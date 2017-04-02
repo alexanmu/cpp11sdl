@@ -8,15 +8,15 @@
 
 #include <iostream>
 
-#include "SDL2/SDL.h"
+#include "SdlInitQuit.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    
-    int errorcode_ = SDL_Init(SDL_INIT_EVERYTHING);
-    if (errorcode_ != 0) std::cout << "init error ...\n";
-                    else std::cout << "init ok\n";
-    SDL_Quit();
+    SdlInitQuit iq(SdlInitQuit::SdlInitComponent::initEverything);
+    if (iq.getErrorCode() != 0)
+        std::cout << "Init failed";
+    else
+    {
+        // do stuff
+    }
     return 0;
 }

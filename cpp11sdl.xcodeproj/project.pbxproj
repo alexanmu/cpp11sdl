@@ -11,6 +11,7 @@
 		1915B7741E91103100147BDB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7711E91103100147BDB /* SDL2_image.framework */; };
 		1915B7751E91103100147BDB /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7721E91103100147BDB /* SDL2_ttf.framework */; };
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
+		19BD5B5B1E9124360043F8E1 /* SdlInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19BD5B591E9124360043F8E1 /* SdlInitQuit.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		1915B7711E91103100147BDB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		1915B7721E91103100147BDB /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		1915B7731E91103100147BDB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		19BD5B591E9124360043F8E1 /* SdlInitQuit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SdlInitQuit.cpp; path = SdlWrapper/SdlInitQuit.cpp; sourceTree = "<group>"; };
+		19BD5B5A1E9124360043F8E1 /* SdlInitQuit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SdlInitQuit.hpp; path = SdlWrapper/SdlInitQuit.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				1915B7691E91101300147BDB /* main.cpp */,
+				19BD5B5C1E9125F10043F8E1 /* SdlWrapper */,
 			);
 			path = cpp11sdl;
 			sourceTree = "<group>";
@@ -80,6 +84,15 @@
 				1915B7731E91103100147BDB /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		19BD5B5C1E9125F10043F8E1 /* SdlWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				19BD5B591E9124360043F8E1 /* SdlInitQuit.cpp */,
+				19BD5B5A1E9124360043F8E1 /* SdlInitQuit.hpp */,
+			);
+			name = SdlWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19BD5B5B1E9124360043F8E1 /* SdlInitQuit.cpp in Sources */,
 				1915B76A1E91101300147BDB /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +290,7 @@
 				1915B76F1E91101300147BDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
