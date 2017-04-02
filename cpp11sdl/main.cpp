@@ -15,8 +15,8 @@ int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     
     int errorcode_ = SDL_Init(SDL_INIT_EVERYTHING);
-    if (errorcode_)
-        std::cout << "init error ...";
+    if (errorcode_ != 0) std::cout << "init error ...\n";
+                    else std::cout << "init ok\n";
     SDL_Quit();
     return 0;
 }
