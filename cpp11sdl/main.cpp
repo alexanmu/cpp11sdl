@@ -13,10 +13,11 @@
 int main(int argc, const char * argv[]) {
     SdlInitQuit iq(SdlInitQuit::SdlInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
-        std::cout << "Init failed";
+        std::cout << "Init failed\n";
     else
     {
         // do stuff
+        std::cout << "Doing stuff\n";
     }
     return 0;
 }
