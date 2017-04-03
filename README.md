@@ -1,7 +1,7 @@
 # cpp11sdl
-C++11 Wrapper for SDL (https://www.libsdl.org/) version 2
+C++11 Wrapper for SDL2 (https://www.libsdl.org/)
 
-Tested with SDL2.0.4
+Tested with SDL2.0.5
 
 Licensed under the zlib licence (http://zlib.net/zlib_license.html).
 
