@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "SdlInitQuit.hpp"
+#include "Playground.hpp"
 
 int main(int argc, const char * argv[]) {
     SdlInitQuit iq(SdlInitQuit::SdlInitComponent::initEverything);
@@ -18,6 +19,8 @@ int main(int argc, const char * argv[]) {
     {
         // do stuff
         std::cout << "Doing stuff\n";
+        Playground p;
+        p.Play();
     }
     return 0;
 }
