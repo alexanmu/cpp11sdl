@@ -19,8 +19,8 @@ SdlColor::SdlColorSdlType SdlColor::getAsGfxColorSdlType() const
     return clr_;
 }
 
-SdlColor::SdlColorSdlType* SdlColor::getAsGfxColorSdlTypePtr(void)
+SdlColor::SdlColorSdlType* SdlColor::getAsGfxColorSdlTypePtr(void) const
 {
     /* This is dangerous; we allow access to object private data */
-    return &clr_;
+    return (SdlColorSdlType*)&clr_;
 }
