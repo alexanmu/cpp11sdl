@@ -9,7 +9,7 @@
 #ifndef GfxPoint_hpp
 #define GfxPoint_hpp
 
-#include "SDL/include/SDL.h"
+#include "GfxSdlHeader.hpp"
 
 class GfxPoint final
 {

@@ -9,7 +9,7 @@
 #ifndef SdlInitQuit_hpp
 #define SdlInitQuit_hpp
 
-#include "SDL/include/SDL.h"
+#include "GfxSdlHeader.hpp"
 
 class GfxInitQuit final
 {

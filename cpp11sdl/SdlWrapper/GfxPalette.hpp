@@ -3,8 +3,7 @@
 
 #include <vector>
 
-#include "SDL/include/SDL.h"
-
+#include "GfxSdlHeader.hpp"
 #include "GfxColor.hpp"
 
 class GfxPalette final

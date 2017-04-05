@@ -9,7 +9,7 @@
 #ifndef GfxColor_hpp
 #define GfxColor_hpp
 
-#include "SDL/include/SDL.h"
+#include "GfxSdlHeader.hpp"
 
 class GfxColor final
 {
