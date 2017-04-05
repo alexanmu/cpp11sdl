@@ -16,6 +16,7 @@ class SdlPoint final
 public:
     typedef SDL_Point SdlPointSdlType;
     
+    /* Delete default constructor */
     SdlPoint() = delete;
     SdlPoint(int x,int y)
     {
@@ -27,9 +28,19 @@ public:
         pt_ = pt;
     }
     
+    /* No copy/move constructors */
+    SdlPoint(const SdlPoint&) = delete;
+    SdlPoint(SdlPoint&&) = delete;
+    
+    /* No assignement operators */
+    SdlPoint& operator=(const SdlPoint&) = delete;
+    SdlPoint& operator=(SdlPoint&&) = delete;
+    
+    /* Getters */
     int getX(void) const;
     int getY(void) const;
     
+    /* Setters */
     void setX(const int x);
     void setY(const int y);
     
