@@ -10,6 +10,7 @@
 
 SdlColor::SdlColor(SdlColorSdlType clr)
 {
+    /* Copy structure; hope SDL_Color assignement operator works ... */
     clr_ = clr;
 }
 
@@ -20,5 +21,6 @@ SdlColor::SdlColorSdlType SdlColor::getAsGfxColorSdlType() const
 
 SdlColor::SdlColorSdlType* SdlColor::getAsGfxColorSdlTypePtr(void)
 {
+    /* This is dangerous; we allow access to object private data */
     return &clr_;
 }
