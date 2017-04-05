@@ -48,7 +48,7 @@ public:
     void setAlpha(uint8_t a) { clr_.a = a; }
     
     SdlColorSdlType getAsGfxColorSdlType(void) const;
-    SdlColorSdlType* getAsGfxColorSdlTypePtr(void);
+    SdlColorSdlType* getAsGfxColorSdlTypePtr(void) const;
 private:
     SdlColorSdlType clr_;
 };
