@@ -8,11 +8,11 @@
 
 #include <iostream>
 
-#include "SdlInitQuit.hpp"
+#include "GfxInitQuit.hpp"
 #include "Playground.hpp"
 
 int main(int argc, const char * argv[]) {
-    SdlInitQuit iq(SdlInitQuit::SdlInitComponent::initEverything);
+    GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
         std::cout << "Init failed\n";
     else
