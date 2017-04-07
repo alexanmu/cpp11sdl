@@ -11,12 +11,12 @@
 GfxRenderer::GfxRenderer(const GfxWindow& win) :
     renderer_(nullptr), window_(&win)
 {
-    GfxRendererSdlType* renderertmp;
+    SdlType* renderertmp;
     
-    renderertmp = SDL_CreateRenderer(window_->getAsGfxWindowSdlTypePtr(), -1, SDL_RENDERER_ACCELERATED);
+    renderertmp = SDL_CreateRenderer(window_->getAsSdlTypePtr(), -1, SDL_RENDERER_ACCELERATED);
     if (!renderertmp)
     {
-        renderertmp = SDL_CreateRenderer(window_->getAsGfxWindowSdlTypePtr(), -1, SDL_RENDERER_SOFTWARE);
+        renderertmp = SDL_CreateRenderer(window_->getAsSdlTypePtr(), -1, SDL_RENDERER_SOFTWARE);
     }
     renderer_ = renderertmp;
 }
@@ -50,7 +50,10 @@ GfxRenderer& GfxRenderer::operator=(GfxRenderer&& rend)
 void GfxRenderer::destroyRenderer()
 {
     if (renderer_)
+    {
         SDL_DestroyRenderer(renderer_);
+        renderer_ = nullptr;
+    }
 }
 
 void GfxRenderer::renderClear()
@@ -66,24 +69,24 @@ void GfxRenderer::renderCopy(const GfxTexture& tex,GfxRect* const src,GfxRect* c
 {
     if (renderer_)
         SDL_RenderCopy(renderer_,
-                       tex.getAsGfxTextureSdlTypePtr(),
-                       src->getAsGfxRectSdlTypePtr(),
-                       dest->getAsGfxRectSdlTypePtr());
+                       tex.getAsSdlTypePtr(),
+                       src->getAsSdlTypePtr(),
+                       dest->getAsSdlTypePtr());
 }
 
 void GfxRenderer::renderCopy(const GfxTexture& tex)
 {
     if (renderer_)
-        SDL_RenderCopy(renderer_,tex.getAsGfxTextureSdlTypePtr(),NULL,NULL);
+        SDL_RenderCopy(renderer_,tex.getAsSdlTypePtr(),NULL,NULL);
 }
 
 void GfxRenderer::renderCopyEx(const GfxTexture& tex,GfxRect* const src, GfxRect* const dest,const double angle,const GfxPoint& pt,const GfxFlip& flip)
 {
     if (renderer_)
         SDL_RenderCopyEx(renderer_,
-                         tex.getAsGfxTextureSdlTypePtr(),
-                         src->getAsGfxRectSdlTypePtr(),
-                         dest->getAsGfxRectSdlTypePtr(),
+                         tex.getAsSdlTypePtr(),
+                         src->getAsSdlTypePtr(),
+                         dest->getAsSdlTypePtr(),
                          angle,
                          pt.getAsSdlTypePtr(),
                          flip.getAsSdlType());
@@ -93,7 +96,7 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex,const double angle,const Gf
 {
     if (renderer_)
         SDL_RenderCopyEx(renderer_,
-                         tex.getAsGfxTextureSdlTypePtr(),
+                         tex.getAsSdlTypePtr(),
                          NULL,
                          NULL,
                          angle,
@@ -107,7 +110,7 @@ void GfxRenderer::renderPresent(void)
         SDL_RenderPresent(renderer_);
 }
 
-GfxRenderer::GfxRendererSdlType* GfxRenderer::getAsGfxRendererSdlTypePtr() const
+GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const
 {
     return renderer_;
 }

@@ -8,46 +8,20 @@
 
 #include "GfxSurface.hpp"
 
-GfxSurface::GfxSurface(int w,int h,int d,int rmask,int gmask,int bmask,int amask)
+GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask)
 {
-    w_ = w;
-    h_ = h;
-    d_ = d;
-    rmask_ = rmask;
-    gmask_ = gmask;
-    bmask_ = bmask;
-    amask_ = amask;
-    surf_ = SDL_CreateRGBSurface(0,w_,h_,d_,rmask_,gmask_,bmask_,amask_);
+    surf_ = SDL_CreateRGBSurface(0,w,h,32,rmask,gmask,bmask,amask);
 }
 
-GfxSurface::GfxSurface(GfxSurfaceSdlType** surf)
+GfxSurface::GfxSurface(SdlTypePtr surf)
 {
-    surf_ = *surf;
-    w_ = surf_->w;
-    h_ = surf_->h;
-    d_ = surf_->format->BitsPerPixel;
-    rmask_ = surf_->format->Rmask;
-    gmask_ = surf_->format->Gmask;
-    bmask_ = surf_->format->Bmask;
-    amask_ = surf_->format->Amask;
-    
-    *surf = nullptr;
+    surf_ = surf;
+    surf = nullptr;
 }
 
 GfxSurface::GfxSurface(GfxSurface&& surf)
 {
-    w_ = surf.w_;
-    h_ = surf.h_;
-    d_ = surf.d_;
-    rmask_ = surf.rmask_;
-    gmask_ = surf.gmask_;
-    bmask_ = surf.bmask_;
-    amask_ = surf.amask_;
     surf_ = surf.surf_;
-    
-    surf.w_ = -1;
-    surf.h_ = -1;
-    surf.d_ = -1;
     surf.surf_ = nullptr;
 }
 
@@ -55,18 +29,7 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& surf)
 {
     if (this != &surf)
     {
-        w_ = surf.w_;
-        h_ = surf.h_;
-        d_ = surf.d_;
-        rmask_ = surf.rmask_;
-        gmask_ = surf.gmask_;
-        bmask_ = surf.bmask_;
-        amask_ = surf.amask_;
         surf_ = surf.surf_;
-        
-        surf.w_ = -1;
-        surf.h_ = -1;
-        surf.d_ = -1;
         surf.surf_ = nullptr;
     }
     return *this;
@@ -80,37 +43,37 @@ GfxSurface::~GfxSurface()
 
 int GfxSurface::getWidth(void) const
 {
-    return w_;
+    return surf_->w;
 }
 
 int GfxSurface::getHeight(void) const
 {
-    return h_;
+    return surf_->h;
 }
 
 int GfxSurface::getDepth(void) const
 {
-    return d_;
+    return surf_->format->BitsPerPixel;
 }
 
 int GfxSurface::getRedMask(void) const
 {
-    return rmask_;
+    return surf_->format->Rmask;
 }
 
 int GfxSurface::getGreenMask(void) const
 {
-    return gmask_;
+    return surf_->format->Gmask;
 }
 
 int GfxSurface::getBlueMask(void) const
 {
-    return bmask_;
+    return surf_->format->Bmask;
 }
 
 int GfxSurface::getAlphaMask(void) const
 {
-    return amask_;
+    return surf_->format->Amask;
 }
 
 GfxPixelFormat GfxSurface::getFormat(void)
@@ -127,7 +90,7 @@ void GfxSurface::destroySurface(void)
     }
 }
 
-GfxSurface::GfxSurfaceSdlType* GfxSurface::getAsGfxSurfaceSdlTypePtr(void) const
+GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const
 {
     return surf_;
 }

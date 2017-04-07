@@ -14,7 +14,10 @@ public:
 
 	using GfxColorVector = std::vector<GfxColor>;
 
-	GfxPalette() = delete;
+	GfxPalette()
+	{
+		pal_ = nullptr;
+	};
 	GfxPalette(int ncolors, GfxColorVector colors);
 
 	~GfxPalette()
@@ -23,11 +26,11 @@ public:
 			SDL_FreePalette(pal_);
 	}
 
-	GfxPalette(const GfxPalette&) = delete;
-	GfxPalette(GfxPalette&&) = delete;
+	GfxPalette(const GfxPalette& other);
+	GfxPalette(GfxPalette&& other);
 
-	GfxPalette& operator=(const GfxPalette&) = delete;
-	GfxPalette& operator=(GfxPalette&&) = delete;
+	GfxPalette& operator=(const GfxPalette& other);
+	GfxPalette& operator=(GfxPalette&& other);
 
 	/* Methods */
 	void allocPalette(int ncolors);

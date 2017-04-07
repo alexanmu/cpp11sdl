@@ -17,11 +17,13 @@
 class GfxWindow final
 {
 public:
-    typedef SDL_Window GfxWindowSdlType;
+    typedef SDL_Window SdlType;
+    typedef SDL_Window* SdlTypePtr;
 
     GfxWindow(std::string title,int width,int height);
 
     GfxWindow() = delete;
+
     GfxWindow(const GfxWindow&) = delete;
     GfxWindow& operator=(const GfxWindow&) = delete;
     
@@ -39,12 +41,10 @@ public:
 
     void setTitle(std::string title);
 
-    GfxWindowSdlType* getAsGfxWindowSdlTypePtr() const;
+    SdlTypePtr getAsSdlTypePtr() const;
 private:
     SDL_Window* window_;
     std::string title_;
-    int width_;
-    int height_;
 };
 
 #endif /* GfxWindow_hpp */

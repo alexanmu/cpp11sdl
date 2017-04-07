@@ -17,9 +17,11 @@
 class GfxTexture final
 {
 public:
-    typedef SDL_Texture GfxTextureSdlType;
+    typedef SDL_Texture SdlType;
+    typedef SDL_Texture* SdlTypePtr;
     
     GfxTexture() = delete;
+
     GfxTexture(void * rend,std::string name);
     GfxTexture(void * rend,std::string name,const GfxSurface& surf);
 
@@ -34,7 +36,8 @@ public:
     void destroyTexture(void);
 
     std::string getName(void) const;
-    GfxTextureSdlType* getAsGfxTextureSdlTypePtr(void) const;
+
+    SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     void * rend_;
     SDL_Texture* tex_;

@@ -20,11 +20,13 @@
 class GfxRenderer final
 {
 public:
-    typedef SDL_Renderer GfxRendererSdlType;
+    typedef SDL_Renderer SdlType;
+    typedef SDL_Renderer* SdlTypePtr;
     
     GfxRenderer(const GfxWindow& win);
     
     GfxRenderer() = delete;
+
     GfxRenderer(const GfxRenderer&) = delete;
     GfxRenderer& operator=(const GfxRenderer&) = delete;
     
@@ -40,11 +42,11 @@ public:
     void renderCopy(const GfxTexture& tex);
     
     void renderCopyEx(const GfxTexture& tex,GfxRect* const src, GfxRect* const dest,const double angle,const GfxPoint& pt,const GfxFlip& flip);
-    void renderCopyEx(const GfxTexture& text,const double angle,const GfxPoint& pt,const GfxFlip& flip);
+    void renderCopyEx(const GfxTexture& tex,const double angle,const GfxPoint& pt,const GfxFlip& flip);
 
     void renderPresent(void);
 
-    GfxRendererSdlType* getAsGfxRendererSdlTypePtr() const;
+    SdlTypePtr getAsSdlTypePtr() const;
 private:
     SDL_Renderer* renderer_;
     GfxWindow const* window_;

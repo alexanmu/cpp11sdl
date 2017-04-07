@@ -15,11 +15,12 @@
 class GfxSurface final
 {
 public:
-    typedef SDL_Surface GfxSurfaceSdlType;
+    typedef SDL_Surface SdlType;
+    typedef SDL_Surface* SdlTypePtr;
 
     GfxSurface() = delete;
-    GfxSurface(int w,int h,int d,int rmask,int gmask,int bmask,int amask);
-    GfxSurface(GfxSurfaceSdlType** surf);
+    GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask);
+    GfxSurface(SdlTypePtr surf);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& surf);
@@ -42,16 +43,9 @@ public:
 
     void destroySurface(void);
 
-    GfxSurfaceSdlType* getAsGfxSurfaceSdlTypePtr(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    SDL_Surface* surf_;
-    int w_;
-    int h_;
-    int d_;
-    int rmask_;
-    int gmask_;
-    int bmask_;
-    int amask_;
+    SdlTypePtr surf_;
 };
 
 #endif /* GfxSurface_hpp */

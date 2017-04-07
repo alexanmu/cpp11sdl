@@ -48,12 +48,12 @@ void GfxRect::setHeight(const int h)
     rect_.h = h;
 }
 
-GfxRect::GfxRectSdlType GfxRect::getAsGfxRectSdlType() const
+GfxRect::SdlType GfxRect::getAsSdlType() const
 {
     return rect_;
 }
 
-GfxRect::GfxRectSdlType* GfxRect::getAsGfxRectSdlTypePtr()
+GfxRect::SdlTypePtr GfxRect::getAsSdlTypePtr() const
 {
-    return &rect_;
+    return (SdlTypePtr)&rect_;
 }

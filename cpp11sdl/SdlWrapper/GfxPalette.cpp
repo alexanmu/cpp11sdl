@@ -1,5 +1,24 @@
 #include "GfxPalette.hpp"
 
+GfxPalette::GfxPalette(const GfxPalette& other)
+{
+	if (pal_ != nullptr)
+		SDL_FreePalette(pal_);
+	pal_ = SDL_AllocPalette(other.pal_->ncolors);
+	SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
+}
+
+GfxPalette::GfxPalette(GfxPalette&& other)
+{
+	if (pal_ != nullptr)
+		SDL_FreePalette(pal_);
+	pal_ = SDL_AllocPalette(other.pal_->ncolors);
+	SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
+	/* free other's resources */
+	SDL_FreePalette(other.pal_);
+	other.pal_ = nullptr;
+}
+
 GfxPalette::GfxPalette(int ncolors, GfxColorVector colors)
 {
 	int colorindex;
@@ -11,6 +30,33 @@ GfxPalette::GfxPalette(int ncolors, GfxColorVector colors)
 		SDL_SetPaletteColors(pal_,clr.getAsSdlTypePtr(),colorindex,1);
 		colorindex += 1;
 	}
+}
+
+GfxPalette& GfxPalette::operator=(const GfxPalette& other)
+{
+	if(this != &other)
+	{
+		if (pal_ != nullptr)
+			SDL_FreePalette(pal_);
+		pal_ = SDL_AllocPalette(other.pal_->ncolors);
+		SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
+	}
+	return *this;
+}
+
+GfxPalette& GfxPalette::operator=(GfxPalette&& other)
+{
+	if(this != &other)
+	{
+		if (pal_ != nullptr)
+			SDL_FreePalette(pal_);
+		pal_ = SDL_AllocPalette(other.pal_->ncolors);
+		SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
+		/* Free other's resources */
+		SDL_FreePalette(other.pal_);
+		other.pal_ = nullptr;
+	}
+	return *this;
 }
 
 void GfxPalette::allocPalette(int ncolors)

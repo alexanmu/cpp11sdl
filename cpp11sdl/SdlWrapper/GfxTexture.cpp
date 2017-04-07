@@ -22,7 +22,7 @@ GfxTexture::GfxTexture(void * rend,std::string name,const GfxSurface& surf) : Gf
     GfxRenderer* rendptr;
     
     rendptr = (GfxRenderer*)rend;
-    tex_ = SDL_CreateTextureFromSurface(rendptr->getAsGfxRendererSdlTypePtr(),surf.getAsGfxSurfaceSdlTypePtr());
+    tex_ = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(),surf.getAsSdlTypePtr());
 }
 
 GfxTexture::~GfxTexture()
@@ -64,7 +64,7 @@ std::string GfxTexture::getName(void) const
     return name_;
 }
 
-GfxTexture::GfxTextureSdlType* GfxTexture::getAsGfxTextureSdlTypePtr(void) const
+GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const
 {
     return tex_;
 }
