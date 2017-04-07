@@ -7,16 +7,19 @@
 //
 
 #include "GfxSurface.hpp"
-
+#include <iostream>
 GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask)
 {
-    surf_ = SDL_CreateRGBSurface(0,w,h,32,rmask,gmask,bmask,amask);
+    surf_ = SDL_CreateRGBSurface(0,w,h,24,rmask,gmask,bmask,amask);
+    if (surf_ == nullptr)
+    {
+        // error handling here ...
+    }
 }
 
 GfxSurface::GfxSurface(SdlTypePtr surf)
 {
     surf_ = surf;
-    surf = nullptr;
 }
 
 GfxSurface::GfxSurface(GfxSurface&& surf)
@@ -76,9 +79,9 @@ int GfxSurface::getAlphaMask(void) const
     return surf_->format->Amask;
 }
 
-GfxPixelFormat GfxSurface::getFormat(void)
+GfxPixelFormat* GfxSurface::getFormat(void)
 {
-    return GfxPixelFormat(*surf_->format);
+    return new GfxPixelFormat(surf_->format);
 }
 
 void GfxSurface::destroySurface(void)

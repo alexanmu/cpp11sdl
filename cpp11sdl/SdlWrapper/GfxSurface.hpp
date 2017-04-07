@@ -39,7 +39,7 @@ public:
     int getBlueMask(void) const;
     int getAlphaMask(void) const;
 
-    GfxPixelFormat getFormat(void);
+    GfxPixelFormat* getFormat(void);
 
     void destroySurface(void);
 
