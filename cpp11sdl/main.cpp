@@ -19,7 +19,6 @@ int main(int argc, const char * argv[]) {
     {
         // do stuff
         std::cout << "Doing stuff\n";
-        
         Playground p;
         p.Play();
     }
