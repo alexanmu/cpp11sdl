@@ -7,4 +7,6 @@ Licensed under the zlib licence (http://zlib.net/zlib_license.html).
 
 For "the real deal" go here: https://github.com/libSDL2pp/libSDL2pp.
 
+Small demo app available. See main.cpp
+
 ---eof---
