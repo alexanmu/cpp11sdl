@@ -51,12 +51,13 @@ void GfxWindow::destroyWindow()
     }
 }
 
-GfxSurface* GfxWindow::getWindowSurface(void)
+std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
 {
     if (window_)
     {
         SDL_Surface* surf = SDL_GetWindowSurface(window_);
-        return new GfxSurface(surf);
+        std::unique_ptr<GfxSurface> ptr {new GfxSurface(surf)};
+        return ptr;
     }
     return nullptr;
 }

@@ -10,6 +10,7 @@
 #define GfxWindow_hpp
 
 #include <string>
+#include <memory>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxSurface.hpp"
@@ -37,7 +38,7 @@ public:
     std::string getTitle() const;
     int getWidth() const;
     int getHeight() const;
-    GfxSurface* getWindowSurface(void);
+    std::unique_ptr<GfxSurface> getWindowSurface(void);
 
     void setTitle(std::string title);
 

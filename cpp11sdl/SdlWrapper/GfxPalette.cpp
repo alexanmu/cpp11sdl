@@ -77,7 +77,7 @@ void GfxPalette::freePalette()
 
 int GfxPalette::setPaletteColors(GfxColorVector colors, int firstcolor)
 {
-	int errorcode;
+	int errorcode = 0;
 
 	for(GfxColor clr : colors)
 	{
