@@ -7,8 +7,8 @@
 //
 
 #include "GfxSurface.hpp"
-#include <iostream>
-GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask)
+
+GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask) : GfxRootClass("GfxSurface")
 {
     surf_ = SDL_CreateRGBSurface(0,w,h,24,rmask,gmask,bmask,amask);
     if (surf_ == nullptr)
@@ -17,12 +17,12 @@ GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask)
     }
 }
 
-GfxSurface::GfxSurface(SdlTypePtr surf)
+GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass("GfxSurface")
 {
     surf_ = surf;
 }
 
-GfxSurface::GfxSurface(GfxSurface&& surf)
+GfxSurface::GfxSurface(GfxSurface&& surf) : GfxRootClass("GfxSurface")
 {
     surf_ = surf.surf_;
     surf.surf_ = nullptr;

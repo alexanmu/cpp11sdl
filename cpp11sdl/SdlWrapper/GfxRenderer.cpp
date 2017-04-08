@@ -8,8 +8,7 @@
 
 #include "GfxRenderer.hpp"
 
-GfxRenderer::GfxRenderer(const GfxWindow& win) :
-    renderer_(nullptr), window_(&win)
+GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass("GfxRenderer"), renderer_(nullptr), window_(&win)
 {
     SdlType* renderertmp;
     
@@ -21,7 +20,7 @@ GfxRenderer::GfxRenderer(const GfxWindow& win) :
     renderer_ = renderertmp;
 }
 
-GfxRenderer::GfxRenderer(GfxRenderer&& rend)
+GfxRenderer::GfxRenderer(GfxRenderer&& rend) : GfxRootClass("GfxRenderer")
 {
     renderer_ = rend.renderer_;
     window_ = rend.window_;

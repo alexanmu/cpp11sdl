@@ -8,13 +8,12 @@
 
 #include "GfxWindow.hpp"
 
-GfxWindow::GfxWindow(std::string title,int width,int height) :
-    title_(title)
+GfxWindow::GfxWindow(std::string title,int width,int height) : GfxRootClass("GfxWindow"), title_(title)
 {
     window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
 }
 
-GfxWindow::GfxWindow(GfxWindow&& win)
+GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
 {
     window_ = win.window_;
     title_ = win.title_;

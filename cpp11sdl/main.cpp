@@ -96,7 +96,7 @@ void _DoStuff(void)
             SDL_FillRect(s.getAsSdlTypePtr(), rt.getAsSdlTypePtr(), SDL_MapRGB(s.getFormat()->getAsSdlTypePtr(), r1, g1, b1));
             rt.setX(481);
             SDL_FillRect(s.getAsSdlTypePtr(), rt.getAsSdlTypePtr(), SDL_MapRGB(s.getFormat()->getAsSdlTypePtr(), 255-r1, 255-g1, 255-b1));
-            GfxTexture t(&r,"tex",s);
+            GfxTexture t(&r,s);
         
             str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1);
             w.setTitle(str);

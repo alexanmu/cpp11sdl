@@ -10,15 +10,16 @@
 #define GfxFlip_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 
-class GfxFlip final
+class GfxFlip final : public GfxRootClass
 {
 public:
     typedef SDL_RendererFlip SdlType;
     typedef SDL_RendererFlip* SdlTypePtr;
 
     GfxFlip() = delete;
-    GfxFlip(bool fliph,bool flipv)
+    GfxFlip(bool fliph,bool flipv) : GfxRootClass("GfxFlip")
     {
         flip_ = static_cast<int>(GfxFlipValues::flipNone);
         if (fliph)
@@ -26,6 +27,12 @@ public:
         if (flipv)
             flip_ |= static_cast<int>(GfxFlipValues::flipVertical);
     }
+
+    GfxFlip(const GfxFlip&) = delete;
+    GfxFlip(GfxFlip&&) = delete;
+    
+    GfxFlip& operator=(const GfxFlip&) = delete;
+    GfxFlip& operator=(GfxFlip&&) = delete;
 
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr();

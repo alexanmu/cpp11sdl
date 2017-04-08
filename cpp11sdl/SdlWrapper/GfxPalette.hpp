@@ -4,9 +4,10 @@
 #include <vector>
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
 
-class GfxPalette final
+class GfxPalette final : public GfxRootClass
 {
 public:
 	typedef SDL_Palette SdlType;
@@ -14,20 +15,20 @@ public:
 
 	using GfxColorVector = std::vector<GfxColor>;
 
-	GfxPalette()
+    GfxPalette() : GfxRootClass("GfxPalette")
 	{
 		pal_ = nullptr;
 	};
 	GfxPalette(int ncolors, GfxColorVector colors);
 
-	~GfxPalette()
-	{
-		if (pal_ != nullptr)
-			SDL_FreePalette(pal_);
-	}
-
 	GfxPalette(const GfxPalette& other);
 	GfxPalette(GfxPalette&& other);
+
+    ~GfxPalette()
+    {
+        if (pal_ != nullptr)
+            SDL_FreePalette(pal_);
+    }
 
 	GfxPalette& operator=(const GfxPalette& other);
 	GfxPalette& operator=(GfxPalette&& other);

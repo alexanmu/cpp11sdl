@@ -13,9 +13,10 @@
 #include <memory>
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
 
-class GfxWindow final
+class GfxWindow final : public GfxRootClass
 {
 public:
     typedef SDL_Window SdlType;

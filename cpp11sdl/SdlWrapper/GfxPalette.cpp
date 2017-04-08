@@ -1,6 +1,6 @@
 #include "GfxPalette.hpp"
 
-GfxPalette::GfxPalette(const GfxPalette& other)
+GfxPalette::GfxPalette(const GfxPalette& other) : GfxRootClass("GfxPalette")
 {
 	if (pal_ != nullptr)
 		SDL_FreePalette(pal_);
@@ -8,7 +8,7 @@ GfxPalette::GfxPalette(const GfxPalette& other)
 	SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
 }
 
-GfxPalette::GfxPalette(GfxPalette&& other)
+GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass("GfxPalette")
 {
 	if (pal_ != nullptr)
 		SDL_FreePalette(pal_);
@@ -19,7 +19,7 @@ GfxPalette::GfxPalette(GfxPalette&& other)
 	other.pal_ = nullptr;
 }
 
-GfxPalette::GfxPalette(int ncolors, GfxColorVector colors)
+GfxPalette::GfxPalette(int ncolors, GfxColorVector colors) : GfxRootClass("GfxPalette")
 {
 	int colorindex;
 

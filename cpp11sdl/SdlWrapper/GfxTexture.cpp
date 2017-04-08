@@ -10,14 +10,13 @@
 
 #include "GfxRenderer.hpp"
 
-GfxTexture::GfxTexture(void * rend,std::string name)
+GfxTexture::GfxTexture(void * rend) : GfxRootClass("GfxTexture")
 {
     rend_ = rend;
     tex_ = nullptr;
-    name_ = name;
 }
 
-GfxTexture::GfxTexture(void * rend,std::string name,const GfxSurface& surf) : GfxTexture(rend,name)
+GfxTexture::GfxTexture(void * rend,const GfxSurface& surf) : GfxTexture(rend)
 {
     GfxRenderer* rendptr;
     
@@ -34,7 +33,6 @@ GfxTexture::~GfxTexture()
 GfxTexture::GfxTexture(GfxTexture&& tex)
 {
     tex_ = tex.tex_;
-    name_ = tex.name_;
 }
 
 GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
@@ -42,10 +40,8 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
     if (this != &tex)
     {
         tex_ = tex.tex_;
-        name_ = tex.name_;
         
         tex.tex_ = nullptr;
-        tex.name_ = "";
     }
     return *this;
 }
@@ -57,11 +53,6 @@ void GfxTexture::destroyTexture(void)
         SDL_DestroyTexture(tex_);
         tex_ = nullptr;
     }
-}
-
-std::string GfxTexture::getName(void) const
-{
-    return name_;
 }
 
 GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const

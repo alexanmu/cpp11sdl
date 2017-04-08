@@ -10,9 +10,10 @@
 #define GfxSurface_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 #include "GfxPixelFormat.hpp"
 
-class GfxSurface final
+class GfxSurface final : public GfxRootClass
 {
 public:
     typedef SDL_Surface SdlType;

@@ -3,44 +3,47 @@
 //  cpp11sdl
 //
 //  Created by George Oros on 4/2/17.
-//  Copyright © 2017 George Oros. All rights reserved.
+//  Copyright ï¿½ 2017 George Oros. All rights reserved.
 //
 
 #ifndef GfxColor_hpp
 #define GfxColor_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 
-class GfxColor final
+class GfxColor final : public GfxRootClass
 {
 public:
     typedef SDL_Color SdlType;
     typedef SDL_Color* SdlTypePtr;
     
-    GfxColor()
+    GfxColor() : GfxRootClass("GfxColor")
     {
         clr_.r = 0;
         clr_.g = 0;
         clr_.b = 0;
         clr_.a = 0;
     }
-    GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+    
+    GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) : GfxRootClass("GfxColor")
     {
         clr_.r = r;
         clr_.g = g;
         clr_.b = b;
         clr_.a = a;
     }
+
     GfxColor(SdlType clr);
     
     /* Copy constructor */
-    GfxColor(const GfxColor& other)
+    GfxColor(const GfxColor& other) : GfxRootClass("GfxColor")
     {
         clr_ = other.clr_;
     }
 
     /* Move constructor */
-    GfxColor(GfxColor&& other)
+    GfxColor(GfxColor&& other) : GfxRootClass("GfxColor")
     {
         clr_ = other.clr_;
         /* Delete other's data */

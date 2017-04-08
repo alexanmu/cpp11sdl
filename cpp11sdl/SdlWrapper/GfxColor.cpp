@@ -3,12 +3,12 @@
 //  cpp11sdl
 //
 //  Created by George Oros on 4/2/17.
-//  Copyright © 2017 George Oros. All rights reserved.
+//  Copyright ï¿½ 2017 George Oros. All rights reserved.
 //
 
 #include "GfxColor.hpp"
 
-GfxColor::GfxColor(SdlType clr)
+GfxColor::GfxColor(SdlType clr) : GfxRootClass("GfxColor")
 {
     /* Copy structure; hope SDL_Color assignement operator works ... */
     clr_ = clr;

@@ -9,12 +9,11 @@
 #ifndef GfxTexture_hpp
 #define GfxTexture_hpp
 
-#include <string>
-
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
 
-class GfxTexture final
+class GfxTexture final : public GfxRootClass
 {
 public:
     typedef SDL_Texture SdlType;
@@ -22,8 +21,8 @@ public:
     
     GfxTexture() = delete;
 
-    GfxTexture(void * rend,std::string name);
-    GfxTexture(void * rend,std::string name,const GfxSurface& surf);
+    GfxTexture(void * rend);
+    GfxTexture(void * rend,const GfxSurface& surf);
 
     ~GfxTexture();
     
@@ -35,13 +34,10 @@ public:
     
     void destroyTexture(void);
 
-    std::string getName(void) const;
-
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     void * rend_;
     SDL_Texture* tex_;
-    std::string name_;
 };
 
 #endif /* GfxTexture_hpp */

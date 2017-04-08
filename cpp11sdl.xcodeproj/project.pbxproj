@@ -11,6 +11,7 @@
 		1915B7741E91103100147BDB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7711E91103100147BDB /* SDL2_image.framework */; };
 		1915B7751E91103100147BDB /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7721E91103100147BDB /* SDL2_ttf.framework */; };
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
+		1942A3861E99377D00A7A5CD /* GfxRootClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1942A3841E99377D00A7A5CD /* GfxRootClass.cpp */; };
 		197459581E9552CF00AB302B /* GfxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1974594F1E9552CF00AB302B /* GfxColor.cpp */; };
 		197459591E9552CF00AB302B /* GfxInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197459511E9552CF00AB302B /* GfxInitQuit.cpp */; };
 		1974595A1E9552CF00AB302B /* GfxPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197459531E9552CF00AB302B /* GfxPalette.cpp */; };
@@ -43,6 +44,8 @@
 		1915B7711E91103100147BDB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		1915B7721E91103100147BDB /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		1915B7731E91103100147BDB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		1942A3841E99377D00A7A5CD /* GfxRootClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRootClass.cpp; path = SdlWrapper/GfxRootClass.cpp; sourceTree = "<group>"; };
+		1942A3851E99377D00A7A5CD /* GfxRootClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRootClass.hpp; path = SdlWrapper/GfxRootClass.hpp; sourceTree = "<group>"; };
 		1974594F1E9552CF00AB302B /* GfxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxColor.cpp; path = SdlWrapper/GfxColor.cpp; sourceTree = "<group>"; };
 		197459501E9552CF00AB302B /* GfxColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxColor.hpp; path = SdlWrapper/GfxColor.hpp; sourceTree = "<group>"; };
 		197459511E9552CF00AB302B /* GfxInitQuit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxInitQuit.cpp; path = SdlWrapper/GfxInitQuit.cpp; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				197459551E9552CF00AB302B /* GfxPoint.cpp */,
 				197459561E9552CF00AB302B /* GfxPoint.hpp */,
 				197459571E9552CF00AB302B /* GfxSdlHeader.hpp */,
+				1942A3841E99377D00A7A5CD /* GfxRootClass.cpp */,
+				1942A3851E99377D00A7A5CD /* GfxRootClass.hpp */,
 			);
 			name = SdlWrapper;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				1974596F1E9553DB00AB302B /* GfxTexture.cpp in Sources */,
 				197459591E9552CF00AB302B /* GfxInitQuit.cpp in Sources */,
 				1915B76A1E91101300147BDB /* main.cpp in Sources */,
+				1942A3861E99377D00A7A5CD /* GfxRootClass.cpp in Sources */,
 				1974596B1E9553DB00AB302B /* GfxPixelFormat.cpp in Sources */,
 				1974596C1E9553DB00AB302B /* GfxRect.cpp in Sources */,
 				1974596A1E9553DB00AB302B /* GfxFlip.cpp in Sources */,

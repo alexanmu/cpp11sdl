@@ -10,6 +10,7 @@
 #define GfxRenderer_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 
 #include "GfxWindow.hpp"
 #include "GfxRect.hpp"
@@ -17,7 +18,7 @@
 #include "GfxFlip.hpp"
 #include "GfxTexture.hpp"
 
-class GfxRenderer final
+class GfxRenderer final : public GfxRootClass
 {
 public:
     typedef SDL_Renderer SdlType;

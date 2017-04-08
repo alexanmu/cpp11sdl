@@ -10,38 +10,39 @@
 #define GfxRect_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 
-class GfxRect final
+class GfxRect final : public GfxRootClass
 {
 public:
     typedef SDL_Rect SdlType;
     typedef SDL_Rect* SdlTypePtr;
     
-    GfxRect()
+    GfxRect() : GfxRootClass("GfxRect")
     {
         rect_.x = -1;
         rect_.y = -1;
         rect_.w = -1;
         rect_.h = -1;
     }
-    GfxRect(const int x, const int y, const int w, const int h)
+    GfxRect(const int x, const int y, const int w, const int h) : GfxRootClass("GfxRect")
     {
         rect_.x = x;
         rect_.y = y;
         rect_.w = w;
         rect_.h = h;
     }
-    GfxRect(SdlType rect)
+    GfxRect(SdlType rect) : GfxRootClass("GfxRect")
     {
         rect_ = rect;
     }
 
-    GfxRect(const GfxRect& other)
+    GfxRect(const GfxRect& other) : GfxRootClass("GfxRect")
     {
         rect_ = other.rect_;
     }
 
-    GfxRect(GfxRect&& other)
+    GfxRect(GfxRect&& other) : GfxRootClass("GfxRect")
     {
         rect_ = other.rect_;
         other.rect_.x = -1;

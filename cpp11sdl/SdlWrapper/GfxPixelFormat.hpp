@@ -10,9 +10,10 @@
 #define GfxPixelFormat_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 #include "GfxPalette.hpp"
 
-class GfxPixelFormat final
+class GfxPixelFormat final : public GfxRootClass
 {
 public:
     typedef SDL_PixelFormat SdlType;
@@ -21,12 +22,12 @@ public:
     GfxPixelFormat();
     GfxPixelFormat(SdlTypePtr pix);
 
-    GfxPixelFormat(const GfxPixelFormat& other)
+    GfxPixelFormat(const GfxPixelFormat& other) : GfxRootClass("GfxPixelFormat")
     {
         pix_ = other.pix_;
         pal_ = other.pal_;
     }
-    GfxPixelFormat(GfxPixelFormat&& other)
+    GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass("GfxPixelFormat")
     {
         pix_ = other.pix_;
         pal_ = other.pal_;

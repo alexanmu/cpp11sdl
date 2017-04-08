@@ -8,12 +8,12 @@
 
 #include "GfxPixelFormat.hpp"
 
-GfxPixelFormat::GfxPixelFormat()
+GfxPixelFormat::GfxPixelFormat() : GfxRootClass("GfxPixelFormat")
 {
     pix_ = nullptr;
 };
 
-GfxPixelFormat::GfxPixelFormat(SdlTypePtr pix)
+GfxPixelFormat::GfxPixelFormat(SdlTypePtr pix) : GfxRootClass("GfxPixelFormat")
 {
     pix_ = pix;
 }

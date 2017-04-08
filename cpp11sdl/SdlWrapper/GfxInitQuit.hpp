@@ -3,15 +3,16 @@
 //  cpp11sdl
 //
 //  Created by George Oros on 4/2/17.
-//  Copyright © 2017 George Oros. All rights reserved.
+//  Copyright ï¿½ 2017 George Oros. All rights reserved.
 //
 
 #ifndef SdlInitQuit_hpp
 #define SdlInitQuit_hpp
 
 #include "GfxSdlHeader.hpp"
+#include "GfxRootClass.hpp"
 
-class GfxInitQuit final
+class GfxInitQuit final : public GfxRootClass
 {
 public:
     // Init Video, Audio or Everything ...
@@ -22,7 +23,7 @@ public:
         initEverything
     };
     
-    GfxInitQuit(GfxInitComponent gfxInitComp) : gfxInitComp_(gfxInitComp), errorcode_(0)
+    GfxInitQuit(GfxInitComponent gfxInitComp) : GfxRootClass("GfxInitQuit"), gfxInitComp_(gfxInitComp), errorcode_(0)
     {
         int initParam;
         
@@ -43,6 +44,7 @@ public:
     
     // No default constructor
     GfxInitQuit() = delete;
+
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;
     GfxInitQuit(GfxInitQuit&&) = delete;
