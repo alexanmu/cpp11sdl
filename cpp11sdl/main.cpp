@@ -39,7 +39,7 @@ void _DoStuff(void)
     bool quit = false;
     int r1 = 128,g1 = 128,b1 = 128;
     std::string str;
-
+    
     std::srand(static_cast<unsigned int>(time(0)));
     while(!quit)
     {
@@ -86,6 +86,8 @@ void _DoStuff(void)
                 { r1 = 42; g1 = 0; b1 = 46; }
                 if (e.key.keysym.scancode == SDL_SCANCODE_Y)
                 { r1 = 156; g1 = 54; b1 = 78; }
+                if (e.key.keysym.scancode == SDL_SCANCODE_P)
+                { r1 = 50; g1 = 100; b1 = 200; }
             }
             rt.setX(0);
             rt.setY(0);
@@ -104,6 +106,7 @@ void _DoStuff(void)
         }
         SDL_Delay(25);
     }
+
 }
 
 int main(int argc, const char * argv[]) {
