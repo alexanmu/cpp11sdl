@@ -10,13 +10,13 @@
 
 #include "GfxRenderer.hpp"
 
-GfxTexture::GfxTexture(void * rend) : GfxRootClass("GfxTexture")
+GfxTexture::GfxTexture(GfxRootClass * rend) : GfxRootClass("GfxTexture")
 {
     rend_ = rend;
     tex_ = nullptr;
 }
 
-GfxTexture::GfxTexture(void * rend,const GfxSurface& surf) : GfxTexture(rend)
+GfxTexture::GfxTexture(GfxRootClass * rend,const GfxSurface& surf) : GfxTexture(rend)
 {
     GfxRenderer* rendptr;
     

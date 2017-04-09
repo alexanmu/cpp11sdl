@@ -11,6 +11,10 @@
 GfxWindow::GfxWindow(std::string title,int width,int height) : GfxRootClass("GfxWindow"), title_(title)
 {
     window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
+    if (window_ == nullptr)
+    {
+        // error handling here
+    }
 }
 
 GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
@@ -55,8 +59,11 @@ std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
     if (window_)
     {
         SDL_Surface* surf = SDL_GetWindowSurface(window_);
-        std::unique_ptr<GfxSurface> ptr {new GfxSurface(surf)};
-        return ptr;
+        if (surf != nullptr)
+        {
+            std::unique_ptr<GfxSurface> ptr {new GfxSurface(surf)};
+            return ptr;
+        }
     }
     return nullptr;
 }

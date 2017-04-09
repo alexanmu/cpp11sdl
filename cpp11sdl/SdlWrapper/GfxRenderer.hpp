@@ -39,10 +39,10 @@ public:
     void destroyRenderer(void);
     void renderClear(void);
 
-    void renderCopy(const GfxTexture& tex,GfxRect* const src,GfxRect* const dest);
+    void renderCopy(const GfxTexture& tex,const GfxRect& src,const GfxRect& dest);
     void renderCopy(const GfxTexture& tex);
     
-    void renderCopyEx(const GfxTexture& tex,GfxRect* const src, GfxRect* const dest,const double angle,const GfxPoint& pt,const GfxFlip& flip);
+    void renderCopyEx(const GfxTexture& tex,const GfxRect& src,const GfxRect& dest,const double angle,const GfxPoint& pt,const GfxFlip& flip);
     void renderCopyEx(const GfxTexture& tex,const double angle,const GfxPoint& pt,const GfxFlip& flip);
 
     void renderPresent(void);

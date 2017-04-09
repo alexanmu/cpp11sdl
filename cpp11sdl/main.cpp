@@ -32,6 +32,8 @@ void _DoStuff(void)
 {
     GfxWindow w("Window title",960,480);
     GfxRenderer r(w);
+    GfxSurface sb("/Users/georgeoros/Documents/Dev/Files/Image2.bmp");
+    
     GfxSurface s(960,480,0xFF,0xFF,0xFF,0xFF);
     GfxRect rt;
 
@@ -89,13 +91,14 @@ void _DoStuff(void)
                 if (e.key.keysym.scancode == SDL_SCANCODE_P)
                 { r1 = 50; g1 = 100; b1 = 200; }
             }
+            s.blitSurface(sb);
             rt.setX(0);
             rt.setY(0);
             rt.setWidth(480);
-            rt.setHeight(480);
-            SDL_FillRect(s.getAsSdlTypePtr(), rt.getAsSdlTypePtr(), SDL_MapRGB(s.getFormat()->getAsSdlTypePtr(), r1, g1, b1));
+            rt.setHeight(240);
+            s.fillRect(rt,GfxColor(r1,g1,b1));
             rt.setX(481);
-            SDL_FillRect(s.getAsSdlTypePtr(), rt.getAsSdlTypePtr(), SDL_MapRGB(s.getFormat()->getAsSdlTypePtr(), 255-r1, 255-g1, 255-b1));
+            s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1));
             GfxTexture t(&r,s);
         
             str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1);

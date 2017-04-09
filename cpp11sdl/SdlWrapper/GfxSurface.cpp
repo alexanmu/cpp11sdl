@@ -19,6 +19,10 @@ GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask) : Gf
 
 GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass("GfxSurface")
 {
+    if (surf == nullptr)
+    {
+        // error handling here
+    }
     surf_ = surf;
 }
 
@@ -26,6 +30,24 @@ GfxSurface::GfxSurface(GfxSurface&& surf) : GfxRootClass("GfxSurface")
 {
     surf_ = surf.surf_;
     surf.surf_ = nullptr;
+}
+
+GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass("GfxSurface")
+{
+    surf_ = SDL_LoadBMP(filename.c_str());
+    if (surf_ == nullptr)
+    {
+        // error handling here
+    }
+}
+
+GfxSurface::GfxSurface(std::string&& filename) : GfxRootClass("GfxSurface")
+{
+    surf_ = SDL_LoadBMP(filename.c_str());
+    if (surf_ == nullptr)
+    {
+        // error handling here
+    }
 }
 
 GfxSurface& GfxSurface::operator=(GfxSurface&& surf)
@@ -79,9 +101,44 @@ int GfxSurface::getAlphaMask(void) const
     return surf_->format->Amask;
 }
 
-GfxPixelFormat* GfxSurface::getFormat(void)
+std::unique_ptr<GfxPixelFormat> GfxSurface::getFormat(void)
 {
-    return new GfxPixelFormat(surf_->format);
+    std::unique_ptr<GfxPixelFormat> p { new GfxPixelFormat(surf_->format) };
+    
+    return p;
+}
+
+void GfxSurface::fillRect(const GfxRect& rect,const GfxColor& color)
+{
+    uint32_t clr;
+    
+    clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
+}
+
+void GfxSurface::fillRect(const GfxColor& color)
+{
+    uint32_t clr;
+    
+    clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    SDL_FillRect(surf_, NULL, clr);
+}
+
+void GfxSurface::fillRects(const std::vector<GfxRect>& rects,const GfxColor& color)
+{
+    if( rects.size() > 0)
+        for (const GfxRect& r : rects)
+            fillRect(r,color);
+}
+
+void GfxSurface::blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr)
+{
+    SDL_BlitSurface(src.getAsSdlTypePtr(),srcr.getAsSdlTypePtr(),surf_,dstr.getAsSdlTypePtr());
+}
+
+void GfxSurface::blitSurface(const GfxSurface& src)
+{
+    SDL_BlitSurface(src.getAsSdlTypePtr(),NULL,surf_,NULL);
 }
 
 void GfxSurface::destroySurface(void)

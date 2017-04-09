@@ -21,6 +21,7 @@ public:
     GfxRect();
     GfxRect(const int x, const int y, const int w, const int h);
     GfxRect(SdlType rect);
+    GfxRect(SdlTypePtr rect);
     GfxRect(const GfxRect& other);
     GfxRect(GfxRect&& other);
 

@@ -16,6 +16,14 @@ GfxColor::GfxColor() : GfxRootClass("GfxColor")
     clr_.a = 0;
 }
 
+GfxColor::GfxColor(uint8_t r, uint8_t g, uint8_t b) : GfxRootClass("GfxColor")
+{
+    clr_.r = r;
+    clr_.g = g;
+    clr_.b = b;
+    clr_.a = 0xFF;
+}
+
 GfxColor::GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) : GfxRootClass("GfxColor")
 {
     clr_.r = r;

@@ -21,8 +21,8 @@ public:
     
     GfxTexture() = delete;
 
-    GfxTexture(void * rend);
-    GfxTexture(void * rend,const GfxSurface& surf);
+    GfxTexture(GfxRootClass * rend);
+    GfxTexture(GfxRootClass * rend,const GfxSurface& surf);
 
     ~GfxTexture();
     

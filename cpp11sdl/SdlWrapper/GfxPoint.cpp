@@ -25,6 +25,11 @@ GfxPoint::GfxPoint(SdlType pt) : GfxRootClass("GfxPoint")
     pt_ = pt;
 }
 
+GfxPoint::GfxPoint(SdlTypePtr pt) : GfxRootClass("GfxPoint")
+{
+    pt_ = *pt;
+}
+
 GfxPoint::GfxPoint(const GfxPoint& other) : GfxRootClass("GfxPoint")
 {
     pt_ = other.pt_;

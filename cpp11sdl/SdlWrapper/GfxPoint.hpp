@@ -21,6 +21,7 @@ public:
     GfxPoint();
     GfxPoint(int x,int y);
     GfxPoint(SdlType pt);
+    GfxPoint(SdlTypePtr pt);
     GfxPoint(const GfxPoint& other);
     GfxPoint(GfxPoint&& other);
     GfxPoint& operator=(const GfxPoint& other);

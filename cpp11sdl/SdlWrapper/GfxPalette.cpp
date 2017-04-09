@@ -105,7 +105,7 @@ int GfxPalette::getNumColors(void) const
 	return pal_->ncolors;
 }
 
-GfxPalette::GfxColorVector GfxPalette::getColors(void) const
+std::unique_ptr<GfxPalette::GfxColorVector> GfxPalette::getColors(void) const
 {
 	GfxColorVector clrs(pal_->ncolors);
 
@@ -114,7 +114,8 @@ GfxPalette::GfxColorVector GfxPalette::getColors(void) const
 		GfxColor c(pal_->colors[i]);
 		clrs.push_back(c);
 	}
-	return clrs;
+    std::unique_ptr<GfxColorVector> ptr {new GfxColorVector(clrs)};
+    return ptr;
 }
 
 uint32_t GfxPalette::getVersion(void) const

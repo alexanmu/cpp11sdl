@@ -33,7 +33,7 @@ public:
 
 	/* Getters */
 	int getNumColors(void) const;
-	GfxColorVector getColors(void) const;
+    std::unique_ptr<GfxColorVector> getColors(void) const;
 	uint32_t getVersion(void) const;
 	int getRefCount(void) const;
 

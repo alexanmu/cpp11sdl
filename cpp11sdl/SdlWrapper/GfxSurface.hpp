@@ -9,6 +9,8 @@
 #ifndef GfxSurface_hpp
 #define GfxSurface_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -30,7 +32,10 @@ public:
     
     GfxSurface& operator=(const GfxSurface&) = delete;
     GfxSurface& operator=(GfxSurface&& surf);
-    
+
+    GfxSurface(const std::string& filename);
+    GfxSurface(std::string&& filename);
+
     ~GfxSurface();
 
     int getWidth(void) const;
@@ -42,10 +47,16 @@ public:
     int getBlueMask(void) const;
     int getAlphaMask(void) const;
 
-    GfxPixelFormat* getFormat(void);
+    std::unique_ptr<GfxPixelFormat> getFormat(void);
 
     void fillRect(const GfxRect& rect,const GfxColor& color);
+    void fillRect(const GfxColor& color);
 
+    void fillRects(const std::vector<GfxRect>& rects,const GfxColor& color);
+
+    void blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr);
+    void blitSurface(const GfxSurface& src);
+    
     void destroySurface(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;

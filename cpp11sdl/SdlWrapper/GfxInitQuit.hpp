@@ -23,10 +23,11 @@ public:
         initEverything
     };
     
-    GfxInitQuit(GfxInitComponent gfxInitComp);
     // No default constructor
     GfxInitQuit() = delete;
     
+    GfxInitQuit(GfxInitComponent gfxInitComp);
+
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;
     GfxInitQuit(GfxInitQuit&&) = delete;
@@ -35,6 +36,7 @@ public:
     GfxInitQuit& operator=(const GfxInitQuit&) = delete;
     GfxInitQuit& operator=(GfxInitQuit&&) = delete;
     
+    // Explicit destructor to de-init SDL lib
     ~GfxInitQuit();
     
     int getErrorCode() const;
