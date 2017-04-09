@@ -12,6 +12,7 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
+#include "GfxBlendMode.hpp"
 
 class GfxTexture final : public GfxRootClass
 {
@@ -34,9 +35,12 @@ public:
     
     void destroyTexture(void);
 
+    void setBlendMode(const GfxBlendMode& blendmode);
+    std::unique_ptr<GfxBlendMode> getBlendMode(void);
+
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    void * rend_;
+    GfxRootClass * rend_;
     SDL_Texture* tex_;
 };
 

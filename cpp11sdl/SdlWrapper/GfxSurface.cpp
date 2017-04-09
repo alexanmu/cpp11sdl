@@ -7,13 +7,16 @@
 //
 
 #include "GfxSurface.hpp"
-
+#include <iostream>
 GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask) : GfxRootClass("GfxSurface")
 {
-    surf_ = SDL_CreateRGBSurface(0,w,h,24,rmask,gmask,bmask,amask);
+    uint32_t format = SDL_PIXELFORMAT_RGBA32;
+
+    surf_ = SDL_CreateRGBSurfaceWithFormat(0,w,h,32,format);
     if (surf_ == nullptr)
     {
         // error handling here ...
+        std::cout << SDL_GetError() << std::endl;
     }
 }
 

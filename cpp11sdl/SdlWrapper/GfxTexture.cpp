@@ -26,13 +26,15 @@ GfxTexture::GfxTexture(GfxRootClass * rend,const GfxSurface& surf) : GfxTexture(
 
 GfxTexture::~GfxTexture()
 {
-    if (tex_)
+    if (tex_ != nullptr)
         SDL_DestroyTexture(tex_);
 }
 
 GfxTexture::GfxTexture(GfxTexture&& tex)
 {
     tex_ = tex.tex_;
+    // Destroy other's data
+    tex.tex_ = nullptr;
 }
 
 GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
@@ -40,7 +42,7 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
     if (this != &tex)
     {
         tex_ = tex.tex_;
-        
+        // Destroy other's data
         tex.tex_ = nullptr;
     }
     return *this;
@@ -48,11 +50,26 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
 
 void GfxTexture::destroyTexture(void)
 {
-    if (tex_)
+    if (tex_ != nullptr)
     {
         SDL_DestroyTexture(tex_);
         tex_ = nullptr;
     }
+}
+
+void GfxTexture::setBlendMode(const GfxBlendMode& blendmode)
+{
+    SDL_SetTextureBlendMode(tex_,blendmode.getAsSdlType());
+}
+
+std::unique_ptr<GfxBlendMode> GfxTexture::getBlendMode(void)
+{
+    SDL_BlendMode bm;
+    
+    SDL_GetTextureBlendMode(tex_,&bm);
+    std::unique_ptr<GfxBlendMode> ptr { new GfxBlendMode(bm) };
+
+    return ptr;
 }
 
 GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const

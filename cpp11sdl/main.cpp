@@ -41,7 +41,8 @@ void _DoStuff(void)
     bool quit = false;
     int r1 = 128,g1 = 128,b1 = 128;
     std::string str;
-    
+    int a1 = 208;
+
     std::srand(static_cast<unsigned int>(time(0)));
     while(!quit)
     {
@@ -90,20 +91,29 @@ void _DoStuff(void)
                 { r1 = 156; g1 = 54; b1 = 78; }
                 if (e.key.keysym.scancode == SDL_SCANCODE_P)
                 { r1 = 50; g1 = 100; b1 = 200; }
+                if (e.key.keysym.scancode == SDL_SCANCODE_1)
+                { inc(&a1); }
+                if (e.key.keysym.scancode == SDL_SCANCODE_2)
+                { dec(&a1); }
             }
-            s.blitSurface(sb);
+
+            str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1) + "-" + std::to_string(a1);
+            w.setTitle(str);
+            
             rt.setX(0);
             rt.setY(0);
             rt.setWidth(480);
             rt.setHeight(240);
-            s.fillRect(rt,GfxColor(r1,g1,b1));
+            s.fillRect(rt,GfxColor(r1,g1,b1,a1));
             rt.setX(481);
-            s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1));
+            s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
             GfxTexture t(&r,s);
+            t.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
         
-            str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1);
-            w.setTitle(str);
-        
+            GfxTexture tb(&r,sb);
+            tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
+            
+            r.renderCopy(tb);
             r.renderCopy(t);
             r.renderPresent();
         }
