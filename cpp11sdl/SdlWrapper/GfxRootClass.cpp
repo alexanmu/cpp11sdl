@@ -35,6 +35,7 @@ GfxRootClass::GfxRootClass(GfxRootClass&& other)
     GfxRootClass::intInstanceCounter_ += 1;
     intInstanceId_ = GfxRootClass::intInstanceCounter_;
     strClassName_ = "$mvctor$" + other.strClassName_;
+    // Delete other's data
     other.intInstanceId_ = -1;
     other.strClassName_ = "$null$";
 }
@@ -57,7 +58,7 @@ GfxRootClass& GfxRootClass::operator=(GfxRootClass&& other)
         GfxRootClass::intInstanceCounter_ += 1;
         intInstanceId_ = GfxRootClass::intInstanceCounter_;
         strClassName_ = "$mvoprt$" + other.strClassName_;
-        
+        // Delete other's data
         other.intInstanceId_ = -1;
         other.strClassName_ = "$null$";
     }

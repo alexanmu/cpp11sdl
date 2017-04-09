@@ -23,28 +23,10 @@ public:
         initEverything
     };
     
-    GfxInitQuit(GfxInitComponent gfxInitComp) : GfxRootClass("GfxInitQuit"), gfxInitComp_(gfxInitComp), errorcode_(0)
-    {
-        int initParam;
-        
-        initParam = 0;
-        if (gfxInitComp == GfxInitComponent::initVideo)
-            initParam = SDL_INIT_VIDEO;
-        if (gfxInitComp == GfxInitComponent::initAudio)
-            initParam = SDL_INIT_AUDIO;
-        if (gfxInitComp == GfxInitComponent::initEverything)
-            initParam = SDL_INIT_EVERYTHING;
-        errorcode_ = SDL_Init(initParam);
-    }
-    
-    ~GfxInitQuit()
-    {
-        SDL_Quit();
-    }
-    
+    GfxInitQuit(GfxInitComponent gfxInitComp);
     // No default constructor
     GfxInitQuit() = delete;
-
+    
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;
     GfxInitQuit(GfxInitQuit&&) = delete;
@@ -53,17 +35,10 @@ public:
     GfxInitQuit& operator=(const GfxInitQuit&) = delete;
     GfxInitQuit& operator=(GfxInitQuit&&) = delete;
     
-    // Return error code after init call
-    int getErrorCode() const
-    {
-        return errorcode_;
-    }
+    ~GfxInitQuit();
     
-    // Returns the requested component
-    GfxInitComponent getInitedComponent() const
-    {
-        return gfxInitComp_;
-    }
+    int getErrorCode() const;
+    GfxInitComponent getInitedComponent() const;
 private:
     GfxInitComponent gfxInitComp_;
     int errorcode_;

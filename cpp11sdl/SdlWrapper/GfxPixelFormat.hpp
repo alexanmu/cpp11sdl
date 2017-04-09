@@ -9,6 +9,8 @@
 #ifndef GfxPixelFormat_hpp
 #define GfxPixelFormat_hpp
 
+#include <memory>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxPalette.hpp"
@@ -22,45 +24,19 @@ public:
     GfxPixelFormat();
     GfxPixelFormat(SdlTypePtr pix);
 
-    GfxPixelFormat(const GfxPixelFormat& other) : GfxRootClass("GfxPixelFormat")
-    {
-        pix_ = other.pix_;
-        pal_ = other.pal_;
-    }
-    GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass("GfxPixelFormat")
-    {
-        pix_ = other.pix_;
-        pal_ = other.pal_;
-    }
+    GfxPixelFormat(const GfxPixelFormat& other);
+    GfxPixelFormat(GfxPixelFormat&& other);
+    GfxPixelFormat& operator=(const GfxPixelFormat& other);
+    GfxPixelFormat& operator=(GfxPixelFormat&& other);
 
-    GfxPixelFormat& operator=(const GfxPixelFormat& other)
-    {
-        if (this != &other)
-        {
-            pix_ = other.pix_;
-            pal_ = other.pal_;
-        }
-        return *this;
-    }
-
-    GfxPixelFormat& operator=(GfxPixelFormat&& other)
-    {
-        if (this != &other)
-        {
-            pix_ = other.pix_;
-            pal_ = other.pal_;
-        }
-        return *this;
-    }
-
-    uint32_t getFormat(void) const { return pix_->format; }
-    uint8_t getBitsPerPixel(void) const { return pix_->BitsPerPixel; }
-    GfxPalette* getPalette(void) { return new GfxPalette(pal_); }
-    uint8_t getBytesPerPixel(void) const { return pix_->BytesPerPixel; }
-    uint32_t getRedMask(void) const { return pix_->Rmask; }
-    uint32_t getGreenMask(void) const { return pix_->Gmask; }
-    uint32_t getBlueMask(void) const { return pix_->Bmask; }
-    uint32_t getAlphaMask(void) const { return pix_->Amask; }
+    uint32_t getFormat(void) const;
+    uint8_t getBitsPerPixel(void) const;
+    std::unique_ptr<GfxPalette> getPalette(void);
+    uint8_t getBytesPerPixel(void) const;
+    uint32_t getRedMask(void) const;
+    uint32_t getGreenMask(void) const;
+    uint32_t getBlueMask(void) const;
+    uint32_t getAlphaMask(void) const;
 
     void setFormat(const uint32_t format);
     void setBitsPerPixel(const uint8_t bpp);
@@ -72,15 +48,15 @@ public:
     void setAlphaMask(const uint32_t amask);
 
     /* for internal use by SDL */
-    uint8_t getRloss(void) const { return pix_->Rloss; }
-    uint8_t getGloss(void) const { return pix_->Gloss; }
-    uint8_t getBloss(void) const { return pix_->Bloss; }
-    uint8_t getAloss(void) const { return pix_->Aloss; }
-    uint8_t getRshift(void) const { return pix_->Rshift; }
-    uint8_t getGshift(void) const { return pix_->Gshift; }
-    uint8_t getBshift(void) const { return pix_->Bshift; }
-    int getRefCount(void) const { return pix_->refcount; }
-    SdlTypePtr getNext(void) const { return pix_->next; }
+    uint8_t getRloss(void) const;
+    uint8_t getGloss(void) const;
+    uint8_t getBloss(void) const;
+    uint8_t getAloss(void) const;
+    uint8_t getRshift(void) const;
+    uint8_t getGshift(void) const;
+    uint8_t getBshift(void) const;
+    int getRefCount(void) const;
+    SdlTypePtr getNext(void) const;
     
     SdlType getAsSdlType(void);
     SdlTypePtr getAsSdlTypePtr(void);

@@ -1,5 +1,10 @@
 #include "GfxPalette.hpp"
 
+GfxPalette::GfxPalette() : GfxRootClass("GfxPalette")
+{
+    pal_ = nullptr;
+};
+
 GfxPalette::GfxPalette(const GfxPalette& other) : GfxRootClass("GfxPalette")
 {
 	if (pal_ != nullptr)
@@ -30,6 +35,12 @@ GfxPalette::GfxPalette(int ncolors, GfxColorVector colors) : GfxRootClass("GfxPa
 		SDL_SetPaletteColors(pal_,clr.getAsSdlTypePtr(),colorindex,1);
 		colorindex += 1;
 	}
+}
+
+GfxPalette::~GfxPalette()
+{
+    if (pal_ != nullptr)
+        SDL_FreePalette(pal_);
 }
 
 GfxPalette& GfxPalette::operator=(const GfxPalette& other)

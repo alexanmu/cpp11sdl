@@ -15,20 +15,13 @@ public:
 
 	using GfxColorVector = std::vector<GfxColor>;
 
-    GfxPalette() : GfxRootClass("GfxPalette")
-	{
-		pal_ = nullptr;
-	};
+    GfxPalette();
 	GfxPalette(int ncolors, GfxColorVector colors);
 
 	GfxPalette(const GfxPalette& other);
 	GfxPalette(GfxPalette&& other);
 
-    ~GfxPalette()
-    {
-        if (pal_ != nullptr)
-            SDL_FreePalette(pal_);
-    }
+    ~GfxPalette();
 
 	GfxPalette& operator=(const GfxPalette& other);
 	GfxPalette& operator=(GfxPalette&& other);

@@ -18,44 +18,13 @@ public:
     typedef SDL_Color SdlType;
     typedef SDL_Color* SdlTypePtr;
     
-    GfxColor() : GfxRootClass("GfxColor")
-    {
-        clr_.r = 0;
-        clr_.g = 0;
-        clr_.b = 0;
-        clr_.a = 0;
-    }
-    
-    GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) : GfxRootClass("GfxColor")
-    {
-        clr_.r = r;
-        clr_.g = g;
-        clr_.b = b;
-        clr_.a = a;
-    }
-
+    GfxColor();
+    GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
     GfxColor(SdlType clr);
-    
-    /* Copy constructor */
-    GfxColor(const GfxColor& other) : GfxRootClass("GfxColor")
-    {
-        clr_ = other.clr_;
-    }
-
-    /* Move constructor */
-    GfxColor(GfxColor&& other) : GfxRootClass("GfxColor")
-    {
-        clr_ = other.clr_;
-        /* Delete other's data */
-        other.clr_.r = 0;
-        other.clr_.g = 0;
-        other.clr_.b = 0;
-        other.clr_.a = 0;
-    }
-    
-    /* Delete copy and move assign operators */
-    GfxColor& operator=(const GfxColor&) = delete;
-    GfxColor& operator=(GfxColor&&) = delete;
+    GfxColor(const GfxColor& other);
+    GfxColor(GfxColor&& other);
+    GfxColor& operator=(const GfxColor& other);
+    GfxColor& operator=(GfxColor&& other);
     
     /* Getters ... */
     uint8_t getRed(void) const { return clr_.r; }

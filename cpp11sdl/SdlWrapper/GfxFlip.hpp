@@ -18,24 +18,15 @@ public:
     typedef SDL_RendererFlip SdlType;
     typedef SDL_RendererFlip* SdlTypePtr;
 
-    GfxFlip() = delete;
-    GfxFlip(bool fliph,bool flipv) : GfxRootClass("GfxFlip")
-    {
-        flip_ = static_cast<int>(GfxFlipValues::flipNone);
-        if (fliph)
-            flip_ |= static_cast<int>(GfxFlipValues::flipHorizontal);
-        if (flipv)
-            flip_ |= static_cast<int>(GfxFlipValues::flipVertical);
-    }
-
-    GfxFlip(const GfxFlip&) = delete;
-    GfxFlip(GfxFlip&&) = delete;
-    
-    GfxFlip& operator=(const GfxFlip&) = delete;
-    GfxFlip& operator=(GfxFlip&&) = delete;
+    GfxFlip();
+    GfxFlip(bool fliph,bool flipv);
+    GfxFlip(const GfxFlip& other);
+    GfxFlip(GfxFlip&& other);
+    GfxFlip& operator=(const GfxFlip& other);
+    GfxFlip& operator=(GfxFlip&& other);
 
     SdlType getAsSdlType() const;
-    SdlTypePtr getAsSdlTypePtr();
+    SdlTypePtr getAsSdlTypePtr() const;
 private:
     enum class GfxFlipValues : int
     {

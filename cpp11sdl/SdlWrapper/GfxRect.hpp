@@ -18,60 +18,14 @@ public:
     typedef SDL_Rect SdlType;
     typedef SDL_Rect* SdlTypePtr;
     
-    GfxRect() : GfxRootClass("GfxRect")
-    {
-        rect_.x = -1;
-        rect_.y = -1;
-        rect_.w = -1;
-        rect_.h = -1;
-    }
-    GfxRect(const int x, const int y, const int w, const int h) : GfxRootClass("GfxRect")
-    {
-        rect_.x = x;
-        rect_.y = y;
-        rect_.w = w;
-        rect_.h = h;
-    }
-    GfxRect(SdlType rect) : GfxRootClass("GfxRect")
-    {
-        rect_ = rect;
-    }
+    GfxRect();
+    GfxRect(const int x, const int y, const int w, const int h);
+    GfxRect(SdlType rect);
+    GfxRect(const GfxRect& other);
+    GfxRect(GfxRect&& other);
 
-    GfxRect(const GfxRect& other) : GfxRootClass("GfxRect")
-    {
-        rect_ = other.rect_;
-    }
-
-    GfxRect(GfxRect&& other) : GfxRootClass("GfxRect")
-    {
-        rect_ = other.rect_;
-        other.rect_.x = -1;
-        other.rect_.y = -1;
-        other.rect_.w = -1;
-        other.rect_.h = -1;
-    }
-
-    GfxRect& operator=(const GfxRect& other)
-    {
-        if (this != &other)
-        {
-            rect_ = other.rect_;
-        }
-        return *this;
-    }
-
-    GfxRect& operator=(GfxRect&& other)
-    {
-        if (this != &other)
-        {
-            rect_ = other.rect_;
-            other.rect_.x = -1;
-            other.rect_.y = -1;
-            other.rect_.w = -1;
-            other.rect_.h = -1;
-        }
-        return *this;
-    }
+    GfxRect& operator=(const GfxRect& other);
+    GfxRect& operator=(GfxRect&& other);
 
     int getX(void) const;
     int getY(void) const;

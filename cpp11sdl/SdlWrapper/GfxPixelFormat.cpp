@@ -18,6 +18,38 @@ GfxPixelFormat::GfxPixelFormat(SdlTypePtr pix) : GfxRootClass("GfxPixelFormat")
     pix_ = pix;
 }
 
+GfxPixelFormat::GfxPixelFormat(const GfxPixelFormat& other) : GfxRootClass("GfxPixelFormat")
+{
+    pix_ = other.pix_;
+    pal_ = other.pal_;
+}
+
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass("GfxPixelFormat")
+{
+    pix_ = other.pix_;
+    pal_ = other.pal_;
+}
+
+GfxPixelFormat& GfxPixelFormat::operator=(const GfxPixelFormat& other)
+{
+    if (this != &other)
+    {
+        pix_ = other.pix_;
+        pal_ = other.pal_;
+    }
+    return *this;
+}
+
+GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
+{
+    if (this != &other)
+    {
+        pix_ = other.pix_;
+        pal_ = other.pal_;
+    }
+    return *this;
+}
+
 void GfxPixelFormat::setFormat(const uint32_t format)
 {
 	pix_->format = format;
@@ -56,6 +88,94 @@ void GfxPixelFormat::setBlueMask(const uint32_t bmask)
 void GfxPixelFormat::setAlphaMask(const uint32_t amask)
 {
 	pix_->Amask = amask;
+}
+
+uint32_t GfxPixelFormat::getFormat(void) const
+{
+    return pix_->format;
+}
+
+uint8_t GfxPixelFormat::getBitsPerPixel(void) const
+{
+    return pix_->BitsPerPixel;
+}
+
+std::unique_ptr<GfxPalette> GfxPixelFormat::getPalette(void)
+{
+    std::unique_ptr<GfxPalette> p {new GfxPalette(pal_)};
+    
+    return p;
+}
+
+uint8_t GfxPixelFormat::getBytesPerPixel(void) const
+{
+    return pix_->BytesPerPixel;
+}
+
+uint32_t GfxPixelFormat::getRedMask(void) const
+{
+    return pix_->Rmask;
+}
+
+uint32_t GfxPixelFormat::getGreenMask(void) const
+{
+    return pix_->Gmask;
+}
+
+uint32_t GfxPixelFormat::getBlueMask(void) const
+{
+    return pix_->Bmask;
+}
+
+uint32_t GfxPixelFormat::getAlphaMask(void) const
+{
+    return pix_->Amask;
+}
+
+/* for internal use by SDL */
+uint8_t GfxPixelFormat::getRloss(void) const
+{
+    return pix_->Rloss;
+}
+
+uint8_t GfxPixelFormat::getGloss(void) const
+{
+    return pix_->Gloss;
+}
+
+uint8_t GfxPixelFormat::getBloss(void) const
+{
+    return pix_->Bloss;
+}
+
+uint8_t GfxPixelFormat::getAloss(void) const
+{
+    return pix_->Aloss;
+}
+
+uint8_t GfxPixelFormat::getRshift(void) const
+{
+    return pix_->Rshift;
+}
+
+uint8_t GfxPixelFormat::getGshift(void) const
+{
+    return pix_->Gshift;
+}
+
+uint8_t GfxPixelFormat::getBshift(void) const
+{
+    return pix_->Bshift;
+}
+
+int GfxPixelFormat::getRefCount(void) const
+{
+    return pix_->refcount;
+}
+
+GfxPixelFormat::SdlTypePtr GfxPixelFormat::getNext(void) const
+{
+    return pix_->next;
 }
 
 GfxPixelFormat::SdlType GfxPixelFormat::getAsSdlType(void)

@@ -18,40 +18,14 @@ public:
     typedef SDL_Point SdlType;
     typedef SDL_Point* SdlTypePtr;
     
-    GfxPoint() : GfxRootClass("GfxPoint")
-    {
-        pt_.x = -1;
-        pt_.y = -1;
-    }
+    GfxPoint();
+    GfxPoint(int x,int y);
+    GfxPoint(SdlType pt);
+    GfxPoint(const GfxPoint& other);
+    GfxPoint(GfxPoint&& other);
+    GfxPoint& operator=(const GfxPoint& other);
+    GfxPoint& operator=(GfxPoint&& other);
 
-    GfxPoint(int x,int y) : GfxRootClass("GfxPoint")
-    {
-        pt_.x = x;
-        pt_.y = y;
-    }
-
-    GfxPoint(SdlType pt) : GfxRootClass("GfxPoint")
-    {
-        pt_ = pt;
-    }
-    
-    GfxPoint(const GfxPoint& other) : GfxRootClass("GfxPoint")
-    {
-        pt_ = other.pt_;
-    }
-
-    GfxPoint(GfxPoint&& other) : GfxRootClass("GfxPoint")
-    {
-        pt_ = other.pt_;
-        /* Delete other's data */
-        other.pt_.x = -1;
-        other.pt_.y = -1;
-    }
-    
-    /* No assignement operators */
-    GfxPoint& operator=(const GfxPoint&) = delete;
-    GfxPoint& operator=(GfxPoint&&) = delete;
-    
     /* Getters */
     int getX(void) const;
     int getY(void) const;

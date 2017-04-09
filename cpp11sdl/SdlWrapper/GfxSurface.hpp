@@ -11,7 +11,9 @@
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
+
 #include "GfxPixelFormat.hpp"
+#include "GfxRect.hpp"
 
 class GfxSurface final : public GfxRootClass
 {
@@ -41,6 +43,8 @@ public:
     int getAlphaMask(void) const;
 
     GfxPixelFormat* getFormat(void);
+
+    void fillRect(const GfxRect& rect,const GfxColor& color);
 
     void destroySurface(void);
 
