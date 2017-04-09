@@ -34,7 +34,7 @@ void _DoStuff(void)
     GfxRenderer r(w);
     GfxSurface sb("/Users/georgeoros/Documents/Dev/Files/Image2.bmp");
     
-    GfxSurface s(960,480,0xFF,0xFF,0xFF,0xFF);
+    GfxSurface s(960,480);
     GfxRect rt;
 
     SDL_Event e;

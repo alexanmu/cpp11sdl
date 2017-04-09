@@ -7,8 +7,8 @@
 //
 
 #include "GfxSurface.hpp"
-#include <iostream>
-GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask) : GfxRootClass("GfxSurface")
+
+GfxSurface::GfxSurface(int w,int h) : GfxRootClass("GfxSurface")
 {
     uint32_t format = SDL_PIXELFORMAT_RGBA32;
 
@@ -16,7 +16,6 @@ GfxSurface::GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask) : Gf
     if (surf_ == nullptr)
     {
         // error handling here ...
-        std::cout << SDL_GetError() << std::endl;
     }
 }
 
@@ -82,26 +81,6 @@ int GfxSurface::getHeight(void) const
 int GfxSurface::getDepth(void) const
 {
     return surf_->format->BitsPerPixel;
-}
-
-int GfxSurface::getRedMask(void) const
-{
-    return surf_->format->Rmask;
-}
-
-int GfxSurface::getGreenMask(void) const
-{
-    return surf_->format->Gmask;
-}
-
-int GfxSurface::getBlueMask(void) const
-{
-    return surf_->format->Bmask;
-}
-
-int GfxSurface::getAlphaMask(void) const
-{
-    return surf_->format->Amask;
 }
 
 std::unique_ptr<GfxPixelFormat> GfxSurface::getFormat(void)

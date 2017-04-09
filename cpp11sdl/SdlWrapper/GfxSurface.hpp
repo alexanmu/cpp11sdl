@@ -24,7 +24,7 @@ public:
     typedef SDL_Surface* SdlTypePtr;
 
     GfxSurface() = delete;
-    GfxSurface(int w,int h,int rmask,int gmask,int bmask,int amask);
+    GfxSurface(int w,int h);
     GfxSurface(SdlTypePtr surf);
 
     GfxSurface(const GfxSurface&) = delete;
@@ -41,11 +41,6 @@ public:
     int getWidth(void) const;
     int getHeight(void) const;
     int getDepth(void) const;
-
-    int getRedMask(void) const;
-    int getGreenMask(void) const;
-    int getBlueMask(void) const;
-    int getAlphaMask(void) const;
 
     std::unique_ptr<GfxPixelFormat> getFormat(void);
 
