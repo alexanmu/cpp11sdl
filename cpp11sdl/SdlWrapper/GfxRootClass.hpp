@@ -20,6 +20,8 @@ public:
     GfxRootClass(const GfxRootClass& other);
     GfxRootClass(GfxRootClass&& other);
     
+    virtual ~GfxRootClass();
+
     GfxRootClass& operator=(const GfxRootClass& other);
     GfxRootClass& operator=(GfxRootClass&& other);
     

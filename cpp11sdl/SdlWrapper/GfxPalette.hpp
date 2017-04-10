@@ -2,6 +2,7 @@
 #define GfxPalette_hpp
 
 #include <vector>
+#include <memory>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"

@@ -40,6 +40,12 @@ GfxRootClass::GfxRootClass(GfxRootClass&& other)
     other.strClassName_ = "$null$";
 }
 
+GfxRootClass::~GfxRootClass()
+{
+    strClassName_ = "$null$";
+    intInstanceId_ = -1;
+}
+
 GfxRootClass& GfxRootClass::operator=(const GfxRootClass& other)
 {
     if (this != &other)

@@ -1,15 +1,15 @@
 #ifndef GfxSdlHeader_hpp
 #define GfxSdlHeader_hpp
 
-//#define __linux_machine
-#define __macosx_machine
+#define __linux_machine
+//#define __macosx_machine
 
 #if defined(__linux_machine) && defined(__macosx_machine)
 #error "Only one machine should be defined!"
 #endif
 
 #ifdef __linux_machine
-#include "SDL/include/SDL.h"
+#include "include/SDL.h"
 #endif
 
 #ifdef __macosx_machine
