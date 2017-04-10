@@ -33,7 +33,7 @@ GfxColor GfxConstants::clrVGA16Black(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Blue(void)
@@ -45,7 +45,7 @@ GfxColor GfxConstants::clrVGA16Blue(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Green(void)
@@ -57,7 +57,7 @@ GfxColor GfxConstants::clrVGA16Green(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Cyan(void)
@@ -69,7 +69,7 @@ GfxColor GfxConstants::clrVGA16Cyan(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Red(void)
@@ -81,7 +81,7 @@ GfxColor GfxConstants::clrVGA16Red(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Magenta(void)
@@ -93,7 +93,7 @@ GfxColor GfxConstants::clrVGA16Magenta(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Brown(void)
@@ -105,7 +105,7 @@ GfxColor GfxConstants::clrVGA16Brown(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16LightGray(void)
@@ -117,7 +117,7 @@ GfxColor GfxConstants::clrVGA16LightGray(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16DarkGray(void)
@@ -129,7 +129,7 @@ GfxColor GfxConstants::clrVGA16DarkGray(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16LightBlue(void)
@@ -141,7 +141,7 @@ GfxColor GfxConstants::clrVGA16LightBlue(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16LightGreen(void)
@@ -153,7 +153,7 @@ GfxColor GfxConstants::clrVGA16LightGreen(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16LightCyan(void)
@@ -165,7 +165,7 @@ GfxColor GfxConstants::clrVGA16LightCyan(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16LightRed(void)
@@ -177,7 +177,7 @@ GfxColor GfxConstants::clrVGA16LightRed(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16LightMagenta(void)
@@ -189,7 +189,7 @@ GfxColor GfxConstants::clrVGA16LightMagenta(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16Yellow(void)
@@ -201,7 +201,7 @@ GfxColor GfxConstants::clrVGA16Yellow(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }
 
 GfxColor GfxConstants::clrVGA16White(void)
@@ -213,5 +213,5 @@ GfxColor GfxConstants::clrVGA16White(void)
 	clr.setBlue(clr.getBlue() << 2);
 	clr.setAlpha(0xFF);
 
-	return std::move(clr);
+	return clr;
 }

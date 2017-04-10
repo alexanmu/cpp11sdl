@@ -15,6 +15,7 @@
 #include "GfxRenderer.hpp"
 #include "GfxSurface.hpp"
 #include "GfxTexture.hpp"
+#include "GfxConstants.hpp"
 
 void inc(int* a)
 {
@@ -39,7 +40,9 @@ void _DoStuff(void)
 
     SDL_Event e;
     bool quit = false;
-    int r1 = 128,g1 = 128,b1 = 128;
+    int r1 = GfxConstants::clrVGA16DarkGray().getRed();
+    int g1 = GfxConstants::clrVGA16DarkGray().getGreen();
+    int b1 = GfxConstants::clrVGA16DarkGray().getBlue();
     std::string str;
     int a1 = 208;
 
