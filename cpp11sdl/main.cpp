@@ -124,7 +124,7 @@ void _DoStuff(void)
     }
 
 }
-
+/*
 int main(int argc, const char * argv[]) {
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
@@ -138,4 +138,5 @@ int main(int argc, const char * argv[]) {
         _DoStuff();
     }
     return 0;
-}
+}*/
+
