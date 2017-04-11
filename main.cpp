@@ -123,16 +123,16 @@ void _DoStuff(void)
 
 }
 
-int main(int argc, const char * argv[]) {
+/*int main(int argc, const char * argv[])
+{
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
         std::cout << "Init failed\n";
     else
     {
         std::cout << "Doing stuff\n";
-        Playground p;
-        p.Play();
         _DoStuff();
     }
     return 0;
 }
+*/

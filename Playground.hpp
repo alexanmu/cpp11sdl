@@ -9,9 +9,18 @@
 #ifndef Playground_hpp
 #define Playground_hpp
 
+#include <cstdint>
+
 class Playground
 {
 public:
     void Play(void);
+private:
+	void DoAlgo(int algo_index);
+
+	double Algo0(std::uint32_t* ptr);
+	double Algo1(std::uint32_t* ptr);
+	double Algo2(std::uint32_t* ptr);
 };
+
 #endif /* Playground_hpp */
