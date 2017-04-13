@@ -196,12 +196,10 @@ void Playground::Play(void)
     DoAlgo(1);
     std::cout << "****************************************" << std::endl;
     DoAlgo(2);
-    //std::exit(0);
 }
 
-int main(int argc, const char * argv[])
+/*int main(int argc, const char * argv[])
 {
     Playground p;
     p.Play();
-    //std::cin.get();
-}
+}*/

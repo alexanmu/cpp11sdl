@@ -33,8 +33,22 @@ void _DoStuff(void)
 {
     GfxWindow w("Window title",960,480);
     GfxRenderer r(w);
-    GfxSurface sb("/Users/georgeoros/Documents/Dev/Files/Image2.bmp");
+    //GfxSurface sb("/home/goros/Pictures/Image2.bmp");
     
+    int c = 0;
+    GfxSurface sb(960,480);
+    for(int i = 0; i < 960; i++)
+    {
+        for (int j = 0; j < 480; j++)
+        {
+            sb.putPixel(i,j,GfxConstants::clrVGA16GetByIndex(static_cast<GfxConstants::GfxVGA16ColorIndex>(c)));
+        }
+        if (((i + 1) % 50) == 0)
+        {
+            c += 1;
+            if (c == 16) c = 0;
+        }
+    }
     GfxSurface s(960,480);
     GfxRect rt;
 
@@ -102,7 +116,10 @@ void _DoStuff(void)
 
             str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1) + "-" + std::to_string(a1);
             w.setTitle(str);
-            
+
+            GfxTexture tb(&r,sb);
+            tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
+
             rt.setX(0);
             rt.setY(0);
             rt.setWidth(480);
@@ -110,11 +127,9 @@ void _DoStuff(void)
             s.fillRect(rt,GfxColor(r1,g1,b1,a1));
             rt.setX(481);
             s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
+
             GfxTexture t(&r,s);
             t.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
-        
-            GfxTexture tb(&r,sb);
-            tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
             
             r.renderCopy(tb);
             r.renderCopy(t);
@@ -124,7 +139,7 @@ void _DoStuff(void)
     }
 
 }
-/*
+
 int main(int argc, const char * argv[]) {
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
@@ -133,10 +148,7 @@ int main(int argc, const char * argv[]) {
     {
         // do stuff
         std::cout << "Doing stuff\n";
-        Playground p;
-        p.Play();
         _DoStuff();
     }
     return 0;
-}*/
-
+}
