@@ -43,7 +43,7 @@ void _DoStuff(void)
         {
             sb.putPixel(i,j,GfxConstants::clrVGA16GetByIndex(static_cast<GfxConstants::GfxVGA16ColorIndex>(c)));
         }
-        if (((i + 1) % 50) == 0)
+        if (((i + 1) % 60) == 0)
         {
             c += 1;
             if (c == 16) c = 0;

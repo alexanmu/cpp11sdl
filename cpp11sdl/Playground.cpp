@@ -106,7 +106,7 @@ double Playground::Algo2(uint32_t* ptr)
 
 #pragma GCC push_options
 #pragma GCC optimize ("Ofast")
-double Algo3Part(uint64_t* ptr,uint64_t * endptr,uint64_t bp)
+void Algo3Part(uint64_t* ptr,uint64_t * endptr,uint64_t bp)
 {
     while( ptr < endptr )
     {
@@ -126,7 +126,7 @@ double Playground::Algo3(uint32_t *ptr)
 {
     std::uint64_t bp = (std::uint64_t)BYTE_PATTERN << (std::uint64_t)32 | (std::uint64_t)BYTE_PATTERN;
     std::uint64_t max64 = SZ_X * SZ_Y / 2;
-    std::uint64_t m = max64 / 2;
+    std::uint64_t m = max64 / 4;
 
     std::uint64_t* p1 = (std::uint64_t*)ptr;
     std::uint64_t* e1 = (std::uint64_t*)(p1 + m);
@@ -143,12 +143,12 @@ double Playground::Algo3(uint32_t *ptr)
 
     auto start = std::chrono::high_resolution_clock::now();
     t1 = std::thread(Algo3Part,p1,e1,bp);
-    //t2 = std::thread(Algo3Part,p2,e2,bp);
-    //t3 = std::thread(Algo3Part,p3,e3,bp);
-    Algo3Part(p2,e2,bp);
+    t2 = std::thread(Algo3Part,p2,e2,bp);
+    t3 = std::thread(Algo3Part,p3,e3,bp);
+    Algo3Part(p4,e4,bp);
     t1.join();
-    //t2.join();
-    //t3.join();
+    t2.join();
+    t3.join();
     auto end = std::chrono::high_resolution_clock::now();
     //
     int i;
@@ -188,6 +188,9 @@ void Playground::DoAlgo(int algo_index)
             std::cout << "Algo2 selected - memset" << std::endl;
             algo_ptr = &Playground::Algo2;
             break;
+        case 3:
+            std::cout << "Algo3 selected - 64 bit pointers" << std::endl;
+            algo_ptr = &Playground::Algo3;
         default:
             std::cout << "Wrong algo index" << std::endl;
             std::exit(2);
@@ -257,6 +260,9 @@ void Playground::Play(void)
     DoAlgo(1);
     std::cout << "****************************************" << std::endl;
     DoAlgo(2);
+    std::cout << "****************************************" << std::endl;
+    DoAlgo(3);
+
 }
 
 /*int main(int argc, const char * argv[])
