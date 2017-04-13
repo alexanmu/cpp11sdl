@@ -31,6 +31,13 @@ void dec(int* a)
 
 void _DoStuff(void)
 {
+    GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
+    if (iq.getErrorCode() != 0)
+    {
+        std::cout << "Init failed\n";
+        return;
+    }
+    
     GfxWindow w("Window title",960,480);
     GfxRenderer r(w);
     //GfxSurface sb("/home/goros/Pictures/Image2.bmp");
@@ -125,7 +132,7 @@ void _DoStuff(void)
             rt.setWidth(480);
             rt.setHeight(240);
             s.fillRect(rt,GfxColor(r1,g1,b1,a1));
-            rt.setX(481);
+            rt.setX(480);
             s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
 
             GfxTexture t(&r,s);
@@ -140,15 +147,11 @@ void _DoStuff(void)
 
 }
 
-int main(int argc, const char * argv[]) {
-    GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
-    if (iq.getErrorCode() != 0)
-        std::cout << "Init failed\n";
-    else
-    {
-        // do stuff
-        std::cout << "Doing stuff\n";
-        _DoStuff();
-    }
+int main(int argc, const char * argv[])
+{
+    _DoStuff();
+    //Playground p;
+    //p.Play();
+
     return 0;
 }

@@ -191,9 +191,10 @@ void Playground::DoAlgo(int algo_index)
         case 3:
             std::cout << "Algo3 selected - 64 bit pointers" << std::endl;
             algo_ptr = &Playground::Algo3;
+            break;
         default:
             std::cout << "Wrong algo index" << std::endl;
-            std::exit(2);
+            return;
             break;
     }
     buffsize = SZ_X * SZ_Y * sizeof(uint32_t);
