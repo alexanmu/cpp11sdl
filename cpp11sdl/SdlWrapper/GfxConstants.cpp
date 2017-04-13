@@ -26,7 +26,7 @@ std::vector<GfxColor> GfxConstants::colorsVGA256_ {
 
 GfxColor GfxConstants::clrVGA16Black(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexBlack]};
+    GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexBlack)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -38,7 +38,7 @@ GfxColor GfxConstants::clrVGA16Black(void)
 
 GfxColor GfxConstants::clrVGA16Blue(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexBlue]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexBlue)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -50,7 +50,7 @@ GfxColor GfxConstants::clrVGA16Blue(void)
 
 GfxColor GfxConstants::clrVGA16Green(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexGreen]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexGreen)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -62,7 +62,7 @@ GfxColor GfxConstants::clrVGA16Green(void)
 
 GfxColor GfxConstants::clrVGA16Cyan(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexCyan]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexCyan)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -74,7 +74,7 @@ GfxColor GfxConstants::clrVGA16Cyan(void)
 
 GfxColor GfxConstants::clrVGA16Red(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexRed]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexRed)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -86,7 +86,7 @@ GfxColor GfxConstants::clrVGA16Red(void)
 
 GfxColor GfxConstants::clrVGA16Magenta(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexMagenta]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexMagenta)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -98,7 +98,7 @@ GfxColor GfxConstants::clrVGA16Magenta(void)
 
 GfxColor GfxConstants::clrVGA16Brown(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexBrown]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexBrown)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -110,7 +110,7 @@ GfxColor GfxConstants::clrVGA16Brown(void)
 
 GfxColor GfxConstants::clrVGA16LightGray(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexLightGray]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexLightGray)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -122,7 +122,7 @@ GfxColor GfxConstants::clrVGA16LightGray(void)
 
 GfxColor GfxConstants::clrVGA16DarkGray(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexDarkGray]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexDarkGray)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -134,7 +134,7 @@ GfxColor GfxConstants::clrVGA16DarkGray(void)
 
 GfxColor GfxConstants::clrVGA16LightBlue(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexLightBlue]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexLightBlue)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -146,7 +146,7 @@ GfxColor GfxConstants::clrVGA16LightBlue(void)
 
 GfxColor GfxConstants::clrVGA16LightGreen(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexLightGreen]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexLightGreen)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -158,7 +158,7 @@ GfxColor GfxConstants::clrVGA16LightGreen(void)
 
 GfxColor GfxConstants::clrVGA16LightCyan(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexLightCyan]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexLightCyan)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -170,7 +170,7 @@ GfxColor GfxConstants::clrVGA16LightCyan(void)
 
 GfxColor GfxConstants::clrVGA16LightRed(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexLightRed]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexLightRed)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -182,7 +182,7 @@ GfxColor GfxConstants::clrVGA16LightRed(void)
 
 GfxColor GfxConstants::clrVGA16LightMagenta(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexLightMagenta]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexLightMagenta)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -194,7 +194,7 @@ GfxColor GfxConstants::clrVGA16LightMagenta(void)
 
 GfxColor GfxConstants::clrVGA16Yellow(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexYellow]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexYellow)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -206,7 +206,7 @@ GfxColor GfxConstants::clrVGA16Yellow(void)
 
 GfxColor GfxConstants::clrVGA16White(void)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[indexWhite]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVGA16ColorIndex::indexWhite)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);
@@ -218,7 +218,7 @@ GfxColor GfxConstants::clrVGA16White(void)
 
 GfxColor GfxConstants::clrVGA16GetByIndex(const GfxVGA16ColorIndex index)
 {
-	GfxColor clr {GfxConstants::colorsVGA16_[index]};
+	GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(index)]};
 
 	clr.setRed(clr.getRed() << 2);
 	clr.setGreen(clr.getGreen() << 2);

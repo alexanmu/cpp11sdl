@@ -17,7 +17,7 @@ public:
 	GfxConstants& operator=(const GfxConstants&) = delete;
 	GfxConstants& operator=(GfxConstants&&) = delete;
 
-	enum GfxVGA16ColorIndex
+    enum class GfxVGA16ColorIndex : int
 	{
 		indexBlack = 0,
 		indexBlue = 1,
