@@ -21,6 +21,7 @@ private:
 	double Algo0(std::uint32_t* ptr);
 	double Algo1(std::uint32_t* ptr);
 	double Algo2(std::uint32_t* ptr);
+	double Algo3(std::uint32_t* ptr);
 };
 
 #endif /* Playground_hpp */
