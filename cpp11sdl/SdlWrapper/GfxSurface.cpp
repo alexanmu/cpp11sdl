@@ -8,7 +8,7 @@
 
 #include "GfxSurface.hpp"
 
-GfxSurface::GfxSurface(int w,int h) : GfxRootClass("GfxSurface")
+GfxSurface::GfxSurface(const uint16_t w,const uint16_t h) : GfxRootClass("GfxSurface")
 {
     uint32_t format = SDL_PIXELFORMAT_RGBA32;
 
@@ -36,20 +36,35 @@ GfxSurface::GfxSurface(GfxSurface&& surf) : GfxRootClass("GfxSurface")
 
 GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass("GfxSurface")
 {
-    surf_ = SDL_LoadBMP(filename.c_str());
-    if (surf_ == nullptr)
+    SDL_Surface* tmpsurfptr;
+
+    tmpsurfptr = SDL_LoadBMP(filename.c_str());
+    if (tmpsurfptr == nullptr)
     {
         // error handling here
     }
+    if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+    {
+        // convert here
+    }
+    surf_ = tmpsurfptr;
 }
 
 GfxSurface::GfxSurface(std::string&& filename) : GfxRootClass("GfxSurface")
 {
-    surf_ = SDL_LoadBMP(filename.c_str());
-    if (surf_ == nullptr)
+    SDL_Surface* tmpsurfptr;
+    tmpsurfptr = SDL_LoadBMP(filename.c_str());
+    if (tmpsurfptr == nullptr)
     {
         // error handling here
     }
+    if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+    {
+        // convert here
+    }
+    surf_ = tmpsurfptr;
+    // Delete other's data
+    filename = "";
 }
 
 GfxSurface& GfxSurface::operator=(GfxSurface&& surf)
@@ -64,7 +79,7 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& surf)
 
 GfxSurface::~GfxSurface()
 {
-    if (surf_)
+    if (surf_ != nullptr)
         SDL_FreeSurface(surf_);
 }
 
@@ -123,9 +138,19 @@ void GfxSurface::blitSurface(const GfxSurface& src)
     SDL_BlitSurface(src.getAsSdlTypePtr(),NULL,surf_,NULL);
 }
 
+void GfxSurface::putPixel(const uint16_t x,const uint16_t y,const GfxColor& color)
+{
+    uint32_t* ptr;
+    uint32_t clr;
+
+    clr = SDL_MapRGBA(surf_->format,color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    ptr = (uint32_t*)surf_->pixels;
+    ptr[y * surf_->w + x] = clr;
+}
+
 void GfxSurface::destroySurface(void)
 {
-    if (surf_)
+    if (surf_ != nullptr)
     {
         SDL_FreeSurface(surf_);
         surf_ = nullptr;

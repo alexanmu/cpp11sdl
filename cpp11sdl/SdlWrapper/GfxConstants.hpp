@@ -17,23 +17,6 @@ public:
 	GfxConstants& operator=(const GfxConstants&) = delete;
 	GfxConstants& operator=(GfxConstants&&) = delete;
 
-	static GfxColor clrVGA16Black(void);
-	static GfxColor clrVGA16Blue(void);
-	static GfxColor clrVGA16Green(void);
-	static GfxColor clrVGA16Cyan(void);
-	static GfxColor clrVGA16Red(void);
-	static GfxColor clrVGA16Magenta(void);
-	static GfxColor clrVGA16Brown(void);
-	static GfxColor clrVGA16LightGray(void);
-	static GfxColor clrVGA16DarkGray(void);
-	static GfxColor clrVGA16LightBlue(void);
-	static GfxColor clrVGA16LightGreen(void);
-	static GfxColor clrVGA16LightCyan(void);
-	static GfxColor clrVGA16LightRed(void);
-	static GfxColor clrVGA16LightMagenta(void);
-	static GfxColor clrVGA16Yellow(void);
-	static GfxColor clrVGA16White(void);
-private:
 	enum GfxVGA16ColorIndex
 	{
 		indexBlack = 0,
@@ -54,6 +37,25 @@ private:
 		indexWhite = 15
 	};
 
+	static GfxColor clrVGA16Black(void);
+	static GfxColor clrVGA16Blue(void);
+	static GfxColor clrVGA16Green(void);
+	static GfxColor clrVGA16Cyan(void);
+	static GfxColor clrVGA16Red(void);
+	static GfxColor clrVGA16Magenta(void);
+	static GfxColor clrVGA16Brown(void);
+	static GfxColor clrVGA16LightGray(void);
+	static GfxColor clrVGA16DarkGray(void);
+	static GfxColor clrVGA16LightBlue(void);
+	static GfxColor clrVGA16LightGreen(void);
+	static GfxColor clrVGA16LightCyan(void);
+	static GfxColor clrVGA16LightRed(void);
+	static GfxColor clrVGA16LightMagenta(void);
+	static GfxColor clrVGA16Yellow(void);
+	static GfxColor clrVGA16White(void);
+
+	static GfxColor clrVGA16GetByIndex(const GfxVGA16ColorIndex index);
+private:
 	static std::vector<GfxColor> colorsVGA16_;
 	static std::vector<GfxColor> colorsVGA256_;
 };

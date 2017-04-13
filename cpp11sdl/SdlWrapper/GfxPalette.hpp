@@ -17,7 +17,7 @@ public:
 	using GfxColorVector = std::vector<GfxColor>;
 
     GfxPalette();
-	GfxPalette(int ncolors, GfxColorVector colors);
+	GfxPalette(const uint16_t ncolors,const GfxColorVector& colors);
 
 	GfxPalette(const GfxPalette& other);
 	GfxPalette(GfxPalette&& other);
@@ -28,12 +28,12 @@ public:
 	GfxPalette& operator=(GfxPalette&& other);
 
 	/* Methods */
-	void allocPalette(int ncolors);
+	void allocPalette(const uint16_t ncolors);
 	void freePalette();
-	int setPaletteColors(GfxColorVector vec, int firstcolor);
+	int setPaletteColors(const GfxColorVector& vec,const uint16_t firstcolor);
 
 	/* Getters */
-	int getNumColors(void) const;
+	uint16_t getNumColors(void) const;
     std::unique_ptr<GfxColorVector> getColors(void) const;
 	uint32_t getVersion(void) const;
 	int getRefCount(void) const;

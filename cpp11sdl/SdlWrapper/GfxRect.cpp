@@ -16,7 +16,7 @@ GfxRect::GfxRect() : GfxRootClass("GfxRect")
     rect_.h = -1;
 }
 
-GfxRect::GfxRect(const int x, const int y, const int w, const int h) : GfxRootClass("GfxRect")
+GfxRect::GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h) : GfxRootClass("GfxRect")
 {
     rect_.x = x;
     rect_.y = y;
@@ -70,42 +70,42 @@ GfxRect& GfxRect::operator=(GfxRect&& other)
     return *this;
 }
 
-int GfxRect::getX(void) const
+uint16_t GfxRect::getX(void) const
 {
     return rect_.x;
 }
 
-int GfxRect::getY(void) const
+uint16_t GfxRect::getY(void) const
 {
     return rect_.y;
 }
 
-int GfxRect::getWidth(void) const
+uint16_t GfxRect::getWidth(void) const
 {
     return rect_.w;
 }
 
-int GfxRect::getHeight(void) const
+uint16_t GfxRect::getHeight(void) const
 {
     return rect_.h;
 }
 
-void GfxRect::setX(const int x)
+void GfxRect::setX(const uint16_t x)
 {
     rect_.x = x;
 }
 
-void GfxRect::setY(const int y)
+void GfxRect::setY(const uint16_t y)
 {
     rect_.y = y;
 }
 
-void GfxRect::setWidth(const int w)
+void GfxRect::setWidth(const uint16_t w)
 {
     rect_.w = w;
 }
 
-void GfxRect::setHeight(const int h)
+void GfxRect::setHeight(const uint16_t h)
 {
     rect_.h = h;
 }

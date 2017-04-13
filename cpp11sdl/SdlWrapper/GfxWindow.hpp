@@ -22,7 +22,7 @@ public:
     typedef SDL_Window SdlType;
     typedef SDL_Window* SdlTypePtr;
 
-    GfxWindow(std::string title,int width,int height);
+    GfxWindow(const std::string& title,const uint16_t width,const uint16_t height);
 
     GfxWindow() = delete;
 
@@ -37,11 +37,11 @@ public:
     void destroyWindow();
 
     std::string getTitle() const;
-    int getWidth() const;
-    int getHeight() const;
+    uint16_t getWidth() const;
+    uint16_t getHeight() const;
     std::unique_ptr<GfxSurface> getWindowSurface(void);
 
-    void setTitle(std::string title);
+    void setTitle(const std::string& title);
 
     SdlTypePtr getAsSdlTypePtr() const;
 private:

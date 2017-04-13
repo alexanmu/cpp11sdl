@@ -19,7 +19,7 @@ public:
     typedef SDL_RendererFlip* SdlTypePtr;
 
     GfxFlip();
-    GfxFlip(bool fliph,bool flipv);
+    GfxFlip(const bool fliph,const bool flipv);
     GfxFlip(const GfxFlip& other);
     GfxFlip(GfxFlip&& other);
     GfxFlip& operator=(const GfxFlip& other);

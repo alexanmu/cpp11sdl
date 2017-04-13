@@ -178,12 +178,12 @@ GfxPixelFormat::SdlTypePtr GfxPixelFormat::getNext(void) const
     return pix_->next;
 }
 
-GfxPixelFormat::SdlType GfxPixelFormat::getAsSdlType(void)
+GfxPixelFormat::SdlType GfxPixelFormat::getAsSdlType(void) const
 {
     return *pix_;
 }
 
-GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void)
+GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const
 {
-    return pix_;
+    return (SdlTypePtr)pix_;
 }

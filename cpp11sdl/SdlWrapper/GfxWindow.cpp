@@ -8,7 +8,7 @@
 
 #include "GfxWindow.hpp"
 
-GfxWindow::GfxWindow(std::string title,int width,int height) : GfxRootClass("GfxWindow"), title_(title)
+GfxWindow::GfxWindow(const std::string& title,const uint16_t width,const uint16_t height) : GfxRootClass("GfxWindow"), title_(title)
 {
     window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (window_ == nullptr)
@@ -28,7 +28,7 @@ GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
 
 GfxWindow::~GfxWindow()
 {
-    if (window_)
+    if (window_ != nullptr)
         SDL_DestroyWindow(window_);
 }
 
@@ -47,7 +47,7 @@ GfxWindow& GfxWindow::operator=(GfxWindow&& win)
 
 void GfxWindow::destroyWindow()
 {
-    if (window_)
+    if (window_ != nullptr)
     {
         SDL_DestroyWindow(window_);
         window_ = nullptr;
@@ -56,7 +56,7 @@ void GfxWindow::destroyWindow()
 
 std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
 {
-    if (window_)
+    if (window_ != nullptr)
     {
         SDL_Surface* surf = SDL_GetWindowSurface(window_);
         if (surf != nullptr)
@@ -73,7 +73,7 @@ std::string GfxWindow::getTitle() const
     return title_;
 }
 
-int GfxWindow::getWidth() const
+uint16_t GfxWindow::getWidth() const
 {
     int w;
     int h;
@@ -82,7 +82,7 @@ int GfxWindow::getWidth() const
     return w;
 }
 
-int GfxWindow::getHeight() const
+uint16_t GfxWindow::getHeight() const
 {
     int w;
     int h;
@@ -91,7 +91,7 @@ int GfxWindow::getHeight() const
     return h;
 }
 
-void GfxWindow::setTitle(std::string title)
+void GfxWindow::setTitle(const std::string& title)
 {
     title_ = title;
     SDL_SetWindowTitle(window_,title_.c_str());

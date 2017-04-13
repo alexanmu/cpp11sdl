@@ -58,8 +58,8 @@ public:
     int getRefCount(void) const;
     SdlTypePtr getNext(void) const;
     
-    SdlType getAsSdlType(void);
-    SdlTypePtr getAsSdlTypePtr(void);
+    SdlType getAsSdlType(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     SdlTypePtr pix_;
     GfxPalette pal_;

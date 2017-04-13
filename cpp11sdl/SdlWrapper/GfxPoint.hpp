@@ -19,9 +19,9 @@ public:
     typedef SDL_Point* SdlTypePtr;
     
     GfxPoint();
-    GfxPoint(int x,int y);
-    GfxPoint(SdlType pt);
-    GfxPoint(SdlTypePtr pt);
+    GfxPoint(const uint16_t x,const uint16_t y);
+    GfxPoint(const SdlType pt);
+    GfxPoint(const SdlTypePtr pt);
     GfxPoint(const GfxPoint& other);
     GfxPoint(GfxPoint&& other);
     GfxPoint& operator=(const GfxPoint& other);
@@ -32,8 +32,8 @@ public:
     int getY(void) const;
     
     /* Setters */
-    void setX(const int x);
-    void setY(const int y);
+    void setX(const uint16_t x);
+    void setY(const uint16_t y);
     
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

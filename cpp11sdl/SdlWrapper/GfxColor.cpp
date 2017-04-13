@@ -16,7 +16,7 @@ GfxColor::GfxColor() : GfxRootClass("GfxColor")
     clr_.a = 0xFF;
 }
 
-GfxColor::GfxColor(uint8_t r, uint8_t g, uint8_t b) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const uint8_t r,const  uint8_t g,const  uint8_t b) : GfxRootClass("GfxColor")
 {
     clr_.r = r;
     clr_.g = g;
@@ -24,7 +24,7 @@ GfxColor::GfxColor(uint8_t r, uint8_t g, uint8_t b) : GfxRootClass("GfxColor")
     clr_.a = 0xFF;
 }
 
-GfxColor::GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const uint8_t r,const  uint8_t g,const  uint8_t b,const  uint8_t a) : GfxRootClass("GfxColor")
 {
     clr_.r = r;
     clr_.g = g;
@@ -76,6 +76,46 @@ GfxColor& GfxColor::operator=(GfxColor&& other)
         other.clr_.a = 0;
     }
     return *this;
+}
+
+uint8_t GfxColor::getRed(void) const
+{
+    return clr_.r;
+}
+
+uint8_t GfxColor::getGreen(void) const
+{
+    return clr_.g;
+}
+
+uint8_t GfxColor::getBlue(void) const
+{
+    return clr_.b;
+}
+
+uint8_t GfxColor::getAlpha(void) const
+{
+    return clr_.a;
+}
+
+void GfxColor::setRed(const uint8_t r)
+{
+    clr_.r = r;
+}
+
+void GfxColor::setGreen(const uint8_t g)
+{
+    clr_.g = g;
+}
+
+void GfxColor::setBlue(const uint8_t b)
+{
+    clr_.b = b;
+}
+
+void GfxColor::setAlpha(const uint8_t a)
+{
+    clr_.a = a;
 }
 
 GfxColor::SdlType GfxColor::getAsSdlType() const

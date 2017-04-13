@@ -14,18 +14,18 @@ GfxPoint::GfxPoint() : GfxRootClass("GfxPoint")
     pt_.y = -1;
 }
 
-GfxPoint::GfxPoint(int x,int y) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const uint16_t x,const uint16_t y) : GfxRootClass("GfxPoint")
 {
     pt_.x = x;
     pt_.y = y;
 }
 
-GfxPoint::GfxPoint(SdlType pt) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const SdlType pt) : GfxRootClass("GfxPoint")
 {
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(SdlTypePtr pt) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const SdlTypePtr pt) : GfxRootClass("GfxPoint")
 {
     pt_ = *pt;
 }
@@ -75,12 +75,12 @@ int GfxPoint::getY(void) const
     return pt_.y;
 }
 
-void GfxPoint::setX(const int x)
+void GfxPoint::setX(const uint16_t x)
 {
     pt_.x = x;
 }
 
-void GfxPoint::setY(const int y)
+void GfxPoint::setY(const uint16_t y)
 {
     pt_.y = y;
 }

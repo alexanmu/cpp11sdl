@@ -19,7 +19,7 @@ public:
     typedef SDL_Rect* SdlTypePtr;
     
     GfxRect();
-    GfxRect(const int x, const int y, const int w, const int h);
+    GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h);
     GfxRect(SdlType rect);
     GfxRect(SdlTypePtr rect);
     GfxRect(const GfxRect& other);
@@ -28,15 +28,15 @@ public:
     GfxRect& operator=(const GfxRect& other);
     GfxRect& operator=(GfxRect&& other);
 
-    int getX(void) const;
-    int getY(void) const;
-    int getWidth(void) const;
-    int getHeight(void) const;
+    uint16_t getX(void) const;
+    uint16_t getY(void) const;
+    uint16_t getWidth(void) const;
+    uint16_t getHeight(void) const;
     
-    void setX(const int x);
-    void setY(const int y);
-    void setWidth(const int w);
-    void setHeight(const int h);
+    void setX(const uint16_t x);
+    void setY(const uint16_t y);
+    void setWidth(const uint16_t w);
+    void setHeight(const uint16_t h);
     
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr() const;

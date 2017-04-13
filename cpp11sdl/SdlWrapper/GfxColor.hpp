@@ -19,26 +19,26 @@ public:
     typedef SDL_Color* SdlTypePtr;
     
     GfxColor();
-    GfxColor(uint8_t r, uint8_t g, uint8_t b);
-    GfxColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-    GfxColor(SdlType clr);
+    GfxColor(const uint8_t r,const uint8_t g,const uint8_t b);
+    GfxColor(const uint8_t r,const uint8_t g,const uint8_t b,const uint8_t a);
+    GfxColor(const SdlType clr);
     GfxColor(const GfxColor& other);
     GfxColor(GfxColor&& other);
     GfxColor& operator=(const GfxColor& other);
     GfxColor& operator=(GfxColor&& other);
     
     /* Getters ... */
-    uint8_t getRed(void) const { return clr_.r; }
-    uint8_t getGreen(void) const { return clr_.g; }
-    uint8_t getBlue(void) const { return clr_.b; }
-    uint8_t getAlpha(void) const { return clr_.a; }
+    uint8_t getRed(void) const;
+    uint8_t getGreen(void) const;
+    uint8_t getBlue(void) const;
+    uint8_t getAlpha(void) const;
     
     /* Setters ... */
-    void setRed(uint8_t r) { clr_.r = r; }
-    void setGreen(uint8_t g) { clr_.g = g; }
-    void setBlue(uint8_t b) { clr_.b = b; }
-    void setAlpha(uint8_t a) { clr_.a = a; }
-    
+    void setRed(const uint8_t r);
+    void setGreen(const uint8_t g);
+    void setBlue(const uint8_t b);
+    void setAlpha(const uint8_t a);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

@@ -16,6 +16,7 @@
 
 #include "GfxPixelFormat.hpp"
 #include "GfxRect.hpp"
+#include "GfxColor.hpp"
 
 class GfxSurface final : public GfxRootClass
 {
@@ -24,8 +25,8 @@ public:
     typedef SDL_Surface* SdlTypePtr;
 
     GfxSurface() = delete;
-    GfxSurface(int w,int h);
-    GfxSurface(SdlTypePtr surf);
+    GfxSurface(const uint16_t w,const uint16_t h);
+    GfxSurface(const SdlTypePtr surf);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& surf);
@@ -52,6 +53,8 @@ public:
     void blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr);
     void blitSurface(const GfxSurface& src);
     
+    void putPixel(const uint16_t x,const uint16_t y,const GfxColor& clr);
+
     void destroySurface(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;

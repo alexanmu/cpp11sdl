@@ -215,3 +215,15 @@ GfxColor GfxConstants::clrVGA16White(void)
 
 	return clr;
 }
+
+GfxColor GfxConstants::clrVGA16GetByIndex(const GfxVGA16ColorIndex index)
+{
+	GfxColor clr {GfxConstants::colorsVGA16_[index]};
+
+	clr.setRed(clr.getRed() << 2);
+	clr.setGreen(clr.getGreen() << 2);
+	clr.setBlue(clr.getBlue() << 2);
+	clr.setAlpha(0xFF);
+
+	return clr;
+}
