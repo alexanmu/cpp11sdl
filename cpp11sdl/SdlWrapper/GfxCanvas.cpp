@@ -12,7 +12,7 @@
 
 GfxCanvas::GfxCanvas(GfxSurface& surf) : surf_(surf)
 {
-	bgi.setCanvas(static_cast<uint32_t*>(surf_.surf_->pixels),surf_.surf_->w,surf_.surf_->h);
+	bgi_.setCanvas(static_cast<uint32_t*>(surf_.surf_->pixels),surf_.surf_->w,surf_.surf_->h);
 }
 
 uint8_t compute(int x, int y)
@@ -39,20 +39,20 @@ void GfxCanvas::paint(void)
 
 void GfxCanvas::circle(const uint16_t x, const uint16_t y, const uint16_t r)
 {
-    bgi.setcolor(SDL_bgi::bgiColors::WHITE);
-	bgi.circle(x,y,r);
+    bgi_.setcolor(SDL_bgi::bgiColors::WHITE);
+	bgi_.circle(x,y,r);
 }
 
 void GfxCanvas::arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius)
 {
-	bgi.setcolor(SDL_bgi::bgiColors::YELLOW);
-	bgi.arc(x,y,stangle,endangle,radius);
+	bgi_.setcolor(SDL_bgi::bgiColors::YELLOW);
+	bgi_.arc(x,y,stangle,endangle,radius);
 }
 
 void GfxCanvas::outtextxy(const uint16_t x, const uint16_t y,std::string text)
 {
-	bgi.setcolor(SDL_bgi::bgiColors::LIGHTRED);
-	bgi.outtextxy(x,y,(char *)text.c_str());
+	bgi_.setcolor(SDL_bgi::bgiColors::LIGHTRED);
+	bgi_.outtextxy(x,y,(char *)text.c_str());
 }
 
 /********************************************************** SDL_bgi **********************************************************/
@@ -72,11 +72,9 @@ void GfxCanvas::SDL_bgi::setCanvas(uint32_t* ptr, int maxx, int maxy)
 	bgi_maxy = maxy - 1;
 }
 
-//#include "SDL_bgi_font.h"
-
 int GfxCanvas::SDL_bgi::is_in_range (int x, int x1, int x2)
 {
-  return (x >= x1 && x <= x2);
+    return (x >= x1 && x <= x2);
 }
 
 // -----
@@ -85,180 +83,181 @@ int GfxCanvas::SDL_bgi::is_in_range (int x, int x1, int x2)
 
 void GfxCanvas::SDL_bgi::arc (int x, int y, int stangle, int endangle, int radius)
 {
-  // Draws a circular arc centered at (x, y), with a radius
-  // given by radius, traveling from stangle to endangle.
-  
-  // Quick and dirty for now, Bresenham-based later (maybe)
-  
-  int angle;
-  
-  if (0 == radius)
-    return;
-  
-  if (endangle < stangle)
-    endangle += 360;
-  
-  bgi_last_arc.x = x;
-  bgi_last_arc.y = y;
-  bgi_last_arc.xstart = x + (radius * cos (stangle * PI_CONV));
-  bgi_last_arc.ystart = y - (radius * sin (stangle * PI_CONV));
-  bgi_last_arc.xend = x + (radius * cos (endangle * PI_CONV));
-  bgi_last_arc.yend = y - (radius * sin (endangle * PI_CONV));
-  
-  for (angle = stangle; angle < endangle; angle++)
-    line (x + floor (0.5 + (radius * cos (angle * PI_CONV))),
-	       y - floor (0.5 + (radius * sin (angle * PI_CONV))),
-	       x + floor (0.5 + (radius * cos ((angle+1) * PI_CONV))),
-	       y - floor (0.5 + (radius * sin ((angle+1) * PI_CONV))));
-  
+    // Draws a circular arc centered at (x, y), with a radius
+    // given by radius, traveling from stangle to endangle.
+    
+    // Quick and dirty for now, Bresenham-based later (maybe)
+    
+    int angle;
+    
+    if (0 == radius)
+        return;
+    
+    if (endangle < stangle)
+        endangle += 360;
+    
+    bgi_last_arc.x = x;
+    bgi_last_arc.y = y;
+    bgi_last_arc.xstart = x + (radius * cos (stangle * PI_CONV));
+    bgi_last_arc.ystart = y - (radius * sin (stangle * PI_CONV));
+    bgi_last_arc.xend = x + (radius * cos (endangle * PI_CONV));
+    bgi_last_arc.yend = y - (radius * sin (endangle * PI_CONV));
+    
+    for (angle = stangle; angle < endangle; angle++)
+        line (x + floor (0.5 + (radius * cos (angle * PI_CONV))),
+              y - floor (0.5 + (radius * sin (angle * PI_CONV))),
+              x + floor (0.5 + (radius * cos ((angle+1) * PI_CONV))),
+              y - floor (0.5 + (radius * sin ((angle+1) * PI_CONV))));
+    
 } // arc ()
 
 // -----
 
 void GfxCanvas::SDL_bgi::bar3d (int left, int top, int right, int bottom, int depth, int topflag)
 {
-  // Draws a three-dimensional, filled-in rectangle (bar), using
-  // the current fill colour and fill pattern.
-  
-  bgiColors tmp, tmpcolor;
-  
-  tmp = bgi_fg_color;
-  
+    // Draws a three-dimensional, filled-in rectangle (bar), using
+    // the current fill colour and fill pattern.
+    
+    bgiColors tmp;
+    bgiColors tmpcolor;
+    
+    tmp = bgi_fg_color;
+    
     if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
-    tmpcolor = bgi_bg_color;
-  else // all other styles
-    tmpcolor = bgi_fill_style.color;
-  
-  setcolor (tmpcolor); // fill
-  bar (left, top, right, bottom);
-  setcolor (tmp); // outline
-  if (depth > 0) {
-    line (left, top, left + depth, top - depth);
-    line (left + depth, top - depth, right + depth, top - depth);
-    line (right, top, right + depth, top - depth);
-    line (right, bottom, right + depth, bottom - depth);
-    line (right + depth, bottom - depth, right + depth, top - depth);
-  }
-  rectangle (left, top, right, bottom);
-  
-  // topflag - what should I do with it?
-  
+        tmpcolor = bgi_bg_color;
+    else // all other styles
+        tmpcolor = bgi_fill_style.color;
+    
+    setcolor (tmpcolor); // fill
+    bar (left, top, right, bottom);
+    setcolor (tmp); // outline
+    if (depth > 0) {
+        line (left, top, left + depth, top - depth);
+        line (left + depth, top - depth, right + depth, top - depth);
+        line (right, top, right + depth, top - depth);
+        line (right, bottom, right + depth, bottom - depth);
+        line (right + depth, bottom - depth, right + depth, top - depth);
+    }
+    rectangle (left, top, right, bottom);
+    
+    // topflag - what should I do with it?
+    
 } // bar3d ()
 
 // -----
 
 void GfxCanvas::SDL_bgi::bar (int left, int top, int right, int bottom)
 {
-  // Draws a filled-in rectangle (bar), using the current fill colour
-  // and fill pattern.
-  
-  int
-    y;
+    // Draws a filled-in rectangle (bar), using the current fill colour
+    // and fill pattern.
+    
+    int y;
     bgiLineThickness tmpthickness;
-  
     bgiColors tmp;
     bgiColors tmpcolor;
     
-  tmp = bgi_fg_color;
-  
-  if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
-    tmpcolor = bgi_bg_color;
-  else // all other styles
-    tmpcolor = bgi_fill_style.color;
-  
-  setcolor (tmpcolor);
-  tmpthickness = bgi_line_style.thickness;
+    tmp = bgi_fg_color;
+    
+    if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
+        tmpcolor = bgi_bg_color;
+    else // all other styles
+        tmpcolor = bgi_fill_style.color;
+    
+    setcolor (tmpcolor);
+    tmpthickness = bgi_line_style.thickness;
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
-  
-  if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
-    for (y = top; y <= bottom; y++)
-      line (left, y, right, y);
-  else
-    for (y = top; y <= bottom; y++)
-      line_fill (left, y, right, y);
-  
-  setcolor (tmp);
-  bgi_line_style.thickness = tmpthickness;
-  
+    
+    if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
+        for (y = top; y <= bottom; y++)
+            line (left, y, right, y);
+    else
+        for (y = top; y <= bottom; y++)
+            line_fill (left, y, right, y);
+    
+    setcolor (tmp);
+    bgi_line_style.thickness = tmpthickness;
+    
 } // bar ()
 
 // -----
 
 void GfxCanvas::SDL_bgi::circle_bresenham (int x, int y, int radius)
 {
-  // Draws a circle of the given radius at (x, y).
-  // Adapted from:
-  // http://members.chello.at/easyfilter/bresenham.html
-  
-  int 
-    xx = -radius,
-    yy = 0,
-    err = 2 - 2*radius;
-  
-  do {
-    _putpixel (x - xx, y + yy); //  I  quadrant
-    _putpixel (x - yy, y - xx); //  II quadrant
-    _putpixel (x + xx, y - yy); //  III quadrant
-    _putpixel (x + yy, y + xx); //  IV quadrant
-    radius = err;
+    // Draws a circle of the given radius at (x, y).
+    // Adapted from:
+    // http://members.chello.at/easyfilter/bresenham.html
     
-    if (radius <= yy) 
-      err += ++yy*2 + 1;
+    int xx = -radius;
+    int yy = 0;
+    int err = 2 - 2 * radius;
     
-    if (radius > xx || err > yy) 
-      err += ++xx*2 + 1;
+    do {
+        _putpixel (x - xx, y + yy); //  I  quadrant
+        _putpixel (x - yy, y - xx); //  II quadrant
+        _putpixel (x + xx, y - yy); //  III quadrant
+        _putpixel (x + yy, y + xx); //  IV quadrant
+        radius = err;
+        
+        if (radius <= yy)
+            err += ++yy * 2 + 1;
+        
+        if (radius > xx || err > yy)
+            err += ++xx * 2 + 1;
+        
+    } while (xx < 0);
     
-  } while (xx < 0);
-
 } // circle_bresenham ();
 
 // -----
 
 void GfxCanvas::SDL_bgi::circle (int x, int y, int radius)
 {
-  // Draws a circle of the given radius at (x, y).
-  
-  // the Bresenham algorithm draws a better-looking circle
-
+    // Draws a circle of the given radius at (x, y).
+    
+    // the Bresenham algorithm draws a better-looking circle
+    
     if (bgiLineThickness::NORM_WIDTH == bgi_line_style.thickness)
-    circle_bresenham (x, y, radius);
-  else 
-    arc (x, y, 0, 360, radius);
-
+        circle_bresenham (x, y, radius);
+    else
+        arc (x, y, 0, 360, radius);
+    
 } // circle ();
 
 // -----
 
 void GfxCanvas::SDL_bgi::cleardevice (void)
 {
-  // Clears the graphics screen, filling it with the current
-  // background color.
-  
-  int x, y;
-
-  bgi_cp_x = bgi_cp_y = 0;
-  
-  for (x = 0; x < bgi_maxx + 1; x++)
-    for (y = 0; y < bgi_maxy + 1; y++)
-      bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
-  
+    // Clears the graphics screen, filling it with the current
+    // background color.
+    
+    int x;
+    int y;
+    
+    bgi_cp_x = 0;
+    bgi_cp_y = 0;
+    
+    for (x = 0; x < bgi_maxx + 1; x++)
+        for (y = 0; y < bgi_maxy + 1; y++)
+            bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
+    
 } // cleardevice ()
 
 // -----
 
 void GfxCanvas::SDL_bgi::clearviewport (void)
 {
-  // Clears the viewport, filling it with the current 
-  // background color.
-  
-  int x, y;
-  
-  bgi_cp_x = bgi_cp_y = 0;
-  
-  for (x = vp.left; x < vp.right + 1; x++)
-    for (y = vp.top; y < vp.bottom + 1; y++)
-      bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
-
+    // Clears the viewport, filling it with the current
+    // background color.
+    
+    int x;
+    int y;
+    
+    bgi_cp_x = bgi_cp_y = 0;
+    
+    for (x = vp.left; x < vp.right + 1; x++)
+        for (y = vp.top; y < vp.bottom + 1; y++)
+            bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
+    
 } // clearviewport ()
 
 // -----
@@ -750,12 +749,12 @@ void GfxCanvas::SDL_bgi::floodfill (int x, int y, bgiColors border)
       tmp_color = bgi_fill_style.color;
       // find a suitable temporary fill colour; it must be different
       // than the border and the background
-      found = NOPE;
+      found = false;
       while (!found) {
 	bgi_fill_style.color = static_cast<bgiColors>(static_cast<int>(bgiColors::BLUE) + random (static_cast<int>(bgiColors::WHITE)));
 	if (oldcol != bgi_fill_style.color && 
 	    border != bgi_fill_style.color)
-	  found = YEAH;
+	  found = true;
       }
       _floodfill (x, y, border);
       // ...then pattern fill
@@ -1025,7 +1024,7 @@ void GfxCanvas::SDL_bgi::graphdefaults (void)
   
   vp.right = bgi_maxx;
   vp.bottom = bgi_maxy;
-  vp.clip = NOPE;
+  vp.clip = false;
   
   // initialise the CP
   bgi_cp_x = 0;
@@ -1767,7 +1766,7 @@ void GfxCanvas::SDL_bgi::putpixel_copy (int x, int y, uint32_t pixel)
   if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
     return;
   
-  if (YEAH == vp.clip)
+  if (true == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
   
@@ -1789,7 +1788,7 @@ void GfxCanvas::SDL_bgi::putpixel_xor (int x, int y, uint32_t pixel)
   if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
     return;
   
-  if (YEAH == vp.clip)
+  if (true == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
   
@@ -1807,7 +1806,7 @@ void GfxCanvas::SDL_bgi::putpixel_and (int x, int y, uint32_t pixel)
   if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
     return;
   
-  if (YEAH == vp.clip)
+  if (true == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
   
@@ -1825,7 +1824,7 @@ void GfxCanvas::SDL_bgi::putpixel_or (int x, int y, uint32_t pixel)
   if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
     return;
   
-  if (YEAH == vp.clip)
+  if (true == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
   
@@ -1843,7 +1842,7 @@ void GfxCanvas::SDL_bgi::putpixel_not (int x, int y, uint32_t pixel)
   if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
     return;
   
-  if (YEAH == vp.clip)
+  if (true == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
 
@@ -1865,7 +1864,7 @@ void GfxCanvas::SDL_bgi::putpixel (int x, int y, int color)
   y += vp.top;
   
   // clip
-  if (YEAH == vp.clip)
+  if (true == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
 
