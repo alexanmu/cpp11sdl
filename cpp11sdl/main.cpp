@@ -61,7 +61,7 @@ void _DoStuff(void)
     cv.paint();
     cv.circle(480,240,230);
     cv.arc(480,240,10,350,239);
-    cv.outtextxy(480,240,"Ana are mere!");
+    cv.outtextxy(480,240,"Diana e cretolina si dragutica!");
 
     GfxSurface s(960,480);
     GfxRect rt;

@@ -23,121 +23,131 @@ public:
     void circle(const uint16_t x, const uint16_t y, const uint16_t r);
     void arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius);
     void outtextxy(const uint16_t x, const uint16_t y,std::string text);
+    
 private:
+#define NOPE 0
+#define YEAH 1
+    
+#define MAXCOLORS      15
+#define PALETTE_SIZE    4096
 	class SDL_bgi : public GfxRootClass
 	{
 	public:
+        enum class bgiFonts : int
+        {
+            DEFAULT_FONT =     0, // 8x8
+            TRIPLEX_FONT =     1, // all other fonts are not implemented
+            SMALL_FONT =       2,
+            SANSSERIF_FONT =   3,
+            GOTHIC_FONT =      4,
+            BIG_FONT =         5,
+            SCRIPT_FONT =      6,
+            SIMPLEX_FONT =     7,
+            TRIPLEX_SCR_FONT = 8,
+            COMPLEX_FONT =     9,
+            EUROPEAN_FONT =    10,
+            BOLD_FONT =        11,
+        };
+
+        enum class bgiDirection : int
+        {
+            HORIZ_DIR =      0,
+            VERT_DIR =       1
+        };
+
+        enum class bgiTextJustification : int
+        {
+            LEFT_TEXT =      0,
+            CENTER_TEXT =    1,
+            RIGHT_TEXT =     2,
+            BOTTOM_TEXT =    0,
+            TOP_TEXT =       2
+        };
+
+        enum class bgiColors : int
+        {
+            BLACK =           0,
+            BLUE =            1,
+            GREEN =           2,
+            CYAN =            3,
+            RED =             4,
+            MAGENTA =         5,
+            BROWN =           6,
+            LIGHTGRAY =       7,
+            DARKGRAY =        8,
+            LIGHTBLUE =       9,
+            LIGHTGREEN =     10,
+            LIGHTCYAN =      11,
+            LIGHTRED =       12,
+            LIGHTMAGENTA =   13,
+            YELLOW =         14,
+            WHITE =          15
+        };
+
+        enum class bgiLineThickness : int
+        {
+            NORM_WIDTH =      1,
+            THICK_WIDTH =     3
+        };
+
+        enum class bgiLineStyle : int
+        {
+            SOLID_LINE =      0,
+            DOTTED_LINE =     1,
+            CENTER_LINE =     2,
+            DASHED_LINE =     3,
+            USERBIT_LINE =    4
+        };
+
+        enum class bgiDrawingMode : int
+        {
+            COPY_PUT  =       0,
+            XOR_PUT =         1,
+            OR_PUT =          2,
+            AND_PUT =         3,
+            NOT_PUT =         4
+        };
+
+        enum class bgiFillStyles : int
+        {
+            EMPTY_FILL =      0,
+            SOLID_FILL =      1,
+            LINE_FILL =       2,
+            LTSLASH_FILL =    3,
+            SLASH_FILL =      4,
+            BKSLASH_FILL =    5,
+            LTBKSLASH_FILL =  6,
+            HATCH_FILL =      7,
+            XHATCH_FILL =     8,
+            INTERLEAVE_FILL = 9,
+            WIDE_DOT_FILL =   10,
+            CLOSE_DOT_FILL =  11,
+            USER_FILL =       12
+        };
+
 		SDL_bgi();
 		void setCanvas(uint32_t* ptr,int maxx, int maxy);
 
-#define NOPE 0
-#define YEAH 1
-
-// BGI fonts
-
-#define DEFAULT_FONT     0 // 8x8
-#define TRIPLEX_FONT     1 // all other fonts are not implemented
-#define SMALL_FONT       2
-#define SANSSERIF_FONT   3
-#define GOTHIC_FONT      4
-#define BIG_FONT         5
-#define SCRIPT_FONT      6
-#define SIMPLEX_FONT     7
-#define TRIPLEX_SCR_FONT 8
-#define COMPLEX_FONT     9
-#define EUROPEAN_FONT    10
-#define BOLD_FONT        11
-
-#define HORIZ_DIR      0
-#define VERT_DIR       1
-
-#define USER_CHAR_SIZE 0
-
-#define LEFT_TEXT      0
-#define CENTER_TEXT    1
-#define RIGHT_TEXT     2
-#define BOTTOM_TEXT    0
-#define TOP_TEXT       2
-
-// BGI colours
-
-#define BLACK           0
-#define BLUE            1
-#define GREEN           2
-#define CYAN            3
-#define RED             4
-#define MAGENTA         5
-#define BROWN           6
-#define LIGHTGRAY       7
-#define DARKGRAY        8
-#define LIGHTBLUE       9
-#define LIGHTGREEN     10
-#define LIGHTCYAN      11
-#define LIGHTRED       12
-#define LIGHTMAGENTA   13
-#define YELLOW         14
-#define WHITE          15
-
-// line style, thickness, and drawing mode
-
-#define NORM_WIDTH      1
-#define THICK_WIDTH     3
-
-#define SOLID_LINE      0
-#define DOTTED_LINE     1
-#define CENTER_LINE     2
-#define DASHED_LINE     3
-#define USERBIT_LINE    4
-
-#define COPY_PUT        0
-#define XOR_PUT         1
-#define OR_PUT          2
-#define AND_PUT         3
-#define NOT_PUT         4
-
-// fill styles
-
-#define EMPTY_FILL      0
-#define SOLID_FILL      1
-#define LINE_FILL       2
-#define LTSLASH_FILL    3
-#define SLASH_FILL      4
-#define BKSLASH_FILL    5
-#define LTBKSLASH_FILL  6
-#define HATCH_FILL      7
-#define XHATCH_FILL     8
-#define INTERLEAVE_FILL 9
-#define WIDE_DOT_FILL   10
-#define CLOSE_DOT_FILL  11
-#define USER_FILL       12
-
-		#define MAXCOLORS      15
-		#define PALETTE_SIZE    4096
-
-struct arccoordstype {
-  int x;
-  int y;
-  int xstart;
-  int ystart;
-  int xend;
-  int yend;
-};
-
-struct date {
-  int da_year;
-  int da_day;
-  int da_mon;
-};
-
-struct fillsettingstype {
-  int pattern;
-  int color;
-};
+        struct arccoordstype
+        {
+            int x;
+            int y;
+            int xstart;
+            int ystart;
+            int xend;
+            int yend;
+        };
+        
+        struct fillsettingstype
+        {
+            bgiFillStyles pattern;
+            bgiColors color;
+        };
 
 struct linesettingstype {
-  int linestyle;
-  unsigned int upattern;
-  int thickness;
+  bgiLineStyle linestyle;
+  bgiFillStyles upattern;
+  bgiLineThickness thickness;
 };
 
 struct palettetype {
@@ -146,11 +156,11 @@ struct palettetype {
 };
 
 struct textsettingstype {
-  int font;
-  int direction;
+  bgiFonts font;
+  bgiDirection direction;
   int charsize;
-  int horiz;
-  int vert;
+  bgiTextJustification horiz;
+  bgiTextJustification vert;
 };
 
 struct viewporttype {
@@ -173,11 +183,11 @@ void drawpoly (int, int *);
 void ellipse (int, int, int, int, int, int);
 void fillellipse (int, int, int, int);
 void fillpoly (int, int *);
-void floodfill (int, int, int);
+void floodfill (int, int, bgiColors);
 void freeimage (void *);
 void getarccoords (struct arccoordstype *);
-int  getbkcolor (void);
-int  getcolor (void);
+bgiColors  getbkcolor (void);
+bgiColors  getcolor (void);
 struct palettetype *getdefaultpalette (void);
 void getfillpattern (char *);
 void getfillsettings (struct fillsettingstype *);
@@ -204,26 +214,23 @@ void outtext (char *);
 void outtextxy (int, int, char *);
 void pieslice (int, int, int, int, int);
 void _putpixel (int, int);
-void putimage (int, int, void *, int);
+void putimage (int, int, void *, bgiDrawingMode);
 void putpixel (int, int, int);
 void rectangle (int, int, int, int);
 void sector (int, int, int, int, int, int);
 void setallpalette (struct palettetype *);
 void setalpha (int, Uint8);
-void setbkcolor (int);
-void setbkrgbcolor (int);
-void setcolor (int);
+void setbkcolor (bgiColors);
+void setcolor (bgiColors);
 void setfillpattern (char *, int); 
-void setfillstyle (int, int);
-void setlinestyle (int, unsigned, int);
-void setpalette (int, int);
-void setrgbcolor (int);
-void setrgbpalette (int, int, int, int);
-void settextjustify (int, int);
-void settextstyle (int, int, int);
+        void setfillstyle (bgiFillStyles, int);
+        void setlinestyle (bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
+        void setpalette (int, int);
+void settextjustify (bgiTextJustification, bgiTextJustification);
+void settextstyle (int, bgiDirection, int);
 void setusercharsize (int, int, int, int);
 void setviewport (int, int, int, int, int);
-void setwritemode (int);
+        void setwritemode (bgiDrawingMode);
 int  textheight (char *);
 int  textwidth (char *);
 
@@ -243,7 +250,7 @@ void line_and  (int, int, int, int);
 void line_or   (int, int, int, int);
 void line_not  (int, int, int, int);
 void line_fill (int, int, int, int);
-void _floodfill (int, int, int);
+void _floodfill (int, int, bgiColors);
 
 int  is_in_range      (int, int, int);
 void swap_if_greater  (int *, int *);
@@ -293,7 +300,7 @@ uint32_t
 };
 
  uint16_t
-  line_patterns[1 + USERBIT_LINE] = 
+        line_patterns[1 + static_cast<int>(bgiLineStyle::USERBIT_LINE)] =
   {0xffff,  // SOLID_LINE  = 1111111111111111
    0xcccc,  // DOTTED_LINE = 1100110011001100
    0xf1f8,  // CENTER_LINE = 1111000111111000
@@ -303,18 +310,20 @@ uint32_t
  uint32_t 
   bgi_tmp_color_argb;     // temporary color set up by COLOR()
 
- int
-  bgi_fg_color = WHITE,   // index of BGI foreground color
-  bgi_bg_color = BLACK,   // index of BGI background color
-  bgi_fill_color = WHITE, // index of BGI fill color
+ 
+        bgiColors bgi_fg_color = bgiColors::WHITE;   // index of BGI foreground color
+        bgiColors bgi_bg_color = bgiColors::BLACK;   // index of BGI background color
+        bgiColors bgi_fill_color = bgiColors::WHITE; // index of BGI fill color
+
+        int
   bgi_font_width = 8,     // default font width and height  
   bgi_font_height = 8,
   bgi_cp_x = 0,           // current position
   bgi_cp_y = 0,
   bgi_maxx,               // screen size
-  bgi_maxy,
-  bgi_argb_mode = NOPE,   // BGI or ARGB colors
-  bgi_writemode;          // plotting method (COPY_PUT, XOR_PUT...)
+        bgi_maxy;
+        
+        bgiDrawingMode bgi_writemode;          // plotting method (COPY_PUT, XOR_PUT...)
 
  float
   bgi_font_mag_x = 1.0,  // font magnification
@@ -327,6 +336,24 @@ uint32_t
  struct viewporttype vp;
  struct palettetype pal;
 
+        // These are setfillpattern-compatible arrays for the tiling patterns.
+        // Taken from TurboC, http://www.sandroid.org/TurboC/
+        
+        uint8_t fill_patterns[1 + static_cast<int>(GfxCanvas::SDL_bgi::bgiFillStyles::USER_FILL)][8] = {
+            {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // EMPTY_FILL
+            {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}, // SOLID_FILL
+            {0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00}, // LINE_FILL
+            {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80}, // LTSLASH_FILL
+            {0x03, 0x06, 0x0c, 0x18, 0x30, 0x60, 0xc0, 0x81}, // SLASH_FILL
+            {0xc0, 0x60, 0x30, 0x18, 0x0c, 0x06, 0x03, 0x81}, // BKSLASH_FILL
+            {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01}, // LTBKSLASH_FILL
+            {0x22, 0x22, 0xff, 0x22, 0x22, 0x22, 0xff, 0x22}, // HATCH_FILL
+            {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81}, // XHATCH_FILL
+            {0x11, 0x44, 0x11, 0x44, 0x11, 0x44, 0x11, 0x44}, // INTERLEAVE_FILL
+            {0x10, 0x00, 0x01, 0x00, 0x10, 0x00, 0x01, 0x00}, // WIDE_DOT_FILL
+            {0x11, 0x00, 0x44, 0x00, 0x11, 0x00, 0x44, 0x00}, // CLOSE_DOT_FILL
+            {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}  // USER_FILL
+        };
 /* ---- 8x8 font definition ---- */
 
 /*  ZLIB (c) A. Schiffler 2012 */

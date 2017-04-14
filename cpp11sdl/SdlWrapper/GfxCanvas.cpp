@@ -39,19 +39,19 @@ void GfxCanvas::paint(void)
 
 void GfxCanvas::circle(const uint16_t x, const uint16_t y, const uint16_t r)
 {
-	bgi.setcolor(WHITE);
+    bgi.setcolor(SDL_bgi::bgiColors::WHITE);
 	bgi.circle(x,y,r);
 }
 
 void GfxCanvas::arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius)
 {
-	bgi.setcolor(YELLOW);
+	bgi.setcolor(SDL_bgi::bgiColors::YELLOW);
 	bgi.arc(x,y,stangle,endangle,radius);
 }
 
 void GfxCanvas::outtextxy(const uint16_t x, const uint16_t y,std::string text)
 {
-	bgi.setcolor(CYAN);
+	bgi.setcolor(SDL_bgi::bgiColors::LIGHTRED);
 	bgi.outtextxy(x,y,(char *)text.c_str());
 }
 
@@ -120,11 +120,11 @@ void GfxCanvas::SDL_bgi::bar3d (int left, int top, int right, int bottom, int de
   // Draws a three-dimensional, filled-in rectangle (bar), using
   // the current fill colour and fill pattern.
   
-  uint32_t tmp, tmpcolor;
+  bgiColors tmp, tmpcolor;
   
   tmp = bgi_fg_color;
   
-  if (EMPTY_FILL == bgi_fill_style.pattern)
+    if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
     tmpcolor = bgi_bg_color;
   else // all other styles
     tmpcolor = bgi_fill_style.color;
@@ -153,21 +153,24 @@ void GfxCanvas::SDL_bgi::bar (int left, int top, int right, int bottom)
   // and fill pattern.
   
   int
-    y, 
-    tmp, tmpcolor, tmpthickness;
+    y;
+    bgiLineThickness tmpthickness;
   
+    bgiColors tmp;
+    bgiColors tmpcolor;
+    
   tmp = bgi_fg_color;
   
-  if (EMPTY_FILL == bgi_fill_style.pattern)
+  if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
     tmpcolor = bgi_bg_color;
   else // all other styles
     tmpcolor = bgi_fill_style.color;
   
   setcolor (tmpcolor);
   tmpthickness = bgi_line_style.thickness;
-  bgi_line_style.thickness = NORM_WIDTH;
+    bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
   
-  if (SOLID_FILL == bgi_fill_style.pattern)
+  if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
     for (y = top; y <= bottom; y++)
       line (left, y, right, y);
   else
@@ -217,7 +220,7 @@ void GfxCanvas::SDL_bgi::circle (int x, int y, int radius)
   
   // the Bresenham algorithm draws a better-looking circle
 
-  if (NORM_WIDTH == bgi_line_style.thickness)
+    if (bgiLineThickness::NORM_WIDTH == bgi_line_style.thickness)
     circle_bresenham (x, y, radius);
   else 
     arc (x, y, 0, 360, radius);
@@ -237,7 +240,7 @@ void GfxCanvas::SDL_bgi::cleardevice (void)
   
   for (x = 0; x < bgi_maxx + 1; x++)
     for (y = 0; y < bgi_maxy + 1; y++)
-      bgi_activepage [y * (bgi_maxx + 1) + x] = palette[bgi_bg_color];
+      bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
   
 } // cleardevice ()
 
@@ -254,7 +257,7 @@ void GfxCanvas::SDL_bgi::clearviewport (void)
   
   for (x = vp.left; x < vp.right + 1; x++)
     for (y = vp.top; y < vp.bottom + 1; y++)
-      bgi_activepage [y * (bgi_maxx + 1) + x] = palette[bgi_bg_color];
+      bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
 
 } // clearviewport ()
 
@@ -517,8 +520,9 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
     *nodeX,     // array of nodes
     ymin, ymax,
     pixelY,
-    i, j,
-    tmp, tmpcolor;
+    i, j;
+    bgiColors tmp;
+    bgiColors tmpcolor;
 
   if (NULL == (nodeX = (int *)calloc (sizeof (int), numpoints))) {
     fprintf (stderr, "Can't allocate memory for fillpoly()\n");
@@ -526,7 +530,7 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
   }
   
   tmp = bgi_fg_color;
-  if (EMPTY_FILL == bgi_fill_style.pattern)
+  if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
     tmpcolor = bgi_bg_color;
   else // all other styles
     tmpcolor = bgi_fill_style.color;
@@ -570,7 +574,7 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
 
     // fill the pixels between node pairs.
     for (i = 0; i < nodes; i += 2) {
-      if (SOLID_FILL == bgi_fill_style.pattern)
+      if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
         line (nodeX[i], pixelY, nodeX[i + 1], pixelY);
       else
         line_fill (nodeX[i], pixelY, nodeX[i + 1], pixelY);
@@ -585,25 +589,6 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
 
 // -----
 
-// These are setfillpattern-compatible arrays for the tiling patterns.
-// Taken from TurboC, http://www.sandroid.org/TurboC/
-
-static uint8_t fill_patterns[1 + USER_FILL][8] = {
-  {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // EMPTY_FILL
-  {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}, // SOLID_FILL
-  {0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00}, // LINE_FILL
-  {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80}, // LTSLASH_FILL
-  {0x03, 0x06, 0x0c, 0x18, 0x30, 0x60, 0xc0, 0x81}, // SLASH_FILL
-  {0xc0, 0x60, 0x30, 0x18, 0x0c, 0x06, 0x03, 0x81}, // BKSLASH_FILL
-  {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01}, // LTBKSLASH_FILL
-  {0x22, 0x22, 0xff, 0x22, 0x22, 0x22, 0xff, 0x22}, // HATCH_FILL
-  {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81}, // XHATCH_FILL
-  {0x11, 0x44, 0x11, 0x44, 0x11, 0x44, 0x11, 0x44}, // INTERLEAVE_FILL
-  {0x10, 0x00, 0x01, 0x00, 0x10, 0x00, 0x01, 0x00}, // WIDE_DOT_FILL
-  {0x11, 0x00, 0x44, 0x00, 0x11, 0x00, 0x44, 0x00}, // CLOSE_DOT_FILL
-  {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}  // USER_FILL
-};
-
 void GfxCanvas::SDL_bgi::ff_putpixel (int x, int y)
 {
   // similar to putpixel (), but uses fill patterns
@@ -612,10 +597,10 @@ void GfxCanvas::SDL_bgi::ff_putpixel (int x, int y)
   y += vp.top;
 
   // if the corresponding bit in the pattern is 1
-  if ( (fill_patterns[bgi_fill_style.pattern][y % 8] >> x % 8) & 1)
-    putpixel_copy (x, y, palette[bgi_fill_style.color]);
+  if ( (fill_patterns[static_cast<int>(bgi_fill_style.pattern)][y % 8] >> x % 8) & 1)
+    putpixel_copy (x, y, palette[static_cast<int>(bgi_fill_style.color)]);
   else
-    putpixel_copy (x, y, palette[bgi_bg_color]);
+    putpixel_copy (x, y, palette[static_cast<int>(bgi_bg_color)]);
 
 } // ff_putpixel ()
 
@@ -672,7 +657,7 @@ static inline void ff_pop (int *y, int *xl, int *xr, int *dy)
 // with the same pixel value to the new pixel value nv.
 // A 4-connected neighbor is a pixel above, below, left, or right of a pixel.
 
-void GfxCanvas::SDL_bgi::_floodfill (int x, int y, int border)
+void GfxCanvas::SDL_bgi::_floodfill (int x, int y, bgiColors border)
 {
   // Fills an enclosed area, containing the x and y points bounded by
   // the border color. The area is filled using the current fill color.
@@ -701,7 +686,7 @@ void GfxCanvas::SDL_bgi::_floodfill (int x, int y, int border)
       ff_putpixel (x, y);
     
     if (x >= x1) {
-      for (x++; x <= x2 && getpixel (x, y) == border; x++)
+      for (x++; x <= x2 && getpixel (x, y) == static_cast<int>(border); x++)
         ;
       start = x;
       if (x > x2)
@@ -714,12 +699,12 @@ void GfxCanvas::SDL_bgi::_floodfill (int x, int y, int border)
       x = x1 + 1;
     }
     do {
-      for (x1 = x; x <= vp.right && getpixel (x, y) != border; x++)
+      for (x1 = x; x <= vp.right && getpixel (x, y) != static_cast<int>(border); x++)
 	ff_putpixel (x, y);
       ff_push (y, start, x - 1, dy,vp.bottom , vp.top);
       if (x > x2 + 1)
         ff_push (y, x2 + 1, x - 1, -dy,vp.bottom, vp.top);    // leak on right?
-      for (x++; x <= x2 && getpixel (x, y) == border; x++)
+      for (x++; x <= x2 && getpixel (x, y) == static_cast<int>(border); x++)
         ;
       start = x;
     } while (x <= x2);
@@ -732,16 +717,14 @@ void GfxCanvas::SDL_bgi::_floodfill (int x, int y, int border)
 
 #define random(range) (rand() % (range))
 
-void GfxCanvas::SDL_bgi::floodfill (int x, int y, int border)
+void GfxCanvas::SDL_bgi::floodfill (int x, int y, bgiColors border)
 {
-  unsigned int
-    oldcol;
-  int
-    found,
-    tmp_pattern,
-    tmp_color;
+    bgiColors oldcol;
+    int found;
+    bgiFillStyles tmp_pattern;
+    bgiColors tmp_color;
   
-  oldcol = getpixel (x, y);
+  oldcol = static_cast<bgiColors>(getpixel (x, y));
   
   // the way the above implementation of floodfill works,
   // the fill colour must be different than the border colour
@@ -755,7 +738,7 @@ void GfxCanvas::SDL_bgi::floodfill (int x, int y, int border)
   // special case for fill patterns. The background colour can't be
   // the same in the area to be filled and in the fill pattern.
   
-  if (SOLID_FILL == bgi_fill_style.pattern) {
+  if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern) {
     _floodfill (x, y, border);
     return;
   }
@@ -763,13 +746,13 @@ void GfxCanvas::SDL_bgi::floodfill (int x, int y, int border)
     if (bgi_bg_color == oldcol) {
       // solid fill first...
       tmp_pattern = bgi_fill_style.pattern;
-      bgi_fill_style.pattern = SOLID_FILL;
+      bgi_fill_style.pattern = bgiFillStyles::SOLID_FILL;
       tmp_color = bgi_fill_style.color;
       // find a suitable temporary fill colour; it must be different
       // than the border and the background
       found = NOPE;
       while (!found) {
-	bgi_fill_style.color = BLUE + random (WHITE);
+	bgi_fill_style.color = static_cast<bgiColors>(static_cast<int>(bgiColors::BLUE) + random (static_cast<int>(bgiColors::WHITE)));
 	if (oldcol != bgi_fill_style.color && 
 	    border != bgi_fill_style.color)
 	  found = YEAH;
@@ -803,7 +786,7 @@ void GfxCanvas::SDL_bgi::getarccoords (struct arccoordstype *arccoords)
 
 // -----
 
-int GfxCanvas::SDL_bgi::getbkcolor (void)
+GfxCanvas::SDL_bgi::bgiColors GfxCanvas::SDL_bgi::getbkcolor (void)
 {
   // Returns the current background color.
   
@@ -812,7 +795,7 @@ int GfxCanvas::SDL_bgi::getbkcolor (void)
 
 // -----
 
-int GfxCanvas::SDL_bgi::getcolor (void)
+GfxCanvas::SDL_bgi::bgiColors GfxCanvas::SDL_bgi::getcolor (void)
 {
   // Returns the current drawing (foreground) color.
   
@@ -836,7 +819,7 @@ void GfxCanvas::SDL_bgi::getfillpattern (char *pattern)
   int i;
   
   for (i = 0; i < 8; i++)
-    pattern[i] = (char) fill_patterns[USER_FILL][i];
+    pattern[i] = (char) fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i];
   
 } // getfillpattern ()
 
@@ -894,9 +877,6 @@ int GfxCanvas::SDL_bgi::getmaxcolor (void)
 {
   // Returns the maximum color value available (MAXCOLORS).
   
-  if (! bgi_argb_mode)
-    return MAXCOLORS;
-  else
     return PALETTE_SIZE;
 } // getmaxcolor ()
 
@@ -964,15 +944,15 @@ unsigned int GfxCanvas::SDL_bgi::getpixel (int x, int y)
   // out of screen?
   if (! is_in_range (x, 0, bgi_maxx) &&
       ! is_in_range (y, 0, bgi_maxy))
-    return bgi_bg_color;
+    return static_cast<int>(bgi_bg_color);
   
   tmp = getpixel_raw (x, y);
   
   // now find the colour
   
-  for (col = BLACK; col < WHITE + 1; col++)
+  for (col = static_cast<int>(bgiColors::BLACK); col < static_cast<int>(bgiColors::WHITE) + 1; col++)
     if (tmp == palette[col])
-      return col;
+      return static_cast<int>(col);
   
   // if it's not a BGI color, just return the 0xAARRGGBB value
   return tmp;
@@ -1037,7 +1017,7 @@ void GfxCanvas::SDL_bgi::graphdefaults (void)
   initpalette ();
 
   // initialise the graphics writing mode
-  bgi_writemode = COPY_PUT;
+    bgi_writemode = bgiDrawingMode::COPY_PUT;
   
   // initialise the viewport
   vp.left = 0;
@@ -1051,21 +1031,21 @@ void GfxCanvas::SDL_bgi::graphdefaults (void)
   bgi_cp_x = 0;
   bgi_cp_y = 0;
   
-  // initialise the text settings
-  bgi_txt_style.font = DEFAULT_FONT;
-  bgi_txt_style.direction = HORIZ_DIR;
-  bgi_txt_style.charsize = 1;
-  bgi_txt_style.horiz = LEFT_TEXT;
-  bgi_txt_style.vert = TOP_TEXT;
+    // initialise the text settings
+    bgi_txt_style.font = bgiFonts::DEFAULT_FONT;
+    bgi_txt_style.direction = bgiDirection::HORIZ_DIR;
+    bgi_txt_style.charsize = 1;
+    bgi_txt_style.horiz = bgiTextJustification::LEFT_TEXT;
+    bgi_txt_style.vert = bgiTextJustification::TOP_TEXT;
   
   // initialise the fill settings
-  bgi_fill_style.pattern =  SOLID_FILL;
-  bgi_fill_style.color = WHITE;
+  bgi_fill_style.pattern =  bgiFillStyles::SOLID_FILL;
+  bgi_fill_style.color = bgiColors::WHITE;
   
   // initialise the line settings
-  bgi_line_style.linestyle = SOLID_LINE;
-  bgi_line_style.upattern = SOLID_FILL;
-  bgi_line_style.thickness = NORM_WIDTH;
+  bgi_line_style.linestyle = bgiLineStyle::SOLID_LINE;
+  bgi_line_style.upattern = bgiFillStyles::SOLID_FILL;
+    bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
 
   // initialise the palette
   pal.size = 1 + MAXCOLORS;
@@ -1091,7 +1071,7 @@ void GfxCanvas::SDL_bgi::initpalette (void)
 {
   int i;
   
-  for (i = BLACK; i < WHITE + 1; i++)
+  for (i = static_cast<int>(bgiColors::BLACK); i < static_cast<int>(bgiColors::WHITE) + 1; i++)
     palette[i] = bgi_palette[i];
 } // initpalette ()
 
@@ -1116,11 +1096,11 @@ void GfxCanvas::SDL_bgi::line_copy (int x1, int y1, int x2, int y2)
     // plot the pixel only if the corresponding bit
     // in the current pattern is set to 1
     
-    if (SOLID_LINE == bgi_line_style.linestyle)
-      putpixel_copy (x1, y1, palette[bgi_fg_color]);
+    if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+      putpixel_copy (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     else
-      if ((line_patterns[bgi_line_style.linestyle] >> counter % 16) & 1)
-	putpixel_copy (x1, y1, palette[bgi_fg_color]);
+      if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+	putpixel_copy (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     
     counter++;
     
@@ -1154,11 +1134,11 @@ void GfxCanvas::SDL_bgi::line_xor (int x1, int y1, int x2, int y2)
  
   for (;;) {
     
-    if (SOLID_LINE == bgi_line_style.linestyle)
-      putpixel_xor (x1, y1, palette[bgi_fg_color]);
+    if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+      putpixel_xor (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     else
-      if ((line_patterns[bgi_line_style.linestyle] >> counter % 16) & 1)
-	putpixel_xor (x1, y1, palette[bgi_fg_color]);
+      if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+	putpixel_xor (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     
     counter++;
     
@@ -1192,11 +1172,11 @@ void GfxCanvas::SDL_bgi::line_and (int x1, int y1, int x2, int y2)
  
   for (;;) {
     
-    if (SOLID_LINE == bgi_line_style.linestyle)
-      putpixel_and (x1, y1, palette[bgi_fg_color]);
+    if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+      putpixel_and (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     else
-      if ((line_patterns[bgi_line_style.linestyle] >> counter % 16) & 1)
-	putpixel_and (x1, y1, palette[bgi_fg_color]);
+      if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+	putpixel_and (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     
     counter++;
 
@@ -1230,11 +1210,11 @@ void GfxCanvas::SDL_bgi::line_or (int x1, int y1, int x2, int y2)
  
   for (;;) {
     
-    if (SOLID_LINE == bgi_line_style.linestyle)
-      putpixel_or (x1, y1, palette[bgi_fg_color]);
+    if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+      putpixel_or (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     else
-      if ((line_patterns[bgi_line_style.linestyle] >> counter % 16) & 1)
-	putpixel_or (x1, y1, palette[bgi_fg_color]);
+      if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+	putpixel_or (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     
     counter++;
 
@@ -1268,11 +1248,11 @@ void GfxCanvas::SDL_bgi::line_not (int x1, int y1, int x2, int y2)
  
   for (;;) {
     
-    if (SOLID_LINE == bgi_line_style.linestyle)
-      putpixel_not (x1, y1, palette[bgi_fg_color]);
+    if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+      putpixel_not (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     else
-      if ((line_patterns[bgi_line_style.linestyle] >> counter % 16) & 1)
-	putpixel_not (x1, y1, palette[bgi_fg_color]);
+      if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+	putpixel_not (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
     
     counter++;
 
@@ -1366,29 +1346,29 @@ void GfxCanvas::SDL_bgi::line (int x1, int y1, int x2, int y2)
   
   switch (bgi_writemode) {
     
-  case COPY_PUT:
+  case bgiDrawingMode::COPY_PUT:
     line_copy (x1, y1, x2, y2);
     break;
     
-  case AND_PUT:
+  case bgiDrawingMode::AND_PUT:
     line_and (x1, y1, x2, y2);
     break;
     
-  case XOR_PUT:
+  case bgiDrawingMode::XOR_PUT:
     line_xor (x1, y1, x2, y2);
     break;
     
-  case OR_PUT:
+  case bgiDrawingMode::OR_PUT:
     line_or (x1, y1, x2, y2);
     break;
     
-  case NOT_PUT:
+  case bgiDrawingMode::NOT_PUT:
     line_not (x1, y1, x2, y2);
     break;
     
   } // switch
   
-  if (THICK_WIDTH == bgi_line_style.thickness) {
+    if (bgiLineThickness::THICK_WIDTH == bgi_line_style.thickness) {
     
     oct = octant (x2 - x1, y1 - y2);
     
@@ -1399,23 +1379,23 @@ void GfxCanvas::SDL_bgi::line (int x1, int y1, int x2, int y2)
     case 5:
     case 8:
       switch (bgi_writemode) {
-      case COPY_PUT:
+      case bgiDrawingMode::COPY_PUT:
 	line_copy (x1, y1 - 1, x2, y2 - 1);
 	line_copy (x1, y1 + 1, x2, y2 + 1);
 	break;
-      case AND_PUT:
+      case bgiDrawingMode::AND_PUT:
 	line_and (x1, y1 - 1, x2, y2 - 1);
 	line_and (x1, y1 + 1, x2, y2 + 1);
 	break;
-      case XOR_PUT:
+      case bgiDrawingMode::XOR_PUT:
 	line_xor (x1, y1 - 1, x2, y2 - 1);
 	line_xor (x1, y1 + 1, x2, y2 + 1);
 	break;
-      case OR_PUT:
+      case bgiDrawingMode::OR_PUT:
 	line_or (x1, y1 - 1, x2, y2 - 1);
 	line_or (x1, y1 + 1, x2, y2 + 1);
 	break;
-      case NOT_PUT:
+      case bgiDrawingMode::NOT_PUT:
 	line_not (x1, y1 - 1, x2, y2 - 1);
 	line_not (x1, y1 + 1, x2, y2 + 1);
 	break;
@@ -1427,23 +1407,23 @@ void GfxCanvas::SDL_bgi::line (int x1, int y1, int x2, int y2)
     case 6:
     case 7:
       switch (bgi_writemode) {
-      case COPY_PUT:
+      case bgiDrawingMode::COPY_PUT:
 	line_copy (x1 - 1, y1, x2 - 1, y2);
 	line_copy (x1 + 1, y1, x2 + 1, y2);
 	break;
-      case AND_PUT:
+      case bgiDrawingMode::AND_PUT:
 	line_and (x1 - 1, y1, x2 - 1, y2);
 	line_and (x1 + 1, y1, x2 + 1, y2);
 	break;
-      case XOR_PUT:
+      case bgiDrawingMode::XOR_PUT:
 	line_xor (x1 - 1, y1, x2 - 1, y2);
 	line_xor (x1 + 1, y1, x2 + 1, y2);
 	break;
-      case OR_PUT:
+      case bgiDrawingMode::OR_PUT:
 	line_or (x1 - 1, y1, x2 - 1, y2);
 	line_or (x1 + 1, y1, x2 + 1, y2);
 	break;
-      case NOT_PUT:
+      case bgiDrawingMode::NOT_PUT:
 	line_not (x1 - 1, y1, x2 - 1, y2);
 	line_not (x1 + 1, y1, x2 + 1, y2);
 	break;
@@ -1502,7 +1482,8 @@ void GfxCanvas::SDL_bgi::moveto (int x, int y)
 void GfxCanvas::SDL_bgi::_bar (int left, int top, int right, int bottom)
 {
   // service routine
-  int tmp, y;
+  int y;
+    bgiColors tmp;
   
   // like bar (), but uses bgi_fg_color
   
@@ -1521,7 +1502,8 @@ void GfxCanvas::SDL_bgi::drawchar (unsigned char ch)
   // used by outtextxy ()
 
   unsigned char i, j, k;
-  int x, y, tmp;
+  int x, y;
+    bgiColors tmp;
 
   tmp = bgi_bg_color;
   bgi_bg_color = bgi_fg_color; // for bar ()
@@ -1538,7 +1520,7 @@ void GfxCanvas::SDL_bgi::drawchar (unsigned char ch)
     for (j = 0; j < 8; j++)
       
       if ( (k << j) & 0x80) { // bit set to 1
-	if (HORIZ_DIR == bgi_txt_style.direction) {
+	if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) {
 	  x = bgi_cp_x + j * bgi_font_mag_x;
 	  y = bgi_cp_y + i * bgi_font_mag_y;
 	  // putpixel (x, y, bgi_fg_color);
@@ -1553,7 +1535,7 @@ void GfxCanvas::SDL_bgi::drawchar (unsigned char ch)
       }
   }
   
-  if (HORIZ_DIR == bgi_txt_style.direction)
+  if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction)
     bgi_cp_x += 8*bgi_font_mag_x;
   else
     bgi_cp_y -= 8*bgi_font_mag_y;
@@ -1569,8 +1551,8 @@ void GfxCanvas::SDL_bgi::outtext (char *textstring)
   // Outputs textstring at the CP.
   
   outtextxy (bgi_cp_x, bgi_cp_y, textstring);
-  if ( (HORIZ_DIR == bgi_txt_style.direction) &&
-       (LEFT_TEXT == bgi_txt_style.horiz))
+  if ( (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) &&
+       (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz))
     bgi_cp_x += textwidth (textstring);
 } // outtext ()
 
@@ -1581,58 +1563,59 @@ void GfxCanvas::SDL_bgi::outtextxy (int x, int y, char *textstring)
   // Outputs textstring at (x, y).
   
   int
-    tmp,
-    i, 
+    i,
     x1 = 0, 
     y1 = 0,
     tw,
     th;
-  
+
+    bgiLineThickness tmp;
+
   tw = textwidth (textstring);
   if (0 == tw)
     return;
   
   th = textheight (textstring);
   
-  if (HORIZ_DIR == bgi_txt_style.direction) {
+  if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) {
     
-    if (LEFT_TEXT == bgi_txt_style.horiz)
+    if (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz)
       x1 = x;
     
-    if (CENTER_TEXT == bgi_txt_style.horiz)
+    if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.horiz)
       x1 = x - tw / 2;
     
-    if (RIGHT_TEXT == bgi_txt_style.horiz)
+    if (bgiTextJustification::RIGHT_TEXT == bgi_txt_style.horiz)
       x1 = x - tw;
     
-    if (CENTER_TEXT == bgi_txt_style.vert)
+    if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.vert)
       y1 = y - th / 2;
     
-    if (TOP_TEXT == bgi_txt_style.vert)
+    if (bgiTextJustification::TOP_TEXT == bgi_txt_style.vert)
       y1 = y;
     
-    if (BOTTOM_TEXT == bgi_txt_style.vert)
+    if (bgiTextJustification::BOTTOM_TEXT == bgi_txt_style.vert)
       y1 = y - th;
     
   }
   else { // VERT_DIR
     
-    if (LEFT_TEXT == bgi_txt_style.horiz)
+    if (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz)
       y1 = y;
     
-    if (CENTER_TEXT == bgi_txt_style.horiz)
+    if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.horiz)
       y1 = y + tw / 2;
     
-    if (RIGHT_TEXT == bgi_txt_style.horiz)
+    if (bgiTextJustification::RIGHT_TEXT == bgi_txt_style.horiz)
       y1 = y + tw;
     
-    if (CENTER_TEXT == bgi_txt_style.vert)
+    if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.vert)
       x1 = x - th / 2;
     
-    if (TOP_TEXT == bgi_txt_style.vert)
+    if (bgiTextJustification::TOP_TEXT == bgi_txt_style.vert)
       x1 = x;
     
-    if (BOTTOM_TEXT == bgi_txt_style.vert)
+    if (bgiTextJustification::BOTTOM_TEXT == bgi_txt_style.vert)
       x1 = x - th;
     
   } // VERT_DIR
@@ -1641,7 +1624,7 @@ void GfxCanvas::SDL_bgi::outtextxy (int x, int y, char *textstring)
   
   // if THICK_WIDTH, fallback to NORM_WIDTH
   tmp = bgi_line_style.thickness;
-  bgi_line_style.thickness = NORM_WIDTH;
+  bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
   
   for (i = 0; i < strlen (textstring); i++)
     drawchar (textstring[i]);
@@ -1693,7 +1676,7 @@ void GfxCanvas::SDL_bgi::pieslice (int x, int y, int stangle, int endangle, int 
 
 // -----
 
-void GfxCanvas::SDL_bgi::putimage (int left, int top, void *bitmap, int op)
+void GfxCanvas::SDL_bgi::putimage (int left, int top, void *bitmap, bgiDrawingMode op)
 {
   // Puts the bit image pointed to by bitmap onto the screen.
   
@@ -1712,23 +1695,23 @@ void GfxCanvas::SDL_bgi::putimage (int left, int top, void *bitmap, int op)
       
       switch (op) {
 	
-      case COPY_PUT:
+      case bgiDrawingMode::COPY_PUT:
 	putpixel_copy (x, y, tmp[i++]);
 	break;
       
-      case AND_PUT:
+      case bgiDrawingMode::AND_PUT:
 	putpixel_and (x, y, tmp[i++]);
 	break;
 	
-      case XOR_PUT:
+      case bgiDrawingMode::XOR_PUT:
 	putpixel_xor (x, y, tmp[i++]);
 	break;
 
-      case OR_PUT:
+      case bgiDrawingMode::OR_PUT:
 	putpixel_or (x, y, tmp[i++]);
 	break;
       
-      case NOT_PUT:
+      case bgiDrawingMode::NOT_PUT:
 	putpixel_not (x, y, tmp[i++]);
 	break;
       } // switch
@@ -1750,25 +1733,25 @@ void GfxCanvas::SDL_bgi::_putpixel (int x, int y)
   
   switch (bgi_writemode) {
     
-  case XOR_PUT:
-    putpixel_xor  (x, y, palette[bgi_fg_color]);
+  case bgiDrawingMode::XOR_PUT:
+    putpixel_xor  (x, y, palette[static_cast<int>(bgi_fg_color)]);
     break;
     
-  case AND_PUT:
-    putpixel_and  (x, y, palette[bgi_fg_color]);
+  case bgiDrawingMode::AND_PUT:
+    putpixel_and  (x, y, palette[static_cast<int>(bgi_fg_color)]);
     break;
     
-  case OR_PUT:
-    putpixel_or   (x, y, palette[bgi_fg_color]);
+  case bgiDrawingMode::OR_PUT:
+    putpixel_or   (x, y, palette[static_cast<int>(bgi_fg_color)]);
     break;
 
-  case NOT_PUT:
-    putpixel_not  (x, y, palette[bgi_fg_color]);
+  case bgiDrawingMode::NOT_PUT:
+    putpixel_not  (x, y, palette[static_cast<int>(bgi_fg_color)]);
     break;
     
   default:
-  case COPY_PUT:
-    putpixel_copy (x, y, palette[bgi_fg_color]);
+  case bgiDrawingMode::COPY_PUT:
+    putpixel_copy (x, y, palette[static_cast<int>(bgi_fg_color)]);
     
   } // switch
 
@@ -1885,37 +1868,29 @@ void GfxCanvas::SDL_bgi::putpixel (int x, int y, int color)
   if (YEAH == vp.clip)
     if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
       return;
-  
-  if (-1 == color) { // COLOR () set up the WHITE + 1 color
-    bgi_argb_mode = 1;
-    tmpcolor = WHITE + 1;
-    palette[tmpcolor] = bgi_tmp_color_argb;
-  }
-  else {
-    bgi_argb_mode = NOPE;
+
     tmpcolor = color;
-  }
   
   switch (bgi_writemode) {
     
-  case XOR_PUT:
+  case bgiDrawingMode::XOR_PUT:
     putpixel_xor  (x, y, palette[tmpcolor]);
     break;
     
-  case AND_PUT:
+  case bgiDrawingMode::AND_PUT:
     putpixel_and  (x, y, palette[tmpcolor]);
     break;
     
-  case OR_PUT:
+  case bgiDrawingMode::OR_PUT:
     putpixel_or   (x, y, palette[tmpcolor]);
     break;
 
-  case NOT_PUT:
+  case bgiDrawingMode::NOT_PUT:
     putpixel_not  (x, y, palette[tmpcolor]);
     break;
     
   default:
-  case COPY_PUT:
+  case bgiDrawingMode::COPY_PUT:
     putpixel_copy (x, y, palette[tmpcolor]);
     
   } // switch
@@ -1945,7 +1920,8 @@ void GfxCanvas::SDL_bgi::sector (int x, int y, int stangle, int endangle,
   // traveling from stangle to endangle.
   
   // quick and dirty for now, Bresenham-based later.
-  int angle, tmpcolor;
+    int angle;
+    bgiColors tmpcolor;
   
   if (0 == xradius && 0 == yradius)
     return;
@@ -1994,46 +1970,16 @@ void GfxCanvas::SDL_bgi::setallpalette (struct palettetype *palette)
 
 // -----
 
-void GfxCanvas::SDL_bgi::setbkcolor (int col)
+void GfxCanvas::SDL_bgi::setbkcolor (bgiColors col)
 {
-  // Sets the current background color using the default palette.
-  
-  if (-1 == col) { // COLOR () set up the WHITE + 2 color
-    bgi_argb_mode = 1;
-    bgi_bg_color = WHITE + 2;
-    palette[bgi_bg_color] = bgi_tmp_color_argb;
-  }
-  else {
-    bgi_argb_mode = NOPE;
     bgi_bg_color = col;
-  }
 } // setbkcolor ()
 
 // -----
 
-void GfxCanvas::SDL_bgi::setbkrgbcolor (int index)
+void GfxCanvas::SDL_bgi::setcolor (bgiColors col)
 {
-  // Sets the current background color using using the
-  // n-th color index in the RGB palette.
-  
-  bgi_bg_color = 1 + MAXCOLORS + 2 + index;
-} // setbkrgbcolor ()
-
-// -----
-
-void GfxCanvas::SDL_bgi::setcolor (int col)
-{
-  // Sets the current drawing color using the default palette.
-  
-  if (-1 == col) { // COLOR () set up the WHITE + 1 color
-    bgi_argb_mode = 1;
-    bgi_fg_color = WHITE + 1;
-    palette[bgi_fg_color] = bgi_tmp_color_argb;
-  }
-  else {
-    bgi_argb_mode = NOPE;
     bgi_fg_color = col;
-  }
 } // setcolor ()
 
 // -----
@@ -2044,17 +1990,11 @@ void GfxCanvas::SDL_bgi::setalpha (int col, uint8_t alpha)
   
   uint32_t tmp;
   
-  if (-1 == col) { // COLOR () set up the WHITE + 1 color
-    bgi_argb_mode = YEAH;
-    bgi_fg_color = WHITE + 1;
-  }
-  else {
-    bgi_argb_mode = NOPE;
-    bgi_fg_color = col;
-  }
-  tmp = palette[bgi_fg_color] << 8; // get rid of alpha
+    bgi_fg_color = static_cast<bgiColors>(col);
+  
+  tmp = palette[static_cast<int>(bgi_fg_color)] << 8; // get rid of alpha
   tmp = tmp >> 8;
-  palette[bgi_fg_color] = ((uint32_t)alpha << 24) | tmp;
+  palette[static_cast<int>(bgi_fg_color)] = ((uint32_t)alpha << 24) | tmp;
   
 } // setcoloralpha ()
 
@@ -2067,53 +2007,36 @@ void GfxCanvas::SDL_bgi::setfillpattern (char *upattern, int color)
   int i;
   
   for (i = 0; i < 8; i++)
-    fill_patterns[USER_FILL][i] = (uint8_t) *upattern++;
+    fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = (uint8_t) *upattern++;
   
-  if (-1 == color) { // COLOR () set up the WHITE + 3 color
-    bgi_argb_mode = YEAH;
-    bgi_fill_color = WHITE + 3;
-    palette[bgi_fill_color] = bgi_tmp_color_argb;
-    bgi_fill_style.color = bgi_fill_color;
-  }
-  else {
-    bgi_argb_mode = NOPE;
-    bgi_fill_style.color = color;
-  }
+    bgi_fill_style.color = static_cast<bgiColors>(color);
   
-  bgi_fill_style.pattern = USER_FILL;
+  bgi_fill_style.pattern = bgiFillStyles::USER_FILL;
   
 } // setfillpattern ()
 
 // -----
 
-void GfxCanvas::SDL_bgi::setfillstyle (int pattern, int color)
+void GfxCanvas::SDL_bgi::setfillstyle (bgiFillStyles pattern, int color)
 {
   // Sets the fill pattern and fill color.
   
   bgi_fill_style.pattern = pattern;
-  
-  if (-1 == color) { // COLOR () set up the WHITE + 3 color
-    bgi_argb_mode = YEAH;
-    bgi_fill_color = WHITE + 3;
-    palette[bgi_fill_color] = bgi_tmp_color_argb;
-    bgi_fill_style.color = bgi_fill_color;
-  }
-  else {
-    bgi_argb_mode = NOPE;
-    bgi_fill_style.color = color;
-  }
+
+    bgi_fill_style.color = static_cast<bgiColors>(color);
   
 } // setfillstyle ()
 
 // -----
 
-void GfxCanvas::SDL_bgi::setlinestyle (int linestyle, unsigned upattern, int thickness)
+void GfxCanvas::SDL_bgi::setlinestyle (bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness)
 {
   // Sets the line width and style for all lines drawn by line(),
   // lineto(), rectangle(), drawpoly(), etc.
 
   bgi_line_style.linestyle = linestyle;
-  line_patterns[USERBIT_LINE] = bgi_line_style.upattern = upattern;
+    line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = static_cast<uint16_t>(upattern);
+    bgi_line_style.upattern = upattern;
   bgi_line_style.thickness = thickness;
 
 } // setlinestyle ()
@@ -2129,28 +2052,7 @@ void GfxCanvas::SDL_bgi::setpalette (int colornum, int color)
 
 // -----
 
-void GfxCanvas::SDL_bgi::setrgbcolor (int index)
-{
-  // Sets the current drawing color using the n-th color index
-  // in the RGB palette.
-  
-  bgi_fg_color = 1 + MAXCOLORS + 3 + index;
-} // setrgbcolor ()
-
-// -----
-
-void GfxCanvas::SDL_bgi::setrgbpalette (int colornum, int red, int green, int blue)
-{
-  // Sets the n-th entry in the RGB palette specifying the r, g,
-  // and b components.
-  
-  palette[1 + MAXCOLORS + 3 + colornum] = 
-    0xff000000 | red << 16 | green << 8 | blue;
-} // setrgbpalette ()
-
-// -----
-
-void GfxCanvas::SDL_bgi::settextjustify (int horiz, int vert)
+void GfxCanvas::SDL_bgi::settextjustify (bgiTextJustification horiz, bgiTextJustification vert)
 {
   // Sets text justification.
   
@@ -2160,16 +2062,16 @@ void GfxCanvas::SDL_bgi::settextjustify (int horiz, int vert)
 
 // -----
 
-void GfxCanvas::SDL_bgi::settextstyle (int font, int direction, int charsize)
+void GfxCanvas::SDL_bgi::settextstyle (int font, bgiDirection direction, int charsize)
 {
   // Sets the text font (only DEFAULT FONT is actually available),
   // the direction in which text is displayed (HORIZ DIR, VERT DIR),
   // and the size of the characters.
   
-  if (VERT_DIR == direction)
-    bgi_txt_style.direction = VERT_DIR;
+  if (bgiDirection::VERT_DIR == direction)
+    bgi_txt_style.direction = bgiDirection::VERT_DIR;
   else
-    bgi_txt_style.direction = HORIZ_DIR;
+    bgi_txt_style.direction = bgiDirection::HORIZ_DIR;
   bgi_txt_style.charsize = bgi_font_mag_x = bgi_font_mag_y = charsize;
   
 } // settextstyle ()
@@ -2206,7 +2108,7 @@ void GfxCanvas::SDL_bgi::setviewport (int left, int top, int right, int bottom, 
 
 // -----
 
-void GfxCanvas::SDL_bgi::setwritemode (int mode)
+void GfxCanvas::SDL_bgi::setwritemode (bgiDrawingMode mode)
 {
   // Sets the writing mode for line drawing. mode can be COPY PUT,
   // XOR PUT, OR PUT, AND PUT, and NOT PUT.
