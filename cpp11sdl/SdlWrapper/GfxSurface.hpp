@@ -18,6 +18,8 @@
 #include "GfxRect.hpp"
 #include "GfxColor.hpp"
 
+class GfxCanvas;
+
 class GfxSurface final : public GfxRootClass
 {
 public:
@@ -54,11 +56,16 @@ public:
     void blitSurface(const GfxSurface& src);
     
     void putPixel(const uint16_t x,const uint16_t y,const GfxColor& clr);
+    std::unique_ptr<GfxColor> getPixel(const uint16_t x, const uint16_t y);
 
     void destroySurface(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
+    friend class GfxCanvas;
+    
+    void putPixelPrv(const uint16_t x,const uint16_t y,const GfxColor& clr);
+    std::unique_ptr<GfxColor> getPixelPrv(const uint16_t x, const uint16_t y);
     SdlTypePtr surf_;
 };
 

@@ -26,6 +26,7 @@
 		19A84A4D1E94067A00C3E83C /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A84A4B1E94067A00C3E83C /* Playground.cpp */; };
 		19D3B6531E9A8C2700981390 /* GfxBlendMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */; };
 		19E492B91E9C005600D1D5C7 /* GfxConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */; };
+		79C8086A1EA083CA003DB94C /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C808681EA083CA003DB94C /* GfxCanvas.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,8 @@
 		19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendMode.hpp; path = SdlWrapper/GfxBlendMode.hpp; sourceTree = "<group>"; };
 		19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxConstants.cpp; path = SdlWrapper/GfxConstants.cpp; sourceTree = "<group>"; };
 		19E492B81E9C005600D1D5C7 /* GfxConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxConstants.hpp; path = SdlWrapper/GfxConstants.hpp; sourceTree = "<group>"; };
+		79C808681EA083CA003DB94C /* GfxCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvas.cpp; path = SdlWrapper/GfxCanvas.cpp; sourceTree = "<group>"; };
+		79C808691EA083CA003DB94C /* GfxCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvas.hpp; path = SdlWrapper/GfxCanvas.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 				1942A3851E99377D00A7A5CD /* GfxRootClass.hpp */,
 				19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */,
 				19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */,
+				79C808681EA083CA003DB94C /* GfxCanvas.cpp */,
+				79C808691EA083CA003DB94C /* GfxCanvas.hpp */,
 			);
 			name = SdlWrapper;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			files = (
 				1974595B1E9552CF00AB302B /* GfxPoint.cpp in Sources */,
 				1974596F1E9553DB00AB302B /* GfxTexture.cpp in Sources */,
+				79C8086A1EA083CA003DB94C /* GfxCanvas.cpp in Sources */,
 				197459591E9552CF00AB302B /* GfxInitQuit.cpp in Sources */,
 				19E492B91E9C005600D1D5C7 /* GfxConstants.cpp in Sources */,
 				1915B76A1E91101300147BDB /* main.cpp in Sources */,

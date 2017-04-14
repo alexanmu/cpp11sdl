@@ -16,6 +16,7 @@
 #include "GfxSurface.hpp"
 #include "GfxTexture.hpp"
 #include "GfxConstants.hpp"
+#include "GfxCanvas.hpp"
 
 void inc(int* a)
 {
@@ -56,6 +57,9 @@ void _DoStuff(void)
             if (c == 16) c = 0;
         }
     }
+    GfxCanvas cv(sb);
+    cv.paint();
+
     GfxSurface s(960,480);
     GfxRect rt;
 

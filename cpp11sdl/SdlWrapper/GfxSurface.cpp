@@ -143,9 +143,32 @@ void GfxSurface::putPixel(const uint16_t x,const uint16_t y,const GfxColor& colo
     uint32_t* ptr;
     uint32_t clr;
 
-    clr = SDL_MapRGBA(surf_->format,color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    ptr = (uint32_t*)surf_->pixels;
-    ptr[y * surf_->w + x] = clr;
+    if (surf_ == nullptr)
+    {
+        // error handling here
+        return;
+    }
+    if ((x >= surf_->w) || (y >= surf_->h))
+    {
+        // error handling here
+        return;
+    }
+    putPixelPrv(x,y,color);
+}
+
+std::unique_ptr<GfxColor> GfxSurface::getPixel(const uint16_t x, const uint16_t y)
+{
+    if (surf_ == nullptr)
+    {
+        // error handling here
+        return nullptr;
+    }
+    if ((x >= surf_->w) || (y >= surf_->h))
+    {
+        // error handling here
+        return nullptr;
+    }
+    return getPixelPrv(x,y);
 }
 
 void GfxSurface::destroySurface(void)
@@ -160,4 +183,24 @@ void GfxSurface::destroySurface(void)
 GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const
 {
     return surf_;
+}
+
+void GfxSurface::putPixelPrv(const uint16_t x,const uint16_t y,const GfxColor& color)
+{
+    uint32_t* ptr;
+    uint32_t clr;
+    
+    clr = SDL_MapRGBA(surf_->format,color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    ptr = (uint32_t*)surf_->pixels;
+    ptr[y * surf_->w + x] = clr;
+}
+
+std::unique_ptr<GfxColor> GfxSurface::getPixelPrv(const uint16_t x, const uint16_t y)
+{
+    uint8_t* ptr;
+    
+    ptr = (uint8_t*)surf_->pixels;
+    std::unique_ptr<GfxColor> clr{new GfxColor(ptr[y * surf_->w + 0], ptr[y * surf_->w + 1],
+                                               ptr[y * surf_->w + 2], ptr[y * surf_->w + 3])};
+    return clr;
 }
