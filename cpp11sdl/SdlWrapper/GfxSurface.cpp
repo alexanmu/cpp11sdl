@@ -140,9 +140,6 @@ void GfxSurface::blitSurface(const GfxSurface& src)
 
 void GfxSurface::putPixel(const uint16_t x,const uint16_t y,const GfxColor& color)
 {
-    uint32_t* ptr;
-    uint32_t clr;
-
     if (surf_ == nullptr)
     {
         // error handling here
