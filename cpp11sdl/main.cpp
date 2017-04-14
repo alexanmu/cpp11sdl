@@ -49,7 +49,7 @@ void _DoStuff(void)
     {
         for (int j = 0; j < 480; j++)
         {
-            sb.putPixel(i,j,GfxConstants::clrVGA16GetByIndex(static_cast<GfxConstants::GfxVGA16ColorIndex>(c)));
+            sb.putPixel(i,j,GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
@@ -59,15 +59,18 @@ void _DoStuff(void)
     }
     GfxCanvas cv(sb);
     cv.paint();
+    cv.circle(480,240,230);
+    cv.arc(480,240,10,350,239);
+    cv.outtextxy(480,240,"Ana are mere!");
 
     GfxSurface s(960,480);
     GfxRect rt;
 
     SDL_Event e;
     bool quit = false;
-    int r1 = GfxConstants::clrVGA16DarkGray().getRed();
-    int g1 = GfxConstants::clrVGA16DarkGray().getGreen();
-    int b1 = GfxConstants::clrVGA16DarkGray().getBlue();
+    int r1 = GfxConstants::vga16DarkGray().getRed();
+    int g1 = GfxConstants::vga16DarkGray().getGreen();
+    int b1 = GfxConstants::vga16DarkGray().getBlue();
     std::string str;
     int a1 = 208;
 

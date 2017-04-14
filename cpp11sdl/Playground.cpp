@@ -45,8 +45,8 @@ double Playground::Algo0(std::uint32_t* ptr)
 
 double Playground::Algo1(std::uint32_t* ptr)
 {
-    int i;
-    int j;
+    uint32_t i;
+    uint32_t j;
     
     std::uint32_t max = SZ_X * SZ_Y;
     if (max % 16 != 0)
