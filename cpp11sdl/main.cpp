@@ -41,7 +41,7 @@ void _DoStuff(void)
     
     GfxWindow w("Window title",960,480);
     GfxRenderer r(w);
-    //GfxSurface sb("/home/goros/Pictures/Image2.bmp");
+    GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
     
     int c = 0;
     GfxSurface sb(960,480);
@@ -170,7 +170,7 @@ void _DoStuff(void)
             }
             s2 += "]";
             w.setTitle(s2);
-            GfxTexture tb(&r,sb);
+            GfxTexture tb(&r,sbi);
             tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
 
             rt.setX(0);

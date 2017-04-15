@@ -78,6 +78,8 @@
 		19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendMode.hpp; path = SdlWrapper/GfxBlendMode.hpp; sourceTree = "<group>"; };
 		19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxConstants.cpp; path = SdlWrapper/GfxConstants.cpp; sourceTree = "<group>"; };
 		19E492B81E9C005600D1D5C7 /* GfxConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxConstants.hpp; path = SdlWrapper/GfxConstants.hpp; sourceTree = "<group>"; };
+		19F226041EA275DF0042041B /* macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = macOS.h; path = macOS/macOS.h; sourceTree = "<group>"; };
+		19F226061EA275FE0042041B /* Linux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Linux.h; path = Linux/Linux.h; sourceTree = "<group>"; };
 		79C808681EA083CA003DB94C /* GfxCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvas.cpp; path = SdlWrapper/GfxCanvas.cpp; sourceTree = "<group>"; };
 		79C808691EA083CA003DB94C /* GfxCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvas.hpp; path = SdlWrapper/GfxCanvas.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,9 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				1915B7691E91101300147BDB /* main.cpp */,
-				19BD5B5C1E9125F10043F8E1 /* SdlWrapper */,
 				19A84A4B1E94067A00C3E83C /* Playground.cpp */,
 				19A84A4C1E94067A00C3E83C /* Playground.hpp */,
+				19F226071EA276040042041B /* Linux */,
+				19F226051EA275E60042041B /* macOS */,
+				19BD5B5C1E9125F10043F8E1 /* SdlWrapper */,
 			);
 			path = cpp11sdl;
 			sourceTree = "<group>";
@@ -170,6 +174,22 @@
 				197459691E9553DB00AB302B /* GfxWindow.hpp */,
 			);
 			name = SdlWrapper;
+			sourceTree = "<group>";
+		};
+		19F226051EA275E60042041B /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				19F226041EA275DF0042041B /* macOS.h */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
+		19F226071EA276040042041B /* Linux */ = {
+			isa = PBXGroup;
+			children = (
+				19F226061EA275FE0042041B /* Linux.h */,
+			);
+			name = Linux;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
