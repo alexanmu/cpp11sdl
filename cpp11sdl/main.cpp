@@ -72,7 +72,7 @@ void _DoStuff(void)
     int g1 = GfxConstants::vga16DarkGray().getGreen();
     int b1 = GfxConstants::vga16DarkGray().getBlue();
     std::string str;
-    int a1 = 208;
+    int a1 = 255;
 
     std::srand(static_cast<unsigned int>(time(0)));
     while(!quit)
@@ -126,21 +126,60 @@ void _DoStuff(void)
                 { inc(&a1); }
                 if (e.key.keysym.scancode == SDL_SCANCODE_2)
                 { dec(&a1); }
+                if (e.key.keysym.scancode == SDL_SCANCODE_L)
+                { r1 = 208; g1 = 8; b1 = 232; }
+                if (e.key.keysym.scancode == SDL_SCANCODE_8)
+                { inc(&r1); inc(&g1); inc(&b1); }
+                if (e.key.keysym.scancode == SDL_SCANCODE_9)
+                { dec(&r1); dec(&g1); dec(&b1); }
             }
 
             str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1) + "-" + std::to_string(a1);
-            w.setTitle(str);
 
+            int rp = r1 * 100 / 255;
+            int gp = g1 * 100 / 255;
+            int bp = b1 * 100 / 255;
+            std::string s2;
+            
+            s2 = "[R:";
+            for(int i = 0; i < rp / 10; i++)
+            {
+                s2 += "=";
+            }
+            for(int i = rp / 10; i < 10; i++)
+            {
+                s2 += ".";
+            }
+            s2 += "][G:";
+            for(int i = 0; i < gp / 10; i++)
+            {
+                s2 += "=";
+            }
+            for(int i = gp / 10; i < 10; i++)
+            {
+                s2 += ".";
+            }
+            s2 += "][B:";
+            for(int i = 0; i < bp / 10; i++)
+            {
+                s2 += "=";
+            }
+            for(int i = bp / 10; i < 10; i++)
+            {
+                s2 += ".";
+            }
+            s2 += "]";
+            w.setTitle(s2);
             GfxTexture tb(&r,sb);
             tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
 
             rt.setX(0);
             rt.setY(0);
-            rt.setWidth(480);
-            rt.setHeight(240);
+            rt.setWidth(960);
+            rt.setHeight(480);
             s.fillRect(rt,GfxColor(r1,g1,b1,a1));
-            rt.setX(480);
-            s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
+            //rt.setX(480);
+            //s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
 
             GfxTexture t(&r,s);
             t.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
