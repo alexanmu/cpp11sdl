@@ -42,10 +42,18 @@ GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass("GfxSurface")
     if (tmpsurfptr == nullptr)
     {
         // error handling here
+        return;
     }
-    if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+    if (tmpsurfptr->format != nullptr)
     {
-        // convert here
+        if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+        {
+            // convert here
+        }
+    }
+    else
+    {
+        // error handling here
     }
     surf_ = tmpsurfptr;
 }
@@ -53,14 +61,23 @@ GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass("GfxSurface")
 GfxSurface::GfxSurface(std::string&& filename) : GfxRootClass("GfxSurface")
 {
     SDL_Surface* tmpsurfptr;
+
     tmpsurfptr = SDL_LoadBMP(filename.c_str());
     if (tmpsurfptr == nullptr)
     {
         // error handling here
+        return;
     }
-    if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+    if (tmpsurfptr->format != nullptr)
     {
-        // convert here
+        if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+        {
+            // convert here
+        }
+    }
+    else
+    {
+        // error handling here
     }
     surf_ = tmpsurfptr;
     // Delete other's data
@@ -80,7 +97,9 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& surf)
 GfxSurface::~GfxSurface()
 {
     if (surf_ != nullptr)
+    {
         SDL_FreeSurface(surf_);
+    }
 }
 
 int GfxSurface::getWidth(void) const
@@ -124,8 +143,12 @@ void GfxSurface::fillRect(const GfxColor& color)
 void GfxSurface::fillRects(const std::vector<GfxRect>& rects,const GfxColor& color)
 {
     if( rects.size() > 0)
+    {
         for (const GfxRect& r : rects)
+        {
             fillRect(r,color);
+        }
+    }
 }
 
 void GfxSurface::blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr)

@@ -24,8 +24,11 @@ public:
     GfxPoint(const SdlTypePtr pt);
     GfxPoint(const GfxPoint& other);
     GfxPoint(GfxPoint&& other);
+
     GfxPoint& operator=(const GfxPoint& other);
     GfxPoint& operator=(GfxPoint&& other);
+
+    bool operator==(const GfxPoint& other);
 
     /* Getters */
     int getX(void) const;

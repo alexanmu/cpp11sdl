@@ -8,7 +8,9 @@ GfxPalette::GfxPalette() : GfxRootClass("GfxPalette")
 GfxPalette::GfxPalette(const GfxPalette& other) : GfxRootClass("GfxPalette")
 {
 	if (pal_ != nullptr)
+    {
 		SDL_FreePalette(pal_);
+    }
 	pal_ = SDL_AllocPalette(other.pal_->ncolors);
 	SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
 }
@@ -16,7 +18,9 @@ GfxPalette::GfxPalette(const GfxPalette& other) : GfxRootClass("GfxPalette")
 GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass("GfxPalette")
 {
 	if (pal_ != nullptr)
+    {
 		SDL_FreePalette(pal_);
+    }
 	pal_ = SDL_AllocPalette(other.pal_->ncolors);
 	SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
 	/* free other's resources */
@@ -29,7 +33,9 @@ GfxPalette::GfxPalette(const uint16_t ncolors,const GfxColorVector& colors) : Gf
 	int colorindex;
 
 	if (pal_ != nullptr)
+    {
 		SDL_FreePalette(pal_);
+    }
 	pal_ = SDL_AllocPalette(ncolors);
 	colorindex = 0;
 	for(GfxColor clr : colors)
@@ -42,7 +48,9 @@ GfxPalette::GfxPalette(const uint16_t ncolors,const GfxColorVector& colors) : Gf
 GfxPalette::~GfxPalette()
 {
     if (pal_ != nullptr)
+    {
         SDL_FreePalette(pal_);
+    }
 }
 
 GfxPalette& GfxPalette::operator=(const GfxPalette& other)
@@ -50,7 +58,9 @@ GfxPalette& GfxPalette::operator=(const GfxPalette& other)
 	if(this != &other)
 	{
 		if (pal_ != nullptr)
+        {
 			SDL_FreePalette(pal_);
+        }
 		pal_ = SDL_AllocPalette(other.pal_->ncolors);
 		SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
 	}
@@ -62,7 +72,9 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
 	if(this != &other)
 	{
 		if (pal_ != nullptr)
+        {
 			SDL_FreePalette(pal_);
+        }
 		pal_ = SDL_AllocPalette(other.pal_->ncolors);
 		SDL_SetPaletteColors(pal_,other.pal_->colors,0,other.pal_->ncolors);
 		/* Free other's resources */
@@ -75,7 +87,9 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
 void GfxPalette::allocPalette(const uint16_t ncolors)
 {
 	if (pal_ != nullptr)
+    {
 		SDL_FreePalette(pal_);
+    }
 	pal_ = SDL_AllocPalette(ncolors);
 }
 
@@ -98,7 +112,9 @@ int GfxPalette::setPaletteColors(const GfxColorVector& colors,const uint16_t fir
 		errorcode = SDL_SetPaletteColors(pal_,clr.getAsSdlTypePtr(),currentcolorindex,1);
 		currentcolorindex += 1;
 		if (errorcode != 0)
+        {
 			break;
+        }
 	}
 	return errorcode;
 }

@@ -78,6 +78,11 @@ GfxColor& GfxColor::operator=(GfxColor&& other)
     return *this;
 }
 
+bool GfxColor::operator==(const GfxColor& other)
+{
+    return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) && (clr_.b == other.clr_.b) && (clr_.a == other.clr_.a));
+}
+
 uint8_t GfxColor::getRed(void) const
 {
     return clr_.r;

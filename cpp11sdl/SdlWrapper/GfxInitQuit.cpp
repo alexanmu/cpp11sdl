@@ -14,11 +14,17 @@ GfxInitQuit::GfxInitQuit(GfxInitComponent gfxInitComp) : GfxRootClass("GfxInitQu
     
     initParam = 0;
     if (gfxInitComp == GfxInitComponent::initVideo)
+    {
         initParam = SDL_INIT_VIDEO;
+    }
     if (gfxInitComp == GfxInitComponent::initAudio)
+    {
         initParam = SDL_INIT_AUDIO;
+    }
     if (gfxInitComp == GfxInitComponent::initEverything)
+    {
         initParam = SDL_INIT_EVERYTHING;
+    }
     errorcode_ = SDL_Init(initParam);
 }
 

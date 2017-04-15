@@ -58,7 +58,6 @@ public:
 	static GfxColor vga16GetColorByIndex(const int index);
 private:
 	static std::vector<GfxColor> colorsVGA16_;
-	static std::vector<GfxColor> colorsVGA256_;
 };
 
 #endif

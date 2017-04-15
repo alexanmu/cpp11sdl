@@ -28,6 +28,8 @@ public:
     GfxRect& operator=(const GfxRect& other);
     GfxRect& operator=(GfxRect&& other);
 
+    bool operator==(const GfxRect& other);
+
     uint16_t getX(void) const;
     uint16_t getY(void) const;
     uint16_t getWidth(void) const;

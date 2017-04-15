@@ -19,11 +19,6 @@ std::vector<GfxColor> GfxConstants::colorsVGA16_ {
     {0x3F,0x3F,0x3F}
 };
 
-std::vector<GfxColor> GfxConstants::colorsVGA256_ {
-	{0,0,0}, // Black
-	{128,0,0} // Maroon
-};
-
 GfxColor GfxConstants::vga16Black(void)
 {
     GfxColor clr {GfxConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBlack)]};

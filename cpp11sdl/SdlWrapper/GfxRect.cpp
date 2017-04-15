@@ -70,6 +70,11 @@ GfxRect& GfxRect::operator=(GfxRect&& other)
     return *this;
 }
 
+bool GfxRect::operator==(const GfxRect& other)
+{
+    return ((rect_.x == other.rect_.x) && (rect_.y == other.rect_.y) && (rect_.w == other.rect_.w) && (rect_.h == other.rect_.h));
+}
+
 uint16_t GfxRect::getX(void) const
 {
     return rect_.x;

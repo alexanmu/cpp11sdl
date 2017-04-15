@@ -60,6 +60,11 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other)
     return *this;
 }
 
+bool GfxBlendMode::operator==(const GfxBlendMode& other)
+{
+    return (blendmode_ == other.blendmode_);
+}
+
 GfxBlendMode::GfxBlendModeValues GfxBlendMode::getBlendMode(void) const
 {
     return blendmode_;

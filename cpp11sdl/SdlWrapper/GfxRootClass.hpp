@@ -25,6 +25,8 @@ public:
     GfxRootClass& operator=(const GfxRootClass& other);
     GfxRootClass& operator=(GfxRootClass&& other);
     
+    bool operator==(const GfxRootClass& other);
+
     std::string getClassName(void) const;
     int getInstanceId(void) const;
 private:

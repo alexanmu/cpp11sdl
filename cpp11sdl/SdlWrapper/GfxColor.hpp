@@ -24,9 +24,12 @@ public:
     GfxColor(const SdlType clr);
     GfxColor(const GfxColor& other);
     GfxColor(GfxColor&& other);
+    
     GfxColor& operator=(const GfxColor& other);
     GfxColor& operator=(GfxColor&& other);
     
+    bool operator==(const GfxColor& other);
+
     /* Getters ... */
     uint8_t getRed(void) const;
     uint8_t getGreen(void) const;

@@ -16,10 +16,14 @@ GfxFlip::GfxFlip() : GfxRootClass("GfxFlip")
 GfxFlip::GfxFlip(const bool fliph,const bool flipv) : GfxRootClass("GfxFlip")
 {
     flip_ = static_cast<int>(GfxFlipValues::flipNone);
-    if (fliph)
+    if (fliph == true)
+    {
         flip_ |= static_cast<int>(GfxFlipValues::flipHorizontal);
-    if (flipv)
+    }
+    if (flipv == true)
+    {
         flip_ |= static_cast<int>(GfxFlipValues::flipVertical);
+    }
 }
 
 GfxFlip::GfxFlip(const GfxFlip& other)
@@ -50,6 +54,11 @@ GfxFlip& GfxFlip::operator=(GfxFlip&& other)
         other.flip_ = static_cast<int>(GfxFlipValues::flipNone);
     }
     return *this;
+}
+
+bool GfxFlip::operator==(const GfxFlip& other)
+{
+    return (flip_ == other.flip_);
 }
 
 GfxFlip::SdlType GfxFlip::getAsSdlType(void) const

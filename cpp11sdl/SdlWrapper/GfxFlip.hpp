@@ -22,8 +22,11 @@ public:
     GfxFlip(const bool fliph,const bool flipv);
     GfxFlip(const GfxFlip& other);
     GfxFlip(GfxFlip&& other);
+
     GfxFlip& operator=(const GfxFlip& other);
     GfxFlip& operator=(GfxFlip&& other);
+
+    bool operator==(const GfxFlip& other);
 
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr() const;

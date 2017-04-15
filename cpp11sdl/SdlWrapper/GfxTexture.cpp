@@ -27,7 +27,9 @@ GfxTexture::GfxTexture(GfxRootClass * rend,const GfxSurface& surf) : GfxTexture(
 GfxTexture::~GfxTexture()
 {
     if (tex_ != nullptr)
+    {
         SDL_DestroyTexture(tex_);
+    }
 }
 
 GfxTexture::GfxTexture(GfxTexture&& tex)

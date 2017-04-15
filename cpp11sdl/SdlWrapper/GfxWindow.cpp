@@ -29,7 +29,9 @@ GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
 GfxWindow::~GfxWindow()
 {
     if (window_ != nullptr)
+    {
         SDL_DestroyWindow(window_);
+    }
 }
 
 GfxWindow& GfxWindow::operator=(GfxWindow&& win)

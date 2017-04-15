@@ -35,7 +35,9 @@ public:
     
     GfxBlendMode& operator=(const GfxBlendMode& other);
     GfxBlendMode& operator=(GfxBlendMode&& other);
-        
+
+    bool operator==(const GfxBlendMode& other);
+
     GfxBlendModeValues getBlendMode(void) const;
 
     SdlType getAsSdlType(void) const;

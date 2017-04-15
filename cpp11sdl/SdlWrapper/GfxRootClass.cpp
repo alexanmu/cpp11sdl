@@ -71,6 +71,11 @@ GfxRootClass& GfxRootClass::operator=(GfxRootClass&& other)
     return *this;
 }
 
+bool GfxRootClass::operator==(const GfxRootClass& other)
+{
+    return ((intInstanceId_ == other.intInstanceId_) && (strClassName_ == other.strClassName_));
+}
+
 std::string GfxRootClass::getClassName(void) const
 {
     return strClassName_;

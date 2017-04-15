@@ -92,7 +92,7 @@ void GfxCanvas::SDL_bgi::setCanvas(uint32_t* ptr, int maxx, int maxy)
 
 int GfxCanvas::SDL_bgi::is_in_range (int x, int x1, int x2)
 {
-    return (x >= x1 && x <= x2);
+    return ((x >= x1) && (x <= x2));
 }
 
 // -----
@@ -109,10 +109,14 @@ void GfxCanvas::SDL_bgi::arc (int x, int y, int stangle, int endangle, int radiu
     int angle;
     
     if (0 == radius)
+    {
         return;
+    }
     
     if (endangle < stangle)
+    {
         endangle += 360;
+    }
     
     bgi_last_arc.x = x;
     bgi_last_arc.y = y;
@@ -124,8 +128,8 @@ void GfxCanvas::SDL_bgi::arc (int x, int y, int stangle, int endangle, int radiu
     for (angle = stangle; angle < endangle; angle++)
         line (x + floor (0.5 + (radius * cos (angle * PI_CONV))),
               y - floor (0.5 + (radius * sin (angle * PI_CONV))),
-              x + floor (0.5 + (radius * cos ((angle+1) * PI_CONV))),
-              y - floor (0.5 + (radius * sin ((angle+1) * PI_CONV))));
+              x + floor (0.5 + (radius * cos ((angle + 1) * PI_CONV))),
+              y - floor (0.5 + (radius * sin ((angle + 1) * PI_CONV))));
     
 } // arc ()
 
@@ -142,14 +146,19 @@ void GfxCanvas::SDL_bgi::bar3d (int left, int top, int right, int bottom, int de
     tmp = bgi_fg_color;
     
     if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
+    {
         tmpcolor = bgi_bg_color;
+    }
     else // all other styles
+    {
         tmpcolor = bgi_fill_style.color;
+    }
     
     setcolor (tmpcolor); // fill
     bar (left, top, right, bottom);
     setcolor (tmp); // outline
-    if (depth > 0) {
+    if (depth > 0)
+    {
         line (left, top, left + depth, top - depth);
         line (left + depth, top - depth, right + depth, top - depth);
         line (right, top, right + depth, top - depth);
@@ -177,20 +186,32 @@ void GfxCanvas::SDL_bgi::bar (int left, int top, int right, int bottom)
     tmp = bgi_fg_color;
     
     if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
+    {
         tmpcolor = bgi_bg_color;
+    }
     else // all other styles
+    {
         tmpcolor = bgi_fill_style.color;
+    }
     
     setcolor (tmpcolor);
     tmpthickness = bgi_line_style.thickness;
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
     
     if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
+    {
         for (y = top; y <= bottom; y++)
+        {
             line (left, y, right, y);
+        }
+    }
     else
+    {
         for (y = top; y <= bottom; y++)
+        {
             line_fill (left, y, right, y);
+        }
+    }
     
     setcolor (tmp);
     bgi_line_style.thickness = tmpthickness;
@@ -209,7 +230,8 @@ void GfxCanvas::SDL_bgi::circle_bresenham (int x, int y, int radius)
     int yy = 0;
     int err = 2 - 2 * radius;
     
-    do {
+    do
+    {
         _putpixel (x - xx, y + yy); //  I  quadrant
         _putpixel (x - yy, y - xx); //  II quadrant
         _putpixel (x + xx, y - yy); //  III quadrant
@@ -217,12 +239,18 @@ void GfxCanvas::SDL_bgi::circle_bresenham (int x, int y, int radius)
         radius = err;
         
         if (radius <= yy)
-            err += ++yy * 2 + 1;
+        {
+            yy += 1;
+            err += yy * 2 + 1;
+        }
         
-        if (radius > xx || err > yy)
-            err += ++xx * 2 + 1;
-        
-    } while (xx < 0);
+        if ((radius > xx) || (err > yy))
+        {
+            xx += 1;
+            err += xx * 2 + 1;
+        }
+    }
+    while (xx < 0);
     
 } // circle_bresenham ();
 
@@ -235,9 +263,13 @@ void GfxCanvas::SDL_bgi::circle (int x, int y, int radius)
     // the Bresenham algorithm draws a better-looking circle
     
     if (bgiLineThickness::NORM_WIDTH == bgi_line_style.thickness)
+    {
         circle_bresenham (x, y, radius);
+    }
     else
+    {
         arc (x, y, 0, 360, radius);
+    }
     
 } // circle ();
 
@@ -255,8 +287,12 @@ void GfxCanvas::SDL_bgi::cleardevice (void)
     bgi_cp_y = 0;
     
     for (x = 0; x < bgi_maxx + 1; x++)
+    {
         for (y = 0; y < bgi_maxy + 1; y++)
+        {
             bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
+        }
+    }
     
 } // cleardevice ()
 
@@ -273,8 +309,12 @@ void GfxCanvas::SDL_bgi::clearviewport (void)
     bgi_cp_x = bgi_cp_y = 0;
     
     for (x = vp.left; x < vp.right + 1; x++)
+    {
         for (y = vp.top; y < vp.bottom + 1; y++)
+        {
             bgi_activepage [y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
+        }
+    }
     
 } // clearviewport ()
 
@@ -287,8 +327,10 @@ void GfxCanvas::SDL_bgi::drawpoly (int numpoints, int *polypoints)
     int n;
     
     for (n = 0; n < numpoints - 1; n++)
+    {
         line (polypoints[2*n], polypoints[2*n + 1],
               polypoints[2*n + 2], polypoints[2*n + 3]);
+    }
     // close the polygon
     line (polypoints[2*n], polypoints[2*n + 1],
           polypoints[0], polypoints[1]);
@@ -301,7 +343,8 @@ void GfxCanvas::SDL_bgi::swap_if_greater (int *x1, int *x2)
 {
     int tmp;
     
-    if (*x1 > *x2) {
+    if (*x1 > *x2)
+    {
         tmp = *x1;
         *x1 = *x2;
         *x2 = tmp;
@@ -320,14 +363,19 @@ void GfxCanvas::SDL_bgi::ellipse (int x, int y, int stangle, int endangle,
     // Bresenham-based if complete
     int angle;
     
-    if (0 == xradius && 0 == yradius)
+    if ((0 == xradius) && (0 == yradius))
+    {
         return;
+    }
     
     if (endangle < stangle)
+    {
         endangle += 360;
+    }
     
     // draw complete ellipse
-    if (0 == stangle && 360 == endangle) {
+    if (0 == stangle && 360 == endangle)
+    {
         _ellipse (x, y, xradius, yradius);
         return;
     }
@@ -337,10 +385,12 @@ void GfxCanvas::SDL_bgi::ellipse (int x, int y, int stangle, int endangle,
     bgi_last_arc.y = y;
     
     for (angle = stangle; angle < endangle; angle++)
+    {
         line (x + (xradius * cos (angle * PI_CONV)),
               y - (yradius * sin (angle * PI_CONV)),
               x + (xradius * cos ((angle+1) * PI_CONV)),
               y - (yradius * sin ((angle+1) * PI_CONV)));
+    }
     
 } // ellipse ()
 
@@ -363,20 +413,23 @@ void GfxCanvas::SDL_bgi::_ellipse (int cx, int cy, int xradius, int yradius)
     int StoppingX;
     int StoppingY;
 
-    if (0 == xradius && 0 == yradius)
+    if ((0 == xradius) && (0 == yradius))
+    {
         return;
+    }
     
-    TwoASquare = 2*xradius*xradius;
-    TwoBSquare = 2*yradius*yradius;
+    TwoASquare = 2 * xradius * xradius;
+    TwoBSquare = 2 * yradius * yradius;
     x = xradius;
     y = 0;
-    xchange = yradius*yradius*(1 - 2*xradius);
-    ychange = xradius*xradius;
+    xchange = yradius * yradius * (1 - 2 * xradius);
+    ychange = xradius * xradius;
     ellipseerror = 0;
-    StoppingX = TwoBSquare*xradius;
+    StoppingX = TwoBSquare * xradius;
     StoppingY = 0;
     
-    while (StoppingX >= StoppingY) {
+    while (StoppingX >= StoppingY)
+    {
         
         // 1st set of points, y' > -1
         
@@ -391,7 +444,8 @@ void GfxCanvas::SDL_bgi::_ellipse (int cx, int cy, int xradius, int yradius)
         ellipseerror += ychange;
         ychange +=TwoASquare;
         
-        if ((2*ellipseerror + xchange) > 0 ) {
+        if ((2 * ellipseerror + xchange) > 0 )
+        {
             x--;
             StoppingX -= TwoBSquare;
             ellipseerror +=xchange;
@@ -409,7 +463,8 @@ void GfxCanvas::SDL_bgi::_ellipse (int cx, int cy, int xradius, int yradius)
     StoppingX = 0;
     StoppingY = TwoASquare*yradius;
     
-    while (StoppingX <= StoppingY ) {
+    while (StoppingX <= StoppingY )
+    {
         
         // 2nd set of points, y' < -1
         
@@ -421,7 +476,7 @@ void GfxCanvas::SDL_bgi::_ellipse (int cx, int cy, int xradius, int yradius)
         StoppingX += TwoBSquare;
         ellipseerror += xchange;
         xchange +=TwoBSquare;
-        if ((2*ellipseerror + ychange) > 0) {
+        if ((2 * ellipseerror + ychange) > 0) {
             y--;
             StoppingY -= TwoASquare;
             ellipseerror += ychange;
@@ -452,20 +507,21 @@ void GfxCanvas::SDL_bgi::fillellipse (int cx, int cy, int xradius, int yradius)
     int StoppingX;
     int StoppingY;
 
-    if (0 == xradius && 0 == yradius)
+    if ((0 == xradius) && (0 == yradius))
         return;
     
-    TwoASquare = 2*xradius*xradius;
-    TwoBSquare = 2*yradius*yradius;
+    TwoASquare = 2 * xradius * xradius;
+    TwoBSquare = 2 * yradius * yradius;
     x = xradius;
     y = 0;
-    xchange = yradius*yradius*(1 - 2*xradius);
-    ychange = xradius*xradius;
+    xchange = yradius * yradius * (1 - 2 * xradius);
+    ychange = xradius * xradius;
     ellipseerror = 0;
-    StoppingX = TwoBSquare*xradius;
+    StoppingX = TwoBSquare * xradius;
     StoppingY = 0;
     
-    while (StoppingX >= StoppingY) {
+    while (StoppingX >= StoppingY)
+    {
         
         // 1st set of points, y' > -1
         
@@ -476,7 +532,8 @@ void GfxCanvas::SDL_bgi::fillellipse (int cx, int cy, int xradius, int yradius)
         ellipseerror += ychange;
         ychange +=TwoASquare;
         
-        if ((2*ellipseerror + xchange) > 0 ) {
+        if ((2 * ellipseerror + xchange) > 0 )
+        {
             x--;
             StoppingX -= TwoBSquare;
             ellipseerror +=xchange;
@@ -488,11 +545,11 @@ void GfxCanvas::SDL_bgi::fillellipse (int cx, int cy, int xradius, int yradius)
     
     x = 0;
     y = yradius;
-    xchange = yradius*yradius;
-    ychange = xradius*xradius*(1 - 2*yradius);
+    xchange = yradius * yradius;
+    ychange = xradius * xradius * (1 - 2 * yradius);
     ellipseerror = 0;
     StoppingX = 0;
-    StoppingY = TwoASquare*yradius;
+    StoppingY = TwoASquare * yradius;
     
     while (StoppingX <= StoppingY ) {
         
@@ -504,7 +561,8 @@ void GfxCanvas::SDL_bgi::fillellipse (int cx, int cy, int xradius, int yradius)
         StoppingX += TwoBSquare;
         ellipseerror += xchange;
         xchange +=TwoBSquare;
-        if ((2*ellipseerror + ychange) > 0) {
+        if ((2 * ellipseerror + ychange) > 0)
+        {
             y--;
             StoppingY -= TwoASquare;
             ellipseerror += ychange;
@@ -548,16 +606,21 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
     bgiColors tmp;
     bgiColors tmpcolor;
 
-    if (NULL == (nodeX = (int *)calloc (sizeof (int), numpoints))) {
-        fprintf (stderr, "Can't allocate memory for fillpoly()\n");
+    nodeX = (int *)calloc (sizeof (int), numpoints);
+    if (NULL == nodeX) {
+        /* fprintf (stderr, "Can't allocate memory for fillpoly()\n"); */
         return;
     }
     
     tmp = bgi_fg_color;
     if (bgiFillStyles::EMPTY_FILL == bgi_fill_style.pattern)
+    {
         tmpcolor = bgi_bg_color;
+    }
     else // all other styles
+    {
         tmpcolor = bgi_fill_style.color;
+    }
     
     setcolor (tmpcolor);
     
@@ -565,31 +628,37 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
     
     ymin = ymax = polypoints[1];
     
-    for (i = 0; i < 2 * numpoints; i += 2) {
+    for (i = 0; i < 2 * numpoints; i += 2)
+    {
         if (polypoints[i + 1] < ymin)
+        {
             ymin = polypoints[i + 1];
+        }
         if (polypoints[i + 1] > ymax)
+        {
             ymax = polypoints[i + 1];
+        }
     }
     
     //  Loop through the rows of the image.
-    for (pixelY = ymin; pixelY < ymax; pixelY++) {
+    for (pixelY = ymin; pixelY < ymax; pixelY++)
+    {
         
         //  Build a list of nodes.
         nodes = 0;
         j = 2 * numpoints - 2;
         
-        for (i = 0; i < 2 * numpoints; i += 2) {
-            
+        for (i = 0; i < 2 * numpoints; i += 2)
+        {
             if (
-                ((float) polypoints[i + 1] < (float)  pixelY &&
-                 (float) polypoints[j + 1] >= (float) pixelY) ||
-                ((float) polypoints[j + 1] < (float)  pixelY &&
-                 (float) polypoints[i + 1] >= (float) pixelY))
+                ((float) polypoints[i + 1] < (float)  pixelY && (float) polypoints[j + 1] >= (float) pixelY) ||
+                ((float) polypoints[j + 1] < (float)  pixelY && (float) polypoints[i + 1] >= (float) pixelY))
+            {
                 nodeX[nodes++] =
                 (int) (polypoints[i] + (pixelY - (float) polypoints[i + 1]) /
                        ((float) polypoints[j + 1] - (float) polypoints[i + 1]) *
                        (polypoints[j] - polypoints[i]));
+            }
             j = i;
         }
         
@@ -597,17 +666,24 @@ void GfxCanvas::SDL_bgi::fillpoly (int numpoints, int *polypoints)
         qsort (nodeX, nodes, sizeof (int), intcmp);
         
         // fill the pixels between node pairs.
-        for (i = 0; i < nodes; i += 2) {
+        for (i = 0; i < nodes; i += 2)
+        {
             if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
+            {
                 line (nodeX[i], pixelY, nodeX[i + 1], pixelY);
+            }
             else
+            {
                 line_fill (nodeX[i], pixelY, nodeX[i + 1], pixelY);
+            }
         }
         
     } //   for pixelY
     
     setcolor (tmp);
     drawpoly (numpoints, polypoints);
+    
+    free(nodeX);
     
 } // fillpoly ()
 
@@ -622,9 +698,13 @@ void GfxCanvas::SDL_bgi::ff_putpixel (int x, int y)
     
     // if the corresponding bit in the pattern is 1
     if ( (fill_patterns[static_cast<int>(bgi_fill_style.pattern)][y % 8] >> x % 8) & 1)
+    {
         putpixel_copy (x, y, palette[static_cast<int>(bgi_fill_style.color)]);
+    }
     else
+    {
         putpixel_copy (x, y, palette[static_cast<int>(bgi_bg_color)]);
+    }
     
 } // ff_putpixel ()
 
@@ -655,8 +735,9 @@ Segment* sp = stack; // stack of filled segments
 static inline void ff_push (int y, int xl, int xr, int dy, int bottom, int top)
 {
     // push new segment on stack
-    if (sp < stack + STACKSIZE && y + dy >= 0 &&
-        y + dy <= bottom - top ) {
+    if ((sp < stack + STACKSIZE) && (y + dy >= 0) &&
+        ((y + dy) <= (bottom - top)) )
+    {
         sp->y = y;
         sp->xl = xl;
         sp->xr = xr;
@@ -698,7 +779,8 @@ void GfxCanvas::SDL_bgi::_floodfill (int x, int y, bgiColors border)
     ff_push (y, x, x, 1,vp.bottom ,vp.top);           // needed in some cases
     ff_push (y + 1, x, x, -1,vp.bottom , vp.top);      // seed segment (popped 1st)
     
-    while (sp > stack) {
+    while (sp > stack)
+    {
         
         // pop segment off stack and fill a neighboring scan line
         
@@ -708,31 +790,50 @@ void GfxCanvas::SDL_bgi::_floodfill (int x, int y, bgiColors border)
         // now explore adjacent pixels in scan line y
         
         for (x = x1; x >= 0 && getpixel (x, y) == oldcol; x--)
+        {
             ff_putpixel (x, y);
+        }
         
-        if (x >= x1) {
+        if (x >= x1)
+        {
             for (x++; x <= x2 && getpixel (x, y) == static_cast<int>(border); x++)
+            {
                 ;
+            }
             start = x;
             if (x > x2)
+            {
                 continue;
+            }
         }
-        else {
+        else
+        {
             start = x + 1;
             if (start < x1)
+            {
                 ff_push (y, start, x1 - 1, -dy,vp.bottom , vp.top);    // leak on left?
+            }
             x = x1 + 1;
         }
-        do {
+        
+        do
+        {
             for (x1 = x; x <= vp.right && getpixel (x, y) != static_cast<int>(border); x++)
+            {
                 ff_putpixel (x, y);
+            }
             ff_push (y, start, x - 1, dy,vp.bottom , vp.top);
             if (x > x2 + 1)
+            {
                 ff_push (y, x2 + 1, x - 1, -dy,vp.bottom, vp.top);    // leak on right?
+            }
             for (x++; x <= x2 && getpixel (x, y) == static_cast<int>(border); x++)
+            {
                 ;
+            }
             start = x;
-        } while (x <= x2);
+        }
+        while (x <= x2);
         
     } // while
     
@@ -755,20 +856,25 @@ void GfxCanvas::SDL_bgi::floodfill (int x, int y, bgiColors border)
     // the fill colour must be different than the border colour
     // and the current shape's background color.
     
-    if (oldcol == border || oldcol == bgi_fill_style.color ||
-        x < 0 || x > vp.right - vp.left || // out of viewport/window?
-        y < 0 || y > vp.bottom - vp.top)
+    if ((oldcol == border) || (oldcol == bgi_fill_style.color) ||
+        (x < 0) || (x > vp.right - vp.left) || // out of viewport/window?
+        (y < 0) || (y > vp.bottom - vp.top))
+    {
         return;
+    }
     
     // special case for fill patterns. The background colour can't be
     // the same in the area to be filled and in the fill pattern.
     
-    if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern) {
+    if (bgiFillStyles::SOLID_FILL == bgi_fill_style.pattern)
+    {
         _floodfill (x, y, border);
         return;
     }
-    else { // fill patterns
-        if (bgi_bg_color == oldcol) {
+    else
+    { // fill patterns
+        if (bgi_bg_color == oldcol)
+        {
             // solid fill first...
             tmp_pattern = bgi_fill_style.pattern;
             bgi_fill_style.pattern = bgiFillStyles::SOLID_FILL;
@@ -776,11 +882,14 @@ void GfxCanvas::SDL_bgi::floodfill (int x, int y, bgiColors border)
             // find a suitable temporary fill colour; it must be different
             // than the border and the background
             found = false;
-            while (!found) {
+            while (!found)
+            {
                 bgi_fill_style.color = static_cast<bgiColors>(static_cast<int>(bgiColors::BLUE) + random (static_cast<int>(bgiColors::WHITE)));
-                if (oldcol != bgi_fill_style.color &&
-                    border != bgi_fill_style.color)
+                if ((oldcol != bgi_fill_style.color) &&
+                    (border != bgi_fill_style.color))
+                {
                     found = true;
+                }
             }
             _floodfill (x, y, border);
             // ...then pattern fill
@@ -789,7 +898,9 @@ void GfxCanvas::SDL_bgi::floodfill (int x, int y, bgiColors border)
             _floodfill (x, y, border);
         }
         else
+        {
             _floodfill (x, y, border);
+        }
     }
 
 } // floodfill ()
@@ -844,7 +955,9 @@ void GfxCanvas::SDL_bgi::getfillpattern (char *pattern)
     int i;
     
     for (i = 0; i < 8; i++)
+    {
         pattern[i] = (char) fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i];
+    }
     
 } // getfillpattern ()
 
@@ -884,8 +997,12 @@ void GfxCanvas::SDL_bgi::getimage (int left, int top, int right, int bottom, voi
     
     // copy image to bitmap
     for (y = top + vp.top; y <= bottom + vp.top; y++)
+    {
         for (x = left + vp.left; x <= right + vp.left; x++)
+        {
             tmp [i++] = getpixel_raw (x, y);
+        }
+    }
 } // getimage ()
 
 // -----
@@ -937,7 +1054,9 @@ void GfxCanvas::SDL_bgi::getpalette (struct palettetype *palette)
     int i;
     
     for (i = 0; i <= MAXCOLORS; i++)
+    {
         palette->colors[i] = pal.colors[i];
+    }
 
 } // getpalette ()
 
@@ -973,15 +1092,21 @@ unsigned int GfxCanvas::SDL_bgi::getpixel (int x, int y)
     // out of screen?
     if (! is_in_range (x, 0, bgi_maxx) &&
         ! is_in_range (y, 0, bgi_maxy))
+    {
         return static_cast<int>(bgi_bg_color);
+    }
     
     tmp = getpixel_raw (x, y);
     
     // now find the colour
     
     for (col = static_cast<int>(bgiColors::BLACK); col < static_cast<int>(bgiColors::WHITE) + 1; col++)
+    {
         if (tmp == palette[col])
+        {
             return static_cast<int>(col);
+        }
+    }
     
     // if it's not a BGI color, just return the 0xAARRGGBB value
     return tmp;
@@ -1079,7 +1204,9 @@ void GfxCanvas::SDL_bgi::graphdefaults (void)
     // initialise the palette
     pal.size = 1 + MAXCOLORS;
     for (i = 0; i < MAXCOLORS + 1; i++)
+    {
         pal.colors[i] = i;
+    }
     
 } // graphdefaults ()
 
@@ -1101,7 +1228,9 @@ void GfxCanvas::SDL_bgi::initpalette (void)
     int i;
     
     for (i = static_cast<int>(bgiColors::BLACK); i < static_cast<int>(bgiColors::WHITE) + 1; i++)
+    {
         palette[i] = bgi_palette[i];
+    }
 } // initpalette ()
 
 // -----
@@ -1119,27 +1248,38 @@ void GfxCanvas::SDL_bgi::line_copy (int x1, int y1, int x2, int y2)
     int err = (dx > dy ? dx : -dy) / 2;
     int e2;
     
-    for (;;) {
+    for (;;)
+    {
         
         // plot the pixel only if the corresponding bit
         // in the current pattern is set to 1
         
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+        {
             putpixel_copy (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+        }
         else
+        {
             if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            {
                 putpixel_copy (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            }
+        }
         
         counter++;
         
-        if (x1 == x2 && y1 == y2)
+        if ((x1 == x2) && (y1 == y2))
+        {
             break;
+        }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx)
+        {
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dy) {
+        if (e2 < dy)
+        {
             err += dx;
             y1 += sy;
         }
@@ -1159,24 +1299,35 @@ void GfxCanvas::SDL_bgi::line_xor (int x1, int y1, int x2, int y2)
     int err = (dx > dy ? dx : -dy) / 2;
     int e2;
     
-    for (;;) {
+    for (;;)
+    {
         
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+        {
             putpixel_xor (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+        }
         else
+        {
             if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            {
                 putpixel_xor (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            }
+        }
         
         counter++;
         
-        if (x1 == x2 && y1 == y2)
+        if ((x1 == x2) && (y1 == y2))
+        {
             break;
+        }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx)
+        {
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dy) {
+        if (e2 < dy)
+        {
             err += dx;
             y1 += sy;
         }
@@ -1196,24 +1347,35 @@ void GfxCanvas::SDL_bgi::line_and (int x1, int y1, int x2, int y2)
     int err = (dx > dy ? dx : -dy) / 2;
     int e2;
     
-    for (;;) {
+    for (;;)
+    {
         
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+        {
             putpixel_and (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+        }
         else
+        {
             if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            {
                 putpixel_and (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            }
+        }
         
         counter++;
         
-        if (x1 == x2 && y1 == y2)
+        if ((x1 == x2) && (y1 == y2))
+        {
             break;
+        }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx)
+        {
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dy) {
+        if (e2 < dy)
+        {
             err += dx;
             y1 += sy;
         }
@@ -1233,24 +1395,35 @@ void GfxCanvas::SDL_bgi::line_or (int x1, int y1, int x2, int y2)
     int err = (dx > dy ? dx : -dy) / 2;
     int e2;
     
-    for (;;) {
+    for (;;)
+    {
         
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+        {
             putpixel_or (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+        }
         else
+        {
             if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            {
                 putpixel_or (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            }
+        }
         
         counter++;
         
-        if (x1 == x2 && y1 == y2)
+        if ((x1 == x2) && (y1 == y2))
+        {
             break;
+        }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx)
+        {
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dy) {
+        if (e2 < dy)
+        {
             err += dx;
             y1 += sy;
         }
@@ -1270,24 +1443,35 @@ void GfxCanvas::SDL_bgi::line_not (int x1, int y1, int x2, int y2)
     int err = (dx > dy ? dx : -dy) / 2;
     int e2;
     
-    for (;;) {
+    for (;;)
+    {
         
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
+        {
             putpixel_not (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+        }
         else
+        {
             if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            {
                 putpixel_not (x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            }
+        }
         
         counter++;
         
-        if (x1 == x2 && y1 == y2)
+        if ((x1 == x2) && (y1 == y2))
+        {
             break;
+        }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx)
+        {
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dy) {
+        if (e2 < dy)
+        {
             err += dx;
             y1 += sy;
         }
@@ -1308,18 +1492,23 @@ void GfxCanvas::SDL_bgi::line_fill (int x1, int y1, int x2, int y2)
     int err = (dx > dy ? dx : -dy) / 2;
     int e2;
     
-    for (;;) {
+    for (;;)
+    {
         
         ff_putpixel (x1, y1);
         
-        if (x1 == x2 && y1 == y2)
+        if ((x1 == x2) && (y1 == y2))
+        {
             break;
+        }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx)
+        {
             err -= dy;
             x1 += sx;
         }
-        if (e2 < dy) {
+        if (e2 < dy)
+        {
             err += dx;
             y1 += sy;
         }
@@ -1333,21 +1522,30 @@ int GfxCanvas::SDL_bgi::octant (int x, int y)
 {
     // returns the octant where x, y lies.
     
-    if (x >= 0) { // octants 1, 2, 7, 8
+    if (x >= 0)
+    { // octants 1, 2, 7, 8
         
         if (y >= 0)
+        {
             return (x > y) ? 1 : 2;
+        }
         else
+        {
             return (x > -y) ? 8 : 7;
+        }
         
     } // if (x > 0)
-    
-    else { // x < 0; 3, 4, 5, 6
+    else
+    { // x < 0; 3, 4, 5, 6
         
         if (y >= 0)
+        {
             return (-x > y) ? 4 : 3;
+        }
         else
+        {
             return (-x > -y) ? 5 : 6;
+        }
         
     } // else
     
@@ -1367,7 +1565,8 @@ void GfxCanvas::SDL_bgi::line (int x1, int y1, int x2, int y2)
     x2 += vp.left;
     y2 += vp.top;
     
-    switch (bgi_writemode) {
+    switch (bgi_writemode)
+    {
             
         case bgiDrawingMode::COPY_PUT:
             line_copy (x1, y1, x2, y2);
@@ -1391,7 +1590,8 @@ void GfxCanvas::SDL_bgi::line (int x1, int y1, int x2, int y2)
             
     } // switch
     
-    if (bgiLineThickness::THICK_WIDTH == bgi_line_style.thickness) {
+    if (bgiLineThickness::THICK_WIDTH == bgi_line_style.thickness)
+    {
         
         oct = octant (x2 - x1, y1 - y2);
         
@@ -1513,7 +1713,9 @@ void GfxCanvas::SDL_bgi::_bar (int left, int top, int right, int bottom)
     tmp = bgi_fg_color;
     // setcolor (bgi_fg_color);
     for (y = top; y <= bottom; y++)
+    {
         line (left, y, right, y);
+    }
     
     setcolor (tmp);
 } // _bar ()
@@ -1537,34 +1739,44 @@ void GfxCanvas::SDL_bgi::drawchar (unsigned char ch)
     
     // for each of the 8 bytes that make up the font
     
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 8; i++)
+    {
         
         k = fontptr[8*ch + i];
         
         // scan horizontal line
         
         for (j = 0; j < 8; j++)
+        {
             
-            if ( (k << j) & 0x80) { // bit set to 1
-                if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) {
+            if ( (k << j) & 0x80)
+            { // bit set to 1
+                if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction)
+                {
                     x = bgi_cp_x + j * bgi_font_mag_x;
                     y = bgi_cp_y + i * bgi_font_mag_y;
                     // putpixel (x, y, bgi_fg_color);
                     _bar (x, y, x + bgi_font_mag_x - 1, y + bgi_font_mag_y - 1);
                 }
-                else {
+                else
+                {
                     x = bgi_cp_x + i * bgi_font_mag_y;
                     y = bgi_cp_y - j * bgi_font_mag_x;
                     // putpixel (bgi_cp_x + i, bgi_cp_y - j, bgi_fg_color);
                     _bar (x, y, x + bgi_font_mag_x - 1, y + bgi_font_mag_y - 1);
                 }
             }
+        }
     }
     
     if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction)
-        bgi_cp_x += 8*bgi_font_mag_x;
+    {
+        bgi_cp_x += 8 * bgi_font_mag_x;
+    }
     else
-        bgi_cp_y -= 8*bgi_font_mag_y;
+    {
+        bgi_cp_y -= 8 * bgi_font_mag_y;
+    }
     
     bgi_bg_color = tmp;
     
@@ -1579,7 +1791,9 @@ void GfxCanvas::SDL_bgi::outtext (char *textstring)
     outtextxy (bgi_cp_x, bgi_cp_y, textstring);
     if ( (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) &&
         (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz))
+    {
         bgi_cp_x += textwidth (textstring);
+    }
 } // outtext ()
 
 // -----
@@ -1602,46 +1816,72 @@ void GfxCanvas::SDL_bgi::outtextxy (int x, int y, char *textstring)
     
     th = textheight (textstring);
     
-    if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) {
+    if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction)
+    {
         
         if (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz)
+        {
             x1 = x;
+        }
         
         if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.horiz)
+        {
             x1 = x - tw / 2;
+        }
         
         if (bgiTextJustification::RIGHT_TEXT == bgi_txt_style.horiz)
+        {
             x1 = x - tw;
+        }
         
         if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.vert)
+        {
             y1 = y - th / 2;
+        }
         
         if (bgiTextJustification::TOP_TEXT == bgi_txt_style.vert)
+        {
             y1 = y;
+        }
         
         if (bgiTextJustification::BOTTOM_TEXT == bgi_txt_style.vert)
+        {
             y1 = y - th;
+        }
         
     }
-    else { // VERT_DIR
+    else
+    { // VERT_DIR
         
         if (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz)
+        {
             y1 = y;
+        }
         
         if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.horiz)
+        {
             y1 = y + tw / 2;
+        }
         
         if (bgiTextJustification::RIGHT_TEXT == bgi_txt_style.horiz)
+        {
             y1 = y + tw;
+        }
         
         if (bgiTextJustification::CENTER_TEXT == bgi_txt_style.vert)
+        {
             x1 = x - th / 2;
+        }
         
         if (bgiTextJustification::TOP_TEXT == bgi_txt_style.vert)
+        {
             x1 = x;
+        }
         
         if (bgiTextJustification::BOTTOM_TEXT == bgi_txt_style.vert)
+        {
             x1 = x - th;
+        }
         
     } // VERT_DIR
     
@@ -1652,7 +1892,9 @@ void GfxCanvas::SDL_bgi::outtextxy (int x, int y, char *textstring)
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
     
     for (i = 0; i < strlen (textstring); i++)
+    {
         drawchar (textstring[i]);
+    }
     
     bgi_line_style.thickness = tmp;
     
@@ -1668,14 +1910,20 @@ void GfxCanvas::SDL_bgi::pieslice (int x, int y, int stangle, int endangle, int 
     // quick and dirty for now, Bresenham-based later.
     int angle;
     
-    if (0 == radius || stangle == endangle)
+    if ((0 == radius) || (stangle == endangle))
+    {
         return;
+    }
     
     if (endangle < stangle)
+    {
         endangle += 360;
+    }
     
     if (0 == radius)
+    {
         return;
+    }
     
     bgi_last_arc.x = x;
     bgi_last_arc.y = y;
@@ -1685,10 +1933,12 @@ void GfxCanvas::SDL_bgi::pieslice (int x, int y, int stangle, int endangle, int 
     bgi_last_arc.yend = y - (radius * sin (endangle * PI_CONV));
     
     for (angle = stangle; angle < endangle; angle++)
+    {
         line (x + (radius * cos (angle * PI_CONV)),
               y - (radius * sin (angle * PI_CONV)),
-              x + (radius * cos ((angle+1) * PI_CONV)),
-              y - (radius * sin ((angle+1) * PI_CONV)));
+              x + (radius * cos ((angle + 1) * PI_CONV)),
+              y - (radius * sin ((angle + 1) * PI_CONV)));
+    }
     line (x, y, bgi_last_arc.xstart, bgi_last_arc.ystart);
     line (x, y, bgi_last_arc.xend, bgi_last_arc.yend);
     
@@ -1712,17 +1962,20 @@ void GfxCanvas::SDL_bgi::putimage (int left, int top, void *bitmap, bgiDrawingMo
     int x;
     int y;
     
-    tmp = (uint32_t*)bitmap;
+    tmp = (uint32_t *)bitmap;
     
     // get width and height info from bitmap
     memcpy (&bitmap_w, tmp, sizeof (uint32_t));
     memcpy (&bitmap_h, tmp + 1, sizeof (uint32_t));
     
     // put bitmap to the screen
-    for (y = top + vp.top; y < top + vp.top + bitmap_h; y++)
-        for (x = left + vp.left; x < left + vp.left + bitmap_w; x++) {
+    for (y = top + vp.top; y < (top + vp.top + bitmap_h); y++)
+    {
+        for (x = left + vp.left; x < (left + vp.left + bitmap_w); x++)
+        {
             
-            switch (op) {
+            switch (op)
+            {
                     
                 case bgiDrawingMode::COPY_PUT:
                     putpixel_copy (x, y, tmp[i++]);
@@ -1745,6 +1998,7 @@ void GfxCanvas::SDL_bgi::putimage (int left, int top, void *bitmap, bgiDrawingMo
                     break;
             } // switch
         }
+    }
     
 } // putimage ()
 
@@ -1760,7 +2014,8 @@ void GfxCanvas::SDL_bgi::_putpixel (int x, int y)
     x += vp.left;
     y += vp.top;
     
-    switch (bgi_writemode) {
+    switch (bgi_writemode)
+    {
             
         case bgiDrawingMode::XOR_PUT:
             putpixel_xor  (x, y, palette[static_cast<int>(bgi_fg_color)]);
@@ -1793,12 +2048,18 @@ void GfxCanvas::SDL_bgi::putpixel_copy (int x, int y, uint32_t pixel)
     // plain putpixel - no logical operations
     
     // out of range?
-    if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
+    if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
+    {
         return;
+    }
     
     if (true == vp.clip)
-        if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+    {
+        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        {
             return;
+        }
+    }
     
     bgi_activepage [y * (bgi_maxx + 1) + x] = pixel;
     
@@ -1815,12 +2076,18 @@ void GfxCanvas::SDL_bgi::putpixel_xor (int x, int y, uint32_t pixel)
     // XOR'ed putpixel
     
     // out of range?
-    if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
+    if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
+    {
         return;
+    }
     
     if (true == vp.clip)
-        if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+    {
+        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        {
             return;
+        }
+    }
     
     bgi_activepage [y * (bgi_maxx + 1) + x] ^= (pixel & 0x00ffffff);
     
@@ -1833,12 +2100,18 @@ void GfxCanvas::SDL_bgi::putpixel_and (int x, int y, uint32_t pixel)
     // AND-ed putpixel
     
     // out of range?
-    if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
+    if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
+    {
         return;
+    }
     
     if (true == vp.clip)
-        if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+    {
+        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        {
             return;
+        }
+    }
     
     bgi_activepage [y * (bgi_maxx + 1) + x] &= (pixel & 0x00ffffff);
     
@@ -1851,12 +2124,18 @@ void GfxCanvas::SDL_bgi::putpixel_or (int x, int y, uint32_t pixel)
     // OR-ed putpixel
     
     // out of range?
-    if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
+    if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
+    {
         return;
+    }
     
     if (true == vp.clip)
-        if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+    {
+        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        {
             return;
+        }
+    }
     
     bgi_activepage [y * (bgi_maxx + 1) + x] |= (pixel & 0x00ffffff);
     
@@ -1869,16 +2148,21 @@ void GfxCanvas::SDL_bgi::putpixel_not (int x, int y, uint32_t pixel)
     // NOT-ed putpixel
     
     // out of range?
-    if (x < 0 || x > bgi_maxx || y < 0 || y > bgi_maxy)
+    if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
+    {
         return;
+    }
     
     if (true == vp.clip)
+    {
         if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+        {
             return;
+        }
+    }
     
     // !!!BUG???
-    bgi_activepage [y * (bgi_maxx + 1) + x] =
-    ~ bgi_activepage [y * (bgi_maxx + 1) + x];
+    bgi_activepage [y * (bgi_maxx + 1) + x] = ~ bgi_activepage [y * (bgi_maxx + 1) + x];
     
 } // putpixel_not ()
 
@@ -1895,12 +2179,17 @@ void GfxCanvas::SDL_bgi::putpixel (int x, int y, int color)
     
     // clip
     if (true == vp.clip)
-        if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+    {
+        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        {
             return;
+        }
+    }
     
     tmpcolor = color;
     
-    switch (bgi_writemode) {
+    switch (bgi_writemode)
+    {
             
         case bgiDrawingMode::XOR_PUT:
             putpixel_xor  (x, y, palette[tmpcolor]);
@@ -1952,11 +2241,15 @@ void GfxCanvas::SDL_bgi::sector (int x, int y, int stangle, int endangle,
     int angle;
     bgiColors tmpcolor;
     
-    if (0 == xradius && 0 == yradius)
+    if ((0 == xradius) && (0 == yradius))
+    {
         return;
+    }
     
     if (endangle < stangle)
+    {
         endangle += 360;
+    }
     
     // really needed?
     bgi_last_arc.x = x;
@@ -1967,10 +2260,12 @@ void GfxCanvas::SDL_bgi::sector (int x, int y, int stangle, int endangle,
     bgi_last_arc.yend = y - (yradius * sin (endangle * PI_CONV));
     
     for (angle = stangle; angle < endangle; angle++)
+    {
         line (x + (xradius * cos (angle * PI_CONV)),
               y - (yradius * sin (angle * PI_CONV)),
-              x + (xradius * cos ((angle+1) * PI_CONV)),
-              y - (yradius * sin ((angle+1) * PI_CONV)));
+              x + (xradius * cos ((angle + 1) * PI_CONV)),
+              y - (yradius * sin ((angle + 1) * PI_CONV)));
+    }
     line (x, y, bgi_last_arc.xstart, bgi_last_arc.ystart);
     line (x, y, bgi_last_arc.xend, bgi_last_arc.yend);
     
@@ -1993,8 +2288,12 @@ void GfxCanvas::SDL_bgi::setallpalette (struct palettetype *palette)
     int i;
     
     for (i = 0; i <= MAXCOLORS; i++)
+    {
         if (palette->colors[i] != -1)
+        {
             setpalette (i, palette->colors[i]);
+        }
+    }
 } // setallpalette ()
 
 // -----
@@ -2036,7 +2335,9 @@ void GfxCanvas::SDL_bgi::setfillpattern (char *upattern, int color)
     int i;
     
     for (i = 0; i < 8; i++)
+    {
         fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = (uint8_t) *upattern++;
+    }
     
     bgi_fill_style.color = static_cast<bgiColors>(color);
     bgi_fill_style.pattern = bgiFillStyles::USER_FILL;
@@ -2097,9 +2398,13 @@ void GfxCanvas::SDL_bgi::settextstyle (int font, bgiDirection direction, int cha
     // and the size of the characters.
     
     if (bgiDirection::VERT_DIR == direction)
+    {
         bgi_txt_style.direction = bgiDirection::VERT_DIR;
+    }
     else
+    {
         bgi_txt_style.direction = bgiDirection::HORIZ_DIR;
+    }
     bgi_txt_style.charsize = bgi_font_mag_x = bgi_font_mag_y = charsize;
     
 } // settextstyle ()
@@ -2121,8 +2426,10 @@ void GfxCanvas::SDL_bgi::setviewport (int left, int top, int right, int bottom, 
 {
     // Sets the current viewport for graphics output.
     
-    if (left < 0 || right > bgi_maxx || top < 0 || bottom > bgi_maxy)
+    if ((left < 0) || (right > bgi_maxx) || (top < 0) || (bottom > bgi_maxy))
+    {
         return;
+    }
     
     vp.left = left;
     vp.top = top;
