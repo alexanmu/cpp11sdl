@@ -6,14 +6,21 @@
 //  Copyright © 2017 George Oros. All rights reserved.
 //
 
-#ifndef GfxCanvasData_h
-#define GfxCanvasData_h
+#ifndef GfxCanvasBgiData_h
+#define GfxCanvasBgiData_h
 
 #include <cstdint>
 
-class GfxCanvasData final
+class GfxCanvasBgiData final
 {
 public:
+    GfxCanvasBgiData() = delete;
+    GfxCanvasBgiData(const GfxCanvasBgiData&) = delete;
+    GfxCanvasBgiData(GfxCanvasBgiData&&) = delete;
+    
+    GfxCanvasBgiData& operator=(const GfxCanvasBgiData&) = delete;
+    GfxCanvasBgiData& operator=(GfxCanvasBgiData&&) = delete;
+
     static constexpr int MAXCOLORS = 15;
     static constexpr int PALETTE_SIZE = 4096;
     static constexpr int GFX_FONTDATAMAX = 8 * 256;
@@ -24,4 +31,4 @@ public:
     static unsigned char gfxPrimitivesFontdata[GFX_FONTDATAMAX];
 };
 
-#endif /* GfxCanvasData_h */
+#endif /* GfxCanvasBgiData_h */

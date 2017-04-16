@@ -63,9 +63,10 @@ public:
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     friend class GfxCanvas;
-    
+
     void putPixelPrv(const uint16_t x,const uint16_t y,const GfxColor& clr);
     std::unique_ptr<GfxColor> getPixelPrv(const uint16_t x, const uint16_t y);
+
     SdlTypePtr surf_;
 };
 
