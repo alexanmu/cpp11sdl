@@ -103,6 +103,12 @@ uint8_t GfxColor::getAlpha(void) const
     return clr_.a;
 }
 
+uint32_t GfxColor::getColor() const
+{
+    uint32_t c = clr_.a << 24 | clr_.r << 16 | clr_.g << 8 | clr_.b;
+    return c;
+}
+
 void GfxColor::setRed(const uint8_t r)
 {
     clr_.r = r;

@@ -1,14 +1,14 @@
 //
-//  GfxCanvasData.cpp
+//  GfxCanvasBgiData.cpp
 //  cpp11sdl
 //
 //  Created by George Oros on 4/16/17.
 //  Copyright © 2017 George Oros. All rights reserved.
 //
 
-#include "GfxCanvasData.hpp"
+#include "GfxCanvasBgiData.hpp"
 
-uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasData::MAXCOLORS] = { // 0 - 15
+uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::MAXCOLORS] = { // 0 - 15
     0xff000000, // BLACK
     0xff0000ff, // BLUE
     0xff00ff00, // GREEN
@@ -58,7 +58,7 @@ uint8_t GfxCanvasBgiData::fill_patterns[1 + 12/*static_cast<int>(GfxCanvas::SDL_
 
 /*  ZLIB (c) A. Schiffler 2012 */
 
-unsigned char GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasData::GFX_FONTDATAMAX] = {
+unsigned char GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::GFX_FONTDATAMAX] = {
     
     /*
      * 0 0x00 '^@'

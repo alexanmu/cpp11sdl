@@ -43,8 +43,9 @@ void _DoStuff(void)
     GfxRenderer r(w);
     GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
     
-    int c = 0;
     GfxSurface sb(960,480);
+    
+    /*int c = 0;
     for(int i = 0; i < 960; i++)
     {
         for (int j = 0; j < 480; j++)
@@ -56,13 +57,27 @@ void _DoStuff(void)
             c += 1;
             if (c == 16) c = 0;
         }
-    }
+    }*/
     GfxCanvas cv(sb);
-    cv.paint();
-    cv.circle(480,240,230);
-    cv.arc(480,240,10,350,239);
-    cv.outtextxy(480,240,"Diana e cretolina si dragutica!");
-
+    cv.bar(0,0,480,240,GfxConstants::vga16DarkGray());
+    cv.circle(480,240,230,GfxConstants::vga16LightGray());
+    cv.arc(480,240,60,300,239,GfxConstants::vga16White());
+    cv.outtextxy(480,240,"Diana e cretolina si dragutica!",GfxColor(50,100,200));
+    /*int c = 0;
+    for(int i = 0; i < 960; i++)
+    {
+        for (int j = 0; j < 480; j++)
+        {
+            cv.putpixel(i,j,GfxColor(0,0,0,c));//GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
+        }
+        if (((i + 1) % 60) == 0)
+        {
+            c += 1;
+            if (c == 16) c = 0;
+        }
+    }*/
+    cv.putpixel(0,0,GfxColor(0,0,0,1));
+    
     GfxSurface s(960,480);
     GfxRect rt;
 
@@ -71,8 +86,7 @@ void _DoStuff(void)
     int r1 = GfxConstants::vga16DarkGray().getRed();
     int g1 = GfxConstants::vga16DarkGray().getGreen();
     int b1 = GfxConstants::vga16DarkGray().getBlue();
-    std::string str;
-    int a1 = 255;
+    int a1 = 0;
 
     std::srand(static_cast<unsigned int>(time(0)));
     while(!quit)
@@ -134,14 +148,12 @@ void _DoStuff(void)
                 { dec(&r1); dec(&g1); dec(&b1); }
             }
 
-            str = std::to_string(r1) + ":" + std::to_string(g1) + ":" + std::to_string(b1) + "-" + std::to_string(a1);
-
             int rp = r1 * 100 / 255;
             int gp = g1 * 100 / 255;
             int bp = b1 * 100 / 255;
             std::string s2;
             
-            s2 = "[R:";
+            s2 = "[R(" + std::to_string(r1) + ")";
             for(int i = 0; i < rp / 10; i++)
             {
                 s2 += "=";
@@ -150,7 +162,7 @@ void _DoStuff(void)
             {
                 s2 += ".";
             }
-            s2 += "][G:";
+            s2 += "][G(" + std::to_string(g1) + ")";
             for(int i = 0; i < gp / 10; i++)
             {
                 s2 += "=";
@@ -159,7 +171,7 @@ void _DoStuff(void)
             {
                 s2 += ".";
             }
-            s2 += "][B:";
+            s2 += "][B(" + std::to_string(b1) + ")";
             for(int i = 0; i < bp / 10; i++)
             {
                 s2 += "=";
@@ -168,9 +180,9 @@ void _DoStuff(void)
             {
                 s2 += ".";
             }
-            s2 += "]";
+            s2 += "][A(" + std::to_string(a1) +")]";
             w.setTitle(s2);
-            GfxTexture tb(&r,sbi);
+            GfxTexture tb(&r,sb);
             tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
 
             rt.setX(0);

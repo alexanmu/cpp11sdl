@@ -64,7 +64,8 @@ public:
         LIGHTRED =       12,
         LIGHTMAGENTA =   13,
         YELLOW =         14,
-        WHITE =          15
+        WHITE =          15,
+        CUSTOM =         16
     };
     
     enum class bgiLineThickness : int
@@ -107,9 +108,6 @@ public:
         CLOSE_DOT_FILL =  11,
         USER_FILL =       12
     };
-    
-    GfxCanvasBgi();
-    void setCanvas(uint32_t* ptr,int maxx, int maxy);
     
     struct arccoordstype
     {
@@ -158,92 +156,98 @@ public:
         bool clip;
     };
     
-    void arc (int x, int y, int stangle, int endangle, int radius);
-    void bar3d (int left, int top, int right, int bottom, int depth, int topflag);
-    void bar (int left, int top,int right, int bottom);
-    void circle (int x, int y, int radius);
-    void cleardevice ();
-    void clearviewport ();
-    void drawpoly (int numpoints, int * polypoints);
-    void ellipse (int x, int y, int stangle, int endangle, int xradius, int yradius);
-    void fillellipse (int x, int y, int xradius, int yradius);
-    void fillpoly (int numpoints, int * polypoints);
-    void floodfill (int x, int y, bgiColors border);
-    void freeimage (void *);
-    void getarccoords (struct arccoordstype * arccoords);
-    bgiColors  getbkcolor (void);
-    bgiColors  getcolor (void);
-    struct palettetype *getdefaultpalette (void);
-    void getfillpattern (char * pattern);
-    void getfillsettings (struct fillsettingstype * fillinfo);
-    void getimage (int left, int top, int right, int bottom, void * bitmap);
-    void getlinesettings (struct linesettingstype * lineinfo);
-    int  getmaxcolor (void);
-    int  getmaxx (void);
-    int  getmaxy (void);
-    void getpalette (struct palettetype *);
-    int  getpalettesize (struct palettetype *);
-    unsigned int getpixel (int, int);
-    void gettextsettings (struct textsettingstype *);
-    void getviewsettings (struct viewporttype *);
-    int  getx (void);
-    int  gety (void);
-    void graphdefaults (void);
-    unsigned imagesize (int, int, int, int);
-    void line (int, int, int, int);
-    void linerel (int dx, int dy);
-    void lineto (int x, int y);
-    void moverel (int, int);
-    void moveto (int, int);
-    void outtext (char *);
-    void outtextxy (int, int, char *);
-    void pieslice (int, int, int, int, int);
-    void _putpixel (int, int);
-    void putimage (int, int, void *, bgiDrawingMode);
-    void putpixel (int, int, int);
-    void rectangle (int, int, int, int);
-    void sector (int, int, int, int, int, int);
-    void setallpalette (struct palettetype *);
-    void setalpha (int, uint8_t);
-    void setbkcolor (bgiColors);
-    void setcolor (bgiColors);
-    void setfillpattern (char *, int);
-    void setfillstyle (bgiFillStyles, int);
-    void setlinestyle (bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
-    void setpalette (int, int);
-    void settextjustify (bgiTextJustification, bgiTextJustification);
-    void settextstyle (int, bgiDirection, int);
-    void setusercharsize (int, int, int, int);
-    void setviewport (int, int, int, int, int);
-    void setwritemode (bgiDrawingMode);
-    int  textheight (char *);
-    int  textwidth (char *);
+    GfxCanvasBgi();
+    GfxCanvasBgi(const GfxCanvasBgi&) = delete;
+    GfxCanvasBgi(GfxCanvasBgi&&) = delete;
+    
+    GfxCanvasBgi& operator=(const GfxCanvasBgi&) = delete;
+    GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
+    
+    void setCanvas(const uint32_t* ptr,const int maxx,const int maxy);
+    void setCustomColor(const uint32_t color);
+
+    void arc(int x, int y, int stangle, int endangle, int radius);
+    void bar3d(int left, int top, int right, int bottom, int depth, int topflag);
+    void bar(int left, int top,int right, int bottom);
+    void circle(int x, int y, int radius);
+    void cleardevice(void);
+    void clearviewport(void);
+    void drawpoly(int numpoints, int * polypoints);
+    void ellipse(int x, int y, int stangle, int endangle, int xradius, int yradius);
+    void fillellipse(int x, int y, int xradius, int yradius);
+    void fillpoly(int numpoints, int * polypoints);
+    void floodfill(int x, int y, bgiColors border);
+    void freeimage(void * bitmap);
+    void getarccoords(struct arccoordstype * arccoords);
+    bgiColors getbkcolor(void);
+    bgiColors getcolor(void);
+    struct palettetype *getdefaultpalette(void);
+    void getfillpattern(char * pattern);
+    void getfillsettings(struct fillsettingstype * fillinfo);
+    void getimage(int left, int top, int right, int bottom, void * bitmap);
+    void getlinesettings(struct linesettingstype * lineinfo);
+    int getmaxcolor(void);
+    int getmaxx(void);
+    int getmaxy(void);
+    void getpalette(struct palettetype *);
+    int getpalettesize(struct palettetype *);
+    unsigned int getpixel(int x, int y);
+    void gettextsettings(struct textsettingstype *);
+    void getviewsettings(struct viewporttype *);
+    int getx(void);
+    int gety(void);
+    void graphdefaults(void);
+    unsigned imagesize(int, int, int, int);
+    void line(int, int, int, int);
+    void linerel(int dx, int dy);
+    void lineto(int x, int y);
+    void moverel(int, int);
+    void moveto(int, int);
+    void outtext(char *);
+    void outtextxy(int, int, char *);
+    void pieslice(int, int, int, int, int);
+    void _putpixel(int, int);
+    void putimage(int, int, void *, bgiDrawingMode);
+    void putpixel(int, int, int);
+    void rectangle(int, int, int, int);
+    void sector(int, int, int, int, int, int);
+    void setallpalette(struct palettetype *);
+    void setbkcolor(bgiColors);
+    void setcolor(bgiColors);
+    void setfillpattern(uint8_t* upattern,bgiColors color);
+    void setfillstyle(bgiFillStyles pattern, bgiColors color);
+    void setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
+    void setpalette(int, int);
+    void settextjustify(bgiTextJustification, bgiTextJustification);
+    void settextstyle(int, bgiDirection, int);
+    void setusercharsize(int, int, int, int);
+    void setviewport(int, int, int, int, int);
+    void setwritemode(bgiDrawingMode);
+    int textheight(char *);
+    int textwidth(char *);
 private:
-    void initpalette    (void);
-    void putpixel_copy  (int, int, uint32_t);
-    void putpixel_xor   (int, int, uint32_t);
-    void putpixel_and   (int, int, uint32_t);
-    void putpixel_or    (int, int, uint32_t);
-    void putpixel_not   (int, int, uint32_t);
-    void ff_putpixel    (int x, int);
-    uint32_t getpixel_raw (int, int);
-    
-    void line_copy (int, int, int, int);
-    void line_xor  (int, int, int, int);
-    void line_and  (int, int, int, int);
-    void line_or   (int, int, int, int);
-    void line_not  (int, int, int, int);
-    void line_fill (int, int, int, int);
-    void _floodfill (int, int, bgiColors);
-    
-    int  is_in_range      (int, int, int);
-    void swap_if_greater  (int *, int *);
-    void circle_bresenham (int, int, int);
-    int  octant           (int, int);
-    void _ellipse (int, int, int, int);
-    
-    void drawchar (unsigned char ch);
-    void _bar (int left, int top, int right, int bottom);
+    void initpalette(void);
+    void putpixel_copy(int, int, uint32_t);
+    void putpixel_xor(int, int, uint32_t);
+    void putpixel_and(int, int, uint32_t);
+    void putpixel_or(int, int, uint32_t);
+    void putpixel_not(int, int, uint32_t);
+    void ff_putpixel(int x, int);
+    uint32_t getpixel_raw(int, int);
+    void line_copy(int, int, int, int);
+    void line_xor(int, int, int, int);
+    void line_and(int, int, int, int);
+    void line_or(int, int, int, int);
+    void line_not(int, int, int, int);
+    void line_fill(int, int, int, int);
+    void _floodfill(int, int, bgiColors);
+    int  is_in_range(int, int, int);
+    void swap_if_greater(int *, int *);
+    void circle_bresenham(int, int, int);
+    int  octant(int, int);
+    void _ellipse(int, int, int, int);
+    void drawchar(unsigned char ch);
+    void _bar(int left, int top, int right, int bottom);
     
     // pixel data of active and visual pages
     uint32_t* bgi_activepage;
@@ -254,11 +258,7 @@ private:
     // updated with the new bgi_activepage contents; bgi_texture is then
     // copied to bgi_renderer, and finally bgi_renderer is made present.
     
-    // The palette contains the BGI colors, entries 0:MAXCOLORS;
-    // then three entries for temporary fg, bg, and fill RGB colors
-    // allocated with COLOR(); then user-defined RGB colors
-    
-    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 3 + GfxCanvasBgiData::PALETTE_SIZE]; // all colors
+    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 1]; // all colors
     
     bgiColors bgi_fg_color = bgiColors::WHITE;   // index of BGI foreground color
     bgiColors bgi_bg_color = bgiColors::BLACK;   // index of BGI background color

@@ -19,13 +19,21 @@ GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass("GfxCanvasBgi")
     bgi_maxy = -1;
 }
 
-void GfxCanvasBgi::setCanvas(uint32_t* ptr, int maxx, int maxy)
+void GfxCanvasBgi::setCanvas(const uint32_t* ptr, const int maxx, const int maxy)
 {
     graphdefaults();
-    bgi_activepage = ptr;    // active (= being drawn on) page; may be hidden
+    bgi_activepage = (uint32_t *)ptr;    // active (= being drawn on) page; may be hidden
     bgi_maxx = maxx - 1;
     bgi_maxy = maxy - 1;
 }
+
+void GfxCanvasBgi::setCustomColor(const uint32_t color)
+{
+    palette[static_cast<int>(bgiColors::CUSTOM)] = color;
+    bgi_fg_color = bgiColors::CUSTOM;
+}
+
+// -----
 
 int GfxCanvasBgi::is_in_range (int x, int x1, int x2)
 {
@@ -780,7 +788,7 @@ void GfxCanvasBgi::_floodfill (int x, int y, bgiColors border)
 
 #define random(range) (rand() % (range))
 
-void GfxCanvasBgi::floodfill (int x, int y, bgiColors border)
+void GfxCanvasBgi::floodfill(int x, int y, bgiColors border)
 {
     bgiColors oldcol;
     int found;
@@ -841,6 +849,13 @@ void GfxCanvasBgi::floodfill (int x, int y, bgiColors border)
     }
     
 } // floodfill ()
+
+// -----
+
+void GfxCanvasBgi::freeimage(void * bitmap)
+{
+    /* Caller manages memory */
+}
 
 // -----
 
@@ -960,7 +975,7 @@ int GfxCanvasBgi::getmaxcolor (void)
 {
     // Returns the maximum color value available (MAXCOLORS).
     
-    return GfxCanvasBgiData::PALETTE_SIZE;
+    return GfxCanvasBgiData::MAXCOLORS;
 } // getmaxcolor ()
 
 // -----
@@ -999,12 +1014,11 @@ void GfxCanvasBgi::getpalette (struct palettetype *palette)
 
 // -----
 
-int GfxCanvasBgi::getpalettesize (struct palettetype *palette)
+int GfxCanvasBgi::getpalettesize(struct palettetype *palette)
 {
     // Returns the size of the palette.
     
-    // !!! BUG - don't ignore the parameter
-    return 1 + GfxCanvasBgiData::MAXCOLORS + 3 + GfxCanvasBgiData::PALETTE_SIZE;
+    return 1 + GfxCanvasBgiData::MAXCOLORS;
 } // getpalettesize ()
 
 // -----
@@ -1983,7 +1997,7 @@ void GfxCanvasBgi::_putpixel (int x, int y)
 void GfxCanvasBgi::putpixel_copy (int x, int y, uint32_t pixel)
 {
     // plain putpixel - no logical operations
-    
+
     // out of range?
     if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
     {
@@ -2249,23 +2263,7 @@ void GfxCanvasBgi::setcolor (bgiColors col)
 
 // -----
 
-void GfxCanvasBgi::setalpha (int col, uint8_t alpha)
-{
-    // Sets alpha transparency for 'col' to 'alpha' (0-255).
-    
-    uint32_t tmp;
-    
-    bgi_fg_color = static_cast<bgiColors>(col);
-    
-    tmp = palette[static_cast<int>(bgi_fg_color)] << 8; // get rid of alpha
-    tmp = tmp >> 8;
-    palette[static_cast<int>(bgi_fg_color)] = ((uint32_t)alpha << 24) | tmp;
-    
-} // setcoloralpha ()
-
-// -----
-
-void GfxCanvasBgi::setfillpattern (char *upattern, int color)
+void GfxCanvasBgi::setfillpattern(uint8_t *upattern,bgiColors color)
 {
     // Sets a user-defined fill pattern.
     
@@ -2273,23 +2271,24 @@ void GfxCanvasBgi::setfillpattern (char *upattern, int color)
     
     for (i = 0; i < 8; i++)
     {
-        GfxCanvasBgiData::fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = (uint8_t) *upattern++;
+        GfxCanvasBgiData::fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = *upattern;
+        upattern += 1;
     }
     
-    bgi_fill_style.color = static_cast<bgiColors>(color);
+    bgi_fill_style.color = color;
     bgi_fill_style.pattern = bgiFillStyles::USER_FILL;
     
 } // setfillpattern ()
 
 // -----
 
-void GfxCanvasBgi::setfillstyle (bgiFillStyles pattern, int color)
+void GfxCanvasBgi::setfillstyle(bgiFillStyles pattern, bgiColors color)
 {
     // Sets the fill pattern and fill color.
     
     bgi_fill_style.pattern = pattern;
     
-    bgi_fill_style.color = static_cast<bgiColors>(color);
+    bgi_fill_style.color = color;
     
 } // setfillstyle ()
 

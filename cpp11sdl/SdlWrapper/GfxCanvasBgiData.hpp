@@ -22,7 +22,6 @@ public:
     GfxCanvasBgiData& operator=(GfxCanvasBgiData&&) = delete;
 
     static constexpr int MAXCOLORS = 15;
-    static constexpr int PALETTE_SIZE = 4096;
     static constexpr int GFX_FONTDATAMAX = 8 * 256;
     
     static uint32_t bgi_palette[1 + MAXCOLORS];

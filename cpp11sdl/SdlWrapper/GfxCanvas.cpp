@@ -55,20 +55,33 @@ void GfxCanvas::paint(void)
         }
 }
 
-void GfxCanvas::circle(const uint16_t x, const uint16_t y, const uint16_t r)
+void GfxCanvas::circle(const uint16_t x, const uint16_t y, const uint16_t radius,const GfxColor& clr)
 {
-    bgi_.setcolor(SDL_bgi::bgiColors::WHITE);
-	bgi_.circle(x,y,r);
+    bgi_.setCustomColor(clr.getColor());
+	bgi_.circle(x,y,radius);
 }
 
-void GfxCanvas::arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius)
+void GfxCanvas::arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius,const GfxColor& clr)
 {
-	bgi_.setcolor(SDL_bgi::bgiColors::YELLOW);
+	bgi_.setCustomColor(clr.getColor());
 	bgi_.arc(x,y,stangle,endangle,radius);
 }
 
-void GfxCanvas::outtextxy(const uint16_t x, const uint16_t y,std::string text)
+void GfxCanvas::outtextxy(const uint16_t x, const uint16_t y,std::string text,const GfxColor& clr)
 {
-	bgi_.setcolor(SDL_bgi::bgiColors::LIGHTRED);
+	bgi_.setCustomColor(clr.getColor());
 	bgi_.outtextxy(x,y,(char *)text.c_str());
+}
+
+void GfxCanvas::bar(const uint16_t x1, const uint16_t y1, const uint16_t x2, const uint16_t y2, const GfxColor& clr)
+{
+    bgi_.setCustomColor(clr.getColor());
+    bgi_.bar(x1,y1,x2,y2);
+}
+
+void GfxCanvas::putpixel(const uint16_t x, const uint16_t y, const GfxColor& clr)
+{
+    int c = clr.getAlpha();
+    bgi_.setcolor(static_cast<GfxCanvasBgi::bgiColors>(c));
+    bgi_._putpixel(x, y);
 }

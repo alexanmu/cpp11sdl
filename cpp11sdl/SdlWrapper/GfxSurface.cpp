@@ -70,7 +70,7 @@ GfxSurface::GfxSurface(std::string&& filename) : GfxRootClass("GfxSurface")
     }
     if (tmpsurfptr->format != nullptr)
     {
-        if (tmpsurfptr->format->format != SDL_PIXELFORMAT_RGBA32)
+        if (tmpsurfptr->format->format != SDL_PIXELFORMAT_ARGB8888)
         {
             // convert here
         }

@@ -36,6 +36,8 @@ public:
     uint8_t getBlue(void) const;
     uint8_t getAlpha(void) const;
     
+    uint32_t getColor(void) const;
+
     /* Setters ... */
     void setRed(const uint8_t r);
     void setGreen(const uint8_t g);

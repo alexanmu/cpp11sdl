@@ -20,11 +20,14 @@ public:
     GfxCanvas() = delete;
     GfxCanvas(GfxSurface& surf);
     
-    void paint(void);
-    void circle(const uint16_t x, const uint16_t y, const uint16_t r);
-    void arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius);
-    void outtextxy(const uint16_t x, const uint16_t y,std::string text);
+    void circle(const uint16_t x, const uint16_t y, const uint16_t radius,const GfxColor& clr);
+    void arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius,const GfxColor& clr);
+    void outtextxy(const uint16_t x, const uint16_t y,std::string text,const GfxColor& clr);
+    void bar(const uint16_t x1, const uint16_t y1, const uint16_t x2, const uint16_t y2, const GfxColor& clr);
+    void putpixel(const uint16_t x, const uint16_t y, const GfxColor& clr);
 private:
+    void paint(void);
+
     GfxCanvasBgi bgi_;
     GfxSurface& surf_;
 };
