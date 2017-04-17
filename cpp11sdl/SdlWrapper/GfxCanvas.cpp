@@ -76,12 +76,14 @@ void GfxCanvas::outtextxy(const uint16_t x, const uint16_t y,std::string text,co
 void GfxCanvas::bar(const uint16_t x1, const uint16_t y1, const uint16_t x2, const uint16_t y2, const GfxColor& clr)
 {
     bgi_.setCustomColor(clr.getColor());
+    bgi_.setfillstyle(GfxCanvasBgi::bgiFillStyles::SOLID_FILL,GfxCanvasBgi::bgiColors::CUSTOM);
     bgi_.bar(x1,y1,x2,y2);
 }
 
 void GfxCanvas::putpixel(const uint16_t x, const uint16_t y, const GfxColor& clr)
 {
-    int c = clr.getAlpha();
-    bgi_.setcolor(static_cast<GfxCanvasBgi::bgiColors>(c));
+    uint32_t c = clr.getColor();
+
+    bgi_.setCustomColor(c);
     bgi_._putpixel(x, y);
 }

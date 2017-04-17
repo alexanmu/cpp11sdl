@@ -45,8 +45,8 @@ void _DoStuff(void)
     
     GfxSurface sb(960,480);
     
-    /*int c = 0;
-    for(int i = 0; i < 960; i++)
+    int c = 0;
+    /*for(int i = 0; i < 960; i++)
     {
         for (int j = 0; j < 480; j++)
         {
@@ -58,25 +58,25 @@ void _DoStuff(void)
             if (c == 16) c = 0;
         }
     }*/
+    
     GfxCanvas cv(sb);
-    cv.bar(0,0,480,240,GfxConstants::vga16DarkGray());
-    cv.circle(480,240,230,GfxConstants::vga16LightGray());
-    cv.arc(480,240,60,300,239,GfxConstants::vga16White());
+    cv.circle(480,240,230,GfxConstants::vga16Green());
+    cv.arc(480,240,60,300,239,GfxConstants::vga16Red());
     cv.outtextxy(480,240,"Diana e cretolina si dragutica!",GfxColor(50,100,200));
-    /*int c = 0;
+    cv.bar(480,0,960,240,GfxConstants::vga16Blue());
+    c = 0;
     for(int i = 0; i < 960; i++)
     {
-        for (int j = 0; j < 480; j++)
+        for (int j = 240; j < 480; j++)
         {
-            cv.putpixel(i,j,GfxColor(0,0,0,c));//GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
+            cv.putpixel(i,j,GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
             if (c == 16) c = 0;
         }
-    }*/
-    cv.putpixel(0,0,GfxColor(0,0,0,1));
+    }
     
     GfxSurface s(960,480);
     GfxRect rt;

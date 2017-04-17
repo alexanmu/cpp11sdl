@@ -31,6 +31,8 @@ void GfxCanvasBgi::setCustomColor(const uint32_t color)
 {
     palette[static_cast<int>(bgiColors::CUSTOM)] = color;
     bgi_fg_color = bgiColors::CUSTOM;
+    bgi_bg_color = bgiColors::CUSTOM;
+    
 }
 
 // -----
