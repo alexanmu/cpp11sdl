@@ -1,10 +1,25 @@
-//
-//  main.cpp
-//  cpp11sdl
-//
-//  Created by George Oros on 4/2/17.
-//  Copyright © 2017 George Oros. All rights reserved.
-//
+/*
+  CPP11SDL
+  Copyright (C) 2017 George Oros
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  See copyright notice at http://lidsdl.org/license.php
+*/
 
 #include <iostream>
 #include <string>
@@ -60,16 +75,31 @@ void _DoStuff(void)
     }*/
     
     GfxCanvas cv(sb);
-    cv.circle(480,240,230,GfxConstants::vga16Green());
-    cv.arc(480,240,60,300,239,GfxConstants::vga16Red());
-    cv.outtextxy(480,240,"Diana e cretolina si dragutica!",GfxColor(50,100,200));
-    cv.bar(480,0,960,240,GfxConstants::vga16Blue());
+    cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxConstants::vga16Green());
+    cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vga16Red());
+    cv.OutText(GfxPoint(360,232),GfxString("Diana!"),GfxColor(50,100,200));
+    cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxConstants::vga16LightRed());
+    cv.Bar(GfxRect(10,10,20,20),GfxConstants::vga16Red());
+    cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxConstants::vga16Green());
+    cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
+    cv.Line(GfxPoint(10,10),GfxPoint(40,40),GfxConstants::vga16Yellow());
+    cv.OutText(GfxPoint(50,50),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(210,210,20),GfxConstants::std8x16Font());
+    cv.OutText(GfxPoint(70,70),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(150,100,200));
+
+
+    cv.Bar(GfxPoint(100,100),GfxPoint(300,200),GfxConstants::vga16LightGray());
+    cv.OutText(GfxPoint(120,120),GfxString("3D Text, custom font"),GfxConstants::vga16White(),GfxConstants::std8x16Font());
+    cv.OutText(GfxPoint(121,121),GfxString("3D Text, custom font"),GfxConstants::vga16Black(),GfxConstants::std8x16Font());
+    cv.OutText(GfxPoint(120,140),GfxString("3D Text, BGI_sdl font"),GfxConstants::vga16White());
+    cv.OutText(GfxPoint(121,141),GfxString("3D Text, BGI_sdl font"),GfxConstants::vga16Black());
+
+
     c = 0;
     for(int i = 0; i < 960; i++)
     {
         for (int j = 240; j < 480; j++)
         {
-            cv.putpixel(i,j,GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
+            cv.PutPixel(GfxPoint(i,j),GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
