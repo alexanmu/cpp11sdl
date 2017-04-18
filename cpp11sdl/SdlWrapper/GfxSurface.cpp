@@ -1,10 +1,25 @@
-//
-//  GfxSurface.cpp
-//  FirstProject
-//
-//  Created by George Oros on 4/1/17.
-//  Copyright © 2017 George Oros. All rights reserved.
-//
+/*
+  CPP11SDL
+  Copyright (C) 2017 George Oros
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  See copyright notice at http://lidsdl.org/license.php
+*/
 
 #include "GfxSurface.hpp"
 
@@ -104,21 +119,38 @@ GfxSurface::~GfxSurface()
 
 int GfxSurface::getWidth(void) const
 {
+    if (surf_ == nullptr)
+    {
+        return -1;
+    }
     return surf_->w;
 }
 
 int GfxSurface::getHeight(void) const
 {
+    if (surf_ == nullptr)
+    {
+        return -1;
+    }
     return surf_->h;
 }
 
 int GfxSurface::getDepth(void) const
 {
+    if (surf_ == nullptr)
+    {
+        return -1;
+    }
     return surf_->format->BitsPerPixel;
 }
 
 std::unique_ptr<GfxPixelFormat> GfxSurface::getFormat(void)
 {
+    if (surf_ == nullptr)
+    {
+        return nullptr;
+    }
+
     std::unique_ptr<GfxPixelFormat> p { new GfxPixelFormat(surf_->format) };
     
     return p;
@@ -127,7 +159,11 @@ std::unique_ptr<GfxPixelFormat> GfxSurface::getFormat(void)
 void GfxSurface::fillRect(const GfxRect& rect,const GfxColor& color)
 {
     uint32_t clr;
-    
+
+    if (surf_ == nullptr)
+    {
+        return;
+    }
     clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
     SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
 }
@@ -135,7 +171,11 @@ void GfxSurface::fillRect(const GfxRect& rect,const GfxColor& color)
 void GfxSurface::fillRect(const GfxColor& color)
 {
     uint32_t clr;
-    
+
+    if (surf_ == nullptr)
+    {
+        return;
+    }
     clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
     SDL_FillRect(surf_, NULL, clr);
 }
@@ -153,11 +193,19 @@ void GfxSurface::fillRects(const std::vector<GfxRect>& rects,const GfxColor& col
 
 void GfxSurface::blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr)
 {
+    if (surf_ == nullptr)
+    {
+        return;
+    }
     SDL_BlitSurface(src.getAsSdlTypePtr(),srcr.getAsSdlTypePtr(),surf_,dstr.getAsSdlTypePtr());
 }
 
 void GfxSurface::blitSurface(const GfxSurface& src)
 {
+    if (surf_ == nullptr)
+    {
+        return;
+    }
     SDL_BlitSurface(src.getAsSdlTypePtr(),NULL,surf_,NULL);
 }
 
@@ -173,11 +221,15 @@ void GfxSurface::putPixel(const uint16_t x,const uint16_t y,const GfxColor& colo
         // error handling here
         return;
     }
+    SDL_LockSurface(surf_);
     putPixelPrv(x,y,color);
+    SDL_UnlockSurface(surf_);
 }
 
 std::unique_ptr<GfxColor> GfxSurface::getPixel(const uint16_t x, const uint16_t y)
 {
+    std::unique_ptr<GfxColor> pix;
+
     if (surf_ == nullptr)
     {
         // error handling here
@@ -188,7 +240,10 @@ std::unique_ptr<GfxColor> GfxSurface::getPixel(const uint16_t x, const uint16_t 
         // error handling here
         return nullptr;
     }
-    return getPixelPrv(x,y);
+    SDL_LockSurface(surf_);
+    pix = getPixelPrv(x,y);
+    SDL_UnlockSurface(surf_);
+    return pix;
 }
 
 void GfxSurface::destroySurface(void)

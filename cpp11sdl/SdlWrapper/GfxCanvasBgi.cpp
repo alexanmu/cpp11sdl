@@ -1,15 +1,33 @@
-//
-//  GfxBgi.cpp
-//  cpp11sdl
-//
-//  Created by George Oros on 4/16/17.
-//  Copyright © 2017 George Oros. All rights reserved.
-//
+/*
+  CPP11SDL
+  Copyright (C) 2017 George Oros
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  See copyright notice at http://lidsdl.org/license.php
+
+  Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
+*/
 
 #include "GfxCanvasBgi.hpp"
 
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 
 GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass("GfxCanvasBgi")
 {
@@ -27,12 +45,36 @@ void GfxCanvasBgi::setCanvas(const uint32_t* ptr, const int maxx, const int maxy
     bgi_maxy = maxy - 1;
 }
 
-void GfxCanvasBgi::setCustomColor(const uint32_t color)
+void GfxCanvasBgi::setCustomForegroundColor(const uint32_t color)
 {
-    palette[static_cast<int>(bgiColors::CUSTOM)] = color;
-    bgi_fg_color = bgiColors::CUSTOM;
-    bgi_bg_color = bgiColors::CUSTOM;
-    
+    palette[static_cast<int>(bgiColors::CUSTOM_FG)] = color;
+    bgi_fg_color = bgiColors::CUSTOM_FG;
+}
+
+void GfxCanvasBgi::setCustomBackgroundColor(const uint32_t color)
+{
+    palette[static_cast<int>(bgiColors::CUSTOM_BG)] = color;
+    bgi_bg_color = bgiColors::CUSTOM_BG;
+}
+
+void GfxCanvasBgi::setCustomFillColor(const uint32_t color)
+{
+    palette[static_cast<int>(bgiColors::CUSTOM_FILL)] = color;
+    bgi_fill_style.color = GfxCanvasBgi::bgiColors::CUSTOM_FILL;
+}
+
+void GfxCanvasBgi::setCustomFont(const uint8_t* fontBitmapData, const uint8_t fontWidth, const uint8_t fontHeight)
+{
+    bgi_font_width = fontWidth;
+    bgi_font_height = fontHeight;
+    fontptr = fontBitmapData;
+}
+
+void GfxCanvasBgi::setDefaultFont(void)
+{
+    bgi_font_width = 8;
+    bgi_font_height = 8;
+    fontptr = GfxCanvasBgiData::gfxPrimitivesFontdata;
 }
 
 // -----
@@ -301,8 +343,7 @@ void GfxCanvasBgi::swap_if_greater (int *x1, int *x2)
 
 // -----
 
-void GfxCanvasBgi::ellipse (int x, int y, int stangle, int endangle,
-                                  int xradius, int yradius)
+void GfxCanvasBgi::ellipse (int x, int y, int stangle, int endangle, int xradius, int yradius)
 {
     // Draws an elliptical arc centered at (x, y), with axes given by
     // xradius and yradius, traveling from stangle to endangle.
@@ -405,7 +446,7 @@ void GfxCanvasBgi::_ellipse (int cx, int cy, int xradius, int yradius)
     x = 0;
     y = yradius;
     xchange = yradius*yradius;
-    ychange = xradius*xradius*(1 - 2*yradius);
+    ychange = xradius*xradius*(1 - 2 * yradius);
     ellipseerror = 0;
     StoppingX = 0;
     StoppingY = TwoASquare*yradius;
@@ -682,8 +723,7 @@ Segment* sp = stack; // stack of filled segments
 static inline void ff_push (int y, int xl, int xr, int dy, int bottom, int top)
 {
     // push new segment on stack
-    if ((sp < stack + STACKSIZE) && (y + dy >= 0) &&
-        ((y + dy) <= (bottom - top)) )
+    if ((sp < stack + STACKSIZE) && (y + dy >= 0) && ((y + dy) <= (bottom - top)) )
     {
         sp->y = y;
         sp->xl = xl;
@@ -736,14 +776,14 @@ void GfxCanvasBgi::_floodfill (int x, int y, bgiColors border)
         // segment of scan line y-dy for x1<=x<=x2 was previously filled,
         // now explore adjacent pixels in scan line y
         
-        for (x = x1; x >= 0 && getpixel (x, y) == oldcol; x--)
+        for (x = x1; (x >= 0) && (getpixel (x, y) == oldcol); x--)
         {
             ff_putpixel (x, y);
         }
         
         if (x >= x1)
         {
-            for (x++; x <= x2 && getpixel (x, y) == static_cast<int>(border); x++)
+            for (x++; (x <= x2) && (getpixel (x, y) == static_cast<uint32_t>(border)); x++)
             {
                 ;
             }
@@ -765,7 +805,7 @@ void GfxCanvasBgi::_floodfill (int x, int y, bgiColors border)
         
         do
         {
-            for (x1 = x; x <= vp.right && getpixel (x, y) != static_cast<int>(border); x++)
+            for (x1 = x; (x <= vp.right) && (getpixel (x, y) != static_cast<uint32_t>(border)); x++)
             {
                 ff_putpixel (x, y);
             }
@@ -774,7 +814,7 @@ void GfxCanvasBgi::_floodfill (int x, int y, bgiColors border)
             {
                 ff_push (y, x2 + 1, x - 1, -dy,vp.bottom, vp.top);    // leak on right?
             }
-            for (x++; x <= x2 && getpixel (x, y) == static_cast<int>(border); x++)
+            for (x++; (x <= x2) && (getpixel (x, y) == static_cast<uint32_t>(border)); x++)
             {
                 ;
             }
@@ -950,9 +990,9 @@ void GfxCanvasBgi::getimage (int left, int top, int right, int bottom, void *bit
     memcpy (tmp + 1, &bitmap_h, sizeof (uint32_t));
     
     // copy image to bitmap
-    for (y = top + vp.top; y <= bottom + vp.top; y++)
+    for (y = (top + vp.top); y <= (bottom + vp.top); y++)
     {
-        for (x = left + vp.left; x <= right + vp.left; x++)
+        for (x = (left + vp.left); x <= (right + vp.left); x++)
         {
             tmp [i++] = getpixel_raw (x, y);
         }
@@ -1053,7 +1093,7 @@ unsigned int GfxCanvasBgi::getpixel (int x, int y)
     
     // now find the colour
     
-    for (col = static_cast<int>(bgiColors::BLACK); col < static_cast<int>(bgiColors::WHITE) + 1; col++)
+    for (col = static_cast<int>(bgiColors::BLACK); col < (static_cast<int>(bgiColors::WHITE) + 1); col++)
     {
         if (tmp == palette[col])
         {
@@ -1156,7 +1196,7 @@ void GfxCanvasBgi::graphdefaults (void)
     
     // initialise the palette
     pal.size = 1 + GfxCanvasBgiData::MAXCOLORS;
-    for (i = 0; i < GfxCanvasBgiData::MAXCOLORS + 1; i++)
+    for (i = 0; i < (GfxCanvasBgiData::MAXCOLORS + 1); i++)
     {
         pal.colors[i] = i;
     }
@@ -1180,7 +1220,7 @@ void GfxCanvasBgi::initpalette (void)
 {
     int i;
     
-    for (i = static_cast<int>(bgiColors::BLACK); i < static_cast<int>(bgiColors::WHITE) + 1; i++)
+    for (i = static_cast<int>(bgiColors::BLACK); i < (static_cast<int>(bgiColors::WHITE) + 1); i++)
     {
         palette[i] = GfxCanvasBgiData::bgi_palette[i];
     }
@@ -1692,14 +1732,14 @@ void GfxCanvasBgi::drawchar (unsigned char ch)
     
     // for each of the 8 bytes that make up the font
     
-    for (i = 0; i < 8; i++)
+    for (i = 0; i < bgi_font_height; i++)
     {
         
-        k = fontptr[8*ch + i];
+        k = fontptr[bgi_font_height*ch + i];
         
         // scan horizontal line
         
-        for (j = 0; j < 8; j++)
+        for (j = 0; j < bgi_font_width; j++)
         {
             
             if ( (k << j) & 0x80)
@@ -1724,11 +1764,11 @@ void GfxCanvasBgi::drawchar (unsigned char ch)
     
     if (bgiDirection::HORIZ_DIR == bgi_txt_style.direction)
     {
-        bgi_cp_x += 8 * bgi_font_mag_x;
+        bgi_cp_x += bgi_font_width * bgi_font_mag_x;
     }
     else
     {
-        bgi_cp_y -= 8 * bgi_font_mag_y;
+        bgi_cp_y -= bgi_font_height * bgi_font_mag_y;
     }
     
     bgi_bg_color = tmp;
@@ -1742,8 +1782,10 @@ void GfxCanvasBgi::outtext (char *textstring)
     // Outputs textstring at the CP.
     
     outtextxy (bgi_cp_x, bgi_cp_y, textstring);
-    if ( (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) &&
-        (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz))
+    if  (
+         (bgiDirection::HORIZ_DIR == bgi_txt_style.direction) &&
+         (bgiTextJustification::LEFT_TEXT == bgi_txt_style.horiz)
+        )
     {
         bgi_cp_x += textwidth (textstring);
     }
@@ -1765,7 +1807,9 @@ void GfxCanvasBgi::outtextxy (int x, int y, char *textstring)
     
     tw = textwidth (textstring);
     if (0 == tw)
+    {
         return;
+    }
     
     th = textheight (textstring);
     
@@ -1844,7 +1888,7 @@ void GfxCanvasBgi::outtextxy (int x, int y, char *textstring)
     tmp = bgi_line_style.thickness;
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
     
-    for (i = 0; i < strlen (textstring); i++)
+    for (i = 0; i < (int)std::strlen (textstring); i++)
     {
         drawchar (textstring[i]);
     }
@@ -1922,9 +1966,9 @@ void GfxCanvasBgi::putimage (int left, int top, void *bitmap, bgiDrawingMode op)
     memcpy (&bitmap_h, tmp + 1, sizeof (uint32_t));
     
     // put bitmap to the screen
-    for (y = top + vp.top; y < (top + vp.top + bitmap_h); y++)
+    for (y = (top + vp.top); y < (int)(top + vp.top + bitmap_h); y++)
     {
-        for (x = left + vp.left; x < (left + vp.left + bitmap_w); x++)
+        for (x = (left + vp.left); x < (int)(left + vp.left + bitmap_w); x++)
         {
             
             switch (op)
@@ -2183,8 +2227,7 @@ void GfxCanvasBgi::rectangle (int x1, int y1, int x2, int y2)
 
 // -----
 
-void GfxCanvasBgi::sector (int x, int y, int stangle, int endangle,
-                                 int xradius, int yradius)
+void GfxCanvasBgi::sector (int x, int y, int stangle, int endangle, int xradius, int yradius)
 {
     // Draws and fills an elliptical pie slice centered at (x, y),
     // horizontal and vertical radii given by xradius and yradius,
@@ -2405,7 +2448,7 @@ int GfxCanvasBgi::textwidth (char *textstring)
 {
     // Returns the height in pixels of a string.
     
-    return (strlen (textstring) * bgi_font_width * bgi_font_mag_x);
+    return (std::strlen (textstring) * bgi_font_width * bgi_font_mag_x);
 } // textwidth ()
 
 // --- end of file SDL_bgi.c

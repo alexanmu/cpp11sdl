@@ -1,10 +1,25 @@
-//
-//  GfxCanvas.hpp
-//  cpp11sdl
-//
-//  Created by Familia Oros on 14/04/17.
-//  Copyright © 2017 George Oros. All rights reserved.
-//
+/*
+  CPP11SDL
+  Copyright (C) 2017 George Oros
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  See copyright notice at http://lidsdl.org/license.php
+*/
 
 #ifndef GfxCanvas_hpp
 #define GfxCanvas_hpp
@@ -13,18 +28,27 @@
 #include "GfxConstants.hpp"
 #include "GfxSurface.hpp"
 #include "GfxCanvasBgi.hpp"
+#include "GfxPoint.hpp"
+#include "GfxRect.hpp"
+#include "GfxCanvasValues.hpp"
+#include "GfxBitmapFont.hpp"
 
 class GfxCanvas final : public GfxRootClass
 {
 public:
     GfxCanvas() = delete;
     GfxCanvas(GfxSurface& surf);
-    
-    void circle(const uint16_t x, const uint16_t y, const uint16_t radius,const GfxColor& clr);
-    void arc(const uint16_t x,const uint16_t y, const int stangle,const int endangle,const uint16_t radius,const GfxColor& clr);
-    void outtextxy(const uint16_t x, const uint16_t y,std::string text,const GfxColor& clr);
-    void bar(const uint16_t x1, const uint16_t y1, const uint16_t x2, const uint16_t y2, const GfxColor& clr);
-    void putpixel(const uint16_t x, const uint16_t y, const GfxColor& clr);
+
+    void Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr);
+    void Arc(const GfxPoint& pt, const GfxAngle& stangle,const GfxAngle& endangle,const GfxRadius& radius,const GfxColor& clr);
+    void OutText(const GfxPoint& pt,const GfxString& text,const GfxColor& clr);
+    void OutText(const GfxPoint& pt,const GfxString& text,const GfxColor& clr,const GfxBitmapFont& font);
+    void Bar(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
+    void Bar(const GfxRect& r, const GfxColor& clr);
+    void PutPixel(const GfxPoint& pt, const GfxColor& clr);
+    void Rect(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
+    void Rect(const GfxRect& r, const GfxColor& clr);
+    void Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
 private:
     void paint(void);
 

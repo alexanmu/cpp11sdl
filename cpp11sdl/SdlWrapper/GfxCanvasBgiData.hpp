@@ -1,10 +1,27 @@
-//
-//  GfxCanvasData.hpp
-//  cpp11sdl
-//
-//  Created by George Oros on 4/16/17.
-//  Copyright © 2017 George Oros. All rights reserved.
-//
+/*
+  CPP11SDL
+  Copyright (C) 2017 George Oros
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  See copyright notice at http://lidsdl.org/license.php
+
+  Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
+*/
 
 #ifndef GfxCanvasBgiData_h
 #define GfxCanvasBgiData_h
@@ -25,9 +42,9 @@ public:
     static constexpr int GFX_FONTDATAMAX = 8 * 256;
     
     static uint32_t bgi_palette[1 + MAXCOLORS];
-    static uint16_t line_patterns[1 + 4/*static_cast<int>(bgiLineStyle::USERBIT_LINE)*/];
-    static uint8_t fill_patterns[1 + 12/*static_cast<int>(GfxCanvas::SDL_bgi::bgiFillStyles::USER_FILL)*/][8];
-    static unsigned char gfxPrimitivesFontdata[GFX_FONTDATAMAX];
+    static uint16_t line_patterns[1 + 4/*static_cast<int>(GfxCanvasBgi::bgiLineStyle::USERBIT_LINE)*/];
+    static uint8_t fill_patterns[1 + 12/*static_cast<int>(GfxCanvasBgi::bgiFillStyles::USER_FILL)*/][8];
+    static uint8_t gfxPrimitivesFontdata[GFX_FONTDATAMAX];
 };
 
 #endif /* GfxCanvasBgiData_h */

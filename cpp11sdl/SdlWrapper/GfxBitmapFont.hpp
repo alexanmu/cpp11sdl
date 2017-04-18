@@ -21,44 +21,35 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef SdlInitQuit_hpp
-#define SdlInitQuit_hpp
+#ifndef gfxbitmapfont_hpp
+#define gfxbitmapfont_hpp
 
-#include "GfxSdlHeader.hpp"
+#include <cstdint>
+
 #include "GfxRootClass.hpp"
 
-class GfxInitQuit final : public GfxRootClass
+class GfxBitmapFont final : public GfxRootClass
 {
 public:
-    // Init Video, Audio or Everything ...
-    enum class GfxInitComponent
-    {
-        initVideo,
-        initAudio,
-        initEverything
-    };
-    
-    // No default constructor
-    GfxInitQuit() = delete;
-    
-    GfxInitQuit(GfxInitComponent gfxInitComp);
+    GfxBitmapFont();
+    GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight);
+    GfxBitmapFont(const GfxBitmapFont& other);
+    GfxBitmapFont(GfxBitmapFont&& other);
 
-    // Copy/Move constructors don't make sense
-    GfxInitQuit(const GfxInitQuit&) = delete;
-    GfxInitQuit(GfxInitQuit&&) = delete;
-    
-    // Forbid copy/move assignements
-    GfxInitQuit& operator=(const GfxInitQuit&) = delete;
-    GfxInitQuit& operator=(GfxInitQuit&&) = delete;
-    
-    // Explicit destructor to de-init SDL lib
-    ~GfxInitQuit();
-    
-    int getErrorCode() const;
-    GfxInitComponent getInitedComponent() const;
+    virtual ~GfxBitmapFont();
+
+    GfxBitmapFont& operator=(const GfxBitmapFont& other);
+    GfxBitmapFont& operator=(GfxBitmapFont&& other);
+
+    uint8_t* getFontData(void) const;
+    uint16_t getFontDataSize(void) const;
+    uint8_t getFontWidth(void) const;
+    uint8_t getFontHeight(void) const;
 private:
-    GfxInitComponent gfxInitComp_;
-    int errorcode_;
+    uint8_t* fontData_;
+    uint16_t fontDataSize_;
+    uint8_t fontWidth_;
+    uint8_t fontHeight_;
 };
 
-#endif /* GfxInitQuit_hpp */
+#endif // gfxbitmapfont_hpp

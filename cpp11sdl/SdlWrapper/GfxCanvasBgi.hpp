@@ -1,10 +1,27 @@
-//
-//  GfxBgi.hpp
-//  cpp11sdl
-//
-//  Created by George Oros on 4/16/17.
-//  Copyright © 2017 George Oros. All rights reserved.
-//
+/*
+  CPP11SDL
+  Copyright (C) 2017 George Oros
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  See copyright notice at http://lidsdl.org/license.php
+
+  Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
+*/
 
 #ifndef GfxBgi_hpp
 #define GfxBgi_hpp
@@ -65,7 +82,9 @@ public:
         LIGHTMAGENTA =   13,
         YELLOW =         14,
         WHITE =          15,
-        CUSTOM =         16
+        CUSTOM_FG =      16,
+        CUSTOM_BG =      17,
+        CUSTOM_FILL =    18
     };
     
     enum class bgiLineThickness : int
@@ -164,7 +183,11 @@ public:
     GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
     
     void setCanvas(const uint32_t* ptr,const int maxx,const int maxy);
-    void setCustomColor(const uint32_t color);
+    void setCustomForegroundColor(const uint32_t color);
+    void setCustomBackgroundColor(const uint32_t color);
+    void setCustomFillColor(const uint32_t color);
+    void setCustomFont(const uint8_t* fontBitmapData, const uint8_t fontWidth, const uint8_t fontHeight);
+    void setDefaultFont(void);
 
     void arc(int x, int y, int stangle, int endangle, int radius);
     void bar3d(int left, int top, int right, int bottom, int depth, int topflag);
@@ -258,7 +281,7 @@ private:
     // updated with the new bgi_activepage contents; bgi_texture is then
     // copied to bgi_renderer, and finally bgi_renderer is made present.
     
-    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 1]; // all colors
+    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 3]; // all colors
     
     bgiColors bgi_fg_color = bgiColors::WHITE;   // index of BGI foreground color
     bgiColors bgi_bg_color = bgiColors::BLACK;   // index of BGI background color
