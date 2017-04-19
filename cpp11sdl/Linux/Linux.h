@@ -32,6 +32,8 @@
 /* Linux specific stuff */
 #define __linux_machine
 #define __base_path "/home/goros/Pictures" 
+#define WIN_W 960
+#define WIN_H 480
 
 #endif
 #endif

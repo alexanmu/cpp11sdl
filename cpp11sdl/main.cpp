@@ -32,6 +32,8 @@
 #include "GfxTexture.hpp"
 #include "GfxConstants.hpp"
 #include "GfxCanvas.hpp"
+#include "Linux.h"
+#include "macOS.h"
 
 void inc(int* a)
 {
@@ -54,31 +56,31 @@ void _DoStuff(void)
         return;
     }
     
-    GfxWindow w("Window title",960,480);
+    GfxWindow w("Window title",WIN_W,WIN_H);
     GfxRenderer r(w);
     GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
     
-    GfxSurface sb(960,480);
+    GfxSurface sb(WIN_W,WIN_H);
     
     int c = 0;
-    /*for(int i = 0; i < 960; i++)
+    for(int i = 0; i < WIN_W; i++)
     {
-        for (int j = 0; j < 480; j++)
+        for (int j = 480; j < WIN_H; j++)
         {
-            sb.putPixel(i,j,GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
+            sb.putPixel(i,j,GfxConstants::vga16GetColorByIndex(c));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
             if (c == 16) c = 0;
         }
-    }*/
+    }
     
     GfxCanvas cv(sb);
-    cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxConstants::vga16Green());
-    cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vga16Red());
+    cv.Circle(GfxPoint(WIN_H,240),GfxRadius(230),GfxConstants::vga16Green());
+    cv.Arc(GfxPoint(WIN_H,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vga16Red());
     cv.OutText(GfxPoint(360,232),GfxString("Diana!"),GfxColor(50,100,200));
-    cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxConstants::vga16LightRed());
+    cv.Bar(GfxPoint(WIN_H,0),GfxPoint(WIN_W,240),GfxConstants::vga16LightRed());
     cv.Bar(GfxRect(10,10,20,20),GfxConstants::vga16Red());
     cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxConstants::vga16Green());
     cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
@@ -95,7 +97,7 @@ void _DoStuff(void)
 
 
     c = 0;
-    for(int i = 0; i < 960; i++)
+    for(int i = 0; i < WIN_W; i++)
     {
         for (int j = 240; j < 480; j++)
         {
@@ -108,7 +110,7 @@ void _DoStuff(void)
         }
     }
     
-    GfxSurface s(960,480);
+    GfxSurface s(WIN_W,WIN_H);
     GfxRect rt;
 
     SDL_Event e;
@@ -217,10 +219,10 @@ void _DoStuff(void)
 
             rt.setX(0);
             rt.setY(0);
-            rt.setWidth(960);
+            rt.setWidth(WIN_W);
             rt.setHeight(480);
             s.fillRect(rt,GfxColor(r1,g1,b1,a1));
-            //rt.setX(480);
+            //rt.setX(WIN_H);
             //s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
 
             GfxTexture t(&r,s);

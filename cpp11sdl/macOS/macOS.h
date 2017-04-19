@@ -31,6 +31,8 @@
 
 #define __macosx_machine
 #define __base_path "/Users/georgeoros/Documents/Dev/Files"
+#define WIN_W 1280
+#define WIN_H 800
 
 #endif
 
