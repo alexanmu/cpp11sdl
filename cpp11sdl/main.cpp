@@ -77,10 +77,10 @@ void _DoStuff(void)
     }
     
     GfxCanvas cv(sb);
-    cv.Circle(GfxPoint(WIN_H,240),GfxRadius(230),GfxConstants::vga16Green());
-    cv.Arc(GfxPoint(WIN_H,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vga16Red());
+    cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxConstants::vga16Green());
+    cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vga16Red());
     cv.OutText(GfxPoint(360,232),GfxString("Diana!"),GfxColor(50,100,200));
-    cv.Bar(GfxPoint(WIN_H,0),GfxPoint(WIN_W,240),GfxConstants::vga16LightRed());
+    cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxConstants::vga16LightRed());
     cv.Bar(GfxRect(10,10,20,20),GfxConstants::vga16Red());
     cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxConstants::vga16Green());
     cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
@@ -222,8 +222,8 @@ void _DoStuff(void)
             rt.setWidth(WIN_W);
             rt.setHeight(480);
             s.fillRect(rt,GfxColor(r1,g1,b1,a1));
-            //rt.setX(WIN_H);
-            //s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
+            rt.setX(480);
+            s.fillRect(rt,GfxColor(255-r1,255-g1,255-b1,a1));
 
             GfxTexture t(&r,s);
             t.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
