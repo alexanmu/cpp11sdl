@@ -23,16 +23,16 @@
 
 #include "GfxConstants.hpp"
 
-#include "fntStandard8x16.hpp"
-#include "fntAntique.hpp"
-#include "fntBroadway.hpp"
-#include "fntCourrier.hpp"
-#include "fntDragon.hpp"
-#include "fntMedieval.hpp"
-#include "fntRoman.hpp"
-#include "fntSansserif.hpp"
-#include "fntScript.hpp"
-#include "fntWacky.hpp"
+#include "../Fonts/fntStandard8x16.hpp"
+#include "../Fonts/fntAntique.hpp"
+#include "../Fonts/fntBroadway.hpp"
+#include "../Fonts/fntCourrier.hpp"
+#include "../Fonts/fntDragon.hpp"
+#include "../Fonts/fntMedieval.hpp"
+#include "../Fonts/fntRoman.hpp"
+#include "../Fonts/fntSansserif.hpp"
+#include "../Fonts/fntScript.hpp"
+#include "../Fonts/fntWacky.hpp"
 
 const std::vector<GfxColor> GfxConstants::colorsVGA16_ {
     {0x00,0x00,0x00},

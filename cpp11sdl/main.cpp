@@ -79,13 +79,15 @@ void _doStuff(void)
     GfxCanvas cv(sb);
     cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxConstants::vga16Green());
     cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vga16Red());
-    cv.OutText(GfxPoint(360,232),GfxString("Diana!"),GfxColor(50,100,200));
+    cv.OutText(GfxPoint(360,232),GfxString("sdl_BGI"),GfxColor(50,100,200));
     cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxConstants::vga16LightRed());
     cv.Bar(GfxRect(10,10,20,20),GfxConstants::vga16Red());
     cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxConstants::vga16Green());
     cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
     cv.Line(GfxPoint(10,10),GfxPoint(40,40),GfxConstants::vga16Yellow());
     cv.OutText(GfxPoint(50,50),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(150,100,200));
+    
+    std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
     for( int i = 0; i < GfxConstants::fntNumFonts; i++)
     {
         int x = 30;
@@ -93,7 +95,7 @@ void _doStuff(void)
         int r = 210 - i * 10;
         int g = 200 + i * 5;
         int b = 20 + i * 10;
-        cv.OutText(GfxPoint(x,y),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
+        cv.OutText(GfxPoint(x,y),GfxString(fontMsg),
                     GfxColor(r,g,b),GfxConstants::fntGetFontByIndex(static_cast<GfxConstants::GfxFontIndex>(i)));
     }
 

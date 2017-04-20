@@ -124,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				1915B7681E91101300147BDB /* cpp11sdl */,
-				19301B771EA90DE100A3D232 /* Fonts */,
 				1915B7701E91103100147BDB /* Frameworks */,
 				1915B7671E91101300147BDB /* Products */,
 			);
@@ -144,6 +143,7 @@
 				1915B7691E91101300147BDB /* main.cpp */,
 				19A84A4B1E94067A00C3E83C /* Playground.cpp */,
 				19A84A4C1E94067A00C3E83C /* Playground.hpp */,
+				19301B771EA90DE100A3D232 /* Fonts */,
 				19F226071EA276040042041B /* Linux */,
 				19F226051EA275E60042041B /* macOS */,
 				19BD5B5C1E9125F10043F8E1 /* SdlWrapper */,
@@ -176,6 +176,7 @@
 				19301B761EA90DD800A3D232 /* fntWacky.hpp */,
 			);
 			name = Fonts;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		19BD5B5C1E9125F10043F8E1 /* SdlWrapper */ = {
