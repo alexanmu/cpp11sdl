@@ -32,8 +32,8 @@
 #include "GfxTexture.hpp"
 #include "GfxConstants.hpp"
 #include "GfxCanvas.hpp"
-#include "Linux.h"
-#include "macOS.h"
+#include "Linux/Linux.h"
+#include "macOS/macOS.h"
 
 void inc(int* a)
 {
@@ -47,7 +47,7 @@ void dec(int* a)
     else *a -= 4;
 }
 
-void _DoStuff(void)
+void _doStuff(void)
 {
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
@@ -67,12 +67,12 @@ void _DoStuff(void)
     {
         for (int j = 480; j < WIN_H; j++)
         {
-            sb.putPixel(i,j,GfxConstants::vga16GetColorByIndex(c));
+            sb.putPixel(i,j,GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == 16) c = 0;
+            if (c == GfxConstants::vga16NumColors) c = 0;
         }
     }
     
@@ -85,15 +85,24 @@ void _DoStuff(void)
     cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxConstants::vga16Green());
     cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
     cv.Line(GfxPoint(10,10),GfxPoint(40,40),GfxConstants::vga16Yellow());
-    cv.OutText(GfxPoint(50,50),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(210,210,20),GfxConstants::std8x16Font());
-    cv.OutText(GfxPoint(70,70),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(150,100,200));
+    cv.OutText(GfxPoint(50,50),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(150,100,200));
+    for( int i = 0; i < GfxConstants::fntNumFonts; i++)
+    {
+        int x = 30;
+        int y = 60 + i * 16;
+        int r = 210 - i * 10;
+        int g = 200 + i * 5;
+        int b = 20 + i * 10;
+        cv.OutText(GfxPoint(x,y),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
+                    GfxColor(r,g,b),GfxConstants::fntGetFontByIndex(static_cast<GfxConstants::GfxFontIndex>(i)));
+    }
 
 
-    cv.Bar(GfxPoint(100,100),GfxPoint(300,200),GfxConstants::vga16LightGray());
-    cv.OutText(GfxPoint(120,120),GfxString("3D Text, custom font"),GfxConstants::vga16White(),GfxConstants::std8x16Font());
-    cv.OutText(GfxPoint(121,121),GfxString("3D Text, custom font"),GfxConstants::vga16Black(),GfxConstants::std8x16Font());
-    cv.OutText(GfxPoint(120,140),GfxString("3D Text, BGI_sdl font"),GfxConstants::vga16White());
-    cv.OutText(GfxPoint(121,141),GfxString("3D Text, BGI_sdl font"),GfxConstants::vga16Black());
+    cv.Bar(GfxPoint(600,100),GfxPoint(800,200),GfxConstants::vga16LightGray());
+    cv.OutText(GfxPoint(620,120),GfxString("3D Text, custom font"),GfxConstants::vga16White(),GfxConstants::fntScript());
+    cv.OutText(GfxPoint(621,121),GfxString("3D Text, custom font"),GfxConstants::vga16Black(),GfxConstants::fntScript());
+    cv.OutText(GfxPoint(620,140),GfxString("3D Text, BGI_sdl font"),GfxConstants::vga16White());
+    cv.OutText(GfxPoint(621,141),GfxString("3D Text, BGI_sdl font"),GfxConstants::vga16Black());
 
 
     c = 0;
@@ -106,7 +115,7 @@ void _DoStuff(void)
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == 16) c = 0;
+            if (c == GfxConstants::vga16NumColors) c = 0;
         }
     }
     
@@ -239,9 +248,10 @@ void _DoStuff(void)
 
 int main(int argc, const char * argv[])
 {
-    _DoStuff();
+    _doStuff();
     //Playground p;
-    //p.Play();
+    //p._doBenchmark();
+    //p._doFonts();
 
     return 0;
 }

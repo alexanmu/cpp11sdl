@@ -25,18 +25,27 @@
 #define Playground_hpp
 
 #include <cstdint>
+#include <string>
+#include <vector>
 
 class Playground
 {
 public:
-    void Play(void);
+    void _doBenchmark(void);
+    void _doFonts(void);
 private:
     void DoAlgo(int algo_index);
-    
+
     double Algo0(std::uint32_t* ptr);
     double Algo1(std::uint32_t* ptr);
     double Algo2(std::uint32_t* ptr);
     double Algo3(std::uint32_t* ptr);
+
+    std::vector<std::string> FindAllFiles(std::string bpath);
+    std::string ToHexStr(uint8_t c);
+    void ProcessBuffer(std::string buffname,uint8_t * buff);
+    std::string GetFntName(std::string fullname);
+    void ProcessFNTfile(std::string fullname);
 };
 
 #endif /* Playground_hpp */
