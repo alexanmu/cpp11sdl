@@ -51,6 +51,16 @@
 		1915B7711E91103100147BDB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		1915B7721E91103100147BDB /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		1915B7731E91103100147BDB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		19301B6D1EA90DD800A3D232 /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = cpp11sdl/Fonts/fntAntique.hpp; sourceTree = "<group>"; };
+		19301B6E1EA90DD800A3D232 /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntBroadway.hpp; path = cpp11sdl/Fonts/fntBroadway.hpp; sourceTree = "<group>"; };
+		19301B6F1EA90DD800A3D232 /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntCourrier.hpp; path = cpp11sdl/Fonts/fntCourrier.hpp; sourceTree = "<group>"; };
+		19301B701EA90DD800A3D232 /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntDragon.hpp; path = cpp11sdl/Fonts/fntDragon.hpp; sourceTree = "<group>"; };
+		19301B711EA90DD800A3D232 /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntMedieval.hpp; path = cpp11sdl/Fonts/fntMedieval.hpp; sourceTree = "<group>"; };
+		19301B721EA90DD800A3D232 /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntRoman.hpp; path = cpp11sdl/Fonts/fntRoman.hpp; sourceTree = "<group>"; };
+		19301B731EA90DD800A3D232 /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntSansserif.hpp; path = cpp11sdl/Fonts/fntSansserif.hpp; sourceTree = "<group>"; };
+		19301B741EA90DD800A3D232 /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntScript.hpp; path = cpp11sdl/Fonts/fntScript.hpp; sourceTree = "<group>"; };
+		19301B751EA90DD800A3D232 /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntStandard8x16.hpp; path = cpp11sdl/Fonts/fntStandard8x16.hpp; sourceTree = "<group>"; };
+		19301B761EA90DD800A3D232 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = cpp11sdl/Fonts/fntWacky.hpp; sourceTree = "<group>"; };
 		1942A3841E99377D00A7A5CD /* GfxRootClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRootClass.cpp; path = SdlWrapper/GfxRootClass.cpp; sourceTree = "<group>"; };
 		1942A3851E99377D00A7A5CD /* GfxRootClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRootClass.hpp; path = SdlWrapper/GfxRootClass.hpp; sourceTree = "<group>"; };
 		1974594F1E9552CF00AB302B /* GfxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxColor.cpp; path = SdlWrapper/GfxColor.cpp; sourceTree = "<group>"; };
@@ -114,8 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				1915B7681E91101300147BDB /* cpp11sdl */,
-				1915B7671E91101300147BDB /* Products */,
+				19301B771EA90DE100A3D232 /* Fonts */,
 				1915B7701E91103100147BDB /* Frameworks */,
+				1915B7671E91101300147BDB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +159,23 @@
 				1915B7731E91103100147BDB /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		19301B771EA90DE100A3D232 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				19301B6D1EA90DD800A3D232 /* fntAntique.hpp */,
+				19301B6E1EA90DD800A3D232 /* fntBroadway.hpp */,
+				19301B6F1EA90DD800A3D232 /* fntCourrier.hpp */,
+				19301B701EA90DD800A3D232 /* fntDragon.hpp */,
+				19301B711EA90DD800A3D232 /* fntMedieval.hpp */,
+				19301B721EA90DD800A3D232 /* fntRoman.hpp */,
+				19301B731EA90DD800A3D232 /* fntSansserif.hpp */,
+				19301B741EA90DD800A3D232 /* fntScript.hpp */,
+				19301B751EA90DD800A3D232 /* fntStandard8x16.hpp */,
+				19301B761EA90DD800A3D232 /* fntWacky.hpp */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		19BD5B5C1E9125F10043F8E1 /* SdlWrapper */ = {
