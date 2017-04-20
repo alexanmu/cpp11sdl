@@ -41,6 +41,8 @@ public:
 	GfxConstants& operator=(const GfxConstants&) = delete;
 	GfxConstants& operator=(GfxConstants&&) = delete;
 
+	static const int vga16NumColors = 16;
+
     enum class GfxVga16ColorIndex : int
 	{
 		indexBlack = 0,
@@ -61,6 +63,22 @@ public:
 		indexWhite = 15
 	};
 
+	static const int fntNumFonts = 10;
+
+	enum class GfxFontIndex : int
+	{
+		indexStandard8x16 = 0,
+		indexAntique = 1,
+		indexBroadway = 2,
+		indexCourrier = 3,
+		intdexDragon = 4,
+		indexMedieval = 5,
+		indexRoman = 6,
+		indexSansserif = 7,
+		indexScript = 8,
+		indexWacky = 9
+	};
+
 	static GfxColor vga16Black(void);
 	static GfxColor vga16Blue(void);
 	static GfxColor vga16Green(void);
@@ -79,12 +97,31 @@ public:
 	static GfxColor vga16White(void);
 
 	static GfxColor vga16GetColorByIndex(const GfxVga16ColorIndex index);
-	static GfxColor vga16GetColorByIndex(const uint8_t index);
 
-	static GfxBitmapFont std8x16Font(void);
+	static GfxBitmapFont fntStandard8x16(void);
+	static GfxBitmapFont fntAntique(void);
+	static GfxBitmapFont fntBroadway(void);
+	static GfxBitmapFont fntCourrier(void);
+	static GfxBitmapFont fntDragon(void);
+	static GfxBitmapFont fntMedieval(void);
+	static GfxBitmapFont fntRoman(void);
+	static GfxBitmapFont fntSansserif(void);
+	static GfxBitmapFont fntScript(void);
+	static GfxBitmapFont fntWacky(void);
+
+	static GfxBitmapFont fntGetFontByIndex(const GfxFontIndex index);
 private:
 	static const std::vector<GfxColor> colorsVGA16_;
-	static const uint8_t standard8x16FontBitmapData[16 * 256];
+	static const uint8_t fntStandard8x16Data[16 * 256];
+	static const uint8_t fntAntiqueData[16 * 256];
+	static const uint8_t fntBroadwayData[16 * 256];
+	static const uint8_t fntCourrierData[16 * 256];
+	static const uint8_t fntDragonData[16 * 256];
+	static const uint8_t fntMedievalData[16 * 256];
+	static const uint8_t fntRomanData[16 * 256];
+	static const uint8_t fntSansserifData[16 * 256];
+	static const uint8_t fntScriptData[16 * 256];
+	static const uint8_t fntWackyData[16 * 256];
 };
 
 #endif

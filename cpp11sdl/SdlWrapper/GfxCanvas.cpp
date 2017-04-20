@@ -66,7 +66,7 @@ void GfxCanvas::paint(void)
         for(int j = 0; j < 480; j++)
         {
             uint8_t c = compute2(i,j);
-            surf_.putPixelPrv(i,j,GfxConstants::vga16GetColorByIndex(c));
+            surf_.putPixelPrv(i,j,GfxConstants::vga16GetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
         }
 }
 
