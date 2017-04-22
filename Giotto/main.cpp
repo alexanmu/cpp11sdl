@@ -38,7 +38,7 @@
 
 void MsgBox(GfxWindow const& win)
 {
-    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagWarning };
+    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
     std::string title = "Title";
     std::string message = "Message";
     int numbuttons = 3;
@@ -47,13 +47,23 @@ void MsgBox(GfxWindow const& win)
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault,2,"Button2"},
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Button3"}
     };
-    GfxMessageBoxColor c[3] = { {255,0,0}, {64,64,64}, {192,192,192} };
+    GfxMessageBoxColor c[5] = { {255,0,0}, {250,220,190}, {192,92,9}, {50,100,200}, {255,255,255} };
     GfxMessageBoxColorScheme colorScheme(c);
 
     GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons,colorScheme);
+    //GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
     
     GfxMessageBox g(m);
-    g.showModal();
+    int r = g.showModal();
+    
+    std::string rez;
+    
+    rez = "Result = " + std::to_string(r);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                             rez.c_str(),
+                             "File is missing. Please reinstall the program.",
+                             NULL);
+
 }
 
 void inc(int* a)
