@@ -19,6 +19,9 @@
   3. This notice may not be removed or altered from any source distribution.
 
   See copyright notice at http://lidsdl.org/license.php
+ 
+  Font file SCRIPT.FNT I found many years ago on the internet. Please message
+  me asap if you think there is a copyright issue at play here.
 */
 
 #ifndef __fntScript_hpp__

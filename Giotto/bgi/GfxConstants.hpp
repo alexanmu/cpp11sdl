@@ -108,8 +108,8 @@ public:
 
 	static const GfxBitmapFont& fntGetFontByIndex(const GfxFontIndex index);
 private:
-	static const GfxColor colorsVGA16_[16];
-    static const GfxBitmapFont fonts_[10];
+	static const GfxColor colorsVGA16_[vgaNumColors];
+    static const GfxBitmapFont fonts_[fntNumFonts];
 
 	static const uint8_t fntStandard8x16Data_[16 * 256];
 	static const uint8_t fntAntiqueData_[16 * 256];
