@@ -52,8 +52,6 @@ public:
     void Rect(const GfxRect& r, const GfxColor& clr);
     void Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
 private:
-    void paint(void);
-
     GfxCanvasBgi bgi_;
     GfxSurface& surf_;
 };

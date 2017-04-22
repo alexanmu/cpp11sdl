@@ -24,9 +24,6 @@
 #ifndef gfxconstants_hpp
 #define gfxconstants_hpp
 
-#include <vector>
-
-#include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
 #include "GfxBitmapFont.hpp"
@@ -41,7 +38,7 @@ public:
 	GfxConstants& operator=(const GfxConstants&) = delete;
 	GfxConstants& operator=(GfxConstants&&) = delete;
 
-	static const int vga16NumColors = 16;
+	static const int vgaNumColors = 16;
 
     enum class GfxVga16ColorIndex : int
 	{
@@ -79,24 +76,24 @@ public:
 		indexWacky = 9
 	};
 
-	static GfxColor vga16Black(void);
-	static GfxColor vga16Blue(void);
-	static GfxColor vga16Green(void);
-	static GfxColor vga16Cyan(void);
-	static GfxColor vga16Red(void);
-	static GfxColor vga16Magenta(void);
-	static GfxColor vga16Brown(void);
-	static GfxColor vga16LightGray(void);
-	static GfxColor vga16DarkGray(void);
-	static GfxColor vga16LightBlue(void);
-	static GfxColor vga16LightGreen(void);
-	static GfxColor vga16LightCyan(void);
-	static GfxColor vga16LightRed(void);
-	static GfxColor vga16LightMagenta(void);
-	static GfxColor vga16Yellow(void);
-	static GfxColor vga16White(void);
+	static GfxColor vgaBlack(void);
+	static GfxColor vgaBlue(void);
+	static GfxColor vgaGreen(void);
+	static GfxColor vgaCyan(void);
+	static GfxColor vgaRed(void);
+	static GfxColor vgaMagenta(void);
+	static GfxColor vgaBrown(void);
+	static GfxColor vgaLightGray(void);
+	static GfxColor vgaDarkGray(void);
+	static GfxColor vgaLightBlue(void);
+	static GfxColor vgaLightGreen(void);
+	static GfxColor vgaLightCyan(void);
+	static GfxColor vgaLightRed(void);
+	static GfxColor vgaLightMagenta(void);
+	static GfxColor vgaYellow(void);
+	static GfxColor vgaWhite(void);
 
-	static GfxColor vga16GetColorByIndex(const GfxVga16ColorIndex index);
+	static GfxColor vgaGetColorByIndex(const GfxVga16ColorIndex index);
 
 	static GfxBitmapFont fntStandard8x16(void);
 	static GfxBitmapFont fntAntique(void);
@@ -111,7 +108,7 @@ public:
 
 	static GfxBitmapFont fntGetFontByIndex(const GfxFontIndex index);
 private:
-	static const std::vector<GfxColor> colorsVGA16_;
+	static const GfxColor colorsVGA16_[16];
 	static const uint8_t fntStandard8x16Data[16 * 256];
 	static const uint8_t fntAntiqueData[16 * 256];
 	static const uint8_t fntBroadwayData[16 * 256];
