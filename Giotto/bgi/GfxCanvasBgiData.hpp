@@ -28,7 +28,9 @@
 
 #include <cstdint>
 
-class GfxCanvasBgiData final
+#include "GfxRootClass.hpp"
+
+class GfxCanvasBgiData final : public GfxRootClass
 {
 public:
     GfxCanvasBgiData() = delete;
@@ -41,10 +43,10 @@ public:
     static constexpr int MAXCOLORS = 15;
     static constexpr int GFX_FONTDATAMAX = 8 * 256;
     
-    static uint32_t bgi_palette[1 + MAXCOLORS];
-    static uint16_t line_patterns[1 + 4/*static_cast<int>(GfxCanvasBgi::bgiLineStyle::USERBIT_LINE)*/];
-    static uint8_t fill_patterns[1 + 12/*static_cast<int>(GfxCanvasBgi::bgiFillStyles::USER_FILL)*/][8];
-    static uint8_t gfxPrimitivesFontdata[GFX_FONTDATAMAX];
+    static const uint32_t bgi_palette[1 + MAXCOLORS];
+    static /*const*/ uint16_t line_patterns[1 + 4/*static_cast<int>(GfxCanvasBgi::bgiLineStyle::USERBIT_LINE)*/];
+    static /*const*/ uint8_t fill_patterns[1 + 12/*static_cast<int>(GfxCanvasBgi::bgiFillStyles::USER_FILL)*/][8];
+    static const uint8_t gfxPrimitivesFontdata[GFX_FONTDATAMAX];
 };
 
 #endif /* GfxCanvasBgiData_h */

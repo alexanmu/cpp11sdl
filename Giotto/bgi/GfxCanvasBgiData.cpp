@@ -25,7 +25,7 @@
 
 #include "GfxCanvasBgiData.hpp"
 
-uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::MAXCOLORS] = { // 0 - 15
+const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::MAXCOLORS] = { // 0 - 15
     0xff000000, // BLACK
     0xff0000ff, // BLUE
     0xff00ff00, // GREEN
@@ -44,7 +44,7 @@ uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::MAXCOLORS] = { // 0
     0xffffffff  // WHITE
 };
 
-uint16_t GfxCanvasBgiData::line_patterns[1 + 4/*static_cast<int>(bgiLineStyle::USERBIT_LINE)*/] = {
+/*const*/ uint16_t GfxCanvasBgiData::line_patterns[1 + 4/*static_cast<int>(bgiLineStyle::USERBIT_LINE)*/] = {
     0xffff,  // SOLID_LINE  = 1111111111111111
     0xcccc,  // DOTTED_LINE = 1100110011001100
     0xf1f8,  // CENTER_LINE = 1111000111111000
@@ -55,7 +55,7 @@ uint16_t GfxCanvasBgiData::line_patterns[1 + 4/*static_cast<int>(bgiLineStyle::U
 // These are setfillpattern-compatible arrays for the tiling patterns.
 // Taken from TurboC, http://www.sandroid.org/TurboC/
 
-uint8_t GfxCanvasBgiData::fill_patterns[1 + 12/*static_cast<int>(GfxCanvas::SDL_bgi::bgiFillStyles::USER_FILL)*/][8] = {
+/*const*/ uint8_t GfxCanvasBgiData::fill_patterns[1 + 12/*static_cast<int>(GfxCanvas::SDL_bgi::bgiFillStyles::USER_FILL)*/][8] = {
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // EMPTY_FILL
     {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}, // SOLID_FILL
     {0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00}, // LINE_FILL
@@ -75,7 +75,7 @@ uint8_t GfxCanvasBgiData::fill_patterns[1 + 12/*static_cast<int>(GfxCanvas::SDL_
 
 /*  ZLIB (c) A. Schiffler 2012 */
 
-uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::GFX_FONTDATAMAX] = {
+const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::GFX_FONTDATAMAX] = {
     
     /*
      * 0 0x00 '^@'

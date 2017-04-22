@@ -34,6 +34,27 @@
 #include "GfxCanvas.hpp"
 #include "platform/Linux.h"
 #include "platform/macOS.h"
+#include "GfxMessageBox.hpp"
+
+void MsgBox(GfxWindow const& win)
+{
+    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagWarning };
+    std::string title = "Title";
+    std::string message = "Message";
+    int numbuttons = 3;
+    GfxMessageBoxButtonData buttons[3] = {
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,1,"Button1"},
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault,2,"Button2"},
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Button3"}
+    };
+    GfxMessageBoxColor c[3] = { {255,0,0}, {64,64,64}, {192,192,192} };
+    GfxMessageBoxColorScheme colorScheme(c);
+
+    GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons,colorScheme);
+    
+    GfxMessageBox g(m);
+    g.showModal();
+}
 
 void inc(int* a)
 {
@@ -55,8 +76,8 @@ void _doStuff(void)
         std::cout << "Init failed\n";
         return;
     }
-    
     GfxWindow w("Window title",WIN_W,WIN_H);
+    MsgBox(w);
     GfxRenderer r(w);
     GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
     

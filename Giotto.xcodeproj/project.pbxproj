@@ -30,6 +30,13 @@
 		1944110C1EAB4D9E0064A6AA /* GfxWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410FE1EAB4D9E0064A6AA /* GfxWindow.cpp */; };
 		197D66471EAB41BF009B5EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66441EAB41BF009B5EBB /* main.cpp */; };
 		197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66451EAB41BF009B5EBB /* Playground.cpp */; };
+		1995962D1EAB653A00B414E5 /* GfxMessageBoxData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995962B1EAB653A00B414E5 /* GfxMessageBoxData.cpp */; };
+		199596301EAB684C00B414E5 /* GfxMessageBoxFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995962E1EAB684C00B414E5 /* GfxMessageBoxFlags.cpp */; };
+		199596331EAB7CE500B414E5 /* GfxMessageBoxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199596311EAB7CE500B414E5 /* GfxMessageBoxColor.cpp */; };
+		199596361EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199596341EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp */; };
+		199596391EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199596371EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp */; };
+		1995963C1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963A1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp */; };
+		1995963F1EAB982F00B414E5 /* GfxMessageBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */; };
 		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
 		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
 		19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778391EAB5039007E1C19 /* GfxString.cpp */; };
@@ -104,6 +111,20 @@
 		197D66441EAB41BF009B5EBB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Giotto/main.cpp; sourceTree = SOURCE_ROOT; };
 		197D66451EAB41BF009B5EBB /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = Giotto/Playground.cpp; sourceTree = SOURCE_ROOT; };
 		197D66461EAB41BF009B5EBB /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = Giotto/Playground.hpp; sourceTree = SOURCE_ROOT; };
+		1995962B1EAB653A00B414E5 /* GfxMessageBoxData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBoxData.cpp; path = sdl2/GfxMessageBoxData.cpp; sourceTree = "<group>"; };
+		1995962C1EAB653A00B414E5 /* GfxMessageBoxData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxData.hpp; path = sdl2/GfxMessageBoxData.hpp; sourceTree = "<group>"; };
+		1995962E1EAB684C00B414E5 /* GfxMessageBoxFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBoxFlags.cpp; path = sdl2/GfxMessageBoxFlags.cpp; sourceTree = "<group>"; };
+		1995962F1EAB684C00B414E5 /* GfxMessageBoxFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxFlags.hpp; path = sdl2/GfxMessageBoxFlags.hpp; sourceTree = "<group>"; };
+		199596311EAB7CE500B414E5 /* GfxMessageBoxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBoxColor.cpp; path = sdl2/GfxMessageBoxColor.cpp; sourceTree = "<group>"; };
+		199596321EAB7CE500B414E5 /* GfxMessageBoxColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxColor.hpp; path = sdl2/GfxMessageBoxColor.hpp; sourceTree = "<group>"; };
+		199596341EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBoxColorScheme.cpp; path = sdl2/GfxMessageBoxColorScheme.cpp; sourceTree = "<group>"; };
+		199596351EAB7E3200B414E5 /* GfxMessageBoxColorScheme.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxColorScheme.hpp; path = sdl2/GfxMessageBoxColorScheme.hpp; sourceTree = "<group>"; };
+		199596371EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBoxButtonFlags.cpp; path = sdl2/GfxMessageBoxButtonFlags.cpp; sourceTree = "<group>"; };
+		199596381EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxButtonFlags.hpp; path = sdl2/GfxMessageBoxButtonFlags.hpp; sourceTree = "<group>"; };
+		1995963A1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBoxButtonData.cpp; path = sdl2/GfxMessageBoxButtonData.cpp; sourceTree = "<group>"; };
+		1995963B1EAB92E300B414E5 /* GfxMessageBoxButtonData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxButtonData.hpp; path = sdl2/GfxMessageBoxButtonData.hpp; sourceTree = "<group>"; };
+		1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBox.cpp; path = sdl2/GfxMessageBox.cpp; sourceTree = "<group>"; };
+		1995963E1EAB982F00B414E5 /* GfxMessageBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBox.hpp; path = sdl2/GfxMessageBox.hpp; sourceTree = "<group>"; };
 		19F778331EAB4F96007E1C19 /* GfxRadius.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRadius.cpp; path = bgi/GfxRadius.cpp; sourceTree = "<group>"; };
 		19F778341EAB4F96007E1C19 /* GfxRadius.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRadius.hpp; path = bgi/GfxRadius.hpp; sourceTree = "<group>"; };
 		19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxAngle.cpp; path = bgi/GfxAngle.cpp; sourceTree = "<group>"; };
@@ -238,6 +259,20 @@
 				194410FD1EAB4D9E0064A6AA /* GfxTexture.hpp */,
 				194410FE1EAB4D9E0064A6AA /* GfxWindow.cpp */,
 				194410FF1EAB4D9E0064A6AA /* GfxWindow.hpp */,
+				1995962B1EAB653A00B414E5 /* GfxMessageBoxData.cpp */,
+				1995962C1EAB653A00B414E5 /* GfxMessageBoxData.hpp */,
+				1995962E1EAB684C00B414E5 /* GfxMessageBoxFlags.cpp */,
+				1995962F1EAB684C00B414E5 /* GfxMessageBoxFlags.hpp */,
+				199596311EAB7CE500B414E5 /* GfxMessageBoxColor.cpp */,
+				199596321EAB7CE500B414E5 /* GfxMessageBoxColor.hpp */,
+				199596341EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp */,
+				199596351EAB7E3200B414E5 /* GfxMessageBoxColorScheme.hpp */,
+				199596371EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp */,
+				199596381EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.hpp */,
+				1995963A1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp */,
+				1995963B1EAB92E300B414E5 /* GfxMessageBoxButtonData.hpp */,
+				1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */,
+				1995963E1EAB982F00B414E5 /* GfxMessageBox.hpp */,
 			);
 			name = sdl2;
 			sourceTree = "<group>";
@@ -300,28 +335,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				194410DF1EAB4C9D0064A6AA /* GfxBitmapFont.cpp in Sources */,
+				199596301EAB684C00B414E5 /* GfxMessageBoxFlags.cpp in Sources */,
 				19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */,
 				19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */,
 				194411041EAB4D9E0064A6AA /* GfxPalette.cpp in Sources */,
+				199596391EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				194411081EAB4D9E0064A6AA /* GfxRenderer.cpp in Sources */,
 				1944110B1EAB4D9E0064A6AA /* GfxTexture.cpp in Sources */,
+				1995963C1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp in Sources */,
 				194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */,
 				194411091EAB4D9E0064A6AA /* GfxRootClass.cpp in Sources */,
 				194411051EAB4D9E0064A6AA /* GfxPixelFormat.cpp in Sources */,
 				1944110A1EAB4D9E0064A6AA /* GfxSurface.cpp in Sources */,
+				1995962D1EAB653A00B414E5 /* GfxMessageBoxData.cpp in Sources */,
 				194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */,
 				194411031EAB4D9E0064A6AA /* GfxInitQuit.cpp in Sources */,
 				194410E41EAB4C9D0064A6AA /* GfxConstants.cpp in Sources */,
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,
+				199596361EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				1944110C1EAB4D9E0064A6AA /* GfxWindow.cpp in Sources */,
 				194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */,
 				194411021EAB4D9E0064A6AA /* GfxFlip.cpp in Sources */,
 				194411061EAB4D9E0064A6AA /* GfxPoint.cpp in Sources */,
 				194411071EAB4D9E0064A6AA /* GfxRect.cpp in Sources */,
 				197D66471EAB41BF009B5EBB /* main.cpp in Sources */,
+				199596331EAB7CE500B414E5 /* GfxMessageBoxColor.cpp in Sources */,
 				194410E21EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp in Sources */,
 				19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */,
+				1995963F1EAB982F00B414E5 /* GfxMessageBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,11 +30,11 @@ GfxInitQuit::GfxInitQuit(GfxInitComponent gfxInitComp) : GfxRootClass("GfxInitQu
     initParam = 0;
     if (gfxInitComp == GfxInitComponent::initVideo)
     {
-        initParam = SDL_INIT_VIDEO;
+        initParam = SDL_INIT_VIDEO | SDL_INIT_EVENTS;
     }
     if (gfxInitComp == GfxInitComponent::initAudio)
     {
-        initParam = SDL_INIT_AUDIO;
+        initParam = SDL_INIT_AUDIO | SDL_INIT_EVENTS;
     }
     if (gfxInitComp == GfxInitComponent::initEverything)
     {
