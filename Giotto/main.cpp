@@ -78,7 +78,8 @@ void _doStuff(void)
     
     GfxCanvas cv(sb);
     cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxConstants::vgaGreen());
-    cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),GfxConstants::vgaRed());
+    auto color = GfxConstants::vgaRed();
+    cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),color);
     cv.OutText(GfxPoint(360,232),GfxString("sdl_BGI"),GfxColor(50,100,200));
     cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxConstants::vgaLightRed());
     cv.Bar(GfxRect(10,10,20,20),GfxConstants::vgaRed());

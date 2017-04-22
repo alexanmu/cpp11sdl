@@ -76,49 +76,51 @@ public:
 		indexWacky = 9
 	};
 
-	static GfxColor vgaBlack(void);
-	static GfxColor vgaBlue(void);
-	static GfxColor vgaGreen(void);
-	static GfxColor vgaCyan(void);
-	static GfxColor vgaRed(void);
-	static GfxColor vgaMagenta(void);
-	static GfxColor vgaBrown(void);
-	static GfxColor vgaLightGray(void);
-	static GfxColor vgaDarkGray(void);
-	static GfxColor vgaLightBlue(void);
-	static GfxColor vgaLightGreen(void);
-	static GfxColor vgaLightCyan(void);
-	static GfxColor vgaLightRed(void);
-	static GfxColor vgaLightMagenta(void);
-	static GfxColor vgaYellow(void);
-	static GfxColor vgaWhite(void);
+	static const GfxColor& vgaBlack(void);
+	static const GfxColor& vgaBlue(void);
+	static const GfxColor& vgaGreen(void);
+	static const GfxColor& vgaCyan(void);
+	static const GfxColor& vgaRed(void);
+	static const GfxColor& vgaMagenta(void);
+	static const GfxColor& vgaBrown(void);
+	static const GfxColor& vgaLightGray(void);
+	static const GfxColor& vgaDarkGray(void);
+	static const GfxColor& vgaLightBlue(void);
+	static const GfxColor& vgaLightGreen(void);
+	static const GfxColor& vgaLightCyan(void);
+	static const GfxColor& vgaLightRed(void);
+	static const GfxColor& vgaLightMagenta(void);
+	static const GfxColor& vgaYellow(void);
+	static const GfxColor& vgaWhite(void);
 
-	static GfxColor vgaGetColorByIndex(const GfxVga16ColorIndex index);
+	static const GfxColor& vgaGetColorByIndex(const GfxVga16ColorIndex index);
 
-	static GfxBitmapFont fntStandard8x16(void);
-	static GfxBitmapFont fntAntique(void);
-	static GfxBitmapFont fntBroadway(void);
-	static GfxBitmapFont fntCourrier(void);
-	static GfxBitmapFont fntDragon(void);
-	static GfxBitmapFont fntMedieval(void);
-	static GfxBitmapFont fntRoman(void);
-	static GfxBitmapFont fntSansserif(void);
-	static GfxBitmapFont fntScript(void);
-	static GfxBitmapFont fntWacky(void);
+	static const GfxBitmapFont& fntStandard8x16(void);
+	static const GfxBitmapFont& fntAntique(void);
+	static const GfxBitmapFont& fntBroadway(void);
+	static const GfxBitmapFont& fntCourrier(void);
+	static const GfxBitmapFont& fntDragon(void);
+	static const GfxBitmapFont& fntMedieval(void);
+	static const GfxBitmapFont& fntRoman(void);
+	static const GfxBitmapFont& fntSansserif(void);
+	static const GfxBitmapFont& fntScript(void);
+	static const GfxBitmapFont& fntWacky(void);
 
-	static GfxBitmapFont fntGetFontByIndex(const GfxFontIndex index);
+	static const GfxBitmapFont& fntGetFontByIndex(const GfxFontIndex index);
 private:
 	static const GfxColor colorsVGA16_[16];
-	static const uint8_t fntStandard8x16Data[16 * 256];
-	static const uint8_t fntAntiqueData[16 * 256];
-	static const uint8_t fntBroadwayData[16 * 256];
-	static const uint8_t fntCourrierData[16 * 256];
-	static const uint8_t fntDragonData[16 * 256];
-	static const uint8_t fntMedievalData[16 * 256];
-	static const uint8_t fntRomanData[16 * 256];
-	static const uint8_t fntSansserifData[16 * 256];
-	static const uint8_t fntScriptData[16 * 256];
-	static const uint8_t fntWackyData[16 * 256];
+    static const GfxBitmapFont fonts_[10];
+
+	static const uint8_t fntStandard8x16Data_[16 * 256];
+	static const uint8_t fntAntiqueData_[16 * 256];
+	static const uint8_t fntBroadwayData_[16 * 256];
+	static const uint8_t fntCourrierData_[16 * 256];
+	static const uint8_t fntDragonData_[16 * 256];
+	static const uint8_t fntMedievalData_[16 * 256];
+	static const uint8_t fntRomanData_[16 * 256];
+	static const uint8_t fntSansserifData_[16 * 256];
+	static const uint8_t fntScriptData_[16 * 256];
+	static const uint8_t fntWackyData_[16 * 256];
 };
 
 #endif

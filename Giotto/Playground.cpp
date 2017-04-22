@@ -359,7 +359,7 @@ void Playground::ProcessBuffer(std::string buffname,uint8_t * buff)
     hpp << "#ifndef __" + buffname + "_hpp__\n";
     hpp << "#define __" + buffname + "_hpp__\n";
     hpp << '\n';
-    hpp << "const uint8_t GfxConstants::" << buffname << "Data[16 * 256] = {" << '\n';
+    hpp << "const uint8_t GfxConstants::" << buffname << "Data_[16 * 256] = {" << '\n';
     for(int i = 0; i < 256; i++)
     {
         hpp << "    ";
