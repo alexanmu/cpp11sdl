@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1915B76A1E91101300147BDB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1915B7691E91101300147BDB /* main.cpp */; };
 		1915B7741E91103100147BDB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7711E91103100147BDB /* SDL2_image.framework */; };
 		1915B7751E91103100147BDB /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7721E91103100147BDB /* SDL2_ttf.framework */; };
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
@@ -23,9 +22,10 @@
 		1974596E1E9553DB00AB302B /* GfxSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197459641E9553DB00AB302B /* GfxSurface.cpp */; };
 		1974596F1E9553DB00AB302B /* GfxTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197459661E9553DB00AB302B /* GfxTexture.cpp */; };
 		197459701E9553DB00AB302B /* GfxWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197459681E9553DB00AB302B /* GfxWindow.cpp */; };
+		197D66471EAB41BF009B5EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66441EAB41BF009B5EBB /* main.cpp */; };
+		197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66451EAB41BF009B5EBB /* Playground.cpp */; };
 		198E461F1EA3D77F00451FEA /* GfxCanvasBgiData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198E461E1EA3D77F00451FEA /* GfxCanvasBgiData.cpp */; };
 		198E46221EA3DD5F00451FEA /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198E46201EA3DD5F00451FEA /* GfxCanvasBgi.cpp */; };
-		19A84A4D1E94067A00C3E83C /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A84A4B1E94067A00C3E83C /* Playground.cpp */; };
 		19D3B6531E9A8C2700981390 /* GfxBlendMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */; };
 		19E492B91E9C005600D1D5C7 /* GfxConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */; };
 		794BF0241EA67957005F902A /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794BF0201EA67957005F902A /* GfxBitmapFont.cpp */; };
@@ -46,21 +46,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1915B7661E91101300147BDB /* cpp11sdl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cpp11sdl; sourceTree = BUILT_PRODUCTS_DIR; };
-		1915B7691E91101300147BDB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1915B7661E91101300147BDB /* Giotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Giotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		1915B7711E91103100147BDB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		1915B7721E91103100147BDB /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		1915B7731E91103100147BDB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		19301B6D1EA90DD800A3D232 /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = cpp11sdl/Fonts/fntAntique.hpp; sourceTree = "<group>"; };
-		19301B6E1EA90DD800A3D232 /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntBroadway.hpp; path = cpp11sdl/Fonts/fntBroadway.hpp; sourceTree = "<group>"; };
-		19301B6F1EA90DD800A3D232 /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntCourrier.hpp; path = cpp11sdl/Fonts/fntCourrier.hpp; sourceTree = "<group>"; };
-		19301B701EA90DD800A3D232 /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntDragon.hpp; path = cpp11sdl/Fonts/fntDragon.hpp; sourceTree = "<group>"; };
-		19301B711EA90DD800A3D232 /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntMedieval.hpp; path = cpp11sdl/Fonts/fntMedieval.hpp; sourceTree = "<group>"; };
-		19301B721EA90DD800A3D232 /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntRoman.hpp; path = cpp11sdl/Fonts/fntRoman.hpp; sourceTree = "<group>"; };
-		19301B731EA90DD800A3D232 /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntSansserif.hpp; path = cpp11sdl/Fonts/fntSansserif.hpp; sourceTree = "<group>"; };
-		19301B741EA90DD800A3D232 /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntScript.hpp; path = cpp11sdl/Fonts/fntScript.hpp; sourceTree = "<group>"; };
-		19301B751EA90DD800A3D232 /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntStandard8x16.hpp; path = cpp11sdl/Fonts/fntStandard8x16.hpp; sourceTree = "<group>"; };
-		19301B761EA90DD800A3D232 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = cpp11sdl/Fonts/fntWacky.hpp; sourceTree = "<group>"; };
 		1942A3841E99377D00A7A5CD /* GfxRootClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRootClass.cpp; path = SdlWrapper/GfxRootClass.cpp; sourceTree = "<group>"; };
 		1942A3851E99377D00A7A5CD /* GfxRootClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRootClass.hpp; path = SdlWrapper/GfxRootClass.hpp; sourceTree = "<group>"; };
 		1974594F1E9552CF00AB302B /* GfxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxColor.cpp; path = SdlWrapper/GfxColor.cpp; sourceTree = "<group>"; };
@@ -86,12 +75,23 @@
 		197459671E9553DB00AB302B /* GfxTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTexture.hpp; path = SdlWrapper/GfxTexture.hpp; sourceTree = "<group>"; };
 		197459681E9553DB00AB302B /* GfxWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxWindow.cpp; path = SdlWrapper/GfxWindow.cpp; sourceTree = "<group>"; };
 		197459691E9553DB00AB302B /* GfxWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxWindow.hpp; path = SdlWrapper/GfxWindow.hpp; sourceTree = "<group>"; };
+		197D66441EAB41BF009B5EBB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Giotto/main.cpp; sourceTree = SOURCE_ROOT; };
+		197D66451EAB41BF009B5EBB /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = Giotto/Playground.cpp; sourceTree = SOURCE_ROOT; };
+		197D66461EAB41BF009B5EBB /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = Giotto/Playground.hpp; sourceTree = SOURCE_ROOT; };
 		198E461D1EA3D6E600451FEA /* GfxCanvasBgiData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgiData.hpp; path = SdlWrapper/GfxCanvasBgiData.hpp; sourceTree = "<group>"; };
 		198E461E1EA3D77F00451FEA /* GfxCanvasBgiData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasBgiData.cpp; path = SdlWrapper/GfxCanvasBgiData.cpp; sourceTree = "<group>"; };
 		198E46201EA3DD5F00451FEA /* GfxCanvasBgi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasBgi.cpp; path = SdlWrapper/GfxCanvasBgi.cpp; sourceTree = "<group>"; };
 		198E46211EA3DD5F00451FEA /* GfxCanvasBgi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgi.hpp; path = SdlWrapper/GfxCanvasBgi.hpp; sourceTree = "<group>"; };
-		19A84A4B1E94067A00C3E83C /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Playground.cpp; sourceTree = "<group>"; };
-		19A84A4C1E94067A00C3E83C /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Playground.hpp; sourceTree = "<group>"; };
+		19A60EA81EAB438D00BD71D5 /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = Giotto/Fonts/fntAntique.hpp; sourceTree = "<group>"; };
+		19A60EA91EAB438D00BD71D5 /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntBroadway.hpp; path = Giotto/Fonts/fntBroadway.hpp; sourceTree = "<group>"; };
+		19A60EAA1EAB438D00BD71D5 /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntCourrier.hpp; path = Giotto/Fonts/fntCourrier.hpp; sourceTree = "<group>"; };
+		19A60EAB1EAB438D00BD71D5 /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntDragon.hpp; path = Giotto/Fonts/fntDragon.hpp; sourceTree = "<group>"; };
+		19A60EAC1EAB438D00BD71D5 /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntMedieval.hpp; path = Giotto/Fonts/fntMedieval.hpp; sourceTree = "<group>"; };
+		19A60EAD1EAB438D00BD71D5 /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntRoman.hpp; path = Giotto/Fonts/fntRoman.hpp; sourceTree = "<group>"; };
+		19A60EAE1EAB438D00BD71D5 /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntSansserif.hpp; path = Giotto/Fonts/fntSansserif.hpp; sourceTree = "<group>"; };
+		19A60EAF1EAB438D00BD71D5 /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntScript.hpp; path = Giotto/Fonts/fntScript.hpp; sourceTree = "<group>"; };
+		19A60EB01EAB438D00BD71D5 /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntStandard8x16.hpp; path = Giotto/Fonts/fntStandard8x16.hpp; sourceTree = "<group>"; };
+		19A60EB11EAB438D00BD71D5 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = Giotto/Fonts/fntWacky.hpp; sourceTree = "<group>"; };
 		19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlendMode.cpp; path = SdlWrapper/GfxBlendMode.cpp; sourceTree = "<group>"; };
 		19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendMode.hpp; path = SdlWrapper/GfxBlendMode.hpp; sourceTree = "<group>"; };
 		19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxConstants.cpp; path = SdlWrapper/GfxConstants.cpp; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		1915B75D1E91101300147BDB = {
 			isa = PBXGroup;
 			children = (
-				1915B7681E91101300147BDB /* cpp11sdl */,
+				1915B7681E91101300147BDB /* Giotto */,
 				1915B7701E91103100147BDB /* Frameworks */,
 				1915B7671E91101300147BDB /* Products */,
 			);
@@ -132,23 +132,23 @@
 		1915B7671E91101300147BDB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1915B7661E91101300147BDB /* cpp11sdl */,
+				1915B7661E91101300147BDB /* Giotto */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1915B7681E91101300147BDB /* cpp11sdl */ = {
+		1915B7681E91101300147BDB /* Giotto */ = {
 			isa = PBXGroup;
 			children = (
-				1915B7691E91101300147BDB /* main.cpp */,
-				19A84A4B1E94067A00C3E83C /* Playground.cpp */,
-				19A84A4C1E94067A00C3E83C /* Playground.hpp */,
+				197D66441EAB41BF009B5EBB /* main.cpp */,
+				197D66451EAB41BF009B5EBB /* Playground.cpp */,
+				197D66461EAB41BF009B5EBB /* Playground.hpp */,
 				19301B771EA90DE100A3D232 /* Fonts */,
 				19F226071EA276040042041B /* Linux */,
 				19F226051EA275E60042041B /* macOS */,
 				19BD5B5C1E9125F10043F8E1 /* SdlWrapper */,
 			);
-			path = cpp11sdl;
+			path = Giotto;
 			sourceTree = "<group>";
 		};
 		1915B7701E91103100147BDB /* Frameworks */ = {
@@ -164,16 +164,16 @@
 		19301B771EA90DE100A3D232 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				19301B6D1EA90DD800A3D232 /* fntAntique.hpp */,
-				19301B6E1EA90DD800A3D232 /* fntBroadway.hpp */,
-				19301B6F1EA90DD800A3D232 /* fntCourrier.hpp */,
-				19301B701EA90DD800A3D232 /* fntDragon.hpp */,
-				19301B711EA90DD800A3D232 /* fntMedieval.hpp */,
-				19301B721EA90DD800A3D232 /* fntRoman.hpp */,
-				19301B731EA90DD800A3D232 /* fntSansserif.hpp */,
-				19301B741EA90DD800A3D232 /* fntScript.hpp */,
-				19301B751EA90DD800A3D232 /* fntStandard8x16.hpp */,
-				19301B761EA90DD800A3D232 /* fntWacky.hpp */,
+				19A60EA81EAB438D00BD71D5 /* fntAntique.hpp */,
+				19A60EA91EAB438D00BD71D5 /* fntBroadway.hpp */,
+				19A60EAA1EAB438D00BD71D5 /* fntCourrier.hpp */,
+				19A60EAB1EAB438D00BD71D5 /* fntDragon.hpp */,
+				19A60EAC1EAB438D00BD71D5 /* fntMedieval.hpp */,
+				19A60EAD1EAB438D00BD71D5 /* fntRoman.hpp */,
+				19A60EAE1EAB438D00BD71D5 /* fntSansserif.hpp */,
+				19A60EAF1EAB438D00BD71D5 /* fntScript.hpp */,
+				19A60EB01EAB438D00BD71D5 /* fntStandard8x16.hpp */,
+				19A60EB11EAB438D00BD71D5 /* fntWacky.hpp */,
 			);
 			name = Fonts;
 			path = ..;
@@ -244,9 +244,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1915B7651E91101300147BDB /* cpp11sdl */ = {
+		1915B7651E91101300147BDB /* Giotto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1915B76D1E91101300147BDB /* Build configuration list for PBXNativeTarget "cpp11sdl" */;
+			buildConfigurationList = 1915B76D1E91101300147BDB /* Build configuration list for PBXNativeTarget "Giotto" */;
 			buildPhases = (
 				1915B7621E91101300147BDB /* Sources */,
 				1915B7631E91101300147BDB /* Frameworks */,
@@ -256,9 +256,9 @@
 			);
 			dependencies = (
 			);
-			name = cpp11sdl;
-			productName = cpp11sdl;
-			productReference = 1915B7661E91101300147BDB /* cpp11sdl */;
+			name = Giotto;
+			productName = Giotto;
+			productReference = 1915B7661E91101300147BDB /* Giotto */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -288,7 +288,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1915B7651E91101300147BDB /* cpp11sdl */,
+				1915B7651E91101300147BDB /* Giotto */,
 			);
 		};
 /* End PBXProject section */
@@ -301,10 +301,10 @@
 				1974595B1E9552CF00AB302B /* GfxPoint.cpp in Sources */,
 				1974596F1E9553DB00AB302B /* GfxTexture.cpp in Sources */,
 				79C8086A1EA083CA003DB94C /* GfxCanvas.cpp in Sources */,
+				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				197459591E9552CF00AB302B /* GfxInitQuit.cpp in Sources */,
 				19E492B91E9C005600D1D5C7 /* GfxConstants.cpp in Sources */,
 				198E46221EA3DD5F00451FEA /* GfxCanvasBgi.cpp in Sources */,
-				1915B76A1E91101300147BDB /* main.cpp in Sources */,
 				1942A3861E99377D00A7A5CD /* GfxRootClass.cpp in Sources */,
 				1974596B1E9553DB00AB302B /* GfxPixelFormat.cpp in Sources */,
 				1974596C1E9553DB00AB302B /* GfxRect.cpp in Sources */,
@@ -316,8 +316,8 @@
 				1974596E1E9553DB00AB302B /* GfxSurface.cpp in Sources */,
 				1974595A1E9552CF00AB302B /* GfxPalette.cpp in Sources */,
 				197459701E9553DB00AB302B /* GfxWindow.cpp in Sources */,
-				19A84A4D1E94067A00C3E83C /* Playground.cpp in Sources */,
 				794BF0251EA67957005F902A /* GfxCanvasValues.cpp in Sources */,
+				197D66471EAB41BF009B5EBB /* main.cpp in Sources */,
 				794BF0241EA67957005F902A /* GfxBitmapFont.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +427,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -442,6 +443,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -457,7 +459,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1915B76D1E91101300147BDB /* Build configuration list for PBXNativeTarget "cpp11sdl" */ = {
+		1915B76D1E91101300147BDB /* Build configuration list for PBXNativeTarget "Giotto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1915B76E1E91101300147BDB /* Debug */,
