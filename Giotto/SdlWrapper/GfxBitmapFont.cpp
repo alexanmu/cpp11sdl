@@ -1,5 +1,5 @@
 /*
-  CPP11SDL
+  Giotto
   Copyright (C) 2017 George Oros
 
   This software is provided 'as-is', without any express or implied

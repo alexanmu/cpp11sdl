@@ -1,5 +1,5 @@
 /*
-  CPP11SDL
+  Giotto
   Copyright (C) 2017 George Oros
 
   This software is provided 'as-is', without any express or implied
@@ -334,7 +334,7 @@ void Playground::ProcessBuffer(std::string buffname,uint8_t * buff)
     std::ofstream hpp(buffname + ".hpp",std::ofstream::out | std::ofstream::trunc);
 
     hpp << "/*\n";
-    hpp << "  CPP11SDL\n";
+    hpp << "  Giotto\n";
     hpp << "  Copyright (C) 2017 George Oros\n";
     hpp << "\n";
     hpp << "  This software is provided 'as-is', without any express or implied\n";
