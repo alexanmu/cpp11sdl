@@ -14,7 +14,6 @@
 		194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D51EAB4C9D0064A6AA /* GfxCanvas.cpp */; };
 		194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D71EAB4C9D0064A6AA /* GfxCanvasBgi.cpp */; };
 		194410E21EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */; };
-		194410E31EAB4C9D0064A6AA /* GfxCanvasValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410DB1EAB4C9D0064A6AA /* GfxCanvasValues.cpp */; };
 		194410E41EAB4C9D0064A6AA /* GfxConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410DD1EAB4C9D0064A6AA /* GfxConstants.cpp */; };
 		194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E51EAB4D9E0064A6AA /* GfxBlendMode.cpp */; };
 		194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E71EAB4D9E0064A6AA /* GfxColor.cpp */; };
@@ -31,6 +30,9 @@
 		1944110C1EAB4D9E0064A6AA /* GfxWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410FE1EAB4D9E0064A6AA /* GfxWindow.cpp */; };
 		197D66471EAB41BF009B5EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66441EAB41BF009B5EBB /* main.cpp */; };
 		197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66451EAB41BF009B5EBB /* Playground.cpp */; };
+		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
+		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
+		19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778391EAB5039007E1C19 /* GfxString.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,8 +72,6 @@
 		194410D81EAB4C9D0064A6AA /* GfxCanvasBgi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgi.hpp; path = bgi/GfxCanvasBgi.hpp; sourceTree = "<group>"; };
 		194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasBgiData.cpp; path = bgi/GfxCanvasBgiData.cpp; sourceTree = "<group>"; };
 		194410DA1EAB4C9D0064A6AA /* GfxCanvasBgiData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgiData.hpp; path = bgi/GfxCanvasBgiData.hpp; sourceTree = "<group>"; };
-		194410DB1EAB4C9D0064A6AA /* GfxCanvasValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasValues.cpp; path = bgi/GfxCanvasValues.cpp; sourceTree = "<group>"; };
-		194410DC1EAB4C9D0064A6AA /* GfxCanvasValues.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasValues.hpp; path = bgi/GfxCanvasValues.hpp; sourceTree = "<group>"; };
 		194410DD1EAB4C9D0064A6AA /* GfxConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxConstants.cpp; path = bgi/GfxConstants.cpp; sourceTree = "<group>"; };
 		194410DE1EAB4C9D0064A6AA /* GfxConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxConstants.hpp; path = bgi/GfxConstants.hpp; sourceTree = "<group>"; };
 		194410E51EAB4D9E0064A6AA /* GfxBlendMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlendMode.cpp; path = sdl2/GfxBlendMode.cpp; sourceTree = "<group>"; };
@@ -104,6 +104,12 @@
 		197D66441EAB41BF009B5EBB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Giotto/main.cpp; sourceTree = SOURCE_ROOT; };
 		197D66451EAB41BF009B5EBB /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = Giotto/Playground.cpp; sourceTree = SOURCE_ROOT; };
 		197D66461EAB41BF009B5EBB /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = Giotto/Playground.hpp; sourceTree = SOURCE_ROOT; };
+		19F778331EAB4F96007E1C19 /* GfxRadius.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRadius.cpp; path = bgi/GfxRadius.cpp; sourceTree = "<group>"; };
+		19F778341EAB4F96007E1C19 /* GfxRadius.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRadius.hpp; path = bgi/GfxRadius.hpp; sourceTree = "<group>"; };
+		19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxAngle.cpp; path = bgi/GfxAngle.cpp; sourceTree = "<group>"; };
+		19F778371EAB4FEC007E1C19 /* GfxAngle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxAngle.hpp; path = bgi/GfxAngle.hpp; sourceTree = "<group>"; };
+		19F778391EAB5039007E1C19 /* GfxString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxString.cpp; path = bgi/GfxString.cpp; sourceTree = "<group>"; };
+		19F7783A1EAB5039007E1C19 /* GfxString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxString.hpp; path = bgi/GfxString.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +177,6 @@
 				194410D81EAB4C9D0064A6AA /* GfxCanvasBgi.hpp */,
 				194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */,
 				194410DA1EAB4C9D0064A6AA /* GfxCanvasBgiData.hpp */,
-				194410DB1EAB4C9D0064A6AA /* GfxCanvasValues.cpp */,
-				194410DC1EAB4C9D0064A6AA /* GfxCanvasValues.hpp */,
 				194410DD1EAB4C9D0064A6AA /* GfxConstants.cpp */,
 				194410DE1EAB4C9D0064A6AA /* GfxConstants.hpp */,
 				194410C91EAB4BC20064A6AA /* fntAntique.hpp */,
@@ -185,6 +189,12 @@
 				194410D01EAB4BC20064A6AA /* fntScript.hpp */,
 				194410D11EAB4BC20064A6AA /* fntStandard8x16.hpp */,
 				194410D21EAB4BC20064A6AA /* fntWacky.hpp */,
+				19F778331EAB4F96007E1C19 /* GfxRadius.cpp */,
+				19F778341EAB4F96007E1C19 /* GfxRadius.hpp */,
+				19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */,
+				19F778371EAB4FEC007E1C19 /* GfxAngle.hpp */,
+				19F778391EAB5039007E1C19 /* GfxString.cpp */,
+				19F7783A1EAB5039007E1C19 /* GfxString.hpp */,
 			);
 			name = bgi;
 			sourceTree = "<group>";
@@ -290,6 +300,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				194410DF1EAB4C9D0064A6AA /* GfxBitmapFont.cpp in Sources */,
+				19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */,
+				19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */,
 				194411041EAB4D9E0064A6AA /* GfxPalette.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				194411081EAB4D9E0064A6AA /* GfxRenderer.cpp in Sources */,
@@ -306,10 +318,10 @@
 				194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */,
 				194411021EAB4D9E0064A6AA /* GfxFlip.cpp in Sources */,
 				194411061EAB4D9E0064A6AA /* GfxPoint.cpp in Sources */,
-				194410E31EAB4C9D0064A6AA /* GfxCanvasValues.cpp in Sources */,
 				194411071EAB4D9E0064A6AA /* GfxRect.cpp in Sources */,
 				197D66471EAB41BF009B5EBB /* main.cpp in Sources */,
 				194410E21EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp in Sources */,
+				19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

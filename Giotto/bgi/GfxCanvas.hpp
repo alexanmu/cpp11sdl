@@ -30,7 +30,9 @@
 #include "GfxCanvasBgi.hpp"
 #include "GfxPoint.hpp"
 #include "GfxRect.hpp"
-#include "GfxCanvasValues.hpp"
+#include "GfxRadius.hpp"
+#include "GfxAngle.hpp"
+#include "GfxString.hpp"
 #include "GfxBitmapFont.hpp"
 
 class GfxCanvas final : public GfxRootClass
