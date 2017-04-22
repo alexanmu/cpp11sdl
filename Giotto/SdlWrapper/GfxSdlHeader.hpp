@@ -24,8 +24,8 @@
 #ifndef GfxSdlHeader_hpp
 #define GfxSdlHeader_hpp
 
-#include "../Linux/Linux.h"
-#include "../macOS/macOS.h"
+#include "../platform/Linux.h"
+#include "../platform/macOS.h"
 
 #if defined(__linux_machine) && defined(__macosx_machine)
 #error "Only one machine should be defined!"

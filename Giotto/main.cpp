@@ -32,8 +32,8 @@
 #include "GfxTexture.hpp"
 #include "GfxConstants.hpp"
 #include "GfxCanvas.hpp"
-#include "Linux/Linux.h"
-#include "macOS/macOS.h"
+#include "platform/Linux.h"
+#include "platform/macOS.h"
 
 void inc(int* a)
 {

@@ -52,6 +52,18 @@
 		1915B7731E91103100147BDB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		1942A3841E99377D00A7A5CD /* GfxRootClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRootClass.cpp; path = SdlWrapper/GfxRootClass.cpp; sourceTree = "<group>"; };
 		1942A3851E99377D00A7A5CD /* GfxRootClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRootClass.hpp; path = SdlWrapper/GfxRootClass.hpp; sourceTree = "<group>"; };
+		194410C71EAB4B8B0064A6AA /* Linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Linux.h; path = platform/Linux.h; sourceTree = "<group>"; };
+		194410C81EAB4B8B0064A6AA /* macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macOS.h; path = platform/macOS.h; sourceTree = "<group>"; };
+		194410C91EAB4BC20064A6AA /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = bgi/fntAntique.hpp; sourceTree = "<group>"; };
+		194410CA1EAB4BC20064A6AA /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntBroadway.hpp; path = bgi/fntBroadway.hpp; sourceTree = "<group>"; };
+		194410CB1EAB4BC20064A6AA /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntCourrier.hpp; path = bgi/fntCourrier.hpp; sourceTree = "<group>"; };
+		194410CC1EAB4BC20064A6AA /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntDragon.hpp; path = bgi/fntDragon.hpp; sourceTree = "<group>"; };
+		194410CD1EAB4BC20064A6AA /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntMedieval.hpp; path = bgi/fntMedieval.hpp; sourceTree = "<group>"; };
+		194410CE1EAB4BC20064A6AA /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntRoman.hpp; path = bgi/fntRoman.hpp; sourceTree = "<group>"; };
+		194410CF1EAB4BC20064A6AA /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntSansserif.hpp; path = bgi/fntSansserif.hpp; sourceTree = "<group>"; };
+		194410D01EAB4BC20064A6AA /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntScript.hpp; path = bgi/fntScript.hpp; sourceTree = "<group>"; };
+		194410D11EAB4BC20064A6AA /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntStandard8x16.hpp; path = bgi/fntStandard8x16.hpp; sourceTree = "<group>"; };
+		194410D21EAB4BC20064A6AA /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = bgi/fntWacky.hpp; sourceTree = "<group>"; };
 		1974594F1E9552CF00AB302B /* GfxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxColor.cpp; path = SdlWrapper/GfxColor.cpp; sourceTree = "<group>"; };
 		197459501E9552CF00AB302B /* GfxColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxColor.hpp; path = SdlWrapper/GfxColor.hpp; sourceTree = "<group>"; };
 		197459511E9552CF00AB302B /* GfxInitQuit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxInitQuit.cpp; path = SdlWrapper/GfxInitQuit.cpp; sourceTree = "<group>"; };
@@ -82,22 +94,10 @@
 		198E461E1EA3D77F00451FEA /* GfxCanvasBgiData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasBgiData.cpp; path = SdlWrapper/GfxCanvasBgiData.cpp; sourceTree = "<group>"; };
 		198E46201EA3DD5F00451FEA /* GfxCanvasBgi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasBgi.cpp; path = SdlWrapper/GfxCanvasBgi.cpp; sourceTree = "<group>"; };
 		198E46211EA3DD5F00451FEA /* GfxCanvasBgi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgi.hpp; path = SdlWrapper/GfxCanvasBgi.hpp; sourceTree = "<group>"; };
-		19A60EA81EAB438D00BD71D5 /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = Giotto/Fonts/fntAntique.hpp; sourceTree = "<group>"; };
-		19A60EA91EAB438D00BD71D5 /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntBroadway.hpp; path = Giotto/Fonts/fntBroadway.hpp; sourceTree = "<group>"; };
-		19A60EAA1EAB438D00BD71D5 /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntCourrier.hpp; path = Giotto/Fonts/fntCourrier.hpp; sourceTree = "<group>"; };
-		19A60EAB1EAB438D00BD71D5 /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntDragon.hpp; path = Giotto/Fonts/fntDragon.hpp; sourceTree = "<group>"; };
-		19A60EAC1EAB438D00BD71D5 /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntMedieval.hpp; path = Giotto/Fonts/fntMedieval.hpp; sourceTree = "<group>"; };
-		19A60EAD1EAB438D00BD71D5 /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntRoman.hpp; path = Giotto/Fonts/fntRoman.hpp; sourceTree = "<group>"; };
-		19A60EAE1EAB438D00BD71D5 /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntSansserif.hpp; path = Giotto/Fonts/fntSansserif.hpp; sourceTree = "<group>"; };
-		19A60EAF1EAB438D00BD71D5 /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntScript.hpp; path = Giotto/Fonts/fntScript.hpp; sourceTree = "<group>"; };
-		19A60EB01EAB438D00BD71D5 /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntStandard8x16.hpp; path = Giotto/Fonts/fntStandard8x16.hpp; sourceTree = "<group>"; };
-		19A60EB11EAB438D00BD71D5 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = Giotto/Fonts/fntWacky.hpp; sourceTree = "<group>"; };
 		19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlendMode.cpp; path = SdlWrapper/GfxBlendMode.cpp; sourceTree = "<group>"; };
 		19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendMode.hpp; path = SdlWrapper/GfxBlendMode.hpp; sourceTree = "<group>"; };
 		19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxConstants.cpp; path = SdlWrapper/GfxConstants.cpp; sourceTree = "<group>"; };
 		19E492B81E9C005600D1D5C7 /* GfxConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxConstants.hpp; path = SdlWrapper/GfxConstants.hpp; sourceTree = "<group>"; };
-		19F226041EA275DF0042041B /* macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = macOS.h; path = macOS/macOS.h; sourceTree = "<group>"; };
-		19F226061EA275FE0042041B /* Linux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Linux.h; path = Linux/Linux.h; sourceTree = "<group>"; };
 		794BF0201EA67957005F902A /* GfxBitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBitmapFont.cpp; path = SdlWrapper/GfxBitmapFont.cpp; sourceTree = "<group>"; };
 		794BF0211EA67957005F902A /* GfxBitmapFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBitmapFont.hpp; path = SdlWrapper/GfxBitmapFont.hpp; sourceTree = "<group>"; };
 		794BF0221EA67957005F902A /* GfxCanvasValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasValues.cpp; path = SdlWrapper/GfxCanvasValues.cpp; sourceTree = "<group>"; };
@@ -143,10 +143,9 @@
 				197D66441EAB41BF009B5EBB /* main.cpp */,
 				197D66451EAB41BF009B5EBB /* Playground.cpp */,
 				197D66461EAB41BF009B5EBB /* Playground.hpp */,
-				19301B771EA90DE100A3D232 /* Fonts */,
-				19F226071EA276040042041B /* Linux */,
-				19F226051EA275E60042041B /* macOS */,
-				19BD5B5C1E9125F10043F8E1 /* SdlWrapper */,
+				194410C51EAB4AC20064A6AA /* bgi */,
+				194410C61EAB4B0D0064A6AA /* platform */,
+				19BD5B5C1E9125F10043F8E1 /* sdl2 */,
 			);
 			path = Giotto;
 			sourceTree = "<group>";
@@ -161,43 +160,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		19301B771EA90DE100A3D232 /* Fonts */ = {
+		194410C51EAB4AC20064A6AA /* bgi */ = {
 			isa = PBXGroup;
 			children = (
-				19A60EA81EAB438D00BD71D5 /* fntAntique.hpp */,
-				19A60EA91EAB438D00BD71D5 /* fntBroadway.hpp */,
-				19A60EAA1EAB438D00BD71D5 /* fntCourrier.hpp */,
-				19A60EAB1EAB438D00BD71D5 /* fntDragon.hpp */,
-				19A60EAC1EAB438D00BD71D5 /* fntMedieval.hpp */,
-				19A60EAD1EAB438D00BD71D5 /* fntRoman.hpp */,
-				19A60EAE1EAB438D00BD71D5 /* fntSansserif.hpp */,
-				19A60EAF1EAB438D00BD71D5 /* fntScript.hpp */,
-				19A60EB01EAB438D00BD71D5 /* fntStandard8x16.hpp */,
-				19A60EB11EAB438D00BD71D5 /* fntWacky.hpp */,
-			);
-			name = Fonts;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		19BD5B5C1E9125F10043F8E1 /* SdlWrapper */ = {
-			isa = PBXGroup;
-			children = (
+				194410C91EAB4BC20064A6AA /* fntAntique.hpp */,
+				194410CA1EAB4BC20064A6AA /* fntBroadway.hpp */,
+				194410CB1EAB4BC20064A6AA /* fntCourrier.hpp */,
+				194410CC1EAB4BC20064A6AA /* fntDragon.hpp */,
+				194410CD1EAB4BC20064A6AA /* fntMedieval.hpp */,
+				194410CE1EAB4BC20064A6AA /* fntRoman.hpp */,
+				194410CF1EAB4BC20064A6AA /* fntSansserif.hpp */,
+				194410D01EAB4BC20064A6AA /* fntScript.hpp */,
+				194410D11EAB4BC20064A6AA /* fntStandard8x16.hpp */,
+				194410D21EAB4BC20064A6AA /* fntWacky.hpp */,
 				794BF0201EA67957005F902A /* GfxBitmapFont.cpp */,
 				794BF0211EA67957005F902A /* GfxBitmapFont.hpp */,
 				794BF0221EA67957005F902A /* GfxCanvasValues.cpp */,
 				794BF0231EA67957005F902A /* GfxCanvasValues.hpp */,
-				19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */,
-				19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */,
 				79C808681EA083CA003DB94C /* GfxCanvas.cpp */,
 				79C808691EA083CA003DB94C /* GfxCanvas.hpp */,
 				198E46201EA3DD5F00451FEA /* GfxCanvasBgi.cpp */,
 				198E46211EA3DD5F00451FEA /* GfxCanvasBgi.hpp */,
 				198E461E1EA3D77F00451FEA /* GfxCanvasBgiData.cpp */,
 				198E461D1EA3D6E600451FEA /* GfxCanvasBgiData.hpp */,
-				1974594F1E9552CF00AB302B /* GfxColor.cpp */,
-				197459501E9552CF00AB302B /* GfxColor.hpp */,
 				19E492B71E9C005600D1D5C7 /* GfxConstants.cpp */,
 				19E492B81E9C005600D1D5C7 /* GfxConstants.hpp */,
+			);
+			name = bgi;
+			sourceTree = "<group>";
+		};
+		194410C61EAB4B0D0064A6AA /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				194410C71EAB4B8B0064A6AA /* Linux.h */,
+				194410C81EAB4B8B0064A6AA /* macOS.h */,
+			);
+			name = platform;
+			sourceTree = "<group>";
+		};
+		19BD5B5C1E9125F10043F8E1 /* sdl2 */ = {
+			isa = PBXGroup;
+			children = (
+				19D3B6511E9A8C2700981390 /* GfxBlendMode.cpp */,
+				19D3B6521E9A8C2700981390 /* GfxBlendMode.hpp */,
+				1974594F1E9552CF00AB302B /* GfxColor.cpp */,
+				197459501E9552CF00AB302B /* GfxColor.hpp */,
 				1974595C1E9553DB00AB302B /* GfxFlip.cpp */,
 				1974595D1E9553DB00AB302B /* GfxFlip.hpp */,
 				197459511E9552CF00AB302B /* GfxInitQuit.cpp */,
@@ -222,23 +229,7 @@
 				197459681E9553DB00AB302B /* GfxWindow.cpp */,
 				197459691E9553DB00AB302B /* GfxWindow.hpp */,
 			);
-			name = SdlWrapper;
-			sourceTree = "<group>";
-		};
-		19F226051EA275E60042041B /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				19F226041EA275DF0042041B /* macOS.h */,
-			);
-			name = macOS;
-			sourceTree = "<group>";
-		};
-		19F226071EA276040042041B /* Linux */ = {
-			isa = PBXGroup;
-			children = (
-				19F226061EA275FE0042041B /* Linux.h */,
-			);
-			name = Linux;
+			name = sdl2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
