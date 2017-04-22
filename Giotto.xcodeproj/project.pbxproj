@@ -276,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1915B7611E91101300147BDB /* Build configuration list for PBXProject "cpp11sdl" */;
+			buildConfigurationList = 1915B7611E91101300147BDB /* Build configuration list for PBXProject "Giotto" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -448,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1915B7611E91101300147BDB /* Build configuration list for PBXProject "cpp11sdl" */ = {
+		1915B7611E91101300147BDB /* Build configuration list for PBXProject "Giotto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1915B76B1E91101300147BDB /* Debug */,
