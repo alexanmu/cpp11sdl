@@ -130,6 +130,11 @@ void GfxRect::setHeight(const uint16_t h)
     rect_.h = h;
 }
 
+void GfxRect::set(SdlType r)
+{
+    rect_ = r;
+};
+
 GfxRect::SdlType GfxRect::getAsSdlType() const
 {
     return rect_;

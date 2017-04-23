@@ -56,6 +56,14 @@ public:
     uint16_t getHeight() const;
     std::unique_ptr<GfxSurface> getWindowSurface(void);
 
+    /*
+     extern DECLSPEC int SDLCALL SDL_GetWindowDisplayIndex(SDL_Window * window);
+     extern DECLSPEC int SDLCALL SDL_SetWindowDisplayMode(SDL_Window * window,
+                                                         const SDL_DisplayMode
+                                                         * mode);
+     extern DECLSPEC Uint32 SDLCALL SDL_GetWindowPixelFormat(SDL_Window * window);
+     etc.
+     */
     void setTitle(const std::string& title);
 
     SdlTypePtr getAsSdlTypePtr() const;

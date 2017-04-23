@@ -38,16 +38,18 @@ public:
     // Copy Ctor not supported due to driver_data ptr
     GfxDisplayMode(GfxDisplayMode const&) = delete;
     GfxDisplayMode(GfxDisplayMode&& other);
-    
+
     // Copy operator not supported due to driver_data ptr
     GfxDisplayMode& operator=(GfxDisplayMode const&) = delete;
     GfxDisplayMode& operator=(GfxDisplayMode&& other);
-    
+
     uint32_t getFormat(void) const;
     int getWidth(void) const;
     int getHeight(void) const;
     int getRefreshRate(void) const;
-    
+
+    void set(SdlType dm);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

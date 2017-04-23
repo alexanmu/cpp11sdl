@@ -95,6 +95,11 @@ int GfxDisplayMode::getRefreshRate(void) const
     return dmode_.refresh_rate;
 }
 
+void GfxDisplayMode::set(SdlType dm)
+{
+    dmode_ = dm;
+}
+
 GfxDisplayMode::SdlType GfxDisplayMode::getAsSdlType(void) const
 {
     return dmode_;

@@ -40,6 +40,7 @@
 #include "GfxPlatform.hpp"
 #include "GfxPowerInfo.hpp"
 #include "GfxScreenSaver.hpp"
+#include "GfxVideo.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -81,6 +82,39 @@ void MsgBox(GfxWindow const& win)
     k.showModal();
 }
 
+void BeforeInit(void)
+{
+    GfxVideo v;
+    
+    std::cout << "v.getNumVideoDrivers()=" << v.getNumVideoDrivers() << '\n';
+    for(int i = 0; i < v.getNumVideoDrivers(); i++)
+    {
+        std::cout << "v.getVideoDriver(i)=" << v.getVideoDriver(i) << '\n';
+    }
+}
+
+void AfterInit(void)
+{
+    GfxVideo v;
+
+    std::cout << "v.getCurrentVideoDriver()=" << v.getCurrentVideoDriver() << '\n';
+    std::cout << "v.getNumVideoDisplays()=" << v.getNumVideoDisplays() << '\n';
+    for(int i = 0; i < v.getNumVideoDisplays(); i++)
+    {
+        std::cout << "v.getDisplayName(i)=" << v.getDisplayName(i) << '\n';
+        float d,h,v1;
+        v.getDisplayDPI(i,&d,&h,&v1);
+        std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
+        std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
+        std::unique_ptr<GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
+        std::cout << "dm.get()->getFormat()=" << std::hex << dm.get()->getFormat() << std::dec << '\n';
+        std::cout << "dm.get()->getWidth()=" << dm.get()->getWidth() << '\n';
+        std::cout << "dm.get()->getHeight()=" << dm.get()->getHeight() << '\n';
+        std::cout << "dm.get()->getRefreshRate()=" << dm.get()->getRefreshRate() << "Hz" << '\n';
+    }
+    std::cout << std::endl;
+}
+
 void inc(int* a)
 {
     if ((*a + 4) > 255) *a = 255;
@@ -95,7 +129,9 @@ void dec(int* a)
 
 void _doStuff(void)
 {
+    BeforeInit();
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
+    AfterInit();
     if (iq.getErrorCode() != 0)
     {
         std::cout << "Init failed\n";
@@ -126,7 +162,7 @@ void _doStuff(void)
     cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxBgiConstants::vgaGreen());
     auto color = GfxBgiConstants::vgaRed();
     cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),color);
-    cv.OutText(GfxPoint(360,232),GfxString("sdl_BGI"),GfxColor(50,100,200));
+    cv.OutText(GfxPoint(360,232),GfxString("SDL_bgi"),GfxColor(50,100,200));
     cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxBgiConstants::vgaLightRed());
     cv.Bar(GfxRect(10,10,20,20),GfxBgiConstants::vgaRed());
     cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxBgiConstants::vgaGreen());
@@ -150,8 +186,8 @@ void _doStuff(void)
     cv.Bar(GfxPoint(600,100),GfxPoint(800,200),GfxBgiConstants::vgaLightGray());
     cv.OutText(GfxPoint(620,120),GfxString("3D Text, custom font"),GfxBgiConstants::vgaWhite(),GfxBgiConstants::fntScript());
     cv.OutText(GfxPoint(621,121),GfxString("3D Text, custom font"),GfxBgiConstants::vgaBlack(),GfxBgiConstants::fntScript());
-    cv.OutText(GfxPoint(620,140),GfxString("3D Text, BGI_sdl font"),GfxBgiConstants::vgaWhite());
-    cv.OutText(GfxPoint(621,141),GfxString("3D Text, BGI_sdl font"),GfxBgiConstants::vgaBlack());
+    cv.OutText(GfxPoint(620,140),GfxString("3D Text, SDL_bgi font"),GfxBgiConstants::vgaWhite());
+    cv.OutText(GfxPoint(621,141),GfxString("3D Text, SDL_bgi font"),GfxBgiConstants::vgaBlack());
 
 
     c = 0;

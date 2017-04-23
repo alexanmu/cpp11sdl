@@ -54,7 +54,8 @@ public:
     void setY(const uint16_t y);
     void setWidth(const uint16_t w);
     void setHeight(const uint16_t h);
-    
+    void set(SdlType r);
+
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr() const;
 private:
