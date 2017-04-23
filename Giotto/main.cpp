@@ -36,6 +36,7 @@
 #include "platform/macOS.h"
 #include "GfxMessageBox.hpp"
 #include "GfxCpuInfo.hpp"
+#include "GfxPlatform.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -59,15 +60,17 @@ void MsgBox(GfxWindow const& win)
     
     std::string rez;
     
-    rez = "Result = " + std::to_string(r);
+    rez = "R=" + std::to_string(r);
     /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
                              NULL);*/
     GfxCpuInfo info;
     info.queryCpuInfo();
+    GfxPlatform plat;
+    plat.queryPlatform();
     GfxMessageBox k(GfxMessageBoxFlags(GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
-                    rez,info.getAsFormatedString(),win);
+                    rez + " " + plat.getPlatform(),info.getAsFormatedString(),win);
     k.showModal();
 }
 
