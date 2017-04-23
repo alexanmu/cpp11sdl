@@ -37,10 +37,16 @@ public:
     GfxMessageBox(GfxMessageBoxFlags const& flag,std::string const& title,std::string const& message);
     GfxMessageBox(GfxMessageBoxFlags const& flag,std::string const& title,std::string const& message,GfxWindow const& win);
 
-    int showModal(void);
+    GfxMessageBox(GfxMessageBox const&) = delete;
+    GfxMessageBox(GfxMessageBox&&) = delete;
+    
+    GfxMessageBox& operator=(GfxMessageBox const&) = delete;
+    GfxMessageBox& operator=(GfxMessageBox&&) = delete;
+
+    int showModal(void) const;
 private:
     int showModalComplex(void) const;
-    int showModalSimple(void);
+    int showModalSimple(void) const;
 
     enum class GfxMessageBoxType : int
     {

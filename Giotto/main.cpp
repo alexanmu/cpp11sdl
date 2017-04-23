@@ -35,6 +35,7 @@
 #include "platform/Linux.h"
 #include "platform/macOS.h"
 #include "GfxMessageBox.hpp"
+#include "GfxCpuInfo.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -63,8 +64,10 @@ void MsgBox(GfxWindow const& win)
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
                              NULL);*/
+    GfxCpuInfo info;
+    info.queryCpuInfo();
     GfxMessageBox k(GfxMessageBoxFlags(GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
-                    "The title",rez,win);
+                    rez,info.getAsFormatedString(),win);
     k.showModal();
 }
 

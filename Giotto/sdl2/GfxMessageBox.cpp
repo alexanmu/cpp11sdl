@@ -48,7 +48,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag,const std::string& t
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-int GfxMessageBox::showModal()
+int GfxMessageBox::showModal() const
 {
     int ret;
 
@@ -63,7 +63,7 @@ int GfxMessageBox::showModal()
     return ret;
 }
 
-int GfxMessageBox::showModalSimple(void)
+int GfxMessageBox::showModalSimple(void) const
 {
     if (winptr_ == nullptr)
     {
