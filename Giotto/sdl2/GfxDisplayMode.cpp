@@ -56,7 +56,6 @@ GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) : GfxRootClass("GfxDispla
     other.dmode_.driverdata = NULL;
 }
 
-
 GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other)
 {
     if (this != &other)
