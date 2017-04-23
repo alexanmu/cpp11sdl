@@ -30,7 +30,7 @@
 #include "GfxRenderer.hpp"
 #include "GfxSurface.hpp"
 #include "GfxTexture.hpp"
-#include "GfxConstants.hpp"
+#include "GfxBgiConstants.hpp"
 #include "GfxCanvas.hpp"
 #include "platform/Linux.h"
 #include "platform/macOS.h"
@@ -113,29 +113,29 @@ void _doStuff(void)
     {
         for (int j = 480; j < WIN_H; j++)
         {
-            sb.putPixel(i,j,GfxConstants::vgaGetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
+            sb.putPixel(i,j,GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == GfxConstants::vgaNumColors) c = 0;
+            if (c == GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
     
     GfxCanvas cv(sb);
-    cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxConstants::vgaGreen());
-    auto color = GfxConstants::vgaRed();
+    cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxBgiConstants::vgaGreen());
+    auto color = GfxBgiConstants::vgaRed();
     cv.Arc(GfxPoint(480,240),GfxAngle(60),GfxAngle(300),GfxRadius(239),color);
     cv.OutText(GfxPoint(360,232),GfxString("sdl_BGI"),GfxColor(50,100,200));
-    cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxConstants::vgaLightRed());
-    cv.Bar(GfxRect(10,10,20,20),GfxConstants::vgaRed());
-    cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxConstants::vgaGreen());
+    cv.Bar(GfxPoint(480,0),GfxPoint(960,240),GfxBgiConstants::vgaLightRed());
+    cv.Bar(GfxRect(10,10,20,20),GfxBgiConstants::vgaRed());
+    cv.Rect(GfxPoint(20,20),GfxPoint(30,30),GfxBgiConstants::vgaGreen());
     cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
-    cv.Line(GfxPoint(10,10),GfxPoint(40,40),GfxConstants::vgaYellow());
+    cv.Line(GfxPoint(10,10),GfxPoint(40,40),GfxBgiConstants::vgaYellow());
     cv.OutText(GfxPoint(50,50),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(150,100,200));
     
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
-    for( int i = 0; i < GfxConstants::fntNumFonts; i++)
+    for( int i = 0; i < GfxBgiConstants::fntNumFonts; i++)
     {
         int x = 30;
         int y = 60 + i * 16;
@@ -143,15 +143,15 @@ void _doStuff(void)
         int g = 200 + i * 5;
         int b = 20 + i * 10;
         cv.OutText(GfxPoint(x,y),GfxString(fontMsg),
-                    GfxColor(r,g,b),GfxConstants::fntGetFontByIndex(static_cast<GfxConstants::GfxFontIndex>(i)));
+                    GfxColor(r,g,b),GfxBgiConstants::fntGetFontByIndex(static_cast<GfxBgiConstants::GfxFontIndex>(i)));
     }
 
 
-    cv.Bar(GfxPoint(600,100),GfxPoint(800,200),GfxConstants::vgaLightGray());
-    cv.OutText(GfxPoint(620,120),GfxString("3D Text, custom font"),GfxConstants::vgaWhite(),GfxConstants::fntScript());
-    cv.OutText(GfxPoint(621,121),GfxString("3D Text, custom font"),GfxConstants::vgaBlack(),GfxConstants::fntScript());
-    cv.OutText(GfxPoint(620,140),GfxString("3D Text, BGI_sdl font"),GfxConstants::vgaWhite());
-    cv.OutText(GfxPoint(621,141),GfxString("3D Text, BGI_sdl font"),GfxConstants::vgaBlack());
+    cv.Bar(GfxPoint(600,100),GfxPoint(800,200),GfxBgiConstants::vgaLightGray());
+    cv.OutText(GfxPoint(620,120),GfxString("3D Text, custom font"),GfxBgiConstants::vgaWhite(),GfxBgiConstants::fntScript());
+    cv.OutText(GfxPoint(621,121),GfxString("3D Text, custom font"),GfxBgiConstants::vgaBlack(),GfxBgiConstants::fntScript());
+    cv.OutText(GfxPoint(620,140),GfxString("3D Text, BGI_sdl font"),GfxBgiConstants::vgaWhite());
+    cv.OutText(GfxPoint(621,141),GfxString("3D Text, BGI_sdl font"),GfxBgiConstants::vgaBlack());
 
 
     c = 0;
@@ -159,12 +159,12 @@ void _doStuff(void)
     {
         for (int j = 240; j < 480; j++)
         {
-            cv.PutPixel(GfxPoint(i,j),GfxConstants::vgaGetColorByIndex(static_cast<GfxConstants::GfxVga16ColorIndex>(c)));
+            cv.PutPixel(GfxPoint(i,j),GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == GfxConstants::vgaNumColors) c = 0;
+            if (c == GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
     
@@ -173,9 +173,9 @@ void _doStuff(void)
 
     SDL_Event e;
     bool quit = false;
-    int r1 = GfxConstants::vgaDarkGray().getRed();
-    int g1 = GfxConstants::vgaDarkGray().getGreen();
-    int b1 = GfxConstants::vgaDarkGray().getBlue();
+    int r1 = GfxBgiConstants::vgaDarkGray().getRed();
+    int g1 = GfxBgiConstants::vgaDarkGray().getGreen();
+    int b1 = GfxBgiConstants::vgaDarkGray().getBlue();
     int a1 = 0;
 
     GfxScreenSaver ss;

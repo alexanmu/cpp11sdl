@@ -21,22 +21,22 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef gfxconstants_hpp
-#define gfxconstants_hpp
+#ifndef GfxBgiConstants_hpp
+#define GfxBgiConstants_hpp
 
 #include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
 #include "GfxBitmapFont.hpp"
 
-class GfxConstants final : public GfxRootClass
+class GfxBgiConstants final : public GfxRootClass
 {
 public:
-	GfxConstants() = delete;
-	GfxConstants(const GfxConstants&) = delete;
-	GfxConstants(GfxConstants&&) = delete;
+	GfxBgiConstants() = delete;
+	GfxBgiConstants(const GfxBgiConstants&) = delete;
+	GfxBgiConstants(GfxBgiConstants&&) = delete;
 
-	GfxConstants& operator=(const GfxConstants&) = delete;
-	GfxConstants& operator=(GfxConstants&&) = delete;
+	GfxBgiConstants& operator=(const GfxBgiConstants&) = delete;
+	GfxBgiConstants& operator=(GfxBgiConstants&&) = delete;
 
 	static const int vgaNumColors = 16;
 

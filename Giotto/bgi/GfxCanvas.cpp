@@ -23,7 +23,7 @@
 #include <cmath>
 
 #include "GfxCanvas.hpp"
-#include "GfxConstants.hpp"
+#include "GfxBgiConstants.hpp"
 
 GfxCanvas::GfxCanvas(GfxSurface& surf) : surf_(surf)
 {

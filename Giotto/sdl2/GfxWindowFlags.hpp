@@ -100,12 +100,16 @@ public:
     void resetShown(void);
     void setHidden(void);
     void resetHidden(void);
-
-    /*void setBorderless(void);
+    void setBorderless(void);
+    void resetBorderless(void);
     void setResizable(void);
+    void resetResizable(void);
     void setMinimized(void);
+    void resetMinimized(void);
     void setMaximized(void);
-    void setInputGrabbed(void);
+    void resetMaximized(void);
+
+    /*void setInputGrabbed(void);
     void setInputFocus(void);
     void setMouseFocus(void);
     void setFullscreenDesktop(void);

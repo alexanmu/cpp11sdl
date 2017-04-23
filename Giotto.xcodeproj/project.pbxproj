@@ -14,7 +14,7 @@
 		194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D51EAB4C9D0064A6AA /* GfxCanvas.cpp */; };
 		194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D71EAB4C9D0064A6AA /* GfxCanvasBgi.cpp */; };
 		194410E21EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */; };
-		194410E41EAB4C9D0064A6AA /* GfxConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410DD1EAB4C9D0064A6AA /* GfxConstants.cpp */; };
+		194410E41EAB4C9D0064A6AA /* GfxBgiConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410DD1EAB4C9D0064A6AA /* GfxBgiConstants.cpp */; };
 		194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E51EAB4D9E0064A6AA /* GfxBlendMode.cpp */; };
 		194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E71EAB4D9E0064A6AA /* GfxColor.cpp */; };
 		194411021EAB4D9E0064A6AA /* GfxFlip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E91EAB4D9E0064A6AA /* GfxFlip.cpp */; };
@@ -87,8 +87,8 @@
 		194410D81EAB4C9D0064A6AA /* GfxCanvasBgi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgi.hpp; path = bgi/GfxCanvasBgi.hpp; sourceTree = "<group>"; };
 		194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCanvasBgiData.cpp; path = bgi/GfxCanvasBgiData.cpp; sourceTree = "<group>"; };
 		194410DA1EAB4C9D0064A6AA /* GfxCanvasBgiData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCanvasBgiData.hpp; path = bgi/GfxCanvasBgiData.hpp; sourceTree = "<group>"; };
-		194410DD1EAB4C9D0064A6AA /* GfxConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxConstants.cpp; path = bgi/GfxConstants.cpp; sourceTree = "<group>"; };
-		194410DE1EAB4C9D0064A6AA /* GfxConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxConstants.hpp; path = bgi/GfxConstants.hpp; sourceTree = "<group>"; };
+		194410DD1EAB4C9D0064A6AA /* GfxBgiConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBgiConstants.cpp; path = bgi/GfxBgiConstants.cpp; sourceTree = "<group>"; };
+		194410DE1EAB4C9D0064A6AA /* GfxBgiConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBgiConstants.hpp; path = bgi/GfxBgiConstants.hpp; sourceTree = "<group>"; };
 		194410E51EAB4D9E0064A6AA /* GfxBlendMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlendMode.cpp; path = sdl2/GfxBlendMode.cpp; sourceTree = "<group>"; };
 		194410E61EAB4D9E0064A6AA /* GfxBlendMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendMode.hpp; path = sdl2/GfxBlendMode.hpp; sourceTree = "<group>"; };
 		194410E71EAB4D9E0064A6AA /* GfxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxColor.cpp; path = sdl2/GfxColor.cpp; sourceTree = "<group>"; };
@@ -235,8 +235,8 @@
 				194410D81EAB4C9D0064A6AA /* GfxCanvasBgi.hpp */,
 				194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */,
 				194410DA1EAB4C9D0064A6AA /* GfxCanvasBgiData.hpp */,
-				194410DD1EAB4C9D0064A6AA /* GfxConstants.cpp */,
-				194410DE1EAB4C9D0064A6AA /* GfxConstants.hpp */,
+				194410DD1EAB4C9D0064A6AA /* GfxBgiConstants.cpp */,
+				194410DE1EAB4C9D0064A6AA /* GfxBgiConstants.hpp */,
 				19F778331EAB4F96007E1C19 /* GfxRadius.cpp */,
 				19F778341EAB4F96007E1C19 /* GfxRadius.hpp */,
 				19F778391EAB5039007E1C19 /* GfxString.cpp */,
@@ -398,7 +398,7 @@
 				1995962D1EAB653A00B414E5 /* GfxMessageBoxData.cpp in Sources */,
 				194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */,
 				194411031EAB4D9E0064A6AA /* GfxInitQuit.cpp in Sources */,
-				194410E41EAB4C9D0064A6AA /* GfxConstants.cpp in Sources */,
+				194410E41EAB4C9D0064A6AA /* GfxBgiConstants.cpp in Sources */,
 				195F7A0E1EAC920D00C11D9F /* GfxPowerState.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,

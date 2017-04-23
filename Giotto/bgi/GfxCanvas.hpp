@@ -25,7 +25,7 @@
 #define GfxCanvas_hpp
 
 #include "GfxRootClass.hpp"
-#include "GfxConstants.hpp"
+#include "GfxBgiConstants.hpp"
 #include "GfxSurface.hpp"
 #include "GfxCanvasBgi.hpp"
 #include "GfxPoint.hpp"

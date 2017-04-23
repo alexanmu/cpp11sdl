@@ -263,6 +263,46 @@ void GfxWindowFlags::resetHidden(void)
     flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_HIDDEN);
 }
 
+void GfxWindowFlags::setBorderless(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_BORDERLESS);
+}
+
+void GfxWindowFlags::resetBorderless(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_BORDERLESS);
+}
+
+void GfxWindowFlags::setResizable(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_RESIZABLE);
+}
+
+void GfxWindowFlags::resetResizable(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_RESIZABLE);
+}
+
+void GfxWindowFlags::setMinimized(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_MINIMIZED);
+}
+
+void GfxWindowFlags::resetMinimized(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_MINIMIZED);
+}
+
+void GfxWindowFlags::setMaximized(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_MAXIMIZED);
+}
+
+void GfxWindowFlags::resetMaximized(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_MAXIMIZED);
+}
+
 // SDL type access
 GfxWindowFlags::SdlType GfxWindowFlags::getAsSdlType(void) const
 {
