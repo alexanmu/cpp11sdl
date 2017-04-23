@@ -37,15 +37,21 @@
 #include "GfxMessageBox.hpp"
 #include "GfxCpuInfo.hpp"
 #include "GfxPlatform.hpp"
+#include "GfxPowerInfo.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
+    GfxPlatform plat;
+    plat.queryPlatform();
+    GfxPowerInfo pinfo;
+    pinfo.queryPowerInfo();
+    
     GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
     std::string title = "Title";
-    std::string message = "Message";
+    std::string message = pinfo.getAsString();
     int numbuttons = 3;
     GfxMessageBoxButtonData buttons[3] = {
-        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,1,"Button1"},
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,1,plat.getPlatform()},
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault,2,"Button2"},
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Button3"}
     };
@@ -65,12 +71,10 @@ void MsgBox(GfxWindow const& win)
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
                              NULL);*/
-    GfxCpuInfo info;
-    info.queryCpuInfo();
-    GfxPlatform plat;
-    plat.queryPlatform();
+    GfxCpuInfo cinfo;
+    cinfo.queryCpuInfo();
     GfxMessageBox k(GfxMessageBoxFlags(GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
-                    rez + " " + plat.getPlatform(),info.getAsFormatedString(),win);
+                    rez,cinfo.getAsString(),win);
     k.showModal();
 }
 

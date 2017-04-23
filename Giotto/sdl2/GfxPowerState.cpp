@@ -70,6 +70,31 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
     return *this;
 }
 
+std::string GfxPowerState::getAsString() const
+{
+    std::string str;
+    
+    switch (static_cast<GfxPowerStateValues>(value_))
+    {
+        case GfxPowerStateValues::stateUnknown:
+            str = "Unknwon";
+            break;
+        case GfxPowerStateValues::stateOnBattery:
+            str = "On Battery";
+            break;
+        case GfxPowerStateValues::stateNoBattery:
+            str = "No Battery";
+            break;
+        case GfxPowerStateValues::stateCharging:
+            str = "Charging";
+            break;
+        case GfxPowerStateValues::stateCharged:
+            str = "Charged";
+            break;
+    }
+    return str;
+}
+
 GfxPowerState::SdlType GfxPowerState::getAsSdlType(void) const
 {
     return value_;

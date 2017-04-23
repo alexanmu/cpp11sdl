@@ -21,42 +21,35 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-#ifndef GfxPowerState_hpp
-#define GfxPowerState_hpp
+#ifndef GfxPowerInfo_hpp
+#define GfxPowerInfo_hpp
+
+#include <string>
 
 #include "GfxRootClass.hpp"
-#include "GfxSdlHeader.hpp"
+#include "GfxPowerState.hpp"
 
-class GfxPowerState final : public GfxRootClass
+class GfxPowerInfo final : public GfxRootClass
 {
 public:
-    typedef SDL_PowerState SdlType;
-    typedef SDL_PowerState* SdlTypePtr;
+    GfxPowerInfo();
+    GfxPowerInfo(GfxPowerInfo const&) = delete;
+    GfxPowerInfo(GfxPowerInfo&&) = delete;
     
-    enum class GfxPowerStateValues : int
-    {
-        stateUnknown = SDL_POWERSTATE_UNKNOWN,
-        stateOnBattery = SDL_POWERSTATE_ON_BATTERY,
-        stateNoBattery = SDL_POWERSTATE_NO_BATTERY,
-        stateCharging = SDL_POWERSTATE_CHARGING,
-        stateCharged = SDL_POWERSTATE_CHARGED
-    };
+    GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
+    GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
     
-    GfxPowerState();
-    GfxPowerState(GfxPowerStateValues value);
-    GfxPowerState(SdlType value);
-    GfxPowerState(GfxPowerState const& other);
-    GfxPowerState(GfxPowerState&& other);
-        
-    GfxPowerState& operator=(GfxPowerState const& other);
-    GfxPowerState& operator=(GfxPowerState&& other);
+    void queryPowerInfo(void);
+    
+    GfxPowerState& getPowerState(void) const;
+    int getRemainingSeconds(void) const;
+    int getRemainingPercentage(void) const;
     
     std::string getAsString(void) const;
-
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    SdlType value_;
+    GfxPowerState pstate_;
+    int seconds_;
+    int percentage_;
 };
 
-#endif /* GfxPowerState_hpp */
+#endif /* GfxPowerInfo_hpp */

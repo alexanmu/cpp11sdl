@@ -123,7 +123,7 @@ int GfxCpuInfo::getSystemRam(void) const
     return systemRam_;
 }
 
-std::string GfxCpuInfo::getAsFormatedString(void) const
+std::string GfxCpuInfo::getAsString(void) const
 {
     std::string str1;
     
