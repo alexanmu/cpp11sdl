@@ -25,7 +25,7 @@
 
 GfxWindowFlags::GfxWindowFlags() : GfxRootClass("GfxWindowFlags")
 {
-    flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowUnknown);
+    flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
 }
 
 GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flag) : GfxRootClass("GfxWindowFlags")
@@ -52,7 +52,7 @@ GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) : GfxRootClass("GfxWindow
 {
     flags_ = other.flags_;
     // Delete other's data
-    other.flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowUnknown);
+    other.flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
 }
 
 GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other)
@@ -70,11 +70,200 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other)
     {
         flags_ = other.flags_;
         // Delete other's data
-        other.flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowUnknown);
+        other.flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
     }
     return *this;
 }
 
+/* Getters ... */
+bool GfxWindowFlags::isUnkown(void) const
+{
+    return (flags_ == 0);
+}
+
+bool GfxWindowFlags::isFullscreen(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_FULLSCREEN;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isOpenGL(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_OPENGL;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isShown(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_SHOWN;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isHidden(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_HIDDEN;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isBorderless(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_BORDERLESS;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isResizable(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_RESIZABLE;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isMinimized(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_MINIMIZED;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isMaximized(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_MAXIMIZED;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isInputGrabbed(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_INPUT_GRABBED;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isInputFocus(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_INPUT_FOCUS;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isMouseFocus(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_MOUSE_FOCUS;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isFullscreenDesktop(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_FULLSCREEN_DESKTOP;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isForeign(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_FOREIGN;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::allowHighDPI(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_ALLOW_HIGHDPI;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::mouseCaptured(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_MOUSE_CAPTURE;
+    
+    return (r != 0);
+}
+
+// X11 only
+bool GfxWindowFlags::isAlwaysOnTop(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_ALWAYS_ON_TOP;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::skipTaskbar(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_SKIP_TASKBAR;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isUtility(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_UTILITY;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isTooltip(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_TOOLTIP;
+    
+    return (r != 0);
+}
+
+bool GfxWindowFlags::isPopupMenu(void) const
+{
+    uint32_t r = flags_ & SDL_WINDOW_POPUP_MENU;
+    
+    return (r != 0);
+}
+
+/* Setters .. */
+void GfxWindowFlags::setFullscreen(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_FULLSCREEN);
+}
+
+void GfxWindowFlags::resetFullscreen(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_FULLSCREEN);
+}
+
+void GfxWindowFlags::setOpenGL(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_OPENGL);
+}
+
+void GfxWindowFlags::resetOpenGL(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_OPENGL);
+}
+
+void GfxWindowFlags::setShown(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_SHOWN);
+}
+
+void GfxWindowFlags::resetShown(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_SHOWN);
+}
+
+void GfxWindowFlags::setHidden(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_HIDDEN);
+}
+
+void GfxWindowFlags::resetHidden(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_HIDDEN);
+}
+
+// SDL type access
 GfxWindowFlags::SdlType GfxWindowFlags::getAsSdlType(void) const
 {
     return flags_;
