@@ -22,13 +22,63 @@
  */
 
 #include "GfxMessageBox.hpp"
+#include "GfxSdlHeader.hpp"
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass("GfxMessageBox")
 {
     data_ = data;
+    type_ = GfxMessageBoxType::typeComplex;
 }
 
-int GfxMessageBox::showModal(void) const
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag,const std::string& title,const std::string& message)
+{
+    flag_ = flag;
+    title_ = title;
+    message_ = message;
+    winptr_ = nullptr;
+    type_ = GfxMessageBoxType::typeSimple;
+}
+
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag,const std::string& title,const std::string& message,GfxWindow const& win)
+{
+    flag_ = flag;
+    title_ = title;
+    message_ = message;
+    winptr_ = (GfxWindow *)&win;
+    type_ = GfxMessageBoxType::typeSimple;
+}
+
+int GfxMessageBox::showModal()
+{
+    int ret;
+
+    if (type_ == GfxMessageBoxType::typeComplex)
+    {
+        ret = showModalComplex();
+    }
+    else
+    {
+        ret = showModalSimple();
+    }
+    return ret;
+}
+
+int GfxMessageBox::showModalSimple(void)
+{
+    if (winptr_ == nullptr)
+    {
+        SDL_ShowSimpleMessageBox(flag_.getAsSdlType(),title_.c_str(),
+                                 message_.c_str(),NULL);
+    }
+    else
+    {
+        SDL_ShowSimpleMessageBox(flag_.getAsSdlType(),title_.c_str(),
+                                 message_.c_str(),winptr_->getAsSdlTypePtr());
+    }
+    return 1;
+}
+
+int GfxMessageBox::showModalComplex(void) const
 {
     int buttonid;
     GfxMessageBoxData::SdlTypePtr p;

@@ -59,11 +59,13 @@ void MsgBox(GfxWindow const& win)
     std::string rez;
     
     rez = "Result = " + std::to_string(r);
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+    /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
-                             NULL);
-
+                             NULL);*/
+    GfxMessageBox k(GfxMessageBoxFlags(GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
+                    "The title",rez,win);
+    k.showModal();
 }
 
 void inc(int* a)

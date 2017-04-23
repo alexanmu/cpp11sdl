@@ -26,16 +26,34 @@
 
 #include "GfxRootClass.hpp"
 #include "GfxMessageBoxData.hpp"
+#include "GfxMessageBoxFlags.hpp"
+#include "GfxWindow.hpp"
 
 class GfxMessageBox final : public GfxRootClass
 {
 public:
     GfxMessageBox() = delete;
     GfxMessageBox(GfxMessageBoxData const& data);
-    
-    int showModal(void) const;
+    GfxMessageBox(GfxMessageBoxFlags const& flag,std::string const& title,std::string const& message);
+    GfxMessageBox(GfxMessageBoxFlags const& flag,std::string const& title,std::string const& message,GfxWindow const& win);
+
+    int showModal(void);
 private:
+    int showModalComplex(void) const;
+    int showModalSimple(void);
+
+    enum class GfxMessageBoxType : int
+    {
+        typeComplex,
+        typeSimple
+    };
+    
+    GfxMessageBoxType type_;
     GfxMessageBoxData data_;
+    GfxMessageBoxFlags flag_;
+    std::string title_;
+    std::string message_;
+    GfxWindow* winptr_;
 };
 
 #endif /* GfxMessageBox_hpp */
