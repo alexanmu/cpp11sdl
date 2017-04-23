@@ -39,6 +39,7 @@
 #include "GfxCpuInfo.hpp"
 #include "GfxPlatform.hpp"
 #include "GfxPowerInfo.hpp"
+#include "GfxScreenSaver.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -177,6 +178,11 @@ void _doStuff(void)
     int b1 = GfxConstants::vgaDarkGray().getBlue();
     int a1 = 0;
 
+    GfxScreenSaver ss;
+    if (ss.isScreenSaverEnabled() == false)
+    {
+        ss.enableScreenSaver();
+    }
     std::srand(static_cast<unsigned int>(time(0)));
     while(!quit)
     {
