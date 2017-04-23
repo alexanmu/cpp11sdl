@@ -26,6 +26,7 @@
 
 #include "../platform/Linux.h"
 #include "../platform/macOS.h"
+#include "../platform/Windows.h"
 
 #if defined(__linux_machine) && defined(__macosx_machine)
 #error "Only one machine should be defined!"
@@ -37,6 +38,10 @@
 
 #ifdef __macosx_machine
 #include "SDL2/SDL.h"
+#endif
+
+#ifdef __windows_machine
+#error Windows not supported yet!
 #endif
 
 #endif

@@ -34,6 +34,7 @@
 #include "GfxCanvas.hpp"
 #include "platform/Linux.h"
 #include "platform/macOS.h"
+#include "platform/Windows.h"
 #include "GfxMessageBox.hpp"
 #include "GfxCpuInfo.hpp"
 #include "GfxPlatform.hpp"
@@ -49,18 +50,19 @@ void MsgBox(GfxWindow const& win)
     GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
     std::string title = "Title";
     std::string message = pinfo.getAsString();
-    int numbuttons = 3;
-    GfxMessageBoxButtonData buttons[3] = {
+    int numbuttons = 4;
+    GfxMessageBoxButtonData buttons[4] = {
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,1,plat.getPlatform()},
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault,2,"Button2"},
-        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Button3"}
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Button3"},
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Test"}
     };
     GfxMessageBoxColor c[5] = { {255,0,0}, {250,220,190}, {192,92,9}, {50,100,200}, {255,255,255} };
     GfxMessageBoxColorScheme colorScheme(c);
 
     GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons,colorScheme);
     //GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
-    
+
     GfxMessageBox g(m);
     int r = g.showModal();
     
