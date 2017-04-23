@@ -70,6 +70,31 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
     return *this;
 }
 
+bool GfxPowerState::isUnknown(void) const
+{
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_UNKNOWN));
+}
+
+bool GfxPowerState::isOnBattery(void) const
+{
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_ON_BATTERY));
+}
+
+bool GfxPowerState::isNoBattery(void) const
+{
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_NO_BATTERY));
+}
+
+bool GfxPowerState::isCharging(void) const
+{
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_CHARGING));
+}
+
+bool GfxPowerState::isCharged(void) const
+{
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_CHARGED));
+}
+
 std::string GfxPowerState::getAsString() const
 {
     std::string str;

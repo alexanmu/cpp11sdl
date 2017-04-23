@@ -32,26 +32,29 @@ class GfxMessageBoxButtonFlags final : public GfxRootClass
 public:
     typedef SDL_MessageBoxButtonFlags SdlType;
     typedef SDL_MessageBoxButtonFlags* SdlTypePtr;
-    
+
     enum class GfxMessageBoxButtonFlagsValues : int
     {
         noneDefault = 0,
         returnKeyDefault = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
         escKeyDefault = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT
     };
-        
+
     GfxMessageBoxButtonFlags();
     GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlagsValues flags);
-    GfxMessageBoxButtonFlags(SdlType blendmode);
-    GfxMessageBoxButtonFlags(SdlTypePtr blendmode);
+    GfxMessageBoxButtonFlags(SdlType flags);
+    GfxMessageBoxButtonFlags(SdlTypePtr flags);
     GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other);
     GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other);
-        
+
     GfxMessageBoxButtonFlags& operator=(const GfxMessageBoxButtonFlags& other);
     GfxMessageBoxButtonFlags& operator=(GfxMessageBoxButtonFlags&& other);
-        
+
     bool operator==(const GfxMessageBoxButtonFlags& other);
-        
+
+    bool isReturnDefault(void) const;
+    bool isEscDefault(void) const;
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

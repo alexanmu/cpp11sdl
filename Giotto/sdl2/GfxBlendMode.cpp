@@ -25,22 +25,22 @@
 
 GfxBlendMode::GfxBlendMode()
 {
-    blendmode_ = GfxBlendModeValues::blendNone;
+    blendmode_ = static_cast<SdlType>(GfxBlendModeValues::blendNone);
 }
 
 GfxBlendMode::GfxBlendMode(GfxBlendModeValues blendmode)
 {
-    blendmode_ = blendmode;
+    blendmode_ = static_cast<SdlType>(blendmode);
 }
 
 GfxBlendMode::GfxBlendMode(SdlType blendmode)
 {
-    blendmode_ = static_cast<GfxBlendModeValues>(blendmode);
+    blendmode_ = blendmode;
 }
 
 GfxBlendMode::GfxBlendMode(SdlTypePtr blendmode)
 {
-    blendmode_ = static_cast<GfxBlendModeValues>(*blendmode);
+    blendmode_ = *blendmode;
 }
 
 GfxBlendMode::GfxBlendMode(const GfxBlendMode& other)
@@ -52,7 +52,7 @@ GfxBlendMode::GfxBlendMode(GfxBlendMode&& other)
 {
     blendmode_ = other.blendmode_;
     // Destroy other's data
-    other.blendmode_ = GfxBlendModeValues::blendNone;
+    other.blendmode_ = static_cast<SdlType>(GfxBlendModeValues::blendNone);
 }
 
 GfxBlendMode& GfxBlendMode::operator=(const GfxBlendMode& other)
@@ -70,7 +70,7 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other)
     {
         blendmode_ = other.blendmode_;
         // Destroy other's data
-        other.blendmode_ = GfxBlendModeValues::blendNone;
+        other.blendmode_ = static_cast<SdlType>(GfxBlendModeValues::blendNone);
     }
     return *this;
 }
@@ -82,7 +82,22 @@ bool GfxBlendMode::operator==(const GfxBlendMode& other)
 
 GfxBlendMode::GfxBlendModeValues GfxBlendMode::getBlendMode(void) const
 {
-    return blendmode_;
+    return static_cast<GfxBlendModeValues>(blendmode_);
+}
+
+bool GfxBlendMode::isBlend(void) const
+{
+    return (blendmode_ == SDL_BLENDMODE_BLEND);
+}
+
+bool GfxBlendMode::isAdd(void) const
+{
+    return (blendmode_ == SDL_BLENDMODE_ADD);
+}
+
+bool GfxBlendMode::isMod(void) const
+{
+    return (blendmode_ == SDL_BLENDMODE_MOD);
 }
 
 GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const

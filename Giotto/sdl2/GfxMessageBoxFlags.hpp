@@ -46,18 +46,22 @@ public:
     GfxMessageBoxFlags(SdlTypePtr flag);
     GfxMessageBoxFlags(const GfxMessageBoxFlags& other);
     GfxMessageBoxFlags(GfxMessageBoxFlags&& other);
-        
+
     GfxMessageBoxFlags& operator=(const GfxMessageBoxFlags& other);
     GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other);
-        
+
     bool operator==(const GfxMessageBoxFlags& other);
-        
+
     GfxMessageBoxFlagsValues getFlag(void) const;
-        
+
+    bool isError(void) const;
+    bool isWarning(void) const;
+    bool isInformation(void) const;
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    GfxMessageBoxFlagsValues flag_;
+    SdlType flag_;
 };
 
 #endif /* GfxMessageBoxFlags_hpp */

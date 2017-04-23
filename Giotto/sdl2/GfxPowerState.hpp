@@ -50,7 +50,13 @@ public:
         
     GfxPowerState& operator=(GfxPowerState const& other);
     GfxPowerState& operator=(GfxPowerState&& other);
-    
+
+    bool isUnknown(void) const;
+    bool isOnBattery(void) const;
+    bool isNoBattery(void) const;
+    bool isCharging(void) const;
+    bool isCharged(void) const;
+
     std::string getAsString(void) const;
 
     SdlType getAsSdlType(void) const;

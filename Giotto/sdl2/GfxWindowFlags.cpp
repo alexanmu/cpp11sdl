@@ -179,7 +179,7 @@ bool GfxWindowFlags::allowHighDPI(void) const
     return (r != 0);
 }
 
-bool GfxWindowFlags::mouseCaptured(void) const
+bool GfxWindowFlags::mouseCapture(void) const
 {
     uint32_t r = flags_ & SDL_WINDOW_MOUSE_CAPTURE;
     
@@ -301,6 +301,126 @@ void GfxWindowFlags::setMaximized(void)
 void GfxWindowFlags::resetMaximized(void)
 {
     flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_MAXIMIZED);
+}
+
+void GfxWindowFlags::setInputGrabbed(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_INPUT_GRABBED);
+}
+
+void GfxWindowFlags::resetInputGrabbed(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_INPUT_GRABBED);
+}
+
+void GfxWindowFlags::setInputFocus(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_INPUT_FOCUS);
+}
+
+void GfxWindowFlags::resetInputFocus(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_INPUT_FOCUS);
+}
+
+void GfxWindowFlags::setMouseFocus(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_MOUSE_FOCUS);
+}
+
+void GfxWindowFlags::resetMouseFocus(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_MOUSE_FOCUS);
+}
+
+void GfxWindowFlags::setFullscreenDesktop(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_FULLSCREEN_DESKTOP);
+}
+
+void GfxWindowFlags::resetFullscreenDesktop(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_FULLSCREEN_DESKTOP);
+}
+
+void GfxWindowFlags::setForeign(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_FOREIGN);
+}
+
+void GfxWindowFlags::resetForeign(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_FOREIGN);
+}
+
+void GfxWindowFlags::setAllowHighDPI(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_ALLOW_HIGHDPI);
+}
+
+void GfxWindowFlags::resetAllowHighDPI(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_ALLOW_HIGHDPI);
+}
+
+void GfxWindowFlags::setMouseCapture(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_MOUSE_CAPTURE);
+}
+
+void GfxWindowFlags::resetMouseCapture(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_MOUSE_CAPTURE);
+}
+
+// X11 only
+void GfxWindowFlags::setAlwaysOnTop(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_ALWAYS_ON_TOP);
+}
+
+void GfxWindowFlags::resetAlwaysOnTop(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_ALWAYS_ON_TOP);
+}
+
+void GfxWindowFlags::setSkipTaskbar(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_SKIP_TASKBAR);
+}
+void GfxWindowFlags::resetSkipTaskbar(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_SKIP_TASKBAR);
+}
+
+void GfxWindowFlags::setUtility(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_UTILITY);
+}
+
+void GfxWindowFlags::resetUtility(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_UTILITY);
+}
+
+void GfxWindowFlags::setTooltip(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_TOOLTIP);
+}
+
+void GfxWindowFlags::resetTooltip(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_TOOLTIP);
+}
+
+void GfxWindowFlags::setPopupMenu(void)
+{
+    flags_ = static_cast<SdlType>(flags_ | SDL_WINDOW_POPUP_MENU);
+}
+
+void GfxWindowFlags::resetPopupMenu(void)
+{
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_WINDOW_POPUP_MENU);
 }
 
 // SDL type access

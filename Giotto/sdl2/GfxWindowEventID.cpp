@@ -75,6 +75,87 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other)
     return *this;
 }
 
+bool GfxWindowEventID::isShown(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_SHOWN);
+}
+
+bool GfxWindowEventID::isHidden(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_HIDDEN);
+}
+
+bool GfxWindowEventID::isExposed(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_EXPOSED);
+}
+
+bool GfxWindowEventID::isMoved(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_MOVED);
+}
+
+bool GfxWindowEventID::isResized(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_RESIZED);
+}
+
+bool GfxWindowEventID::isSizeChanged(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_SIZE_CHANGED);
+}
+
+bool GfxWindowEventID::isMinimized(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_MINIMIZED);
+}
+
+bool GfxWindowEventID::isMaximized(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_MAXIMIZED);
+}
+
+bool GfxWindowEventID::isRestored(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_RESTORED);
+}
+
+bool GfxWindowEventID::enter(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_ENTER);
+}
+
+bool GfxWindowEventID::leave(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_LEAVE);
+}
+
+bool GfxWindowEventID::isFocusGained(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_FOCUS_GAINED);
+}
+
+bool GfxWindowEventID::isFocusLost(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_FOCUS_LOST);
+}
+
+bool GfxWindowEventID::close(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_CLOSE);
+}
+
+bool GfxWindowEventID::takeFocus(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_TAKE_FOCUS);
+}
+
+bool GfxWindowEventID::hitTest(void) const
+{
+    return (eventid_ == SDL_WINDOWEVENT_HIT_TEST);
+}
+
+
 GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const
 {
     return eventid_;

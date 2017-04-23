@@ -64,6 +64,24 @@ public:
     GfxWindowEventID& operator=(GfxWindowEventID const& other);
     GfxWindowEventID& operator=(GfxWindowEventID&& other);
 
+    // Getters
+    bool isShown(void) const;
+    bool isHidden(void) const;
+    bool isExposed(void) const;
+    bool isMoved(void) const;
+    bool isResized(void) const;
+    bool isSizeChanged(void) const;
+    bool isMinimized(void) const;
+    bool isMaximized(void) const;
+    bool isRestored(void) const;
+    bool enter(void) const;
+    bool leave(void) const;
+    bool isFocusGained(void) const;
+    bool isFocusLost(void) const;
+    bool close(void) const;
+    bool takeFocus(void) const;
+    bool hitTest(void) const;
+        
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

@@ -25,19 +25,19 @@
 
 GfxFlip::GfxFlip() : GfxRootClass("GfxFlip")
 {
-    flip_ = static_cast<int>(GfxFlipValues::flipNone);
+    flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
 }
 
 GfxFlip::GfxFlip(const bool fliph,const bool flipv) : GfxRootClass("GfxFlip")
 {
-    flip_ = static_cast<int>(GfxFlipValues::flipNone);
+    flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
     if (fliph == true)
     {
-        flip_ |= static_cast<int>(GfxFlipValues::flipHorizontal);
+        flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_HORIZONTAL);
     }
     if (flipv == true)
     {
-        flip_ |= static_cast<int>(GfxFlipValues::flipVertical);
+        flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_VERTICAL);
     }
 }
 
@@ -49,7 +49,7 @@ GfxFlip::GfxFlip(const GfxFlip& other)
 GfxFlip::GfxFlip(GfxFlip&& other)
 {
     flip_ = other.flip_;
-    other.flip_ = static_cast<int>(GfxFlipValues::flipNone);
+    other.flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
 }
 
 GfxFlip& GfxFlip::operator=(const GfxFlip& other)
@@ -66,7 +66,7 @@ GfxFlip& GfxFlip::operator=(GfxFlip&& other)
     if (this != &other)
     {
         flip_ = other.flip_;
-        other.flip_ = static_cast<int>(GfxFlipValues::flipNone);
+        other.flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
     }
     return *this;
 }
@@ -74,6 +74,16 @@ GfxFlip& GfxFlip::operator=(GfxFlip&& other)
 bool GfxFlip::operator==(const GfxFlip& other)
 {
     return (flip_ == other.flip_);
+}
+
+bool GfxFlip::isFlipHorizontal(void) const
+{
+    return ((flip_ & SDL_FLIP_HORIZONTAL) != 0);
+}
+
+bool GfxFlip::isFlipVertical(void) const
+{
+    return ((flip_ & SDL_FLIP_VERTICAL) != 0);
 }
 
 GfxFlip::SdlType GfxFlip::getAsSdlType(void) const

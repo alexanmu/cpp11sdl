@@ -47,7 +47,7 @@ public:
     GfxBlendMode(SdlTypePtr blendmode);
     GfxBlendMode(const GfxBlendMode& other);
     GfxBlendMode(GfxBlendMode&& other);
-    
+
     GfxBlendMode& operator=(const GfxBlendMode& other);
     GfxBlendMode& operator=(GfxBlendMode&& other);
 
@@ -55,10 +55,14 @@ public:
 
     GfxBlendModeValues getBlendMode(void) const;
 
+    bool isBlend(void) const;
+    bool isAdd(void) const;
+    bool isMod(void) const;
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    GfxBlendModeValues blendmode_;
+    SdlType blendmode_;
 };
 
 #endif /* GfxBlendMode_hpp */

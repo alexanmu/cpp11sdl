@@ -84,7 +84,7 @@ public:
     bool isFullscreenDesktop(void) const;
     bool isForeign(void) const;
     bool allowHighDPI(void) const;
-    bool mouseCaptured(void) const;
+    bool mouseCapture(void) const;
     // X11 only
     bool isAlwaysOnTop(void) const;
     bool skipTaskbar(void) const;
@@ -108,20 +108,31 @@ public:
     void resetMinimized(void);
     void setMaximized(void);
     void resetMaximized(void);
-
-    /*void setInputGrabbed(void);
+    void setInputGrabbed(void);
+    void resetInputGrabbed(void);
     void setInputFocus(void);
+    void resetInputFocus(void);
     void setMouseFocus(void);
+    void resetMouseFocus(void);
     void setFullscreenDesktop(void);
+    void resetFullscreenDesktop(void);
     void setForeign(void);
+    void resetForeign(void);
     void setAllowHighDPI(void);
-    void setMouseCaptured(void);
+    void resetAllowHighDPI(void);
+    void setMouseCapture(void);
+    void resetMouseCapture(void);
     // X11 only
     void setAlwaysOnTop(void);
+    void resetAlwaysOnTop(void);
     void setSkipTaskbar(void);
+    void resetSkipTaskbar(void);
     void setUtility(void);
+    void resetUtility(void);
     void setTooltip(void);
-    void setPopupMenu(void);*/
+    void resetTooltip(void);
+    void setPopupMenu(void);
+    void resetPopupMenu(void);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

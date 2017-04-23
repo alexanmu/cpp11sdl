@@ -23,24 +23,24 @@
 
 #include "GfxMessageBoxFlags.hpp"
 
-GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass("GfxMessageBoxFlags"), flag_(GfxMessageBoxFlagsValues::flagError)
+GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass("GfxMessageBoxFlags")
 {
-    // Nothing to do
+    flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootClass("GfxMessageBoxFlags"), flag_(flag)
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootClass("GfxMessageBoxFlags")
 {
-    // Nothing to do
+    flag_ = static_cast<SdlType>(flag);
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(SdlType flag) : GfxRootClass("GfxMessageBoxFlags")
 {
-    flag_ = static_cast<GfxMessageBoxFlagsValues>(flag);
+    flag_ = flag;
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(SdlTypePtr flag) : GfxRootClass("GfxMessageBoxFlags")
 {
-    flag_ = static_cast<GfxMessageBoxFlagsValues>(*flag);
+    flag_ = *flag;
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) : GfxRootClass("GfxMessageBoxFlags")
@@ -52,7 +52,7 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) : GfxRootClas
 {
     flag_ = other.flag_;
     // Delete other's data
-    other.flag_ = GfxMessageBoxFlagsValues::flagError;
+    other.flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
 }
 
 GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(const GfxMessageBoxFlags& other)
@@ -70,7 +70,7 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other)
     {
         flag_ = other.flag_;
         // Delete other's data
-        other.flag_ = GfxMessageBoxFlagsValues::flagError;
+        other.flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
     }
     return *this;
 }
@@ -82,7 +82,22 @@ bool GfxMessageBoxFlags::operator==(const GfxMessageBoxFlags& other)
 
 GfxMessageBoxFlags::GfxMessageBoxFlagsValues GfxMessageBoxFlags::getFlag(void) const
 {
-    return flag_;
+    return static_cast<GfxMessageBoxFlagsValues>(flag_);
+}
+
+bool GfxMessageBoxFlags::isError(void) const
+{
+    return (flag_ == SDL_MESSAGEBOX_ERROR);
+}
+
+bool GfxMessageBoxFlags::isWarning(void) const
+{
+    return (flag_ == SDL_MESSAGEBOX_WARNING);
+}
+
+bool GfxMessageBoxFlags::isInformation(void) const
+{
+    return (flag_ == SDL_MESSAGEBOX_INFORMATION);
 }
 
 GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const

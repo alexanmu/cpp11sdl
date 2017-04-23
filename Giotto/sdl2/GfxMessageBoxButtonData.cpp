@@ -73,6 +73,19 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
     return *this;
 }
 
+int GfxMessageBoxButtonData::getButtonId(void) const
+{
+    return data_.buttonid;
+}
+
+std::string GfxMessageBoxButtonData::getText(void) const
+{
+    std::string text;
+    
+    text = data_.text;
+    return text;
+}
+
 GfxMessageBoxButtonData::SdlType GfxMessageBoxButtonData::getAsSdlType(void) const
 {
     return data_;

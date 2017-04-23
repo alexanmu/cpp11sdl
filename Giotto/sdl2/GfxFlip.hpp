@@ -33,8 +33,16 @@ public:
     typedef SDL_RendererFlip SdlType;
     typedef SDL_RendererFlip* SdlTypePtr;
 
+    enum class GfxFlipValues : int
+    {
+        flipNone = SDL_FLIP_NONE,
+        flipHorizontal = SDL_FLIP_HORIZONTAL,
+        flipVertical = SDL_FLIP_VERTICAL
+    };
+
     GfxFlip();
     GfxFlip(const bool fliph,const bool flipv);
+    GfxFlip(GfxFlipValues values);
     GfxFlip(const GfxFlip& other);
     GfxFlip(GfxFlip&& other);
 
@@ -43,16 +51,13 @@ public:
 
     bool operator==(const GfxFlip& other);
 
+    bool isFlipHorizontal(void) const;
+    bool isFlipVertical(void) const;
+
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr() const;
 private:
-    enum class GfxFlipValues : int
-    {
-        flipNone = SDL_FLIP_NONE,
-        flipHorizontal = SDL_FLIP_HORIZONTAL,
-        flipVertical = SDL_FLIP_VERTICAL
-    };
-    int flip_;
+    SdlType flip_;
 };
 
 #endif /* GfxFlip_hpp */
