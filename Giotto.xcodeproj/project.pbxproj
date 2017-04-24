@@ -46,6 +46,7 @@
 		199596391EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199596371EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp */; };
 		1995963C1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963A1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp */; };
 		1995963F1EAB982F00B414E5 /* GfxMessageBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */; };
+		19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */; };
 		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
 		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
 		19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778391EAB5039007E1C19 /* GfxString.cpp */; };
@@ -153,6 +154,8 @@
 		1995963B1EAB92E300B414E5 /* GfxMessageBoxButtonData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBoxButtonData.hpp; path = sdl2/GfxMessageBoxButtonData.hpp; sourceTree = "<group>"; };
 		1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMessageBox.cpp; path = sdl2/GfxMessageBox.cpp; sourceTree = "<group>"; };
 		1995963E1EAB982F00B414E5 /* GfxMessageBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBox.hpp; path = sdl2/GfxMessageBox.hpp; sourceTree = "<group>"; };
+		19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxWindowPosition.cpp; path = sdl2/GfxWindowPosition.cpp; sourceTree = "<group>"; };
+		19A8FAB61EAE561A00FFD332 /* GfxWindowPosition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxWindowPosition.hpp; path = sdl2/GfxWindowPosition.hpp; sourceTree = "<group>"; };
 		19F778331EAB4F96007E1C19 /* GfxRadius.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRadius.cpp; path = bgi/GfxRadius.cpp; sourceTree = "<group>"; };
 		19F778341EAB4F96007E1C19 /* GfxRadius.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRadius.hpp; path = bgi/GfxRadius.hpp; sourceTree = "<group>"; };
 		19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxAngle.cpp; path = bgi/GfxAngle.cpp; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				195F7A1D1EACDBA900C11D9F /* GfxWindowEventID.hpp */,
 				195F7A191EACD52400C11D9F /* GfxWindowFlags.cpp */,
 				195F7A1A1EACD52400C11D9F /* GfxWindowFlags.hpp */,
+				19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */,
+				19A8FAB61EAE561A00FFD332 /* GfxWindowPosition.hpp */,
 			);
 			name = sdl2;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				194411031EAB4D9E0064A6AA /* GfxInitQuit.cpp in Sources */,
 				195F7A211EACFBCB00C11D9F /* GfxVideo.cpp in Sources */,
 				194410E41EAB4C9D0064A6AA /* GfxBgiConstants.cpp in Sources */,
+				19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */,
 				195F7A0E1EAC920D00C11D9F /* GfxPowerState.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,

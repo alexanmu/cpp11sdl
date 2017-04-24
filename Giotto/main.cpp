@@ -25,6 +25,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 
 #include "GfxInitQuit.hpp"
 #include "Playground.hpp"
@@ -56,10 +57,10 @@ void MsgBox(GfxWindow const& win)
     std::string message = pinfo.getAsString();
     int numbuttons = 4;
     GfxMessageBoxButtonData buttons[4] = {
-        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,1,plat.getPlatform()},
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,1,"1" + plat.getPlatform()},
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault,2,"Button2"},
         {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Button3"},
-        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault,3,"Test"}
+        {GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault,4,"4 Test"}
     };
     GfxMessageBoxColor c[5] = { {255,0,0}, {250,220,190}, {192,92,9}, {50,100,200}, {255,255,255} };
     GfxMessageBoxColorScheme colorScheme(c);
@@ -109,7 +110,8 @@ void AfterInit(void)
         std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
         std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
         std::unique_ptr<GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
-        std::cout << "dm.get()->getFormat()=" << std::hex << dm.get()->getFormat() << std::dec << '\n';
+        std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') << std::setw(8) << std::hex << dm.get()->getFormat() << std::dec << '\n';
+        std::cout << "dm.get()->getFormat()=" << dm.get()->getFormat() << '\n';
         std::cout << "dm.get()->getWidth()=" << dm.get()->getWidth() << '\n';
         std::cout << "dm.get()->getHeight()=" << dm.get()->getHeight() << '\n';
         std::cout << "dm.get()->getRefreshRate()=" << dm.get()->getRefreshRate() << "Hz" << '\n';

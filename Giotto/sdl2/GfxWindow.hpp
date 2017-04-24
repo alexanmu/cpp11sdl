@@ -30,6 +30,7 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
+#include "GfxWindowPosition.hpp"
 
 class GfxWindow final : public GfxRootClass
 {
@@ -46,14 +47,23 @@ public:
     
     GfxWindow(GfxWindow&& win);
     GfxWindow& operator=(GfxWindow&& win);
-    
+
     ~GfxWindow();
 
     void destroyWindow();
 
     std::string getTitle() const;
+    void setTitle(const std::string& title);
+
     uint16_t getWidth() const;
     uint16_t getHeight() const;
+
+    void setWindowPosition(const GfxWindowPosition& x,const GfxWindowPosition& y);
+    void getWindowPosition(GfxWindowPosition& x,GfxWindowPosition& y);
+
+    void setWindowSize(int32_t x,int32_t y);
+    void getWindowSize(int32_t* px,int32_t* py);
+
     std::unique_ptr<GfxSurface> getWindowSurface(void);
 
     /*
@@ -64,7 +74,7 @@ public:
      extern DECLSPEC Uint32 SDLCALL SDL_GetWindowPixelFormat(SDL_Window * window);
      etc.
      */
-    void setTitle(const std::string& title);
+    
 
     SdlTypePtr getAsSdlTypePtr() const;
 private:

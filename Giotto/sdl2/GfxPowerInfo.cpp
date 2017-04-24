@@ -58,7 +58,7 @@ std::string GfxPowerInfo::getAsString(void) const
     std::string str;
     
     str = pstate_.getAsString() + "\n";
-    str += "Seconds remaining " + std::to_string(seconds_) + "\n";
+    str += "Minutes remaining " + std::to_string(seconds_ / 60) + "\n";
     str += "Percentage left " + std::to_string(percentage_) + "%";
     return str;
 }

@@ -90,6 +90,39 @@ std::string GfxWindow::getTitle() const
     return title_;
 }
 
+void GfxWindow::setTitle(const std::string& title)
+{
+    title_ = title;
+    SDL_SetWindowTitle(window_,title_.c_str());
+}
+
+void GfxWindow::setWindowPosition(const GfxWindowPosition& x,const GfxWindowPosition& y)
+{
+    SDL_SetWindowPosition(window_,x.getCoordinate(),y.getCoordinate());
+}
+
+void GfxWindow::getWindowPosition(GfxWindowPosition& x,GfxWindowPosition& y)
+{
+    int xcoord;
+    int ycoord;
+    
+    SDL_GetWindowPosition(window_,&xcoord,&ycoord);
+    x.setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
+    x.setCoordinate(xcoord);
+    y.setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
+    y.setCoordinate(ycoord);
+}
+
+void GfxWindow::setWindowSize(int32_t x,int32_t y)
+{
+    //
+}
+
+void GfxWindow::getWindowSize(int32_t* px,int32_t* py)
+{
+    //
+}
+
 uint16_t GfxWindow::getWidth() const
 {
     int w;
@@ -112,12 +145,6 @@ uint16_t GfxWindow::getHeight() const
     return h;
 }
 
-void GfxWindow::setTitle(const std::string& title)
-{
-    title_ = title;
-    SDL_SetWindowTitle(window_,title_.c_str());
-}
-                       
 GfxWindow::SdlTypePtr GfxWindow::getAsSdlTypePtr() const
 {
     return window_;
