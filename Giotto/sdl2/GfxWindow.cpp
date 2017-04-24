@@ -32,6 +32,15 @@ GfxWindow::GfxWindow(const std::string& title,const uint16_t width,const uint16_
     }
 }
 
+GfxWindow::GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height) : GfxRootClass("GfxWindow"), title_(title)
+{
+    window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(), width, height, 0);
+    if (window_ == nullptr)
+    {
+        // error handling here
+    }
+}
+
 GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
 {
     window_ = win.window_;
@@ -115,12 +124,12 @@ void GfxWindow::getWindowPosition(GfxWindowPosition& x,GfxWindowPosition& y)
 
 void GfxWindow::setWindowSize(int32_t x,int32_t y)
 {
-    //
+    SDL_SetWindowSize(window_,x,y);
 }
 
 void GfxWindow::getWindowSize(int32_t* px,int32_t* py)
 {
-    //
+    SDL_GetWindowSize(window_,px,py);
 }
 
 uint16_t GfxWindow::getWidth() const

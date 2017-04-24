@@ -39,6 +39,7 @@ public:
     typedef SDL_Window* SdlTypePtr;
 
     GfxWindow(const std::string& title,const uint16_t width,const uint16_t height);
+    GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height);
 
     GfxWindow() = delete;
 
