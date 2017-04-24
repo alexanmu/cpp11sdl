@@ -23,6 +23,8 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 #include "GfxInitQuit.hpp"
 #include "Playground.hpp"
@@ -48,7 +50,7 @@ void MsgBox(GfxWindow const& win)
     plat.queryPlatform();
     GfxPowerInfo pinfo;
     pinfo.queryPowerInfo();
-    
+
     GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
     std::string title = "Title";
     std::string message = pinfo.getAsString();
@@ -67,9 +69,9 @@ void MsgBox(GfxWindow const& win)
 
     GfxMessageBox g(m);
     int r = g.showModal();
-    
+
     std::string rez;
-    
+
     rez = "R=" + std::to_string(r);
     /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              rez.c_str(),
@@ -85,7 +87,7 @@ void MsgBox(GfxWindow const& win)
 void BeforeInit(void)
 {
     GfxVideo v;
-    
+
     std::cout << "v.getNumVideoDrivers()=" << v.getNumVideoDrivers() << '\n';
     for(int i = 0; i < v.getNumVideoDrivers(); i++)
     {
@@ -141,9 +143,9 @@ void _doStuff(void)
     MsgBox(w);
     GfxRenderer r(w);
     GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
-    
+
     GfxSurface sb(WIN_W,WIN_H);
-    
+
     int c = 0;
     for(int i = 0; i < WIN_W; i++)
     {
@@ -157,7 +159,7 @@ void _doStuff(void)
             if (c == GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
-    
+
     GfxCanvas cv(sb);
     cv.Circle(GfxPoint(480,240),GfxRadius(230),GfxBgiConstants::vgaGreen());
     auto color = GfxBgiConstants::vgaRed();
@@ -169,7 +171,7 @@ void _doStuff(void)
     cv.Rect(GfxRect(30,30,40,40),GfxColor(128,128,128));
     cv.Line(GfxPoint(10,10),GfxPoint(40,40),GfxBgiConstants::vgaYellow());
     cv.OutText(GfxPoint(50,50),GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),GfxColor(150,100,200));
-    
+
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
     for( int i = 0; i < GfxBgiConstants::fntNumFonts; i++)
     {
@@ -203,7 +205,7 @@ void _doStuff(void)
             if (c == GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
-    
+
     GfxSurface s(WIN_W,WIN_H);
     GfxRect rt;
 
@@ -283,7 +285,7 @@ void _doStuff(void)
             int gp = g1 * 100 / 255;
             int bp = b1 * 100 / 255;
             std::string s2;
-            
+
             s2 = "[R(" + std::to_string(r1) + ")";
             for(int i = 0; i < rp / 10; i++)
             {
@@ -326,7 +328,7 @@ void _doStuff(void)
 
             GfxTexture t(&r,s);
             t.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
-            
+
             r.renderCopy(tb);
             r.renderCopy(t);
             r.renderPresent();
@@ -336,7 +338,11 @@ void _doStuff(void)
 
 }
 
+#ifdef __windows_machine
+int WinMain(int argc, const char * argv[])
+#else
 int main(int argc, const char * argv[])
+#endif
 {
     _doStuff();
     //Playground p;
