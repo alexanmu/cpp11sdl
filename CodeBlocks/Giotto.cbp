@@ -1,1 +1,144 @@
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Giotto" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Giotto" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="../SDL2-2.0.5/i686-w64-mingw32" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Giotto" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../sdl2" />
+			<Add directory="../platform" />
+			<Add directory="../bgi" />
+		</Compiler>
+		<Linker>
+			<Add library="../SDL2-2.0.5/i686-w64-mingw32/lib/libSDL2.dll.a" />
+		</Linker>
+		<Unit filename="../Playground.cpp" />
+		<Unit filename="../Playground.hpp" />
+		<Unit filename="../bgi/GfxAngle.cpp" />
+		<Unit filename="../bgi/GfxAngle.hpp" />
+		<Unit filename="../bgi/GfxBgiConstants.cpp" />
+		<Unit filename="../bgi/GfxBgiConstants.hpp" />
+		<Unit filename="../bgi/GfxBitmapFont.cpp" />
+		<Unit filename="../bgi/GfxBitmapFont.hpp" />
+		<Unit filename="../bgi/GfxCanvas.cpp" />
+		<Unit filename="../bgi/GfxCanvas.hpp" />
+		<Unit filename="../bgi/GfxCanvasBgi.cpp" />
+		<Unit filename="../bgi/GfxCanvasBgi.hpp" />
+		<Unit filename="../bgi/GfxCanvasBgiData.cpp" />
+		<Unit filename="../bgi/GfxCanvasBgiData.hpp" />
+		<Unit filename="../bgi/GfxRadius.cpp" />
+		<Unit filename="../bgi/GfxRadius.hpp" />
+		<Unit filename="../bgi/GfxString.cpp" />
+		<Unit filename="../bgi/GfxString.hpp" />
+		<Unit filename="../bgi/fntAntique.hpp" />
+		<Unit filename="../bgi/fntBroadway.hpp" />
+		<Unit filename="../bgi/fntCourrier.hpp" />
+		<Unit filename="../bgi/fntDragon.hpp" />
+		<Unit filename="../bgi/fntMedieval.hpp" />
+		<Unit filename="../bgi/fntRoman.hpp" />
+		<Unit filename="../bgi/fntSansserif.hpp" />
+		<Unit filename="../bgi/fntScript.hpp" />
+		<Unit filename="../bgi/fntStandard8x16.hpp" />
+		<Unit filename="../bgi/fntWacky.hpp" />
+		<Unit filename="../main.cpp" />
+		<Unit filename="../platform/Linux.h" />
+		<Unit filename="../platform/Windows.h" />
+		<Unit filename="../platform/macOS.h" />
+		<Unit filename="../sdl2/GfxBlendMode.cpp" />
+		<Unit filename="../sdl2/GfxBlendMode.hpp" />
+		<Unit filename="../sdl2/GfxColor.cpp" />
+		<Unit filename="../sdl2/GfxColor.hpp" />
+		<Unit filename="../sdl2/GfxCpuInfo.cpp" />
+		<Unit filename="../sdl2/GfxCpuInfo.hpp" />
+		<Unit filename="../sdl2/GfxDisplayMode.cpp" />
+		<Unit filename="../sdl2/GfxDisplayMode.hpp" />
+		<Unit filename="../sdl2/GfxFlip.cpp" />
+		<Unit filename="../sdl2/GfxFlip.hpp" />
+		<Unit filename="../sdl2/GfxInitQuit.cpp" />
+		<Unit filename="../sdl2/GfxInitQuit.hpp" />
+		<Unit filename="../sdl2/GfxMessageBox.cpp" />
+		<Unit filename="../sdl2/GfxMessageBox.hpp" />
+		<Unit filename="../sdl2/GfxMessageBoxButtonData.cpp" />
+		<Unit filename="../sdl2/GfxMessageBoxButtonData.hpp" />
+		<Unit filename="../sdl2/GfxMessageBoxButtonFlags.cpp" />
+		<Unit filename="../sdl2/GfxMessageBoxButtonFlags.hpp" />
+		<Unit filename="../sdl2/GfxMessageBoxColor.cpp" />
+		<Unit filename="../sdl2/GfxMessageBoxColor.hpp" />
+		<Unit filename="../sdl2/GfxMessageBoxColorScheme.cpp" />
+		<Unit filename="../sdl2/GfxMessageBoxColorScheme.hpp" />
+		<Unit filename="../sdl2/GfxMessageBoxData.cpp" />
+		<Unit filename="../sdl2/GfxMessageBoxData.hpp" />
+		<Unit filename="../sdl2/GfxMessageBoxFlags.cpp" />
+		<Unit filename="../sdl2/GfxMessageBoxFlags.hpp" />
+		<Unit filename="../sdl2/GfxPalette.cpp" />
+		<Unit filename="../sdl2/GfxPalette.hpp" />
+		<Unit filename="../sdl2/GfxPixelFormat.cpp" />
+		<Unit filename="../sdl2/GfxPixelFormat.hpp" />
+		<Unit filename="../sdl2/GfxPlatform.cpp" />
+		<Unit filename="../sdl2/GfxPlatform.hpp" />
+		<Unit filename="../sdl2/GfxPoint.cpp" />
+		<Unit filename="../sdl2/GfxPoint.hpp" />
+		<Unit filename="../sdl2/GfxPowerInfo.cpp" />
+		<Unit filename="../sdl2/GfxPowerInfo.hpp" />
+		<Unit filename="../sdl2/GfxPowerState.cpp" />
+		<Unit filename="../sdl2/GfxPowerState.hpp" />
+		<Unit filename="../sdl2/GfxRect.cpp" />
+		<Unit filename="../sdl2/GfxRect.hpp" />
+		<Unit filename="../sdl2/GfxRenderer.cpp" />
+		<Unit filename="../sdl2/GfxRenderer.hpp" />
+		<Unit filename="../sdl2/GfxRootClass.cpp" />
+		<Unit filename="../sdl2/GfxRootClass.hpp" />
+		<Unit filename="../sdl2/GfxScreenSaver.cpp" />
+		<Unit filename="../sdl2/GfxScreenSaver.hpp" />
+		<Unit filename="../sdl2/GfxSdlHeader.hpp" />
+		<Unit filename="../sdl2/GfxSurface.cpp" />
+		<Unit filename="../sdl2/GfxSurface.hpp" />
+		<Unit filename="../sdl2/GfxTexture.cpp" />
+		<Unit filename="../sdl2/GfxTexture.hpp" />
+		<Unit filename="../sdl2/GfxVideo.cpp" />
+		<Unit filename="../sdl2/GfxVideo.hpp" />
+		<Unit filename="../sdl2/GfxWindow.cpp" />
+		<Unit filename="../sdl2/GfxWindow.hpp" />
+		<Unit filename="../sdl2/GfxWindowEventID.cpp" />
+		<Unit filename="../sdl2/GfxWindowEventID.hpp" />
+		<Unit filename="../sdl2/GfxWindowFlags.cpp" />
+		<Unit filename="../sdl2/GfxWindowFlags.hpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
