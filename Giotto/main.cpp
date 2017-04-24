@@ -46,6 +46,8 @@
 #include "GfxVideo.hpp"
 #include "GfxWindowPosition.hpp"
 #include "GfxWindowFlags.hpp"
+#include "GfxVersion.hpp"
+#include "GfxGetVersion.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -96,6 +98,13 @@ void BeforeInit(void)
     {
         std::cout << "v.getVideoDriver(i)=" << v.getVideoDriver(i) << '\n';
     }
+    GfxGetVersion gv;
+    GfxVersion ver;
+    
+    gv.getVersion(ver);
+    std::cout << "ver.getAsString()=" << ver.getAsString() << '\n';
+    std::cout << "gv.getRevision()=" << gv.getRevision() << '\n';
+    std::cout << "gv.getRevisionNumber()=" << gv.getRevisionNumber() << '\n';
 }
 
 void AfterInit(void)

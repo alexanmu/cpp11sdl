@@ -50,6 +50,8 @@
 		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
 		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
 		19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778391EAB5039007E1C19 /* GfxString.cpp */; };
+		19FA54021EAE7D5C009CD6E9 /* GfxVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19FA54001EAE7D5C009CD6E9 /* GfxVersion.cpp */; };
+		19FA54051EAE8095009CD6E9 /* GfxGetVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19FA54031EAE8095009CD6E9 /* GfxGetVersion.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -162,6 +164,10 @@
 		19F778371EAB4FEC007E1C19 /* GfxAngle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxAngle.hpp; path = bgi/GfxAngle.hpp; sourceTree = "<group>"; };
 		19F778391EAB5039007E1C19 /* GfxString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxString.cpp; path = bgi/GfxString.cpp; sourceTree = "<group>"; };
 		19F7783A1EAB5039007E1C19 /* GfxString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxString.hpp; path = bgi/GfxString.hpp; sourceTree = "<group>"; };
+		19FA54001EAE7D5C009CD6E9 /* GfxVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxVersion.cpp; path = sdl2/GfxVersion.cpp; sourceTree = "<group>"; };
+		19FA54011EAE7D5C009CD6E9 /* GfxVersion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxVersion.hpp; path = sdl2/GfxVersion.hpp; sourceTree = "<group>"; };
+		19FA54031EAE8095009CD6E9 /* GfxGetVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGetVersion.cpp; path = sdl2/GfxGetVersion.cpp; sourceTree = "<group>"; };
+		19FA54041EAE8095009CD6E9 /* GfxGetVersion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGetVersion.hpp; path = sdl2/GfxGetVersion.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +280,8 @@
 				195F7A171EACCFD200C11D9F /* GfxDisplayMode.hpp */,
 				194410E91EAB4D9E0064A6AA /* GfxFlip.cpp */,
 				194410EA1EAB4D9E0064A6AA /* GfxFlip.hpp */,
+				19FA54031EAE8095009CD6E9 /* GfxGetVersion.cpp */,
+				19FA54041EAE8095009CD6E9 /* GfxGetVersion.hpp */,
 				194410EB1EAB4D9E0064A6AA /* GfxInitQuit.cpp */,
 				194410EC1EAB4D9E0064A6AA /* GfxInitQuit.hpp */,
 				1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */,
@@ -315,6 +323,8 @@
 				194410FB1EAB4D9E0064A6AA /* GfxSurface.hpp */,
 				194410FC1EAB4D9E0064A6AA /* GfxTexture.cpp */,
 				194410FD1EAB4D9E0064A6AA /* GfxTexture.hpp */,
+				19FA54001EAE7D5C009CD6E9 /* GfxVersion.cpp */,
+				19FA54011EAE7D5C009CD6E9 /* GfxVersion.hpp */,
 				195F7A1F1EACFBCB00C11D9F /* GfxVideo.cpp */,
 				195F7A201EACFBCB00C11D9F /* GfxVideo.hpp */,
 				194410FE1EAB4D9E0064A6AA /* GfxWindow.cpp */,
@@ -391,6 +401,7 @@
 				199596301EAB684C00B414E5 /* GfxMessageBoxFlags.cpp in Sources */,
 				19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */,
 				19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */,
+				19FA54051EAE8095009CD6E9 /* GfxGetVersion.cpp in Sources */,
 				194411041EAB4D9E0064A6AA /* GfxPalette.cpp in Sources */,
 				199596391EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp in Sources */,
 				195F7A1E1EACDBA900C11D9F /* GfxWindowEventID.cpp in Sources */,
@@ -422,6 +433,7 @@
 				194411061EAB4D9E0064A6AA /* GfxPoint.cpp in Sources */,
 				194411071EAB4D9E0064A6AA /* GfxRect.cpp in Sources */,
 				197D66471EAB41BF009B5EBB /* main.cpp in Sources */,
+				19FA54021EAE7D5C009CD6E9 /* GfxVersion.cpp in Sources */,
 				199596331EAB7CE500B414E5 /* GfxMessageBoxColor.cpp in Sources */,
 				194410E21EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp in Sources */,
 				19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */,
