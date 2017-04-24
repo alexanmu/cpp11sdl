@@ -41,7 +41,7 @@
 #endif
 
 #ifdef __windows_machine
-#error Windows not supported yet!
+#include "include/SDL2/SDL.h"
 #endif
 
 #endif
