@@ -24,6 +24,7 @@
 #ifndef GfxVideo_hpp
 #define GfxVideo_hpp
 
+#include <memory>
 #include <map>
 
 #include "GfxRootClass.hpp"
