@@ -31,6 +31,7 @@
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
 #include "GfxWindowPosition.hpp"
+#include "GfxWindowFlags.hpp"
 
 class GfxWindow final : public GfxRootClass
 {
@@ -39,7 +40,7 @@ public:
     typedef SDL_Window* SdlTypePtr;
 
     GfxWindow(const std::string& title,const uint16_t width,const uint16_t height);
-    GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height);
+    GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height,const GfxWindowFlags& flags);
 
     GfxWindow() = delete;
 
@@ -66,8 +67,49 @@ public:
     void getWindowSize(int32_t* px,int32_t* py);
 
     std::unique_ptr<GfxSurface> getWindowSurface(void);
-
     /*
+    SDL_UpdateWindowSurface
+    SDL_UpdateWindowSurfaceRects
+    SDL_GetWindowFromID()
+
+    SDL_SetWindowData()
+    SDL_GetWindowData()
+
+    SDL_GetWindowFlags()
+    SDL_SetWindowFullscreen()
+
+    SDL_HideWindow()
+    SDL_ShowWindow()
+
+    SDL_MaximizeWindow()
+    SDL_MinimizeWindow()
+    SDL_RestoreWindow()
+
+    SDL_RaiseWindow()
+
+    SDL_SetWindowGrab()
+    SDL_GetWindowGrab()
+
+    SDL_SetWindowIcon()
+    SDL_SetWindowPosition()
+    SDL_SetWindowBordered()
+    SDL_GetWindowBordersSize
+    SDL_SetWindowResizable()
+    SDL_SetWindowMinimumSize
+    SDL_GetWindowMinimumSize
+    SDL_SetWindowMaximumSize
+    SDL_GetWindowMaximumSize
+    SDL_SetWindowBrightness
+    SDL_GetWindowBrightness
+    SDL_SetWindowOpacity
+    SDL_GetWindowOpacity
+    SDL_SetWindowModalFor
+    SDL_SetWindowInputFocus
+    SDL_SetWindowGammaRamp
+    SDL_GetWindowGammaRamp
+    static class method
+    SDL_GetGrabbedWindow
+
      extern DECLSPEC int SDLCALL SDL_GetWindowDisplayIndex(SDL_Window * window);
      extern DECLSPEC int SDLCALL SDL_SetWindowDisplayMode(SDL_Window * window,
                                                          const SDL_DisplayMode

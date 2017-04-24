@@ -32,9 +32,9 @@ GfxWindow::GfxWindow(const std::string& title,const uint16_t width,const uint16_
     }
 }
 
-GfxWindow::GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height) : GfxRootClass("GfxWindow"), title_(title)
+GfxWindow::GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height,const GfxWindowFlags& flags) : GfxRootClass("GfxWindow"), title_(title)
 {
-    window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(), width, height, 0);
+    window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(), width, height, flags.getAsSdlType());
     if (window_ == nullptr)
     {
         // error handling here

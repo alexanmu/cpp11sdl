@@ -45,6 +45,7 @@
 #include "GfxScreenSaver.hpp"
 #include "GfxVideo.hpp"
 #include "GfxWindowPosition.hpp"
+#include "GfxWindowFlags.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -142,7 +143,8 @@ void _doStuff(void)
         std::cout << "Init failed\n";
         return;
     }
-    GfxWindow w("Window title",GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),WIN_W,WIN_H);
+    GfxWindowFlags wf(GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
+    GfxWindow w("Window title",GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),WIN_W,WIN_H,wf);
     MsgBox(w);
     GfxRenderer r(w);
     GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
