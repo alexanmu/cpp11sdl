@@ -52,6 +52,7 @@
 #include "GfxFileSystem.hpp"
 #include "GfxBits.hpp"
 #include "GfxClipboard.hpp"
+#include "GfxEndian.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -148,6 +149,10 @@ void AfterInit(void)
         std::cout << "dm.get()->getWidth()=" << dm.get()->getWidth() << '\n';
         std::cout << "dm.get()->getHeight()=" << dm.get()->getHeight() << '\n';
         std::cout << "dm.get()->getRefreshRate()=" << dm.get()->getRefreshRate() << "Hz" << '\n';
+
+        GfxEndian e;
+
+        std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
     }
     std::cout << std::endl;
 }
