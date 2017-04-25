@@ -53,6 +53,7 @@
 #include "GfxBits.hpp"
 #include "GfxClipboard.hpp"
 #include "GfxEndian.hpp"
+#include "GfxLoadSo.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -153,6 +154,20 @@ void AfterInit(void)
         GfxEndian e;
 
         std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
+    }
+    std::cout << std::endl;
+}
+
+void AfterDeInit(void)
+{
+    // We expect this to fail
+    GfxLoadSo lso("Whatever");
+    void * f;
+    
+    f = lso.loadFunction("Whatever");
+    if (f == nullptr)
+    {
+        std::cout << "lso.loadFunction(\"Whatever\")=" << "nullptr" << '\n';
     }
     std::cout << std::endl;
 }
@@ -402,6 +417,7 @@ void _doStuff(void)
         }
         SDL_Delay(25);
     }
+    AfterDeInit();
 }
 
 #ifdef __windows_machine
