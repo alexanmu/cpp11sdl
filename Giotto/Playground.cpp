@@ -39,7 +39,7 @@ double Playground::Algo0(std::uint32_t* ptr)
 {
     int i;
     int j;
-    
+
     auto start = std::chrono::high_resolution_clock::now();
     for (i = 0; i < SZ_Y; i++)
     {
@@ -62,7 +62,7 @@ double Playground::Algo1(std::uint32_t* ptr)
 {
     uint32_t i;
     uint32_t j;
-    
+
     std::uint32_t max = SZ_X * SZ_Y;
     if (max % 16 != 0)
     {
@@ -70,7 +70,7 @@ double Playground::Algo1(std::uint32_t* ptr)
     }
     i = 0;
     auto start = std::chrono::high_resolution_clock::now();
-    while(i < max)
+    while (i < max)
     {
         *(ptr + i + 0) = BYTE_PATTERN;
         *(ptr + i + 1) = BYTE_PATTERN;
@@ -104,9 +104,9 @@ double Playground::Algo2(uint32_t* ptr)
 {
     int i;
     int j;
-    
+
     auto start = std::chrono::high_resolution_clock::now();
-    std::memset(ptr,0x11,SZ_X * SZ_Y * sizeof(uint32_t));
+    std::memset(ptr, 0x11, SZ_X * SZ_Y * sizeof(uint32_t));
     auto end = std::chrono::high_resolution_clock::now();
     i = SZ_Y - 1;
     j = SZ_X - 1;
@@ -121,9 +121,9 @@ double Playground::Algo2(uint32_t* ptr)
 
 #pragma GCC push_options
 #pragma GCC optimize ("Ofast")
-void Algo3Part(uint64_t* ptr,uint64_t * endptr,uint64_t bp)
+void Algo3Part(uint64_t* ptr, uint64_t * endptr, uint64_t bp)
 {
-    while( ptr < endptr )
+    while (ptr < endptr )
     {
         *(ptr + 0) = bp;
         *(ptr + 1) = bp;
@@ -157,10 +157,10 @@ double Playground::Algo3(uint32_t *ptr)
     std::thread t3;
 
     auto start = std::chrono::high_resolution_clock::now();
-    t1 = std::thread(Algo3Part,p1,e1,bp);
-    t2 = std::thread(Algo3Part,p2,e2,bp);
-    t3 = std::thread(Algo3Part,p3,e3,bp);
-    Algo3Part(p4,e4,bp);
+    t1 = std::thread(Algo3Part, p1, e1, bp);
+    t2 = std::thread(Algo3Part, p2, e2, bp);
+    t3 = std::thread(Algo3Part, p3, e3, bp);
+    Algo3Part(p4, e4, bp);
     t1.join();
     t2.join();
     t3.join();
@@ -188,8 +188,8 @@ void Playground::DoAlgo(int algo_index)
     void * buff;
     size_t buffsize;
     double (Playground::*algo_ptr)(uint32_t*);
-    
-    switch(algo_index)
+
+    switch (algo_index)
     {
         case 0:
             std::cout << "Algo0 selected - standard Matrix" << std::endl;
@@ -213,7 +213,7 @@ void Playground::DoAlgo(int algo_index)
             break;
     }
     buffsize = SZ_X * SZ_Y * sizeof(uint32_t);
-    
+
     std::cout << ((buffsize / 1024.0) / 1024.0) << "MB dataset" << std::endl;
     buff = std::malloc(buffsize);
     if (buff == NULL)
@@ -221,9 +221,9 @@ void Playground::DoAlgo(int algo_index)
         std::cout << "malloc fail!" << std::endl;
         exit(1);
     }
-    
+
     ptr = (std::uint32_t *)buff;
-    
+
     (void)((this)->*(algo_ptr))(ptr);
     for (k = 0; k < EXEC_CNT; k++)
     {
@@ -235,7 +235,7 @@ void Playground::DoAlgo(int algo_index)
             step_old = step_new;
         }
         diff[k] = ((this)->*(algo_ptr))(ptr);
-        std::memset(buff,0,buffsize);
+        std::memset(buff, 0, buffsize);
     }
     std::cout << " done." << std::endl;
     double sum = 0.0;
@@ -243,7 +243,7 @@ void Playground::DoAlgo(int algo_index)
     double max = DBL_MIN;
     int min_index = -1;
     int max_index = -1;
-    for( k = 0; k < EXEC_CNT; k++)
+    for (k = 0; k < EXEC_CNT; k++)
     {
         sum += diff[k];
         if (diff[k] < min)
@@ -262,7 +262,8 @@ void Playground::DoAlgo(int algo_index)
     std::cout << "Average of " << avg << "sec" << std::endl;
     std::cout << "Min " << min << "sec. Run " << min_index << std::endl;
     std::cout << "Max " << max << "sec. Run " << max_index << std::endl;
-    double bytes_written = (double)EXEC_CNT * (double)SZ_X * (double)SZ_Y * (double)sizeof(uint32_t);
+    double bytes_written = static_cast<double>(EXEC_CNT) * static_cast<double>(SZ_X) *
+                    static_cast<double>(SZ_Y) * static_cast<double>(sizeof(uint32_t));
     double bw = (((bytes_written / sum) / 1024.0) / 1024.0 / 1024.0);
     std::cout << "Bandwidth=" << bw << " GB/sec" << std::endl;
     std::free(buff);
@@ -280,12 +281,10 @@ void Playground::_doBenchmark(void)
     DoAlgo(3);
 }
 
-/********************************************************** Fonts **********************************************************/
-#include <iostream>
+/******************************************************* Fonts *******************************************************/
 #include <fstream>
 #include <string>
 #include <vector>
-#include <cstring>
 #include <locale>
 #include <algorithm>
 #include <cstdint>
@@ -303,9 +302,9 @@ std::vector<std::string> Playground::FindAllFiles(std::string bpath)
     if (d)
     {
         dir = readdir(d);
-        while(dir != NULL)
+        while (dir != NULL)
         {
-            if (std::strcmp(dir->d_name,".") && std::strcmp(dir->d_name,".."))
+            if (std::strcmp(dir->d_name, ".") && std::strcmp(dir->d_name, ".."))
             {
                 files.push_back(dir->d_name);
             }
@@ -329,9 +328,9 @@ std::string Playground::ToHexStr(uint8_t c)
     return std::string(s);
 }
 
-void Playground::ProcessBuffer(std::string buffname,uint8_t * buff)
+void Playground::ProcessBuffer(std::string buffname, uint8_t * buff)
 {
-    std::ofstream hpp(buffname + ".hpp",std::ofstream::out | std::ofstream::trunc);
+    std::ofstream hpp(buffname + ".hpp", std::ofstream::out | std::ofstream::trunc);
 
     hpp << "/*\n";
     hpp << "  Giotto\n";
@@ -360,7 +359,7 @@ void Playground::ProcessBuffer(std::string buffname,uint8_t * buff)
     hpp << "#define __" + buffname + "_hpp__\n";
     hpp << '\n';
     hpp << "const uint8_t GfxBgiConstants::" << buffname << "Data_[16 * 256] = {" << '\n';
-    for(int i = 0; i < 256; i++)
+    for (int i = 0; i < 256; i++)
     {
         hpp << "    ";
         for (int j = 0; j < 15; j++)
@@ -376,7 +375,7 @@ void Playground::ProcessBuffer(std::string buffname,uint8_t * buff)
     }
     hpp << '\n';
     hpp << "};" << "\n\n";
-    hpp << "#endif // __" + buffname + "_hpp__\n";
+    hpp << "#endif  // __" + buffname + "_hpp__\n";
     hpp.close();
 }
 
@@ -392,9 +391,9 @@ std::string Playground::GetFntName(std::string fullname)
     n = fname.rfind(".");
     ext = fname.substr(n + 1);
     name = fname.substr(0, n);
-    std::transform(name.begin(),name.end(),name.begin(),::tolower);
+    std::transform(name.begin(), name.end(), name.begin(), ::tolower);
     name[0] = std::toupper(name[0]);
-    std::transform(ext.begin(),ext.end(),ext.begin(),::tolower);
+    std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
     return ext + name;
 }
 
@@ -412,12 +411,12 @@ void Playground::ProcessFNTfile(std::string fullname)
         return;
     }
     uint8_t buff[4096];
-    std::memset(buff,0,sizeof(buff));
+    std::memset(buff, 0, sizeof(buff));
 
     inf.clear();
     inf.seekg(0);
-    inf.read((char *)&buff[0],fsize);
-    ProcessBuffer(name,&buff[0]);
+    inf.read(reinterpret_cast<char *>(&buff[0]), fsize);
+    ProcessBuffer(name, &buff[0]);
     inf.close();
 }
 
@@ -430,14 +429,14 @@ void Playground::_doFonts(void)
     std::vector<std::string> fntfiles;
 
     files = FindAllFiles(bpath +"/");
-    for(auto it : files )
+    for (auto it : files )
     {
         std::size_t n = it.rfind(".");
 
         if (n != std::string::npos)
         {
             std::string tmp = it.substr(n + 1);
-            std::transform(tmp.begin(),tmp.end(),tmp.begin(),::toupper);
+            std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
             if (tmp == "FNT")
             {
                 fntfiles.push_back(it);
