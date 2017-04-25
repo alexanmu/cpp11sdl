@@ -48,6 +48,7 @@
 #include "GfxWindowFlags.hpp"
 #include "GfxVersion.hpp"
 #include "GfxGetVersion.hpp"
+#include "GfxFileSystem.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -105,6 +106,11 @@ void BeforeInit(void)
     std::cout << "ver.getAsString()=" << ver.getAsString() << '\n';
     std::cout << "gv.getRevision()=" << gv.getRevision() << '\n';
     std::cout << "gv.getRevisionNumber()=" << gv.getRevisionNumber() << '\n';
+
+    GfxFileSystem fs;
+
+    std::cout << "fs.getBasePath()=" << fs.getBasePath() << '\n';
+    std::cout << std::endl;
 }
 
 void AfterInit(void)
