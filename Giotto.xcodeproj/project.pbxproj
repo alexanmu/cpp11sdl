@@ -12,6 +12,7 @@
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
 		192445E81EAF95B900147389 /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445E61EAF95B900147389 /* GfxFileSystem.cpp */; };
 		192445EB1EAF962500147389 /* GfxBits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445E91EAF962500147389 /* GfxBits.cpp */; };
+		192445EE1EAF97E000147389 /* GfxClipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445EC1EAF97E000147389 /* GfxClipboard.cpp */; };
 		194410DF1EAB4C9D0064A6AA /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D31EAB4C9D0064A6AA /* GfxBitmapFont.cpp */; };
 		194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D51EAB4C9D0064A6AA /* GfxCanvas.cpp */; };
 		194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D71EAB4C9D0064A6AA /* GfxCanvasBgi.cpp */; };
@@ -77,6 +78,8 @@
 		192445E71EAF95B900147389 /* GfxFileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFileSystem.hpp; path = sdl2/GfxFileSystem.hpp; sourceTree = "<group>"; };
 		192445E91EAF962500147389 /* GfxBits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBits.cpp; path = sdl2/GfxBits.cpp; sourceTree = "<group>"; };
 		192445EA1EAF962500147389 /* GfxBits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBits.hpp; path = sdl2/GfxBits.hpp; sourceTree = "<group>"; };
+		192445EC1EAF97E000147389 /* GfxClipboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxClipboard.cpp; path = sdl2/GfxClipboard.cpp; sourceTree = "<group>"; };
+		192445ED1EAF97E000147389 /* GfxClipboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxClipboard.hpp; path = sdl2/GfxClipboard.hpp; sourceTree = "<group>"; };
 		194410C71EAB4B8B0064A6AA /* Linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Linux.h; path = platform/Linux.h; sourceTree = "<group>"; };
 		194410C81EAB4B8B0064A6AA /* macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macOS.h; path = platform/macOS.h; sourceTree = "<group>"; };
 		194410C91EAB4BC20064A6AA /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = bgi/fntAntique.hpp; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				192445EA1EAF962500147389 /* GfxBits.hpp */,
 				194410E51EAB4D9E0064A6AA /* GfxBlendMode.cpp */,
 				194410E61EAB4D9E0064A6AA /* GfxBlendMode.hpp */,
+				192445EC1EAF97E000147389 /* GfxClipboard.cpp */,
+				192445ED1EAF97E000147389 /* GfxClipboard.hpp */,
 				194410E71EAB4D9E0064A6AA /* GfxColor.cpp */,
 				194410E81EAB4D9E0064A6AA /* GfxColor.hpp */,
 				195F7A061EAC862600C11D9F /* GfxCpuInfo.cpp */,
@@ -432,6 +437,7 @@
 				194411031EAB4D9E0064A6AA /* GfxInitQuit.cpp in Sources */,
 				195F7A211EACFBCB00C11D9F /* GfxVideo.cpp in Sources */,
 				194410E41EAB4C9D0064A6AA /* GfxBgiConstants.cpp in Sources */,
+				192445EE1EAF97E000147389 /* GfxClipboard.cpp in Sources */,
 				19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */,
 				195F7A0E1EAC920D00C11D9F /* GfxPowerState.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,

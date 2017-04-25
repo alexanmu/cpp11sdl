@@ -50,6 +50,8 @@
 #include "GfxVersion.hpp"
 #include "GfxGetVersion.hpp"
 #include "GfxFileSystem.hpp"
+#include "GfxBits.hpp"
+#include "GfxClipboard.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -86,7 +88,9 @@ void MsgBox(GfxWindow const& win)
 
     std::string rez;
 
-    rez = "R=" + std::to_string(r);
+    GfxBits b;
+    rez = "R=" + std::to_string((b.mostSignificantBitIndex32(r) << 8) | (r & 0x00FF));
+
     /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
@@ -96,6 +100,9 @@ void MsgBox(GfxWindow const& win)
     GfxMessageBox k(GfxMessageBoxFlags(GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
                     rez, cinfo.getAsString(), win);
     k.showModal();
+
+    GfxClipboard clipb;
+    clipb.setClipboardText(cinfo.getAsString());
 }
 
 void BeforeInit(void)

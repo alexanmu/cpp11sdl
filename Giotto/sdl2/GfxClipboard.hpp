@@ -21,24 +21,26 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-#ifndef GfxBits_hpp
-#define GfxBits_hpp
+#ifndef GfxClipboard_hpp
+#define GfxClipboard_hpp
 
-#include <cstdlib>
+#include <string>
 
 #include "GfxRootClass.hpp"
 
-class GfxBits final : public GfxRootClass
+class GfxClipboard final : public GfxRootClass
 {
 public:
-    GfxBits();
-    GfxBits(GfxBits const&) = delete;
-    GfxBits(GfxBits&&) = delete;
+    GfxClipboard();
+    GfxClipboard(GfxClipboard const&) = delete;
+    GfxClipboard(GfxClipboard&&) = delete;
 
-    GfxBits& operator=(GfxBits const&) = delete;
-    GfxBits& operator=(GfxBits&&) = delete;
+    GfxClipboard& operator=(GfxClipboard const&) = delete;
+    GfxClipboard& operator=(GfxClipboard&&) = delete;
 
-    int mostSignificantBitIndex32(uint32_t x) const;
+    void setClipboardText(const std::string& str) const;
+    std::string getClipboardText(void) const;
+    bool hasClipboardText(void) const;
 };
 
-#endif /* GfxBits_hpp */
+#endif /* GfxClipboard_hpp */
