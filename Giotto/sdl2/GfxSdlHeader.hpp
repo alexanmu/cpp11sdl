@@ -34,14 +34,17 @@
 
 #ifdef __linux_machine
 #include "include/SDL.h"
+#include "include/SDL_bits.h"
 #endif
 
 #ifdef __macosx_machine
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_bits.h"
 #endif
 
 #ifdef __windows_machine
 #include "include/SDL2/SDL.h"
+#include "include/SDL2/SDL_bits.h"
 #endif
 
 #endif
