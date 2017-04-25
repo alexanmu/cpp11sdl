@@ -24,25 +24,27 @@
 #ifndef GfxString_hpp
 #define GfxString_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 
 class GfxString final : public GfxRootClass
 {
 public:
     typedef std::string GfxValueType;
-    
+
     GfxString();
-    GfxString(GfxValueType value);
+    explicit GfxString(GfxValueType value);
     GfxString(const GfxString& other);
     GfxString(GfxString&& other);
-    
+
     GfxString& operator=(const GfxString& other);
     GfxString& operator=(GfxString&& other);
-    
+
     bool operator==(const GfxString& other);
     bool operator>(const GfxString& other);
     bool operator<(const GfxString& other);
-    
+
     GfxValueType getValue() const;
 private:
     GfxValueType value_;

@@ -35,8 +35,8 @@ class GfxCanvasBgi : public GfxRootClass
 public:
     enum class bgiFonts : int
     {
-        DEFAULT_FONT =     0, // 8x8
-        TRIPLEX_FONT =     1, // all other fonts are not implemented
+        DEFAULT_FONT =     0,  // 8x8
+        TRIPLEX_FONT =     1,  // all other fonts are not implemented
         SMALL_FONT =       2,
         SANSSERIF_FONT =   3,
         GOTHIC_FONT =      4,
@@ -48,13 +48,13 @@ public:
         EUROPEAN_FONT =    10,
         BOLD_FONT =        11,
     };
-    
+
     enum class bgiDirection : int
     {
         HORIZ_DIR =      0,
         VERT_DIR =       1
     };
-    
+
     enum class bgiTextJustification : int
     {
         LEFT_TEXT =      0,
@@ -63,7 +63,7 @@ public:
         BOTTOM_TEXT =    0,
         TOP_TEXT =       2
     };
-    
+
     enum class bgiColors : int
     {
         BLACK =           0,
@@ -86,13 +86,13 @@ public:
         CUSTOM_BG =      17,
         CUSTOM_FILL =    18
     };
-    
+
     enum class bgiLineThickness : int
     {
         NORM_WIDTH =      1,
         THICK_WIDTH =     3
     };
-    
+
     enum class bgiLineStyle : int
     {
         SOLID_LINE =      0,
@@ -101,7 +101,7 @@ public:
         DASHED_LINE =     3,
         USERBIT_LINE =    4
     };
-    
+
     enum class bgiDrawingMode : int
     {
         COPY_PUT  =       0,
@@ -110,7 +110,7 @@ public:
         AND_PUT =         3,
         NOT_PUT =         4
     };
-    
+
     enum class bgiFillStyles : int
     {
         EMPTY_FILL =      0,
@@ -127,7 +127,7 @@ public:
         CLOSE_DOT_FILL =  11,
         USER_FILL =       12
     };
-    
+
     struct arccoordstype
     {
         int x;
@@ -137,26 +137,26 @@ public:
         int xend;
         int yend;
     };
-    
+
     struct fillsettingstype
     {
         bgiFillStyles pattern;
         bgiColors color;
     };
-    
+
     struct linesettingstype
     {
         bgiLineStyle linestyle;
         bgiFillStyles upattern;
         bgiLineThickness thickness;
     };
-    
+
     struct palettetype
     {
         unsigned char size;
         signed char colors[GfxCanvasBgiData::MAXCOLORS + 1];
     };
-    
+
     struct textsettingstype
     {
         bgiFonts font;
@@ -165,7 +165,7 @@ public:
         bgiTextJustification horiz;
         bgiTextJustification vert;
     };
-    
+
     struct viewporttype
     {
         int left;
@@ -174,15 +174,15 @@ public:
         int bottom;
         bool clip;
     };
-    
+
     GfxCanvasBgi();
     GfxCanvasBgi(const GfxCanvasBgi&) = delete;
     GfxCanvasBgi(GfxCanvasBgi&&) = delete;
-    
+
     GfxCanvasBgi& operator=(const GfxCanvasBgi&) = delete;
     GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
-    
-    void setCanvas(const uint32_t* ptr,const int maxx,const int maxy);
+
+    void setCanvas(const uint32_t* ptr, const int maxx, const int maxy);
     void setCustomForegroundColor(const uint32_t color);
     void setCustomBackgroundColor(const uint32_t color);
     void setCustomFillColor(const uint32_t color);
@@ -191,7 +191,7 @@ public:
 
     void arc(int x, int y, int stangle, int endangle, int radius);
     void bar3d(int left, int top, int right, int bottom, int depth, int topflag);
-    void bar(int left, int top,int right, int bottom);
+    void bar(int left, int top, int right, int bottom);
     void circle(int x, int y, int radius);
     void cleardevice(void);
     void clearviewport(void);
@@ -237,7 +237,7 @@ public:
     void setallpalette(struct palettetype *);
     void setbkcolor(bgiColors);
     void setcolor(bgiColors);
-    void setfillpattern(uint8_t* upattern,bgiColors color);
+    void setfillpattern(uint8_t* upattern, bgiColors color);
     void setfillstyle(bgiFillStyles pattern, bgiColors color);
     void setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
     void setpalette(int, int);
@@ -271,44 +271,44 @@ private:
     void _ellipse(int, int, int, int);
     void drawchar(unsigned char ch);
     void _bar(int left, int top, int right, int bottom);
-    
+
     // pixel data of active and visual pages
     uint32_t* bgi_activepage;
-    
+
     // This is how we draw stuff on the screen. Pixels pointed to by
     // bgi_activepage (a pointer to pixel data in the active surface)
     // are modified by functions like putpixel_copy(); bgi_texture is
     // updated with the new bgi_activepage contents; bgi_texture is then
     // copied to bgi_renderer, and finally bgi_renderer is made present.
-    
-    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 3]; // all colors
-    
-    bgiColors bgi_fg_color = bgiColors::WHITE;   // index of BGI foreground color
-    bgiColors bgi_bg_color = bgiColors::BLACK;   // index of BGI background color
-    bgiColors bgi_fill_color = bgiColors::WHITE; // index of BGI fill color
-    
+
+    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 3];  // all colors
+
+    bgiColors bgi_fg_color = bgiColors::WHITE;    // index of BGI foreground color
+    bgiColors bgi_bg_color = bgiColors::BLACK;    // index of BGI background color
+    bgiColors bgi_fill_color = bgiColors::WHITE;  // index of BGI fill color
+
     int bgi_font_width = 8;     // default font width and height
     int bgi_font_height = 8;
     int bgi_cp_x = 0;           // current position
     int bgi_cp_y = 0;
     int bgi_maxx;               // screen size
     int bgi_maxy;
-    
+
     bgiDrawingMode bgi_writemode;          // plotting method (COPY_PUT, XOR_PUT...)
-    
+
     float bgi_font_mag_x = 1.0;  // font magnification
     float bgi_font_mag_y = 1.0;
-    
+
     struct arccoordstype bgi_last_arc;
     struct fillsettingstype bgi_fill_style;
     struct linesettingstype bgi_line_style;
     struct textsettingstype bgi_txt_style;
     struct viewporttype vp;
     struct palettetype pal;
-    
+
     // pointer to font array. Should I add more (ugly) bitmap fonts?
     const uint8_t *fontptr = GfxCanvasBgiData::gfxPrimitivesFontdata;
-}; // class SDL_bgi
+};  // class SDL_bgi
 
 
 #endif /* GfxBgi_hpp */

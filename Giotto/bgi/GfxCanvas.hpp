@@ -39,12 +39,13 @@ class GfxCanvas final : public GfxRootClass
 {
 public:
     GfxCanvas() = delete;
-    GfxCanvas(GfxSurface& surf);
+    explicit GfxCanvas(GfxSurface const& surf);
 
     void Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr);
-    void Arc(const GfxPoint& pt, const GfxAngle& stangle,const GfxAngle& endangle,const GfxRadius& radius,const GfxColor& clr);
-    void OutText(const GfxPoint& pt,const GfxString& text,const GfxColor& clr);
-    void OutText(const GfxPoint& pt,const GfxString& text,const GfxColor& clr,const GfxBitmapFont& font);
+    void Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+                const GfxRadius& radius, const GfxColor& clr);
+    void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr);
+    void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const GfxBitmapFont& font);
     void Bar(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
     void Bar(const GfxRect& r, const GfxColor& clr);
     void PutPixel(const GfxPoint& pt, const GfxColor& clr);
@@ -53,7 +54,7 @@ public:
     void Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
 private:
     GfxCanvasBgi bgi_;
-    GfxSurface& surf_;
+    GfxSurface const& surf_;
 };
 
 #endif /* GfxCanvas_hpp */

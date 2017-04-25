@@ -52,4 +52,4 @@ private:
     uint8_t fontHeight_;
 };
 
-#endif // gfxbitmapfont_hpp
+#endif  // gfxbitmapfont_hpp

@@ -30,19 +30,19 @@ class GfxAngle final : public GfxRootClass
 {
 public:
     typedef int GfxValueType;
-    
+
     GfxAngle();
-    GfxAngle(GfxValueType value);
+    explicit GfxAngle(GfxValueType value);
     GfxAngle(const GfxAngle& other);
     GfxAngle(GfxAngle&& other);
-    
+
     GfxAngle& operator=(const GfxAngle& other);
     GfxAngle& operator=(GfxAngle&& other);
-    
+
     bool operator==(const GfxAngle& other);
     bool operator>(const GfxAngle& other);
     bool operator<(const GfxAngle& other);
-    
+
     GfxValueType getValue() const;
 private:
     GfxValueType value_;

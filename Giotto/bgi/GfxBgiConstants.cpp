@@ -54,101 +54,101 @@ const GfxColor GfxBgiConstants::colorsVGA16_[16] {
 };
 
 const GfxBitmapFont GfxBgiConstants::fonts_[10] {
-    { &fntStandard8x16Data_[0],8,16 },
-    { &fntAntiqueData_[0],8,16 },
-    { &fntBroadwayData_[0],8,16 },
-    { &fntCourrierData_[0],8,16 },
-    { &fntDragonData_[0],8,16 },
-    { &fntMedievalData_[0],8,16 },
-    { &fntRomanData_[0],8,16 },
-    { &fntSansserifData_[0],8,16 },
-    { &fntScriptData_[0],8,16 },
-    { &fntWackyData_[0],8,16 }
+    { &fntStandard8x16Data_[0], 8, 16 },
+    { &fntAntiqueData_[0], 8, 16 },
+    { &fntBroadwayData_[0], 8, 16 },
+    { &fntCourrierData_[0], 8, 16 },
+    { &fntDragonData_[0], 8, 16 },
+    { &fntMedievalData_[0], 8, 16 },
+    { &fntRomanData_[0], 8, 16 },
+    { &fntSansserifData_[0], 8, 16 },
+    { &fntScriptData_[0], 8, 16 },
+    { &fntWackyData_[0], 8, 16 }
 };
 
 const GfxColor& GfxBgiConstants::vgaBlack(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBlack)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBlack)];
 }
 
 const GfxColor& GfxBgiConstants::vgaBlue(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBlue)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBlue)];
 }
 
 const GfxColor& GfxBgiConstants::vgaGreen(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexGreen)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexGreen)];
 }
 
 const GfxColor& GfxBgiConstants::vgaCyan(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexCyan)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexCyan)];
 }
 
 const GfxColor& GfxBgiConstants::vgaRed(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexRed)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexRed)];
 }
 
 const GfxColor& GfxBgiConstants::vgaMagenta(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexMagenta)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexMagenta)];
 }
 
 const GfxColor& GfxBgiConstants::vgaBrown(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBrown)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexBrown)];
 }
 
 const GfxColor& GfxBgiConstants::vgaLightGray(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightGray)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightGray)];
 }
 
 const GfxColor& GfxBgiConstants::vgaDarkGray(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexDarkGray)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexDarkGray)];
 }
 
 const GfxColor& GfxBgiConstants::vgaLightBlue(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightBlue)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightBlue)];
 }
 
 const GfxColor& GfxBgiConstants::vgaLightGreen(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightGreen)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightGreen)];
 }
 
 const GfxColor& GfxBgiConstants::vgaLightCyan(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightCyan)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightCyan)];
 }
 
 const GfxColor& GfxBgiConstants::vgaLightRed(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightRed)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightRed)];
 }
 
 const GfxColor& GfxBgiConstants::vgaLightMagenta(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightMagenta)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexLightMagenta)];
 }
 
 const GfxColor& GfxBgiConstants::vgaYellow(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexYellow)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexYellow)];
 }
 
 const GfxColor& GfxBgiConstants::vgaWhite(void)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexWhite)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(GfxVga16ColorIndex::indexWhite)];
 }
 
 const GfxColor& GfxBgiConstants::vgaGetColorByIndex(const GfxVga16ColorIndex index)
 {
-	return GfxBgiConstants::colorsVGA16_[static_cast<int>(index)];
+    return GfxBgiConstants::colorsVGA16_[static_cast<int>(index)];
 }
 
 const GfxBitmapFont& GfxBgiConstants::fntStandard8x16(void)

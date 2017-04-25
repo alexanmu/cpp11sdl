@@ -24,12 +24,14 @@
 
 #include "GfxBitmapFont.hpp"
 
-GfxBitmapFont::GfxBitmapFont() : GfxRootClass("GfxBitmapFont"), fontData_(nullptr), fontDataSize_(0), fontWidth_(0), fontHeight_(0)
+GfxBitmapFont::GfxBitmapFont() : GfxRootClass("GfxBitmapFont"), fontData_(nullptr),
+        fontDataSize_(0), fontWidth_(0), fontHeight_(0)
 {
     //
 }
 
-GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight) : GfxRootClass("GfxBitmapFont")
+GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight) :
+        GfxRootClass("GfxBitmapFont")
 {
     fontWidth_ = 0;
     fontHeight_ = 0;
@@ -44,7 +46,7 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, c
             fontHeight_ = fontHeight;
             fontDataSize_ = fontWidth / 8 * fontHeight * 256;
             fontData_ = new uint8_t[fontDataSize_];
-            std::memcpy(fontData_,fontData,fontDataSize_);
+            std::memcpy(fontData_, fontData, fontDataSize_);
         }
     }
 }
@@ -55,7 +57,7 @@ GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other)
     fontHeight_ = other.fontHeight_;
     fontDataSize_ = other.fontDataSize_;
     fontData_ = new uint8_t[fontDataSize_];
-    std::memcpy(fontData_,other.fontData_,fontDataSize_);
+    std::memcpy(fontData_, other.fontData_, fontDataSize_);
 }
 
 GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other)
@@ -91,7 +93,7 @@ GfxBitmapFont& GfxBitmapFont::operator=(const GfxBitmapFont& other)
         }
         fontDataSize_ = other.fontDataSize_;
         fontData_ = new uint8_t[fontDataSize_];
-        std::memcpy(fontData_,other.fontData_,fontDataSize_);
+        std::memcpy(fontData_, other.fontData_, fontDataSize_);
     }
     return *this;
 }

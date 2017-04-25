@@ -30,19 +30,19 @@ class GfxRadius final : public GfxRootClass
 {
 public:
     typedef uint16_t GfxValueType;
-    
+
     GfxRadius();
-    GfxRadius(GfxValueType value);
+    explicit GfxRadius(GfxValueType value);
     GfxRadius(const GfxRadius& other);
     GfxRadius(GfxRadius&& other);
-    
+
     GfxRadius& operator=(const GfxRadius& other);
     GfxRadius& operator=(GfxRadius&& other);
-    
+
     bool operator==(const GfxRadius& other);
     bool operator>(const GfxRadius& other);
     bool operator<(const GfxRadius& other);
-    
+
     GfxValueType getValue() const;
 private:
     GfxValueType value_;

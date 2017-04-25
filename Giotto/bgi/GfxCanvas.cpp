@@ -25,47 +25,48 @@
 #include "GfxCanvas.hpp"
 #include "GfxBgiConstants.hpp"
 
-GfxCanvas::GfxCanvas(GfxSurface& surf) : surf_(surf)
+GfxCanvas::GfxCanvas(GfxSurface const& surf) : surf_(surf)
 {
-    bgi_.setCanvas(static_cast<uint32_t *>(surf_.surf_->pixels),surf_.surf_->w,surf_.surf_->h);
+    bgi_.setCanvas(static_cast<uint32_t *>(surf_.surf_->pixels), surf_.surf_->w, surf_.surf_->h);
 }
 
 void GfxCanvas::Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr)
 {
     bgi_.setCustomForegroundColor(clr.getColor());
-    bgi_.circle(pt.getX(),pt.getY(),r.getValue());
+    bgi_.circle(pt.getX(), pt.getY(), r.getValue());
 }
 
-void GfxCanvas::Arc(const GfxPoint& pt, const GfxAngle& stangle,const GfxAngle& endangle,const GfxRadius& radius,const GfxColor& clr)
+void GfxCanvas::Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+                    const GfxRadius& radius, const GfxColor& clr)
 {
     bgi_.setCustomForegroundColor(clr.getColor());
-    bgi_.arc(pt.getX(),pt.getY(),stangle.getValue(),endangle.getValue(),radius.getValue());
+    bgi_.arc(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
-void GfxCanvas::OutText(const GfxPoint& pt,const GfxString& text,const GfxColor& clr,const GfxBitmapFont& font)
+void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const GfxBitmapFont& font)
 {
     bgi_.setCustomForegroundColor(clr.getColor());
-    bgi_.setCustomFont(font.getFontData(),font.getFontWidth(),font.getFontHeight());
-    bgi_.outtextxy(pt.getX(),pt.getY(),(char *)text.getValue().c_str());
+    bgi_.setCustomFont(font.getFontData(), font.getFontWidth(), font.getFontHeight());
+    bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutText(const GfxPoint& pt,const GfxString& text,const GfxColor& clr)
+void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr)
 {
     bgi_.setCustomForegroundColor(clr.getColor());
-    bgi_.outtextxy(pt.getX(),pt.getY(),(char *)text.getValue().c_str());
+    bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
 }
 
 void GfxCanvas::Bar(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr)
 {
     bgi_.setCustomFillColor(clr.getColor());
-    bgi_.bar(pt1.getX(),pt1.getY(),pt2.getX(),pt2.getY());
+    bgi_.bar(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
 void GfxCanvas::Bar(const GfxRect& r, const GfxColor& clr)
 {
     bgi_.setCustomFillColor(clr.getColor());
-    bgi_.bar(r.getX(),r.getY(),r.getWidth() + 1,r.getHeight() + 1);
+    bgi_.bar(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
 void GfxCanvas::PutPixel(const GfxPoint& pt, const GfxColor& clr)
@@ -81,7 +82,7 @@ void GfxCanvas::Rect(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& c
     uint32_t c = clr.getColor();
 
     bgi_.setCustomForegroundColor(c);
-    bgi_.rectangle(pt1.getX(),pt1.getY(),pt2.getX(), pt2.getY());
+    bgi_.rectangle(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
 void GfxCanvas::Rect(const GfxRect& r, const GfxColor& clr)
@@ -89,7 +90,7 @@ void GfxCanvas::Rect(const GfxRect& r, const GfxColor& clr)
     uint32_t c = clr.getColor();
 
     bgi_.setCustomForegroundColor(c);
-    bgi_.rectangle(r.getX(),r.getY(),r.getWidth() + 1, r.getHeight() + 1);
+    bgi_.rectangle(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
 void GfxCanvas::Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr)
@@ -97,5 +98,5 @@ void GfxCanvas::Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& c
     uint32_t c = clr.getColor();
 
     bgi_.setCustomForegroundColor(c);
-    bgi_.line(pt1.getX(),pt1.getY(),pt2.getX(), pt2.getY());
+    bgi_.line(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
