@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxData.hpp"
 
 GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass("GfxMessageBoxData")
@@ -36,7 +38,10 @@ GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass("GfxMessageBoxData")
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWindow& win, std::string title, std::string message, const int numbuttons, GfxMessageBoxButtonData buttons[],const GfxMessageBoxColorScheme& colorScheme) : GfxRootClass("GfxMessageBoxData")
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
+                                    std::string title, std::string message, const int numbuttons,
+                                    GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
+        GfxRootClass("GfxMessageBoxData")
 {
     data_.flags = flags.getAsSdlType();
     data_.window = win.getAsSdlTypePtr();
@@ -46,7 +51,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWi
     data_.message = message_.c_str();
     data_.numbuttons = numbuttons;
     btndataptr = new GfxMessageBoxButtonData::SdlType[numbuttons];
-    for(int i = 0; i < numbuttons; i++)
+    for (int i = 0; i < numbuttons; i++)
     {
         btndataptr[i] = buttons[i].getAsSdlType();
     }
@@ -54,7 +59,10 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWi
     data_.colorScheme = colorScheme.getAsSdlTypePtr();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWindow& win, std::string title, std::string message, const int numbuttons, GfxMessageBoxButtonData buttons[]) : GfxRootClass("GfxMessageBoxData")
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
+                                    std::string title, std::string message, const int numbuttons,
+                                    GfxMessageBoxButtonData buttons[]) :
+        GfxRootClass("GfxMessageBoxData")
 {
     data_.flags = flags.getAsSdlType();
     data_.window = win.getAsSdlTypePtr();
@@ -64,7 +72,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWi
     data_.message = message_.c_str();
     data_.numbuttons = numbuttons;
     btndataptr = new GfxMessageBoxButtonData::SdlType[numbuttons];
-    for(int i = 0; i < numbuttons; i++)
+    for (int i = 0; i < numbuttons; i++)
     {
         btndataptr[i] = buttons[i].getAsSdlType();
     }
@@ -85,7 +93,13 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) : GfxRootClass("
     title_ = other.title_;
     message_ = other.message_;
     // Delete other's data
-    // other.data_ = NOTHING;
+    other.data_.flags = 0;
+    other.data_.window = nullptr;
+    other.data_.title = nullptr;
+    other.data_.message = nullptr;
+    other.data_.numbuttons = 0;
+    other.data_.buttons = nullptr;
+    other.data_.colorScheme = nullptr;
     other.title_ = "";
     other.message_ = "";
 }
@@ -117,7 +131,13 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other)
         title_ = other.title_;
         message_ = other.message_;
         // Delete other's data
-        //other.data_ = NOTHING;
+        other.data_.flags = 0;
+        other.data_.window = nullptr;
+        other.data_.title = nullptr;
+        other.data_.message = nullptr;
+        other.data_.numbuttons = 0;
+        other.data_.buttons = nullptr;
+        other.data_.colorScheme = nullptr;
         other.title_ = "";
         other.message_ = "";
     }

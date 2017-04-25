@@ -34,12 +34,12 @@ public:
     GfxPlatform();
     GfxPlatform(GfxPlatform const&) = delete;
     GfxPlatform(GfxPlatform&&) = delete;
-    
+
     GfxPlatform& operator=(GfxPlatform const &) = delete;
     GfxPlatform& operator=(GfxPlatform&&) = delete;
-    
+
     void queryPlatform(void);
-    
+
     std::string getPlatform(void) const;
 private:
     std::string platform_;

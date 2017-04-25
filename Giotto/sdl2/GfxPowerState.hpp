@@ -24,6 +24,8 @@
 #ifndef GfxPowerState_hpp
 #define GfxPowerState_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,7 +34,7 @@ class GfxPowerState final : public GfxRootClass
 public:
     typedef SDL_PowerState SdlType;
     typedef SDL_PowerState* SdlTypePtr;
-    
+
     enum class GfxPowerStateValues : int
     {
         stateUnknown = SDL_POWERSTATE_UNKNOWN,
@@ -41,13 +43,13 @@ public:
         stateCharging = SDL_POWERSTATE_CHARGING,
         stateCharged = SDL_POWERSTATE_CHARGED
     };
-    
+
     GfxPowerState();
-    GfxPowerState(GfxPowerStateValues value);
-    GfxPowerState(SdlType value);
+    explicit GfxPowerState(GfxPowerStateValues value);
+    explicit GfxPowerState(SdlType value);
     GfxPowerState(GfxPowerState const& other);
     GfxPowerState(GfxPowerState&& other);
-        
+
     GfxPowerState& operator=(GfxPowerState const& other);
     GfxPowerState& operator=(GfxPowerState&& other);
 

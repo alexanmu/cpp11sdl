@@ -21,11 +21,13 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxPowerInfo.hpp"
 
 GfxPowerInfo::GfxPowerInfo() : GfxRootClass("GfxPowerInfo")
 {
-    pstate_ = GfxPowerState::GfxPowerStateValues::stateUnknown;
+    pstate_ = GfxPowerState(GfxPowerState::GfxPowerStateValues::stateUnknown);
     seconds_ = -1;
     percentage_ = -1;
 }
@@ -33,9 +35,9 @@ GfxPowerInfo::GfxPowerInfo() : GfxRootClass("GfxPowerInfo")
 void GfxPowerInfo::queryPowerInfo(void)
 {
     GfxPowerState::SdlType pstate;
-    
-    pstate = SDL_GetPowerInfo(&seconds_,&percentage_);
-    pstate_ = pstate;
+
+    pstate = SDL_GetPowerInfo(&seconds_, &percentage_);
+    pstate_ = GfxPowerState(pstate);
 }
 
 GfxPowerState& GfxPowerInfo::getPowerState(void) const
@@ -56,7 +58,7 @@ int GfxPowerInfo::getRemainingPercentage(void) const
 std::string GfxPowerInfo::getAsString(void) const
 {
     std::string str;
-    
+
     str = pstate_.getAsString() + "\n";
     str += "Minutes remaining " + std::to_string(seconds_ / 60) + "\n";
     str += "Percentage left " + std::to_string(percentage_) + "%";

@@ -21,9 +21,10 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-
 #ifndef GfxGetVersion_hpp
 #define GfxGetVersion_hpp
+
+#include <string>
 
 #include "GfxRootClass.hpp"
 #include "GfxVersion.hpp"
@@ -38,7 +39,7 @@ public:
     GfxGetVersion& operator=(GfxGetVersion const&) = delete;
     GfxGetVersion& operator=(GfxGetVersion&&) = delete;
 
-    void getVersion(GfxVersion& ver) const;
+    void getVersion(GfxVersion* ver) const;
     std::string getRevision(void) const;
     int getRevisionNumber(void) const;
 };

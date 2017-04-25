@@ -40,16 +40,19 @@ public:
     typedef SDL_MessageBoxData* SdlTypePtr;
 
     GfxMessageBoxData();
-    GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWindow& win,std::string title, std::string message, const int numbuttons, GfxMessageBoxButtonData buttons[],const GfxMessageBoxColorScheme& colorScheme);
-    GfxMessageBoxData(const GfxMessageBoxFlags& flags,const GfxWindow& win,std::string title, std::string message, const int numbuttons, GfxMessageBoxButtonData buttons[]);
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win, std::string title,
+                    std::string message, const int numbuttons, GfxMessageBoxButtonData buttons[],
+                    const GfxMessageBoxColorScheme& colorScheme);
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win, std::string title,
+                    std::string message, const int numbuttons, GfxMessageBoxButtonData buttons[]);
     GfxMessageBoxData(GfxMessageBoxData const& other);
     GfxMessageBoxData(GfxMessageBoxData&& other);
-    
+
     virtual ~GfxMessageBoxData();
 
     GfxMessageBoxData& operator=(GfxMessageBoxData const& other);
     GfxMessageBoxData& operator=(GfxMessageBoxData&& other);
-    
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

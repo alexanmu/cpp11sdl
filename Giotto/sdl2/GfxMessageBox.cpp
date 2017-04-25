@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBox.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -30,7 +32,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass("GfxM
     type_ = GfxMessageBoxType::typeComplex;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag,const std::string& title,const std::string& message)
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title, const std::string& message)
 {
     flag_ = flag;
     title_ = title;
@@ -39,12 +41,13 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag,const std::string& t
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag,const std::string& title,const std::string& message,GfxWindow const& win)
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
+                                const std::string& message, GfxWindow const& win)
 {
     flag_ = flag;
     title_ = title;
     message_ = message;
-    winptr_ = (GfxWindow *)&win;
+    winptr_ = reinterpret_cast<GfxWindow const *>(&win);
     type_ = GfxMessageBoxType::typeSimple;
 }
 
@@ -67,13 +70,13 @@ int GfxMessageBox::showModalSimple(void) const
 {
     if (winptr_ == nullptr)
     {
-        SDL_ShowSimpleMessageBox(flag_.getAsSdlType(),title_.c_str(),
-                                 message_.c_str(),NULL);
+        SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
+                                 message_.c_str(), NULL);
     }
     else
     {
-        SDL_ShowSimpleMessageBox(flag_.getAsSdlType(),title_.c_str(),
-                                 message_.c_str(),winptr_->getAsSdlTypePtr());
+        SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
+                                 message_.c_str(), winptr_->getAsSdlTypePtr());
     }
     return 1;
 }
@@ -84,6 +87,6 @@ int GfxMessageBox::showModalComplex(void) const
     GfxMessageBoxData::SdlTypePtr p;
 
     p = data_.getAsSdlTypePtr();
-    SDL_ShowMessageBox(p,&buttonid);
+    SDL_ShowMessageBox(p, &buttonid);
     return buttonid;
 }

@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxPowerState.hpp"
 
 GfxPowerState::GfxPowerState() : GfxRootClass("GfxPowerState")
@@ -40,7 +42,7 @@ GfxPowerState::GfxPowerState(SdlType value) : GfxRootClass("GfxPowerState")
 
 GfxPowerState::GfxPowerState(GfxPowerState const& other) : GfxRootClass("GfxPowerState")
 {
-    value_  =other.value_;
+    value_ = other.value_;
 }
 
 GfxPowerState::GfxPowerState(GfxPowerState&& other) : GfxRootClass("GfxPowerState")
@@ -98,7 +100,7 @@ bool GfxPowerState::isCharged(void) const
 std::string GfxPowerState::getAsString() const
 {
     std::string str;
-    
+
     switch (static_cast<GfxPowerStateValues>(value_))
     {
         case GfxPowerStateValues::stateUnknown:

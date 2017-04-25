@@ -23,10 +23,11 @@
 
 #include "GfxInitQuit.hpp"
 
-GfxInitQuit::GfxInitQuit(GfxInitComponent gfxInitComp) : GfxRootClass("GfxInitQuit"), gfxInitComp_(gfxInitComp), errorcode_(0)
+GfxInitQuit::GfxInitQuit(GfxInitComponent gfxInitComp) :
+                GfxRootClass("GfxInitQuit"), gfxInitComp_(gfxInitComp), errorcode_(0)
 {
     int initParam;
-    
+
     initParam = 0;
     if (gfxInitComp == GfxInitComponent::initVideo)
     {

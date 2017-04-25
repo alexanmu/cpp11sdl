@@ -26,6 +26,7 @@
 
 #include <memory>
 #include <map>
+#include <string>
 
 #include "GfxRootClass.hpp"
 #include "GfxRect.hpp"
@@ -37,7 +38,7 @@ public:
     GfxVideo();
     GfxVideo(GfxVideo const&) = delete;
     GfxVideo(GfxVideo&&) = delete;
-    
+
     GfxVideo& operator=(GfxVideo const&) = delete;
     GfxVideo& operator=(GfxVideo&&) = delete;
 
@@ -51,16 +52,16 @@ public:
     std::string getDisplayName(int displayindex) const;
     std::unique_ptr<GfxRect> getDisplayBounds(int displayindex) const;
     std::unique_ptr<GfxRect> getDisplayUsableBounds(int displayindex) const;
-    void getDisplayDPI(int displayindex,float * ddpi,float * hdpi, float * vdpi) const;
+    void getDisplayDPI(int displayindex, float * ddpi, float * hdpi, float * vdpi) const;
     int getNumDisplayModes(int displayindex);
-    std::unique_ptr<GfxDisplayMode> getDisplayMode(int displayindex,int modeindex);
+    std::unique_ptr<GfxDisplayMode> getDisplayMode(int displayindex, int modeindex);
     std::unique_ptr<GfxDisplayMode> getDesktopDisplayMode(int displayindex) const;
     std::unique_ptr<GfxDisplayMode> getCurrentDisplayMode(int displayindex) const;
-    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(int displayindex,GfxDisplayMode const& mode) const;
+    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(int displayindex, GfxDisplayMode const& mode) const;
 private:
     int numvideodrivers_;
     int numvideodisplays_;
-    std::map<int,int> numdisplaymodes_;
+    std::map<int, int> numdisplaymodes_;
 };
 
 #endif /* GfxVideo_hpp */

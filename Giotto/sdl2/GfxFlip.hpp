@@ -41,8 +41,8 @@ public:
     };
 
     GfxFlip();
-    GfxFlip(const bool fliph,const bool flipv);
-    GfxFlip(GfxFlipValues values);
+    GfxFlip(const bool fliph, const bool flipv);
+    explicit GfxFlip(GfxFlipValues values);
     GfxFlip(const GfxFlip& other);
     GfxFlip(GfxFlip&& other);
 

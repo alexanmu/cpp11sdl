@@ -24,6 +24,8 @@
 #ifndef GfxTexture_hpp
 #define GfxTexture_hpp
 
+#include <memory>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
@@ -34,23 +36,24 @@ class GfxTexture final : public GfxRootClass
 public:
     typedef SDL_Texture SdlType;
     typedef SDL_Texture* SdlTypePtr;
-    
+
     GfxTexture() = delete;
 
-    GfxTexture(GfxRootClass * rend);
-    GfxTexture(GfxRootClass * rend,const GfxSurface& surf);
+    explicit GfxTexture(GfxRootClass * rend);
+    GfxTexture(GfxRootClass * rend, const GfxSurface& surf);
 
     ~GfxTexture();
-    
+
     GfxTexture(const GfxTexture&) = delete;
     GfxTexture(GfxTexture&& tex);
-    
+
     GfxTexture& operator=(const GfxTexture&) = delete;
     GfxTexture& operator=(GfxTexture&& tex);
-    
+
     void destroyTexture(void);
 
     void setBlendMode(const GfxBlendMode& blendmode);
+    void setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode);
     std::unique_ptr<GfxBlendMode> getBlendMode(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;

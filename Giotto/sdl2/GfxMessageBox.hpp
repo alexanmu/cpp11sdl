@@ -24,6 +24,8 @@
 #ifndef GfxMessageBox_hpp
 #define GfxMessageBox_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBoxFlags.hpp"
@@ -33,13 +35,14 @@ class GfxMessageBox final : public GfxRootClass
 {
 public:
     GfxMessageBox() = delete;
-    GfxMessageBox(GfxMessageBoxData const& data);
-    GfxMessageBox(GfxMessageBoxFlags const& flag,std::string const& title,std::string const& message);
-    GfxMessageBox(GfxMessageBoxFlags const& flag,std::string const& title,std::string const& message,GfxWindow const& win);
+    explicit GfxMessageBox(GfxMessageBoxData const& data);
+    GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title, std::string const& message);
+    GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
+                    std::string const& message, GfxWindow const& win);
 
     GfxMessageBox(GfxMessageBox const&) = delete;
     GfxMessageBox(GfxMessageBox&&) = delete;
-    
+
     GfxMessageBox& operator=(GfxMessageBox const&) = delete;
     GfxMessageBox& operator=(GfxMessageBox&&) = delete;
 
@@ -53,13 +56,13 @@ private:
         typeComplex,
         typeSimple
     };
-    
+
     GfxMessageBoxType type_;
     GfxMessageBoxData data_;
     GfxMessageBoxFlags flag_;
     std::string title_;
     std::string message_;
-    GfxWindow* winptr_;
+    GfxWindow const* winptr_;
 };
 
 #endif /* GfxMessageBox_hpp */

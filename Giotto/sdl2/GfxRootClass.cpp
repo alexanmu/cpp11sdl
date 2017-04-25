@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 
 int GfxRootClass::intInstanceCounter_ = 0;

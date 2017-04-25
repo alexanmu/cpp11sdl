@@ -35,16 +35,16 @@ public:
     GfxPowerInfo();
     GfxPowerInfo(GfxPowerInfo const&) = delete;
     GfxPowerInfo(GfxPowerInfo&&) = delete;
-    
+
     GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
     GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
-    
+
     void queryPowerInfo(void);
-    
+
     GfxPowerState& getPowerState(void) const;
     int getRemainingSeconds(void) const;
     int getRemainingPercentage(void) const;
-    
+
     std::string getAsString(void) const;
 private:
     GfxPowerState pstate_;

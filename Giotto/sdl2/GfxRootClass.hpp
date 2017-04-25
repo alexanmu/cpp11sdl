@@ -30,16 +30,16 @@ class GfxRootClass
 {
 public:
     GfxRootClass();
-    GfxRootClass(std::string strClassName);
-    
+    explicit GfxRootClass(std::string strClassName);
+
     GfxRootClass(const GfxRootClass& other);
     GfxRootClass(GfxRootClass&& other);
-    
+
     virtual ~GfxRootClass();
 
     GfxRootClass& operator=(const GfxRootClass& other);
     GfxRootClass& operator=(GfxRootClass&& other);
-    
+
     bool operator==(const GfxRootClass& other);
 
     std::string getClassName(void) const;

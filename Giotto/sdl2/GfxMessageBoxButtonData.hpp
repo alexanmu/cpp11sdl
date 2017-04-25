@@ -24,6 +24,8 @@
 #ifndef GfxMessageBoxButtonData_hpp
 #define GfxMessageBoxButtonData_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxMessageBoxButtonFlags.hpp"
@@ -33,12 +35,12 @@ class GfxMessageBoxButtonData final : public GfxRootClass
 public:
     typedef SDL_MessageBoxButtonData SdlType;
     typedef SDL_MessageBoxButtonData* SdlTypePtr;
-    
+
     GfxMessageBoxButtonData();
-    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,int buttonid,std::string text);
+    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int buttonid, const std::string& text);
     GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other);
     GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other);
-    
+
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData const& other);
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other);
 

@@ -31,7 +31,7 @@ GfxColor::GfxColor() : GfxRootClass("GfxColor")
     clr_.a = 0xFF;
 }
 
-GfxColor::GfxColor(const uint8_t r,const  uint8_t g,const  uint8_t b) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRootClass("GfxColor")
 {
     clr_.r = r;
     clr_.g = g;
@@ -39,7 +39,7 @@ GfxColor::GfxColor(const uint8_t r,const  uint8_t g,const  uint8_t b) : GfxRootC
     clr_.a = 0xFF;
 }
 
-GfxColor::GfxColor(const uint8_t r,const  uint8_t g,const  uint8_t b,const  uint8_t a) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) : GfxRootClass("GfxColor")
 {
     clr_.r = r;
     clr_.g = g;

@@ -39,7 +39,7 @@ public:
     GfxFileSystem& operator=(GfxFileSystem&&) = delete;
 
     std::string getBasePath(void) const;
-    std::string getPrefPath(const std::string& organization,const std::string& appname) const;
+    std::string getPrefPath(const std::string& organization, const std::string& appname) const;
 private:
     std::string getThisFolder(void) const;
 };

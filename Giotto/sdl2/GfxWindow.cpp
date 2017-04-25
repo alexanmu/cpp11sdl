@@ -21,9 +21,13 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <memory>
+#include <string>
+
 #include "GfxWindow.hpp"
 
-GfxWindow::GfxWindow(const std::string& title,const uint16_t width,const uint16_t height) : GfxRootClass("GfxWindow"), title_(title)
+GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint16_t height) :
+        GfxRootClass("GfxWindow"), title_(title)
 {
     window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (window_ == nullptr)
@@ -32,9 +36,12 @@ GfxWindow::GfxWindow(const std::string& title,const uint16_t width,const uint16_
     }
 }
 
-GfxWindow::GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height,const GfxWindowFlags& flags) : GfxRootClass("GfxWindow"), title_(title)
+GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
+                        const uint16_t width, const uint16_t height, const GfxWindowFlags& flags) :
+        GfxRootClass("GfxWindow"), title_(title)
 {
-    window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(), width, height, flags.getAsSdlType());
+    window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
+                                width, height, flags.getAsSdlType());
     if (window_ == nullptr)
     {
         // error handling here
@@ -45,7 +52,7 @@ GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
 {
     window_ = win.window_;
     title_ = win.title_;
-    
+
     win.window_ = nullptr;
     win.title_ = "";
 }
@@ -64,7 +71,7 @@ GfxWindow& GfxWindow::operator=(GfxWindow&& win)
     {
         window_ = win.window_;
         title_ = win.title_;
-        
+        // Delete other's data
         win.window_ = nullptr;
         win.title_ = "";
     }
@@ -102,34 +109,34 @@ std::string GfxWindow::getTitle() const
 void GfxWindow::setTitle(const std::string& title)
 {
     title_ = title;
-    SDL_SetWindowTitle(window_,title_.c_str());
+    SDL_SetWindowTitle(window_, title_.c_str());
 }
 
-void GfxWindow::setWindowPosition(const GfxWindowPosition& x,const GfxWindowPosition& y)
+void GfxWindow::setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y)
 {
-    SDL_SetWindowPosition(window_,x.getCoordinate(),y.getCoordinate());
+    SDL_SetWindowPosition(window_, x.getCoordinate(), y.getCoordinate());
 }
 
-void GfxWindow::getWindowPosition(GfxWindowPosition& x,GfxWindowPosition& y)
+void GfxWindow::getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y)
 {
     int xcoord;
     int ycoord;
-    
-    SDL_GetWindowPosition(window_,&xcoord,&ycoord);
-    x.setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
-    x.setCoordinate(xcoord);
-    y.setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
-    y.setCoordinate(ycoord);
+
+    SDL_GetWindowPosition(window_, &xcoord, &ycoord);
+    x->setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
+    x->setCoordinate(xcoord);
+    y->setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
+    y->setCoordinate(ycoord);
 }
 
-void GfxWindow::setWindowSize(int32_t x,int32_t y)
+void GfxWindow::setWindowSize(int32_t x, int32_t y)
 {
-    SDL_SetWindowSize(window_,x,y);
+    SDL_SetWindowSize(window_, x, y);
 }
 
-void GfxWindow::getWindowSize(int32_t* px,int32_t* py)
+void GfxWindow::getWindowSize(int32_t* px, int32_t* py)
 {
-    SDL_GetWindowSize(window_,px,py);
+    SDL_GetWindowSize(window_, px, py);
 }
 
 uint16_t GfxWindow::getWidth() const
@@ -141,7 +148,7 @@ uint16_t GfxWindow::getWidth() const
     {
         return 0;
     }
-    SDL_GetWindowSize(window_,&w,&h);
+    SDL_GetWindowSize(window_, &w, &h);
     return w;
 }
 
@@ -150,7 +157,7 @@ uint16_t GfxWindow::getHeight() const
     int w;
     int h;
 
-    SDL_GetWindowSize(window_,&w,&h);
+    SDL_GetWindowSize(window_, &w, &h);
     return h;
 }
 

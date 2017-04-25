@@ -34,7 +34,7 @@ public:
     typedef SDL_DisplayMode* SdlTypePtr;
 
     GfxDisplayMode();
-    GfxDisplayMode(uint32_t format,int w,int h,int refresh);
+    GfxDisplayMode(uint32_t format, int w, int h, int refresh);
     // Copy Ctor not supported due to driver_data ptr
     GfxDisplayMode(GfxDisplayMode const&) = delete;
     GfxDisplayMode(GfxDisplayMode&& other);

@@ -28,7 +28,7 @@ GfxFlip::GfxFlip() : GfxRootClass("GfxFlip")
     flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
 }
 
-GfxFlip::GfxFlip(const bool fliph,const bool flipv) : GfxRootClass("GfxFlip")
+GfxFlip::GfxFlip(const bool fliph, const bool flipv) : GfxRootClass("GfxFlip")
 {
     flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
     if (fliph == true)

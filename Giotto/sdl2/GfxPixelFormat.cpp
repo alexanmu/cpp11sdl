@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <memory>
+
 #include "GfxPixelFormat.hpp"
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass("GfxPixelFormat")
@@ -67,42 +69,42 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
 
 void GfxPixelFormat::setFormat(const uint32_t format)
 {
-	pix_->format = format;
+    pix_->format = format;
 }
 
 void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
 {
-	pix_->BitsPerPixel = bpp;
+    pix_->BitsPerPixel = bpp;
 }
 
 void GfxPixelFormat::setPalette(const GfxPalette& pal)
 {
-	pal_ = pal;
+    pal_ = pal;
 }
 
 void GfxPixelFormat::setBytesPerPixel(const uint8_t bypp)
 {
-	pix_->BytesPerPixel = bypp;
+    pix_->BytesPerPixel = bypp;
 }
 
 void GfxPixelFormat::setRedMask(const uint32_t rmask)
 {
-	pix_->Rmask = rmask;
+    pix_->Rmask = rmask;
 }
 
 void GfxPixelFormat::setGreenMask(const uint32_t gmask)
 {
-	pix_->Gmask = gmask;
+    pix_->Gmask = gmask;
 }
 
 void GfxPixelFormat::setBlueMask(const uint32_t bmask)
 {
-	pix_->Bmask = bmask;
+    pix_->Bmask = bmask;
 }
 
 void GfxPixelFormat::setAlphaMask(const uint32_t amask)
 {
-	pix_->Amask = amask;
+    pix_->Amask = amask;
 }
 
 uint32_t GfxPixelFormat::getFormat(void) const
@@ -118,7 +120,7 @@ uint8_t GfxPixelFormat::getBitsPerPixel(void) const
 std::unique_ptr<GfxPalette> GfxPixelFormat::getPalette(void)
 {
     std::unique_ptr<GfxPalette> p {new GfxPalette(pal_)};
-    
+
     return p;
 }
 

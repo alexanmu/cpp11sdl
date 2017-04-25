@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxCpuInfo.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -29,7 +31,7 @@ GfxCpuInfo::GfxCpuInfo() : GfxRootClass("GfxCpuInfo")
     cpuCount_ = 0;
     cpuCacheLineSize_ = 0;
     hasRdtsc_ = false;
-    hasAltiVec_= false;
+    hasAltiVec_ = false;
     hasMmx_ = false;
     hasSse_ = false;
     hasSse2_ = false;
@@ -126,7 +128,7 @@ int GfxCpuInfo::getSystemRam(void) const
 std::string GfxCpuInfo::getAsString(void) const
 {
     std::string str1;
-    
+
     str1 = "#CPU=" + std::to_string(cpuCount_) + "\n";
     str1 += "CacheLine=" + std::to_string(cpuCacheLineSize_) + "\n";
     str1 += "RDTSC:" + std::to_string(hasRdtsc_) + "\n";
@@ -142,4 +144,3 @@ std::string GfxCpuInfo::getAsString(void) const
     str1 += "RAM=" + std::to_string(systemRam_) + "MB";
     return str1;
 }
-

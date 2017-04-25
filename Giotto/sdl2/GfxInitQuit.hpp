@@ -37,23 +37,23 @@ public:
         initAudio,
         initEverything
     };
-    
+
     // No default constructor
     GfxInitQuit() = delete;
-    
-    GfxInitQuit(GfxInitComponent gfxInitComp);
+
+    explicit GfxInitQuit(GfxInitComponent gfxInitComp);
 
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;
     GfxInitQuit(GfxInitQuit&&) = delete;
-    
+
     // Forbid copy/move assignements
     GfxInitQuit& operator=(const GfxInitQuit&) = delete;
     GfxInitQuit& operator=(GfxInitQuit&&) = delete;
-    
+
     // Explicit destructor to de-init SDL lib
     ~GfxInitQuit();
-    
+
     int getErrorCode() const;
     GfxInitComponent getInitedComponent() const;
 private:

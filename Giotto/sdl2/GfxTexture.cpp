@@ -21,8 +21,9 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GfxTexture.hpp"
+#include <memory>
 
+#include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
 
 GfxTexture::GfxTexture(GfxRootClass * rend) : GfxRootClass("GfxTexture")
@@ -31,12 +32,12 @@ GfxTexture::GfxTexture(GfxRootClass * rend) : GfxRootClass("GfxTexture")
     tex_ = nullptr;
 }
 
-GfxTexture::GfxTexture(GfxRootClass * rend,const GfxSurface& surf) : GfxTexture(rend)
+GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxTexture(rend)
 {
     GfxRenderer* rendptr;
-    
-    rendptr = (GfxRenderer*)rend;
-    tex_ = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(),surf.getAsSdlTypePtr());
+
+    rendptr = reinterpret_cast<GfxRenderer *>(rend);
+    tex_ = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
 }
 
 GfxTexture::~GfxTexture()
@@ -80,18 +81,27 @@ void GfxTexture::setBlendMode(const GfxBlendMode& blendmode)
     {
       return;
     }
-    SDL_SetTextureBlendMode(tex_,blendmode.getAsSdlType());
+    SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
+}
+
+void GfxTexture::setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode)
+{
+    if (tex_ == nullptr)
+    {
+      return;
+    }
+    SDL_SetTextureBlendMode(tex_, static_cast<GfxBlendMode::SdlType>(blendmode));
 }
 
 std::unique_ptr<GfxBlendMode> GfxTexture::getBlendMode(void)
 {
     SDL_BlendMode bm;
-    
+
     if (tex_ == nullptr)
     {
         return nullptr;
     }
-    SDL_GetTextureBlendMode(tex_,&bm);
+    SDL_GetTextureBlendMode(tex_, &bm);
     std::unique_ptr<GfxBlendMode> ptr { new GfxBlendMode(bm) };
 
     return ptr;

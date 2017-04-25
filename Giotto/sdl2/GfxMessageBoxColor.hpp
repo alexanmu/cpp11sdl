@@ -32,30 +32,30 @@ class GfxMessageBoxColor final : public GfxRootClass
 public:
     typedef SDL_MessageBoxColor SdlType;
     typedef SDL_MessageBoxColor* SdlTypePtr;
-    
+
     GfxMessageBoxColor();
-    GfxMessageBoxColor(const uint8_t r,const uint8_t g,const uint8_t b);
-    GfxMessageBoxColor(const SdlType clr);
+    GfxMessageBoxColor(const uint8_t r, const uint8_t g, const uint8_t b);
+    explicit GfxMessageBoxColor(const SdlType clr);
     GfxMessageBoxColor(const GfxMessageBoxColor& other);
     GfxMessageBoxColor(GfxMessageBoxColor&& other);
-    
+
     GfxMessageBoxColor& operator=(const GfxMessageBoxColor& other);
     GfxMessageBoxColor& operator=(GfxMessageBoxColor&& other);
-    
+
     bool operator==(const GfxMessageBoxColor& other);
-    
+
     /* Getters ... */
     uint8_t getRed(void) const;
     uint8_t getGreen(void) const;
     uint8_t getBlue(void) const;
-    
+
     uint32_t getColor(void) const;
-    
+
     /* Setters ... */
     void setRed(const uint8_t r);
     void setGreen(const uint8_t g);
     void setBlue(const uint8_t b);
-    
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

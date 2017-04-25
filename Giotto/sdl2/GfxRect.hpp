@@ -32,11 +32,11 @@ class GfxRect final : public GfxRootClass
 public:
     typedef SDL_Rect SdlType;
     typedef SDL_Rect* SdlTypePtr;
-    
+
     GfxRect();
     GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h);
-    GfxRect(SdlType rect);
-    GfxRect(SdlTypePtr rect);
+    explicit GfxRect(SdlType rect);
+    explicit GfxRect(SdlTypePtr rect);
     GfxRect(const GfxRect& other);
     GfxRect(GfxRect&& other);
 
@@ -49,7 +49,7 @@ public:
     uint16_t getY(void) const;
     uint16_t getWidth(void) const;
     uint16_t getHeight(void) const;
-    
+
     void setX(const uint16_t x);
     void setY(const uint16_t y);
     void setWidth(const uint16_t w);

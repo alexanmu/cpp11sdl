@@ -21,13 +21,17 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "GfxSurface.hpp"
 
-GfxSurface::GfxSurface(const uint16_t w,const uint16_t h) : GfxRootClass("GfxSurface")
+GfxSurface::GfxSurface(const uint16_t w, const uint16_t h) : GfxRootClass("GfxSurface")
 {
     uint32_t format = SDL_PIXELFORMAT_ARGB8888;
 
-    surf_ = SDL_CreateRGBSurfaceWithFormat(0,w,h,32,format);
+    surf_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, format);
     if (surf_ == nullptr)
     {
         // error handling here ...
@@ -152,11 +156,11 @@ std::unique_ptr<GfxPixelFormat> GfxSurface::getFormat(void)
     }
 
     std::unique_ptr<GfxPixelFormat> p { new GfxPixelFormat(surf_->format) };
-    
+
     return p;
 }
 
-void GfxSurface::fillRect(const GfxRect& rect,const GfxColor& color)
+void GfxSurface::fillRect(const GfxRect& rect, const GfxColor& color)
 {
     uint32_t clr;
 
@@ -180,24 +184,24 @@ void GfxSurface::fillRect(const GfxColor& color)
     SDL_FillRect(surf_, NULL, clr);
 }
 
-void GfxSurface::fillRects(const std::vector<GfxRect>& rects,const GfxColor& color)
+void GfxSurface::fillRects(const std::vector<GfxRect>& rects, const GfxColor& color)
 {
-    if( rects.size() > 0)
+    if (rects.size() > 0)
     {
         for (const GfxRect& r : rects)
         {
-            fillRect(r,color);
+            fillRect(r, color);
         }
     }
 }
 
-void GfxSurface::blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr)
+void GfxSurface::blitSurface(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr)
 {
     if (surf_ == nullptr)
     {
         return;
     }
-    SDL_BlitSurface(src.getAsSdlTypePtr(),srcr.getAsSdlTypePtr(),surf_,dstr.getAsSdlTypePtr());
+    SDL_BlitSurface(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
 void GfxSurface::blitSurface(const GfxSurface& src)
@@ -206,10 +210,10 @@ void GfxSurface::blitSurface(const GfxSurface& src)
     {
         return;
     }
-    SDL_BlitSurface(src.getAsSdlTypePtr(),NULL,surf_,NULL);
+    SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
 }
 
-void GfxSurface::putPixel(const uint16_t x,const uint16_t y,const GfxColor& color)
+void GfxSurface::putPixel(const uint16_t x, const uint16_t y, const GfxColor& color)
 {
     if (surf_ == nullptr)
     {
@@ -222,7 +226,7 @@ void GfxSurface::putPixel(const uint16_t x,const uint16_t y,const GfxColor& colo
         return;
     }
     SDL_LockSurface(surf_);
-    putPixelPrv(x,y,color);
+    putPixelPrv(x, y, color);
     SDL_UnlockSurface(surf_);
 }
 
@@ -241,7 +245,7 @@ std::unique_ptr<GfxColor> GfxSurface::getPixel(const uint16_t x, const uint16_t 
         return nullptr;
     }
     SDL_LockSurface(surf_);
-    pix = getPixelPrv(x,y);
+    pix = getPixelPrv(x, y);
     SDL_UnlockSurface(surf_);
     return pix;
 }
@@ -260,22 +264,22 @@ GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const
     return surf_;
 }
 
-void GfxSurface::putPixelPrv(const uint16_t x,const uint16_t y,const GfxColor& color)
+void GfxSurface::putPixelPrv(const uint16_t x, const uint16_t y, const GfxColor& color)
 {
     uint32_t* ptr;
     uint32_t clr;
-    
-    clr = SDL_MapRGBA(surf_->format,color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    ptr = (uint32_t*)surf_->pixels;
+
+    clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    ptr = reinterpret_cast<uint32_t*>(surf_->pixels);
     ptr[y * surf_->w + x] = clr;
 }
 
 std::unique_ptr<GfxColor> GfxSurface::getPixelPrv(const uint16_t x, const uint16_t y)
 {
     uint8_t* ptr;
-    
-    ptr = (uint8_t*)surf_->pixels;
-    std::unique_ptr<GfxColor> clr{new GfxColor(ptr[y * surf_->w + 0], ptr[y * surf_->w + 1],
-                                               ptr[y * surf_->w + 2], ptr[y * surf_->w + 3])};
+
+    ptr = reinterpret_cast<uint8_t*>(surf_->pixels);
+    std::unique_ptr<GfxColor> clr { new GfxColor(ptr[y * surf_->w + 0], ptr[y * surf_->w + 1],
+                                                 ptr[y * surf_->w + 2], ptr[y * surf_->w + 3]) };
     return clr;
 }

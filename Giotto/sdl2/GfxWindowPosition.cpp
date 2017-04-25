@@ -29,7 +29,7 @@ GfxWindowPosition::GfxWindowPosition() : GfxRootClass("GfxWindowPosition")
     coord_ = -1;
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos,uint32_t coord) : GfxRootClass("GfxWindowPosition")
+GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord) : GfxRootClass("GfxWindowPosition")
 {
     pos_ = pos;
     if (pos_ == GfxWindowPosition::GfxWindowPositionValues::positionSpecified)
@@ -101,7 +101,7 @@ void GfxWindowPosition::setCoordinate(uint32_t coord)
 uint32_t GfxWindowPosition::getCoordinate(void) const
 {
     uint32_t ret;
-    
+
     switch (pos_)
     {
         case GfxWindowPositionValues::positionUndefined:

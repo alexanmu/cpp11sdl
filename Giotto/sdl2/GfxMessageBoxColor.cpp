@@ -30,7 +30,8 @@ GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass("GfxMessageBoxColor")
     clr_.b = 0;
 }
 
-GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r,const  uint8_t g,const  uint8_t b) : GfxRootClass("GfxMessageBoxColor")
+GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) :
+        GfxRootClass("GfxMessageBoxColor")
 {
     clr_.r = r;
     clr_.g = g;
@@ -104,7 +105,7 @@ uint8_t GfxMessageBoxColor::getBlue(void) const
 uint32_t GfxMessageBoxColor::getColor() const
 {
     uint32_t c = 0;
-    
+
     c |= clr_.r << 16 | clr_.g << 8 | clr_.b;
     return c;
 }

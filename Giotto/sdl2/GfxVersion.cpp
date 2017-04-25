@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
 
 #include "GfxVersion.hpp"
 
@@ -31,7 +32,7 @@ GfxVersion::GfxVersion() : GfxRootClass("GfxVersion")
     ver_.patch = 0;
 }
 
-GfxVersion::GfxVersion(uint8_t major,uint8_t minor,uint8_t patch) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(uint8_t major, uint8_t minor, uint8_t patch) : GfxRootClass("GfxVersion")
 {
     ver_.major = major;
     ver_.minor = minor;
@@ -102,7 +103,7 @@ void GfxVersion::set(SdlType ver)
 std::string GfxVersion::getAsString(void) const
 {
     std::string str;
-    
+
     str = std::to_string(ver_.major) + "." + std::to_string(ver_.minor) + "." + std::to_string(ver_.patch);
     return str;
 }

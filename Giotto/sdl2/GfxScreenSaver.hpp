@@ -32,10 +32,10 @@ public:
     GfxScreenSaver();
     GfxScreenSaver(GfxScreenSaver const&) = delete;
     GfxScreenSaver(GfxScreenSaver&&) = delete;
-    
+
     GfxScreenSaver& operator=(GfxScreenSaver const&) = delete;
     GfxScreenSaver& operator=(GfxScreenSaver&&) = delete;
-    
+
     bool isScreenSaverEnabled(void) const;
     void enableScreenSaver(void);
     void disableScreenSaver(void);

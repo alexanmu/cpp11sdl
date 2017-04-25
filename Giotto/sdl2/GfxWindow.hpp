@@ -39,14 +39,15 @@ public:
     typedef SDL_Window SdlType;
     typedef SDL_Window* SdlTypePtr;
 
-    GfxWindow(const std::string& title,const uint16_t width,const uint16_t height);
-    GfxWindow(const std::string& title,const GfxWindowPosition& x,const GfxWindowPosition& y,const uint16_t width,const uint16_t height,const GfxWindowFlags& flags);
+    GfxWindow(const std::string& title, const uint16_t width, const uint16_t height);
+    GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
+                const uint16_t width, const uint16_t height, const GfxWindowFlags& flags);
 
     GfxWindow() = delete;
 
     GfxWindow(const GfxWindow&) = delete;
     GfxWindow& operator=(const GfxWindow&) = delete;
-    
+
     GfxWindow(GfxWindow&& win);
     GfxWindow& operator=(GfxWindow&& win);
 
@@ -60,11 +61,11 @@ public:
     uint16_t getWidth() const;
     uint16_t getHeight() const;
 
-    void setWindowPosition(const GfxWindowPosition& x,const GfxWindowPosition& y);
-    void getWindowPosition(GfxWindowPosition& x,GfxWindowPosition& y);
+    void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
+    void getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y);
 
-    void setWindowSize(int32_t x,int32_t y);
-    void getWindowSize(int32_t* px,int32_t* py);
+    void setWindowSize(int32_t x, int32_t y);
+    void getWindowSize(int32_t* px, int32_t* py);
 
     std::unique_ptr<GfxSurface> getWindowSurface(void);
     /*
@@ -117,7 +118,6 @@ public:
      extern DECLSPEC Uint32 SDLCALL SDL_GetWindowPixelFormat(SDL_Window * window);
      etc.
      */
-    
 
     SdlTypePtr getAsSdlTypePtr() const;
 private:

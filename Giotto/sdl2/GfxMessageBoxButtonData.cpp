@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxButtonData.hpp"
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass("GfxMessageBoxButtonData")
@@ -30,19 +32,22 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass("GfxMessageBox
     data_.text = nullptr;;
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,int buttonid,std::string text) : GfxRootClass("GfxMessageBoxButtonData")
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
+                            const int buttonid, const std::string& text) : GfxRootClass("GfxMessageBoxButtonData")
 {
     data_.flags = flags.getAsSdlType();
     data_.buttonid = buttonid;
     data_.text = text.c_str();
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) : GfxRootClass("GfxMessageBoxButtonData")
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) :
+         GfxRootClass("GfxMessageBoxButtonData")
 {
     data_ = other.data_;
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) : GfxRootClass("GfxMessageBoxButtonData")
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) :
+        GfxRootClass("GfxMessageBoxButtonData")
 {
     data_ = other.data_;
     // Delete other's data
@@ -81,7 +86,7 @@ int GfxMessageBoxButtonData::getButtonId(void) const
 std::string GfxMessageBoxButtonData::getText(void) const
 {
     std::string text;
-    
+
     text = data_.text;
     return text;
 }

@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
 
 #include "GfxGetVersion.hpp"
 
@@ -29,12 +30,12 @@ GfxGetVersion::GfxGetVersion() : GfxRootClass("GfxGetVersion")
     // Nothing to do
 }
 
-void GfxGetVersion::getVersion(GfxVersion& ver) const
+void GfxGetVersion::getVersion(GfxVersion* ver) const
 {
     GfxVersion::SdlType v;
-    
+
     SDL_GetVersion(&v);
-    ver.set(v);
+    ver->set(v);
 }
 
 std::string GfxGetVersion::getRevision(void) const

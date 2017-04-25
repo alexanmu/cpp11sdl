@@ -29,7 +29,7 @@ GfxPoint::GfxPoint() : GfxRootClass("GfxPoint")
     pt_.y = -1;
 }
 
-GfxPoint::GfxPoint(const uint16_t x,const uint16_t y) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const uint16_t x, const uint16_t y) : GfxRootClass("GfxPoint")
 {
     pt_.x = x;
     pt_.y = y;

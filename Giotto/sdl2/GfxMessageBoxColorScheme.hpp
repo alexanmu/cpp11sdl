@@ -35,10 +35,10 @@ public:
     typedef SDL_MessageBoxColorScheme* SdlTypePtr;
 
     GfxMessageBoxColorScheme();
-    GfxMessageBoxColorScheme(GfxMessageBoxColor colors[]);
+    explicit GfxMessageBoxColorScheme(GfxMessageBoxColor colors[]);
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other);
-    
+
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other);
 

@@ -25,6 +25,8 @@
 #define GfxSurface_hpp
 
 #include <string>
+#include <memory>
+#include <vector>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
@@ -42,17 +44,17 @@ public:
     typedef SDL_Surface* SdlTypePtr;
 
     GfxSurface() = delete;
-    GfxSurface(const uint16_t w,const uint16_t h);
-    GfxSurface(const SdlTypePtr surf);
+    GfxSurface(const uint16_t w, const uint16_t h);
+    explicit GfxSurface(const SdlTypePtr surf);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& surf);
-    
+
     GfxSurface& operator=(const GfxSurface&) = delete;
     GfxSurface& operator=(GfxSurface&& surf);
 
-    GfxSurface(const std::string& filename);
-    GfxSurface(std::string&& filename);
+    explicit GfxSurface(const std::string& filename);
+    explicit GfxSurface(std::string&& filename);
 
     ~GfxSurface();
 
@@ -62,15 +64,15 @@ public:
 
     std::unique_ptr<GfxPixelFormat> getFormat(void);
 
-    void fillRect(const GfxRect& rect,const GfxColor& color);
+    void fillRect(const GfxRect& rect, const GfxColor& color);
     void fillRect(const GfxColor& color);
 
-    void fillRects(const std::vector<GfxRect>& rects,const GfxColor& color);
+    void fillRects(const std::vector<GfxRect>& rects, const GfxColor& color);
 
-    void blitSurface(const GfxSurface& src,const GfxRect& srcr,const GfxRect& dstr);
+    void blitSurface(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
     void blitSurface(const GfxSurface& src);
-    
-    void putPixel(const uint16_t x,const uint16_t y,const GfxColor& clr);
+
+    void putPixel(const uint16_t x, const uint16_t y, const GfxColor& clr);
     std::unique_ptr<GfxColor> getPixel(const uint16_t x, const uint16_t y);
 
     void destroySurface(void);
@@ -79,7 +81,7 @@ public:
 private:
     friend class GfxCanvas;
 
-    void putPixelPrv(const uint16_t x,const uint16_t y,const GfxColor& clr);
+    void putPixelPrv(const uint16_t x, const uint16_t y, const GfxColor& clr);
     std::unique_ptr<GfxColor> getPixelPrv(const uint16_t x, const uint16_t y);
 
     SdlTypePtr surf_;

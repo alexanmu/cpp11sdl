@@ -21,7 +21,6 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-
 #ifndef GfxVersion_hpp
 #define GfxVersion_hpp
 
@@ -37,8 +36,8 @@ public:
     typedef SDL_version* SdlTypePtr;
 
     GfxVersion();
-    GfxVersion(uint8_t major,uint8_t minor,uint8_t patch);
-    GfxVersion(SdlType ver);
+    GfxVersion(uint8_t major, uint8_t minor, uint8_t patch);
+    explicit GfxVersion(SdlType ver);
     GfxVersion(GfxVersion const& other);
     GfxVersion(GfxVersion&& other);
 

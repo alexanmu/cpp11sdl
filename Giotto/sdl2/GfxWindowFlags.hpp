@@ -60,15 +60,15 @@ public:
     };
 
     GfxWindowFlags();
-    GfxWindowFlags(GfxWindowFlagsValues flag);
-    GfxWindowFlags(SdlType flag);
-    GfxWindowFlags(SdlTypePtr flag);
+    explicit GfxWindowFlags(GfxWindowFlagsValues flag);
+    explicit GfxWindowFlags(SdlType flag);
+    explicit GfxWindowFlags(SdlTypePtr flag);
     GfxWindowFlags(GfxWindowFlags const& other);
     GfxWindowFlags(GfxWindowFlags&& other);
 
     GfxWindowFlags& operator=(GfxWindowFlags const& other);
     GfxWindowFlags& operator=(GfxWindowFlags&& other);
- 
+
     bool isUnkown(void) const;
     bool isFullscreen(void) const;
     bool isOpenGL(void) const;

@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxPlatform.hpp"
 #include "GfxSdlHeader.hpp"
 

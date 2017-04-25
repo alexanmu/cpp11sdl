@@ -32,17 +32,17 @@ class GfxColor final : public GfxRootClass
 public:
     typedef SDL_Color SdlType;
     typedef SDL_Color* SdlTypePtr;
-    
+
     GfxColor();
-    GfxColor(const uint8_t r,const uint8_t g,const uint8_t b);
-    GfxColor(const uint8_t r,const uint8_t g,const uint8_t b,const uint8_t a);
-    GfxColor(const SdlType clr);
+    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b);
+    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a);
+    explicit GfxColor(const SdlType clr);
     GfxColor(const GfxColor& other);
     GfxColor(GfxColor&& other);
-    
+
     GfxColor& operator=(const GfxColor& other);
     GfxColor& operator=(GfxColor&& other);
-    
+
     bool operator==(const GfxColor& other);
 
     /* Getters ... */
@@ -50,7 +50,7 @@ public:
     uint8_t getGreen(void) const;
     uint8_t getBlue(void) const;
     uint8_t getAlpha(void) const;
-    
+
     uint32_t getColor(void) const;
 
     /* Setters ... */

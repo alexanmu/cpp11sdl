@@ -37,7 +37,7 @@ public:
     typedef SDL_PixelFormat* SdlTypePtr;
 
     GfxPixelFormat();
-    GfxPixelFormat(SdlTypePtr pix);
+    explicit GfxPixelFormat(SdlTypePtr pix);
 
     GfxPixelFormat(const GfxPixelFormat& other);
     GfxPixelFormat(GfxPixelFormat&& other);
@@ -72,7 +72,7 @@ public:
     uint8_t getBshift(void) const;
     int getRefCount(void) const;
     SdlTypePtr getNext(void) const;
-    
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

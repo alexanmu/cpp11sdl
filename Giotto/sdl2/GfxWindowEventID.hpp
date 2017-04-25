@@ -55,12 +55,12 @@ public:
     };
 
     GfxWindowEventID();
-    GfxWindowEventID(GfxWindowEventIDValues eventid);
-    GfxWindowEventID(SdlType eventid);
-    GfxWindowEventID(SdlTypePtr eventid);
+    explicit GfxWindowEventID(GfxWindowEventIDValues eventid);
+    explicit GfxWindowEventID(SdlType eventid);
+    explicit GfxWindowEventID(SdlTypePtr eventid);
     GfxWindowEventID(GfxWindowEventID const& other);
     GfxWindowEventID(GfxWindowEventID&& other);
-    
+
     GfxWindowEventID& operator=(GfxWindowEventID const& other);
     GfxWindowEventID& operator=(GfxWindowEventID&& other);
 
@@ -81,7 +81,7 @@ public:
     bool close(void) const;
     bool takeFocus(void) const;
     bool hitTest(void) const;
-        
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
