@@ -24,6 +24,7 @@
 #include <string>
 
 #include "GfxRootClass.hpp"
+#include "GfxSdlHeader.hpp"
 
 int GfxRootClass::intInstanceCounter_ = 0;
 
@@ -101,6 +102,20 @@ std::string GfxRootClass::getClassName(void) const
 int GfxRootClass::getInstanceId(void) const
 {
     return intInstanceId_;
+}
+
+bool GfxRootClass::hasError(void) const
+{
+    return hasError_;
+}
+
+std::string GfxRootClass::getError(void)
+{
+    std::string str;
+    
+    str = SDL_GetError();
+    hasError_ = false;
+    return str;
 }
 
 /* EOF */
