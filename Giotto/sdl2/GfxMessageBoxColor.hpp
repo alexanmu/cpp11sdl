@@ -34,7 +34,7 @@ public:
     typedef SDL_MessageBoxColor* SdlTypePtr;
 
     GfxMessageBoxColor();
-    GfxMessageBoxColor(const uint8_t r, const uint8_t g, const uint8_t b);
+    explicit GfxMessageBoxColor(const uint8_t r, const uint8_t g, const uint8_t b);
     explicit GfxMessageBoxColor(const SdlType clr);
     GfxMessageBoxColor(const GfxMessageBoxColor& other);
     GfxMessageBoxColor(GfxMessageBoxColor&& other);

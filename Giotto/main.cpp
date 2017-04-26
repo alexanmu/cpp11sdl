@@ -75,13 +75,20 @@ void MsgBox(GfxWindow const& win)
         GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 4, "4 Test")
     };
     GfxMessageBoxColor c[5] = {
-        {255, 0, 0},
-        {250, 220, 190},
-        {192, 92, 9},
-        {50, 100, 200},
-        {255, 255, 255}
+        GfxMessageBoxColor(255, 0, 0),
+        GfxMessageBoxColor(250, 220, 190),
+        GfxMessageBoxColor(192, 92, 9),
+        GfxMessageBoxColor(50, 100, 200),
+        GfxMessageBoxColor(255, 255, 255)
     };
     GfxMessageBoxColorScheme colorScheme(c);
+    colorScheme.setColor(GfxMessageBoxColorType(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorBackground),
+                         GfxMessageBoxColor(
+                                            GfxBgiConstants::vgaDarkGray().getRed(),
+                                            GfxBgiConstants::vgaDarkGray().getGreen(),
+                                            GfxBgiConstants::vgaDarkGray().getBlue()
+                                            )
+                         );
 
     GfxMessageBoxData m(flags, win, title, message, numbuttons, buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);

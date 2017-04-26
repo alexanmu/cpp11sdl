@@ -27,6 +27,7 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxMessageBoxColor.hpp"
+#include "GfxMessageBoxColorType.hpp"
 
 class GfxMessageBoxColorScheme final : public GfxRootClass
 {
@@ -34,13 +35,17 @@ public:
     typedef SDL_MessageBoxColorScheme SdlType;
     typedef SDL_MessageBoxColorScheme* SdlTypePtr;
 
+    static constexpr int colorsArraySize = static_cast<int>(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
+
     GfxMessageBoxColorScheme();
-    explicit GfxMessageBoxColorScheme(GfxMessageBoxColor colors[]);
+    explicit GfxMessageBoxColorScheme(GfxMessageBoxColor colors[colorsArraySize]);
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other);
 
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other);
+
+    void setColor(GfxMessageBoxColorType const& type,GfxMessageBoxColor const& color);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
