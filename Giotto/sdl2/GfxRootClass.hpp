@@ -45,16 +45,11 @@ public:
     std::string getClassName(void) const;
     int getInstanceId(void) const;
 
-    /* Error handling */
-    bool hasError(void) const;
-    std::string getError(void);
 private:
     std::string strClassName_;
     int intInstanceId_;
 
     static int intInstanceCounter_;
-protected:
-    bool hasError_;
 };
 
 #endif /* GfxRootClass_hpp */

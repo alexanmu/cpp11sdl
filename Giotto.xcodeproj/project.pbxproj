@@ -12,6 +12,7 @@
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
 		191DCD431EB0DC85006A1602 /* GfxRendererFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 191DCD411EB0DC85006A1602 /* GfxRendererFlags.cpp */; };
 		191DCD461EB0E4D5006A1602 /* GfxTextureModulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 191DCD441EB0E4D5006A1602 /* GfxTextureModulate.cpp */; };
+		191DCD491EB1051F006A1602 /* GfxError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 191DCD471EB1051F006A1602 /* GfxError.cpp */; };
 		192445E81EAF95B900147389 /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445E61EAF95B900147389 /* GfxFileSystem.cpp */; };
 		192445EB1EAF962500147389 /* GfxBits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445E91EAF962500147389 /* GfxBits.cpp */; };
 		192445EE1EAF97E000147389 /* GfxClipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445EC1EAF97E000147389 /* GfxClipboard.cpp */; };
@@ -82,6 +83,8 @@
 		191DCD421EB0DC85006A1602 /* GfxRendererFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRendererFlags.hpp; path = sdl2/GfxRendererFlags.hpp; sourceTree = "<group>"; };
 		191DCD441EB0E4D5006A1602 /* GfxTextureModulate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTextureModulate.cpp; path = sdl2/GfxTextureModulate.cpp; sourceTree = "<group>"; };
 		191DCD451EB0E4D5006A1602 /* GfxTextureModulate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTextureModulate.hpp; path = sdl2/GfxTextureModulate.hpp; sourceTree = "<group>"; };
+		191DCD471EB1051F006A1602 /* GfxError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxError.cpp; path = sdl2/GfxError.cpp; sourceTree = "<group>"; };
+		191DCD481EB1051F006A1602 /* GfxError.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxError.hpp; path = sdl2/GfxError.hpp; sourceTree = "<group>"; };
 		192445E61EAF95B900147389 /* GfxFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFileSystem.cpp; path = sdl2/GfxFileSystem.cpp; sourceTree = "<group>"; };
 		192445E71EAF95B900147389 /* GfxFileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFileSystem.hpp; path = sdl2/GfxFileSystem.hpp; sourceTree = "<group>"; };
 		192445E91EAF962500147389 /* GfxBits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBits.cpp; path = sdl2/GfxBits.cpp; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				195F7A171EACCFD200C11D9F /* GfxDisplayMode.hpp */,
 				192445EF1EAF9B4100147389 /* GfxEndian.cpp */,
 				192445F01EAF9B4100147389 /* GfxEndian.hpp */,
+				191DCD471EB1051F006A1602 /* GfxError.cpp */,
+				191DCD481EB1051F006A1602 /* GfxError.hpp */,
 				192445E61EAF95B900147389 /* GfxFileSystem.cpp */,
 				192445E71EAF95B900147389 /* GfxFileSystem.hpp */,
 				19FA54031EAE8095009CD6E9 /* GfxGetVersion.cpp */,
@@ -451,6 +456,7 @@
 				195F7A0B1EAC8E9B00C11D9F /* GfxPlatform.cpp in Sources */,
 				1995963C1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp in Sources */,
 				194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */,
+				191DCD491EB1051F006A1602 /* GfxError.cpp in Sources */,
 				194411091EAB4D9E0064A6AA /* GfxRootClass.cpp in Sources */,
 				194411051EAB4D9E0064A6AA /* GfxPixelFormat.cpp in Sources */,
 				192445EB1EAF962500147389 /* GfxBits.cpp in Sources */,

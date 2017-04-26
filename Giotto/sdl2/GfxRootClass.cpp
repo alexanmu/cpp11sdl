@@ -99,23 +99,4 @@ std::string GfxRootClass::getClassName(void) const
     return strClassName_;
 }
 
-int GfxRootClass::getInstanceId(void) const
-{
-    return intInstanceId_;
-}
-
-bool GfxRootClass::hasError(void) const
-{
-    return hasError_;
-}
-
-std::string GfxRootClass::getError(void)
-{
-    std::string str;
-    
-    str = SDL_GetError();
-    hasError_ = false;
-    return str;
-}
-
 /* EOF */

@@ -54,6 +54,7 @@
 #include "GfxClipboard.hpp"
 #include "GfxEndian.hpp"
 #include "GfxLoadSo.hpp"
+#include "GfxError.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -163,11 +164,12 @@ void AfterDeInit(void)
     // We expect this to fail
     GfxLoadSo lso("Whatever");
     void * f;
-    
+
     f = lso.loadFunction("Whatever");
     if (f == nullptr)
     {
         std::cout << "lso.loadFunction(\"Whatever\")=" << "nullptr" << '\n';
+        std::cout << "err.getError()=" << GfxError::getError() << '\n';
     }
     std::cout << std::endl;
 }
