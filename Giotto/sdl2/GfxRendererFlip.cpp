@@ -21,16 +21,16 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GfxFlip.hpp"
+#include "GfxRendererFlip.hpp"
 
-GfxFlip::GfxFlip() : GfxRootClass("GfxFlip")
+GfxRendererFlip::GfxRendererFlip() : GfxRootClass("GfxRendererFlip")
 {
-    flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
+    flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
 }
 
-GfxFlip::GfxFlip(const bool fliph, const bool flipv) : GfxRootClass("GfxFlip")
+GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootClass("GfxRendererFlip")
 {
-    flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
+    flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
     if (fliph == true)
     {
         flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_HORIZONTAL);
@@ -41,18 +41,18 @@ GfxFlip::GfxFlip(const bool fliph, const bool flipv) : GfxRootClass("GfxFlip")
     }
 }
 
-GfxFlip::GfxFlip(const GfxFlip& other)
+GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other)
 {
     flip_ = other.flip_;
 }
 
-GfxFlip::GfxFlip(GfxFlip&& other)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other)
 {
     flip_ = other.flip_;
-    other.flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
+    other.flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
 }
 
-GfxFlip& GfxFlip::operator=(const GfxFlip& other)
+GfxRendererFlip& GfxRendererFlip::operator=(const GfxRendererFlip& other)
 {
     if (this != &other)
     {
@@ -61,37 +61,37 @@ GfxFlip& GfxFlip::operator=(const GfxFlip& other)
     return *this;
 }
 
-GfxFlip& GfxFlip::operator=(GfxFlip&& other)
+GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other)
 {
     if (this != &other)
     {
         flip_ = other.flip_;
-        other.flip_ = static_cast<SdlType>(GfxFlipValues::flipNone);
+        other.flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
     }
     return *this;
 }
 
-bool GfxFlip::operator==(const GfxFlip& other)
+bool GfxRendererFlip::operator==(const GfxRendererFlip& other)
 {
     return (flip_ == other.flip_);
 }
 
-bool GfxFlip::isFlipHorizontal(void) const
+bool GfxRendererFlip::isFlipHorizontal(void) const
 {
     return ((flip_ & SDL_FLIP_HORIZONTAL) != 0);
 }
 
-bool GfxFlip::isFlipVertical(void) const
+bool GfxRendererFlip::isFlipVertical(void) const
 {
     return ((flip_ & SDL_FLIP_VERTICAL) != 0);
 }
 
-GfxFlip::SdlType GfxFlip::getAsSdlType(void) const
+GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const
 {
     return (SdlType)flip_;
 }
 
-GfxFlip::SdlTypePtr GfxFlip::getAsSdlTypePtr(void) const
+GfxRendererFlip::SdlTypePtr GfxRendererFlip::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flip_;
 }

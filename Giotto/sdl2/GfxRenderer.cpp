@@ -101,7 +101,7 @@ void GfxRenderer::renderCopy(const GfxTexture& tex)
 }
 
 void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest,
-                                const double angle, const GfxPoint& pt, const GfxFlip& flip)
+                                const double angle, const GfxPoint& pt, const GfxRendererFlip& flip)
 {
     if (renderer_ != nullptr)
     {
@@ -115,7 +115,7 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const 
     }
 }
 
-void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt, const GfxFlip& flip)
+void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt, const GfxRendererFlip& flip)
 {
     if (renderer_ != nullptr)
     {

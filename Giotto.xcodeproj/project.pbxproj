@@ -22,7 +22,7 @@
 		194410E41EAB4C9D0064A6AA /* GfxBgiConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410DD1EAB4C9D0064A6AA /* GfxBgiConstants.cpp */; };
 		194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E51EAB4D9E0064A6AA /* GfxBlendMode.cpp */; };
 		194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E71EAB4D9E0064A6AA /* GfxColor.cpp */; };
-		194411021EAB4D9E0064A6AA /* GfxFlip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E91EAB4D9E0064A6AA /* GfxFlip.cpp */; };
+		194411021EAB4D9E0064A6AA /* GfxRendererFlip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410E91EAB4D9E0064A6AA /* GfxRendererFlip.cpp */; };
 		194411031EAB4D9E0064A6AA /* GfxInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410EB1EAB4D9E0064A6AA /* GfxInitQuit.cpp */; };
 		194411041EAB4D9E0064A6AA /* GfxPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410ED1EAB4D9E0064A6AA /* GfxPalette.cpp */; };
 		194411051EAB4D9E0064A6AA /* GfxPixelFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410EF1EAB4D9E0064A6AA /* GfxPixelFormat.cpp */; };
@@ -112,8 +112,8 @@
 		194410E61EAB4D9E0064A6AA /* GfxBlendMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendMode.hpp; path = sdl2/GfxBlendMode.hpp; sourceTree = "<group>"; };
 		194410E71EAB4D9E0064A6AA /* GfxColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxColor.cpp; path = sdl2/GfxColor.cpp; sourceTree = "<group>"; };
 		194410E81EAB4D9E0064A6AA /* GfxColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxColor.hpp; path = sdl2/GfxColor.hpp; sourceTree = "<group>"; };
-		194410E91EAB4D9E0064A6AA /* GfxFlip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFlip.cpp; path = sdl2/GfxFlip.cpp; sourceTree = "<group>"; };
-		194410EA1EAB4D9E0064A6AA /* GfxFlip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFlip.hpp; path = sdl2/GfxFlip.hpp; sourceTree = "<group>"; };
+		194410E91EAB4D9E0064A6AA /* GfxRendererFlip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRendererFlip.cpp; path = sdl2/GfxRendererFlip.cpp; sourceTree = "<group>"; };
+		194410EA1EAB4D9E0064A6AA /* GfxRendererFlip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRendererFlip.hpp; path = sdl2/GfxRendererFlip.hpp; sourceTree = "<group>"; };
 		194410EB1EAB4D9E0064A6AA /* GfxInitQuit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxInitQuit.cpp; path = sdl2/GfxInitQuit.cpp; sourceTree = "<group>"; };
 		194410EC1EAB4D9E0064A6AA /* GfxInitQuit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxInitQuit.hpp; path = sdl2/GfxInitQuit.hpp; sourceTree = "<group>"; };
 		194410ED1EAB4D9E0064A6AA /* GfxPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPalette.cpp; path = sdl2/GfxPalette.cpp; sourceTree = "<group>"; };
@@ -301,8 +301,8 @@
 				192445F01EAF9B4100147389 /* GfxEndian.hpp */,
 				192445E61EAF95B900147389 /* GfxFileSystem.cpp */,
 				192445E71EAF95B900147389 /* GfxFileSystem.hpp */,
-				194410E91EAB4D9E0064A6AA /* GfxFlip.cpp */,
-				194410EA1EAB4D9E0064A6AA /* GfxFlip.hpp */,
+				194410E91EAB4D9E0064A6AA /* GfxRendererFlip.cpp */,
+				194410EA1EAB4D9E0064A6AA /* GfxRendererFlip.hpp */,
 				19FA54031EAE8095009CD6E9 /* GfxGetVersion.cpp */,
 				19FA54041EAE8095009CD6E9 /* GfxGetVersion.hpp */,
 				194410EB1EAB4D9E0064A6AA /* GfxInitQuit.cpp */,
@@ -458,7 +458,7 @@
 				195F7A151EACCD9A00C11D9F /* GfxScreenSaver.cpp in Sources */,
 				1944110C1EAB4D9E0064A6AA /* GfxWindow.cpp in Sources */,
 				194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */,
-				194411021EAB4D9E0064A6AA /* GfxFlip.cpp in Sources */,
+				194411021EAB4D9E0064A6AA /* GfxRendererFlip.cpp in Sources */,
 				194411061EAB4D9E0064A6AA /* GfxPoint.cpp in Sources */,
 				194411071EAB4D9E0064A6AA /* GfxRect.cpp in Sources */,
 				192445E81EAF95B900147389 /* GfxFileSystem.cpp in Sources */,

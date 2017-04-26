@@ -30,7 +30,7 @@
 #include "GfxWindow.hpp"
 #include "GfxRect.hpp"
 #include "GfxPoint.hpp"
-#include "GfxFlip.hpp"
+#include "GfxRendererFlip.hpp"
 #include "GfxTexture.hpp"
 
 class GfxRenderer final : public GfxRootClass
@@ -58,8 +58,8 @@ public:
     void renderCopy(const GfxTexture& tex);
 
     void renderCopyEx(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest,
-                        const double angle, const GfxPoint& pt, const GfxFlip& flip);
-    void renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt, const GfxFlip& flip);
+                        const double angle, const GfxPoint& pt, const GfxRendererFlip& flip);
+    void renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt, const GfxRendererFlip& flip);
 
     void renderPresent(void);
 

@@ -21,35 +21,35 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxFlip_hpp
-#define GfxFlip_hpp
+#ifndef GfxRendererFlip_hpp
+#define GfxRendererFlip_hpp
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
-class GfxFlip final : public GfxRootClass
+class GfxRendererFlip final : public GfxRootClass
 {
 public:
     typedef SDL_RendererFlip SdlType;
     typedef SDL_RendererFlip* SdlTypePtr;
 
-    enum class GfxFlipValues : int
+    enum class GfxRendererFlipValues : int
     {
         flipNone = SDL_FLIP_NONE,
         flipHorizontal = SDL_FLIP_HORIZONTAL,
         flipVertical = SDL_FLIP_VERTICAL
     };
 
-    GfxFlip();
-    GfxFlip(const bool fliph, const bool flipv);
-    explicit GfxFlip(GfxFlipValues values);
-    GfxFlip(const GfxFlip& other);
-    GfxFlip(GfxFlip&& other);
+    GfxRendererFlip();
+    GfxRendererFlip(const bool fliph, const bool flipv);
+    explicit GfxRendererFlip(GfxRendererFlipValues values);
+    GfxRendererFlip(const GfxRendererFlip& other);
+    GfxRendererFlip(GfxRendererFlip&& other);
 
-    GfxFlip& operator=(const GfxFlip& other);
-    GfxFlip& operator=(GfxFlip&& other);
+    GfxRendererFlip& operator=(const GfxRendererFlip& other);
+    GfxRendererFlip& operator=(GfxRendererFlip&& other);
 
-    bool operator==(const GfxFlip& other);
+    bool operator==(const GfxRendererFlip& other);
 
     bool isFlipHorizontal(void) const;
     bool isFlipVertical(void) const;
@@ -60,4 +60,4 @@ private:
     SdlType flip_;
 };
 
-#endif /* GfxFlip_hpp */
+#endif /* GfxRendererFlip_hpp */

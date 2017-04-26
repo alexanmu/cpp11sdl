@@ -428,7 +428,7 @@ void Playground::_doFonts(void)
     std::vector<std::string> files;
     std::vector<std::string> fntfiles;
 
-    files = FindAllFiles(bpath +"/");
+    files = FindAllFiles(bpath + "/");
     for (auto it : files )
     {
         std::size_t n = it.rfind(".");
