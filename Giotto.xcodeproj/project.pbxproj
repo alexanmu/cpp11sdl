@@ -11,6 +11,7 @@
 		1915B7751E91103100147BDB /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7721E91103100147BDB /* SDL2_ttf.framework */; };
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
 		191DCD431EB0DC85006A1602 /* GfxRendererFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 191DCD411EB0DC85006A1602 /* GfxRendererFlags.cpp */; };
+		191DCD461EB0E4D5006A1602 /* GfxTextureModulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 191DCD441EB0E4D5006A1602 /* GfxTextureModulate.cpp */; };
 		192445E81EAF95B900147389 /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445E61EAF95B900147389 /* GfxFileSystem.cpp */; };
 		192445EB1EAF962500147389 /* GfxBits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445E91EAF962500147389 /* GfxBits.cpp */; };
 		192445EE1EAF97E000147389 /* GfxClipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445EC1EAF97E000147389 /* GfxClipboard.cpp */; };
@@ -79,6 +80,8 @@
 		1915B7731E91103100147BDB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		191DCD411EB0DC85006A1602 /* GfxRendererFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRendererFlags.cpp; path = sdl2/GfxRendererFlags.cpp; sourceTree = "<group>"; };
 		191DCD421EB0DC85006A1602 /* GfxRendererFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRendererFlags.hpp; path = sdl2/GfxRendererFlags.hpp; sourceTree = "<group>"; };
+		191DCD441EB0E4D5006A1602 /* GfxTextureModulate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTextureModulate.cpp; path = sdl2/GfxTextureModulate.cpp; sourceTree = "<group>"; };
+		191DCD451EB0E4D5006A1602 /* GfxTextureModulate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTextureModulate.hpp; path = sdl2/GfxTextureModulate.hpp; sourceTree = "<group>"; };
 		192445E61EAF95B900147389 /* GfxFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFileSystem.cpp; path = sdl2/GfxFileSystem.cpp; sourceTree = "<group>"; };
 		192445E71EAF95B900147389 /* GfxFileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFileSystem.hpp; path = sdl2/GfxFileSystem.hpp; sourceTree = "<group>"; };
 		192445E91EAF962500147389 /* GfxBits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBits.cpp; path = sdl2/GfxBits.cpp; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				194410FB1EAB4D9E0064A6AA /* GfxSurface.hpp */,
 				194410FC1EAB4D9E0064A6AA /* GfxTexture.cpp */,
 				194410FD1EAB4D9E0064A6AA /* GfxTexture.hpp */,
+				191DCD441EB0E4D5006A1602 /* GfxTextureModulate.cpp */,
+				191DCD451EB0E4D5006A1602 /* GfxTextureModulate.hpp */,
 				19FA54001EAE7D5C009CD6E9 /* GfxVersion.cpp */,
 				19FA54011EAE7D5C009CD6E9 /* GfxVersion.hpp */,
 				195F7A1F1EACFBCB00C11D9F /* GfxVideo.cpp */,
@@ -440,6 +445,7 @@
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				192445F11EAF9B4100147389 /* GfxEndian.cpp in Sources */,
 				194411081EAB4D9E0064A6AA /* GfxRenderer.cpp in Sources */,
+				191DCD461EB0E4D5006A1602 /* GfxTextureModulate.cpp in Sources */,
 				191DCD431EB0DC85006A1602 /* GfxRendererFlags.cpp in Sources */,
 				1944110B1EAB4D9E0064A6AA /* GfxTexture.cpp in Sources */,
 				195F7A0B1EAC8E9B00C11D9F /* GfxPlatform.cpp in Sources */,
