@@ -40,3 +40,5 @@ std::string GfxPlatform::getPlatform(void) const
 {
     return platform_;
 }
+
+/* EOF */

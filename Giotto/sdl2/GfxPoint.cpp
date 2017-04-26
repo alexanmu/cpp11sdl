@@ -114,3 +114,5 @@ GfxPoint::SdlTypePtr GfxPoint::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&pt_;
 }
+
+/* EOF */

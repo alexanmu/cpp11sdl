@@ -88,3 +88,5 @@ void GfxLoadSo::unloadObject()
     SDL_UnloadObject(handle_);
     handle_ = nullptr;
 }
+
+/* EOF */

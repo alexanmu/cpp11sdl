@@ -110,3 +110,4 @@ GfxBlendMode::SdlTypePtr GfxBlendMode::getAsSdlTypePtr(void) const
     return (SdlTypePtr)blendmode_;
 }
 
+/* EOF */

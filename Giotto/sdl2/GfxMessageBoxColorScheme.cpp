@@ -93,3 +93,5 @@ GfxMessageBoxColorScheme::SdlTypePtr GfxMessageBoxColorScheme::getAsSdlTypePtr(v
 {
     return (SdlTypePtr)&clrscheme_;
 }
+
+/* EOF */

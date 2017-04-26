@@ -84,3 +84,5 @@ GfxRadius::GfxValueType GfxRadius::getValue() const
 {
     return value_;
 }
+
+/* EOF */

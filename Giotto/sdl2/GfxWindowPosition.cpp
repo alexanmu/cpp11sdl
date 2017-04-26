@@ -119,3 +119,5 @@ uint32_t GfxWindowPosition::getCoordinate(void) const
     }
     return ret;
 }
+
+/* EOF */

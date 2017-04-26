@@ -73,3 +73,5 @@ std::string GfxFileSystem::getThisFolder(void) const
     return "./";
 #endif
 }
+
+/* EOF */

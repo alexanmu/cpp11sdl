@@ -109,3 +109,5 @@ GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)flag_;
 }
+
+/* EOF */

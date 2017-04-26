@@ -45,3 +45,5 @@ void GfxScreenSaver::disableScreenSaver(void)
     SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
 }
+
+/* EOF */

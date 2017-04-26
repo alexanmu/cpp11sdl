@@ -84,3 +84,5 @@ GfxString::GfxValueType GfxString::getValue() const
 {
     return value_;
 }
+
+/* EOF */

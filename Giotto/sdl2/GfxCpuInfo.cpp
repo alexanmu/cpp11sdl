@@ -144,3 +144,5 @@ std::string GfxCpuInfo::getAsString(void) const
     str1 += "RAM=" + std::to_string(systemRam_) + "MB";
     return str1;
 }
+
+/* EOF */

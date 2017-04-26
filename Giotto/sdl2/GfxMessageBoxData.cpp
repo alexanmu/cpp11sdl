@@ -153,3 +153,5 @@ GfxMessageBoxData::SdlTypePtr GfxMessageBoxData::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&data_;
 }
+
+/* EOF */

@@ -35,3 +35,5 @@ int GfxBits::mostSignificantBitIndex32(uint32_t x) const
 {
     return SDL_MostSignificantBitIndex32(x);
 }
+
+/* EOF */

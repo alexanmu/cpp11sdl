@@ -165,3 +165,5 @@ GfxWindowEventID::SdlTypePtr GfxWindowEventID::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&eventid_;
 }
+
+/* EOF */

@@ -109,3 +109,5 @@ GfxDisplayMode::SdlTypePtr GfxDisplayMode::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&dmode_;
 }
+
+/* EOF */

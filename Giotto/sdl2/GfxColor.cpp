@@ -154,3 +154,5 @@ GfxColor::SdlTypePtr GfxColor::getAsSdlTypePtr(void) const
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)&clr_;
 }
+
+/* EOF */

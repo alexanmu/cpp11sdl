@@ -182,3 +182,5 @@ GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)pal_;
 }
+
+/* EOF */

@@ -111,3 +111,5 @@ GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const
 {
     return tex_;
 }
+
+/* EOF */

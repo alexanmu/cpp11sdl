@@ -51,3 +51,5 @@ bool GfxClipboard::hasClipboardText(void) const
 {
     return SDL_HasClipboardText();
 }
+
+/* EOF */

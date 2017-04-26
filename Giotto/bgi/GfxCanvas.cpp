@@ -100,3 +100,5 @@ void GfxCanvas::Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& c
     bgi_.setCustomForegroundColor(c);
     bgi_.line(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
+
+/* EOF */

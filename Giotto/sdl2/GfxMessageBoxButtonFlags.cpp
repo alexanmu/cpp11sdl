@@ -101,3 +101,5 @@ GfxMessageBoxButtonFlags::SdlTypePtr GfxMessageBoxButtonFlags::getAsSdlTypePtr(v
 {
     return (SdlTypePtr)&flags_;
 }
+
+/* EOF */

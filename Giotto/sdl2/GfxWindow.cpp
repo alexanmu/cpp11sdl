@@ -165,3 +165,5 @@ GfxWindow::SdlTypePtr GfxWindow::getAsSdlTypePtr() const
 {
     return window_;
 }
+
+/* EOF */

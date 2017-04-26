@@ -90,3 +90,5 @@ int GfxMessageBox::showModalComplex(void) const
     SDL_ShowMessageBox(p, &buttonid);
     return buttonid;
 }
+
+/* EOF */

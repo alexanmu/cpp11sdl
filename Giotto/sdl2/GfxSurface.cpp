@@ -283,3 +283,5 @@ std::unique_ptr<GfxColor> GfxSurface::getPixelPrv(const uint16_t x, const uint16
                                                  ptr[y * surf_->w + 2], ptr[y * surf_->w + 3]) };
     return clr;
 }
+
+/* EOF */

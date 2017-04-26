@@ -60,3 +60,5 @@ GfxInitQuit::GfxInitComponent GfxInitQuit::getInitedComponent() const
 {
     return gfxInitComp_;
 }
+
+/* EOF */

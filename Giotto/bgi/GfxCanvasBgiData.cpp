@@ -3149,3 +3149,5 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::GFX_FONT
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
 };
+
+/* EOF */

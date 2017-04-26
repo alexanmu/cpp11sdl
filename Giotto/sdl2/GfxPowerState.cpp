@@ -131,3 +131,5 @@ GfxPowerState::SdlTypePtr GfxPowerState::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)value_;
 }
+
+/* EOF */

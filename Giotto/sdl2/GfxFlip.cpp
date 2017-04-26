@@ -95,3 +95,5 @@ GfxFlip::SdlTypePtr GfxFlip::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flip_;
 }
+
+/* EOF */

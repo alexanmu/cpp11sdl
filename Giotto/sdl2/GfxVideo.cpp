@@ -204,3 +204,5 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(int displayindex
     }
     return dm;
 }
+
+/* EOF */

@@ -117,3 +117,5 @@ GfxVersion::SdlTypePtr GfxVersion::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&ver_;
 }
+
+/* EOF */

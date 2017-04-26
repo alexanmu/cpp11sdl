@@ -204,3 +204,5 @@ GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)pix_;
 }
+
+/* EOF */

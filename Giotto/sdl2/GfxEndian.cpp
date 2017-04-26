@@ -91,3 +91,4 @@ float GfxEndian::swapFloatBE(float x) const
     return SDL_SwapFloatBE(x);
 }
 
+/* EOF */

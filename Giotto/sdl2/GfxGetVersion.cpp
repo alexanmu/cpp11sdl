@@ -50,3 +50,5 @@ int GfxGetVersion::getRevisionNumber(void) const
 {
     return SDL_GetRevisionNumber();
 }
+
+/* EOF */

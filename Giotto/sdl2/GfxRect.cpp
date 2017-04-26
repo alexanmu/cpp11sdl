@@ -145,3 +145,5 @@ GfxRect::SdlTypePtr GfxRect::getAsSdlTypePtr() const
 {
     return (SdlTypePtr)&rect_;
 }
+
+/* EOF */

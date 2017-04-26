@@ -433,3 +433,5 @@ GfxWindowFlags::SdlTypePtr GfxWindowFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flags_;
 }
+
+/* EOF */

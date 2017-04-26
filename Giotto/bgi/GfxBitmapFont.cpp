@@ -134,3 +134,5 @@ uint8_t GfxBitmapFont::getFontHeight(void) const
 {
     return fontHeight_;
 }
+
+/* EOF */

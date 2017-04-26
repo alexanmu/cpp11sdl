@@ -205,3 +205,5 @@ const GfxBitmapFont& GfxBgiConstants::fntGetFontByIndex(const GfxFontIndex index
 {
     return GfxBgiConstants::fonts_[static_cast<int>(index)];
 }
+
+/* EOF */

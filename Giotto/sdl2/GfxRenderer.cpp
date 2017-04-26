@@ -141,3 +141,5 @@ GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const
 {
     return renderer_;
 }
+
+/* EOF */

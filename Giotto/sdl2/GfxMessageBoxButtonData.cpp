@@ -100,3 +100,5 @@ GfxMessageBoxButtonData::SdlTypePtr GfxMessageBoxButtonData::getAsSdlTypePtr(voi
 {
     return (SdlTypePtr)&data_;
 }
+
+/* EOF */

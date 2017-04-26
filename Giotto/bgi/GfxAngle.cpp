@@ -84,3 +84,5 @@ GfxAngle::GfxValueType GfxAngle::getValue() const
 {
     return value_;
 }
+
+/* EOF */
