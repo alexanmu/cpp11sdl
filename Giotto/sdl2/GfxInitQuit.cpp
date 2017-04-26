@@ -49,6 +49,11 @@ GfxInitQuit::~GfxInitQuit()
     SDL_Quit();
 }
 
+void GfxInitQuit::quitRequested(void)
+{
+    SDL_QuitRequested();
+}
+                                
 // Return error code after init call
 int GfxInitQuit::getErrorCode() const
 {

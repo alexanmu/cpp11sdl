@@ -63,6 +63,18 @@ public:
 
     void renderPresent(void);
 
+    /*struct SDL_RendererInfo
+    SDL_TextureAccess
+    SDL_TextureModulate
+    SDL_LockTexture(…)
+    SDL_UnlockTexture(…)
+    SDL_Set{/Get}RenderDraw{/Blend}Color(…)
+    SDL_RenderDrawPoint{/s}(…)
+    SDL_RenderDrawLine{/s}(…)
+    SDL_RenderDrawRect{/s}(…)
+    SDL_RenderFillRect{/s}(…)
+    SDL_RenderReadPixels(…)*/
+
     SdlTypePtr getAsSdlTypePtr() const;
 private:
     SDL_Renderer* renderer_;

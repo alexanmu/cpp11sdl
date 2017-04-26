@@ -77,6 +77,11 @@ public:
 
     void destroySurface(void);
 
+    /*SDL_Set{/Get}ColorKey(…)
+    Set/Get RLE
+    Set/Get ColorMod
+    SDL_CreateRGBSurfaceFrom(…)*/
+
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     friend class GfxCanvas;

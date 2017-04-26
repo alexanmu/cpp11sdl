@@ -52,7 +52,9 @@ public:
     GfxInitQuit& operator=(GfxInitQuit&&) = delete;
 
     // Explicit destructor to de-init SDL lib
-    ~GfxInitQuit();
+    virtual ~GfxInitQuit();
+
+    void quitRequested(void);
 
     int getErrorCode() const;
     GfxInitComponent getInitedComponent() const;
