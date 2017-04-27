@@ -81,6 +81,21 @@ void GfxRenderer::renderClear()
     }
 }
 
+void GfxRenderer::getRendererInfo(GfxRendererInfo* infoptr)
+{
+    GfxRendererInfo::SdlType ri;
+
+    if (renderer_ != nullptr)
+    {
+        SDL_GetRendererInfo(renderer_,&ri);
+        infoptr->set(ri);
+    }
+    else
+    {
+        infoptr = nullptr;
+    }
+}
+
 void GfxRenderer::renderCopy(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest)
 {
     if (renderer_ != nullptr)

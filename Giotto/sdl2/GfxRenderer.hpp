@@ -32,6 +32,7 @@
 #include "GfxPoint.hpp"
 #include "GfxRendererFlip.hpp"
 #include "GfxTexture.hpp"
+#include "GfxRendererInfo.hpp"
 
 class GfxRenderer final : public GfxRootClass
 {
@@ -53,6 +54,7 @@ public:
 
     void destroyRenderer(void);
     void renderClear(void);
+    void getRendererInfo(GfxRendererInfo* infoptr);
 
     void renderCopy(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest);
     void renderCopy(const GfxTexture& tex);
