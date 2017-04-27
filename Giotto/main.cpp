@@ -120,6 +120,8 @@ void MsgBox(GfxWindow const& win)
 
 void BeforeInit(void)
 {
+    std::cout << "BeforeInit()" << std::endl;
+
     GfxVideo v;
 
     std::cout << "v.getNumVideoDrivers()=" << v.getNumVideoDrivers() << '\n';
@@ -143,6 +145,8 @@ void BeforeInit(void)
 
 void AfterInit(void)
 {
+    std::cout << "AfterInit()" << std::endl;
+
     GfxVideo v;
 
     std::cout << "v.getCurrentVideoDriver()=" << v.getCurrentVideoDriver() << '\n';
@@ -194,14 +198,16 @@ void AfterInit(void)
 
 void AfterDeInit(void)
 {
+    std::cout << "AfterDeInit()" << std::endl;
+
     // We expect this to fail
-    GfxLoadSo lso("Whatever");
+    GfxLoadSo lso("whatever.so");
     void * f;
 
-    f = lso.loadFunction("Whatever");
+    f = lso.loadFunction("whatever_function");
     if (f == nullptr)
     {
-        std::cout << "lso.loadFunction(\"Whatever\")=" << "nullptr" << '\n';
+        std::cout << "lso.loadFunction(\"whatever_function\")=" << "nullptr" << '\n';
         std::cout << "err.getError()=" << GfxError::getError() << '\n';
     }
     std::cout << std::endl;
@@ -236,6 +242,7 @@ void _doStuff(void)
     BeforeInit();
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     AfterInit();
+    std::cout << "_doStuff()" << std::endl;
     if (iq.getErrorCode() != 0)
     {
         std::cout << "Init failed\n";
@@ -246,6 +253,15 @@ void _doStuff(void)
                 GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
     MsgBox(w);
     GfxRenderer r(w);
+
+    GfxRendererInfo ri;
+    r.getRendererInfo(&ri);
+    std::cout << "ri.getName()=" << ri.getName() << '\n';
+    std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
+    std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
+    std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
+    std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
+
     GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
 
     GfxSurface sb(WIN_W, WIN_H);
