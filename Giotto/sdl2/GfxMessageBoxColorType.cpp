@@ -33,12 +33,14 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(SdlType type) : GfxRootClass("Gfx
     type_ = type;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorTypeValues type) : GfxRootClass("GfxMessageBoxColorType")
+GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorTypeValues type) :
+        GfxRootClass("GfxMessageBoxColorType")
 {
     type_ = static_cast<SdlType>(type);
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) : GfxRootClass("GfxMessageBoxColorType")
+GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) :
+        GfxRootClass("GfxMessageBoxColorType")
 {
     type_ = other.type_;
 }

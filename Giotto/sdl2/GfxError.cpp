@@ -29,7 +29,7 @@
 std::string GfxError::getError(void)
 {
     std::string str;
-    
+
     str = SDL_GetError();
     return str;
 }

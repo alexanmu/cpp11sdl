@@ -56,7 +56,7 @@ public:
 
     void setColor(void);
     void resetColor(void);
-        
+
     void setAlpha(void);
     void resetAlpha(void);
 
