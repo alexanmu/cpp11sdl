@@ -90,8 +90,7 @@ void MsgBox(GfxWindow const& win)
                                             GfxBgiConstants::vgaDarkGray().getRed(),
                                             GfxBgiConstants::vgaDarkGray().getGreen(),
                                             GfxBgiConstants::vgaDarkGray().getBlue()
-                                            )
-                         );
+                                            ));
 
     GfxMessageBoxData m(flags, win, title, message, numbuttons, buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
@@ -213,6 +212,37 @@ void AfterDeInit(void)
     std::cout << std::endl;
 }
 
+void bmpSurfaceInfo(GfxSurface* bmps)
+{
+    std::unique_ptr<GfxPixelFormat> ptr;
+    GfxPalette::SdlTypePtr pal;
+
+    ptr = bmps->getFormat();
+    std::cout << "ptr->getFormat()=" << ptr->getFormat() << '\n';
+    // palette goes here
+    std::cout << "ptr->getBitsPerPixel()=" << (int)ptr->getBitsPerPixel() << '\n';
+    std::cout << "ptr->getBytesPerPixel()=" << (int)ptr->getBytesPerPixel() << '\n';
+    std::cout << "ptr->getRmask()=" << ptr->getRedMask() << '\n';
+    std::cout << "ptr->getGmask()=" << ptr->getGreenMask() << '\n';
+    std::cout << "ptr->getBmask()=" << ptr->getBlueMask() << '\n';
+    std::cout << "ptr->getAmask()=" << ptr->getAlphaMask() << '\n';
+    std::cout << "ptr->getRloss()=" << (int)ptr->getRloss() << '\n';
+    std::cout << "ptr->getGloss()=" << (int)ptr->getGloss() << '\n';
+    std::cout << "ptr->getBloss()=" << (int)ptr->getBloss() << '\n';
+    std::cout << "ptr->getAloss()=" << (int)ptr->getAloss() << '\n';
+    std::cout << "ptr->getRshift()=" << (int)ptr->getRshift() << '\n';
+    std::cout << "ptr->getGshift()=" << (int)ptr->getGshift() << '\n';
+    std::cout << "ptr->getBshift()=" << (int)ptr->getBshift() << '\n';
+    std::cout << "ptr->getAshift()=" << (int)ptr->getAshift() << '\n';
+    std::cout << "ptr->getRefCount()=" << ptr->getRefCount() << '\n';
+
+    pal = ptr->getPalette();
+    if (pal != nullptr)
+    {
+        std::cout << "pal->ncolors=" << pal->ncolors << '\n';
+    }
+}
+
 void inc(int* a)
 {
     if ((*a + 4) > 255)
@@ -249,29 +279,30 @@ void _doStuff(void)
         return;
     }
     GfxWindowFlags wf(GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
-    GfxWindow w("Window title", GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),
-                GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
-    MsgBox(w);
-    GfxRenderer r(w);
+    GfxWindow win("Window title", GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),
+                  GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
+    MsgBox(win);
+    GfxRenderer rend(win);
 
     GfxRendererInfo ri;
-    r.getRendererInfo(&ri);
+    rend.getRendererInfo(&ri);
     std::cout << "ri.getName()=" << ri.getName() << '\n';
     std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
     std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
     std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
     std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
 
-    GfxSurface sbi(std::string(__base_path) + std::string("/Image2.bmp"));
+    GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
+    bmpSurfaceInfo(&sbitmap);
 
-    GfxSurface sb(WIN_W, WIN_H);
+    GfxSurface surfcanvas(WIN_W, WIN_H);
 
     int c = 0;
     for (int i = 0; i < WIN_W; i++)
     {
         for (int j = 480; j < WIN_H; j++)
         {
-            sb.putPixel(i, j, GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
+            surfcanvas.putPixel(i, j, GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
@@ -280,7 +311,7 @@ void _doStuff(void)
         }
     }
 
-    GfxCanvas cv(sb);
+    GfxCanvas cv(surfcanvas);
     cv.Circle(GfxPoint(480, 240), GfxRadius(230), GfxBgiConstants::vgaGreen());
     auto color = GfxBgiConstants::vgaRed();
     cv.Arc(GfxPoint(480, 240), GfxAngle(60), GfxAngle(300), GfxRadius(239), color);
@@ -319,14 +350,23 @@ void _doStuff(void)
                 GfxBgiConstants::vgaBlack());
 
 
+    cv.OutText(GfxPoint(1010, 120), GfxString("WIN_W=" + std::to_string(WIN_W)),
+               GfxBgiConstants::vgaGreen(), GfxBgiConstants::fntAntique());
+    cv.OutText(GfxPoint(1010, 150), GfxString("WIN_H=" + std::to_string(WIN_H)),
+               GfxBgiConstants::vgaLightGray(),GfxBgiConstants::fntWacky());
     c = 0;
     for (int i = 0; i < WIN_W; i++)
     {
         for (int j = 240; j < 480; j++)
         {
-            cv.PutPixel(GfxPoint(i, j),
-                         GfxBgiConstants::vgaGetColorByIndex(
-                            static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
+            uint8_t r;
+            uint8_t g;
+            uint8_t b;
+        
+            r = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
+            g = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
+            b = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
+            cv.PutPixel(GfxPoint(i, j),GfxColor(r,g,b,224));
         }
         if (((i + 1) % 60) == 0)
         {
@@ -335,7 +375,7 @@ void _doStuff(void)
         }
     }
 
-    GfxSurface s(WIN_W, WIN_H);
+    GfxSurface colors_surf(WIN_W, WIN_H);
     GfxRect rt;
 
     SDL_Event e;
@@ -417,54 +457,55 @@ void _doStuff(void)
             int rp = r1 * 100 / 255;
             int gp = g1 * 100 / 255;
             int bp = b1 * 100 / 255;
-            std::string s2;
+            std::string str_title;
 
-            s2 = "[R(" + std::to_string(r1) + ")";
+            str_title = "[R(" + std::to_string(r1) + ")";
             for (int i = 0; i < rp / 10; i++)
             {
-                s2 += "=";
+                str_title += "=";
             }
             for (int i = rp / 10; i < 10; i++)
             {
-                s2 += ".";
+                str_title += ".";
             }
-            s2 += "][G(" + std::to_string(g1) + ")";
+            str_title += "][G(" + std::to_string(g1) + ")";
             for (int i = 0; i < gp / 10; i++)
             {
-                s2 += "=";
+                str_title += "=";
             }
             for (int i = gp / 10; i < 10; i++)
             {
-                s2 += ".";
+                str_title += ".";
             }
-            s2 += "][B(" + std::to_string(b1) + ")";
+            str_title += "][B(" + std::to_string(b1) + ")";
             for (int i = 0; i < bp / 10; i++)
             {
-                s2 += "=";
+                str_title += "=";
             }
             for (int i = bp / 10; i < 10; i++)
             {
-                s2 += ".";
+                str_title += ".";
             }
-            s2 += "][A(" + std::to_string(a1) +")]";
-            w.setTitle(s2);
-            GfxTexture tb(&r, sb);
-            tb.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
+            str_title += "][A(" + std::to_string(a1) +")]";
+            win.setTitle(str_title);
+            surfcanvas.blitSurface(sbitmap, GfxRect(0,0,sbitmap.getWidth(),sbitmap.getHeight()), GfxRect(160,640,WIN_W,WIN_H));
+            GfxTexture canvas_tex(&rend, surfcanvas);
+            canvas_tex.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
 
             rt.setX(0);
             rt.setY(0);
             rt.setWidth(WIN_W);
             rt.setHeight(480);
-            s.fillRect(rt, GfxColor(r1, g1, b1, a1));
-            rt.setX(480);
-            s.fillRect(rt, GfxColor(255-r1, 255-g1, 255-b1, a1));
+            colors_surf.fillRect(rt, GfxColor(r1, g1, b1, a1));
+            rt.setX(WIN_W / 2);
+            colors_surf.fillRect(rt, GfxColor(255-r1, 255-g1, 255-b1, a1));
 
-            GfxTexture t(&r, s);
-            t.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
+            GfxTexture colors_tex(&rend, colors_surf);
+            colors_tex.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
 
-            r.renderCopy(tb);
-            r.renderCopy(t);
-            r.renderPresent();
+            rend.renderCopy(canvas_tex);
+            rend.renderCopy(colors_tex);
+            rend.renderPresent();
         }
         SDL_Delay(25);
     }

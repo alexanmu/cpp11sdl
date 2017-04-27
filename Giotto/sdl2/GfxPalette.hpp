@@ -51,8 +51,6 @@ public:
     GfxPalette& operator=(GfxPalette&& other);
 
     /* Methods */
-    void allocPalette(const uint16_t ncolors);
-    void freePalette();
     int setPaletteColors(const GfxColorVector& vec, const uint16_t firstcolor);
 
     /* Getters */
@@ -64,6 +62,7 @@ public:
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
+    static constexpr int kDefaultPaletteSize = 16;
     SdlTypePtr pal_;
 };
 

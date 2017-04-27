@@ -67,61 +67,20 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
     return *this;
 }
 
-void GfxPixelFormat::setFormat(const uint32_t format)
-{
-    pix_->format = format;
-}
-
-void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
-{
-    pix_->BitsPerPixel = bpp;
-}
-
-void GfxPixelFormat::setPalette(const GfxPalette& pal)
-{
-    pal_ = pal;
-}
-
-void GfxPixelFormat::setBytesPerPixel(const uint8_t bypp)
-{
-    pix_->BytesPerPixel = bypp;
-}
-
-void GfxPixelFormat::setRedMask(const uint32_t rmask)
-{
-    pix_->Rmask = rmask;
-}
-
-void GfxPixelFormat::setGreenMask(const uint32_t gmask)
-{
-    pix_->Gmask = gmask;
-}
-
-void GfxPixelFormat::setBlueMask(const uint32_t bmask)
-{
-    pix_->Bmask = bmask;
-}
-
-void GfxPixelFormat::setAlphaMask(const uint32_t amask)
-{
-    pix_->Amask = amask;
-}
-
+/*** Getters ***/
 uint32_t GfxPixelFormat::getFormat(void) const
 {
     return pix_->format;
 }
 
+GfxPalette::SdlTypePtr GfxPixelFormat::getPalette(void)
+{
+    return pix_->palette;
+}
+
 uint8_t GfxPixelFormat::getBitsPerPixel(void) const
 {
     return pix_->BitsPerPixel;
-}
-
-std::unique_ptr<GfxPalette> GfxPixelFormat::getPalette(void)
-{
-    std::unique_ptr<GfxPalette> p {new GfxPalette(pal_)};
-
-    return p;
 }
 
 uint8_t GfxPixelFormat::getBytesPerPixel(void) const
@@ -185,6 +144,11 @@ uint8_t GfxPixelFormat::getBshift(void) const
     return pix_->Bshift;
 }
 
+uint8_t GfxPixelFormat::getAshift(void) const
+{
+    return pix_->Ashift;
+}
+
 int GfxPixelFormat::getRefCount(void) const
 {
     return pix_->refcount;
@@ -195,6 +159,48 @@ GfxPixelFormat::SdlTypePtr GfxPixelFormat::getNext(void) const
     return pix_->next;
 }
 
+/*** Setters ***/
+void GfxPixelFormat::setFormat(const uint32_t format)
+{
+    pix_->format = format;
+}
+
+void GfxPixelFormat::setPalette(const GfxPalette& pal)
+{
+    pal_ = pal;
+}
+
+void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
+{
+    pix_->BitsPerPixel = bpp;
+}
+
+void GfxPixelFormat::setBytesPerPixel(const uint8_t bypp)
+{
+    pix_->BytesPerPixel = bypp;
+}
+
+void GfxPixelFormat::setRedMask(const uint32_t rmask)
+{
+    pix_->Rmask = rmask;
+}
+
+void GfxPixelFormat::setGreenMask(const uint32_t gmask)
+{
+    pix_->Gmask = gmask;
+}
+
+void GfxPixelFormat::setBlueMask(const uint32_t bmask)
+{
+    pix_->Bmask = bmask;
+}
+
+void GfxPixelFormat::setAlphaMask(const uint32_t amask)
+{
+    pix_->Amask = amask;
+}
+
+/*** SDL ***/
 GfxPixelFormat::SdlType GfxPixelFormat::getAsSdlType(void) const
 {
     return *pix_;
