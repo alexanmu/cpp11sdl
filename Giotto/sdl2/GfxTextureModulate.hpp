@@ -30,8 +30,8 @@
 class GfxTextureModulate final : public GfxRootClass
 {
 public:
-    typedef SDL_RendererFlags SdlType;
-    typedef SDL_RendererFlags* SdlTypePtr;
+    typedef SDL_TextureModulate SdlType;
+    typedef SDL_TextureModulate* SdlTypePtr;
 
     enum class GfxTextureModulateValues : int
     {
