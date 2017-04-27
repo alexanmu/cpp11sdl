@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190E5C8F1EB23A290045C666 /* GfxGetRendererInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190E5C8B1EB23A290045C666 /* GfxGetRendererInfo.cpp */; };
+		190E5C901EB23A290045C666 /* GfxRendererInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190E5C8D1EB23A290045C666 /* GfxRendererInfo.cpp */; };
 		1915B7741E91103100147BDB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7711E91103100147BDB /* SDL2_image.framework */; };
 		1915B7751E91103100147BDB /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7721E91103100147BDB /* SDL2_ttf.framework */; };
 		1915B7761E91103100147BDB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915B7731E91103100147BDB /* SDL2.framework */; };
@@ -77,6 +79,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		190E5C8B1EB23A290045C666 /* GfxGetRendererInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGetRendererInfo.cpp; path = sdl2/GfxGetRendererInfo.cpp; sourceTree = "<group>"; };
+		190E5C8C1EB23A290045C666 /* GfxGetRendererInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGetRendererInfo.hpp; path = sdl2/GfxGetRendererInfo.hpp; sourceTree = "<group>"; };
+		190E5C8D1EB23A290045C666 /* GfxRendererInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRendererInfo.cpp; path = sdl2/GfxRendererInfo.cpp; sourceTree = "<group>"; };
+		190E5C8E1EB23A290045C666 /* GfxRendererInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRendererInfo.hpp; path = sdl2/GfxRendererInfo.hpp; sourceTree = "<group>"; };
 		1915B7661E91101300147BDB /* Giotto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Giotto; sourceTree = BUILT_PRODUCTS_DIR; };
 		1915B7711E91103100147BDB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		1915B7721E91103100147BDB /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -320,6 +326,8 @@
 				191DCD481EB1051F006A1602 /* GfxError.hpp */,
 				192445E61EAF95B900147389 /* GfxFileSystem.cpp */,
 				192445E71EAF95B900147389 /* GfxFileSystem.hpp */,
+				190E5C8B1EB23A290045C666 /* GfxGetRendererInfo.cpp */,
+				190E5C8C1EB23A290045C666 /* GfxGetRendererInfo.hpp */,
 				19FA54031EAE8095009CD6E9 /* GfxGetVersion.cpp */,
 				19FA54041EAE8095009CD6E9 /* GfxGetVersion.hpp */,
 				194410EB1EAB4D9E0064A6AA /* GfxInitQuit.cpp */,
@@ -362,6 +370,8 @@
 				191DCD421EB0DC85006A1602 /* GfxRendererFlags.hpp */,
 				194410E91EAB4D9E0064A6AA /* GfxRendererFlip.cpp */,
 				194410EA1EAB4D9E0064A6AA /* GfxRendererFlip.hpp */,
+				190E5C8D1EB23A290045C666 /* GfxRendererInfo.cpp */,
+				190E5C8E1EB23A290045C666 /* GfxRendererInfo.hpp */,
 				194410F71EAB4D9E0064A6AA /* GfxRootClass.cpp */,
 				194410F81EAB4D9E0064A6AA /* GfxRootClass.hpp */,
 				195F7A131EACCD9A00C11D9F /* GfxScreenSaver.cpp */,
@@ -459,6 +469,7 @@
 				195F7A1B1EACD52400C11D9F /* GfxWindowFlags.cpp in Sources */,
 				195F7A181EACCFD200C11D9F /* GfxDisplayMode.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
+				190E5C8F1EB23A290045C666 /* GfxGetRendererInfo.cpp in Sources */,
 				192445F11EAF9B4100147389 /* GfxEndian.cpp in Sources */,
 				194411081EAB4D9E0064A6AA /* GfxRenderer.cpp in Sources */,
 				191DCD461EB0E4D5006A1602 /* GfxTextureModulate.cpp in Sources */,
@@ -469,6 +480,7 @@
 				194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */,
 				191DCD491EB1051F006A1602 /* GfxError.cpp in Sources */,
 				194411091EAB4D9E0064A6AA /* GfxRootClass.cpp in Sources */,
+				190E5C901EB23A290045C666 /* GfxRendererInfo.cpp in Sources */,
 				194411051EAB4D9E0064A6AA /* GfxPixelFormat.cpp in Sources */,
 				192445EB1EAF962500147389 /* GfxBits.cpp in Sources */,
 				1944110A1EAB4D9E0064A6AA /* GfxSurface.cpp in Sources */,
