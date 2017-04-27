@@ -22,6 +22,7 @@
 */
 
 #include <cstring>
+#include <string>
 
 #include "GfxRendererInfo.hpp"
 
@@ -30,7 +31,7 @@ GfxRendererInfo::GfxRendererInfo() : GfxRootClass("GfxRendererInfo")
     info_.name = nullptr;
     info_.flags = 0;
     info_.num_texture_formats = 0;
-    for (int i = 0; i < textureFormatsArrayLength; i++)
+    for (int i = 0; i < kTextureFormatsArrayLength; i++)
     {
         info_.texture_formats[i] = 0;
     }
@@ -55,7 +56,7 @@ GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) : GfxRootClass("GfxRen
     other.info_.name = nullptr;
     other.info_.flags = 0;
     other.info_.num_texture_formats = 0;
-    for (int i = 0; i < textureFormatsArrayLength; i++)
+    for (int i = 0; i < kTextureFormatsArrayLength; i++)
     {
         other.info_.texture_formats[i] = 0;
     }
@@ -81,7 +82,7 @@ GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other)
         other.info_.name = nullptr;
         other.info_.flags = 0;
         other.info_.num_texture_formats = 0;
-        for (int i = 0; i < textureFormatsArrayLength; i++)
+        for (int i = 0; i < kTextureFormatsArrayLength; i++)
         {
             other.info_.texture_formats[i] = 0;
         }
@@ -115,9 +116,9 @@ GfxRendererInfo::GfxTextureFormats GfxRendererInfo::getTextureFormats(void) cons
     uint32_t max;
 
     std::memset(reinterpret_cast<void *>(&tf.formats[0]), 0, sizeof(tf.formats));
-    if (info_.num_texture_formats > textureFormatsArrayLength)
+    if (info_.num_texture_formats > kTextureFormatsArrayLength)
     {
-        max = textureFormatsArrayLength;
+        max = kTextureFormatsArrayLength;
     }
     else
     {

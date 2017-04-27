@@ -36,11 +36,11 @@ public:
     typedef SDL_RendererInfo SdlType;
     typedef SDL_RendererInfo* SdlTypePtr;
 
-    static constexpr int textureFormatsArrayLength = 16;
+    static constexpr int kTextureFormatsArrayLength = 16;
 
     struct GfxTextureFormats
     {
-        uint32_t formats[textureFormatsArrayLength];
+        uint32_t formats[kTextureFormatsArrayLength];
         uint32_t& operator[](int index)
         {
             return formats[index];

@@ -49,7 +49,7 @@ void GfxGetRendererInfo::getRenderDriverInfo(int index, GfxRendererInfo* infoptr
 
     if (index < numRenderDrivers_)
     {
-        SDL_GetRenderDriverInfo(index,&rdi);
+        SDL_GetRenderDriverInfo(index, &rdi);
         infoptr->set(rdi);
     }
     else
