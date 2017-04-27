@@ -54,8 +54,8 @@ public:
     bool isFlipHorizontal(void) const;
     bool isFlipVertical(void) const;
 
-    SdlType getAsSdlType() const;
-    SdlTypePtr getAsSdlTypePtr() const;
+    SdlType getAsSdlType(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     SdlType flip_;
 };
