@@ -55,6 +55,9 @@
 #include "GfxEndian.hpp"
 #include "GfxLoadSo.hpp"
 #include "GfxError.hpp"
+#include "GfxRendererInfo.hpp"
+#include "GfxGetRendererInfo.hpp"
+#include "GfxRendererFlags.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -162,6 +165,29 @@ void AfterInit(void)
         GfxEndian e;
 
         std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
+    }
+    GfxGetRendererInfo gri;
+    GfxRendererInfo ri;
+
+    std::cout << "gri.getNumRenderDrivers()=" << gri.getNumRenderDrivers() << '\n';
+    for (int i = 0; i < gri.getNumRenderDrivers(); i++)
+    {
+        gri.getRenderDriverInfo(i,&ri);
+        std::cout << "ri.getName()=" << ri.getName() << '\n';
+        std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
+        std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
+        std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
+        std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
+        for (uint32_t j = 0; j < ri.getNumTextureFormats(); j++)
+        {
+            std::cout << "ri.getTextureFormats()[j]=" << ri.getTextureFormats()[j] << '\n';
+        }
+        GfxRendererFlags rf(static_cast<GfxRendererFlags::SdlType>(ri.getFlags()));
+        std::cout << "rf.isUnknown()=" << rf.isUnknown() << '\n';
+        std::cout << "rf.isSoftware()=" << rf.isSoftware() << '\n';
+        std::cout << "rf.isAccelerated()=" << rf.isAccelerated() << '\n';
+        std::cout << "rf.getPresentVSync()=" << rf.getPresentVSync() << '\n';
+        std::cout << "rf.getTargetTexture()=" << rf.getTargetTexture() << '\n';
     }
     std::cout << std::endl;
 }
