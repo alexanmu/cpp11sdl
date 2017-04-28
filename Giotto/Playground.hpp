@@ -33,6 +33,7 @@ class Playground
 public:
     void _doBenchmark(void);
     void _doFonts(void);
+    void _doPalette(void);
 private:
     void DoAlgo(int algo_index);
 
@@ -43,9 +44,13 @@ private:
 
     std::vector<std::string> FindAllFiles(std::string bpath);
     std::string ToHexStr(uint8_t c);
-    void ProcessBuffer(std::string buffname,uint8_t * buff);
+    void ProcessBuffer(std::string buffname, uint8_t * buff);
     std::string GetFntName(std::string fullname);
     void ProcessFNTfile(std::string fullname);
+
+    void printPalette(void * palptr, bool printclrs);
+    void printPixFormat(void * pixptr);
+    template <typename T> std::string IntToHexStr(T value);
 };
 
 #endif /* Playground_hpp */

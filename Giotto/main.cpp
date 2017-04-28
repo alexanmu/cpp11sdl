@@ -27,6 +27,7 @@
 #include <ctime>
 #include <iomanip>
 #include <memory>
+#include <cstring>
 
 #include "GfxInitQuit.hpp"
 #include "Playground.hpp"
@@ -72,10 +73,14 @@ void MsgBox(GfxWindow const& win)
     int numbuttons = 4;
     std::string btn1 = "1 " + plat.getPlatform();
     GfxMessageBoxButtonData buttons[4] {
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, btn1),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault), 2, "Button2"),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault), 3, "Button3"),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 4, "4 Test")
+        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
+                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, btn1),
+        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
+                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault), 2, "Button2"),
+        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
+                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault), 3, "Button3"),
+        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
+                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 4, "4 Test")
     };
     GfxMessageBoxColor c[5] = {
         GfxMessageBoxColor(255, 0, 0),
@@ -89,8 +94,7 @@ void MsgBox(GfxWindow const& win)
                          GfxMessageBoxColor(
                                             GfxBgiConstants::vgaDarkGray().getRed(),
                                             GfxBgiConstants::vgaDarkGray().getGreen(),
-                                            GfxBgiConstants::vgaDarkGray().getBlue()
-                                            ));
+                                            GfxBgiConstants::vgaDarkGray().getBlue()));
 
     GfxMessageBoxData m(flags, win, title, message, numbuttons, buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
@@ -175,7 +179,7 @@ void AfterInit(void)
     std::cout << "gri.getNumRenderDrivers()=" << gri.getNumRenderDrivers() << '\n';
     for (int i = 0; i < gri.getNumRenderDrivers(); i++)
     {
-        gri.getRenderDriverInfo(i,&ri);
+        gri.getRenderDriverInfo(i, &ri);
         std::cout << "ri.getName()=" << ri.getName() << '\n';
         std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
         std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
@@ -220,20 +224,20 @@ void bmpSurfaceInfo(GfxSurface* bmps)
     ptr = bmps->getFormat();
     std::cout << "ptr->getFormat()=" << ptr->getFormat() << '\n';
     // palette goes here
-    std::cout << "ptr->getBitsPerPixel()=" << (int)ptr->getBitsPerPixel() << '\n';
-    std::cout << "ptr->getBytesPerPixel()=" << (int)ptr->getBytesPerPixel() << '\n';
+    std::cout << "ptr->getBitsPerPixel()=" << static_cast<int>(ptr->getBitsPerPixel()) << '\n';
+    std::cout << "ptr->getBytesPerPixel()=" << static_cast<int>(ptr->getBytesPerPixel()) << '\n';
     std::cout << "ptr->getRmask()=" << ptr->getRedMask() << '\n';
     std::cout << "ptr->getGmask()=" << ptr->getGreenMask() << '\n';
     std::cout << "ptr->getBmask()=" << ptr->getBlueMask() << '\n';
     std::cout << "ptr->getAmask()=" << ptr->getAlphaMask() << '\n';
-    std::cout << "ptr->getRloss()=" << (int)ptr->getRloss() << '\n';
-    std::cout << "ptr->getGloss()=" << (int)ptr->getGloss() << '\n';
-    std::cout << "ptr->getBloss()=" << (int)ptr->getBloss() << '\n';
-    std::cout << "ptr->getAloss()=" << (int)ptr->getAloss() << '\n';
-    std::cout << "ptr->getRshift()=" << (int)ptr->getRshift() << '\n';
-    std::cout << "ptr->getGshift()=" << (int)ptr->getGshift() << '\n';
-    std::cout << "ptr->getBshift()=" << (int)ptr->getBshift() << '\n';
-    std::cout << "ptr->getAshift()=" << (int)ptr->getAshift() << '\n';
+    std::cout << "ptr->getRloss()=" << static_cast<int>(ptr->getRloss()) << '\n';
+    std::cout << "ptr->getGloss()=" << static_cast<int>(ptr->getGloss()) << '\n';
+    std::cout << "ptr->getBloss()=" << static_cast<int>(ptr->getBloss()) << '\n';
+    std::cout << "ptr->getAloss()=" << static_cast<int>(ptr->getAloss()) << '\n';
+    std::cout << "ptr->getRshift()=" << static_cast<int>(ptr->getRshift()) << '\n';
+    std::cout << "ptr->getGshift()=" << static_cast<int>(ptr->getGshift()) << '\n';
+    std::cout << "ptr->getBshift()=" << static_cast<int>(ptr->getBshift()) << '\n';
+    std::cout << "ptr->getAshift()=" << static_cast<int>(ptr->getAshift()) << '\n';
     std::cout << "ptr->getRefCount()=" << ptr->getRefCount() << '\n';
 
     pal = ptr->getPalette();
@@ -302,7 +306,8 @@ void _doStuff(void)
     {
         for (int j = 480; j < WIN_H; j++)
         {
-            surfcanvas.putPixel(i, j, GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
+            surfcanvas.putPixel(i, j, GfxBgiConstants::vgaGetColorByIndex(
+                        static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
@@ -353,7 +358,7 @@ void _doStuff(void)
     cv.OutText(GfxPoint(1010, 120), GfxString("WIN_W=" + std::to_string(WIN_W)),
                GfxBgiConstants::vgaGreen(), GfxBgiConstants::fntAntique());
     cv.OutText(GfxPoint(1010, 150), GfxString("WIN_H=" + std::to_string(WIN_H)),
-               GfxBgiConstants::vgaLightGray(),GfxBgiConstants::fntWacky());
+               GfxBgiConstants::vgaLightGray(), GfxBgiConstants::fntWacky());
     c = 0;
     for (int i = 0; i < WIN_W; i++)
     {
@@ -362,11 +367,11 @@ void _doStuff(void)
             uint8_t r;
             uint8_t g;
             uint8_t b;
-        
+
             r = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
             g = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
             b = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
-            cv.PutPixel(GfxPoint(i, j),GfxColor(r,g,b,224));
+            cv.PutPixel(GfxPoint(i, j), GfxColor(r, g, b, 224));
         }
         if (((i + 1) % 60) == 0)
         {
@@ -488,7 +493,8 @@ void _doStuff(void)
             }
             str_title += "][A(" + std::to_string(a1) +")]";
             win.setTitle(str_title);
-            surfcanvas.blitSurface(sbitmap, GfxRect(0,0,sbitmap.getWidth(),sbitmap.getHeight()), GfxRect(160,640,WIN_W,WIN_H));
+            surfcanvas.blitSurface(sbitmap, GfxRect(0, 0, sbitmap.getWidth(),
+                    sbitmap.getHeight()), GfxRect(160, 640, WIN_W, WIN_H));
             GfxTexture canvas_tex(&rend, surfcanvas);
             canvas_tex.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
 
@@ -512,16 +518,37 @@ void _doStuff(void)
     AfterDeInit();
 }
 
+void _doPlay(void)
+{
+    Playground p;
+
+    // p._doBenchmark();
+    // p._doFonts();
+    p._doPalette();
+}
+
 #ifdef __windows_machine
 int WinMain(int argc, const char * argv[])
 #else
 int main(int argc, const char * argv[])
 #endif
 {
-    _doStuff();
-    // Playground p;
-    // p._doBenchmark();
-    // p._doFonts();
+    int action = 0;
 
+    if (argc == 2)
+    {
+        if (std::strcmp(argv[1], "sdl") == 0)
+        {
+            action = 1;
+        }
+    }
+    if (action == 0)
+    {
+        _doPlay();
+    }
+    else
+    {
+        _doStuff();
+    }
     return 0;
 }

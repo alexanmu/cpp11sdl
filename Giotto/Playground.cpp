@@ -120,7 +120,7 @@ double Playground::Algo2(uint32_t* ptr)
 #include <thread>
 
 #pragma GCC push_options
-#pragma GCC optimize ("Ofast")
+#pragma GCC optimize("Ofast")
 void Algo3Part(uint64_t* ptr, uint64_t * endptr, uint64_t bp)
 {
     while (ptr < endptr )
@@ -453,4 +453,131 @@ void Playground::_doFonts(void)
     std::cout << "Done!" << std::endl;
 }
 
+/***************************************************** Palette *****************************************************/
+#include <iomanip>
+#include <sstream>
+
+#include "platform/Linux.h"
+#include "platform/macOS.h"
+#include "platform/Windows.h"
+#include "GfxSdlHeader.hpp"
+
+// http://stackoverflow.com/questions/5100718/integer-to-hex-string-in-c
+template <typename T>
+std::string Playground::IntToHexStr(T value)
+{
+    std::stringstream stream;
+
+    stream << "0x" << std::setfill('0') << std::setw(sizeof(T) * 2) <<\
+            std::hex << static_cast<int>(value);
+    return stream.str();
+}
+
+void Playground::printPalette(void * palptr, bool printclrs)
+{
+    SDL_Palette *pal;
+    SDL_Color* clr;
+
+    pal = reinterpret_cast<SDL_Palette *>(palptr);
+    std::cout << "pal->ncolors=" << pal->ncolors << '\n';
+    clr = pal->colors;
+    if (clr == nullptr)
+    {
+        std::cout << "pal->colors=nullptr" << '\n';
+    }
+    else
+    {
+        if (printclrs == true)
+        {
+            for (int i = 0; i < pal->ncolors; i++)
+            {
+                std::cout << "r=" << static_cast<int>(clr->r) <<\
+                        " g=" << static_cast<int>(clr->g) <<\
+                        " b=" << static_cast<int>(clr->b) <<\
+                        " a=" << static_cast<int>(clr->a) << '\n';
+                clr += 1;
+            }
+        }
+        else
+        {
+            std::cout << "pal->colors=" << IntToHexStr<uint64_t>(reinterpret_cast<uint64_t>(pal->colors)) << '\n';
+        }
+    }
+    std::cout << "pal->version=" << pal->version << '\n';
+    std::cout << "pal->refcount=" << pal->refcount << '\n';
+    std::cout << std::endl;
+}
+
+void Playground::printPixFormat(void * pixfmtptr)
+{
+    SDL_PixelFormat* pix;
+
+    if (pixfmtptr == nullptr)
+    {
+        std::cout << "pixfmtptr=nullptr" << '\n';
+        return;
+    }
+    pix = reinterpret_cast<SDL_PixelFormat *>(pixfmtptr);
+    std::cout << "pix->format=" << IntToHexStr<uint32_t>(pix->format) << '\n';
+    if (pix->palette == nullptr)
+    {
+        std::cout << "pix->palette=nullptr" << '\n';
+    }
+    else
+    {
+        printPalette(pix->palette, true);
+    }
+    std::cout << "pix->BitsPerPixel=" << static_cast<int>(pix->BitsPerPixel) << '\n';
+    std::cout << "pix->BytesPerPixel=" << static_cast<int>(pix->BytesPerPixel) << '\n';
+    std::cout << "pix->Rmask=" << IntToHexStr<uint32_t>(pix->Rmask) << '\n';
+    std::cout << "pix->Gmask=" << IntToHexStr<uint32_t>(pix->Gmask) << '\n';
+    std::cout << "pix->Bmask=" << IntToHexStr<uint32_t>(pix->Bmask)<< '\n';
+    std::cout << "pix->Amask=" << IntToHexStr<uint32_t>(pix->Amask) << '\n';
+    std::cout << "pix->Rloss=" << IntToHexStr<uint8_t>(pix->Rloss) << '\n';
+    std::cout << "pix->Gloss=" << IntToHexStr<uint8_t>(pix->Gloss) << '\n';
+    std::cout << "pix->Bloss=" << IntToHexStr<uint8_t>(pix->Bloss)<< '\n';
+    std::cout << "pix->Aloss=" << IntToHexStr<uint8_t>(pix->Aloss) << '\n';
+    std::cout << "pix->Rshift=" << IntToHexStr<uint8_t>(pix->Rshift) << '\n';
+    std::cout << "pix->Gshift=" << IntToHexStr<uint8_t>(pix->Gshift) << '\n';
+    std::cout << "pix->Bshift=" << IntToHexStr<uint8_t>(pix->Bshift)<< '\n';
+    std::cout << "pix->Ashift=" << IntToHexStr<uint8_t>(pix->Ashift) << '\n';
+    std::cout << "pix->refcount=" << IntToHexStr<int>(pix->refcount) << '\n';
+    std::cout << "pix->next=" << IntToHexStr<uint64_t>((uint64_t)pix->next) << '\n';
+    std::cout << std::endl;
+}
+
+void Playground::_doPalette(void)
+{
+    std::cout << "TestPalette" << '\n';
+    SDL_Palette* pal;
+
+    /* Part 1 */
+    pal = SDL_AllocPalette(2);
+    printPalette(pal, false);
+    for (int i = 0; i < pal->ncolors; i++)
+    {
+        SDL_Color c;
+        c.r = i + 1;
+        c.g = i + 1;
+        c.b = i + 1;
+        c.a = 255 - i - 1;
+        SDL_SetPaletteColors(pal, &c, i, 1);
+    }
+    printPalette(pal, false);
+    /* Part 2 */
+    SDL_PixelFormat* pix;
+
+    pix = SDL_AllocFormat(SDL_PIXELFORMAT_RGB332);
+    if (SDL_SetPixelFormatPalette(pix, pal) != 0)
+    {
+        std::cout << SDL_GetError() << '\n';
+    }
+    printPixFormat(pix);
+
+    std::cout << "SDL_GetPixelFormatName(...)=" << SDL_GetPixelFormatName(pix->format) << '\n';
+    /* Free stuff */
+    SDL_FreePalette(pal);
+    SDL_FreeFormat(pix);
+    std::cout << "Done!" << std::endl;
+}
 /* EOF */
