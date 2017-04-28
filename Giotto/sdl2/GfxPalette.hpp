@@ -41,6 +41,7 @@ public:
 
     GfxPalette();
     GfxPalette(const uint16_t ncolors, const GfxColorVector& colors);
+    explicit GfxPalette(SdlTypePtr pal);
 
     GfxPalette(const GfxPalette& other);
     GfxPalette(GfxPalette&& other);
@@ -62,7 +63,7 @@ public:
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    static constexpr int kDefaultPaletteSize = 16;
+    static constexpr int kDefaultPaletteSize = 256;
     SdlTypePtr pal_;
 };
 

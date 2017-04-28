@@ -28,11 +28,13 @@
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass("GfxPixelFormat")
 {
     pix_ = nullptr;
+    pal_ = nullptr;
 };
 
 GfxPixelFormat::GfxPixelFormat(SdlTypePtr pix) : GfxRootClass("GfxPixelFormat")
 {
     pix_ = pix;
+    pal_ = new GfxPalette(pix->palette);
 }
 
 GfxPixelFormat::GfxPixelFormat(const GfxPixelFormat& other) : GfxRootClass("GfxPixelFormat")
@@ -73,9 +75,11 @@ uint32_t GfxPixelFormat::getFormat(void) const
     return pix_->format;
 }
 
-GfxPalette::SdlTypePtr GfxPixelFormat::getPalette(void)
+std::unique_ptr<GfxPalette> GfxPixelFormat::getPalette(void)
 {
-    return pix_->palette;
+    std::unique_ptr<GfxPalette> p { new GfxPalette(pix_->palette) };
+
+    return p;
 }
 
 uint8_t GfxPixelFormat::getBitsPerPixel(void) const
@@ -165,7 +169,7 @@ void GfxPixelFormat::setFormat(const uint32_t format)
     pix_->format = format;
 }
 
-void GfxPixelFormat::setPalette(const GfxPalette& pal)
+void GfxPixelFormat::setPalette(GfxPalette&& pal)
 {
     pal_ = pal;
 }

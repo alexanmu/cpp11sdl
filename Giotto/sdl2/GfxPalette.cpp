@@ -62,6 +62,13 @@ GfxPalette::GfxPalette(const uint16_t ncolors, const GfxColorVector& colors) : G
     }
 }
 
+GfxPalette::GfxPalette(SdlTypePtr pal)
+{
+    pal_ = SDL_AllocPalette(pal->ncolors);
+    SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
+    SDL_FreePalette(pal_);
+}
+
 GfxPalette::~GfxPalette()
 {
     if (pal_ != nullptr)
