@@ -98,7 +98,7 @@ void MsgBox(GfxWindow const& win)
                                             GfxBgiConstants::vgaDarkGray().getGreen(),
                                             GfxBgiConstants::vgaDarkGray().getBlue()));
 
-    GfxMessageBoxData m(flags, win, title, message, numbuttons, buttons, colorScheme);
+    GfxMessageBoxData m(flags, const_cast<GfxWindow *>(&win), title, message, numbuttons, buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
 
     GfxMessageBox g(m);
@@ -281,7 +281,7 @@ void _doStuff(void)
     GfxWindowFlags wf(GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
     GfxWindow win("Window title", GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),
                   GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
-    //MsgBox(win);
+    MsgBox(win);
     GfxRenderer rend(win);
 
     GfxRendererInfo ri;
@@ -535,32 +535,52 @@ void _doPlay(void)
     p._doPaletteGfx();
 }
 
+#include "GApplication.hpp"
+
+void _doGApp(void)
+{
+    GApplication gApp("AppName");
+
+    gApp.loadAppConfiguration();
+    gApp.run();
+}
+
 #ifdef __windows_machine
 int WinMain(int argc, const char * argv[])
 #else
 int main(int argc, const char * argv[])
 #endif
 {
-    int action = __platform_default_action;
+    int action = __platform_default_action + 1;
 
     if (argc == 2)
     {
-        if (std::strcmp(argv[1], "sdl") == 0)
-        {
-            action = 1;
-        }
         if (std::strcmp(argv[1], "play") == 0)
         {
             action = 0;
         }
+        if (std::strcmp(argv[1], "sdl") == 0)
+        {
+            action = 1;
+        }
+        if (std::strcmp(argv[1], "giotto") == 0)
+        {
+            action = 2;
+        }
     }
-    if (action == 0)
+    switch (action)
     {
-        _doPlay();
-    }
-    else
-    {
-        _doStuff();
+        case 0:
+            _doPlay();
+            break;
+        case 1:
+            _doStuff();
+            break;
+        case 2:
+            _doGApp();
+            break;
+        default:
+            break;
     }
     return 0;
 }

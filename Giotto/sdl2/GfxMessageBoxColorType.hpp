@@ -33,7 +33,7 @@ public:
     typedef SDL_MessageBoxColorType SdlType;
     typedef SDL_MessageBoxColorType* SdlTypePtr;
 
-    enum class GfxMessageBoxColorTypeValues : int
+    enum class GfxMessageBoxColorTypeValues : uint32_t
     {
         colorBackground = SDL_MESSAGEBOX_COLOR_BACKGROUND,
         colorText = SDL_MESSAGEBOX_COLOR_TEXT,

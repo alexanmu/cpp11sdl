@@ -41,7 +41,7 @@ public:
 
     GfxMessageBoxData();
 
-    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win, const std::string& title,
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win, const std::string& title,
                       const std::string& message, const int numbuttons, GfxMessageBoxButtonData buttons[],
                       const GfxMessageBoxColorScheme& colorScheme);
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win, const std::string& title,

@@ -38,13 +38,20 @@ GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass("GfxMessageBoxData")
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win,
                                      const std::string& title, const std::string& message, const int numbuttons,
                                      GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
         GfxRootClass("GfxMessageBoxData")
 {
     data_.flags = flags.getAsSdlType();
-    data_.window = win.getAsSdlTypePtr();
+    if (win != nullptr)
+    {
+        data_.window = reinterpret_cast<GfxWindow *>(win)->getAsSdlTypePtr();
+    }
+    else
+    {
+        data_.window = nullptr;
+    }
     title_ = title;
     data_.title = title_.c_str();
     message_ = message;

@@ -24,6 +24,10 @@
 		192445F41EAFAA3400147389 /* GfxLoadSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445F21EAFAA3400147389 /* GfxLoadSo.cpp */; };
 		192A5B2D1EB4CF1D003BDDD1 /* GfxSurfaceFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B2B1EB4CF1D003BDDD1 /* GfxSurfaceFlags.cpp */; };
 		192A5B301EB4D74F003BDDD1 /* GfxTextureAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B2E1EB4D74F003BDDD1 /* GfxTextureAccess.cpp */; };
+		192A5B341EB4DECA003BDDD1 /* GObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B321EB4DECA003BDDD1 /* GObject.cpp */; };
+		192A5B381EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B361EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.cpp */; };
+		192A5B3B1EB4E1DB003BDDD1 /* GDialogsConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B391EB4E1DA003BDDD1 /* GDialogsConstants.cpp */; };
+		192A5B411EB4E7D7003BDDD1 /* GApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B3F1EB4E7D7003BDDD1 /* GApplication.cpp */; };
 		194410DF1EAB4C9D0064A6AA /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D31EAB4C9D0064A6AA /* GfxBitmapFont.cpp */; };
 		194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D51EAB4C9D0064A6AA /* GfxCanvas.cpp */; };
 		194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D71EAB4C9D0064A6AA /* GfxCanvasBgi.cpp */; };
@@ -113,6 +117,14 @@
 		192A5B2C1EB4CF1D003BDDD1 /* GfxSurfaceFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxSurfaceFlags.hpp; path = sdl2/GfxSurfaceFlags.hpp; sourceTree = "<group>"; };
 		192A5B2E1EB4D74F003BDDD1 /* GfxTextureAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTextureAccess.cpp; path = sdl2/GfxTextureAccess.cpp; sourceTree = "<group>"; };
 		192A5B2F1EB4D74F003BDDD1 /* GfxTextureAccess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTextureAccess.hpp; path = sdl2/GfxTextureAccess.hpp; sourceTree = "<group>"; };
+		192A5B321EB4DECA003BDDD1 /* GObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GObject.cpp; path = giotto/GObject.cpp; sourceTree = "<group>"; };
+		192A5B331EB4DECA003BDDD1 /* GObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GObject.hpp; path = giotto/GObject.hpp; sourceTree = "<group>"; };
+		192A5B361EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAbortRetryIgnoreMsgBox.cpp; path = gdialogs/GAbortRetryIgnoreMsgBox.cpp; sourceTree = "<group>"; };
+		192A5B371EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GAbortRetryIgnoreMsgBox.hpp; path = gdialogs/GAbortRetryIgnoreMsgBox.hpp; sourceTree = "<group>"; };
+		192A5B391EB4E1DA003BDDD1 /* GDialogsConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GDialogsConstants.cpp; path = gdialogs/GDialogsConstants.cpp; sourceTree = "<group>"; };
+		192A5B3A1EB4E1DB003BDDD1 /* GDialogsConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GDialogsConstants.hpp; path = gdialogs/GDialogsConstants.hpp; sourceTree = "<group>"; };
+		192A5B3F1EB4E7D7003BDDD1 /* GApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GApplication.cpp; path = giotto/GApplication.cpp; sourceTree = "<group>"; };
+		192A5B401EB4E7D7003BDDD1 /* GApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GApplication.hpp; path = giotto/GApplication.hpp; sourceTree = "<group>"; };
 		194410C71EAB4B8B0064A6AA /* Linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Linux.h; path = platform/Linux.h; sourceTree = "<group>"; };
 		194410C81EAB4B8B0064A6AA /* macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macOS.h; path = platform/macOS.h; sourceTree = "<group>"; };
 		194410C91EAB4BC20064A6AA /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = bgi/fntAntique.hpp; sourceTree = "<group>"; };
@@ -250,6 +262,8 @@
 				197D66451EAB41BF009B5EBB /* Playground.cpp */,
 				197D66461EAB41BF009B5EBB /* Playground.hpp */,
 				194410C51EAB4AC20064A6AA /* bgi */,
+				192A5B351EB4E0C3003BDDD1 /* gdialogs */,
+				192A5B311EB4DE91003BDDD1 /* giotto */,
 				194410C61EAB4B0D0064A6AA /* platform */,
 				19BD5B5C1E9125F10043F8E1 /* sdl2 */,
 			);
@@ -264,6 +278,28 @@
 				1915B7731E91103100147BDB /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		192A5B311EB4DE91003BDDD1 /* giotto */ = {
+			isa = PBXGroup;
+			children = (
+				192A5B321EB4DECA003BDDD1 /* GObject.cpp */,
+				192A5B331EB4DECA003BDDD1 /* GObject.hpp */,
+				192A5B3F1EB4E7D7003BDDD1 /* GApplication.cpp */,
+				192A5B401EB4E7D7003BDDD1 /* GApplication.hpp */,
+			);
+			name = giotto;
+			sourceTree = "<group>";
+		};
+		192A5B351EB4E0C3003BDDD1 /* gdialogs */ = {
+			isa = PBXGroup;
+			children = (
+				192A5B361EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.cpp */,
+				192A5B371EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.hpp */,
+				192A5B391EB4E1DA003BDDD1 /* GDialogsConstants.cpp */,
+				192A5B3A1EB4E1DB003BDDD1 /* GDialogsConstants.hpp */,
+			);
+			name = gdialogs;
 			sourceTree = "<group>";
 		};
 		194410C51EAB4AC20064A6AA /* bgi */ = {
@@ -477,9 +513,11 @@
 				194411041EAB4D9E0064A6AA /* GfxPalette.cpp in Sources */,
 				199596391EAB8FCA00B414E5 /* GfxMessageBoxButtonFlags.cpp in Sources */,
 				195F7A1E1EACDBA900C11D9F /* GfxWindowEventID.cpp in Sources */,
+				192A5B411EB4E7D7003BDDD1 /* GApplication.cpp in Sources */,
 				195F7A1B1EACD52400C11D9F /* GfxWindowFlags.cpp in Sources */,
 				195F7A181EACCFD200C11D9F /* GfxDisplayMode.cpp in Sources */,
 				192A5B301EB4D74F003BDDD1 /* GfxTextureAccess.cpp in Sources */,
+				192A5B3B1EB4E1DB003BDDD1 /* GDialogsConstants.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				190E5C8F1EB23A290045C666 /* GfxGetRendererInfo.cpp in Sources */,
 				192445F11EAF9B4100147389 /* GfxEndian.cpp in Sources */,
@@ -497,6 +535,7 @@
 				192445EB1EAF962500147389 /* GfxBits.cpp in Sources */,
 				1944110A1EAB4D9E0064A6AA /* GfxSurface.cpp in Sources */,
 				1995962D1EAB653A00B414E5 /* GfxMessageBoxData.cpp in Sources */,
+				192A5B381EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */,
 				194411031EAB4D9E0064A6AA /* GfxInitQuit.cpp in Sources */,
 				195F7A211EACFBCB00C11D9F /* GfxVideo.cpp in Sources */,
@@ -509,6 +548,7 @@
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,
 				199596361EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				195F7A151EACCD9A00C11D9F /* GfxScreenSaver.cpp in Sources */,
+				192A5B341EB4DECA003BDDD1 /* GObject.cpp in Sources */,
 				1944110C1EAB4D9E0064A6AA /* GfxWindow.cpp in Sources */,
 				194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */,
 				194411021EAB4D9E0064A6AA /* GfxRendererFlip.cpp in Sources */,
