@@ -28,6 +28,8 @@
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
 #include "GfxBlendMode.hpp"
+#include "GfxTextureModulate.hpp"
+#include "GfxTextureAccess.hpp"
 
 class GfxTexture final : public GfxRootClass
 {
@@ -37,8 +39,8 @@ public:
 
     GfxTexture() = delete;
 
-    explicit GfxTexture(GfxRootClass * rend);
-    GfxTexture(GfxRootClass * rend, const GfxSurface& surf);
+    explicit GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h);
+    explicit GfxTexture(GfxRootClass * rend, const GfxSurface& surf);
 
     virtual ~GfxTexture();
 

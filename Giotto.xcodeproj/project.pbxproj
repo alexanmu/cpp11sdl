@@ -23,6 +23,7 @@
 		192445F11EAF9B4100147389 /* GfxEndian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445EF1EAF9B4100147389 /* GfxEndian.cpp */; };
 		192445F41EAFAA3400147389 /* GfxLoadSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192445F21EAFAA3400147389 /* GfxLoadSo.cpp */; };
 		192A5B2D1EB4CF1D003BDDD1 /* GfxSurfaceFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B2B1EB4CF1D003BDDD1 /* GfxSurfaceFlags.cpp */; };
+		192A5B301EB4D74F003BDDD1 /* GfxTextureAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192A5B2E1EB4D74F003BDDD1 /* GfxTextureAccess.cpp */; };
 		194410DF1EAB4C9D0064A6AA /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D31EAB4C9D0064A6AA /* GfxBitmapFont.cpp */; };
 		194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D51EAB4C9D0064A6AA /* GfxCanvas.cpp */; };
 		194410E11EAB4C9D0064A6AA /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194410D71EAB4C9D0064A6AA /* GfxCanvasBgi.cpp */; };
@@ -110,6 +111,8 @@
 		192445F31EAFAA3400147389 /* GfxLoadSo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxLoadSo.hpp; path = sdl2/GfxLoadSo.hpp; sourceTree = "<group>"; };
 		192A5B2B1EB4CF1D003BDDD1 /* GfxSurfaceFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxSurfaceFlags.cpp; path = sdl2/GfxSurfaceFlags.cpp; sourceTree = "<group>"; };
 		192A5B2C1EB4CF1D003BDDD1 /* GfxSurfaceFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxSurfaceFlags.hpp; path = sdl2/GfxSurfaceFlags.hpp; sourceTree = "<group>"; };
+		192A5B2E1EB4D74F003BDDD1 /* GfxTextureAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTextureAccess.cpp; path = sdl2/GfxTextureAccess.cpp; sourceTree = "<group>"; };
+		192A5B2F1EB4D74F003BDDD1 /* GfxTextureAccess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTextureAccess.hpp; path = sdl2/GfxTextureAccess.hpp; sourceTree = "<group>"; };
 		194410C71EAB4B8B0064A6AA /* Linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Linux.h; path = platform/Linux.h; sourceTree = "<group>"; };
 		194410C81EAB4B8B0064A6AA /* macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macOS.h; path = platform/macOS.h; sourceTree = "<group>"; };
 		194410C91EAB4BC20064A6AA /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = bgi/fntAntique.hpp; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				192A5B2C1EB4CF1D003BDDD1 /* GfxSurfaceFlags.hpp */,
 				194410FC1EAB4D9E0064A6AA /* GfxTexture.cpp */,
 				194410FD1EAB4D9E0064A6AA /* GfxTexture.hpp */,
+				192A5B2E1EB4D74F003BDDD1 /* GfxTextureAccess.cpp */,
+				192A5B2F1EB4D74F003BDDD1 /* GfxTextureAccess.hpp */,
 				191DCD441EB0E4D5006A1602 /* GfxTextureModulate.cpp */,
 				191DCD451EB0E4D5006A1602 /* GfxTextureModulate.hpp */,
 				19FA54001EAE7D5C009CD6E9 /* GfxVersion.cpp */,
@@ -474,6 +479,7 @@
 				195F7A1E1EACDBA900C11D9F /* GfxWindowEventID.cpp in Sources */,
 				195F7A1B1EACD52400C11D9F /* GfxWindowFlags.cpp in Sources */,
 				195F7A181EACCFD200C11D9F /* GfxDisplayMode.cpp in Sources */,
+				192A5B301EB4D74F003BDDD1 /* GfxTextureAccess.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				190E5C8F1EB23A290045C666 /* GfxGetRendererInfo.cpp in Sources */,
 				192445F11EAF9B4100147389 /* GfxEndian.cpp in Sources */,

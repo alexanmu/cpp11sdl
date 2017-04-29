@@ -24,16 +24,23 @@
 #include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
 
-GfxTexture::GfxTexture(GfxRootClass * rend) : GfxRootClass("GfxTexture")
-{
-    rend_ = rend;
-    tex_ = nullptr;
-}
-
-GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxTexture(rend)
+GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) : GfxRootClass("GfxTexture")
 {
     GfxRenderer* rendptr;
 
+    rend_ = rend;
+    rendptr = reinterpret_cast<GfxRenderer *>(rend);
+    tex_ = SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
+                             SDL_PIXELFORMAT_ARGB8888,
+                             acc.getAsSdlType(),
+                             w,h);
+}
+
+GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass("GfxTexture")
+{
+    GfxRenderer* rendptr;
+
+    rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
     tex_ = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
 }
