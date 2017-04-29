@@ -21,32 +21,34 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-#ifndef GObject_hpp
-#define GObject_hpp
+#ifndef GRetryCancelMsgBox_hpp
+#define GRetryCancelMsgBox_hpp
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GObject.hpp"
+#include "GDialogsConstants.hpp"
 
-class GObject
+class GRetryCancelMsgBox : public GObject
 {
 public:
-    GObject();
-
-    GObject(GObject const& other);
-    GObject(GObject&& other);
-
-    GObject& operator=(GObject const& other);
-    GObject& operator=(GObject&& other);
-
-    virtual ~GObject();
+    GRetryCancelMsgBox(GObject* parent);
+    
+    GRetryCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
+    
+    GRetryCancelMsgBox(GRetryCancelMsgBox const&) = delete;
+    GRetryCancelMsgBox(GRetryCancelMsgBox&&) = delete;
+    
+    GRetryCancelMsgBox& operator=(GRetryCancelMsgBox const&) = delete;
+    GRetryCancelMsgBox& operator=(GRetryCancelMsgBox&&) = delete;
+    
+    void showModal(void);
+    GDialogsConstants getSelection(void) const;
 private:
-    enum class GInitType : uint32_t
-    {
-        defaultCtor,
-        copyCtor,
-        moveCtor
-    };
-    GInitType inittype_;
+    std::string title_;
+    std::string message_;
+    GDialogsConstants selection_;
+    GObject* parent_;
 };
-#endif /* GObject_hpp */
+
+#endif /* GRetryCancelMsgBox_hpp */

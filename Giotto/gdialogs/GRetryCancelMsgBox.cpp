@@ -23,7 +23,7 @@
 
 #include <string>
 
-#include "GAbortRetryIgnoreMsgBox.hpp"
+#include "GRetryCancelMsgBox.hpp"
 
 #include "GfxMessageBoxFlags.hpp"
 #include "GfxMessageBoxButtonData.hpp"
@@ -34,33 +34,31 @@
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBox.hpp"
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent) : GObject(), parent_(parent)
+GRetryCancelMsgBox::GRetryCancelMsgBox(GObject* parent) : GObject(), parent_(parent)
 {
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent,const std::string& title, const std::string& message) : GObject(), parent_(parent)
+GRetryCancelMsgBox::GRetryCancelMsgBox(GObject* parent,const std::string& title, const std::string& message) : GObject(), parent_(parent)
 {
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-void GAbortRetryIgnoreMsgBox::showModal(void)
+void GRetryCancelMsgBox::showModal(void)
 {
     GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
-
-    GfxMessageBoxButtonData buttons[3] {
+    
+    GfxMessageBoxButtonData buttons[2] {
         GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                                                         GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, "Abort"),
+                                                         GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, "Retry"),
         GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                                                         GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 2, "Retry"),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                                                         GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 3, "Ignore"),
+                                                         GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 2, "Cancel"),
     };
-
+    
     GfxMessageBoxColor colors[static_cast<uint32_t>(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
         GfxMessageBoxColor(255, 0, 0),
         GfxMessageBoxColor(250, 220, 190),
@@ -68,28 +66,26 @@ void GAbortRetryIgnoreMsgBox::showModal(void)
         GfxMessageBoxColor(50, 100, 200),
         GfxMessageBoxColor(255, 255, 255)
     };
-
+    
     GfxMessageBoxColorScheme colorScheme(colors);
-
-    GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 3, buttons, colorScheme);
-
+    
+    GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 2, buttons, colorScheme);
+    
     GfxMessageBox messageBox(msgBoxData);
-
+    
     int result = messageBox.showModal();
     switch (result) {
         case 1:
-            selection_ = GDialogsConstants::kButtonAbort;
+            selection_ = GDialogsConstants::kButtonRetry;
             break;
         case 2:
-            selection_ = GDialogsConstants::kButtonRetry;
-        case 3:
-            selection_ = GDialogsConstants::kButtonIgnore;
+            selection_ = GDialogsConstants::kButtonCancel;
         default:
             break;
     }
 }
 
-GDialogsConstants GAbortRetryIgnoreMsgBox::getSelection(void) const
+GDialogsConstants GRetryCancelMsgBox::getSelection(void) const
 {
     return selection_;
 }

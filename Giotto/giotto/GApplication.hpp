@@ -20,8 +20,6 @@ public:
 
     void loadAppConfiguration(void);
     void run(void);
-
-    virtual GfxRootClass* getGfxObject(void) const;
 private:
     std::string appName_;
 };

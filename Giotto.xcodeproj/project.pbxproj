@@ -65,6 +65,7 @@
 		1995963C1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963A1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp */; };
 		1995963F1EAB982F00B414E5 /* GfxMessageBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */; };
 		19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */; };
+		19B351FB1EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */; };
 		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
 		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
 		19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778391EAB5039007E1C19 /* GfxString.cpp */; };
@@ -212,6 +213,8 @@
 		1995963E1EAB982F00B414E5 /* GfxMessageBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBox.hpp; path = sdl2/GfxMessageBox.hpp; sourceTree = "<group>"; };
 		19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxWindowPosition.cpp; path = sdl2/GfxWindowPosition.cpp; sourceTree = "<group>"; };
 		19A8FAB61EAE561A00FFD332 /* GfxWindowPosition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxWindowPosition.hpp; path = sdl2/GfxWindowPosition.hpp; sourceTree = "<group>"; };
+		19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GRetryCancelMsgBox.cpp; path = gdialogs/GRetryCancelMsgBox.cpp; sourceTree = "<group>"; };
+		19B351FA1EB4F4B20020DCF4 /* GRetryCancelMsgBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GRetryCancelMsgBox.hpp; path = gdialogs/GRetryCancelMsgBox.hpp; sourceTree = "<group>"; };
 		19F778331EAB4F96007E1C19 /* GfxRadius.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRadius.cpp; path = bgi/GfxRadius.cpp; sourceTree = "<group>"; };
 		19F778341EAB4F96007E1C19 /* GfxRadius.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRadius.hpp; path = bgi/GfxRadius.hpp; sourceTree = "<group>"; };
 		19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxAngle.cpp; path = bgi/GfxAngle.cpp; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				192A5B371EB4E0EC003BDDD1 /* GAbortRetryIgnoreMsgBox.hpp */,
 				192A5B391EB4E1DA003BDDD1 /* GDialogsConstants.cpp */,
 				192A5B3A1EB4E1DB003BDDD1 /* GDialogsConstants.hpp */,
+				19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */,
+				19B351FA1EB4F4B20020DCF4 /* GRetryCancelMsgBox.hpp */,
 			);
 			name = gdialogs;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 				1944110C1EAB4D9E0064A6AA /* GfxWindow.cpp in Sources */,
 				194411001EAB4D9E0064A6AA /* GfxBlendMode.cpp in Sources */,
 				194411021EAB4D9E0064A6AA /* GfxRendererFlip.cpp in Sources */,
+				19B351FB1EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp in Sources */,
 				194411061EAB4D9E0064A6AA /* GfxPoint.cpp in Sources */,
 				194411071EAB4D9E0064A6AA /* GfxRect.cpp in Sources */,
 				192445E81EAF95B900147389 /* GfxFileSystem.cpp in Sources */,

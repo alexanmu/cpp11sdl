@@ -14,6 +14,7 @@
 #include "GfxWindow.hpp"
 #include "GfxRenderer.hpp"
 #include "GAbortRetryIgnoreMsgBox.hpp"
+#include "GRetryCancelMsgBox.hpp"
 
 GApplication::GApplication(std::string appName) : GObject()
 {
@@ -42,20 +43,15 @@ void GApplication::run(void)
                   winFlags);
     GfxRenderer rend(win);
 
-    GAbortRetryIgnoreMsgBox g(this,"Error","An error occured. What should I do?");
+    GRetryCancelMsgBox g(this,"Error","An error occured. What should I do?");
     g.showModal();
     
     GDialogsConstants sel;
     
     sel = g.getSelection();
-    while (sel != GDialogsConstants::kButtonAbort)
+    while (sel != GDialogsConstants::kButtonCancel)
     {
         g.showModal();
         sel = g.getSelection();
     }
-}
-
-GfxRootClass* GApplication::getGfxObject(void) const
-{
-    return nullptr;
 }
