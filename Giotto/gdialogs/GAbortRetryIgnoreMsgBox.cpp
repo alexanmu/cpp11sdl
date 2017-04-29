@@ -50,7 +50,7 @@ GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent,const std::stri
 
 void GAbortRetryIgnoreMsgBox::showModal(void)
 {
-    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
+    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
 
     GfxMessageBoxButtonData buttons[3] {
         GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(

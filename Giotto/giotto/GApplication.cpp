@@ -44,6 +44,15 @@ void GApplication::run(void)
 
     GAbortRetryIgnoreMsgBox g(this,"Error","An error occured. What should I do?");
     g.showModal();
+    
+    GDialogsConstants sel;
+    
+    sel = g.getSelection();
+    while (sel != GDialogsConstants::kButtonAbort)
+    {
+        g.showModal();
+        sel = g.getSelection();
+    }
 }
 
 GfxRootClass* GApplication::getGfxObject(void) const
