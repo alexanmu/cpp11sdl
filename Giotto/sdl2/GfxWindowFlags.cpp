@@ -28,19 +28,14 @@ GfxWindowFlags::GfxWindowFlags() : GfxRootClass("GfxWindowFlags")
     flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flag) : GfxRootClass("GfxWindowFlags")
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) : GfxRootClass("GfxWindowFlags")
 {
-    flags_ = static_cast<SdlType>(flag);
+    flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(SdlType flag) : GfxRootClass("GfxWindowFlags")
+GfxWindowFlags::GfxWindowFlags(SdlType flags) : GfxRootClass("GfxWindowFlags")
 {
-    flags_ = flag;
-}
-
-GfxWindowFlags::GfxWindowFlags(SdlTypePtr flag) : GfxRootClass("GfxWindowFlags")
-{
-    flags_ = *flag;
+    flags_ = flags;
 }
 
 GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) : GfxRootClass("GfxWindowFlags")

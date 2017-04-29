@@ -33,6 +33,7 @@
 #include "GfxPixelFormat.hpp"
 #include "GfxRect.hpp"
 #include "GfxColor.hpp"
+#include "GfxSurfaceFlags.hpp"
 
 class GfxCanvas;
 
@@ -44,7 +45,7 @@ public:
 
     GfxSurface() = delete;
 
-    explicit GfxSurface(const uint16_t w, const uint16_t h);
+    explicit GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h);
     explicit GfxSurface(const SdlTypePtr surf);
     explicit GfxSurface(const std::string& filename);
 

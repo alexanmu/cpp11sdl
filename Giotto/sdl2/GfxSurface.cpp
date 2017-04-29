@@ -27,11 +27,11 @@
 
 #include "GfxSurface.hpp"
 
-GfxSurface::GfxSurface(const uint16_t w, const uint16_t h) : GfxRootClass("GfxSurface")
+GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass("GfxSurface")
 {
     uint32_t format = SDL_PIXELFORMAT_ARGB8888;
 
-    surf_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, format);
+    surf_ = SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), w, h, 32, format);
     if (surf_ == nullptr)
     {
         // error handling here ...

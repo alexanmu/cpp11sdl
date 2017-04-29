@@ -60,6 +60,7 @@
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererFlags.hpp"
 #include "GfxPalette.hpp"
+#include "GfxSurfaceFlags.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -305,7 +306,7 @@ void _doStuff(void)
     GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
-    GfxSurface surfcanvas(WIN_W, WIN_H);
+    GfxSurface surfcanvas(GfxSurfaceFlags(), WIN_W, WIN_H);
 
     int c = 0;
     for (int i = 0; i < WIN_W; i++)
@@ -386,7 +387,7 @@ void _doStuff(void)
         }
     }
 
-    GfxSurface colors_surf(WIN_W, WIN_H);
+    GfxSurface colors_surf(GfxSurfaceFlags(), WIN_W, WIN_H);
     GfxRect rt;
 
     SDL_Event e;
