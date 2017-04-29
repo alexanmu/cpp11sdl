@@ -32,7 +32,8 @@ enum class GDialogsConstants : uint16_t
     kButtonAbort = 0x0010,
     kButtonRetry = 0x0011,
     kButtonIgnore = 0x0012,
-    kButtonCancel = 0x0013
+    kButtonCancel = 0x0013,
+    kButtonOk = 0x0014
 };
 
 #endif /* GDialogsConstants_hpp */

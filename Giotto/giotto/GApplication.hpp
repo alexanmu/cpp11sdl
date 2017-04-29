@@ -9,19 +9,17 @@
 #ifndef GApplication_hpp
 #define GApplication_hpp
 
+#include <memory>
 #include <string>
 
 #include "GObject.hpp"
+#include "GForm.hpp"
 
 class GApplication : public GObject
 {
 public:
-    GApplication(std::string appName);
-
-    void loadAppConfiguration(void);
-    void run(void);
-private:
-    std::string appName_;
+    virtual void loadAppConfiguration(void) = 0;
+    virtual void run(void) = 0;
 };
 
 #endif /* GApplication_hpp */

@@ -21,30 +21,35 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-#ifndef GObject_hpp
-#define GObject_hpp
+#ifndef GWindowObject_hpp
+#define GWindowObject_hpp
 
+#include <memory>
 #include <string>
 
-class GObject
+#include "GObject.hpp"
+#include "GfxCanvas.hpp"
+
+#include "GfxWindow.hpp"
+
+class GForm : public GObject
 {
 public:
-    GObject();
+    GForm(const std::string& title);
 
-    GObject(GObject const& other);
-    GObject(GObject&& other);
+    void setFormTitle(const std::string& title);
+    void createForm(void);
+    void closeForm(void);
 
-    GObject& operator=(GObject const& other);
-    GObject& operator=(GObject&& other);
+    void drawForm(void);
 
-    virtual ~GObject();
+    std::shared_ptr<GfxCanvas> getFormCanvas(void);
 private:
-    enum class GInitType : uint32_t
-    {
-        defaultCtor,
-        copyCtor,
-        moveCtor
-    };
-    GInitType inittype_;
+    std::shared_ptr<GfxWindow> window_;
+    std::string title_;
+    
+    std::shared_ptr<GfxCanvas> canvas_;
+    bool canvasInUse_;
 };
-#endif /* GObject_hpp */
+
+#endif /* GWindowObject_hpp */

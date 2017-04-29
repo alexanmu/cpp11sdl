@@ -24,8 +24,8 @@
 #ifndef GfxWindow_hpp
 #define GfxWindow_hpp
 
-#include <string>
 #include <memory>
+#include <string>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
@@ -66,6 +66,8 @@ public:
     void getWindowSize(int32_t* px, int32_t* py);
 
     std::unique_ptr<GfxSurface> getWindowSurface(void);
+    void updateWindowSurface(void);
+
     /*
     SDL_UpdateWindowSurface
     SDL_UpdateWindowSurfaceRects

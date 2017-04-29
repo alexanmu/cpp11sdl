@@ -72,11 +72,17 @@ std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
         SDL_Surface* surf = SDL_GetWindowSurface(window_);
         if (surf != nullptr)
         {
-            std::unique_ptr<GfxSurface> ptr {new GfxSurface(surf)};
+            std::unique_ptr<GfxSurface> ptr { new GfxSurface(surf) };
+            
             return ptr;
         }
     }
     return nullptr;
+}
+
+void GfxWindow::updateWindowSurface(void)
+{
+    SDL_UpdateWindowSurface(window_);
 }
 
 std::string GfxWindow::getTitle() const

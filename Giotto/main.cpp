@@ -535,11 +535,11 @@ void _doPlay(void)
     p._doPaletteGfx();
 }
 
-#include "GApplication.hpp"
+#include "GDemoApp.hpp"
 
 void _doGApp(void)
 {
-    GApplication gApp("AppName");
+    GDemoApp gApp("AppName");
 
     gApp.loadAppConfiguration();
     gApp.run();

@@ -21,30 +21,34 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
-#ifndef GObject_hpp
-#define GObject_hpp
+#ifndef GOKCancelMsgBox_hpp
+#define GOKCancelMsgBox_hpp
 
 #include <string>
 
-class GObject
+#include "GObject.hpp"
+#include "GDialogsConstants.hpp"
+
+class GOKCancelMsgBox : public GObject
 {
 public:
-    GObject();
-
-    GObject(GObject const& other);
-    GObject(GObject&& other);
-
-    GObject& operator=(GObject const& other);
-    GObject& operator=(GObject&& other);
-
-    virtual ~GObject();
+    GOKCancelMsgBox(GObject* parent);
+    
+    GOKCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
+    
+    GOKCancelMsgBox(GOKCancelMsgBox const&) = delete;
+    GOKCancelMsgBox(GOKCancelMsgBox&&) = delete;
+    
+    GOKCancelMsgBox& operator=(GOKCancelMsgBox const&) = delete;
+    GOKCancelMsgBox& operator=(GOKCancelMsgBox&&) = delete;
+    
+    void showModal(void);
+    GDialogsConstants getSelection(void) const;
 private:
-    enum class GInitType : uint32_t
-    {
-        defaultCtor,
-        copyCtor,
-        moveCtor
-    };
-    GInitType inittype_;
+    std::string title_;
+    std::string message_;
+    GDialogsConstants selection_;
+    GObject* parent_;
 };
-#endif /* GObject_hpp */
+
+#endif /* GOKCancelMsgBox_hpp */
