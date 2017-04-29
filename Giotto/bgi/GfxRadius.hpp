@@ -32,7 +32,9 @@ public:
     typedef uint16_t GfxValueType;
 
     GfxRadius();
-    explicit GfxRadius(GfxValueType value);
+
+    explicit GfxRadius(const GfxValueType value);
+
     GfxRadius(const GfxRadius& other);
     GfxRadius(GfxRadius&& other);
 
@@ -44,6 +46,7 @@ public:
     bool operator<(const GfxRadius& other);
 
     GfxValueType getValue() const;
+    void setValue(const GfxValueType& value);
 private:
     GfxValueType value_;
 };

@@ -21,8 +21,6 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <memory>
-
 #include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
 
@@ -59,6 +57,10 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
 {
     if (this != &tex)
     {
+        if (tex_ != nullptr)
+        {
+            SDL_DestroyTexture(tex_);
+        }
         tex_ = tex.tex_;
         // Destroy other's data
         tex.tex_ = nullptr;
@@ -79,7 +81,7 @@ void GfxTexture::setBlendMode(const GfxBlendMode& blendmode)
 {
     if (tex_ == nullptr)
     {
-      return;
+        return;
     }
     SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
 }
@@ -88,23 +90,22 @@ void GfxTexture::setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode)
 {
     if (tex_ == nullptr)
     {
-      return;
+        return;
     }
     SDL_SetTextureBlendMode(tex_, static_cast<GfxBlendMode::SdlType>(blendmode));
 }
 
-std::unique_ptr<GfxBlendMode> GfxTexture::getBlendMode(void)
+GfxBlendMode GfxTexture::getBlendMode(void)
 {
-    SDL_BlendMode bm;
+    GfxBlendMode::SdlType bm;
 
     if (tex_ == nullptr)
     {
-        return nullptr;
+        return GfxBlendMode();
     }
     SDL_GetTextureBlendMode(tex_, &bm);
-    std::unique_ptr<GfxBlendMode> ptr { new GfxBlendMode(bm) };
 
-    return ptr;
+    return GfxBlendMode(bm);
 }
 
 GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const

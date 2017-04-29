@@ -43,9 +43,10 @@ public:
     };
 
     GfxRendererFlags();
-    explicit GfxRendererFlags(GfxRendererFlagsValues flags);
-    explicit GfxRendererFlags(SdlType flags);
-    explicit GfxRendererFlags(SdlTypePtr flags);
+
+    explicit GfxRendererFlags(const GfxRendererFlagsValues flags);
+    explicit GfxRendererFlags(const SdlType flags);
+
     GfxRendererFlags(GfxRendererFlags const& other);
     GfxRendererFlags(GfxRendererFlags&& other);
 

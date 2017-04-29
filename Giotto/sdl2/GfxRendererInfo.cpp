@@ -141,7 +141,7 @@ int32_t GfxRendererInfo::getMaxTextureHeight(void) const
     return info_.max_texture_height;
 }
 
-void GfxRendererInfo::set(SdlType info)
+void GfxRendererInfo::set(const SdlType info)
 {
     info_ = info;
 }

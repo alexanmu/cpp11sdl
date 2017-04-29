@@ -38,7 +38,9 @@ public:
     static constexpr int colorsArraySize = static_cast<int>(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
 
     GfxMessageBoxColorScheme();
-    explicit GfxMessageBoxColorScheme(GfxMessageBoxColor colors[colorsArraySize]);
+
+    explicit GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[colorsArraySize]);
+
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other);
 

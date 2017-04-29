@@ -32,6 +32,7 @@ class GfxCpuInfo final : public GfxRootClass
 {
 public:
     GfxCpuInfo();
+
     GfxCpuInfo(GfxCpuInfo const&) = delete;
     GfxCpuInfo(GfxCpuInfo&&) = delete;
     

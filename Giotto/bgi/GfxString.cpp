@@ -85,4 +85,9 @@ GfxString::GfxValueType GfxString::getValue() const
     return value_;
 }
 
+void GfxString::setValue(const GfxValueType& value)
+{
+    value_ = value;
+}
+
 /* EOF */

@@ -32,18 +32,17 @@ class GfxLoadSo final : public GfxRootClass
 {
 public:
     GfxLoadSo() = delete;
+
     explicit GfxLoadSo(const std::string& objectname);
 
     /* Copy ctor should not be used */
     GfxLoadSo(GfxLoadSo const&) = delete;
-
     GfxLoadSo(GfxLoadSo&& other);
 
     virtual ~GfxLoadSo();
 
-    /* Copy oeprator should not be used */
+    /* Copy operator should not be used */
     GfxLoadSo& operator=(GfxLoadSo&) = delete;
-
     GfxLoadSo& operator=(GfxLoadSo&&);
 
     bool isObjectLoaded(void) const;

@@ -23,10 +23,13 @@
 
 #include "GfxScreenSaver.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBool.hpp"
 
 GfxScreenSaver::GfxScreenSaver()
 {
-    ssstatus_ = static_cast<ScreenSaverStatus>(SDL_IsScreenSaverEnabled());
+    GfxBool status { SDL_IsScreenSaverEnabled() };
+
+    ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
 }
 
 bool GfxScreenSaver::isScreenSaverEnabled(void) const

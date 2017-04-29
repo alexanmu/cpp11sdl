@@ -34,7 +34,9 @@ public:
     typedef std::string GfxValueType;
 
     GfxString();
+
     explicit GfxString(GfxValueType value);
+
     GfxString(const GfxString& other);
     GfxString(GfxString&& other);
 
@@ -46,6 +48,7 @@ public:
     bool operator<(const GfxString& other);
 
     GfxValueType getValue() const;
+    void setValue(const GfxValueType& value);
 private:
     GfxValueType value_;
 };

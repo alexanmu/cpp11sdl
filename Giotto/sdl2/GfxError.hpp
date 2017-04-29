@@ -32,6 +32,7 @@ class GfxError final : public GfxRootClass
 {
 public:
     GfxError() = delete;
+
     GfxError(GfxError const&) = delete;
     GfxError(GfxError&&) = delete;
 

@@ -36,8 +36,10 @@ public:
     typedef SDL_version* SdlTypePtr;
 
     GfxVersion();
-    GfxVersion(uint8_t major, uint8_t minor, uint8_t patch);
-    explicit GfxVersion(SdlType ver);
+
+    GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch);
+    explicit GfxVersion(const SdlType ver);
+
     GfxVersion(GfxVersion const& other);
     GfxVersion(GfxVersion&& other);
 
@@ -48,7 +50,7 @@ public:
     uint8_t getMinor(void) const;
     uint8_t getPatch(void) const;
 
-    void set(SdlType ver);
+    void set(const SdlType ver);
 
     std::string getAsString(void) const;
 

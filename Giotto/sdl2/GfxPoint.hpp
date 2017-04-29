@@ -34,9 +34,10 @@ public:
     typedef SDL_Point* SdlTypePtr;
 
     GfxPoint();
+
     GfxPoint(const uint16_t x, const uint16_t y);
     explicit GfxPoint(const SdlType pt);
-    explicit GfxPoint(const SdlTypePtr pt);
+
     GfxPoint(const GfxPoint& other);
     GfxPoint(GfxPoint&& other);
 

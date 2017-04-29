@@ -35,7 +35,7 @@ GfxRootClass::GfxRootClass()
     strClassName_ = "$init$";
 }
 
-GfxRootClass::GfxRootClass(std::string strClassName) : strClassName_(strClassName)
+GfxRootClass::GfxRootClass(const std::string& strClassName) : strClassName_(strClassName)
 {
     GfxRootClass::intInstanceCounter_ += 1;
     intInstanceId_ = GfxRootClass::intInstanceCounter_;

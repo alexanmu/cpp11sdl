@@ -32,14 +32,14 @@ GfxVersion::GfxVersion() : GfxRootClass("GfxVersion")
     ver_.patch = 0;
 }
 
-GfxVersion::GfxVersion(uint8_t major, uint8_t minor, uint8_t patch) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) : GfxRootClass("GfxVersion")
 {
     ver_.major = major;
     ver_.minor = minor;
     ver_.patch = patch;
 }
 
-GfxVersion::GfxVersion(SdlType ver) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(const SdlType ver) : GfxRootClass("GfxVersion")
 {
     ver_ = ver;
 }
@@ -95,7 +95,7 @@ uint8_t GfxVersion::getPatch(void) const
     return ver_.patch;
 }
 
-void GfxVersion::set(SdlType ver)
+void GfxVersion::set(const SdlType ver)
 {
     ver_ = ver;
 }

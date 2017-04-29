@@ -28,12 +28,12 @@ GfxMessageBoxColorType::GfxMessageBoxColorType() : GfxRootClass("GfxMessageBoxCo
     type_ = static_cast<SdlType>(GfxMessageBoxColorTypeValues::colorMax);
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(SdlType type) : GfxRootClass("GfxMessageBoxColorType")
+GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) : GfxRootClass("GfxMessageBoxColorType")
 {
     type_ = type;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorTypeValues type) :
+GfxMessageBoxColorType::GfxMessageBoxColorType(const GfxMessageBoxColorTypeValues type) :
         GfxRootClass("GfxMessageBoxColorType")
 {
     type_ = static_cast<SdlType>(type);

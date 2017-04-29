@@ -25,7 +25,6 @@
 #define GfxSurface_hpp
 
 #include <string>
-#include <memory>
 #include <vector>
 
 #include "GfxSdlHeader.hpp"
@@ -44,8 +43,10 @@ public:
     typedef SDL_Surface* SdlTypePtr;
 
     GfxSurface() = delete;
-    GfxSurface(const uint16_t w, const uint16_t h);
+
+    explicit GfxSurface(const uint16_t w, const uint16_t h);
     explicit GfxSurface(const SdlTypePtr surf);
+    explicit GfxSurface(const std::string& filename);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& surf);
@@ -53,16 +54,13 @@ public:
     GfxSurface& operator=(const GfxSurface&) = delete;
     GfxSurface& operator=(GfxSurface&& surf);
 
-    explicit GfxSurface(const std::string& filename);
-    explicit GfxSurface(std::string&& filename);
-
-    ~GfxSurface();
+    virtual ~GfxSurface();
 
     int getWidth(void) const;
     int getHeight(void) const;
     int getDepth(void) const;
 
-    std::unique_ptr<GfxPixelFormat> getFormat(void);
+    GfxPixelFormat getFormat(void);
 
     void fillRect(const GfxRect& rect, const GfxColor& color);
     void fillRect(const GfxColor& color);
@@ -73,7 +71,7 @@ public:
     void blitSurface(const GfxSurface& src);
 
     void putPixel(const uint16_t x, const uint16_t y, const GfxColor& clr);
-    std::unique_ptr<GfxColor> getPixel(const uint16_t x, const uint16_t y);
+    GfxColor getPixel(const uint16_t x, const uint16_t y);
 
     void destroySurface(void);
 
@@ -87,7 +85,7 @@ private:
     friend class GfxCanvas;
 
     void putPixelPrv(const uint16_t x, const uint16_t y, const GfxColor& clr);
-    std::unique_ptr<GfxColor> getPixelPrv(const uint16_t x, const uint16_t y);
+    GfxColor getPixelPrv(const uint16_t x, const uint16_t y);
 
     SdlTypePtr surf_;
 };

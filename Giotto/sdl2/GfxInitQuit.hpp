@@ -41,7 +41,7 @@ public:
     // No default constructor
     GfxInitQuit() = delete;
 
-    explicit GfxInitQuit(GfxInitComponent gfxInitComp);
+    explicit GfxInitQuit(const GfxInitComponent gfxInitComp);
 
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;

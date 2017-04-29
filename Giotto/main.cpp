@@ -59,6 +59,7 @@
 #include "GfxRendererInfo.hpp"
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererFlags.hpp"
+#include "GfxPalette.hpp"
 
 void MsgBox(GfxWindow const& win)
 {
@@ -218,34 +219,27 @@ void AfterDeInit(void)
 
 void bmpSurfaceInfo(GfxSurface* bmps)
 {
-    std::unique_ptr<GfxPixelFormat> ptr;
-    GfxPalette::SdlTypePtr pal;
+    GfxPixelFormat ptr;
     GfxPalette::GfxColorVector vec;
 
     ptr = bmps->getFormat();
-    std::cout << "ptr->getFormat()=" << ptr->getFormat() << '\n';
+    std::cout << "ptr.getFormat()=" << ptr.getFormat() << '\n';
     // palette goes here
-    std::cout << "ptr->getBitsPerPixel()=" << static_cast<int>(ptr->getBitsPerPixel()) << '\n';
-    std::cout << "ptr->getBytesPerPixel()=" << static_cast<int>(ptr->getBytesPerPixel()) << '\n';
-    std::cout << "ptr->getRmask()=" << ptr->getRedMask() << '\n';
-    std::cout << "ptr->getGmask()=" << ptr->getGreenMask() << '\n';
-    std::cout << "ptr->getBmask()=" << ptr->getBlueMask() << '\n';
-    std::cout << "ptr->getAmask()=" << ptr->getAlphaMask() << '\n';
-    std::cout << "ptr->getRloss()=" << static_cast<int>(ptr->getRloss()) << '\n';
-    std::cout << "ptr->getGloss()=" << static_cast<int>(ptr->getGloss()) << '\n';
-    std::cout << "ptr->getBloss()=" << static_cast<int>(ptr->getBloss()) << '\n';
-    std::cout << "ptr->getAloss()=" << static_cast<int>(ptr->getAloss()) << '\n';
-    std::cout << "ptr->getRshift()=" << static_cast<int>(ptr->getRshift()) << '\n';
-    std::cout << "ptr->getGshift()=" << static_cast<int>(ptr->getGshift()) << '\n';
-    std::cout << "ptr->getBshift()=" << static_cast<int>(ptr->getBshift()) << '\n';
-    std::cout << "ptr->getAshift()=" << static_cast<int>(ptr->getAshift()) << '\n';
-    std::cout << "ptr->getRefCount()=" << ptr->getRefCount() << '\n';
-
-    pal = ptr->getPaletteAsSdlTypePtr();
-    if (pal != nullptr)
-    {
-        std::cout << "pal->ncolors=" << pal->ncolors << '\n';
-    }
+    std::cout << "ptr.getBitsPerPixel()=" << static_cast<int>(ptr.getBitsPerPixel()) << '\n';
+    std::cout << "ptr.getBytesPerPixel()=" << static_cast<int>(ptr.getBytesPerPixel()) << '\n';
+    std::cout << "ptr.getRmask()=" << ptr.getRedMask() << '\n';
+    std::cout << "ptr.getGmask()=" << ptr.getGreenMask() << '\n';
+    std::cout << "ptr.getBmask()=" << ptr.getBlueMask() << '\n';
+    std::cout << "ptr.getAmask()=" << ptr.getAlphaMask() << '\n';
+    std::cout << "ptr.getRloss()=" << static_cast<int>(ptr.getRloss()) << '\n';
+    std::cout << "ptr.getGloss()=" << static_cast<int>(ptr.getGloss()) << '\n';
+    std::cout << "ptr.getBloss()=" << static_cast<int>(ptr.getBloss()) << '\n';
+    std::cout << "ptr.getAloss()=" << static_cast<int>(ptr.getAloss()) << '\n';
+    std::cout << "ptr.getRshift()=" << static_cast<int>(ptr.getRshift()) << '\n';
+    std::cout << "ptr.getGshift()=" << static_cast<int>(ptr.getGshift()) << '\n';
+    std::cout << "ptr.getBshift()=" << static_cast<int>(ptr.getBshift()) << '\n';
+    std::cout << "ptr.getAshift()=" << static_cast<int>(ptr.getAshift()) << '\n';
+    std::cout << "ptr.getRefCount()=" << ptr.getRefCount() << '\n';
 }
 
 void inc(int* a)
@@ -286,7 +280,7 @@ void _doStuff(void)
     GfxWindowFlags wf(GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
     GfxWindow win("Window title", GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),
                   GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
-    MsgBox(win);
+    //MsgBox(win);
     GfxRenderer rend(win);
 
     GfxRendererInfo ri;
@@ -297,6 +291,17 @@ void _doStuff(void)
     std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
     std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
 
+    if (ri.getNumTextureFormats() > 0)
+    {
+        GfxRendererInfo::GfxTextureFormats gtf;
+
+        gtf = ri.getTextureFormats();
+        for (int i = 0; i < ri.getNumTextureFormats(); i++)
+        {
+            GfxPixelFormat gpf(gtf[i]);
+            std::cout << "gpf.getFormatAsString()=" << gpf.getFormatAsString() << '\n';
+        }
+    }
     GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
@@ -535,13 +540,17 @@ int WinMain(int argc, const char * argv[])
 int main(int argc, const char * argv[])
 #endif
 {
-    int action = 0;
+    int action = __platform_default_action;
 
     if (argc == 2)
     {
         if (std::strcmp(argv[1], "sdl") == 0)
         {
             action = 1;
+        }
+        if (std::strcmp(argv[1], "play") == 0)
+        {
+            action = 0;
         }
     }
     if (action == 0)

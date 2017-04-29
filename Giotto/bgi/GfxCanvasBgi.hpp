@@ -154,7 +154,7 @@ public:
     struct palettetype
     {
         unsigned char size;
-        signed char colors[GfxCanvasBgiData::MAXCOLORS + 1];
+        signed char colors[GfxCanvasBgiData::kMaxColors + 1];
     };
 
     struct textsettingstype
@@ -176,6 +176,7 @@ public:
     };
 
     GfxCanvasBgi();
+
     GfxCanvasBgi(const GfxCanvasBgi&) = delete;
     GfxCanvasBgi(GfxCanvasBgi&&) = delete;
 
@@ -281,7 +282,7 @@ private:
     // updated with the new bgi_activepage contents; bgi_texture is then
     // copied to bgi_renderer, and finally bgi_renderer is made present.
 
-    uint32_t palette[1 + GfxCanvasBgiData::MAXCOLORS + 3];  // all colors
+    uint32_t palette[1 + GfxCanvasBgiData::kMaxColors + 3];  // all colors
 
     bgiColors bgi_fg_color = bgiColors::WHITE;    // index of BGI foreground color
     bgiColors bgi_bg_color = bgiColors::BLACK;    // index of BGI background color
@@ -308,7 +309,7 @@ private:
 
     // pointer to font array. Should I add more (ugly) bitmap fonts?
     const uint8_t *fontptr = GfxCanvasBgiData::gfxPrimitivesFontdata;
-};  // class SDL_bgi
+};  // class GfxCanvasBgi
 
 
 #endif /* GfxBgi_hpp */

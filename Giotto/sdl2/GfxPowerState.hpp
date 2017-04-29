@@ -45,8 +45,10 @@ public:
     };
 
     GfxPowerState();
-    explicit GfxPowerState(GfxPowerStateValues value);
-    explicit GfxPowerState(SdlType value);
+
+    explicit GfxPowerState(const GfxPowerStateValues value);
+    explicit GfxPowerState(const SdlType value);
+
     GfxPowerState(GfxPowerState const& other);
     GfxPowerState(GfxPowerState&& other);
 

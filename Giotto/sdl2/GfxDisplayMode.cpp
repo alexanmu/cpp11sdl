@@ -32,7 +32,8 @@ GfxDisplayMode::GfxDisplayMode() : GfxRootClass("GfxDisplayMode")
     dmode_.driverdata = NULL;
 }
 
-GfxDisplayMode::GfxDisplayMode(uint32_t format, int w, int h, int refresh) : GfxRootClass("GfxDisplayMode")
+GfxDisplayMode::GfxDisplayMode(uint32_t const format, int const w, int const h, int const refresh) :
+        GfxRootClass("GfxDisplayMode")
 {
     dmode_.format = format;
     dmode_.w = w;

@@ -28,20 +28,15 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass("GfxMessageB
     flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlagsValues flags) :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlagsValues flags) :
         GfxRootClass("GfxMessageBoxButtonFlags")
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(SdlType flags) : GfxRootClass("GfxMessageBoxButtonFlags")
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) : GfxRootClass("GfxMessageBoxButtonFlags")
 {
     flags_ = flags;
-}
-
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(SdlTypePtr flags) : GfxRootClass("GfxMessageBoxButtonFlags")
-{
-    flags_ = *flags;
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) :

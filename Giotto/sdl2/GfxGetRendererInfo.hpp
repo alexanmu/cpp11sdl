@@ -31,6 +31,7 @@ class GfxGetRendererInfo final : public GfxRootClass
 {
 public:
     GfxGetRendererInfo();
+
     GfxGetRendererInfo(GfxGetRendererInfo const&) = delete;
     GfxGetRendererInfo(GfxGetRendererInfo&&) = delete;
 
@@ -38,7 +39,7 @@ public:
     GfxGetRendererInfo& operator=(GfxGetRendererInfo&&) = delete;
 
     int getNumRenderDrivers(void);
-    void getRenderDriverInfo(int index, GfxRendererInfo* infoptr);
+    void getRenderDriverInfo(const int index, GfxRendererInfo* infoptr);
 private:
     int numRenderDrivers_;
 };

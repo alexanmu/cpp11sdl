@@ -48,7 +48,9 @@ public:
     };
 
     GfxRendererInfo();
-    explicit GfxRendererInfo(SdlType info);
+
+    explicit GfxRendererInfo(const SdlType info);
+
     GfxRendererInfo(const GfxRendererInfo& other);
     GfxRendererInfo(GfxRendererInfo&& other);
 
@@ -62,7 +64,7 @@ public:
     int32_t getMaxTextureWidth(void) const;
     int32_t getMaxTextureHeight(void) const;
 
-    void set(SdlType info);
+    void set(const SdlType info);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

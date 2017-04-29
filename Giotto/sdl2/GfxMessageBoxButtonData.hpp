@@ -37,7 +37,9 @@ public:
     typedef SDL_MessageBoxButtonData* SdlTypePtr;
 
     GfxMessageBoxButtonData();
+
     GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int buttonid, const std::string& text);
+
     GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other);
     GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other);
 

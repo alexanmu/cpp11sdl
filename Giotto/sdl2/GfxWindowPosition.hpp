@@ -38,14 +38,16 @@ public:
     };
 
     GfxWindowPosition();
-    explicit GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord = 0);
+
+    explicit GfxWindowPosition(const GfxWindowPositionValues pos, const uint32_t coord = 0);
+
     GfxWindowPosition(GfxWindowPosition const& other);
     GfxWindowPosition(GfxWindowPosition&& other);
 
     GfxWindowPosition& operator=(GfxWindowPosition const& other);
     GfxWindowPosition& operator=(GfxWindowPosition&& other);
 
-    void setPosition(GfxWindowPositionValues pos);
+    void setPosition(const GfxWindowPositionValues pos);
     GfxWindowPositionValues getPosition(void) const;
 
     void setCoordinate(uint32_t coord = -1);

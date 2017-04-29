@@ -41,9 +41,11 @@ public:
     };
 
     GfxTextureModulate();
-    explicit GfxTextureModulate(GfxTextureModulateValues modulate);
-    explicit GfxTextureModulate(SdlType modulate);
-    explicit GfxTextureModulate(SdlTypePtr modulate);
+
+    explicit GfxTextureModulate(const GfxTextureModulateValues modulate);
+    explicit GfxTextureModulate(const SdlType modulate);
+    explicit GfxTextureModulate(const SdlTypePtr modulate);
+
     GfxTextureModulate(GfxTextureModulate const& other);
     GfxTextureModulate(GfxTextureModulate&& other);
 

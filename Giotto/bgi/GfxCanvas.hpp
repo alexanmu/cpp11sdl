@@ -41,9 +41,15 @@ public:
     GfxCanvas() = delete;
     explicit GfxCanvas(GfxSurface const& surf);
 
+    GfxCanvas(GfxCanvas const&) = delete;
+    GfxCanvas(GfxCanvas&&) = delete;
+
+    GfxCanvas& operator=(GfxCanvas const&) = delete;
+    GfxCanvas& operator=(GfxCanvas&&) = delete;
+
     void Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr);
     void Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
-                const GfxRadius& radius, const GfxColor& clr);
+             const GfxRadius& radius, const GfxColor& clr);
     void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr);
     void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const GfxBitmapFont& font);
     void Bar(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);

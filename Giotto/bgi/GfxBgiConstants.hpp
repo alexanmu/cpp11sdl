@@ -32,6 +32,7 @@ class GfxBgiConstants final : public GfxRootClass
 {
 public:
     GfxBgiConstants() = delete;
+
     GfxBgiConstants(const GfxBgiConstants&) = delete;
     GfxBgiConstants(GfxBgiConstants&&) = delete;
 

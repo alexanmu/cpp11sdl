@@ -32,7 +32,9 @@ public:
     typedef int GfxValueType;
 
     GfxAngle();
-    explicit GfxAngle(GfxValueType value);
+
+    explicit GfxAngle(const GfxValueType value);
+
     GfxAngle(const GfxAngle& other);
     GfxAngle(GfxAngle&& other);
 
@@ -44,6 +46,7 @@ public:
     bool operator<(const GfxAngle& other);
 
     GfxValueType getValue() const;
+    void setValue(const GfxValueType& angle);
 private:
     GfxValueType value_;
 };

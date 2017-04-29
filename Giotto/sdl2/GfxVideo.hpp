@@ -36,6 +36,7 @@ class GfxVideo final : public GfxRootClass
 {
 public:
     GfxVideo();
+
     GfxVideo(GfxVideo const&) = delete;
     GfxVideo(GfxVideo&&) = delete;
 
@@ -46,18 +47,18 @@ public:
     void videoQuit(void) throw();
 
     int getNumVideoDrivers(void);
-    std::string getVideoDriver(int driverindex) const;
+    std::string getVideoDriver(const int driverindex) const;
     std::string getCurrentVideoDriver(void) const;
     int getNumVideoDisplays(void);
-    std::string getDisplayName(int displayindex) const;
-    std::unique_ptr<GfxRect> getDisplayBounds(int displayindex) const;
-    std::unique_ptr<GfxRect> getDisplayUsableBounds(int displayindex) const;
-    void getDisplayDPI(int displayindex, float * ddpi, float * hdpi, float * vdpi) const;
-    int getNumDisplayModes(int displayindex);
-    std::unique_ptr<GfxDisplayMode> getDisplayMode(int displayindex, int modeindex);
-    std::unique_ptr<GfxDisplayMode> getDesktopDisplayMode(int displayindex) const;
-    std::unique_ptr<GfxDisplayMode> getCurrentDisplayMode(int displayindex) const;
-    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(int displayindex, GfxDisplayMode const& mode) const;
+    std::string getDisplayName(const int displayindex) const;
+    std::unique_ptr<GfxRect> getDisplayBounds(const int displayindex) const;
+    std::unique_ptr<GfxRect> getDisplayUsableBounds(const int displayindex) const;
+    void getDisplayDPI(const int displayindex, float * ddpi, float * hdpi, float * vdpi) const;
+    int getNumDisplayModes(const int displayindex);
+    std::unique_ptr<GfxDisplayMode> getDisplayMode(const int displayindex, const int modeindex);
+    std::unique_ptr<GfxDisplayMode> getDesktopDisplayMode(const int displayindex) const;
+    std::unique_ptr<GfxDisplayMode> getCurrentDisplayMode(const int displayindex) const;
+    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(const int displayindex, GfxDisplayMode const& mode) const;
 private:
     int numvideodrivers_;
     int numvideodisplays_;

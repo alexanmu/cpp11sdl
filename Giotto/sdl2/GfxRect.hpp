@@ -34,9 +34,10 @@ public:
     typedef SDL_Rect* SdlTypePtr;
 
     GfxRect();
+
     GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h);
-    explicit GfxRect(SdlType rect);
-    explicit GfxRect(SdlTypePtr rect);
+    explicit GfxRect(const SdlType rect);
+
     GfxRect(const GfxRect& other);
     GfxRect(GfxRect&& other);
 
@@ -59,7 +60,7 @@ public:
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr() const;
 private:
-    SDL_Rect rect_;
+    SdlType rect_;
 };
 
 #endif /* GfxRect_hpp */

@@ -24,11 +24,10 @@
 #ifndef GfxPixelFormat_hpp
 #define GfxPixelFormat_hpp
 
-#include <memory>
+#include <string>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
-#include "GfxPalette.hpp"
 
 class GfxPixelFormat final : public GfxRootClass
 {
@@ -37,15 +36,22 @@ public:
     typedef SDL_PixelFormat* SdlTypePtr;
 
     GfxPixelFormat();
-    explicit GfxPixelFormat(SdlTypePtr pix);
+    explicit GfxPixelFormat(const SdlTypePtr pix);
+    explicit GfxPixelFormat(const uint32_t format);
 
-    GfxPixelFormat(const GfxPixelFormat& other);
+    /* No copy-ctor */
+    GfxPixelFormat(const GfxPixelFormat& other) = delete;
     GfxPixelFormat(GfxPixelFormat&& other);
-    GfxPixelFormat& operator=(const GfxPixelFormat& other);
+
+    // No copy-oprtr
+    GfxPixelFormat& operator=(const GfxPixelFormat& other) = delete;
     GfxPixelFormat& operator=(GfxPixelFormat&& other);
 
+    virtual ~GfxPixelFormat();
+
+    void freeFormat(void);
+
     uint32_t getFormat(void) const;
-    GfxPalette::GfxColorVector getPalette(void);
     uint8_t getBitsPerPixel(void) const;
     uint8_t getBytesPerPixel(void) const;
     uint32_t getRedMask(void) const;
@@ -64,8 +70,9 @@ public:
     int32_t getRefCount(void) const;
     SdlTypePtr getNext(void) const;
 
+    std::string getFormatAsString(void) const;
+
     void setFormat(const uint32_t format);
-    void setPaletteColors(GfxPalette::GfxColorVector vec);
     void setBitsPerPixel(const uint8_t bpp);
     void setBytesPerPixel(const uint8_t bypp);
     void setRedMask(const uint32_t rmask);
@@ -73,11 +80,9 @@ public:
     void setBlueMask(const uint32_t bmask);
     void setAlphaMask(const uint32_t amask);
 
-    GfxPalette::SdlTypePtr getPaletteAsSdlTypePtr(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     SdlTypePtr pix_;
-    GfxPalette* pal_;
 };
 
 #endif /* GfxPixelFormat_hpp */

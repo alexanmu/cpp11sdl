@@ -32,7 +32,9 @@ class GfxBitmapFont final : public GfxRootClass
 {
 public:
     GfxBitmapFont();
+
     GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight);
+
     GfxBitmapFont(const GfxBitmapFont& other);
     GfxBitmapFont(GfxBitmapFont&& other);
 

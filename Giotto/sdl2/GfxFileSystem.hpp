@@ -32,6 +32,7 @@ class GfxFileSystem final : public GfxRootClass
 {
 public:
     GfxFileSystem();
+
     GfxFileSystem(GfxFileSystem const&) = delete;
     GfxFileSystem(GfxFileSystem&&) = delete;
 

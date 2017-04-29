@@ -41,18 +41,22 @@ public:
 
     GfxPalette();
     explicit GfxPalette(const uint16_t nColors);
-    explicit GfxPalette(SdlTypePtr pal);
+    explicit GfxPalette(const SdlTypePtr pal);
     explicit GfxPalette(const GfxColorVector& colors);
 
-    GfxPalette(const GfxPalette& other);
+    // No copy-ctor
+    GfxPalette(const GfxPalette& other) = delete;
     GfxPalette(GfxPalette&& other);
 
-    ~GfxPalette();
+    virtual ~GfxPalette();
 
-    GfxPalette& operator=(const GfxPalette& other);
+    // No copy-oprtr
+    GfxPalette& operator=(const GfxPalette& other) = delete;
     GfxPalette& operator=(GfxPalette&& other);
 
     /* Methods */
+    void freePalette(void);
+
     void setPaletteColors(const GfxColorVector& vec, const uint16_t firstColor);
     GfxColorVector getPaletteColors(void) const;
 
@@ -61,7 +65,6 @@ public:
     uint32_t getVersion(void) const;
     int getRefCount(void) const;
 
-    SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     static constexpr uint16_t kDefaultPaletteSize = 256;

@@ -996,7 +996,7 @@ int GfxCanvasBgi::getmaxcolor(void)
 {
     // Returns the maximum color value available (MAXCOLORS).
 
-    return GfxCanvasBgiData::MAXCOLORS;
+    return GfxCanvasBgiData::kMaxColors;
 }  // getmaxcolor ()
 
 // -----
@@ -1025,7 +1025,7 @@ void GfxCanvasBgi::getpalette(struct palettetype *palette)
     // information about the current palette’s size and colors.
     int i;
 
-    for (i = 0; i <= GfxCanvasBgiData::MAXCOLORS; i++)
+    for (i = 0; i <= GfxCanvasBgiData::kMaxColors; i++)
     {
         palette->colors[i] = pal.colors[i];
     }
@@ -1037,7 +1037,7 @@ int GfxCanvasBgi::getpalettesize(struct palettetype *palette)
 {
     // Returns the size of the palette.
 
-    return (1 + GfxCanvasBgiData::MAXCOLORS);
+    return (1 + GfxCanvasBgiData::kMaxColors);
 }  // getpalettesize ()
 
 // -----
@@ -1171,8 +1171,8 @@ void GfxCanvasBgi::graphdefaults(void)
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
 
     // initialise the palette
-    pal.size = 1 + GfxCanvasBgiData::MAXCOLORS;
-    for (i = 0; i < (GfxCanvasBgiData::MAXCOLORS + 1); i++)
+    pal.size = 1 + GfxCanvasBgiData::kMaxColors;
+    for (i = 0; i < (GfxCanvasBgiData::kMaxColors + 1); i++)
     {
         pal.colors[i] = i;
     }
@@ -2190,7 +2190,7 @@ void GfxCanvasBgi::setallpalette(struct palettetype *palette)
     // Sets the current palette to the values given in palette.
     int i;
 
-    for (i = 0; i <= GfxCanvasBgiData::MAXCOLORS; i++)
+    for (i = 0; i <= GfxCanvasBgiData::kMaxColors; i++)
     {
         if (palette->colors[i] != -1)
         {

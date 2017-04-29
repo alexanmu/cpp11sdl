@@ -43,7 +43,7 @@ int GfxGetRendererInfo::getNumRenderDrivers(void)
     return nrd;
 }
 
-void GfxGetRendererInfo::getRenderDriverInfo(int index, GfxRendererInfo* infoptr)
+void GfxGetRendererInfo::getRenderDriverInfo(const int index, GfxRendererInfo* infoptr)
 {
     GfxRendererInfo::SdlType rdi;
 

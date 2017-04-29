@@ -44,8 +44,10 @@ public:
     };
 
     GfxMessageBoxColorType();
-    explicit GfxMessageBoxColorType(SdlType type);
-    explicit GfxMessageBoxColorType(GfxMessageBoxColorTypeValues type);
+
+    explicit GfxMessageBoxColorType(const SdlType type);
+    explicit GfxMessageBoxColorType(const GfxMessageBoxColorTypeValues type);
+
     GfxMessageBoxColorType(GfxMessageBoxColorType const& other);
     GfxMessageBoxColorType(GfxMessageBoxColorType&& other);
 

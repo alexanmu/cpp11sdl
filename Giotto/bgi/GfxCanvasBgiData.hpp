@@ -34,19 +34,20 @@ class GfxCanvasBgiData final : public GfxRootClass
 {
 public:
     GfxCanvasBgiData() = delete;
+
     GfxCanvasBgiData(const GfxCanvasBgiData&) = delete;
     GfxCanvasBgiData(GfxCanvasBgiData&&) = delete;
 
     GfxCanvasBgiData& operator=(const GfxCanvasBgiData&) = delete;
     GfxCanvasBgiData& operator=(GfxCanvasBgiData&&) = delete;
 
-    static constexpr int MAXCOLORS = 15;
-    static constexpr int GFX_FONTDATAMAX = 8 * 256;
+    static constexpr int kMaxColors = 15;
+    static constexpr int kGfxFontDataMax = 8 * 256;
 
-    static const uint32_t bgi_palette[1 + MAXCOLORS];
+    static const uint32_t bgi_palette[1 + kMaxColors];
     static /*const*/ uint16_t line_patterns[1 + 4/*static_cast<int>(GfxCanvasBgi::bgiLineStyle::USERBIT_LINE)*/];
     static /*const*/ uint8_t fill_patterns[1 + 12/*static_cast<int>(GfxCanvasBgi::bgiFillStyles::USER_FILL)*/][8];
-    static const uint8_t gfxPrimitivesFontdata[GFX_FONTDATAMAX];
+    static const uint8_t gfxPrimitivesFontdata[kGfxFontDataMax];
 };
 
 #endif /* GfxCanvasBgiData_h */

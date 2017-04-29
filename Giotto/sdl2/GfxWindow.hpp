@@ -44,14 +44,12 @@ public:
                 const uint16_t width, const uint16_t height, const GfxWindowFlags& flags);
 
     GfxWindow() = delete;
-
     GfxWindow(const GfxWindow&) = delete;
+    GfxWindow(GfxWindow&&) = delete;
     GfxWindow& operator=(const GfxWindow&) = delete;
+    GfxWindow& operator=(GfxWindow&&) = delete;
 
-    GfxWindow(GfxWindow&& win);
-    GfxWindow& operator=(GfxWindow&& win);
-
-    ~GfxWindow();
+    virtual ~GfxWindow();
 
     void destroyWindow();
 
@@ -64,7 +62,7 @@ public:
     void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
     void getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y);
 
-    void setWindowSize(int32_t x, int32_t y);
+    void setWindowSize(const int32_t x, const int32_t y);
     void getWindowSize(int32_t* px, int32_t* py);
 
     std::unique_ptr<GfxSurface> getWindowSurface(void);
@@ -121,8 +119,7 @@ public:
 
     SdlTypePtr getAsSdlTypePtr() const;
 private:
-    SDL_Window* window_;
-    std::string title_;
+    SdlTypePtr window_;
 };
 
 #endif /* GfxWindow_hpp */

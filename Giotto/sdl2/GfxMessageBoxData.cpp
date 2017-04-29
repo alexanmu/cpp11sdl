@@ -39,8 +39,8 @@ GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass("GfxMessageBoxData")
 }
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
-                                    std::string title, std::string message, const int numbuttons,
-                                    GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
+                                     const std::string& title, const std::string& message, const int numbuttons,
+                                     GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
         GfxRootClass("GfxMessageBoxData")
 {
     data_.flags = flags.getAsSdlType();
@@ -60,8 +60,8 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxW
 }
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
-                                    std::string title, std::string message, const int numbuttons,
-                                    GfxMessageBoxButtonData buttons[]) :
+                                     const std::string& title, const std::string& message, const int numbuttons,
+                                     GfxMessageBoxButtonData buttons[]) :
         GfxRootClass("GfxMessageBoxData")
 {
     data_.flags = flags.getAsSdlType();

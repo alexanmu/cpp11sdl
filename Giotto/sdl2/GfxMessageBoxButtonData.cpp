@@ -85,9 +85,8 @@ int GfxMessageBoxButtonData::getButtonId(void) const
 
 std::string GfxMessageBoxButtonData::getText(void) const
 {
-    std::string text;
+    std::string text { data_.text };
 
-    text = data_.text;
     return text;
 }
 

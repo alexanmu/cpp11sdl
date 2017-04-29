@@ -33,6 +33,7 @@ class GfxPowerInfo final : public GfxRootClass
 {
 public:
     GfxPowerInfo();
+
     GfxPowerInfo(GfxPowerInfo const&) = delete;
     GfxPowerInfo(GfxPowerInfo&&) = delete;
 

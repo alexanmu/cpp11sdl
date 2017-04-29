@@ -30,6 +30,7 @@ class GfxScreenSaver final : public GfxRootClass
 {
 public:
     GfxScreenSaver();
+
     GfxScreenSaver(GfxScreenSaver const&) = delete;
     GfxScreenSaver(GfxScreenSaver&&) = delete;
 

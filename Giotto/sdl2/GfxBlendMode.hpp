@@ -42,9 +42,10 @@ public:
     };
 
     GfxBlendMode();
-    explicit GfxBlendMode(GfxBlendModeValues blendmode);
-    explicit GfxBlendMode(SdlType blendmode);
-    explicit GfxBlendMode(SdlTypePtr blendmode);
+
+    explicit GfxBlendMode(const GfxBlendModeValues blendmode);
+    explicit GfxBlendMode(const SdlType blendmode);
+
     GfxBlendMode(const GfxBlendMode& other);
     GfxBlendMode(GfxBlendMode&& other);
 

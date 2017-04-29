@@ -28,19 +28,14 @@ GfxBlendMode::GfxBlendMode()
     blendmode_ = static_cast<SdlType>(GfxBlendModeValues::blendNone);
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendModeValues blendmode)
+GfxBlendMode::GfxBlendMode(const GfxBlendModeValues blendmode)
 {
     blendmode_ = static_cast<SdlType>(blendmode);
 }
 
-GfxBlendMode::GfxBlendMode(SdlType blendmode)
+GfxBlendMode::GfxBlendMode(const SdlType blendmode)
 {
     blendmode_ = blendmode;
-}
-
-GfxBlendMode::GfxBlendMode(SdlTypePtr blendmode)
-{
-    blendmode_ = *blendmode;
 }
 
 GfxBlendMode::GfxBlendMode(const GfxBlendMode& other)

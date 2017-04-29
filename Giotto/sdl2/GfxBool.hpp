@@ -34,9 +34,10 @@ public:
     typedef SDL_bool* SdlTypePtr;
 
     GfxBool();
-    explicit GfxBool(bool value);
-    explicit GfxBool(SdlType value);
-    explicit GfxBool(SdlTypePtr value);
+
+    explicit GfxBool(const bool value);
+    explicit GfxBool(const SdlType value);
+
     GfxBool(const GfxBool& other);
     GfxBool(GfxBool&& other);
 

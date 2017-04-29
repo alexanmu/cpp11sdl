@@ -28,19 +28,14 @@ GfxBool::GfxBool() : GfxRootClass("GfxBool")
     value_ = static_cast<SdlType>(false);
 }
 
-GfxBool::GfxBool(bool value) : GfxRootClass("GfxBool")
+GfxBool::GfxBool(const bool value) : GfxRootClass("GfxBool")
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(SdlType value) : GfxRootClass("GfxBool")
+GfxBool::GfxBool(const SdlType value) : GfxRootClass("GfxBool")
 {
     value_ = value;
-}
-
-GfxBool::GfxBool(SdlTypePtr value) : GfxRootClass("GfxBool")
-{
-    value_ = *value;
 }
 
 GfxBool::GfxBool(const GfxBool& other) : GfxRootClass("GfxBool")

@@ -596,9 +596,20 @@ void Playground::_doPaletteGfx(void)
     GfxPalette g4(vec);
     
     printSdlPalette(g1.getAsSdlTypePtr(), false);
-    printSdlPalette(g2.getAsSdlTypePtr(), true);
-    printSdlPalette(g3.getAsSdlTypePtr(), false);
-    printSdlPalette(g4.getAsSdlTypePtr(), true);
+    printSdlPalette(g2.getAsSdlTypePtr(), false);
+    printSdlPalette(g3.getAsSdlTypePtr(), true);
+    printSdlPalette(g4.getAsSdlTypePtr(), false);
+    
+    GfxPixelFormat pf1;
+    SDL_PixelFormat* pix = SDL_AllocFormat(SDL_PIXELFORMAT_INDEX8);
+    GfxPixelFormat pf2(pix);
+    SDL_FreeFormat(pix);
+    GfxPixelFormat pf3(SDL_PIXELFORMAT_RGB24);
+    
+    std::cout << "pf1.getFormatAsString()=" << pf1.getFormatAsString() << '\n';
+    std::cout << "pf2.getFormatAsString()=" << pf2.getFormatAsString() << '\n';
+    std::cout << "pf3.getFormatAsString()=" << pf3.getFormatAsString() << '\n';
+    std::cout << "SDL_GetPixelFormatName(...)=" << SDL_GetPixelFormatName(SDL_PIXELFORMAT_INDEX8) << '\n';
 }
 
 /* EOF */

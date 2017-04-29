@@ -55,9 +55,11 @@ public:
     };
 
     GfxWindowEventID();
-    explicit GfxWindowEventID(GfxWindowEventIDValues eventid);
-    explicit GfxWindowEventID(SdlType eventid);
-    explicit GfxWindowEventID(SdlTypePtr eventid);
+
+    explicit GfxWindowEventID(const GfxWindowEventIDValues eventid);
+    explicit GfxWindowEventID(const SdlType eventid);
+    explicit GfxWindowEventID(const SdlTypePtr eventid);
+
     GfxWindowEventID(GfxWindowEventID const& other);
     GfxWindowEventID(GfxWindowEventID&& other);
 

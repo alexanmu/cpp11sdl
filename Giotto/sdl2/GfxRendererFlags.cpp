@@ -38,11 +38,6 @@ GfxRendererFlags::GfxRendererFlags(SdlType flags) : GfxRootClass("GfxRendererFla
     flags_ = flags;
 }
 
-GfxRendererFlags::GfxRendererFlags(SdlTypePtr flags) : GfxRootClass("GfxRendererFlags")
-{
-    flags_ = *flags;
-}
-
 GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) : GfxRootClass("GfxRendererFlags")
 {
     flags_ = other.flags_;

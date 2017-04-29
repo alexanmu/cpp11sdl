@@ -30,12 +30,12 @@ GfxPowerState::GfxPowerState() : GfxRootClass("GfxPowerState")
     value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
 }
 
-GfxPowerState::GfxPowerState(GfxPowerStateValues value) : GfxRootClass("GfxPowerState")
+GfxPowerState::GfxPowerState(const GfxPowerStateValues value) : GfxRootClass("GfxPowerState")
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPowerState::GfxPowerState(SdlType value) : GfxRootClass("GfxPowerState")
+GfxPowerState::GfxPowerState(const SdlType value) : GfxRootClass("GfxPowerState")
 {
     value_ = value;
 }

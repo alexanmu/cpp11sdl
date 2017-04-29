@@ -32,6 +32,7 @@ class GfxClipboard final : public GfxRootClass
 {
 public:
     GfxClipboard();
+
     GfxClipboard(GfxClipboard const&) = delete;
     GfxClipboard(GfxClipboard&&) = delete;
 

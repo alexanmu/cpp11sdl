@@ -33,14 +33,9 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootC
     flag_ = static_cast<SdlType>(flag);
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(SdlType flag) : GfxRootClass("GfxMessageBoxFlags")
+GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) : GfxRootClass("GfxMessageBoxFlags")
 {
     flag_ = flag;
-}
-
-GfxMessageBoxFlags::GfxMessageBoxFlags(SdlTypePtr flag) : GfxRootClass("GfxMessageBoxFlags")
-{
-    flag_ = *flag;
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) : GfxRootClass("GfxMessageBoxFlags")
@@ -107,7 +102,7 @@ GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const
 
 GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const
 {
-    return (SdlTypePtr)flag_;
+    return (SdlTypePtr)&flag_;
 }
 
 /* EOF */

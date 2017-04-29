@@ -21,193 +21,297 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <memory>
+#include <string>
 
 #include "GfxPixelFormat.hpp"
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass("GfxPixelFormat")
 {
-    pix_ = nullptr;
-    pal_ = nullptr;
+    pix_ = SDL_AllocFormat(SDL_PIXELFORMAT_ARGB8888);
+    if (pix_ == nullptr)
+    {
+        // Error handling here
+    }
 };
 
-GfxPixelFormat::GfxPixelFormat(SdlTypePtr pix) : GfxRootClass("GfxPixelFormat")
+GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass("GfxPixelFormat")
 {
-    pix_ = pix;
-    pal_ = new GfxPalette(pix->palette);
+    pix_ = SDL_AllocFormat(pix->format);
+    *pix_ = *pix;
 }
 
-GfxPixelFormat::GfxPixelFormat(const GfxPixelFormat& other) : GfxRootClass("GfxPixelFormat")
+GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass("GfxPixelFormat")
 {
-    pix_ = other.pix_;
-    pal_ = other.pal_;
+    pix_ = SDL_AllocFormat(format);
+    if (pix_ == nullptr)
+    {
+        // Error handling here
+    }
 }
 
 GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass("GfxPixelFormat")
 {
     pix_ = other.pix_;
-    pal_ = other.pal_;
-}
-
-GfxPixelFormat& GfxPixelFormat::operator=(const GfxPixelFormat& other)
-{
-    if (this != &other)
-    {
-        pix_ = other.pix_;
-        pal_ = other.pal_;
-    }
-    return *this;
+    // Delete other's data
+    other.pix_ = nullptr;
 }
 
 GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
 {
     if (this != &other)
     {
+        if (pix_ != nullptr)
+        {
+            SDL_FreeFormat(pix_);
+        }
         pix_ = other.pix_;
-        pal_ = other.pal_;
+        // Delete other's data
+        other.pix_ = nullptr;
     }
     return *this;
+}
+
+GfxPixelFormat::~GfxPixelFormat()
+{
+    if (pix_ != nullptr)
+    {
+        SDL_FreeFormat(pix_);
+    }
+}
+
+void GfxPixelFormat::freeFormat(void)
+{
+    if (pix_ != nullptr)
+    {
+        SDL_FreeFormat(pix_);
+        pix_ = nullptr;
+    }
 }
 
 /*** Getters ***/
 uint32_t GfxPixelFormat::getFormat(void) const
 {
-    return pix_->format;
-}
-
-GfxPalette::GfxColorVector GfxPixelFormat::getPalette(void)
-{
-    return pal_->getPaletteColors();
+    if (pix_ != nullptr)
+    {
+        return pix_->format;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getBitsPerPixel(void) const
 {
-    return pix_->BitsPerPixel;
+    if (pix_ != nullptr)
+    {
+        return pix_->BitsPerPixel;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getBytesPerPixel(void) const
 {
-    return pix_->BytesPerPixel;
+    if (pix_ != nullptr)
+    {
+        return pix_->BytesPerPixel;
+    }
+    return 0;
 }
 
 uint32_t GfxPixelFormat::getRedMask(void) const
 {
-    return pix_->Rmask;
+    if (pix_ != nullptr)
+    {
+        return pix_->Rmask;
+    }
+    return 0;
 }
 
 uint32_t GfxPixelFormat::getGreenMask(void) const
 {
-    return pix_->Gmask;
+    if (pix_ != nullptr)
+    {
+        return pix_->Gmask;
+    }
+    return 0;
 }
 
 uint32_t GfxPixelFormat::getBlueMask(void) const
 {
-    return pix_->Bmask;
+    if (pix_ != nullptr)
+    {
+        return pix_->Bmask;
+    }
+    return 0;
 }
 
 uint32_t GfxPixelFormat::getAlphaMask(void) const
 {
-    return pix_->Amask;
+    if (pix_ != nullptr)
+    {
+        return pix_->Amask;
+    }
+    return 0;
 }
 
 /* for internal use by SDL */
 uint8_t GfxPixelFormat::getRloss(void) const
 {
-    return pix_->Rloss;
+    if (pix_ != nullptr)
+    {
+        return pix_->Rloss;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getGloss(void) const
 {
-    return pix_->Gloss;
+    if (pix_ != nullptr)
+    {
+        return pix_->Gloss;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getBloss(void) const
 {
-    return pix_->Bloss;
+    if (pix_ != nullptr)
+    {
+        return pix_->Bloss;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getAloss(void) const
 {
-    return pix_->Aloss;
+    if (pix_ != nullptr)
+    {
+        return pix_->Aloss;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getRshift(void) const
 {
-    return pix_->Rshift;
+    if (pix_ != nullptr)
+    {
+        return pix_->Rshift;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getGshift(void) const
 {
-    return pix_->Gshift;
+    if (pix_ != nullptr)
+    {
+        return pix_->Gshift;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getBshift(void) const
 {
-    return pix_->Bshift;
+    if (pix_ != nullptr)
+    {
+        return pix_->Bshift;
+    }
+    return 0;
 }
 
 uint8_t GfxPixelFormat::getAshift(void) const
 {
-    return pix_->Ashift;
+    if (pix_ != nullptr)
+    {
+        return pix_->Ashift;
+    }
+    return 0;
 }
 
 int32_t GfxPixelFormat::getRefCount(void) const
 {
-    return pix_->refcount;
+    if (pix_ != nullptr)
+    {
+        return pix_->refcount;
+    }
+    return -1;
 }
 
 GfxPixelFormat::SdlTypePtr GfxPixelFormat::getNext(void) const
 {
-    return pix_->next;
+    if (pix_ != nullptr)
+    {
+        return pix_->next;
+    }
+    return nullptr;
+}
+
+std::string GfxPixelFormat::getFormatAsString(void) const
+{
+    std::string str {"$nullptr$"};
+
+    if (pix_ != nullptr)
+    {
+        str = SDL_GetPixelFormatName(pix_->format);
+    }
+    return str;
 }
 
 /*** Setters ***/
 void GfxPixelFormat::setFormat(const uint32_t format)
 {
-    pix_->format = format;
-}
-
-void GfxPixelFormat::setPaletteColors(GfxPalette::GfxColorVector vec)
-{
-    pal_->setPaletteColors(vec, 0);
+    if (pix_ != nullptr)
+    {
+        pix_->format = format;
+    }
 }
 
 void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
 {
-    pix_->BitsPerPixel = bpp;
+    if (pix_ != nullptr)
+    {
+        pix_->BitsPerPixel = bpp;
+    }
 }
 
 void GfxPixelFormat::setBytesPerPixel(const uint8_t bypp)
 {
-    pix_->BytesPerPixel = bypp;
+    if (pix_ != nullptr)
+    {
+        pix_->BytesPerPixel = bypp;
+    }
 }
 
 void GfxPixelFormat::setRedMask(const uint32_t rmask)
 {
-    pix_->Rmask = rmask;
+    if (pix_ != nullptr)
+    {
+        pix_->Rmask = rmask;
+    }
 }
 
 void GfxPixelFormat::setGreenMask(const uint32_t gmask)
 {
-    pix_->Gmask = gmask;
+    if (pix_ != nullptr)
+    {
+        pix_->Gmask = gmask;
+    }
 }
 
 void GfxPixelFormat::setBlueMask(const uint32_t bmask)
 {
-    pix_->Bmask = bmask;
+    if (pix_ != nullptr)
+    {
+        pix_->Bmask = bmask;
+    }
 }
 
 void GfxPixelFormat::setAlphaMask(const uint32_t amask)
 {
-    pix_->Amask = amask;
+    if (pix_ != nullptr)
+    {
+        pix_->Amask = amask;
+    }
 }
 
 /*** SDL ***/
-GfxPalette::SdlTypePtr GfxPixelFormat::getPaletteAsSdlTypePtr(void) const
-{
-    return pal_->getAsSdlTypePtr();
-}
-
 GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)pix_;

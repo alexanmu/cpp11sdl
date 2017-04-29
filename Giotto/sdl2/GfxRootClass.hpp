@@ -30,7 +30,8 @@ class GfxRootClass
 {
 public:
     GfxRootClass();
-    explicit GfxRootClass(std::string strClassName);
+
+    explicit GfxRootClass(const std::string& strClassName);
 
     GfxRootClass(const GfxRootClass& other);
     GfxRootClass(GfxRootClass&& other);

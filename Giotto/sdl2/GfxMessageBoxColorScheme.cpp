@@ -33,7 +33,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass("GfxMessageB
     }
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColor colors[]) :
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) :
         GfxRootClass("GfxMessageBoxColorScheme")
 {
     for (int index = 0; index < colorsArraySize; index++)

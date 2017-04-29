@@ -31,62 +31,62 @@ GfxEndian::GfxEndian() : GfxRootClass("GfxEndian")
     // Nothing to do
 }
 
-uint16_t GfxEndian::swap16(uint16_t x) const
+uint16_t GfxEndian::swap16(const uint16_t x) const
 {
     return SDL_Swap16(x);
 }
 
-uint32_t GfxEndian::swap32(uint32_t x) const
+uint32_t GfxEndian::swap32(const uint32_t x) const
 {
     return SDL_Swap32(x);
 }
 
-uint64_t GfxEndian::swap64(uint64_t x) const
+uint64_t GfxEndian::swap64(const uint64_t x) const
 {
     return SDL_Swap64(x);
 }
 
-float GfxEndian::swapFloat(float x) const
+float GfxEndian::swapFloat(const float x) const
 {
     return SDL_SwapFloat(x);
 }
 
-uint16_t GfxEndian::swapLE16(uint16_t x) const
+uint16_t GfxEndian::swapLE16(const uint16_t x) const
 {
     return SDL_SwapLE16(x);
 }
 
-uint32_t GfxEndian::swapLE32(uint32_t x) const
+uint32_t GfxEndian::swapLE32(const uint32_t x) const
 {
     return SDL_SwapLE32(x);
 }
 
-uint64_t GfxEndian::swapLE64(uint64_t x) const
+uint64_t GfxEndian::swapLE64(const uint64_t x) const
 {
     return SDL_SwapLE64(x);
 }
 
-float GfxEndian::swapFloatLE(float x) const
+float GfxEndian::swapFloatLE(const float x) const
 {
     return SDL_SwapFloatLE(x);
 }
 
-uint16_t GfxEndian::swapBE16(uint16_t x) const
+uint16_t GfxEndian::swapBE16(const uint16_t x) const
 {
     return SDL_SwapBE16(x);
 }
 
-uint32_t GfxEndian::swapBE32(uint32_t x) const
+uint32_t GfxEndian::swapBE32(const uint32_t x) const
 {
     return SDL_SwapBE32(x);
 }
 
-uint64_t GfxEndian::swapBE64(uint64_t x) const
+uint64_t GfxEndian::swapBE64(const uint64_t x) const
 {
     return SDL_SwapBE64(x);
 }
 
-float GfxEndian::swapFloatBE(float x) const
+float GfxEndian::swapFloatBE(const float x) const
 {
     return SDL_SwapFloatBE(x);
 }

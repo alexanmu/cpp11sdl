@@ -43,14 +43,12 @@ public:
     explicit GfxRenderer(const GfxWindow& win);
 
     GfxRenderer() = delete;
-
     GfxRenderer(const GfxRenderer&) = delete;
+    GfxRenderer(GfxRenderer&&) = delete;
     GfxRenderer& operator=(const GfxRenderer&) = delete;
+    GfxRenderer& operator=(GfxRenderer&& rend) = delete;
 
-    GfxRenderer(GfxRenderer&& rend);
-    GfxRenderer& operator=(GfxRenderer&& rend);
-
-    ~GfxRenderer();
+    virtual ~GfxRenderer();
 
     void destroyRenderer(void);
     void renderClear(void);
@@ -79,8 +77,8 @@ public:
 
     SdlTypePtr getAsSdlTypePtr() const;
 private:
-    SDL_Renderer* renderer_;
-    GfxWindow const* window_;
+    SdlTypePtr renderer_;
+    GfxWindow const& window_;
 };
 
 #endif /* GfxRenderer_hpp */

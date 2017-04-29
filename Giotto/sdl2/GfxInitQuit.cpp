@@ -23,7 +23,7 @@
 
 #include "GfxInitQuit.hpp"
 
-GfxInitQuit::GfxInitQuit(GfxInitComponent gfxInitComp) :
+GfxInitQuit::GfxInitQuit(const GfxInitComponent gfxInitComp) :
                 GfxRootClass("GfxInitQuit"), gfxInitComp_(gfxInitComp), errorcode_(0)
 {
     int initParam;

@@ -25,7 +25,7 @@
 
 #include "GfxCanvasBgiData.hpp"
 
-const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::MAXCOLORS] = {  // 0 - 15
+const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::kMaxColors] = {  // 0 - 15
     0xff000000,  // BLACK
     0xff0000ff,  // BLUE
     0xff00ff00,  // GREEN
@@ -76,7 +76,7 @@ const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::MAXCOLORS] = 
 
 /*  ZLIB (c) A. Schiffler 2012 */
 
-const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::GFX_FONTDATAMAX] = {
+const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFontDataMax] = {
     /*
      * 0 0x00 '^@'
      */

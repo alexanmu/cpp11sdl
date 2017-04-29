@@ -60,9 +60,11 @@ public:
     };
 
     GfxWindowFlags();
-    explicit GfxWindowFlags(GfxWindowFlagsValues flag);
-    explicit GfxWindowFlags(SdlType flag);
-    explicit GfxWindowFlags(SdlTypePtr flag);
+
+    explicit GfxWindowFlags(const GfxWindowFlagsValues flag);
+    explicit GfxWindowFlags(const SdlType flag);
+    explicit GfxWindowFlags(const SdlTypePtr flag);
+
     GfxWindowFlags(GfxWindowFlags const& other);
     GfxWindowFlags(GfxWindowFlags&& other);
 

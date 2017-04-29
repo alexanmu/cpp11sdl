@@ -23,24 +23,16 @@
 
 #include "GfxRenderer.hpp"
 
-GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass("GfxRenderer"), renderer_(nullptr), window_(&win)
+GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass("GfxRenderer"), renderer_(nullptr), window_(win)
 {
     SdlType* renderertmp;
 
-    renderertmp = SDL_CreateRenderer(window_->getAsSdlTypePtr(), -1, SDL_RENDERER_ACCELERATED);
+    renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, SDL_RENDERER_ACCELERATED);
     if (renderertmp == nullptr)
     {
-        renderertmp = SDL_CreateRenderer(window_->getAsSdlTypePtr(), -1, SDL_RENDERER_SOFTWARE);
+        renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, SDL_RENDERER_SOFTWARE);
     }
     renderer_ = renderertmp;
-}
-
-GfxRenderer::GfxRenderer(GfxRenderer&& rend) : GfxRootClass("GfxRenderer")
-{
-    renderer_ = rend.renderer_;
-    window_ = rend.window_;
-    rend.renderer_ = nullptr;
-    rend.window_ = nullptr;
 }
 
 GfxRenderer::~GfxRenderer()
@@ -49,18 +41,6 @@ GfxRenderer::~GfxRenderer()
     {
         SDL_DestroyRenderer(renderer_);
     }
-}
-
-GfxRenderer& GfxRenderer::operator=(GfxRenderer&& rend)
-{
-    if (this != &rend)
-    {
-        renderer_ = rend.renderer_;
-        window_ = rend.window_;
-        rend.renderer_ = nullptr;
-        rend.window_ = nullptr;
-    }
-    return *this;
 }
 
 void GfxRenderer::destroyRenderer()

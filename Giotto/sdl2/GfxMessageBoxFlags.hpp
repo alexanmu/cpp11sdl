@@ -41,9 +41,10 @@ public:
     };
 
     GfxMessageBoxFlags();
-    explicit GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag);
-    explicit GfxMessageBoxFlags(SdlType flag);
-    explicit GfxMessageBoxFlags(SdlTypePtr flag);
+
+    explicit GfxMessageBoxFlags(const GfxMessageBoxFlagsValues flag);
+    explicit GfxMessageBoxFlags(const SdlType flag);
+
     GfxMessageBoxFlags(const GfxMessageBoxFlags& other);
     GfxMessageBoxFlags(GfxMessageBoxFlags&& other);
 

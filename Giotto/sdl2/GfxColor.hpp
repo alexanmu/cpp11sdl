@@ -34,9 +34,11 @@ public:
     typedef SDL_Color* SdlTypePtr;
 
     GfxColor();
+
     GfxColor(const uint8_t r, const uint8_t g, const uint8_t b);
     GfxColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a);
     explicit GfxColor(const SdlType clr);
+
     GfxColor(const GfxColor& other);
     GfxColor(GfxColor&& other);
 

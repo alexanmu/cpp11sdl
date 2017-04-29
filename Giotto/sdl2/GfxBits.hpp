@@ -32,13 +32,14 @@ class GfxBits final : public GfxRootClass
 {
 public:
     GfxBits();
+
     GfxBits(GfxBits const&) = delete;
     GfxBits(GfxBits&&) = delete;
 
     GfxBits& operator=(GfxBits const&) = delete;
     GfxBits& operator=(GfxBits&&) = delete;
 
-    int mostSignificantBitIndex32(uint32_t x) const;
+    int mostSignificantBitIndex32(const uint32_t x) const;
 };
 
 #endif /* GfxBits_hpp */

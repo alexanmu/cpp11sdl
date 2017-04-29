@@ -32,6 +32,7 @@ class GfxPlatform final : public GfxRootClass
 {
 public:
     GfxPlatform();
+
     GfxPlatform(GfxPlatform const&) = delete;
     GfxPlatform(GfxPlatform&&) = delete;
 

@@ -33,6 +33,7 @@ class GfxGetVersion final : public GfxRootClass
 {
 public:
     GfxGetVersion();
+
     GfxGetVersion(GfxGetVersion const&) = delete;
     GfxGetVersion(GfxGetVersion&&) = delete;
 

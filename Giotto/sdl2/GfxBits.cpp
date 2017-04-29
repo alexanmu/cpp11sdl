@@ -31,7 +31,7 @@ GfxBits::GfxBits() : GfxRootClass("GfxBits")
     // Nothing to do
 }
 
-int GfxBits::mostSignificantBitIndex32(uint32_t x) const
+int GfxBits::mostSignificantBitIndex32(const uint32_t x) const
 {
     return SDL_MostSignificantBitIndex32(x);
 }

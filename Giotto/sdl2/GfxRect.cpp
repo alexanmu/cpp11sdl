@@ -44,11 +44,6 @@ GfxRect::GfxRect(SdlType rect) : GfxRootClass("GfxRect")
     rect_ = rect;
 }
 
-GfxRect::GfxRect(SdlTypePtr rect) : GfxRootClass("GfxRect")
-{
-    rect_ = *rect;
-}
-
 GfxRect::GfxRect(const GfxRect& other) : GfxRootClass("GfxRect")
 {
     rect_ = other.rect_;

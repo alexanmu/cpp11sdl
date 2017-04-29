@@ -27,7 +27,7 @@
 #include "GfxWindow.hpp"
 
 GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint16_t height) :
-        GfxRootClass("GfxWindow"), title_(title)
+        GfxRootClass("GfxWindow")
 {
     window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (window_ == nullptr)
@@ -38,7 +38,7 @@ GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint1
 
 GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
                         const uint16_t width, const uint16_t height, const GfxWindowFlags& flags) :
-        GfxRootClass("GfxWindow"), title_(title)
+        GfxRootClass("GfxWindow")
 {
     window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
                                 width, height, flags.getAsSdlType());
@@ -48,34 +48,12 @@ GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const
     }
 }
 
-GfxWindow::GfxWindow(GfxWindow&& win) : GfxRootClass("GfxWindow")
-{
-    window_ = win.window_;
-    title_ = win.title_;
-
-    win.window_ = nullptr;
-    win.title_ = "";
-}
-
 GfxWindow::~GfxWindow()
 {
     if (window_ != nullptr)
     {
         SDL_DestroyWindow(window_);
     }
-}
-
-GfxWindow& GfxWindow::operator=(GfxWindow&& win)
-{
-    if (this != &win)
-    {
-        window_ = win.window_;
-        title_ = win.title_;
-        // Delete other's data
-        win.window_ = nullptr;
-        win.title_ = "";
-    }
-    return *this;
 }
 
 void GfxWindow::destroyWindow()
@@ -103,13 +81,15 @@ std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
 
 std::string GfxWindow::getTitle() const
 {
-    return title_;
+    const char * pch;
+
+    pch = SDL_GetWindowTitle(window_);
+    return std::string(pch);
 }
 
 void GfxWindow::setTitle(const std::string& title)
 {
-    title_ = title;
-    SDL_SetWindowTitle(window_, title_.c_str());
+    SDL_SetWindowTitle(window_, title.c_str());
 }
 
 void GfxWindow::setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y)

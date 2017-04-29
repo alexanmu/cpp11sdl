@@ -41,8 +41,10 @@ public:
     };
 
     GfxRendererFlip();
+
     GfxRendererFlip(const bool fliph, const bool flipv);
-    explicit GfxRendererFlip(GfxRendererFlipValues values);
+    explicit GfxRendererFlip(const GfxRendererFlipValues values);
+
     GfxRendererFlip(const GfxRendererFlip& other);
     GfxRendererFlip(GfxRendererFlip&& other);
 

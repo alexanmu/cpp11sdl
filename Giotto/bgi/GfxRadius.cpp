@@ -85,4 +85,9 @@ GfxRadius::GfxValueType GfxRadius::getValue() const
     return value_;
 }
 
+void GfxRadius::setValue(const GfxValueType& value)
+{
+    value_ = value;
+}
+
 /* EOF */

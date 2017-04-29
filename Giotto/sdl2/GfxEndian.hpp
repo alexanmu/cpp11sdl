@@ -32,25 +32,27 @@ class GfxEndian final : public GfxRootClass
 {
 public:
     GfxEndian();
+
     GfxEndian(GfxEndian const&) = delete;
     GfxEndian(GfxEndian&&) = delete;
 
     GfxEndian& operator=(GfxEndian const&) = delete;
     GfxEndian& operator=(GfxEndian&&) = delete;
 
-    uint16_t swap16(uint16_t x) const;
-    uint32_t swap32(uint32_t x) const;
-    uint64_t swap64(uint64_t x) const;
-    float swapFloat(float x) const;
+    /* Methods */
+    uint16_t swap16(const uint16_t x) const;
+    uint32_t swap32(const uint32_t x) const;
+    uint64_t swap64(const uint64_t x) const;
+    float swapFloat(const float x) const;
 
-    uint16_t swapLE16(uint16_t x) const;
-    uint32_t swapLE32(uint32_t x) const;
-    uint64_t swapLE64(uint64_t x) const;
-    float swapFloatLE(float x) const;
-    uint16_t swapBE16(uint16_t x) const;
-    uint32_t swapBE32(uint32_t x) const;
-    uint64_t swapBE64(uint64_t x) const;
-    float swapFloatBE(float x) const;
+    uint16_t swapLE16(const uint16_t x) const;
+    uint32_t swapLE32(const uint32_t x) const;
+    uint64_t swapLE64(const uint64_t x) const;
+    float swapFloatLE(const float x) const;
+    uint16_t swapBE16(const uint16_t x) const;
+    uint32_t swapBE32(const uint32_t x) const;
+    uint64_t swapBE64(const uint64_t x) const;
+    float swapFloatBE(const float x) const;
 };
 
 #endif /* GfxEndian_hpp */

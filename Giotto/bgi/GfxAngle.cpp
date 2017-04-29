@@ -28,7 +28,7 @@ GfxAngle::GfxAngle() : GfxRootClass("GfxAngle"), value_(0)
     // Nothing to do
 }
 
-GfxAngle::GfxAngle(GfxValueType value) : GfxRootClass("GfxAngle"), value_(value)
+GfxAngle::GfxAngle(const GfxValueType value) : GfxRootClass("GfxAngle"), value_(value)
 {
     value_ = value_ % 360;
 }
@@ -83,6 +83,11 @@ bool GfxAngle::operator<(const GfxAngle& other)
 GfxAngle::GfxValueType GfxAngle::getValue() const
 {
     return value_;
+}
+
+void GfxAngle::setValue(const GfxValueType& value)
+{
+    value_ = value;
 }
 
 /* EOF */
