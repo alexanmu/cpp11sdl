@@ -40,8 +40,9 @@ public:
     using GfxColorVector = std::vector<GfxColor>;
 
     GfxPalette();
-    GfxPalette(const uint16_t ncolors, const GfxColorVector& colors);
+    explicit GfxPalette(const uint16_t nColors);
     explicit GfxPalette(SdlTypePtr pal);
+    explicit GfxPalette(const GfxColorVector& colors);
 
     GfxPalette(const GfxPalette& other);
     GfxPalette(GfxPalette&& other);
@@ -52,18 +53,22 @@ public:
     GfxPalette& operator=(GfxPalette&& other);
 
     /* Methods */
-    int setPaletteColors(const GfxColorVector& vec, const uint16_t firstcolor);
+    void setPaletteColors(const GfxColorVector& vec, const uint16_t firstColor);
+    GfxColorVector getPaletteColors(void) const;
 
     /* Getters */
     uint16_t getNumColors(void) const;
-    std::unique_ptr<GfxColorVector> getColors(void) const;
     uint32_t getVersion(void) const;
     int getRefCount(void) const;
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    static constexpr int kDefaultPaletteSize = 256;
+    static constexpr uint16_t kDefaultPaletteSize = 256;
+    static constexpr uint8_t kDefaultPaletteColorRed = 0xFF;
+    static constexpr uint8_t kDefaultPaletteColorGreen = 0xFF;
+    static constexpr uint8_t kDefaultPaletteColorBlue = 0xFF;
+
     SdlTypePtr pal_;
 };
 

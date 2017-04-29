@@ -33,7 +33,8 @@ class Playground
 public:
     void _doBenchmark(void);
     void _doFonts(void);
-    void _doPalette(void);
+    void _doPaletteSdl(void);
+    void _doPaletteGfx(void);
 private:
     void DoAlgo(int algo_index);
 
@@ -48,8 +49,8 @@ private:
     std::string GetFntName(std::string fullname);
     void ProcessFNTfile(std::string fullname);
 
-    void printPalette(void * palptr, bool printclrs);
-    void printPixFormat(void * pixptr);
+    void printSdlPalette(void * palptr, bool printclrs);
+    void printSdlPixFormat(void * pixptr);
     template <typename T> std::string IntToHexStr(T value);
 };
 

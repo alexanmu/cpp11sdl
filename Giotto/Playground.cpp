@@ -453,7 +453,7 @@ void Playground::_doFonts(void)
     std::cout << "Done!" << std::endl;
 }
 
-/***************************************************** Palette *****************************************************/
+/***************************************************** Palette (SDL) *****************************************************/
 #include <iomanip>
 #include <sstream>
 
@@ -473,7 +473,7 @@ std::string Playground::IntToHexStr(T value)
     return stream.str();
 }
 
-void Playground::printPalette(void * palptr, bool printclrs)
+void Playground::printSdlPalette(void * palptr, bool printclrs)
 {
     SDL_Palette *pal;
     SDL_Color* clr;
@@ -508,7 +508,7 @@ void Playground::printPalette(void * palptr, bool printclrs)
     std::cout << std::endl;
 }
 
-void Playground::printPixFormat(void * pixfmtptr)
+void Playground::printSdlPixFormat(void * pixfmtptr)
 {
     SDL_PixelFormat* pix;
 
@@ -525,7 +525,7 @@ void Playground::printPixFormat(void * pixfmtptr)
     }
     else
     {
-        printPalette(pix->palette, true);
+        printSdlPalette(pix->palette, true);
     }
     std::cout << "pix->BitsPerPixel=" << static_cast<int>(pix->BitsPerPixel) << '\n';
     std::cout << "pix->BytesPerPixel=" << static_cast<int>(pix->BytesPerPixel) << '\n';
@@ -546,14 +546,14 @@ void Playground::printPixFormat(void * pixfmtptr)
     std::cout << std::endl;
 }
 
-void Playground::_doPalette(void)
+void Playground::_doPaletteSdl(void)
 {
     std::cout << "TestPalette" << '\n';
     SDL_Palette* pal;
 
     /* Part 1 */
     pal = SDL_AllocPalette(2);
-    printPalette(pal, false);
+    printSdlPalette(pal, false);
     for (int i = 0; i < pal->ncolors; i++)
     {
         SDL_Color c;
@@ -563,7 +563,7 @@ void Playground::_doPalette(void)
         c.a = 255 - i - 1;
         SDL_SetPaletteColors(pal, &c, i, 1);
     }
-    printPalette(pal, false);
+    printSdlPalette(pal, false);
     /* Part 2 */
     SDL_PixelFormat* pix;
 
@@ -572,7 +572,7 @@ void Playground::_doPalette(void)
     {
         std::cout << SDL_GetError() << '\n';
     }
-    printPixFormat(pix);
+    printSdlPixFormat(pix);
 
     std::cout << "SDL_GetPixelFormatName(...)=" << SDL_GetPixelFormatName(pix->format) << '\n';
     /* Free stuff */
@@ -580,4 +580,25 @@ void Playground::_doPalette(void)
     SDL_FreeFormat(pix);
     std::cout << "Done!" << std::endl;
 }
+
+/***************************************************** Palette (GFX) *****************************************************/
+#include "GfxPalette.hpp"
+#include "GfxPixelFormat.hpp"
+
+void Playground::_doPaletteGfx(void)
+{
+    GfxPalette g1;
+    GfxPalette g2(16);
+    SDL_Palette* pal = SDL_AllocPalette(256);
+    GfxPalette g3(pal);
+    SDL_FreePalette(pal);
+    GfxPalette::GfxColorVector vec { { 0xFF, 0xFE, 0xFD }, { 0xFC, 0xFB, 0xFA }, { 0xF9, 0xF8, 0xF7 }, { 0xF6, 0xF5, 0xF4} };
+    GfxPalette g4(vec);
+    
+    printSdlPalette(g1.getAsSdlTypePtr(), false);
+    printSdlPalette(g2.getAsSdlTypePtr(), true);
+    printSdlPalette(g3.getAsSdlTypePtr(), false);
+    printSdlPalette(g4.getAsSdlTypePtr(), true);
+}
+
 /* EOF */

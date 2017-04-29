@@ -75,11 +75,9 @@ uint32_t GfxPixelFormat::getFormat(void) const
     return pix_->format;
 }
 
-std::unique_ptr<GfxPalette> GfxPixelFormat::getPalette(void)
+GfxPalette::GfxColorVector GfxPixelFormat::getPalette(void)
 {
-    std::unique_ptr<GfxPalette> p { new GfxPalette(pix_->palette) };
-
-    return p;
+    return pal_->getPaletteColors();
 }
 
 uint8_t GfxPixelFormat::getBitsPerPixel(void) const
@@ -153,7 +151,7 @@ uint8_t GfxPixelFormat::getAshift(void) const
     return pix_->Ashift;
 }
 
-int GfxPixelFormat::getRefCount(void) const
+int32_t GfxPixelFormat::getRefCount(void) const
 {
     return pix_->refcount;
 }
@@ -169,9 +167,9 @@ void GfxPixelFormat::setFormat(const uint32_t format)
     pix_->format = format;
 }
 
-void GfxPixelFormat::setPalette(GfxPalette&& pal)
+void GfxPixelFormat::setPaletteColors(GfxPalette::GfxColorVector vec)
 {
-    pal_ = pal;
+    pal_->setPaletteColors(vec, 0);
 }
 
 void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
@@ -205,9 +203,9 @@ void GfxPixelFormat::setAlphaMask(const uint32_t amask)
 }
 
 /*** SDL ***/
-GfxPixelFormat::SdlType GfxPixelFormat::getAsSdlType(void) const
+GfxPalette::SdlTypePtr GfxPixelFormat::getPaletteAsSdlTypePtr(void) const
 {
-    return *pix_;
+    return pal_->getAsSdlTypePtr();
 }
 
 GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const

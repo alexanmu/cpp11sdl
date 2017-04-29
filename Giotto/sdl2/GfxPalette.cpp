@@ -28,11 +28,37 @@
 GfxPalette::GfxPalette() : GfxRootClass("GfxPalette")
 {
     pal_ = SDL_AllocPalette(kDefaultPaletteSize);
-    for (int i = 0; i < kDefaultPaletteSize; i++)
+    for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
     {
-        SDL_SetPaletteColors(pal_,GfxColor(0x00,0x00,0x00).getAsSdlTypePtr(),i,1);
+        SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen,\
+                                            kDefaultPaletteColorBlue).getAsSdlTypePtr(), i, 1);
     }
 };
+
+GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass("GfxPalette")
+{
+    uint32_t colorIndex;
+    uint16_t nColors;
+    
+    nColors = colors.size();
+    pal_ = SDL_AllocPalette(nColors);
+    colorIndex = 0;
+    for (GfxColor clr : colors)
+    {
+        SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), colorIndex, 1);
+        colorIndex += 1;
+    }
+}
+
+GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass("GfxPalette")
+{
+    pal_ = SDL_AllocPalette(nColors);
+    for (uint32_t i = 0; i < nColors; i++)
+    {
+        SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen,\
+                                            kDefaultPaletteColorBlue).getAsSdlTypePtr(), i, 1);
+    }
+}
 
 GfxPalette::GfxPalette(const GfxPalette& other) : GfxRootClass("GfxPalette")
 {
@@ -49,24 +75,10 @@ GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass("GfxPalette")
     other.pal_ = nullptr;
 }
 
-GfxPalette::GfxPalette(const uint16_t ncolors, const GfxColorVector& colors) : GfxRootClass("GfxPalette")
-{
-    int colorindex;
-
-    pal_ = SDL_AllocPalette(ncolors);
-    colorindex = 0;
-    for (GfxColor clr : colors)
-    {
-        SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), colorindex, 1);
-        colorindex += 1;
-    }
-}
-
 GfxPalette::GfxPalette(SdlTypePtr pal)
 {
     pal_ = SDL_AllocPalette(pal->ncolors);
     SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
-    SDL_FreePalette(pal_);
 }
 
 GfxPalette::~GfxPalette()
@@ -108,39 +120,37 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
     return *this;
 }
 
-int GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t firstcolor)
+void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t firstColor)
 {
-    int errorcode = 0;
-    int currentcolorindex = firstcolor;
+    int errorCode = 0;
+    int currentColorIndex = firstColor;
 
     for (GfxColor clr : colors)
     {
-        errorcode = SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), currentcolorindex, 1);
-        currentcolorindex += 1;
-        if (errorcode != 0)
+        errorCode = SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), currentColorIndex, 1);
+        currentColorIndex += 1;
+        if (errorCode != 0)
         {
             break;
         }
     }
-    return errorcode;
+}
+
+GfxPalette::GfxColorVector GfxPalette::getPaletteColors(void) const
+{
+    GfxColorVector clrs(pal_->ncolors);
+
+    for (uint32_t i = 0; i < pal_->ncolors; i++)
+    {
+        GfxColor c(pal_->colors[i]);
+        clrs.push_back(c);
+    }
+    return clrs;
 }
 
 uint16_t GfxPalette::getNumColors(void) const
 {
     return pal_->ncolors;
-}
-
-std::unique_ptr<GfxPalette::GfxColorVector> GfxPalette::getColors(void) const
-{
-    GfxColorVector clrs(pal_->ncolors);
-
-    for (int i = 0; i < pal_->ncolors; i++)
-    {
-        GfxColor c(pal_->colors[i]);
-        clrs.push_back(c);
-    }
-    std::unique_ptr<GfxColorVector> ptr {new GfxColorVector(clrs)};
-    return ptr;
 }
 
 uint32_t GfxPalette::getVersion(void) const

@@ -220,6 +220,7 @@ void bmpSurfaceInfo(GfxSurface* bmps)
 {
     std::unique_ptr<GfxPixelFormat> ptr;
     GfxPalette::SdlTypePtr pal;
+    GfxPalette::GfxColorVector vec;
 
     ptr = bmps->getFormat();
     std::cout << "ptr->getFormat()=" << ptr->getFormat() << '\n';
@@ -240,7 +241,7 @@ void bmpSurfaceInfo(GfxSurface* bmps)
     std::cout << "ptr->getAshift()=" << static_cast<int>(ptr->getAshift()) << '\n';
     std::cout << "ptr->getRefCount()=" << ptr->getRefCount() << '\n';
 
-    pal = ptr->getPalette();
+    pal = ptr->getPaletteAsSdlTypePtr();
     if (pal != nullptr)
     {
         std::cout << "pal->ncolors=" << pal->ncolors << '\n';
@@ -524,7 +525,8 @@ void _doPlay(void)
 
     // p._doBenchmark();
     // p._doFonts();
-    p._doPalette();
+    // p._doPaletteSdl();
+    p._doPaletteGfx();
 }
 
 #ifdef __windows_machine
