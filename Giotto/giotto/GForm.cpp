@@ -27,9 +27,16 @@
 #include "GForm.hpp"
 #include "GfxError.hpp"
 
-GForm::GForm(const std::string& title)
+GForm::GForm() : GObject()
 {
     title_ = "GForm";
+    window_ = nullptr;
+    canvasInUse_ = false;
+}
+
+GForm::GForm(const std::string& title) : GObject()
+{
+    title_ = title;
     window_ = nullptr;
     canvasInUse_ = false;
 }

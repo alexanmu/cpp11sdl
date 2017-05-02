@@ -35,6 +35,7 @@
 class GForm : public GObject
 {
 public:
+    GForm();
     GForm(const std::string& title);
 
     void setFormTitle(const std::string& title);

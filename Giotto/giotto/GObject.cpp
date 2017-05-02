@@ -31,27 +31,48 @@ GObject::GObject()
 GObject::GObject(GObject const& other)
 {
     inittype_ = GInitType::copyCtor;
+    // Avoid compiler warning
+    static_cast<GObject>(other) = static_cast<GObject>(other);
 }
 GObject::GObject(GObject&& other)
 {
     inittype_ = GInitType::moveCtor;
+    // Avoid compiler warning
+    other = other;
 }
 
 GObject& GObject::operator=(GObject const& other)
 {
     // Nothing to do yet
+    // Avoid compiler warning
+    static_cast<GObject>(other) = static_cast<GObject>(other);
     return *this;
 }
 
 GObject& GObject::operator=(GObject&& other)
 {
     // Nothing to do yet
+    // Avoid compiler warning
+    other = other;
     return *this;
 }
 
 GObject::~GObject()
 {
     // Nothing to do yet
+}
+
+bool GObject::operator==(GObject const& other)
+{
+    if (this != &other)
+    {
+	if (inittype_ == other.inittype_)
+	{
+	    return true;
+	}
+	return false;
+    }
+    return true;
 }
 
 /* EOF */

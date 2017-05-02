@@ -38,6 +38,8 @@ public:
     GObject& operator=(GObject&& other);
 
     virtual ~GObject();
+
+    bool operator==(GObject const& other);
 private:
     enum class GInitType : uint32_t
     {
@@ -48,3 +50,4 @@ private:
     GInitType inittype_;
 };
 #endif /* GObject_hpp */
+
