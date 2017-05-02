@@ -33,6 +33,7 @@
 #define __base_path "/Users/georgeoros/Documents/Dev/Files"
 #define WIN_W 1280
 #define WIN_H 800
+#define __platform_default_action 2
 
 #endif
 

@@ -35,6 +35,7 @@
 #define __base_path "/home/goros/Pictures"
 #define WIN_W 960
 #define WIN_H 480
+#define __platform_default_action 0
 
 #endif
 #endif
