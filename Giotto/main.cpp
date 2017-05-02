@@ -297,7 +297,7 @@ void _doStuff(void)
         GfxRendererInfo::GfxTextureFormats gtf;
 
         gtf = ri.getTextureFormats();
-        for (int i = 0; i < ri.getNumTextureFormats(); i++)
+        for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
         {
             GfxPixelFormat gpf(gtf[i]);
             std::cout << "gpf.getFormatAsString()=" << gpf.getFormatAsString() << '\n';
@@ -551,7 +551,7 @@ int WinMain(int argc, const char * argv[])
 int main(int argc, const char * argv[])
 #endif
 {
-    int action = __platform_default_action + 1;
+    int action = __platform_default_action;
 
     if (argc == 2)
     {
@@ -584,3 +584,5 @@ int main(int argc, const char * argv[])
     }
     return 0;
 }
+
+/* EOF */
