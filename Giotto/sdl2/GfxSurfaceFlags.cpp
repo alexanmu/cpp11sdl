@@ -23,27 +23,27 @@
 
 #include "GfxSurfaceFlags.hpp"
 
-GfxSurfaceFlags::GfxSurfaceFlags()
+GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass("GfxSurfaceFlags")
 {
     flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags)
+GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags) : GfxRootClass("GfxSurfaceFlags")
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags)
+GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) : GfxRootClass("GfxSurfaceFlags")
 {
     flags_ = flags;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) : GfxRootClass("GfxSurfaceFlags")
 {
     flags_ = other.flags_;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) : GfxRootClass("GfxSurfaceFlags")
 {
     flags_ = other.flags_;
     // Delete other's data

@@ -131,7 +131,7 @@ GfxPalette::GfxColorVector GfxPalette::getPaletteColors(void) const
     {
         GfxColorVector clrs(pal_->ncolors);
 
-        for (uint32_t i = 0; i < pal_->ncolors; i++)
+        for (int32_t i = 0; i < pal_->ncolors; i++)
         {
             GfxColor c(pal_->colors[i]);
             clrs.push_back(c);

@@ -42,12 +42,14 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
     }
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other)
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) :
+	GfxRootClass("GfxMessageBoxColorScheme")
 {
     clrscheme_ = other.clrscheme_;
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other)
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) :
+	GfxRootClass("GfxMessageBoxColorScheme")
 {
     clrscheme_ = other.clrscheme_;
     // Delete other's data

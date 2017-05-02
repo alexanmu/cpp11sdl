@@ -23,27 +23,27 @@
 
 #include "GfxBlendMode.hpp"
 
-GfxBlendMode::GfxBlendMode()
+GfxBlendMode::GfxBlendMode() : GfxRootClass("GfxBlendMode")
 {
     blendmode_ = static_cast<SdlType>(GfxBlendModeValues::blendNone);
 }
 
-GfxBlendMode::GfxBlendMode(const GfxBlendModeValues blendmode)
+GfxBlendMode::GfxBlendMode(const GfxBlendModeValues blendmode) : GfxRootClass("GfxBlendMode")
 {
     blendmode_ = static_cast<SdlType>(blendmode);
 }
 
-GfxBlendMode::GfxBlendMode(const SdlType blendmode)
+GfxBlendMode::GfxBlendMode(const SdlType blendmode) : GfxRootClass("GfxBlendMode")
 {
     blendmode_ = blendmode;
 }
 
-GfxBlendMode::GfxBlendMode(const GfxBlendMode& other)
+GfxBlendMode::GfxBlendMode(const GfxBlendMode& other) : GfxRootClass("GfxBlendMode")
 {
     blendmode_ = other.blendmode_;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode&& other)
+GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) : GfxRootClass("GfxBlendMode")
 {
     blendmode_ = other.blendmode_;
     // Destroy other's data

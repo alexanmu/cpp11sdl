@@ -41,12 +41,12 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootCl
     }
 }
 
-GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other)
+GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other) : GfxRootClass("GfxRendererFlip")
 {
     flip_ = other.flip_;
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) : GfxRootClass("GfxRendererFlip")
 {
     flip_ = other.flip_;
     other.flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);

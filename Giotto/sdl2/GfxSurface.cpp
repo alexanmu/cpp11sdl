@@ -255,7 +255,8 @@ GfxColor GfxSurface::getPixelPrv(const uint16_t x, const uint16_t y)
     uint8_t* ptr;
 
     ptr = reinterpret_cast<uint8_t*>(surf_->pixels);
-    return GfxColor { GfxColor(ptr[y * surf_->w + 0], ptr[y * surf_->w + 1],ptr[y * surf_->w + 2], ptr[y * surf_->w + 3]) };
+    return GfxColor { GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],\
+			ptr[y * surf_->w + x + 2], ptr[y * surf_->w + x + 3]) };
 }
 
 /* EOF */

@@ -23,22 +23,22 @@
 
 #include "GfxTextureAccess.hpp"
 
-GfxTextureAccess::GfxTextureAccess()
+GfxTextureAccess::GfxTextureAccess() : GfxRootClass("GfxTextureAccess")
 {
     access_ = static_cast<SdlType>(GfxTextureAccessValues::accessStatic);
 }
 
-GfxTextureAccess::GfxTextureAccess(const GfxTextureAccessValues access)
+GfxTextureAccess::GfxTextureAccess(const GfxTextureAccessValues access) : GfxRootClass("GfxTextureAccess")
 {
     access_ = static_cast<SdlType>(access);
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) : GfxRootClass("GfxTextureAccess")
 {
     access_ = other.access_;
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) : GfxRootClass("GfxTextureAccess")
 {
     access_ = other.access_;
     // Delete other's data
