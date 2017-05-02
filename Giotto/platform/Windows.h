@@ -61,7 +61,6 @@ namespace std
 #define __base_path "c:\\users\\goros\\Pictures"
 #define WIN_W 960
 #define WIN_H 480
-#define __platform_default_action 0
 
 #endif // defined(__OK) && !defined(__NOK)
 
