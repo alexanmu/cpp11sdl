@@ -156,6 +156,7 @@ void GfxCanvasBgi::bar3d(int left, int top, int right, int bottom, int depth, in
     rectangle(left, top, right, bottom);
 
     // topflag - what should I do with it?
+    topflag = topflag;
 }  // bar3d ()
 
 // -----
@@ -877,6 +878,7 @@ void GfxCanvasBgi::floodfill(int x, int y, bgiColors border)
 void GfxCanvasBgi::freeimage(void * bitmap)
 {
     /* Caller manages memory */
+    bitmap = bitmap;
 }
 
 // -----
@@ -1036,6 +1038,7 @@ void GfxCanvasBgi::getpalette(struct palettetype *palette)
 int GfxCanvasBgi::getpalettesize(struct palettetype *palette)
 {
     // Returns the size of the palette.
+    palette = palette;
 
     return (1 + GfxCanvasBgiData::kMaxColors);
 }  // getpalettesize ()
@@ -2039,6 +2042,7 @@ void GfxCanvasBgi::putpixel_and(int x, int y, uint32_t pixel)
 void GfxCanvasBgi::putpixel_or(int x, int y, uint32_t pixel)
 {
     // OR-ed putpixel
+    uint32_t pix = pixel & 0x00ffffff;
 
     // out of range?
     if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
@@ -2054,7 +2058,7 @@ void GfxCanvasBgi::putpixel_or(int x, int y, uint32_t pixel)
         }
     }
 
-    bgi_activepage[y * (bgi_maxx + 1) + x] |= (pixel & 0x00ffffff);
+    bgi_activepage[y * (bgi_maxx + 1) + x] |= pix;
 }  // putpixel_or ()
 
 // -----
@@ -2062,6 +2066,7 @@ void GfxCanvasBgi::putpixel_or(int x, int y, uint32_t pixel)
 void GfxCanvasBgi::putpixel_not(int x, int y, uint32_t pixel)
 {
     // NOT-ed putpixel
+    pixel = pixel;
 
     // out of range?
     if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
@@ -2289,6 +2294,8 @@ void GfxCanvasBgi::settextstyle(int font, bgiDirection direction, int charsize)
         bgi_txt_style.direction = bgiDirection::HORIZ_DIR;
     }
     bgi_txt_style.charsize = bgi_font_mag_x = bgi_font_mag_y = charsize;
+    // avoid compiler warning
+    font = font;
 }  // settextstyle ()
 
 // -----
@@ -2336,6 +2343,8 @@ void GfxCanvasBgi::setwritemode(bgiDrawingMode mode)
 int GfxCanvasBgi::textheight(char *textstring)
 {
     // Returns the height in pixels of a string.
+    // avoid compiler warning
+    textstring = textstring;
 
     return bgi_font_mag_y * bgi_font_height;
 }  // textheight ()
