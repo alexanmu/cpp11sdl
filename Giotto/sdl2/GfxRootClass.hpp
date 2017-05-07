@@ -50,6 +50,8 @@ private:
     std::string strClassName_;
     int intInstanceId_;
 
+    static const std::string astrClassNames[];
+    static const int intClassNamesCount;
     static int intInstanceCounter_;
 };
 

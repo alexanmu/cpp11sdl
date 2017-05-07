@@ -26,7 +26,118 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+#include "GfxBits.hpp"
+#include "GfxBlendMode.hpp"
+#include "GfxBool.hpp"
+#include "GfxClipboard.hpp"
+#include "GfxColor.hpp"
+#include "GfxCpuInfo.hpp"
+#include "GfxDisplayMode.hpp"
+#include "GfxEndian.hpp"
+#include "GfxError.hpp"
+#include "GfxFileSystem.hpp"
+#include "GfxGetRendererInfo.hpp"
+#include "GfxGetVersion.hpp"
+#include "GfxInitQuit.hpp"
+#include "GfxLoadSo.hpp"
+#include "GfxMessageBox.hpp"
+#include "GfxMessageBoxButtonData.hpp"
+#include "GfxMessageBoxButtonFlags.hpp"
+#include "GfxMessageBoxColor.hpp"
+#include "GfxMessageBoxColorScheme.hpp"
+#include "GfxMessageBoxData.hpp"
+#include "GfxMessageBoxFlags.hpp"
+#include "GfxPalette.hpp"
+#include "GfxPixelFormat.hpp"
+#include "GfxPlatform.hpp"
+#include "GfxPoint.hpp"
+#include "GfxPowerInfo.hpp"
+#include "GfxPowerState.hpp"
+#include "GfxRect.hpp"
+#include "GfxRenderer.hpp"
+#include "GfxRendererFlags.hpp"
+#include "GfxRendererFlip.hpp"
+#include "GfxRendererInfo.hpp"
+#include "GfxScreenSaver.hpp"
+#include "GfxSurface.hpp"
+#include "GfxSurfaceFlags.hpp"
+#include "GfxTexture.hpp"
+#include "GfxTextureAccess.hpp"
+#include "GfxTextureModulate.hpp"
+#include "GfxVersion.hpp"
+#include "GfxVideo.hpp"
+#include "GfxWindow.hpp"
+#include "GfxWindowEventID.hpp"
+#include "GfxWindowFlags.hpp"
+#include "GfxWindowPosition.hpp"
+#include "GfxAngle.hpp"
+#include "GfxBitmapFont.hpp"
+#include "GfxCanvas.hpp"
+#include "GfxCanvasBgi.hpp"
+#include "GfxCanvasBgiData.hpp"
+#include "GfxBgiConstants.hpp"
+#include "GfxRadius.hpp"
+#include "GfxString.hpp"
+
 int GfxRootClass::intInstanceCounter_ = 0;
+
+const std::string GfxRootClass::astrClassNames[] =
+{
+    GfxBits::ClassName,
+    GfxBlendMode::ClassName,
+    GfxBool::ClassName,
+    GfxClipboard::ClassName,
+    GfxColor::ClassName,
+    GfxCpuInfo::ClassName,
+    GfxDisplayMode::ClassName,
+    GfxEndian::ClassName,
+    GfxError::ClassName,
+    GfxFileSystem::ClassName,
+    GfxGetRendererInfo::ClassName,
+    GfxGetVersion::ClassName,
+    GfxInitQuit::ClassName,
+    GfxLoadSo::ClassName,
+    GfxMessageBox::ClassName,
+    GfxMessageBoxButtonData::ClassName,
+    GfxMessageBoxButtonFlags::ClassName,
+    GfxMessageBoxColor::ClassName,
+    GfxMessageBoxColorScheme::ClassName,
+    GfxMessageBoxData::ClassName,
+    GfxMessageBoxFlags::ClassName,
+    GfxPalette::ClassName,
+    GfxPixelFormat::ClassName,
+    GfxPlatform::ClassName,
+    GfxPoint::ClassName,
+    GfxPowerInfo::ClassName,
+    GfxPowerState::ClassName,
+    GfxRect::ClassName,
+    GfxRenderer::ClassName,
+    GfxRendererFlags::ClassName,
+    GfxRendererFlip::ClassName,
+    GfxRendererInfo::ClassName,
+    GfxScreenSaver::ClassName,
+    GfxSurface::ClassName,
+    GfxSurfaceFlags::ClassName,
+    GfxTexture::ClassName,
+    GfxTextureAccess::ClassName,
+    GfxTextureModulate::ClassName,
+    GfxVersion::ClassName,
+    GfxVideo::ClassName,
+    GfxWindow::ClassName,
+    GfxWindowEventID::ClassName,
+    GfxWindowFlags::ClassName,
+    GfxWindowPosition::ClassName,
+    bgi::GfxAngle::ClassName,
+    bgi::GfxBitmapFont::ClassName,
+    bgi::GfxCanvas::ClassName,
+    bgi::GfxCanvasBgi::ClassName,
+    bgi::GfxCanvasBgiData::ClassName,
+    bgi::GfxBgiConstants::ClassName,
+    bgi::GfxRadius::ClassName,
+    bgi::GfxString::ClassName
+};
+
+const int GfxRootClass::intClassNamesCount = sizeof(GfxRootClass::astrClassNames) / sizeof(GfxRootClass::astrClassNames[0]);
 
 GfxRootClass::GfxRootClass()
 {
