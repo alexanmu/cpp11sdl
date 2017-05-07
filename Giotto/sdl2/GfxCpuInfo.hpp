@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxCpuInfo final : public GfxRootClass
 {
 public:
@@ -73,5 +76,7 @@ private:
     bool hasAvx2_;
     int systemRam_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxCpuInfo_hpp */

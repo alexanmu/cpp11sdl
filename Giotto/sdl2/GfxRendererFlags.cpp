@@ -25,6 +25,9 @@
 
 #include "GfxRendererFlags.hpp"
 
+namespace gfx
+{
+
 const std::string GfxRendererFlags::ClassName = "GfxRendererFlags";
 
 GfxRendererFlags::GfxRendererFlags() : GfxRootClass(ClassName)
@@ -156,5 +159,7 @@ GfxRendererFlags::SdlTypePtr GfxRendererFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace gfx
 
 /* EOF */

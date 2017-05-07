@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxBool final : public GfxRootClass
 {
 public:
@@ -55,5 +58,7 @@ public:
 private:
     SdlType value_;
 };
-    
+
+}  // namespace gfx
+
 #endif /* GfxBool_hpp */

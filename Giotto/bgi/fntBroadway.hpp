@@ -27,6 +27,8 @@
 #ifndef __fntBrodway_hpp__
 #define __fntBrodway_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntBroadwayData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntBrodway_hpp__

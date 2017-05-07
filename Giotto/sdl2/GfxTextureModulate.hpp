@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxTextureModulate final : public GfxRootClass
 {
 public:
@@ -71,5 +74,7 @@ public:
 private:
     SdlType modulate_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxTextureModulate_hpp */

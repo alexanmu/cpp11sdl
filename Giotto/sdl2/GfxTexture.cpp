@@ -26,6 +26,9 @@
 #include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
 
+namespace gfx
+{
+
 const std::string GfxTexture::ClassName = "GfxTexture";
 
 GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) : GfxRootClass(ClassName)
@@ -123,5 +126,7 @@ GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const
 {
     return tex_;
 }
+
+}  // namespace gfx
 
 /* EOF */

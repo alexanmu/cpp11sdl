@@ -25,6 +25,9 @@
 
 #include "GfxPoint.hpp"
 
+namespace gfx
+{
+
 const std::string GfxPoint::ClassName = "GfxPoint";
 
 GfxPoint::GfxPoint() : GfxRootClass(ClassName)
@@ -113,5 +116,7 @@ GfxPoint::SdlTypePtr GfxPoint::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&pt_;
 }
+
+}  // namespace gfx
 
 /* EOF */

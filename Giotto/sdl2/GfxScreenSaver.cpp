@@ -27,6 +27,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxBool.hpp"
 
+namespace gfx
+{
+
 const std::string GfxScreenSaver::ClassName = "GfxScreenSaver";
 
 GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
@@ -52,5 +55,7 @@ void GfxScreenSaver::disableScreenSaver(void)
     sdl2::SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
 }
+
+}  // namespace gfx
 
 /* EOF */

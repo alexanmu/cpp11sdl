@@ -25,6 +25,9 @@
 
 #include "GfxColor.hpp"
 
+namespace gfx
+{
+
 const std::string GfxColor::ClassName = "GfxColor";
 
 GfxColor::GfxColor() : GfxRootClass(ClassName)
@@ -158,5 +161,7 @@ GfxColor::SdlTypePtr GfxColor::getAsSdlTypePtr(void) const
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)&clr_;
 }
+
+}  // namespace gfx
 
 /* EOF */

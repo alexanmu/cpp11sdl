@@ -33,6 +33,9 @@
 #include "GfxWindowPosition.hpp"
 #include "GfxWindowFlags.hpp"
 
+namespace gfx
+{
+
 class GfxWindow final : public GfxRootClass
 {
 public:
@@ -125,5 +128,7 @@ public:
 private:
     SdlTypePtr window_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxWindow_hpp */

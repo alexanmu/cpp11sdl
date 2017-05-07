@@ -33,6 +33,9 @@
 #include "GfxTextureModulate.hpp"
 #include "GfxTextureAccess.hpp"
 
+namespace gfx
+{
+
 class GfxTexture final : public GfxRootClass
 {
 public:
@@ -65,5 +68,7 @@ private:
     GfxRootClass * rend_;
     SdlTypePtr tex_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxTexture_hpp */

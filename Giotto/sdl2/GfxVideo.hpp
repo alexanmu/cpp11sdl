@@ -32,6 +32,9 @@
 #include "GfxRect.hpp"
 #include "GfxDisplayMode.hpp"
 
+namespace gfx
+{
+
 class GfxVideo final : public GfxRootClass
 {
 public:
@@ -66,5 +69,7 @@ private:
     int numvideodisplays_;
     std::map<int, int> numdisplaymodes_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxVideo_hpp */

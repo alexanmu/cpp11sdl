@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxPowerState final : public GfxRootClass
 {
 public:
@@ -70,5 +73,7 @@ public:
 private:
     SdlType value_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxPowerState_hpp */

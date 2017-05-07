@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxClipboard final : public GfxRootClass
 {
 public:
@@ -45,5 +48,7 @@ public:
     std::string getClipboardText(void) const;
     bool hasClipboardText(void) const;
 };
+
+}  // namespace gfx
 
 #endif /* GfxClipboard_hpp */

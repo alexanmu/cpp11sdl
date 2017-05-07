@@ -24,6 +24,8 @@
 #ifndef __fntWacky_hpp__
 #define __fntWacky_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -287,5 +289,6 @@ const uint8_t GfxBgiConstants::fntWackyData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntWacky_hpp__

@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxPowerState.hpp"
 
+namespace gfx
+{
+
 class GfxPowerInfo final : public GfxRootClass
 {
 public:
@@ -54,5 +57,7 @@ private:
     int seconds_;
     int percentage_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxPowerInfo_hpp */

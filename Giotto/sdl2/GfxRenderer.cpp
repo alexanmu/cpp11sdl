@@ -25,16 +25,19 @@
 
 #include "GfxRenderer.hpp"
 
+namespace gfx
+{
+
 const std::string GfxRenderer::ClassName = "GfxRenderer";
 
 GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass(ClassName), renderer_(nullptr), window_(win)
 {
     SdlType* renderertmp;
 
-    renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_ACCELERATED);
+    renderertmp = sdl2::SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_ACCELERATED);
     if (renderertmp == nullptr)
     {
-        renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_SOFTWARE);
+        renderertmp = sdl2::SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_SOFTWARE);
     }
     renderer_ = renderertmp;
 }
@@ -43,7 +46,7 @@ GfxRenderer::~GfxRenderer()
 {
     if (renderer_ != nullptr)
     {
-        SDL_DestroyRenderer(renderer_);
+        sdl2::SDL_DestroyRenderer(renderer_);
     }
 }
 
@@ -51,7 +54,7 @@ void GfxRenderer::destroyRenderer()
 {
     if (renderer_ != nullptr)
     {
-        SDL_DestroyRenderer(renderer_);
+        sdl2::SDL_DestroyRenderer(renderer_);
         renderer_ = nullptr;
     }
 }
@@ -60,8 +63,8 @@ void GfxRenderer::renderClear()
 {
     if (renderer_ != nullptr)
     {
-        SDL_SetRenderDrawColor(renderer_, 0xFF, 0xFF, 0xFF, 0xFF);
-        SDL_RenderClear(renderer_);
+        sdl2::SDL_SetRenderDrawColor(renderer_, 0xFF, 0xFF, 0xFF, 0xFF);
+        sdl2::SDL_RenderClear(renderer_);
     }
 }
 
@@ -71,7 +74,7 @@ void GfxRenderer::getRendererInfo(GfxRendererInfo* infoptr)
 
     if (renderer_ != nullptr)
     {
-        SDL_GetRendererInfo(renderer_,&ri);
+        sdl2::SDL_GetRendererInfo(renderer_,&ri);
         infoptr->set(ri);
     }
     else
@@ -84,7 +87,7 @@ void GfxRenderer::renderCopy(const GfxTexture& tex, const GfxRect& src, const Gf
 {
     if (renderer_ != nullptr)
     {
-        SDL_RenderCopy(renderer_,
+        sdl2::SDL_RenderCopy(renderer_,
                        tex.getAsSdlTypePtr(),
                        src.getAsSdlTypePtr(),
                        dest.getAsSdlTypePtr());
@@ -104,7 +107,7 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const 
 {
     if (renderer_ != nullptr)
     {
-        SDL_RenderCopyEx(renderer_,
+        sdl2::SDL_RenderCopyEx(renderer_,
                          tex.getAsSdlTypePtr(),
                          src.getAsSdlTypePtr(),
                          dest.getAsSdlTypePtr(),
@@ -118,7 +121,7 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const 
 {
     if (renderer_ != nullptr)
     {
-        SDL_RenderCopyEx(renderer_,
+        sdl2::SDL_RenderCopyEx(renderer_,
                          tex.getAsSdlTypePtr(),
                          NULL,
                          NULL,
@@ -132,7 +135,7 @@ void GfxRenderer::renderPresent(void)
 {
     if (renderer_ != nullptr)
     {
-        SDL_RenderPresent(renderer_);
+        sdl2::SDL_RenderPresent(renderer_);
     }
 }
 
@@ -140,5 +143,7 @@ GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const
 {
     return renderer_;
 }
+
+}  // namespace gfx
 
 /* EOF */

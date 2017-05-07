@@ -25,6 +25,9 @@
 
 #include "GfxBlendMode.hpp"
 
+namespace gfx
+{
+
 const std::string GfxBlendMode::ClassName = "GfxBlendMode";
 
 GfxBlendMode::GfxBlendMode() : GfxRootClass(ClassName)
@@ -108,5 +111,7 @@ GfxBlendMode::SdlTypePtr GfxBlendMode::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)blendmode_;
 }
+
+}  // namespace gfx
 
 /* EOF */

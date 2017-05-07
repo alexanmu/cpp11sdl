@@ -27,6 +27,8 @@
 
 #include "GfxCanvasBgiData.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -3158,5 +3160,6 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

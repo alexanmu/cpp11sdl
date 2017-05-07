@@ -26,6 +26,9 @@
 #include "GfxMessageBox.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxMessageBox::ClassName = "GfxMessageBox";
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass(ClassName)
@@ -92,5 +95,7 @@ int GfxMessageBox::showModalComplex(void) const
     sdl2::SDL_ShowMessageBox(p, &buttonid);
     return buttonid;
 }
+
+}  // namespace gfx
 
 /* EOF */

@@ -29,6 +29,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxPoint final : public GfxRootClass
 {
 public:
@@ -64,5 +67,6 @@ private:
     SdlType pt_;
 };
 
+} // namespace gfx
 
 #endif /* GfxPoint_hpp */

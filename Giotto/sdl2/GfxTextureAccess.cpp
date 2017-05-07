@@ -25,6 +25,9 @@
 
 #include "GfxTextureAccess.hpp"
 
+namespace gfx
+{
+
 const std::string GfxTextureAccess::ClassName = "GfxTextureAccess";
 
 GfxTextureAccess::GfxTextureAccess() : GfxRootClass(ClassName)
@@ -78,5 +81,7 @@ GfxTextureAccess::SdlTypePtr GfxTextureAccess::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&access_;
 }
+
+}  // namespace gfx
 
 /* EOF */

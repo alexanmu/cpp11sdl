@@ -25,6 +25,9 @@
 
 #include "GfxInitQuit.hpp"
 
+namespace gfx
+{
+
 const std::string GfxInitQuit::ClassName = "GfxInitQuit";
 
 GfxInitQuit::GfxInitQuit(const GfxInitComponent gfxInitComp) :
@@ -71,5 +74,7 @@ GfxInitQuit::GfxInitComponent GfxInitQuit::getInitedComponent() const
 {
     return gfxInitComp_;
 }
+
+}  // namespace gfx
 
 /* EOF */

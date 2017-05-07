@@ -58,7 +58,7 @@ void GDemoApp::loadAppConfiguration(void)
 
 void GDemoApp::run(void)
 {
-    GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
+    gfx::GfxInitQuit iq(gfx::GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
     {
         return;
@@ -68,11 +68,11 @@ void GDemoApp::run(void)
     mainForm_->createForm();
 
     auto canvas = mainForm_->getFormCanvas();
-    canvas->Bar(GfxRect(0, 0, 100, 100), GfxColor(200, 200, 200));
-    canvas->Line(GfxPoint(10,10), GfxPoint(10,90), bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(GfxPoint(10,10), GfxPoint(90,10), bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(GfxPoint(90,10), GfxPoint(90,90), bgi::GfxBgiConstants::vgaDarkGray());
-    canvas->Line(GfxPoint(10,90), GfxPoint(90,90), bgi::GfxBgiConstants::vgaDarkGray());
+    canvas->Bar(gfx::GfxRect(0, 0, 100, 100), gfx::GfxColor(200, 200, 200));
+    canvas->Line(gfx::GfxPoint(10,10), gfx::GfxPoint(10,90), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::GfxPoint(10,10), gfx::GfxPoint(90,10), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::GfxPoint(90,10), gfx::GfxPoint(90,90), gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    canvas->Line(gfx::GfxPoint(10,90), gfx::GfxPoint(90,90), gfx::bgi::GfxBgiConstants::vgaDarkGray());
     mainForm_->drawForm();
     
     GOKCancelMsgBox g(this,"Error","An error occured. What should I do?");

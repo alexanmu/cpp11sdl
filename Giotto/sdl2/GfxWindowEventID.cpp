@@ -25,6 +25,9 @@
 
 #include "GfxWindowEventID.hpp"
 
+namespace gfx
+{
+
 const std::string GfxWindowEventID::ClassName = "GfxWindowEventID";
 
 GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
@@ -164,5 +167,7 @@ GfxWindowEventID::SdlTypePtr GfxWindowEventID::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&eventid_;
 }
+
+}  // namespace gfx
 
 /* EOF */

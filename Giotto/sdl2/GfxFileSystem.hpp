@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxFileSystem final : public GfxRootClass
 {
 public:
@@ -46,5 +49,7 @@ public:
 private:
     std::string getThisFolder(void) const;
 };
+
+}  // namespace gfx
 
 #endif /* GfxFileSystem_hpp */

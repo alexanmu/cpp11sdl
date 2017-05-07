@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxBits final : public GfxRootClass
 {
 public:
@@ -43,5 +46,7 @@ public:
 
     int mostSignificantBitIndex32(const uint32_t x) const;
 };
+
+}  // namespace gfx
 
 #endif /* GfxBits_hpp */

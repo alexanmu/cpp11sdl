@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxPlatform final : public GfxRootClass
 {
 public:
@@ -47,5 +50,7 @@ public:
 private:
     std::string platform_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxPlatform_hpp */

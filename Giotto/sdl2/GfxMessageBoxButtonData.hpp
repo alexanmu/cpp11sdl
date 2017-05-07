@@ -30,6 +30,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxMessageBoxButtonFlags.hpp"
 
+namespace gfx
+{
+
 class GfxMessageBoxButtonData final : public GfxRootClass
 {
 public:
@@ -56,5 +59,7 @@ public:
 private:
     SdlType data_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxMessageBoxButtonData_hpp */

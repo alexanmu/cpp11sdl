@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxMessageBoxFlags final : public GfxRootClass
 {
 public:
@@ -68,5 +71,7 @@ public:
 private:
     SdlType flag_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxMessageBoxFlags_hpp */

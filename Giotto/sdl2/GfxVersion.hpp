@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxVersion final : public GfxRootClass
 {
 public:
@@ -61,5 +64,7 @@ public:
 private:
     SdlType ver_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxVersion_hpp */

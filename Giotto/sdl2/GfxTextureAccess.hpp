@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxTextureAccess final : public GfxRootClass
 {
 public:
@@ -59,5 +62,7 @@ public:
 private:
     SdlType access_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxTextureAccess_hpp */

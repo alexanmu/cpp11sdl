@@ -25,6 +25,9 @@
 
 #include "GfxGetVersion.hpp"
 
+namespace gfx
+{
+
 const std::string GfxGetVersion::ClassName = "GfxGetVersion";
 
 GfxGetVersion::GfxGetVersion() : GfxRootClass(ClassName)
@@ -52,5 +55,7 @@ int GfxGetVersion::getRevisionNumber(void) const
 {
     return sdl2::SDL_GetRevisionNumber();
 }
+
+}  // namespace gfx
 
 /* EOF */

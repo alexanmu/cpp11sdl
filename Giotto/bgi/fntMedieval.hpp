@@ -27,6 +27,8 @@
 #ifndef __fntMedieval_hpp__
 #define __fntMedieval_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntMedievalData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntMedieval_hpp__

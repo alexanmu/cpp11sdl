@@ -29,6 +29,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxPixelFormat final : public GfxRootClass
 {
 public:
@@ -86,5 +89,7 @@ public:
 private:
     SdlTypePtr pix_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxPixelFormat_hpp */

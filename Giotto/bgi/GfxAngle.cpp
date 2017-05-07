@@ -25,6 +25,8 @@
 
 #include "GfxAngle.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -98,5 +100,6 @@ void GfxAngle::setValue(const GfxValueType& value)
 }
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

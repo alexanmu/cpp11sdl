@@ -28,6 +28,8 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -59,5 +61,6 @@ private:
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif /* GfxRadius_hpp */

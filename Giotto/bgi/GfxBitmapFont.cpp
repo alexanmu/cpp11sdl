@@ -26,6 +26,8 @@
 
 #include "GfxBitmapFont.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -143,5 +145,6 @@ uint8_t GfxBitmapFont::getFontHeight(void) const
 }
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxWindowEventID final : public GfxRootClass
 {
 public:
@@ -92,5 +95,7 @@ public:
 private:
     SdlType eventid_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxWindowEventID_hpp */

@@ -31,6 +31,9 @@
 #include "GfxMessageBoxFlags.hpp"
 #include "GfxWindow.hpp"
 
+namespace gfx
+{
+
 class GfxMessageBox final : public GfxRootClass
 {
 public:
@@ -67,5 +70,7 @@ private:
     std::string message_;
     GfxWindow const* winptr_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxMessageBox_hpp */

@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxLoadSo final : public GfxRootClass
 {
 public:
@@ -56,5 +59,7 @@ private:
     std::string objectname_;
     void * handle_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxLoadSo_hpp */

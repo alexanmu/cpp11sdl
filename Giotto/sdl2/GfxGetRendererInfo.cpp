@@ -26,6 +26,9 @@
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererInfo.hpp"
 
+namespace gfx
+{
+
 const std::string GfxGetRendererInfo::ClassName = "GfxGetRendererInfo";
 
 GfxGetRendererInfo::GfxGetRendererInfo() : GfxRootClass(ClassName)
@@ -59,5 +62,7 @@ void GfxGetRendererInfo::getRenderDriverInfo(const int index, GfxRendererInfo* i
         infoptr = nullptr;
     }
 }
+
+}  // namespace gfx
 
 /* EOF */

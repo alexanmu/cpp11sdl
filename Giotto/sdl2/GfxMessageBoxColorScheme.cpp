@@ -25,6 +25,9 @@
 
 #include "GfxMessageBoxColorScheme.hpp"
 
+namespace gfx
+{
+
 const std::string GfxMessageBoxColorScheme::ClassName = "GfxMessageBoxColorScheme";
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
@@ -106,5 +109,7 @@ GfxMessageBoxColorScheme::SdlTypePtr GfxMessageBoxColorScheme::getAsSdlTypePtr(v
 {
     return (SdlTypePtr)&clrscheme_;
 }
+
+}  // namespace gfx
 
 /* EOF */

@@ -35,6 +35,9 @@
 #include "GfxColor.hpp"
 #include "GfxSurfaceFlags.hpp"
 
+namespace gfx
+{
+
 class GfxSurface final : public GfxRootClass
 {
 public:
@@ -88,5 +91,7 @@ private:
 
     SdlTypePtr surf_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxSurface_hpp */

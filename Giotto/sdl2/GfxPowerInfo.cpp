@@ -25,6 +25,9 @@
 
 #include "GfxPowerInfo.hpp"
 
+namespace gfx
+{
+
 const std::string GfxPowerInfo::ClassName = "GfxPowerInfo";
 
 GfxPowerInfo::GfxPowerInfo() : GfxRootClass(ClassName)
@@ -66,5 +69,7 @@ std::string GfxPowerInfo::getAsString(void) const
     str += "Percentage left " + std::to_string(percentage_) + "%";
     return str;
 }
+
+}  // namespace gfx
 
 /* EOF */

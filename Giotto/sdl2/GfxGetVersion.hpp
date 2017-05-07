@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxVersion.hpp"
 
+namespace gfx
+{
+
 class GfxGetVersion final : public GfxRootClass
 {
 public:
@@ -46,5 +49,7 @@ public:
     std::string getRevision(void) const;
     int getRevisionNumber(void) const;
 };
+
+}  // namespace gfx
 
 #endif /* GfxGetVersion_hpp */

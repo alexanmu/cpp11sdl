@@ -52,13 +52,13 @@ void GForm::setFormTitle(const std::string& title)
 
 void GForm::createForm(void)
 {
-    GfxWindowFlags winFlags(GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
-    GfxWindowPosition winPosCenter(GfxWindowPosition::GfxWindowPositionValues::positionCentered);
+    gfx::GfxWindowFlags winFlags(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
+    gfx::GfxWindowPosition winPosCenter(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered);
 
     std::string s = title_;
 
-    window_ = std::make_shared<GfxWindow>(s, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
-    canvas_ = std::make_shared<bgi::GfxCanvas>(*(window_->getWindowSurface()));
+    window_ = std::make_shared<gfx::GfxWindow>(s, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
+    canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(*(window_->getWindowSurface()));
 }
 
 void GForm::closeForm(void)
@@ -66,7 +66,7 @@ void GForm::closeForm(void)
     //
 }
 
-std::shared_ptr<bgi::GfxCanvas> GForm::getFormCanvas(void)
+std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getFormCanvas(void)
 {
     canvasInUse_ = true;
     return canvas_;

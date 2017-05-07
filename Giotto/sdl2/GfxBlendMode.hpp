@@ -29,6 +29,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxBlendMode final : public GfxRootClass
 {
 public:
@@ -69,5 +72,7 @@ public:
 private:
     SdlType blendmode_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxBlendMode_hpp */

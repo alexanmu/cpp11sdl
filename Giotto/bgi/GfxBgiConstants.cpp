@@ -23,6 +23,8 @@
 
 #include <string>
 
+#include "GfxColor.hpp"
+#include "GfxBitmapFont.hpp"
 #include "GfxBgiConstants.hpp"
 
 #include "fntStandard8x16.hpp"
@@ -36,6 +38,8 @@
 #include "fntScript.hpp"
 #include "fntWacky.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -214,5 +218,6 @@ const GfxBitmapFont& GfxBgiConstants::fntGetFontByIndex(const GfxFontIndex index
 }
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

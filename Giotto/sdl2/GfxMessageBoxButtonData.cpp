@@ -25,6 +25,9 @@
 
 #include "GfxMessageBoxButtonData.hpp"
 
+namespace gfx
+{
+
 const std::string GfxMessageBoxButtonData::ClassName = "GfxMessageBoxButtonData";
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
@@ -101,5 +104,7 @@ GfxMessageBoxButtonData::SdlTypePtr GfxMessageBoxButtonData::getAsSdlTypePtr(voi
 {
     return (SdlTypePtr)&data_;
 }
+
+}  // namespace gfx
 
 /* EOF */

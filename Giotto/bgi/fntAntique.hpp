@@ -27,6 +27,8 @@
 #ifndef __fntAntique_hpp__
 #define __fntAntique_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntAntiqueData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntAntique_hpp__

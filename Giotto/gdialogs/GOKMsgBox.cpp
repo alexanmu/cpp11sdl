@@ -50,26 +50,26 @@ GOKMsgBox::GOKMsgBox(GObject* parent,const std::string& title, const std::string
 
 void GOKMsgBox::showModal(void)
 {
-    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
+    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
     
-    GfxMessageBoxButtonData buttons[1] {
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                                                         GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, "OK"),
+    gfx::GfxMessageBoxButtonData buttons[1] {
+        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
+                                                         gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, "OK"),
     };
     
-    GfxMessageBoxColor colors[static_cast<uint32_t>(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
-        GfxMessageBoxColor(255, 0, 0),
-        GfxMessageBoxColor(250, 220, 190),
-        GfxMessageBoxColor(192, 92, 9),
-        GfxMessageBoxColor(50, 100, 200),
-        GfxMessageBoxColor(255, 255, 255)
+    gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
+        gfx::GfxMessageBoxColor(255, 0, 0),
+        gfx::GfxMessageBoxColor(250, 220, 190),
+        gfx::GfxMessageBoxColor(192, 92, 9),
+        gfx::GfxMessageBoxColor(50, 100, 200),
+        gfx::GfxMessageBoxColor(255, 255, 255)
     };
     
-    GfxMessageBoxColorScheme colorScheme(colors);
+    gfx::GfxMessageBoxColorScheme colorScheme(colors);
     
-    GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 1, buttons, colorScheme);
+    gfx::GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 1, buttons, colorScheme);
     
-    GfxMessageBox messageBox(msgBoxData);
+    gfx::GfxMessageBox messageBox(msgBoxData);
     
     int result = messageBox.showModal();
     switch (result) {

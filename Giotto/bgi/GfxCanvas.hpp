@@ -37,6 +37,8 @@
 #include "GfxString.hpp"
 #include "GfxBitmapFont.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -71,5 +73,6 @@ private:
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif /* GfxCanvas_hpp */

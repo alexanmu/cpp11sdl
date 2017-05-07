@@ -26,6 +26,9 @@
 #include "GfxPlatform.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxPlatform::ClassName = "GfxPlatform";
 
 GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
@@ -42,5 +45,7 @@ std::string GfxPlatform::getPlatform(void) const
 {
     return platform_;
 }
+
+}  // namespace gfx
 
 /* EOF */

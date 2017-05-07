@@ -26,6 +26,9 @@
 #include "GfxError.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxError::ClassName = "GfxError";
 
 std::string GfxError::getError(void)
@@ -40,5 +43,7 @@ void GfxError::clearError(void)
 {
     sdl2::SDL_ClearError();
 }
+
+}  // namespace gfx
 
 /* EOF */

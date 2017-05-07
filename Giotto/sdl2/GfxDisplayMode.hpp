@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxDisplayMode final : public GfxRootClass
 {
 public:
@@ -61,5 +64,7 @@ public:
 private:
     SdlType dmode_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxDisplayMode_hpp */

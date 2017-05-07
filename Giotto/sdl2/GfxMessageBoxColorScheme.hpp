@@ -31,6 +31,9 @@
 #include "GfxMessageBoxColor.hpp"
 #include "GfxMessageBoxColorType.hpp"
 
+namespace gfx
+{
+
 class GfxMessageBoxColorScheme final : public GfxRootClass
 {
 public:
@@ -58,5 +61,7 @@ public:
 private:
     SdlType clrscheme_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxMessageBoxColorScheme_hpp */

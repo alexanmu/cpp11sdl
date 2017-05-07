@@ -29,6 +29,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxRendererFlip final : public GfxRootClass
 {
 public:
@@ -65,5 +68,7 @@ public:
 private:
     SdlType flip_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxRendererFlip_hpp */

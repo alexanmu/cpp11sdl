@@ -27,6 +27,8 @@
 #ifndef __fntDragon_hpp__
 #define __fntDragon_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntDragonData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntDragon_hpp__

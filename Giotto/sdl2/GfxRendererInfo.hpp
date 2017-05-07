@@ -30,6 +30,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxRendererInfo final : public GfxRootClass
 {
 public:
@@ -73,5 +76,7 @@ public:
 private:
     SdlType info_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxRendererInfo_hpp */

@@ -29,6 +29,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxRect final : public GfxRootClass
 {
 public:
@@ -66,5 +69,7 @@ public:
 private:
     SdlType rect_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxRect_hpp */

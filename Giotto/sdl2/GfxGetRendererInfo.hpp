@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxRendererInfo.hpp"
 
+namespace gfx
+{
+
 class GfxGetRendererInfo final : public GfxRootClass
 {
 public:
@@ -47,5 +50,7 @@ public:
 private:
     int numRenderDrivers_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxGetRendererInfo_hpp */

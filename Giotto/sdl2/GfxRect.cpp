@@ -25,6 +25,9 @@
 
 #include "GfxRect.hpp"
 
+namespace gfx
+{
+
 const std::string GfxRect::ClassName = "GfxRect";
 
 GfxRect::GfxRect() : GfxRootClass(ClassName)
@@ -144,5 +147,7 @@ GfxRect::SdlTypePtr GfxRect::getAsSdlTypePtr() const
 {
     return (SdlTypePtr)&rect_;
 }
+
+}  // namespace gfx
 
 /* EOF */

@@ -25,6 +25,8 @@
 
 #include "GfxRadius.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -98,5 +100,6 @@ void GfxRadius::setValue(const GfxValueType& value)
 }
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

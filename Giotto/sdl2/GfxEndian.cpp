@@ -27,6 +27,9 @@
 #include "GfxEndian.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxEndian::ClassName = "GfxEndian";
 
 GfxEndian::GfxEndian() : GfxRootClass(ClassName)
@@ -93,5 +96,7 @@ float GfxEndian::swapFloatBE(const float x) const
 {
     return sdl2::SDL_SwapFloatBE(x);
 }
+
+}  // namespace gfx
 
 /* EOF */

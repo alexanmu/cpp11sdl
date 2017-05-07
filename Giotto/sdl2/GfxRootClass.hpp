@@ -26,6 +26,9 @@
 
 #include <string>
 
+namespace gfx
+{
+
 class GfxRootClass
 {
 public:
@@ -54,5 +57,7 @@ private:
     static const int intClassNamesCount;
     static int intInstanceCounter_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxRootClass_hpp */

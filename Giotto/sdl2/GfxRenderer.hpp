@@ -36,6 +36,9 @@
 #include "GfxTexture.hpp"
 #include "GfxRendererInfo.hpp"
 
+namespace gfx
+{
+
 class GfxRenderer final : public GfxRootClass
 {
 public:
@@ -84,5 +87,7 @@ private:
     SdlTypePtr renderer_;
     GfxWindow const& window_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxRenderer_hpp */

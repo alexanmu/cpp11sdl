@@ -29,6 +29,9 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxInitQuit final : public GfxRootClass
 {
 public:
@@ -66,5 +69,7 @@ private:
     GfxInitComponent gfxInitComp_;
     int errorcode_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxInitQuit_hpp */

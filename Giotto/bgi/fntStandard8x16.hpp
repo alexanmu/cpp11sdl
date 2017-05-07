@@ -27,6 +27,8 @@
 #ifndef __fntStandard8x16_hpp__
 #define __fntStandard8x16_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -291,5 +293,6 @@ const uint8_t GfxBgiConstants::fntStandard8x16Data_[16 * 256] =
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntStandard8x16_hpp__

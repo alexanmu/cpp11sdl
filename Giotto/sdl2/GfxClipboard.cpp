@@ -26,6 +26,9 @@
 #include "GfxClipboard.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxClipboard::ClassName = "GfxClipboard";
 
 GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
@@ -53,5 +56,7 @@ bool GfxClipboard::hasClipboardText(void) const
 {
     return sdl2::SDL_HasClipboardText();
 }
+
+}  // namespace gfx
 
 /* EOF */

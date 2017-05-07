@@ -25,6 +25,9 @@
 
 #include "GfxDisplayMode.hpp"
 
+namespace gfx
+{
+
 const std::string GfxDisplayMode::ClassName = "GfxDisplayMode";
 
 GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
@@ -114,5 +117,7 @@ GfxDisplayMode::SdlTypePtr GfxDisplayMode::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&dmode_;
 }
+
+}  // namespace gfx
 
 /* EOF */

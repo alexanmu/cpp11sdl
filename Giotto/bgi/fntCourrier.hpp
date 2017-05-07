@@ -27,6 +27,8 @@
 #ifndef __fntCourrier_hpp__
 #define __fntCourrier_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntCourrierData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntCourrier_hpp__

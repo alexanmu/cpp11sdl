@@ -26,6 +26,9 @@
 #include "GfxCpuInfo.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxCpuInfo::ClassName  = "GfxCpuInfo";
 
 GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
@@ -146,5 +149,7 @@ std::string GfxCpuInfo::getAsString(void) const
     str1 += "RAM=" + std::to_string(systemRam_) + "MB";
     return str1;
 }
+
+}  // namespace gfx
 
 /* EOF */

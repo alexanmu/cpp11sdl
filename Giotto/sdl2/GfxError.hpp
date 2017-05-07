@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxError final : public GfxRootClass
 {
 public:
@@ -44,5 +47,7 @@ public:
     static std::string getError(void);
     static void clearError(void);
 };
+
+}  // namespace gfx
 
 #endif /* GfxError_hpp */

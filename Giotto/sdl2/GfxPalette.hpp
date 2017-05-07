@@ -32,6 +32,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
 
+namespace gfx
+{
+
 class GfxPalette final : public GfxRootClass
 {
 public:
@@ -77,5 +80,7 @@ private:
 
     SdlTypePtr pal_;
 };
+
+}  // namespace gfx
 
 #endif

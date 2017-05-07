@@ -49,5 +49,5 @@ private:
     };
     GInitType inittype_;
 };
-#endif /* GObject_hpp */
 
+#endif /* GObject_hpp */

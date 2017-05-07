@@ -25,6 +25,9 @@
 
 #include "GfxBool.hpp"
 
+namespace gfx
+{
+
 const std::string GfxBool::ClassName = "GfxBool";
 
 GfxBool::GfxBool() : GfxRootClass(ClassName)
@@ -88,5 +91,7 @@ GfxBool::SdlTypePtr GfxBool::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&value_;
 }
+
+}  // namespace gfx
 
 /* EOF */

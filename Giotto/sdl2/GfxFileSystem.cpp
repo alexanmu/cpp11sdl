@@ -26,6 +26,9 @@
 #include "GfxFileSystem.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 const std::string GfxFileSystem::ClassName = "GfxFileSystem";
 
 GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
@@ -75,5 +78,7 @@ std::string GfxFileSystem::getThisFolder(void) const
     return "./";
 #endif
 }
+
+}  // namespace gfx
 
 /* EOF */

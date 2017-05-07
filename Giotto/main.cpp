@@ -62,64 +62,64 @@
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
 
-void MsgBox(GfxWindow const& win)
+void MsgBox(gfx::GfxWindow const& win)
 {
-    GfxPlatform plat;
+    gfx::GfxPlatform plat;
     plat.queryPlatform();
-    GfxPowerInfo pinfo;
+    gfx::GfxPowerInfo pinfo;
     pinfo.queryPowerInfo();
 
-    GfxMessageBoxFlags flags { GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
+    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagInformation };
     std::string title = "Title";
     std::string message = pinfo.getAsString();
     int numbuttons = 4;
     std::string btn1 = "1 " + plat.getPlatform();
-    GfxMessageBoxButtonData buttons[4] {
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, btn1),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault), 2, "Button2"),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault), 3, "Button3"),
-        GfxMessageBoxButtonData(GfxMessageBoxButtonFlags(
-                    GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 4, "4 Test")
+    gfx::GfxMessageBoxButtonData buttons[4] {
+        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
+                    gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, btn1),
+        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
+                    gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault), 2, "Button2"),
+        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
+                    gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault), 3, "Button3"),
+        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
+                    gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 4, "4 Test")
     };
-    GfxMessageBoxColor c[5] = {
-        GfxMessageBoxColor(255, 0, 0),
-        GfxMessageBoxColor(250, 220, 190),
-        GfxMessageBoxColor(192, 92, 9),
-        GfxMessageBoxColor(50, 100, 200),
-        GfxMessageBoxColor(255, 255, 255)
+    gfx::GfxMessageBoxColor c[5] = {
+        gfx::GfxMessageBoxColor(255, 0, 0),
+        gfx::GfxMessageBoxColor(250, 220, 190),
+        gfx::GfxMessageBoxColor(192, 92, 9),
+        gfx::GfxMessageBoxColor(50, 100, 200),
+        gfx::GfxMessageBoxColor(255, 255, 255)
     };
-    GfxMessageBoxColorScheme colorScheme(c);
-    colorScheme.setColor(GfxMessageBoxColorType(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorBackground),
-                         GfxMessageBoxColor(
-                                            bgi::GfxBgiConstants::vgaDarkGray().getRed(),
-                                            bgi::GfxBgiConstants::vgaDarkGray().getGreen(),
-                                            bgi::GfxBgiConstants::vgaDarkGray().getBlue()));
+    gfx::GfxMessageBoxColorScheme colorScheme(c);
+    colorScheme.setColor(gfx::GfxMessageBoxColorType(gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorBackground),
+                         gfx::GfxMessageBoxColor(
+                                            gfx::bgi::GfxBgiConstants::vgaDarkGray().getRed(),
+                                            gfx::bgi::GfxBgiConstants::vgaDarkGray().getGreen(),
+                                            gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue()));
 
-    GfxMessageBoxData m(flags, const_cast<GfxWindow *>(&win), title, message, numbuttons, buttons, colorScheme);
+    gfx::GfxMessageBoxData m(flags, const_cast<gfx::GfxWindow *>(&win), title, message, numbuttons, buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
 
-    GfxMessageBox g(m);
+    gfx::GfxMessageBox g(m);
     int r = g.showModal();
 
     std::string rez;
 
-    GfxBits b;
+    gfx::GfxBits b;
     rez = "R=" + std::to_string((b.mostSignificantBitIndex32(r) << 8) | (r & 0x00FF));
 
     /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
                              NULL);*/
-    GfxCpuInfo cinfo;
+    gfx::GfxCpuInfo cinfo;
     cinfo.queryCpuInfo();
-    GfxMessageBox k(GfxMessageBoxFlags(GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
+    gfx::GfxMessageBox k(gfx::GfxMessageBoxFlags(gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
                     rez, cinfo.getAsString(), win);
     k.showModal();
 
-    GfxClipboard clipb;
+    gfx::GfxClipboard clipb;
     clipb.setClipboardText(cinfo.getAsString());
 }
 
@@ -127,22 +127,22 @@ void BeforeInit(void)
 {
     std::cout << "BeforeInit()" << std::endl;
 
-    GfxVideo v;
+    gfx::GfxVideo v;
 
     std::cout << "v.getNumVideoDrivers()=" << v.getNumVideoDrivers() << '\n';
     for (int i = 0; i < v.getNumVideoDrivers(); i++)
     {
         std::cout << "v.getVideoDriver(i)=" << v.getVideoDriver(i) << '\n';
     }
-    GfxGetVersion gv;
-    GfxVersion ver;
+    gfx::GfxGetVersion gv;
+    gfx::GfxVersion ver;
 
     gv.getVersion(&ver);
     std::cout << "ver.getAsString()=" << ver.getAsString() << '\n';
     std::cout << "gv.getRevision()=" << gv.getRevision() << '\n';
     std::cout << "gv.getRevisionNumber()=" << gv.getRevisionNumber() << '\n';
 
-    GfxFileSystem fs;
+    gfx::GfxFileSystem fs;
 
     std::cout << "fs.getBasePath()=" << fs.getBasePath() << '\n';
     std::cout << std::endl;
@@ -152,7 +152,7 @@ void AfterInit(void)
 {
     std::cout << "AfterInit()" << std::endl;
 
-    GfxVideo v;
+    gfx::GfxVideo v;
 
     std::cout << "v.getCurrentVideoDriver()=" << v.getCurrentVideoDriver() << '\n';
     std::cout << "v.getNumVideoDisplays()=" << v.getNumVideoDisplays() << '\n';
@@ -163,7 +163,7 @@ void AfterInit(void)
         v.getDisplayDPI(i, &d, &h, &v1);
         std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
         std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
-        std::unique_ptr<GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
+        std::unique_ptr<gfx::GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
         std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
                     std::setw(8) << std::hex << dm.get()->getFormat() << std::dec << '\n';
         std::cout << "dm.get()->getFormat()=" << dm.get()->getFormat() << '\n';
@@ -171,12 +171,12 @@ void AfterInit(void)
         std::cout << "dm.get()->getHeight()=" << dm.get()->getHeight() << '\n';
         std::cout << "dm.get()->getRefreshRate()=" << dm.get()->getRefreshRate() << "Hz" << '\n';
 
-        GfxEndian e;
+        gfx::GfxEndian e;
 
         std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
     }
-    GfxGetRendererInfo gri;
-    GfxRendererInfo ri;
+    gfx::GfxGetRendererInfo gri;
+    gfx::GfxRendererInfo ri;
 
     std::cout << "gri.getNumRenderDrivers()=" << gri.getNumRenderDrivers() << '\n';
     for (int i = 0; i < gri.getNumRenderDrivers(); i++)
@@ -191,7 +191,7 @@ void AfterInit(void)
         {
             std::cout << "ri.getTextureFormats()[j]=" << ri.getTextureFormats()[j] << '\n';
         }
-        GfxRendererFlags rf(static_cast<GfxRendererFlags::SdlType>(ri.getFlags()));
+        gfx::GfxRendererFlags rf(static_cast<gfx::GfxRendererFlags::SdlType>(ri.getFlags()));
         std::cout << "rf.isUnknown()=" << rf.isUnknown() << '\n';
         std::cout << "rf.isSoftware()=" << rf.isSoftware() << '\n';
         std::cout << "rf.isAccelerated()=" << rf.isAccelerated() << '\n';
@@ -206,22 +206,22 @@ void AfterDeInit(void)
     std::cout << "AfterDeInit()" << std::endl;
 
     // We expect this to fail
-    GfxLoadSo lso("whatever.so");
+    gfx::GfxLoadSo lso("whatever.so");
     void * f;
 
     f = lso.loadFunction("whatever_function");
     if (f == nullptr)
     {
         std::cout << "lso.loadFunction(\"whatever_function\")=" << "nullptr" << '\n';
-        std::cout << "err.getError()=" << GfxError::getError() << '\n';
+        std::cout << "err.getError()=" << gfx::GfxError::getError() << '\n';
     }
     std::cout << std::endl;
 }
 
-void bmpSurfaceInfo(GfxSurface* bmps)
+void bmpSurfaceInfo(gfx::GfxSurface* bmps)
 {
-    GfxPixelFormat ptr;
-    GfxPalette::GfxColorVector vec;
+    gfx::GfxPixelFormat ptr;
+    gfx::GfxPalette::GfxColorVector vec;
 
     ptr = bmps->getFormat();
     std::cout << "ptr.getFormat()=" << ptr.getFormat() << '\n';
@@ -270,7 +270,7 @@ void dec(int* a)
 void _doStuff(void)
 {
     BeforeInit();
-    GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
+    gfx::GfxInitQuit iq(gfx::GfxInitQuit::GfxInitComponent::initEverything);
     AfterInit();
     std::cout << "_doStuff()" << std::endl;
     if (iq.getErrorCode() != 0)
@@ -278,13 +278,13 @@ void _doStuff(void)
         std::cout << "Init failed\n";
         return;
     }
-    GfxWindowFlags wf(GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
-    GfxWindow win("Window title", GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered),
-                  GfxWindowPosition(GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
+    gfx::GfxWindowFlags wf(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
+    gfx::GfxWindow win("Window title", gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered),
+                  gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
     MsgBox(win);
-    GfxRenderer rend(win);
+    gfx::GfxRenderer rend(win);
 
-    GfxRendererInfo ri;
+    gfx::GfxRendererInfo ri;
     rend.getRendererInfo(&ri);
     std::cout << "ri.getName()=" << ri.getName() << '\n';
     std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
@@ -294,78 +294,78 @@ void _doStuff(void)
 
     if (ri.getNumTextureFormats() > 0)
     {
-        GfxRendererInfo::GfxTextureFormats gtf;
+        gfx::GfxRendererInfo::GfxTextureFormats gtf;
 
         gtf = ri.getTextureFormats();
         for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
         {
-            GfxPixelFormat gpf(gtf[i]);
+            gfx::GfxPixelFormat gpf(gtf[i]);
             std::cout << "gpf.getFormatAsString()=" << gpf.getFormatAsString() << '\n';
         }
     }
-    GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
+    gfx::GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
-    GfxSurface surfcanvas(GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::GfxSurface surfcanvas(gfx::GfxSurfaceFlags(), WIN_W, WIN_H);
 
     int c = 0;
     for (int i = 0; i < WIN_W; i++)
     {
         for (int j = 480; j < WIN_H; j++)
         {
-            surfcanvas.putPixel(i, j, bgi::GfxBgiConstants::vgaGetColorByIndex(
-                        static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)));
+            surfcanvas.putPixel(i, j, gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(
+                        static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == bgi::GfxBgiConstants::vgaNumColors) c = 0;
+            if (c == gfx::bgi::GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
 
-    bgi::GfxCanvas cv(surfcanvas);
-    cv.Circle(GfxPoint(480, 240), bgi::GfxRadius(230), bgi::GfxBgiConstants::vgaGreen());
-    auto color = bgi::GfxBgiConstants::vgaRed();
-    cv.Arc(GfxPoint(480, 240), bgi::GfxAngle(60), bgi::GfxAngle(300), bgi::GfxRadius(239), color);
-    cv.OutText(GfxPoint(360, 232), bgi::GfxString("SDL_bgi"), GfxColor(50, 100, 200));
-    cv.Bar(GfxPoint(480, 0), GfxPoint(960, 240), bgi::GfxBgiConstants::vgaLightRed());
-    cv.Bar(GfxRect(10, 10, 20, 20), bgi::GfxBgiConstants::vgaRed());
-    cv.Rect(GfxPoint(20, 20), GfxPoint(30, 30), bgi::GfxBgiConstants::vgaGreen());
-    cv.Rect(GfxRect(30, 30, 40, 40), GfxColor(128, 128, 128));
-    cv.Line(GfxPoint(10, 10), GfxPoint(40, 40), bgi::GfxBgiConstants::vgaYellow());
-    cv.OutText(GfxPoint(50, 50), bgi::GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
-                GfxColor(150, 100, 200));
+    gfx::bgi::GfxCanvas cv(surfcanvas);
+    cv.Circle(gfx::GfxPoint(480, 240), gfx::bgi::GfxRadius(230), gfx::bgi::GfxBgiConstants::vgaGreen());
+    auto color = gfx::bgi::GfxBgiConstants::vgaRed();
+    cv.Arc(gfx::GfxPoint(480, 240), gfx::bgi::GfxAngle(60), gfx::bgi::GfxAngle(300), gfx::bgi::GfxRadius(239), color);
+    cv.OutText(gfx::GfxPoint(360, 232), gfx::bgi::GfxString("SDL_bgi"), gfx::GfxColor(50, 100, 200));
+    cv.Bar(gfx::GfxPoint(480, 0), gfx::GfxPoint(960, 240), gfx::bgi::GfxBgiConstants::vgaLightRed());
+    cv.Bar(gfx::GfxRect(10, 10, 20, 20), gfx::bgi::GfxBgiConstants::vgaRed());
+    cv.Rect(gfx::GfxPoint(20, 20), gfx::GfxPoint(30, 30), gfx::bgi::GfxBgiConstants::vgaGreen());
+    cv.Rect(gfx::GfxRect(30, 30, 40, 40), gfx::GfxColor(128, 128, 128));
+    cv.Line(gfx::GfxPoint(10, 10), gfx::GfxPoint(40, 40), gfx::bgi::GfxBgiConstants::vgaYellow());
+    cv.OutText(gfx::GfxPoint(50, 50), gfx::bgi::GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
+                gfx::GfxColor(150, 100, 200));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
-    for (int i = 0; i < bgi::GfxBgiConstants::fntNumFonts; i++)
+    for (int i = 0; i < gfx::bgi::GfxBgiConstants::fntNumFonts; i++)
     {
         int x = 30;
         int y = 60 + i * 16;
         int r = 210 - i * 10;
         int g = 200 + i * 5;
         int b = 20 + i * 10;
-        cv.OutText(GfxPoint(x, y), bgi::GfxString(fontMsg),
-                   GfxColor(r, g, b),
-                   bgi::GfxBgiConstants::fntGetFontByIndex(
-                        static_cast<bgi::GfxBgiConstants::GfxFontIndex>(i)));
+        cv.OutText(gfx::GfxPoint(x, y), gfx::bgi::GfxString(fontMsg),
+                   gfx::GfxColor(r, g, b),
+                   gfx::bgi::GfxBgiConstants::fntGetFontByIndex(
+                        static_cast<gfx::bgi::GfxBgiConstants::GfxFontIndex>(i)));
     }
 
 
-    cv.Bar(GfxPoint(600, 100), GfxPoint(800, 200), bgi::GfxBgiConstants::vgaLightGray());
-    cv.OutText(GfxPoint(620, 120), bgi::GfxString("3D Text, custom font"),
-                bgi::GfxBgiConstants::vgaWhite(), bgi::GfxBgiConstants::fntScript());
-    cv.OutText(GfxPoint(621, 121), bgi::GfxString("3D Text, custom font"),
-                bgi::GfxBgiConstants::vgaBlack(), bgi::GfxBgiConstants::fntScript());
-    cv.OutText(GfxPoint(620, 140), bgi::GfxString("3D Text, SDL_bgi font"),
-                bgi::GfxBgiConstants::vgaWhite());
-    cv.OutText(GfxPoint(621, 141), bgi::GfxString("3D Text, SDL_bgi font"),
-                bgi::GfxBgiConstants::vgaBlack());
+    cv.Bar(gfx::GfxPoint(600, 100), gfx::GfxPoint(800, 200), gfx::bgi::GfxBgiConstants::vgaLightGray());
+    cv.OutText(gfx::GfxPoint(620, 120), gfx::bgi::GfxString("3D Text, custom font"),
+                gfx::bgi::GfxBgiConstants::vgaWhite(), gfx::bgi::GfxBgiConstants::fntScript());
+    cv.OutText(gfx::GfxPoint(621, 121), gfx::bgi::GfxString("3D Text, custom font"),
+                gfx::bgi::GfxBgiConstants::vgaBlack(), gfx::bgi::GfxBgiConstants::fntScript());
+    cv.OutText(gfx::GfxPoint(620, 140), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
+                gfx::bgi::GfxBgiConstants::vgaWhite());
+    cv.OutText(gfx::GfxPoint(621, 141), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
+                gfx::bgi::GfxBgiConstants::vgaBlack());
 
 
-    cv.OutText(GfxPoint(1010, 120), bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
-               bgi::GfxBgiConstants::vgaGreen(), bgi::GfxBgiConstants::fntAntique());
-    cv.OutText(GfxPoint(1010, 150), bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
-               bgi::GfxBgiConstants::vgaLightGray(), bgi::GfxBgiConstants::fntWacky());
+    cv.OutText(gfx::GfxPoint(1010, 120), gfx::bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
+               gfx::bgi::GfxBgiConstants::vgaGreen(), gfx::bgi::GfxBgiConstants::fntAntique());
+    cv.OutText(gfx::GfxPoint(1010, 150), gfx::bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
+               gfx::bgi::GfxBgiConstants::vgaLightGray(), gfx::bgi::GfxBgiConstants::fntWacky());
     c = 0;
     for (int i = 0; i < WIN_W; i++)
     {
@@ -375,29 +375,29 @@ void _doStuff(void)
             uint8_t g;
             uint8_t b;
 
-            r = bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
-            g = bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
-            b = bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
-            cv.PutPixel(GfxPoint(i, j), GfxColor(r, g, b, 224));
+            r = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
+            g = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
+            b = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
+            cv.PutPixel(gfx::GfxPoint(i, j), gfx::GfxColor(r, g, b, 224));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == bgi::GfxBgiConstants::vgaNumColors) c = 0;
+            if (c == gfx::bgi::GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
 
-    GfxSurface colors_surf(GfxSurfaceFlags(), WIN_W, WIN_H);
-    GfxRect rt;
+    gfx::GfxSurface colors_surf(gfx::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::GfxRect rt;
 
-    sdl2::SDL_Event e;
+    gfx::sdl2::SDL_Event e;
     bool quit = false;
-    int r1 = bgi::GfxBgiConstants::vgaDarkGray().getRed();
-    int g1 = bgi::GfxBgiConstants::vgaDarkGray().getGreen();
-    int b1 = bgi::GfxBgiConstants::vgaDarkGray().getBlue();
+    int r1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getRed();
+    int g1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getGreen();
+    int b1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue();
     int a1 = 0;
 
-    GfxScreenSaver ss;
+    gfx::GfxScreenSaver ss;
     if (ss.isScreenSaverEnabled() == false)
     {
         ss.enableScreenSaver();
@@ -407,62 +407,62 @@ void _doStuff(void)
     {
         if (SDL_PollEvent(&e))
         {
-            if (e.type == sdl2::SDL_QUIT)
+            if (e.type == gfx::sdl2::SDL_QUIT)
                 quit = true;
-            if (e.type == sdl2::SDL_KEYDOWN) {
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_Q)
+            if (e.type == gfx::sdl2::SDL_KEYDOWN) {
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_Q)
                     inc(&r1);
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_A)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_A)
                     dec(&r1);
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_W)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_W)
                     inc(&g1);
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_S)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_S)
                     dec(&g1);
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_E)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_E)
                     inc(&b1);
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_D)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_D)
                     dec(&b1);
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_Z)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_Z)
                 { r1 = 0; g1 = 0; b1 = 0; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_X)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_X)
                 { r1 = 128; g1 = 128; b1 = 128; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_C)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_C)
                 { r1 = 255; g1 = 255; b1 = 255; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_K)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_K)
                 { r1 = 137; g1 = 6; b1 = 71; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_U)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_U)
                 { r1 = 113; g1 = 194; b1 = 4; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_O)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_O)
                 { r1 = 237; g1 = 249; b1 = 75; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_M)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_M)
                 { r1 = 128; g1 = 64; b1 = 128; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_N)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_N)
                 {
                     r1 = std::rand() % 255;
                     g1 = std::rand() % 255;
                     b1 = std::rand() % 255;
                 }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_H)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_H)
                 { r1 = 128; g1 = 138; b1 = 43; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_I)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_I)
                 { r1 = 42; g1 = 0; b1 = 46; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_T)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_T)
                 { r1 = 125; g1 = 251; b1 = 1; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_J)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_J)
                 { r1 = 42; g1 = 0; b1 = 46; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_Y)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_Y)
                 { r1 = 156; g1 = 54; b1 = 78; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_P)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_P)
                 { r1 = 50; g1 = 100; b1 = 200; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_1)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_1)
                 { inc(&a1); }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_2)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_2)
                 { dec(&a1); }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_L)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_L)
                 { r1 = 208; g1 = 8; b1 = 232; }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_8)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_8)
                 { inc(&r1); inc(&g1); inc(&b1); }
-                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_9)
+                if (e.key.keysym.scancode == gfx::sdl2::SDL_SCANCODE_9)
                 { dec(&r1); dec(&g1); dec(&b1); }
             }
 
@@ -500,27 +500,27 @@ void _doStuff(void)
             }
             str_title += "][A(" + std::to_string(a1) +")]";
             win.setTitle(str_title);
-            surfcanvas.blitSurface(sbitmap, GfxRect(0, 0, sbitmap.getWidth(),
-                    sbitmap.getHeight()), GfxRect(160, 640, WIN_W, WIN_H));
-            GfxTexture canvas_tex(&rend, surfcanvas);
-            canvas_tex.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendNone);
+            surfcanvas.blitSurface(sbitmap, gfx::GfxRect(0, 0, sbitmap.getWidth(),
+                    sbitmap.getHeight()), gfx::GfxRect(160, 640, WIN_W, WIN_H));
+            gfx::GfxTexture canvas_tex(&rend, surfcanvas);
+            canvas_tex.setBlendMode(gfx::GfxBlendMode::GfxBlendModeValues::blendNone);
 
             rt.setX(0);
             rt.setY(0);
             rt.setWidth(WIN_W);
             rt.setHeight(480);
-            colors_surf.fillRect(rt, GfxColor(r1, g1, b1, a1));
+            colors_surf.fillRect(rt, gfx::GfxColor(r1, g1, b1, a1));
             rt.setX(WIN_W / 2);
-            colors_surf.fillRect(rt, GfxColor(255-r1, 255-g1, 255-b1, a1));
+            colors_surf.fillRect(rt, gfx::GfxColor(255-r1, 255-g1, 255-b1, a1));
 
-            GfxTexture colors_tex(&rend, colors_surf);
-            colors_tex.setBlendMode(GfxBlendMode::GfxBlendModeValues::blendBlend);
+            gfx::GfxTexture colors_tex(&rend, colors_surf);
+            colors_tex.setBlendMode(gfx::GfxBlendMode::GfxBlendModeValues::blendBlend);
 
             rend.renderCopy(canvas_tex);
             rend.renderCopy(colors_tex);
             rend.renderPresent();
         }
-        sdl2::SDL_Delay(25);
+        gfx::sdl2::SDL_Delay(25);
     }
     AfterDeInit();
 }

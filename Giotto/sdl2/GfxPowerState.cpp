@@ -25,6 +25,9 @@
 
 #include "GfxPowerState.hpp"
 
+namespace gfx
+{
+
 const std::string GfxPowerState::ClassName = "GfxPowerState";
 
 GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
@@ -133,5 +136,7 @@ GfxPowerState::SdlTypePtr GfxPowerState::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)value_;
 }
+
+}  // namespace gfx
 
 /* EOF */

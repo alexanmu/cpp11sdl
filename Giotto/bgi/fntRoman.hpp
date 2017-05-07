@@ -27,6 +27,8 @@
 #ifndef __fntRoman_hpp__
 #define __fntRoman_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntRomanData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntRoman_hpp__

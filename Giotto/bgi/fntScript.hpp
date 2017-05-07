@@ -27,6 +27,8 @@
 #ifndef __fntScript_hpp__
 #define __fntScript_hpp__
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -290,5 +292,6 @@ const uint8_t GfxBgiConstants::fntScriptData_[16 * 256] = {
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // __fntScript_hpp__

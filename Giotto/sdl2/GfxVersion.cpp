@@ -25,6 +25,9 @@
 
 #include "GfxVersion.hpp"
 
+namespace gfx
+{
+
 const std::string GfxVersion::ClassName = "GfxVersion";
 
 GfxVersion::GfxVersion() : GfxRootClass(ClassName)
@@ -119,5 +122,7 @@ GfxVersion::SdlTypePtr GfxVersion::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&ver_;
 }
+
+}  // namespace gfx
 
 /* EOF */

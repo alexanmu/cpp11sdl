@@ -25,6 +25,9 @@
 
 #include "GfxWindowPosition.hpp"
 
+namespace gfx
+{
+
 const std::string GfxWindowPosition::ClassName = "GfxWindowPosition";
 
 GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
@@ -123,5 +126,7 @@ uint32_t GfxWindowPosition::getCoordinate(void) const
     }
     return ret;
 }
+
+}  // namespace gfx
 
 /* EOF */

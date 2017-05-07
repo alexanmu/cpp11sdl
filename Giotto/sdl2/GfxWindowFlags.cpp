@@ -25,6 +25,9 @@
 
 #include "GfxWindowFlags.hpp"
 
+namespace gfx
+{
+
 const std::string GfxWindowFlags::ClassName = "GfxWindowFlags";
 
 GfxWindowFlags::GfxWindowFlags() : GfxRootClass(ClassName)
@@ -432,5 +435,7 @@ GfxWindowFlags::SdlTypePtr GfxWindowFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace gfx
 
 /* EOF */

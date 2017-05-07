@@ -25,6 +25,9 @@
 
 #include "GfxTextureModulate.hpp"
 
+namespace gfx
+{
+
 const std::string GfxTextureModulate::ClassName = "GfxTextureModulate";
 
 GfxTextureModulate::GfxTextureModulate() : GfxRootClass(ClassName)
@@ -127,5 +130,7 @@ GfxTextureModulate::SdlTypePtr GfxTextureModulate::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&modulate_;
 }
+
+}  // namespace
 
 /* EOF */

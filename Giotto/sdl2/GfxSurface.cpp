@@ -27,6 +27,9 @@
 
 #include "GfxSurface.hpp"
 
+namespace gfx
+{
+
 const std::string GfxSurface::ClassName = "GfxSurface";
 
 GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
@@ -260,5 +263,7 @@ GfxColor GfxSurface::getPixelPrv(const uint16_t x, const uint16_t y)
     return GfxColor { GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],
                                ptr[y * surf_->w + x + 2], ptr[y * surf_->w + x + 3]) };
 }
+
+}  // namespace gfx
 
 /* EOF */

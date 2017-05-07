@@ -26,6 +26,9 @@
 
 #include "GfxPalette.hpp"
 
+namespace gfx
+{
+
 const std::string GfxPalette::ClassName = "GfxPalette";
 
 GfxPalette::GfxPalette() : GfxRootClass(ClassName)
@@ -176,5 +179,7 @@ GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)pal_;
 }
+
+}  // namespace gfx
 
 /* EOF */

@@ -25,6 +25,9 @@
 
 #include "GfxPixelFormat.hpp"
 
+namespace gfx
+{
+
 const std::string GfxPixelFormat::ClassName = "GfxPixelFormat";
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
@@ -318,5 +321,7 @@ GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)pix_;
 }
+
+}  // namespace gfx
 
 /* EOF */

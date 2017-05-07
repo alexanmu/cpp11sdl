@@ -29,7 +29,6 @@
 
 #include "GObject.hpp"
 #include "GfxCanvas.hpp"
-
 #include "GfxWindow.hpp"
 
 class GForm : public GObject
@@ -44,12 +43,12 @@ public:
 
     void drawForm(void);
 
-    std::shared_ptr<bgi::GfxCanvas> getFormCanvas(void);
+    std::shared_ptr<gfx::bgi::GfxCanvas> getFormCanvas(void);
 private:
-    std::shared_ptr<GfxWindow> window_;
+    std::shared_ptr<gfx::GfxWindow> window_;
     std::string title_;
     
-    std::shared_ptr<bgi::GfxCanvas> canvas_;
+    std::shared_ptr<gfx::bgi::GfxCanvas> canvas_;
     bool canvasInUse_;
 };
 

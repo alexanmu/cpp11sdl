@@ -26,6 +26,9 @@
 
 #include "GfxRendererInfo.hpp"
 
+namespace gfx
+{
+
 const std::string GfxRendererInfo::ClassName = "GfxRendererInfo";
 
 GfxRendererInfo::GfxRendererInfo() : GfxRootClass(ClassName)
@@ -157,5 +160,7 @@ GfxRendererInfo::SdlTypePtr GfxRendererInfo::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&info_;
 }
+
+}  // namespace gfx
 
 /* EOF */

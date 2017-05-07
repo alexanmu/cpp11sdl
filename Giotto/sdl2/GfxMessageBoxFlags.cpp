@@ -25,6 +25,9 @@
 
 #include "GfxMessageBoxFlags.hpp"
 
+namespace gfx
+{
+
 const std::string GfxMessageBoxFlags::ClassName = "GfxMessageBoxFlags";
 
 GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass(ClassName)
@@ -108,5 +111,7 @@ GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flag_;
 }
+
+}  // namespace gfx
 
 /* EOF */

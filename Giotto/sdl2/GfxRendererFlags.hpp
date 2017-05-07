@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxRendererFlags final : public GfxRootClass
 {
 public:
@@ -80,5 +83,7 @@ public:
 private:
     SdlType flags_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxRendererFlags_hpp */

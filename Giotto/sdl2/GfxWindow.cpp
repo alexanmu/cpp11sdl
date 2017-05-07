@@ -26,6 +26,9 @@
 
 #include "GfxWindow.hpp"
 
+namespace gfx
+{
+
 const std::string GfxWindow::ClassName = "GfxWindow";
 
 GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint16_t height) :
@@ -153,5 +156,7 @@ GfxWindow::SdlTypePtr GfxWindow::getAsSdlTypePtr() const
 {
     return window_;
 }
+
+}  // namespace gfx
 
 /* EOF */

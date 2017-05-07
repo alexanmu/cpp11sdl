@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
+
 class GfxScreenSaver final : public GfxRootClass
 {
 public:
@@ -53,5 +56,7 @@ private:
 
     ScreenSaverStatus ssstatus_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxScreenSaver_hpp */

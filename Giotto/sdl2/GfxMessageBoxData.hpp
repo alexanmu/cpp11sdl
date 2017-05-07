@@ -33,6 +33,9 @@
 #include "GfxMessageBoxColorScheme.hpp"
 #include "GfxMessageBoxButtonData.hpp"
 
+namespace gfx
+{
+
 class GfxMessageBoxData final : public GfxRootClass
 {
 public:
@@ -65,5 +68,7 @@ private:
     std::string title_;
     std::string message_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxMessageBoxData_hpp */

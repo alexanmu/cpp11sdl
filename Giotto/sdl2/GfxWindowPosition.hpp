@@ -29,6 +29,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
+namespace gfx
+{
+
 class GfxWindowPosition final : public GfxRootClass
 {
 public:
@@ -60,5 +63,7 @@ private:
     GfxWindowPositionValues pos_;
     uint32_t coord_;
 };
+
+}  // namespace gfx
 
 #endif /* GfxWindowPosition_hpp */

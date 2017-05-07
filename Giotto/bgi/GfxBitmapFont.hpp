@@ -29,6 +29,8 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -61,5 +63,6 @@ private:
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif  // gfxbitmapfont_hpp

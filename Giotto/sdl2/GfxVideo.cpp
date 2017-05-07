@@ -27,6 +27,9 @@
 
 #include "GfxVideo.hpp"
 
+namespace gfx
+{
+
 const std::string GfxVideo::ClassName = "GfxVideo";
 
 GfxVideo::GfxVideo() : GfxRootClass(ClassName)
@@ -206,5 +209,7 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int displa
     }
     return dm;
 }
+
+}  // namespace gfx
 
 /* EOF */

@@ -28,6 +28,8 @@
 #include "../platform/macOS.h"
 #include "../platform/Windows.h"
 
+namespace gfx
+{
 #if defined(__linux_machine) && defined(__macosx_machine)
 #error "Only one machine should be defined!"
 #endif
@@ -48,5 +50,7 @@ namespace sdl2 {
 #include "include/SDL2/SDL_bits.h"
 #endif
 }  // namespce sdl2
+
+}  // namespace gfx
 
 #endif

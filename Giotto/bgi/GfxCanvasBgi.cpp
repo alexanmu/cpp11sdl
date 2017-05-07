@@ -30,6 +30,8 @@
 #include <cstdlib>
 #include <cstring>
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -2366,5 +2368,6 @@ int GfxCanvasBgi::textwidth(char *textstring)
 // --- end of file SDL_bgi.c
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

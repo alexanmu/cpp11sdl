@@ -31,6 +31,8 @@
 
 #include "GfxRootClass.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -57,5 +59,6 @@ public:
 };
 
 }  // namespace bgi
+}  // namespace gfx
 
 #endif /* GfxCanvasBgiData_h */

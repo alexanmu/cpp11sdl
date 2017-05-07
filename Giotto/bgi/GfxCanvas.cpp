@@ -27,6 +27,8 @@
 #include "GfxCanvas.hpp"
 #include "GfxBgiConstants.hpp"
 
+namespace gfx
+{
 namespace bgi
 {
 
@@ -109,5 +111,6 @@ void GfxCanvas::Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& c
 }
 
 }  // namespace bgi
+}  // namespace gfx
 
 /* EOF */

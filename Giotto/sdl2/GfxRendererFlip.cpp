@@ -25,6 +25,9 @@
 
 #include "GfxRendererFlip.hpp"
 
+namespace gfx
+{
+
 const std::string GfxRendererFlip::ClassName = "GfxRendererFlip";
 
 GfxRendererFlip::GfxRendererFlip() : GfxRootClass(ClassName)
@@ -99,5 +102,7 @@ GfxRendererFlip::SdlTypePtr GfxRendererFlip::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flip_;
 }
+
+}  // namespace gfx
 
 /* EOF */
