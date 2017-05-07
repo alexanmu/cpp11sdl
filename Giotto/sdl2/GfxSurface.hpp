@@ -35,8 +35,6 @@
 #include "GfxColor.hpp"
 #include "GfxSurfaceFlags.hpp"
 
-class GfxCanvas;
-
 class GfxSurface final : public GfxRootClass
 {
 public:
@@ -85,8 +83,6 @@ public:
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    friend class GfxCanvas;
-
     void putPixelPrv(const uint16_t x, const uint16_t y, const GfxColor& clr);
     GfxColor getPixelPrv(const uint16_t x, const uint16_t y);
 

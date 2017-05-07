@@ -44,12 +44,12 @@ public:
 
     void drawForm(void);
 
-    std::shared_ptr<GfxCanvas> getFormCanvas(void);
+    std::shared_ptr<bgi::GfxCanvas> getFormCanvas(void);
 private:
     std::shared_ptr<GfxWindow> window_;
     std::string title_;
     
-    std::shared_ptr<GfxCanvas> canvas_;
+    std::shared_ptr<bgi::GfxCanvas> canvas_;
     bool canvasInUse_;
 };
 

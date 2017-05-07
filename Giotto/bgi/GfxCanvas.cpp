@@ -34,7 +34,7 @@ const std::string GfxCanvas::ClassName = "GfxCanvas";
 
 GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName), surf_(surf)
 {
-    bgi_.setCanvas(static_cast<uint32_t *>(surf_.surf_->pixels), surf_.surf_->w, surf_.surf_->h);
+    bgi_.setCanvas(static_cast<uint32_t *>(surf_.getAsSdlTypePtr()->pixels), surf_.getAsSdlTypePtr()->w, surf_.getAsSdlTypePtr()->h);
 }
 
 void GfxCanvas::Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr)

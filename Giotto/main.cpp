@@ -94,9 +94,9 @@ void MsgBox(GfxWindow const& win)
     GfxMessageBoxColorScheme colorScheme(c);
     colorScheme.setColor(GfxMessageBoxColorType(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorBackground),
                          GfxMessageBoxColor(
-                                            GfxBgiConstants::vgaDarkGray().getRed(),
-                                            GfxBgiConstants::vgaDarkGray().getGreen(),
-                                            GfxBgiConstants::vgaDarkGray().getBlue()));
+                                            bgi::GfxBgiConstants::vgaDarkGray().getRed(),
+                                            bgi::GfxBgiConstants::vgaDarkGray().getGreen(),
+                                            bgi::GfxBgiConstants::vgaDarkGray().getBlue()));
 
     GfxMessageBoxData m(flags, const_cast<GfxWindow *>(&win), title, message, numbuttons, buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
@@ -313,59 +313,59 @@ void _doStuff(void)
     {
         for (int j = 480; j < WIN_H; j++)
         {
-            surfcanvas.putPixel(i, j, GfxBgiConstants::vgaGetColorByIndex(
-                        static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)));
+            surfcanvas.putPixel(i, j, bgi::GfxBgiConstants::vgaGetColorByIndex(
+                        static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == GfxBgiConstants::vgaNumColors) c = 0;
+            if (c == bgi::GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
 
-    GfxCanvas cv(surfcanvas);
-    cv.Circle(GfxPoint(480, 240), GfxRadius(230), GfxBgiConstants::vgaGreen());
-    auto color = GfxBgiConstants::vgaRed();
-    cv.Arc(GfxPoint(480, 240), GfxAngle(60), GfxAngle(300), GfxRadius(239), color);
-    cv.OutText(GfxPoint(360, 232), GfxString("SDL_bgi"), GfxColor(50, 100, 200));
-    cv.Bar(GfxPoint(480, 0), GfxPoint(960, 240), GfxBgiConstants::vgaLightRed());
-    cv.Bar(GfxRect(10, 10, 20, 20), GfxBgiConstants::vgaRed());
-    cv.Rect(GfxPoint(20, 20), GfxPoint(30, 30), GfxBgiConstants::vgaGreen());
+    bgi::GfxCanvas cv(surfcanvas);
+    cv.Circle(GfxPoint(480, 240), bgi::GfxRadius(230), bgi::GfxBgiConstants::vgaGreen());
+    auto color = bgi::GfxBgiConstants::vgaRed();
+    cv.Arc(GfxPoint(480, 240), bgi::GfxAngle(60), bgi::GfxAngle(300), bgi::GfxRadius(239), color);
+    cv.OutText(GfxPoint(360, 232), bgi::GfxString("SDL_bgi"), GfxColor(50, 100, 200));
+    cv.Bar(GfxPoint(480, 0), GfxPoint(960, 240), bgi::GfxBgiConstants::vgaLightRed());
+    cv.Bar(GfxRect(10, 10, 20, 20), bgi::GfxBgiConstants::vgaRed());
+    cv.Rect(GfxPoint(20, 20), GfxPoint(30, 30), bgi::GfxBgiConstants::vgaGreen());
     cv.Rect(GfxRect(30, 30, 40, 40), GfxColor(128, 128, 128));
-    cv.Line(GfxPoint(10, 10), GfxPoint(40, 40), GfxBgiConstants::vgaYellow());
-    cv.OutText(GfxPoint(50, 50), GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
+    cv.Line(GfxPoint(10, 10), GfxPoint(40, 40), bgi::GfxBgiConstants::vgaYellow());
+    cv.OutText(GfxPoint(50, 50), bgi::GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
                 GfxColor(150, 100, 200));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
-    for (int i = 0; i < GfxBgiConstants::fntNumFonts; i++)
+    for (int i = 0; i < bgi::GfxBgiConstants::fntNumFonts; i++)
     {
         int x = 30;
         int y = 60 + i * 16;
         int r = 210 - i * 10;
         int g = 200 + i * 5;
         int b = 20 + i * 10;
-        cv.OutText(GfxPoint(x, y), GfxString(fontMsg),
-                    GfxColor(r, g, b),
-                    GfxBgiConstants::fntGetFontByIndex(
-                        static_cast<GfxBgiConstants::GfxFontIndex>(i)));
+        cv.OutText(GfxPoint(x, y), bgi::GfxString(fontMsg),
+                   GfxColor(r, g, b),
+                   bgi::GfxBgiConstants::fntGetFontByIndex(
+                        static_cast<bgi::GfxBgiConstants::GfxFontIndex>(i)));
     }
 
 
-    cv.Bar(GfxPoint(600, 100), GfxPoint(800, 200), GfxBgiConstants::vgaLightGray());
-    cv.OutText(GfxPoint(620, 120), GfxString("3D Text, custom font"),
-                GfxBgiConstants::vgaWhite(), GfxBgiConstants::fntScript());
-    cv.OutText(GfxPoint(621, 121), GfxString("3D Text, custom font"),
-                GfxBgiConstants::vgaBlack(), GfxBgiConstants::fntScript());
-    cv.OutText(GfxPoint(620, 140), GfxString("3D Text, SDL_bgi font"),
-                GfxBgiConstants::vgaWhite());
-    cv.OutText(GfxPoint(621, 141), GfxString("3D Text, SDL_bgi font"),
-                GfxBgiConstants::vgaBlack());
+    cv.Bar(GfxPoint(600, 100), GfxPoint(800, 200), bgi::GfxBgiConstants::vgaLightGray());
+    cv.OutText(GfxPoint(620, 120), bgi::GfxString("3D Text, custom font"),
+                bgi::GfxBgiConstants::vgaWhite(), bgi::GfxBgiConstants::fntScript());
+    cv.OutText(GfxPoint(621, 121), bgi::GfxString("3D Text, custom font"),
+                bgi::GfxBgiConstants::vgaBlack(), bgi::GfxBgiConstants::fntScript());
+    cv.OutText(GfxPoint(620, 140), bgi::GfxString("3D Text, SDL_bgi font"),
+                bgi::GfxBgiConstants::vgaWhite());
+    cv.OutText(GfxPoint(621, 141), bgi::GfxString("3D Text, SDL_bgi font"),
+                bgi::GfxBgiConstants::vgaBlack());
 
 
-    cv.OutText(GfxPoint(1010, 120), GfxString("WIN_W=" + std::to_string(WIN_W)),
-               GfxBgiConstants::vgaGreen(), GfxBgiConstants::fntAntique());
-    cv.OutText(GfxPoint(1010, 150), GfxString("WIN_H=" + std::to_string(WIN_H)),
-               GfxBgiConstants::vgaLightGray(), GfxBgiConstants::fntWacky());
+    cv.OutText(GfxPoint(1010, 120), bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
+               bgi::GfxBgiConstants::vgaGreen(), bgi::GfxBgiConstants::fntAntique());
+    cv.OutText(GfxPoint(1010, 150), bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
+               bgi::GfxBgiConstants::vgaLightGray(), bgi::GfxBgiConstants::fntWacky());
     c = 0;
     for (int i = 0; i < WIN_W; i++)
     {
@@ -375,15 +375,15 @@ void _doStuff(void)
             uint8_t g;
             uint8_t b;
 
-            r = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
-            g = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
-            b = GfxBgiConstants::vgaGetColorByIndex(static_cast<GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
+            r = bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
+            g = bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
+            b = bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
             cv.PutPixel(GfxPoint(i, j), GfxColor(r, g, b, 224));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == GfxBgiConstants::vgaNumColors) c = 0;
+            if (c == bgi::GfxBgiConstants::vgaNumColors) c = 0;
         }
     }
 
@@ -392,9 +392,9 @@ void _doStuff(void)
 
     sdl2::SDL_Event e;
     bool quit = false;
-    int r1 = GfxBgiConstants::vgaDarkGray().getRed();
-    int g1 = GfxBgiConstants::vgaDarkGray().getGreen();
-    int b1 = GfxBgiConstants::vgaDarkGray().getBlue();
+    int r1 = bgi::GfxBgiConstants::vgaDarkGray().getRed();
+    int g1 = bgi::GfxBgiConstants::vgaDarkGray().getGreen();
+    int b1 = bgi::GfxBgiConstants::vgaDarkGray().getBlue();
     int a1 = 0;
 
     GfxScreenSaver ss;

@@ -58,7 +58,7 @@ void GForm::createForm(void)
     std::string s = title_;
 
     window_ = std::make_shared<GfxWindow>(s, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
-    canvas_ = std::make_shared<GfxCanvas>(*(window_->getWindowSurface()));
+    canvas_ = std::make_shared<bgi::GfxCanvas>(*(window_->getWindowSurface()));
 }
 
 void GForm::closeForm(void)
@@ -66,7 +66,7 @@ void GForm::closeForm(void)
     //
 }
 
-std::shared_ptr<GfxCanvas> GForm::getFormCanvas(void)
+std::shared_ptr<bgi::GfxCanvas> GForm::getFormCanvas(void)
 {
     canvasInUse_ = true;
     return canvas_;
