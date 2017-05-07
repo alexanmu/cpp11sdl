@@ -23,7 +23,8 @@
 
 #include "GDemoApp.hpp"
 
-#include <iostream>
+#include <memory>
+#include <string>
 
 #include "GfxInitQuit.hpp"
 #include "GfxWindow.hpp"
@@ -60,7 +61,6 @@ void GDemoApp::run(void)
     GfxInitQuit iq(GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)
     {
-        std::cout << "Init failed\n";
         return;
     }
 

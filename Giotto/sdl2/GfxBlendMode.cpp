@@ -86,17 +86,17 @@ GfxBlendMode::GfxBlendModeValues GfxBlendMode::getBlendMode(void) const
 
 bool GfxBlendMode::isBlend(void) const
 {
-    return (blendmode_ == SDL_BLENDMODE_BLEND);
+    return (blendmode_ == sdl2::SDL_BLENDMODE_BLEND);
 }
 
 bool GfxBlendMode::isAdd(void) const
 {
-    return (blendmode_ == SDL_BLENDMODE_ADD);
+    return (blendmode_ == sdl2::SDL_BLENDMODE_ADD);
 }
 
 bool GfxBlendMode::isMod(void) const
 {
-    return (blendmode_ == SDL_BLENDMODE_MOD);
+    return (blendmode_ == sdl2::SDL_BLENDMODE_MOD);
 }
 
 GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const

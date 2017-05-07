@@ -47,6 +47,6 @@ namespace sdl2 {
 #include "include/SDL2/SDL.h"
 #include "include/SDL2/SDL_bits.h"
 #endif
-}
+}  // namespce sdl2
 
 #endif
