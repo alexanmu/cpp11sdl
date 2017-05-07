@@ -21,8 +21,6 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <string>
-
 #include "GfxBlendMode.hpp"
 
 namespace gfx
