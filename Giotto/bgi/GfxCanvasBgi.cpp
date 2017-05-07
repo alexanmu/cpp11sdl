@@ -25,13 +25,15 @@
 
 #include "GfxCanvasBgi.hpp"
 
+#include <string>
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
 
-GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass("GfxCanvasBgi")
+const std::string GfxCanvasBgi::ClassName = "GfxCanvasBgi";
+
+GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
 {
-    graphdefaults();
     bgi_activepage = nullptr;
     bgi_maxx = -1;
     bgi_maxy = -1;

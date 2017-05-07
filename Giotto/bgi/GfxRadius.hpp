@@ -24,11 +24,15 @@
 #ifndef GfxRadius_hpp
 #define GfxRadius_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 
 class GfxRadius final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     typedef uint16_t GfxValueType;
 
     GfxRadius();

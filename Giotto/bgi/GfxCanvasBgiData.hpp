@@ -26,6 +26,7 @@
 #ifndef GfxCanvasBgiData_h
 #define GfxCanvasBgiData_h
 
+#include <string>
 #include <cstdint>
 
 #include "GfxRootClass.hpp"
@@ -33,6 +34,8 @@
 class GfxCanvasBgiData final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxCanvasBgiData() = delete;
 
     GfxCanvasBgiData(const GfxCanvasBgiData&) = delete;

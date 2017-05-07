@@ -20,18 +20,22 @@
 
   See copyright notice at http://lidsdl.org/license.php
 */
+
+#include <string>
 #include <cstring>
 
 #include "GfxBitmapFont.hpp"
 
-GfxBitmapFont::GfxBitmapFont() : GfxRootClass("GfxBitmapFont"), fontData_(nullptr),
+const std::string GfxBitmapFont::ClassName = "GfxBitmapFont";
+
+GfxBitmapFont::GfxBitmapFont() : GfxRootClass(ClassName), fontData_(nullptr),
         fontDataSize_(0), fontWidth_(0), fontHeight_(0)
 {
     //
 }
 
 GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight) :
-        GfxRootClass("GfxBitmapFont")
+        GfxRootClass(ClassName)
 {
     fontWidth_ = 0;
     fontHeight_ = 0;
@@ -51,7 +55,7 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, c
     }
 }
 
-GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxRootClass("GfxBitmapFont")
+GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxRootClass(ClassName)
 {
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;
@@ -60,7 +64,7 @@ GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxRootClass("GfxBitm
     std::memcpy(fontData_, other.fontData_, fontDataSize_);
 }
 
-GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) : GfxRootClass("GfxBitmapFont")
+GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) : GfxRootClass(ClassName)
 {
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;

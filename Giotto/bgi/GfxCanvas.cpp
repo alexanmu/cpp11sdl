@@ -20,12 +20,16 @@
 
   See copyright notice at http://lidsdl.org/license.php
 */
+
+#include <string>
 #include <cmath>
 
 #include "GfxCanvas.hpp"
 #include "GfxBgiConstants.hpp"
 
-GfxCanvas::GfxCanvas(GfxSurface const& surf) : surf_(surf)
+const std::string GfxCanvas::ClassName = "GfxCanvas";
+
+GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName), surf_(surf)
 {
     bgi_.setCanvas(static_cast<uint32_t *>(surf_.surf_->pixels), surf_.surf_->w, surf_.surf_->h);
 }

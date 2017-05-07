@@ -27,12 +27,16 @@
 #define GfxBgi_hpp
 
 #include <cstdint>
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxCanvasBgiData.hpp"
 
 class GfxCanvasBgi : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     enum class bgiFonts : int
     {
         DEFAULT_FONT =     0,  // 8x8

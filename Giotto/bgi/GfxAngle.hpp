@@ -19,10 +19,12 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxAngle_hpp
 #define GfxAngle_hpp
+
+#include <string>
 
 #include "GfxRootClass.hpp"
 
@@ -30,6 +32,8 @@ class GfxAngle final : public GfxRootClass
 {
 public:
     typedef int GfxValueType;
+
+    static const std::string ClassName;
 
     GfxAngle();
 

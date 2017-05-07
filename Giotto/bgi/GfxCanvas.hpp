@@ -24,6 +24,8 @@
 #ifndef GfxCanvas_hpp
 #define GfxCanvas_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxBgiConstants.hpp"
 #include "GfxSurface.hpp"
@@ -38,6 +40,8 @@
 class GfxCanvas final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxCanvas() = delete;
     explicit GfxCanvas(GfxSurface const& surf);
 

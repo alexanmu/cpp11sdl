@@ -19,26 +19,30 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
+
+#include <string>
 
 #include "GfxRadius.hpp"
 
-GfxRadius::GfxRadius() : GfxRootClass("GfxRadius"), value_(0)
+const std::string GfxRadius::ClassName = "GfxRadius";
+
+GfxRadius::GfxRadius() : GfxRootClass(ClassName), value_(0)
 {
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(GfxValueType value) : GfxRootClass("GfxRadius"), value_(value)
+GfxRadius::GfxRadius(GfxValueType value) : GfxRootClass(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(const GfxRadius& other) : GfxRootClass("GfxRadius")
+GfxRadius::GfxRadius(const GfxRadius& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxRadius::GfxRadius(GfxRadius&& other) : GfxRootClass("GfxRadius")
+GfxRadius::GfxRadius(GfxRadius&& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

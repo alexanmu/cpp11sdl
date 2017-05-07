@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxBgiConstants.hpp"
 
 #include "fntStandard8x16.hpp"
@@ -33,6 +35,8 @@
 #include "fntSansserif.hpp"
 #include "fntScript.hpp"
 #include "fntWacky.hpp"
+
+const std::string GfxBgiConstants::ClassName = "GfxBgiConstants";
 
 const GfxColor GfxBgiConstants::colorsVGA16_[16] {
     {0x00 << 2, 0x00 << 2, 0x00 << 2, 0xFF},

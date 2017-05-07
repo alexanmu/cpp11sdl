@@ -21,24 +21,28 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxAngle.hpp"
 
-GfxAngle::GfxAngle() : GfxRootClass("GfxAngle"), value_(0)
+const std::string GfxAngle::ClassName = "GfxAngle";
+
+GfxAngle::GfxAngle() : GfxRootClass(ClassName), value_(0)
 {
     // Nothing to do
 }
 
-GfxAngle::GfxAngle(const GfxValueType value) : GfxRootClass("GfxAngle"), value_(value)
+GfxAngle::GfxAngle(const GfxValueType value) : GfxRootClass(ClassName), value_(value)
 {
     value_ = value_ % 360;
 }
 
-GfxAngle::GfxAngle(const GfxAngle& other) : GfxRootClass("GfxAngle")
+GfxAngle::GfxAngle(const GfxAngle& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxAngle::GfxAngle(GfxAngle&& other) : GfxRootClass("GfxAngle")
+GfxAngle::GfxAngle(GfxAngle&& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

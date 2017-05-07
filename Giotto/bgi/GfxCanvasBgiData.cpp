@@ -23,7 +23,11 @@
   Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
 */
 
+#include <string>
+
 #include "GfxCanvasBgiData.hpp"
+
+const std::string GfxCanvasBgiData::ClassName = "GfxCanvasBgiData";
 
 const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::kMaxColors] = {  // 0 - 15
     0xff000000,  // BLACK

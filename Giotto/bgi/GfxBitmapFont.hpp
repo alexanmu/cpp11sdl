@@ -24,6 +24,7 @@
 #ifndef gfxbitmapfont_hpp
 #define gfxbitmapfont_hpp
 
+#include <string>
 #include <cstdint>
 
 #include "GfxRootClass.hpp"
@@ -31,6 +32,8 @@
 class GfxBitmapFont final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxBitmapFont();
 
     GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight);

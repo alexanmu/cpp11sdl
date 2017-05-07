@@ -24,6 +24,8 @@
 #ifndef GfxBgiConstants_hpp
 #define GfxBgiConstants_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
 #include "GfxBitmapFont.hpp"
@@ -31,6 +33,8 @@
 class GfxBgiConstants final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxBgiConstants() = delete;
 
     GfxBgiConstants(const GfxBgiConstants&) = delete;

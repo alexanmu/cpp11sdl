@@ -19,26 +19,30 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
+
+#include <string>
 
 #include "GfxString.hpp"
 
-GfxString::GfxString() : GfxRootClass("GfxString"), value_("")
+const std::string GfxString::ClassName = "GfxString";
+
+GfxString::GfxString() : GfxRootClass(ClassName), value_("")
 {
     // Nothing to do
 }
 
-GfxString::GfxString(GfxValueType value) : GfxRootClass("GfxString"), value_(value)
+GfxString::GfxString(GfxValueType value) : GfxRootClass(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxString::GfxString(const GfxString& other) : GfxRootClass("GfxString")
+GfxString::GfxString(const GfxString& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxString::GfxString(GfxString&& other) : GfxRootClass("GfxString")
+GfxString::GfxString(GfxString&& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
