@@ -27,6 +27,9 @@
 #include "GfxCanvas.hpp"
 #include "GfxBgiConstants.hpp"
 
+namespace bgi
+{
+
 const std::string GfxCanvas::ClassName = "GfxCanvas";
 
 GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName), surf_(surf)
@@ -104,5 +107,7 @@ void GfxCanvas::Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& c
     bgi_.setCustomForegroundColor(c);
     bgi_.line(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
+
+}  // namespace bgi
 
 /* EOF */

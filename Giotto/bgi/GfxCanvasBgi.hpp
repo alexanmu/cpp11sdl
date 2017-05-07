@@ -32,6 +32,9 @@
 #include "GfxRootClass.hpp"
 #include "GfxCanvasBgiData.hpp"
 
+namespace bgi
+{
+
 class GfxCanvasBgi : public GfxRootClass
 {
 public:
@@ -315,5 +318,6 @@ private:
     const uint8_t *fontptr = GfxCanvasBgiData::gfxPrimitivesFontdata;
 };  // class GfxCanvasBgi
 
+}  // namespace bgi
 
 #endif /* GfxBgi_hpp */

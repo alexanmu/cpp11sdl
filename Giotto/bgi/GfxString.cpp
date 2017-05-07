@@ -25,6 +25,9 @@
 
 #include "GfxString.hpp"
 
+namespace bgi
+{
+
 const std::string GfxString::ClassName = "GfxString";
 
 GfxString::GfxString() : GfxRootClass(ClassName), value_("")
@@ -93,5 +96,7 @@ void GfxString::setValue(const GfxValueType& value)
 {
     value_ = value;
 }
+
+}  // namespace bgi
 
 /* EOF */

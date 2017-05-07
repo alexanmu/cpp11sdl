@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace bgi
+{
+
 class GfxRadius final : public GfxRootClass
 {
 public:
@@ -55,5 +58,6 @@ private:
     GfxValueType value_;
 };
 
+}  // namespace bgi
 
 #endif /* GfxRadius_hpp */

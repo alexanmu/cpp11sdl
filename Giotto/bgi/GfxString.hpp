@@ -28,6 +28,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace bgi
+{
+
 class GfxString final : public GfxRootClass
 {
 public:
@@ -54,5 +57,7 @@ public:
 private:
     GfxValueType value_;
 };
+
+}  // namespace bgi
 
 #endif /* GfxString_hpp */

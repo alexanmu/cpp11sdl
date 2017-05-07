@@ -27,6 +27,9 @@
 
 #include "GfxCanvasBgiData.hpp"
 
+namespace bgi
+{
+
 const std::string GfxCanvasBgiData::ClassName = "GfxCanvasBgiData";
 
 const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::kMaxColors] = {  // 0 - 15
@@ -3153,5 +3156,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
 };
+
+}  // namespace bgi
 
 /* EOF */

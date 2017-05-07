@@ -29,6 +29,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace bgi
+{
+
 class GfxBitmapFont final : public GfxRootClass
 {
 public:
@@ -56,5 +59,7 @@ private:
     uint8_t fontWidth_;
     uint8_t fontHeight_;
 };
+
+}  // namespace bgi
 
 #endif  // gfxbitmapfont_hpp

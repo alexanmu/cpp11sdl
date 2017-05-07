@@ -37,6 +37,9 @@
 #include "GfxString.hpp"
 #include "GfxBitmapFont.hpp"
 
+namespace bgi
+{
+
 class GfxCanvas final : public GfxRootClass
 {
 public:
@@ -66,5 +69,7 @@ private:
     GfxCanvasBgi bgi_;
     GfxSurface const& surf_;
 };
+
+}  // namespace bgi
 
 #endif /* GfxCanvas_hpp */

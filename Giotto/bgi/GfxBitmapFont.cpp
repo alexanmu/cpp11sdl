@@ -26,6 +26,9 @@
 
 #include "GfxBitmapFont.hpp"
 
+namespace bgi
+{
+
 const std::string GfxBitmapFont::ClassName = "GfxBitmapFont";
 
 GfxBitmapFont::GfxBitmapFont() : GfxRootClass(ClassName), fontData_(nullptr),
@@ -138,5 +141,7 @@ uint8_t GfxBitmapFont::getFontHeight(void) const
 {
     return fontHeight_;
 }
+
+}  // namespace bgi
 
 /* EOF */

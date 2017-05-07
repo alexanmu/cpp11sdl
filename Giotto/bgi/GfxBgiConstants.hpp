@@ -30,6 +30,9 @@
 #include "GfxColor.hpp"
 #include "GfxBitmapFont.hpp"
 
+namespace bgi
+{
+
 class GfxBgiConstants final : public GfxRootClass
 {
 public:
@@ -127,5 +130,7 @@ private:
     static const uint8_t fntScriptData_[16 * 256];
     static const uint8_t fntWackyData_[16 * 256];
 };
+
+}  // namespace bgi
 
 #endif

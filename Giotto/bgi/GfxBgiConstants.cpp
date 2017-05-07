@@ -36,6 +36,9 @@
 #include "fntScript.hpp"
 #include "fntWacky.hpp"
 
+namespace bgi
+{
+
 const std::string GfxBgiConstants::ClassName = "GfxBgiConstants";
 
 const GfxColor GfxBgiConstants::colorsVGA16_[16] {
@@ -209,5 +212,7 @@ const GfxBitmapFont& GfxBgiConstants::fntGetFontByIndex(const GfxFontIndex index
 {
     return GfxBgiConstants::fonts_[static_cast<int>(index)];
 }
+
+}  // namespace bgi
 
 /* EOF */

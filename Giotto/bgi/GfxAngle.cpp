@@ -25,6 +25,9 @@
 
 #include "GfxAngle.hpp"
 
+namespace bgi
+{
+
 const std::string GfxAngle::ClassName = "GfxAngle";
 
 GfxAngle::GfxAngle() : GfxRootClass(ClassName), value_(0)
@@ -93,5 +96,7 @@ void GfxAngle::setValue(const GfxValueType& value)
 {
     value_ = value;
 }
+
+}  // namespace bgi
 
 /* EOF */

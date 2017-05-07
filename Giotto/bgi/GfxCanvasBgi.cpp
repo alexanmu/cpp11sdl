@@ -30,6 +30,9 @@
 #include <cstdlib>
 #include <cstring>
 
+namespace bgi
+{
+
 const std::string GfxCanvasBgi::ClassName = "GfxCanvasBgi";
 
 GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
@@ -2361,3 +2364,7 @@ int GfxCanvasBgi::textwidth(char *textstring)
 }  // textwidth ()
 
 // --- end of file SDL_bgi.c
+
+}  // namespace bgi
+
+/* EOF */

@@ -31,6 +31,9 @@
 
 #include "GfxRootClass.hpp"
 
+namespace bgi
+{
+
 class GfxCanvasBgiData final : public GfxRootClass
 {
 public:
@@ -52,5 +55,7 @@ public:
     static /*const*/ uint8_t fill_patterns[1 + 12/*static_cast<int>(GfxCanvasBgi::bgiFillStyles::USER_FILL)*/][8];
     static const uint8_t gfxPrimitivesFontdata[kGfxFontDataMax];
 };
+
+}  // namespace bgi
 
 #endif /* GfxCanvasBgiData_h */

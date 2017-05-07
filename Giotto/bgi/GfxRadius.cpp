@@ -25,6 +25,9 @@
 
 #include "GfxRadius.hpp"
 
+namespace bgi
+{
+
 const std::string GfxRadius::ClassName = "GfxRadius";
 
 GfxRadius::GfxRadius() : GfxRootClass(ClassName), value_(0)
@@ -93,5 +96,7 @@ void GfxRadius::setValue(const GfxValueType& value)
 {
     value_ = value;
 }
+
+}  // namespace bgi
 
 /* EOF */
