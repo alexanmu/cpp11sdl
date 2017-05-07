@@ -24,6 +24,8 @@
 #ifndef GfxBlendMode_hpp
 #define GfxBlendMode_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -32,6 +34,8 @@ class GfxBlendMode final : public GfxRootClass
 public:
     typedef SDL_BlendMode SdlType;
     typedef SDL_BlendMode* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxBlendModeValues : int
     {

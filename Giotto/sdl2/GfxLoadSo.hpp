@@ -31,6 +31,8 @@
 class GfxLoadSo final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxLoadSo() = delete;
 
     explicit GfxLoadSo(const std::string& objectname);

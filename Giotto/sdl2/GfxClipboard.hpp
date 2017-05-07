@@ -31,6 +31,8 @@
 class GfxClipboard final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxClipboard();
 
     GfxClipboard(GfxClipboard const&) = delete;

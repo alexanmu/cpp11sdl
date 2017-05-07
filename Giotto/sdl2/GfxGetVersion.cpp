@@ -25,7 +25,9 @@
 
 #include "GfxGetVersion.hpp"
 
-GfxGetVersion::GfxGetVersion() : GfxRootClass("GfxGetVersion")
+const std::string GfxGetVersion::ClassName = "GfxGetVersion";
+
+GfxGetVersion::GfxGetVersion() : GfxRootClass(ClassName)
 {
     // Nothing to do
 }

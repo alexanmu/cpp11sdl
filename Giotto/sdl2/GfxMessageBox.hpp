@@ -34,6 +34,8 @@
 class GfxMessageBox final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxMessageBox() = delete;
 
     explicit GfxMessageBox(GfxMessageBoxData const& data);

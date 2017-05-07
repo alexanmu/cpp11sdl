@@ -26,7 +26,9 @@
 #include "GfxFileSystem.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxFileSystem::GfxFileSystem() : GfxRootClass("GfxFileSystem")
+const std::string GfxFileSystem::ClassName = "GfxFileSystem";
+
+GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
 {
     // Nothing to do
 }

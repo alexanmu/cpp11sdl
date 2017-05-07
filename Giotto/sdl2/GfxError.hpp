@@ -31,6 +31,8 @@
 class GfxError final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxError() = delete;
 
     GfxError(GfxError const&) = delete;

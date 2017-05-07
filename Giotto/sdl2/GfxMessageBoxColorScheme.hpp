@@ -24,6 +24,8 @@
 #ifndef GfxMessageBoxColorScheme_hpp
 #define GfxMessageBoxColorScheme_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxMessageBoxColor.hpp"
@@ -34,6 +36,8 @@ class GfxMessageBoxColorScheme final : public GfxRootClass
 public:
     typedef SDL_MessageBoxColorScheme SdlType;
     typedef SDL_MessageBoxColorScheme* SdlTypePtr;
+
+    static const std::string ClassName;
 
     static constexpr int colorsArraySize = static_cast<int>(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
 

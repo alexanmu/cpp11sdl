@@ -21,12 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
 #include <cstdlib>
 
 #include "GfxBits.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxBits::GfxBits() : GfxRootClass("GfxBits")
+const std::string GfxBits::ClassName = "GfxBits";
+
+GfxBits::GfxBits() : GfxRootClass(ClassName)
 {
     // Nothing to do
 }

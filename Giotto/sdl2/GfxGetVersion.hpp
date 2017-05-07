@@ -32,6 +32,8 @@
 class GfxGetVersion final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxGetVersion();
 
     GfxGetVersion(GfxGetVersion const&) = delete;

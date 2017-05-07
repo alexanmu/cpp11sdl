@@ -21,31 +21,35 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxButtonFlags.hpp"
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass("GfxMessageBoxButtonFlags")
+const std::string GfxMessageBoxButtonFlags::ClassName = "GfxMessageBoxButtonFlags";
+
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlagsValues flags) :
-        GfxRootClass("GfxMessageBoxButtonFlags")
+        GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) : GfxRootClass("GfxMessageBoxButtonFlags")
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) : GfxRootClass(ClassName)
 {
     flags_ = flags;
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) :
-        GfxRootClass("GfxMessageBoxButtonFlags")
+        GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) :
-        GfxRootClass("GfxMessageBoxButtonFlags")
+        GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

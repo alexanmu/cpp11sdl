@@ -24,6 +24,8 @@
 #ifndef GfxMessageBoxButtonFlags_hpp
 #define GfxMessageBoxButtonFlags_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxMessageBoxButtonFlags final : public GfxRootClass
 public:
     typedef SDL_MessageBoxButtonFlags SdlType;
     typedef SDL_MessageBoxButtonFlags* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxMessageBoxButtonFlagsValues : int
     {

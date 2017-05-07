@@ -24,12 +24,16 @@
 #ifndef SdlInitQuit_hpp
 #define SdlInitQuit_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
 class GfxInitQuit final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     // Init Video, Audio or Everything ...
     enum class GfxInitComponent
     {

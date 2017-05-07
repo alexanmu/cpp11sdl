@@ -24,6 +24,8 @@
 #ifndef GfxColor_hpp
 #define GfxColor_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -32,6 +34,8 @@ class GfxColor final : public GfxRootClass
 public:
     typedef SDL_Color SdlType;
     typedef SDL_Color* SdlTypePtr;
+
+    static const std::string ClassName;
 
     GfxColor();
 

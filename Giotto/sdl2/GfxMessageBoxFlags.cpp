@@ -21,29 +21,33 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxFlags.hpp"
 
-GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass("GfxMessageBoxFlags")
+const std::string GfxMessageBoxFlags::ClassName = "GfxMessageBoxFlags";
+
+GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass(ClassName)
 {
     flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootClass("GfxMessageBoxFlags")
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootClass(ClassName)
 {
     flag_ = static_cast<SdlType>(flag);
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) : GfxRootClass("GfxMessageBoxFlags")
+GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) : GfxRootClass(ClassName)
 {
     flag_ = flag;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) : GfxRootClass("GfxMessageBoxFlags")
+GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) : GfxRootClass(ClassName)
 {
     flag_ = other.flag_;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) : GfxRootClass("GfxMessageBoxFlags")
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) : GfxRootClass(ClassName)
 {
     flag_ = other.flag_;
     // Delete other's data

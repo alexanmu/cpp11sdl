@@ -21,9 +21,13 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxColor.hpp"
 
-GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass("GfxMessageBoxColor")
+const std::string GfxMessageBoxColor::ClassName = "GfxMessageBoxColor";
+
+GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass(ClassName)
 {
     clr_.r = 0;
     clr_.g = 0;
@@ -31,27 +35,27 @@ GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass("GfxMessageBoxColor")
 }
 
 GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) :
-        GfxRootClass("GfxMessageBoxColor")
+        GfxRootClass(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
     clr_.b = b;
 }
 
-GfxMessageBoxColor::GfxMessageBoxColor(SdlType clr) : GfxRootClass("GfxMessageBoxColor")
+GfxMessageBoxColor::GfxMessageBoxColor(SdlType clr) : GfxRootClass(ClassName)
 {
     /* Copy structure; hope SDL_MessageBoxColor assignement operator works ... */
     clr_ = clr;
 }
 
 /* Copy constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) : GfxRootClass("GfxMessageBoxColor")
+GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
 }
 
 /* Move constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) : GfxRootClass("GfxMessageBoxColor")
+GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */

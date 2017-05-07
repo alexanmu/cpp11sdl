@@ -21,31 +21,35 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxColorType.hpp"
 
-GfxMessageBoxColorType::GfxMessageBoxColorType() : GfxRootClass("GfxMessageBoxColorType")
+const std::string GfxMessageBoxColorType::ClassName = "GfxMessageBoxColorType";
+
+GfxMessageBoxColorType::GfxMessageBoxColorType() : GfxRootClass(ClassName)
 {
     type_ = static_cast<SdlType>(GfxMessageBoxColorTypeValues::colorMax);
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) : GfxRootClass("GfxMessageBoxColorType")
+GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) : GfxRootClass(ClassName)
 {
     type_ = type;
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(const GfxMessageBoxColorTypeValues type) :
-        GfxRootClass("GfxMessageBoxColorType")
+        GfxRootClass(ClassName)
 {
     type_ = static_cast<SdlType>(type);
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) :
-        GfxRootClass("GfxMessageBoxColorType")
+        GfxRootClass(ClassName)
 {
     type_ = other.type_;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) : GfxRootClass("GfxMessageBoxColorType")
+GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) : GfxRootClass(ClassName)
 {
     type_ = other.type_;
     // Delete other's data

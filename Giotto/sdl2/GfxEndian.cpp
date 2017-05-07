@@ -21,12 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
 #include <cstdlib>
 
 #include "GfxEndian.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxEndian::GfxEndian() : GfxRootClass("GfxEndian")
+const std::string GfxEndian::ClassName = "GfxEndian";
+
+GfxEndian::GfxEndian() : GfxRootClass(ClassName)
 {
     // Nothing to do
 }

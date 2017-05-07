@@ -24,6 +24,7 @@
 #ifndef GfxPalette_hpp
 #define GfxPalette_hpp
 
+#include <string>
 #include <vector>
 #include <memory>
 
@@ -36,6 +37,8 @@ class GfxPalette final : public GfxRootClass
 public:
     typedef SDL_Palette SdlType;
     typedef SDL_Palette* SdlTypePtr;
+
+    static const std::string ClassName;
 
     using GfxColorVector = std::vector<GfxColor>;
 

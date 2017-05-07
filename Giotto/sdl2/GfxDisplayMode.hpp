@@ -24,6 +24,8 @@
 #ifndef GfxDisplayMode_hpp
 #define GfxDisplayMode_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxDisplayMode final : public GfxRootClass
 public:
     typedef SDL_DisplayMode SdlType;
     typedef SDL_DisplayMode* SdlTypePtr;
+
+    static const std::string ClassName;
 
     GfxDisplayMode();
 

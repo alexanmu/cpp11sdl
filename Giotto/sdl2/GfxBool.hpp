@@ -24,6 +24,8 @@
 #ifndef GfxBool_hpp
 #define GfxBool_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxBool final : public GfxRootClass
 public:
     typedef SDL_bool SdlType;
     typedef SDL_bool* SdlTypePtr;
+
+    static const std::string ClassName;
 
     GfxBool();
 

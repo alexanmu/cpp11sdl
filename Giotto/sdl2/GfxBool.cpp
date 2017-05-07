@@ -21,29 +21,33 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxBool.hpp"
 
-GfxBool::GfxBool() : GfxRootClass("GfxBool")
+const std::string GfxBool::ClassName = "GfxBool";
+
+GfxBool::GfxBool() : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(false);
 }
 
-GfxBool::GfxBool(const bool value) : GfxRootClass("GfxBool")
+GfxBool::GfxBool(const bool value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const SdlType value) : GfxRootClass("GfxBool")
+GfxBool::GfxBool(const SdlType value) : GfxRootClass(ClassName)
 {
     value_ = value;
 }
 
-GfxBool::GfxBool(const GfxBool& other) : GfxRootClass("GfxBool")
+GfxBool::GfxBool(const GfxBool& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBool::GfxBool(GfxBool&& other) : GfxRootClass("GfxBool")
+GfxBool::GfxBool(GfxBool&& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

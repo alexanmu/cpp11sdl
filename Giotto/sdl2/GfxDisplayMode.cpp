@@ -21,9 +21,13 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxDisplayMode.hpp"
 
-GfxDisplayMode::GfxDisplayMode() : GfxRootClass("GfxDisplayMode")
+const std::string GfxDisplayMode::ClassName = "GfxDisplayMode";
+
+GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
 {
     dmode_.format = 0;
     dmode_.w = -1;
@@ -33,7 +37,7 @@ GfxDisplayMode::GfxDisplayMode() : GfxRootClass("GfxDisplayMode")
 }
 
 GfxDisplayMode::GfxDisplayMode(uint32_t const format, int const w, int const h, int const refresh) :
-        GfxRootClass("GfxDisplayMode")
+        GfxRootClass(ClassName)
 {
     dmode_.format = format;
     dmode_.w = w;
@@ -42,7 +46,7 @@ GfxDisplayMode::GfxDisplayMode(uint32_t const format, int const w, int const h, 
     dmode_.driverdata = NULL;
 }
 
-GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) : GfxRootClass("GfxDisplayMode")
+GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) : GfxRootClass(ClassName)
 {
     dmode_.format = other.dmode_.format;
     dmode_.w = other.dmode_.w;

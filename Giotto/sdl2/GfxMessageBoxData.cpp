@@ -25,7 +25,9 @@
 
 #include "GfxMessageBoxData.hpp"
 
-GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass("GfxMessageBoxData")
+const std::string GfxMessageBoxData::ClassName = "GfxMessageBoxData";
+
+GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
 {
     data_.flags = 0;
     data_.window = nullptr;
@@ -41,7 +43,7 @@ GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass("GfxMessageBoxData")
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win,
                                      const std::string& title, const std::string& message, const int numbuttons,
                                      GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
-        GfxRootClass("GfxMessageBoxData")
+        GfxRootClass(ClassName)
 {
     data_.flags = flags.getAsSdlType();
     if (win != nullptr)
@@ -69,7 +71,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
                                      const std::string& title, const std::string& message, const int numbuttons,
                                      GfxMessageBoxButtonData buttons[]) :
-        GfxRootClass("GfxMessageBoxData")
+        GfxRootClass(ClassName)
 {
     data_.flags = flags.getAsSdlType();
     data_.window = win.getAsSdlTypePtr();
@@ -87,14 +89,14 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxW
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) : GfxRootClass("GfxMessageBoxData")
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) : GfxRootClass(ClassName)
 {
     data_ = other.data_;
     title_ = other.title_;
     message_ = other.message_;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) : GfxRootClass("GfxMessageBoxData")
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) : GfxRootClass(ClassName)
 {
     data_ = other.data_;
     title_ = other.title_;

@@ -24,6 +24,8 @@
 #ifndef GfxMessageBoxColorType_hpp
 #define GfxMessageBoxColorType_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxMessageBoxColorType final : public GfxRootClass
 public:
     typedef SDL_MessageBoxColorType SdlType;
     typedef SDL_MessageBoxColorType* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxMessageBoxColorTypeValues : uint32_t
     {

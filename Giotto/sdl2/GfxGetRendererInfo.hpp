@@ -24,12 +24,16 @@
 #ifndef GfxGetRendererInfo_hpp
 #define GfxGetRendererInfo_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxRendererInfo.hpp"
 
 class GfxGetRendererInfo final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxGetRendererInfo();
 
     GfxGetRendererInfo(GfxGetRendererInfo const&) = delete;

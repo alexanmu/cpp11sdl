@@ -26,7 +26,9 @@
 #include "GfxMessageBox.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass("GfxMessageBox")
+const std::string GfxMessageBox::ClassName = "GfxMessageBox";
+
+GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass(ClassName)
 {
     data_ = data;
     type_ = GfxMessageBoxType::typeComplex;

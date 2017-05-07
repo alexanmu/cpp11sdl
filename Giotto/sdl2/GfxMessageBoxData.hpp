@@ -39,6 +39,8 @@ public:
     typedef SDL_MessageBoxData SdlType;
     typedef SDL_MessageBoxData* SdlTypePtr;
 
+    static const std::string ClassName;
+
     GfxMessageBoxData();
 
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win, const std::string& title,

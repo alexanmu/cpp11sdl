@@ -31,6 +31,8 @@
 class GfxFileSystem final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxFileSystem();
 
     GfxFileSystem(GfxFileSystem const&) = delete;

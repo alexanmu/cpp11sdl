@@ -21,10 +21,14 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxInitQuit.hpp"
 
+const std::string GfxInitQuit::ClassName = "GfxInitQuit";
+
 GfxInitQuit::GfxInitQuit(const GfxInitComponent gfxInitComp) :
-                GfxRootClass("GfxInitQuit"), gfxInitComp_(gfxInitComp), errorcode_(0)
+                GfxRootClass(ClassName), gfxInitComp_(gfxInitComp), errorcode_(0)
 {
     int initParam;
 

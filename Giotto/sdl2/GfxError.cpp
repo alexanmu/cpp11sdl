@@ -26,6 +26,8 @@
 #include "GfxError.hpp"
 #include "GfxSdlHeader.hpp"
 
+const std::string GfxError::ClassName = "GfxError";
+
 std::string GfxError::getError(void)
 {
     std::string str;

@@ -21,12 +21,14 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <cstring>
+#include <string>
 
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererInfo.hpp"
 
-GfxGetRendererInfo::GfxGetRendererInfo() : GfxRootClass("GfxGetRendererInfo")
+const std::string GfxGetRendererInfo::ClassName = "GfxGetRendererInfo";
+
+GfxGetRendererInfo::GfxGetRendererInfo() : GfxRootClass(ClassName)
 {
     numRenderDrivers_ = -1;
 }
@@ -57,4 +59,5 @@ void GfxGetRendererInfo::getRenderDriverInfo(const int index, GfxRendererInfo* i
         infoptr = nullptr;
     }
 }
+
 /* EOF */

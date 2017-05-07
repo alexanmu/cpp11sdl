@@ -21,11 +21,14 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
 #include <memory>
 
 #include "GfxPalette.hpp"
 
-GfxPalette::GfxPalette() : GfxRootClass("GfxPalette")
+const std::string GfxPalette::ClassName = "GfxPalette";
+
+GfxPalette::GfxPalette() : GfxRootClass(ClassName)
 {
     pal_ = SDL_AllocPalette(kDefaultPaletteSize);
     for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
@@ -35,7 +38,7 @@ GfxPalette::GfxPalette() : GfxRootClass("GfxPalette")
     }
 };
 
-GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass("GfxPalette")
+GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
 {
     uint32_t colorIndex;
     uint16_t nColors;
@@ -50,7 +53,7 @@ GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass("GfxPalette"
     }
 }
 
-GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass("GfxPalette")
+GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass(ClassName)
 {
     pal_ = SDL_AllocPalette(nColors);
     for (uint32_t i = 0; i < nColors; i++)
@@ -60,7 +63,7 @@ GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass("GfxPalette")
     }
 }
 
-GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass("GfxPalette")
+GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass(ClassName)
 {
     pal_ = other.pal_;
     // Delete other's data

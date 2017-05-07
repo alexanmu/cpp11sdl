@@ -24,6 +24,7 @@
 #ifndef GfxBits_hpp
 #define GfxBits_hpp
 
+#include <string>
 #include <cstdlib>
 
 #include "GfxRootClass.hpp"
@@ -31,6 +32,8 @@
 class GfxBits final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxBits();
 
     GfxBits(GfxBits const&) = delete;

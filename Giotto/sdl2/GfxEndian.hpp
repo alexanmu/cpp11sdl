@@ -24,6 +24,7 @@
 #ifndef GfxEndian_hpp
 #define GfxEndian_hpp
 
+#include <string>
 #include <cstdlib>
 
 #include "GfxRootClass.hpp"
@@ -31,6 +32,8 @@
 class GfxEndian final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxEndian();
 
     GfxEndian(GfxEndian const&) = delete;

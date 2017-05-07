@@ -21,9 +21,13 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxColor.hpp"
 
-GfxColor::GfxColor() : GfxRootClass("GfxColor")
+const std::string GfxColor::ClassName = "GfxColor";
+
+GfxColor::GfxColor() : GfxRootClass(ClassName)
 {
     clr_.r = 0;
     clr_.g = 0;
@@ -31,7 +35,7 @@ GfxColor::GfxColor() : GfxRootClass("GfxColor")
     clr_.a = 0xFF;
 }
 
-GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRootClass(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
@@ -39,7 +43,7 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRoo
     clr_.a = 0xFF;
 }
 
-GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) : GfxRootClass(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
@@ -47,20 +51,20 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  u
     clr_.a = a;
 }
 
-GfxColor::GfxColor(SdlType clr) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(SdlType clr) : GfxRootClass(ClassName)
 {
     /* Copy structure; hope SDL_Color assignement operator works ... */
     clr_ = clr;
 }
 
 /* Copy constructor */
-GfxColor::GfxColor(const GfxColor& other) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(const GfxColor& other) : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
 }
 
 /* Move constructor */
-GfxColor::GfxColor(GfxColor&& other) : GfxRootClass("GfxColor")
+GfxColor::GfxColor(GfxColor&& other) : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */

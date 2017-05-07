@@ -26,13 +26,15 @@
 #include "GfxLoadSo.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass("GfxLoadSo")
+const std::string GfxLoadSo::ClassName = "GfxLoadSo";
+
+GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
 {
     objectname_ = objectname;
     handle_ = SDL_LoadObject(objectname_.c_str());
 }
 
-GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) : GfxRootClass("GfxLoadSo")
+GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) : GfxRootClass(ClassName)
 {
     objectname_ = other.objectname_;
     handle_ = other.handle_;

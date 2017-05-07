@@ -21,9 +21,13 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxMessageBoxColorScheme.hpp"
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass("GfxMessageBoxColorScheme")
+const std::string GfxMessageBoxColorScheme::ClassName = "GfxMessageBoxColorScheme";
+
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
 {
     for (int index = 0; index < colorsArraySize; index++)
     {
@@ -34,7 +38,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass("GfxMessageB
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) :
-        GfxRootClass("GfxMessageBoxColorScheme")
+        GfxRootClass(ClassName)
 {
     for (int index = 0; index < colorsArraySize; index++)
     {
@@ -43,13 +47,13 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) :
-	GfxRootClass("GfxMessageBoxColorScheme")
+	GfxRootClass(ClassName)
 {
     clrscheme_ = other.clrscheme_;
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) :
-	GfxRootClass("GfxMessageBoxColorScheme")
+	GfxRootClass(ClassName)
 {
     clrscheme_ = other.clrscheme_;
     // Delete other's data

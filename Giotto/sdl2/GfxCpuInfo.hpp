@@ -31,6 +31,8 @@
 class GfxCpuInfo final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxCpuInfo();
 
     GfxCpuInfo(GfxCpuInfo const&) = delete;

@@ -26,7 +26,9 @@
 #include "GfxCpuInfo.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxCpuInfo::GfxCpuInfo() : GfxRootClass("GfxCpuInfo")
+const std::string GfxCpuInfo::ClassName  = "GfxCpuInfo";
+
+GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
 {
     cpuCount_ = 0;
     cpuCacheLineSize_ = 0;

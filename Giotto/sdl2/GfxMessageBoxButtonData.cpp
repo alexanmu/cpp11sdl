@@ -25,7 +25,9 @@
 
 #include "GfxMessageBoxButtonData.hpp"
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass("GfxMessageBoxButtonData")
+const std::string GfxMessageBoxButtonData::ClassName = "GfxMessageBoxButtonData";
+
+GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
 {
     data_.flags = 0;
     data_.buttonid = -1;
@@ -33,7 +35,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass("GfxMessageBox
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
-                            const int buttonid, const std::string& text) : GfxRootClass("GfxMessageBoxButtonData")
+                            const int buttonid, const std::string& text) : GfxRootClass(ClassName)
 {
     data_.flags = flags.getAsSdlType();
     data_.buttonid = buttonid;
@@ -41,13 +43,13 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const&
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) :
-         GfxRootClass("GfxMessageBoxButtonData")
+         GfxRootClass(ClassName)
 {
     data_ = other.data_;
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) :
-        GfxRootClass("GfxMessageBoxButtonData")
+        GfxRootClass(ClassName)
 {
     data_ = other.data_;
     // Delete other's data

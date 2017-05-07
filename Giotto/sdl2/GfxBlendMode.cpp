@@ -21,29 +21,33 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxBlendMode.hpp"
 
-GfxBlendMode::GfxBlendMode() : GfxRootClass("GfxBlendMode")
+const std::string GfxBlendMode::ClassName = "GfxBlendMode";
+
+GfxBlendMode::GfxBlendMode() : GfxRootClass(ClassName)
 {
     blendmode_ = static_cast<SdlType>(GfxBlendModeValues::blendNone);
 }
 
-GfxBlendMode::GfxBlendMode(const GfxBlendModeValues blendmode) : GfxRootClass("GfxBlendMode")
+GfxBlendMode::GfxBlendMode(const GfxBlendModeValues blendmode) : GfxRootClass(ClassName)
 {
     blendmode_ = static_cast<SdlType>(blendmode);
 }
 
-GfxBlendMode::GfxBlendMode(const SdlType blendmode) : GfxRootClass("GfxBlendMode")
+GfxBlendMode::GfxBlendMode(const SdlType blendmode) : GfxRootClass(ClassName)
 {
     blendmode_ = blendmode;
 }
 
-GfxBlendMode::GfxBlendMode(const GfxBlendMode& other) : GfxRootClass("GfxBlendMode")
+GfxBlendMode::GfxBlendMode(const GfxBlendMode& other) : GfxRootClass(ClassName)
 {
     blendmode_ = other.blendmode_;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) : GfxRootClass("GfxBlendMode")
+GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) : GfxRootClass(ClassName)
 {
     blendmode_ = other.blendmode_;
     // Destroy other's data

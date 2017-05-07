@@ -26,7 +26,9 @@
 #include "GfxClipboard.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxClipboard::GfxClipboard() : GfxRootClass("GfxClipboard")
+const std::string GfxClipboard::ClassName = "GfxClipboard";
+
+GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
 {
     // Nothing to do
 }
