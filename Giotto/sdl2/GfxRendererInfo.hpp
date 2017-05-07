@@ -36,6 +36,8 @@ public:
     typedef SDL_RendererInfo SdlType;
     typedef SDL_RendererInfo* SdlTypePtr;
 
+    static const std::string ClassName;
+
     static constexpr int kTextureFormatsArrayLength = 16;
 
     struct GfxTextureFormats

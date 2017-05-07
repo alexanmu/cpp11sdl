@@ -24,6 +24,8 @@
 #ifndef GfxWindowFlags_hpp
 #define GfxWindowFlags_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxWindowFlags final : public GfxRootClass
 public:
     typedef SDL_WindowFlags SdlType;
     typedef SDL_WindowFlags* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxWindowFlagsValues : uint32_t
     {

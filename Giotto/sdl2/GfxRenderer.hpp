@@ -24,6 +24,8 @@
 #ifndef GfxRenderer_hpp
 #define GfxRenderer_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -39,6 +41,8 @@ class GfxRenderer final : public GfxRootClass
 public:
     typedef SDL_Renderer SdlType;
     typedef SDL_Renderer* SdlTypePtr;
+
+    static const std::string ClassName;
 
     explicit GfxRenderer(const GfxWindow& win);
 

@@ -24,6 +24,8 @@
 #ifndef GfxRendererFlags_hpp
 #define GfxRendererFlags_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxRendererFlags final : public GfxRootClass
 public:
     typedef SDL_RendererFlags SdlType;
     typedef SDL_RendererFlags* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxRendererFlagsValues : int
     {

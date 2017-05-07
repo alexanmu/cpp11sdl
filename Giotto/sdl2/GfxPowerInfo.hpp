@@ -32,6 +32,8 @@
 class GfxPowerInfo final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxPowerInfo();
 
     GfxPowerInfo(GfxPowerInfo const&) = delete;

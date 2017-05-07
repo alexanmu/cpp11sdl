@@ -21,31 +21,35 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxPoint.hpp"
 
-GfxPoint::GfxPoint() : GfxRootClass("GfxPoint")
+const std::string GfxPoint::ClassName = "GfxPoint";
+
+GfxPoint::GfxPoint() : GfxRootClass(ClassName)
 {
     pt_.x = -1;
     pt_.y = -1;
 }
 
-GfxPoint::GfxPoint(const uint16_t x, const uint16_t y) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const uint16_t x, const uint16_t y) : GfxRootClass(ClassName)
 {
     pt_.x = x;
     pt_.y = y;
 }
 
-GfxPoint::GfxPoint(const SdlType pt) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const SdlType pt) : GfxRootClass(ClassName)
 {
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(const GfxPoint& other) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(const GfxPoint& other) : GfxRootClass(ClassName)
 {
     pt_ = other.pt_;
 }
 
-GfxPoint::GfxPoint(GfxPoint&& other) : GfxRootClass("GfxPoint")
+GfxPoint::GfxPoint(GfxPoint&& other) : GfxRootClass(ClassName)
 {
     pt_ = other.pt_;
     /* Delete other's data */

@@ -21,9 +21,13 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxRenderer.hpp"
 
-GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass("GfxRenderer"), renderer_(nullptr), window_(win)
+const std::string GfxRenderer::ClassName = "GfxRenderer";
+
+GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass(ClassName), renderer_(nullptr), window_(win)
 {
     SdlType* renderertmp;
 

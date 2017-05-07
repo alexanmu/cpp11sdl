@@ -24,12 +24,16 @@
 #ifndef GfxWindowPosition_hpp
 #define GfxWindowPosition_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
 class GfxWindowPosition final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     enum class GfxWindowPositionValues : int
     {
         positionUndefined = SDL_WINDOWPOS_UNDEFINED,

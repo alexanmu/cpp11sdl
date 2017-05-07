@@ -43,6 +43,8 @@ public:
     typedef SDL_Surface SdlType;
     typedef SDL_Surface* SdlTypePtr;
 
+    static const std::string ClassName;
+
     GfxSurface() = delete;
 
     explicit GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h);

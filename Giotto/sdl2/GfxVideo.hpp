@@ -35,6 +35,8 @@
 class GfxVideo final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxVideo();
 
     GfxVideo(GfxVideo const&) = delete;

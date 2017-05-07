@@ -24,6 +24,8 @@
 #ifndef GfxRendererFlip_hpp
 #define GfxRendererFlip_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -32,6 +34,8 @@ class GfxRendererFlip final : public GfxRootClass
 public:
     typedef SDL_RendererFlip SdlType;
     typedef SDL_RendererFlip* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxRendererFlipValues : int
     {

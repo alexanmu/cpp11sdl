@@ -25,7 +25,9 @@
 
 #include "GfxPowerInfo.hpp"
 
-GfxPowerInfo::GfxPowerInfo() : GfxRootClass("GfxPowerInfo")
+const std::string GfxPowerInfo::ClassName = "GfxPowerInfo";
+
+GfxPowerInfo::GfxPowerInfo() : GfxRootClass(ClassName)
 {
     pstate_ = GfxPowerState(GfxPowerState::GfxPowerStateValues::stateUnknown);
     seconds_ = -1;

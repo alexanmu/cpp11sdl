@@ -27,7 +27,9 @@
 
 #include "GfxVideo.hpp"
 
-GfxVideo::GfxVideo() : GfxRootClass("GfxVideo")
+const std::string GfxVideo::ClassName = "GfxVideo";
+
+GfxVideo::GfxVideo() : GfxRootClass(ClassName)
 {
     numvideodrivers_ = -1;
     numvideodisplays_ = -1;

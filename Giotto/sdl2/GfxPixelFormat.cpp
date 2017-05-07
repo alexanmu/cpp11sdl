@@ -25,7 +25,9 @@
 
 #include "GfxPixelFormat.hpp"
 
-GfxPixelFormat::GfxPixelFormat() : GfxRootClass("GfxPixelFormat")
+const std::string GfxPixelFormat::ClassName = "GfxPixelFormat";
+
+GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 {
     pix_ = SDL_AllocFormat(SDL_PIXELFORMAT_ARGB8888);
     if (pix_ == nullptr)
@@ -34,13 +36,13 @@ GfxPixelFormat::GfxPixelFormat() : GfxRootClass("GfxPixelFormat")
     }
 };
 
-GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass("GfxPixelFormat")
+GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass(ClassName)
 {
     pix_ = SDL_AllocFormat(pix->format);
     *pix_ = *pix;
 }
 
-GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass("GfxPixelFormat")
+GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)
 {
     pix_ = SDL_AllocFormat(format);
     if (pix_ == nullptr)
@@ -49,7 +51,7 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass("GfxPixelFo
     }
 }
 
-GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass("GfxPixelFormat")
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass(ClassName)
 {
     pix_ = other.pix_;
     // Delete other's data

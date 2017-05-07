@@ -26,7 +26,9 @@
 #include "GfxPlatform.hpp"
 #include "GfxSdlHeader.hpp"
 
-GfxPlatform::GfxPlatform() : GfxRootClass("GfxPlatform")
+const std::string GfxPlatform::ClassName = "GfxPlatform";
+
+GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
 {
     platform_ = "";
 }

@@ -21,10 +21,14 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
 
-GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) : GfxRootClass("GfxTexture")
+const std::string GfxTexture::ClassName = "GfxTexture";
+
+GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) : GfxRootClass(ClassName)
 {
     GfxRenderer* rendptr;
 
@@ -36,7 +40,7 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const i
                              w,h);
 }
 
-GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass("GfxTexture")
+GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass(ClassName)
 {
     GfxRenderer* rendptr;
 

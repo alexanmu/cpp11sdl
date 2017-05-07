@@ -19,22 +19,26 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
+
+#include <string>
 
 #include "GfxWindowPosition.hpp"
 
-GfxWindowPosition::GfxWindowPosition() : GfxRootClass("GfxWindowPosition")
+const std::string GfxWindowPosition::ClassName = "GfxWindowPosition";
+
+GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
 {
     pos_ = GfxWindowPositionValues::positionUndefined;
     coord_ = -1;
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord) : GfxRootClass("GfxWindowPosition")
+GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord) : GfxRootClass(ClassName)
 {
     pos_ = pos;
     if (pos_ == GfxWindowPosition::GfxWindowPositionValues::positionSpecified)
     {
-        if ((coord > 0) && (coord <= 16384))
+        if (coord <= 16384)
         {
             coord_ = coord;
         }
@@ -45,13 +49,13 @@ GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord
     }
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) : GfxRootClass("GfxWindowPosition")
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) : GfxRootClass(ClassName)
 {
     pos_ = other.pos_;
     coord_ = other.coord_;
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) : GfxRootClass("GfxWindowPosition")
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) : GfxRootClass(ClassName)
 {
     pos_ = other.pos_;
     coord_ = other.coord_;

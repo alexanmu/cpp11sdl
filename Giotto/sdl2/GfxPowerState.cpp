@@ -25,27 +25,29 @@
 
 #include "GfxPowerState.hpp"
 
-GfxPowerState::GfxPowerState() : GfxRootClass("GfxPowerState")
+const std::string GfxPowerState::ClassName = "GfxPowerState";
+
+GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
 }
 
-GfxPowerState::GfxPowerState(const GfxPowerStateValues value) : GfxRootClass("GfxPowerState")
+GfxPowerState::GfxPowerState(const GfxPowerStateValues value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPowerState::GfxPowerState(const SdlType value) : GfxRootClass("GfxPowerState")
+GfxPowerState::GfxPowerState(const SdlType value) : GfxRootClass(ClassName)
 {
     value_ = value;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState const& other) : GfxRootClass("GfxPowerState")
+GfxPowerState::GfxPowerState(GfxPowerState const& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState&& other) : GfxRootClass("GfxPowerState")
+GfxPowerState::GfxPowerState(GfxPowerState&& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

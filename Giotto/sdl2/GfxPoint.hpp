@@ -24,6 +24,8 @@
 #ifndef GfxPoint_hpp
 #define GfxPoint_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -32,6 +34,8 @@ class GfxPoint final : public GfxRootClass
 public:
     typedef SDL_Point SdlType;
     typedef SDL_Point* SdlTypePtr;
+
+    static const std::string ClassName;
 
     GfxPoint();
 

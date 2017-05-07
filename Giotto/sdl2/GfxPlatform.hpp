@@ -31,6 +31,8 @@
 class GfxPlatform final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxPlatform();
 
     GfxPlatform(GfxPlatform const&) = delete;

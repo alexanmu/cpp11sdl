@@ -19,31 +19,35 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
+
+#include <string>
 
 #include "GfxWindowFlags.hpp"
 
-GfxWindowFlags::GfxWindowFlags() : GfxRootClass("GfxWindowFlags")
+const std::string GfxWindowFlags::ClassName = "GfxWindowFlags";
+
+GfxWindowFlags::GfxWindowFlags() : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) : GfxRootClass("GfxWindowFlags")
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(SdlType flags) : GfxRootClass("GfxWindowFlags")
+GfxWindowFlags::GfxWindowFlags(SdlType flags) : GfxRootClass(ClassName)
 {
     flags_ = flags;
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) : GfxRootClass("GfxWindowFlags")
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) : GfxRootClass("GfxWindowFlags")
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

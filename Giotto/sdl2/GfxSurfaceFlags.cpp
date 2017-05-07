@@ -21,29 +21,33 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxSurfaceFlags.hpp"
 
-GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass("GfxSurfaceFlags")
+const std::string GfxSurfaceFlags::ClassName = "GfxSurfaceFlags";
+
+GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags) : GfxRootClass("GfxSurfaceFlags")
+GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags) : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) : GfxRootClass("GfxSurfaceFlags")
+GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) : GfxRootClass(ClassName)
 {
     flags_ = flags;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) : GfxRootClass("GfxSurfaceFlags")
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) : GfxRootClass("GfxSurfaceFlags")
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

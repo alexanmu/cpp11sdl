@@ -26,8 +26,10 @@
 
 #include "GfxWindow.hpp"
 
+const std::string GfxWindow::ClassName = "GfxWindow";
+
 GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint16_t height) :
-        GfxRootClass("GfxWindow")
+        GfxRootClass(ClassName)
 {
     window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (window_ == nullptr)
@@ -38,7 +40,7 @@ GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint1
 
 GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
                         const uint16_t width, const uint16_t height, const GfxWindowFlags& flags) :
-        GfxRootClass("GfxWindow")
+        GfxRootClass(ClassName)
 {
     window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
                                 width, height, flags.getAsSdlType());

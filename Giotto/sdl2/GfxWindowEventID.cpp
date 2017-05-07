@@ -21,34 +21,33 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxWindowEventID.hpp"
 
-GfxWindowEventID::GfxWindowEventID()
+const std::string GfxWindowEventID::ClassName = "GfxWindowEventID";
+
+GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
 {
     eventid_ = static_cast<SdlType>(GfxWindowEventIDValues::eventNone);
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventIDValues eventid)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventIDValues eventid) : GfxRootClass(ClassName)
 {
     eventid_ = static_cast<SdlType>(eventid);
 }
 
-GfxWindowEventID::GfxWindowEventID(SdlType eventid)
+GfxWindowEventID::GfxWindowEventID(SdlType eventid) : GfxRootClass(ClassName)
 {
     eventid_ = eventid;
 }
 
-GfxWindowEventID::GfxWindowEventID(SdlTypePtr eventid)
-{
-    eventid_ = *eventid;
-}
-
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) : GfxRootClass(ClassName)
 {
     eventid_ = other.eventid_;
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) : GfxRootClass(ClassName)
 {
     eventid_ = other.eventid_;
     // Delete other's data

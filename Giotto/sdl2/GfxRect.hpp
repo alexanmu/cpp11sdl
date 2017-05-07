@@ -24,6 +24,8 @@
 #ifndef GfxRect_hpp
 #define GfxRect_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 
@@ -32,6 +34,8 @@ class GfxRect final : public GfxRootClass
 public:
     typedef SDL_Rect SdlType;
     typedef SDL_Rect* SdlTypePtr;
+
+    static const std::string ClassName;
 
     GfxRect();
 

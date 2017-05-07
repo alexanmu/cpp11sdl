@@ -35,6 +35,8 @@ public:
     typedef SDL_PowerState SdlType;
     typedef SDL_PowerState* SdlTypePtr;
 
+    static const std::string ClassName;
+
     enum class GfxPowerStateValues : int
     {
         stateUnknown = SDL_POWERSTATE_UNKNOWN,

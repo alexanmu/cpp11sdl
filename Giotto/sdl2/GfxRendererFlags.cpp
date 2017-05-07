@@ -21,29 +21,33 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxRendererFlags.hpp"
 
-GfxRendererFlags::GfxRendererFlags() : GfxRootClass("GfxRendererFlags")
+const std::string GfxRendererFlags::ClassName = "GfxRendererFlags";
+
+GfxRendererFlags::GfxRendererFlags() : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown);
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlagsValues flags) : GfxRootClass("GfxRendererFlags")
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlagsValues flags) : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxRendererFlags::GfxRendererFlags(SdlType flags) : GfxRootClass("GfxRendererFlags")
+GfxRendererFlags::GfxRendererFlags(SdlType flags) : GfxRootClass(ClassName)
 {
     flags_ = flags;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) : GfxRootClass("GfxRendererFlags")
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) : GfxRootClass("GfxRendererFlags")
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

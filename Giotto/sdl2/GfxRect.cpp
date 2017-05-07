@@ -21,9 +21,13 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxRect.hpp"
 
-GfxRect::GfxRect() : GfxRootClass("GfxRect")
+const std::string GfxRect::ClassName = "GfxRect";
+
+GfxRect::GfxRect() : GfxRootClass(ClassName)
 {
     rect_.x = -1;
     rect_.y = -1;
@@ -31,7 +35,7 @@ GfxRect::GfxRect() : GfxRootClass("GfxRect")
     rect_.h = -1;
 }
 
-GfxRect::GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h) : GfxRootClass("GfxRect")
+GfxRect::GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
 {
     rect_.x = x;
     rect_.y = y;
@@ -39,17 +43,17 @@ GfxRect::GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uin
     rect_.h = h;
 }
 
-GfxRect::GfxRect(SdlType rect) : GfxRootClass("GfxRect")
+GfxRect::GfxRect(SdlType rect) : GfxRootClass(ClassName)
 {
     rect_ = rect;
 }
 
-GfxRect::GfxRect(const GfxRect& other) : GfxRootClass("GfxRect")
+GfxRect::GfxRect(const GfxRect& other) : GfxRootClass(ClassName)
 {
     rect_ = other.rect_;
 }
 
-GfxRect::GfxRect(GfxRect&& other) : GfxRootClass("GfxRect")
+GfxRect::GfxRect(GfxRect&& other) : GfxRootClass(ClassName)
 {
     rect_ = other.rect_;
     other.rect_.x = -1;

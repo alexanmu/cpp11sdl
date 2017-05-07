@@ -35,6 +35,8 @@ public:
     typedef SDL_version SdlType;
     typedef SDL_version* SdlTypePtr;
 
+    static const std::string ClassName;
+
     GfxVersion();
 
     GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch);

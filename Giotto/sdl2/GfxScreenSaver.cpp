@@ -21,11 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxScreenSaver.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxBool.hpp"
 
-GfxScreenSaver::GfxScreenSaver()
+const std::string GfxScreenSaver::ClassName = "GfxScreenSaver";
+
+GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
 {
     GfxBool status { SDL_IsScreenSaverEnabled() };
 

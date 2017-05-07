@@ -24,11 +24,15 @@
 #ifndef GfxScreenSaver_hpp
 #define GfxScreenSaver_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 
 class GfxScreenSaver final : public GfxRootClass
 {
 public:
+    static const std::string ClassName;
+
     GfxScreenSaver();
 
     GfxScreenSaver(GfxScreenSaver const&) = delete;

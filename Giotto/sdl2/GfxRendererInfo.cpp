@@ -26,7 +26,9 @@
 
 #include "GfxRendererInfo.hpp"
 
-GfxRendererInfo::GfxRendererInfo() : GfxRootClass("GfxRendererInfo")
+const std::string GfxRendererInfo::ClassName = "GfxRendererInfo";
+
+GfxRendererInfo::GfxRendererInfo() : GfxRootClass(ClassName)
 {
     info_.name = nullptr;
     info_.flags = 0;
@@ -39,17 +41,17 @@ GfxRendererInfo::GfxRendererInfo() : GfxRootClass("GfxRendererInfo")
     info_.max_texture_height = -1;
 }
 
-GfxRendererInfo::GfxRendererInfo(SdlType info) : GfxRootClass("GfxRendererInfo")
+GfxRendererInfo::GfxRendererInfo(SdlType info) : GfxRootClass(ClassName)
 {
     info_ = info;
 }
 
-GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) : GfxRootClass("GfxRendererInfo")
+GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) : GfxRootClass(ClassName)
 {
     info_ = other.info_;
 }
 
-GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) : GfxRootClass("GfxRendererInfo")
+GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) : GfxRootClass(ClassName)
 {
     info_ = other.info_;
     // Delete other's data

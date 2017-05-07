@@ -21,24 +21,28 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxTextureAccess.hpp"
 
-GfxTextureAccess::GfxTextureAccess() : GfxRootClass("GfxTextureAccess")
+const std::string GfxTextureAccess::ClassName = "GfxTextureAccess";
+
+GfxTextureAccess::GfxTextureAccess() : GfxRootClass(ClassName)
 {
     access_ = static_cast<SdlType>(GfxTextureAccessValues::accessStatic);
 }
 
-GfxTextureAccess::GfxTextureAccess(const GfxTextureAccessValues access) : GfxRootClass("GfxTextureAccess")
+GfxTextureAccess::GfxTextureAccess(const GfxTextureAccessValues access) : GfxRootClass(ClassName)
 {
     access_ = static_cast<SdlType>(access);
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) : GfxRootClass("GfxTextureAccess")
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) : GfxRootClass(ClassName)
 {
     access_ = other.access_;
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) : GfxRootClass("GfxTextureAccess")
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) : GfxRootClass(ClassName)
 {
     access_ = other.access_;
     // Delete other's data

@@ -24,6 +24,8 @@
 #ifndef GfxSurfaceFlags_hpp
 #define GfxSurfaceFlags_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxSurfaceFlags final : public GfxRootClass
 public:
     typedef uint32_t SdlType;
     typedef uint32_t* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxSurfaceFlagsValues : uint32_t
     {

@@ -24,6 +24,8 @@
 #ifndef GfxWindowEventID_hpp
 #define GfxWindowEventID_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxWindowEventID final : public GfxRootClass
 public:
     typedef SDL_WindowEventID SdlType;
     typedef SDL_WindowEventID* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxWindowEventIDValues : int
     {
@@ -58,7 +62,6 @@ public:
 
     explicit GfxWindowEventID(const GfxWindowEventIDValues eventid);
     explicit GfxWindowEventID(const SdlType eventid);
-    explicit GfxWindowEventID(const SdlTypePtr eventid);
 
     GfxWindowEventID(GfxWindowEventID const& other);
     GfxWindowEventID(GfxWindowEventID&& other);

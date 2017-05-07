@@ -24,6 +24,8 @@
 #ifndef GfxTexture_hpp
 #define GfxTexture_hpp
 
+#include <string>
+
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
@@ -36,6 +38,8 @@ class GfxTexture final : public GfxRootClass
 public:
     typedef SDL_Texture SdlType;
     typedef SDL_Texture* SdlTypePtr;
+
+    static const std::string ClassName;
 
     GfxTexture() = delete;
 

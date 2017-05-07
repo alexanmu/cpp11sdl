@@ -24,6 +24,8 @@
 #ifndef GfxTextureAccess_hpp
 #define GfxTextureAccess_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxTextureAccess final : public GfxRootClass
 public:
     typedef SDL_TextureAccess SdlType;
     typedef SDL_TextureAccess* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxTextureAccessValues : uint32_t
     {

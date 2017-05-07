@@ -27,7 +27,9 @@
 
 #include "GfxSurface.hpp"
 
-GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass("GfxSurface")
+const std::string GfxSurface::ClassName = "GfxSurface";
+
+GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
 {
     uint32_t format = SDL_PIXELFORMAT_ARGB8888;
 
@@ -38,7 +40,7 @@ GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uin
     }
 }
 
-GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass("GfxSurface")
+GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass(ClassName)
 {
     if (surf == nullptr)
     {
@@ -47,7 +49,7 @@ GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass("GfxSurface")
     surf_ = surf;
 }
 
-GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass("GfxSurface")
+GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
 {
     SDL_Surface* tmpsurfptr;
     
@@ -71,7 +73,7 @@ GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass("GfxSurface")
     surf_ = tmpsurfptr;
 }
 
-GfxSurface::GfxSurface(GfxSurface&& surf) : GfxRootClass("GfxSurface")
+GfxSurface::GfxSurface(GfxSurface&& surf) : GfxRootClass(ClassName)
 {
     surf_ = surf.surf_;
     surf.surf_ = nullptr;

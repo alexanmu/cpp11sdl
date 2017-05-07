@@ -21,14 +21,18 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxRendererFlip.hpp"
 
-GfxRendererFlip::GfxRendererFlip() : GfxRootClass("GfxRendererFlip")
+const std::string GfxRendererFlip::ClassName = "GfxRendererFlip";
+
+GfxRendererFlip::GfxRendererFlip() : GfxRootClass(ClassName)
 {
     flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
 }
 
-GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootClass("GfxRendererFlip")
+GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootClass(ClassName)
 {
     flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
     if (fliph == true)
@@ -41,12 +45,12 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootCl
     }
 }
 
-GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other) : GfxRootClass("GfxRendererFlip")
+GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other) : GfxRootClass(ClassName)
 {
     flip_ = other.flip_;
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) : GfxRootClass("GfxRendererFlip")
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) : GfxRootClass(ClassName)
 {
     flip_ = other.flip_;
     other.flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);

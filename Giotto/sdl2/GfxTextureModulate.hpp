@@ -24,6 +24,8 @@
 #ifndef GfxTextureModulate_hpp
 #define GfxTextureModulate_hpp
 
+#include <string>
+
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,6 +34,8 @@ class GfxTextureModulate final : public GfxRootClass
 public:
     typedef SDL_TextureModulate SdlType;
     typedef SDL_TextureModulate* SdlTypePtr;
+
+    static const std::string ClassName;
 
     enum class GfxTextureModulateValues : int
     {

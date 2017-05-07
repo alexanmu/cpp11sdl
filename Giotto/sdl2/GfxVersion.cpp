@@ -25,31 +25,33 @@
 
 #include "GfxVersion.hpp"
 
-GfxVersion::GfxVersion() : GfxRootClass("GfxVersion")
+const std::string GfxVersion::ClassName = "GfxVersion";
+
+GfxVersion::GfxVersion() : GfxRootClass(ClassName)
 {
     ver_.major = 0;
     ver_.minor = 0;
     ver_.patch = 0;
 }
 
-GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) : GfxRootClass(ClassName)
 {
     ver_.major = major;
     ver_.minor = minor;
     ver_.patch = patch;
 }
 
-GfxVersion::GfxVersion(const SdlType ver) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(const SdlType ver) : GfxRootClass(ClassName)
 {
     ver_ = ver;
 }
 
-GfxVersion::GfxVersion(GfxVersion const& other) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(GfxVersion const& other) : GfxRootClass(ClassName)
 {
     ver_ = other.ver_;
 }
 
-GfxVersion::GfxVersion(GfxVersion&& other) : GfxRootClass("GfxVersion")
+GfxVersion::GfxVersion(GfxVersion&& other) : GfxRootClass(ClassName)
 {
     ver_ = other.ver_;
     // Delete other's data

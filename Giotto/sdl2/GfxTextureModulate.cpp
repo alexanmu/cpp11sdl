@@ -21,34 +21,38 @@
  See copyright notice at http://lidsdl.org/license.php
  */
 
+#include <string>
+
 #include "GfxTextureModulate.hpp"
 
-GfxTextureModulate::GfxTextureModulate() : GfxRootClass("GfxTextureModulate")
+const std::string GfxTextureModulate::ClassName = "GfxTextureModulate";
+
+GfxTextureModulate::GfxTextureModulate() : GfxRootClass(ClassName)
 {
     modulate_ = static_cast<SdlType>(GfxTextureModulateValues::modulateNone);
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulateValues flags) : GfxRootClass("GfxTextureModulate")
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulateValues flags) : GfxRootClass(ClassName)
 {
     modulate_ = static_cast<SdlType>(flags);
 }
 
-GfxTextureModulate::GfxTextureModulate(SdlType flags) : GfxRootClass("GfxTextureModulate")
+GfxTextureModulate::GfxTextureModulate(SdlType flags) : GfxRootClass(ClassName)
 {
     modulate_ = flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(SdlTypePtr flags) : GfxRootClass("GfxTextureModulate")
+GfxTextureModulate::GfxTextureModulate(SdlTypePtr flags) : GfxRootClass(ClassName)
 {
     modulate_ = *flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) : GfxRootClass("GfxTextureModulate")
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) : GfxRootClass(ClassName)
 {
     modulate_ = other.modulate_;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) : GfxRootClass("GfxTextureModulate")
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) : GfxRootClass(ClassName)
 {
     modulate_ = other.modulate_;
     // Delete other's data
