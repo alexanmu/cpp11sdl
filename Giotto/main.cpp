@@ -116,7 +116,7 @@ void MsgBox(gfx::GfxWindow const& win)
     gfx::GfxCpuInfo cinfo;
     cinfo.queryCpuInfo();
     gfx::GfxMessageBox k(gfx::GfxMessageBoxFlags(gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError),
-                    rez, cinfo.getAsString(), win);
+                         rez, cinfo.getAsString(), win);
     k.showModal();
 
     gfx::GfxClipboard clipb;
@@ -280,7 +280,7 @@ void _doStuff(void)
     }
     gfx::GfxWindowFlags wf(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
     gfx::GfxWindow win("Window title", gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered),
-                  gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
+                       gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
     MsgBox(win);
     gfx::GfxRenderer rend(win);
 
@@ -334,7 +334,7 @@ void _doStuff(void)
     cv.Rect(gfx::GfxRect(30, 30, 40, 40), gfx::GfxColor(128, 128, 128));
     cv.Line(gfx::GfxPoint(10, 10), gfx::GfxPoint(40, 40), gfx::bgi::GfxBgiConstants::vgaYellow());
     cv.OutText(gfx::GfxPoint(50, 50), gfx::bgi::GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
-                gfx::GfxColor(150, 100, 200));
+               gfx::GfxColor(150, 100, 200));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
     for (int i = 0; i < gfx::bgi::GfxBgiConstants::fntNumFonts; i++)
@@ -353,13 +353,13 @@ void _doStuff(void)
 
     cv.Bar(gfx::GfxPoint(600, 100), gfx::GfxPoint(800, 200), gfx::bgi::GfxBgiConstants::vgaLightGray());
     cv.OutText(gfx::GfxPoint(620, 120), gfx::bgi::GfxString("3D Text, custom font"),
-                gfx::bgi::GfxBgiConstants::vgaWhite(), gfx::bgi::GfxBgiConstants::fntScript());
+               gfx::bgi::GfxBgiConstants::vgaWhite(), gfx::bgi::GfxBgiConstants::fntScript());
     cv.OutText(gfx::GfxPoint(621, 121), gfx::bgi::GfxString("3D Text, custom font"),
-                gfx::bgi::GfxBgiConstants::vgaBlack(), gfx::bgi::GfxBgiConstants::fntScript());
+               gfx::bgi::GfxBgiConstants::vgaBlack(), gfx::bgi::GfxBgiConstants::fntScript());
     cv.OutText(gfx::GfxPoint(620, 140), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
-                gfx::bgi::GfxBgiConstants::vgaWhite());
+               gfx::bgi::GfxBgiConstants::vgaWhite());
     cv.OutText(gfx::GfxPoint(621, 141), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
-                gfx::bgi::GfxBgiConstants::vgaBlack());
+               gfx::bgi::GfxBgiConstants::vgaBlack());
 
 
     cv.OutText(gfx::GfxPoint(1010, 120), gfx::bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
@@ -500,8 +500,8 @@ void _doStuff(void)
             }
             str_title += "][A(" + std::to_string(a1) +")]";
             win.setTitle(str_title);
-            surfcanvas.blitSurface(sbitmap, gfx::GfxRect(0, 0, sbitmap.getWidth(),
-                    sbitmap.getHeight()), gfx::GfxRect(160, 640, WIN_W, WIN_H));
+            surfcanvas.blitSurface(sbitmap, gfx::GfxRect(0, 0, sbitmap.getWidth(), sbitmap.getHeight()),
+                                   gfx::GfxRect(160, 640, WIN_W, WIN_H));
             gfx::GfxTexture canvas_tex(&rend, surfcanvas);
             canvas_tex.setBlendMode(gfx::GfxBlendMode::GfxBlendModeValues::blendNone);
 
