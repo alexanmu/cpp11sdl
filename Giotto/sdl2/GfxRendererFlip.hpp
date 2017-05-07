@@ -32,16 +32,16 @@
 class GfxRendererFlip final : public GfxRootClass
 {
 public:
-    typedef SDL_RendererFlip SdlType;
-    typedef SDL_RendererFlip* SdlTypePtr;
+    typedef sdl2::SDL_RendererFlip SdlType;
+    typedef sdl2::SDL_RendererFlip* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxRendererFlipValues : int
     {
-        flipNone = SDL_FLIP_NONE,
-        flipHorizontal = SDL_FLIP_HORIZONTAL,
-        flipVertical = SDL_FLIP_VERTICAL
+        flipNone = sdl2::SDL_FLIP_NONE,
+        flipHorizontal = sdl2::SDL_FLIP_HORIZONTAL,
+        flipVertical = sdl2::SDL_FLIP_VERTICAL
     };
 
     GfxRendererFlip();

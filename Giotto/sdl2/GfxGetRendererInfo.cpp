@@ -37,7 +37,7 @@ int GfxGetRendererInfo::getNumRenderDrivers(void)
 {
     int nrd;
 
-    nrd = SDL_GetNumRenderDrivers();
+    nrd = sdl2::SDL_GetNumRenderDrivers();
     if (nrd >= 0)
     {
         numRenderDrivers_ = nrd + 1;
@@ -51,7 +51,7 @@ void GfxGetRendererInfo::getRenderDriverInfo(const int index, GfxRendererInfo* i
 
     if (index < numRenderDrivers_)
     {
-        SDL_GetRenderDriverInfo(index, &rdi);
+        sdl2::SDL_GetRenderDriverInfo(index, &rdi);
         infoptr->set(rdi);
     }
     else

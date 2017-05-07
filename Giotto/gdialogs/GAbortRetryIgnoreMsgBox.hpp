@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GAbortRetryIgnoreMsgBox_hpp
 #define GAbortRetryIgnoreMsgBox_hpp

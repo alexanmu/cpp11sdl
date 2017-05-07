@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -83,12 +83,12 @@ bool GfxMessageBoxButtonFlags::operator==(const GfxMessageBoxButtonFlags& other)
 
 bool GfxMessageBoxButtonFlags::isReturnDefault(void) const
 {
-    return (flags_ == SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT);
+    return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT);
 }
 
 bool GfxMessageBoxButtonFlags::isEscDefault(void) const
 {
-    return (flags_ == SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT);
+    return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT);
 }
 
 GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) const

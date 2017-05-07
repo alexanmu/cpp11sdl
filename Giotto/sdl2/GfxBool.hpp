@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxBool_hpp
 #define GfxBool_hpp
@@ -32,8 +32,8 @@
 class GfxBool final : public GfxRootClass
 {
 public:
-    typedef SDL_bool SdlType;
-    typedef SDL_bool* SdlTypePtr;
+    typedef sdl2::SDL_bool SdlType;
+    typedef sdl2::SDL_bool* SdlTypePtr;
 
     static const std::string ClassName;
 

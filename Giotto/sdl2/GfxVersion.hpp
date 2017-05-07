@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxVersion_hpp
 #define GfxVersion_hpp
@@ -32,8 +32,8 @@
 class GfxVersion final : public GfxRootClass
 {
 public:
-    typedef SDL_version SdlType;
-    typedef SDL_version* SdlTypePtr;
+    typedef sdl2::SDL_version SdlType;
+    typedef sdl2::SDL_version* SdlTypePtr;
 
     static const std::string ClassName;
 

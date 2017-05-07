@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -86,36 +86,36 @@ bool GfxTextureModulate::isNone(void) const
 
 bool GfxTextureModulate::isColor(void) const
 {
-    uint32_t r = modulate_ & SDL_TEXTUREMODULATE_COLOR;
+    uint32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_COLOR;
 
     return (r != 0);
 }
 
 bool GfxTextureModulate::isAlpha(void) const
 {
-    uint32_t r = modulate_ & SDL_TEXTUREMODULATE_ALPHA;
+    uint32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_ALPHA;
 
     return (r != 0);
 }
 
 void GfxTextureModulate::setColor(void)
 {
-    modulate_ = static_cast<SdlType>(modulate_ | SDL_TEXTUREMODULATE_COLOR);
+    modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_COLOR);
 }
 
 void GfxTextureModulate::resetColor(void)
 {
-    modulate_ = static_cast<SdlType>(modulate_ & ~SDL_TEXTUREMODULATE_COLOR);
+    modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_COLOR);
 }
 
 void GfxTextureModulate::setAlpha(void)
 {
-    modulate_ = static_cast<SdlType>(modulate_ | SDL_TEXTUREMODULATE_ALPHA);
+    modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_ALPHA);
 }
 
 void GfxTextureModulate::resetAlpha(void)
 {
-    modulate_ = static_cast<SdlType>(modulate_ & ~SDL_TEXTUREMODULATE_ALPHA);
+    modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_ALPHA);
 }
 
 GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const

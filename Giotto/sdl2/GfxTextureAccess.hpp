@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxTextureAccess_hpp
 #define GfxTextureAccess_hpp
@@ -32,16 +32,16 @@
 class GfxTextureAccess final : public GfxRootClass
 {
 public:
-    typedef SDL_TextureAccess SdlType;
-    typedef SDL_TextureAccess* SdlTypePtr;
+    typedef sdl2::SDL_TextureAccess SdlType;
+    typedef sdl2::SDL_TextureAccess* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxTextureAccessValues : uint32_t
     {
-        accessStatic = SDL_TEXTUREACCESS_STATIC,
-        accessStreaming = SDL_TEXTUREACCESS_STREAMING,
-        accessTarget = SDL_TEXTUREACCESS_TARGET
+        accessStatic = sdl2::SDL_TEXTUREACCESS_STATIC,
+        accessStreaming = sdl2::SDL_TEXTUREACCESS_STREAMING,
+        accessTarget = sdl2::SDL_TEXTUREACCESS_TARGET
     };
 
     GfxTextureAccess();

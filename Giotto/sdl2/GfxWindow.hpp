@@ -36,8 +36,8 @@
 class GfxWindow final : public GfxRootClass
 {
 public:
-    typedef SDL_Window SdlType;
-    typedef SDL_Window* SdlTypePtr;
+    typedef sdl2::SDL_Window SdlType;
+    typedef sdl2::SDL_Window* SdlTypePtr;
 
     static const std::string ClassName;
 

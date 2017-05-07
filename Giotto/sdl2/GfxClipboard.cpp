@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -35,7 +35,7 @@ GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
 
 void GfxClipboard::setClipboardText(const std::string& str) const
 {
-    SDL_SetClipboardText(str.c_str());
+    sdl2::SDL_SetClipboardText(str.c_str());
 }
 
 std::string GfxClipboard::getClipboardText(void) const
@@ -43,15 +43,15 @@ std::string GfxClipboard::getClipboardText(void) const
     char * c;
     std::string str;
     
-    c = SDL_GetClipboardText();
+    c = sdl2::SDL_GetClipboardText();
     str = c;
-    SDL_free(c);
+    sdl2::SDL_free(c);
     return str;
 }
 
 bool GfxClipboard::hasClipboardText(void) const
 {
-    return SDL_HasClipboardText();
+    return sdl2::SDL_HasClipboardText();
 }
 
 /* EOF */

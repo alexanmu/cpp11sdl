@@ -39,8 +39,8 @@
 class GfxRenderer final : public GfxRootClass
 {
 public:
-    typedef SDL_Renderer SdlType;
-    typedef SDL_Renderer* SdlTypePtr;
+    typedef sdl2::SDL_Renderer SdlType;
+    typedef sdl2::SDL_Renderer* SdlTypePtr;
 
     static const std::string ClassName;
 

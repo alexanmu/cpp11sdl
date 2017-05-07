@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -31,7 +31,7 @@ const std::string GfxScreenSaver::ClassName = "GfxScreenSaver";
 
 GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
 {
-    GfxBool status { SDL_IsScreenSaverEnabled() };
+    GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
 
     ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
 }
@@ -43,13 +43,13 @@ bool GfxScreenSaver::isScreenSaverEnabled(void) const
 
 void GfxScreenSaver::enableScreenSaver(void)
 {
-    SDL_EnableScreenSaver();
+    sdl2::SDL_EnableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusEnabled;
 }
 
 void GfxScreenSaver::disableScreenSaver(void)
 {
-    SDL_DisableScreenSaver();
+    sdl2::SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
 }
 

@@ -32,6 +32,7 @@
 #error "Only one machine should be defined!"
 #endif
 
+namespace sdl2 {
 #ifdef __linux_machine
 #include "include/SDL.h"
 #include "include/SDL_bits.h"
@@ -46,5 +47,6 @@
 #include "include/SDL2/SDL.h"
 #include "include/SDL2/SDL_bits.h"
 #endif
+}
 
 #endif

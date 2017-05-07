@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxWindowEventID_hpp
 #define GfxWindowEventID_hpp
@@ -32,30 +32,30 @@
 class GfxWindowEventID final : public GfxRootClass
 {
 public:
-    typedef SDL_WindowEventID SdlType;
-    typedef SDL_WindowEventID* SdlTypePtr;
+    typedef sdl2::SDL_WindowEventID SdlType;
+    typedef sdl2::SDL_WindowEventID* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxWindowEventIDValues : int
     {
-        eventNone = SDL_WINDOWEVENT_NONE,
-        eventShown = SDL_WINDOWEVENT_SHOWN,
-        eventHidden = SDL_WINDOWEVENT_HIDDEN,
-        eventExposed = SDL_WINDOWEVENT_EXPOSED,
-        eventMoved = SDL_WINDOWEVENT_MOVED,
-        eventResized = SDL_WINDOWEVENT_RESIZED,
-        eventSizeChanged = SDL_WINDOWEVENT_SIZE_CHANGED,
-        eventMinimized = SDL_WINDOWEVENT_MINIMIZED,
-        eventMaximized = SDL_WINDOWEVENT_MAXIMIZED,
-        eventRestored = SDL_WINDOWEVENT_RESTORED,
-        eventEnter = SDL_WINDOWEVENT_ENTER,
-        eventLeave = SDL_WINDOWEVENT_LEAVE,
-        eventFocusGained = SDL_WINDOWEVENT_FOCUS_GAINED,
-        eventFocusLost = SDL_WINDOWEVENT_FOCUS_LOST,
-        eventClose = SDL_WINDOWEVENT_CLOSE,
-        eventTakeFocus = SDL_WINDOWEVENT_TAKE_FOCUS,
-        eventHitTest = SDL_WINDOWEVENT_HIT_TEST
+        eventNone = sdl2::SDL_WINDOWEVENT_NONE,
+        eventShown = sdl2::SDL_WINDOWEVENT_SHOWN,
+        eventHidden = sdl2::SDL_WINDOWEVENT_HIDDEN,
+        eventExposed = sdl2::SDL_WINDOWEVENT_EXPOSED,
+        eventMoved = sdl2::SDL_WINDOWEVENT_MOVED,
+        eventResized = sdl2::SDL_WINDOWEVENT_RESIZED,
+        eventSizeChanged = sdl2::SDL_WINDOWEVENT_SIZE_CHANGED,
+        eventMinimized = sdl2::SDL_WINDOWEVENT_MINIMIZED,
+        eventMaximized = sdl2::SDL_WINDOWEVENT_MAXIMIZED,
+        eventRestored = sdl2::SDL_WINDOWEVENT_RESTORED,
+        eventEnter = sdl2::SDL_WINDOWEVENT_ENTER,
+        eventLeave = sdl2::SDL_WINDOWEVENT_LEAVE,
+        eventFocusGained = sdl2::SDL_WINDOWEVENT_FOCUS_GAINED,
+        eventFocusLost = sdl2::SDL_WINDOWEVENT_FOCUS_LOST,
+        eventClose = sdl2::SDL_WINDOWEVENT_CLOSE,
+        eventTakeFocus = sdl2::SDL_WINDOWEVENT_TAKE_FOCUS,
+        eventHitTest = sdl2::SDL_WINDOWEVENT_HIT_TEST
     };
 
     GfxWindowEventID();

@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -47,19 +47,19 @@ GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
 
 void GfxCpuInfo::queryCpuInfo(void)
 {
-    cpuCount_ = SDL_GetCPUCount();
-    cpuCacheLineSize_ = SDL_GetCPUCacheLineSize();
-    hasRdtsc_ = SDL_HasRDTSC();
-    hasAltiVec_ = SDL_HasAltiVec();
-    hasMmx_ = SDL_HasMMX();
-    hasSse_ = SDL_HasSSE();
-    hasSse2_ = SDL_HasSSE2();
-    hasSse3_ = SDL_HasSSE3();
-    hasSse41_ = SDL_HasSSE41();
-    hasSse42_ = SDL_HasSSE42();
-    hasAvx_ = SDL_HasAVX();
-    hasAvx2_ = SDL_HasAVX2();
-    systemRam_ = SDL_GetSystemRAM();
+    cpuCount_ = sdl2::SDL_GetCPUCount();
+    cpuCacheLineSize_ = sdl2::SDL_GetCPUCacheLineSize();
+    hasRdtsc_ = sdl2::SDL_HasRDTSC();
+    hasAltiVec_ = sdl2::SDL_HasAltiVec();
+    hasMmx_ = sdl2::SDL_HasMMX();
+    hasSse_ = sdl2::SDL_HasSSE();
+    hasSse2_ = sdl2::SDL_HasSSE2();
+    hasSse3_ = sdl2::SDL_HasSSE3();
+    hasSse41_ = sdl2::SDL_HasSSE41();
+    hasSse42_ = sdl2::SDL_HasSSE42();
+    hasAvx_ = sdl2::SDL_HasAVX();
+    hasAvx2_ = sdl2::SDL_HasAVX2();
+    systemRam_ = sdl2::SDL_GetSystemRAM();
 }
 
 int GfxCpuInfo::getCpuCount(void) const

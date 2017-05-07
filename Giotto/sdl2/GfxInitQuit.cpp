@@ -45,17 +45,19 @@ GfxInitQuit::GfxInitQuit(const GfxInitComponent gfxInitComp) :
     {
         initParam = SDL_INIT_EVERYTHING;
     }
-    errorcode_ = SDL_Init(initParam);
+    errorcode_ = sdl2::SDL_Init(initParam);
 }
 
 GfxInitQuit::~GfxInitQuit()
 {
-    SDL_Quit();
+    sdl2::SDL_Quit();
 }
 
 void GfxInitQuit::quitRequested(void)
 {
-    SDL_QuitRequested();
+    // sdl2::SDL_QuitRequested();
+    sdl2::SDL_PumpEvents();
+    sdl2::SDL_PeepEvents(NULL,0,sdl2::SDL_PEEKEVENT,sdl2::SDL_QUIT,sdl2::SDL_QUIT);
 }
                                 
 // Return error code after init call

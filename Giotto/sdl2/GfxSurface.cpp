@@ -31,9 +31,9 @@ const std::string GfxSurface::ClassName = "GfxSurface";
 
 GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
 {
-    uint32_t format = SDL_PIXELFORMAT_ARGB8888;
+    uint32_t format = sdl2::SDL_PIXELFORMAT_ARGB8888;
 
-    surf_ = SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), w, h, 32, format);
+    surf_ = sdl2::SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), w, h, 32, format);
     if (surf_ == nullptr)
     {
         // error handling here ...
@@ -51,9 +51,9 @@ GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass(ClassName)
 
 GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
 {
-    SDL_Surface* tmpsurfptr;
+    sdl2::SDL_Surface* tmpsurfptr;
     
-    tmpsurfptr = SDL_LoadBMP(filename.c_str());
+    tmpsurfptr = sdl2::SDL_LoadBMP_RW(sdl2::SDL_RWFromFile(filename.c_str(), "rb"), 1); // sdl2::SDL_LoadBMP(filename.c_str());
     if (tmpsurfptr == nullptr)
     {
         // error handling here
@@ -61,7 +61,7 @@ GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
     }
     if (tmpsurfptr->format != nullptr)
     {
-        if (tmpsurfptr->format->format != SDL_PIXELFORMAT_ARGB8888)
+        if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
             // convert here
         }
@@ -85,7 +85,7 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& surf)
     {
         if (surf_ != nullptr)
         {
-            SDL_FreeSurface(surf_);
+            sdl2::SDL_FreeSurface(surf_);
         }
         surf_ = surf.surf_;
         surf.surf_ = nullptr;
@@ -97,7 +97,7 @@ GfxSurface::~GfxSurface()
 {
     if (surf_ != nullptr)
     {
-        SDL_FreeSurface(surf_);
+        sdl2::SDL_FreeSurface(surf_);
     }
 }
 
@@ -146,8 +146,8 @@ void GfxSurface::fillRect(const GfxRect& rect, const GfxColor& color)
     {
         return;
     }
-    clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
+    clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    sdl2::SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
 }
 
 void GfxSurface::fillRect(const GfxColor& color)
@@ -158,8 +158,8 @@ void GfxSurface::fillRect(const GfxColor& color)
     {
         return;
     }
-    clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    SDL_FillRect(surf_, NULL, clr);
+    clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    sdl2::SDL_FillRect(surf_, NULL, clr);
 }
 
 void GfxSurface::fillRects(const std::vector<GfxRect>& rects, const GfxColor& color)
@@ -179,7 +179,7 @@ void GfxSurface::blitSurface(const GfxSurface& src, const GfxRect& srcr, const G
     {
         return;
     }
-    SDL_BlitSurface(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
+    sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
 void GfxSurface::blitSurface(const GfxSurface& src)
@@ -188,7 +188,7 @@ void GfxSurface::blitSurface(const GfxSurface& src)
     {
         return;
     }
-    SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
+    sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
 }
 
 void GfxSurface::putPixel(const uint16_t x, const uint16_t y, const GfxColor& color)
@@ -203,9 +203,9 @@ void GfxSurface::putPixel(const uint16_t x, const uint16_t y, const GfxColor& co
         // error handling here
         return;
     }
-    SDL_LockSurface(surf_);
+    sdl2::SDL_LockSurface(surf_);
     putPixelPrv(x, y, color);
-    SDL_UnlockSurface(surf_);
+    sdl2::SDL_UnlockSurface(surf_);
 }
 
 GfxColor GfxSurface::getPixel(const uint16_t x, const uint16_t y)
@@ -222,9 +222,9 @@ GfxColor GfxSurface::getPixel(const uint16_t x, const uint16_t y)
         // error handling here
         return GfxColor();
     }
-    SDL_LockSurface(surf_);
+    sdl2::SDL_LockSurface(surf_);
     pix = getPixelPrv(x, y);
-    SDL_UnlockSurface(surf_);
+    sdl2::SDL_UnlockSurface(surf_);
     return pix;
 }
 
@@ -232,7 +232,7 @@ void GfxSurface::destroySurface(void)
 {
     if (surf_ != nullptr)
     {
-        SDL_FreeSurface(surf_);
+        sdl2::SDL_FreeSurface(surf_);
         surf_ = nullptr;
     }
 }
@@ -247,8 +247,8 @@ void GfxSurface::putPixelPrv(const uint16_t x, const uint16_t y, const GfxColor&
     uint32_t* ptr;
     uint32_t clr;
 
-    clr = SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    ptr = reinterpret_cast<uint32_t*>(surf_->pixels);
+    clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    ptr = reinterpret_cast<uint32_t *>(surf_->pixels);
     ptr[y * surf_->w + x] = clr;
 }
 
@@ -257,8 +257,8 @@ GfxColor GfxSurface::getPixelPrv(const uint16_t x, const uint16_t y)
     uint8_t* ptr;
 
     ptr = reinterpret_cast<uint8_t*>(surf_->pixels);
-    return GfxColor { GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],\
-			ptr[y * surf_->w + x + 2], ptr[y * surf_->w + x + 3]) };
+    return GfxColor { GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],
+                               ptr[y * surf_->w + x + 2], ptr[y * surf_->w + x + 3]) };
 }
 
 /* EOF */

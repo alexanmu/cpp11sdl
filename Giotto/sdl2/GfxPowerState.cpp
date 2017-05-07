@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -76,27 +76,27 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
 
 bool GfxPowerState::isUnknown(void) const
 {
-    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_UNKNOWN));
+    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_UNKNOWN));
 }
 
 bool GfxPowerState::isOnBattery(void) const
 {
-    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_ON_BATTERY));
+    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_ON_BATTERY));
 }
 
 bool GfxPowerState::isNoBattery(void) const
 {
-    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_NO_BATTERY));
+    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_NO_BATTERY));
 }
 
 bool GfxPowerState::isCharging(void) const
 {
-    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_CHARGING));
+    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGING));
 }
 
 bool GfxPowerState::isCharged(void) const
 {
-    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_CHARGED));
+    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGED));
 }
 
 std::string GfxPowerState::getAsString() const

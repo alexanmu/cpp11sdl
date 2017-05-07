@@ -40,8 +40,8 @@ class GfxCanvas;
 class GfxSurface final : public GfxRootClass
 {
 public:
-    typedef SDL_Surface SdlType;
-    typedef SDL_Surface* SdlTypePtr;
+    typedef sdl2::SDL_Surface SdlType;
+    typedef sdl2::SDL_Surface* SdlTypePtr;
 
     static const std::string ClassName;
 

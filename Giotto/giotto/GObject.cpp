@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include "GObject.hpp"
 
@@ -66,11 +66,11 @@ bool GObject::operator==(GObject const& other)
 {
     if (this != &other)
     {
-	if (inittype_ == other.inittype_)
-	{
-	    return true;
-	}
-	return false;
+        if (inittype_ == other.inittype_)
+        {
+            return true;
+        }
+        return false;
     }
     return true;
 }

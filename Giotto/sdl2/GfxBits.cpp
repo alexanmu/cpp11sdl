@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 #include <cstdlib>
@@ -36,7 +36,7 @@ GfxBits::GfxBits() : GfxRootClass(ClassName)
 
 int GfxBits::mostSignificantBitIndex32(const uint32_t x) const
 {
-    return SDL_MostSignificantBitIndex32(x);
+    return sdl2::SDL_MostSignificantBitIndex32(x);
 }
 
 /* EOF */

@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxMessageBoxButtonFlags_hpp
 #define GfxMessageBoxButtonFlags_hpp
@@ -32,16 +32,16 @@
 class GfxMessageBoxButtonFlags final : public GfxRootClass
 {
 public:
-    typedef SDL_MessageBoxButtonFlags SdlType;
-    typedef SDL_MessageBoxButtonFlags* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxButtonFlags SdlType;
+    typedef sdl2::SDL_MessageBoxButtonFlags* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxMessageBoxButtonFlagsValues : int
     {
         noneDefault = 0,
-        returnKeyDefault = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
-        escKeyDefault = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT
+        returnKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
+        escKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT
     };
 
     GfxMessageBoxButtonFlags();

@@ -38,7 +38,7 @@ std::string GfxFileSystem::getBasePath(void) const
     char * base_path = NULL;
     std::string str;
 
-    str = SDL_GetBasePath();
+    str = sdl2::SDL_GetBasePath();
     if (base_path != NULL)
     {
         str = base_path;
@@ -55,7 +55,7 @@ std::string GfxFileSystem::getPrefPath(const std::string& organization, const st
     char * base_path = NULL;
     std::string str;
 
-    base_path = SDL_GetPrefPath(organization.c_str(), appname.c_str());
+    base_path = sdl2::SDL_GetPrefPath(organization.c_str(), appname.c_str());
     if (base_path != NULL)
     {
         str = base_path;

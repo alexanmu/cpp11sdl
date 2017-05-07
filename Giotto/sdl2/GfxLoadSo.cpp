@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -31,7 +31,7 @@ const std::string GfxLoadSo::ClassName = "GfxLoadSo";
 GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
 {
     objectname_ = objectname;
-    handle_ = SDL_LoadObject(objectname_.c_str());
+    handle_ = sdl2::SDL_LoadObject(objectname_.c_str());
 }
 
 GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) : GfxRootClass(ClassName)
@@ -47,7 +47,7 @@ GfxLoadSo::~GfxLoadSo()
 {
     if (handle_ != nullptr)
     {
-        SDL_UnloadObject(handle_);
+        sdl2::SDL_UnloadObject(handle_);
     }
 }
 
@@ -80,14 +80,14 @@ void * GfxLoadSo::loadFunction(const std::string& function)
 
     if (handle_ != nullptr)
     {
-        func = SDL_LoadFunction(handle_,function.c_str());
+        func = sdl2::SDL_LoadFunction(handle_,function.c_str());
     }
     return func;
 }
 
 void GfxLoadSo::unloadObject()
 {
-    SDL_UnloadObject(handle_);
+    sdl2::SDL_UnloadObject(handle_);
     handle_ = nullptr;
 }
 

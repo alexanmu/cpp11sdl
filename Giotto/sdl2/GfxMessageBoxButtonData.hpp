@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxMessageBoxButtonData_hpp
 #define GfxMessageBoxButtonData_hpp
@@ -33,8 +33,8 @@
 class GfxMessageBoxButtonData final : public GfxRootClass
 {
 public:
-    typedef SDL_MessageBoxButtonData SdlType;
-    typedef SDL_MessageBoxButtonData* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxButtonData SdlType;
+    typedef sdl2::SDL_MessageBoxButtonData* SdlTypePtr;
 
     static const std::string ClassName;
 

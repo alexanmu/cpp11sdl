@@ -30,7 +30,7 @@ const std::string GfxPalette::ClassName = "GfxPalette";
 
 GfxPalette::GfxPalette() : GfxRootClass(ClassName)
 {
-    pal_ = SDL_AllocPalette(kDefaultPaletteSize);
+    pal_ = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
     for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
     {
         SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen,\
@@ -44,7 +44,7 @@ GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
     uint16_t nColors;
     
     nColors = colors.size();
-    pal_ = SDL_AllocPalette(nColors);
+    pal_ = sdl2::SDL_AllocPalette(nColors);
     colorIndex = 0;
     for (GfxColor clr : colors)
     {
@@ -55,7 +55,7 @@ GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
 
 GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass(ClassName)
 {
-    pal_ = SDL_AllocPalette(nColors);
+    pal_ = sdl2::SDL_AllocPalette(nColors);
     for (uint32_t i = 0; i < nColors; i++)
     {
         SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen,\
@@ -72,7 +72,7 @@ GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass(ClassName)
 
 GfxPalette::GfxPalette(const SdlTypePtr pal)
 {
-    pal_ = SDL_AllocPalette(pal->ncolors);
+    pal_ = sdl2::SDL_AllocPalette(pal->ncolors);
     SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
 }
 
@@ -90,7 +90,7 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
     {
         if (pal_ != nullptr)
         {
-            SDL_FreePalette(pal_);
+            sdl2::SDL_FreePalette(pal_);
         }
         pal_ = other.pal_;
         // Delete other's data
@@ -103,7 +103,7 @@ void GfxPalette::freePalette(void)
 {
     if (pal_ != nullptr)
     {
-        SDL_FreePalette(pal_);
+        sdl2::SDL_FreePalette(pal_);
         pal_ = nullptr;
     }
 }
@@ -119,7 +119,7 @@ void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t f
     }
     for (GfxColor clr : colors)
     {
-        errorCode = SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), currentColorIndex, 1);
+        errorCode = sdl2::SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), currentColorIndex, 1);
         currentColorIndex += 1;
         if (errorCode != 0)
         {

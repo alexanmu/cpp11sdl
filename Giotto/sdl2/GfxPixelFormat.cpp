@@ -29,7 +29,7 @@ const std::string GfxPixelFormat::ClassName = "GfxPixelFormat";
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 {
-    pix_ = SDL_AllocFormat(SDL_PIXELFORMAT_ARGB8888);
+    pix_ = sdl2::SDL_AllocFormat(sdl2::SDL_PIXELFORMAT_ARGB8888);
     if (pix_ == nullptr)
     {
         // Error handling here
@@ -38,13 +38,13 @@ GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 
 GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass(ClassName)
 {
-    pix_ = SDL_AllocFormat(pix->format);
+    pix_ = sdl2::SDL_AllocFormat(pix->format);
     *pix_ = *pix;
 }
 
 GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)
 {
-    pix_ = SDL_AllocFormat(format);
+    pix_ = sdl2::SDL_AllocFormat(format);
     if (pix_ == nullptr)
     {
         // Error handling here
@@ -251,7 +251,7 @@ std::string GfxPixelFormat::getFormatAsString(void) const
 
     if (pix_ != nullptr)
     {
-        str = SDL_GetPixelFormatName(pix_->format);
+        str = sdl2::SDL_GetPixelFormatName(pix_->format);
     }
     return str;
 }

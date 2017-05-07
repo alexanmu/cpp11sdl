@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 #include <cstdlib>
@@ -36,22 +36,22 @@ GfxEndian::GfxEndian() : GfxRootClass(ClassName)
 
 uint16_t GfxEndian::swap16(const uint16_t x) const
 {
-    return SDL_Swap16(x);
+    return sdl2::SDL_Swap16(x);
 }
 
 uint32_t GfxEndian::swap32(const uint32_t x) const
 {
-    return SDL_Swap32(x);
+    return sdl2::SDL_Swap32(x);
 }
 
 uint64_t GfxEndian::swap64(const uint64_t x) const
 {
-    return SDL_Swap64(x);
+    return sdl2::SDL_Swap64(x);
 }
 
 float GfxEndian::swapFloat(const float x) const
 {
-    return SDL_SwapFloat(x);
+    return sdl2::SDL_SwapFloat(x);
 }
 
 uint16_t GfxEndian::swapLE16(const uint16_t x) const
@@ -76,22 +76,22 @@ float GfxEndian::swapFloatLE(const float x) const
 
 uint16_t GfxEndian::swapBE16(const uint16_t x) const
 {
-    return SDL_SwapBE16(x);
+    return sdl2::SDL_SwapBE16(x);
 }
 
 uint32_t GfxEndian::swapBE32(const uint32_t x) const
 {
-    return SDL_SwapBE32(x);
+    return sdl2::SDL_SwapBE32(x);
 }
 
 uint64_t GfxEndian::swapBE64(const uint64_t x) const
 {
-    return SDL_SwapBE64(x);
+    return sdl2::SDL_SwapBE64(x);
 }
 
 float GfxEndian::swapFloatBE(const float x) const
 {
-    return SDL_SwapFloatBE(x);
+    return sdl2::SDL_SwapFloatBE(x);
 }
 
 /* EOF */

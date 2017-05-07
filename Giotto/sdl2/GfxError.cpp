@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -32,13 +32,13 @@ std::string GfxError::getError(void)
 {
     std::string str;
 
-    str = SDL_GetError();
+    str = sdl2::SDL_GetError();
     return str;
 }
 
 void GfxError::clearError(void)
 {
-    SDL_ClearError();
+    sdl2::SDL_ClearError();
 }
 
 /* EOF */

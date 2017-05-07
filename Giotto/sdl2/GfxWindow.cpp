@@ -31,7 +31,7 @@ const std::string GfxWindow::ClassName = "GfxWindow";
 GfxWindow::GfxWindow(const std::string& title, const uint16_t width, const uint16_t height) :
         GfxRootClass(ClassName)
 {
-    window_ = SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
+    window_ = sdl2::SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (window_ == nullptr)
     {
         // error handling here
@@ -42,8 +42,8 @@ GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const
                         const uint16_t width, const uint16_t height, const GfxWindowFlags& flags) :
         GfxRootClass(ClassName)
 {
-    window_ = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
-                                width, height, flags.getAsSdlType());
+    window_ = sdl2::SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
+                                     width, height, flags.getAsSdlType());
     if (window_ == nullptr)
     {
         // error handling here
@@ -54,7 +54,7 @@ GfxWindow::~GfxWindow()
 {
     if (window_ != nullptr)
     {
-        SDL_DestroyWindow(window_);
+        sdl2::SDL_DestroyWindow(window_);
     }
 }
 
@@ -62,7 +62,7 @@ void GfxWindow::destroyWindow()
 {
     if (window_ != nullptr)
     {
-        SDL_DestroyWindow(window_);
+        sdl2::SDL_DestroyWindow(window_);
         window_ = nullptr;
     }
 }
@@ -71,7 +71,7 @@ std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
 {
     if (window_ != nullptr)
     {
-        SDL_Surface* surf = SDL_GetWindowSurface(window_);
+        sdl2::SDL_Surface* surf = sdl2::SDL_GetWindowSurface(window_);
         if (surf != nullptr)
         {
             std::unique_ptr<GfxSurface> ptr { new GfxSurface(surf) };
@@ -84,25 +84,25 @@ std::unique_ptr<GfxSurface> GfxWindow::getWindowSurface(void)
 
 void GfxWindow::updateWindowSurface(void)
 {
-    SDL_UpdateWindowSurface(window_);
+    sdl2::SDL_UpdateWindowSurface(window_);
 }
 
 std::string GfxWindow::getTitle() const
 {
     const char * pch;
 
-    pch = SDL_GetWindowTitle(window_);
+    pch = sdl2::SDL_GetWindowTitle(window_);
     return std::string(pch);
 }
 
 void GfxWindow::setTitle(const std::string& title)
 {
-    SDL_SetWindowTitle(window_, title.c_str());
+    sdl2::SDL_SetWindowTitle(window_, title.c_str());
 }
 
 void GfxWindow::setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y)
 {
-    SDL_SetWindowPosition(window_, x.getCoordinate(), y.getCoordinate());
+    sdl2::SDL_SetWindowPosition(window_, x.getCoordinate(), y.getCoordinate());
 }
 
 void GfxWindow::getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y)
@@ -110,7 +110,7 @@ void GfxWindow::getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y)
     int xcoord;
     int ycoord;
 
-    SDL_GetWindowPosition(window_, &xcoord, &ycoord);
+    sdl2::SDL_GetWindowPosition(window_, &xcoord, &ycoord);
     x->setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
     x->setCoordinate(xcoord);
     y->setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
@@ -119,12 +119,12 @@ void GfxWindow::getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y)
 
 void GfxWindow::setWindowSize(int32_t x, int32_t y)
 {
-    SDL_SetWindowSize(window_, x, y);
+    sdl2::SDL_SetWindowSize(window_, x, y);
 }
 
 void GfxWindow::getWindowSize(int32_t* px, int32_t* py)
 {
-    SDL_GetWindowSize(window_, px, py);
+    sdl2::SDL_GetWindowSize(window_, px, py);
 }
 
 uint16_t GfxWindow::getWidth() const
@@ -136,7 +136,7 @@ uint16_t GfxWindow::getWidth() const
     {
         return 0;
     }
-    SDL_GetWindowSize(window_, &w, &h);
+    sdl2::SDL_GetWindowSize(window_, &w, &h);
     return w;
 }
 
@@ -145,7 +145,7 @@ uint16_t GfxWindow::getHeight() const
     int w;
     int h;
 
-    SDL_GetWindowSize(window_, &w, &h);
+    sdl2::SDL_GetWindowSize(window_, &w, &h);
     return h;
 }
 

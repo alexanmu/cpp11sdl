@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxDisplayMode_hpp
 #define GfxDisplayMode_hpp
@@ -32,8 +32,8 @@
 class GfxDisplayMode final : public GfxRootClass
 {
 public:
-    typedef SDL_DisplayMode SdlType;
-    typedef SDL_DisplayMode* SdlTypePtr;
+    typedef sdl2::SDL_DisplayMode SdlType;
+    typedef sdl2::SDL_DisplayMode* SdlTypePtr;
 
     static const std::string ClassName;
 

@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -76,82 +76,82 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other)
 
 bool GfxWindowEventID::isShown(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_SHOWN);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_SHOWN);
 }
 
 bool GfxWindowEventID::isHidden(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_HIDDEN);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_HIDDEN);
 }
 
 bool GfxWindowEventID::isExposed(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_EXPOSED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_EXPOSED);
 }
 
 bool GfxWindowEventID::isMoved(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_MOVED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_MOVED);
 }
 
 bool GfxWindowEventID::isResized(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_RESIZED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_RESIZED);
 }
 
 bool GfxWindowEventID::isSizeChanged(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_SIZE_CHANGED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_SIZE_CHANGED);
 }
 
 bool GfxWindowEventID::isMinimized(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_MINIMIZED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_MINIMIZED);
 }
 
 bool GfxWindowEventID::isMaximized(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_MAXIMIZED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_MAXIMIZED);
 }
 
 bool GfxWindowEventID::isRestored(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_RESTORED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_RESTORED);
 }
 
 bool GfxWindowEventID::enter(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_ENTER);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_ENTER);
 }
 
 bool GfxWindowEventID::leave(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_LEAVE);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_LEAVE);
 }
 
 bool GfxWindowEventID::isFocusGained(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_FOCUS_GAINED);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_GAINED);
 }
 
 bool GfxWindowEventID::isFocusLost(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_FOCUS_LOST);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_LOST);
 }
 
 bool GfxWindowEventID::close(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_CLOSE);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_CLOSE);
 }
 
 bool GfxWindowEventID::takeFocus(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_TAKE_FOCUS);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_TAKE_FOCUS);
 }
 
 bool GfxWindowEventID::hitTest(void) const
 {
-    return (eventid_ == SDL_WINDOWEVENT_HIT_TEST);
+    return (eventid_ == sdl2::SDL_WINDOWEVENT_HIT_TEST);
 }
 
 

@@ -390,7 +390,7 @@ void _doStuff(void)
     GfxSurface colors_surf(GfxSurfaceFlags(), WIN_W, WIN_H);
     GfxRect rt;
 
-    SDL_Event e;
+    sdl2::SDL_Event e;
     bool quit = false;
     int r1 = GfxBgiConstants::vgaDarkGray().getRed();
     int g1 = GfxBgiConstants::vgaDarkGray().getGreen();
@@ -407,62 +407,62 @@ void _doStuff(void)
     {
         if (SDL_PollEvent(&e))
         {
-            if (e.type == SDL_QUIT)
+            if (e.type == sdl2::SDL_QUIT)
                 quit = true;
-            if (e.type == SDL_KEYDOWN) {
-                if (e.key.keysym.scancode == SDL_SCANCODE_Q)
+            if (e.type == sdl2::SDL_KEYDOWN) {
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_Q)
                     inc(&r1);
-                if (e.key.keysym.scancode == SDL_SCANCODE_A)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_A)
                     dec(&r1);
-                if (e.key.keysym.scancode == SDL_SCANCODE_W)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_W)
                     inc(&g1);
-                if (e.key.keysym.scancode == SDL_SCANCODE_S)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_S)
                     dec(&g1);
-                if (e.key.keysym.scancode == SDL_SCANCODE_E)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_E)
                     inc(&b1);
-                if (e.key.keysym.scancode == SDL_SCANCODE_D)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_D)
                     dec(&b1);
-                if (e.key.keysym.scancode == SDL_SCANCODE_Z)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_Z)
                 { r1 = 0; g1 = 0; b1 = 0; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_X)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_X)
                 { r1 = 128; g1 = 128; b1 = 128; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_C)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_C)
                 { r1 = 255; g1 = 255; b1 = 255; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_K)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_K)
                 { r1 = 137; g1 = 6; b1 = 71; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_U)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_U)
                 { r1 = 113; g1 = 194; b1 = 4; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_O)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_O)
                 { r1 = 237; g1 = 249; b1 = 75; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_M)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_M)
                 { r1 = 128; g1 = 64; b1 = 128; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_N)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_N)
                 {
                     r1 = std::rand() % 255;
                     g1 = std::rand() % 255;
                     b1 = std::rand() % 255;
                 }
-                if (e.key.keysym.scancode == SDL_SCANCODE_H)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_H)
                 { r1 = 128; g1 = 138; b1 = 43; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_I)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_I)
                 { r1 = 42; g1 = 0; b1 = 46; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_T)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_T)
                 { r1 = 125; g1 = 251; b1 = 1; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_J)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_J)
                 { r1 = 42; g1 = 0; b1 = 46; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_Y)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_Y)
                 { r1 = 156; g1 = 54; b1 = 78; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_P)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_P)
                 { r1 = 50; g1 = 100; b1 = 200; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_1)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_1)
                 { inc(&a1); }
-                if (e.key.keysym.scancode == SDL_SCANCODE_2)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_2)
                 { dec(&a1); }
-                if (e.key.keysym.scancode == SDL_SCANCODE_L)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_L)
                 { r1 = 208; g1 = 8; b1 = 232; }
-                if (e.key.keysym.scancode == SDL_SCANCODE_8)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_8)
                 { inc(&r1); inc(&g1); inc(&b1); }
-                if (e.key.keysym.scancode == SDL_SCANCODE_9)
+                if (e.key.keysym.scancode == sdl2::SDL_SCANCODE_9)
                 { dec(&r1); dec(&g1); dec(&b1); }
             }
 
@@ -520,7 +520,7 @@ void _doStuff(void)
             rend.renderCopy(colors_tex);
             rend.renderPresent();
         }
-        SDL_Delay(25);
+        sdl2::SDL_Delay(25);
     }
     AfterDeInit();
 }

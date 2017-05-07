@@ -35,8 +35,8 @@
 class GfxPalette final : public GfxRootClass
 {
 public:
-    typedef SDL_Palette SdlType;
-    typedef SDL_Palette* SdlTypePtr;
+    typedef sdl2::SDL_Palette SdlType;
+    typedef sdl2::SDL_Palette* SdlTypePtr;
 
     static const std::string ClassName;
 

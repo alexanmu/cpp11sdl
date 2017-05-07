@@ -31,10 +31,10 @@ GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass(ClassName), render
 {
     SdlType* renderertmp;
 
-    renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, SDL_RENDERER_ACCELERATED);
+    renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_ACCELERATED);
     if (renderertmp == nullptr)
     {
-        renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, SDL_RENDERER_SOFTWARE);
+        renderertmp = SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_SOFTWARE);
     }
     renderer_ = renderertmp;
 }

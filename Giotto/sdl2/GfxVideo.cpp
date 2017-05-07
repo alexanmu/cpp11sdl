@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <memory>
 #include <map>
@@ -48,7 +48,7 @@ void GfxVideo::videoQuit(void) throw()
 
 int GfxVideo::getNumVideoDrivers(void)
 {
-    numvideodrivers_ = SDL_GetNumVideoDrivers();
+    numvideodrivers_ = sdl2::SDL_GetNumVideoDrivers();
     return numvideodrivers_;
 }
 
@@ -58,7 +58,7 @@ std::string GfxVideo::getVideoDriver(const int driverindex) const
 
     if ((numvideodrivers_ >= 0) && (driverindex < numvideodrivers_))
     {
-        str = SDL_GetVideoDriver(driverindex);
+        str = sdl2::SDL_GetVideoDriver(driverindex);
     }
     return str;
 }
@@ -68,7 +68,7 @@ std::string GfxVideo::getCurrentVideoDriver(void) const
     const char * c;
     std::string str = "Not initialized";
 
-    c = reinterpret_cast<const char *>(SDL_GetCurrentVideoDriver());
+    c = reinterpret_cast<const char *>(sdl2::SDL_GetCurrentVideoDriver());
     if (c != NULL)
     {
         str = c;
@@ -78,7 +78,7 @@ std::string GfxVideo::getCurrentVideoDriver(void) const
 
 int GfxVideo::getNumVideoDisplays(void)
 {
-    numvideodisplays_ = SDL_GetNumVideoDisplays();
+    numvideodisplays_ = sdl2::SDL_GetNumVideoDisplays();
     return numvideodisplays_;
 }
 
@@ -88,7 +88,7 @@ std::string GfxVideo::getDisplayName(const int displayindex) const
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        str = SDL_GetDisplayName(displayindex);
+        str = sdl2::SDL_GetDisplayName(displayindex);
     }
     return str;
 }
@@ -123,7 +123,7 @@ void GfxVideo::getDisplayDPI(const int displayindex, float * ddpi, float * hdpi,
 {
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        SDL_GetDisplayDPI(displayindex, ddpi, hdpi, vdpi);
+        sdl2::SDL_GetDisplayDPI(displayindex, ddpi, hdpi, vdpi);
     }
 }
 
@@ -133,7 +133,7 @@ int GfxVideo::getNumDisplayModes(const int displayindex)
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        numdisplaymodes = SDL_GetNumDisplayModes(displayindex);
+        numdisplaymodes = sdl2::SDL_GetNumDisplayModes(displayindex);
         numdisplaymodes_[displayindex] = numdisplaymodes;
     }
     return numdisplaymodes;

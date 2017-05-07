@@ -32,8 +32,8 @@
 class GfxPoint final : public GfxRootClass
 {
 public:
-    typedef SDL_Point SdlType;
-    typedef SDL_Point* SdlTypePtr;
+    typedef sdl2::SDL_Point SdlType;
+    typedef sdl2::SDL_Point* SdlTypePtr;
 
     static const std::string ClassName;
 

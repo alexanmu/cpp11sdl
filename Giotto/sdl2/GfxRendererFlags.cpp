@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -81,70 +81,70 @@ bool GfxRendererFlags::isUnknown(void) const
 
 bool GfxRendererFlags::isSoftware(void) const
 {
-    uint32_t r = flags_ & SDL_RENDERER_SOFTWARE;
+    uint32_t r = flags_ & sdl2::SDL_RENDERER_SOFTWARE;
 
     return (r != 0);
 }
 
 bool GfxRendererFlags::isAccelerated(void) const
 {
-    uint32_t r = flags_ & SDL_RENDERER_ACCELERATED;
+    uint32_t r = flags_ & sdl2::SDL_RENDERER_ACCELERATED;
 
     return (r != 0);
 }
 
 bool GfxRendererFlags::getPresentVSync(void) const
 {
-    uint32_t r = flags_ & SDL_RENDERER_PRESENTVSYNC;
+    uint32_t r = flags_ & sdl2::SDL_RENDERER_PRESENTVSYNC;
 
     return (r != 0);
 }
 
 bool GfxRendererFlags::getTargetTexture(void) const
 {
-    uint32_t r = flags_ & SDL_RENDERER_TARGETTEXTURE;
+    uint32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
     
     return (r != 0);
 }
 
 void GfxRendererFlags::setSoftware(void)
 {
-    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_SOFTWARE);
+    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_SOFTWARE);
 }
 
 void GfxRendererFlags::resetSoftware(void)
 {
-    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_SOFTWARE);
+    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_SOFTWARE);
 }
 
 void GfxRendererFlags::setAccelerated(void)
 {
-    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_ACCELERATED);
+    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_ACCELERATED);
 }
 
 void GfxRendererFlags::resetAccelerated(void)
 {
-    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_ACCELERATED);
+    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_ACCELERATED);
 }
 
 void GfxRendererFlags::setPresentVSync(void)
 {
-    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_PRESENTVSYNC);
+    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_PRESENTVSYNC);
 }
 
 void GfxRendererFlags::resetPresentVSync(void)
 {
-    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_PRESENTVSYNC);
+    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_PRESENTVSYNC);
 }
 
 void GfxRendererFlags::setTargetTexture(void)
 {
-    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_TARGETTEXTURE);
+    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_TARGETTEXTURE);
 }
 
 void GfxRendererFlags::resetTargetTexture(void)
 {
-    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_TARGETTEXTURE);
+    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_TARGETTEXTURE);
 }
 
 GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const

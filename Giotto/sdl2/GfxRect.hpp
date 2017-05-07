@@ -32,8 +32,8 @@
 class GfxRect final : public GfxRootClass
 {
 public:
-    typedef SDL_Rect SdlType;
-    typedef SDL_Rect* SdlTypePtr;
+    typedef sdl2::SDL_Rect SdlType;
+    typedef sdl2::SDL_Rect* SdlTypePtr;
 
     static const std::string ClassName;
 

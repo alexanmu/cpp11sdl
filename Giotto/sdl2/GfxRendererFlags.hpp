@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxRendererFlags_hpp
 #define GfxRendererFlags_hpp
@@ -32,18 +32,18 @@
 class GfxRendererFlags final : public GfxRootClass
 {
 public:
-    typedef SDL_RendererFlags SdlType;
-    typedef SDL_RendererFlags* SdlTypePtr;
+    typedef sdl2::SDL_RendererFlags SdlType;
+    typedef sdl2::SDL_RendererFlags* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxRendererFlagsValues : int
     {
         flagUnknown,
-        flagSoftware = SDL_RENDERER_SOFTWARE,
-        flagAccelerated = SDL_RENDERER_ACCELERATED,
-        flagPresentVSync = SDL_RENDERER_PRESENTVSYNC,
-        flagTargetTexture = SDL_RENDERER_TARGETTEXTURE
+        flagSoftware = sdl2::SDL_RENDERER_SOFTWARE,
+        flagAccelerated = sdl2::SDL_RENDERER_ACCELERATED,
+        flagPresentVSync = sdl2::SDL_RENDERER_PRESENTVSYNC,
+        flagTargetTexture = sdl2::SDL_RENDERER_TARGETTEXTURE
     };
 
     GfxRendererFlags();

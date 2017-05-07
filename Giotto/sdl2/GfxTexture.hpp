@@ -36,8 +36,8 @@
 class GfxTexture final : public GfxRootClass
 {
 public:
-    typedef SDL_Texture SdlType;
-    typedef SDL_Texture* SdlTypePtr;
+    typedef sdl2::SDL_Texture SdlType;
+    typedef sdl2::SDL_Texture* SdlTypePtr;
 
     static const std::string ClassName;
 

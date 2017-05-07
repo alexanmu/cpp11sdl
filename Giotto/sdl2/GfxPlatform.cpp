@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -35,7 +35,7 @@ GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
 
 void GfxPlatform::queryPlatform(void)
 {
-    platform_ = SDL_GetPlatform();
+    platform_ = sdl2::SDL_GetPlatform();
 }
 
 std::string GfxPlatform::getPlatform(void) const

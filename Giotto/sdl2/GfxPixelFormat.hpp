@@ -32,8 +32,8 @@
 class GfxPixelFormat final : public GfxRootClass
 {
 public:
-    typedef SDL_PixelFormat SdlType;
-    typedef SDL_PixelFormat* SdlTypePtr;
+    typedef sdl2::SDL_PixelFormat SdlType;
+    typedef sdl2::SDL_PixelFormat* SdlTypePtr;
 
     static const std::string ClassName;
 

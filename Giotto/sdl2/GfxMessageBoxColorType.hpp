@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxMessageBoxColorType_hpp
 #define GfxMessageBoxColorType_hpp
@@ -32,19 +32,19 @@
 class GfxMessageBoxColorType final : public GfxRootClass
 {
 public:
-    typedef SDL_MessageBoxColorType SdlType;
-    typedef SDL_MessageBoxColorType* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxColorType SdlType;
+    typedef sdl2::SDL_MessageBoxColorType* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxMessageBoxColorTypeValues : uint32_t
     {
-        colorBackground = SDL_MESSAGEBOX_COLOR_BACKGROUND,
-        colorText = SDL_MESSAGEBOX_COLOR_TEXT,
-        colorButtonBorder = SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
-        colorButtonBackground = SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
-        colorButtonSelected = SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
-        colorMax = SDL_MESSAGEBOX_COLOR_MAX
+        colorBackground = sdl2::SDL_MESSAGEBOX_COLOR_BACKGROUND,
+        colorText = sdl2::SDL_MESSAGEBOX_COLOR_TEXT,
+        colorButtonBorder = sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
+        colorButtonBackground = sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
+        colorButtonSelected = sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
+        colorMax = sdl2::SDL_MESSAGEBOX_COLOR_MAX
     };
 
     GfxMessageBoxColorType();

@@ -34,10 +34,10 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const i
 
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    tex_ = SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
-                             SDL_PIXELFORMAT_ARGB8888,
-                             acc.getAsSdlType(),
-                             w,h);
+    tex_ = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
+                                   sdl2::SDL_PIXELFORMAT_ARGB8888,
+                                   acc.getAsSdlType(),
+                                   w,h);
 }
 
 GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass(ClassName)
@@ -46,14 +46,14 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootCla
 
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    tex_ = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    tex_ = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
 }
 
 GfxTexture::~GfxTexture()
 {
     if (tex_ != nullptr)
     {
-        SDL_DestroyTexture(tex_);
+        sdl2::SDL_DestroyTexture(tex_);
     }
 }
 
@@ -70,7 +70,7 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
     {
         if (tex_ != nullptr)
         {
-            SDL_DestroyTexture(tex_);
+            sdl2::SDL_DestroyTexture(tex_);
         }
         tex_ = tex.tex_;
         // Destroy other's data
@@ -83,7 +83,7 @@ void GfxTexture::destroyTexture(void)
 {
     if (tex_ != nullptr)
     {
-        SDL_DestroyTexture(tex_);
+        sdl2::SDL_DestroyTexture(tex_);
         tex_ = nullptr;
     }
 }
@@ -94,7 +94,7 @@ void GfxTexture::setBlendMode(const GfxBlendMode& blendmode)
     {
         return;
     }
-    SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
+    sdl2::SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
 }
 
 void GfxTexture::setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode)
@@ -103,7 +103,7 @@ void GfxTexture::setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode)
     {
         return;
     }
-    SDL_SetTextureBlendMode(tex_, static_cast<GfxBlendMode::SdlType>(blendmode));
+    sdl2::SDL_SetTextureBlendMode(tex_, static_cast<GfxBlendMode::SdlType>(blendmode));
 }
 
 GfxBlendMode GfxTexture::getBlendMode(void)
@@ -114,7 +114,7 @@ GfxBlendMode GfxTexture::getBlendMode(void)
     {
         return GfxBlendMode();
     }
-    SDL_GetTextureBlendMode(tex_, &bm);
+    sdl2::SDL_GetTextureBlendMode(tex_, &bm);
 
     return GfxBlendMode(bm);
 }

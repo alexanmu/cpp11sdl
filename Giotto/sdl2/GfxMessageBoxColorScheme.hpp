@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxMessageBoxColorScheme_hpp
 #define GfxMessageBoxColorScheme_hpp
@@ -34,8 +34,8 @@
 class GfxMessageBoxColorScheme final : public GfxRootClass
 {
 public:
-    typedef SDL_MessageBoxColorScheme SdlType;
-    typedef SDL_MessageBoxColorScheme* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxColorScheme SdlType;
+    typedef sdl2::SDL_MessageBoxColorScheme* SdlTypePtr;
 
     static const std::string ClassName;
 

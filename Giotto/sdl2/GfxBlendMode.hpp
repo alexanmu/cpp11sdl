@@ -32,17 +32,17 @@
 class GfxBlendMode final : public GfxRootClass
 {
 public:
-    typedef SDL_BlendMode SdlType;
-    typedef SDL_BlendMode* SdlTypePtr;
+    typedef sdl2::SDL_BlendMode SdlType;
+    typedef sdl2::SDL_BlendMode* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxBlendModeValues : int
     {
-        blendNone = SDL_BLENDMODE_NONE,
-        blendBlend = SDL_BLENDMODE_BLEND,
-        blendAdd = SDL_BLENDMODE_ADD,
-        blendMod = SDL_BLENDMODE_MOD
+        blendNone = sdl2::SDL_BLENDMODE_NONE,
+        blendBlend = sdl2::SDL_BLENDMODE_BLEND,
+        blendAdd = sdl2::SDL_BLENDMODE_ADD,
+        blendMod = sdl2::SDL_BLENDMODE_MOD
     };
 
     GfxBlendMode();

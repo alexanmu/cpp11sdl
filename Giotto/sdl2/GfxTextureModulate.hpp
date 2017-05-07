@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxTextureModulate_hpp
 #define GfxTextureModulate_hpp
@@ -32,16 +32,16 @@
 class GfxTextureModulate final : public GfxRootClass
 {
 public:
-    typedef SDL_TextureModulate SdlType;
-    typedef SDL_TextureModulate* SdlTypePtr;
+    typedef sdl2::SDL_TextureModulate SdlType;
+    typedef sdl2::SDL_TextureModulate* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxTextureModulateValues : int
     {
-        modulateNone = SDL_TEXTUREMODULATE_NONE,
-        modulateColor = SDL_TEXTUREMODULATE_COLOR,
-        modulateAlpha = SDL_TEXTUREMODULATE_ALPHA
+        modulateNone = sdl2::SDL_TEXTUREMODULATE_NONE,
+        modulateColor = sdl2::SDL_TEXTUREMODULATE_COLOR,
+        modulateAlpha = sdl2::SDL_TEXTUREMODULATE_ALPHA
     };
 
     GfxTextureModulate();

@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxMessageBoxFlags_hpp
 #define GfxMessageBoxFlags_hpp
@@ -32,16 +32,16 @@
 class GfxMessageBoxFlags final : public GfxRootClass
 {
 public:
-    typedef SDL_MessageBoxFlags SdlType;
-    typedef SDL_MessageBoxFlags* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxFlags SdlType;
+    typedef sdl2::SDL_MessageBoxFlags* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxMessageBoxFlagsValues : int
     {
-        flagError = SDL_MESSAGEBOX_ERROR,
-        flagWarning = SDL_MESSAGEBOX_WARNING,
-        flagInformation = SDL_MESSAGEBOX_INFORMATION
+        flagError = sdl2::SDL_MESSAGEBOX_ERROR,
+        flagWarning = sdl2::SDL_MESSAGEBOX_WARNING,
+        flagInformation = sdl2::SDL_MESSAGEBOX_INFORMATION
     };
 
     GfxMessageBoxFlags();

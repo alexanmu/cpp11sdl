@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #ifndef GfxPowerState_hpp
 #define GfxPowerState_hpp
@@ -32,18 +32,18 @@
 class GfxPowerState final : public GfxRootClass
 {
 public:
-    typedef SDL_PowerState SdlType;
-    typedef SDL_PowerState* SdlTypePtr;
+    typedef sdl2::SDL_PowerState SdlType;
+    typedef sdl2::SDL_PowerState* SdlTypePtr;
 
     static const std::string ClassName;
 
     enum class GfxPowerStateValues : int
     {
-        stateUnknown = SDL_POWERSTATE_UNKNOWN,
-        stateOnBattery = SDL_POWERSTATE_ON_BATTERY,
-        stateNoBattery = SDL_POWERSTATE_NO_BATTERY,
-        stateCharging = SDL_POWERSTATE_CHARGING,
-        stateCharged = SDL_POWERSTATE_CHARGED
+        stateUnknown = sdl2::SDL_POWERSTATE_UNKNOWN,
+        stateOnBattery = sdl2::SDL_POWERSTATE_ON_BATTERY,
+        stateNoBattery = sdl2::SDL_POWERSTATE_NO_BATTERY,
+        stateCharging = sdl2::SDL_POWERSTATE_CHARGING,
+        stateCharged = sdl2::SDL_POWERSTATE_CHARGED
     };
 
     GfxPowerState();

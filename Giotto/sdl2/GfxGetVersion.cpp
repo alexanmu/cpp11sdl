@@ -19,7 +19,7 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
 #include <string>
 
@@ -44,13 +44,13 @@ std::string GfxGetVersion::getRevision(void) const
 {
     std::string str;
 
-    str = SDL_GetRevision();
+    str = sdl2::SDL_GetRevision();
     return str;
 }
 
 int GfxGetVersion::getRevisionNumber(void) const
 {
-    return SDL_GetRevisionNumber();
+    return sdl2::SDL_GetRevisionNumber();
 }
 
 /* EOF */
