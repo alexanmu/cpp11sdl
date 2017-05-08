@@ -60,7 +60,7 @@ public:
     void Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
              const GfxRadius& radius, const GfxColor& clr);
     void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr);
-    void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const GfxBitmapFont& font);
+    void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const fnt::GfxBitmapFont& font);
     void Bar(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
     void Bar(const GfxRect& r, const GfxColor& clr);
     void PutPixel(const GfxPoint& pt, const GfxColor& clr);

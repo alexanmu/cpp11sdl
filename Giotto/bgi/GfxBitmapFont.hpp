@@ -33,6 +33,8 @@ namespace gfx
 {
 namespace bgi
 {
+namespace fnt
+{
 
 class GfxBitmapFont final : public GfxRootClass
 {
@@ -62,6 +64,7 @@ private:
     uint8_t fontHeight_;
 };
 
+}  // namespace fnt
 }  // namespace bgi
 }  // namespace gfx
 

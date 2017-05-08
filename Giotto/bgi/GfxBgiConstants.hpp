@@ -28,7 +28,6 @@
 
 #include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
-#include "GfxBitmapFont.hpp"
 
 namespace gfx
 {
@@ -70,22 +69,6 @@ public:
         indexWhite = 15
     };
 
-    static const int fntNumFonts = 10;
-
-    enum class GfxFontIndex : int
-    {
-        indexStandard8x16 = 0,
-        indexAntique = 1,
-        indexBroadway = 2,
-        indexCourrier = 3,
-        intdexDragon = 4,
-        indexMedieval = 5,
-        indexRoman = 6,
-        indexSansserif = 7,
-        indexScript = 8,
-        indexWacky = 9
-    };
-
     static const GfxColor& vgaBlack(void);
     static const GfxColor& vgaBlue(void);
     static const GfxColor& vgaGreen(void);
@@ -104,33 +87,8 @@ public:
     static const GfxColor& vgaWhite(void);
 
     static const GfxColor& vgaGetColorByIndex(const GfxVga16ColorIndex index);
-
-    static const GfxBitmapFont& fntStandard8x16(void);
-    static const GfxBitmapFont& fntAntique(void);
-    static const GfxBitmapFont& fntBroadway(void);
-    static const GfxBitmapFont& fntCourrier(void);
-    static const GfxBitmapFont& fntDragon(void);
-    static const GfxBitmapFont& fntMedieval(void);
-    static const GfxBitmapFont& fntRoman(void);
-    static const GfxBitmapFont& fntSansserif(void);
-    static const GfxBitmapFont& fntScript(void);
-    static const GfxBitmapFont& fntWacky(void);
-
-    static const GfxBitmapFont& fntGetFontByIndex(const GfxFontIndex index);
 private:
     static const GfxColor colorsVGA16_[vgaNumColors];
-    static const GfxBitmapFont fonts_[fntNumFonts];
-
-    static const uint8_t fntStandard8x16Data_[16 * 256];
-    static const uint8_t fntAntiqueData_[16 * 256];
-    static const uint8_t fntBroadwayData_[16 * 256];
-    static const uint8_t fntCourrierData_[16 * 256];
-    static const uint8_t fntDragonData_[16 * 256];
-    static const uint8_t fntMedievalData_[16 * 256];
-    static const uint8_t fntRomanData_[16 * 256];
-    static const uint8_t fntSansserifData_[16 * 256];
-    static const uint8_t fntScriptData_[16 * 256];
-    static const uint8_t fntWackyData_[16 * 256];
 };
 
 }  // namespace bgi

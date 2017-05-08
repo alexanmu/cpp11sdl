@@ -76,6 +76,7 @@
 #include "GfxCanvasBgi.hpp"
 #include "GfxCanvasBgiData.hpp"
 #include "GfxBgiConstants.hpp"
+#include "GfxBgiFontConstants.hpp"
 #include "GfxRadius.hpp"
 #include "GfxString.hpp"
 
@@ -131,11 +132,12 @@ const std::string GfxRootClass::astrClassNames[] =
     gfx::GfxWindowFlags::ClassName,
     gfx::GfxWindowPosition::ClassName,
     gfx::bgi::GfxAngle::ClassName,
-    gfx::bgi::GfxBitmapFont::ClassName,
+    gfx::bgi::fnt::GfxBitmapFont::ClassName,
     gfx::bgi::GfxCanvas::ClassName,
     gfx::bgi::GfxCanvasBgi::ClassName,
     gfx::bgi::GfxCanvasBgiData::ClassName,
     gfx::bgi::GfxBgiConstants::ClassName,
+    gfx::bgi::fnt::GfxBgiFontConstants::ClassName,
     gfx::bgi::GfxRadius::ClassName,
     gfx::bgi::GfxString::ClassName
 };

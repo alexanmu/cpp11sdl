@@ -30,6 +30,8 @@ namespace gfx
 {
 namespace bgi
 {
+namespace fnt
+{
 
 const std::string GfxBitmapFont::ClassName = "GfxBitmapFont";
 
@@ -144,6 +146,7 @@ uint8_t GfxBitmapFont::getFontHeight(void) const
     return fontHeight_;
 }
 
+}  // namespace fnt
 }  // namespace bgi
 }  // namespace gfx
 

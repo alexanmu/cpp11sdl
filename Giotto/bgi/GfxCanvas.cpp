@@ -52,7 +52,8 @@ void GfxCanvas::Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle&
     bgi_.arc(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
-void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const GfxBitmapFont& font)
+void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr,
+                        const fnt::GfxBitmapFont& font)
 {
     bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.setCustomFont(font.getFontData(), font.getFontWidth(), font.getFontHeight());

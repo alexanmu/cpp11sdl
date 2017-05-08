@@ -61,6 +61,7 @@
 #include "GfxRendererFlags.hpp"
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
+#include "GfxBgiFontConstants.hpp"
 
 void MsgBox(gfx::GfxWindow const& win)
 {
@@ -337,7 +338,7 @@ void _doStuff(void)
                gfx::GfxColor(150, 100, 200));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
-    for (int i = 0; i < gfx::bgi::GfxBgiConstants::fntNumFonts; i++)
+    for (int i = 0; i < gfx::bgi::fnt::GfxBgiFontConstants::fntNumFonts; i++)
     {
         int x = 30;
         int y = 60 + i * 16;
@@ -346,16 +347,16 @@ void _doStuff(void)
         int b = 20 + i * 10;
         cv.OutText(gfx::GfxPoint(x, y), gfx::bgi::GfxString(fontMsg),
                    gfx::GfxColor(r, g, b),
-                   gfx::bgi::GfxBgiConstants::fntGetFontByIndex(
-                        static_cast<gfx::bgi::GfxBgiConstants::GfxFontIndex>(i)));
+                   gfx::bgi::fnt::GfxBgiFontConstants::fntGetFontByIndex(
+                        static_cast<gfx::bgi::fnt::GfxBgiFontConstants::GfxFontIndex>(i)));
     }
 
 
     cv.Bar(gfx::GfxPoint(600, 100), gfx::GfxPoint(800, 200), gfx::bgi::GfxBgiConstants::vgaLightGray());
     cv.OutText(gfx::GfxPoint(620, 120), gfx::bgi::GfxString("3D Text, custom font"),
-               gfx::bgi::GfxBgiConstants::vgaWhite(), gfx::bgi::GfxBgiConstants::fntScript());
+               gfx::bgi::GfxBgiConstants::vgaWhite(), gfx::bgi::fnt::GfxBgiFontConstants::fntScript());
     cv.OutText(gfx::GfxPoint(621, 121), gfx::bgi::GfxString("3D Text, custom font"),
-               gfx::bgi::GfxBgiConstants::vgaBlack(), gfx::bgi::GfxBgiConstants::fntScript());
+               gfx::bgi::GfxBgiConstants::vgaBlack(), gfx::bgi::fnt::GfxBgiFontConstants::fntScript());
     cv.OutText(gfx::GfxPoint(620, 140), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
                gfx::bgi::GfxBgiConstants::vgaWhite());
     cv.OutText(gfx::GfxPoint(621, 141), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
@@ -363,9 +364,9 @@ void _doStuff(void)
 
 
     cv.OutText(gfx::GfxPoint(1010, 120), gfx::bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
-               gfx::bgi::GfxBgiConstants::vgaGreen(), gfx::bgi::GfxBgiConstants::fntAntique());
+               gfx::bgi::GfxBgiConstants::vgaGreen(), gfx::bgi::fnt::GfxBgiFontConstants::fntAntique());
     cv.OutText(gfx::GfxPoint(1010, 150), gfx::bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
-               gfx::bgi::GfxBgiConstants::vgaLightGray(), gfx::bgi::GfxBgiConstants::fntWacky());
+               gfx::bgi::GfxBgiConstants::vgaLightGray(), gfx::bgi::fnt::GfxBgiFontConstants::fntWacky());
     c = 0;
     for (int i = 0; i < WIN_W; i++)
     {

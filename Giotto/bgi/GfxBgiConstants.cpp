@@ -24,19 +24,7 @@
 #include <string>
 
 #include "GfxColor.hpp"
-#include "GfxBitmapFont.hpp"
 #include "GfxBgiConstants.hpp"
-
-#include "fntStandard8x16.hpp"
-#include "fntAntique.hpp"
-#include "fntBroadway.hpp"
-#include "fntCourrier.hpp"
-#include "fntDragon.hpp"
-#include "fntMedieval.hpp"
-#include "fntRoman.hpp"
-#include "fntSansserif.hpp"
-#include "fntScript.hpp"
-#include "fntWacky.hpp"
 
 namespace gfx
 {
@@ -62,19 +50,6 @@ const GfxColor GfxBgiConstants::colorsVGA16_[16] {
     {0x2C << 2, 0x00 << 2, 0x3F << 2, 0xFF},
     {0x3F << 2, 0x3F << 2, 0x12 << 2, 0xFF},
     {0x3F << 2, 0x3F << 2, 0x3F << 2, 0xFF}
-};
-
-const GfxBitmapFont GfxBgiConstants::fonts_[10] {
-    { &fntStandard8x16Data_[0], 8, 16 },
-    { &fntAntiqueData_[0], 8, 16 },
-    { &fntBroadwayData_[0], 8, 16 },
-    { &fntCourrierData_[0], 8, 16 },
-    { &fntDragonData_[0], 8, 16 },
-    { &fntMedievalData_[0], 8, 16 },
-    { &fntRomanData_[0], 8, 16 },
-    { &fntSansserifData_[0], 8, 16 },
-    { &fntScriptData_[0], 8, 16 },
-    { &fntWackyData_[0], 8, 16 }
 };
 
 const GfxColor& GfxBgiConstants::vgaBlack(void)
@@ -160,61 +135,6 @@ const GfxColor& GfxBgiConstants::vgaWhite(void)
 const GfxColor& GfxBgiConstants::vgaGetColorByIndex(const GfxVga16ColorIndex index)
 {
     return GfxBgiConstants::colorsVGA16_[static_cast<int>(index)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntStandard8x16(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexStandard8x16)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntAntique(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexAntique)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntBroadway(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexBroadway)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntCourrier(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexCourrier)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntDragon(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::intdexDragon)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntMedieval(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexMedieval)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntRoman(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexRoman)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntSansserif(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexSansserif)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntScript(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexScript)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntWacky(void)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(GfxFontIndex::indexWacky)];
-}
-
-const GfxBitmapFont& GfxBgiConstants::fntGetFontByIndex(const GfxFontIndex index)
-{
-    return GfxBgiConstants::fonts_[static_cast<int>(index)];
 }
 
 }  // namespace bgi

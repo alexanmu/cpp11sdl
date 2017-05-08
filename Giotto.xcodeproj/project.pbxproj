@@ -65,6 +65,7 @@
 		1995963C1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963A1EAB92E300B414E5 /* GfxMessageBoxButtonData.cpp */; };
 		1995963F1EAB982F00B414E5 /* GfxMessageBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995963D1EAB982F00B414E5 /* GfxMessageBox.cpp */; };
 		19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */; };
+		19AEA9F61EC0E6CB00AD7821 /* GfxBgiFontConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19AEA9F41EC0E6CB00AD7821 /* GfxBgiFontConstants.cpp */; };
 		19B351FB1EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */; };
 		19B351FE1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351FC1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp */; };
 		19B352011EB4FAAF0020DCF4 /* GForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351FF1EB4FAAF0020DCF4 /* GForm.cpp */; };
@@ -218,6 +219,8 @@
 		1995963E1EAB982F00B414E5 /* GfxMessageBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMessageBox.hpp; path = sdl2/GfxMessageBox.hpp; sourceTree = "<group>"; };
 		19A8FAB51EAE561A00FFD332 /* GfxWindowPosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxWindowPosition.cpp; path = sdl2/GfxWindowPosition.cpp; sourceTree = "<group>"; };
 		19A8FAB61EAE561A00FFD332 /* GfxWindowPosition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxWindowPosition.hpp; path = sdl2/GfxWindowPosition.hpp; sourceTree = "<group>"; };
+		19AEA9F41EC0E6CB00AD7821 /* GfxBgiFontConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBgiFontConstants.cpp; path = bgi/GfxBgiFontConstants.cpp; sourceTree = "<group>"; };
+		19AEA9F51EC0E6CB00AD7821 /* GfxBgiFontConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBgiFontConstants.hpp; path = bgi/GfxBgiFontConstants.hpp; sourceTree = "<group>"; };
 		19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GRetryCancelMsgBox.cpp; path = gdialogs/GRetryCancelMsgBox.cpp; sourceTree = "<group>"; };
 		19B351FA1EB4F4B20020DCF4 /* GRetryCancelMsgBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GRetryCancelMsgBox.hpp; path = gdialogs/GRetryCancelMsgBox.hpp; sourceTree = "<group>"; };
 		19B351FC1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GOKCancelMsgBox.cpp; path = gdialogs/GOKCancelMsgBox.cpp; sourceTree = "<group>"; };
@@ -347,6 +350,10 @@
 				194410D21EAB4BC20064A6AA /* fntWacky.hpp */,
 				19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */,
 				19F778371EAB4FEC007E1C19 /* GfxAngle.hpp */,
+				194410DD1EAB4C9D0064A6AA /* GfxBgiConstants.cpp */,
+				194410DE1EAB4C9D0064A6AA /* GfxBgiConstants.hpp */,
+				19AEA9F41EC0E6CB00AD7821 /* GfxBgiFontConstants.cpp */,
+				19AEA9F51EC0E6CB00AD7821 /* GfxBgiFontConstants.hpp */,
 				194410D31EAB4C9D0064A6AA /* GfxBitmapFont.cpp */,
 				194410D41EAB4C9D0064A6AA /* GfxBitmapFont.hpp */,
 				194410D51EAB4C9D0064A6AA /* GfxCanvas.cpp */,
@@ -355,8 +362,6 @@
 				194410D81EAB4C9D0064A6AA /* GfxCanvasBgi.hpp */,
 				194410D91EAB4C9D0064A6AA /* GfxCanvasBgiData.cpp */,
 				194410DA1EAB4C9D0064A6AA /* GfxCanvasBgiData.hpp */,
-				194410DD1EAB4C9D0064A6AA /* GfxBgiConstants.cpp */,
-				194410DE1EAB4C9D0064A6AA /* GfxBgiConstants.hpp */,
 				19F778331EAB4F96007E1C19 /* GfxRadius.cpp */,
 				19F778341EAB4F96007E1C19 /* GfxRadius.hpp */,
 				19F778391EAB5039007E1C19 /* GfxString.cpp */,
@@ -581,6 +586,7 @@
 				192445F41EAFAA3400147389 /* GfxLoadSo.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,
+				19AEA9F61EC0E6CB00AD7821 /* GfxBgiFontConstants.cpp in Sources */,
 				199596361EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				195F7A151EACCD9A00C11D9F /* GfxScreenSaver.cpp in Sources */,
 				192A5B341EB4DECA003BDDD1 /* GObject.cpp in Sources */,
