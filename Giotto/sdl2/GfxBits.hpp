@@ -25,6 +25,7 @@
 #define GfxBits_hpp
 
 #include <string>
+#include <cstdint>
 
 #include "GfxRootClass.hpp"
 

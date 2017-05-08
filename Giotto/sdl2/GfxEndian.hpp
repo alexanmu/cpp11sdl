@@ -25,6 +25,7 @@
 #define GfxEndian_hpp
 
 #include <string>
+#include <cstdint>
 
 #include "GfxRootClass.hpp"
 
