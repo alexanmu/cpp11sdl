@@ -69,6 +69,7 @@
 		19B351FE1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351FC1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp */; };
 		19B352011EB4FAAF0020DCF4 /* GForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351FF1EB4FAAF0020DCF4 /* GForm.cpp */; };
 		19B352071EB50E040020DCF4 /* GDemoApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B352051EB50E040020DCF4 /* GDemoApp.cpp */; };
+		19E091F41EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E091F21EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp */; };
 		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
 		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
 		19F7783B1EAB5039007E1C19 /* GfxString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778391EAB5039007E1C19 /* GfxString.cpp */; };
@@ -225,6 +226,8 @@
 		19B352001EB4FAAF0020DCF4 /* GForm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GForm.hpp; path = giotto/GForm.hpp; sourceTree = "<group>"; };
 		19B352051EB50E040020DCF4 /* GDemoApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDemoApp.cpp; sourceTree = "<group>"; };
 		19B352061EB50E040020DCF4 /* GDemoApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDemoApp.hpp; sourceTree = "<group>"; };
+		19E091F21EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GQuitCancelMsgBox.cpp; path = gdialogs/GQuitCancelMsgBox.cpp; sourceTree = "<group>"; };
+		19E091F31EC0E1C7000D95EB /* GQuitCancelMsgBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GQuitCancelMsgBox.hpp; path = gdialogs/GQuitCancelMsgBox.hpp; sourceTree = "<group>"; };
 		19F778331EAB4F96007E1C19 /* GfxRadius.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRadius.cpp; path = bgi/GfxRadius.cpp; sourceTree = "<group>"; };
 		19F778341EAB4F96007E1C19 /* GfxRadius.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRadius.hpp; path = bgi/GfxRadius.hpp; sourceTree = "<group>"; };
 		19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxAngle.cpp; path = bgi/GfxAngle.cpp; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 				19B351FD1EB4FA110020DCF4 /* GOKCancelMsgBox.hpp */,
 				79EEDA391EB6282C009CB6A1 /* GOKMsgBox.cpp */,
 				79EEDA3A1EB6282C009CB6A1 /* GOKMsgBox.hpp */,
+				19E091F21EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp */,
+				19E091F31EC0E1C7000D95EB /* GQuitCancelMsgBox.hpp */,
 				19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */,
 				19B351FA1EB4F4B20020DCF4 /* GRetryCancelMsgBox.hpp */,
 			);
@@ -555,6 +560,7 @@
 				194411011EAB4D9E0064A6AA /* GfxColor.cpp in Sources */,
 				191DCD491EB1051F006A1602 /* GfxError.cpp in Sources */,
 				194411091EAB4D9E0064A6AA /* GfxRootClass.cpp in Sources */,
+				19E091F41EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp in Sources */,
 				190E5C901EB23A290045C666 /* GfxRendererInfo.cpp in Sources */,
 				194411051EAB4D9E0064A6AA /* GfxPixelFormat.cpp in Sources */,
 				192445EB1EAF962500147389 /* GfxBits.cpp in Sources */,

@@ -21,20 +21,34 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GDialogsConstants_hpp
-#define GDialogsConstants_hpp
+#ifndef GQuitCancelMsgBox_hpp
+#define GQuitCancelMsgBox_hpp
+
+#include <string>
 
 #include "GObject.hpp"
+#include "GDialogsConstants.hpp"
 
-enum class GDialogsConstants : uint16_t
+class GQuitCancelMsgBox : public GObject
 {
-    kNoSelection = 0x0000,
-    kButtonAbort = 0x0010,
-    kButtonRetry = 0x0011,
-    kButtonIgnore = 0x0012,
-    kButtonCancel = 0x0013,
-    kButtonOk = 0x0014,
-    kButtonQuit = 0x0015
+public:
+    GQuitCancelMsgBox(GObject* parent);
+    
+    GQuitCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
+    
+    GQuitCancelMsgBox(GQuitCancelMsgBox const&) = delete;
+    GQuitCancelMsgBox(GQuitCancelMsgBox&&) = delete;
+    
+    GQuitCancelMsgBox& operator=(GQuitCancelMsgBox const&) = delete;
+    GQuitCancelMsgBox& operator=(GQuitCancelMsgBox&&) = delete;
+    
+    void showModal(void);
+    GDialogsConstants getSelection(void) const;
+private:
+    std::string title_;
+    std::string message_;
+    GDialogsConstants selection_;
+    GObject* parent_;
 };
 
-#endif /* GDialogsConstants_hpp */
+#endif /* GQuitCancelMsgBox_hpp */

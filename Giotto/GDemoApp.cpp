@@ -35,6 +35,7 @@
 #include "GForm.hpp"
 #include "GOKMsgBox.hpp"
 #include "GOKCancelMsgBox.hpp"
+#include "GQuitCancelMsgBox.hpp"
 
 GDemoApp::GDemoApp() : GApplication()
 {
@@ -75,13 +76,13 @@ void GDemoApp::run(void)
     canvas->Line(gfx::GfxPoint(10,90), gfx::GfxPoint(90,90), gfx::bgi::GfxBgiConstants::vgaDarkGray());
     mainForm_->drawForm();
     
-    GOKCancelMsgBox g(this,"Error","An error occured. What should I do?");
+    GQuitCancelMsgBox g(this,"Error","An error occured. What should I do?");
     g.showModal();
     
     GDialogsConstants sel;
     
     sel = g.getSelection();
-    while (sel != GDialogsConstants::kButtonOk)
+    while (sel != GDialogsConstants::kButtonQuit)
     {
         g.showModal();
         sel = g.getSelection();
