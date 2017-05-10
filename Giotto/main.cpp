@@ -541,7 +541,7 @@ void _doPlay(void)
 
 void _doGApp(void)
 {
-    GApplication gApp;
+    giotto::objects::GApplication gApp;
     std::shared_ptr<GDemoForm> demoForm = std::make_shared<GDemoForm>("GDemoForm");
 
     gApp.setMainForm(demoForm);

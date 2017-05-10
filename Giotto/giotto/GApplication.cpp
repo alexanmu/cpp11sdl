@@ -23,6 +23,12 @@
 
 #include "GApplication.hpp"
 
+namespace giotto
+{
+
+namespace objects
+{
+
 GApplication::GApplication() : GObject()
 {
     mainForm_ = nullptr;
@@ -44,5 +50,9 @@ void GApplication::run()
     mainForm_.get()->run();
     mainForm_.get()->closeForm();
 }
+
+}  // namespace objects
+
+}  // namespace giotto
 
 /* EOF */

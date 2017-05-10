@@ -29,7 +29,13 @@
 #include "GObject.hpp"
 #include "GDialogsConstants.hpp"
 
-class GRetryCancelMsgBox : public GObject
+namespace giotto
+{
+
+namespace dialogs
+{
+
+class GRetryCancelMsgBox : public objects::GObject
 {
 public:
     explicit GRetryCancelMsgBox(GObject* parent);
@@ -50,5 +56,9 @@ private:
     GDialogsConstants selection_;
     GObject* parent_;
 };
+
+}  // namespace dialogs
+
+}  // namespace giotto
 
 #endif /* GRetryCancelMsgBox_hpp */

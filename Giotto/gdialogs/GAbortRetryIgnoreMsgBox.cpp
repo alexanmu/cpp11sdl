@@ -34,6 +34,11 @@
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBox.hpp"
 
+namespace giotto
+{
+namespace dialogs
+{
+
 GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent) : GObject(), parent_(parent)
 {
     title_ = "";
@@ -93,5 +98,9 @@ GDialogsConstants GAbortRetryIgnoreMsgBox::getSelection(void) const
 {
     return selection_;
 }
+
+}  // namespace dialogs
+
+}  // namespace giotto
 
 /* EOF */

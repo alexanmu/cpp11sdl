@@ -27,6 +27,12 @@
 #include "GForm.hpp"
 #include "GfxError.hpp"
 
+namespace giotto
+{
+
+namespace objects
+{
+
 GForm::GForm() : GObject()
 {
     title_ = "GForm";
@@ -74,10 +80,17 @@ std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getFormCanvas(void)
 
 void GForm::drawForm(void)
 {
-    if (canvasInUse_ == true)
+    if (window_)
     {
-        window_->updateWindowSurface();
+        if (canvasInUse_ == true)
+        {
+            window_->updateWindowSurface();
+        }
     }
 }
+
+}  // namespace objects
+
+}  // namespace giotto
 
 /* EOF */

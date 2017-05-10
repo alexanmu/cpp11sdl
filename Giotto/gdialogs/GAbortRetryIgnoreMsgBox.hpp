@@ -29,7 +29,12 @@
 #include "GObject.hpp"
 #include "GDialogsConstants.hpp"
 
-class GAbortRetryIgnoreMsgBox : public GObject
+namespace giotto
+{
+namespace dialogs
+{
+
+class GAbortRetryIgnoreMsgBox : public objects::GObject
 {
 public:
     explicit GAbortRetryIgnoreMsgBox(GObject* parent);
@@ -50,5 +55,9 @@ private:
     GDialogsConstants selection_;
     GObject* parent_;
 };
+
+}  // namespace dialogs
+
+}  // namespace giotto
 
 #endif /* GAbortRetryIgnoreMsgBox_hpp */

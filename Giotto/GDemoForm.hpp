@@ -30,7 +30,7 @@
 #include "GObject.hpp"
 #include "GForm.hpp"
 
-class GDemoForm : public GForm
+class GDemoForm : public giotto::objects::GForm
 {
 public:
     GDemoForm();
@@ -42,7 +42,7 @@ public:
     void run(void);
 private:
     std::string appName_;
-    std::shared_ptr<GForm> mainForm_;
+    std::shared_ptr<giotto::objects::GForm> mainForm_;
 };
 
 #endif /* GDemoForm_hpp */

@@ -30,6 +30,12 @@
 #include "GObject.hpp"
 #include "GForm.hpp"
 
+namespace giotto
+{
+
+namespace objects
+{
+
 class GApplication : public GObject
 {
 public:
@@ -48,5 +54,9 @@ public:
 private:
     GForm::SharedPtr mainForm_;
 };
+
+}  // namespace objects
+
+}  // namespace giotto
 
 #endif /* GApplication_hpp */

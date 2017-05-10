@@ -23,6 +23,12 @@
 
 #include "GObject.hpp"
 
+namespace giotto
+{
+
+namespace objects
+{
+
 GObject::GObject()
 {
     inittype_ = GInitType::defaultCtor;
@@ -74,5 +80,9 @@ bool GObject::operator==(GObject const& other)
     }
     return true;
 }
+
+}  // namespace objects
+
+}  // namespace giotto
 
 /* EOF */

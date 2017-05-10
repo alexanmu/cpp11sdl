@@ -24,6 +24,12 @@
 #ifndef GObject_hpp
 #define GObject_hpp
 
+namespace giotto
+{
+
+namespace objects
+{
+
 class GObject
 {
 public:
@@ -47,5 +53,9 @@ private:
     };
     GInitType inittype_;
 };
+
+}  // namespace objects
+
+}  // namespace giotto
 
 #endif /* GObject_hpp */

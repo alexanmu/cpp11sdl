@@ -31,6 +31,12 @@
 #include "GfxCanvas.hpp"
 #include "GfxWindow.hpp"
 
+namespace giotto
+{
+
+namespace objects
+{
+
 class GForm : public GObject
 {
 public:
@@ -62,5 +68,9 @@ private:
     std::shared_ptr<gfx::bgi::GfxCanvas> canvas_;
     bool canvasInUse_;
 };
+
+}  // namespace objects
+
+}  // namespace giotto
 
 #endif /* GWindowObject_hpp */

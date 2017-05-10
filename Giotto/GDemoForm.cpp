@@ -37,12 +37,12 @@
 #include "GOKCancelMsgBox.hpp"
 #include "GQuitCancelMsgBox.hpp"
 
-GDemoForm::GDemoForm() : GForm()
+GDemoForm::GDemoForm() : giotto::objects::GForm()
 {
     appName_ = "GDemoApp";
 }
 
-GDemoForm::GDemoForm(const std::string& appName) : GForm()
+GDemoForm::GDemoForm(const std::string& appName) : giotto::objects::GForm()
 {
     appName_ = appName;
 }
@@ -76,13 +76,13 @@ void GDemoForm::run(void)
     canvas->Line(gfx::GfxPoint(10,90), gfx::GfxPoint(90,90), gfx::bgi::GfxBgiConstants::vgaDarkGray());
     mainForm_->drawForm();
     
-    GQuitCancelMsgBox g(this,"Error","An error occured. What should I do?");
+    giotto::dialogs::GQuitCancelMsgBox g(this,"Error","An error occured. What should I do?");
     g.showModal();
     
-    GDialogsConstants sel;
+    giotto::dialogs::GDialogsConstants sel;
     
     sel = g.getSelection();
-    while (sel != GDialogsConstants::kButtonQuit)
+    while (sel != giotto::dialogs::GDialogsConstants::kButtonQuit)
     {
         g.showModal();
         sel = g.getSelection();

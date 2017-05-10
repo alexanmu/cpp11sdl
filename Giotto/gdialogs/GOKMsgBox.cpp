@@ -34,6 +34,12 @@
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBox.hpp"
 
+namespace giotto
+{
+
+namespace dialogs
+{
+
 GOKMsgBox::GOKMsgBox(GObject* parent) : GObject(), parent_(parent)
 {
     title_ = "";
@@ -87,5 +93,9 @@ GDialogsConstants GOKMsgBox::getSelection(void) const
 {
     return selection_;
 }
+
+}  // namespace dialogs
+
+}  // namespace giotto
 
 /* EOF */

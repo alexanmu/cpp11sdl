@@ -23,4 +23,12 @@
 
 #include "GDialogsConstants.hpp"
 
+namespace giotto
+{
+namespace dialogs
+{
+
+}  // namespace dialogs
+}  // namespace giotto
+
 /* EOF */

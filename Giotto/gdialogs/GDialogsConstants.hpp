@@ -24,7 +24,15 @@
 #ifndef GDialogsConstants_hpp
 #define GDialogsConstants_hpp
 
+#include <cstdint>
+
 #include "GObject.hpp"
+
+namespace giotto
+{
+
+namespace dialogs
+{
 
 enum class GDialogsConstants : uint16_t
 {
@@ -36,5 +44,9 @@ enum class GDialogsConstants : uint16_t
     kButtonOk = 0x0014,
     kButtonQuit = 0x0015
 };
+
+}  // namespace dialogs
+
+}  // namespace giotto
 
 #endif /* GDialogsConstants_hpp */

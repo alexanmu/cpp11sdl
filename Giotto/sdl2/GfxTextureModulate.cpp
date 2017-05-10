@@ -131,6 +131,6 @@ GfxTextureModulate::SdlTypePtr GfxTextureModulate::getAsSdlTypePtr(void) const
     return (SdlTypePtr)&modulate_;
 }
 
-}  // namespace
+}  // namespace gfx
 
 /* EOF */

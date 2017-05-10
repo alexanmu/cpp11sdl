@@ -29,7 +29,13 @@
 #include "GObject.hpp"
 #include "GDialogsConstants.hpp"
 
-class GOKMsgBox : public GObject
+namespace giotto
+{
+
+namespace dialogs
+{
+
+class GOKMsgBox : public objects::GObject
 {
 public:
     explicit GOKMsgBox(GObject* parent);
@@ -50,5 +56,9 @@ private:
     GDialogsConstants selection_;
     GObject* parent_;
 };
+
+}  // namespace dialogs
+
+}  // namespace giotto
 
 #endif /* GOKMsgBox_hpp */
