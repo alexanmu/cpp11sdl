@@ -32,7 +32,7 @@
 class GQuitCancelMsgBox : public GObject
 {
 public:
-    GQuitCancelMsgBox(GObject* parent);
+    explicit GQuitCancelMsgBox(GObject* parent);
     
     GQuitCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
     

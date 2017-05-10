@@ -30,7 +30,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxString::ClassName = "GfxString";
+const char GfxString::ClassName[] = "GfxString";
 
 GfxString::GfxString() : GfxRootClass(ClassName), value_("")
 {

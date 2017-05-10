@@ -21,23 +21,22 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GDemoApp_hpp
-#define GDemoApp_hpp
+#ifndef GDemoForm_hpp
+#define GDemoForm_hpp
 
 #include <string>
 #include <memory>
 
 #include "GObject.hpp"
-#include "GApplication.hpp"
 #include "GForm.hpp"
 
-class GDemoApp : public GApplication
+class GDemoForm : public GForm
 {
 public:
-    GDemoApp();
-    GDemoApp(const std::string& appName);
+    GDemoForm();
+    GDemoForm(const std::string& appName);
 
-    virtual ~GDemoApp();
+    virtual ~GDemoForm();
 
     void loadAppConfiguration(void);
     void run(void);
@@ -46,4 +45,4 @@ private:
     std::shared_ptr<GForm> mainForm_;
 };
 
-#endif /* GDemoApp_hpp */
+#endif /* GDemoForm_hpp */

@@ -32,7 +32,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxCanvas::ClassName = "GfxCanvas";
+const char GfxCanvas::ClassName[] = "GfxCanvas";
 
 GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName), surf_(surf)
 {

@@ -32,7 +32,7 @@
 class GOKMsgBox : public GObject
 {
 public:
-    GOKMsgBox(GObject* parent);
+    explicit GOKMsgBox(GObject* parent);
     
     GOKMsgBox(GObject* parent, const std::string& title, const std::string& message);
     

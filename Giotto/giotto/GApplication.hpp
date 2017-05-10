@@ -33,8 +33,20 @@
 class GApplication : public GObject
 {
 public:
-    virtual void loadAppConfiguration(void) = 0;
-    virtual void run(void) = 0;
+    GApplication();
+
+    GApplication(GApplication const&) = delete;
+    GApplication(GApplication&&) = delete;
+
+    GApplication& operator=(GApplication const&) = delete;
+    GApplication& operator=(GApplication&&) = delete;
+
+    void setMainForm(GForm::SharedPtr mainForm);
+
+    void loadAppConfiguration(void);
+    void run(void);
+private:
+    GForm::SharedPtr mainForm_;
 };
 
 #endif /* GApplication_hpp */

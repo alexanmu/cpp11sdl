@@ -38,7 +38,7 @@ class GfxString final : public GfxRootClass
 public:
     typedef std::string GfxValueType;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxString();
 

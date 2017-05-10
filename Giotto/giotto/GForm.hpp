@@ -34,12 +34,23 @@
 class GForm : public GObject
 {
 public:
+    typedef std::shared_ptr<GForm> SharedPtr;
+
     GForm();
-    GForm(const std::string& title);
+    explicit GForm(const std::string& title);
+
+    GForm(GForm const&) = delete;
+    GForm(GForm&&) = delete;
+
+    GForm& operator=(GForm const&) = delete;
+    GForm& operator=(GForm&&) = delete;
 
     void setFormTitle(const std::string& title);
     void createForm(void);
     void closeForm(void);
+
+    virtual void loadAppConfiguration(void) {};
+    virtual void run(void) {};
 
     void drawForm(void);
 

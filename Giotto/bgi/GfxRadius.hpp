@@ -36,9 +36,9 @@ namespace bgi
 class GfxRadius final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
-
     typedef uint16_t GfxValueType;
+
+    static const char ClassName[];
 
     GfxRadius();
 

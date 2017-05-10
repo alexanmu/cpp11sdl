@@ -30,7 +30,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxRadius::ClassName = "GfxRadius";
+const char GfxRadius::ClassName[] = "GfxRadius";
 
 GfxRadius::GfxRadius() : GfxRootClass(ClassName), value_(0)
 {

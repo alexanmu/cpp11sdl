@@ -37,7 +37,7 @@ namespace bgi
 class GfxBgiConstants final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxBgiConstants() = delete;
 

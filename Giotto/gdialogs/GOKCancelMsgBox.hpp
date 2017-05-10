@@ -32,7 +32,7 @@
 class GOKCancelMsgBox : public GObject
 {
 public:
-    GOKCancelMsgBox(GObject* parent);
+    explicit GOKCancelMsgBox(GObject* parent);
     
     GOKCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
     

@@ -44,7 +44,7 @@ namespace bgi
 namespace fnt
 {
 
-const std::string GfxBgiFontConstants::ClassName = "GfxBgiFontConstants";
+const char GfxBgiFontConstants::ClassName[] = "GfxBgiFontConstants";
 
 const GfxBitmapFont GfxBgiFontConstants::fonts_[10] {
     { &fntStandard8x16Data_[0], 8, 16 },

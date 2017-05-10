@@ -30,7 +30,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxAngle::ClassName = "GfxAngle";
+const char GfxAngle::ClassName[] = "GfxAngle";
 
 GfxAngle::GfxAngle() : GfxRootClass(ClassName), value_(0)
 {

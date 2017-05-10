@@ -45,7 +45,7 @@ namespace bgi
 class GfxCanvas final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxCanvas() = delete;
     explicit GfxCanvas(GfxSurface const& surf);

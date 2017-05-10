@@ -40,7 +40,7 @@ namespace bgi
 class GfxCanvasBgi : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class bgiFonts : int
     {

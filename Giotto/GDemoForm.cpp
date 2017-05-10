@@ -21,7 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GDemoApp.hpp"
+#include "GDemoForm.hpp"
 
 #include <memory>
 #include <string>
@@ -37,27 +37,27 @@
 #include "GOKCancelMsgBox.hpp"
 #include "GQuitCancelMsgBox.hpp"
 
-GDemoApp::GDemoApp() : GApplication()
+GDemoForm::GDemoForm() : GForm()
 {
     appName_ = "GDemoApp";
 }
 
-GDemoApp::GDemoApp(const std::string& appName) : GApplication()
+GDemoForm::GDemoForm(const std::string& appName) : GForm()
 {
     appName_ = appName;
 }
 
-GDemoApp::~GDemoApp()
+GDemoForm::~GDemoForm()
 {
     // Nothing to do yet
 }
 
-void GDemoApp::loadAppConfiguration(void)
+void GDemoForm::loadAppConfiguration(void)
 {
     // Nothing to do yet
 }
 
-void GDemoApp::run(void)
+void GDemoForm::run(void)
 {
     gfx::GfxInitQuit iq(gfx::GfxInitQuit::GfxInitComponent::initEverything);
     if (iq.getErrorCode() != 0)

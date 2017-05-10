@@ -31,7 +31,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxBgiConstants::ClassName = "GfxBgiConstants";
+const char GfxBgiConstants::ClassName[] = "GfxBgiConstants";
 
 const GfxColor GfxBgiConstants::colorsVGA16_[16] {
     {0x00 << 2, 0x00 << 2, 0x00 << 2, 0xFF},

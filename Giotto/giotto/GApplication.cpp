@@ -23,6 +23,26 @@
 
 #include "GApplication.hpp"
 
-// Nothing yet. GApplication is pure...
+GApplication::GApplication() : GObject()
+{
+    mainForm_ = nullptr;
+}
+
+void GApplication::setMainForm(GForm::SharedPtr mainForm)
+{
+    mainForm_ = mainForm;
+}
+
+void GApplication::loadAppConfiguration(void)
+{
+    mainForm_.get()->loadAppConfiguration();
+}
+
+void GApplication::run()
+{
+    mainForm_.get()->createForm();
+    mainForm_.get()->run();
+    mainForm_.get()->closeForm();
+}
 
 /* EOF */

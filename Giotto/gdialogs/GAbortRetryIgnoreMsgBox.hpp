@@ -32,7 +32,7 @@
 class GAbortRetryIgnoreMsgBox : public GObject
 {
 public:
-    GAbortRetryIgnoreMsgBox(GObject* parent);
+    explicit GAbortRetryIgnoreMsgBox(GObject* parent);
 
     GAbortRetryIgnoreMsgBox(GObject* parent, const std::string& title, const std::string& message);
 

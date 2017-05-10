@@ -33,7 +33,7 @@ namespace bgi
 namespace fnt
 {
 
-const std::string GfxBitmapFont::ClassName = "GfxBitmapFont";
+const char GfxBitmapFont::ClassName[] = "GfxBitmapFont";
 
 GfxBitmapFont::GfxBitmapFont() : GfxRootClass(ClassName), fontData_(nullptr),
         fontDataSize_(0), fontWidth_(0), fontHeight_(0)

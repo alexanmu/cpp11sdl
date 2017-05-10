@@ -38,7 +38,7 @@ class GfxAngle final : public GfxRootClass
 public:
     typedef int GfxValueType;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxAngle();
 

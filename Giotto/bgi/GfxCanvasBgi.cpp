@@ -35,7 +35,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxCanvasBgi::ClassName = "GfxCanvasBgi";
+const char GfxCanvasBgi::ClassName[] = "GfxCanvasBgi";
 
 GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
 {

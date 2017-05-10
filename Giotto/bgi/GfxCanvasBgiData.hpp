@@ -39,7 +39,7 @@ namespace bgi
 class GfxCanvasBgiData final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxCanvasBgiData() = delete;
 

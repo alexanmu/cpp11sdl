@@ -69,7 +69,7 @@
 		19B351FB1EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351F91EB4F4B20020DCF4 /* GRetryCancelMsgBox.cpp */; };
 		19B351FE1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351FC1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp */; };
 		19B352011EB4FAAF0020DCF4 /* GForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B351FF1EB4FAAF0020DCF4 /* GForm.cpp */; };
-		19B352071EB50E040020DCF4 /* GDemoApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B352051EB50E040020DCF4 /* GDemoApp.cpp */; };
+		19B352071EB50E040020DCF4 /* GDemoForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19B352051EB50E040020DCF4 /* GDemoForm.cpp */; };
 		19E091F41EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E091F21EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp */; };
 		19F778351EAB4F96007E1C19 /* GfxRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778331EAB4F96007E1C19 /* GfxRadius.cpp */; };
 		19F778381EAB4FEC007E1C19 /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F778361EAB4FEC007E1C19 /* GfxAngle.cpp */; };
@@ -227,8 +227,8 @@
 		19B351FD1EB4FA110020DCF4 /* GOKCancelMsgBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GOKCancelMsgBox.hpp; path = gdialogs/GOKCancelMsgBox.hpp; sourceTree = "<group>"; };
 		19B351FF1EB4FAAF0020DCF4 /* GForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GForm.cpp; path = giotto/GForm.cpp; sourceTree = "<group>"; };
 		19B352001EB4FAAF0020DCF4 /* GForm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GForm.hpp; path = giotto/GForm.hpp; sourceTree = "<group>"; };
-		19B352051EB50E040020DCF4 /* GDemoApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDemoApp.cpp; sourceTree = "<group>"; };
-		19B352061EB50E040020DCF4 /* GDemoApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDemoApp.hpp; sourceTree = "<group>"; };
+		19B352051EB50E040020DCF4 /* GDemoForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDemoForm.cpp; sourceTree = "<group>"; };
+		19B352061EB50E040020DCF4 /* GDemoForm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDemoForm.hpp; sourceTree = "<group>"; };
 		19E091F21EC0E1C7000D95EB /* GQuitCancelMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GQuitCancelMsgBox.cpp; path = gdialogs/GQuitCancelMsgBox.cpp; sourceTree = "<group>"; };
 		19E091F31EC0E1C7000D95EB /* GQuitCancelMsgBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GQuitCancelMsgBox.hpp; path = gdialogs/GQuitCancelMsgBox.hpp; sourceTree = "<group>"; };
 		19F778331EAB4F96007E1C19 /* GfxRadius.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRadius.cpp; path = bgi/GfxRadius.cpp; sourceTree = "<group>"; };
@@ -279,10 +279,10 @@
 		1915B7681E91101300147BDB /* Giotto */ = {
 			isa = PBXGroup;
 			children = (
-				19B352051EB50E040020DCF4 /* GDemoApp.cpp */,
+				19B352051EB50E040020DCF4 /* GDemoForm.cpp */,
 				197D66441EAB41BF009B5EBB /* main.cpp */,
 				197D66451EAB41BF009B5EBB /* Playground.cpp */,
-				19B352061EB50E040020DCF4 /* GDemoApp.hpp */,
+				19B352061EB50E040020DCF4 /* GDemoForm.hpp */,
 				197D66461EAB41BF009B5EBB /* Playground.hpp */,
 				194410C51EAB4AC20064A6AA /* bgi */,
 				192A5B351EB4E0C3003BDDD1 /* gdialogs */,
@@ -581,7 +581,7 @@
 				192445EE1EAF97E000147389 /* GfxClipboard.cpp in Sources */,
 				19B351FE1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp in Sources */,
 				19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */,
-				19B352071EB50E040020DCF4 /* GDemoApp.cpp in Sources */,
+				19B352071EB50E040020DCF4 /* GDemoForm.cpp in Sources */,
 				195F7A0E1EAC920D00C11D9F /* GfxPowerState.cpp in Sources */,
 				192445F41EAFAA3400147389 /* GfxLoadSo.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,

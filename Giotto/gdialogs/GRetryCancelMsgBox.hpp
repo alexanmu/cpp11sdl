@@ -32,7 +32,7 @@
 class GRetryCancelMsgBox : public GObject
 {
 public:
-    GRetryCancelMsgBox(GObject* parent);
+    explicit GRetryCancelMsgBox(GObject* parent);
     
     GRetryCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
     

@@ -22,7 +22,7 @@
 */
 
 #include <string>
-#include <iostream>
+#include <memory>
 
 #include "GForm.hpp"
 #include "GfxError.hpp"

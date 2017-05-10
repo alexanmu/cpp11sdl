@@ -24,8 +24,6 @@
 #ifndef GObject_hpp
 #define GObject_hpp
 
-#include <string>
-
 class GObject
 {
 public:
@@ -41,7 +39,7 @@ public:
 
     bool operator==(GObject const& other);
 private:
-    enum class GInitType : uint32_t
+    enum class GInitType : int
     {
         defaultCtor,
         copyCtor,

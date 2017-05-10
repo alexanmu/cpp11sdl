@@ -39,7 +39,7 @@ namespace fnt
 class GfxBitmapFont final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxBitmapFont();
 

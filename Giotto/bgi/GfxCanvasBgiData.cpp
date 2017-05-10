@@ -32,7 +32,7 @@ namespace gfx
 namespace bgi
 {
 
-const std::string GfxCanvasBgiData::ClassName = "GfxCanvasBgiData";
+const char GfxCanvasBgiData::ClassName[] = "GfxCanvasBgiData";
 
 const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::kMaxColors] = {  // 0 - 15
     0xff000000,  // BLACK

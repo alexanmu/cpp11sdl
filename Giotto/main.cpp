@@ -536,12 +536,15 @@ void _doPlay(void)
     p._doPaletteGfx();
 }
 
-#include "GDemoApp.hpp"
+#include "GApplication.hpp"
+#include "GDemoForm.hpp"
 
 void _doGApp(void)
 {
-    GDemoApp gApp("AppName");
+    GApplication gApp;
+    std::shared_ptr<GDemoForm> demoForm = std::make_shared<GDemoForm>("GDemoForm");
 
+    gApp.setMainForm(demoForm);
     gApp.loadAppConfiguration();
     gApp.run();
 }
