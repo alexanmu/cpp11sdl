@@ -35,6 +35,7 @@ public:
     void _doFonts(void);
     void _doPaletteSdl(void);
     void _doPaletteGfx(void);
+    void _doCallback(void);
 private:
     void DoAlgo(int algo_index);
 

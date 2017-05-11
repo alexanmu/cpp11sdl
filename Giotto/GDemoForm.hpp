@@ -33,16 +33,10 @@
 class GDemoForm : public giotto::objects::GForm
 {
 public:
-    GDemoForm();
-    GDemoForm(const std::string& appName);
+    explicit GDemoForm(const std::string& appName);
 
-    virtual ~GDemoForm();
-
-    void loadAppConfiguration(void);
-    void run(void);
-private:
-    std::string appName_;
-    std::shared_ptr<giotto::objects::GForm> mainForm_;
+    virtual void draw(void);
+    virtual void run(void);
 };
 
 #endif /* GDemoForm_hpp */

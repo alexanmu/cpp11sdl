@@ -533,7 +533,8 @@ void _doPlay(void)
     // p._doBenchmark();
     // p._doFonts();
     // p._doPaletteSdl();
-    p._doPaletteGfx();
+    // p._doPaletteGfx();
+    p._doCallback();
 }
 
 #include "GApplication.hpp"
