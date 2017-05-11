@@ -21,15 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GWindowObject_hpp
-#define GWindowObject_hpp
-
-#include <memory>
-#include <string>
-
-#include "GObject.hpp"
-#include "GfxCanvas.hpp"
-#include "GfxWindow.hpp"
+#include "GPanel.hpp"
 
 namespace giotto
 {
@@ -37,43 +29,56 @@ namespace giotto
 namespace objects
 {
 
-class GForm : public GObject
+GPanel::GPanel() : GObject()
 {
-public:
-    typedef std::shared_ptr<GForm> SharedPtr;
+    //
+}
 
-    GForm();
-    explicit GForm(const std::string& title);
+GPanel::GPanel(GPanel const& other) : GObject()
+{
+    width_ = other.width_;
+    height_ = other.height_;
+}
 
-    GForm(GForm const&) = delete;
-    GForm(GForm&&) = delete;
+GPanel::GPanel(GPanel&& other) : GObject()
+{
+    width_ = other.width_;
+    height_ = other.height_;
+    // Delete other's data
+    other.width_ = 0;
+    other.height_ = 0;
+}
 
-    GForm& operator=(GForm const&) = delete;
-    GForm& operator=(GForm&&) = delete;
+GPanel& GPanel::operator=(GPanel const& other)
+{
+    if (this != &other)
+    {
+        width_ = other.width_;
+        height_ = other.height_;
+    }
+    return *this;
+}
 
-    virtual ~GForm();
+GPanel& GPanel::operator=(GPanel&& other)
+{
+    if (this != &other)
+    {
+        width_ = other.width_;
+        height_ = other.height_;
+        // Delete other's data
+        other.width_ = 0;
+        other.height_ = 0;
+    }
+    return *this;
+}
 
-    virtual void setTitle(const std::string& title);
-    virtual void create(void);
-    virtual void close(void);
-
-    virtual void loadResources(void);
-    virtual void run(void);
-
-    virtual void draw(void);
-
-    std::shared_ptr<gfx::bgi::GfxCanvas> getCanvas(void);
-protected:
-    std::shared_ptr<gfx::GfxWindow> window_;
-
-private:
-    std::string title_;
-    std::shared_ptr<gfx::bgi::GfxCanvas> canvas_;
-    bool canvasInUse_;
-};
+void GPanel::drawObject(void)
+{
+    //
+}
 
 }  // namespace objects
 
 }  // namespace giotto
 
-#endif /* GWindowObject_hpp */
+/* EOF */

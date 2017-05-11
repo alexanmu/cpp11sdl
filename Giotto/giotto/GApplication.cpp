@@ -32,6 +32,15 @@ namespace objects
 GApplication::GApplication() : GObject()
 {
     mainForm_ = nullptr;
+    iq_ = nullptr;
+}
+
+GApplication::~GApplication()
+{
+    if (iq_ != nullptr)
+    {
+        iq_->~GfxInitQuit();
+    }
 }
 
 void GApplication::setMainForm(GForm::SharedPtr mainForm)
@@ -41,14 +50,26 @@ void GApplication::setMainForm(GForm::SharedPtr mainForm)
 
 void GApplication::loadAppConfiguration(void)
 {
-    mainForm_.get()->loadAppConfiguration();
+    if (mainForm_ != nullptr)
+    {
+        mainForm_.get()->loadResources();
+    }
 }
 
 void GApplication::run()
 {
-    mainForm_.get()->createForm();
-    mainForm_.get()->run();
-    mainForm_.get()->closeForm();
+    iq_ = new gfx::GfxInitQuit(gfx::GfxInitQuit::GfxInitComponent::initEverything);
+    if (iq_->getErrorCode() != 0)
+    {
+        return;
+    }
+    if (mainForm_ != nullptr)
+    {
+        mainForm_.get()->create();
+        mainForm_.get()->draw();
+        mainForm_.get()->run();
+        mainForm_.get()->close();
+    }
 }
 
 }  // namespace objects

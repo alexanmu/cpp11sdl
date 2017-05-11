@@ -27,6 +27,7 @@
 #include <memory>
 #include <string>
 
+#include "GfxInitQuit.hpp"
 #include "GObject.hpp"
 #include "GForm.hpp"
 
@@ -47,12 +48,15 @@ public:
     GApplication& operator=(GApplication const&) = delete;
     GApplication& operator=(GApplication&&) = delete;
 
+    ~GApplication();
+
     void setMainForm(GForm::SharedPtr mainForm);
 
     void loadAppConfiguration(void);
     void run(void);
 private:
     GForm::SharedPtr mainForm_;
+    gfx::GfxInitQuit* iq_;
 };
 
 }  // namespace objects

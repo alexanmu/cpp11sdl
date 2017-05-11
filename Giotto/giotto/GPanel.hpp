@@ -21,15 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GWindowObject_hpp
-#define GWindowObject_hpp
+#ifndef GPanel_hpp
+#define GPanel_hpp
 
-#include <memory>
-#include <string>
+#include <cstdint>
 
 #include "GObject.hpp"
-#include "GfxCanvas.hpp"
-#include "GfxWindow.hpp"
 
 namespace giotto
 {
@@ -37,43 +34,27 @@ namespace giotto
 namespace objects
 {
 
-class GForm : public GObject
+class GPanel : public GObject
 {
 public:
-    typedef std::shared_ptr<GForm> SharedPtr;
+    GPanel();
 
-    GForm();
-    explicit GForm(const std::string& title);
+    GPanel(GPanel const& other);
+    GPanel(GPanel&& other);
 
-    GForm(GForm const&) = delete;
-    GForm(GForm&&) = delete;
+    GPanel& operator=(GPanel const& other);
+    GPanel& operator=(GPanel&& other);
 
-    GForm& operator=(GForm const&) = delete;
-    GForm& operator=(GForm&&) = delete;
-
-    virtual ~GForm();
-
-    virtual void setTitle(const std::string& title);
-    virtual void create(void);
-    virtual void close(void);
-
-    virtual void loadResources(void);
-    virtual void run(void);
-
-    virtual void draw(void);
-
-    std::shared_ptr<gfx::bgi::GfxCanvas> getCanvas(void);
-protected:
-    std::shared_ptr<gfx::GfxWindow> window_;
-
+    void drawObject(void);
 private:
-    std::string title_;
-    std::shared_ptr<gfx::bgi::GfxCanvas> canvas_;
-    bool canvasInUse_;
+    uint16_t left_;
+    uint16_t top_;
+    uint16_t width_;
+    uint16_t height_;
 };
 
 }  // namespace objects
 
 }  // namespace giotto
 
-#endif /* GWindowObject_hpp */
+#endif /* GObject_hpp */

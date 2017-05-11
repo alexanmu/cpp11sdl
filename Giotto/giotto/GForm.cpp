@@ -37,6 +37,7 @@ GForm::GForm() : GObject()
 {
     title_ = "GForm";
     window_ = nullptr;
+    canvas_ = nullptr;
     canvasInUse_ = false;
 }
 
@@ -44,10 +45,19 @@ GForm::GForm(const std::string& title) : GObject()
 {
     title_ = title;
     window_ = nullptr;
+    canvas_ = nullptr;
     canvasInUse_ = false;
 }
 
-void GForm::setFormTitle(const std::string& title)
+GForm::~GForm()
+{
+    if (window_ != nullptr)
+    {
+        window_.get()->~GfxWindow();
+    }
+}
+
+void GForm::setTitle(const std::string& title)
 {
     title_ = title;
     if (window_ != nullptr)
@@ -56,7 +66,7 @@ void GForm::setFormTitle(const std::string& title)
     }
 }
 
-void GForm::createForm(void)
+void GForm::create(void)
 {
     gfx::GfxWindowFlags winFlags(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
     gfx::GfxWindowPosition winPosCenter(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered);
@@ -64,23 +74,40 @@ void GForm::createForm(void)
     std::string s = title_;
 
     window_ = std::make_shared<gfx::GfxWindow>(s, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
-    canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(*(window_->getWindowSurface()));
+    canvas_ = nullptr;
 }
 
-void GForm::closeForm(void)
+void GForm::close(void)
 {
     //
 }
 
-std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getFormCanvas(void)
+void GForm::loadResources(void)
 {
-    canvasInUse_ = true;
-    return canvas_;
+    //
 }
 
-void GForm::drawForm(void)
+void GForm::run(void)
 {
-    if (window_)
+    //
+}
+
+std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getCanvas(void)
+{
+    if (window_ != nullptr)
+    {
+        gfx::GfxSurface* srf = window_->getWindowSurface();
+        canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(*srf);
+        canvasInUse_ = true;
+
+        return canvas_;
+    }
+    return nullptr;
+}
+
+void GForm::draw(void)
+{
+    if (window_ != nullptr)
     {
         if (canvasInUse_ == true)
         {
