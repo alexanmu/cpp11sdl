@@ -39,15 +39,15 @@ class GOKCancelMsgBox : public objects::GObject
 {
 public:
     explicit GOKCancelMsgBox(GObject* parent);
-    
+
     GOKCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
-    
+
     GOKCancelMsgBox(GOKCancelMsgBox const&) = delete;
     GOKCancelMsgBox(GOKCancelMsgBox&&) = delete;
-    
+
     GOKCancelMsgBox& operator=(GOKCancelMsgBox const&) = delete;
     GOKCancelMsgBox& operator=(GOKCancelMsgBox&&) = delete;
-    
+
     void showModal(void);
     GDialogsConstants getSelection(void) const;
 private:

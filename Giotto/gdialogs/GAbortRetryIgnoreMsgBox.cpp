@@ -46,7 +46,8 @@ GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent) : GObject(), p
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent,const std::string& title, const std::string& message) : GObject(), parent_(parent)
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent, const std::string& title,
+        const std::string& message) : GObject(), parent_(parent)
 {
     title_ = title;
     message_ = message;
@@ -59,14 +60,18 @@ void GAbortRetryIgnoreMsgBox::showModal(void)
 
     gfx::GfxMessageBoxButtonData buttons[3] {
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                                         gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, "Abort"),
+                                        gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault),
+                                        1, "Abort"),
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                                         gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 2, "Retry"),
+                                        gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault),
+                                        2, "Retry"),
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                                         gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 3, "Ignore"),
+                                        gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault),
+                                        3, "Ignore"),
     };
 
-    gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
+    gfx::GfxMessageBoxColor colors[
+        static_cast<uint32_t>(gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
         gfx::GfxMessageBoxColor(255, 0, 0),
         gfx::GfxMessageBoxColor(250, 220, 190),
         gfx::GfxMessageBoxColor(192, 92, 9),

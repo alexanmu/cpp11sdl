@@ -39,15 +39,15 @@ class GRetryCancelMsgBox : public objects::GObject
 {
 public:
     explicit GRetryCancelMsgBox(GObject* parent);
-    
+
     GRetryCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
-    
+
     GRetryCancelMsgBox(GRetryCancelMsgBox const&) = delete;
     GRetryCancelMsgBox(GRetryCancelMsgBox&&) = delete;
-    
+
     GRetryCancelMsgBox& operator=(GRetryCancelMsgBox const&) = delete;
     GRetryCancelMsgBox& operator=(GRetryCancelMsgBox&&) = delete;
-    
+
     void showModal(void);
     GDialogsConstants getSelection(void) const;
 private:

@@ -39,15 +39,15 @@ class GQuitCancelMsgBox : public objects::GObject
 {
 public:
     explicit GQuitCancelMsgBox(GObject* parent);
-    
+
     GQuitCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
-    
+
     GQuitCancelMsgBox(GQuitCancelMsgBox const&) = delete;
     GQuitCancelMsgBox(GQuitCancelMsgBox&&) = delete;
-    
+
     GQuitCancelMsgBox& operator=(GQuitCancelMsgBox const&) = delete;
     GQuitCancelMsgBox& operator=(GQuitCancelMsgBox&&) = delete;
-    
+
     void showModal(void);
     GDialogsConstants getSelection(void) const;
 private:
