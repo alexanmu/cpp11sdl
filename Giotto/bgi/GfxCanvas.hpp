@@ -69,7 +69,6 @@ public:
     void Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
 private:
     GfxCanvasBgi bgi_;
-    GfxSurface const& surf_;
 };
 
 }  // namespace bgi

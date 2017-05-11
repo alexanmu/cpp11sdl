@@ -98,7 +98,7 @@ const GfxBitmapFont& GfxBgiFontConstants::fntSansserif(void)
 {
     return GfxBgiFontConstants::fonts_[static_cast<int>(GfxFontIndex::indexSansserif)];
 }
-        
+
 const GfxBitmapFont& GfxBgiFontConstants::fntScript(void)
 {
     return GfxBgiFontConstants::fonts_[static_cast<int>(GfxFontIndex::indexScript)];

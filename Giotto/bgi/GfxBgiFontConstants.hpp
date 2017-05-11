@@ -95,5 +95,5 @@ private:
 }  // namespace fnt
 }  // namespace bgi
 }  // namespace gfx
-        
+
 #endif

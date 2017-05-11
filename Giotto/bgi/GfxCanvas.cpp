@@ -34,9 +34,10 @@ namespace bgi
 
 const char GfxCanvas::ClassName[] = "GfxCanvas";
 
-GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName), surf_(surf)
+GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName)
 {
-    bgi_.setCanvas(static_cast<uint32_t *>(surf_.getAsSdlTypePtr()->pixels), surf_.getAsSdlTypePtr()->w, surf_.getAsSdlTypePtr()->h);
+    bgi_.setCanvas(static_cast<uint32_t *>(surf.getAsSdlTypePtr()->pixels), surf.getAsSdlTypePtr()->w,
+                    surf.getAsSdlTypePtr()->h);
 }
 
 void GfxCanvas::Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr)
