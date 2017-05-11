@@ -38,7 +38,7 @@ namespace gfx
 class GfxVideo final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxVideo();
 

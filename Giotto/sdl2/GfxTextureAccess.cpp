@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxTextureAccess::ClassName = "GfxTextureAccess";
+const char GfxTextureAccess::ClassName[] = "GfxTextureAccess";
 
 GfxTextureAccess::GfxTextureAccess() : GfxRootClass(ClassName)
 {

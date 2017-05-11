@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_version SdlType;
     typedef sdl2::SDL_version* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxVersion();
 

@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxGetRendererInfo::ClassName = "GfxGetRendererInfo";
+const char GfxGetRendererInfo::ClassName[] = "GfxGetRendererInfo";
 
 GfxGetRendererInfo::GfxGetRendererInfo() : GfxRootClass(ClassName)
 {

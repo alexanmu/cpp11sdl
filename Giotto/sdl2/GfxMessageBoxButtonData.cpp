@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxMessageBoxButtonData::ClassName = "GfxMessageBoxButtonData";
+const char GfxMessageBoxButtonData::ClassName[] = "GfxMessageBoxButtonData";
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
 {

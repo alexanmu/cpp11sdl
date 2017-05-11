@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxClipboard::ClassName = "GfxClipboard";
+const char GfxClipboard::ClassName[] = "GfxClipboard";
 
 GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
 {
@@ -45,7 +45,7 @@ std::string GfxClipboard::getClipboardText(void) const
 {
     char * c;
     std::string str;
-    
+
     c = sdl2::SDL_GetClipboardText();
     str = c;
     sdl2::SDL_free(c);

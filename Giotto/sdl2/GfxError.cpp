@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxError::ClassName = "GfxError";
+const char GfxError::ClassName[] = "GfxError";
 
 std::string GfxError::getError(void)
 {

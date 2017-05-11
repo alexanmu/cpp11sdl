@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxRendererFlags::ClassName = "GfxRendererFlags";
+const char GfxRendererFlags::ClassName[] = "GfxRendererFlags";
 
 GfxRendererFlags::GfxRendererFlags() : GfxRootClass(ClassName)
 {
@@ -106,7 +106,7 @@ bool GfxRendererFlags::getPresentVSync(void) const
 bool GfxRendererFlags::getTargetTexture(void) const
 {
     uint32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
-    
+
     return (r != 0);
 }
 

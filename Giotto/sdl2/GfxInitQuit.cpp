@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxInitQuit::ClassName = "GfxInitQuit";
+const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
 GfxInitQuit::GfxInitQuit(const GfxInitComponent gfxInitComp) :
                 GfxRootClass(ClassName), gfxInitComp_(gfxInitComp), errorcode_(0)
@@ -60,9 +60,9 @@ void GfxInitQuit::quitRequested(void)
 {
     // sdl2::SDL_QuitRequested();
     sdl2::SDL_PumpEvents();
-    sdl2::SDL_PeepEvents(NULL,0,sdl2::SDL_PEEKEVENT,sdl2::SDL_QUIT,sdl2::SDL_QUIT);
+    sdl2::SDL_PeepEvents(NULL, 0, sdl2::SDL_PEEKEVENT, sdl2::SDL_QUIT, sdl2::SDL_QUIT);
 }
-                                
+
 // Return error code after init call
 int GfxInitQuit::getErrorCode() const
 {

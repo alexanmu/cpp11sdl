@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxDisplayMode::ClassName = "GfxDisplayMode";
+const char GfxDisplayMode::ClassName[] = "GfxDisplayMode";
 
 GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
 {

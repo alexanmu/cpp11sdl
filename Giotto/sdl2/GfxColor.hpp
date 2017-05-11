@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_Color SdlType;
     typedef sdl2::SDL_Color* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxColor();
 

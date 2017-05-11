@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxWindowFlags::ClassName = "GfxWindowFlags";
+const char GfxWindowFlags::ClassName[] = "GfxWindowFlags";
 
 GfxWindowFlags::GfxWindowFlags() : GfxRootClass(ClassName)
 {

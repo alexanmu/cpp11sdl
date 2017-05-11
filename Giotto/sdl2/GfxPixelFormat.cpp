@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxPixelFormat::ClassName = "GfxPixelFormat";
+const char GfxPixelFormat::ClassName[] = "GfxPixelFormat";
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 {

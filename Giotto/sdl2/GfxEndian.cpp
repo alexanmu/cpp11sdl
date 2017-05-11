@@ -30,7 +30,7 @@
 namespace gfx
 {
 
-const std::string GfxEndian::ClassName = "GfxEndian";
+const char GfxEndian::ClassName[] = "GfxEndian";
 
 GfxEndian::GfxEndian() : GfxRootClass(ClassName)
 {

@@ -37,7 +37,7 @@ namespace gfx
 class GfxMessageBox final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxMessageBox() = delete;
 

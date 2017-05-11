@@ -30,7 +30,7 @@
 namespace gfx
 {
 
-const std::string GfxBits::ClassName = "GfxBits";
+const char GfxBits::ClassName[] = "GfxBits";
 
 GfxBits::GfxBits() : GfxRootClass(ClassName)
 {

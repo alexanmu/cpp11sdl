@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_PixelFormat SdlType;
     typedef sdl2::SDL_PixelFormat* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxPixelFormat();
     explicit GfxPixelFormat(const SdlTypePtr pix);

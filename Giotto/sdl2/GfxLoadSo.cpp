@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxLoadSo::ClassName = "GfxLoadSo";
+const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
 GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
 {
@@ -83,7 +83,7 @@ void * GfxLoadSo::loadFunction(const std::string& function)
 
     if (handle_ != nullptr)
     {
-        func = sdl2::SDL_LoadFunction(handle_,function.c_str());
+        func = sdl2::SDL_LoadFunction(handle_, function.c_str());
     }
     return func;
 }

@@ -34,16 +34,16 @@ namespace gfx
 class GfxCpuInfo final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxCpuInfo();
 
     GfxCpuInfo(GfxCpuInfo const&) = delete;
     GfxCpuInfo(GfxCpuInfo&&) = delete;
-    
+
     GfxCpuInfo& operator=(GfxCpuInfo const&) = delete;
     GfxCpuInfo& operator=(GfxCpuInfo&&) = delete;
-    
+
     void queryCpuInfo(void);
 
     int getCpuCount(void) const;
@@ -59,7 +59,7 @@ public:
     bool hasAvx(void) const;
     bool hasAvx2(void) const;
     int getSystemRam(void) const;
-    
+
     std::string getAsString(void) const;
 private:
     int cpuCount_;

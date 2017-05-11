@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxMessageBoxColorScheme::ClassName = "GfxMessageBoxColorScheme";
+const char GfxMessageBoxColorScheme::ClassName[] = "GfxMessageBoxColorScheme";
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
 {
@@ -50,13 +50,13 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) :
-	GfxRootClass(ClassName)
+    GfxRootClass(ClassName)
 {
     clrscheme_ = other.clrscheme_;
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) :
-	GfxRootClass(ClassName)
+    GfxRootClass(ClassName)
 {
     clrscheme_ = other.clrscheme_;
     // Delete other's data
@@ -93,7 +93,7 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
     return *this;
 }
 
-void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type,GfxMessageBoxColor const& color)
+void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color)
 {
     int index = static_cast<int>(type.getType());
 

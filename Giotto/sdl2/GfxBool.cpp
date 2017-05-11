@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxBool::ClassName = "GfxBool";
+const char GfxBool::ClassName[] = "GfxBool";
 
 GfxBool::GfxBool() : GfxRootClass(ClassName)
 {

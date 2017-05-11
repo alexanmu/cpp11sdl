@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_WindowFlags SdlType;
     typedef sdl2::SDL_WindowFlags* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxWindowFlagsValues : uint32_t
     {

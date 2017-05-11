@@ -30,7 +30,7 @@
 namespace gfx
 {
 
-const std::string GfxSurface::ClassName = "GfxSurface";
+const char GfxSurface::ClassName[] = "GfxSurface";
 
 GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
 {
@@ -55,23 +55,50 @@ GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass(ClassName)
 GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
 {
     sdl2::SDL_Surface* tmpsurfptr;
-    
-    tmpsurfptr = sdl2::SDL_LoadBMP_RW(sdl2::SDL_RWFromFile(filename.c_str(), "rb"), 1); // sdl2::SDL_LoadBMP(filename.c_str());
+
+    tmpsurfptr = sdl2::SDL_LoadBMP_RW(sdl2::SDL_RWFromFile(filename.c_str(), "rb"), 1);
+                    //  sdl2::SDL_LoadBMP(filename.c_str());
     if (tmpsurfptr == nullptr)
     {
-        // error handling here
+        //  error handling here
         return;
     }
     if (tmpsurfptr->format != nullptr)
     {
         if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
-            // convert here
+            //  convert here
         }
     }
     else
     {
-        // error handling here
+        //  error handling here
+    }
+    surf_ = tmpsurfptr;
+}
+
+GfxSurface::GfxSurface(void * pixels, const int32_t width, const int32_t height, const int32_t depth,
+                        const int32_t pitch, const uint32_t rmask, const uint32_t gmask, const uint32_t bmask,
+                        const uint32_t amask) : GfxRootClass(ClassName)
+{
+    sdl2::SDL_Surface* tmpsurfptr;
+
+    tmpsurfptr = sdl2::SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
+    if (tmpsurfptr == nullptr)
+    {
+        //  error handling here
+        return;
+    }
+    if (tmpsurfptr->format != nullptr)
+    {
+        if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
+        {
+            //  convert here
+        }
+    }
+    else
+    {
+        //  error handling here
     }
     surf_ = tmpsurfptr;
 }

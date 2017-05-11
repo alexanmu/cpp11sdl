@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_BlendMode SdlType;
     typedef sdl2::SDL_BlendMode* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxBlendModeValues : int
     {

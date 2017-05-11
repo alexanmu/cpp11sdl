@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxPowerState::ClassName = "GfxPowerState";
+const char GfxPowerState::ClassName[] = "GfxPowerState";
 
 GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
 {

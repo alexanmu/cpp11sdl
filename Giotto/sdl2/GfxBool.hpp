@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_bool SdlType;
     typedef sdl2::SDL_bool* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxBool();
 
@@ -50,7 +50,7 @@ public:
 
     GfxBool& operator=(const GfxBool& other);
     GfxBool& operator=(GfxBool&& other);
-    
+
     bool getBool(void) const;
 
     SdlType getAsSdlType(void) const;

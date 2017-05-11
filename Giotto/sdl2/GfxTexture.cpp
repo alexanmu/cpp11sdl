@@ -29,9 +29,10 @@
 namespace gfx
 {
 
-const std::string GfxTexture::ClassName = "GfxTexture";
+const char GfxTexture::ClassName[] = "GfxTexture";
 
-GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) : GfxRootClass(ClassName)
+GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) :
+    GfxRootClass(ClassName)
 {
     GfxRenderer* rendptr;
 
@@ -40,7 +41,7 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const i
     tex_ = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
                                    sdl2::SDL_PIXELFORMAT_ARGB8888,
                                    acc.getAsSdlType(),
-                                   w,h);
+                                   w, h);
 }
 
 GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass(ClassName)

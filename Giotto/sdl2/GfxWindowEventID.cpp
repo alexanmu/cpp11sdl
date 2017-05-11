@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxWindowEventID::ClassName = "GfxWindowEventID";
+const char GfxWindowEventID::ClassName[] = "GfxWindowEventID";
 
 GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
 {

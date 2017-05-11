@@ -35,7 +35,7 @@ namespace gfx
 class GfxWindowPosition final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxWindowPositionValues : int
     {

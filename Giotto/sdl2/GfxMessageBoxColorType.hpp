@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_MessageBoxColorType SdlType;
     typedef sdl2::SDL_MessageBoxColorType* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxMessageBoxColorTypeValues : uint32_t
     {

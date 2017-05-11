@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxPlatform::ClassName = "GfxPlatform";
+const char GfxPlatform::ClassName[] = "GfxPlatform";
 
 GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
 {

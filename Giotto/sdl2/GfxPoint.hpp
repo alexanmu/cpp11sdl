@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_Point SdlType;
     typedef sdl2::SDL_Point* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxPoint();
 
@@ -67,6 +67,6 @@ private:
     SdlType pt_;
 };
 
-} // namespace gfx
+}  // namespace gfx
 
 #endif /* GfxPoint_hpp */

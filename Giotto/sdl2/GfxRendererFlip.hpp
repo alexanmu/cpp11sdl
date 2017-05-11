@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_RendererFlip SdlType;
     typedef sdl2::SDL_RendererFlip* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxRendererFlipValues : int
     {

@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_TextureAccess SdlType;
     typedef sdl2::SDL_TextureAccess* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxTextureAccessValues : uint32_t
     {
@@ -49,7 +49,7 @@ public:
 
     GfxTextureAccess();
 
-    GfxTextureAccess(const GfxTextureAccessValues access);
+    explicit GfxTextureAccess(const GfxTextureAccessValues access);
 
     GfxTextureAccess(GfxTextureAccess const& other);
     GfxTextureAccess(GfxTextureAccess&& other);

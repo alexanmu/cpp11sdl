@@ -42,7 +42,7 @@ public:
     typedef sdl2::SDL_Texture SdlType;
     typedef sdl2::SDL_Texture* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxTexture() = delete;
 

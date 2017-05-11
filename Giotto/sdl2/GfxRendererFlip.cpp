@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxRendererFlip::ClassName = "GfxRendererFlip";
+const char GfxRendererFlip::ClassName[] = "GfxRendererFlip";
 
 GfxRendererFlip::GfxRendererFlip() : GfxRootClass(ClassName)
 {

@@ -38,7 +38,7 @@ public:
     typedef uint32_t SdlType;
     typedef uint32_t* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxSurfaceFlagsValues : uint32_t
     {

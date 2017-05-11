@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxPoint::ClassName = "GfxPoint";
+const char GfxPoint::ClassName[] = "GfxPoint";
 
 GfxPoint::GfxPoint() : GfxRootClass(ClassName)
 {

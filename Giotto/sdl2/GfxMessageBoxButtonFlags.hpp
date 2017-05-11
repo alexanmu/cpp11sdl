@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_MessageBoxButtonFlags SdlType;
     typedef sdl2::SDL_MessageBoxButtonFlags* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxMessageBoxButtonFlagsValues : int
     {

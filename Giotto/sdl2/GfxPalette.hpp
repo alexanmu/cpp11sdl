@@ -41,7 +41,7 @@ public:
     typedef sdl2::SDL_Palette SdlType;
     typedef sdl2::SDL_Palette* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     using GfxColorVector = std::vector<GfxColor>;
 

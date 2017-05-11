@@ -39,7 +39,7 @@ public:
     typedef sdl2::SDL_RendererInfo SdlType;
     typedef sdl2::SDL_RendererInfo* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     static constexpr int kTextureFormatsArrayLength = 16;
 

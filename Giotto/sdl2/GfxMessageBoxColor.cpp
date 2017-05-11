@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxMessageBoxColor::ClassName = "GfxMessageBoxColor";
+const char GfxMessageBoxColor::ClassName[] = "GfxMessageBoxColor";
 
 GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass(ClassName)
 {

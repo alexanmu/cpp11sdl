@@ -30,7 +30,7 @@
 namespace gfx
 {
 
-const std::string GfxVideo::ClassName = "GfxVideo";
+const char GfxVideo::ClassName[] = "GfxVideo";
 
 GfxVideo::GfxVideo() : GfxRootClass(ClassName)
 {
@@ -193,7 +193,8 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getCurrentDisplayMode(const int displa
     return dm;
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int displayindex, GfxDisplayMode const& mode) const
+std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int displayindex,
+                                                                GfxDisplayMode const& mode) const
 {
     std::unique_ptr<GfxDisplayMode> dm { new GfxDisplayMode() };
     GfxDisplayMode::SdlType dms;

@@ -29,14 +29,14 @@
 namespace gfx
 {
 
-const std::string GfxPalette::ClassName = "GfxPalette";
+const char GfxPalette::ClassName[] = "GfxPalette";
 
 GfxPalette::GfxPalette() : GfxRootClass(ClassName)
 {
     pal_ = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
     for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
     {
-        SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen,\
+        SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen, \
                                             kDefaultPaletteColorBlue).getAsSdlTypePtr(), i, 1);
     }
 };
@@ -45,7 +45,7 @@ GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
 {
     uint32_t colorIndex;
     uint16_t nColors;
-    
+
     nColors = colors.size();
     pal_ = sdl2::SDL_AllocPalette(nColors);
     colorIndex = 0;
@@ -61,7 +61,7 @@ GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass(ClassName)
     pal_ = sdl2::SDL_AllocPalette(nColors);
     for (uint32_t i = 0; i < nColors; i++)
     {
-        SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen,\
+        SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen, \
                                             kDefaultPaletteColorBlue).getAsSdlTypePtr(), i, 1);
     }
 }

@@ -35,7 +35,7 @@ namespace gfx
 class GfxGetVersion final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxGetVersion();
 

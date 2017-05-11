@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxRenderer::ClassName = "GfxRenderer";
+const char GfxRenderer::ClassName[] = "GfxRenderer";
 
 GfxRenderer::GfxRenderer(const GfxWindow& win) : GfxRootClass(ClassName), renderer_(nullptr), window_(win)
 {
@@ -74,7 +74,7 @@ void GfxRenderer::getRendererInfo(GfxRendererInfo* infoptr)
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_GetRendererInfo(renderer_,&ri);
+        sdl2::SDL_GetRendererInfo(renderer_, &ri);
         infoptr->set(ri);
     }
     else
@@ -117,7 +117,8 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const 
     }
 }
 
-void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt, const GfxRendererFlip& flip)
+void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt,
+                                const GfxRendererFlip& flip)
 {
     if (renderer_ != nullptr)
     {

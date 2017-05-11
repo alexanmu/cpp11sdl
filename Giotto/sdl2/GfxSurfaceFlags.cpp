@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxSurfaceFlags::ClassName = "GfxSurfaceFlags";
+const char GfxSurfaceFlags::ClassName[] = "GfxSurfaceFlags";
 
 GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass(ClassName)
 {
@@ -80,21 +80,21 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other)
 bool GfxSurfaceFlags::isSwSurface(void) const
 {
     uint32_t r = flags_ & SDL_SWSURFACE;
-    
+
     return (r != 0);
 }
 
 bool GfxSurfaceFlags::isPreAlloc(void) const
 {
     uint32_t r = flags_ & SDL_PREALLOC;
-    
+
     return (r != 0);
 }
 
 bool GfxSurfaceFlags::isRLEAccel(void) const
 {
     uint32_t r = flags_ & SDL_RLEACCEL;
-    
+
     return (r != 0);
 }
 

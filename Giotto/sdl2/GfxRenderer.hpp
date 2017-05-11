@@ -45,7 +45,7 @@ public:
     typedef sdl2::SDL_Renderer SdlType;
     typedef sdl2::SDL_Renderer* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     explicit GfxRenderer(const GfxWindow& win);
 

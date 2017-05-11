@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_DisplayMode SdlType;
     typedef sdl2::SDL_DisplayMode* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxDisplayMode();
 

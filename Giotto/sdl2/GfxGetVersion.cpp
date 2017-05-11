@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxGetVersion::ClassName = "GfxGetVersion";
+const char GfxGetVersion::ClassName[] = "GfxGetVersion";
 
 GfxGetVersion::GfxGetVersion() : GfxRootClass(ClassName)
 {

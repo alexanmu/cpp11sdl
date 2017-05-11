@@ -85,7 +85,7 @@ namespace gfx
 
 int GfxRootClass::intInstanceCounter_ = 0;
 
-const std::string GfxRootClass::astrClassNames[] =
+const char* GfxRootClass::astrClassNames[] =
 {
     gfx::GfxBits::ClassName,
     gfx::GfxBlendMode::ClassName,
@@ -142,7 +142,8 @@ const std::string GfxRootClass::astrClassNames[] =
     gfx::bgi::GfxString::ClassName
 };
 
-const int GfxRootClass::intClassNamesCount = sizeof(GfxRootClass::astrClassNames) / sizeof(GfxRootClass::astrClassNames[0]);
+const int GfxRootClass::intClassNamesCount = sizeof(GfxRootClass::astrClassNames) /
+                                                sizeof(GfxRootClass::astrClassNames[0]);
 
 GfxRootClass::GfxRootClass()
 {

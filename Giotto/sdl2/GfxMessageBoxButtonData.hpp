@@ -39,7 +39,7 @@ public:
     typedef sdl2::SDL_MessageBoxButtonData SdlType;
     typedef sdl2::SDL_MessageBoxButtonData* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxMessageBoxButtonData();
 

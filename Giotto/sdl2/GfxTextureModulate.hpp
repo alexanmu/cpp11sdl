@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_TextureModulate SdlType;
     typedef sdl2::SDL_TextureModulate* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxTextureModulateValues : int
     {

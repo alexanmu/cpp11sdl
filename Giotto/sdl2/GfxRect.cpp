@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxRect::ClassName = "GfxRect";
+const char GfxRect::ClassName[] = "GfxRect";
 
 GfxRect::GfxRect() : GfxRootClass(ClassName)
 {

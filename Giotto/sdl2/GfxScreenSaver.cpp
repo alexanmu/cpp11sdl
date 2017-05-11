@@ -30,7 +30,7 @@
 namespace gfx
 {
 
-const std::string GfxScreenSaver::ClassName = "GfxScreenSaver";
+const char GfxScreenSaver::ClassName[] = "GfxScreenSaver";
 
 GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
 {

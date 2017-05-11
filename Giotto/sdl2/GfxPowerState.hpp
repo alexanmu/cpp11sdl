@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_PowerState SdlType;
     typedef sdl2::SDL_PowerState* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     enum class GfxPowerStateValues : int
     {

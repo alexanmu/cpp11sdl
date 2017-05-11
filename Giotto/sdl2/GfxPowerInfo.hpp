@@ -35,7 +35,7 @@ namespace gfx
 class GfxPowerInfo final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxPowerInfo();
 

@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxFileSystem::ClassName = "GfxFileSystem";
+const char GfxFileSystem::ClassName[] = "GfxFileSystem";
 
 GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
 {

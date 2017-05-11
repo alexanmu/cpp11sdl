@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxWindowPosition::ClassName = "GfxWindowPosition";
+const char GfxWindowPosition::ClassName[] = "GfxWindowPosition";
 
 GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
 {

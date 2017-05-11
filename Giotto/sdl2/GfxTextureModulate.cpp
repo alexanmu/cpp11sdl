@@ -28,7 +28,7 @@
 namespace gfx
 {
 
-const std::string GfxTextureModulate::ClassName = "GfxTextureModulate";
+const char GfxTextureModulate::ClassName[] = "GfxTextureModulate";
 
 GfxTextureModulate::GfxTextureModulate() : GfxRootClass(ClassName)
 {

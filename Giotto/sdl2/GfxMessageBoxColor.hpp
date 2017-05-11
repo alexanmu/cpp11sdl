@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_MessageBoxColor SdlType;
     typedef sdl2::SDL_MessageBoxColor* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxMessageBoxColor();
 

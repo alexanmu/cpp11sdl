@@ -44,14 +44,16 @@ public:
     typedef sdl2::SDL_Surface SdlType;
     typedef sdl2::SDL_Surface* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxSurface() = delete;
 
     explicit GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h);
     explicit GfxSurface(const SdlTypePtr surf);
     explicit GfxSurface(const std::string& filename);
-
+    explicit GfxSurface(void * pixels, const int32_t width, const int32_t height, const int32_t depth,
+                        const int32_t pitch, const uint32_t rmask, const uint32_t gmask, const uint32_t bmask,
+                        const uint32_t amask);
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& surf);
 

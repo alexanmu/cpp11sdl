@@ -35,7 +35,7 @@ namespace gfx
 class GfxInitQuit final : public GfxRootClass
 {
 public:
-    static const std::string ClassName;
+    static const char ClassName[];
 
     // Init Video, Audio or Everything ...
     enum class GfxInitComponent

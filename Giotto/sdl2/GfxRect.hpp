@@ -38,7 +38,7 @@ public:
     typedef sdl2::SDL_Rect SdlType;
     typedef sdl2::SDL_Rect* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxRect();
 

@@ -21,12 +21,14 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxBlendMode.hpp"
 
 namespace gfx
 {
 
-const std::string GfxBlendMode::ClassName = "GfxBlendMode";
+const char GfxBlendMode::ClassName[] = "GfxBlendMode";
 
 GfxBlendMode::GfxBlendMode() : GfxRootClass(ClassName)
 {

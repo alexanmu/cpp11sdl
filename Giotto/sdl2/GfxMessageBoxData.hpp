@@ -42,7 +42,7 @@ public:
     typedef sdl2::SDL_MessageBoxData SdlType;
     typedef sdl2::SDL_MessageBoxData* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxMessageBoxData();
 

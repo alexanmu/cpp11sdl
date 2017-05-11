@@ -24,7 +24,6 @@
 #ifndef GfxWindow_hpp
 #define GfxWindow_hpp
 
-#include <memory>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -42,7 +41,7 @@ public:
     typedef sdl2::SDL_Window SdlType;
     typedef sdl2::SDL_Window* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
     GfxWindow(const std::string& title, const uint16_t width, const uint16_t height);
     GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
@@ -61,8 +60,8 @@ public:
     std::string getTitle() const;
     void setTitle(const std::string& title);
 
-    uint16_t getWidth() const;
-    uint16_t getHeight() const;
+    int32_t getWidth() const;
+    int32_t getHeight() const;
 
     void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
     void getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y);
@@ -70,7 +69,7 @@ public:
     void setWindowSize(const int32_t x, const int32_t y);
     void getWindowSize(int32_t* px, int32_t* py);
 
-    std::unique_ptr<GfxSurface> getWindowSurface(void);
+    GfxSurface* getWindowSurface(void);
     void updateWindowSurface(void);
 
     /*
@@ -95,9 +94,10 @@ public:
 
     SDL_SetWindowGrab()
     SDL_GetWindowGrab()
+*/
+    void setWindowIcon(GfxSurface const& icon);
 
-    SDL_SetWindowIcon()
-    SDL_SetWindowPosition()
+    /*SDL_SetWindowPosition()
     SDL_SetWindowBordered()
     SDL_GetWindowBordersSize
     SDL_SetWindowResizable()

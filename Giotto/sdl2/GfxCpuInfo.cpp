@@ -29,7 +29,7 @@
 namespace gfx
 {
 
-const std::string GfxCpuInfo::ClassName  = "GfxCpuInfo";
+const char GfxCpuInfo::ClassName[]  = "GfxCpuInfo";
 
 GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
 {

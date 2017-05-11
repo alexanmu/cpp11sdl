@@ -40,9 +40,10 @@ public:
     typedef sdl2::SDL_MessageBoxColorScheme SdlType;
     typedef sdl2::SDL_MessageBoxColorScheme* SdlTypePtr;
 
-    static const std::string ClassName;
+    static const char ClassName[];
 
-    static constexpr int colorsArraySize = static_cast<int>(GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
+    static constexpr int colorsArraySize = static_cast<int>(
+                                            GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
 
     GfxMessageBoxColorScheme();
 
@@ -54,7 +55,7 @@ public:
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other);
 
-    void setColor(GfxMessageBoxColorType const& type,GfxMessageBoxColor const& color);
+    void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
