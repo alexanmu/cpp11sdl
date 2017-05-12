@@ -32,7 +32,7 @@ const char GfxSurfaceFlags::ClassName[] = "GfxSurfaceFlags";
 
 GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass(ClassName)
 {
-    flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
+    clear();
 }
 
 GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags) : GfxRootClass(ClassName)
@@ -54,7 +54,7 @@ GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) : GfxRootClass(ClassNa
 {
     flags_ = other.flags_;
     // Delete other's data
-    other.flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
+    other.clear();
 }
 
 GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other)
@@ -72,7 +72,7 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other)
     {
         flags_ = other.flags_;
         // Delete other's data
-        other.flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
+        other.clear();
     }
     return *this;
 }
@@ -123,6 +123,11 @@ void GfxSurfaceFlags::setRLEAccel(void) throw()
 void GfxSurfaceFlags::setDontFree(void) throw()
 {
     throw;
+}
+
+void GfxSurfaceFlags::clear(void)
+{
+    flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
 }
 
 GfxSurfaceFlags::SdlType GfxSurfaceFlags::getAsSdlType(void) const

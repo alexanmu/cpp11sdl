@@ -32,7 +32,7 @@ const char GfxRendererFlip::ClassName[] = "GfxRendererFlip";
 
 GfxRendererFlip::GfxRendererFlip() : GfxRootClass(ClassName)
 {
-    flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
+    clear();
 }
 
 GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootClass(ClassName)
@@ -56,7 +56,7 @@ GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other) : GfxRootClass(Cl
 GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) : GfxRootClass(ClassName)
 {
     flip_ = other.flip_;
-    other.flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
+    other.clear();
 }
 
 GfxRendererFlip& GfxRendererFlip::operator=(const GfxRendererFlip& other)
@@ -73,7 +73,7 @@ GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other)
     if (this != &other)
     {
         flip_ = other.flip_;
-        other.flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
+        other.clear();
     }
     return *this;
 }
@@ -91,6 +91,11 @@ bool GfxRendererFlip::isFlipHorizontal(void) const
 bool GfxRendererFlip::isFlipVertical(void) const
 {
     return ((flip_ & sdl2::SDL_FLIP_VERTICAL) != 0);
+}
+
+void GfxRendererFlip::clear(void)
+{
+    flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
 }
 
 GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const

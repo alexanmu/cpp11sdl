@@ -52,7 +52,9 @@ public:
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other);
 
     int getButtonId(void) const;
-    std::string getText(void) const;
+    const std::string getText(void) const;
+
+    void clear(void);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

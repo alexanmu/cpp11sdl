@@ -32,7 +32,7 @@ const char GfxTextureAccess::ClassName[] = "GfxTextureAccess";
 
 GfxTextureAccess::GfxTextureAccess() : GfxRootClass(ClassName)
 {
-    access_ = static_cast<SdlType>(GfxTextureAccessValues::accessStatic);
+    clear();
 }
 
 GfxTextureAccess::GfxTextureAccess(const GfxTextureAccessValues access) : GfxRootClass(ClassName)
@@ -49,7 +49,7 @@ GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) : GfxRootClass(Clas
 {
     access_ = other.access_;
     // Delete other's data
-    other.access_ = static_cast<SdlType>(GfxTextureAccessValues::accessStatic);
+    other.clear();
 }
 
 GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other)
@@ -67,9 +67,14 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other)
     {
         access_ = other.access_;
         // Delete other's data
-        other.access_ = static_cast<SdlType>(GfxTextureAccessValues::accessStatic);
+        other.clear();
     }
     return *this;
+}
+
+void GfxTextureAccess::clear(void)
+{
+    access_ = static_cast<SdlType>(GfxTextureAccessValues::accessStatic);
 }
 
 GfxTextureAccess::SdlType GfxTextureAccess::getAsSdlType(void) const

@@ -54,8 +54,6 @@ public:
 
     virtual ~GfxPixelFormat();
 
-    void freeFormat(void);
-
     uint32_t getFormat(void) const;
     uint8_t getBitsPerPixel(void) const;
     uint8_t getBytesPerPixel(void) const;
@@ -84,6 +82,8 @@ public:
     void setGreenMask(const uint32_t gmask);
     void setBlueMask(const uint32_t bmask);
     void setAlphaMask(const uint32_t amask);
+
+    void clear(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

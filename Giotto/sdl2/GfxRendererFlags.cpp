@@ -32,7 +32,7 @@ const char GfxRendererFlags::ClassName[] = "GfxRendererFlags";
 
 GfxRendererFlags::GfxRendererFlags() : GfxRootClass(ClassName)
 {
-    flags_ = static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown);
+    clear();
 }
 
 GfxRendererFlags::GfxRendererFlags(GfxRendererFlagsValues flags) : GfxRootClass(ClassName)
@@ -54,7 +54,7 @@ GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) : GfxRootClass(Clas
 {
     flags_ = other.flags_;
     // Delete other's data
-    other.flags_ = static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown);
+    other.clear();
 }
 
 GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other)
@@ -72,7 +72,7 @@ GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other)
     {
         flags_ = other.flags_;
         // Delete other's data
-        other.flags_ = static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown);
+        other.clear();
     }
     return *this;
 }
@@ -148,6 +148,11 @@ void GfxRendererFlags::setTargetTexture(void)
 void GfxRendererFlags::resetTargetTexture(void)
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_TARGETTEXTURE);
+}
+
+void GfxRendererFlags::clear(void)
+{
+    flags_ = static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown);
 }
 
 GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const

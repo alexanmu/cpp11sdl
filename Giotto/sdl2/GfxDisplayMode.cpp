@@ -32,11 +32,7 @@ const char GfxDisplayMode::ClassName[] = "GfxDisplayMode";
 
 GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
 {
-    dmode_.format = 0;
-    dmode_.w = -1;
-    dmode_.h = -1;
-    dmode_.refresh_rate = -1;
-    dmode_.driverdata = NULL;
+    clear();
 }
 
 GfxDisplayMode::GfxDisplayMode(uint32_t const format, int const w, int const h, int const refresh) :
@@ -57,11 +53,7 @@ GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) : GfxRootClass(ClassName)
     dmode_.refresh_rate = other.dmode_.refresh_rate;
     dmode_.driverdata = other.dmode_.driverdata;
     // Delete other's data
-    other.dmode_.format = 0;
-    other.dmode_.w = -1;
-    other.dmode_.h = -1;
-    other.dmode_.refresh_rate = -1;
-    other.dmode_.driverdata = NULL;
+    other.clear();
 }
 
 GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other)
@@ -74,11 +66,7 @@ GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other)
         dmode_.refresh_rate = other.dmode_.refresh_rate;
         dmode_.driverdata = other.dmode_.driverdata;
         // Delete other's data
-        other.dmode_.format = 0;
-        other.dmode_.w = -1;
-        other.dmode_.h = -1;
-        other.dmode_.refresh_rate = -1;
-        other.dmode_.driverdata = NULL;
+        other.clear();
     }
     return *this;
 }
@@ -103,9 +91,18 @@ int GfxDisplayMode::getRefreshRate(void) const
     return dmode_.refresh_rate;
 }
 
-void GfxDisplayMode::set(SdlType dm)
+void GfxDisplayMode::set(const SdlType dm)
 {
     dmode_ = dm;
+}
+
+void GfxDisplayMode::clear(void)
+{
+    dmode_.format = 0;
+    dmode_.w = -1;
+    dmode_.h = -1;
+    dmode_.refresh_rate = -1;
+    dmode_.driverdata = NULL;
 }
 
 GfxDisplayMode::SdlType GfxDisplayMode::getAsSdlType(void) const

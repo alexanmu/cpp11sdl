@@ -63,6 +63,8 @@ public:
 
     GfxMessageBoxColorTypeValues getType(void) const;
 
+    void clear(void);
+
     SdlType getAsSdllType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

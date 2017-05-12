@@ -32,7 +32,7 @@ const char GfxMessageBoxFlags::ClassName[] = "GfxMessageBoxFlags";
 
 GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass(ClassName)
 {
-    flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
+    clear();
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootClass(ClassName)
@@ -54,7 +54,7 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) : GfxRootClas
 {
     flag_ = other.flag_;
     // Delete other's data
-    other.flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
+    other.clear();
 }
 
 GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(const GfxMessageBoxFlags& other)
@@ -72,7 +72,7 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other)
     {
         flag_ = other.flag_;
         // Delete other's data
-        other.flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
+        other.clear();
     }
     return *this;
 }
@@ -100,6 +100,11 @@ bool GfxMessageBoxFlags::isWarning(void) const
 bool GfxMessageBoxFlags::isInformation(void) const
 {
     return (flag_ == sdl2::SDL_MESSAGEBOX_INFORMATION);
+}
+
+void GfxMessageBoxFlags::clear(void)
+{
+    flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
 }
 
 GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const

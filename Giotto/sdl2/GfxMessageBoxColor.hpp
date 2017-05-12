@@ -65,6 +65,8 @@ public:
     void setGreen(const uint8_t g);
     void setBlue(const uint8_t b);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

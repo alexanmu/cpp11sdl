@@ -60,7 +60,7 @@ public:
     bool hasAvx2(void) const;
     int getSystemRam(void) const;
 
-    std::string getAsString(void) const;
+    const std::string getAsString(void) const;
 private:
     int cpuCount_;
     int cpuCacheLineSize_;

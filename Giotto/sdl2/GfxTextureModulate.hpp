@@ -69,6 +69,8 @@ public:
     void setAlpha(void);
     void resetAlpha(void);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

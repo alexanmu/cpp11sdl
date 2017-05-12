@@ -56,6 +56,7 @@ public:
     uint8_t getPatch(void) const;
 
     void set(const SdlType ver);
+    void clear(void);
 
     std::string getAsString(void) const;
 

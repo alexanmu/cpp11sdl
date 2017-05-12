@@ -57,6 +57,8 @@ public:
     GfxTextureAccess& operator=(GfxTextureAccess const& other);
     GfxTextureAccess& operator=(GfxTextureAccess&& other);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

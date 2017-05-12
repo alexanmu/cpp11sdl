@@ -57,6 +57,8 @@ public:
 
     void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

@@ -78,6 +78,8 @@ public:
     void setTargetTexture(void);
     void resetTargetTexture(void);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

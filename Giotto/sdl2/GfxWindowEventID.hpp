@@ -90,6 +90,8 @@ public:
     bool takeFocus(void) const;
     bool hitTest(void) const;
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

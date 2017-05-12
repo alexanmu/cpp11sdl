@@ -45,7 +45,7 @@ void GfxPowerInfo::queryPowerInfo(void)
     pstate_ = GfxPowerState(pstate);
 }
 
-GfxPowerState& GfxPowerInfo::getPowerState(void) const
+const GfxPowerState& GfxPowerInfo::getPowerState(void) const
 {
     return (GfxPowerState&)pstate_;
 }
@@ -60,7 +60,7 @@ int GfxPowerInfo::getRemainingPercentage(void) const
     return percentage_;
 }
 
-std::string GfxPowerInfo::getAsString(void) const
+const std::string GfxPowerInfo::getAsString(void) const
 {
     std::string str;
 

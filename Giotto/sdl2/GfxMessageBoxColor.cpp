@@ -32,9 +32,7 @@ const char GfxMessageBoxColor::ClassName[] = "GfxMessageBoxColor";
 
 GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass(ClassName)
 {
-    clr_.r = 0;
-    clr_.g = 0;
-    clr_.b = 0;
+    clear();
 }
 
 GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) :
@@ -62,9 +60,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) : GfxRootClas
 {
     clr_ = other.clr_;
     /* Delete other's data */
-    other.clr_.r = 0;
-    other.clr_.g = 0;
-    other.clr_.b = 0;
+    other.clear();
 }
 
 /* Delete copy and move assign operators */
@@ -82,9 +78,7 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other)
     if (this != &other)
     {
         clr_ = other.clr_;
-        other.clr_.r = 0;
-        other.clr_.g = 0;
-        other.clr_.b = 0;
+        other.clear();
     }
     return *this;
 }
@@ -130,6 +124,13 @@ void GfxMessageBoxColor::setGreen(const uint8_t g)
 void GfxMessageBoxColor::setBlue(const uint8_t b)
 {
     clr_.b = b;
+}
+
+void GfxMessageBoxColor::clear(void)
+{
+    clr_.r = 0;
+    clr_.g = 0;
+    clr_.b = 0;
 }
 
 GfxMessageBoxColor::SdlType GfxMessageBoxColor::getAsSdlType() const

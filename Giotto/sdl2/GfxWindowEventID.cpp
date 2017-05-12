@@ -32,7 +32,7 @@ const char GfxWindowEventID::ClassName[] = "GfxWindowEventID";
 
 GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
 {
-    eventid_ = static_cast<SdlType>(GfxWindowEventIDValues::eventNone);
+    clear();
 }
 
 GfxWindowEventID::GfxWindowEventID(GfxWindowEventIDValues eventid) : GfxRootClass(ClassName)
@@ -54,7 +54,7 @@ GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) : GfxRootClass(Clas
 {
     eventid_ = other.eventid_;
     // Delete other's data
-    other.eventid_ = static_cast<SdlType>(GfxWindowEventIDValues::eventNone);
+    other.clear();
 }
 
 GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other)
@@ -72,7 +72,7 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other)
     {
         eventid_ = other.eventid_;
         // Delete other's data
-        other.eventid_ = static_cast<SdlType>(GfxWindowEventIDValues::eventNone);
+        other.clear();
     }
     return *this;
 }
@@ -157,6 +157,10 @@ bool GfxWindowEventID::hitTest(void) const
     return (eventid_ == sdl2::SDL_WINDOWEVENT_HIT_TEST);
 }
 
+void GfxWindowEventID::clear(void)
+{
+    eventid_ = static_cast<SdlType>(GfxWindowEventIDValues::eventNone);
+}
 
 GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const
 {

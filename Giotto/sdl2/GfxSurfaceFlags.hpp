@@ -69,6 +69,8 @@ public:
     void setRLEAccel(void) throw();
     void setDontFree(void) throw();
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

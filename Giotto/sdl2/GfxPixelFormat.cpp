@@ -58,7 +58,7 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass(ClassName)
 {
     pix_ = other.pix_;
     // Delete other's data
-    other.pix_ = nullptr;
+    other.clear();
 }
 
 GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
@@ -71,7 +71,7 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
         }
         pix_ = other.pix_;
         // Delete other's data
-        other.pix_ = nullptr;
+        other.clear();
     }
     return *this;
 }
@@ -81,15 +81,6 @@ GfxPixelFormat::~GfxPixelFormat()
     if (pix_ != nullptr)
     {
         SDL_FreeFormat(pix_);
-    }
-}
-
-void GfxPixelFormat::freeFormat(void)
-{
-    if (pix_ != nullptr)
-    {
-        SDL_FreeFormat(pix_);
-        pix_ = nullptr;
     }
 }
 
@@ -313,6 +304,15 @@ void GfxPixelFormat::setAlphaMask(const uint32_t amask)
     if (pix_ != nullptr)
     {
         pix_->Amask = amask;
+    }
+}
+
+void GfxPixelFormat::clear(void)
+{
+    if (pix_ != nullptr)
+    {
+        SDL_FreeFormat(pix_);
+        pix_ = nullptr;
     }
 }
 

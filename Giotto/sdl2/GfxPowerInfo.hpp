@@ -47,11 +47,11 @@ public:
 
     void queryPowerInfo(void);
 
-    GfxPowerState& getPowerState(void) const;
+    const GfxPowerState& getPowerState(void) const;
     int getRemainingSeconds(void) const;
     int getRemainingPercentage(void) const;
 
-    std::string getAsString(void) const;
+    const std::string getAsString(void) const;
 private:
     GfxPowerState pstate_;
     int seconds_;

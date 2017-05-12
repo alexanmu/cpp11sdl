@@ -102,15 +102,6 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
     return *this;
 }
 
-void GfxPalette::freePalette(void)
-{
-    if (pal_ != nullptr)
-    {
-        sdl2::SDL_FreePalette(pal_);
-        pal_ = nullptr;
-    }
-}
-
 void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t firstColor)
 {
     int errorCode = 0;
@@ -172,6 +163,15 @@ int GfxPalette::getRefCount(void) const
         return pal_->refcount;
     }
     return 0;
+}
+
+void GfxPalette::clear(void)
+{
+    if (pal_ != nullptr)
+    {
+        sdl2::SDL_FreePalette(pal_);
+        pal_ = nullptr;
+    }
 }
 
 GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const

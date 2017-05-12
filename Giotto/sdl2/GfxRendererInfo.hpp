@@ -70,6 +70,7 @@ public:
     int32_t getMaxTextureHeight(void) const;
 
     void set(const SdlType info);
+    void clear(void);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

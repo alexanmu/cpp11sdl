@@ -32,12 +32,7 @@ const char GfxMessageBoxColorScheme::ClassName[] = "GfxMessageBoxColorScheme";
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
 {
-    for (int index = 0; index < colorsArraySize; index++)
-    {
-        clrscheme_.colors[index].r = 0x00;
-        clrscheme_.colors[index].g = 0x00;
-        clrscheme_.colors[index].b = 0x00;
-    }
+    clear();
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) :
@@ -60,12 +55,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& ot
 {
     clrscheme_ = other.clrscheme_;
     // Delete other's data
-    for (int index = 0; index < colorsArraySize; index++)
-    {
-        clrscheme_.colors[index].r = 0x00;
-        clrscheme_.colors[index].g = 0x00;
-        clrscheme_.colors[index].b = 0x00;
-    }
+    other.clear();
 }
 
 GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColorScheme const& other)
@@ -83,12 +73,7 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
     {
         clrscheme_ = other.clrscheme_;
         // Delete other's data
-        for (int index = 0; index < colorsArraySize; index++)
-        {
-            clrscheme_.colors[index].r = 0x00;
-            clrscheme_.colors[index].g = 0x00;
-            clrscheme_.colors[index].b = 0x00;
-        }
+        other.clear();
     }
     return *this;
 }
@@ -98,6 +83,16 @@ void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxM
     int index = static_cast<int>(type.getType());
 
     clrscheme_.colors[index] = color.getAsSdlType();
+}
+
+void GfxMessageBoxColorScheme::clear(void)
+{
+    for (int index = 0; index < colorsArraySize; index++)
+    {
+        clrscheme_.colors[index].r = 0x00;
+        clrscheme_.colors[index].g = 0x00;
+        clrscheme_.colors[index].b = 0x00;
+    }
 }
 
 GfxMessageBoxColorScheme::SdlType GfxMessageBoxColorScheme::getAsSdlType(void) const

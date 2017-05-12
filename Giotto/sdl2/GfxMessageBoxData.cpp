@@ -32,15 +32,7 @@ const char GfxMessageBoxData::ClassName[] = "GfxMessageBoxData";
 
 GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
 {
-    data_.flags = 0;
-    data_.window = nullptr;
-    title_ = "";
-    data_.title = "";
-    message_ = "";
-    data_.message = "'";
-    data_.numbuttons = 0;
-    btndataptr = nullptr;
-    data_.colorScheme = nullptr;
+    clear();
 }
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win,
@@ -105,15 +97,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) : GfxRootClass(C
     title_ = other.title_;
     message_ = other.message_;
     // Delete other's data
-    other.data_.flags = 0;
-    other.data_.window = nullptr;
-    other.data_.title = nullptr;
-    other.data_.message = nullptr;
-    other.data_.numbuttons = 0;
-    other.data_.buttons = nullptr;
-    other.data_.colorScheme = nullptr;
-    other.title_ = "";
-    other.message_ = "";
+    other.clear();
 }
 
 GfxMessageBoxData::~GfxMessageBoxData()
@@ -143,17 +127,26 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other)
         title_ = other.title_;
         message_ = other.message_;
         // Delete other's data
-        other.data_.flags = 0;
-        other.data_.window = nullptr;
-        other.data_.title = nullptr;
-        other.data_.message = nullptr;
-        other.data_.numbuttons = 0;
-        other.data_.buttons = nullptr;
-        other.data_.colorScheme = nullptr;
-        other.title_ = "";
-        other.message_ = "";
+        other.clear();
     }
     return *this;
+}
+
+void GfxMessageBoxData::clear(void)
+{
+    data_.flags = 0;
+    data_.window = nullptr;
+    title_ = "";
+    data_.title = "";
+    message_ = "";
+    data_.message = "'";
+    data_.numbuttons = 0;
+    if (btndataptr != nullptr)
+    {
+        delete btndataptr;
+        btndataptr = nullptr;
+    }
+    data_.colorScheme = nullptr;
 }
 
 GfxMessageBoxData::SdlType GfxMessageBoxData::getAsSdlType(void) const

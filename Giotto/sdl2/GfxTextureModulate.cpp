@@ -32,7 +32,7 @@ const char GfxTextureModulate::ClassName[] = "GfxTextureModulate";
 
 GfxTextureModulate::GfxTextureModulate() : GfxRootClass(ClassName)
 {
-    modulate_ = static_cast<SdlType>(GfxTextureModulateValues::modulateNone);
+    clear();
 }
 
 GfxTextureModulate::GfxTextureModulate(GfxTextureModulateValues flags) : GfxRootClass(ClassName)
@@ -59,7 +59,7 @@ GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) : GfxRootClas
 {
     modulate_ = other.modulate_;
     // Delete other's data
-    other.modulate_ = static_cast<SdlType>(GfxTextureModulateValues::modulateNone);
+    other.clear();
 }
 
 GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& other)
@@ -77,7 +77,7 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other)
     {
         modulate_ = other.modulate_;
         // Delete other's data
-        other.modulate_ = static_cast<SdlType>(GfxTextureModulateValues::modulateNone);
+        other.clear();
     }
     return *this;
 }
@@ -119,6 +119,11 @@ void GfxTextureModulate::setAlpha(void)
 void GfxTextureModulate::resetAlpha(void)
 {
     modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_ALPHA);
+}
+
+void GfxTextureModulate::clear(void)
+{
+    modulate_ = static_cast<SdlType>(GfxTextureModulateValues::modulateNone);
 }
 
 GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const

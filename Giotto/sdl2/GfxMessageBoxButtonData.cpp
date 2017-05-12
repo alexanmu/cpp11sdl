@@ -32,9 +32,7 @@ const char GfxMessageBoxButtonData::ClassName[] = "GfxMessageBoxButtonData";
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
 {
-    data_.flags = 0;
-    data_.buttonid = -1;
-    data_.text = nullptr;;
+    clear();
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
@@ -56,9 +54,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other
 {
     data_ = other.data_;
     // Delete other's data
-    other.data_.flags = 0;
-    other.data_.buttonid = -1;
-    other.data_.text = nullptr;
+    other.clear();
 }
 
 GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonData const& other)
@@ -76,9 +72,7 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
     {
         data_ = other.data_;
         // Delete other's data
-        other.data_.flags = 0;
-        other.data_.buttonid = -1;
-        other.data_.text = nullptr;
+        other.clear();
     }
     return *this;
 }
@@ -88,11 +82,18 @@ int GfxMessageBoxButtonData::getButtonId(void) const
     return data_.buttonid;
 }
 
-std::string GfxMessageBoxButtonData::getText(void) const
+const std::string GfxMessageBoxButtonData::getText(void) const
 {
     std::string text { data_.text };
 
     return text;
+}
+
+void GfxMessageBoxButtonData::clear(void)
+{
+    data_.flags = 0;
+    data_.buttonid = -1;
+    data_.text = nullptr;
 }
 
 GfxMessageBoxButtonData::SdlType GfxMessageBoxButtonData::getAsSdlType(void) const

@@ -57,7 +57,8 @@ public:
     int getHeight(void) const;
     int getRefreshRate(void) const;
 
-    void set(SdlType dm);
+    void set(const SdlType dm);
+    void clear(void);
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

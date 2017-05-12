@@ -68,6 +68,8 @@ public:
     void setBlue(const uint8_t b);
     void setAlpha(const uint8_t a);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

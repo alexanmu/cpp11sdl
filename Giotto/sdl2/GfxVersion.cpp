@@ -32,9 +32,7 @@ const char GfxVersion::ClassName[] = "GfxVersion";
 
 GfxVersion::GfxVersion() : GfxRootClass(ClassName)
 {
-    ver_.major = 0;
-    ver_.minor = 0;
-    ver_.patch = 0;
+    clear();
 }
 
 GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) : GfxRootClass(ClassName)
@@ -58,9 +56,7 @@ GfxVersion::GfxVersion(GfxVersion&& other) : GfxRootClass(ClassName)
 {
     ver_ = other.ver_;
     // Delete other's data
-    other.ver_.major = 0;
-    other.ver_.minor = 0;
-    other.ver_.patch = 0;
+    other.clear();
 }
 
 GfxVersion& GfxVersion::operator=(GfxVersion const& other)
@@ -78,9 +74,7 @@ GfxVersion& GfxVersion::operator=(GfxVersion&& other)
     {
         ver_ = other.ver_;
         // Delete other's data
-        other.ver_.major = 0;
-        other.ver_.minor = 0;
-        other.ver_.patch = 0;
+        other.clear();
     }
     return *this;
 }
@@ -103,6 +97,13 @@ uint8_t GfxVersion::getPatch(void) const
 void GfxVersion::set(const SdlType ver)
 {
     ver_ = ver;
+}
+
+void GfxVersion::clear(void)
+{
+    ver_.major = 0;
+    ver_.minor = 0;
+    ver_.patch = 0;
 }
 
 std::string GfxVersion::getAsString(void) const

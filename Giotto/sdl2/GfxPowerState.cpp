@@ -32,7 +32,7 @@ const char GfxPowerState::ClassName[] = "GfxPowerState";
 
 GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
 {
-    value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
+    clear();
 }
 
 GfxPowerState::GfxPowerState(const GfxPowerStateValues value) : GfxRootClass(ClassName)
@@ -54,7 +54,7 @@ GfxPowerState::GfxPowerState(GfxPowerState&& other) : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
-    other.value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
+    other.clear();
 }
 
 GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other)
@@ -72,7 +72,7 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
     {
         value_ = other.value_;
         // Delete other's value
-        other.value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
+        other.clear();
     }
     return *this;
 }
@@ -102,7 +102,12 @@ bool GfxPowerState::isCharged(void) const
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGED));
 }
 
-std::string GfxPowerState::getAsString() const
+void GfxPowerState::clear(void)
+{
+    value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
+}
+
+const std::string GfxPowerState::getAsString() const
 {
     std::string str;
 

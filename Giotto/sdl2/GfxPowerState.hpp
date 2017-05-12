@@ -66,7 +66,9 @@ public:
     bool isCharging(void) const;
     bool isCharged(void) const;
 
-    std::string getAsString(void) const;
+    void clear(void);
+
+    const std::string getAsString(void) const;
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;

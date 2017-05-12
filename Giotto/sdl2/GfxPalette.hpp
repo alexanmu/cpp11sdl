@@ -61,8 +61,6 @@ public:
     GfxPalette& operator=(GfxPalette&& other);
 
     /* Methods */
-    void freePalette(void);
-
     void setPaletteColors(const GfxColorVector& vec, const uint16_t firstColor);
     GfxColorVector getPaletteColors(void) const;
 
@@ -70,6 +68,8 @@ public:
     uint16_t getNumColors(void) const;
     uint32_t getVersion(void) const;
     int getRefCount(void) const;
+
+    void clear(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

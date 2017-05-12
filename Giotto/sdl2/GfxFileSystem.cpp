@@ -36,7 +36,7 @@ GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
     // Nothing to do
 }
 
-std::string GfxFileSystem::getBasePath(void) const
+const std::string GfxFileSystem::getBasePath(void) const
 {
     char * base_path = NULL;
     std::string str;
@@ -53,7 +53,7 @@ std::string GfxFileSystem::getBasePath(void) const
     return str;
 }
 
-std::string GfxFileSystem::getPrefPath(const std::string& organization, const std::string& appname) const
+const std::string GfxFileSystem::getPrefPath(const std::string& organization, const std::string& appname) const
 {
     char * base_path = NULL;
     std::string str;

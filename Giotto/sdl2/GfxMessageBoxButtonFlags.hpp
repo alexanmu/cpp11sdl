@@ -63,6 +63,8 @@ public:
     bool isReturnDefault(void) const;
     bool isEscDefault(void) const;
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

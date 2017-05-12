@@ -33,15 +33,7 @@ const char GfxRendererInfo::ClassName[] = "GfxRendererInfo";
 
 GfxRendererInfo::GfxRendererInfo() : GfxRootClass(ClassName)
 {
-    info_.name = nullptr;
-    info_.flags = 0;
-    info_.num_texture_formats = 0;
-    for (int i = 0; i < kTextureFormatsArrayLength; i++)
-    {
-        info_.texture_formats[i] = 0;
-    }
-    info_.max_texture_width = -1;
-    info_.max_texture_height = -1;
+    clear();
 }
 
 GfxRendererInfo::GfxRendererInfo(SdlType info) : GfxRootClass(ClassName)
@@ -58,15 +50,7 @@ GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) : GfxRootClass(ClassNa
 {
     info_ = other.info_;
     // Delete other's data
-    other.info_.name = nullptr;
-    other.info_.flags = 0;
-    other.info_.num_texture_formats = 0;
-    for (int i = 0; i < kTextureFormatsArrayLength; i++)
-    {
-        other.info_.texture_formats[i] = 0;
-    }
-    other.info_.max_texture_width = -1;
-    other.info_.max_texture_height = -1;
+    other.clear();
 }
 
 GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other)
@@ -84,15 +68,7 @@ GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other)
     {
         info_ = other.info_;
         // Delete other's data
-        other.info_.name = nullptr;
-        other.info_.flags = 0;
-        other.info_.num_texture_formats = 0;
-        for (int i = 0; i < kTextureFormatsArrayLength; i++)
-        {
-            other.info_.texture_formats[i] = 0;
-        }
-        other.info_.max_texture_width = -1;
-        other.info_.max_texture_height = -1;
+        other.clear();
     }
     return *this;
 }
@@ -149,6 +125,19 @@ int32_t GfxRendererInfo::getMaxTextureHeight(void) const
 void GfxRendererInfo::set(const SdlType info)
 {
     info_ = info;
+}
+
+void GfxRendererInfo::clear(void)
+{
+    info_.name = nullptr;
+    info_.flags = 0;
+    info_.num_texture_formats = 0;
+    for (int i = 0; i < kTextureFormatsArrayLength; i++)
+    {
+        info_.texture_formats[i] = 0;
+    }
+    info_.max_texture_width = -1;
+    info_.max_texture_height = -1;
 }
 
 GfxRendererInfo::SdlType GfxRendererInfo::getAsSdlType(void) const

@@ -32,10 +32,7 @@ const char GfxColor::ClassName[] = "GfxColor";
 
 GfxColor::GfxColor() : GfxRootClass(ClassName)
 {
-    clr_.r = 0;
-    clr_.g = 0;
-    clr_.b = 0;
-    clr_.a = 0xFF;
+    clear();
 }
 
 GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRootClass(ClassName)
@@ -71,10 +68,7 @@ GfxColor::GfxColor(GfxColor&& other) : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */
-    other.clr_.r = 0;
-    other.clr_.g = 0;
-    other.clr_.b = 0;
-    other.clr_.a = 0;
+    other.clear();
 }
 
 /* Delete copy and move assign operators */
@@ -92,10 +86,7 @@ GfxColor& GfxColor::operator=(GfxColor&& other)
     if (this != &other)
     {
         clr_ = other.clr_;
-        other.clr_.r = 0;
-        other.clr_.g = 0;
-        other.clr_.b = 0;
-        other.clr_.a = 0;
+        other.clear();
     }
     return *this;
 }
@@ -150,6 +141,14 @@ void GfxColor::setBlue(const uint8_t b)
 void GfxColor::setAlpha(const uint8_t a)
 {
     clr_.a = a;
+}
+
+void GfxColor::clear(void)
+{
+    clr_.r = 0;
+    clr_.g = 0;
+    clr_.b = 0;
+    clr_.a = 0xFF;
 }
 
 GfxColor::SdlType GfxColor::getAsSdlType() const

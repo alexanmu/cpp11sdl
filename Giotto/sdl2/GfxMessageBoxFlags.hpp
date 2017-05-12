@@ -66,6 +66,8 @@ public:
     bool isWarning(void) const;
     bool isInformation(void) const;
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

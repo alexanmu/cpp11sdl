@@ -32,7 +32,7 @@ const char GfxMessageBoxButtonFlags::ClassName[] = "GfxMessageBoxButtonFlags";
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass(ClassName)
 {
-    flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
+    clear();
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlagsValues flags) :
@@ -56,7 +56,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& ot
 {
     flags_ = other.flags_;
     // Delete other's data
-    other.flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
+    other.clear();
 }
 
 GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(const GfxMessageBoxButtonFlags& other)
@@ -74,7 +74,7 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
     {
         flags_ = other.flags_;
         // Delete other's data
-        other.flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
+        other.clear();
     }
     return *this;
 }
@@ -92,6 +92,11 @@ bool GfxMessageBoxButtonFlags::isReturnDefault(void) const
 bool GfxMessageBoxButtonFlags::isEscDefault(void) const
 {
     return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT);
+}
+
+void GfxMessageBoxButtonFlags::clear(void)
+{
+    flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
 }
 
 GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) const
