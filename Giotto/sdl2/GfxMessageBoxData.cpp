@@ -32,6 +32,7 @@ const char GfxMessageBoxData::ClassName[] = "GfxMessageBoxData";
 
 GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
 {
+    btndataptr = nullptr;
     clear();
 }
 
