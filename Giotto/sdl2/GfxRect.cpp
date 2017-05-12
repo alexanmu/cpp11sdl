@@ -59,10 +59,7 @@ GfxRect::GfxRect(const GfxRect& other) : GfxRootClass(ClassName)
 GfxRect::GfxRect(GfxRect&& other) : GfxRootClass(ClassName)
 {
     rect_ = other.rect_;
-    other.rect_.x = -1;
-    other.rect_.y = -1;
-    other.rect_.w = -1;
-    other.rect_.h = -1;
+    other.clear();
 }
 
 GfxRect& GfxRect::operator=(const GfxRect& other)
@@ -79,10 +76,7 @@ GfxRect& GfxRect::operator=(GfxRect&& other)
     if (this != &other)
     {
         rect_ = other.rect_;
-        other.rect_.x = -1;
-        other.rect_.y = -1;
-        other.rect_.w = -1;
-        other.rect_.h = -1;
+        other.clear();
     }
     return *this;
 }
@@ -137,6 +131,14 @@ void GfxRect::set(SdlType r)
 {
     rect_ = r;
 };
+
+void GfxRect::clear(void)
+{
+    rect_.x = -1;
+    rect_.y = -1;
+    rect_.w = -1;
+    rect_.h = -1;
+}
 
 GfxRect::SdlType GfxRect::getAsSdlType() const
 {

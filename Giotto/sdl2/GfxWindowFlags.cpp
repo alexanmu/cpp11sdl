@@ -32,7 +32,7 @@ const char GfxWindowFlags::ClassName[] = "GfxWindowFlags";
 
 GfxWindowFlags::GfxWindowFlags() : GfxRootClass(ClassName)
 {
-    flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
+    clear();
 }
 
 GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) : GfxRootClass(ClassName)
@@ -54,7 +54,7 @@ GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data
-    other.flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
+    other.clear();
 }
 
 GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other)
@@ -72,7 +72,7 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other)
     {
         flags_ = other.flags_;
         // Delete other's data
-        other.flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
+        other.clear();
     }
     return *this;
 }
@@ -423,6 +423,11 @@ void GfxWindowFlags::setPopupMenu(void)
 void GfxWindowFlags::resetPopupMenu(void)
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_POPUP_MENU);
+}
+
+void GfxWindowFlags::clear(void)
+{
+    flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
 }
 
 // SDL type access

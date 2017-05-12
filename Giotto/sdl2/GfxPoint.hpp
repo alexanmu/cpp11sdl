@@ -61,6 +61,8 @@ public:
     void setX(const uint16_t x);
     void setY(const uint16_t y);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

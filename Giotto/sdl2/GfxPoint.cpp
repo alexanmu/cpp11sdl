@@ -32,8 +32,7 @@ const char GfxPoint::ClassName[] = "GfxPoint";
 
 GfxPoint::GfxPoint() : GfxRootClass(ClassName)
 {
-    pt_.x = -1;
-    pt_.y = -1;
+    clear();
 }
 
 GfxPoint::GfxPoint(const uint16_t x, const uint16_t y) : GfxRootClass(ClassName)
@@ -56,8 +55,7 @@ GfxPoint::GfxPoint(GfxPoint&& other) : GfxRootClass(ClassName)
 {
     pt_ = other.pt_;
     /* Delete other's data */
-    other.pt_.x = -1;
-    other.pt_.y = -1;
+    other.clear();
 }
 
 /* No assignement operators */
@@ -76,8 +74,7 @@ GfxPoint& GfxPoint::operator=(GfxPoint&& other)
     {
         pt_ = other.pt_;
         // Delete other's data
-        other.pt_.x = -1;
-        other.pt_.y = -1;
+        other.clear();
     }
     return *this;
 }
@@ -105,6 +102,12 @@ void GfxPoint::setX(const uint16_t x)
 void GfxPoint::setY(const uint16_t y)
 {
     pt_.y = y;
+}
+
+void GfxPoint::clear(void)
+{
+    pt_.x = -1;
+    pt_.y = -1;
 }
 
 GfxPoint::SdlType GfxPoint::getAsSdlType(void) const

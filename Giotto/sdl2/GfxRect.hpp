@@ -64,6 +64,8 @@ public:
     void setHeight(const uint16_t h);
     void set(SdlType r);
 
+    void clear(void);
+
     SdlType getAsSdlType() const;
     SdlTypePtr getAsSdlTypePtr() const;
 private:

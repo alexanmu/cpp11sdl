@@ -67,6 +67,8 @@ public:
     bool isAdd(void) const;
     bool isMod(void) const;
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

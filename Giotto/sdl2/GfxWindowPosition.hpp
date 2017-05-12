@@ -59,6 +59,8 @@ public:
 
     void setCoordinate(uint32_t coord = -1);
     uint32_t getCoordinate(void) const;
+
+    void clear(void);
 private:
     GfxWindowPositionValues pos_;
     uint32_t coord_;

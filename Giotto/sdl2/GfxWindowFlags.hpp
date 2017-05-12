@@ -142,6 +142,8 @@ public:
     void setPopupMenu(void);
     void resetPopupMenu(void);
 
+    void clear(void);
+
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:

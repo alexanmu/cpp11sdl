@@ -27,6 +27,7 @@
 #include <cstdint>
 
 #include "GObject.hpp"
+#include "GfxRect.hpp"
 
 namespace giotto
 {
@@ -37,7 +38,7 @@ namespace objects
 class GPanel : public GObject
 {
 public:
-    GPanel();
+    GPanel() = delete;
 
     GPanel(GPanel const& other);
     GPanel(GPanel&& other);
@@ -45,12 +46,13 @@ public:
     GPanel& operator=(GPanel const& other);
     GPanel& operator=(GPanel&& other);
 
+    GPanel(gfx::GfxRect const& bounds);
+
     void drawObject(void);
+
+    void clear(void);
 private:
-    uint16_t left_;
-    uint16_t top_;
-    uint16_t width_;
-    uint16_t height_;
+    gfx::GfxRect bounds_;
 };
 
 }  // namespace objects

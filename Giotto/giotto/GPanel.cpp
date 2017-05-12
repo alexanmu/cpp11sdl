@@ -29,32 +29,28 @@ namespace giotto
 namespace objects
 {
 
-GPanel::GPanel() : GObject()
-{
-    //
-}
-
 GPanel::GPanel(GPanel const& other) : GObject()
 {
-    width_ = other.width_;
-    height_ = other.height_;
+    bounds_ = other.bounds_;
 }
 
 GPanel::GPanel(GPanel&& other) : GObject()
 {
-    width_ = other.width_;
-    height_ = other.height_;
+    bounds_ = other.bounds_;
     // Delete other's data
-    other.width_ = 0;
-    other.height_ = 0;
+    other.clear();
+}
+
+GPanel::GPanel(gfx::GfxRect const& bounds)
+{
+    bounds_ = bounds;
 }
 
 GPanel& GPanel::operator=(GPanel const& other)
 {
     if (this != &other)
     {
-        width_ = other.width_;
-        height_ = other.height_;
+        bounds_ = other.bounds_;
     }
     return *this;
 }
@@ -63,11 +59,9 @@ GPanel& GPanel::operator=(GPanel&& other)
 {
     if (this != &other)
     {
-        width_ = other.width_;
-        height_ = other.height_;
+        bounds_ = other.bounds_;
         // Delete other's data
-        other.width_ = 0;
-        other.height_ = 0;
+        other.clear();
     }
     return *this;
 }
@@ -75,6 +69,11 @@ GPanel& GPanel::operator=(GPanel&& other)
 void GPanel::drawObject(void)
 {
     //
+}
+
+void GPanel::clear(void)
+{
+    bounds_.clear();
 }
 
 }  // namespace objects

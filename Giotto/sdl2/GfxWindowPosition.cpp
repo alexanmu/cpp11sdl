@@ -32,8 +32,7 @@ const char GfxWindowPosition::ClassName[] = "GfxWindowPosition";
 
 GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
 {
-    pos_ = GfxWindowPositionValues::positionUndefined;
-    coord_ = -1;
+    clear();
 }
 
 GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord) : GfxRootClass(ClassName)
@@ -63,8 +62,7 @@ GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) : GfxRootClass(C
     pos_ = other.pos_;
     coord_ = other.coord_;
     // Delete other's data
-    other.pos_ = GfxWindowPositionValues::positionUndefined;
-    other.coord_ = -1;
+    other.clear();
 }
 
 GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other)
@@ -84,8 +82,7 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other)
         pos_ = other.pos_;
         coord_ = other.coord_;
         // Delete other's data
-        other.pos_ = GfxWindowPositionValues::positionUndefined;
-        other.coord_ = -1;
+        other.clear();
     }
     return *this;
 }
@@ -125,6 +122,12 @@ uint32_t GfxWindowPosition::getCoordinate(void) const
             break;
     }
     return ret;
+}
+
+void GfxWindowPosition::clear(void)
+{
+    pos_ = GfxWindowPositionValues::positionUndefined;
+    coord_ = -1;
 }
 
 }  // namespace gfx
