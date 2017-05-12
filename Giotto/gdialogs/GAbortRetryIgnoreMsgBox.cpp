@@ -39,15 +39,16 @@ namespace giotto
 namespace dialogs
 {
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent) : GObject(), parent_(parent)
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& name, GObject* parent) :
+        GObject(name), parent_(parent)
 {
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(GObject* parent, const std::string& title,
-        const std::string& message) : GObject(), parent_(parent)
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& name, GObject* parent,
+        const std::string& title, const std::string& message) : GObject(name), parent_(parent)
 {
     title_ = title;
     message_ = message;

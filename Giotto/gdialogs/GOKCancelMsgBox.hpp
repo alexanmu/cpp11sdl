@@ -38,9 +38,10 @@ namespace dialogs
 class GOKCancelMsgBox : public objects::GObject
 {
 public:
-    explicit GOKCancelMsgBox(GObject* parent);
+    explicit GOKCancelMsgBox(std::string const& name, GObject* parent);
 
-    GOKCancelMsgBox(GObject* parent, const std::string& title, const std::string& message);
+    GOKCancelMsgBox(std::string const& name, GObject* parent, const std::string& title,
+                    const std::string& message);
 
     GOKCancelMsgBox(GOKCancelMsgBox const&) = delete;
     GOKCancelMsgBox(GOKCancelMsgBox&&) = delete;

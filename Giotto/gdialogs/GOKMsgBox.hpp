@@ -38,16 +38,17 @@ namespace dialogs
 class GOKMsgBox : public objects::GObject
 {
 public:
-    explicit GOKMsgBox(GObject* parent);
-    
-    GOKMsgBox(GObject* parent, const std::string& title, const std::string& message);
-    
+    explicit GOKMsgBox(std::string const& name, GObject* parent);
+
+    GOKMsgBox(std::string const& name, GObject* parent, const std::string& title,
+                const std::string& message);
+
     GOKMsgBox(GOKMsgBox const&) = delete;
     GOKMsgBox(GOKMsgBox&&) = delete;
-    
+
     GOKMsgBox& operator=(GOKMsgBox const&) = delete;
     GOKMsgBox& operator=(GOKMsgBox&&) = delete;
-    
+
     void showModal(void);
     GDialogsConstants getSelection(void) const;
 private:

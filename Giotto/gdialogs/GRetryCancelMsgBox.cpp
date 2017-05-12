@@ -40,15 +40,16 @@ namespace giotto
 namespace dialogs
 {
 
-GRetryCancelMsgBox::GRetryCancelMsgBox(GObject* parent) : GObject(), parent_(parent)
+GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& name, GObject* parent) :
+        GObject(name), parent_(parent)
 {
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GRetryCancelMsgBox::GRetryCancelMsgBox(GObject* parent, const std::string& title,
-            const std::string& message) : GObject(), parent_(parent)
+GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& name, GObject* parent, const std::string& title,
+            const std::string& message) : GObject(name), parent_(parent)
 {
     title_ = title;
     message_ = message;

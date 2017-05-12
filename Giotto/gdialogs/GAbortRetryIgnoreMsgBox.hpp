@@ -37,9 +37,10 @@ namespace dialogs
 class GAbortRetryIgnoreMsgBox : public objects::GObject
 {
 public:
-    explicit GAbortRetryIgnoreMsgBox(GObject* parent);
+    explicit GAbortRetryIgnoreMsgBox(std::string const& name, GObject* parent);
 
-    GAbortRetryIgnoreMsgBox(GObject* parent, const std::string& title, const std::string& message);
+    GAbortRetryIgnoreMsgBox(std::string const& name, GObject* parent, const std::string& title,
+                            const std::string& message);
 
     GAbortRetryIgnoreMsgBox(GAbortRetryIgnoreMsgBox const&) = delete;
     GAbortRetryIgnoreMsgBox(GAbortRetryIgnoreMsgBox&&) = delete;

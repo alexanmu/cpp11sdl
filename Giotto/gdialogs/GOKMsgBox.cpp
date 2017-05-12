@@ -40,14 +40,16 @@ namespace giotto
 namespace dialogs
 {
 
-GOKMsgBox::GOKMsgBox(GObject* parent) : GObject(), parent_(parent)
+GOKMsgBox::GOKMsgBox(std::string const& name, GObject* parent) :
+        GObject(name), parent_(parent)
 {
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GOKMsgBox::GOKMsgBox(GObject* parent,const std::string& title, const std::string& message) : GObject(), parent_(parent)
+GOKMsgBox::GOKMsgBox(std::string const& name, GObject* parent, const std::string& title,
+        const std::string& message) : GObject(name), parent_(parent)
 {
     title_ = title;
     message_ = message;
@@ -57,26 +59,28 @@ GOKMsgBox::GOKMsgBox(GObject* parent,const std::string& title, const std::string
 void GOKMsgBox::showModal(void)
 {
     gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
-    
+
     gfx::GfxMessageBoxButtonData buttons[1] {
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                                         gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault), 1, "OK"),
+                                        gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault),
+                                        1, "OK"),
     };
-    
-    gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
+
+    gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(
+                                    gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
         gfx::GfxMessageBoxColor(255, 0, 0),
         gfx::GfxMessageBoxColor(250, 220, 190),
         gfx::GfxMessageBoxColor(192, 92, 9),
         gfx::GfxMessageBoxColor(50, 100, 200),
         gfx::GfxMessageBoxColor(255, 255, 255)
     };
-    
+
     gfx::GfxMessageBoxColorScheme colorScheme(colors);
-    
+
     gfx::GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 1, buttons, colorScheme);
-    
+
     gfx::GfxMessageBox messageBox(msgBoxData);
-    
+
     int result = messageBox.showModal();
     switch (result) {
         case 1:
