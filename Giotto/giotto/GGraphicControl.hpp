@@ -52,7 +52,7 @@ public:
     GGraphicControl& operator=(GGraphicControl const& other) = delete;
     GGraphicControl& operator=(GGraphicControl&& other) = delete;
 
-    explicit GGraphicControl(std::string const& name, GComponent* owner, gfx::GfxRect bounds);
+    explicit GGraphicControl(std::string const& name, GComponent* owner, uint16_t width, uint16_t height);
     virtual ~GGraphicControl();
 
     gfx::GfxSurface const& getSurface(void) const noexcept;

@@ -153,8 +153,8 @@ void GControl::adjustClientBounds(void) noexcept
         borderThikness = static_cast<uint8_t>(borderType_);
         clientBounds_.setX(bounds_.getX() + borderThikness);
         clientBounds_.setY(bounds_.getY() + borderThikness);
-        clientBounds_.setWidth(bounds_.getWidth() - borderThikness - 1);
-        clientBounds_.setHeight(bounds_.getHeight() - borderThikness - 1);
+        clientBounds_.setWidth(bounds_.getWidth() - 2 * borderThikness);
+        clientBounds_.setHeight(bounds_.getHeight() - 2 * borderThikness);
     }
 }
 

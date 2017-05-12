@@ -39,11 +39,11 @@ const gfx::GfxColor GGraphicControl::kDefaultBackgroundColor { 0x00, 0x00, 0x00,
 const gfx::GfxColor GGraphicControl::kDefaultBorderLightColor { 0xC0, 0xC0, 0xC0, 0xFF };
 const gfx::GfxColor GGraphicControl::kDefaultBorderShadowColor { 0x60, 0x60, 0x60, 0xFF };
 
-GGraphicControl::GGraphicControl(std::string const& name, GComponent* owner, gfx::GfxRect bounds) :
+GGraphicControl::GGraphicControl(std::string const& name, GComponent* owner, uint16_t width, uint16_t height) :
         GControl(name, owner), surf_(gfx::GfxSurfaceFlags(gfx::GfxSurfaceFlags::GfxSurfaceFlagsValues::flagSwSurface),
-                                    bounds.getWidth(), bounds.getHeight())
+                                    width, height)
 {
-    setBounds(bounds);
+    setBounds(gfx::GfxRect(0,0, width, height));
     foregroundColor_ = kDefaultForegroundColor;
     backgroundColor_ = kDefaultBackgroundColor;
     borderLightColor_ = kDefaultBorderLightColor;
@@ -118,23 +118,23 @@ void GGraphicControl::drawBorder(void) noexcept
     gfx::GfxRect south;
     uint8_t thikness = static_cast<uint8_t>(borderType_);
 
-    east.setX(bounds_.getX());
-    east.setY(bounds_.getY());
+    east.setX(0);
+    east.setY(0);
     east.setWidth(thikness);
     east.setHeight(bounds_.getHeight());
 
-    north.setX(bounds_.getX());
-    north.setY(bounds_.getY());
+    north.setX(0);
+    north.setY(0);
     north.setWidth(bounds_.getWidth() - 1);
     north.setHeight(thikness);
 
-    south.setX(bounds_.getX() + 1);
-    south.setY(bounds_.getY() + bounds_.getHeight() - thikness);
+    south.setX(1);
+    south.setY(bounds_.getHeight() - thikness);
     south.setWidth(bounds_.getWidth() - 1);
     south.setHeight(thikness);
 
-    west.setX(bounds_.getX() + bounds_.getWidth() - thikness);
-    west.setY(bounds_.getY());
+    west.setX(bounds_.getWidth() - thikness);
+    west.setY(0);
     west.setWidth(thikness);
     west.setHeight(bounds_.getHeight());
 

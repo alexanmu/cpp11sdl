@@ -93,13 +93,13 @@ void GDemoForm::draw(void)
     window_.get()->setWindowIcon(surf);
 
     /*************************************************************************************************/
-    giotto::objects::GGraphicControl g(GVarName(g), nullptr, gfx::GfxRect(0, 0, 50, 50));
-    g.setBorder(giotto::objects::GControl::GBorderType::thinBorder);
+    giotto::objects::GGraphicControl g(GVarName(g), nullptr, 50, 50);
+    g.setBorder(giotto::objects::GControl::GBorderType::thikBorder);
     g.setBorderLightColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
     g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
     g.draw();
-    windowsurface_->blitSurface(g.getSurface());
+    windowsurface_->blitSurface(g.getSurface(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
     GForm::draw();
 }
 
