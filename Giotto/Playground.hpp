@@ -31,11 +31,14 @@
 class Playground
 {
 public:
+    void _doPlayground(void);
+protected:
     void _doBenchmark(void);
     void _doFonts(void);
     void _doPaletteSdl(void);
     void _doPaletteGfx(void);
     void _doCallback(void);
+    void _doComponent(void);
 private:
     void DoAlgo(int algo_index);
 

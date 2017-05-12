@@ -37,6 +37,9 @@
 #include "GOKCancelMsgBox.hpp"
 #include "GQuitCancelMsgBox.hpp"
 #include "GfxSurface.hpp"
+#include "GGraphicControl.hpp"
+#include "GfxRect.hpp"
+#include "GControl.hpp"
 
 uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -80,20 +83,29 @@ GDemoForm::GDemoForm(const std::string& appName) : giotto::objects::GForm(appNam
 void GDemoForm::draw(void)
 {
     auto canvas = getCanvas();
-    canvas->Bar(gfx::GfxRect(0, 0, 100, 100), gfx::GfxColor(200, 200, 200));
-    canvas->Line(gfx::GfxPoint(10, 10), gfx::GfxPoint(10, 90), gfx::bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(gfx::GfxPoint(10, 10), gfx::GfxPoint(90, 10), gfx::bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(gfx::GfxPoint(90, 10), gfx::GfxPoint(90, 90), gfx::bgi::GfxBgiConstants::vgaDarkGray());
-    canvas->Line(gfx::GfxPoint(10, 90), gfx::GfxPoint(90, 90), gfx::bgi::GfxBgiConstants::vgaDarkGray());
-    GForm::draw();
+    canvas->Bar(gfx::GfxRect(0, 0, 300, 300), gfx::GfxColor(200, 200, 200));
+    canvas->Line(gfx::GfxPoint(110, 110), gfx::GfxPoint(110, 190), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::GfxPoint(110, 110), gfx::GfxPoint(190, 110), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::GfxPoint(190, 110), gfx::GfxPoint(190, 190), gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    canvas->Line(gfx::GfxPoint(110, 190), gfx::GfxPoint(190, 190), gfx::bgi::GfxBgiConstants::vgaDarkGray());
 
     auto surf = gfx::GfxSurface(pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
     window_.get()->setWindowIcon(surf);
+
+    /*************************************************************************************************/
+    giotto::objects::GGraphicControl g(GVarName(g), nullptr, gfx::GfxRect(0, 0, 50, 50));
+    g.setBorder(giotto::objects::GControl::GBorderType::thinBorder);
+    g.setBorderLightColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+    g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
+    g.draw();
+    windowsurface_->blitSurface(g.getSurface());
+    GForm::draw();
 }
 
 void GDemoForm::run(void)
 {
-    giotto::dialogs::GQuitCancelMsgBox g(this, "Error", "An error occured. What should I do?");
+    giotto::dialogs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "An error occured. What should I do?");
     g.showModal();
 
     giotto::dialogs::GDialogsConstants sel;

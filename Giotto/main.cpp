@@ -530,11 +530,7 @@ void _doPlay(void)
 {
     Playground p;
 
-    // p._doBenchmark();
-    // p._doFonts();
-    // p._doPaletteSdl();
-    // p._doPaletteGfx();
-    p._doCallback();
+    p._doPlayground();
 }
 
 #include "GApplication.hpp"
@@ -542,8 +538,8 @@ void _doPlay(void)
 
 void _doGApp(void)
 {
-    giotto::objects::GApplication gApp;
-    std::shared_ptr<GDemoForm> demoForm = std::make_shared<GDemoForm>("GDemoForm");
+    giotto::objects::GApplication gApp(GVarName(gApp));
+    GDemoForm* demoForm = new GDemoForm("GDemoForm");
 
     gApp.setMainForm(demoForm);
     gApp.loadAppConfiguration();
