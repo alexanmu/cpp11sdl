@@ -23,15 +23,18 @@
 
 #include "GObject.hpp"
 
+#include <string>
+
 namespace giotto
 {
 
 namespace objects
 {
 
-GObject::GObject()
+GObject::GObject(std::string const& name)
 {
     inittype_ = GInitType::defaultCtor;
+    name_ = name;
 }
 
 GObject::GObject(GObject const& other)
@@ -79,6 +82,11 @@ bool GObject::operator==(GObject const& other)
         return false;
     }
     return true;
+}
+
+const std::string& GObject::getName(void) const
+{
+    return name_;
 }
 
 }  // namespace objects

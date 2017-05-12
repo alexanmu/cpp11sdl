@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GApplication.hpp"
 
 namespace giotto
@@ -29,7 +31,7 @@ namespace giotto
 namespace objects
 {
 
-GApplication::GApplication() : GObject()
+GApplication::GApplication(std::string const& name) : GObject(name)
 {
     mainForm_ = nullptr;
     iq_ = nullptr;
@@ -43,7 +45,7 @@ GApplication::~GApplication()
     }
 }
 
-void GApplication::setMainForm(GForm::SharedPtr mainForm)
+void GApplication::setMainForm(GForm * mainForm)
 {
     mainForm_ = mainForm;
 }
@@ -52,7 +54,7 @@ void GApplication::loadAppConfiguration(void)
 {
     if (mainForm_ != nullptr)
     {
-        mainForm_.get()->loadResources();
+        mainForm_->loadResources();
     }
 }
 
@@ -65,10 +67,10 @@ void GApplication::run()
     }
     if (mainForm_ != nullptr)
     {
-        mainForm_.get()->create();
-        mainForm_.get()->draw();
-        mainForm_.get()->run();
-        mainForm_.get()->close();
+        mainForm_->create();
+        mainForm_->draw();
+        mainForm_->run();
+        mainForm_->close();
     }
 }
 

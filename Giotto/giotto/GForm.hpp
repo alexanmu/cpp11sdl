@@ -42,9 +42,10 @@ class GForm : public GObject
 public:
     typedef std::shared_ptr<GForm> SharedPtr;
 
-    GForm();
-    explicit GForm(const std::string& title);
+    explicit GForm(std::string const& name);
+    explicit GForm(std::string const& name, std::string const& title);
 
+    GForm() = delete;
     GForm(GForm const&) = delete;
     GForm(GForm&&) = delete;
 
@@ -65,6 +66,7 @@ public:
     std::shared_ptr<gfx::bgi::GfxCanvas> getCanvas(void);
 protected:
     std::shared_ptr<gfx::GfxWindow> window_;
+    gfx::GfxSurface* windowsurface_;
 
 private:
     std::string title_;

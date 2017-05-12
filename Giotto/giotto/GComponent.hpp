@@ -21,14 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GPanel_hpp
-#define GPanel_hpp
+#ifndef GComponent_hpp
+#define GComponent_hpp
 
 #include <cstdint>
+#include <vector>
 #include <string>
+#include <stdexcept>
 
-#include "GGraphicControl.hpp"
-#include "GfxRect.hpp"
+#include "GObject.hpp"
 
 namespace giotto
 {
@@ -36,28 +37,41 @@ namespace giotto
 namespace objects
 {
 
-class GPanel : public GGraphicControl
+class GComponent : public GObject
 {
 public:
-    GPanel() = delete;
+    GComponent() = delete;
 
-    GPanel(GPanel const& other) = delete;
-    GPanel(GPanel&& other) = delete;
+    GComponent(GComponent const& other) = delete;
+    GComponent(GComponent&& other) = delete;
 
-    GPanel& operator=(GPanel const& other) = delete;
-    GPanel& operator=(GPanel&& other) = delete;
+    GComponent& operator=(GComponent const& other) = delete;
+    GComponent& operator=(GComponent&& other) = delete;
 
-    explicit GPanel(std::string const& name, GComponent* owner, gfx::GfxRect bounds);
+    explicit GComponent(std::string const& name, GComponent* owner);
+    virtual ~GComponent();
 
-    void draw(void);
+    GComponent* getParentComponent(void) const noexcept;
+    bool hasParent(void) const noexcept;
 
-    void clear(void);
-private:
-    gfx::GfxRect bounds_;
+    bool equals(GObject * object);
+
+    void insertComponent(GComponent * const component) throw(std::invalid_argument);
+    void removeComponent(GComponent * const component) throw(std::invalid_argument);
+    GComponent* findComponent(const std::string& name);
+
+    uint64_t getTag(void) const noexcept;
+    void setTag(uint64_t tag) noexcept;
+protected:
+    uint64_t tag_;
+    GComponent* owner_;
+
+    uint32_t componentCount_;
+    std::vector<GComponent *> components_;
 };
 
 }  // namespace objects
 
 }  // namespace giotto
 
-#endif /* GObject_hpp */
+#endif /* GComponent_hpp */

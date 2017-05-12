@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GPanel.hpp"
 
 namespace giotto
@@ -29,44 +31,12 @@ namespace giotto
 namespace objects
 {
 
-GPanel::GPanel(GPanel const& other) : GObject()
+GPanel::GPanel(std::string const& name, GComponent* owner, gfx::GfxRect bounds) :
+        GGraphicControl(name, owner, bounds)
 {
-    bounds_ = other.bounds_;
 }
 
-GPanel::GPanel(GPanel&& other) : GObject()
-{
-    bounds_ = other.bounds_;
-    // Delete other's data
-    other.clear();
-}
-
-GPanel::GPanel(gfx::GfxRect const& bounds)
-{
-    bounds_ = bounds;
-}
-
-GPanel& GPanel::operator=(GPanel const& other)
-{
-    if (this != &other)
-    {
-        bounds_ = other.bounds_;
-    }
-    return *this;
-}
-
-GPanel& GPanel::operator=(GPanel&& other)
-{
-    if (this != &other)
-    {
-        bounds_ = other.bounds_;
-        // Delete other's data
-        other.clear();
-    }
-    return *this;
-}
-
-void GPanel::drawObject(void)
+void GPanel::draw(void)
 {
     //
 }

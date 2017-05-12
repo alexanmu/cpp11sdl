@@ -33,24 +33,30 @@ namespace giotto
 namespace objects
 {
 
-GForm::GForm() : GObject()
+GForm::GForm(std::string const& name) : GObject(name)
 {
     title_ = "GForm";
     window_ = nullptr;
     canvas_ = nullptr;
     canvasInUse_ = false;
+    windowsurface_ = nullptr;
 }
 
-GForm::GForm(const std::string& title) : GObject()
+GForm::GForm(std::string const& name, std::string const& title) : GObject(name)
 {
     title_ = title;
     window_ = nullptr;
     canvas_ = nullptr;
     canvasInUse_ = false;
+    windowsurface_ = nullptr;
 }
 
 GForm::~GForm()
 {
+    if (windowsurface_ != nullptr)
+    {
+        delete windowsurface_;
+    }
     if (window_ != nullptr)
     {
         window_.get()->~GfxWindow();
@@ -96,8 +102,8 @@ std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getCanvas(void)
 {
     if (window_ != nullptr)
     {
-        gfx::GfxSurface* srf = window_->getWindowSurface();
-        canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(*srf);
+        windowsurface_ = window_->getWindowSurface();
+        canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(*windowsurface_);
         canvasInUse_ = true;
 
         return canvas_;

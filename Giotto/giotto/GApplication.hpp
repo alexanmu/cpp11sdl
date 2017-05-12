@@ -40,7 +40,7 @@ namespace objects
 class GApplication : public GObject
 {
 public:
-    GApplication();
+    GApplication() = delete;
 
     GApplication(GApplication const&) = delete;
     GApplication(GApplication&&) = delete;
@@ -48,14 +48,15 @@ public:
     GApplication& operator=(GApplication const&) = delete;
     GApplication& operator=(GApplication&&) = delete;
 
+    explicit GApplication(std::string const& name);
     ~GApplication();
 
-    void setMainForm(GForm::SharedPtr mainForm);
+    void setMainForm(GForm * mainForm);
 
     void loadAppConfiguration(void);
     void run(void);
 private:
-    GForm::SharedPtr mainForm_;
+    GForm* mainForm_;
     gfx::GfxInitQuit* iq_;
 };
 
