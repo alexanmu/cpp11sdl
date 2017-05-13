@@ -36,7 +36,7 @@ GControl::GControl(std::string const& name, GComponent* owner) : GComponent(name
     bounds_.clear();
     clientBounds_.clear();
     enabled_ = false;
-    borderType_ = kDefaultBorderType;
+    borderThikness_ = kDefaultBorderThikness;
     hint_.clear();
     showHint_ = false;
     visible_ = false;
@@ -74,15 +74,15 @@ bool GControl::getEnabled(void) const noexcept
     return enabled_;
 }
 
-void GControl::setBorder(GBorderType bordertype) noexcept
+void GControl::setBorderThikness(GBorderThikness borderthikness) noexcept
 {
-    borderType_ = bordertype;
+    borderThikness_ = borderthikness;
     adjustClientBounds();
 }
 
-bool GControl::hasBorder(void) const noexcept
+GBorderThikness GControl::getBorderThikness(void) const noexcept
 {
-    return (borderType_ != GBorderType::noBorder);
+    return borderThikness_;
 }
 
 void GControl::setHint(std::string const& hint) noexcept
@@ -144,13 +144,13 @@ void GControl::adjustClientBounds(void) noexcept
 {
     uint8_t borderThikness;
 
-    if (borderType_ == GBorderType::noBorder)
+    if (borderThikness_ == GBorderThikness::noBorder)
     {
         clientBounds_ = bounds_;
     }
     else
     {
-        borderThikness = static_cast<uint8_t>(borderType_);
+        borderThikness = static_cast<uint8_t>(borderThikness_);
         clientBounds_.setX(bounds_.getX() + borderThikness);
         clientBounds_.setY(bounds_.getY() + borderThikness);
         clientBounds_.setWidth(bounds_.getWidth() - 2 * borderThikness);

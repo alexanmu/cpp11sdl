@@ -29,6 +29,7 @@
 #include <string>
 #include <stdexcept>
 
+#include "GTypes.hpp"
 #include "GComponent.hpp"
 #include "GfxRect.hpp"
 
@@ -41,13 +42,6 @@ namespace objects
 class GControl : public GComponent
 {
 public:
-    enum class GBorderType : uint8_t
-    {
-        noBorder = 0,
-        thinBorder = 1,
-        thikBorder = 2
-    };
-
     GControl() = delete;
 
     GControl(GControl const& other) = delete;
@@ -66,8 +60,8 @@ public:
     void setEnabled(void) noexcept;
     bool getEnabled(void) const noexcept;
 
-    void setBorder(GBorderType bordertype) noexcept;
-    bool hasBorder(void) const noexcept;
+    void setBorderThikness(GBorderThikness borderthikness) noexcept;
+    GBorderThikness getBorderThikness(void) const noexcept;
 
     void setHint(std::string const& hint) noexcept;
     std::string const& getHint(void) const noexcept;
@@ -88,12 +82,12 @@ protected:
     gfx::GfxRect bounds_;
     gfx::GfxRect clientBounds_;
     bool enabled_;
-    GBorderType borderType_;
+    GBorderThikness borderThikness_;
     std::string hint_;
     bool showHint_;
     bool visible_;
 private:
-    static const GBorderType kDefaultBorderType = GBorderType::noBorder;
+    static const GBorderThikness kDefaultBorderThikness = GBorderThikness::noBorder;
 
     void adjustClientBounds(void) noexcept;
 };

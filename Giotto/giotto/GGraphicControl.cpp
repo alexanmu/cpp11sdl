@@ -102,7 +102,7 @@ void GGraphicControl::setBorderShadowColor(gfx::GfxColor const& color) noexcept
 
 void GGraphicControl::draw(void)
 {
-    if (hasBorder() == true)
+    if (getBorderThikness() != GBorderThikness::noBorder)
     {
         drawBorder();
     }
@@ -142,7 +142,7 @@ void GGraphicControl::drawBorder(void) noexcept
     surf_.fillRect(west, borderShadowColor_);
     surf_.fillRect(south, borderShadowColor_);
 
-    if (borderType_ == GBorderType::thikBorder)
+    if (borderThikness_ == GBorderThikness::thikBorder)
     {
         east.setX(1);
         east.setY(1);
