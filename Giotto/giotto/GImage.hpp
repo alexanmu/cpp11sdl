@@ -29,7 +29,6 @@
 
 #include "GComponent.hpp"
 #include "GGraphicControl.hpp"
-#include "GfxSurface.hpp"
 #include "GTypes.hpp"
 
 namespace giotto

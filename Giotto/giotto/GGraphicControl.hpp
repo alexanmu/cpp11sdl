@@ -32,7 +32,7 @@
 #include "GComponent.hpp"
 #include "GControl.hpp"
 #include "GfxRect.hpp"
-#include "GfxSurface.hpp"
+#include "GfxControlledSurface.hpp"
 #include "GfxColor.hpp"
 
 namespace giotto
@@ -55,7 +55,7 @@ public:
     explicit GGraphicControl(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height);
     virtual ~GGraphicControl();
 
-    gfx::GfxSurface const& getSurface(void) const noexcept;
+    gfx::supp::GfxControlledSurface const& getSurface(void) const noexcept;
 
     gfx::GfxColor const& getForegroundColor(void) const noexcept;
     void setForegroundColor(gfx::GfxColor const& color) noexcept;
@@ -71,7 +71,7 @@ public:
 
     virtual void draw(void);
 protected:
-    gfx::GfxSurface surf_;
+    gfx::supp::GfxControlledSurface surf_;
     gfx::GfxColor backgroundColor_;
     gfx::GfxColor foregroundColor_;
     gfx::GfxColor borderColor_;

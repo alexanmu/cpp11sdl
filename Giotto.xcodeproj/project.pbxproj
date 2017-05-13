@@ -57,6 +57,7 @@
 		195F7A211EACFBCB00C11D9F /* GfxVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 195F7A1F1EACFBCB00C11D9F /* GfxVideo.cpp */; };
 		197AA66B1EC6DD6700EE956F /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197AA6691EC6DD6700EE956F /* GTypes.cpp */; };
 		197AA66E1EC6FA6500EE956F /* GImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197AA66C1EC6FA6500EE956F /* GImage.cpp */; };
+		197AA6711EC7009900EE956F /* GfxControlledSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197AA66F1EC7009900EE956F /* GfxControlledSurface.cpp */; };
 		197D66471EAB41BF009B5EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66441EAB41BF009B5EBB /* main.cpp */; };
 		197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66451EAB41BF009B5EBB /* Playground.cpp */; };
 		1995962D1EAB653A00B414E5 /* GfxMessageBoxData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995962B1EAB653A00B414E5 /* GfxMessageBoxData.cpp */; };
@@ -210,6 +211,8 @@
 		197AA66A1EC6DD6700EE956F /* GTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GTypes.hpp; path = giotto/GTypes.hpp; sourceTree = "<group>"; };
 		197AA66C1EC6FA6500EE956F /* GImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GImage.cpp; path = giotto/GImage.cpp; sourceTree = "<group>"; };
 		197AA66D1EC6FA6500EE956F /* GImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GImage.hpp; path = giotto/GImage.hpp; sourceTree = "<group>"; };
+		197AA66F1EC7009900EE956F /* GfxControlledSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxControlledSurface.cpp; path = supp/GfxControlledSurface.cpp; sourceTree = "<group>"; };
+		197AA6701EC7009900EE956F /* GfxControlledSurface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxControlledSurface.hpp; path = supp/GfxControlledSurface.hpp; sourceTree = "<group>"; };
 		197D66441EAB41BF009B5EBB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Giotto/main.cpp; sourceTree = SOURCE_ROOT; };
 		197D66451EAB41BF009B5EBB /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = Giotto/Playground.cpp; sourceTree = SOURCE_ROOT; };
 		197D66461EAB41BF009B5EBB /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = Giotto/Playground.hpp; sourceTree = SOURCE_ROOT; };
@@ -298,15 +301,16 @@
 			isa = PBXGroup;
 			children = (
 				19B352051EB50E040020DCF4 /* GDemoForm.cpp */,
-				19B352061EB50E040020DCF4 /* GDemoForm.hpp */,
 				197D66441EAB41BF009B5EBB /* main.cpp */,
 				197D66451EAB41BF009B5EBB /* Playground.cpp */,
+				19B352061EB50E040020DCF4 /* GDemoForm.hpp */,
 				197D66461EAB41BF009B5EBB /* Playground.hpp */,
 				194410C51EAB4AC20064A6AA /* bgi */,
 				192A5B351EB4E0C3003BDDD1 /* gdialogs */,
 				192A5B311EB4DE91003BDDD1 /* giotto */,
 				194410C61EAB4B0D0064A6AA /* platform */,
 				19BD5B5C1E9125F10043F8E1 /* sdl2 */,
+				197AA6721EC7009F00EE956F /* supp */,
 			);
 			path = Giotto;
 			sourceTree = "<group>";
@@ -408,6 +412,15 @@
 				195F7A121EACC94600C11D9F /* Windows.h */,
 			);
 			name = platform;
+			sourceTree = "<group>";
+		};
+		197AA6721EC7009F00EE956F /* supp */ = {
+			isa = PBXGroup;
+			children = (
+				197AA66F1EC7009900EE956F /* GfxControlledSurface.cpp */,
+				197AA6701EC7009900EE956F /* GfxControlledSurface.hpp */,
+			);
+			name = supp;
 			sourceTree = "<group>";
 		};
 		19BD5B5C1E9125F10043F8E1 /* sdl2 */ = {
@@ -583,6 +596,7 @@
 				195F7A181EACCFD200C11D9F /* GfxDisplayMode.cpp in Sources */,
 				192A5B301EB4D74F003BDDD1 /* GfxTextureAccess.cpp in Sources */,
 				192A5B3B1EB4E1DB003BDDD1 /* GDialogsConstants.cpp in Sources */,
+				197AA6711EC7009900EE956F /* GfxControlledSurface.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				190E5C8F1EB23A290045C666 /* GfxGetRendererInfo.cpp in Sources */,
 				79E93E851EC56D81009729C5 /* GPanel.cpp in Sources */,

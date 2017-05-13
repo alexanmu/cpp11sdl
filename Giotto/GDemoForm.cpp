@@ -100,7 +100,7 @@ void GDemoForm::draw(void)
     g.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
     g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
     g.draw();
-    windowsurface_->blitSurface(g.getSurface(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
+    windowsurface_->blitSurface(g.getSurface().getUnderlyingSurface(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
     GForm::draw();
 }
 

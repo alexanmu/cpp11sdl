@@ -30,6 +30,7 @@
 #include "GObject.hpp"
 #include "GfxCanvas.hpp"
 #include "GfxWindow.hpp"
+#include "GfxSurface.hpp"
 
 namespace giotto
 {

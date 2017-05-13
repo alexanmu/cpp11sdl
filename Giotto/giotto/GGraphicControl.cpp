@@ -25,7 +25,6 @@
 
 #include "GGraphicControl.hpp"
 #include "GComponent.hpp"
-#include "GfxSurfaceFlags.hpp"
 #include "GfxRect.hpp"
 
 namespace giotto
@@ -40,8 +39,7 @@ const gfx::GfxColor GGraphicControl::kDefaultBorderColor { 0xC0, 0xC0, 0xC0, 0xF
 const gfx::GfxColor GGraphicControl::kDefaultBorderShadowColor { 0x60, 0x60, 0x60, 0xFF };
 
 GGraphicControl::GGraphicControl(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
-        GControl(vname, owner), surf_(gfx::GfxSurfaceFlags(gfx::GfxSurfaceFlags::GfxSurfaceFlagsValues::flagSwSurface),
-                                    width, height)
+        GControl(vname, owner), surf_(width, height)
 {
     setBounds(gfx::GfxRect(0,0, width, height));
     foregroundColor_ = kDefaultForegroundColor;
@@ -55,7 +53,7 @@ GGraphicControl::~GGraphicControl()
     // nothing to do yet
 }
 
-gfx::GfxSurface const& GGraphicControl::getSurface(void) const noexcept
+gfx::supp::GfxControlledSurface const& GGraphicControl::getSurface(void) const noexcept
 {
     return surf_;
 }
