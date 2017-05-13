@@ -39,6 +39,13 @@ enum class GBorderThikness : uint8_t
     thikBorder = 2
 };
 
+enum class GBorderStyle : uint8_t
+{
+    flatBorder = 0,
+    raised3DBorder = 1,
+    sunken3DBorder = 2
+};
+
 }  // namespace objects
 
 }  // namespace giotto

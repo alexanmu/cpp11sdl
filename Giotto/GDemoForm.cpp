@@ -95,8 +95,9 @@ void GDemoForm::draw(void)
     /*************************************************************************************************/
     giotto::objects::GGraphicControl g(GVarName(g), nullptr, 50, 50);
     g.setBorderThikness(giotto::objects::GBorderThikness::thikBorder);
-    g.setBorderLightColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+    g.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    g.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
     g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
     g.draw();
     windowsurface_->blitSurface(g.getSurface(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));

@@ -60,8 +60,11 @@ public:
     void setEnabled(void) noexcept;
     bool getEnabled(void) const noexcept;
 
-    void setBorderThikness(GBorderThikness borderthikness) noexcept;
+    void setBorderThikness(const GBorderThikness borderthikness) noexcept;
     GBorderThikness getBorderThikness(void) const noexcept;
+
+    void setBorderStyle(const GBorderStyle borderstyle) noexcept;
+    GBorderStyle getBorderStyle(void) const noexcept;
 
     void setHint(std::string const& hint) noexcept;
     std::string const& getHint(void) const noexcept;
@@ -83,11 +86,13 @@ protected:
     gfx::GfxRect clientBounds_;
     bool enabled_;
     GBorderThikness borderThikness_;
+    GBorderStyle borderStyle_;
     std::string hint_;
     bool showHint_;
     bool visible_;
 private:
     static const GBorderThikness kDefaultBorderThikness = GBorderThikness::noBorder;
+    static const GBorderStyle kDefaultBorderStyle = GBorderStyle::flatBorder;
 
     void adjustClientBounds(void) noexcept;
 };

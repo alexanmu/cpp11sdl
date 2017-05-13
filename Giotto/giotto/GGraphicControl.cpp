@@ -36,7 +36,7 @@ namespace objects
 
 const gfx::GfxColor GGraphicControl::kDefaultForegroundColor { 0xFF, 0xFF, 0xFF, 0xFF };
 const gfx::GfxColor GGraphicControl::kDefaultBackgroundColor { 0x00, 0x00, 0x00, 0xFF };
-const gfx::GfxColor GGraphicControl::kDefaultBorderLightColor { 0xC0, 0xC0, 0xC0, 0xFF };
+const gfx::GfxColor GGraphicControl::kDefaultBorderColor { 0xC0, 0xC0, 0xC0, 0xFF };
 const gfx::GfxColor GGraphicControl::kDefaultBorderShadowColor { 0x60, 0x60, 0x60, 0xFF };
 
 GGraphicControl::GGraphicControl(std::string const& name, GComponent* owner, uint16_t width, uint16_t height) :
@@ -46,7 +46,7 @@ GGraphicControl::GGraphicControl(std::string const& name, GComponent* owner, uin
     setBounds(gfx::GfxRect(0,0, width, height));
     foregroundColor_ = kDefaultForegroundColor;
     backgroundColor_ = kDefaultBackgroundColor;
-    borderLightColor_ = kDefaultBorderLightColor;
+    borderColor_ = kDefaultBorderColor;
     borderShadowColor_ = kDefaultBorderShadowColor;
 }
 
@@ -80,14 +80,14 @@ void GGraphicControl::setBackgroundColor(gfx::GfxColor const& color) noexcept
     backgroundColor_ = color;
 }
 
-gfx::GfxColor const& GGraphicControl::getBorderLightColor(void) const noexcept
+gfx::GfxColor const& GGraphicControl::getBorderColor(void) const noexcept
 {
-    return borderLightColor_;
+    return borderColor_;
 }
 
-void GGraphicControl::setBorderLightColor(gfx::GfxColor const& color) noexcept
+void GGraphicControl::setBorderColor(gfx::GfxColor const& color) noexcept
 {
-    borderLightColor_ = color;
+    borderColor_ = color;
 }
 
 gfx::GfxColor const& GGraphicControl::getBorderShadowColor(void) const noexcept
@@ -117,6 +117,24 @@ void GGraphicControl::drawBorder(void) noexcept
     gfx::GfxRect north;
     gfx::GfxRect south;
 
+    gfx::GfxColor color1;
+    gfx::GfxColor color2;
+
+    switch (borderStyle_)
+    {
+        case GBorderStyle::flatBorder:
+            color1 = borderColor_;
+            color2 = borderColor_;
+            break;
+        case GBorderStyle::raised3DBorder:
+            color1 = borderColor_;
+            color2 = borderShadowColor_;
+            break;
+        case GBorderStyle::sunken3DBorder:
+            color1 = borderShadowColor_;
+            color2 = borderColor_;
+            break;
+    }
     east.setX(0);
     east.setY(0);
     east.setWidth(1);
@@ -137,10 +155,10 @@ void GGraphicControl::drawBorder(void) noexcept
     west.setWidth(1);
     west.setHeight(bounds_.getHeight() - 1);
 
-    surf_.fillRect(east, borderLightColor_);
-    surf_.fillRect(north, borderLightColor_);
-    surf_.fillRect(west, borderShadowColor_);
-    surf_.fillRect(south, borderShadowColor_);
+    surf_.fillRect(east, color1);
+    surf_.fillRect(north, color1);
+    surf_.fillRect(west, color2);
+    surf_.fillRect(south, color2);
 
     if (borderThikness_ == GBorderThikness::thikBorder)
     {
@@ -164,10 +182,10 @@ void GGraphicControl::drawBorder(void) noexcept
         west.setWidth(1);
         west.setHeight(bounds_.getHeight() - 2);
 
-        surf_.fillRect(east, borderLightColor_);
-        surf_.fillRect(north, borderLightColor_);
-        surf_.fillRect(west, borderShadowColor_);
-        surf_.fillRect(south, borderShadowColor_);
+        surf_.fillRect(east, color1);
+        surf_.fillRect(north, color1);
+        surf_.fillRect(west, color2);
+        surf_.fillRect(south, color2);
     }
 }
 

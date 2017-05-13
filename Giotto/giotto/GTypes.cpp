@@ -22,3 +22,7 @@
 */
 
 #include "GTypes.hpp"
+
+/* Nothing to do here, yet */
+
+/* EOF */

@@ -63,8 +63,8 @@ public:
     gfx::GfxColor const& getBackgroundColor(void) const noexcept;
     void setBackgroundColor(gfx::GfxColor const& color) noexcept;
 
-    gfx::GfxColor const& getBorderLightColor(void) const noexcept;
-    void setBorderLightColor(gfx::GfxColor const& color) noexcept;
+    gfx::GfxColor const& getBorderColor(void) const noexcept;
+    void setBorderColor(gfx::GfxColor const& color) noexcept;
 
     gfx::GfxColor const& getBorderShadowColor(void) const noexcept;
     void setBorderShadowColor(gfx::GfxColor const& color) noexcept;
@@ -74,7 +74,7 @@ protected:
     gfx::GfxSurface surf_;
     gfx::GfxColor backgroundColor_;
     gfx::GfxColor foregroundColor_;
-    gfx::GfxColor borderLightColor_;
+    gfx::GfxColor borderColor_;
     gfx::GfxColor borderShadowColor_;
 
 private:
@@ -82,7 +82,7 @@ private:
 
     static const gfx::GfxColor kDefaultForegroundColor;
     static const gfx::GfxColor kDefaultBackgroundColor;
-    static const gfx::GfxColor kDefaultBorderLightColor;
+    static const gfx::GfxColor kDefaultBorderColor;
     static const gfx::GfxColor kDefaultBorderShadowColor;
 };
 
