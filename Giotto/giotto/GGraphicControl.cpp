@@ -116,32 +116,59 @@ void GGraphicControl::drawBorder(void) noexcept
     gfx::GfxRect west;
     gfx::GfxRect north;
     gfx::GfxRect south;
-    uint8_t thikness = static_cast<uint8_t>(borderType_);
 
     east.setX(0);
     east.setY(0);
-    east.setWidth(thikness);
-    east.setHeight(bounds_.getHeight());
+    east.setWidth(1);
+    east.setHeight(bounds_.getHeight() - 1);
 
     north.setX(0);
     north.setY(0);
     north.setWidth(bounds_.getWidth() - 1);
-    north.setHeight(thikness);
+    north.setHeight(1);
 
-    south.setX(1);
-    south.setY(bounds_.getHeight() - thikness);
-    south.setWidth(bounds_.getWidth() - 1);
-    south.setHeight(thikness);
+    south.setX(0);
+    south.setY(bounds_.getHeight() - 1);
+    south.setWidth(bounds_.getWidth());
+    south.setHeight(1);
 
-    west.setX(bounds_.getWidth() - thikness);
+    west.setX(bounds_.getWidth() - 1);
     west.setY(0);
-    west.setWidth(thikness);
-    west.setHeight(bounds_.getHeight());
+    west.setWidth(1);
+    west.setHeight(bounds_.getHeight() - 1);
 
     surf_.fillRect(east, borderLightColor_);
     surf_.fillRect(north, borderLightColor_);
     surf_.fillRect(west, borderShadowColor_);
     surf_.fillRect(south, borderShadowColor_);
+
+    if (borderType_ == GBorderType::thikBorder)
+    {
+        east.setX(1);
+        east.setY(1);
+        east.setWidth(1);
+        east.setHeight(bounds_.getHeight() - 2);
+
+        north.setX(1);
+        north.setY(1);
+        north.setWidth(bounds_.getWidth() - 2);
+        north.setHeight(1);
+
+        south.setX(1);
+        south.setY(bounds_.getHeight() - 2);
+        south.setWidth(bounds_.getWidth() - 2);
+        south.setHeight(1);
+
+        west.setX(bounds_.getWidth() - 2);
+        west.setY(1);
+        west.setWidth(1);
+        west.setHeight(bounds_.getHeight() - 2);
+
+        surf_.fillRect(east, borderLightColor_);
+        surf_.fillRect(north, borderLightColor_);
+        surf_.fillRect(west, borderShadowColor_);
+        surf_.fillRect(south, borderShadowColor_);
+    }
 }
 
 }  // namespace objects
