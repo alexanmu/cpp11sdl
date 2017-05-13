@@ -56,6 +56,7 @@
 		195F7A1E1EACDBA900C11D9F /* GfxWindowEventID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 195F7A1C1EACDBA900C11D9F /* GfxWindowEventID.cpp */; };
 		195F7A211EACFBCB00C11D9F /* GfxVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 195F7A1F1EACFBCB00C11D9F /* GfxVideo.cpp */; };
 		197AA66B1EC6DD6700EE956F /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197AA6691EC6DD6700EE956F /* GTypes.cpp */; };
+		197AA66E1EC6FA6500EE956F /* GImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197AA66C1EC6FA6500EE956F /* GImage.cpp */; };
 		197D66471EAB41BF009B5EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66441EAB41BF009B5EBB /* main.cpp */; };
 		197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D66451EAB41BF009B5EBB /* Playground.cpp */; };
 		1995962D1EAB653A00B414E5 /* GfxMessageBoxData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1995962B1EAB653A00B414E5 /* GfxMessageBoxData.cpp */; };
@@ -207,6 +208,8 @@
 		195F7A201EACFBCB00C11D9F /* GfxVideo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxVideo.hpp; path = sdl2/GfxVideo.hpp; sourceTree = "<group>"; };
 		197AA6691EC6DD6700EE956F /* GTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GTypes.cpp; path = giotto/GTypes.cpp; sourceTree = "<group>"; };
 		197AA66A1EC6DD6700EE956F /* GTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GTypes.hpp; path = giotto/GTypes.hpp; sourceTree = "<group>"; };
+		197AA66C1EC6FA6500EE956F /* GImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GImage.cpp; path = giotto/GImage.cpp; sourceTree = "<group>"; };
+		197AA66D1EC6FA6500EE956F /* GImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GImage.hpp; path = giotto/GImage.hpp; sourceTree = "<group>"; };
 		197D66441EAB41BF009B5EBB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Giotto/main.cpp; sourceTree = SOURCE_ROOT; };
 		197D66451EAB41BF009B5EBB /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = Giotto/Playground.cpp; sourceTree = SOURCE_ROOT; };
 		197D66461EAB41BF009B5EBB /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = Giotto/Playground.hpp; sourceTree = SOURCE_ROOT; };
@@ -331,6 +334,8 @@
 				19B352001EB4FAAF0020DCF4 /* GForm.hpp */,
 				79D2760A1EC6226F006B796D /* GGraphicControl.cpp */,
 				79D2760B1EC6226F006B796D /* GGraphicControl.hpp */,
+				197AA66C1EC6FA6500EE956F /* GImage.cpp */,
+				197AA66D1EC6FA6500EE956F /* GImage.hpp */,
 				192A5B321EB4DECA003BDDD1 /* GObject.cpp */,
 				192A5B331EB4DECA003BDDD1 /* GObject.hpp */,
 				79E93E831EC56D81009729C5 /* GPanel.cpp */,
@@ -615,6 +620,7 @@
 				192445F41EAFAA3400147389 /* GfxLoadSo.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,
+				197AA66E1EC6FA6500EE956F /* GImage.cpp in Sources */,
 				79D2760D1EC6226F006B796D /* GControl.cpp in Sources */,
 				19AEA9F61EC0E6CB00AD7821 /* GfxBgiFontConstants.cpp in Sources */,
 				199596361EAB7E3200B414E5 /* GfxMessageBoxColorScheme.cpp in Sources */,

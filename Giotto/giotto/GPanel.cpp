@@ -31,8 +31,8 @@ namespace giotto
 namespace objects
 {
 
-GPanel::GPanel(std::string const& name, GComponent* owner, gfx::GfxRect bounds) :
-        GGraphicControl(name, owner, bounds.getWidth(), bounds.getHeight())
+GPanel::GPanel(std::string const& vname, GComponent* owner, gfx::GfxRect bounds) :
+        GGraphicControl(vname, owner, bounds.getWidth(), bounds.getHeight())
 {
 }
 

@@ -39,7 +39,7 @@ class GObject
 public:
     GObject() = delete;
 
-    explicit GObject(std::string const& name);
+    explicit GObject(std::string const& vname);
 
     GObject(GObject const& other);
     GObject(GObject&& other);

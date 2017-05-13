@@ -31,10 +31,10 @@ namespace giotto
 namespace objects
 {
 
-GObject::GObject(std::string const& name)
+GObject::GObject(std::string const& vname)
 {
     inittype_ = GInitType::defaultCtor;
-    name_ = name;
+    name_ = vname;
 }
 
 GObject::GObject(GObject const& other)

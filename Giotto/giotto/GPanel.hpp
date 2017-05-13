@@ -47,7 +47,7 @@ public:
     GPanel& operator=(GPanel const& other) = delete;
     GPanel& operator=(GPanel&& other) = delete;
 
-    explicit GPanel(std::string const& name, GComponent* owner, gfx::GfxRect bounds);
+    explicit GPanel(std::string const& vname, GComponent* owner, gfx::GfxRect bounds);
 
     void draw(void);
 

@@ -50,7 +50,7 @@ public:
     GControl& operator=(GControl const& other) = delete;
     GControl& operator=(GControl&& other) = delete;
 
-    explicit GControl(std::string const& name, GComponent* owner);
+    explicit GControl(std::string const& vname, GComponent* owner);
     virtual ~GControl();
 
     void setBounds(gfx::GfxRect const& bounds) noexcept;

@@ -21,10 +21,16 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GTypes_hpp
-#define GTypes_hpp
+#ifndef GImage_hpp
+#define GImage_hpp
 
-#include <cstdint>
+#include <string>
+#include <stdexcept>
+
+#include "GComponent.hpp"
+#include "GGraphicControl.hpp"
+#include "GfxSurface.hpp"
+#include "GTypes.hpp"
 
 namespace giotto
 {
@@ -32,29 +38,35 @@ namespace giotto
 namespace objects
 {
 
-enum class GBorderThikness : uint8_t
+class GImage : public GGraphicControl
 {
-    noBorder = 0,
-    thinBorder = 1,
-    thikBorder = 2
-};
+public:
+    GImage() = delete;
+    
+    GImage(GImage const& other) = delete;
+    GImage(GImage&& other) = delete;
+    
+    GImage& operator=(GImage const& other) = delete;
+    GImage& operator=(GImage&& other) = delete;
+    
+    explicit GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height);
+    virtual ~GImage();
 
-enum class GBorderStyle : uint8_t
-{
-    flatBorder = 0,
-    raised3DBorder = 1,
-    sunken3DBorder = 2
-};
+    GImageScaleMode getScaleMode(void) const noexcept;
+    void setScaleMode(const GImageScaleMode scalemode) noexcept;
 
-enum class GImageScaleMode : uint8_t
-{
-    Off = 0,
-    Centerd = 1,
-    Scaled = 2
+    std::string const& getFileName(void) const noexcept;
+    void setFileName(std::string const& filename) noexcept;
+
+    virtual void loadImage(void) throw(std::invalid_argument) = 0;
+    virtual void draw(void) = 0;
+protected:
+    GImageScaleMode scaleMode_;
+    std::string fileName_;
 };
 
 }  // namespace objects
 
 }  // namespace giotto
 
-#endif /* GTypes_hpp */
+#endif /* GImage_hpp */

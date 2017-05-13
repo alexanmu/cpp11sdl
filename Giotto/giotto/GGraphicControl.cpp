@@ -39,8 +39,8 @@ const gfx::GfxColor GGraphicControl::kDefaultBackgroundColor { 0x00, 0x00, 0x00,
 const gfx::GfxColor GGraphicControl::kDefaultBorderColor { 0xC0, 0xC0, 0xC0, 0xFF };
 const gfx::GfxColor GGraphicControl::kDefaultBorderShadowColor { 0x60, 0x60, 0x60, 0xFF };
 
-GGraphicControl::GGraphicControl(std::string const& name, GComponent* owner, uint16_t width, uint16_t height) :
-        GControl(name, owner), surf_(gfx::GfxSurfaceFlags(gfx::GfxSurfaceFlags::GfxSurfaceFlagsValues::flagSwSurface),
+GGraphicControl::GGraphicControl(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
+        GControl(vname, owner), surf_(gfx::GfxSurfaceFlags(gfx::GfxSurfaceFlags::GfxSurfaceFlagsValues::flagSwSurface),
                                     width, height)
 {
     setBounds(gfx::GfxRect(0,0, width, height));

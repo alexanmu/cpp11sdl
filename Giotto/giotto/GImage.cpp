@@ -21,10 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GTypes_hpp
-#define GTypes_hpp
-
-#include <cstdint>
+#include "GImage.hpp"
 
 namespace giotto
 {
@@ -32,29 +29,39 @@ namespace giotto
 namespace objects
 {
 
-enum class GBorderThikness : uint8_t
+GImage::GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
+        GGraphicControl(vname, owner, width, height)
 {
-    noBorder = 0,
-    thinBorder = 1,
-    thikBorder = 2
-};
+    scaleMode_ = GImageScaleMode::Off;
+    fileName_ = "";
+}
 
-enum class GBorderStyle : uint8_t
+GImage::~GImage()
 {
-    flatBorder = 0,
-    raised3DBorder = 1,
-    sunken3DBorder = 2
-};
+}
 
-enum class GImageScaleMode : uint8_t
+GImageScaleMode GImage::getScaleMode(void) const noexcept
 {
-    Off = 0,
-    Centerd = 1,
-    Scaled = 2
-};
+    return scaleMode_;
+}
+
+void GImage::setScaleMode(const GImageScaleMode scalemode) noexcept
+{
+    scaleMode_ = scalemode;
+}
+
+std::string const& GImage::getFileName(void) const noexcept
+{
+    return fileName_;
+}
+
+void GImage::setFileName(std::string const& filename) noexcept
+{
+    fileName_ = filename;
+}
 
 }  // namespace objects
 
 }  // namespace giotto
 
-#endif /* GTypes_hpp */
+/* EOF */

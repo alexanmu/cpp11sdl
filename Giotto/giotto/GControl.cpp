@@ -31,7 +31,7 @@ namespace giotto
 namespace objects
 {
 
-GControl::GControl(std::string const& name, GComponent* owner) : GComponent(name, owner)
+GControl::GControl(std::string const& vname, GComponent* owner) : GComponent(vname, owner)
 {
     bounds_.clear();
     clientBounds_.clear();
