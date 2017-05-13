@@ -25,6 +25,7 @@
 #define GfxControlledSurface_hpp
 
 #include <cstdint>
+#include <stdexcept>
 
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
@@ -41,9 +42,6 @@ class GfxControlledSurface final
 public:
     GfxControlledSurface();
 
-    explicit GfxControlledSurface(const uint16_t w, const uint16_t h);
-    explicit GfxControlledSurface(const std::string& filename);
-
     GfxControlledSurface(const GfxControlledSurface&) = delete;
     GfxControlledSurface(GfxControlledSurface&& surf) = delete;
     
@@ -52,11 +50,12 @@ public:
 
     virtual ~GfxControlledSurface();
 
-    void fillRect(gfx::GfxRect const& rect, gfx::GfxColor const& color);
+    void createSurface(const uint16_t w, const uint16_t h) throw(std::invalid_argument);
 
-    gfx::GfxSurface const& getUnderlyingSurface(void) const;
+    gfx::GfxSurface& operator()(void) const throw(std::invalid_argument);
 private:
     gfx::GfxSurface * surf_;
+    bool surfaceConstructed_;
 };
 
 }  // namespace supp

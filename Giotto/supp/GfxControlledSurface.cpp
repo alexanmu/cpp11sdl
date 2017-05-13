@@ -35,31 +35,38 @@ namespace supp
 
 GfxControlledSurface::GfxControlledSurface()
 {
-    //
-}
-
-GfxControlledSurface::GfxControlledSurface(const uint16_t w, const uint16_t h)
-{
-    surf_ = new gfx::GfxSurface(GfxSurfaceFlags(), w, h);
-}
-
-GfxControlledSurface::GfxControlledSurface(const std::string& filename)
-{
-    surf_ = new gfx::GfxSurface(filename);
+    surf_ = nullptr;
+    surfaceConstructed_ = false;
 }
 
 GfxControlledSurface::~GfxControlledSurface()
 {
-    delete surf_;
+    if (surfaceConstructed_ == true)
+    {
+        delete surf_;
+    }
 }
 
-void GfxControlledSurface::fillRect(gfx::GfxRect const& rect, gfx::GfxColor const& color)
+void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) throw(std::invalid_argument)
 {
-    surf_->fillRect(rect, color);
+    if (surfaceConstructed_ == false)
+    {
+        if ((w > 1) && (h > 1))
+        {
+            surf_ = new gfx::GfxSurface(GfxSurfaceFlags(), w, h);
+            surfaceConstructed_ = true;
+            return;
+        }
+    }
+    throw std::invalid_argument("Object already constructed");
 }
 
-gfx::GfxSurface const& GfxControlledSurface::getUnderlyingSurface(void) const
+gfx::GfxSurface& GfxControlledSurface::operator()(void) const throw(std::invalid_argument)
 {
+    if (surfaceConstructed_ == false)
+    {
+        throw std::invalid_argument("Object not constructed");
+    }
     return *surf_;
 }
 
