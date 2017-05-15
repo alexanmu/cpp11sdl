@@ -24,10 +24,10 @@
 #ifndef GGraphicControl_hpp
 #define GGraphicControl_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <vector>
 #include <string>
-#include <stdexcept>
 
 #include "GComponent.hpp"
 #include "GControl.hpp"
@@ -79,6 +79,7 @@ protected:
 
 private:
     void drawBorder(void) noexcept;
+    void drawBackground(void) noexcept;
 
     static const gfx::GfxColor kDefaultForegroundColor;
     static const gfx::GfxColor kDefaultBackgroundColor;

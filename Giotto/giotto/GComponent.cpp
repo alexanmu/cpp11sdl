@@ -66,20 +66,20 @@ bool GComponent::equals(GObject * object)
     return (this == object);
 }
 
-void GComponent::insertComponent(GComponent * const component) throw(std::invalid_argument)
+void GComponent::insertComponent(GComponent * const component) throw(std::runtime_error)
 {
     if (components_.size() > 0)
     {
         if (findComponent(component->getName()) != nullptr)
         {
-            throw std::invalid_argument("Component name is not unique");
+            throw std::runtime_error("Component name is not unique");
         }
     }
     componentCount_ += 1;
     components_.push_back(component);
 }
 
-void GComponent::removeComponent(GComponent * const component) throw(std::invalid_argument)
+void GComponent::removeComponent(GComponent * const component) throw(std::runtime_error)
 {
     auto pos = std::find(components_.begin(), components_.end(), component);;
     if (pos != components_.end())
@@ -89,7 +89,7 @@ void GComponent::removeComponent(GComponent * const component) throw(std::invali
     }
     else
     {
-        throw std::invalid_argument("Component not found in container");
+        throw std::runtime_error("Component not found in container");
     }
 }
 

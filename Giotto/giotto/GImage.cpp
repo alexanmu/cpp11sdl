@@ -21,6 +21,9 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstdint>
+#include <string>
+
 #include "GImage.hpp"
 
 namespace giotto
@@ -32,7 +35,7 @@ namespace objects
 GImage::GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
         GGraphicControl(vname, owner, width, height)
 {
-    scaleMode_ = GImageScaleMode::Off;
+    scaleMode_ = kDefaultImageScaleMode;
     fileName_ = "";
 }
 
@@ -45,7 +48,7 @@ GImageScaleMode GImage::getScaleMode(void) const noexcept
     return scaleMode_;
 }
 
-void GImage::setScaleMode(const GImageScaleMode scalemode) noexcept
+void GImage::setScaleMode(GImageScaleMode const& scalemode) noexcept
 {
     scaleMode_ = scalemode;
 }
@@ -58,6 +61,11 @@ std::string const& GImage::getFileName(void) const noexcept
 void GImage::setFileName(std::string const& filename) noexcept
 {
     fileName_ = filename;
+}
+
+void GImage::draw(void)
+{
+    GGraphicControl::draw();
 }
 
 }  // namespace objects

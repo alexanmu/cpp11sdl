@@ -39,6 +39,12 @@ enum class GBorderThikness : uint8_t
     thikBorder = 2
 };
 
+enum class GBackgroundStyle : uint8_t
+{
+    transparentColor = 0,
+    solidColor = 1
+};
+
 enum class GBorderStyle : uint8_t
 {
     flatBorder = 0,
@@ -48,9 +54,9 @@ enum class GBorderStyle : uint8_t
 
 enum class GImageScaleMode : uint8_t
 {
-    Off = 0,
-    Centerd = 1,
-    Scaled = 2
+    centerScaled = 0,
+    strechScaled = 1,
+    tileScaled = 2
 };
 
 }  // namespace objects

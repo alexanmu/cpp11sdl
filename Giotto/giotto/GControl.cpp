@@ -38,6 +38,7 @@ GControl::GControl(std::string const& vname, GComponent* owner) : GComponent(vna
     enabled_ = false;
     borderThikness_ = kDefaultBorderThikness;
     borderStyle_ = kDefaultBorderStyle;
+    backgroundStyle_ = kDefaultBackgroundStyle;
     hint_.clear();
     showHint_ = false;
     visible_ = false;
@@ -75,7 +76,7 @@ bool GControl::getEnabled(void) const noexcept
     return enabled_;
 }
 
-void GControl::setBorderThikness(const GBorderThikness borderthikness) noexcept
+void GControl::setBorderThikness(GBorderThikness const& borderthikness) noexcept
 {
     borderThikness_ = borderthikness;
     adjustClientBounds();
@@ -86,7 +87,7 @@ GBorderThikness GControl::getBorderThikness(void) const noexcept
     return borderThikness_;
 }
 
-void GControl::setBorderStyle(const GBorderStyle borderstyle) noexcept
+void GControl::setBorderStyle(GBorderStyle const& borderstyle) noexcept
 {
     borderStyle_ = borderstyle;
 }
@@ -94,6 +95,16 @@ void GControl::setBorderStyle(const GBorderStyle borderstyle) noexcept
 GBorderStyle GControl::getBorderStyle(void) const noexcept
 {
     return borderStyle_;
+}
+
+void GControl::setBackgroundStyle(GBackgroundStyle const& backgroundstyle) noexcept
+{
+    backgroundStyle_ = backgroundstyle;
+}
+
+GBackgroundStyle GControl::getBackgroundStyle(void) const noexcept
+{
+    return backgroundStyle_;
 }
 
 void GControl::setHint(std::string const& hint) noexcept

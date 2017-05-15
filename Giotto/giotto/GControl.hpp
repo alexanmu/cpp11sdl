@@ -24,10 +24,10 @@
 #ifndef GControl_hpp
 #define GControl_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <vector>
 #include <string>
-#include <stdexcept>
 
 #include "GTypes.hpp"
 #include "GComponent.hpp"
@@ -60,11 +60,14 @@ public:
     void setEnabled(void) noexcept;
     bool getEnabled(void) const noexcept;
 
-    void setBorderThikness(const GBorderThikness borderthikness) noexcept;
+    void setBorderThikness(GBorderThikness const& borderthikness) noexcept;
     GBorderThikness getBorderThikness(void) const noexcept;
 
-    void setBorderStyle(const GBorderStyle borderstyle) noexcept;
+    void setBorderStyle(GBorderStyle const& borderstyle) noexcept;
     GBorderStyle getBorderStyle(void) const noexcept;
+
+    void setBackgroundStyle(GBackgroundStyle const& backgroundstyle) noexcept;
+    GBackgroundStyle getBackgroundStyle(void) const noexcept;
 
     void setHint(std::string const& hint) noexcept;
     std::string const& getHint(void) const noexcept;
@@ -87,12 +90,14 @@ protected:
     bool enabled_;
     GBorderThikness borderThikness_;
     GBorderStyle borderStyle_;
+    GBackgroundStyle backgroundStyle_;
     std::string hint_;
     bool showHint_;
     bool visible_;
 private:
     static const GBorderThikness kDefaultBorderThikness = GBorderThikness::noBorder;
     static const GBorderStyle kDefaultBorderStyle = GBorderStyle::flatBorder;
+    static const GBackgroundStyle kDefaultBackgroundStyle = GBackgroundStyle::transparentColor;
 
     void adjustClientBounds(void) noexcept;
 };

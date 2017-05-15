@@ -24,12 +24,13 @@
 #ifndef GImage_hpp
 #define GImage_hpp
 
-#include <string>
 #include <stdexcept>
+#include <string>
 
 #include "GComponent.hpp"
 #include "GGraphicControl.hpp"
 #include "GTypes.hpp"
+#include "GfxControlledSurface.hpp"
 
 namespace giotto
 {
@@ -41,27 +42,29 @@ class GImage : public GGraphicControl
 {
 public:
     GImage() = delete;
-    
+
     GImage(GImage const& other) = delete;
     GImage(GImage&& other) = delete;
-    
+
     GImage& operator=(GImage const& other) = delete;
     GImage& operator=(GImage&& other) = delete;
-    
+
     explicit GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height);
     virtual ~GImage();
 
     GImageScaleMode getScaleMode(void) const noexcept;
-    void setScaleMode(const GImageScaleMode scalemode) noexcept;
+    void setScaleMode(GImageScaleMode const& scalemode) noexcept;
 
     std::string const& getFileName(void) const noexcept;
     void setFileName(std::string const& filename) noexcept;
 
-    virtual void loadImage(void) throw(std::invalid_argument) = 0;
-    virtual void draw(void) = 0;
+    virtual void load(void) throw(std::runtime_error) = 0;
+    virtual void draw(void);
 protected:
     GImageScaleMode scaleMode_;
     std::string fileName_;
+
+    static const GImageScaleMode kDefaultImageScaleMode = GImageScaleMode::centerScaled;
 };
 
 }  // namespace objects

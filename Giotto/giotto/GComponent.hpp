@@ -24,10 +24,10 @@
 #ifndef GComponent_hpp
 #define GComponent_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <vector>
 #include <string>
-#include <stdexcept>
 
 #include "GObject.hpp"
 
@@ -56,8 +56,8 @@ public:
 
     bool equals(GObject * object);
 
-    void insertComponent(GComponent * const component) throw(std::invalid_argument);
-    void removeComponent(GComponent * const component) throw(std::invalid_argument);
+    void insertComponent(GComponent * const component) throw(std::runtime_error);
+    void removeComponent(GComponent * const component) throw(std::runtime_error);
     GComponent* findComponent(const std::string& name);
 
     uint64_t getTag(void) const noexcept;

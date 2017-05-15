@@ -41,7 +41,7 @@ const gfx::GfxColor GGraphicControl::kDefaultBorderShadowColor { 0x60, 0x60, 0x6
 GGraphicControl::GGraphicControl(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
         GControl(vname, owner)
 {
-    setBounds(gfx::GfxRect(0,0, width, height));
+    setBounds(gfx::GfxRect(0, 0, width, height));
     foregroundColor_ = kDefaultForegroundColor;
     backgroundColor_ = kDefaultBackgroundColor;
     borderColor_ = kDefaultBorderColor;
@@ -101,11 +101,8 @@ void GGraphicControl::setBorderShadowColor(gfx::GfxColor const& color) noexcept
 
 void GGraphicControl::draw(void)
 {
-    if (getBorderThikness() != GBorderThikness::noBorder)
-    {
-        drawBorder();
-    }
-    surf_().fillRect(clientBounds_, backgroundColor_);
+    drawBorder();
+    drawBackground();
 }
 
 //  Private methods
@@ -119,6 +116,10 @@ void GGraphicControl::drawBorder(void) noexcept
     gfx::GfxColor color1;
     gfx::GfxColor color2;
 
+    if (getBorderThikness() == GBorderThikness::noBorder)
+    {
+        return;
+    }
     switch (borderStyle_)
     {
         case GBorderStyle::flatBorder:
@@ -185,6 +186,19 @@ void GGraphicControl::drawBorder(void) noexcept
         surf_().fillRect(north, color1);
         surf_().fillRect(west, color2);
         surf_().fillRect(south, color2);
+    }
+}
+
+void GGraphicControl::drawBackground(void) noexcept
+{
+    switch (backgroundStyle_)
+    {
+        case GBackgroundStyle::solidColor :
+            surf_().fillRect(clientBounds_, backgroundColor_);
+            break;
+        case GBackgroundStyle::transparentColor :
+            /* Nothing to do */
+            break;
     }
 }
 
