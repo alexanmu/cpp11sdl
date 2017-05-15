@@ -32,7 +32,7 @@
 
 /* Linux specific stuff */
 #define __linux_machine
-#define __base_path "/home/goros/Pictures"
+#define __base_path "/var/fpwork/goros/cpp11work/tool_v4/Files"
 #define WIN_W 960
 #define WIN_H 480
 #define __platform_default_action 0
