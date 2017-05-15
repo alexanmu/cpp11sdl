@@ -47,7 +47,7 @@ GfxControlledSurface::~GfxControlledSurface()
     }
 }
 
-void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) throw(std::invalid_argument)
+void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error)
 {
     if (surfaceConstructed_ == false)
     {
@@ -58,14 +58,34 @@ void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) thr
             return;
         }
     }
-    throw std::invalid_argument("Object already constructed");
+    throw std::runtime_error("Object already constructed");
 }
 
-gfx::GfxSurface& GfxControlledSurface::operator()(void) const throw(std::invalid_argument)
+void GfxControlledSurface::createSurface(std::string const& filename) throw(std::runtime_error)
 {
     if (surfaceConstructed_ == false)
     {
-        throw std::invalid_argument("Object not constructed");
+        surf_ = new gfx::GfxSurface(filename);
+        surfaceConstructed_ = true;
+        return;
+    }
+    throw std::runtime_error("Object already constructed");
+}
+
+void GfxControlledSurface::free(void) noexcept
+{
+    if (surfaceConstructed_ == true)
+    {
+        delete surf_;
+        surf_ = nullptr;
+    }
+}
+
+gfx::GfxSurface& GfxControlledSurface::operator()(void) const throw(std::runtime_error)
+{
+    if (surfaceConstructed_ == false)
+    {
+        throw std::runtime_error("Object not constructed");
     }
     return *surf_;
 }

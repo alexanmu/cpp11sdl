@@ -24,8 +24,9 @@
 #ifndef GfxControlledSurface_hpp
 #define GfxControlledSurface_hpp
 
-#include <cstdint>
 #include <stdexcept>
+#include <cstdint>
+#include <string>
 
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
@@ -44,15 +45,18 @@ public:
 
     GfxControlledSurface(const GfxControlledSurface&) = delete;
     GfxControlledSurface(GfxControlledSurface&& surf) = delete;
-    
+
     GfxControlledSurface& operator=(const GfxControlledSurface&) = delete;
     GfxControlledSurface& operator=(GfxControlledSurface&& surf) = delete;
 
     virtual ~GfxControlledSurface();
 
-    void createSurface(const uint16_t w, const uint16_t h) throw(std::invalid_argument);
+    void createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error);
+    void createSurface(std::string const& filename) throw(std::runtime_error);
 
-    gfx::GfxSurface& operator()(void) const throw(std::invalid_argument);
+    void free(void) noexcept;
+
+    gfx::GfxSurface& operator()(void) const throw(std::runtime_error);
 private:
     gfx::GfxSurface * surf_;
     bool surfaceConstructed_;
