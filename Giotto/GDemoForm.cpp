@@ -40,6 +40,9 @@
 #include "GGraphicControl.hpp"
 #include "GfxRect.hpp"
 #include "GControl.hpp"
+#include "GBitmap.hpp"
+#include "GfxSdlHeader.hpp"
+#include "GTypes.hpp"
 
 uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -99,8 +102,19 @@ void GDemoForm::draw(void)
     g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
     g.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
     g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
+    g.setBackgroundStyle(giotto::objects::GBackgroundStyle::solidColor);
     g.draw();
     windowsurface_->blitSurface(g.getSurface()(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
+
+    giotto::objects::GBitmap bmp(GVarName(bmp), nullptr, 384, 384,
+                giotto::objects::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
+    bmp.load();
+    bmp.setBorderColor(gfx::bgi::GfxBgiConstants::vgaLightGreen());
+    bmp.setBorderThikness(giotto::objects::GBorderThikness::thinBorder);
+    bmp.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaGreen());
+    bmp.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
+    bmp.draw();
+    windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::GfxRect(90, 90, 384, 384));
     GForm::draw();
 }
 
