@@ -76,6 +76,8 @@ public:
     void blitSurface(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
     void blitSurface(const GfxSurface& src);
 
+    void blitScaled(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
+
     void putPixel(const uint16_t x, const uint16_t y, const GfxColor& clr);
     GfxColor getPixel(const uint16_t x, const uint16_t y);
 

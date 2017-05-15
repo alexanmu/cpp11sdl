@@ -56,12 +56,17 @@ GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
 {
     sdl2::SDL_Surface* tmpsurfptr;
 
-    tmpsurfptr = sdl2::SDL_LoadBMP_RW(sdl2::SDL_RWFromFile(filename.c_str(), "rb"), 1);
+    auto rw = sdl2::SDL_RWFromFile(filename.c_str(), "rb");
+    if (rw == nullptr)
+    {
+        throw std::runtime_error(sdl2::SDL_GetError());
+    }
+    tmpsurfptr = sdl2::SDL_LoadBMP_RW(rw, 1);
                     //  sdl2::SDL_LoadBMP(filename.c_str());
     if (tmpsurfptr == nullptr)
     {
         //  error handling here
-        return;
+        throw std::runtime_error("pix");
     }
     if (tmpsurfptr->format != nullptr)
     {
@@ -219,6 +224,15 @@ void GfxSurface::blitSurface(const GfxSurface& src)
         return;
     }
     sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
+}
+
+void GfxSurface::blitScaled(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr)
+{
+    if (surf_ == nullptr)
+    {
+        return;
+    }
+    sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
 void GfxSurface::putPixel(const uint16_t x, const uint16_t y, const GfxColor& color)
