@@ -32,7 +32,7 @@ namespace gfx
 
 const char GfxSurface::ClassName[] = "GfxSurface";
 
-GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) throw(std::runtime_error) : GfxRootClass(ClassName)
 {
     uint32_t format = sdl2::SDL_PIXELFORMAT_ARGB8888;
 
@@ -40,19 +40,21 @@ GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uin
     if (surf_ == nullptr)
     {
         // error handling here ...
+        throw std::runtime_error("Not implemented");
     }
 }
 
-GfxSurface::GfxSurface(SdlTypePtr surf) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(SdlTypePtr surf) throw(std::runtime_error) : GfxRootClass(ClassName)
 {
     if (surf == nullptr)
     {
         // error handling here
+        throw std::runtime_error("Not implemented");
     }
     surf_ = surf;
 }
 
-GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(const std::string& filename) throw(std::runtime_error) : GfxRootClass(ClassName)
 {
     sdl2::SDL_Surface* tmpsurfptr;
 
@@ -66,25 +68,27 @@ GfxSurface::GfxSurface(const std::string& filename) : GfxRootClass(ClassName)
     if (tmpsurfptr == nullptr)
     {
         //  error handling here
-        throw std::runtime_error("pix");
+        throw std::runtime_error("Not implemented");
     }
     if (tmpsurfptr->format != nullptr)
     {
         if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
             //  convert here
+            throw std::runtime_error("Not implemented");
         }
     }
     else
     {
         //  error handling here
+        throw std::runtime_error("Not implemented");
     }
     surf_ = tmpsurfptr;
 }
 
 GfxSurface::GfxSurface(void * pixels, const int32_t width, const int32_t height, const int32_t depth,
                         const int32_t pitch, const uint32_t rmask, const uint32_t gmask, const uint32_t bmask,
-                        const uint32_t amask) : GfxRootClass(ClassName)
+                        const uint32_t amask) throw(std::runtime_error) : GfxRootClass(ClassName)
 {
     sdl2::SDL_Surface* tmpsurfptr;
 
@@ -92,18 +96,20 @@ GfxSurface::GfxSurface(void * pixels, const int32_t width, const int32_t height,
     if (tmpsurfptr == nullptr)
     {
         //  error handling here
-        return;
+        throw std::runtime_error("Not implemented");
     }
     if (tmpsurfptr->format != nullptr)
     {
         if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
             //  convert here
+            throw std::runtime_error("Not implemented");
         }
     }
     else
     {
         //  error handling here
+        throw std::runtime_error("Not implemented");
     }
     surf_ = tmpsurfptr;
 }

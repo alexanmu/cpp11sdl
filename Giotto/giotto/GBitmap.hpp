@@ -54,7 +54,7 @@ public:
     virtual ~GBitmap();
 
     virtual void load(void) throw(std::runtime_error);
-    virtual void draw(void);
+    virtual void draw(void) throw(std::runtime_error);
 private:
     gfx::supp::GfxControlledSurface imgSurf_;
 };

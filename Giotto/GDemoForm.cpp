@@ -113,6 +113,7 @@ void GDemoForm::draw(void)
     bmp.setBorderThikness(giotto::objects::GBorderThikness::thinBorder);
     bmp.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaGreen());
     bmp.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
+    bmp.setScaleMode(giotto::objects::GImageScaleMode::strechScaled);
     bmp.draw();
     windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::GfxRect(90, 90, 384, 384));
     GForm::draw();
