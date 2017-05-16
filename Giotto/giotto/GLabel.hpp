@@ -21,10 +21,16 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GTypes_hpp
-#define GTypes_hpp
+#ifndef GLabel_hpp
+#define GLabel_hpp
 
+#include <stdexcept>
 #include <cstdint>
+#include <string>
+
+#include "GComponent.hpp"
+#include "GGraphicControl.hpp"
+#include "GTypes.hpp"
 
 namespace giotto
 {
@@ -32,42 +38,38 @@ namespace giotto
 namespace objects
 {
 
-enum class GBorderThikness : uint8_t
+class GLabel : public GGraphicControl
 {
-    noBorder = 0,
-    thinBorder = 1,
-    thikBorder = 2
-};
+public:
+    GLabel() = delete;
 
-enum class GBackgroundStyle : uint8_t
-{
-    transparentColor = 0,
-    solidColor = 1
-};
+    GLabel(GLabel const& other) = delete;
+    GLabel(GLabel&& other) = delete;
 
-enum class GBorderStyle : uint8_t
-{
-    flatBorder = 0,
-    raised3DBorder = 1,
-    sunken3DBorder = 2
-};
+    GLabel& operator=(GLabel const& other) = delete;
+    GLabel& operator=(GLabel&& other) = delete;
 
-enum class GImageScaleMode : uint8_t
-{
-    centerScaled = 0,
-    strechScaled = 1,
-    tileScaled = 2
-};
+    explicit GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
+                    std::string const& text);
+    virtual ~GLabel();
 
-enum class GTextRenderMode : uint8_t
-{
-    solidText = 0,
-    shadedText = 1,
-    blendedText = 2
+    std::string const& getText(void) const noexcept;
+    void setText(std::string const& text) noexcept;
+
+    GTextRenderMode getTextRenderMode(void) const noexcept;
+    void setTextRenderMode(GTextRenderMode const& textrendermode) noexcept;
+
+    virtual void draw(void);
+protected:
+    GTextRenderMode textRenderMode_;
+
+    static const GTextRenderMode kDefaultTextRenderMode = GTextRenderMode::shadedText;
+private:
+    std::string text_;
 };
 
 }  // namespace objects
 
 }  // namespace giotto
 
-#endif /* GTypes_hpp */
+#endif /* GLabel_hpp */
