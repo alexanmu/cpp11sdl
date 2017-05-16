@@ -32,7 +32,8 @@ namespace gfx
 
 const char GfxSurface::ClassName[] = "GfxSurface";
 
-GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) throw(std::runtime_error) :
+        GfxRootClass(ClassName)
 {
     uint32_t format = sdl2::SDL_PIXELFORMAT_ARGB8888;
 
@@ -40,7 +41,7 @@ GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uin
     if (surf_ == nullptr)
     {
         // error handling here ...
-        throw std::runtime_error("Not implemented");
+        throw std::runtime_error("Not implemented; branch 1");
     }
 }
 
@@ -49,7 +50,7 @@ GfxSurface::GfxSurface(SdlTypePtr surf) throw(std::runtime_error) : GfxRootClass
     if (surf == nullptr)
     {
         // error handling here
-        throw std::runtime_error("Not implemented");
+        throw std::runtime_error("Not implemented; branch 2");
     }
     surf_ = surf;
 }
@@ -68,20 +69,19 @@ GfxSurface::GfxSurface(const std::string& filename) throw(std::runtime_error) : 
     if (tmpsurfptr == nullptr)
     {
         //  error handling here
-        throw std::runtime_error("Not implemented");
+        throw std::runtime_error("Not implemented; branch 3");
     }
-    if (tmpsurfptr->format != nullptr)
+    if (tmpsurfptr->format == nullptr)
+    {
+        //  error handling here
+        throw std::runtime_error("Not implemented; branch 4");
+    }
+    else
     {
         if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
             //  convert here
-            throw std::runtime_error("Not implemented");
         }
-    }
-    else
-    {
-        //  error handling here
-        throw std::runtime_error("Not implemented");
     }
     surf_ = tmpsurfptr;
 }
@@ -96,20 +96,19 @@ GfxSurface::GfxSurface(void * pixels, const int32_t width, const int32_t height,
     if (tmpsurfptr == nullptr)
     {
         //  error handling here
-        throw std::runtime_error("Not implemented");
+        throw std::runtime_error("Not implemented; branch 5");
     }
-    if (tmpsurfptr->format != nullptr)
+    if (tmpsurfptr->format == nullptr)
+    {
+        //  error handling here
+        throw std::runtime_error("Not implemented; branch 6");
+    }
+    else
     {
         if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
             //  convert here
-            throw std::runtime_error("Not implemented");
         }
-    }
-    else
-    {
-        //  error handling here
-        throw std::runtime_error("Not implemented");
     }
     surf_ = tmpsurfptr;
 }
@@ -139,6 +138,7 @@ GfxSurface::~GfxSurface()
     if (surf_ != nullptr)
     {
         sdl2::SDL_FreeSurface(surf_);
+        surf_ = nullptr;
     }
 }
 

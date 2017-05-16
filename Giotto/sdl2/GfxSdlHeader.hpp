@@ -36,8 +36,9 @@ namespace gfx
 
 namespace sdl2 {
 #ifdef __linux_machine
-#include "include/SDL.h"
-#include "include/SDL_bits.h"
+#include "SDL.h"
+#include "SDL_bits.h"
+#include "SDL_ttf.h"
 #endif
 
 #ifdef __macosx_machine
