@@ -44,6 +44,7 @@ namespace sdl2 {
 #ifdef __macosx_machine
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_bits.h"
+#include "SDL2_ttf/SDL_ttf.h"
 #endif
 
 #ifdef __windows_machine

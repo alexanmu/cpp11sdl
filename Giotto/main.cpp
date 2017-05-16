@@ -552,7 +552,7 @@ int WinMain(int argc, const char * argv[])
 int main(int argc, const char * argv[])
 #endif
 {
-    int action = __platform_default_action+1;
+    int action = __platform_default_action;
 
     if (argc == 2)
     {

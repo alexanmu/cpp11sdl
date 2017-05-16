@@ -118,7 +118,7 @@ void GDemoForm::draw(void)
     bmp.draw();
     windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::GfxRect(90, 90, 384, 384));
 
-    giotto::objects::GLabel g2(GVarName(g2), nullptr, 280, 60, "Label text :-)");
+    giotto::objects::GLabel g2(GVarName(g2), nullptr, 280, 60, "Label text :-)", 24);
     g2.setBorderThikness(giotto::objects::GBorderThikness::thikBorder);
     g2.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g2.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
@@ -127,7 +127,7 @@ void GDemoForm::draw(void)
     g2.setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightCyan());
     g2.setTextRenderMode(giotto::objects::GTextRenderMode::solidText);
     g2.draw();
-    windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(600, 150, 120, 60));
+    windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(600, 10, 120, 60));
 
     GForm::draw();
 }

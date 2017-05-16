@@ -50,14 +50,17 @@ public:
     GLabel& operator=(GLabel&& other) = delete;
 
     explicit GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
-                    std::string const& text);
+                    std::string const& text, uint8_t const& textsize);
     virtual ~GLabel();
 
     std::string const& getText(void) const noexcept;
     void setText(std::string const& text) noexcept;
 
+    uint8_t getTextSize(void) const noexcept;
+    void setTextSize(uint8_t const textsize) noexcept;
+
     GTextRenderMode getTextRenderMode(void) const noexcept;
-    void setTextRenderMode(GTextRenderMode const& textrendermode) noexcept;
+    void setTextRenderMode(GTextRenderMode const textrendermode) noexcept;
 
     virtual void draw(void);
 protected:
@@ -66,6 +69,7 @@ protected:
     static const GTextRenderMode kDefaultTextRenderMode = GTextRenderMode::shadedText;
 private:
     std::string text_;
+    uint8_t textSize_;
 };
 
 }  // namespace objects

@@ -39,10 +39,11 @@ namespace objects
 {
 
 GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
-                std::string const& text) :
+                std::string const& text, uint8_t const& textsize) :
         GGraphicControl(vname, owner, width, height)
 {
     text_ = text;
+    textSize_ = textsize;
     textRenderMode_ = kDefaultTextRenderMode;
     gfx::sdl2::TTF_Init();
 }
@@ -62,12 +63,22 @@ void GLabel::setText(std::string const& text) noexcept
     text_ = text;
 }
 
+uint8_t GLabel::getTextSize(void) const noexcept
+{
+    return textSize_;
+}
+
+void GLabel::setTextSize(uint8_t const textsize) noexcept
+{
+    textSize_ = textsize;
+}
+
 GTextRenderMode GLabel::getTextRenderMode(void) const noexcept
 {
     return textRenderMode_;
 }
 
-void GLabel::setTextRenderMode(GTextRenderMode const& textrendermode) noexcept
+void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
 {
     textRenderMode_ = textrendermode;
 }
@@ -77,7 +88,7 @@ void GLabel::draw(void)
     std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
     gfx::sdl2::TTF_Font * ff;
 
-    ff = gfx::sdl2::TTF_OpenFont(fontfile.c_str(), 24);
+    ff = gfx::sdl2::TTF_OpenFont(fontfile.c_str(), textSize_);
 
     surf_().fillRect(clientBounds_, backgroundColor_);
     if (ff != nullptr)
