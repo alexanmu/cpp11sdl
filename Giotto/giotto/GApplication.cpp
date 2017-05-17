@@ -23,6 +23,7 @@
 
 #include <string>
 
+#include "GfxInitFlags.hpp"
 #include "GApplication.hpp"
 
 namespace giotto
@@ -42,6 +43,7 @@ GApplication::~GApplication()
     if (iq_ != nullptr)
     {
         iq_->~GfxInitQuit();
+        delete iq_;
     }
 }
 
@@ -60,7 +62,11 @@ void GApplication::loadAppConfiguration(void)
 
 void GApplication::run()
 {
-    iq_ = new gfx::GfxInitQuit(gfx::GfxInitQuit::GfxInitComponent::initEverything);
+    gfx::GfxInitFlags iflags;
+
+    iflags.setVideo();
+    iflags.setEvents();
+    iq_ = new gfx::GfxInitQuit(iflags);
     if (iq_->getErrorCode() != 0)
     {
         return;
