@@ -31,6 +31,7 @@
 #include "GComponent.hpp"
 #include "GGraphicControl.hpp"
 #include "GTypes.hpp"
+#include "GfxTtfInitQuit.hpp"
 
 namespace giotto
 {
@@ -68,6 +69,7 @@ protected:
 
     static const GTextRenderMode kDefaultTextRenderMode = GTextRenderMode::shadedText;
 private:
+    gfx::ttf::GfxTtfInitQuit * ttfiq_;
     std::string text_;
     uint8_t textSize_;
 };

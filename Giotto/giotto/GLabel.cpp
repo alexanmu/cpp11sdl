@@ -31,6 +31,7 @@
 #include "GfxRect.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxSurface.hpp"
+#include "GfxTtfFont.hpp"
 
 namespace giotto
 {
@@ -45,12 +46,12 @@ GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint
     text_ = text;
     textSize_ = textsize;
     textRenderMode_ = kDefaultTextRenderMode;
-    gfx::sdl2::TTF_Init();
+    ttfiq_ = new gfx::ttf::GfxTtfInitQuit();
 }
 
 GLabel::~GLabel()
 {
-    gfx::sdl2::TTF_Quit();
+    delete ttfiq_;
 }
 
 std::string const& GLabel::getText(void) const noexcept
@@ -86,34 +87,30 @@ void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
 void GLabel::draw(void)
 {
     std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
-    gfx::sdl2::TTF_Font * ff;
-
-    ff = gfx::sdl2::TTF_OpenFont(fontfile.c_str(), textSize_);
+    gfx::ttf::GfxTtfFont ttffont(fontfile,textSize_);
 
     surf_().fillRect(clientBounds_, backgroundColor_);
-    if (ff != nullptr)
+
+    const char * cstr = text_.c_str();
+    gfx::sdl2::SDL_Surface * txtsrf;
+
+    switch (textRenderMode_)
     {
-        const char * cstr = text_.c_str();
-        gfx::sdl2::SDL_Surface * txtsrf;
-
-        switch (textRenderMode_)
-        {
-            case GTextRenderMode::solidText:
-                txtsrf = gfx::sdl2::TTF_RenderText_Solid(ff, cstr, foregroundColor_.getAsSdlType());
-                break;
-            case GTextRenderMode::shadedText:
-                txtsrf = gfx::sdl2::TTF_RenderText_Shaded(ff, cstr, foregroundColor_.getAsSdlType(),
-                                                            backgroundColor_.getAsSdlType());
-                break;
-            case GTextRenderMode::blendedText:
-                txtsrf = gfx::sdl2::TTF_RenderText_Blended(ff, cstr, foregroundColor_.getAsSdlType());
-                break;
-        }
-        gfx::GfxRect textbounds(0, 0, txtsrf->w, txtsrf->h);
-
-        surf_().blitSurface(gfx::GfxSurface(txtsrf), textbounds, clientBounds_);
-        gfx::sdl2::TTF_CloseFont(ff);
+        case GTextRenderMode::solidText:
+            txtsrf = gfx::sdl2::TTF_RenderText_Solid(ttffont.getAsSdlTypePtr(), cstr, foregroundColor_.getAsSdlType());
+            break;
+        case GTextRenderMode::shadedText:
+            txtsrf = gfx::sdl2::TTF_RenderText_Shaded(ttffont.getAsSdlTypePtr(), cstr, foregroundColor_.getAsSdlType(),
+                                                        backgroundColor_.getAsSdlType());
+            break;
+        case GTextRenderMode::blendedText:
+            txtsrf = gfx::sdl2::TTF_RenderText_Blended(ttffont.getAsSdlTypePtr(), cstr, foregroundColor_.getAsSdlType());
+            break;
     }
+    gfx::GfxRect textbounds(0, 0, txtsrf->w, txtsrf->h);
+
+    surf_().blitSurface(gfx::GfxSurface(txtsrf), textbounds, clientBounds_);
+
     GGraphicControl::draw();
 }
 
