@@ -24,6 +24,7 @@
 #ifndef GfxInitQuit_hpp
 #define GfxInitQuit_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -61,10 +62,10 @@ public:
 
     void quitRequested(void);
 
-    int getErrorCode() const;
+    int32_t getErrorCode() const;
 private:
     GfxInitFlags flags_;
-    int errorCode_;
+    int32_t errorCode_;
 };
 
 }  // namespace gfx

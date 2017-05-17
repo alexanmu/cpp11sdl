@@ -67,7 +67,7 @@ void GfxInitQuit::quitRequested(void)
 }
 
 // Return error code after init call
-int GfxInitQuit::getErrorCode() const
+int32_t GfxInitQuit::getErrorCode() const
 {
     return errorCode_;
 }
