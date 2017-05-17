@@ -79,6 +79,7 @@
 #include "GfxBgiFontConstants.hpp"
 #include "GfxRadius.hpp"
 #include "GfxString.hpp"
+#include "GfxInitFlags.hpp"  // 2017.05.17
 
 namespace gfx
 {
@@ -139,7 +140,8 @@ const char* GfxRootClass::astrClassNames[] =
     gfx::bgi::GfxBgiConstants::ClassName,
     gfx::bgi::fnt::GfxBgiFontConstants::ClassName,
     gfx::bgi::GfxRadius::ClassName,
-    gfx::bgi::GfxString::ClassName
+    gfx::bgi::GfxString::ClassName,
+    gfx::GfxInitFlags::ClassName  // 2017.05.17
 };
 
 const int GfxRootClass::intClassNamesCount = sizeof(GfxRootClass::astrClassNames) /

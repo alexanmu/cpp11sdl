@@ -42,7 +42,6 @@ GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass(ClassName)
 {
     pix_ = sdl2::SDL_AllocFormat(pix->format);
-    *pix_ = *pix;
 }
 
 GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)

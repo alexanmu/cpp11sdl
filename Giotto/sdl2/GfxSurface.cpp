@@ -64,23 +64,23 @@ GfxSurface::GfxSurface(const std::string& filename) throw(std::runtime_error) : 
     {
         throw std::runtime_error(sdl2::SDL_GetError());
     }
-    tmpsurfptr = sdl2::SDL_LoadBMP_RW(rw, 1);
-                    //  sdl2::SDL_LoadBMP(filename.c_str());
+    tmpsurfptr = sdl2::SDL_LoadBMP_RW(rw, 0);  // 1 = auto-close file
+    SDL_RWclose(rw);
     if (tmpsurfptr == nullptr)
     {
-        //  error handling here
+        // error handling here
         throw std::runtime_error("Not implemented; branch 3");
     }
     if (tmpsurfptr->format == nullptr)
     {
-        //  error handling here
+        // error handling here
         throw std::runtime_error("Not implemented; branch 4");
     }
     else
     {
         if (tmpsurfptr->format->format != sdl2::SDL_PIXELFORMAT_ARGB8888)
         {
-            //  convert here
+            // convert here
         }
     }
     surf_ = tmpsurfptr;
@@ -169,14 +169,14 @@ int GfxSurface::getDepth(void) const
     return surf_->format->BitsPerPixel;
 }
 
-GfxPixelFormat GfxSurface::getFormat(void)
+GfxPixelFormat * GfxSurface::getFormat(void)
 {
     if (surf_ == nullptr)
     {
-        return GfxPixelFormat();
+        return new GfxPixelFormat();
     }
 
-    return GfxPixelFormat { surf_->format };
+    return new GfxPixelFormat(surf_->format);
 }
 
 void GfxSurface::fillRect(const GfxRect& rect, const GfxColor& color)

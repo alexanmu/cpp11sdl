@@ -21,13 +21,14 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef SdlInitQuit_hpp
-#define SdlInitQuit_hpp
+#ifndef GfxInitQuit_hpp
+#define GfxInitQuit_hpp
 
 #include <string>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
+#include "GfxInitFlags.hpp"
 
 namespace gfx
 {
@@ -37,18 +38,10 @@ class GfxInitQuit final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    // Init Video, Audio or Everything ...
-    enum class GfxInitComponent
-    {
-        initVideo,
-        initAudio,
-        initEverything
-    };
-
     // No default constructor
     GfxInitQuit() = delete;
 
-    explicit GfxInitQuit(const GfxInitComponent gfxInitComp);
+    explicit GfxInitQuit(GfxInitFlags const& flags);
 
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;
@@ -61,13 +54,17 @@ public:
     // Explicit destructor to de-init SDL lib
     virtual ~GfxInitQuit();
 
+    void initSubSystem(GfxInitFlags const& flags);
+    void quitSubSystem(GfxInitFlags const& flags);
+
+    GfxInitFlags * wasInit(GfxInitFlags const& flags);
+
     void quitRequested(void);
 
     int getErrorCode() const;
-    GfxInitComponent getInitedComponent() const;
 private:
-    GfxInitComponent gfxInitComp_;
-    int errorcode_;
+    GfxInitFlags flags_;
+    int errorCode_;
 };
 
 }  // namespace gfx

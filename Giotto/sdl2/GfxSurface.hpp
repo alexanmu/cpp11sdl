@@ -67,7 +67,7 @@ public:
     int getHeight(void) const;
     int getDepth(void) const;
 
-    GfxPixelFormat getFormat(void);
+    GfxPixelFormat * getFormat(void);
 
     void fillRect(const GfxRect& rect, const GfxColor& color);
     void fillRect(const GfxColor& color);

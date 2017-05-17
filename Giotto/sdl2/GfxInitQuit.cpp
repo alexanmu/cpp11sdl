@@ -30,30 +30,33 @@ namespace gfx
 
 const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
-GfxInitQuit::GfxInitQuit(const GfxInitComponent gfxInitComp) :
-                GfxRootClass(ClassName), gfxInitComp_(gfxInitComp), errorcode_(0)
+GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) :
+                GfxRootClass(ClassName), flags_(flags), errorCode_(0)
 {
-    int initParam;
-
-    initParam = 0;
-    if (gfxInitComp == GfxInitComponent::initVideo)
-    {
-        initParam = SDL_INIT_VIDEO | SDL_INIT_EVENTS;
-    }
-    if (gfxInitComp == GfxInitComponent::initAudio)
-    {
-        initParam = SDL_INIT_AUDIO | SDL_INIT_EVENTS;
-    }
-    if (gfxInitComp == GfxInitComponent::initEverything)
-    {
-        initParam = SDL_INIT_EVERYTHING;
-    }
-    errorcode_ = sdl2::SDL_Init(initParam);
+    errorCode_ = sdl2::SDL_Init(flags.getAsSdlType());
 }
 
 GfxInitQuit::~GfxInitQuit()
 {
     sdl2::SDL_Quit();
+}
+
+void GfxInitQuit::initSubSystem(GfxInitFlags const& flags)
+{
+    errorCode_ = sdl2::SDL_InitSubSystem(flags.getAsSdlType());
+}
+
+void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags)
+{
+    sdl2::SDL_QuitSubSystem(flags.getAsSdlType());
+}
+
+GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags)
+{
+    uint32_t ret;
+
+    ret = sdl2::SDL_WasInit(flags.getAsSdlType());
+    return new GfxInitFlags(ret);
 }
 
 void GfxInitQuit::quitRequested(void)
@@ -66,13 +69,7 @@ void GfxInitQuit::quitRequested(void)
 // Return error code after init call
 int GfxInitQuit::getErrorCode() const
 {
-    return errorcode_;
-}
-
-// Returns the requested component
-GfxInitQuit::GfxInitComponent GfxInitQuit::getInitedComponent() const
-{
-    return gfxInitComp_;
+    return errorCode_;
 }
 
 }  // namespace gfx
