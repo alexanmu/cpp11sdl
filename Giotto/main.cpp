@@ -221,27 +221,28 @@ void AfterDeInit(void)
 
 void bmpSurfaceInfo(gfx::GfxSurface* bmps)
 {
-    gfx::GfxPixelFormat ptr;
+    gfx::GfxPixelFormat * ptr;
     gfx::GfxPalette::GfxColorVector vec;
 
     ptr = bmps->getFormat();
-    std::cout << "ptr.getFormat()=" << ptr.getFormat() << '\n';
+    std::cout << "ptr.getFormat()=" << ptr->getFormat() << '\n';
     // palette goes here
-    std::cout << "ptr.getBitsPerPixel()=" << static_cast<int>(ptr.getBitsPerPixel()) << '\n';
-    std::cout << "ptr.getBytesPerPixel()=" << static_cast<int>(ptr.getBytesPerPixel()) << '\n';
-    std::cout << "ptr.getRmask()=" << ptr.getRedMask() << '\n';
-    std::cout << "ptr.getGmask()=" << ptr.getGreenMask() << '\n';
-    std::cout << "ptr.getBmask()=" << ptr.getBlueMask() << '\n';
-    std::cout << "ptr.getAmask()=" << ptr.getAlphaMask() << '\n';
-    std::cout << "ptr.getRloss()=" << static_cast<int>(ptr.getRloss()) << '\n';
-    std::cout << "ptr.getGloss()=" << static_cast<int>(ptr.getGloss()) << '\n';
-    std::cout << "ptr.getBloss()=" << static_cast<int>(ptr.getBloss()) << '\n';
-    std::cout << "ptr.getAloss()=" << static_cast<int>(ptr.getAloss()) << '\n';
-    std::cout << "ptr.getRshift()=" << static_cast<int>(ptr.getRshift()) << '\n';
-    std::cout << "ptr.getGshift()=" << static_cast<int>(ptr.getGshift()) << '\n';
-    std::cout << "ptr.getBshift()=" << static_cast<int>(ptr.getBshift()) << '\n';
-    std::cout << "ptr.getAshift()=" << static_cast<int>(ptr.getAshift()) << '\n';
-    std::cout << "ptr.getRefCount()=" << ptr.getRefCount() << '\n';
+    std::cout << "ptr.getBitsPerPixel()=" << static_cast<int>(ptr->getBitsPerPixel()) << '\n';
+    std::cout << "ptr.getBytesPerPixel()=" << static_cast<int>(ptr->getBytesPerPixel()) << '\n';
+    std::cout << "ptr.getRmask()=" << ptr->getRedMask() << '\n';
+    std::cout << "ptr.getGmask()=" << ptr->getGreenMask() << '\n';
+    std::cout << "ptr.getBmask()=" << ptr->getBlueMask() << '\n';
+    std::cout << "ptr.getAmask()=" << ptr->getAlphaMask() << '\n';
+    std::cout << "ptr.getRloss()=" << static_cast<int>(ptr->getRloss()) << '\n';
+    std::cout << "ptr.getGloss()=" << static_cast<int>(ptr->getGloss()) << '\n';
+    std::cout << "ptr.getBloss()=" << static_cast<int>(ptr->getBloss()) << '\n';
+    std::cout << "ptr.getAloss()=" << static_cast<int>(ptr->getAloss()) << '\n';
+    std::cout << "ptr.getRshift()=" << static_cast<int>(ptr->getRshift()) << '\n';
+    std::cout << "ptr.getGshift()=" << static_cast<int>(ptr->getGshift()) << '\n';
+    std::cout << "ptr.getBshift()=" << static_cast<int>(ptr->getBshift()) << '\n';
+    std::cout << "ptr.getAshift()=" << static_cast<int>(ptr->getAshift()) << '\n';
+    std::cout << "ptr.getRefCount()=" << ptr->getRefCount() << '\n';
+    delete ptr;
 }
 
 void inc(int* a)
@@ -271,7 +272,11 @@ void dec(int* a)
 void _doStuff(void)
 {
     BeforeInit();
-    gfx::GfxInitQuit iq(gfx::GfxInitQuit::GfxInitComponent::initEverything);
+    gfx::GfxInitFlags iflags;
+
+    iflags.setVideo();
+    iflags.setEvents();
+    gfx::GfxInitQuit iq(iflags);
     AfterInit();
     std::cout << "_doStuff()" << std::endl;
     if (iq.getErrorCode() != 0)
@@ -523,6 +528,7 @@ void _doStuff(void)
         }
         gfx::sdl2::SDL_Delay(25);
     }
+    sbitmap.~GfxSurface();
     AfterDeInit();
 }
 
