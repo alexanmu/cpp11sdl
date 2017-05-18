@@ -82,6 +82,8 @@
 #include "GfxInitFlags.hpp"  // 2017.05.17
 #include "GfxTtfFont.hpp"  // 2017.05.17
 #include "GfxTtfInitQuit.hpp"  // 2017.05.17
+#include "GfxTtfGetVersion.hpp"  // 2017.05.18
+#include "GfxTtfFontStyle.hpp"  // 2017.05.18
 
 namespace gfx
 {
@@ -145,7 +147,9 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::bgi::GfxString::ClassName, sizeof(gfx::bgi::GfxString) },
     { gfx::GfxInitFlags::ClassName, sizeof(gfx::GfxInitFlags) },  // 2017.05.17
     { gfx::ttf::GfxTtfFont::ClassName, sizeof(gfx::ttf::GfxTtfFont) },  // 2017.05.17
-    { gfx::ttf::GfxTtfInitQuit::ClassName, sizeof(gfx::ttf::GfxTtfInitQuit) }  // 2017.05.17
+    { gfx::ttf::GfxTtfInitQuit::ClassName, sizeof(gfx::ttf::GfxTtfInitQuit) },  // 2017.05.17
+    { gfx::ttf::GfxTtfGetVersion::ClassName, sizeof(gfx::ttf::GfxTtfGetVersion) },  // 2017.05.18
+    { gfx::ttf::GfxTtfFontStyle::ClassName, sizeof(gfx::ttf::GfxTtfFontStyle) }  // 2017.05.18
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
