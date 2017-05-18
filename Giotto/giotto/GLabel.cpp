@@ -92,16 +92,34 @@ void GLabel::draw(void)
     gfx::ttf::GfxTtfFont ttffont(fontfile, textSize_);
     gfx::GfxVersion v;
     gfx::ttf::GfxTtfGetVersion gv;
+    gfx::ttf::GfxTtfFontHinting fh;
+    int32_t w;
+    int32_t h;
 
     gv.getVersion(&v);
 
     surf_().fillRect(clientBounds_, backgroundColor_);
 
-    text_ = text_ + " " + v.getAsString();
+    text_ = ttffont.getFontFaceFamilyName() + " " + v.getAsString();
+    if (ttffont.sizeText(text_, &w, &h) == true)
+    {
+        if (w > getClientBounds().getWidth())
+        {
+            return;
+        }
+        if (h > getClientBounds().getHeight())
+        {
+            return;
+        }
+    }
     const char * cstr = text_.c_str();
     gfx::sdl2::SDL_Surface * txtsrf;
 
-    ttffont.setFontStyle(gfx::ttf::GfxTtfFontStyle(true, true, true, true));
+    ttffont.setFontStyle(gfx::ttf::GfxTtfFontStyle(false, true, false, false));
+    ttffont.setFontHinting(gfx::ttf::GfxTtfFontHinting(
+        gfx::ttf::GfxTtfFontHinting::GfxTtfFontHintingValues::hintingLight));
+    ttffont.setFontOutline(1);
+    ttffont.setFontKerning(false);
     switch (textRenderMode_)
     {
         case GTextRenderMode::solidText:
