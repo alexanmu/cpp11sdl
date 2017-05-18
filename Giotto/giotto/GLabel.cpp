@@ -119,7 +119,8 @@ void GLabel::draw(void)
     ttffont.setFontHinting(gfx::ttf::GfxTtfFontHinting(
         gfx::ttf::GfxTtfFontHinting::GfxTtfFontHintingValues::hintingLight));
     ttffont.setFontOutline(1);
-    ttffont.setFontKerning(false);
+    ttffont.setFontKerning(true);
+    textRenderMode_ = GTextRenderMode::shadedText;
     switch (textRenderMode_)
     {
         case GTextRenderMode::solidText:
