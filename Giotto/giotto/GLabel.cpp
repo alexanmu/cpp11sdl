@@ -33,6 +33,7 @@
 #include "GfxSurface.hpp"
 #include "GfxTtfFont.hpp"
 #include "GfxTtfGetVersion.hpp"
+#include "GfxTtfFontStyle.hpp"
 
 namespace giotto
 {
@@ -88,7 +89,7 @@ void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
 void GLabel::draw(void)
 {
     std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
-    gfx::ttf::GfxTtfFont ttffont(fontfile,textSize_);
+    gfx::ttf::GfxTtfFont ttffont(fontfile, textSize_);
     gfx::GfxVersion v;
     gfx::ttf::GfxTtfGetVersion gv;
 
@@ -100,6 +101,7 @@ void GLabel::draw(void)
     const char * cstr = text_.c_str();
     gfx::sdl2::SDL_Surface * txtsrf;
 
+    ttffont.setFontStyle(gfx::ttf::GfxTtfFontStyle(true, true, true, true));
     switch (textRenderMode_)
     {
         case GTextRenderMode::solidText:
@@ -110,7 +112,8 @@ void GLabel::draw(void)
                                                         backgroundColor_.getAsSdlType());
             break;
         case GTextRenderMode::blendedText:
-            txtsrf = gfx::sdl2::TTF_RenderText_Blended(ttffont.getAsSdlTypePtr(), cstr, foregroundColor_.getAsSdlType());
+            txtsrf = gfx::sdl2::TTF_RenderText_Blended(ttffont.getAsSdlTypePtr(), cstr,
+                                                        foregroundColor_.getAsSdlType());
             break;
     }
     gfx::GfxRect textbounds(0, 0, txtsrf->w, txtsrf->h);
