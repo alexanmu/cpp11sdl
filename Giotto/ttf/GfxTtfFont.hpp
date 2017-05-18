@@ -31,6 +31,7 @@
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxTtfFontStyle.hpp"
+#include "GfxTtfFontHinting.hpp"
 
 namespace gfx
 {
@@ -64,8 +65,37 @@ public:
     void openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error);
     void closeFont(void);
 
-    GfxTtfFontStyle* getFontStyle(void);
+    GfxTtfFontStyle const& getFontStyle(void) const;
     void setFontStyle(GfxTtfFontStyle const& fontstyle);
+
+    GfxTtfFontHinting const& getFontHinting(void) const;
+    void setFontHinting(GfxTtfFontHinting const& fonthinting);
+
+    int32_t getFontOutline(void) const;
+    void setFontOutline(int32_t const& outline);
+
+    bool getFontKerning(void) const;
+    void setFontKerning(bool const& kerning);
+
+    int32_t getFontHeight(void) const;
+    int32_t getFontAscent(void) const;
+    int32_t getFontDescent(void) const;
+    int32_t getFontLineSkip(void) const;
+
+    int64_t getFontFaces(void) const;
+
+    bool isFontFaceFixedWidth(void) const;
+
+    std::string getFontFaceFamilyName(void) const;
+    std::string getFontFaceStyleName(void) const;
+
+    int32_t glyphIsProvided(uint16_t ch) const;
+    bool glyphMetrics(uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
+                        int32_t * maxy, int32_t * advance) const;
+
+    bool sizeText(std::string const& text, int32_t * w, int32_t * h) const;
+    bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const;
+    bool sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error);
 
     void clear(void);
 
@@ -75,6 +105,10 @@ private:
     std::string fileName_;
     int32_t pointSize_;
     int32_t index_;
+    GfxTtfFontStyle fontStyle_;
+    GfxTtfFontHinting fontHinting_;
+    int32_t outline_;
+    bool kerning_;
 };
 
 }  // namespace ttf

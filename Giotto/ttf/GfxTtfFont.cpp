@@ -46,6 +46,10 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) : GfxRoot
     fileName_ = filename;
     pointSize_ = pointsize;
     index_ = -1;
+    fontStyle_.clear();
+    fontHinting_.clear();
+    outline_ = 0;
+    kerning_ = true;
 }
 
 GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t index) : GfxRootClass(ClassName)
@@ -54,6 +58,10 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t i
     fileName_ = filename;
     pointSize_ = pointsize;
     index_ = index;
+    fontStyle_.clear();
+    fontHinting_.clear();
+    outline_ = 0;
+    kerning_ = true;
 }
 
 GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) : GfxRootClass(ClassName)
@@ -62,6 +70,10 @@ GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) : GfxRootClass(ClassName)
     fileName_ = other.fileName_;
     pointSize_ = other.pointSize_;
     index_ = other.index_;
+    fontStyle_ = other.fontStyle_;
+    fontHinting_ = other.fontHinting_;
+    outline_ = other.outline_;
+    kerning_ = other.kerning_;
     // Delete other's data
     other.clear();
 }
@@ -74,6 +86,10 @@ GfxTtfFont& GfxTtfFont::operator=(GfxTtfFont&& other)
         fileName_ = other.fileName_;
         pointSize_ = other.pointSize_;
         index_ = other.index_;
+        fontStyle_ = other.fontStyle_;
+        fontHinting_ = other.fontHinting_;
+        outline_ = other.outline_;
+        kerning_ = other.kerning_;
         // Delete other's data
         other.clear();
     }
@@ -98,6 +114,10 @@ void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize) throw(
     fileName_ = filename;
     pointSize_ = pointsize;
     index_ = -1;
+    fontStyle_.clear();
+    fontHinting_.clear();
+    outline_ = 0;
+    kerning_ = true;
 }
 
 void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error)
@@ -110,6 +130,10 @@ void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize, int32_
     fileName_ = filename;
     pointSize_ = pointsize;
     index_ = index;
+    fontStyle_.clear();
+    fontHinting_.clear();
+    outline_ = 0;
+    kerning_ = true;
 }
 
 void GfxTtfFont::closeFont(void)
@@ -117,20 +141,135 @@ void GfxTtfFont::closeFont(void)
     if (ttf_ != nullptr)
     {
         sdl2::TTF_CloseFont(ttf_);
-        ttf_ = nullptr;
+        clear();
     }
 }
 
-GfxTtfFontStyle* GfxTtfFont::getFontStyle(void)
+GfxTtfFontStyle const& GfxTtfFont::getFontStyle(void) const
 {
-    GfxTtfFontStyle::SdlType style = TTF_GetFontStyle(ttf_);
-
-    return new GfxTtfFontStyle(style);
+    return fontStyle_;
 }
 
 void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle)
 {
+    fontStyle_ = fontstyle;
     sdl2::TTF_SetFontStyle(ttf_, fontstyle.getAsSdlType());
+}
+
+GfxTtfFontHinting const& GfxTtfFont::getFontHinting(void) const
+{
+    return fontHinting_;
+}
+
+void GfxTtfFont::setFontHinting(GfxTtfFontHinting const& fonthinting)
+{
+    fontHinting_ = fonthinting;
+    sdl2::TTF_SetFontHinting(ttf_, fonthinting.getAsSdlType());
+}
+
+int32_t GfxTtfFont::getFontOutline(void) const
+{
+    return outline_;
+}
+
+void GfxTtfFont::setFontOutline(int32_t const& outline)
+{
+    outline_ = outline;
+    sdl2::TTF_SetFontOutline(ttf_, outline);
+}
+
+bool GfxTtfFont::getFontKerning(void) const
+{
+    return kerning_;
+}
+
+void GfxTtfFont::setFontKerning(bool const& kerning)
+{
+    kerning_ = kerning;
+    sdl2::TTF_SetFontKerning(ttf_, kerning);
+}
+
+int32_t GfxTtfFont::getFontHeight(void) const
+{
+    return sdl2::TTF_FontHeight(ttf_);
+}
+
+int32_t GfxTtfFont::getFontAscent(void) const
+{
+    return sdl2::TTF_FontAscent(ttf_);
+}
+
+int32_t GfxTtfFont::getFontDescent(void) const
+{
+    return sdl2::TTF_FontDescent(ttf_);
+}
+
+int32_t GfxTtfFont::getFontLineSkip(void) const
+{
+    return sdl2::TTF_FontLineSkip(ttf_);
+}
+
+int64_t GfxTtfFont::getFontFaces(void) const
+{
+    return sdl2::TTF_FontFaces(ttf_);
+}
+
+bool GfxTtfFont::isFontFaceFixedWidth(void) const
+{
+    return (sdl2::TTF_FontFaceIsFixedWidth(ttf_) != 0);
+}
+
+std::string GfxTtfFont::getFontFaceFamilyName(void) const
+{
+    char * pChar;
+
+    pChar = sdl2::TTF_FontFaceFamilyName(ttf_);
+    if (pChar != nullptr)
+    {
+        return std::string(pChar);
+    }
+    return "";
+}
+
+std::string GfxTtfFont::getFontFaceStyleName(void) const
+{
+    char * pChar;
+
+    pChar = sdl2::TTF_FontFaceStyleName(ttf_);
+    if (pChar != nullptr)
+    {
+        return std::string(pChar);
+    }
+    return "";
+}
+
+int32_t GfxTtfFont::glyphIsProvided(uint16_t ch) const
+{
+    return sdl2::TTF_GlyphIsProvided(ttf_, ch);
+}
+
+bool GfxTtfFont::glyphMetrics(uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
+                                int32_t * maxy, int32_t * advance) const
+{
+    return (sdl2::TTF_GlyphMetrics(ttf_, ch, minx, maxx, miny, maxy, advance) == 0);
+}
+
+bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) const
+{
+    return (sdl2::TTF_SizeText(ttf_, text.c_str(), w, h) == 0);
+}
+
+bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const
+{
+    return (sdl2::TTF_SizeUTF8(ttf_, text.c_str(), w, h) == 0);
+}
+
+bool GfxTtfFont::sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error)
+{
+    text = text;
+    w = w;
+    h = h;
+    throw std::runtime_error("Not supported");
 }
 
 void GfxTtfFont::clear(void)
@@ -139,6 +278,10 @@ void GfxTtfFont::clear(void)
     fileName_ = "";
     pointSize_ = -1;
     index_ = -1;
+    fontStyle_.clear();
+    fontHinting_.clear();
+    outline_ = 0;
+    kerning_ = true;
 }
 
 GfxTtfFont::SdlTypePtr GfxTtfFont::getAsSdlTypePtr(void) const
