@@ -121,6 +121,18 @@ void GfxTtfFont::closeFont(void)
     }
 }
 
+GfxTtfFontStyle* GfxTtfFont::getFontStyle(void)
+{
+    GfxTtfFontStyle::SdlType style = TTF_GetFontStyle(ttf_);
+
+    return new GfxTtfFontStyle(style);
+}
+
+void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle)
+{
+    sdl2::TTF_SetFontStyle(ttf_, fontstyle.getAsSdlType());
+}
+
 void GfxTtfFont::clear(void)
 {
     ttf_ = nullptr;

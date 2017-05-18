@@ -30,6 +30,7 @@
 
 #include "GfxRootClass.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxTtfFontStyle.hpp"
 
 namespace gfx
 {
@@ -62,6 +63,9 @@ public:
     void openFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error);
     void openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error);
     void closeFont(void);
+
+    GfxTtfFontStyle* getFontStyle(void);
+    void setFontStyle(GfxTtfFontStyle const& fontstyle);
 
     void clear(void);
 
