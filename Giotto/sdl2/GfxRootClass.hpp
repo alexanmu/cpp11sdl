@@ -24,6 +24,7 @@
 #ifndef GfxRootClass_hpp
 #define GfxRootClass_hpp
 
+#include <cstdint>
 #include <string>
 
 namespace gfx
@@ -44,25 +45,25 @@ public:
     GfxRootClass& operator=(const GfxRootClass& other);
     GfxRootClass& operator=(GfxRootClass&& other);
 
-    bool operator==(const GfxRootClass& other);
+    bool operator==(const GfxRootClass& other) const;
+    bool operator()(void) const;
 
-    std::string getClassName(void) const;
-    int getInstanceId(void) const;
-
+    std::string const& getClassName(void) const;
+    int32_t getInstanceId(void) const;
 private:
     std::string strClassName_;
-    int intInstanceId_;
+    int32_t i32InstanceId_;
 
     struct stClassInfo
     {
         const char * pchClassName;
-        int iSize;
+        int32_t iSize;
     };
 
     static const struct stClassInfo astClassInfo[];
-    static const int intClassNamesCount;
+    static const int32_t i32ClassNamesCount;
 
-    static int intInstanceCounter_;
+    static int32_t i32InstanceCounter_;
 };
 
 }  // namespace gfx

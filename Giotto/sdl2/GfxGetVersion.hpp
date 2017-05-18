@@ -24,6 +24,7 @@
 #ifndef GfxGetVersion_hpp
 #define GfxGetVersion_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -47,7 +48,7 @@ public:
 
     void getVersion(GfxVersion* ver) const;
     std::string getRevision(void) const;
-    int getRevisionNumber(void) const;
+    int32_t getRevisionNumber(void) const;
 };
 
 }  // namespace gfx

@@ -39,7 +39,7 @@ void GfxGetVersion::getVersion(GfxVersion* ver) const
 {
     GfxVersion::SdlType v;
 
-    SDL_GetVersion(&v);
+    sdl2::SDL_GetVersion(&v);
     ver->set(v);
 }
 
@@ -51,7 +51,7 @@ std::string GfxGetVersion::getRevision(void) const
     return str;
 }
 
-int GfxGetVersion::getRevisionNumber(void) const
+int32_t GfxGetVersion::getRevisionNumber(void) const
 {
     return sdl2::SDL_GetRevisionNumber();
 }

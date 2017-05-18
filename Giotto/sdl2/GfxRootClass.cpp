@@ -86,7 +86,7 @@
 namespace gfx
 {
 
-int GfxRootClass::intInstanceCounter_ = 0;
+int32_t GfxRootClass::i32InstanceCounter_ = 0;
 
 const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
 {
@@ -148,51 +148,51 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::ttf::GfxTtfInitQuit::ClassName, sizeof(gfx::ttf::GfxTtfInitQuit) }  // 2017.05.17
 };
 
-const int GfxRootClass::intClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
+const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
                                                 sizeof(GfxRootClass::astClassInfo[0]);
 
 GfxRootClass::GfxRootClass()
 {
-    GfxRootClass::intInstanceCounter_ += 1;
-    intInstanceId_ = GfxRootClass::intInstanceCounter_;
+    GfxRootClass::i32InstanceCounter_ += 1;
+    i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
     strClassName_ = "$init$";
 }
 
 GfxRootClass::GfxRootClass(const std::string& strClassName) : strClassName_(strClassName)
 {
-    GfxRootClass::intInstanceCounter_ += 1;
-    intInstanceId_ = GfxRootClass::intInstanceCounter_;
+    GfxRootClass::i32InstanceCounter_ += 1;
+    i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
 }
 
 GfxRootClass::GfxRootClass(const GfxRootClass& other)
 {
-    GfxRootClass::intInstanceCounter_ += 1;
-    intInstanceId_ = GfxRootClass::intInstanceCounter_;
+    GfxRootClass::i32InstanceCounter_ += 1;
+    i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
     strClassName_ = "$cpctor$" + other.strClassName_;
 }
 
 GfxRootClass::GfxRootClass(GfxRootClass&& other)
 {
-    GfxRootClass::intInstanceCounter_ += 1;
-    intInstanceId_ = GfxRootClass::intInstanceCounter_;
+    GfxRootClass::i32InstanceCounter_ += 1;
+    i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
     strClassName_ = "$mvctor$" + other.strClassName_;
     // Delete other's data
-    other.intInstanceId_ = -1;
+    other.i32InstanceId_ = -1;
     other.strClassName_ = "$null$";
 }
 
 GfxRootClass::~GfxRootClass()
 {
     strClassName_ = "$null$";
-    intInstanceId_ = -1;
+    i32InstanceId_ = -1;
 }
 
 GfxRootClass& GfxRootClass::operator=(const GfxRootClass& other)
 {
     if (this != &other)
     {
-        GfxRootClass::intInstanceCounter_ += 1;
-        intInstanceId_ = GfxRootClass::intInstanceCounter_;
+        GfxRootClass::i32InstanceCounter_ += 1;
+        i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
         strClassName_ = "$cpoprt$" + other.strClassName_;
     }
     return *this;
@@ -202,24 +202,34 @@ GfxRootClass& GfxRootClass::operator=(GfxRootClass&& other)
 {
     if (this != &other)
     {
-        GfxRootClass::intInstanceCounter_ += 1;
-        intInstanceId_ = GfxRootClass::intInstanceCounter_;
+        GfxRootClass::i32InstanceCounter_ += 1;
+        i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
         strClassName_ = "$mvoprt$" + other.strClassName_;
         // Delete other's data
-        other.intInstanceId_ = -1;
+        other.i32InstanceId_ = -1;
         other.strClassName_ = "$null$";
     }
     return *this;
 }
 
-bool GfxRootClass::operator==(const GfxRootClass& other)
+bool GfxRootClass::operator==(const GfxRootClass& other) const
 {
-    return ((intInstanceId_ == other.intInstanceId_) && (strClassName_ == other.strClassName_));
+    return ((i32InstanceId_ == other.i32InstanceId_) && (strClassName_ == other.strClassName_));
 }
 
-std::string GfxRootClass::getClassName(void) const
+bool GfxRootClass::operator()(void) const
+{
+    return (strClassName_ != "$null$");
+}
+
+std::string const& GfxRootClass::getClassName(void) const
 {
     return strClassName_;
+}
+
+int32_t GfxRootClass::getInstanceId(void) const
+{
+    return i32InstanceId_;
 }
 
 }  // namespace gfx
