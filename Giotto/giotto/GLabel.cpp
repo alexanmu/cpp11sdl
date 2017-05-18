@@ -32,6 +32,7 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxSurface.hpp"
 #include "GfxTtfFont.hpp"
+#include "GfxTtfGetVersion.hpp"
 
 namespace giotto
 {
@@ -88,9 +89,14 @@ void GLabel::draw(void)
 {
     std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
     gfx::ttf::GfxTtfFont ttffont(fontfile,textSize_);
+    gfx::GfxVersion v;
+    gfx::ttf::GfxTtfGetVersion gv;
+
+    gv.getVersion(&v);
 
     surf_().fillRect(clientBounds_, backgroundColor_);
 
+    text_ = text_ + " " + v.getAsString();
     const char * cstr = text_.c_str();
     gfx::sdl2::SDL_Surface * txtsrf;
 
