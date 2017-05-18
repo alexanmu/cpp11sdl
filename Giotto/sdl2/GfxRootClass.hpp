@@ -53,8 +53,15 @@ private:
     std::string strClassName_;
     int intInstanceId_;
 
-    static const char* astrClassNames[];
+    struct stClassInfo
+    {
+        const char * pchClassName;
+        int iSize;
+    };
+
+    static const struct stClassInfo astClassInfo[];
     static const int intClassNamesCount;
+
     static int intInstanceCounter_;
 };
 
