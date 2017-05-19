@@ -22,6 +22,7 @@
 */
 
 #include "GfxFontInfo.hpp"
+#include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
@@ -31,14 +32,249 @@ namespace supp
 
 const char GfxFontInfo::ClassName[] = "GfxFontInfo";
 
+const std::string GfxFontInfo::kDefaultFontName = "Raleway";
+const uint8_t GfxFontInfo::kDefaultFontSize = 16;
+const int32_t GfxFontInfo::kDefaultFontOutline = 0;
+const bool GfxFontInfo::kDefaultFontBold = false;
+const bool GfxFontInfo::kDefaultFontItalic = false;
+const bool GfxFontInfo::kDefaultFontUnderline = false;
+const bool GfxFontInfo::kDefaultFontStrikethrough = false;
+const int32_t GfxFontInfo::kDefaultFontHinting = TTF_HINTING_NORMAL;
+const bool GfxFontInfo::kDefaultFontKerning = true;
+    
 GfxFontInfo::GfxFontInfo() : GfxRootClass(ClassName)
 {
-    // Nothing to do yet
+    clear();
+}
+
+GfxFontInfo::GfxFontInfo(std::string const& fontName) : GfxRootClass(ClassName)
+{
+    clear();
+    fontName_ = fontName;
+}
+
+GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) : GfxRootClass(ClassName)
+{
+    clear();
+    fontName_ = fontName;
+    fontSize_ = fontSize;
+}
+
+GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) : GfxRootClass(ClassName)
+{
+    fontName_ = other.fontName_;
+    fontSize_ = other.fontSize_;
+    fontOutline_ = other.fontOutline_;
+    fontBold_ = other.fontBold_;
+    fontItalic_ = other.fontItalic_;
+    fontUnderline_ = other.fontUnderline_;
+    fontStrikethrough_ = other.fontStrikethrough_;
+    fontHinting_ = other.fontHinting_;
+    fontKerning_ = other.fontKerning_;
+}
+
+GfxFontInfo::GfxFontInfo(GfxFontInfo&& other) : GfxRootClass(ClassName)
+{
+    fontName_ = other.fontName_;
+    fontSize_ = other.fontSize_;
+    fontOutline_ = other.fontOutline_;
+    fontBold_ = other.fontBold_;
+    fontItalic_ = other.fontItalic_;
+    fontUnderline_ = other.fontUnderline_;
+    fontStrikethrough_ = other.fontStrikethrough_;
+    fontHinting_ = other.fontHinting_;
+    fontKerning_ = other.fontKerning_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxFontInfo& GfxFontInfo::operator=(GfxFontInfo const& other)
+{
+    if (this != &other)
+    {
+        fontName_ = other.fontName_;
+        fontSize_ = other.fontSize_;
+        fontOutline_ = other.fontOutline_;
+        fontBold_ = other.fontBold_;
+        fontItalic_ = other.fontItalic_;
+        fontUnderline_ = other.fontUnderline_;
+        fontStrikethrough_ = other.fontStrikethrough_;
+        fontHinting_ = other.fontHinting_;
+        fontKerning_ = other.fontKerning_;
+    }
+    return *this;
+}
+
+GfxFontInfo& GfxFontInfo::operator=(GfxFontInfo&& other)
+{
+    if (this != &other)
+    {
+        fontName_ = other.fontName_;
+        fontSize_ = other.fontSize_;
+        fontOutline_ = other.fontOutline_;
+        fontBold_ = other.fontBold_;
+        fontItalic_ = other.fontItalic_;
+        fontUnderline_ = other.fontUnderline_;
+        fontStrikethrough_ = other.fontStrikethrough_;
+        fontHinting_ = other.fontHinting_;
+        fontKerning_ = other.fontKerning_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
 }
 
 GfxFontInfo::operator bool() const
 {
     return true;
+}
+
+void GfxFontInfo::setFontName(std::string const& fontName)
+{
+    fontName_ = fontName;
+}
+
+void GfxFontInfo::setFontNameDefault(void)
+{
+    fontName_ = kDefaultFontName;
+}
+
+std::string const& GfxFontInfo::getFontName(void) const
+{
+    return fontName_;
+}
+
+void GfxFontInfo::setFontSize(const uint8_t fontSize)
+{
+    fontSize_ = fontSize;
+}
+
+void GfxFontInfo::setFontSizeDefault(void)
+{
+    fontSize_ = kDefaultFontSize;
+}
+
+uint8_t GfxFontInfo::getFontSize(void) const
+{
+    return fontSize_;
+}
+
+void GfxFontInfo::setFontOutline(const int32_t fontOutline)
+{
+    fontOutline_ = fontOutline;
+}
+
+void GfxFontInfo::setFontOutlineDefault(void)
+{
+    fontOutline_ = kDefaultFontOutline;
+}
+
+int32_t GfxFontInfo::getFontOutline(void) const
+{
+    return fontOutline_;
+}
+
+void GfxFontInfo::setFontBold(const bool fontBold)
+{
+    fontBold_ = fontBold;
+}
+
+void GfxFontInfo::setFontBoldDefault(void)
+{
+    fontBold_ = kDefaultFontBold;
+}
+
+bool GfxFontInfo::getFontBold(void) const
+{
+    return fontBold_;
+}
+
+void GfxFontInfo::setFontItalic(const bool fontItalic)
+{
+    fontItalic_ = fontItalic;
+}
+
+void GfxFontInfo::setFontItalicDefault(void)
+{
+    fontItalic_ = kDefaultFontItalic;
+}
+
+bool GfxFontInfo::getFontItalic(void) const
+{
+    return fontItalic_;
+}
+
+void GfxFontInfo::setFontUnderline(const bool fontUnderline)
+{
+    fontUnderline_ = fontUnderline;
+}
+
+void GfxFontInfo::setFontUnderlineDefault(void)
+{
+    fontUnderline_ = kDefaultFontUnderline;
+}
+
+bool GfxFontInfo::getFontUnderline(void) const
+{
+    return fontUnderline_;
+}
+
+void GfxFontInfo::setFontStrikethrough(const bool fontStrikethrough)
+{
+    fontStrikethrough_ = fontStrikethrough;
+}
+
+void GfxFontInfo::setFontStrikethroughDefault(void)
+{
+    fontStrikethrough_ = kDefaultFontStrikethrough;
+}
+
+bool GfxFontInfo::getFontStrikethrough(void) const
+{
+    return fontStrikethrough_;
+}
+
+void GfxFontInfo::setFontHinting(const int32_t fontHinting)
+{
+    fontHinting_ = fontHinting;
+}
+
+void GfxFontInfo::setFontHintingDefault(void)
+{
+    fontHinting_ = kDefaultFontHinting;
+}
+
+int32_t GfxFontInfo::getFontHinting(void) const
+{
+    return fontHinting_;
+}
+
+void GfxFontInfo::setFontKerning(const bool fontKerning)
+{
+    fontKerning_ = fontKerning;
+}
+
+void GfxFontInfo::setFontKerningDefault(void)
+{
+    fontKerning_ = kDefaultFontKerning;
+}
+
+bool GfxFontInfo::getFontKerning(void) const
+{
+    return fontKerning_;
+}
+
+void GfxFontInfo::clear(void)
+{
+    fontName_ = kDefaultFontName;
+    fontSize_ = kDefaultFontSize;
+    fontOutline_ = kDefaultFontOutline;
+    fontBold_ = kDefaultFontBold;
+    fontItalic_ = kDefaultFontItalic;
+    fontUnderline_ = kDefaultFontUnderline;
+    fontStrikethrough_ = kDefaultFontStrikethrough;
+    fontHinting_ = kDefaultFontHinting;
+    fontKerning_ = kDefaultFontKerning;
 }
 
 }  // namespace supp

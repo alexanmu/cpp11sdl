@@ -42,6 +42,7 @@ public:
 
     GfxFontInfo();
     explicit GfxFontInfo(std::string const& fontName);
+    explicit GfxFontInfo(std::string const& fontName, const uint8_t fontSize);
 
     GfxFontInfo(GfxFontInfo const& other);
     GfxFontInfo(GfxFontInfo&& other);
@@ -51,9 +52,56 @@ public:
 
     virtual explicit operator bool() const;
 
+    void setFontName(std::string const& fontName);
+    void setFontNameDefault(void);
+    std::string const& getFontName(void) const;
+
+    void setFontSize(const uint8_t fontSize);
+    void setFontSizeDefault(void);
+    uint8_t getFontSize(void) const;
+
+    void setFontOutline(const int32_t fontOutline);
+    void setFontOutlineDefault(void);
+    int32_t getFontOutline(void) const;
+
+    void setFontBold(const bool fontBold);
+    void setFontBoldDefault(void);
+    bool getFontBold(void) const;
+
+    void setFontItalic(const bool fontItalic);
+    void setFontItalicDefault(void);
+    bool getFontItalic(void) const;
+
+    void setFontUnderline(const bool fontUnderline);
+    void setFontUnderlineDefault(void);
+    bool getFontUnderline(void) const;
+
+    void setFontStrikethrough(const bool fontStrikethrough);
+    void setFontStrikethroughDefault(void);
+    bool getFontStrikethrough(void) const;
+
+    void setFontHinting(const int32_t fontHinting);
+    void setFontHintingDefault(void);
+    int32_t getFontHinting(void) const;
+
+    void setFontKerning(const bool fontKerning);
+    void setFontKerningDefault(void);
+    bool getFontKerning(void) const;
+
     void clear(void);
 private:
+    static const std::string kDefaultFontName;
+    static const uint8_t kDefaultFontSize;
+    static const int32_t kDefaultFontOutline;
+    static const bool kDefaultFontBold;
+    static const bool kDefaultFontItalic;
+    static const bool kDefaultFontUnderline;
+    static const bool kDefaultFontStrikethrough;
+    static const int32_t kDefaultFontHinting;
+    static const bool kDefaultFontKerning;
+
     std::string fontName_;
+    uint8_t fontSize_;
     int32_t fontOutline_;
     bool fontBold_;
     bool fontItalic_;

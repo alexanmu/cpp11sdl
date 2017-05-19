@@ -58,8 +58,8 @@ public:
     std::string const& getText(void) const noexcept;
     void setText(std::string const& text) noexcept;
 
-    uint8_t getTextSize(void) const noexcept;
-    void setTextSize(uint8_t const textsize) noexcept;
+    gfx::supp::GfxFontInfo& getFontInfo(void) noexcept;
+    void setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept;
 
     GTextRenderMode getTextRenderMode(void) const noexcept;
     void setTextRenderMode(GTextRenderMode const textrendermode) noexcept;
@@ -72,7 +72,6 @@ protected:
 private:
     gfx::ttf::GfxTtfInitQuit * ttfiq_;
     std::string text_;
-    uint8_t textSize_;
     gfx::supp::GfxFontInfo fontInfo_;
 };
 

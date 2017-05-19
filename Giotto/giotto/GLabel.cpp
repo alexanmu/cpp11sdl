@@ -48,7 +48,8 @@ GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint
         GGraphicControl(vname, owner, width, height)
 {
     text_ = text;
-    textSize_ = textsize;
+    fontInfo_.clear();
+    fontInfo_.setFontSize(textsize);
     textRenderMode_ = kDefaultTextRenderMode;
     ttfiq_ = new gfx::ttf::GfxTtfInitQuit();
 }
@@ -68,14 +69,14 @@ void GLabel::setText(std::string const& text) noexcept
     text_ = text;
 }
 
-uint8_t GLabel::getTextSize(void) const noexcept
+gfx::supp::GfxFontInfo& GLabel::getFontInfo(void) noexcept
 {
-    return textSize_;
+    return fontInfo_;
 }
 
-void GLabel::setTextSize(uint8_t const textsize) noexcept
+    void GLabel::setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept
 {
-    textSize_ = textsize;
+    fontInfo_ = fontinfo;
 }
 
 GTextRenderMode GLabel::getTextRenderMode(void) const noexcept
@@ -91,7 +92,7 @@ void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
 void GLabel::draw(void)
 {
     std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
-    gfx::ttf::GfxTtfFont ttffont(fontfile, textSize_);
+    gfx::ttf::GfxTtfFont ttffont(fontfile, fontInfo_.getFontSize());
     gfx::GfxVersion v;
     gfx::ttf::GfxTtfGetVersion gv;
     gfx::ttf::GfxTtfFontHinting fh;
