@@ -60,6 +60,8 @@ public:
     GfxTtfFontStyle& operator=(GfxTtfFontStyle const& other);
     GfxTtfFontStyle& operator=(GfxTtfFontStyle&& other);
 
+    virtual explicit operator bool() const;
+
     bool isNormal(void) const;
     bool isBold(void) const;
     bool isItalic(void) const;

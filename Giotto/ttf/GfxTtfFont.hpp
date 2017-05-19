@@ -61,9 +61,13 @@ public:
 
     virtual ~GfxTtfFont();
 
+    virtual explicit operator bool() const;
+
     void openFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error);
     void openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error);
     void closeFont(void);
+
+    void setByteSwappedUnicode(bool swapped) const;
 
     GfxTtfFontStyle const& getFontStyle(void) const;
     void setFontStyle(GfxTtfFontStyle const& fontstyle);

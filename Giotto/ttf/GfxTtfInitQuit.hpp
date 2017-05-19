@@ -51,6 +51,8 @@ public:
 
     virtual ~GfxTtfInitQuit();
 
+    virtual explicit operator bool() const;
+
     int32_t wasInit(void) const;
 
     int32_t getErrorCode(void) const;

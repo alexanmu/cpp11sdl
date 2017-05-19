@@ -41,6 +41,11 @@ GfxTtfInitQuit::~GfxTtfInitQuit(void)
     sdl2::TTF_Quit();
 }
 
+GfxTtfInitQuit::operator bool() const
+{
+    return (errorCode_ == 0);
+}
+
 int32_t GfxTtfInitQuit::wasInit(void) const
 {
     return sdl2::TTF_WasInit();

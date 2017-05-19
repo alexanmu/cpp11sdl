@@ -78,6 +78,11 @@ GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting&& other)
     return *this;
 }
 
+GfxTtfFontHinting::operator bool() const
+{
+    return true;
+}
+
 bool GfxTtfFontHinting::isNormal(void) const
 {
     return (hinting_ == TTF_HINTING_NORMAL);

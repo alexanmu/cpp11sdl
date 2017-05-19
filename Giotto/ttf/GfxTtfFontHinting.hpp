@@ -59,6 +59,8 @@ public:
     GfxTtfFontHinting& operator=(GfxTtfFontHinting const& other);
     GfxTtfFontHinting& operator=(GfxTtfFontHinting&& other);
 
+    virtual explicit operator bool() const;
+
     bool isNormal(void) const;
     bool isLight(void) const;
     bool isMono(void) const;

@@ -36,6 +36,11 @@ GfxTtfGetVersion::GfxTtfGetVersion() : GfxRootClass(ClassName)
     // Nothing to do
 }
 
+GfxTtfGetVersion::operator bool() const
+{
+    return true;
+}
+
 void GfxTtfGetVersion::getVersion(gfx::GfxVersion * ver) const
 {
     gfx::GfxVersion::SdlTypePtr v;

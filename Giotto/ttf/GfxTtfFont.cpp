@@ -104,6 +104,11 @@ GfxTtfFont::~GfxTtfFont(void)
     }
 }
 
+GfxTtfFont::operator bool() const
+{
+    return (ttf_ != nullptr);
+}
+
 void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error)
 {
     if (ttf_ == nullptr)
@@ -143,6 +148,11 @@ void GfxTtfFont::closeFont(void)
         sdl2::TTF_CloseFont(ttf_);
         clear();
     }
+}
+
+void GfxTtfFont::setByteSwappedUnicode(bool swapped) const
+{
+    sdl2::TTF_ByteSwappedUNICODE(static_cast<int>(swapped));
 }
 
 GfxTtfFontStyle const& GfxTtfFont::getFontStyle(void) const

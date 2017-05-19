@@ -46,6 +46,8 @@ public:
     GfxTtfGetVersion& operator=(GfxTtfGetVersion const&) = delete;
     GfxTtfGetVersion& operator=(GfxTtfGetVersion&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void getVersion(gfx::GfxVersion* ver) const;
 };
 

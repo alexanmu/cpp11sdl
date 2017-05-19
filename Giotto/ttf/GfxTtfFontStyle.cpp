@@ -94,6 +94,11 @@ GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle&& other)
     return *this;
 }
 
+GfxTtfFontStyle::operator bool() const
+{
+    return true;
+}
+
 bool GfxTtfFontStyle::isNormal(void) const
 {
     return (style_ == 0);
