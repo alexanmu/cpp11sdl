@@ -32,6 +32,7 @@
 #include "GGraphicControl.hpp"
 #include "GTypes.hpp"
 #include "GfxTtfInitQuit.hpp"
+#include "GfxFontInfo.hpp"
 
 namespace giotto
 {
@@ -72,6 +73,7 @@ private:
     gfx::ttf::GfxTtfInitQuit * ttfiq_;
     std::string text_;
     uint8_t textSize_;
+    gfx::supp::GfxFontInfo fontInfo_;
 };
 
 }  // namespace objects

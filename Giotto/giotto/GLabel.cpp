@@ -34,6 +34,8 @@
 #include "GfxTtfFont.hpp"
 #include "GfxTtfGetVersion.hpp"
 #include "GfxTtfFontStyle.hpp"
+#include "GfxTtfFontRenderer.hpp"
+#include "GfxFontInfo.hpp"
 
 namespace giotto
 {
@@ -95,6 +97,7 @@ void GLabel::draw(void)
     gfx::ttf::GfxTtfFontHinting fh;
     int32_t w;
     int32_t h;
+    gfx::ttf::GfxTtfFontRenderer ttfr(&ttffont);
 
     gv.getVersion(&v);
 
@@ -112,32 +115,32 @@ void GLabel::draw(void)
             return;
         }
     }
-    const char * cstr = text_.c_str();
-    gfx::sdl2::SDL_Surface * txtsrf;
 
     ttffont.setFontStyle(gfx::ttf::GfxTtfFontStyle(false, true, false, false));
     ttffont.setFontHinting(gfx::ttf::GfxTtfFontHinting(
         gfx::ttf::GfxTtfFontHinting::GfxTtfFontHintingValues::hintingLight));
     ttffont.setFontOutline(1);
     ttffont.setFontKerning(true);
-    textRenderMode_ = GTextRenderMode::shadedText;
+
+    gfx::GfxSurface * rendsurf;
+
     switch (textRenderMode_)
     {
         case GTextRenderMode::solidText:
-            txtsrf = gfx::sdl2::TTF_RenderText_Solid(ttffont.getAsSdlTypePtr(), cstr, foregroundColor_.getAsSdlType());
+            rendsurf = ttfr.renderTextSolid(text_, foregroundColor_);
             break;
         case GTextRenderMode::shadedText:
-            txtsrf = gfx::sdl2::TTF_RenderText_Shaded(ttffont.getAsSdlTypePtr(), cstr, foregroundColor_.getAsSdlType(),
-                                                        backgroundColor_.getAsSdlType());
+            rendsurf = ttfr.renderTextShaded(text_ , foregroundColor_, backgroundColor_);
             break;
         case GTextRenderMode::blendedText:
-            txtsrf = gfx::sdl2::TTF_RenderText_Blended(ttffont.getAsSdlTypePtr(), cstr,
-                                                        foregroundColor_.getAsSdlType());
+            rendsurf = ttfr.renderTextBlended(text_, foregroundColor_);
             break;
     }
-    gfx::GfxRect textbounds(0, 0, txtsrf->w, txtsrf->h);
+    gfx::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
 
-    surf_().blitSurface(gfx::GfxSurface(txtsrf), textbounds, clientBounds_);
+    surf_().blitSurface(*rendsurf, textbounds, clientBounds_);
+
+    delete rendsurf;
 
     GGraphicControl::draw();
 }
