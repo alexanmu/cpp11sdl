@@ -545,11 +545,13 @@ void _doPlay(void)
 void _doGApp(void)
 {
     giotto::objects::GApplication gApp(GVarName(gApp));
-    GDemoForm* demoForm = new GDemoForm("GDemoForm");
+    GDemoForm * demoForm = new GDemoForm("GDemoForm");
 
     gApp.setMainForm(demoForm);
     gApp.loadAppConfiguration();
     gApp.run();
+
+    delete demoForm;
 }
 
 #ifdef __windows_machine
