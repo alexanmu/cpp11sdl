@@ -47,6 +47,11 @@ GfxControlledSurface::~GfxControlledSurface()
     }
 }
 
+GfxControlledSurface::operator bool() const
+{
+    return (surf_ != nullptr);
+}
+
 void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error)
 {
     if (surfaceConstructed_ == false)

@@ -51,6 +51,8 @@ public:
 
     virtual ~GfxControlledSurface();
 
+    virtual explicit operator bool() const;
+
     void createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error);
     void createSurface(std::string const& filename) throw(std::runtime_error);
 
