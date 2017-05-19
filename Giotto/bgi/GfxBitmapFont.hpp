@@ -53,6 +53,8 @@ public:
     GfxBitmapFont& operator=(const GfxBitmapFont& other);
     GfxBitmapFont& operator=(GfxBitmapFont&& other);
 
+    virtual explicit operator bool() const;
+
     uint8_t* getFontData(void) const;
     uint16_t getFontDataSize(void) const;
     uint8_t getFontWidth(void) const;

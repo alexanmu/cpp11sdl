@@ -44,6 +44,11 @@ GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
     bgi_maxy = -1;
 }
 
+GfxCanvasBgi::operator bool() const
+{
+    return (bgi_activepage != nullptr);
+}
+
 void GfxCanvasBgi::setCanvas(const uint32_t* ptr, const int maxx, const int maxy)
 {
     graphdefaults();

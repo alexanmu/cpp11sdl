@@ -54,6 +54,8 @@ public:
     bool operator>(const GfxAngle& other);
     bool operator<(const GfxAngle& other);
 
+    virtual explicit operator bool() const;
+
     GfxValueType getValue() const;
     void setValue(const GfxValueType& angle);
 private:

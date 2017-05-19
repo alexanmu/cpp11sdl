@@ -54,6 +54,8 @@ public:
     bool operator>(const GfxRadius& other);
     bool operator<(const GfxRadius& other);
 
+    virtual explicit operator bool() const;
+
     GfxValueType getValue() const;
     void setValue(const GfxValueType& value);
 private:

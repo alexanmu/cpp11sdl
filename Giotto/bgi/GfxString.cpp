@@ -89,6 +89,11 @@ bool GfxString::operator<(const GfxString& other)
     return (value_ < other.value_);
 }
 
+GfxString::operator bool() const
+{
+    return true;
+}
+
 GfxString::GfxValueType GfxString::getValue() const
 {
     return value_;

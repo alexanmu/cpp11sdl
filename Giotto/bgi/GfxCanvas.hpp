@@ -56,6 +56,8 @@ public:
     GfxCanvas& operator=(GfxCanvas const&) = delete;
     GfxCanvas& operator=(GfxCanvas&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr);
     void Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
              const GfxRadius& radius, const GfxColor& clr);

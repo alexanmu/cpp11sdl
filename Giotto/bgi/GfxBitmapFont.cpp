@@ -126,6 +126,11 @@ GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other)
     return *this;
 }
 
+GfxBitmapFont::operator bool() const
+{
+    return (fontData_ != nullptr);
+}
+
 uint8_t* GfxBitmapFont::getFontData(void) const
 {
     return fontData_;

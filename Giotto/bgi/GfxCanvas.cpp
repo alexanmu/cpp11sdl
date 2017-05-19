@@ -40,6 +40,11 @@ GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName)
                     surf.getAsSdlTypePtr()->h);
 }
 
+GfxCanvas::operator bool() const
+{
+    return true;
+}
+
 void GfxCanvas::Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr)
 {
     bgi_.setCustomForegroundColor(clr.getColor());

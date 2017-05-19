@@ -89,6 +89,11 @@ bool GfxRadius::operator<(const GfxRadius& other)
     return (value_ < other.value_);
 }
 
+GfxRadius::operator bool() const
+{
+    return true;
+}
+
 GfxRadius::GfxValueType GfxRadius::getValue() const
 {
     return value_;

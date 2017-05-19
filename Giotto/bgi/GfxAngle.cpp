@@ -89,6 +89,11 @@ bool GfxAngle::operator<(const GfxAngle& other)
     return (value_ < other.value_);
 }
 
+GfxAngle::operator bool() const
+{
+    return true;
+}
+
 GfxAngle::GfxValueType GfxAngle::getValue() const
 {
     return value_;
