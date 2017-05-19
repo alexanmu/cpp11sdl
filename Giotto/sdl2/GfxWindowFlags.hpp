@@ -77,6 +77,8 @@ public:
     GfxWindowFlags& operator=(GfxWindowFlags const& other);
     GfxWindowFlags& operator=(GfxWindowFlags&& other);
 
+    virtual explicit operator bool() const;
+
     bool isUnkown(void) const;
     bool isFullscreen(void) const;
     bool isOpenGL(void) const;

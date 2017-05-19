@@ -77,6 +77,11 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
     return *this;
 }
 
+GfxMessageBoxButtonData::operator bool() const
+{
+    return true;
+}
+
 int GfxMessageBoxButtonData::getButtonId(void) const
 {
     return data_.buttonid;

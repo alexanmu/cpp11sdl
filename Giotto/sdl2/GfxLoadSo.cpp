@@ -67,6 +67,11 @@ GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other)
     return *this;
 }
 
+GfxLoadSo::operator bool() const
+{
+    return (handle_ != nullptr);
+}
+
 bool GfxLoadSo::isObjectLoaded(void) const
 {
     return (handle_ != nullptr);

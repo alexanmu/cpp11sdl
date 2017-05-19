@@ -61,6 +61,8 @@ public:
 
     bool operator==(const GfxBlendMode& other);
 
+    virtual explicit operator bool() const;
+
     GfxBlendModeValues getBlendMode(void) const;
 
     bool isBlend(void) const;

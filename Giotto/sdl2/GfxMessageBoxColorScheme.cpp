@@ -78,6 +78,11 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
     return *this;
 }
 
+GfxMessageBoxColorScheme::operator bool() const
+{
+    return true;
+}
+
 void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color)
 {
     int index = static_cast<int>(type.getType());

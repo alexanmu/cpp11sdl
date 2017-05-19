@@ -54,6 +54,8 @@ public:
     GfxWindowPosition& operator=(GfxWindowPosition const& other);
     GfxWindowPosition& operator=(GfxWindowPosition&& other);
 
+    virtual explicit operator bool() const;
+
     void setPosition(const GfxWindowPositionValues pos);
     GfxWindowPositionValues getPosition(void) const;
 

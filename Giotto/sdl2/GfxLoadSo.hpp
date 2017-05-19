@@ -50,6 +50,8 @@ public:
     GfxLoadSo& operator=(GfxLoadSo&) = delete;
     GfxLoadSo& operator=(GfxLoadSo&&);
 
+    virtual explicit operator bool() const;
+
     bool isObjectLoaded(void) const;
     std::string getObjectName(void) const;
     void * loadFunction(const std::string& function);

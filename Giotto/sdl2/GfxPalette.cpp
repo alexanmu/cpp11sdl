@@ -102,6 +102,11 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
     return *this;
 }
 
+GfxPalette::operator bool() const
+{
+    return (pal_ != nullptr);
+}
+
 void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t firstColor)
 {
     int errorCode = 0;

@@ -56,6 +56,11 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
     type_ = GfxMessageBoxType::typeSimple;
 }
 
+GfxMessageBox::operator bool() const
+{
+    return true;
+}
+
 int GfxMessageBox::showModal() const
 {
     int ret;

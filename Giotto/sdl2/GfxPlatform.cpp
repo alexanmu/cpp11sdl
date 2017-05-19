@@ -36,6 +36,11 @@ GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
     platform_ = "";
 }
 
+GfxPlatform::operator bool() const
+{
+    return true;
+}
+
 void GfxPlatform::queryPlatform(void)
 {
     platform_ = sdl2::SDL_GetPlatform();

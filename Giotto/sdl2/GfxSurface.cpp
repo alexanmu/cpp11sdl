@@ -142,6 +142,11 @@ GfxSurface::~GfxSurface()
     }
 }
 
+GfxSurface::operator bool() const
+{
+    return (surf_ != nullptr);
+}
+
 int GfxSurface::getWidth(void) const
 {
     if (surf_ == nullptr)

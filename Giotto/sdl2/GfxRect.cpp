@@ -87,6 +87,11 @@ bool GfxRect::operator==(const GfxRect& other)
             (rect_.w == other.rect_.w) && (rect_.h == other.rect_.h));
 }
 
+GfxRect::operator bool() const
+{
+    return true;
+}
+
 uint16_t GfxRect::getX(void) const
 {
     return rect_.x;

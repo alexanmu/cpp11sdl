@@ -83,6 +83,11 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
     return *this;
 }
 
+GfxTexture::operator bool() const
+{
+    return (tex_ != nullptr);
+}
+
 void GfxTexture::destroyTexture(void)
 {
     if (tex_ != nullptr)

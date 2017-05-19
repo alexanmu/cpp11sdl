@@ -52,6 +52,8 @@ public:
     GfxMessageBox& operator=(GfxMessageBox const&) = delete;
     GfxMessageBox& operator=(GfxMessageBox&&) = delete;
 
+    virtual explicit operator bool() const;
+
     int showModal(void) const;
 private:
     int showModalComplex(void) const;

@@ -54,6 +54,8 @@ public:
 
     virtual ~GfxPixelFormat();
 
+    virtual explicit operator bool() const;
+
     uint32_t getFormat(void) const;
     uint8_t getBitsPerPixel(void) const;
     uint8_t getBytesPerPixel(void) const;

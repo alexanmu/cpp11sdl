@@ -57,6 +57,8 @@ public:
     GfxTexture& operator=(const GfxTexture&) = delete;
     GfxTexture& operator=(GfxTexture&& tex);
 
+    virtual explicit operator bool() const;
+
     void destroyTexture(void);
 
     void setBlendMode(const GfxBlendMode& blendmode);

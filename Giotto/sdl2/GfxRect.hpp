@@ -53,6 +53,8 @@ public:
 
     bool operator==(const GfxRect& other);
 
+    virtual explicit operator bool() const;
+
     uint16_t getX(void) const;
     uint16_t getY(void) const;
     uint16_t getWidth(void) const;

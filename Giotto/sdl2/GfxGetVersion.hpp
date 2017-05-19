@@ -46,6 +46,8 @@ public:
     GfxGetVersion& operator=(GfxGetVersion const&) = delete;
     GfxGetVersion& operator=(GfxGetVersion&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void getVersion(GfxVersion* ver) const;
     std::string getRevision(void) const;
     int32_t getRevisionNumber(void) const;

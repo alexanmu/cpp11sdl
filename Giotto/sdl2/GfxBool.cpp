@@ -35,6 +35,11 @@ GfxBool::GfxBool() : GfxRootClass(ClassName)
     clear();
 }
 
+GfxBool::operator bool() const
+{
+    return true;
+}
+
 GfxBool::GfxBool(const bool value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);

@@ -60,6 +60,8 @@ public:
     GfxPowerState& operator=(GfxPowerState const& other);
     GfxPowerState& operator=(GfxPowerState&& other);
 
+    virtual explicit operator bool() const;
+
     bool isUnknown(void) const;
     bool isOnBattery(void) const;
     bool isNoBattery(void) const;

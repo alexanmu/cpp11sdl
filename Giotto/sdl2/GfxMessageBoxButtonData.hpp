@@ -51,6 +51,8 @@ public:
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData const& other);
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other);
 
+    virtual explicit operator bool() const;
+
     int getButtonId(void) const;
     const std::string getText(void) const;
 

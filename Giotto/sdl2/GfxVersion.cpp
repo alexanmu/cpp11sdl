@@ -35,6 +35,11 @@ GfxVersion::GfxVersion() : GfxRootClass(ClassName)
     clear();
 }
 
+GfxVersion::operator bool() const
+{
+    return true;
+}
+
 GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) : GfxRootClass(ClassName)
 {
     ver_.major = major;

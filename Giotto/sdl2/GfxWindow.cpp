@@ -60,6 +60,11 @@ GfxWindow::~GfxWindow()
     }
 }
 
+GfxWindow::operator bool() const
+{
+    return (window_ != nullptr);
+}
+
 void GfxWindow::destroyWindow()
 {
     if (window_ != nullptr)

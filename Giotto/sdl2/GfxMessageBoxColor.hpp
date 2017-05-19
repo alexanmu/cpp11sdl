@@ -53,6 +53,8 @@ public:
 
     bool operator==(const GfxMessageBoxColor& other);
 
+    virtual explicit operator bool() const;
+
     /* Getters ... */
     uint8_t getRed(void) const;
     uint8_t getGreen(void) const;

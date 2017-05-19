@@ -77,6 +77,11 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other)
     return *this;
 }
 
+GfxWindowFlags::operator bool() const
+{
+    return true;
+}
+
 /* Getters ... */
 bool GfxWindowFlags::isUnkown(void) const
 {

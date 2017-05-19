@@ -77,6 +77,11 @@ GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other)
     return *this;
 }
 
+GfxRendererFlags::operator bool() const
+{
+    return true;
+}
+
 bool GfxRendererFlags::isUnknown(void) const
 {
     return (flags_ == static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown));

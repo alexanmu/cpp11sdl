@@ -44,6 +44,8 @@ public:
     GfxCpuInfo& operator=(GfxCpuInfo const&) = delete;
     GfxCpuInfo& operator=(GfxCpuInfo&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void queryCpuInfo(void);
 
     int getCpuCount(void) const;

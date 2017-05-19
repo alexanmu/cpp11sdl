@@ -88,6 +88,11 @@ bool GfxMessageBoxColor::operator==(const GfxMessageBoxColor& other)
     return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) && (clr_.b == other.clr_.b));
 }
 
+GfxMessageBoxColor::operator bool() const
+{
+    return true;
+}
+
 uint8_t GfxMessageBoxColor::getRed(void) const
 {
     return clr_.r;

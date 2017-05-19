@@ -56,6 +56,8 @@ public:
 
     virtual ~GfxPalette();
 
+    virtual explicit operator bool() const;
+
     // No copy-oprtr
     GfxPalette& operator=(const GfxPalette& other) = delete;
     GfxPalette& operator=(GfxPalette&& other);

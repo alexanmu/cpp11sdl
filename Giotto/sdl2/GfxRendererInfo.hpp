@@ -62,6 +62,8 @@ public:
     GfxRendererInfo& operator=(const GfxRendererInfo& other);
     GfxRendererInfo& operator=(GfxRendererInfo&& other);
 
+    virtual explicit operator bool() const;
+
     std::string getName(void) const;
     uint32_t getFlags(void) const;
     uint32_t getNumTextureFormats(void) const;

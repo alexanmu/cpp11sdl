@@ -51,6 +51,8 @@ public:
     GfxVersion& operator=(GfxVersion const& other);
     GfxVersion& operator=(GfxVersion&& other);
 
+    virtual explicit operator bool() const;
+
     uint8_t getMajor(void) const;
     uint8_t getMinor(void) const;
     uint8_t getPatch(void) const;

@@ -73,6 +73,11 @@ GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other)
     return *this;
 }
 
+GfxRendererInfo::operator bool() const
+{
+    return true;
+}
+
 std::string GfxRendererInfo::getName(void) const
 {
     std::string str;

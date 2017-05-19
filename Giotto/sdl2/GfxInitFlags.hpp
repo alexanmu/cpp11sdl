@@ -65,6 +65,8 @@ public:
     GfxInitFlags& operator=(GfxInitFlags const&);
     GfxInitFlags& operator=(GfxInitFlags&&);
 
+    virtual explicit operator bool() const;
+
     bool isNothing(void) const;
     bool isTimer(void) const;
     bool isAudio(void) const;

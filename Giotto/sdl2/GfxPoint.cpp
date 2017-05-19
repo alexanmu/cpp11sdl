@@ -84,6 +84,11 @@ bool GfxPoint::operator==(const GfxPoint& other)
     return ((pt_.x == other.pt_.x) && (pt_.y == other.pt_.y));
 }
 
+GfxPoint::operator bool() const
+{
+    return true;
+}
+
 int GfxPoint::getX(void) const
 {
     return pt_.x;

@@ -44,6 +44,8 @@ public:
     GfxClipboard& operator=(GfxClipboard const&) = delete;
     GfxClipboard& operator=(GfxClipboard&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void setClipboardText(const std::string& str) const;
     std::string getClipboardText(void) const;
     bool hasClipboardText(void) const;

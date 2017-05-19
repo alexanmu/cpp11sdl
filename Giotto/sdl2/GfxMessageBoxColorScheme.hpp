@@ -55,6 +55,8 @@ public:
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other);
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other);
 
+    virtual explicit operator bool() const;
+
     void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color);
 
     void clear(void);

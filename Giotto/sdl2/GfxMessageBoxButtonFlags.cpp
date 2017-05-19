@@ -84,6 +84,11 @@ bool GfxMessageBoxButtonFlags::operator==(const GfxMessageBoxButtonFlags& other)
     return (flags_ == other.flags_);
 }
 
+GfxMessageBoxButtonFlags::operator bool() const
+{
+    return true;
+}
+
 bool GfxMessageBoxButtonFlags::isReturnDefault(void) const
 {
     return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT);

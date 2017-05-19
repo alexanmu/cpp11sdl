@@ -39,6 +39,11 @@ GfxVideo::GfxVideo() : GfxRootClass(ClassName)
     numdisplaymodes_.clear();
 }
 
+GfxVideo::operator bool() const
+{
+    return true;
+}
+
 void GfxVideo::videoInit(void) throw()
 {
     throw;

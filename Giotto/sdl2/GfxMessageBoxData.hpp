@@ -60,6 +60,8 @@ public:
     GfxMessageBoxData& operator=(GfxMessageBoxData const& other);
     GfxMessageBoxData& operator=(GfxMessageBoxData&& other);
 
+    virtual explicit operator bool() const;
+
     void clear(void);
 
     SdlType getAsSdlType(void) const;

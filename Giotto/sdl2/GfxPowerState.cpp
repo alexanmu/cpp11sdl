@@ -77,6 +77,11 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
     return *this;
 }
 
+GfxPowerState::operator bool() const
+{
+    return true;
+}
+
 bool GfxPowerState::isUnknown(void) const
 {
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_UNKNOWN));

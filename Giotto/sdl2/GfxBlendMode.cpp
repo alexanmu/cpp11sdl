@@ -82,6 +82,11 @@ bool GfxBlendMode::operator==(const GfxBlendMode& other)
     return (blendmode_ == other.blendmode_);
 }
 
+GfxBlendMode::operator bool() const
+{
+    return true;
+}
+
 GfxBlendMode::GfxBlendModeValues GfxBlendMode::getBlendMode(void) const
 {
     return static_cast<GfxBlendModeValues>(blendmode_);

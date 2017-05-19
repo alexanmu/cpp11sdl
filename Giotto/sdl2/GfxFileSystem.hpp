@@ -44,6 +44,8 @@ public:
     GfxFileSystem& operator=(GfxFileSystem const&) = delete;
     GfxFileSystem& operator=(GfxFileSystem&&) = delete;
 
+    virtual explicit operator bool() const;
+
     const std::string getBasePath(void) const;
     const std::string getPrefPath(const std::string& organization, const std::string& appname) const;
 private:

@@ -87,6 +87,11 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other)
     return *this;
 }
 
+GfxWindowPosition::operator bool() const
+{
+    return true;
+}
+
 void GfxWindowPosition::setPosition(GfxWindowPositionValues pos)
 {
     pos_ = pos;

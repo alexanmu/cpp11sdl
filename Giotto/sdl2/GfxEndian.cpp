@@ -37,6 +37,11 @@ GfxEndian::GfxEndian() : GfxRootClass(ClassName)
     // Nothing to do
 }
 
+GfxEndian::operator bool() const
+{
+    return true;
+}
+
 uint16_t GfxEndian::swap16(const uint16_t x) const
 {
     return sdl2::SDL_Swap16(x);

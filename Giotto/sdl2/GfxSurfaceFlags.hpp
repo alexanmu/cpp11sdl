@@ -59,6 +59,8 @@ public:
     GfxSurfaceFlags& operator=(GfxSurfaceFlags const& other);
     GfxSurfaceFlags& operator=(GfxSurfaceFlags&& other);
 
+    virtual explicit operator bool() const;
+
     bool isSwSurface(void) const;
     bool isPreAlloc(void) const;
     bool isRLEAccel(void) const;

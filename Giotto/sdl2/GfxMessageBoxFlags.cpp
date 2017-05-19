@@ -82,6 +82,11 @@ bool GfxMessageBoxFlags::operator==(const GfxMessageBoxFlags& other)
     return (flag_ == other.flag_);
 }
 
+GfxMessageBoxFlags::operator bool() const
+{
+    return true;
+}
+
 GfxMessageBoxFlags::GfxMessageBoxFlagsValues GfxMessageBoxFlags::getFlag(void) const
 {
     return static_cast<GfxMessageBoxFlagsValues>(flag_);

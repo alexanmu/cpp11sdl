@@ -41,6 +41,11 @@ GfxInitQuit::~GfxInitQuit()
     sdl2::SDL_Quit();
 }
 
+GfxInitQuit::operator bool() const
+{
+    return (errorCode_ != 0);
+}
+
 void GfxInitQuit::initSubSystem(GfxInitFlags const& flags)
 {
     errorCode_ = sdl2::SDL_InitSubSystem(flags.getAsSdlType());

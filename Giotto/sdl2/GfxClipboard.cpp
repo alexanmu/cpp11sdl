@@ -36,6 +36,11 @@ GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
     // Nothing to do
 }
 
+GfxClipboard::operator bool() const
+{
+    return true;
+}
+
 void GfxClipboard::setClipboardText(const std::string& str) const
 {
     sdl2::SDL_SetClipboardText(str.c_str());

@@ -54,6 +54,8 @@ public:
 
     bool operator==(const GfxColor& other);
 
+    virtual explicit operator bool() const;
+
     /* Getters ... */
     uint8_t getRed(void) const;
     uint8_t getGreen(void) const;

@@ -71,6 +71,11 @@ GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other)
     return *this;
 }
 
+GfxDisplayMode::operator bool() const
+{
+    return true;
+}
+
 uint32_t GfxDisplayMode::getFormat(void) const
 {
     return dmode_.format;

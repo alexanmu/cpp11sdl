@@ -77,6 +77,11 @@ GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags&& other)
     return *this;
 }
 
+GfxInitFlags::operator bool() const
+{
+    return true;
+}
+
 bool GfxInitFlags::isNothing(void) const
 {
     return (flags_ == 0);

@@ -55,6 +55,8 @@ public:
 
     virtual ~GfxWindow();
 
+    virtual explicit operator bool() const;
+
     void destroyWindow();
 
     std::string getTitle() const;

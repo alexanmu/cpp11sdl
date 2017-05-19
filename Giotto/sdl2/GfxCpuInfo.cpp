@@ -48,6 +48,11 @@ GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
     systemRam_ = 0;
 }
 
+GfxCpuInfo::operator bool() const
+{
+    return true;
+}
+
 void GfxCpuInfo::queryCpuInfo(void)
 {
     cpuCount_ = sdl2::SDL_GetCPUCount();

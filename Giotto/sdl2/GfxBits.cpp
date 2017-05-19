@@ -37,6 +37,11 @@ GfxBits::GfxBits() : GfxRootClass(ClassName)
     // Nothing to do
 }
 
+GfxBits::operator bool() const
+{
+    return true;
+}
+
 int GfxBits::mostSignificantBitIndex32(const uint32_t x) const
 {
     return sdl2::SDL_MostSignificantBitIndex32(x);

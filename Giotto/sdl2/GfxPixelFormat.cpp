@@ -83,6 +83,11 @@ GfxPixelFormat::~GfxPixelFormat()
     }
 }
 
+GfxPixelFormat::operator bool() const
+{
+    return (pix_ != nullptr);
+}
+
 /*** Getters ***/
 uint32_t GfxPixelFormat::getFormat(void) const
 {

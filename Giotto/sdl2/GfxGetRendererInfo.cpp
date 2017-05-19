@@ -36,6 +36,11 @@ GfxGetRendererInfo::GfxGetRendererInfo() : GfxRootClass(ClassName)
     numRenderDrivers_ = -1;
 }
 
+GfxGetRendererInfo::operator bool() const
+{
+    return true;
+}
+
 int GfxGetRendererInfo::getNumRenderDrivers(void)
 {
     int nrd;

@@ -36,6 +36,11 @@ GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
     // Nothing to do
 }
 
+GfxFileSystem::operator bool() const
+{
+    return true;
+}
+
 const std::string GfxFileSystem::getBasePath(void) const
 {
     char * base_path = NULL;

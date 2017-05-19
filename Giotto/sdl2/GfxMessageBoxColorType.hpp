@@ -61,6 +61,8 @@ public:
     GfxMessageBoxColorType& operator=(GfxMessageBoxColorType const& other);
     GfxMessageBoxColorType& operator=(GfxMessageBoxColorType&& other);
 
+    virtual explicit operator bool() const;
+
     GfxMessageBoxColorTypeValues getType(void) const;
 
     void clear(void);

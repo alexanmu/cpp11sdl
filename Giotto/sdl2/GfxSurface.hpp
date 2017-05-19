@@ -63,6 +63,8 @@ public:
 
     virtual ~GfxSurface();
 
+    virtual explicit operator bool() const;
+
     int getWidth(void) const;
     int getHeight(void) const;
     int getDepth(void) const;

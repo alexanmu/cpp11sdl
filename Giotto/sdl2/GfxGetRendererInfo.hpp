@@ -45,6 +45,8 @@ public:
     GfxGetRendererInfo& operator=(GfxGetRendererInfo const&) = delete;
     GfxGetRendererInfo& operator=(GfxGetRendererInfo&&) = delete;
 
+    virtual explicit operator bool() const;
+
     int getNumRenderDrivers(void);
     void getRenderDriverInfo(const int index, GfxRendererInfo* infoptr);
 private:

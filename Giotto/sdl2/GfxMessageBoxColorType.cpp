@@ -79,6 +79,11 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
     return *this;
 }
 
+GfxMessageBoxColorType::operator bool() const
+{
+    return true;
+}
+
 GfxMessageBoxColorType::GfxMessageBoxColorTypeValues GfxMessageBoxColorType::getType(void) const
 {
     return static_cast<GfxMessageBoxColorTypeValues>(type_);

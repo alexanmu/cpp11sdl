@@ -57,6 +57,8 @@ public:
 
     virtual ~GfxRenderer();
 
+    virtual explicit operator bool() const;
+
     void destroyRenderer(void);
     void renderClear(void);
     void getRendererInfo(GfxRendererInfo* infoptr);

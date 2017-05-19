@@ -50,6 +50,11 @@ GfxRenderer::~GfxRenderer()
     }
 }
 
+GfxRenderer::operator bool() const
+{
+    return (renderer_ != nullptr);
+}
+
 void GfxRenderer::destroyRenderer()
 {
     if (renderer_ != nullptr)

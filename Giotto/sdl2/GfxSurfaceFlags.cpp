@@ -77,6 +77,11 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other)
     return *this;
 }
 
+GfxSurfaceFlags::operator bool() const
+{
+    return true;
+}
+
 bool GfxSurfaceFlags::isSwSurface(void) const
 {
     uint32_t r = flags_ & SDL_SWSURFACE;

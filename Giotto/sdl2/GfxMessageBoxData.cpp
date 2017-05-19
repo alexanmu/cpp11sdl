@@ -133,6 +133,11 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other)
     return *this;
 }
 
+GfxMessageBoxData::operator bool() const
+{
+    return true;
+}
+
 void GfxMessageBoxData::clear(void)
 {
     data_.flags = 0;

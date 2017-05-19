@@ -60,6 +60,8 @@ public:
 
     bool operator==(const GfxMessageBoxFlags& other);
 
+    virtual explicit operator bool() const;
+
     GfxMessageBoxFlagsValues getFlag(void) const;
 
     bool isError(void) const;

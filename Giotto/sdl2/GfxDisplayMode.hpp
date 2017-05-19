@@ -52,6 +52,8 @@ public:
     GfxDisplayMode& operator=(GfxDisplayMode const&) = delete;
     GfxDisplayMode& operator=(GfxDisplayMode&& other);
 
+    virtual explicit operator bool() const;
+
     uint32_t getFormat(void) const;
     int getWidth(void) const;
     int getHeight(void) const;

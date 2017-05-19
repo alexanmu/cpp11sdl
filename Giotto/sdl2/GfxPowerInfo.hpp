@@ -45,9 +45,11 @@ public:
     GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
     GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void queryPowerInfo(void);
 
-    const GfxPowerState& getPowerState(void) const;
+    GfxPowerState const& getPowerState(void) const;
     int getRemainingSeconds(void) const;
     int getRemainingPercentage(void) const;
 

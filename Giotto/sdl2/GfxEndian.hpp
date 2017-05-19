@@ -45,6 +45,8 @@ public:
     GfxEndian& operator=(GfxEndian const&) = delete;
     GfxEndian& operator=(GfxEndian&&) = delete;
 
+    virtual explicit operator bool() const;
+
     /* Methods */
     uint16_t swap16(const uint16_t x) const;
     uint32_t swap32(const uint32_t x) const;

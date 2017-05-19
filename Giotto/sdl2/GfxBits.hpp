@@ -45,6 +45,8 @@ public:
     GfxBits& operator=(GfxBits const&) = delete;
     GfxBits& operator=(GfxBits&&) = delete;
 
+    virtual explicit operator bool() const;
+
     int mostSignificantBitIndex32(const uint32_t x) const;
 };
 

@@ -55,6 +55,8 @@ public:
     // Explicit destructor to de-init SDL lib
     virtual ~GfxInitQuit();
 
+    virtual explicit operator bool() const;
+
     void initSubSystem(GfxInitFlags const& flags);
     void quitSubSystem(GfxInitFlags const& flags);
 

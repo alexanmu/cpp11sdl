@@ -60,6 +60,8 @@ public:
     GfxRendererFlags& operator=(GfxRendererFlags const& other);
     GfxRendererFlags& operator=(GfxRendererFlags&& other);
 
+    virtual explicit operator bool() const;
+
     bool isUnknown(void) const;
     bool isSoftware(void) const;
     bool isAccelerated(void) const;

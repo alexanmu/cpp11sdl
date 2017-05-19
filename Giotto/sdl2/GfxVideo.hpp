@@ -48,6 +48,8 @@ public:
     GfxVideo& operator=(GfxVideo const&) = delete;
     GfxVideo& operator=(GfxVideo&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void videoInit(void) throw();
     void videoQuit(void) throw();
 

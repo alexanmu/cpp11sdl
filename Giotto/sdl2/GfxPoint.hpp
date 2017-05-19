@@ -53,6 +53,8 @@ public:
 
     bool operator==(const GfxPoint& other);
 
+    virtual explicit operator bool() const;
+
     /* Getters */
     int getX(void) const;
     int getY(void) const;

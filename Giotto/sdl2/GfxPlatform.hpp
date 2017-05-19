@@ -44,6 +44,8 @@ public:
     GfxPlatform& operator=(GfxPlatform const &) = delete;
     GfxPlatform& operator=(GfxPlatform&&) = delete;
 
+    virtual explicit operator bool() const;
+
     void queryPlatform(void);
 
     std::string getPlatform(void) const;

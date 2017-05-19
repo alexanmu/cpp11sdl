@@ -39,6 +39,11 @@ GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
     ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
 }
 
+GfxScreenSaver::operator bool() const
+{
+    return true;
+}
+
 bool GfxScreenSaver::isScreenSaverEnabled(void) const
 {
     return static_cast<bool>(ssstatus_);

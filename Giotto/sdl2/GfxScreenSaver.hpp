@@ -44,6 +44,8 @@ public:
     GfxScreenSaver& operator=(GfxScreenSaver const&) = delete;
     GfxScreenSaver& operator=(GfxScreenSaver&&) = delete;
 
+    virtual explicit operator bool() const;
+
     bool isScreenSaverEnabled(void) const;
     void enableScreenSaver(void);
     void disableScreenSaver(void);

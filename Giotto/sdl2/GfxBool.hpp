@@ -51,6 +51,8 @@ public:
     GfxBool& operator=(const GfxBool& other);
     GfxBool& operator=(GfxBool&& other);
 
+    virtual explicit operator bool() const;
+
     bool getBool(void) const;
 
     void clear(void);

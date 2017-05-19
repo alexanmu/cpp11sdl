@@ -60,6 +60,8 @@ public:
 
     bool operator==(const GfxMessageBoxButtonFlags& other);
 
+    virtual explicit operator bool() const;
+
     bool isReturnDefault(void) const;
     bool isEscDefault(void) const;
 

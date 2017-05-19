@@ -37,6 +37,11 @@ GfxPowerInfo::GfxPowerInfo() : GfxRootClass(ClassName)
     percentage_ = -1;
 }
 
+GfxPowerInfo::operator bool() const
+{
+    return true;
+}
+
 void GfxPowerInfo::queryPowerInfo(void)
 {
     GfxPowerState::SdlType pstate;
@@ -45,7 +50,7 @@ void GfxPowerInfo::queryPowerInfo(void)
     pstate_ = GfxPowerState(pstate);
 }
 
-const GfxPowerState& GfxPowerInfo::getPowerState(void) const
+GfxPowerState const& GfxPowerInfo::getPowerState(void) const
 {
     return (GfxPowerState&)pstate_;
 }
