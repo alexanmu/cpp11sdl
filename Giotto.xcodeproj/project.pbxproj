@@ -82,6 +82,7 @@
 		793538581ECE162E0070F1DF /* GfxTtfFontHinting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793538521ECE162E0070F1DF /* GfxTtfFontHinting.cpp */; };
 		793538591ECE162E0070F1DF /* GfxTtfFontStyle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793538541ECE162E0070F1DF /* GfxTtfFontStyle.cpp */; };
 		7935385A1ECE162E0070F1DF /* GfxTtfGetVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793538561ECE162E0070F1DF /* GfxTtfGetVersion.cpp */; };
+		7982D12D1ECEA34A00987ABA /* GfxTtfFontRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7982D12B1ECEA34A00987ABA /* GfxTtfFontRenderer.cpp */; };
 		7990B27D1ECAACB500CB5EB6 /* GBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7990B27B1ECAACB500CB5EB6 /* GBitmap.cpp */; };
 		79D1AB3A1ECB57F100CA5CDE /* GLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D1AB381ECB57F100CA5CDE /* GLabel.cpp */; };
 		79D2760C1EC6226F006B796D /* GComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D276061EC6226F006B796D /* GComponent.cpp */; };
@@ -268,6 +269,8 @@
 		793538551ECE162E0070F1DF /* GfxTtfFontStyle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTtfFontStyle.hpp; path = Giotto/ttf/GfxTtfFontStyle.hpp; sourceTree = "<group>"; };
 		793538561ECE162E0070F1DF /* GfxTtfGetVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTtfGetVersion.cpp; path = Giotto/ttf/GfxTtfGetVersion.cpp; sourceTree = "<group>"; };
 		793538571ECE162E0070F1DF /* GfxTtfGetVersion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTtfGetVersion.hpp; path = Giotto/ttf/GfxTtfGetVersion.hpp; sourceTree = "<group>"; };
+		7982D12B1ECEA34A00987ABA /* GfxTtfFontRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTtfFontRenderer.cpp; path = Giotto/ttf/GfxTtfFontRenderer.cpp; sourceTree = "<group>"; };
+		7982D12C1ECEA34A00987ABA /* GfxTtfFontRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTtfFontRenderer.hpp; path = Giotto/ttf/GfxTtfFontRenderer.hpp; sourceTree = "<group>"; };
 		7990B27B1ECAACB500CB5EB6 /* GBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GBitmap.cpp; path = giotto/GBitmap.cpp; sourceTree = "<group>"; };
 		7990B27C1ECAACB500CB5EB6 /* GBitmap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GBitmap.hpp; path = giotto/GBitmap.hpp; sourceTree = "<group>"; };
 		79D1AB381ECB57F100CA5CDE /* GLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLabel.cpp; path = giotto/GLabel.cpp; sourceTree = "<group>"; };
@@ -557,14 +560,16 @@
 		79F8D8B51ECCB19F000282B6 /* ttf */ = {
 			isa = PBXGroup;
 			children = (
+				79F8D8B61ECCB1BD000282B6 /* GfxTtfFont.cpp */,
+				79F8D8B71ECCB1BD000282B6 /* GfxTtfFont.hpp */,
 				793538521ECE162E0070F1DF /* GfxTtfFontHinting.cpp */,
 				793538531ECE162E0070F1DF /* GfxTtfFontHinting.hpp */,
+				7982D12B1ECEA34A00987ABA /* GfxTtfFontRenderer.cpp */,
+				7982D12C1ECEA34A00987ABA /* GfxTtfFontRenderer.hpp */,
 				793538541ECE162E0070F1DF /* GfxTtfFontStyle.cpp */,
 				793538551ECE162E0070F1DF /* GfxTtfFontStyle.hpp */,
 				793538561ECE162E0070F1DF /* GfxTtfGetVersion.cpp */,
 				793538571ECE162E0070F1DF /* GfxTtfGetVersion.hpp */,
-				79F8D8B61ECCB1BD000282B6 /* GfxTtfFont.cpp */,
-				79F8D8B71ECCB1BD000282B6 /* GfxTtfFont.hpp */,
 				79F8D8B81ECCB1BD000282B6 /* GfxTtfInitQuit.cpp */,
 				79F8D8B91ECCB1BD000282B6 /* GfxTtfInitQuit.hpp */,
 			);
@@ -680,6 +685,7 @@
 				7990B27D1ECAACB500CB5EB6 /* GBitmap.cpp in Sources */,
 				79EEDA3B1EB6282C009CB6A1 /* GOKMsgBox.cpp in Sources */,
 				192445EE1EAF97E000147389 /* GfxClipboard.cpp in Sources */,
+				7982D12D1ECEA34A00987ABA /* GfxTtfFontRenderer.cpp in Sources */,
 				19B351FE1EB4FA110020DCF4 /* GOKCancelMsgBox.cpp in Sources */,
 				19A8FAB71EAE561A00FFD332 /* GfxWindowPosition.cpp in Sources */,
 				79D2760C1EC6226F006B796D /* GComponent.cpp in Sources */,

@@ -85,6 +85,7 @@
 #include "GfxTtfGetVersion.hpp"  // 2017.05.18
 #include "GfxTtfFontStyle.hpp"  // 2017.05.18
 #include "GfxTtfFontHinting.hpp"  // 2017.05.18
+#include "GfxTtfFontRenderer.hpp"  // 2017.05.19
 
 namespace gfx
 {
@@ -151,7 +152,8 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::ttf::GfxTtfInitQuit::ClassName, sizeof(gfx::ttf::GfxTtfInitQuit) },  // 2017.05.17
     { gfx::ttf::GfxTtfGetVersion::ClassName, sizeof(gfx::ttf::GfxTtfGetVersion) },  // 2017.05.18
     { gfx::ttf::GfxTtfFontStyle::ClassName, sizeof(gfx::ttf::GfxTtfFontStyle) },  // 2017.05.18
-    { gfx::ttf::GfxTtfFontHinting::ClassName, sizeof(gfx::ttf::GfxTtfFontHinting) }  // 2017.05.18
+    { gfx::ttf::GfxTtfFontHinting::ClassName, sizeof(gfx::ttf::GfxTtfFontHinting) },  // 2017.05.18
+    { gfx::ttf::GfxTtfFontRenderer::ClassName, sizeof(gfx::ttf::GfxTtfFontRenderer) }  // 2017.05.19
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
