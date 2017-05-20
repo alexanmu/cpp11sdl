@@ -31,7 +31,6 @@
 #include "GComponent.hpp"
 #include "GGraphicControl.hpp"
 #include "GTypes.hpp"
-#include "GfxTtfInitQuit.hpp"
 #include "GfxFontInfo.hpp"
 
 namespace giotto
@@ -53,7 +52,6 @@ public:
 
     explicit GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
                     std::string const& text, uint8_t const& textsize);
-    virtual ~GLabel();
 
     std::string const& getText(void) const noexcept;
     void setText(std::string const& text) noexcept;
@@ -68,9 +66,8 @@ public:
 protected:
     GTextRenderMode textRenderMode_;
 
-    static const GTextRenderMode kDefaultTextRenderMode = GTextRenderMode::shadedText;
+    static const GTextRenderMode kDefaultTextRenderMode = GTextRenderMode::solidText;
 private:
-    gfx::ttf::GfxTtfInitQuit * ttfiq_;
     std::string text_;
     gfx::supp::GfxFontInfo fontInfo_;
 };

@@ -40,6 +40,11 @@ GApplication::GApplication(std::string const& name) : GObject(name)
 
 GApplication::~GApplication()
 {
+    if (ttfiq_ != nullptr)
+    {
+        ttfiq_->~GfxTtfInitQuit();
+        delete ttfiq_;
+    }
     if (iq_ != nullptr)
     {
         iq_->~GfxInitQuit();
@@ -67,7 +72,12 @@ void GApplication::run()
     iflags.setVideo();
     iflags.setEvents();
     iq_ = new gfx::GfxInitQuit(iflags);
-    if (iq_->getErrorCode() != 0)
+    if (!iq_)
+    {
+        return;
+    }
+    ttfiq_ = new gfx::ttf::GfxTtfInitQuit();
+    if (!ttfiq_)
     {
         return;
     }

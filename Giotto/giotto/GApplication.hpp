@@ -28,6 +28,7 @@
 #include <string>
 
 #include "GfxInitQuit.hpp"
+#include "GfxTtfInitQuit.hpp"
 #include "GObject.hpp"
 #include "GForm.hpp"
 
@@ -56,8 +57,9 @@ public:
     void loadAppConfiguration(void);
     void run(void);
 private:
-    GForm* mainForm_;
-    gfx::GfxInitQuit* iq_;
+    GForm * mainForm_;
+    gfx::GfxInitQuit * iq_;
+    gfx::ttf::GfxTtfInitQuit * ttfiq_;
 };
 
 }  // namespace objects

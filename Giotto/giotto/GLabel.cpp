@@ -32,7 +32,6 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxSurface.hpp"
 #include "GfxTtfFont.hpp"
-#include "GfxTtfGetVersion.hpp"
 #include "GfxTtfFontStyle.hpp"
 #include "GfxTtfFontRenderer.hpp"
 #include "GfxFontInfo.hpp"
@@ -51,12 +50,6 @@ GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint
     fontInfo_.clear();
     fontInfo_.setFontSize(textsize);
     textRenderMode_ = kDefaultTextRenderMode;
-    ttfiq_ = new gfx::ttf::GfxTtfInitQuit();
-}
-
-GLabel::~GLabel()
-{
-    delete ttfiq_;
 }
 
 std::string const& GLabel::getText(void) const noexcept
@@ -74,7 +67,7 @@ gfx::supp::GfxFontInfo& GLabel::getFontInfo(void) noexcept
     return fontInfo_;
 }
 
-    void GLabel::setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept
+void GLabel::setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept
 {
     fontInfo_ = fontinfo;
 }
@@ -92,20 +85,15 @@ void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
 void GLabel::draw(void)
 {
     std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
-    gfx::ttf::GfxTtfFont ttffont(fontfile, fontInfo_.getFontSize());
-    gfx::GfxVersion v;
-    gfx::ttf::GfxTtfGetVersion gv;
-    gfx::ttf::GfxTtfFontHinting fh;
     int32_t w;
     int32_t h;
-    gfx::ttf::GfxTtfFontRenderer ttfr(&ttffont);
-
-    gv.getVersion(&v);
+    gfx::ttf::GfxTtfFont font(fontfile, fontInfo_.getFontSize());
+    gfx::ttf::GfxTtfFontRenderer rend(&font);
+    gfx::GfxSurface * rendsurf;
 
     surf_().fillRect(clientBounds_, backgroundColor_);
 
-    text_ = ttffont.getFontFaceFamilyName() + " " + v.getAsString();
-    if (ttffont.sizeText(text_, &w, &h) == true)
+    if (font.sizeText(text_, &w, &h) == true)
     {
         if (w > getClientBounds().getWidth())
         {
@@ -117,31 +105,32 @@ void GLabel::draw(void)
         }
     }
 
-    ttffont.setFontStyle(gfx::ttf::GfxTtfFontStyle(false, true, false, false));
-    ttffont.setFontHinting(gfx::ttf::GfxTtfFontHinting(
-        gfx::ttf::GfxTtfFontHinting::GfxTtfFontHintingValues::hintingLight));
-    ttffont.setFontOutline(1);
-    ttffont.setFontKerning(true);
+    font.setFontStyle(gfx::ttf::GfxTtfFontStyle(fontInfo_.getFontBold(), fontInfo_.getFontItalic(),
+                                                fontInfo_.getFontUnderline(), fontInfo_.getFontStrikethrough()));
+    font.setFontHinting(gfx::ttf::GfxTtfFontHinting(fontInfo_.getFontHinting()));
+    font.setFontOutline(fontInfo_.getFontOutline());
+    font.setFontKerning(fontInfo_.getFontKerning());
 
-    gfx::GfxSurface * rendsurf;
-
+    rendsurf = nullptr;
     switch (textRenderMode_)
     {
         case GTextRenderMode::solidText:
-            rendsurf = ttfr.renderTextSolid(text_, foregroundColor_);
+            rendsurf = rend.renderTextSolid(text_, foregroundColor_);
             break;
         case GTextRenderMode::shadedText:
-            rendsurf = ttfr.renderTextShaded(text_ , foregroundColor_, backgroundColor_);
+            rendsurf = rend.renderTextShaded(text_ , foregroundColor_, backgroundColor_);
             break;
         case GTextRenderMode::blendedText:
-            rendsurf = ttfr.renderTextBlended(text_, foregroundColor_);
+            rendsurf = rend.renderTextBlended(text_, foregroundColor_);
             break;
     }
-    gfx::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
+    if (rendsurf)
+    {
+        gfx::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
 
-    surf_().blitSurface(*rendsurf, textbounds, clientBounds_);
-
-    delete rendsurf;
+        surf_().blitSurface(*rendsurf, textbounds, clientBounds_);
+        delete rendsurf;
+    }
 
     GGraphicControl::draw();
 }
