@@ -29,7 +29,7 @@ namespace giotto
 namespace utils
 {
     
-GFolderObject::GFolderObject(std::string const& vname, std::string const& pathspec) : GObject(vname)
+GFolderObject::GFolderObject(std::string const& pathspec) : GObject()
 {
     pathSpec_ = pathspec;
 }

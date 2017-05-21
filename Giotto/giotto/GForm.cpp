@@ -33,7 +33,7 @@ namespace giotto
 namespace objects
 {
 
-GForm::GForm(std::string const& name) : GObject(name)
+GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
 {
     title_ = "GForm";
     window_ = nullptr;
@@ -42,7 +42,7 @@ GForm::GForm(std::string const& name) : GObject(name)
     windowsurface_ = nullptr;
 }
 
-GForm::GForm(std::string const& name, std::string const& title) : GObject(name)
+GForm::GForm(std::string const& vname, std::string const& title) : GComponent(vname, nullptr)
 {
     title_ = title;
     window_ = nullptr;

@@ -37,6 +37,8 @@ namespace giotto
 namespace objects
 {
 
+#define GVarName(x) (#x)
+
 class GComponent : public GObject
 {
 public:
@@ -48,7 +50,7 @@ public:
     GComponent& operator=(GComponent const& other) = delete;
     GComponent& operator=(GComponent&& other) = delete;
 
-    explicit GComponent(std::string const& name, GComponent* owner);
+    explicit GComponent(std::string const& vname, GComponent* owner);
     virtual ~GComponent();
 
     GComponent* getParentComponent(void) const noexcept;
@@ -62,7 +64,10 @@ public:
 
     uint64_t getTag(void) const noexcept;
     void setTag(uint64_t tag) noexcept;
+
+    std::string const& getName(void) const;
 protected:
+    std::string vname_;
     uint64_t tag_;
     GComponent* owner_;
 

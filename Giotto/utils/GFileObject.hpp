@@ -25,6 +25,7 @@
 #define GFileObject_hpp
 
 #include <stdexcept>
+#include <cstdint>
 #include <vector>
 #include <string>
 
@@ -42,7 +43,7 @@ public:
     typedef std::vector<GFileObject> GFilesCollection;
 
     GFileObject() = delete;
-    explicit GFileObject(std::string const& vname, std::string const& filespec);
+    explicit GFileObject(std::string const& filespec);
 
     GFileObject(GFileObject const&) = delete;
     GFileObject(GFileObject&&) = delete;
@@ -53,6 +54,13 @@ public:
     virtual ~GFileObject();
 private:
     std::string fileSpec_;
+    uint32_t attributes_;
+    uint32_t dateCreated_;
+    uint32_t dateLastAccessed_;
+    uint32_t dateLastModified_;
+    std::string parentFolder_;
+    std::string path_;
+    uint64_t size_;
 };
 
 }  // namespace utils

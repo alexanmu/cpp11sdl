@@ -29,7 +29,7 @@ namespace giotto
 namespace utils
 {
 
-GFileObject::GFileObject(std::string const& vname, std::string const& filespec) : GObject(vname)
+GFileObject::GFileObject(std::string const& filespec) : GObject()
 {
     fileSpec_ = filespec;
 }

@@ -38,9 +38,9 @@ namespace dialogs
 class GQuitCancelMsgBox : public objects::GObject
 {
 public:
-    explicit GQuitCancelMsgBox(std::string const& name, GObject* parent);
+    explicit GQuitCancelMsgBox(std::string const& vname, GObject* parent);
 
-    GQuitCancelMsgBox(std::string const& name, GObject* parent, const std::string& title,
+    GQuitCancelMsgBox(std::string const& vname, GObject* parent, const std::string& title,
                         const std::string& message);
 
     GQuitCancelMsgBox(GQuitCancelMsgBox const&) = delete;

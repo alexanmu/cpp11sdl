@@ -31,10 +31,9 @@ namespace giotto
 namespace objects
 {
 
-GObject::GObject(std::string const& vname)
+GObject::GObject()
 {
     inittype_ = GInitType::defaultCtor;
-    name_ = vname;
 }
 
 GObject::GObject(GObject const& other)
@@ -82,11 +81,6 @@ bool GObject::operator==(GObject const& other)
         return false;
     }
     return true;
-}
-
-const std::string& GObject::getName(void) const
-{
-    return name_;
 }
 
 }  // namespace objects

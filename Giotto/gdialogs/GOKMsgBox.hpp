@@ -38,7 +38,7 @@ namespace dialogs
 class GOKMsgBox : public objects::GObject
 {
 public:
-    explicit GOKMsgBox(std::string const& name, GObject* parent);
+    explicit GOKMsgBox(std::string const& vname, GObject* parent);
 
     GOKMsgBox(std::string const& name, GObject* parent, const std::string& title,
                 const std::string& message);

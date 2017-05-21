@@ -32,8 +32,9 @@ namespace giotto
 namespace objects
 {
 
-GComponent::GComponent(std::string const& name, GComponent* owner) : GObject(name)
+GComponent::GComponent(std::string const& vname, GComponent* owner) : GObject()
 {
+    vname_ = vname;
     tag_ = 0;
     owner_ = owner;
     componentCount_ = 0;
@@ -115,6 +116,11 @@ uint64_t GComponent::getTag(void) const noexcept
 void GComponent::setTag(uint64_t tag) noexcept
 {
     tag_ = tag;
+}
+
+std::string const& GComponent::getName(void) const
+{
+    return vname_;
 }
 
 }  // namespace objects

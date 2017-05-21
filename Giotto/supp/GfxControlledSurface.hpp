@@ -41,6 +41,8 @@ namespace supp
 class GfxControlledSurface final
 {
 public:
+    static const char ClassName[];
+
     GfxControlledSurface();
 
     GfxControlledSurface(const GfxControlledSurface&) = delete;

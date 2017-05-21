@@ -33,7 +33,7 @@ namespace giotto
 namespace utils
 {
 
-GFileSystemObject::GFileSystemObject(std::string const& vname) : objects::GObject(vname)
+GFileSystemObject::GFileSystemObject() : objects::GObject()
 {
 }
 
@@ -91,7 +91,7 @@ bool GFileSystemObject::folderExists(std::string const& folderspec) throw(std::r
     throw std::runtime_error("Not implemented");
 }
 
-GFileObject GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
+GFileObject * GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
 {
     throw std::runtime_error("Not implemented");
 }
@@ -101,9 +101,9 @@ std::string GFileSystemObject::getFileName(std::string const& filespec) throw(st
     throw std::runtime_error("Not implemented");
 }
 
-GFolderObject GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
+GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
 {
-    throw std::runtime_error("Not implemented");
+    return new GFolderObject(folderspec);
 }
 
 std::string GFileSystemObject::getParentFolderName(std::string const& folderspec) throw(std::runtime_error)

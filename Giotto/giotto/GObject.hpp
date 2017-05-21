@@ -32,14 +32,10 @@ namespace giotto
 namespace objects
 {
 
-#define GVarName(x) (#x)
-
 class GObject
 {
 public:
-    GObject() = delete;
-
-    explicit GObject(std::string const& vname);
+    GObject();
 
     GObject(GObject const& other);
     GObject(GObject&& other);
@@ -50,8 +46,6 @@ public:
     virtual ~GObject();
 
     bool operator==(GObject const& other);
-
-    const std::string& getName(void) const;
 private:
     enum class GInitType : int
     {
@@ -60,7 +54,6 @@ private:
         moveCtor
     };
     GInitType inittype_;
-    std::string name_;
 };
 
 }  // namespace objects

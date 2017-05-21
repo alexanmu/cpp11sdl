@@ -33,6 +33,8 @@ namespace gfx
 namespace supp
 {
 
+const char GfxControlledSurface::ClassName[] = "GfxControlledSurface";
+
 GfxControlledSurface::GfxControlledSurface()
 {
     surf_ = nullptr;

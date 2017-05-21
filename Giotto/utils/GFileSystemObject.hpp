@@ -41,8 +41,7 @@ class GFolderObject;
 class GFileSystemObject : public objects::GObject
 {
 public:
-    GFileSystemObject() = delete;
-    GFileSystemObject(std::string const& vname);
+    GFileSystemObject();
 
     GFileSystemObject(GFileSystemObject const&) = delete;
     GFileSystemObject(GFileSystemObject&&) = delete;
@@ -60,9 +59,9 @@ public:
     void deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error);
     bool fileExists(std::string const& filespec) throw(std::runtime_error);
     bool folderExists(std::string const& folderspec) throw(std::runtime_error);
-    GFileObject getFile(std::string const& filespec) throw(std::runtime_error);
+    GFileObject * getFile(std::string const& filespec) throw(std::runtime_error);
     std::string getFileName(std::string const& filespec) throw(std::runtime_error);
-    GFolderObject getFolder(std::string const& folderspec) throw(std::runtime_error);
+    GFolderObject * getFolder(std::string const& folderspec) throw(std::runtime_error);
     std::string getParentFolderName(std::string const& folderspec) throw(std::runtime_error);
     std::string getTempName(void) throw(std::runtime_error);
     void moveFile(std::string const& source, std::string const& destination) throw(std::runtime_error);

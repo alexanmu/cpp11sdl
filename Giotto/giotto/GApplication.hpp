@@ -49,7 +49,7 @@ public:
     GApplication& operator=(GApplication const&) = delete;
     GApplication& operator=(GApplication&&) = delete;
 
-    explicit GApplication(std::string const& name);
+    explicit GApplication(std::string const& appname);
     ~GApplication();
 
     void setMainForm(GForm * mainForm);
@@ -57,6 +57,7 @@ public:
     void loadAppConfiguration(void);
     void run(void);
 private:
+    std::string appName_;
     GForm * mainForm_;
     gfx::GfxInitQuit * iq_;
     gfx::ttf::GfxTtfInitQuit * ttfiq_;

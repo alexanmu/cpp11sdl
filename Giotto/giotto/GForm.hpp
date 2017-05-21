@@ -27,7 +27,7 @@
 #include <memory>
 #include <string>
 
-#include "GObject.hpp"
+#include "GComponent.hpp"
 #include "GfxCanvas.hpp"
 #include "GfxWindow.hpp"
 #include "GfxSurface.hpp"
@@ -38,13 +38,13 @@ namespace giotto
 namespace objects
 {
 
-class GForm : public GObject
+class GForm : public GComponent
 {
 public:
     typedef std::shared_ptr<GForm> SharedPtr;
 
-    explicit GForm(std::string const& name);
-    explicit GForm(std::string const& name, std::string const& title);
+    explicit GForm(std::string const& vname);
+    explicit GForm(std::string const& vname, std::string const& title);
 
     GForm() = delete;
     GForm(GForm const&) = delete;
@@ -70,6 +70,7 @@ protected:
     gfx::GfxSurface* windowsurface_;
 
 private:
+    std::string formName_;
     std::string title_;
     std::shared_ptr<gfx::bgi::GfxCanvas> canvas_;
     bool canvasInUse_;

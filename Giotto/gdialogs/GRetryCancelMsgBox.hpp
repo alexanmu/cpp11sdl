@@ -38,9 +38,9 @@ namespace dialogs
 class GRetryCancelMsgBox : public objects::GObject
 {
 public:
-    explicit GRetryCancelMsgBox(std::string const& name, GObject* parent);
+    explicit GRetryCancelMsgBox(std::string const& vname, GObject* parent);
 
-    GRetryCancelMsgBox(std::string const& name, GObject* parent, const std::string& title,
+    GRetryCancelMsgBox(std::string const& vname, GObject* parent, const std::string& title,
                         const std::string& message);
 
     GRetryCancelMsgBox(GRetryCancelMsgBox const&) = delete;

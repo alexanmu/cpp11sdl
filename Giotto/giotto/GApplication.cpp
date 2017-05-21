@@ -32,8 +32,9 @@ namespace giotto
 namespace objects
 {
 
-GApplication::GApplication(std::string const& name) : GObject(name)
+GApplication::GApplication(std::string const& appname) : GObject()
 {
+    appName_ = appname;
     mainForm_ = nullptr;
     iq_ = nullptr;
 }

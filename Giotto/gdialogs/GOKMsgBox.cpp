@@ -40,16 +40,16 @@ namespace giotto
 namespace dialogs
 {
 
-GOKMsgBox::GOKMsgBox(std::string const& name, GObject* parent) :
-        GObject(name), parent_(parent)
+GOKMsgBox::GOKMsgBox(std::string const& vname, GObject* parent) :
+        GObject(), parent_(parent)
 {
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GOKMsgBox::GOKMsgBox(std::string const& name, GObject* parent, const std::string& title,
-        const std::string& message) : GObject(name), parent_(parent)
+GOKMsgBox::GOKMsgBox(std::string const& vname, GObject* parent, const std::string& title,
+        const std::string& message) : GObject(), parent_(parent)
 {
     title_ = title;
     message_ = message;

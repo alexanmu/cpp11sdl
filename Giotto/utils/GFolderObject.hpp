@@ -30,6 +30,7 @@
 #include <string>
 
 #include "GObject.hpp"
+#include "GFileObject.hpp"
 
 namespace giotto
 {
@@ -45,7 +46,7 @@ public:
     typedef std::vector<GFolderObject> GFolderCollection;
 
     GFolderObject() = delete;
-    explicit GFolderObject(std::string const& vname, std::string const& pathspec);
+    explicit GFolderObject(std::string const& pathspec);
 
     GFolderObject(GFolderObject const&) = delete;
     GFolderObject(GFolderObject&&) = delete;
@@ -61,8 +62,9 @@ private:
     uint32_t dateLastModified_;
     bool isRootFolder;
     std::string parentFolder_;
-    uint32_t size_;
+    uint64_t size_;
     GFolderCollection subFolders_;
+    GFileObject::GFilesCollection files_;
 };
 
 }  // namespace utils
