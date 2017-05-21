@@ -27,6 +27,7 @@
 #include <stdexcept>
 #include <cstdint>
 #include <vector>
+#include <string>
 
 #include "GObject.hpp"
 
@@ -44,14 +45,17 @@ public:
     typedef std::vector<GFolderObject> GFolderCollection;
 
     GFolderObject() = delete;
-    GFolderObject(std::string const& vname, std::string const& pathspec);
+    explicit GFolderObject(std::string const& vname, std::string const& pathspec);
 
     GFolderObject(GFolderObject const&) = delete;
     GFolderObject(GFolderObject&&) = delete;
 
     GFolderObject& operator=(GFolderObject const&) = delete;
     GFolderObject& operator=(GFolderObject&&) = delete;
+
+    virtual ~GFolderObject();
 private:
+    std::string pathSpec_;
     uint32_t attributes_;
     uint32_t dateLastAccessed_;
     uint32_t dateLastModified_;

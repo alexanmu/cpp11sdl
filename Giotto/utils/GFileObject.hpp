@@ -21,25 +21,42 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GFolderObject.hpp"
+#ifndef GFileObject_hpp
+#define GFileObject_hpp
+
+#include <stdexcept>
+#include <vector>
+#include <string>
+
+#include "GObject.hpp"
 
 namespace giotto
 {
 
 namespace utils
 {
-    
-GFolderObject::GFolderObject(std::string const& vname, std::string const& pathspec) : GObject(vname)
-{
-    pathSpec_ = pathspec;
-}
 
-GFolderObject::~GFolderObject()
+class GFileObject : public objects::GObject
 {
-}
+public:
+    typedef std::vector<GFileObject> GFilesCollection;
+
+    GFileObject() = delete;
+    explicit GFileObject(std::string const& vname, std::string const& filespec);
+
+    GFileObject(GFileObject const&) = delete;
+    GFileObject(GFileObject&&) = delete;
+
+    GFileObject& operator=(GFileObject const&) = delete;
+    GFileObject& operator=(GFileObject&&) = delete;
+
+    virtual ~GFileObject();
+private:
+    std::string fileSpec_;
+};
 
 }  // namespace utils
 
 }  // namespace giotto
 
-/* EOF */
+#endif /* GFileObject_hpp */

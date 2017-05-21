@@ -25,6 +25,7 @@
 
 #include "GFileSystemObject.hpp"
 #include "GFolderObject.hpp"
+#include "GFileObject.hpp"
 
 namespace giotto
 {
@@ -90,10 +91,10 @@ bool GFileSystemObject::folderExists(std::string const& folderspec) throw(std::r
     throw std::runtime_error("Not implemented");
 }
 
-/*GFileObject GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
+GFileObject GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
 {
     throw std::runtime_error("Not implemented");
-}*/
+}
 
 std::string GFileSystemObject::getFileName(std::string const& filespec) throw(std::runtime_error)
 {

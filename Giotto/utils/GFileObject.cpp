@@ -21,25 +21,25 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GFolderObject.hpp"
+#include "GFileObject.hpp"
 
 namespace giotto
 {
 
 namespace utils
 {
-    
-GFolderObject::GFolderObject(std::string const& vname, std::string const& pathspec) : GObject(vname)
+
+GFileObject::GFileObject(std::string const& vname, std::string const& filespec) : GObject(vname)
 {
-    pathSpec_ = pathspec;
+    fileSpec_ = filespec;
 }
 
-GFolderObject::~GFolderObject()
+GFileObject::~GFileObject()
 {
 }
 
 }  // namespace utils
-
+    
 }  // namespace giotto
 
 /* EOF */
