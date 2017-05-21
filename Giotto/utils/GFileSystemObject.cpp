@@ -21,7 +21,10 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GFileSystemObject.hpp"
+#include "GFolderObject.hpp"
 
 namespace giotto
 {
@@ -97,10 +100,10 @@ std::string GFileSystemObject::getFileName(std::string const& filespec) throw(st
     throw std::runtime_error("Not implemented");
 }
 
-/*GFolderObject GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
+GFolderObject GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
 {
     throw std::runtime_error("Not implemented");
-}*/
+}
 
 std::string GFileSystemObject::getParentFolderName(std::string const& folderspec) throw(std::runtime_error)
 {
