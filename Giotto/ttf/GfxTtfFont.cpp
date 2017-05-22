@@ -22,6 +22,7 @@
 */
 
 #include <stdexcept>
+#include <cassert>
 #include <cstdint>
 #include <string>
 
@@ -42,6 +43,9 @@ GfxTtfFont::GfxTtfFont() : GfxRootClass(ClassName)
 
 GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) : GfxRootClass(ClassName)
 {
+    assert(filename.length() > 0);
+    assert(pointsize > 0);
+
     ttf_ = sdl2::TTF_OpenFont(filename.c_str(), pointsize);
     fileName_ = filename;
     pointSize_ = pointsize;
@@ -54,6 +58,10 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) : GfxRoot
 
 GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t index) : GfxRootClass(ClassName)
 {
+    assert(filename.length() > 0);
+    assert(pointsize > 0);
+    assert(index >= 0);
+
     ttf_ = sdl2::TTF_OpenFontIndex(filename.c_str(), pointsize, index);
     fileName_ = filename;
     pointSize_ = pointsize;
@@ -111,6 +119,9 @@ GfxTtfFont::operator bool() const
 
 void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error)
 {
+    assert(filename.length() > 0);
+    assert(pointsize > 0);
+
     if (ttf_ == nullptr)
     {
         throw std::runtime_error("Font already loaded");
@@ -127,6 +138,10 @@ void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize) throw(
 
 void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error)
 {
+    assert(filename.length() > 0);
+    assert(pointsize > 0);
+    assert(index >= 0);
+
     if (ttf_ == nullptr)
     {
         throw std::runtime_error("Font already loaded");
@@ -184,6 +199,8 @@ int32_t GfxTtfFont::getFontOutline(void) const
 
 void GfxTtfFont::setFontOutline(int32_t const& outline)
 {
+    assert(outline >= 0);
+
     outline_ = outline;
     sdl2::TTF_SetFontOutline(ttf_, outline);
 }
@@ -261,24 +278,37 @@ int32_t GfxTtfFont::glyphIsProvided(uint16_t ch) const
 bool GfxTtfFont::glyphMetrics(uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
                                 int32_t * maxy, int32_t * advance) const
 {
+    assert(minx != nullptr);
+    assert(maxx != nullptr);
+    assert(miny != nullptr);
+    assert(maxy != nullptr);
+    assert(advance != nullptr);
+
     return (sdl2::TTF_GlyphMetrics(ttf_, ch, minx, maxx, miny, maxy, advance) == 0);
 }
 
 bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) const
 {
+    assert(w != nullptr);
+    assert(h != nullptr);
+
     return (sdl2::TTF_SizeText(ttf_, text.c_str(), w, h) == 0);
 }
 
 bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const
 {
+    assert(w != nullptr);
+    assert(h != nullptr);
+
     return (sdl2::TTF_SizeUTF8(ttf_, text.c_str(), w, h) == 0);
 }
 
 bool GfxTtfFont::sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error)
 {
-    text = text;
-    w = w;
-    h = h;
+    assert(text.length() > 0);
+    assert(w != nullptr);
+    assert(h != nullptr);
+
     throw std::runtime_error("Not supported");
 }
 

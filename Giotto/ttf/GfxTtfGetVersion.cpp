@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+
 #include "GfxTtfGetVersion.hpp"
 
 namespace gfx
@@ -43,6 +45,8 @@ GfxTtfGetVersion::operator bool() const
 
 void GfxTtfGetVersion::getVersion(gfx::GfxVersion * ver) const
 {
+    assert(ver != nullptr);
+
     gfx::GfxVersion::SdlTypePtr v;
 
     v = const_cast<gfx::GfxVersion::SdlTypePtr>(sdl2::TTF_Linked_Version());

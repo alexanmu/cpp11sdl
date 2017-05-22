@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+
 #include "GfxTtfFontHinting.hpp"
 
 namespace gfx
@@ -43,6 +45,8 @@ GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) : G
 
 GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) : GfxRootClass(ClassName)
 {
+    assert(hinting >= 0);
+
     hinting_ = hinting;
 }
 

@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+
 #include "GfxTtfFontStyle.hpp"
 
 namespace gfx
@@ -59,6 +61,8 @@ GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool st
 
 GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) : GfxRootClass(ClassName)
 {
+    assert(style >= 0);
+
     style_ = style;
 }
 

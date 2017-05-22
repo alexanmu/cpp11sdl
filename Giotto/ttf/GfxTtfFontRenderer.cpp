@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <cstdint>
 #include <string>
 
@@ -64,24 +65,35 @@ void GfxTtfFontRenderer::setFont(GfxTtfFont * ttf) throw(std::runtime_error)
 
 bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t * h) const
 {
+    assert(text.length() > 0);
+    assert(w != nullptr);
+    assert(h != nullptr);
+
     return (sdl2::TTF_SizeText(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
 }
 
 bool GfxTtfFontRenderer::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const
 {
+    assert(text.length() > 0);
+    assert(w != nullptr);
+    assert(h != nullptr);
+
     return (sdl2::TTF_SizeUTF8(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
 }
 
 bool GfxTtfFontRenderer::sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error)
 {
-    text = text;
-    w = w;
-    h = h;
+    assert(text.length() > 0);
+    assert(w != nullptr);
+    assert(h != nullptr);
+
     throw std::runtime_error("Not supported");
 }
 
 gfx::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, gfx::GfxColor const& fg) const
 {
+    assert(text.length() > 0);
+
     gfx::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
@@ -90,6 +102,8 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, g
 
 gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text, gfx::GfxColor const& fg) const
 {
+    assert(text.length() > 0);
+
     gfx::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
@@ -99,8 +113,8 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& tex
 gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, gfx::GfxColor fg)
         const throw(std::runtime_error)
 {
-    text = text;
-    fg = fg;
+    assert(text.length() > 0);
+    assert(fg);
     throw std::runtime_error("Not implemented");
 }
 
