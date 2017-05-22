@@ -46,9 +46,8 @@ public:
     GfxRootClass& operator=(GfxRootClass&& other);
 
     bool operator==(const GfxRootClass& other) const;
-    bool operator()(void) const;
 
-    virtual explicit operator bool() const = 0;
+    virtual explicit operator bool() const;
 
     std::string const& getClassName(void) const;
     int32_t getInstanceId(void) const;

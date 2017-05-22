@@ -233,9 +233,9 @@ bool GfxRootClass::operator==(const GfxRootClass& other) const
     return ((i32InstanceId_ == other.i32InstanceId_) && (strClassName_ == other.strClassName_));
 }
 
-bool GfxRootClass::operator()(void) const
+GfxRootClass::operator bool() const
 {
-    return (strClassName_ != "$null$");
+    return true;
 }
 
 std::string const& GfxRootClass::getClassName(void) const
