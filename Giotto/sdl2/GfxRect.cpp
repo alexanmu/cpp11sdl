@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdlib>
 #include <string>
 
 #include "GfxRect.hpp"
@@ -38,8 +40,13 @@ GfxRect::GfxRect() : GfxRootClass(ClassName)
     rect_.h = -1;
 }
 
-GfxRect::GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h) : GfxRootClass(ClassName)
+GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) : GfxRootClass(ClassName)
 {
+    assert(x >= 0);
+    assert(y >= 0);
+    assert(w >= 0);
+    assert(h >= 0);
+
     rect_.x = x;
     rect_.y = y;
     rect_.w = w;
@@ -92,43 +99,51 @@ GfxRect::operator bool() const
     return true;
 }
 
-uint16_t GfxRect::getX(void) const
+int32_t GfxRect::getX(void) const
 {
     return rect_.x;
 }
 
-uint16_t GfxRect::getY(void) const
+int32_t GfxRect::getY(void) const
 {
     return rect_.y;
 }
 
-uint16_t GfxRect::getWidth(void) const
+int32_t GfxRect::getWidth(void) const
 {
     return rect_.w;
 }
 
-uint16_t GfxRect::getHeight(void) const
+int32_t GfxRect::getHeight(void) const
 {
     return rect_.h;
 }
 
-void GfxRect::setX(const uint16_t x)
+void GfxRect::setX(const int32_t x)
 {
+    assert(x >= 0);
+
     rect_.x = x;
 }
 
-void GfxRect::setY(const uint16_t y)
+void GfxRect::setY(const int32_t y)
 {
+    assert(y >= 0);
+
     rect_.y = y;
 }
 
-void GfxRect::setWidth(const uint16_t w)
+void GfxRect::setWidth(const int32_t w)
 {
+    assert(w >= 0);
+
     rect_.w = w;
 }
 
-void GfxRect::setHeight(const uint16_t h)
+void GfxRect::setHeight(const int32_t h)
 {
+    assert(h >= 0);
+
     rect_.h = h;
 }
 

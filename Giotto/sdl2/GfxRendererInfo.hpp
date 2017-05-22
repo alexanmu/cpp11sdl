@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    static constexpr int kTextureFormatsArrayLength = 16;
+    static constexpr int32_t kTextureFormatsArrayLength = 16;
 
     struct GfxTextureFormats
     {

@@ -24,6 +24,7 @@
 #ifndef GfxSurfaceFlags_hpp
 #define GfxSurfaceFlags_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"

@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxRenderer.hpp"
@@ -73,8 +74,10 @@ void GfxRenderer::renderClear()
     }
 }
 
-void GfxRenderer::getRendererInfo(GfxRendererInfo* infoptr)
+void GfxRenderer::getRendererInfo(GfxRendererInfo * infoptr)
 {
+    assert(infoptr != nullptr);
+
     GfxRendererInfo::SdlType ri;
 
     if (renderer_ != nullptr)
@@ -90,6 +93,10 @@ void GfxRenderer::getRendererInfo(GfxRendererInfo* infoptr)
 
 void GfxRenderer::renderCopy(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest)
 {
+    assert(tex);
+    assert(src);
+    assert(dest);
+
     if (renderer_ != nullptr)
     {
         sdl2::SDL_RenderCopy(renderer_,
@@ -101,6 +108,8 @@ void GfxRenderer::renderCopy(const GfxTexture& tex, const GfxRect& src, const Gf
 
 void GfxRenderer::renderCopy(const GfxTexture& tex)
 {
+    assert(tex);
+
     if (renderer_ != nullptr)
     {
         SDL_RenderCopy(renderer_, tex.getAsSdlTypePtr(), NULL, NULL);
@@ -110,6 +119,12 @@ void GfxRenderer::renderCopy(const GfxTexture& tex)
 void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest,
                                 const double angle, const GfxPoint& pt, const GfxRendererFlip& flip)
 {
+    assert(tex);
+    assert(src);
+    assert(dest);
+    assert(pt);
+    assert(flip);
+
     if (renderer_ != nullptr)
     {
         sdl2::SDL_RenderCopyEx(renderer_,
@@ -125,6 +140,10 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const 
 void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt,
                                 const GfxRendererFlip& flip)
 {
+    assert(tex);
+    assert(pt);
+    assert(flip);
+
     if (renderer_ != nullptr)
     {
         sdl2::SDL_RenderCopyEx(renderer_,

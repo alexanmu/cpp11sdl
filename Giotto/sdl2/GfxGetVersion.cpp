@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxGetVersion.hpp"
@@ -40,8 +42,10 @@ GfxGetVersion::operator bool() const
     return true;
 }
 
-void GfxGetVersion::getVersion(GfxVersion* ver) const
+void GfxGetVersion::getVersion(GfxVersion * ver) const
 {
+    assert(ver != nullptr);
+
     GfxVersion::SdlType v;
 
     sdl2::SDL_GetVersion(&v);

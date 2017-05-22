@@ -24,6 +24,7 @@
 #ifndef GfxDisplayMode_hpp
 #define GfxDisplayMode_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -42,7 +43,7 @@ public:
 
     GfxDisplayMode();
 
-    GfxDisplayMode(const uint32_t format, const int w, const int h, const int refresh);
+    GfxDisplayMode(const uint32_t format, const int32_t w, const int32_t h, const int32_t refresh);
 
     // Copy Ctor not supported due to driver_data ptr
     GfxDisplayMode(GfxDisplayMode const&) = delete;
@@ -55,8 +56,8 @@ public:
     virtual explicit operator bool() const;
 
     uint32_t getFormat(void) const;
-    int getWidth(void) const;
-    int getHeight(void) const;
+    int32_t getWidth(void) const;
+    int32_t getHeight(void) const;
     int getRefreshRate(void) const;
 
     void set(const SdlType dm);

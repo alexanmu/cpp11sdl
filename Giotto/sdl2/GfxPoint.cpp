@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdlib>
 #include <string>
 
 #include "GfxPoint.hpp"
@@ -35,8 +37,11 @@ GfxPoint::GfxPoint() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxPoint::GfxPoint(const uint16_t x, const uint16_t y) : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(const int32_t x, const int32_t y) : GfxRootClass(ClassName)
 {
+    assert(x >= 0);
+    assert(y >= 0);
+
     pt_.x = x;
     pt_.y = y;
 }
@@ -89,23 +94,27 @@ GfxPoint::operator bool() const
     return true;
 }
 
-int GfxPoint::getX(void) const
+int32_t GfxPoint::getX(void) const
 {
     return pt_.x;
 }
 
-int GfxPoint::getY(void) const
+int32_t GfxPoint::getY(void) const
 {
     return pt_.y;
 }
 
-void GfxPoint::setX(const uint16_t x)
+void GfxPoint::setX(const int32_t x)
 {
+    assert(x >= 0);
+
     pt_.x = x;
 }
 
-void GfxPoint::setY(const uint16_t y)
+void GfxPoint::setY(const int32_t y)
 {
+    assert(y >= 0);
+
     pt_.y = y;
 }
 

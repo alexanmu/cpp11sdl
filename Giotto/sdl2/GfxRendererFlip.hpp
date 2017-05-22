@@ -24,6 +24,7 @@
 #ifndef GfxRendererFlip_hpp
 #define GfxRendererFlip_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxRendererFlipValues : int
+    enum class GfxRendererFlipValues : int32_t
     {
         flipNone = sdl2::SDL_FLIP_NONE,
         flipHorizontal = sdl2::SDL_FLIP_HORIZONTAL,

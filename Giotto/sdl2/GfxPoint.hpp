@@ -24,6 +24,7 @@
 #ifndef GfxPoint_hpp
 #define GfxPoint_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -42,7 +43,7 @@ public:
 
     GfxPoint();
 
-    GfxPoint(const uint16_t x, const uint16_t y);
+    GfxPoint(const int32_t x, const int32_t y);
     explicit GfxPoint(const SdlType pt);
 
     GfxPoint(const GfxPoint& other);
@@ -56,12 +57,12 @@ public:
     virtual explicit operator bool() const;
 
     /* Getters */
-    int getX(void) const;
-    int getY(void) const;
+    int32_t getX(void) const;
+    int32_t getY(void) const;
 
     /* Setters */
-    void setX(const uint16_t x);
-    void setY(const uint16_t y);
+    void setX(const int32_t x);
+    void setY(const int32_t y);
 
     void clear(void);
 

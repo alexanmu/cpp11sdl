@@ -24,6 +24,7 @@
 #ifndef GfxRect_hpp
 #define GfxRect_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -42,7 +43,7 @@ public:
 
     GfxRect();
 
-    GfxRect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h);
+    GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h);
     explicit GfxRect(const SdlType rect);
 
     GfxRect(const GfxRect& other);
@@ -55,15 +56,15 @@ public:
 
     virtual explicit operator bool() const;
 
-    uint16_t getX(void) const;
-    uint16_t getY(void) const;
-    uint16_t getWidth(void) const;
-    uint16_t getHeight(void) const;
+    int32_t getX(void) const;
+    int32_t getY(void) const;
+    int32_t getWidth(void) const;
+    int32_t getHeight(void) const;
 
-    void setX(const uint16_t x);
-    void setY(const uint16_t y);
-    void setWidth(const uint16_t w);
-    void setHeight(const uint16_t h);
+    void setX(const int32_t x);
+    void setY(const int32_t y);
+    void setWidth(const int32_t w);
+    void setHeight(const int32_t h);
     void set(SdlType r);
 
     void clear(void);

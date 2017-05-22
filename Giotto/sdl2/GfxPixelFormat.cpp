@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxPixelFormat.hpp"
@@ -41,11 +43,15 @@ GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 
 GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass(ClassName)
 {
+    assert(pix != nullptr);
+
     pix_ = sdl2::SDL_AllocFormat(pix->format);
 }
 
 GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)
 {
+    assert(format > 0);
+
     pix_ = sdl2::SDL_AllocFormat(format);
     if (pix_ == nullptr)
     {
@@ -257,6 +263,8 @@ std::string GfxPixelFormat::getFormatAsString(void) const
 /*** Setters ***/
 void GfxPixelFormat::setFormat(const uint32_t format)
 {
+    assert(format > 0);
+
     if (pix_ != nullptr)
     {
         pix_->format = format;
@@ -265,6 +273,8 @@ void GfxPixelFormat::setFormat(const uint32_t format)
 
 void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
 {
+    assert(bpp > 0);
+
     if (pix_ != nullptr)
     {
         pix_->BitsPerPixel = bpp;
@@ -273,6 +283,8 @@ void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
 
 void GfxPixelFormat::setBytesPerPixel(const uint8_t bypp)
 {
+    assert(bypp > 0);
+
     if (pix_ != nullptr)
     {
         pix_->BytesPerPixel = bypp;

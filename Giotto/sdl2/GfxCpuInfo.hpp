@@ -24,6 +24,7 @@
 #ifndef GfxCpuInfo_hpp
 #define GfxCpuInfo_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -48,8 +49,8 @@ public:
 
     void queryCpuInfo(void);
 
-    int getCpuCount(void) const;
-    int getCpuCacheLineSize(void) const;
+    int32_t getCpuCount(void) const;
+    int32_t getCpuCacheLineSize(void) const;
     bool hasRdtsc(void) const;
     bool hasAltiVec(void) const;
     bool hasMmx(void) const;
@@ -60,12 +61,12 @@ public:
     bool hasSse42(void) const;
     bool hasAvx(void) const;
     bool hasAvx2(void) const;
-    int getSystemRam(void) const;
+    int32_t getSystemRam(void) const;
 
     const std::string getAsString(void) const;
 private:
-    int cpuCount_;
-    int cpuCacheLineSize_;
+    int32_t cpuCount_;
+    int32_t cpuCacheLineSize_;
     bool hasRdtsc_;
     bool hasAltiVec_;
     bool hasMmx_;
@@ -76,7 +77,7 @@ private:
     bool hasSse42_;
     bool hasAvx_;
     bool hasAvx2_;
-    int systemRam_;
+    int32_t systemRam_;
 };
 
 }  // namespace gfx

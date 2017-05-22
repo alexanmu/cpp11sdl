@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstdint>
 #include <string>
 
 #include "GfxPowerInfo.hpp"
@@ -55,12 +56,12 @@ GfxPowerState const& GfxPowerInfo::getPowerState(void) const
     return (GfxPowerState&)pstate_;
 }
 
-int GfxPowerInfo::getRemainingSeconds(void) const
+int32_t GfxPowerInfo::getRemainingSeconds(void) const
 {
     return seconds_;
 }
 
-int GfxPowerInfo::getRemainingPercentage(void) const
+int32_t GfxPowerInfo::getRemainingPercentage(void) const
 {
     return percentage_;
 }

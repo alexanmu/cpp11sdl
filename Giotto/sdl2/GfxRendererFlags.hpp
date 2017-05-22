@@ -24,6 +24,7 @@
 #ifndef GfxRendererFlags_hpp
 #define GfxRendererFlags_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxRendererFlagsValues : int
+    enum class GfxRendererFlagsValues : int32_t
     {
         flagUnknown,
         flagSoftware = sdl2::SDL_RENDERER_SOFTWARE,

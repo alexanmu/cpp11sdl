@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstdint>
 #include <cstring>
 #include <string>
 

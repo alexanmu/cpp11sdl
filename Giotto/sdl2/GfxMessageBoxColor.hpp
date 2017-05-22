@@ -24,6 +24,7 @@
 #ifndef GfxMessageBoxColor_hpp
 #define GfxMessageBoxColor_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"

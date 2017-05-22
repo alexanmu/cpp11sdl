@@ -24,6 +24,7 @@
 #ifndef GfxMessageBoxFlags_hpp
 #define GfxMessageBoxFlags_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxMessageBoxFlagsValues : int
+    enum class GfxMessageBoxFlagsValues : int32_t
     {
         flagError = sdl2::SDL_MESSAGEBOX_ERROR,
         flagWarning = sdl2::SDL_MESSAGEBOX_WARNING,

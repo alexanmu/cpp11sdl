@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxLoadSo.hpp"
@@ -33,6 +34,8 @@ const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
 GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
 {
+    assert(objectname.length() > 0);
+
     objectname_ = objectname;
     handle_ = sdl2::SDL_LoadObject(objectname_.c_str());
 }
@@ -77,13 +80,15 @@ bool GfxLoadSo::isObjectLoaded(void) const
     return (handle_ != nullptr);
 }
 
-std::string GfxLoadSo::getObjectName(void) const
+std::string const& GfxLoadSo::getObjectName(void) const
 {
     return objectname_;
 }
 
 void * GfxLoadSo::loadFunction(const std::string& function)
 {
+    assert(function.length() > 0);
+
     void * func = nullptr;
 
     if (handle_ != nullptr)

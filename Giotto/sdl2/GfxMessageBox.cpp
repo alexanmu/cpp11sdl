@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxMessageBox.hpp"
@@ -33,12 +35,18 @@ const char GfxMessageBox::ClassName[] = "GfxMessageBox";
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass(ClassName)
 {
+    assert(data);
+
     data_ = data;
     type_ = GfxMessageBoxType::typeComplex;
 }
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title, const std::string& message)
 {
+    assert(flag);
+    assert(title.length() > 0);
+    assert(message.length() > 0);
+
     flag_ = flag;
     title_ = title;
     message_ = message;
@@ -49,6 +57,11 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
                              const std::string& message, GfxWindow const& win)
 {
+    assert(flag);
+    assert(title.length() > 0);
+    assert(message.length() > 0);
+    assert(win);
+
     flag_ = flag;
     title_ = title;
     message_ = message;
@@ -61,9 +74,9 @@ GfxMessageBox::operator bool() const
     return true;
 }
 
-int GfxMessageBox::showModal() const
+int32_t GfxMessageBox::showModal() const
 {
-    int ret;
+    int32_t ret;
 
     if (type_ == GfxMessageBoxType::typeComplex)
     {
@@ -76,7 +89,7 @@ int GfxMessageBox::showModal() const
     return ret;
 }
 
-int GfxMessageBox::showModalSimple(void) const
+int32_t GfxMessageBox::showModalSimple(void) const
 {
     if (winptr_ == nullptr)
     {
@@ -91,9 +104,9 @@ int GfxMessageBox::showModalSimple(void) const
     return 1;
 }
 
-int GfxMessageBox::showModalComplex(void) const
+int32_t GfxMessageBox::showModalComplex(void) const
 {
-    int buttonid;
+    int32_t buttonid;
     GfxMessageBoxData::SdlTypePtr p;
 
     p = data_.getAsSdlTypePtr();

@@ -24,6 +24,7 @@
 #ifndef GfxPowerState_hpp
 #define GfxPowerState_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxPowerStateValues : int
+    enum class GfxPowerStateValues : int32_t
     {
         stateUnknown = sdl2::SDL_POWERSTATE_UNKNOWN,
         stateOnBattery = sdl2::SDL_POWERSTATE_ON_BATTERY,

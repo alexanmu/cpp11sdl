@@ -21,6 +21,9 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxWindowFlags.hpp"
@@ -30,34 +33,36 @@ namespace gfx
 
 const char GfxWindowFlags::ClassName[] = "GfxWindowFlags";
 
-GfxWindowFlags::GfxWindowFlags() : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) noexcept : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(SdlType flags) : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(SdlType flags) noexcept : GfxRootClass(ClassName)
 {
+    assert(flags >= 0);
+
     flags_ = flags;
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
 }
 
-GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other)
+GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other) noexcept
 {
     if (this != &other)
     {
@@ -66,7 +71,7 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other)
     return *this;
 }
 
-GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other)
+GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other) noexcept
 {
     if (this != &other)
     {
@@ -77,116 +82,116 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other)
     return *this;
 }
 
-GfxWindowFlags::operator bool() const
+GfxWindowFlags::operator bool() const noexcept
 {
     return true;
 }
 
 /* Getters ... */
-bool GfxWindowFlags::isUnkown(void) const
+bool GfxWindowFlags::isUnkown(void) const noexcept
 {
     return (flags_ == 0);
 }
 
-bool GfxWindowFlags::isFullscreen(void) const
+bool GfxWindowFlags::isFullscreen(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_FULLSCREEN;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isOpenGL(void) const
+bool GfxWindowFlags::isOpenGL(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_OPENGL;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isShown(void) const
+bool GfxWindowFlags::isShown(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_SHOWN;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isHidden(void) const
+bool GfxWindowFlags::isHidden(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_HIDDEN;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isBorderless(void) const
+bool GfxWindowFlags::isBorderless(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_BORDERLESS;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isResizable(void) const
+bool GfxWindowFlags::isResizable(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_RESIZABLE;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isMinimized(void) const
+bool GfxWindowFlags::isMinimized(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_MINIMIZED;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isMaximized(void) const
+bool GfxWindowFlags::isMaximized(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_MAXIMIZED;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isInputGrabbed(void) const
+bool GfxWindowFlags::isInputGrabbed(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_INPUT_GRABBED;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isInputFocus(void) const
+bool GfxWindowFlags::isInputFocus(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_INPUT_FOCUS;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isMouseFocus(void) const
+bool GfxWindowFlags::isMouseFocus(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_MOUSE_FOCUS;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isFullscreenDesktop(void) const
+bool GfxWindowFlags::isFullscreenDesktop(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_FULLSCREEN_DESKTOP;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isForeign(void) const
+bool GfxWindowFlags::isForeign(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_FOREIGN;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::allowHighDPI(void) const
+bool GfxWindowFlags::allowHighDPI(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_ALLOW_HIGHDPI;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::mouseCapture(void) const
+bool GfxWindowFlags::mouseCapture(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_MOUSE_CAPTURE;
 
@@ -194,35 +199,35 @@ bool GfxWindowFlags::mouseCapture(void) const
 }
 
 // X11 only
-bool GfxWindowFlags::isAlwaysOnTop(void) const
+bool GfxWindowFlags::isAlwaysOnTop(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_ALWAYS_ON_TOP;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::skipTaskbar(void) const
+bool GfxWindowFlags::skipTaskbar(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_SKIP_TASKBAR;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isUtility(void) const
+bool GfxWindowFlags::isUtility(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_UTILITY;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isTooltip(void) const
+bool GfxWindowFlags::isTooltip(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_TOOLTIP;
 
     return (r != 0);
 }
 
-bool GfxWindowFlags::isPopupMenu(void) const
+bool GfxWindowFlags::isPopupMenu(void) const noexcept
 {
     uint32_t r = flags_ & sdl2::SDL_WINDOW_POPUP_MENU;
 
@@ -230,218 +235,218 @@ bool GfxWindowFlags::isPopupMenu(void) const
 }
 
 /* Setters .. */
-void GfxWindowFlags::setFullscreen(void)
+void GfxWindowFlags::setFullscreen(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_FULLSCREEN);
 }
 
-void GfxWindowFlags::resetFullscreen(void)
+void GfxWindowFlags::resetFullscreen(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_FULLSCREEN);
 }
 
-void GfxWindowFlags::setOpenGL(void)
+void GfxWindowFlags::setOpenGL(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_OPENGL);
 }
 
-void GfxWindowFlags::resetOpenGL(void)
+void GfxWindowFlags::resetOpenGL(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_OPENGL);
 }
 
-void GfxWindowFlags::setShown(void)
+void GfxWindowFlags::setShown(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_SHOWN);
 }
 
-void GfxWindowFlags::resetShown(void)
+void GfxWindowFlags::resetShown(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_SHOWN);
 }
 
-void GfxWindowFlags::setHidden(void)
+void GfxWindowFlags::setHidden(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_HIDDEN);
 }
 
-void GfxWindowFlags::resetHidden(void)
+void GfxWindowFlags::resetHidden(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_HIDDEN);
 }
 
-void GfxWindowFlags::setBorderless(void)
+void GfxWindowFlags::setBorderless(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_BORDERLESS);
 }
 
-void GfxWindowFlags::resetBorderless(void)
+void GfxWindowFlags::resetBorderless(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_BORDERLESS);
 }
 
-void GfxWindowFlags::setResizable(void)
+void GfxWindowFlags::setResizable(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_RESIZABLE);
 }
 
-void GfxWindowFlags::resetResizable(void)
+void GfxWindowFlags::resetResizable(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_RESIZABLE);
 }
 
-void GfxWindowFlags::setMinimized(void)
+void GfxWindowFlags::setMinimized(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_MINIMIZED);
 }
 
-void GfxWindowFlags::resetMinimized(void)
+void GfxWindowFlags::resetMinimized(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_MINIMIZED);
 }
 
-void GfxWindowFlags::setMaximized(void)
+void GfxWindowFlags::setMaximized(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_MAXIMIZED);
 }
 
-void GfxWindowFlags::resetMaximized(void)
+void GfxWindowFlags::resetMaximized(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_MAXIMIZED);
 }
 
-void GfxWindowFlags::setInputGrabbed(void)
+void GfxWindowFlags::setInputGrabbed(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_INPUT_GRABBED);
 }
 
-void GfxWindowFlags::resetInputGrabbed(void)
+void GfxWindowFlags::resetInputGrabbed(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_INPUT_GRABBED);
 }
 
-void GfxWindowFlags::setInputFocus(void)
+void GfxWindowFlags::setInputFocus(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_INPUT_FOCUS);
 }
 
-void GfxWindowFlags::resetInputFocus(void)
+void GfxWindowFlags::resetInputFocus(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_INPUT_FOCUS);
 }
 
-void GfxWindowFlags::setMouseFocus(void)
+void GfxWindowFlags::setMouseFocus(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_MOUSE_FOCUS);
 }
 
-void GfxWindowFlags::resetMouseFocus(void)
+void GfxWindowFlags::resetMouseFocus(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_MOUSE_FOCUS);
 }
 
-void GfxWindowFlags::setFullscreenDesktop(void)
+void GfxWindowFlags::setFullscreenDesktop(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
-void GfxWindowFlags::resetFullscreenDesktop(void)
+void GfxWindowFlags::resetFullscreenDesktop(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
-void GfxWindowFlags::setForeign(void)
+void GfxWindowFlags::setForeign(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_FOREIGN);
 }
 
-void GfxWindowFlags::resetForeign(void)
+void GfxWindowFlags::resetForeign(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_FOREIGN);
 }
 
-void GfxWindowFlags::setAllowHighDPI(void)
+void GfxWindowFlags::setAllowHighDPI(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_ALLOW_HIGHDPI);
 }
 
-void GfxWindowFlags::resetAllowHighDPI(void)
+void GfxWindowFlags::resetAllowHighDPI(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_ALLOW_HIGHDPI);
 }
 
-void GfxWindowFlags::setMouseCapture(void)
+void GfxWindowFlags::setMouseCapture(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_MOUSE_CAPTURE);
 }
 
-void GfxWindowFlags::resetMouseCapture(void)
+void GfxWindowFlags::resetMouseCapture(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_MOUSE_CAPTURE);
 }
 
 // X11 only
-void GfxWindowFlags::setAlwaysOnTop(void)
+void GfxWindowFlags::setAlwaysOnTop(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_ALWAYS_ON_TOP);
 }
 
-void GfxWindowFlags::resetAlwaysOnTop(void)
+void GfxWindowFlags::resetAlwaysOnTop(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_ALWAYS_ON_TOP);
 }
 
-void GfxWindowFlags::setSkipTaskbar(void)
+void GfxWindowFlags::setSkipTaskbar(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_SKIP_TASKBAR);
 }
-void GfxWindowFlags::resetSkipTaskbar(void)
+void GfxWindowFlags::resetSkipTaskbar(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_SKIP_TASKBAR);
 }
 
-void GfxWindowFlags::setUtility(void)
+void GfxWindowFlags::setUtility(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_UTILITY);
 }
 
-void GfxWindowFlags::resetUtility(void)
+void GfxWindowFlags::resetUtility(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_UTILITY);
 }
 
-void GfxWindowFlags::setTooltip(void)
+void GfxWindowFlags::setTooltip(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_TOOLTIP);
 }
 
-void GfxWindowFlags::resetTooltip(void)
+void GfxWindowFlags::resetTooltip(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_TOOLTIP);
 }
 
-void GfxWindowFlags::setPopupMenu(void)
+void GfxWindowFlags::setPopupMenu(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_POPUP_MENU);
 }
 
-void GfxWindowFlags::resetPopupMenu(void)
+void GfxWindowFlags::resetPopupMenu(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_POPUP_MENU);
 }
 
-void GfxWindowFlags::clear(void)
+void GfxWindowFlags::clear(void) noexcept
 {
     flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
 }
 
 // SDL type access
-GfxWindowFlags::SdlType GfxWindowFlags::getAsSdlType(void) const
+GfxWindowFlags::SdlType GfxWindowFlags::getAsSdlType(void) const noexcept
 {
     return flags_;
 }
 
-GfxWindowFlags::SdlTypePtr GfxWindowFlags::getAsSdlTypePtr(void) const
+GfxWindowFlags::SdlTypePtr GfxWindowFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flags_;
 }

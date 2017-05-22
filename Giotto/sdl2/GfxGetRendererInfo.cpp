@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxGetRendererInfo.hpp"
@@ -41,9 +43,9 @@ GfxGetRendererInfo::operator bool() const
     return true;
 }
 
-int GfxGetRendererInfo::getNumRenderDrivers(void)
+int32_t GfxGetRendererInfo::getNumRenderDrivers(void)
 {
-    int nrd;
+    int32_t nrd;
 
     nrd = sdl2::SDL_GetNumRenderDrivers();
     if (nrd >= 0)
@@ -53,8 +55,11 @@ int GfxGetRendererInfo::getNumRenderDrivers(void)
     return nrd;
 }
 
-void GfxGetRendererInfo::getRenderDriverInfo(const int index, GfxRendererInfo* infoptr)
+void GfxGetRendererInfo::getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr)
 {
+    assert(index >= 0);
+    assert(infoptr != nullptr);
+
     GfxRendererInfo::SdlType rdi;
 
     if (index < numRenderDrivers_)

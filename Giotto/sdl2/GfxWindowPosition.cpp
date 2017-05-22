@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxWindowPosition.hpp"
@@ -35,8 +37,10 @@ GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, uint32_t coord) : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, int32_t coord) : GfxRootClass(ClassName)
 {
+    assert(coord >= 0);
+
     pos_ = pos;
     if (pos_ == GfxWindowPosition::GfxWindowPositionValues::positionSpecified)
     {
@@ -102,14 +106,16 @@ GfxWindowPosition::GfxWindowPositionValues GfxWindowPosition::getPosition(void) 
     return pos_;
 }
 
-void GfxWindowPosition::setCoordinate(uint32_t coord)
+void GfxWindowPosition::setCoordinate(int32_t coord)
 {
+    assert(coord >= 0);
+
     coord_ = coord;
 }
 
-uint32_t GfxWindowPosition::getCoordinate(void) const
+int32_t GfxWindowPosition::getCoordinate(void) const
 {
-    uint32_t ret;
+    int32_t ret;
 
     switch (pos_)
     {

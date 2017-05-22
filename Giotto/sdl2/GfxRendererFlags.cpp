@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxRendererFlags.hpp"
@@ -42,6 +44,8 @@ GfxRendererFlags::GfxRendererFlags(GfxRendererFlagsValues flags) : GfxRootClass(
 
 GfxRendererFlags::GfxRendererFlags(SdlType flags) : GfxRootClass(ClassName)
 {
+    assert(flags > 0);
+
     flags_ = flags;
 }
 
@@ -89,28 +93,28 @@ bool GfxRendererFlags::isUnknown(void) const
 
 bool GfxRendererFlags::isSoftware(void) const
 {
-    uint32_t r = flags_ & sdl2::SDL_RENDERER_SOFTWARE;
+    int32_t r = flags_ & sdl2::SDL_RENDERER_SOFTWARE;
 
     return (r != 0);
 }
 
 bool GfxRendererFlags::isAccelerated(void) const
 {
-    uint32_t r = flags_ & sdl2::SDL_RENDERER_ACCELERATED;
+    int32_t r = flags_ & sdl2::SDL_RENDERER_ACCELERATED;
 
     return (r != 0);
 }
 
 bool GfxRendererFlags::getPresentVSync(void) const
 {
-    uint32_t r = flags_ & sdl2::SDL_RENDERER_PRESENTVSYNC;
+    int32_t r = flags_ & sdl2::SDL_RENDERER_PRESENTVSYNC;
 
     return (r != 0);
 }
 
 bool GfxRendererFlags::getTargetTexture(void) const
 {
-    uint32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
+    int32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
 
     return (r != 0);
 }

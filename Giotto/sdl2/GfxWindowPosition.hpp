@@ -37,7 +37,7 @@ class GfxWindowPosition final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    enum class GfxWindowPositionValues : int
+    enum class GfxWindowPositionValues : int32_t
     {
         positionUndefined = SDL_WINDOWPOS_UNDEFINED,
         positionCentered = SDL_WINDOWPOS_CENTERED,
@@ -46,7 +46,7 @@ public:
 
     GfxWindowPosition();
 
-    explicit GfxWindowPosition(const GfxWindowPositionValues pos, const uint32_t coord = 0);
+    explicit GfxWindowPosition(const GfxWindowPositionValues pos, const int32_t coord = 0);
 
     GfxWindowPosition(GfxWindowPosition const& other);
     GfxWindowPosition(GfxWindowPosition&& other);
@@ -59,8 +59,8 @@ public:
     void setPosition(const GfxWindowPositionValues pos);
     GfxWindowPositionValues getPosition(void) const;
 
-    void setCoordinate(uint32_t coord = -1);
-    uint32_t getCoordinate(void) const;
+    void setCoordinate(int32_t coord = 0);
+    int32_t getCoordinate(void) const;
 
     void clear(void);
 private:

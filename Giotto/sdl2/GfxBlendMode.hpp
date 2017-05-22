@@ -24,6 +24,7 @@
 #ifndef GfxBlendMode_hpp
 #define GfxBlendMode_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxBlendModeValues : int
+    enum class GfxBlendModeValues : int32_t
     {
         blendNone = sdl2::SDL_BLENDMODE_NONE,
         blendBlend = sdl2::SDL_BLENDMODE_BLEND,

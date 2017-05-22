@@ -24,6 +24,7 @@
 #ifndef GfxTextureModulate_hpp
 #define GfxTextureModulate_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxTextureModulateValues : int
+    enum class GfxTextureModulateValues : int32_t
     {
         modulateNone = sdl2::SDL_TEXTUREMODULATE_NONE,
         modulateColor = sdl2::SDL_TEXTUREMODULATE_COLOR,

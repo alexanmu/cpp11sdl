@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxSurfaceFlags.hpp"
@@ -42,6 +44,8 @@ GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags) : GfxRootCla
 
 GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) : GfxRootClass(ClassName)
 {
+    assert(flags > 0);
+
     flags_ = flags;
 }
 

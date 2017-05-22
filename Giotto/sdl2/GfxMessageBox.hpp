@@ -24,6 +24,7 @@
 #ifndef GfxMessageBox_hpp
 #define GfxMessageBox_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -54,12 +55,12 @@ public:
 
     virtual explicit operator bool() const;
 
-    int showModal(void) const;
+    int32_t showModal(void) const;
 private:
-    int showModalComplex(void) const;
-    int showModalSimple(void) const;
+    int32_t showModalComplex(void) const;
+    int32_t showModalSimple(void) const;
 
-    enum class GfxMessageBoxType : int
+    enum class GfxMessageBoxType : int32_t
     {
         typeComplex,
         typeSimple

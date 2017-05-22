@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxMessageBoxColorType.hpp"
@@ -37,6 +38,8 @@ GfxMessageBoxColorType::GfxMessageBoxColorType() : GfxRootClass(ClassName)
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) : GfxRootClass(ClassName)
 {
+    assert(type >= 0);
+
     type_ = type;
 }
 

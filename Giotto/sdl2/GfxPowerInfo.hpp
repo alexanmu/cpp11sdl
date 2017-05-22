@@ -24,6 +24,7 @@
 #ifndef GfxPowerInfo_hpp
 #define GfxPowerInfo_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -50,14 +51,14 @@ public:
     void queryPowerInfo(void);
 
     GfxPowerState const& getPowerState(void) const;
-    int getRemainingSeconds(void) const;
-    int getRemainingPercentage(void) const;
+    int32_t getRemainingSeconds(void) const;
+    int32_t getRemainingPercentage(void) const;
 
     const std::string getAsString(void) const;
 private:
     GfxPowerState pstate_;
-    int seconds_;
-    int percentage_;
+    int32_t seconds_;
+    int32_t percentage_;
 };
 
 }  // namespace gfx

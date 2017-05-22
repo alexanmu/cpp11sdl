@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxBlendMode.hpp"
@@ -42,6 +43,8 @@ GfxBlendMode::GfxBlendMode(const GfxBlendModeValues blendmode) : GfxRootClass(Cl
 
 GfxBlendMode::GfxBlendMode(const SdlType blendmode) : GfxRootClass(ClassName)
 {
+    assert(blendmode >= 0);
+
     blendmode_ = blendmode;
 }
 

@@ -46,7 +46,7 @@ void GfxPlatform::queryPlatform(void)
     platform_ = sdl2::SDL_GetPlatform();
 }
 
-std::string GfxPlatform::getPlatform(void) const
+std::string const& GfxPlatform::getPlatform(void) const
 {
     return platform_;
 }

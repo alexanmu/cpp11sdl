@@ -48,7 +48,7 @@ public:
 
     void queryPlatform(void);
 
-    std::string getPlatform(void) const;
+    std::string const& getPlatform(void) const;
 private:
     std::string platform_;
 };

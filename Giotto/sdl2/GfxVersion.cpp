@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstdint>
 #include <string>
 
 #include "GfxVersion.hpp"

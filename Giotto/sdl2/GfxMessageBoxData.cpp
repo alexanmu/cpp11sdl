@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxMessageBoxData.hpp"
@@ -37,10 +39,16 @@ GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
 }
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win,
-                                     const std::string& title, const std::string& message, const int numbuttons,
+                                     const std::string& title, const std::string& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
         GfxRootClass(ClassName)
 {
+    assert(flags);
+    assert(title.length() > 0);
+    assert(message.length() > 0);
+    assert(numbuttons > 0);
+    assert(colorScheme);
+
     data_.flags = flags.getAsSdlType();
     if (win != nullptr)
     {
@@ -56,7 +64,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
     data_.message = message_.c_str();
     data_.numbuttons = numbuttons;
     btndataptr = new GfxMessageBoxButtonData::SdlType[numbuttons];
-    for (int i = 0; i < numbuttons; i++)
+    for (int32_t i = 0; i < numbuttons; i++)
     {
         btndataptr[i] = buttons[i].getAsSdlType();
     }
@@ -65,10 +73,15 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
 }
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
-                                     const std::string& title, const std::string& message, const int numbuttons,
+                                     const std::string& title, const std::string& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[]) :
         GfxRootClass(ClassName)
 {
+    assert(flags);
+    assert(title.length() > 0);
+    assert(message.length() > 0);
+    assert(numbuttons > 0);
+
     data_.flags = flags.getAsSdlType();
     data_.window = win.getAsSdlTypePtr();
     title_ = title;
@@ -77,7 +90,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxW
     data_.message = message_.c_str();
     data_.numbuttons = numbuttons;
     btndataptr = new GfxMessageBoxButtonData::SdlType[numbuttons];
-    for (int i = 0; i < numbuttons; i++)
+    for (int32_t i = 0; i < numbuttons; i++)
     {
         btndataptr[i] = buttons[i].getAsSdlType();
     }

@@ -24,6 +24,7 @@
 #ifndef GfxWindowEventID_hpp
 #define GfxWindowEventID_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxWindowEventIDValues : int
+    enum class GfxWindowEventIDValues : int32_t
     {
         eventNone = sdl2::SDL_WINDOWEVENT_NONE,
         eventShown = sdl2::SDL_WINDOWEVENT_SHOWN,

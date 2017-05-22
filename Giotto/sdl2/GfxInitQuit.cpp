@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxInitQuit.hpp"
@@ -33,6 +35,8 @@ const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) :
                 GfxRootClass(ClassName), flags_(flags), errorCode_(0)
 {
+    assert(flags);
+
     errorCode_ = sdl2::SDL_Init(flags.getAsSdlType());
 }
 
@@ -48,17 +52,23 @@ GfxInitQuit::operator bool() const
 
 void GfxInitQuit::initSubSystem(GfxInitFlags const& flags)
 {
+    assert(flags);
+
     errorCode_ = sdl2::SDL_InitSubSystem(flags.getAsSdlType());
 }
 
 void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags)
 {
+    assert(flags);
+
     sdl2::SDL_QuitSubSystem(flags.getAsSdlType());
 }
 
 GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags)
 {
-    uint32_t ret;
+    assert(flags);
+
+    int32_t ret;
 
     ret = sdl2::SDL_WasInit(flags.getAsSdlType());
     return new GfxInitFlags(ret);

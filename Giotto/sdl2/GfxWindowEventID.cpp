@@ -20,7 +20,7 @@
  
  See copyright notice at http://lidsdl.org/license.php
 */
-
+#include <cassert>
 #include <string>
 
 #include "GfxWindowEventID.hpp"
@@ -42,6 +42,8 @@ GfxWindowEventID::GfxWindowEventID(GfxWindowEventIDValues eventid) : GfxRootClas
 
 GfxWindowEventID::GfxWindowEventID(SdlType eventid) : GfxRootClass(ClassName)
 {
+    assert(eventid >= 0);
+
     eventid_ = eventid;
 }
 

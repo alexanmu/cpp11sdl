@@ -24,6 +24,8 @@
 #ifndef GfxVideo_hpp
 #define GfxVideo_hpp
 
+#include <stdexcept>
+#include <cstdint>
 #include <memory>
 #include <map>
 #include <string>
@@ -50,26 +52,27 @@ public:
 
     virtual explicit operator bool() const;
 
-    void videoInit(void) throw();
-    void videoQuit(void) throw();
+    void videoInit(void) throw(std::runtime_error);
+    void videoQuit(void) throw(std::runtime_error);
 
-    int getNumVideoDrivers(void);
-    std::string getVideoDriver(const int driverindex) const;
+    int32_t getNumVideoDrivers(void);
+    std::string getVideoDriver(const int32_t driverindex) const;
     std::string getCurrentVideoDriver(void) const;
-    int getNumVideoDisplays(void);
-    std::string getDisplayName(const int displayindex) const;
-    std::unique_ptr<GfxRect> getDisplayBounds(const int displayindex) const;
-    std::unique_ptr<GfxRect> getDisplayUsableBounds(const int displayindex) const;
-    void getDisplayDPI(const int displayindex, float * ddpi, float * hdpi, float * vdpi) const;
-    int getNumDisplayModes(const int displayindex);
-    std::unique_ptr<GfxDisplayMode> getDisplayMode(const int displayindex, const int modeindex);
-    std::unique_ptr<GfxDisplayMode> getDesktopDisplayMode(const int displayindex) const;
-    std::unique_ptr<GfxDisplayMode> getCurrentDisplayMode(const int displayindex) const;
-    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(const int displayindex, GfxDisplayMode const& mode) const;
+    int32_t getNumVideoDisplays(void);
+    std::string getDisplayName(const int32_t displayindex) const;
+    std::unique_ptr<GfxRect> getDisplayBounds(const int32_t displayindex) const;
+    std::unique_ptr<GfxRect> getDisplayUsableBounds(const int32_t displayindex) const;
+    void getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const;
+    int32_t getNumDisplayModes(const int32_t displayindex);
+    std::unique_ptr<GfxDisplayMode> getDisplayMode(const int32_t displayindex, const int32_t modeindex);
+    std::unique_ptr<GfxDisplayMode> getDesktopDisplayMode(const int32_t displayindex) const;
+    std::unique_ptr<GfxDisplayMode> getCurrentDisplayMode(const int32_t displayindex) const;
+    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(const int32_t displayindex,
+                                                            GfxDisplayMode const& mode) const;
 private:
-    int numvideodrivers_;
-    int numvideodisplays_;
-    std::map<int, int> numdisplaymodes_;
+    int32_t numvideodrivers_;
+    int32_t numvideodisplays_;
+    std::map<int32_t, int32_t> numdisplaymodes_;
 };
 
 }  // namespace gfx

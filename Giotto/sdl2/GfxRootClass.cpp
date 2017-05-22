@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -172,6 +174,8 @@ GfxRootClass::GfxRootClass()
 
 GfxRootClass::GfxRootClass(const std::string& strClassName) : strClassName_(strClassName)
 {
+    assert(strClassName.length() > 0);
+
     GfxRootClass::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
 }

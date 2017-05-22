@@ -24,6 +24,7 @@
 #ifndef GfxMessageBoxButtonFlags_hpp
 #define GfxMessageBoxButtonFlags_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -40,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxMessageBoxButtonFlagsValues : int
+    enum class GfxMessageBoxButtonFlagsValues : uint32_t
     {
         noneDefault = 0,
         returnKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,

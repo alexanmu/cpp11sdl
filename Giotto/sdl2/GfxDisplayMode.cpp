@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxDisplayMode.hpp"
@@ -35,9 +37,13 @@ GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxDisplayMode::GfxDisplayMode(uint32_t const format, int const w, int const h, int const refresh) :
+GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t const h, int32_t const refresh) :
         GfxRootClass(ClassName)
 {
+    assert(w >= 0);
+    assert(h >= 0);
+    assert(refresh >= 0);
+
     dmode_.format = format;
     dmode_.w = w;
     dmode_.h = h;

@@ -24,6 +24,7 @@
 #ifndef GfxVersion_hpp
 #define GfxVersion_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"

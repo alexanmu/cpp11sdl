@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxMessageBoxColorScheme.hpp"
@@ -38,8 +40,10 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) :
         GfxRootClass(ClassName)
 {
-    for (int index = 0; index < colorsArraySize; index++)
+    for (int32_t index = 0; index < colorsArraySize; index++)
     {
+        assert(colors[index]);
+
         clrscheme_.colors[index] = colors[index].getAsSdlType();
     }
 }
@@ -85,14 +89,17 @@ GfxMessageBoxColorScheme::operator bool() const
 
 void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color)
 {
-    int index = static_cast<int>(type.getType());
+    assert(type);
+    assert(color);
+
+    int32_t index = static_cast<int32_t>(type.getType());
 
     clrscheme_.colors[index] = color.getAsSdlType();
 }
 
 void GfxMessageBoxColorScheme::clear(void)
 {
-    for (int index = 0; index < colorsArraySize; index++)
+    for (int32_t index = 0; index < colorsArraySize; index++)
     {
         clrscheme_.colors[index].r = 0x00;
         clrscheme_.colors[index].g = 0x00;

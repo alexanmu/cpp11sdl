@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxMessageBoxButtonFlags.hpp"
@@ -43,6 +44,9 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlag
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) : GfxRootClass(ClassName)
 {
+    assert(flags > 0);
+    assert(flags < 3);
+
     flags_ = flags;
 }
 

@@ -24,6 +24,7 @@
 #ifndef GfxPixelFormat_hpp
 #define GfxPixelFormat_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"

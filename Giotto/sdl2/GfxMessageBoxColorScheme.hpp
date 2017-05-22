@@ -24,6 +24,7 @@
 #ifndef GfxMessageBoxColorScheme_hpp
 #define GfxMessageBoxColorScheme_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -42,7 +43,7 @@ public:
 
     static const char ClassName[];
 
-    static constexpr int colorsArraySize = static_cast<int>(
+    static constexpr int32_t colorsArraySize = static_cast<int32_t>(
                                             GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
 
     GfxMessageBoxColorScheme();

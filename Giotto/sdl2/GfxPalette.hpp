@@ -24,6 +24,7 @@
 #ifndef GfxPalette_hpp
 #define GfxPalette_hpp
 
+#include <cstdint>
 #include <string>
 #include <vector>
 #include <memory>
@@ -69,7 +70,7 @@ public:
     /* Getters */
     uint16_t getNumColors(void) const;
     uint32_t getVersion(void) const;
-    int getRefCount(void) const;
+    int32_t getRefCount(void) const;
 
     void clear(void);
 

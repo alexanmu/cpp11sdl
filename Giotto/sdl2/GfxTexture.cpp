@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxTexture.hpp"
@@ -34,7 +36,12 @@ const char GfxTexture::ClassName[] = "GfxTexture";
 GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) :
     GfxRootClass(ClassName)
 {
-    GfxRenderer* rendptr;
+    assert(rend != nullptr);
+    assert(acc);
+    assert(w >= 0);
+    assert(h >= 0);
+
+    GfxRenderer * rendptr;
 
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
@@ -46,7 +53,10 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const i
 
 GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass(ClassName)
 {
-    GfxRenderer* rendptr;
+    assert(rend != nullptr);
+    assert(surf);
+
+    GfxRenderer * rendptr;
 
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
@@ -99,6 +109,8 @@ void GfxTexture::destroyTexture(void)
 
 void GfxTexture::setBlendMode(const GfxBlendMode& blendmode)
 {
+    assert(blendmode);
+
     if (tex_ == nullptr)
     {
         return;

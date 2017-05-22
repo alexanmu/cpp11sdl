@@ -24,6 +24,7 @@
 #ifndef GfxColor_hpp
 #define GfxColor_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"

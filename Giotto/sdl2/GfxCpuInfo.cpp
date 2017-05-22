@@ -70,12 +70,12 @@ void GfxCpuInfo::queryCpuInfo(void)
     systemRam_ = sdl2::SDL_GetSystemRAM();
 }
 
-int GfxCpuInfo::getCpuCount(void) const
+int32_t GfxCpuInfo::getCpuCount(void) const
 {
     return cpuCount_;
 }
 
-int GfxCpuInfo::getCpuCacheLineSize(void) const
+int32_t GfxCpuInfo::getCpuCacheLineSize(void) const
 {
     return cpuCacheLineSize_;
 }
@@ -130,7 +130,7 @@ bool GfxCpuInfo::hasAvx2(void) const
     return hasAvx2_;
 }
 
-int GfxCpuInfo::getSystemRam(void) const
+int32_t GfxCpuInfo::getSystemRam(void) const
 {
     return systemRam_;
 }

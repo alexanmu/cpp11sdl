@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxMessageBoxFlags.hpp"
@@ -42,6 +43,8 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootC
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) : GfxRootClass(ClassName)
 {
+    assert(flag > 0);
+
     flag_ = flag;
 }
 

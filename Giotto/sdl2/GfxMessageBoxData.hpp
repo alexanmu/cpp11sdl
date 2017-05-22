@@ -24,6 +24,7 @@
 #ifndef GfxMessageBoxData_hpp
 #define GfxMessageBoxData_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -47,10 +48,10 @@ public:
     GfxMessageBoxData();
 
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win, const std::string& title,
-                      const std::string& message, const int numbuttons, GfxMessageBoxButtonData buttons[],
+                      const std::string& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[],
                       const GfxMessageBoxColorScheme& colorScheme);
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win, const std::string& title,
-                      const std::string& message, const int numbuttons, GfxMessageBoxButtonData buttons[]);
+                      const std::string& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[]);
 
     GfxMessageBoxData(GfxMessageBoxData const& other);
     GfxMessageBoxData(GfxMessageBoxData&& other);

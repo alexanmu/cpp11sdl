@@ -25,6 +25,7 @@
 #define GfxSurface_hpp
 
 #include <stdexcept>
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -49,7 +50,7 @@ public:
 
     GfxSurface() = delete;
 
-    explicit GfxSurface(const GfxSurfaceFlags& flags, const uint16_t w, const uint16_t h) throw(std::runtime_error);
+    explicit GfxSurface(const GfxSurfaceFlags& flags, const int32_t w, const int32_t h) throw(std::runtime_error);
     explicit GfxSurface(const SdlTypePtr surf) throw(std::runtime_error);
     explicit GfxSurface(const std::string& filename) throw(std::runtime_error);
     explicit GfxSurface(void * pixels, const int32_t width, const int32_t height, const int32_t depth,
@@ -65,9 +66,9 @@ public:
 
     virtual explicit operator bool() const;
 
-    int getWidth(void) const;
-    int getHeight(void) const;
-    int getDepth(void) const;
+    int32_t getWidth(void) const;
+    int32_t getHeight(void) const;
+    int32_t getDepth(void) const;
 
     GfxPixelFormat * getFormat(void);
 
@@ -81,8 +82,8 @@ public:
 
     void blitScaled(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
 
-    void putPixel(const uint16_t x, const uint16_t y, const GfxColor& clr);
-    GfxColor getPixel(const uint16_t x, const uint16_t y);
+    void putPixel(const int32_t x, const int32_t y, const GfxColor& clr);
+    GfxColor getPixel(const int32_t x, const int32_t y);
 
     void destroySurface(void);
 
@@ -93,8 +94,8 @@ public:
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    void putPixelPrv(const uint16_t x, const uint16_t y, const GfxColor& clr);
-    GfxColor getPixelPrv(const uint16_t x, const uint16_t y);
+    void putPixelPrv(const int32_t x, const int32_t y, const GfxColor& clr);
+    GfxColor getPixelPrv(const int32_t x, const int32_t y);
 
     SdlTypePtr surf_;
 };

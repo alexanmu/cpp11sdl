@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxPowerState.hpp"
@@ -42,6 +43,8 @@ GfxPowerState::GfxPowerState(const GfxPowerStateValues value) : GfxRootClass(Cla
 
 GfxPowerState::GfxPowerState(const SdlType value) : GfxRootClass(ClassName)
 {
+    assert(value >= 0);
+
     value_ = value;
 }
 

@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxClipboard.hpp"
@@ -43,17 +44,22 @@ GfxClipboard::operator bool() const
 
 void GfxClipboard::setClipboardText(const std::string& str) const
 {
+    assert(str.length() > 0);
+
     sdl2::SDL_SetClipboardText(str.c_str());
 }
 
 std::string GfxClipboard::getClipboardText(void) const
 {
     char * c;
-    std::string str;
+    std::string str { "" };
 
     c = sdl2::SDL_GetClipboardText();
-    str = c;
-    sdl2::SDL_free(c);
+    if (c != nullptr)
+    {
+        str = c;
+        sdl2::SDL_free(c);
+    }
     return str;
 }
 

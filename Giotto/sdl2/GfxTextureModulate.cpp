@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxTextureModulate.hpp"
@@ -42,11 +43,15 @@ GfxTextureModulate::GfxTextureModulate(GfxTextureModulateValues flags) : GfxRoot
 
 GfxTextureModulate::GfxTextureModulate(SdlType flags) : GfxRootClass(ClassName)
 {
+    assert(flags >= 0);
+
     modulate_ = flags;
 }
 
 GfxTextureModulate::GfxTextureModulate(SdlTypePtr flags) : GfxRootClass(ClassName)
 {
+    assert(flags != nullptr);
+
     modulate_ = *flags;
 }
 
@@ -89,14 +94,14 @@ bool GfxTextureModulate::isNone(void) const
 
 bool GfxTextureModulate::isColor(void) const
 {
-    uint32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_COLOR;
+    int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_COLOR;
 
     return (r != 0);
 }
 
 bool GfxTextureModulate::isAlpha(void) const
 {
-    uint32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_ALPHA;
+    int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_ALPHA;
 
     return (r != 0);
 }

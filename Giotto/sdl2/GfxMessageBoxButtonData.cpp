@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxMessageBoxButtonData.hpp"
@@ -36,8 +38,12 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
-                            const int buttonid, const std::string& text) : GfxRootClass(ClassName)
+                            const int32_t buttonid, const std::string& text) : GfxRootClass(ClassName)
 {
+    assert(flags);
+    assert(buttonid >= 0);
+    assert(text.length() > 0);
+
     data_.flags = flags.getAsSdlType();
     data_.buttonid = buttonid;
     data_.text = text.c_str();
@@ -82,7 +88,7 @@ GfxMessageBoxButtonData::operator bool() const
     return true;
 }
 
-int GfxMessageBoxButtonData::getButtonId(void) const
+int32_t GfxMessageBoxButtonData::getButtonId(void) const
 {
     return data_.buttonid;
 }

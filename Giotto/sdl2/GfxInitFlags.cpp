@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GfxInitFlags.hpp"
@@ -35,14 +37,16 @@ GfxInitFlags::GfxInitFlags() : GfxRootClass(ClassName)
     flags_ = 0;
 }
 
-GfxInitFlags::GfxInitFlags(const uint32_t flags) : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(const int32_t flags) : GfxRootClass(ClassName)
 {
+    assert(flags >= 0);
+
     flags_ = flags;
 }
 
 GfxInitFlags::GfxInitFlags(GfxInitFlagsValues const& flags) : GfxRootClass(ClassName)
 {
-    flags_ = static_cast<uint32_t>(flags);
+    flags_ = static_cast<int32_t>(flags);
 }
 
 GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) : GfxRootClass(ClassName)
@@ -89,63 +93,63 @@ bool GfxInitFlags::isNothing(void) const
 
 bool GfxInitFlags::isTimer(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_TIMER;
+    int32_t r = flags_ & SDL_INIT_TIMER;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isAudio(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_AUDIO;
+    int32_t r = flags_ & SDL_INIT_AUDIO;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isVideo(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_VIDEO;
+    int32_t r = flags_ & SDL_INIT_VIDEO;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isJoystick(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_JOYSTICK;
+    int32_t r = flags_ & SDL_INIT_JOYSTICK;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isHaptic(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_HAPTIC;
+    int32_t r = flags_ & SDL_INIT_HAPTIC;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isGameController(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_GAMECONTROLLER;
+    int32_t r = flags_ & SDL_INIT_GAMECONTROLLER;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isEvents(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_EVENTS;
+    int32_t r = flags_ & SDL_INIT_EVENTS;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isEverything(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_EVERYTHING;
+    int32_t r = flags_ & SDL_INIT_EVERYTHING;
 
     return (r != 0);
 }
 
 bool GfxInitFlags::isNoParachute(void) const
 {
-    uint32_t r = flags_ & SDL_INIT_NOPARACHUTE;
+    int32_t r = flags_ & SDL_INIT_NOPARACHUTE;
 
     return (r != 0);
 }

@@ -24,6 +24,8 @@
 #ifndef GfxWindowFlags_hpp
 #define GfxWindowFlags_hpp
 
+#include <stdexcept>
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -66,88 +68,88 @@ public:
         windowPopupMenu = sdl2::SDL_WINDOW_POPUP_MENU
     };
 
-    GfxWindowFlags();
+    GfxWindowFlags() noexcept;
 
-    explicit GfxWindowFlags(const GfxWindowFlagsValues flags);
-    explicit GfxWindowFlags(const SdlType flags);
+    explicit GfxWindowFlags(const GfxWindowFlagsValues flags) noexcept;
+    explicit GfxWindowFlags(const SdlType flags) noexcept;
 
-    GfxWindowFlags(GfxWindowFlags const& other);
-    GfxWindowFlags(GfxWindowFlags&& other);
+    GfxWindowFlags(GfxWindowFlags const& other) noexcept;
+    GfxWindowFlags(GfxWindowFlags&& other) noexcept;
 
-    GfxWindowFlags& operator=(GfxWindowFlags const& other);
-    GfxWindowFlags& operator=(GfxWindowFlags&& other);
+    GfxWindowFlags& operator=(GfxWindowFlags const& other) noexcept;
+    GfxWindowFlags& operator=(GfxWindowFlags&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isUnkown(void) const;
-    bool isFullscreen(void) const;
-    bool isOpenGL(void) const;
-    bool isShown(void) const;
-    bool isHidden(void) const;
-    bool isBorderless(void) const;
-    bool isResizable(void) const;
-    bool isMinimized(void) const;
-    bool isMaximized(void) const;
-    bool isInputGrabbed(void) const;
-    bool isInputFocus(void) const;
-    bool isMouseFocus(void) const;
-    bool isFullscreenDesktop(void) const;
-    bool isForeign(void) const;
-    bool allowHighDPI(void) const;
-    bool mouseCapture(void) const;
+    bool isUnkown(void) const noexcept;
+    bool isFullscreen(void) const noexcept;
+    bool isOpenGL(void) const noexcept;
+    bool isShown(void) const noexcept;
+    bool isHidden(void) const noexcept;
+    bool isBorderless(void) const noexcept;
+    bool isResizable(void) const noexcept;
+    bool isMinimized(void) const noexcept;
+    bool isMaximized(void) const noexcept;
+    bool isInputGrabbed(void) const noexcept;
+    bool isInputFocus(void) const noexcept;
+    bool isMouseFocus(void) const noexcept;
+    bool isFullscreenDesktop(void) const noexcept;
+    bool isForeign(void) const noexcept;
+    bool allowHighDPI(void) const noexcept;
+    bool mouseCapture(void) const noexcept;
     // X11 only
-    bool isAlwaysOnTop(void) const;
-    bool skipTaskbar(void) const;
-    bool isUtility(void) const;
-    bool isTooltip(void) const;
-    bool isPopupMenu(void) const;
+    bool isAlwaysOnTop(void) const noexcept;
+    bool skipTaskbar(void) const noexcept;
+    bool isUtility(void) const noexcept;
+    bool isTooltip(void) const noexcept;
+    bool isPopupMenu(void) const noexcept;
 
-    void setFullscreen(void);
-    void resetFullscreen(void);
-    void setOpenGL(void);
-    void resetOpenGL(void);
-    void setShown(void);
-    void resetShown(void);
-    void setHidden(void);
-    void resetHidden(void);
-    void setBorderless(void);
-    void resetBorderless(void);
-    void setResizable(void);
-    void resetResizable(void);
-    void setMinimized(void);
-    void resetMinimized(void);
-    void setMaximized(void);
-    void resetMaximized(void);
-    void setInputGrabbed(void);
-    void resetInputGrabbed(void);
-    void setInputFocus(void);
-    void resetInputFocus(void);
-    void setMouseFocus(void);
-    void resetMouseFocus(void);
-    void setFullscreenDesktop(void);
-    void resetFullscreenDesktop(void);
-    void setForeign(void);
-    void resetForeign(void);
-    void setAllowHighDPI(void);
-    void resetAllowHighDPI(void);
-    void setMouseCapture(void);
-    void resetMouseCapture(void);
+    void setFullscreen(void) noexcept;
+    void resetFullscreen(void) noexcept;
+    void setOpenGL(void) noexcept;
+    void resetOpenGL(void) noexcept;
+    void setShown(void) noexcept;
+    void resetShown(void) noexcept;
+    void setHidden(void) noexcept;
+    void resetHidden(void) noexcept;
+    void setBorderless(void) noexcept;
+    void resetBorderless(void) noexcept;
+    void setResizable(void) noexcept;
+    void resetResizable(void) noexcept;
+    void setMinimized(void) noexcept;
+    void resetMinimized(void) noexcept;
+    void setMaximized(void) noexcept;
+    void resetMaximized(void) noexcept;
+    void setInputGrabbed(void) noexcept;
+    void resetInputGrabbed(void) noexcept;
+    void setInputFocus(void) noexcept;
+    void resetInputFocus(void) noexcept;
+    void setMouseFocus(void) noexcept;
+    void resetMouseFocus(void) noexcept;
+    void setFullscreenDesktop(void) noexcept;
+    void resetFullscreenDesktop(void) noexcept;
+    void setForeign(void) noexcept;
+    void resetForeign(void) noexcept;
+    void setAllowHighDPI(void) noexcept;
+    void resetAllowHighDPI(void) noexcept;
+    void setMouseCapture(void) noexcept;
+    void resetMouseCapture(void) noexcept;
     // X11 only
-    void setAlwaysOnTop(void);
-    void resetAlwaysOnTop(void);
-    void setSkipTaskbar(void);
-    void resetSkipTaskbar(void);
-    void setUtility(void);
-    void resetUtility(void);
-    void setTooltip(void);
-    void resetTooltip(void);
-    void setPopupMenu(void);
-    void resetPopupMenu(void);
+    void setAlwaysOnTop(void) noexcept;
+    void resetAlwaysOnTop(void) noexcept;
+    void setSkipTaskbar(void) noexcept;
+    void resetSkipTaskbar(void) noexcept;
+    void setUtility(void) noexcept;
+    void resetUtility(void) noexcept;
+    void setTooltip(void) noexcept;
+    void resetTooltip(void) noexcept;
+    void setPopupMenu(void) noexcept;
+    void resetPopupMenu(void) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flags_;
 };

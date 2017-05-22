@@ -24,6 +24,7 @@
 #ifndef GfxTextureAccess_hpp
 #define GfxTextureAccess_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"

@@ -24,6 +24,7 @@
 #ifndef GfxTexture_hpp
 #define GfxTexture_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"

@@ -24,6 +24,7 @@
 #ifndef GfxWindow_hpp
 #define GfxWindow_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxSdlHeader.hpp"
@@ -43,9 +44,9 @@ public:
 
     static const char ClassName[];
 
-    GfxWindow(const std::string& title, const uint16_t width, const uint16_t height);
+    GfxWindow(const std::string& title, const int32_t width, const int32_t height);
     GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
-                const uint16_t width, const uint16_t height, const GfxWindowFlags& flags);
+                const int32_t width, const int32_t height, const GfxWindowFlags& flags);
 
     GfxWindow() = delete;
     GfxWindow(const GfxWindow&) = delete;
@@ -66,12 +67,12 @@ public:
     int32_t getHeight() const;
 
     void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
-    void getWindowPosition(GfxWindowPosition* x, GfxWindowPosition* y);
+    void getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y);
 
-    void setWindowSize(const int32_t x, const int32_t y);
-    void getWindowSize(int32_t* px, int32_t* py);
+    void setWindowSize(const int32_t w, const int32_t h);
+    void getWindowSize(int32_t * pw, int32_t * ph);
 
-    GfxSurface* getWindowSurface(void);
+    GfxSurface * getWindowSurface(void);
     void updateWindowSurface(void);
 
     /*

@@ -21,6 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 #include <memory>
 
@@ -51,6 +53,8 @@ GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
     colorIndex = 0;
     for (GfxColor clr : colors)
     {
+        assert(clr);
+
         SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), colorIndex, 1);
         colorIndex += 1;
     }
@@ -58,7 +62,10 @@ GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
 
 GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass(ClassName)
 {
+    assert(nColors > 0);
+
     pal_ = sdl2::SDL_AllocPalette(nColors);
+
     for (uint32_t i = 0; i < nColors; i++)
     {
         SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen, \
@@ -75,6 +82,8 @@ GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass(ClassName)
 
 GfxPalette::GfxPalette(const SdlTypePtr pal)
 {
+    assert(pal != nullptr);
+
     pal_ = sdl2::SDL_AllocPalette(pal->ncolors);
     SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
 }
@@ -109,8 +118,8 @@ GfxPalette::operator bool() const
 
 void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t firstColor)
 {
-    int errorCode = 0;
-    int currentColorIndex = firstColor;
+    int32_t errorCode = 0;
+    int32_t currentColorIndex = firstColor;
 
     if (pal_ == nullptr)
     {
@@ -118,6 +127,8 @@ void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t f
     }
     for (GfxColor clr : colors)
     {
+        assert(clr);
+
         errorCode = sdl2::SDL_SetPaletteColors(pal_, clr.getAsSdlTypePtr(), currentColorIndex, 1);
         currentColorIndex += 1;
         if (errorCode != 0)

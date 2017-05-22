@@ -24,6 +24,7 @@
 #ifndef GfxGetRendererInfo_hpp
 #define GfxGetRendererInfo_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -47,10 +48,10 @@ public:
 
     virtual explicit operator bool() const;
 
-    int getNumRenderDrivers(void);
-    void getRenderDriverInfo(const int index, GfxRendererInfo* infoptr);
+    int32_t getNumRenderDrivers(void);
+    void getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr);
 private:
-    int numRenderDrivers_;
+    int32_t numRenderDrivers_;
 };
 
 }  // namespace gfx

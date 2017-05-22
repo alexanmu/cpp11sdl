@@ -24,6 +24,7 @@
 #ifndef GfxMessageBoxButtonData_hpp
 #define GfxMessageBoxButtonData_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -43,7 +44,7 @@ public:
 
     GfxMessageBoxButtonData();
 
-    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int buttonid, const std::string& text);
+    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid, const std::string& text);
 
     GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other);
     GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other);
@@ -53,7 +54,7 @@ public:
 
     virtual explicit operator bool() const;
 
-    int getButtonId(void) const;
+    int32_t getButtonId(void) const;
     const std::string getText(void) const;
 
     void clear(void);

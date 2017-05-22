@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstdint>
 #include <string>
 
 #include "GfxColor.hpp"
@@ -40,7 +41,7 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRoo
     clr_.r = r;
     clr_.g = g;
     clr_.b = b;
-    clr_.a = 0xFF;
+    clr_.a = 0xFFu;
 }
 
 GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) : GfxRootClass(ClassName)
@@ -153,7 +154,7 @@ void GfxColor::clear(void)
     clr_.r = 0;
     clr_.g = 0;
     clr_.b = 0;
-    clr_.a = 0xFF;
+    clr_.a = 0xFFu;
 }
 
 GfxColor::SdlType GfxColor::getAsSdlType() const

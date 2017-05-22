@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxFileSystem.hpp"
@@ -60,6 +61,9 @@ const std::string GfxFileSystem::getBasePath(void) const
 
 const std::string GfxFileSystem::getPrefPath(const std::string& organization, const std::string& appname) const
 {
+    assert(organization.length() > 0);
+    assert(appname.length() > 0);
+
     char * base_path = NULL;
     std::string str;
 
