@@ -44,8 +44,8 @@ GFileSystemObject::~GFileSystemObject()
 
 std::string GFileSystemObject::buildPath(std::string const& path, std::string const& filename)
 {
-    assert(path != "");
-    assert(filename != "");
+    assert(path.length() > 0);
+    assert(filename.length() > 0);
 
     std::string spec;
 
@@ -63,8 +63,8 @@ std::string GFileSystemObject::buildPath(std::string const& path, std::string co
 void GFileSystemObject::copyFile(std::string const& source, std::string const& destination, bool overwrite)
                 throw(std::runtime_error)
 {
-    assert(source != "");
-    assert(destination != "");
+    assert(source.length() > 0);
+    assert(destination.length() > 0);
     assert(overwrite == true || overwrite == false);
     throw std::runtime_error("Not implemented");
 }
@@ -72,65 +72,65 @@ void GFileSystemObject::copyFile(std::string const& source, std::string const& d
 void GFileSystemObject::copyFolder(std::string const& source, std::string const& destination, bool overwrite)
                 throw(std::runtime_error)
 {
-    assert(source != "");
-    assert(destination != "");
+    assert(source.length() > 0);
+    assert(destination.length() > 0);
     assert((overwrite == true || overwrite == false));
     throw std::runtime_error("Not implemented");
 }
 
 void GFileSystemObject::createFolder(std::string const& foldername) throw(std::runtime_error)
 {
-    assert(foldername != "");
+    assert(foldername.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
 void GFileSystemObject::deleteFile(std::string const& filespec, bool force) throw(std::runtime_error)
 {
-    assert(filespec != "");
+    assert(filespec.length() > 0);
     assert((force == true || force == false));
     throw std::runtime_error("Not implemented");
 }
 
 void GFileSystemObject::deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error)
 {
-    assert(folderspec != "");
+    assert(folderspec.length() > 0);
     assert((force == true || force == false));
     throw std::runtime_error("Not implemented");
 }
 
 bool GFileSystemObject::fileExists(std::string const& filespec) throw(std::runtime_error)
 {
-    assert(filespec != "");
+    assert(filespec.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
 bool GFileSystemObject::folderExists(std::string const& folderspec) throw(std::runtime_error)
 {
-    assert(folderspec != "");
+    assert(folderspec.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
 GFileObject * GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
 {
-    assert(filespec != "");
-    throw std::runtime_error("Not implemented");
+    assert(filespec.length() > 0);
+    return new GFileObject(filespec);
 }
 
 std::string GFileSystemObject::getFileName(std::string const& filespec) throw(std::runtime_error)
 {
-    assert(filespec != "");
+    assert(filespec.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
 GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
 {
-    assert(folderspec != "");
+    assert(folderspec.length() > 0);
     return new GFolderObject(folderspec);
 }
 
 std::string GFileSystemObject::getParentFolderName(std::string const& folderspec) throw(std::runtime_error)
 {
-    assert(folderspec != "");
+    assert(folderspec.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
@@ -141,15 +141,15 @@ std::string GFileSystemObject::getTempName(void) throw(std::runtime_error)
 
 void GFileSystemObject::moveFile(std::string const& source, std::string const& destination) throw(std::runtime_error)
 {
-    assert(source != "");
-    assert(destination != "");
+    assert(source.length() > 0);
+    assert(destination.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
 void GFileSystemObject::moveFolder(std::string const& source, std::string const& destination) throw(std::runtime_error)
 {
-    assert(source != "");
-    assert(destination != "");
+    assert(source.length() > 0);
+    assert(destination.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
