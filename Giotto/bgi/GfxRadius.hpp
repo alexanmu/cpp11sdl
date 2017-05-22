@@ -24,6 +24,7 @@
 #ifndef GfxRadius_hpp
 #define GfxRadius_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -36,7 +37,7 @@ namespace bgi
 class GfxRadius final : public GfxRootClass
 {
 public:
-    typedef uint16_t GfxValueType;
+    typedef int32_t GfxValueType;
 
     static const char ClassName[];
 

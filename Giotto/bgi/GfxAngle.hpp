@@ -24,6 +24,7 @@
 #ifndef GfxAngle_hpp
 #define GfxAngle_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -36,7 +37,7 @@ namespace bgi
 class GfxAngle final : public GfxRootClass
 {
 public:
-    typedef int GfxValueType;
+    typedef int32_t GfxValueType;
 
     static const char ClassName[];
 

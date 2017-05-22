@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 #include <cstring>
 
@@ -44,6 +45,8 @@ GfxBitmapFont::GfxBitmapFont() : GfxRootClass(ClassName), fontData_(nullptr),
 GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight) :
         GfxRootClass(ClassName)
 {
+    assert(fontData != nullptr);
+
     fontWidth_ = 0;
     fontHeight_ = 0;
     fontDataSize_ = 0;

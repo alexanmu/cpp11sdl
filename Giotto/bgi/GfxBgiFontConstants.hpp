@@ -24,6 +24,7 @@
 #ifndef GfxBgiFontConstants_hpp
 #define GfxBgiFontConstants_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -51,7 +52,7 @@ public:
 
     static const int fntNumFonts = 10;
 
-    enum class GfxFontIndex : int
+    enum class GfxFontIndex : int32_t
     {
         indexStandard8x16 = 0,
         indexAntique = 1,

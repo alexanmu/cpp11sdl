@@ -23,12 +23,13 @@
   Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
 */
 
-#include "GfxCanvasBgi.hpp"
-
+#include <cassert>
 #include <string>
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
+
+#include "GfxCanvasBgi.hpp"
 
 namespace gfx
 {
@@ -51,6 +52,10 @@ GfxCanvasBgi::operator bool() const
 
 void GfxCanvasBgi::setCanvas(const uint32_t* ptr, const int maxx, const int maxy)
 {
+    assert(ptr != nullptr);
+    assert(maxx > 0);
+    assert(maxy > 0);
+
     graphdefaults();
     bgi_activepage = const_cast<uint32_t *>(ptr);    // active (= being drawn on) page; may be hidden
     bgi_maxx = maxx - 1;
@@ -77,6 +82,10 @@ void GfxCanvasBgi::setCustomFillColor(const uint32_t color)
 
 void GfxCanvasBgi::setCustomFont(const uint8_t* fontBitmapData, const uint8_t fontWidth, const uint8_t fontHeight)
 {
+    assert(fontBitmapData != nullptr);
+    assert(fontWidth % 8 == 0);
+    assert(fontHeight % 8 == 0);
+
     bgi_font_width = fontWidth;
     bgi_font_height = fontHeight;
     fontptr = fontBitmapData;

@@ -24,6 +24,7 @@
 #ifndef GfxBgiConstants_hpp
 #define GfxBgiConstants_hpp
 
+#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
@@ -47,9 +48,9 @@ public:
     GfxBgiConstants& operator=(const GfxBgiConstants&) = delete;
     GfxBgiConstants& operator=(GfxBgiConstants&&) = delete;
 
-    static const int vgaNumColors = 16;
+    static const int32_t vgaNumColors = 16;
 
-    enum class GfxVga16ColorIndex : int
+    enum class GfxVga16ColorIndex : int32_t
     {
         indexBlack = 0,
         indexBlue = 1,

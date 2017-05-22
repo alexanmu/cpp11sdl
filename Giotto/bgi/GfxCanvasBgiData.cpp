@@ -23,6 +23,7 @@
   Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
 */
 
+#include <cstdint>
 #include <string>
 
 #include "GfxCanvasBgiData.hpp"
