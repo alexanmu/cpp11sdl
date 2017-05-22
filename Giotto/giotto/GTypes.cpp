@@ -23,6 +23,17 @@
 
 #include "GTypes.hpp"
 
-/* Nothing to do here, yet */
+namespace giotto
+{
+
+namespace objects
+{
+
+const uint16_t kMaxObjectWidth = 8192;
+const uint16_t kMaxObjectHeight = 8192;
+
+}  // namespace objects
+
+}  // namespace giotto
 
 /* EOF */

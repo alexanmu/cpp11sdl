@@ -21,10 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <cstdint>
 #include <string>
 
 #include "GImage.hpp"
+#include "GTypes.hpp"
 
 namespace giotto
 {
@@ -35,6 +37,11 @@ namespace objects
 GImage::GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
         GGraphicControl(vname, owner, width, height)
 {
+    assert(vname.length() > 0);
+    assert(owner != nullptr);
+    assert(width <= kMaxObjectWidth);
+    assert(height <= kMaxObjectHeight);
+
     scaleMode_ = kDefaultImageScaleMode;
     fileName_ = "";
 }
@@ -60,6 +67,8 @@ std::string const& GImage::getFileName(void) const noexcept
 
 void GImage::setFileName(std::string const& filename) noexcept
 {
+    assert(filename.length() > 0);
+
     fileName_ = filename;
 }
 

@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 #include <algorithm>
 
@@ -32,8 +34,10 @@ namespace giotto
 namespace objects
 {
 
-GComponent::GComponent(std::string const& vname, GComponent* owner) : GObject()
+GComponent::GComponent(std::string const& vname, GComponent * owner) : GObject()
 {
+    assert(vname.length() > 0);
+
     vname_ = vname;
     tag_ = 0;
     owner_ = owner;
@@ -69,6 +73,12 @@ bool GComponent::equals(GObject * object)
 
 void GComponent::insertComponent(GComponent * const component) throw(std::runtime_error)
 {
+    assert(component != nullptr);
+
+    if (this == component)
+    {
+        throw std::runtime_error("Cannot insert self in container");
+    }
     if (components_.size() > 0)
     {
         if (findComponent(component->getName()) != nullptr)
@@ -82,6 +92,8 @@ void GComponent::insertComponent(GComponent * const component) throw(std::runtim
 
 void GComponent::removeComponent(GComponent * const component) throw(std::runtime_error)
 {
+    assert(component != nullptr);
+
     auto pos = std::find(components_.begin(), components_.end(), component);;
     if (pos != components_.end())
     {
@@ -96,6 +108,8 @@ void GComponent::removeComponent(GComponent * const component) throw(std::runtim
 
 GComponent* GComponent::findComponent(const std::string& name)
 {
+    assert(name.length() > 0);
+
     auto pos = std::find_if(components_.begin(), components_.end(),
             [=](GComponent * const c)
                 {

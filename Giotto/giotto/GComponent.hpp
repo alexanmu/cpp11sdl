@@ -50,7 +50,7 @@ public:
     GComponent& operator=(GComponent const& other) = delete;
     GComponent& operator=(GComponent&& other) = delete;
 
-    explicit GComponent(std::string const& vname, GComponent* owner);
+    explicit GComponent(std::string const& vname, GComponent * owner);
     virtual ~GComponent();
 
     GComponent* getParentComponent(void) const noexcept;

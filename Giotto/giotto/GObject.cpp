@@ -33,18 +33,18 @@ namespace objects
 
 GObject::GObject()
 {
-    inittype_ = GInitType::defaultCtor;
+    initType_ = GInitType::defaultCtor;
 }
 
 GObject::GObject(GObject const& other)
 {
-    inittype_ = GInitType::copyCtor;
+    initType_ = GInitType::copyCtor;
     // Avoid compiler warning
     static_cast<GObject>(other) = static_cast<GObject>(other);
 }
 GObject::GObject(GObject&& other)
 {
-    inittype_ = GInitType::moveCtor;
+    initType_ = GInitType::moveCtor;
     // Avoid compiler warning
     other = other;
 }
@@ -74,7 +74,7 @@ bool GObject::operator==(GObject const& other)
 {
     if (this != &other)
     {
-        if (inittype_ == other.inittype_)
+        if (initType_ == other.initType_)
         {
             return true;
         }

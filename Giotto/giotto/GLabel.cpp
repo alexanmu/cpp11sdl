@@ -22,6 +22,7 @@
 */
 
 #include <stdexcept>
+#include <cassert>
 #include <cstdint>
 #include <string>
 
@@ -46,6 +47,11 @@ GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint
                 std::string const& text, uint8_t const& textsize) :
         GGraphicControl(vname, owner, width, height)
 {
+    assert(vname.length() > 0);
+    assert(owner != nullptr);
+    assert(width <= kMaxObjectWidth);
+    assert(height <= kMaxObjectHeight);
+
     text_ = text;
     fontInfo_.clear();
     fontInfo_.setFontSize(textsize);
@@ -69,6 +75,8 @@ gfx::supp::GfxFontInfo& GLabel::getFontInfo(void) noexcept
 
 void GLabel::setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept
 {
+    assert(fontinfo);
+
     fontInfo_ = fontinfo;
 }
 

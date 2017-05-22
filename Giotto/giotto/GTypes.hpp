@@ -66,6 +66,9 @@ enum class GTextRenderMode : uint8_t
     blendedText = 2
 };
 
+extern const uint16_t kMaxObjectWidth;
+extern const uint16_t kMaxObjectHeight;
+
 }  // namespace objects
 
 }  // namespace giotto

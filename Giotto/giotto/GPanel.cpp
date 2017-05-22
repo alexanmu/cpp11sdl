@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GPanel.hpp"
@@ -34,6 +35,9 @@ namespace objects
 GPanel::GPanel(std::string const& vname, GComponent* owner, gfx::GfxRect bounds) :
         GGraphicControl(vname, owner, bounds.getWidth(), bounds.getHeight())
 {
+    assert(vname.length() > 0);
+    assert(owner != nullptr);
+    assert(bounds);
 }
 
 void GPanel::draw(void)

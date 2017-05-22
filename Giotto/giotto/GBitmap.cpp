@@ -22,6 +22,7 @@
 */
 
 #include <stdexcept>
+#include <cassert>
 #include <cstdint>
 #include <string>
 
@@ -40,6 +41,12 @@ GBitmap::GBitmap(std::string const& vname, GComponent* owner, uint16_t width, ui
                 GImageScaleMode const& scalemode, std::string const& filename) :
         GImage(vname, owner, width, height)
 {
+    assert(vname.length() > 0);
+    assert(owner != nullptr);
+    assert(width <= kMaxObjectWidth);
+    assert(height <= kMaxObjectHeight);
+    assert(filename.length() > 0);
+
     setScaleMode(scalemode);
     setFileName(filename);
 }

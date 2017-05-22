@@ -24,6 +24,7 @@
 #ifndef GObject_hpp
 #define GObject_hpp
 
+#include <cstdint>
 #include <string>
 
 namespace giotto
@@ -47,13 +48,13 @@ public:
 
     bool operator==(GObject const& other);
 private:
-    enum class GInitType : int
+    enum class GInitType : int32_t
     {
         defaultCtor,
         copyCtor,
         moveCtor
     };
-    GInitType inittype_;
+    GInitType initType_;
 };
 
 }  // namespace objects

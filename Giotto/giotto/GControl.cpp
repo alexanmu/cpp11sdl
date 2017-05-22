@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 #include "GControl.hpp"
@@ -33,6 +35,9 @@ namespace objects
 
 GControl::GControl(std::string const& vname, GComponent* owner) : GComponent(vname, owner)
 {
+    assert(vname.length() > 0);
+    assert(owner != nullptr);
+
     bounds_.clear();
     clientBounds_.clear();
     enabled_ = false;
@@ -51,6 +56,8 @@ GControl::~GControl()
 
 void GControl::setBounds(gfx::GfxRect const& bounds) noexcept
 {
+    assert(bounds);
+
     bounds_ = bounds;
     adjustClientBounds();
 }

@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxInitFlags.hpp"
@@ -34,6 +35,8 @@ namespace objects
 
 GApplication::GApplication(std::string const& appname) : GObject()
 {
+    assert(appname.length() > 0);
+
     appName_ = appname;
     mainForm_ = nullptr;
     iq_ = nullptr;
@@ -55,6 +58,8 @@ GApplication::~GApplication()
 
 void GApplication::setMainForm(GForm * mainForm)
 {
+    assert(mainForm != nullptr);
+
     mainForm_ = mainForm;
 }
 

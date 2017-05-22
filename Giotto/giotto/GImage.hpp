@@ -25,6 +25,7 @@
 #define GImage_hpp
 
 #include <stdexcept>
+#include <cstdint>
 #include <string>
 
 #include "GComponent.hpp"

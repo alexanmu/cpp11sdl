@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 #include <memory>
 
@@ -35,6 +36,8 @@ namespace objects
 
 GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
 {
+    assert(vname.length() > 0);
+
     title_ = "GForm";
     window_ = nullptr;
     canvas_ = nullptr;
@@ -44,6 +47,9 @@ GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
 
 GForm::GForm(std::string const& vname, std::string const& title) : GComponent(vname, nullptr)
 {
+    assert(vname.length() > 0);
+    assert(title.length() > 0);
+
     title_ = title;
     window_ = nullptr;
     canvas_ = nullptr;
@@ -65,6 +71,8 @@ GForm::~GForm()
 
 void GForm::setTitle(const std::string& title)
 {
+    assert(title.length() > 0);
+
     title_ = title;
     if (window_ != nullptr)
     {
@@ -77,9 +85,7 @@ void GForm::create(void)
     gfx::GfxWindowFlags winFlags(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
     gfx::GfxWindowPosition winPosCenter(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered);
 
-    std::string s = title_;
-
-    window_ = std::make_shared<gfx::GfxWindow>(s, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
+    window_ = std::make_shared<gfx::GfxWindow>(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
     canvas_ = nullptr;
 }
 
