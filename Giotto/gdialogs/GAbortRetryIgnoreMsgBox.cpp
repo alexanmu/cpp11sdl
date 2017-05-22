@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GAbortRetryIgnoreMsgBox.hpp"
@@ -42,6 +43,7 @@ namespace dialogs
 GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, GObject* parent) :
         GObject(), parent_(parent)
 {
+    assert(vname.length() > 0);
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
@@ -50,6 +52,7 @@ GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, GObje
 GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, GObject* parent,
         const std::string& title, const std::string& message) : GObject(), parent_(parent)
 {
+    assert(vname.length() > 0);
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;

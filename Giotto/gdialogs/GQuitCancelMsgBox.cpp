@@ -19,8 +19,9 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
- */
+*/
 
+#include <cassert>
 #include <string>
 
 #include "GQuitCancelMsgBox.hpp"
@@ -43,6 +44,7 @@ namespace dialogs
 GQuitCancelMsgBox::GQuitCancelMsgBox(std::string const& vname, GObject* parent) :
         GObject(), parent_(parent)
 {
+    assert(vname.length() > 0);
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
@@ -51,6 +53,7 @@ GQuitCancelMsgBox::GQuitCancelMsgBox(std::string const& vname, GObject* parent) 
 GQuitCancelMsgBox::GQuitCancelMsgBox(std::string const& vname, GObject* parent, const std::string& title,
             const std::string& message) : GObject(), parent_(parent)
 {
+    assert(vname.length() > 0);
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;
