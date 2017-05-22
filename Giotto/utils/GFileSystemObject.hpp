@@ -52,8 +52,10 @@ public:
     virtual ~GFileSystemObject();
 
     std::string buildPath(std::string const& path, std::string const& filename);
-    void copyFile(std::string const& source, std::string const& destiantion, bool overwrite) throw(std::runtime_error);
-    void copyFolder(std::string const& source, std::string const& destination, bool overwrite) throw(std::runtime_error);
+    void copyFile(std::string const& source, std::string const& destination, bool overwrite)
+               throw(std::runtime_error);
+    void copyFolder(std::string const& source, std::string const& destination, bool overwrite)
+               throw(std::runtime_error);
     void createFolder(std::string const& foldername) throw(std::runtime_error);
     void deleteFile(std::string const& filespec, bool force) throw(std::runtime_error);
     void deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error);

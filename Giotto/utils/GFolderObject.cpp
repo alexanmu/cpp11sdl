@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GFolderObject.hpp"
 
 namespace giotto
@@ -28,7 +30,7 @@ namespace giotto
 
 namespace utils
 {
-    
+
 GFolderObject::GFolderObject(std::string const& pathspec) : GObject()
 {
     pathSpec_ = pathspec;

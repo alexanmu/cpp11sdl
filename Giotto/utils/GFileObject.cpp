@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GFileObject.hpp"
 
 namespace giotto
@@ -39,7 +41,7 @@ GFileObject::~GFileObject()
 }
 
 }  // namespace utils
-    
+
 }  // namespace giotto
 
 /* EOF */
