@@ -40,6 +40,11 @@ GFileObject::~GFileObject()
 {
 }
 
+std::string const& GFileObject::getFileSpec(void) const
+{
+    return fileSpec_;
+}
+
 }  // namespace utils
 
 }  // namespace giotto

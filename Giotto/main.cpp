@@ -577,6 +577,7 @@ int main(int argc, const char * argv[])
             action = 2;
         }
     }
+    action = 0; // temp
     switch (action)
     {
         case 0:

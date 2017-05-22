@@ -21,9 +21,11 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <dirent.h>
 #include <string>
 
 #include "GFolderObject.hpp"
+#include "GFileObject.hpp"
 
 namespace giotto
 {
@@ -31,13 +33,73 @@ namespace giotto
 namespace utils
 {
 
-GFolderObject::GFolderObject(std::string const& pathspec) : GObject()
+GFolderObject::GFolderObject(std::string const& pathSpec, bool scan) : GObject()
 {
-    pathSpec_ = pathspec;
+    pathSpec_ = pathSpec;
+    scanned_ = false;
+    if (scan == true)
+    {
+        scanned_ = true;
+        scanFolder();
+    }
 }
 
 GFolderObject::~GFolderObject()
 {
+    if (subFolders_.size() > 0)
+    {
+        for (auto& it : subFolders_)
+        {
+            delete it;
+        }
+    }
+    if (files_.size() > 0)
+    {
+        for (auto& it : files_)
+        {
+            delete it;
+        }
+    }
+}
+
+void GFolderObject::scan(void)
+{
+    scanFolder();
+    scanned_ = true;
+}
+
+GFileObject::GFilesCollection GFolderObject::getFilesCollection(void)
+{
+    return files_;
+}
+
+//  Private methods
+void GFolderObject::scanFolder(void)
+{
+    DIR *d;
+    struct dirent *dir;
+    d = opendir(pathSpec_.c_str());
+    if (d)
+    {
+        dir = readdir(d);
+        while (dir != NULL)
+        {
+            if (dir->d_type == DT_DIR)
+            {
+                if ((std::strcmp(dir->d_name,".") != 0) && (std::strcmp(dir->d_name,"..") != 0))
+                {
+                    GFolderObject * folder = new GFolderObject(dir->d_name, false);
+                    subFolders_.push_back(folder);
+                }
+            }
+            if (dir->d_type == DT_REG)
+            {
+                GFileObject * file = new GFileObject(dir->d_name);
+                files_.push_back(file);
+            }
+            dir = readdir(d);
+        }
+    }
 }
 
 }  // namespace utils

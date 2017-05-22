@@ -30,7 +30,8 @@ void Playground::_doPlayground(void)
     //_doPaletteSdl();
     //_doPaletteGfx();
     //_doCallback();
-    _doComponent();
+    //_doComponent();
+    _doFSO();
 }
 
 /******************************************************* Benchmark *******************************************************/
@@ -722,6 +723,35 @@ void Playground::_doComponent(void)
     delete c;
 
     std::cout << "Done!" << std::endl;
+}
+
+/******************************************************* FSO *******************************************************/
+#include "GFileSystemObject.hpp"
+#include "GFolderObject.hpp"
+#include "GFileObject.hpp"
+
+using giotto::utils::GFileSystemObject;
+using giotto::utils::GFolderObject;
+using giotto::utils::GFileObject;
+
+void Playground::_doFSO(void)
+{
+    std::string path = "/Users/familiaoros/Documents/Dev/Files";
+
+    GFileSystemObject fso;
+    GFolderObject * fo = fso.getFolder(path);
+
+    if (fo != nullptr)
+    {
+        giotto::utils::GFileObject::GFilesCollection fcoll;
+
+        fcoll = fo->getFilesCollection();
+        for (auto& it : fcoll)
+        {
+            std::cout << it->getFileSpec() << std::endl;
+        }
+        delete fo;
+    }
 }
 
 /* EOF */

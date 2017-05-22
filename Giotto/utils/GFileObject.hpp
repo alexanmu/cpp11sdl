@@ -40,7 +40,7 @@ namespace utils
 class GFileObject : public objects::GObject
 {
 public:
-    typedef std::vector<GFileObject> GFilesCollection;
+    typedef std::vector<GFileObject *> GFilesCollection;
 
     GFileObject() = delete;
     explicit GFileObject(std::string const& filespec);
@@ -52,6 +52,8 @@ public:
     GFileObject& operator=(GFileObject&&) = delete;
 
     virtual ~GFileObject();
+
+    std::string const& getFileSpec(void) const;
 private:
     std::string fileSpec_;
     uint32_t attributes_;

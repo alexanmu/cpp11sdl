@@ -43,10 +43,10 @@ class GFileObject;
 class GFolderObject : public objects::GObject
 {
 public:
-    typedef std::vector<GFolderObject> GFolderCollection;
+    typedef std::vector<GFolderObject *> GFolderCollection;
 
     GFolderObject() = delete;
-    explicit GFolderObject(std::string const& pathspec);
+    explicit GFolderObject(std::string const& pathSpec, bool scan);
 
     GFolderObject(GFolderObject const&) = delete;
     GFolderObject(GFolderObject&&) = delete;
@@ -55,7 +55,12 @@ public:
     GFolderObject& operator=(GFolderObject&&) = delete;
 
     virtual ~GFolderObject();
+
+    void scan(void);
+    GFileObject::GFilesCollection getFilesCollection(void);
 private:
+    bool scanned_;
+
     std::string pathSpec_;
     uint32_t attributes_;
     uint32_t dateLastAccessed_;
@@ -65,6 +70,8 @@ private:
     uint64_t size_;
     GFolderCollection subFolders_;
     GFileObject::GFilesCollection files_;
+
+    void scanFolder(void);
 };
 
 }  // namespace utils

@@ -39,6 +39,7 @@ protected:
     void _doPaletteGfx(void);
     void _doCallback(void);
     void _doComponent(void);
+    void _doFSO(void);
 private:
     void DoAlgo(int algo_index);
 

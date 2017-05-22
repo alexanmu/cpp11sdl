@@ -113,6 +113,7 @@ bool GFileSystemObject::folderExists(std::string const& folderspec) throw(std::r
 GFileObject * GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
 {
     assert(filespec.length() > 0);
+
     return new GFileObject(filespec);
 }
 
@@ -125,7 +126,8 @@ std::string GFileSystemObject::getFileName(std::string const& filespec) throw(st
 GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
 {
     assert(folderspec.length() > 0);
-    return new GFolderObject(folderspec);
+
+    return new GFolderObject(folderspec, true);
 }
 
 std::string GFileSystemObject::getParentFolderName(std::string const& folderspec) throw(std::runtime_error)
