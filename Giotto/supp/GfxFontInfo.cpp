@@ -21,6 +21,9 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <string>
+
 #include "GfxFontInfo.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -32,7 +35,7 @@ namespace supp
 
 const char GfxFontInfo::ClassName[] = "GfxFontInfo";
 
-const std::string GfxFontInfo::kDefaultFontName = "Raleway";
+const char GfxFontInfo::kDefaultFontName[] = "Raleway";
 const uint8_t GfxFontInfo::kDefaultFontSize = 16;
 const int32_t GfxFontInfo::kDefaultFontOutline = 0;
 const bool GfxFontInfo::kDefaultFontBold = false;
@@ -41,7 +44,9 @@ const bool GfxFontInfo::kDefaultFontUnderline = false;
 const bool GfxFontInfo::kDefaultFontStrikethrough = false;
 const int32_t GfxFontInfo::kDefaultFontHinting = TTF_HINTING_NORMAL;
 const bool GfxFontInfo::kDefaultFontKerning = true;
-    
+
+const uint8_t GfxFontInfo::kMinFontSize = 4;
+
 GfxFontInfo::GfxFontInfo() : GfxRootClass(ClassName)
 {
     clear();
@@ -49,12 +54,17 @@ GfxFontInfo::GfxFontInfo() : GfxRootClass(ClassName)
 
 GfxFontInfo::GfxFontInfo(std::string const& fontName) : GfxRootClass(ClassName)
 {
+    assert(fontName.length() > 0);
+
     clear();
     fontName_ = fontName;
 }
 
 GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) : GfxRootClass(ClassName)
 {
+    assert(fontName.length() > 0);
+    assert(fontSize >= kMinFontSize);
+
     clear();
     fontName_ = fontName;
     fontSize_ = fontSize;
@@ -131,6 +141,8 @@ GfxFontInfo::operator bool() const
 
 void GfxFontInfo::setFontName(std::string const& fontName)
 {
+    assert(fontName.length() > 0);
+
     fontName_ = fontName;
 }
 
@@ -146,6 +158,8 @@ std::string const& GfxFontInfo::getFontName(void) const
 
 void GfxFontInfo::setFontSize(const uint8_t fontSize)
 {
+    assert(fontSize >= kMinFontSize);
+
     fontSize_ = fontSize;
 }
 
@@ -161,6 +175,8 @@ uint8_t GfxFontInfo::getFontSize(void) const
 
 void GfxFontInfo::setFontOutline(const int32_t fontOutline)
 {
+    assert(fontOutline >= 0);
+
     fontOutline_ = fontOutline;
 }
 
@@ -236,6 +252,8 @@ bool GfxFontInfo::getFontStrikethrough(void) const
 
 void GfxFontInfo::setFontHinting(const int32_t fontHinting)
 {
+    assert(fontHinting >= 0);
+
     fontHinting_ = fontHinting;
 }
 

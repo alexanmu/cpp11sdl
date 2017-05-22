@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxControlledSurface.hpp"
@@ -56,20 +57,22 @@ GfxControlledSurface::operator bool() const
 
 void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error)
 {
+    assert((w > 1) && (w < 8192));
+    assert((h > 1) && (h < 8192));
+
     if (surfaceConstructed_ == false)
     {
-        if ((w > 1) && (h > 1))
-        {
-            surf_ = new gfx::GfxSurface(GfxSurfaceFlags(), w, h);
-            surfaceConstructed_ = true;
-            return;
-        }
+        surf_ = new gfx::GfxSurface(GfxSurfaceFlags(), w, h);
+        surfaceConstructed_ = true;
+        return;
     }
     throw std::runtime_error("Object already constructed");
 }
 
 void GfxControlledSurface::createSurface(std::string const& filename) throw(std::runtime_error)
 {
+    assert(filename.length() > 0);
+
     if (surfaceConstructed_ == false)
     {
         surf_ = new gfx::GfxSurface(filename);

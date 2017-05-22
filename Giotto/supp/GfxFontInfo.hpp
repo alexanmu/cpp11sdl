@@ -90,7 +90,7 @@ public:
 
     void clear(void);
 private:
-    static const std::string kDefaultFontName;
+    static const char kDefaultFontName[];
     static const uint8_t kDefaultFontSize;
     static const int32_t kDefaultFontOutline;
     static const bool kDefaultFontBold;
@@ -99,6 +99,8 @@ private:
     static const bool kDefaultFontStrikethrough;
     static const int32_t kDefaultFontHinting;
     static const bool kDefaultFontKerning;
+
+    static const uint8_t kMinFontSize;
 
     std::string fontName_;
     uint8_t fontSize_;
