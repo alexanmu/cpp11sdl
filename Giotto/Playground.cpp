@@ -46,7 +46,7 @@ void Playground::_doPlayground(void)
 
 #define BYTE_PATTERN 0x11223344
 
-double Playground::Algo0(std::uint32_t* ptr)
+double Playground::Algo0(std::uint32_t * ptr)
 {
     int i;
     int j;
@@ -69,7 +69,7 @@ double Playground::Algo0(std::uint32_t* ptr)
     return std::chrono::duration<double>(end - start).count();
 }
 
-double Playground::Algo1(std::uint32_t* ptr)
+double Playground::Algo1(std::uint32_t * ptr)
 {
     uint32_t i;
     uint32_t j;
@@ -111,7 +111,7 @@ double Playground::Algo1(std::uint32_t* ptr)
     return std::chrono::duration<double>(end - start).count();
 }
 
-double Playground::Algo2(uint32_t* ptr)
+double Playground::Algo2(uint32_t * ptr)
 {
     int i;
     int j;
@@ -132,7 +132,7 @@ double Playground::Algo2(uint32_t* ptr)
 
 #pragma GCC push_options
 #pragma GCC optimize("Ofast")
-void Algo3Part(uint64_t* ptr, uint64_t * endptr, uint64_t bp)
+void Algo3Part(uint64_t * ptr, uint64_t * endptr, const uint64_t bp)
 {
     while (ptr < endptr )
     {
@@ -148,7 +148,7 @@ void Algo3Part(uint64_t* ptr, uint64_t * endptr, uint64_t bp)
     }
 }
 
-double Playground::Algo3(uint32_t *ptr)
+double Playground::Algo3(uint32_t * ptr)
 {
     std::uint64_t bp = (std::uint64_t)BYTE_PATTERN << (std::uint64_t)32 | (std::uint64_t)BYTE_PATTERN;
     std::uint64_t max64 = SZ_X * SZ_Y / 2;
@@ -189,7 +189,7 @@ double Playground::Algo3(uint32_t *ptr)
 }
 #pragma GCC pop_options
 
-void Playground::DoAlgo(int algo_index)
+void Playground::DoAlgo(const int algo_index)
 {
     int k;
     double diff[EXEC_CNT];
@@ -303,7 +303,7 @@ void Playground::_doBenchmark(void)
 
 #include <dirent.h>
 
-std::vector<std::string> Playground::FindAllFiles(std::string bpath)
+std::vector<std::string> Playground::FindAllFiles(std::string const& bpath)
 {
     std::vector<std::string> files;
 
@@ -339,7 +339,7 @@ std::string Playground::ToHexStr(uint8_t c)
     return std::string(s);
 }
 
-void Playground::ProcessBuffer(std::string buffname, uint8_t * buff)
+void Playground::ProcessBuffer(std::string const& buffname, uint8_t * buff)
 {
     std::ofstream hpp(buffname + ".hpp", std::ofstream::out | std::ofstream::trunc);
 
@@ -390,7 +390,7 @@ void Playground::ProcessBuffer(std::string buffname, uint8_t * buff)
     hpp.close();
 }
 
-std::string Playground::GetFntName(std::string fullname)
+std::string Playground::GetFntName(std::string const& fullname)
 {
     std::size_t n;
     std::string fname;
@@ -408,7 +408,7 @@ std::string Playground::GetFntName(std::string fullname)
     return ext + name;
 }
 
-void Playground::ProcessFNTfile(std::string fullname)
+void Playground::ProcessFNTfile(std::string const& fullname)
 {
     std::ifstream inf(fullname, std::ifstream::ate | std::ifstream::binary);
     std::ifstream::pos_type fsize = inf.tellg();
@@ -440,7 +440,7 @@ void Playground::_doFonts(void)
     std::vector<std::string> fntfiles;
 
     files = FindAllFiles(bpath + "/");
-    for (auto it : files )
+    for (auto it : files)
     {
         std::size_t n = it.rfind(".");
 
@@ -484,7 +484,7 @@ std::string Playground::IntToHexStr(T value)
     return stream.str();
 }
 
-void Playground::printSdlPalette(void * palptr, bool printclrs)
+void Playground::printSdlPalette(void * palptr, const bool printclrs)
 {
     gfx::sdl2::SDL_Palette *pal;
     gfx::sdl2::SDL_Color* clr;

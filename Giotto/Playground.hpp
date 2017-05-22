@@ -42,18 +42,18 @@ protected:
 private:
     void DoAlgo(int algo_index);
 
-    double Algo0(std::uint32_t* ptr);
-    double Algo1(std::uint32_t* ptr);
-    double Algo2(std::uint32_t* ptr);
-    double Algo3(std::uint32_t* ptr);
+    double Algo0(std::uint32_t * ptr);
+    double Algo1(std::uint32_t * ptr);
+    double Algo2(std::uint32_t * ptr);
+    double Algo3(std::uint32_t * ptr);
 
-    std::vector<std::string> FindAllFiles(std::string bpath);
+    std::vector<std::string> FindAllFiles(std::string const& bpath);
     std::string ToHexStr(uint8_t c);
-    void ProcessBuffer(std::string buffname, uint8_t * buff);
-    std::string GetFntName(std::string fullname);
-    void ProcessFNTfile(std::string fullname);
+    void ProcessBuffer(std::string const& buffname, uint8_t * buff);
+    std::string GetFntName(std::string const& fullname);
+    void ProcessFNTfile(std::string const& fullname);
 
-    void printSdlPalette(void * palptr, bool printclrs);
+    void printSdlPalette(void * palptr, bool const printclrs);
     void printSdlPixFormat(void * pixptr);
     template <typename T> std::string IntToHexStr(T value);
 };

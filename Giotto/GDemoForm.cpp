@@ -98,7 +98,7 @@ void GDemoForm::draw(void)
     window_.get()->setWindowIcon(surf);
 
     /*************************************************************************************************/
-    giotto::objects::GGraphicControl g(GVarName(g), nullptr, 50, 50);
+    giotto::objects::GGraphicControl g(GVarName(g), this, 50, 50);
     g.setBorderThikness(giotto::objects::GBorderThikness::thikBorder);
     g.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
@@ -108,7 +108,7 @@ void GDemoForm::draw(void)
     g.draw();
     windowsurface_->blitSurface(g.getSurface()(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
 
-    giotto::objects::GBitmap bmp(GVarName(bmp), nullptr, 384, 384,
+    giotto::objects::GBitmap bmp(GVarName(bmp), this, 384, 384,
                 giotto::objects::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
     bmp.load();
     bmp.setBorderColor(gfx::bgi::GfxBgiConstants::vgaLightGreen());
@@ -124,7 +124,7 @@ void GDemoForm::draw(void)
     gv.getVersion(&v);
     std::string labelText = "Label text " + v.getAsString();
 
-    giotto::objects::GLabel g2(GVarName(g2), nullptr, 280, 60, labelText, 32);
+    giotto::objects::GLabel g2(GVarName(g2), this, 280, 60, labelText, 32);
     g2.setBorderThikness(giotto::objects::GBorderThikness::thikBorder);
     g2.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g2.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
