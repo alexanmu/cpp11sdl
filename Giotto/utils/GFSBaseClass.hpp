@@ -21,17 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GFileObject_hpp
-#define GFileObject_hpp
+#ifndef GFSBaseClass_hpp
+#define GFSBaseClass_hpp
 
 #include <stdexcept>
 #include <cstdint>
 #include <ctime>
-#include <vector>
 #include <string>
 
-#include "GFSBaseClass.hpp"
-#include "GFileCollectionElement.hpp"
+#include "GObject.hpp"
 
 namespace giotto
 {
@@ -39,50 +37,27 @@ namespace giotto
 namespace utils
 {
 
-class GFileObject : public GFSBaseClass
+class GFSBaseClass : public objects::GObject
 {
 public:
-    GFileObject() = delete;
+    virtual ~GFSBaseClass();
 
-    explicit GFileObject(std::string const& fileSpec);
-    explicit GFileObject(GFileCollectionElement const& file);
+    std::string _getWorkingDirectory(void) const;
+    void _setWorkingDirectory(std::string const& dir) const throw(std::runtime_error);
+    std::string _getFilePath(std::string const& filespec);
+    std::string _getFileName(std::string const& filespec);
 
-    GFileObject(GFileObject const&) = delete;
-    GFileObject(GFileObject&&) = delete;
+    std::string _getCurrentDateAsString(std::string const& sep1, std::string const& sep2);
+    std::string _getCurrentTimeAsString(std::string const& sep1, std::string const& sep2);
 
-    GFileObject& operator=(GFileObject const&) = delete;
-    GFileObject& operator=(GFileObject&&) = delete;
-
-    virtual ~GFileObject();
-
-    std::string const& getFileSpec(void) const;
-    std::string getAttributesAsString(void) const;
-
-    void rescan(void);
+    const char kFolderSeparator = '/';
+    const char kExtensionSeparator = '.';
 private:
-    void scanFile(void);
-
-    std::string fileSpec_;
-    bool rdUsr_;
-    bool wrUsr_;
-    bool xcUsr_;
-    bool rdGrp_;
-    bool wrGrp_;
-    bool xcGrp_;
-    bool rdOth_;
-    bool wrOth_;
-    bool xcOth_;
-    bool isLink_;
-    std::tm dateCreated_;
-    std::tm dateLastAccessed_;
-    std::tm dateLastModified_;
-    std::string parentFolder_;
-    std::string path_;
-    uint64_t size_;
+    std::string _lz(std::string const& str, const uint32_t elen);
 };
 
 }  // namespace utils
 
 }  // namespace giotto
 
-#endif /* GFileObject_hpp */
+#endif /* GFSBaseClass_hpp */

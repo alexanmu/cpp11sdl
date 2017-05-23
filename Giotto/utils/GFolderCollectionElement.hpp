@@ -25,8 +25,9 @@
 #define GFolderCollectionElement_hpp
 
 #include <vector>
+#include <string>
 
-#include "GObject.hpp"
+#include "GFSBaseClass.hpp"
 
 namespace giotto
 {
@@ -34,9 +35,25 @@ namespace giotto
 namespace utils
 {
 
-class GFolderCollectionElement : public objects::GObject
+class GFolderCollectionElement : public GFSBaseClass
 {
 public:
+    GFolderCollectionElement();
+    explicit GFolderCollectionElement(std::string const& folderSpec);
+
+    GFolderCollectionElement(GFolderCollectionElement const& other);
+    GFolderCollectionElement(GFolderCollectionElement&& other);
+
+    GFolderCollectionElement& operator=(GFolderCollectionElement const& other);
+    GFolderCollectionElement& operator=(GFolderCollectionElement&& other);
+
+    virtual ~GFolderCollectionElement();
+
+    std::string const& getFolderSpec(void) const noexcept;
+
+    void clear(void);
+private:
+    std::string folderSpec_;
 };
 
 typedef std::vector<GFolderCollectionElement> GFolderCollection;

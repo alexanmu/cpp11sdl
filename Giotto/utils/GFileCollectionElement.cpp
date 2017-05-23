@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GFileCollectionElement.hpp"
 
 namespace giotto
@@ -28,6 +30,58 @@ namespace giotto
 
 namespace utils
 {
+
+GFileCollectionElement::GFileCollectionElement(std::string const& fileSpec) : GFSBaseClass()
+{
+    fileSpec_ = fileSpec;
+}
+
+GFileCollectionElement::GFileCollectionElement(GFileCollectionElement const& other) : GFSBaseClass()
+{
+    fileSpec_ = other.fileSpec_;
+}
+
+GFileCollectionElement::GFileCollectionElement(GFileCollectionElement&& other) : GFSBaseClass()
+{
+    fileSpec_ = other.fileSpec_;
+    // Delete other's data
+    other.clear();
+}
+
+GFileCollectionElement& GFileCollectionElement::operator=(GFileCollectionElement const& other)
+{
+    if (this != &other)
+    {
+        fileSpec_ = other.fileSpec_;
+    }
+    return *this;
+}
+
+GFileCollectionElement& GFileCollectionElement::operator=(GFileCollectionElement&& other)
+{
+    if (this != &other)
+    {
+        fileSpec_ = other.fileSpec_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
+}
+
+GFileCollectionElement::~GFileCollectionElement()
+{
+    clear();
+}
+
+std::string const& GFileCollectionElement::getFileSpec(void) const noexcept
+{
+    return fileSpec_;
+}
+
+void GFileCollectionElement::clear(void)
+{
+    fileSpec_ = "";
+}
 
 }  // namespace utils
 

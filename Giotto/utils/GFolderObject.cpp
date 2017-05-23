@@ -22,6 +22,7 @@
 */
 
 #include <dirent.h>
+#include <cstring>
 #include <string>
 
 #include "GFolderObject.hpp"
@@ -33,15 +34,16 @@ namespace giotto
 namespace utils
 {
 
-GFolderObject::GFolderObject(std::string const& pathSpec, bool scan) : GObject()
+GFolderObject::GFolderObject(std::string const& folderSpec) : GFSBaseClass()
 {
-    pathSpec_ = pathSpec;
-    scanned_ = false;
-    if (scan == true)
-    {
-        scanned_ = true;
-        scanFolder();
-    }
+    folderSpec_ = folderSpec;
+    scanFolder();
+}
+
+GFolderObject::GFolderObject(GFolderCollectionElement const& folder) : GFSBaseClass()
+{
+    folderSpec_ = folder.getFolderSpec();
+    scanFolder();
 }
 
 GFolderObject::~GFolderObject()
@@ -50,25 +52,29 @@ GFolderObject::~GFolderObject()
     {
         for (auto& it : subFolders_)
         {
-            delete it;
+            it.clear();
         }
     }
     if (files_.size() > 0)
     {
         for (auto& it : files_)
         {
-            delete it;
+            it.clear();
         }
     }
 }
 
-void GFolderObject::scan(void)
+std::string const& GFolderObject::getFolderSpec(void) const noexcept
 {
-    scanFolder();
-    scanned_ = true;
+    return folderSpec_;
 }
 
-GFileObject::GFilesCollection GFolderObject::getFilesCollection(void)
+void GFolderObject::rescan(void)
+{
+    scanFolder();
+}
+
+GFilesCollection GFolderObject::getFilesCollection(void)
 {
     return files_;
 }
@@ -78,23 +84,26 @@ void GFolderObject::scanFolder(void)
 {
     DIR *d;
     struct dirent *dir;
-    d = opendir(pathSpec_.c_str());
+    std::string fullpath;
+
+    d = opendir(folderSpec_.c_str());
     if (d)
     {
         dir = readdir(d);
         while (dir != NULL)
         {
+            fullpath = folderSpec_ + dir->d_name;
             if (dir->d_type == DT_DIR)
             {
-                if ((std::strcmp(dir->d_name,".") != 0) && (std::strcmp(dir->d_name,"..") != 0))
+                if ((std::strcmp(dir->d_name, ".") != 0) && (std::strcmp(dir->d_name, "..") != 0))
                 {
-                    GFolderObject * folder = new GFolderObject(dir->d_name, false);
+                    GFolderCollectionElement folder(fullpath);
                     subFolders_.push_back(folder);
                 }
             }
             if (dir->d_type == DT_REG)
             {
-                GFileObject * file = new GFileObject(dir->d_name);
+                GFileCollectionElement file(fullpath);
                 files_.push_back(file);
             }
             dir = readdir(d);

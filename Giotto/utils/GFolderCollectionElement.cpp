@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GFolderCollectionElement.hpp"
 
 namespace giotto
@@ -28,6 +30,63 @@ namespace giotto
 
 namespace utils
 {
+
+GFolderCollectionElement::GFolderCollectionElement() : GFSBaseClass()
+{
+    folderSpec_ = "";
+}
+
+GFolderCollectionElement::GFolderCollectionElement(std::string const& folderSpec) : GFSBaseClass()
+{
+    folderSpec_ = folderSpec;
+}
+
+GFolderCollectionElement::GFolderCollectionElement(GFolderCollectionElement const& other) : GFSBaseClass()
+{
+    folderSpec_ = other.folderSpec_;
+}
+
+GFolderCollectionElement::GFolderCollectionElement(GFolderCollectionElement&& other) : GFSBaseClass()
+{
+    folderSpec_ = other.folderSpec_;
+    // Delete other's data
+    other .clear();
+}
+
+GFolderCollectionElement& GFolderCollectionElement::operator=(GFolderCollectionElement const& other)
+{
+    if (this != &other)
+    {
+        folderSpec_ = other.folderSpec_;
+    }
+    return *this;
+}
+
+GFolderCollectionElement& GFolderCollectionElement::operator=(GFolderCollectionElement&& other)
+{
+    if (this != &other)
+    {
+        folderSpec_ = other.folderSpec_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
+}
+
+GFolderCollectionElement::~GFolderCollectionElement()
+{
+    clear();
+}
+
+std::string const& GFolderCollectionElement::getFolderSpec(void) const noexcept
+{
+    return folderSpec_;
+}
+
+void GFolderCollectionElement::clear(void)
+{
+    folderSpec_ = "";
+}
 
 }  // namespace utils
 

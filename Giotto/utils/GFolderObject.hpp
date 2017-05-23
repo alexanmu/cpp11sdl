@@ -26,11 +26,11 @@
 
 #include <stdexcept>
 #include <cstdint>
-#include <vector>
 #include <string>
 
-#include "GObject.hpp"
-#include "GFileObject.hpp"
+#include "GFSBaseClass.hpp"
+#include "GFolderCollectionElement.hpp"
+#include "GFileCollectionElement.hpp"
 
 namespace giotto
 {
@@ -40,13 +40,13 @@ namespace utils
 
 class GFileObject;
 
-class GFolderObject : public objects::GObject
+class GFolderObject : public GFSBaseClass
 {
 public:
-    typedef std::vector<GFolderObject *> GFolderCollection;
-
     GFolderObject() = delete;
-    explicit GFolderObject(std::string const& pathSpec, bool scan);
+
+    explicit GFolderObject(std::string const& pathSpec);
+    explicit GFolderObject(GFolderCollectionElement const& folder);
 
     GFolderObject(GFolderObject const&) = delete;
     GFolderObject(GFolderObject&&) = delete;
@@ -56,12 +56,15 @@ public:
 
     virtual ~GFolderObject();
 
-    void scan(void);
-    GFileObject::GFilesCollection getFilesCollection(void);
-private:
-    bool scanned_;
+    std::string const& getFolderSpec(void) const noexcept;
 
-    std::string pathSpec_;
+    void rescan(void);
+
+    GFilesCollection getFilesCollection(void);
+private:
+    void scanFolder(void);
+
+    std::string folderSpec_;
     uint32_t attributes_;
     uint32_t dateLastAccessed_;
     uint32_t dateLastModified_;
@@ -69,9 +72,7 @@ private:
     std::string parentFolder_;
     uint64_t size_;
     GFolderCollection subFolders_;
-    GFileObject::GFilesCollection files_;
-
-    void scanFolder(void);
+    GFilesCollection files_;
 };
 
 }  // namespace utils

@@ -21,6 +21,9 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <unistd.h>
+#include <errno.h>
+
 #include <cassert>
 #include <string>
 
@@ -34,7 +37,7 @@ namespace giotto
 namespace utils
 {
 
-GFileSystemObject::GFileSystemObject() : objects::GObject()
+GFileSystemObject::GFileSystemObject() : GFSBaseClass()
 {
 }
 
@@ -81,6 +84,10 @@ void GFileSystemObject::copyFolder(std::string const& source, std::string const&
 void GFileSystemObject::createFolder(std::string const& foldername) throw(std::runtime_error)
 {
     assert(foldername.length() > 0);
+
+    /* sys/stat.h
+        int mkdir(const char *filename, mode_t mode)
+    */
     throw std::runtime_error("Not implemented");
 }
 
@@ -88,6 +95,10 @@ void GFileSystemObject::deleteFile(std::string const& filespec, bool force) thro
 {
     assert(filespec.length() > 0);
     assert((force == true || force == false));
+
+    /* unistd.h
+        int unlink(const char* filename);
+    */
     throw std::runtime_error("Not implemented");
 }
 
@@ -95,6 +106,9 @@ void GFileSystemObject::deleteFolder(std::string const& folderspec, bool force) 
 {
     assert(folderspec.length() > 0);
     assert((force == true || force == false));
+    /* unistd.h
+        int rmdir(const char * filename);
+    */
     throw std::runtime_error("Not implemented");
 }
 
@@ -110,24 +124,35 @@ bool GFileSystemObject::folderExists(std::string const& folderspec) throw(std::r
     throw std::runtime_error("Not implemented");
 }
 
-GFileObject * GFileSystemObject::getFile(std::string const& filespec) throw(std::runtime_error)
+GFileObject * GFileSystemObject::getFile(std::string const& filespec)
 {
     assert(filespec.length() > 0);
 
     return new GFileObject(filespec);
 }
 
-std::string GFileSystemObject::getFileName(std::string const& filespec) throw(std::runtime_error)
+std::string GFileSystemObject::getFileName(std::string const& filespec)
 {
     assert(filespec.length() > 0);
-    throw std::runtime_error("Not implemented");
+
+    return _getFileName(filespec);
 }
 
-GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec) throw(std::runtime_error)
+GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec)
 {
     assert(folderspec.length() > 0);
 
-    return new GFolderObject(folderspec, true);
+    std::string fullpath;
+
+    if (folderspec[folderspec.length() - 1] != kFolderSeparator)
+    {
+        fullpath = folderspec + kFolderSeparator;
+    }
+    else
+    {
+        fullpath = folderspec;
+    }
+    return new GFolderObject(fullpath);
 }
 
 std::string GFileSystemObject::getParentFolderName(std::string const& folderspec) throw(std::runtime_error)
@@ -138,6 +163,10 @@ std::string GFileSystemObject::getParentFolderName(std::string const& folderspec
 
 std::string GFileSystemObject::getTempName(void) throw(std::runtime_error)
 {
+    /* unistd.h?
+        char * tmpname(const char* dir, const char * prefix);
+        == NULL on failure
+    */
     throw std::runtime_error("Not implemented");
 }
 
@@ -145,6 +174,10 @@ void GFileSystemObject::moveFile(std::string const& source, std::string const& d
 {
     assert(source.length() > 0);
     assert(destination.length() > 0);
+
+    /* unistd.h?
+        int rename(const char* oldname, const char* newname);
+    */
     throw std::runtime_error("Not implemented");
 }
 
@@ -152,6 +185,10 @@ void GFileSystemObject::moveFolder(std::string const& source, std::string const&
 {
     assert(source.length() > 0);
     assert(destination.length() > 0);
+
+    /* unistd.h?
+        int rename(const char* oldname, const char* newname);
+    */
     throw std::runtime_error("Not implemented");
 }
 

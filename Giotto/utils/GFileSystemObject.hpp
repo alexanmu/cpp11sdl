@@ -27,7 +27,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "GObject.hpp"
+#include "GFSBaseClass.hpp"
 
 namespace giotto
 {
@@ -38,7 +38,7 @@ namespace utils
 class GFileObject;
 class GFolderObject;
 
-class GFileSystemObject : public objects::GObject
+class GFileSystemObject : public GFSBaseClass
 {
 public:
     GFileSystemObject();
@@ -61,15 +61,14 @@ public:
     void deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error);
     bool fileExists(std::string const& filespec) throw(std::runtime_error);
     bool folderExists(std::string const& folderspec) throw(std::runtime_error);
-    GFileObject * getFile(std::string const& filespec) throw(std::runtime_error);
-    std::string getFileName(std::string const& filespec) throw(std::runtime_error);
-    GFolderObject * getFolder(std::string const& folderspec) throw(std::runtime_error);
+    GFileObject * getFile(std::string const& filespec);
+    std::string getFileName(std::string const& filespec);
+    GFolderObject * getFolder(std::string const& folderspec);
     std::string getParentFolderName(std::string const& folderspec) throw(std::runtime_error);
     std::string getTempName(void) throw(std::runtime_error);
     void moveFile(std::string const& source, std::string const& destination) throw(std::runtime_error);
     void moveFolder(std::string const& source, std::string const& destination) throw(std::runtime_error);
 private:
-    const char kFolderSeparator = '/';
 };
 
 }  // namespace utils

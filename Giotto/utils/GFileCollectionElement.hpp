@@ -24,9 +24,10 @@
 #ifndef GFileCollectionElement_hpp
 #define GFileCollectionElement_hpp
 
+#include <string>
 #include <vector>
 
-#include "GObject.hpp"
+#include "GFSBaseClass.hpp"
 
 namespace giotto
 {
@@ -34,12 +35,27 @@ namespace giotto
 namespace utils
 {
 
-class GFileCollectionElement : public objects::GObject
+class GFileCollectionElement : public GFSBaseClass
 {
 public:
+    GFileCollectionElement();
+    explicit GFileCollectionElement(std::string const& fileSpec);
+
+    GFileCollectionElement(GFileCollectionElement const& other);
+    GFileCollectionElement(GFileCollectionElement&& other);
+
+    GFileCollectionElement& operator=(GFileCollectionElement const& other);
+    GFileCollectionElement& operator=(GFileCollectionElement&& other);
+
+    virtual ~GFileCollectionElement();
+
+    std::string const& getFileSpec(void) const noexcept;
+    void clear(void);
+private:
+    std::string fileSpec_;
 };
 
-typedef std::vector<GFileCollectionElement> GFileCollection;
+typedef std::vector<GFileCollectionElement> GFilesCollection;
 
 }  // namespace utils
 

@@ -21,9 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include "GFileObject.hpp"
+
+#include <sys/stat.h>
+#include <time.h>
+#include <cassert>
+#include <ctime>
 #include <string>
 
-#include "GFileObject.hpp"
+#include <iostream>
 
 namespace giotto
 {
@@ -31,9 +37,16 @@ namespace giotto
 namespace utils
 {
 
-GFileObject::GFileObject(std::string const& filespec) : GObject()
+GFileObject::GFileObject(std::string const& fileSpec) : GFSBaseClass()
 {
-    fileSpec_ = filespec;
+    fileSpec_ = fileSpec;
+    scanFile();
+}
+
+GFileObject::GFileObject(GFileCollectionElement const& file) : GFSBaseClass()
+{
+    fileSpec_ = file.getFileSpec();
+    scanFile();
 }
 
 GFileObject::~GFileObject()
@@ -43,6 +56,143 @@ GFileObject::~GFileObject()
 std::string const& GFileObject::getFileSpec(void) const
 {
     return fileSpec_;
+}
+
+std::string GFileObject::getAttributesAsString(void) const
+{
+    std::string attrs = "-";
+
+    //  User
+    if (rdUsr_ == true)
+    {
+        attrs += "r";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    if (wrUsr_ == true)
+    {
+        attrs += "w";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    if (xcUsr_ == true)
+    {
+        attrs += "x";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    //  Group
+    if (rdGrp_ == true)
+    {
+        attrs += "r";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    if (wrGrp_ == true)
+    {
+        attrs += "w";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    if (xcGrp_ == true)
+    {
+        attrs += "x";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    //  Other
+    if (rdOth_ == true)
+    {
+        attrs += "r";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    if (wrOth_ == true)
+    {
+        attrs += "w";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    if (xcOth_ == true)
+    {
+        attrs += "x";
+    }
+    else
+    {
+        attrs += "-";
+    }
+    //  Done
+    return attrs;
+}
+
+void GFileObject::rescan(void)
+{
+    scanFile();
+}
+
+// Private methods
+void GFileObject::scanFile(void)
+{
+    // http://codewiki.wikidot.com/c:system-call:stat
+
+    struct stat fileStat;
+    int ret;
+    std::tm * ptr;
+
+    ret = lstat(fileSpec_.c_str(), &fileStat);
+    if (ret == 0)
+    {
+        size_ = fileStat.st_size;
+        rdUsr_ = (fileStat.st_mode & S_IRUSR) != 0;
+        wrUsr_ = (fileStat.st_mode & S_IWUSR) != 0;
+        xcUsr_ = (fileStat.st_mode & S_IXUSR) != 0;
+        rdGrp_ = (fileStat.st_mode & S_IRGRP) != 0;
+        wrGrp_ = (fileStat.st_mode & S_IWGRP) != 0;
+        xcGrp_ = (fileStat.st_mode & S_IXGRP) != 0;
+        rdOth_ = (fileStat.st_mode & S_IROTH) != 0;
+        wrOth_ = (fileStat.st_mode & S_IWOTH) != 0;
+        xcOth_ = (fileStat.st_mode & S_IXOTH) != 0;
+        isLink_ = S_ISLNK(fileStat.st_mode);
+        ptr = std::localtime(&fileStat.st_ctime);
+        if (ptr != NULL)
+        {
+            dateCreated_ = *ptr;
+        }
+        ptr = std::localtime(&fileStat.st_atime);
+        if (ptr != NULL)
+        {
+            dateLastAccessed_ = *ptr;
+        }
+        ptr = std::localtime(&fileStat.st_mtime);
+        if (ptr != NULL)
+        {
+            dateLastModified_ = *ptr;
+        }
+    }
+    std::cout << fileSpec_ << std::endl;
+    std::cout << getAttributesAsString() << std::endl;
+    std::cout << size_ << std::endl;
+    std::cout << std::asctime(&dateCreated_);
+    std::cout << std::asctime(&dateLastAccessed_);
+    std::cout << std::asctime(&dateLastModified_);
+    parentFolder_ = "";
+    path_ = "";
 }
 
 }  // namespace utils
