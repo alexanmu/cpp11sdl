@@ -22,6 +22,7 @@
 */
 
 #include <unistd.h>
+#include <errno.h>
 #include <stdexcept>
 #include <cassert>
 #include <ctime>
