@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstdlib>
 #include <cassert>
 #include <string>
 
@@ -58,7 +59,7 @@ std::string GfxClipboard::getClipboardText(void) const
     if (c != nullptr)
     {
         str = c;
-        sdl2::SDL_free(c);
+        std::free(c);
     }
     return str;
 }
