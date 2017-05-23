@@ -736,20 +736,28 @@ using giotto::utils::GFileObject;
 
 void Playground::_doFSO(void)
 {
-    std::string path = "/Users/familiaoros/Documents/Dev/Files";
-
     GFileSystemObject fso;
-    GFolderObject * fo = fso.getFolder(path);
+    GFolderObject * fo = fso.getFolder(fso._getWorkingDirectory());
 
+    std::cout << "pwd=" << fso._getWorkingDirectory() << std::endl;
     if (fo != nullptr)
     {
-        giotto::utils::GFileObject::GFilesCollection fcoll;
+        giotto::utils::GFilesCollection fcoll;
+        std::string lastfile;
 
         fcoll = fo->getFilesCollection();
         for (auto& it : fcoll)
         {
-            std::cout << it->getFileSpec() << std::endl;
+            std::string fn;
+            std::string path;
+
+            path = fso._getFilePath(it.getFileSpec());
+            fn = fso.getFileName(it.getFileSpec());
+            std::cout << it.getFileSpec() << "<>" << fn << "<>" << path << std::endl;
+            lastfile = it.getFileSpec();
         }
+        giotto::utils::GFileObject fileo(lastfile);
+        //fileo.rescan();
         delete fo;
     }
 }
