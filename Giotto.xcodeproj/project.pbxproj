@@ -92,6 +92,8 @@
 		79D2760C1EC6226F006B796D /* GComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D276061EC6226F006B796D /* GComponent.cpp */; };
 		79D2760D1EC6226F006B796D /* GControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D276081EC6226F006B796D /* GControl.cpp */; };
 		79D2760E1EC6226F006B796D /* GGraphicControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D2760A1EC6226F006B796D /* GGraphicControl.cpp */; };
+		79D557481ED3F15D00629207 /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D557461ED3F15D00629207 /* GFileCollectionElement.cpp */; };
+		79D5574B1ED3F19B00629207 /* GFolderCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79D557491ED3F19B00629207 /* GFolderCollectionElement.cpp */; };
 		79E93E851EC56D81009729C5 /* GPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79E93E831EC56D81009729C5 /* GPanel.cpp */; };
 		79EEDA3B1EB6282C009CB6A1 /* GOKMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79EEDA391EB6282C009CB6A1 /* GOKMsgBox.cpp */; };
 		79F8D8BA1ECCB1BD000282B6 /* GfxTtfFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79F8D8B61ECCB1BD000282B6 /* GfxTtfFont.cpp */; };
@@ -293,6 +295,10 @@
 		79D276091EC6226F006B796D /* GControl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GControl.hpp; path = giotto/GControl.hpp; sourceTree = "<group>"; };
 		79D2760A1EC6226F006B796D /* GGraphicControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GGraphicControl.cpp; path = giotto/GGraphicControl.cpp; sourceTree = "<group>"; };
 		79D2760B1EC6226F006B796D /* GGraphicControl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GGraphicControl.hpp; path = giotto/GGraphicControl.hpp; sourceTree = "<group>"; };
+		79D557461ED3F15D00629207 /* GFileCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFileCollectionElement.cpp; path = Giotto/utils/GFileCollectionElement.cpp; sourceTree = "<group>"; };
+		79D557471ED3F15D00629207 /* GFileCollectionElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFileCollectionElement.hpp; path = Giotto/utils/GFileCollectionElement.hpp; sourceTree = "<group>"; };
+		79D557491ED3F19B00629207 /* GFolderCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFolderCollectionElement.cpp; path = Giotto/utils/GFolderCollectionElement.cpp; sourceTree = "<group>"; };
+		79D5574A1ED3F19B00629207 /* GFolderCollectionElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFolderCollectionElement.hpp; path = Giotto/utils/GFolderCollectionElement.hpp; sourceTree = "<group>"; };
 		79E93E831EC56D81009729C5 /* GPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GPanel.cpp; path = giotto/GPanel.cpp; sourceTree = "<group>"; };
 		79E93E841EC56D81009729C5 /* GPanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GPanel.hpp; path = giotto/GPanel.hpp; sourceTree = "<group>"; };
 		79EEDA391EB6282C009CB6A1 /* GOKMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GOKMsgBox.cpp; path = gdialogs/GOKMsgBox.cpp; sourceTree = "<group>"; };
@@ -575,10 +581,14 @@
 		79C2FDF81ED1379E00B64121 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				79D557461ED3F15D00629207 /* GFileCollectionElement.cpp */,
+				79D557471ED3F15D00629207 /* GFileCollectionElement.hpp */,
 				79C2FDFC1ED1452C00B64121 /* GFileObject.cpp */,
 				79C2FDFD1ED1452C00B64121 /* GFileObject.hpp */,
 				79C2FDF51ED1379900B64121 /* GFileSystemObject.cpp */,
 				79C2FDF61ED1379900B64121 /* GFileSystemObject.hpp */,
+				79D557491ED3F19B00629207 /* GFolderCollectionElement.cpp */,
+				79D5574A1ED3F19B00629207 /* GFolderCollectionElement.hpp */,
 				79C2FDF91ED1429E00B64121 /* GFolderObject.cpp */,
 				79C2FDFA1ED1429E00B64121 /* GFolderObject.hpp */,
 			);
@@ -684,6 +694,7 @@
 				79F8D8BB1ECCB1BD000282B6 /* GfxTtfInitQuit.cpp in Sources */,
 				197D66481EAB41BF009B5EBB /* Playground.cpp in Sources */,
 				190E5C8F1EB23A290045C666 /* GfxGetRendererInfo.cpp in Sources */,
+				79D5574B1ED3F19B00629207 /* GFolderCollectionElement.cpp in Sources */,
 				79E93E851EC56D81009729C5 /* GPanel.cpp in Sources */,
 				192445F11EAF9B4100147389 /* GfxEndian.cpp in Sources */,
 				194411081EAB4D9E0064A6AA /* GfxRenderer.cpp in Sources */,
@@ -725,6 +736,7 @@
 				195F7A0E1EAC920D00C11D9F /* GfxPowerState.cpp in Sources */,
 				192445F41EAFAA3400147389 /* GfxLoadSo.cpp in Sources */,
 				195F7A111EAC953100C11D9F /* GfxPowerInfo.cpp in Sources */,
+				79D557481ED3F15D00629207 /* GFileCollectionElement.cpp in Sources */,
 				7913EA731ECF503E0059D5CD /* GfxFontInfo.cpp in Sources */,
 				194410E01EAB4C9D0064A6AA /* GfxCanvas.cpp in Sources */,
 				197AA66E1EC6FA6500EE956F /* GImage.cpp in Sources */,
