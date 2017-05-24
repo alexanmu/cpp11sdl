@@ -44,16 +44,24 @@ public:
 
     std::string _getWorkingDirectory(void) const;
     void _setWorkingDirectory(std::string const& dir) const throw(std::runtime_error);
-    std::string _getFilePath(std::string const& filespec);
-    std::string _getFileName(std::string const& filespec);
+    std::string _getFilePath(std::string const& filespec) const;
+    std::string _getFileName(std::string const& filespec) const;
+    std::string _getParentFolder(std::string const& filespec) const;
 
-    std::string _getCurrentDateAsString(std::string const& sep1, std::string const& sep2);
-    std::string _getCurrentTimeAsString(std::string const& sep1, std::string const& sep2);
+    std::string _getCurrentDateAsString(std::string const& sep1, std::string const& sep2) const;
+    std::string _getCurrentDateAsString(void) const;
+    std::string _getCurrentTimeAsString(std::string const& sep1, std::string const& sep2) const;
+    std::string _getCurrentTimeAsString(void) const;
+
+    std::string _getDateAsString(std::tm const& date, std::string const& sep1, std::string const& sep2) const;
+    std::string _getDateAsString(std::tm const& date) const;
+    std::string _getTimeAsString(std::tm const& time, std::string const& sep1, std::string const& sep2) const;
+    std::string _getTimeAsString(std::tm const& time) const;
 
     const char kFolderSeparator = '/';
     const char kExtensionSeparator = '.';
 private:
-    std::string _lz(std::string const& str, const uint32_t elen);
+    std::string _lz(std::string const& str, const uint32_t elen) const;
 };
 
 }  // namespace utils

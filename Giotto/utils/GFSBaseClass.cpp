@@ -23,8 +23,10 @@
 
 #include <unistd.h>
 #include <errno.h>
+#include <libgen.h>
 #include <stdexcept>
 #include <cassert>
+#include <cstdlib>
 #include <ctime>
 #include <string>
 
@@ -50,12 +52,12 @@ std::string GFSBaseClass::_getWorkingDirectory(void) const
 
     while (1)
     {
-        buffer = reinterpret_cast<char *>(malloc(size));
+        buffer = reinterpret_cast<char *>(std::malloc(size));
         if (getcwd(buffer, size) == buffer)
         {
             break;
         }
-        free(buffer);
+        std::free(buffer);
         if (errno != ERANGE)
         {
             return ret;
@@ -78,7 +80,7 @@ void GFSBaseClass::_setWorkingDirectory(std::string const& dir) const throw(std:
     }
 }
 
-std::string GFSBaseClass::_getFilePath(std::string const& filespec)
+std::string GFSBaseClass::_getFilePath(std::string const& filespec) const
 {
     assert(filespec.length() > 0);
 
@@ -97,7 +99,7 @@ std::string GFSBaseClass::_getFilePath(std::string const& filespec)
     return ret;
 }
 
-std::string GFSBaseClass::_getFileName(std::string const& filespec)
+std::string GFSBaseClass::_getFileName(std::string const& filespec) const
 {
     assert(filespec.length() > 0);
 
@@ -146,8 +148,38 @@ std::string GFSBaseClass::_getFileName(std::string const& filespec)
     return ret;
 }
 
-std::string GFSBaseClass::_getCurrentDateAsString(std::string const& sep1, std::string const& sep2)
+std::string GFSBaseClass::_getParentFolder(std::string const& filespec) const
 {
+    assert(filespec.length() > 0);
+
+    std::string path;
+    char * chptr;
+    char * retptr;
+    std::string ret;
+
+    path = _getFilePath(filespec);
+    if (path.length() > 0)
+    {
+        chptr = reinterpret_cast<char *>(std::malloc(path.length() + 1));
+    }
+    else
+    {
+        chptr = NULL;
+    }
+    retptr = dirname(chptr);
+    ret = std::string(retptr);
+    if (chptr != NULL)
+    {
+        std::free(chptr);
+    }
+    return ret;
+}
+
+std::string GFSBaseClass::_getCurrentDateAsString(std::string const& sep1, std::string const& sep2) const
+{
+    assert(sep1.length() > 0);
+    assert(sep2.length() > 0);
+
     std::time_t t = std::time(nullptr);
     std::tm tm = *std::localtime(&t);
     std::string y = std::to_string(tm.tm_year + 1900);
@@ -157,8 +189,22 @@ std::string GFSBaseClass::_getCurrentDateAsString(std::string const& sep1, std::
     return y + sep1 + _lz(m, 2) + sep2 + _lz(d, 2);
 }
 
-std::string GFSBaseClass::_getCurrentTimeAsString(std::string const& sep1, std::string const& sep2)
+std::string GFSBaseClass::_getCurrentDateAsString(void) const
 {
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
+    std::string y = std::to_string(tm.tm_year + 1900);
+    std::string m = std::to_string(tm.tm_mon + 1);
+    std::string d = std::to_string(tm.tm_mday);
+
+    return y + '.' + _lz(m, 2) + '.' + _lz(d, 2);
+}
+
+std::string GFSBaseClass::_getCurrentTimeAsString(std::string const& sep1, std::string const& sep2) const
+{
+    assert(sep1.length() > 0);
+    assert(sep2.length() > 0);
+
     std::time_t t = std::time(nullptr);
     std::tm tm = *std::localtime(&t);
     std::string h = std::to_string(tm.tm_hour);
@@ -168,9 +214,67 @@ std::string GFSBaseClass::_getCurrentTimeAsString(std::string const& sep1, std::
     return _lz(h, 2) + sep1 + _lz(m, 2) + sep2 + _lz(s, 2);
 }
 
-// Private methods
-std::string GFSBaseClass::_lz(std::string const& str, const uint32_t elen)
+std::string GFSBaseClass::_getCurrentTimeAsString(void) const
 {
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
+    std::string h = std::to_string(tm.tm_hour);
+    std::string m = std::to_string(tm.tm_min);
+    std::string s = std::to_string(tm.tm_sec);
+
+    return _lz(h, 2) + ':' + _lz(m, 2) + ':' + _lz(s, 2);
+}
+
+std::string GFSBaseClass::_getDateAsString(std::tm const& date, std::string const& sep1,
+                                            std::string const& sep2) const
+{
+    assert(sep1.length() > 0);
+    assert(sep2.length() > 0);
+
+    std::string y = std::to_string(date.tm_year + 1900);
+    std::string m = std::to_string(date.tm_mon + 1);
+    std::string d = std::to_string(date.tm_mday);
+
+    return y + sep1 + _lz(m, 2) + sep2 + _lz(d, 2);
+}
+
+std::string GFSBaseClass::_getDateAsString(std::tm const& date) const
+{
+    std::string y = std::to_string(date.tm_year + 1900);
+    std::string m = std::to_string(date.tm_mon + 1);
+    std::string d = std::to_string(date.tm_mday);
+
+    return y + '.' + _lz(m, 2) + '.' + _lz(d, 2);
+}
+
+std::string GFSBaseClass::_getTimeAsString(std::tm const& time, std::string const& sep1,
+                                            std::string const& sep2) const
+{
+    assert(sep1.length() > 0);
+    assert(sep2.length() > 0);
+
+    std::string h = std::to_string(time.tm_hour);
+    std::string m = std::to_string(time.tm_min);
+    std::string s = std::to_string(time.tm_sec);
+
+    return _lz(h, 2) + sep1 + _lz(m, 2) + sep2 + _lz(s, 2);
+}
+
+std::string GFSBaseClass::_getTimeAsString(std::tm const& time) const
+{
+    std::string h = std::to_string(time.tm_hour);
+    std::string m = std::to_string(time.tm_min);
+    std::string s = std::to_string(time.tm_sec);
+
+    return _lz(h, 2) + ':' + _lz(m, 2) + ':' + _lz(s, 2);
+}
+
+// Private methods
+std::string GFSBaseClass::_lz(std::string const& str, const uint32_t elen) const
+{
+    assert(str.length() > 0);
+    assert(elen > 0);
+
     std::string s;
 
     if (str.length() < elen)

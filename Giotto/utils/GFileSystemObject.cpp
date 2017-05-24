@@ -39,10 +39,16 @@ namespace utils
 
 GFileSystemObject::GFileSystemObject() : GFSBaseClass()
 {
+    errorCode_ = GFSOErrorCode::noError;
 }
 
 GFileSystemObject::~GFileSystemObject()
 {
+}
+
+GFileSystemObject::GFSOErrorCode GFileSystemObject::getError(void) const noexcept
+{
+    return errorCode_;
 }
 
 std::string GFileSystemObject::buildPath(std::string const& path, std::string const& filename)
@@ -60,6 +66,7 @@ std::string GFileSystemObject::buildPath(std::string const& path, std::string co
     {
         spec = path + filename;
     }
+    errorCode_ = GFSOErrorCode::noError;
     return spec;
 }
 
@@ -112,22 +119,55 @@ void GFileSystemObject::deleteFolder(std::string const& folderspec, bool force) 
     throw std::runtime_error("Not implemented");
 }
 
-bool GFileSystemObject::fileExists(std::string const& filespec) throw(std::runtime_error)
+bool GFileSystemObject::fileExists(std::string const& filespec)
 {
+    //  https://stackoverflow.com/questions/9314586/c-faster-way-to-check-if-a-directory-exists
     assert(filespec.length() > 0);
-    throw std::runtime_error("Not implemented");
+
+    if (access(filespec.c_str(), F_OK) != 0)
+    {
+        return false;
+    }
+    errorCode_ = GFSOErrorCode::noError;
+    return true;
 }
 
-bool GFileSystemObject::folderExists(std::string const& folderspec) throw(std::runtime_error)
+bool GFileSystemObject::folderExists(std::string const& folderspec)
 {
+    //  https://stackoverflow.com/questions/9314586/c-faster-way-to-check-if-a-directory-exists
     assert(folderspec.length() > 0);
-    throw std::runtime_error("Not implemented");
+
+    std::string path;
+
+    path = folderspec;
+    if (folderspec[folderspec.length() - 1] != kFolderSeparator)
+    {
+        path += kFolderSeparator;
+    }
+    if (access(path.c_str(), F_OK) != 0)
+    {
+        if (errno == ENOENT)
+        {
+            // Does not exist
+            return false;
+        }
+        if (errno == ENOTDIR)
+        {
+            // Not a directory
+            return false;
+        }
+        // Another error occurred
+        return false;
+    }
+    errorCode_ = GFSOErrorCode::noError;
+    return true;
 }
 
 GFileObject * GFileSystemObject::getFile(std::string const& filespec)
 {
     assert(filespec.length() > 0);
 
+    errorCode_ = GFSOErrorCode::noError;
     return new GFileObject(filespec);
 }
 
@@ -135,6 +175,7 @@ std::string GFileSystemObject::getFileName(std::string const& filespec)
 {
     assert(filespec.length() > 0);
 
+    errorCode_ = GFSOErrorCode::noError;
     return _getFileName(filespec);
 }
 
@@ -152,6 +193,7 @@ GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec)
     {
         fullpath = folderspec;
     }
+    errorCode_ = GFSOErrorCode::noError;
     return new GFolderObject(fullpath);
 }
 

@@ -25,6 +25,7 @@
 #define GFileSystemObject_hpp
 
 #include <stdexcept>
+#include <cstdint>
 #include <string>
 
 #include "GFSBaseClass.hpp"
@@ -41,6 +42,11 @@ class GFolderObject;
 class GFileSystemObject : public GFSBaseClass
 {
 public:
+    enum class GFSOErrorCode : uint8_t
+    {
+        noError = 0
+    };
+
     GFileSystemObject();
 
     GFileSystemObject(GFileSystemObject const&) = delete;
@@ -51,6 +57,8 @@ public:
 
     virtual ~GFileSystemObject();
 
+    GFSOErrorCode getError(void) const noexcept;
+
     std::string buildPath(std::string const& path, std::string const& filename);
     void copyFile(std::string const& source, std::string const& destination, bool overwrite)
                throw(std::runtime_error);
@@ -59,8 +67,8 @@ public:
     void createFolder(std::string const& foldername) throw(std::runtime_error);
     void deleteFile(std::string const& filespec, bool force) throw(std::runtime_error);
     void deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error);
-    bool fileExists(std::string const& filespec) throw(std::runtime_error);
-    bool folderExists(std::string const& folderspec) throw(std::runtime_error);
+    bool fileExists(std::string const& filespec);
+    bool folderExists(std::string const& folderspec);
     GFileObject * getFile(std::string const& filespec);
     std::string getFileName(std::string const& filespec);
     GFolderObject * getFolder(std::string const& folderspec);
@@ -69,6 +77,7 @@ public:
     void moveFile(std::string const& source, std::string const& destination) throw(std::runtime_error);
     void moveFolder(std::string const& source, std::string const& destination) throw(std::runtime_error);
 private:
+    GFSOErrorCode errorCode_;
 };
 
 }  // namespace utils

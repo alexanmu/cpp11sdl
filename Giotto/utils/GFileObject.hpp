@@ -55,12 +55,32 @@ public:
 
     virtual ~GFileObject();
 
-    std::string const& getFileSpec(void) const;
+    std::string const& getFileSpec(void) const noexcept;
+    std::string getFileName(void) const noexcept;
+    std::string getFilePath(void) const noexcept;
+
     std::string getAttributesAsString(void) const;
+    void getUserAttributes(bool * rd, bool * wr, bool * xc) const noexcept;
+    void getGroupAttributes(bool * rd, bool * wr, bool * xc) const noexcept;
+    void getOtherAttributes(bool * rd, bool * wr, bool * xc) const noexcept;
+    bool isLink(void) const noexcept;
+    uint64_t getFileSize(void) const noexcept;
+    std::string getDateCreated(void) const noexcept;
+    std::string getDateLastAccessed(void) const noexcept;
+    std::string getDateLastModified(void) const noexcept;
+    std::string getTimeCreated(void) const noexcept;
+    std::string getTimeLastAccessed(void) const noexcept;
+    std::string getTimeLastModified(void) const noexcept;
+    std::string getDateTimeCreated(void) const noexcept;
+    std::string getDateTimeLastAccessed(void) const noexcept;
+    std::string getDateTimeLastModified(void) const noexcept;
+    std::string getParentFolder(void) const noexcept;
 
     void rescan(void);
 private:
+    void clear(void);
     void scanFile(void);
+    bool isTmValid(std::tm const& tm) const noexcept;
 
     std::string fileSpec_;
     bool rdUsr_;
@@ -76,9 +96,7 @@ private:
     std::tm dateCreated_;
     std::tm dateLastAccessed_;
     std::tm dateLastModified_;
-    std::string parentFolder_;
-    std::string path_;
-    uint64_t size_;
+    uint64_t fileSize_;
 };
 
 }  // namespace utils
