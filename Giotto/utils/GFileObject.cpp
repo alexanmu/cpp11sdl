@@ -27,11 +27,10 @@
 #include <time.h>
 #include <cassert>
 #include <ctime>
+#include <cstdint>
 #include <string>
 #include <limits>
 #include <cstring>
-
-#include <iostream>
 
 namespace giotto
 {
@@ -39,14 +38,14 @@ namespace giotto
 namespace utils
 {
 
-GFileObject::GFileObject(std::string const& fileSpec) : GFSBaseClass()
+GFileObject::GFileObject(std::string const& fileSpec) throw(std::runtime_error) : GFSBaseClass()
 {
     clear();
     fileSpec_ = fileSpec;
     scanFile();
 }
 
-GFileObject::GFileObject(GFileCollectionElement const& file) : GFSBaseClass()
+GFileObject::GFileObject(GFileCollectionElement const& file) throw(std::runtime_error) : GFSBaseClass()
 {
     clear();
     fileSpec_ = file.getFileSpec();
@@ -73,120 +72,120 @@ std::string GFileObject::getFilePath(void) const noexcept
     return GFSBaseClass::_getFilePath(fileSpec_);
 }
 
-std::string GFileObject::getAttributesAsString(void) const
+std::string GFileObject::getAttributesAsString(void) const noexcept
 {
-    std::string attrs = "-";
+    std::string attrs { kAttrCharNothing };
 
     //  User
-    if (rdUsr_ == true)
+    if (readUser_ == true)
     {
-        attrs += "r";
+        attrs += kAttrCharRead;
     }
     else
     {
-        attrs += "-";
+        attrs += kAttrCharNothing;
     }
-    if (wrUsr_ == true)
+    if (writeUser_ == true)
     {
-        attrs += "w";
-    }
-    else
-    {
-        attrs += "-";
-    }
-    if (xcUsr_ == true)
-    {
-        attrs += "x";
+        attrs += kAttrCharWrite;
     }
     else
     {
-        attrs += "-";
+        attrs += kAttrCharNothing;
+    }
+    if (executeUser_ == true)
+    {
+        attrs += kAttrCharExecute;
+    }
+    else
+    {
+        attrs += kAttrCharNothing;
     }
     //  Group
-    if (rdGrp_ == true)
+    if (readGroup_ == true)
     {
-        attrs += "r";
+        attrs += kAttrCharRead;
     }
     else
     {
-        attrs += "-";
+        attrs += kAttrCharNothing;
     }
-    if (wrGrp_ == true)
+    if (writeGroup_ == true)
     {
-        attrs += "w";
-    }
-    else
-    {
-        attrs += "-";
-    }
-    if (xcGrp_ == true)
-    {
-        attrs += "x";
+        attrs += kAttrCharWrite;
     }
     else
     {
-        attrs += "-";
+        attrs += kAttrCharNothing;
+    }
+    if (executeGroup_ == true)
+    {
+        attrs += kAttrCharExecute;
+    }
+    else
+    {
+        attrs += kAttrCharNothing;
     }
     //  Other
-    if (rdOth_ == true)
+    if (readOther_ == true)
     {
-        attrs += "r";
+        attrs += kAttrCharRead;
     }
     else
     {
-        attrs += "-";
+        attrs += kAttrCharNothing;
     }
-    if (wrOth_ == true)
+    if (writeOther_ == true)
     {
-        attrs += "w";
-    }
-    else
-    {
-        attrs += "-";
-    }
-    if (xcOth_ == true)
-    {
-        attrs += "x";
+        attrs += kAttrCharWrite;
     }
     else
     {
-        attrs += "-";
+        attrs += kAttrCharNothing;
+    }
+    if (executeOther_ == true)
+    {
+        attrs += kAttrCharExecute;
+    }
+    else
+    {
+        attrs += kAttrCharNothing;
     }
     //  Done
     return attrs;
 }
 
-void GFileObject::getUserAttributes(bool * rd, bool * wr, bool * xc) const noexcept
+void GFileObject::getUserAttributes(bool * read, bool * write, bool * execute) const noexcept
 {
-    assert(rd != nullptr);
-    assert(wr != nullptr);
-    assert(xc != nullptr);
+    assert(read != nullptr);
+    assert(write != nullptr);
+    assert(execute != nullptr);
 
-    *rd = rdUsr_;
-    *wr = wrUsr_;
-    *xc = xcUsr_;
+    *read = readUser_;
+    *write = writeUser_;
+    *execute = executeUser_;
 }
 
-void GFileObject::getGroupAttributes(bool * rd, bool * wr, bool * xc) const noexcept
+void GFileObject::getGroupAttributes(bool * read, bool * write, bool * execute) const noexcept
 {
-    assert(rd != nullptr);
-    assert(wr != nullptr);
-    assert(xc != nullptr);
+    assert(read != nullptr);
+    assert(write != nullptr);
+    assert(execute != nullptr);
 
-    *rd = rdGrp_;
-    *wr = wrGrp_;
-    *xc = xcGrp_;
+    *read = readGroup_;
+    *write = writeGroup_;
+    *execute = executeGroup_;
 }
 
-void GFileObject::getOtherAttributes(bool * rd, bool * wr, bool * xc) const noexcept
+void GFileObject::getOtherAttributes(bool * read, bool * write, bool * execute) const noexcept
 {
-    assert(rd != nullptr);
-    assert(wr != nullptr);
-    assert(xc != nullptr);
+    assert(read != nullptr);
+    assert(write != nullptr);
+    assert(execute != nullptr);
 
-    *rd = rdOth_;
-    *wr = wrOth_;
-    *xc = xcOth_;
+    *read = readOther_;
+    *write = writeOther_;
+    *execute = executeOther_;
 }
 
 bool GFileObject::isLink(void) const noexcept
@@ -303,53 +302,56 @@ std::string GFileObject::getParentFolder(void) const noexcept
     return GFSBaseClass::_getParentFolder(fileSpec_);
 }
 
-void GFileObject::rescan(void)
+void GFileObject::rescan(void) throw(std::runtime_error)
 {
     clear();
     scanFile();
 }
 
 // Private methods
-void GFileObject::clear(void)
+void GFileObject::clear(void) noexcept
 {
     fileSpec_ = "";
-    rdUsr_ = false;
-    wrUsr_ = false;
-    xcUsr_ = false;
-    rdGrp_ = false;
-    wrGrp_ = false;
-    xcGrp_ = false;
-    rdOth_ = false;
-    wrOth_ = false;
-    xcOth_ = false;
+    readUser_ = false;
+    writeUser_ = false;
+    executeUser_ = false;
+    readGroup_ = false;
+    writeGroup_ = false;
+    executeGroup_ = false;
+    readOther_ = false;
+    writeOther_ = false;
+    executeOther_ = false;
     isLink_ = false;
-    std::memset(reinterpret_cast<void *>(&dateCreated_), 0xFF, sizeof(std::tm));
-    std::memset(reinterpret_cast<void *>(&dateLastAccessed_), 0xFF, sizeof(std::tm));
-    std::memset(reinterpret_cast<void *>(&dateLastModified_), 0xFF, sizeof(std::tm));
+    std::memset(reinterpret_cast<void *>(&dateCreated_),
+                std::numeric_limits<uint8_t>::max(), sizeof(std::tm));
+    std::memset(reinterpret_cast<void *>(&dateLastAccessed_),
+                std::numeric_limits<uint8_t>::max(), sizeof(std::tm));
+    std::memset(reinterpret_cast<void *>(&dateLastModified_),
+                std::numeric_limits<uint8_t>::max(), sizeof(std::tm));
     fileSize_ = std::numeric_limits<uint64_t>::max();
 }
 
-void GFileObject::scanFile(void)
+void GFileObject::scanFile(void) throw(std::runtime_error)
 {
     // http://codewiki.wikidot.com/c:system-call:stat
 
     struct stat fileStat;
-    int ret;
+    int32_t ret;
     std::tm * ptr;
 
     ret = lstat(fileSpec_.c_str(), &fileStat);
     if (ret == 0)
     {
         fileSize_ = fileStat.st_size;
-        rdUsr_ = (fileStat.st_mode & S_IRUSR) != 0;
-        wrUsr_ = (fileStat.st_mode & S_IWUSR) != 0;
-        xcUsr_ = (fileStat.st_mode & S_IXUSR) != 0;
-        rdGrp_ = (fileStat.st_mode & S_IRGRP) != 0;
-        wrGrp_ = (fileStat.st_mode & S_IWGRP) != 0;
-        xcGrp_ = (fileStat.st_mode & S_IXGRP) != 0;
-        rdOth_ = (fileStat.st_mode & S_IROTH) != 0;
-        wrOth_ = (fileStat.st_mode & S_IWOTH) != 0;
-        xcOth_ = (fileStat.st_mode & S_IXOTH) != 0;
+        readUser_ = ((fileStat.st_mode & S_IRUSR) != 0);
+        writeUser_ = ((fileStat.st_mode & S_IWUSR) != 0);
+        executeUser_ = ((fileStat.st_mode & S_IXUSR) != 0);
+        readGroup_ = ((fileStat.st_mode & S_IRGRP) != 0);
+        writeGroup_ = ((fileStat.st_mode & S_IWGRP) != 0);
+        executeGroup_ = ((fileStat.st_mode & S_IXGRP) != 0);
+        readOther_ = ((fileStat.st_mode & S_IROTH) != 0);
+        writeOther_ = ((fileStat.st_mode & S_IWOTH) != 0);
+        executeOther_ = ((fileStat.st_mode & S_IXOTH) != 0);
         isLink_ = S_ISLNK(fileStat.st_mode);
         ptr = std::localtime(&fileStat.st_ctime);
         if (ptr != NULL)
@@ -360,7 +362,8 @@ void GFileObject::scanFile(void)
             }
             else
             {
-                std::memset(reinterpret_cast<char *>(&dateCreated_), 0xFF, sizeof(dateCreated_));
+                std::memset(reinterpret_cast<char *>(&dateCreated_),
+                            std::numeric_limits<uint8_t>::max(), sizeof(dateCreated_));
             }
         }
         ptr = std::localtime(&fileStat.st_atime);
@@ -372,7 +375,8 @@ void GFileObject::scanFile(void)
             }
             else
             {
-                std::memset(reinterpret_cast<char *>(&dateLastAccessed_), 0xFF, sizeof(dateLastAccessed_));
+                std::memset(reinterpret_cast<char *>(&dateLastAccessed_),
+                            std::numeric_limits<uint8_t>::max(), sizeof(dateLastAccessed_));
             }
         }
         ptr = std::localtime(&fileStat.st_mtime);
@@ -384,54 +388,53 @@ void GFileObject::scanFile(void)
             }
             else
             {
-                std::memset(reinterpret_cast<char *>(&dateLastModified_), 0xFF, sizeof(dateLastModified_));
+                std::memset(reinterpret_cast<char *>(&dateLastModified_),
+                            std::numeric_limits<uint8_t>::max(), sizeof(dateLastModified_));
             }
         }
     }
-    std::cout << fileSpec_ << std::endl;
-    std::cout << getAttributesAsString() << std::endl;
-    std::cout << fileSize_ << std::endl;
-    std::cout << std::asctime(&dateCreated_);
-    std::cout << std::asctime(&dateLastAccessed_);
-    std::cout << std::asctime(&dateLastModified_);
+    else
+    {
+        clear();
+    }
 }
 
 bool GFileObject::isTmValid(std::tm const& tm) const noexcept
 {
-    if ((tm.tm_sec < 0) || (tm.tm_sec > 60))
+    if ((tm.tm_sec < kTimeDateMinSec) || (tm.tm_sec > kTimeDateMaxSec))
     {
         return false;
     }
-    if ((tm.tm_min < 0) || (tm.tm_min > 59))
+    if ((tm.tm_min < kTimeDateMinMin) || (tm.tm_min > kTimeDateMaxMin))
     {
         return false;
     }
-    if ((tm.tm_hour < 0) || (tm.tm_hour > 23))
+    if ((tm.tm_hour < kTimeDateMinHour) || (tm.tm_hour > kTimeDateMaxHour))
     {
         return false;
     }
-    if ((tm.tm_mday < 1) || (tm.tm_mday > 31))
+    if ((tm.tm_mday < kTimeDateMinMonthDay) || (tm.tm_mday > kTimeDateMaxMonthDay))
     {
         return false;
     }
-    if ((tm.tm_mon < 0) || (tm.tm_mon > 11))
+    if ((tm.tm_mon < kTimeDateMinMonth) || (tm.tm_mon > kTimeDateMaxMonth))
     {
         return false;
     }
-    if (tm.tm_year > 2000)
+    if (tm.tm_year > kTimeDateMaxYearIncrement)
     {
-        // Assume this SW will not run after year 2100 :-)
+        // Assume this SW will not run beyond year 2100 :-)
         return false;
     }
-    if ((tm.tm_wday < 0) || (tm.tm_wday > 6))
-    {
-        return false;
-    }
-    if ((tm.tm_yday < 0) || (tm.tm_yday > 365))
+    if ((tm.tm_wday < kTimeDateMinWeekDay) || (tm.tm_wday > kTimeDateMaxWeekDay))
     {
         return false;
     }
-    if (tm.tm_isdst > 0)
+    if ((tm.tm_yday < kTimeDateMinYearDay) || (tm.tm_yday > kTimeDateMaxYearDay))
+    {
+        return false;
+    }
+    if ((tm.tm_isdst < kTimeDateMinDstValue) || (tm.tm_isdst > kTimeDateMaxDstValue))
     {
         return false;
     }

@@ -757,7 +757,12 @@ void Playground::_doFSO(void)
             lastfile = it.getFileSpec();
         }
         giotto::utils::GFileObject fileo(lastfile);
-        //fileo.rescan();
+
+        std::cout << fileo.getFileName() << std::endl;
+        std::cout << fileo.getFilePath() << std::endl;
+        std::cout << fileo.getFileSpec() << std::endl;
+        std::cout << fileo.getAttributesAsString() << std::endl;
+        std::cout << fileo.getDateTimeCreated() << std::endl;
         delete fo;
     }
 }

@@ -27,7 +27,6 @@
 #include <stdexcept>
 #include <cstdint>
 #include <ctime>
-#include <vector>
 #include <string>
 
 #include "GFSBaseClass.hpp"
@@ -44,8 +43,8 @@ class GFileObject : public GFSBaseClass
 public:
     GFileObject() = delete;
 
-    explicit GFileObject(std::string const& fileSpec);
-    explicit GFileObject(GFileCollectionElement const& file);
+    explicit GFileObject(std::string const& fileSpec) throw(std::runtime_error);
+    explicit GFileObject(GFileCollectionElement const& file) throw(std::runtime_error);
 
     GFileObject(GFileObject const&) = delete;
     GFileObject(GFileObject&&) = delete;
@@ -59,10 +58,10 @@ public:
     std::string getFileName(void) const noexcept;
     std::string getFilePath(void) const noexcept;
 
-    std::string getAttributesAsString(void) const;
-    void getUserAttributes(bool * rd, bool * wr, bool * xc) const noexcept;
-    void getGroupAttributes(bool * rd, bool * wr, bool * xc) const noexcept;
-    void getOtherAttributes(bool * rd, bool * wr, bool * xc) const noexcept;
+    std::string getAttributesAsString(void) const noexcept;
+    void getUserAttributes(bool * read, bool * write, bool * execute) const noexcept;
+    void getGroupAttributes(bool * read, bool * write, bool * execute) const noexcept;
+    void getOtherAttributes(bool * read, bool * wriye, bool * execute) const noexcept;
     bool isLink(void) const noexcept;
     uint64_t getFileSize(void) const noexcept;
     std::string getDateCreated(void) const noexcept;
@@ -76,27 +75,49 @@ public:
     std::string getDateTimeLastModified(void) const noexcept;
     std::string getParentFolder(void) const noexcept;
 
-    void rescan(void);
+    void rescan(void) throw(std::runtime_error);
 private:
-    void clear(void);
-    void scanFile(void);
+    void clear(void) noexcept;
+    void scanFile(void) throw(std::runtime_error);
     bool isTmValid(std::tm const& tm) const noexcept;
 
     std::string fileSpec_;
-    bool rdUsr_;
-    bool wrUsr_;
-    bool xcUsr_;
-    bool rdGrp_;
-    bool wrGrp_;
-    bool xcGrp_;
-    bool rdOth_;
-    bool wrOth_;
-    bool xcOth_;
+    bool readUser_;
+    bool writeUser_;
+    bool executeUser_;
+    bool readGroup_;
+    bool writeGroup_;
+    bool executeGroup_;
+    bool readOther_;
+    bool writeOther_;
+    bool executeOther_;
     bool isLink_;
     std::tm dateCreated_;
     std::tm dateLastAccessed_;
     std::tm dateLastModified_;
     uint64_t fileSize_;
+
+    static const char kAttrCharNothing = '-';
+    static const char kAttrCharRead = 'r';
+    static const char kAttrCharWrite = 'w';
+    static const char kAttrCharExecute = 'x';
+    static const int32_t kTimeDateMinSec = 0;
+    static const int32_t kTimeDateMaxSec = 60;
+    static const int32_t kTimeDateMinMin = 0;
+    static const int32_t kTimeDateMaxMin = 59;
+    static const int32_t kTimeDateMinHour = 0;
+    static const int32_t kTimeDateMaxHour = 23;
+    static const int32_t kTimeDateMinMonthDay = 1;
+    static const int32_t kTimeDateMaxMonthDay = 31;
+    static const int32_t kTimeDateMinMonth = 0;
+    static const int32_t kTimeDateMaxMonth = 11;
+    static const int32_t kTimeDateMaxYearIncrement = 200;
+    static const int32_t kTimeDateMinWeekDay = 0;
+    static const int32_t kTimeDateMaxWeekDay = 6;
+    static const int32_t kTimeDateMinYearDay = 0;
+    static const int32_t kTimeDateMaxYearDay = 365;
+    static const int32_t kTimeDateMinDstValue = -1;
+    static const int32_t kTimeDateMaxDstValue = 1;
 };
 
 }  // namespace utils
