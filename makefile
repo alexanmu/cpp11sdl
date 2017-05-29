@@ -190,6 +190,7 @@ endif
 
 ######################################## All ########################################
 all : clean clean-test tool test
+	$(RM) -rf $(BUILDDIR)/DerivedData
 
 clean-all: clean clean-play clean-test clean-lint
 
