@@ -30,10 +30,10 @@
 #include "GGraphicControl.hpp"
 #include "GfxRect.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GPanel : public GGraphicControl
@@ -56,8 +56,8 @@ private:
     gfx::GfxRect bounds_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GObject_hpp */

@@ -29,13 +29,13 @@
 #include "GObject.hpp"
 #include "GDialogsConstants.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace dialogs
+namespace dlgs
 {
 
-class GOKMsgBox : public objects::GObject
+class GOKMsgBox : public gobj::GObject
 {
 public:
     explicit GOKMsgBox(std::string const& vname, GObject* parent);
@@ -58,8 +58,8 @@ private:
     GObject* parent_;
 };
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GOKMsgBox_hpp */

@@ -23,12 +23,12 @@
 
 #include "GDialogsConstants.hpp"
 
-namespace giotto
+namespace gto
 {
-namespace dialogs
+namespace dlgs
 {
 
-}  // namespace dialogs
-}  // namespace giotto
+}  // namespace dlgs
+}  // namespace gto
 
 /* EOF */

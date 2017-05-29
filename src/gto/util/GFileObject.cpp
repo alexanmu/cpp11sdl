@@ -32,10 +32,10 @@
 #include <limits>
 #include <cstring>
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 GFileObject::GFileObject(std::string const& fileSpec) throw(std::runtime_error) : GFSBaseClass()
@@ -441,8 +441,8 @@ bool GFileObject::isTmValid(std::tm const& tm) const noexcept
     return true;
 }
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

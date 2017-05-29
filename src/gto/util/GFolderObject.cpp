@@ -28,10 +28,10 @@
 #include "GFolderObject.hpp"
 #include "GFileObject.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 GFolderObject::GFolderObject(std::string const& folderSpec) : GFSBaseClass()
@@ -111,8 +111,8 @@ void GFolderObject::scanFolder(void)
     }
 }
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

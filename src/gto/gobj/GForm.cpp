@@ -28,10 +28,10 @@
 #include "GForm.hpp"
 #include "GfxError.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
@@ -128,8 +128,8 @@ void GForm::draw(void)
     }
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

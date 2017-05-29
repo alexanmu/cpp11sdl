@@ -35,10 +35,10 @@
 #include "GfxControlledSurface.hpp"
 #include "GfxColor.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GGraphicControl : public GControl
@@ -88,8 +88,8 @@ private:
     static const gfx::GfxColor kDefaultBorderShadowColor;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GGraphicControl_hpp */

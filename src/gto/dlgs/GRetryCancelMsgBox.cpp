@@ -35,16 +35,17 @@
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBox.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace dialogs
+namespace dlgs
 {
 
 GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& vname, GObject* parent) :
         GObject(), parent_(parent)
 {
     assert(vname.length() > 0);
+    assert(parent_ != nullptr);
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
@@ -54,6 +55,7 @@ GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& vname, GObject* parent
             const std::string& message) : GObject(), parent_(parent)
 {
     assert(vname.length() > 0);
+    assert(parent_ != nullptr);
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;
@@ -104,8 +106,8 @@ GDialogsConstants GRetryCancelMsgBox::getSelection(void) const
     return selection_;
 }
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

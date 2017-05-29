@@ -28,10 +28,10 @@
 
 #include "GComponent.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GComponent::GComponent(std::string const& vname, GComponent * owner) : GObject()
@@ -137,8 +137,8 @@ std::string const& GComponent::getName(void) const
     return vname_;
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

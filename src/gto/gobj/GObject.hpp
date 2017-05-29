@@ -27,10 +27,10 @@
 #include <cstdint>
 #include <string>
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GObject
@@ -57,8 +57,8 @@ private:
     GInitType initType_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GObject_hpp */

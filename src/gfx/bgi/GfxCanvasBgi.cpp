@@ -177,7 +177,7 @@ void GfxCanvasBgi::bar3d(int left, int top, int right, int bottom, int depth, in
     rectangle(left, top, right, bottom);
 
     // topflag - what should I do with it?
-    topflag = topflag;
+    assert(topflag == 0);
 }  // bar3d ()
 
 // -----
@@ -899,7 +899,7 @@ void GfxCanvasBgi::floodfill(int x, int y, bgiColors border)
 void GfxCanvasBgi::freeimage(void * bitmap)
 {
     /* Caller manages memory */
-    bitmap = bitmap;
+    assert(bitmap != nullptr);
 }
 
 // -----
@@ -1059,7 +1059,7 @@ void GfxCanvasBgi::getpalette(struct palettetype *palette)
 int GfxCanvasBgi::getpalettesize(struct palettetype *palette)
 {
     // Returns the size of the palette.
-    palette = palette;
+    assert(palette != nullptr);
 
     return (1 + GfxCanvasBgiData::kMaxColors);
 }  // getpalettesize ()
@@ -2087,7 +2087,7 @@ void GfxCanvasBgi::putpixel_or(int x, int y, uint32_t pixel)
 void GfxCanvasBgi::putpixel_not(int x, int y, uint32_t pixel)
 {
     // NOT-ed putpixel
-    pixel = pixel;
+    assert(pixel < 0x00FFFFFF);
 
     // out of range?
     if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
@@ -2316,7 +2316,7 @@ void GfxCanvasBgi::settextstyle(int font, bgiDirection direction, int charsize)
     }
     bgi_txt_style.charsize = bgi_font_mag_x = bgi_font_mag_y = charsize;
     // avoid compiler warning
-    font = font;
+    assert(font >= 0);
 }  // settextstyle ()
 
 // -----
@@ -2365,7 +2365,7 @@ int GfxCanvasBgi::textheight(char *textstring)
 {
     // Returns the height in pixels of a string.
     // avoid compiler warning
-    textstring = textstring;
+    assert(textstring != nullptr);;
 
     return bgi_font_mag_y * bgi_font_height;
 }  // textheight ()

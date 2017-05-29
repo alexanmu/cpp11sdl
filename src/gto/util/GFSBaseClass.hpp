@@ -31,13 +31,13 @@
 
 #include "GObject.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
-class GFSBaseClass : public objects::GObject
+class GFSBaseClass : public gobj::GObject
 {
 public:
     virtual ~GFSBaseClass();
@@ -64,8 +64,8 @@ private:
     std::string _lz(std::string const& str, const uint32_t elen) const;
 };
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GFSBaseClass_hpp */

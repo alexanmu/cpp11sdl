@@ -29,13 +29,13 @@
 #include "GObject.hpp"
 #include "GDialogsConstants.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace dialogs
+namespace dlgs
 {
 
-class GQuitCancelMsgBox : public objects::GObject
+class GQuitCancelMsgBox : public gobj::GObject
 {
 public:
     explicit GQuitCancelMsgBox(std::string const& vname, GObject* parent);
@@ -58,8 +58,8 @@ private:
     GObject* parent_;
 };
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GQuitCancelMsgBox_hpp */

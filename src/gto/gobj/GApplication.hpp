@@ -32,10 +32,10 @@
 #include "GObject.hpp"
 #include "GForm.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GApplication : public GObject
@@ -63,8 +63,8 @@ private:
     gfx::ttf::GfxTtfInitQuit * ttfiq_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GApplication_hpp */

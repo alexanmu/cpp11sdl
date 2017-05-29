@@ -32,10 +32,10 @@
 #include "GFSBaseClass.hpp"
 #include "GFileCollectionElement.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 class GFileObject : public GFSBaseClass
@@ -120,8 +120,8 @@ private:
     static const int32_t kTimeDateMaxDstValue = 1;
 };
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GFileObject_hpp */

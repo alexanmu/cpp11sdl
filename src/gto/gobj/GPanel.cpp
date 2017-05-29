@@ -26,10 +26,10 @@
 
 #include "GPanel.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GPanel::GPanel(std::string const& vname, GComponent* owner, gfx::GfxRect bounds) :
@@ -50,8 +50,8 @@ void GPanel::clear(void)
     bounds_.clear();
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

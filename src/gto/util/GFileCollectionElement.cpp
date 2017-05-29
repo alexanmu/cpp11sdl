@@ -25,10 +25,10 @@
 
 #include "GFileCollectionElement.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 GFileCollectionElement::GFileCollectionElement(std::string const& fileSpec) : GFSBaseClass()
@@ -83,8 +83,8 @@ void GFileCollectionElement::clear(void)
     fileSpec_ = "";
 }
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

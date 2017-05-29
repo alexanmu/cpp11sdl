@@ -26,10 +26,10 @@
 
 #include <cstdint>
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 enum class GBorderThikness : uint8_t
@@ -69,8 +69,8 @@ enum class GTextRenderMode : uint8_t
 extern const uint16_t kMaxObjectWidth;
 extern const uint16_t kMaxObjectHeight;
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GTypes_hpp */

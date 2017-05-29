@@ -24,9 +24,8 @@
 #ifndef GfxSdlHeader_hpp
 #define GfxSdlHeader_hpp
 
-#include "../platform/Linux.h"
-#include "../platform/macOS.h"
-#include "../platform/Windows.h"
+#include "Linux.h"
+#include "macOS.h"
 
 namespace gfx
 {
@@ -42,16 +41,17 @@ namespace sdl2 {
 #endif
 
 #ifdef __macosx_machine
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_bits.h"
-#include "SDL2_ttf/SDL_ttf.h"
-#endif
 
-#ifdef __windows_machine
-#include "include/SDL2/SDL.h"
-#include "include/SDL2/SDL_bits.h"
+// #include "SDL2/SDL.h"
+// #include "SDL2/SDL_bits.h"
+// #include "SDL2_ttf/SDL_ttf.h"
+
+#include "SDL.h"
+#include "SDL_bits.h"
+#include "SDL_ttf.h"
+
 #endif
-}  // namespce sdl2
+}  // namespace sdl2
 
 }  // namespace gfx
 

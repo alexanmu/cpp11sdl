@@ -23,17 +23,17 @@
 
 #include "GTypes.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 const uint16_t kMaxObjectWidth = 8192;
 const uint16_t kMaxObjectHeight = 8192;
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

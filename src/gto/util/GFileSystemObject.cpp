@@ -31,10 +31,10 @@
 #include "GFolderObject.hpp"
 #include "GFileObject.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 GFileSystemObject::GFileSystemObject() : GFSBaseClass()
@@ -234,9 +234,9 @@ void GFileSystemObject::moveFolder(std::string const& source, std::string const&
     throw std::runtime_error("Not implemented");
 }
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */
 

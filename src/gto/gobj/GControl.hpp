@@ -33,10 +33,10 @@
 #include "GComponent.hpp"
 #include "GfxRect.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GControl : public GComponent
@@ -102,8 +102,8 @@ private:
     void adjustClientBounds(void) noexcept;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GControl_hpp */

@@ -25,10 +25,10 @@
 
 #include "GFolderCollectionElement.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 GFolderCollectionElement::GFolderCollectionElement() : GFSBaseClass()
@@ -88,8 +88,8 @@ void GFolderCollectionElement::clear(void)
     folderSpec_ = "";
 }
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

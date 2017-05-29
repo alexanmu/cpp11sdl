@@ -31,10 +31,10 @@
 
 #include "GObject.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 #define GVarName(x) (#x)
@@ -75,8 +75,8 @@ protected:
     std::vector<GComponent *> components_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GComponent_hpp */

@@ -33,10 +33,10 @@
 #include "GTypes.hpp"
 #include "GfxFontInfo.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GLabel : public GGraphicControl
@@ -72,8 +72,8 @@ private:
     gfx::supp::GfxFontInfo fontInfo_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GLabel_hpp */

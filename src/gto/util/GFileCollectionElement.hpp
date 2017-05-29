@@ -29,10 +29,10 @@
 
 #include "GFSBaseClass.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 class GFileCollectionElement : public GFSBaseClass
@@ -57,8 +57,8 @@ private:
 
 typedef std::vector<GFileCollectionElement> GFilesCollection;
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GFileCollectionElement_hpp */

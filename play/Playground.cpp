@@ -21,18 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include "Playground.hpp"
-
-void Playground::_doPlayground(void)
-{
-    //_doBenchmark();
-    //_doFonts();
-    //_doPaletteSdl();
-    //_doPaletteGfx();
-    //_doCallback();
-    //_doComponent();
-    _doFSO();
-}
 
 /******************************************************* Benchmark *******************************************************/
 #include <cstdlib>
@@ -131,8 +121,8 @@ double Playground::Algo2(uint32_t * ptr)
 
 #include <thread>
 
-#pragma GCC push_options
-#pragma GCC optimize("Ofast")
+// #pragma GCC push_options
+// #pragma GCC optimize("Ofast")
 void Algo3Part(uint64_t * ptr, uint64_t * endptr, const uint64_t bp)
 {
     while (ptr < endptr )
@@ -188,7 +178,7 @@ double Playground::Algo3(uint32_t * ptr)
     }
     return std::chrono::duration<double>(end - start).count();
 }
-#pragma GCC pop_options
+// #pragma GCC pop_options
 
 void Playground::DoAlgo(const int algo_index)
 {
@@ -469,9 +459,8 @@ void Playground::_doFonts(void)
 #include <iomanip>
 #include <sstream>
 
-#include "platform/Linux.h"
-#include "platform/macOS.h"
-#include "platform/Windows.h"
+#include "Linux.h"
+#include "macOS.h"
 #include "GfxSdlHeader.hpp"
 
 // http://stackoverflow.com/questions/5100718/integer-to-hex-string-in-c
@@ -676,7 +665,7 @@ void Playground::_doCallback(void)
 /***************************************************** Component *****************************************************/
 #include "GComponent.hpp"
 
-using giotto::objects::GComponent;
+using gto::gobj::GComponent;
 
 void Playground::_doComponent(void)
 {
@@ -730,9 +719,9 @@ void Playground::_doComponent(void)
 #include "GFolderObject.hpp"
 #include "GFileObject.hpp"
 
-using giotto::utils::GFileSystemObject;
-using giotto::utils::GFolderObject;
-using giotto::utils::GFileObject;
+using gto::util::GFileSystemObject;
+using gto::util::GFolderObject;
+using gto::util::GFileObject;
 
 void Playground::_doFSO(void)
 {
@@ -742,7 +731,7 @@ void Playground::_doFSO(void)
     std::cout << "pwd=" << fso._getWorkingDirectory() << std::endl;
     if (fo != nullptr)
     {
-        giotto::utils::GFilesCollection fcoll;
+        gto::util::GFilesCollection fcoll;
         std::string lastfile;
 
         fcoll = fo->getFilesCollection();
@@ -756,7 +745,7 @@ void Playground::_doFSO(void)
             std::cout << it.getFileSpec() << "<>" << fn << "<>" << path << std::endl;
             lastfile = it.getFileSpec();
         }
-        giotto::utils::GFileObject fileo(lastfile);
+        gto::util::GFileObject fileo(lastfile);
 
         std::cout << fileo.getFileName() << std::endl;
         std::cout << fileo.getFilePath() << std::endl;
@@ -765,6 +754,28 @@ void Playground::_doFSO(void)
         std::cout << fileo.getDateTimeCreated() << std::endl;
         delete fo;
     }
+}
+
+/******************************************************* main *******************************************************/
+void Playground::_doPlayground(void)
+{
+    //_doBenchmark();
+    //_doFonts();
+    //_doPaletteSdl();
+    //_doPaletteGfx();
+    //_doCallback();
+    //_doComponent();
+    _doFSO();
+}
+
+int main(int argc, char *argv[])
+{
+    Playground p;
+
+    assert(argc == 1);
+    assert(argv != nullptr);
+    p._doPlayground();
+    return 0;
 }
 
 /* EOF */

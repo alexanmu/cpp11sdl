@@ -32,10 +32,10 @@
 #include "GImage.hpp"
 #include "GTypes.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GBitmap : public GImage
@@ -59,8 +59,8 @@ private:
     gfx::supp::GfxControlledSurface imgSurf_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GBitmap_hpp */

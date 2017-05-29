@@ -31,10 +31,10 @@
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GBitmap::GBitmap(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
@@ -105,8 +105,8 @@ void GBitmap::draw(void) throw(std::runtime_error)
     GImage::draw();
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

@@ -27,10 +27,10 @@
 
 #include "GControl.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GControl::GControl(std::string const& vname, GComponent* owner) : GComponent(vname, owner)
@@ -187,8 +187,8 @@ void GControl::adjustClientBounds(void) noexcept
     }
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

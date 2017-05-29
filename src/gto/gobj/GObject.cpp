@@ -25,10 +25,10 @@
 
 #include <string>
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GObject::GObject()
@@ -83,8 +83,8 @@ bool GObject::operator==(GObject const& other)
     return true;
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

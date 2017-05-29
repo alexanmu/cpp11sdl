@@ -30,16 +30,14 @@
 #include <cstring>
 
 #include "GfxInitQuit.hpp"
-#include "Playground.hpp"
 #include "GfxWindow.hpp"
 #include "GfxRenderer.hpp"
 #include "GfxSurface.hpp"
 #include "GfxTexture.hpp"
 #include "GfxBgiConstants.hpp"
 #include "GfxCanvas.hpp"
-#include "platform/Linux.h"
-#include "platform/macOS.h"
-#include "platform/Windows.h"
+#include "Linux.h"
+#include "macOS.h"
 #include "GfxMessageBox.hpp"
 #include "GfxCpuInfo.hpp"
 #include "GfxPlatform.hpp"
@@ -93,13 +91,15 @@ void MsgBox(gfx::GfxWindow const& win)
         gfx::GfxMessageBoxColor(255, 255, 255)
     };
     gfx::GfxMessageBoxColorScheme colorScheme(c);
-    colorScheme.setColor(gfx::GfxMessageBoxColorType(gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorBackground),
+    colorScheme.setColor(gfx::GfxMessageBoxColorType(
+                            gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorBackground),
                          gfx::GfxMessageBoxColor(
                                             gfx::bgi::GfxBgiConstants::vgaDarkGray().getRed(),
                                             gfx::bgi::GfxBgiConstants::vgaDarkGray().getGreen(),
                                             gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue()));
 
-    gfx::GfxMessageBoxData m(flags, const_cast<gfx::GfxWindow *>(&win), title, message, numbuttons, buttons, colorScheme);
+    gfx::GfxMessageBoxData m(flags, const_cast<gfx::GfxWindow *>(&win), title, message, numbuttons, buttons,
+                                colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
 
     gfx::GfxMessageBox g(m);
@@ -285,8 +285,12 @@ void _doStuff(void)
         return;
     }
     gfx::GfxWindowFlags wf(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
-    gfx::GfxWindow win("Window title", gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered),
-                       gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered), WIN_W, WIN_H, wf);
+    gfx::GfxWindow win("Window title",
+                        gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered),
+                        gfx::GfxWindowPosition(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered),
+                        WIN_W,
+                        WIN_H,
+                        wf);
     MsgBox(win);
     gfx::GfxRenderer rend(win);
 
@@ -381,9 +385,12 @@ void _doStuff(void)
             uint8_t g;
             uint8_t b;
 
-            r = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
-            g = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
-            b = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
+            r = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(
+                    static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getRed();
+            g = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(
+                    static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
+            b = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(
+                    static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
             cv.PutPixel(gfx::GfxPoint(i, j), gfx::GfxColor(r, g, b, 224));
         }
         if (((i + 1) % 60) == 0)
@@ -534,9 +541,7 @@ void _doStuff(void)
 
 void _doPlay(void)
 {
-    Playground p;
-
-    p._doPlayground();
+    std::cout << "Moved to play!" << std::endl;
 }
 
 #include "GApplication.hpp"
@@ -544,7 +549,7 @@ void _doPlay(void)
 
 void _doGApp(void)
 {
-    giotto::objects::GApplication gApp(GVarName(gApp));
+    gto::gobj::GApplication gApp(GVarName(gApp));
     GDemoForm * demoForm = new GDemoForm("GDemoForm");
 
     gApp.setMainForm(demoForm);
@@ -577,7 +582,7 @@ int main(int argc, const char * argv[])
             action = 2;
         }
     }
-    action = 0; // temp
+
     switch (action)
     {
         case 0:

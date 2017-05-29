@@ -32,10 +32,10 @@
 #include "GFolderCollectionElement.hpp"
 #include "GFileCollectionElement.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 class GFileObject;
@@ -65,18 +65,18 @@ private:
     void scanFolder(void);
 
     std::string folderSpec_;
-    uint32_t attributes_;
-    uint32_t dateLastAccessed_;
-    uint32_t dateLastModified_;
-    bool isRootFolder;
+    // uint32_t attributes_;
+    // uint32_t dateLastAccessed_;
+    // uint32_t dateLastModified_;
+    // bool isRootFolder;
     std::string parentFolder_;
-    uint64_t size_;
+    // uint64_t size_;
     GFolderCollection subFolders_;
     GFilesCollection files_;
 };
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GFolderObject_hpp */

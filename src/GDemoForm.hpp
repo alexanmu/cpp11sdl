@@ -30,7 +30,7 @@
 #include "GObject.hpp"
 #include "GForm.hpp"
 
-class GDemoForm : public giotto::objects::GForm
+class GDemoForm : public gto::gobj::GForm
 {
 public:
     explicit GDemoForm(const std::string& appName);

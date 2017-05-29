@@ -29,10 +29,10 @@
 #include "GComponent.hpp"
 #include "GfxRect.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 const gfx::GfxColor GGraphicControl::kDefaultForegroundColor { 0xFF, 0xFF, 0xFF, 0xFF };
@@ -217,8 +217,8 @@ void GGraphicControl::drawBackground(void) noexcept
     }
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

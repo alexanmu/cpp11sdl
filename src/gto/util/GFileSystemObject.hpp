@@ -30,10 +30,10 @@
 
 #include "GFSBaseClass.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace utils
+namespace util
 {
 
 class GFileObject;
@@ -80,8 +80,8 @@ private:
     GFSOErrorCode errorCode_;
 };
 
-}  // namespace utils
+}  // namespace util
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GFileSystemObject_hpp */

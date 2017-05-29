@@ -81,7 +81,7 @@ uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff
  };
 
-GDemoForm::GDemoForm(const std::string& appName) : giotto::objects::GForm(appName)
+GDemoForm::GDemoForm(const std::string& appName) : gto::gobj::GForm(appName)
 {
 }
 
@@ -98,24 +98,24 @@ void GDemoForm::draw(void)
     window_.get()->setWindowIcon(surf);
 
     /*************************************************************************************************/
-    giotto::objects::GGraphicControl g(GVarName(g), this, 50, 50);
-    g.setBorderThikness(giotto::objects::GBorderThikness::thikBorder);
+    gto::gobj::GGraphicControl g(GVarName(g), this, 50, 50);
+    g.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
     g.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
-    g.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
+    g.setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
     g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
-    g.setBackgroundStyle(giotto::objects::GBackgroundStyle::solidColor);
+    g.setBackgroundStyle(gto::gobj::GBackgroundStyle::solidColor);
     g.draw();
     windowsurface_->blitSurface(g.getSurface()(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
 
-    giotto::objects::GBitmap bmp(GVarName(bmp), this, 384, 384,
-                giotto::objects::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
+    gto::gobj::GBitmap bmp(GVarName(bmp), this, 384, 384,
+                gto::gobj::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
     bmp.load();
     bmp.setBorderColor(gfx::bgi::GfxBgiConstants::vgaLightGreen());
-    bmp.setBorderThikness(giotto::objects::GBorderThikness::thinBorder);
+    bmp.setBorderThikness(gto::gobj::GBorderThikness::thinBorder);
     bmp.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaGreen());
-    bmp.setBorderStyle(giotto::objects::GBorderStyle::sunken3DBorder);
-    bmp.setScaleMode(giotto::objects::GImageScaleMode::strechScaled);
+    bmp.setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
+    bmp.setScaleMode(gto::gobj::GImageScaleMode::strechScaled);
     bmp.draw();
     windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::GfxRect(90, 90, 384, 384));
 
@@ -124,16 +124,16 @@ void GDemoForm::draw(void)
     gv.getVersion(&v);
     std::string labelText = "Label text " + v.getAsString();
 
-    giotto::objects::GLabel g2(GVarName(g2), this, 280, 60, labelText, 32);
-    g2.setBorderThikness(giotto::objects::GBorderThikness::thikBorder);
+    gto::gobj::GLabel g2(GVarName(g2), this, 280, 60, labelText, 32);
+    g2.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
     g2.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g2.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
-    g2.setBorderStyle(giotto::objects::GBorderStyle::raised3DBorder);
+    g2.setBorderStyle(gto::gobj::GBorderStyle::raised3DBorder);
     g2.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
     g2.setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightCyan());
-    g2.setTextRenderMode(giotto::objects::GTextRenderMode::solidText);
+    g2.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
     g2.getFontInfo().setFontUnderline(true);
-    g2.setTextRenderMode(giotto::objects::GTextRenderMode::blendedText);
+    g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g2.draw();
     windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(600, 10, 120, 60));
 
@@ -142,13 +142,13 @@ void GDemoForm::draw(void)
 
 void GDemoForm::run(void)
 {
-    giotto::dialogs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "An error occured. What should I do?");
+    gto::dlgs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "An error occured. What should I do?");
     g.showModal();
 
-    giotto::dialogs::GDialogsConstants sel;
+    gto::dlgs::GDialogsConstants sel;
 
     sel = g.getSelection();
-    while (sel != giotto::dialogs::GDialogsConstants::kButtonQuit)
+    while (sel != gto::dlgs::GDialogsConstants::kButtonQuit)
     {
         g.showModal();
         sel = g.getSelection();

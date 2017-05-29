@@ -28,10 +28,10 @@
 #include "GImage.hpp"
 #include "GTypes.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GImage::GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
@@ -77,8 +77,8 @@ void GImage::draw(void)
     GGraphicControl::draw();
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

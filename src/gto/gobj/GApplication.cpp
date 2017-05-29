@@ -27,10 +27,10 @@
 #include "GfxInitFlags.hpp"
 #include "GApplication.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GApplication::GApplication(std::string const& appname) : GObject()
@@ -96,8 +96,8 @@ void GApplication::run()
     }
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

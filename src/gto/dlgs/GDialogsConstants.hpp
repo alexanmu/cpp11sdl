@@ -28,10 +28,10 @@
 
 #include "GObject.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace dialogs
+namespace dlgs
 {
 
 enum class GDialogsConstants : uint16_t
@@ -45,8 +45,8 @@ enum class GDialogsConstants : uint16_t
     kButtonQuit = 0x0015
 };
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GDialogsConstants_hpp */

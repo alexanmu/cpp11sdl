@@ -35,16 +35,17 @@
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBox.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace dialogs
+namespace dlgs
 {
 
 GOKMsgBox::GOKMsgBox(std::string const& vname, GObject* parent) :
         GObject(), parent_(parent)
 {
     assert(vname.length() > 0);
+    assert(parent_ != nullptr);
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
@@ -54,6 +55,7 @@ GOKMsgBox::GOKMsgBox(std::string const& vname, GObject* parent, const std::strin
         const std::string& message) : GObject(), parent_(parent)
 {
     assert(vname.length() > 0);
+    assert(parent_ != nullptr);
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;
@@ -101,8 +103,8 @@ GDialogsConstants GOKMsgBox::getSelection(void) const
     return selection_;
 }
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

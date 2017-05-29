@@ -33,10 +33,10 @@
 #include "GTypes.hpp"
 #include "GfxControlledSurface.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GImage : public GGraphicControl
@@ -68,8 +68,8 @@ protected:
     static const GImageScaleMode kDefaultImageScaleMode = GImageScaleMode::centerScaled;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GImage_hpp */

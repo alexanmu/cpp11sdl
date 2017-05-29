@@ -29,17 +29,17 @@
 #include "GObject.hpp"
 #include "GDialogsConstants.hpp"
 
-namespace giotto
+namespace gto
 {
-namespace dialogs
+namespace dlgs
 {
 
-class GAbortRetryIgnoreMsgBox : public objects::GObject
+class GAbortRetryIgnoreMsgBox : public gobj::GObject
 {
 public:
-    explicit GAbortRetryIgnoreMsgBox(std::string const& name, GObject* parent);
+    explicit GAbortRetryIgnoreMsgBox(std::string const& name, gobj::GObject* parent);
 
-    GAbortRetryIgnoreMsgBox(std::string const& name, GObject* parent, const std::string& title,
+    GAbortRetryIgnoreMsgBox(std::string const& name, gobj::GObject* parent, const std::string& title,
                             const std::string& message);
 
     GAbortRetryIgnoreMsgBox(GAbortRetryIgnoreMsgBox const&) = delete;
@@ -54,11 +54,11 @@ private:
     std::string title_;
     std::string message_;
     GDialogsConstants selection_;
-    GObject* parent_;
+    gobj::GObject* parent_;
 };
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GAbortRetryIgnoreMsgBox_hpp */

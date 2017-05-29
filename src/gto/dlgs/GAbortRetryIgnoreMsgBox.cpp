@@ -24,6 +24,7 @@
 #include <cassert>
 #include <string>
 
+#include "GObject.hpp"
 #include "GAbortRetryIgnoreMsgBox.hpp"
 
 #include "GfxMessageBoxFlags.hpp"
@@ -35,24 +36,26 @@
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBox.hpp"
 
-namespace giotto
+namespace gto
 {
-namespace dialogs
+namespace dlgs
 {
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, GObject* parent) :
-        GObject(), parent_(parent)
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GObject* parent) :
+        gobj::GObject(), parent_(parent)
 {
     assert(vname.length() > 0);
+    assert(parent_ != nullptr);
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, GObject* parent,
-        const std::string& title, const std::string& message) : GObject(), parent_(parent)
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GObject* parent,
+        const std::string& title, const std::string& message) : gobj::GObject(), parent_(parent)
 {
     assert(vname.length() > 0);
+    assert(parent_ != nullptr);
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;
@@ -108,8 +111,8 @@ GDialogsConstants GAbortRetryIgnoreMsgBox::getSelection(void) const
     return selection_;
 }
 
-}  // namespace dialogs
+}  // namespace dlgs
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */

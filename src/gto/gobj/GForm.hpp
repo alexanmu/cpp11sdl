@@ -32,10 +32,10 @@
 #include "GfxWindow.hpp"
 #include "GfxSurface.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 class GForm : public GComponent
@@ -76,8 +76,8 @@ private:
     bool canvasInUse_;
 };
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 #endif /* GWindowObject_hpp */

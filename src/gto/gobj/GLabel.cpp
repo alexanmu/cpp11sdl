@@ -37,10 +37,10 @@
 #include "GfxTtfFontRenderer.hpp"
 #include "GfxFontInfo.hpp"
 
-namespace giotto
+namespace gto
 {
 
-namespace objects
+namespace gobj
 {
 
 GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
@@ -143,8 +143,8 @@ void GLabel::draw(void)
     GGraphicControl::draw();
 }
 
-}  // namespace objects
+}  // namespace gobj
 
-}  // namespace giotto
+}  // namespace gto
 
 /* EOF */
