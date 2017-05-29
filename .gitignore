@@ -1,9 +1,51 @@
+## Based on https://github.com/github/gitignore
 
-*.xcworkspacedata
+# Prerequisits (C++.gitignore)
+*.d
 
-*.xcuserstate
+## Object files (C++.gitignore)
+*.o
 
-*.xcscheme
+## Lint files
+*.cpp.lnt
+*.hpp.lnt
 
+## Static libraries (C++.gitignore)
+*.a
+
+## Build generated (Xcode.gitignore)
+bin/
+DerivedData/
+
+## Various settings (Xcode.gitignore)
+*.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other (Xcode.gitignore/Objective-C.gitignore)
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## OS X (Objective-C.gitignore)
+*.dSYM.zip
+*.dSYM
+*.dSYM/
+
+## (macOS.gitignore)
+*.DS_Store
+._*
+
+## Specific
+build/
+data/
+include/
+*.xcworkspace/
+*.xcshareddata/
 *.plist
 
