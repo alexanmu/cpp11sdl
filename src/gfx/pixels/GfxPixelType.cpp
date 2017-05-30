@@ -25,11 +25,78 @@
 
 namespace gfx
 {
-    
+
 namespace pixels
 {
 
 const char GfxPixelType::ClassName[] = "GfxPixelType";
+
+GfxPixelType::GfxPixelType() : GfxRootClass(ClassName)
+{
+    clear();
+}
+
+GfxPixelType::GfxPixelType(ValueType value)
+{
+    value_ = static_cast<SdlType>(value);
+}
+
+GfxPixelType::GfxPixelType(SdlType value)
+{
+    value_ = value;
+}
+
+GfxPixelType::GfxPixelType(GfxPixelType const& other) : GfxRootClass(ClassName)
+{
+    value_ = other.value_;
+}
+
+GfxPixelType::GfxPixelType(GfxPixelType&& other) : GfxRootClass(ClassName)
+{
+    value_ = other.value_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other)
+{
+    if (this != &other)
+    {
+        value_ = other.value_;
+    }
+    return *this;
+}
+
+GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other)
+{
+    if (this != &other)
+    {
+        value_ = other.value_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
+}
+
+GfxPixelType::operator bool() const
+{
+    return true;
+}
+
+GfxPixelType::ValueType GfxPixelType::getValue(void) const noexcept
+{
+    return static_cast<ValueType>(value_);
+}
+
+void GfxPixelType::clear(void) noexcept
+{
+    value_ = static_cast<SdlType>(ValueType::pixelTypeUnknown);
+}
+
+GfxPixelType::SdlType GfxPixelType::getAsSdlType(void) const
+{
+    return value_;
+}
 
 }  // namespace pixels
 

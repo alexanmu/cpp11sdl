@@ -39,7 +39,6 @@ class GfxPixelType : public gfx::GfxRootClass
 {
 public:
     typedef uint32_t SdlType;
-    typedef uint32_t * SdlTypePtr;
 
     static const char ClassName[];
 
@@ -56,8 +55,28 @@ public:
         pixelTypeArrayU16 = sdl2::SDL_PIXELTYPE_ARRAYU16,
         pixelTypeArrayU32 = sdl2::SDL_PIXELTYPE_ARRAYU32,
         pixelTypeArrayF16 = sdl2::SDL_PIXELTYPE_ARRAYF16,
-        pixelTypeArrayF32 = sdl2::SDL_PIXELTYPE_ARRAYF32,
+        pixelTypeArrayF32 = sdl2::SDL_PIXELTYPE_ARRAYF32
     };
+
+    GfxPixelType();
+    explicit GfxPixelType(ValueType value);
+    explicit GfxPixelType(SdlType value);
+
+    GfxPixelType(GfxPixelType const& other);
+    GfxPixelType(GfxPixelType&& other);
+
+    GfxPixelType& operator=(GfxPixelType const& other);
+    GfxPixelType& operator=(GfxPixelType&& other);
+
+    virtual explicit operator bool() const;
+
+    ValueType getValue(void) const noexcept;
+
+    void clear(void) noexcept;
+
+    SdlType getAsSdlType(void) const;
+private:
+    SdlType value_;
 };
 
 }  // namespace pixels
