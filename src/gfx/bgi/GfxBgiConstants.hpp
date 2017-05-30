@@ -48,7 +48,7 @@ public:
     GfxBgiConstants& operator=(const GfxBgiConstants&) = delete;
     GfxBgiConstants& operator=(GfxBgiConstants&&) = delete;
 
-    static const int32_t vgaNumColors = 16;
+    static const int32_t kVgaNumColors = 16;
 
     enum class GfxVga16ColorIndex : int32_t
     {
@@ -70,26 +70,26 @@ public:
         indexWhite = 15
     };
 
-    static const GfxColor& vgaBlack(void);
-    static const GfxColor& vgaBlue(void);
-    static const GfxColor& vgaGreen(void);
-    static const GfxColor& vgaCyan(void);
-    static const GfxColor& vgaRed(void);
-    static const GfxColor& vgaMagenta(void);
-    static const GfxColor& vgaBrown(void);
-    static const GfxColor& vgaLightGray(void);
-    static const GfxColor& vgaDarkGray(void);
-    static const GfxColor& vgaLightBlue(void);
-    static const GfxColor& vgaLightGreen(void);
-    static const GfxColor& vgaLightCyan(void);
-    static const GfxColor& vgaLightRed(void);
-    static const GfxColor& vgaLightMagenta(void);
-    static const GfxColor& vgaYellow(void);
-    static const GfxColor& vgaWhite(void);
+    static const pixels::GfxColor& vgaBlack(void);
+    static const pixels::GfxColor& vgaBlue(void);
+    static const pixels::GfxColor& vgaGreen(void);
+    static const pixels::GfxColor& vgaCyan(void);
+    static const pixels::GfxColor& vgaRed(void);
+    static const pixels::GfxColor& vgaMagenta(void);
+    static const pixels::GfxColor& vgaBrown(void);
+    static const pixels::GfxColor& vgaLightGray(void);
+    static const pixels::GfxColor& vgaDarkGray(void);
+    static const pixels::GfxColor& vgaLightBlue(void);
+    static const pixels::GfxColor& vgaLightGreen(void);
+    static const pixels::GfxColor& vgaLightCyan(void);
+    static const pixels::GfxColor& vgaLightRed(void);
+    static const pixels::GfxColor& vgaLightMagenta(void);
+    static const pixels::GfxColor& vgaYellow(void);
+    static const pixels::GfxColor& vgaWhite(void);
 
-    static const GfxColor& vgaGetColorByIndex(const GfxVga16ColorIndex index);
+    static const pixels::GfxColor& vgaGetColorByIndex(const GfxVga16ColorIndex index);
 private:
-    static const GfxColor colorsVGA16_[vgaNumColors];
+    static const pixels::GfxColor kColorsVGA16_[kVgaNumColors];
 };
 
 }  // namespace bgi

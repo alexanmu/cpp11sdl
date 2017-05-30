@@ -58,17 +58,18 @@ public:
 
     virtual explicit operator bool() const;
 
-    void Circle(const GfxPoint& pt, const GfxRadius& r, const GfxColor& clr);
+    void Circle(const GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr);
     void Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
-             const GfxRadius& radius, const GfxColor& clr);
-    void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr);
-    void OutText(const GfxPoint& pt, const GfxString& text, const GfxColor& clr, const fnt::GfxBitmapFont& font);
-    void Bar(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
-    void Bar(const GfxRect& r, const GfxColor& clr);
-    void PutPixel(const GfxPoint& pt, const GfxColor& clr);
-    void Rect(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
-    void Rect(const GfxRect& r, const GfxColor& clr);
-    void Line(const GfxPoint& pt1, const GfxPoint& pt2, const GfxColor& clr);
+             const GfxRadius& radius, const pixels::GfxColor& clr);
+    void OutText(const GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr);
+    void OutText(const GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr,
+                  const fnt::GfxBitmapFont& font);
+    void Bar(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxColor& clr);
+    void Bar(const GfxRect& r, const pixels::GfxColor& clr);
+    void PutPixel(const GfxPoint& pt, const pixels::GfxColor& clr);
+    void Rect(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxColor& clr);
+    void Rect(const GfxRect& r, const pixels::GfxColor& clr);
+    void Line(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxColor& clr);
 private:
     GfxCanvasBgi bgi_;
 };
