@@ -88,7 +88,7 @@ GDemoForm::GDemoForm(const std::string& appName) : gto::gobj::GForm(appName)
 void GDemoForm::draw(void)
 {
     auto canvas = getCanvas();
-    canvas->Bar(gfx::GfxRect(0, 0, 300, 300), gfx::GfxColor(200, 200, 200));
+    canvas->Bar(gfx::GfxRect(0, 0, 300, 300), gfx::pixels::GfxColor(200, 200, 200));
     canvas->Line(gfx::GfxPoint(110, 110), gfx::GfxPoint(110, 190), gfx::bgi::GfxBgiConstants::vgaWhite());
     canvas->Line(gfx::GfxPoint(110, 110), gfx::GfxPoint(190, 110), gfx::bgi::GfxBgiConstants::vgaWhite());
     canvas->Line(gfx::GfxPoint(190, 110), gfx::GfxPoint(190, 190), gfx::bgi::GfxBgiConstants::vgaDarkGray());

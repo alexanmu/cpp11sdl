@@ -60,6 +60,7 @@
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
 #include "GfxBgiFontConstants.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 void MsgBox(gfx::GfxWindow const& win)
 {
@@ -221,28 +222,24 @@ void AfterDeInit(void)
 
 void bmpSurfaceInfo(gfx::GfxSurface* bmps)
 {
-    gfx::pixels::GfxPixelFormat * ptr;
+    gfx::pixels::GfxPixelFormat * fmt;
     gfx::pixels::GfxPalette::GfxColorVector vec;
+    int32_t bpp;
+    uint32_t redMask;
+    uint32_t greenMask;
+    uint32_t blueMask;
+    uint32_t alphaMask;
 
-    ptr = bmps->getFormat();
-    std::cout << "ptr.getFormat()=" << ptr->getFormat() << '\n';
+    fmt = bmps->getFormat();
+    std::cout << "fmt->getFormat()=" << fmt->getFormat().getAsSdlType() << '\n';
     // palette goes here
-    std::cout << "ptr.getBitsPerPixel()=" << static_cast<int>(ptr->getBitsPerPixel()) << '\n';
-    std::cout << "ptr.getBytesPerPixel()=" << static_cast<int>(ptr->getBytesPerPixel()) << '\n';
-    std::cout << "ptr.getRmask()=" << ptr->getRedMask() << '\n';
-    std::cout << "ptr.getGmask()=" << ptr->getGreenMask() << '\n';
-    std::cout << "ptr.getBmask()=" << ptr->getBlueMask() << '\n';
-    std::cout << "ptr.getAmask()=" << ptr->getAlphaMask() << '\n';
-    std::cout << "ptr.getRloss()=" << static_cast<int>(ptr->getRloss()) << '\n';
-    std::cout << "ptr.getGloss()=" << static_cast<int>(ptr->getGloss()) << '\n';
-    std::cout << "ptr.getBloss()=" << static_cast<int>(ptr->getBloss()) << '\n';
-    std::cout << "ptr.getAloss()=" << static_cast<int>(ptr->getAloss()) << '\n';
-    std::cout << "ptr.getRshift()=" << static_cast<int>(ptr->getRshift()) << '\n';
-    std::cout << "ptr.getGshift()=" << static_cast<int>(ptr->getGshift()) << '\n';
-    std::cout << "ptr.getBshift()=" << static_cast<int>(ptr->getBshift()) << '\n';
-    std::cout << "ptr.getAshift()=" << static_cast<int>(ptr->getAshift()) << '\n';
-    std::cout << "ptr.getRefCount()=" << ptr->getRefCount() << '\n';
-    delete ptr;
+    std::cout << "fmt->getBitsPerPixel()=" << static_cast<int>(fmt->bitsPerPixel()) << '\n';
+    std::cout << "fmt->getBytesPerPixel()=" << static_cast<int>(fmt->bytesPerPixel()) << '\n';
+    fmt->pixelFormatEnumToMasks(&bpp, &redMask, &greenMask, &blueMask, &alphaMask);
+    std::cout << "fmt->getRmask()=" << redMask << '\n';
+    std::cout << "fmt->getGmask()=" << greenMask << '\n';
+    std::cout << "fmt->getBmask()=" << blueMask<< '\n';
+    std::cout << "fmt->getAmask()=" << alphaMask << '\n';
 }
 
 void inc(int* a)
@@ -309,8 +306,8 @@ void _doStuff(void)
         gtf = ri.getTextureFormats();
         for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
         {
-            gfx::pixels::GfxPixelFormat gpf(gtf[i]);
-            std::cout << "gpf.getFormatAsString()=" << gpf.getFormatAsString() << '\n';
+            gfx::pixels::GfxPixelFormat gpf(gfx::pixels::GfxPixelFormatEnum(gtf[i]));
+            std::cout << "gpf.getPixelFormatName()=" << gpf.getPixelFormatName() << '\n';
         }
     }
     gfx::GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
@@ -329,7 +326,7 @@ void _doStuff(void)
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == gfx::bgi::GfxBgiConstants::vgaNumColors) c = 0;
+            if (c == gfx::bgi::GfxBgiConstants::kVgaNumColors) c = 0;
         }
     }
 
@@ -337,14 +334,14 @@ void _doStuff(void)
     cv.Circle(gfx::GfxPoint(480, 240), gfx::bgi::GfxRadius(230), gfx::bgi::GfxBgiConstants::vgaGreen());
     auto color = gfx::bgi::GfxBgiConstants::vgaRed();
     cv.Arc(gfx::GfxPoint(480, 240), gfx::bgi::GfxAngle(60), gfx::bgi::GfxAngle(300), gfx::bgi::GfxRadius(239), color);
-    cv.OutText(gfx::GfxPoint(360, 232), gfx::bgi::GfxString("SDL_bgi"), gfx::GfxColor(50, 100, 200));
+    cv.OutText(gfx::GfxPoint(360, 232), gfx::bgi::GfxString("SDL_bgi"), gfx::pixels::GfxColor(50, 100, 200));
     cv.Bar(gfx::GfxPoint(480, 0), gfx::GfxPoint(960, 240), gfx::bgi::GfxBgiConstants::vgaLightRed());
     cv.Bar(gfx::GfxRect(10, 10, 20, 20), gfx::bgi::GfxBgiConstants::vgaRed());
     cv.Rect(gfx::GfxPoint(20, 20), gfx::GfxPoint(30, 30), gfx::bgi::GfxBgiConstants::vgaGreen());
-    cv.Rect(gfx::GfxRect(30, 30, 40, 40), gfx::GfxColor(128, 128, 128));
+    cv.Rect(gfx::GfxRect(30, 30, 40, 40), gfx::pixels::GfxColor(128, 128, 128));
     cv.Line(gfx::GfxPoint(10, 10), gfx::GfxPoint(40, 40), gfx::bgi::GfxBgiConstants::vgaYellow());
     cv.OutText(gfx::GfxPoint(50, 50), gfx::bgi::GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
-               gfx::GfxColor(150, 100, 200));
+               gfx::pixels::GfxColor(150, 100, 200));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
     for (int i = 0; i < gfx::bgi::fnt::GfxBgiFontConstants::fntNumFonts; i++)
@@ -355,7 +352,7 @@ void _doStuff(void)
         int g = 200 + i * 5;
         int b = 20 + i * 10;
         cv.OutText(gfx::GfxPoint(x, y), gfx::bgi::GfxString(fontMsg),
-                   gfx::GfxColor(r, g, b),
+                   gfx::pixels::GfxColor(r, g, b),
                    gfx::bgi::fnt::GfxBgiFontConstants::fntGetFontByIndex(
                         static_cast<gfx::bgi::fnt::GfxBgiFontConstants::GfxFontIndex>(i)));
     }
@@ -391,12 +388,12 @@ void _doStuff(void)
                     static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getGreen();
             b = gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(
                     static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)).getBlue();
-            cv.PutPixel(gfx::GfxPoint(i, j), gfx::GfxColor(r, g, b, 224));
+            cv.PutPixel(gfx::GfxPoint(i, j), gfx::pixels::GfxColor(r, g, b, 224));
         }
         if (((i + 1) % 60) == 0)
         {
             c += 1;
-            if (c == gfx::bgi::GfxBgiConstants::vgaNumColors) c = 0;
+            if (c == gfx::bgi::GfxBgiConstants::kVgaNumColors) c = 0;
         }
     }
 
@@ -522,9 +519,9 @@ void _doStuff(void)
             rt.setY(0);
             rt.setWidth(WIN_W);
             rt.setHeight(480);
-            colors_surf.fillRect(rt, gfx::GfxColor(r1, g1, b1, a1));
+            colors_surf.fillRect(rt, gfx::pixels::GfxColor(r1, g1, b1, a1));
             rt.setX(WIN_W / 2);
-            colors_surf.fillRect(rt, gfx::GfxColor(255-r1, 255-g1, 255-b1, a1));
+            colors_surf.fillRect(rt, gfx::pixels::GfxColor(255-r1, 255-g1, 255-b1, a1));
 
             gfx::GfxTexture colors_tex(&rend, colors_surf);
             colors_tex.setBlendMode(gfx::GfxBlendMode::ValueType::blendBlend);
