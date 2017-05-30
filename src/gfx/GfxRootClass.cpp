@@ -91,6 +91,11 @@
 #include "GfxFontInfo.hpp"  // 2017.05.19
 #include "GfxControlledSurface.hpp"
 #include "GfxPixelType.hpp"  // 2017.05.30
+#include "GfxBitmapOrder.hpp"  // 2017.05.30
+#include "GfxPackedOrder.hpp"  // 2017.05.30
+#include "GfxArrayOrder.hpp"  // 2017.05.30
+#include "GfxPackedLayout.hpp"  // 2017.05.30
+#include "GfxPixelFormatEnum.hpp"  // 2017.05.30
 
 namespace gfx
 {
@@ -103,7 +108,7 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::GfxBlendMode::ClassName, sizeof(gfx::GfxBlendMode) },
     { gfx::GfxBool::ClassName, sizeof(gfx::GfxBool) },
     { gfx::GfxClipboard::ClassName, sizeof(gfx::GfxClipboard) },
-    { gfx::GfxColor::ClassName, sizeof(gfx::GfxColor) },
+    { gfx::pixels::GfxColor::ClassName, sizeof(gfx::pixels::GfxColor) },
     { gfx::GfxCpuInfo::ClassName, sizeof(gfx::GfxCpuInfo) },
     { gfx::GfxDisplayMode::ClassName, sizeof(gfx::GfxDisplayMode) },
     { gfx::GfxEndian::ClassName, sizeof(gfx::GfxEndian) },
@@ -161,7 +166,12 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::ttf::GfxTtfFontRenderer::ClassName, sizeof(gfx::ttf::GfxTtfFontRenderer) },  // 2017.05.19
     { gfx::supp::GfxFontInfo::ClassName, sizeof(gfx::supp::GfxFontInfo) },  // 2017.05.19
     { gfx::supp::GfxControlledSurface::ClassName, sizeof(gfx::supp::GfxControlledSurface) },
-    { gfx::pixels::GfxPixelType::ClassName, sizeof(gfx::pixels::GfxPixelType) }  // 2017.05.30
+    { gfx::pixels::GfxPixelType::ClassName, sizeof(gfx::pixels::GfxPixelType) },  // 2017.05.30
+    { gfx::pixels::GfxBitmapOrder::ClassName, sizeof(gfx::pixels::GfxBitmapOrder) },  // 2017.05.30
+    { gfx::pixels::GfxPackedOrder::ClassName, sizeof(gfx::pixels::GfxPackedOrder) },  // 2017.05.30
+    { gfx::pixels::GfxArrayOrder::ClassName, sizeof(gfx::pixels::GfxArrayOrder) },  // 2017.05.30
+    { gfx::pixels::GfxPackedLayout::ClassName, sizeof(gfx::pixels::GfxPackedLayout) },  // 2017.05.30
+    { gfx::pixels::GfxPixelFormatEnum::ClassName, sizeof(gfx::pixels::GfxPixelFormatEnum) }  // 2017.05.30
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /

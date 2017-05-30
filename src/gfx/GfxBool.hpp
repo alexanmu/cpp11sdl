@@ -36,13 +36,18 @@ class GfxBool final : public GfxRootClass
 {
 public:
     typedef sdl2::SDL_bool SdlType;
-    typedef sdl2::SDL_bool* SdlTypePtr;
 
     static const char ClassName[];
 
+    enum class ValueType : bool
+    {
+        boolFalse = sdl2::SDL_FALSE,
+        boolTrue = sdl2::SDL_TRUE
+    };
+
     GfxBool();
 
-    explicit GfxBool(const bool value);
+    explicit GfxBool(const ValueType value);
     explicit GfxBool(const SdlType value);
 
     GfxBool(const GfxBool& other);
@@ -58,7 +63,6 @@ public:
     void clear(void);
 
     SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
 private:
     SdlType value_;
 };

@@ -72,18 +72,18 @@ public:
 
     pixels::GfxPixelFormat * getFormat(void);
 
-    void fillRect(const GfxRect& rect, const GfxColor& color);
-    void fillRect(const GfxColor& color);
+    void fillRect(const GfxRect& rect, const pixels::GfxColor& color);
+    void fillRect(const pixels::GfxColor& color);
 
-    void fillRects(const std::vector<GfxRect>& rects, const GfxColor& color);
+    void fillRects(const std::vector<GfxRect>& rects, const pixels::GfxColor& color);
 
     void blitSurface(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
     void blitSurface(const GfxSurface& src);
 
     void blitScaled(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
 
-    void putPixel(const int32_t x, const int32_t y, const GfxColor& clr);
-    GfxColor getPixel(const int32_t x, const int32_t y);
+    void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr);
+    pixels::GfxColor getPixel(const int32_t x, const int32_t y);
 
     void destroySurface(void);
 
@@ -94,8 +94,8 @@ public:
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    void putPixelPrv(const int32_t x, const int32_t y, const GfxColor& clr);
-    GfxColor getPixelPrv(const int32_t x, const int32_t y);
+    void putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& clr);
+    pixels::GfxColor getPixelPrv(const int32_t x, const int32_t y);
 
     SdlTypePtr surf_;
 };

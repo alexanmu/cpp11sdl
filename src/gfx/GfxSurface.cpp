@@ -198,7 +198,7 @@ pixels::GfxPixelFormat * GfxSurface::getFormat(void)
     return new pixels::GfxPixelFormat(surf_->format);
 }
 
-void GfxSurface::fillRect(const GfxRect& rect, const GfxColor& color)
+void GfxSurface::fillRect(const GfxRect& rect, const pixels::GfxColor& color)
 {
     assert(rect);
     assert(color);
@@ -213,7 +213,7 @@ void GfxSurface::fillRect(const GfxRect& rect, const GfxColor& color)
     sdl2::SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
 }
 
-void GfxSurface::fillRect(const GfxColor& color)
+void GfxSurface::fillRect(const pixels::GfxColor& color)
 {
     assert(color);
 
@@ -227,7 +227,7 @@ void GfxSurface::fillRect(const GfxColor& color)
     sdl2::SDL_FillRect(surf_, NULL, clr);
 }
 
-void GfxSurface::fillRects(const std::vector<GfxRect>& rects, const GfxColor& color)
+void GfxSurface::fillRects(const std::vector<GfxRect>& rects, const pixels::GfxColor& color)
 {
     assert(color);
 
@@ -278,7 +278,7 @@ void GfxSurface::blitScaled(const GfxSurface& src, const GfxRect& srcr, const Gf
     sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
-void GfxSurface::putPixel(const int32_t x, const int32_t y, const GfxColor& color)
+void GfxSurface::putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& color)
 {
     assert(x >= 0);
     assert(y >= 0);
@@ -299,22 +299,22 @@ void GfxSurface::putPixel(const int32_t x, const int32_t y, const GfxColor& colo
     sdl2::SDL_UnlockSurface(surf_);
 }
 
-GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y)
+pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y)
 {
     assert(x >= 0);
     assert(y >= 0);
 
-    GfxColor pix;
+    pixels::GfxColor pix;
 
     if (surf_ == nullptr)
     {
         // error handling here
-        return GfxColor();
+        return pixels::GfxColor();
     }
     if ((x >= surf_->w) || (y >= surf_->h))
     {
         // error handling here
-        return GfxColor();
+        return pixels::GfxColor();
     }
     sdl2::SDL_LockSurface(surf_);
     pix = getPixelPrv(x, y);
@@ -336,7 +336,7 @@ GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const
     return surf_;
 }
 
-void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const GfxColor& color)
+void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& color)
 {
     uint32_t* ptr;
     uint32_t clr;
@@ -346,12 +346,12 @@ void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const GfxColor& c
     ptr[y * surf_->w + x] = clr;
 }
 
-GfxColor GfxSurface::getPixelPrv(const int32_t x, const int32_t y)
+pixels::GfxColor GfxSurface::getPixelPrv(const int32_t x, const int32_t y)
 {
     uint8_t* ptr;
 
     ptr = reinterpret_cast<uint8_t*>(surf_->pixels);
-    return GfxColor { GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],
+    return pixels::GfxColor { pixels::GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],
                                ptr[y * surf_->w + x + 2], ptr[y * surf_->w + x + 3]) };
 }
 

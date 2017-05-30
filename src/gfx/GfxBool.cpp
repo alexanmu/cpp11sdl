@@ -40,7 +40,7 @@ GfxBool::operator bool() const
     return true;
 }
 
-GfxBool::GfxBool(const bool value) : GfxRootClass(ClassName)
+GfxBool::GfxBool(const ValueType value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
@@ -95,11 +95,6 @@ void GfxBool::clear(void)
 GfxBool::SdlType GfxBool::getAsSdlType(void) const
 {
     return value_;
-}
-
-GfxBool::SdlTypePtr GfxBool::getAsSdlTypePtr(void) const
-{
-    return (SdlTypePtr)&value_;
 }
 
 }  // namespace gfx
