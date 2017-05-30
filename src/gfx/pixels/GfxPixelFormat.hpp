@@ -29,6 +29,14 @@
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
+#include "GfxPixelFormatEnum.hpp"
+#include "GfxPixelType.hpp"
+#include "GfxPackedOrder.hpp"
+#include "GfxArrayOrder.hpp"
+#include "GfxPackedLayout.hpp"
+#include "GfxBitmapOrder.hpp"
+#include "GfxBool.hpp"
+#include "GfxPalette.hpp"
 
 namespace gfx
 {
@@ -39,14 +47,16 @@ namespace pixels
 class GfxPixelFormat final : public GfxRootClass
 {
 public:
-    typedef sdl2::SDL_PixelFormat SdlType;
     typedef sdl2::SDL_PixelFormat* SdlTypePtr;
 
     static const char ClassName[];
 
+    static const int32_t kGfxAlphaOpaque = 255;
+    static const int32_t kGfxAlphaTransparent = 0;
+
     GfxPixelFormat();
     explicit GfxPixelFormat(const SdlTypePtr pix);
-    explicit GfxPixelFormat(const uint32_t format);
+    explicit GfxPixelFormat(GfxPixelFormatEnum const& format);
 
     /* No copy-ctor */
     GfxPixelFormat(const GfxPixelFormat& other) = delete;
@@ -60,34 +70,34 @@ public:
 
     virtual explicit operator bool() const;
 
-    uint32_t getFormat(void) const;
-    uint8_t getBitsPerPixel(void) const;
-    uint8_t getBytesPerPixel(void) const;
-    uint32_t getRedMask(void) const;
-    uint32_t getGreenMask(void) const;
-    uint32_t getBlueMask(void) const;
-    uint32_t getAlphaMask(void) const;
-    /* for internal use by SDL */
-    uint8_t getRloss(void) const;
-    uint8_t getGloss(void) const;
-    uint8_t getBloss(void) const;
-    uint8_t getAloss(void) const;
-    uint8_t getRshift(void) const;
-    uint8_t getGshift(void) const;
-    uint8_t getBshift(void) const;
-    uint8_t getAshift(void) const;
-    int32_t getRefCount(void) const;
-    SdlTypePtr getNext(void) const;
+    void allocFormat(GfxPixelFormatEnum const& format);
+    void freeFormat(void);
+    GfxPixelFormatEnum getFormat(void);
 
-    std::string getFormatAsString(void) const;
-
-    void setFormat(const uint32_t format);
-    void setBitsPerPixel(const uint8_t bpp);
-    void setBytesPerPixel(const uint8_t bypp);
-    void setRedMask(const uint32_t rmask);
-    void setGreenMask(const uint32_t gmask);
-    void setBlueMask(const uint32_t bmask);
-    void setAlphaMask(const uint32_t amask);
+    uint32_t pixelFlag(void) const;
+    GfxPixelType pixelType(void) const;
+    GfxPackedOrder pixelOrderPacked(void) const;
+    GfxArrayOrder pixelOrderArray(void) const;
+    GfxBitmapOrder pixelOrderBitmap(void) const;
+    GfxPackedLayout pixelLayout(void) const;
+    uint32_t bitsPerPixel(void) const;
+    uint32_t bytesPerPixel(void) const;
+    bool isPixelFormatIndexed(void) const;
+    bool isPixelFormatPacked(void) const;
+    bool isPixelFormatArray(void) const;
+    bool isPixelFormatAlpha(void) const;
+    bool isPixelFormatFourCC(void) const;
+    std::string getPixelFormatName(void) const;
+    GfxBool pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, uint32_t * Gmask,
+                            uint32_t * Bmask, uint32_t * Amask);
+    GfxPixelFormatEnum masksToPixelFormatEnum(int32_t bpp, uint32_t Rmask, uint32_t Gmask,
+                            uint32_t Bmask, uint32_t Amask);
+    void setPixelFormatPalette(GfxPalette const& palette);
+    uint32_t mapRGB(uint8_t r, uint8_t g, uint8_t b);
+    uint32_t mapRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+    void getRGB(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b);
+    void getRGBA(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a);
+    void calculateGammaRamp(float gamma, uint16_t * ramp);
 
     void clear(void);
 

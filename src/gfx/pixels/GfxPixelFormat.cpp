@@ -37,11 +37,7 @@ const char GfxPixelFormat::ClassName[] = "GfxPixelFormat";
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
 {
-    pix_ = sdl2::SDL_AllocFormat(sdl2::SDL_PIXELFORMAT_ARGB8888);
-    if (pix_ == nullptr)
-    {
-        // Error handling here
-    }
+    pix_ = nullptr;
 };
 
 GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass(ClassName)
@@ -49,13 +45,17 @@ GfxPixelFormat::GfxPixelFormat(const SdlTypePtr pix) : GfxRootClass(ClassName)
     assert(pix != nullptr);
 
     pix_ = sdl2::SDL_AllocFormat(pix->format);
+    if (pix_ == nullptr)
+    {
+        // Error handling here
+    }
 }
 
-GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) : GfxRootClass(ClassName)
 {
-    assert(format > 0);
+    assert(format);
 
-    pix_ = sdl2::SDL_AllocFormat(format);
+    pix_ = sdl2::SDL_AllocFormat(format.getAsSdlType());
     if (pix_ == nullptr)
     {
         // Error handling here
@@ -64,6 +64,10 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)
 
 GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass(ClassName)
 {
+    if (pix_ != nullptr)
+    {
+        sdl2::SDL_FreeFormat(pix_);
+    }
     pix_ = other.pix_;
     // Delete other's data
     other.clear();
@@ -75,7 +79,7 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other)
     {
         if (pix_ != nullptr)
         {
-            SDL_FreeFormat(pix_);
+            sdl2::SDL_FreeFormat(pix_);
         }
         pix_ = other.pix_;
         // Delete other's data
@@ -88,7 +92,7 @@ GfxPixelFormat::~GfxPixelFormat()
 {
     if (pix_ != nullptr)
     {
-        SDL_FreeFormat(pix_);
+        sdl2::SDL_FreeFormat(pix_);
     }
 }
 
@@ -97,162 +101,221 @@ GfxPixelFormat::operator bool() const
     return (pix_ != nullptr);
 }
 
-/*** Getters ***/
-uint32_t GfxPixelFormat::getFormat(void) const
+void GfxPixelFormat::allocFormat(GfxPixelFormatEnum const& format)
 {
     if (pix_ != nullptr)
     {
-        return pix_->format;
+        sdl2::SDL_FreeFormat(pix_);
     }
-    return 0;
+    pix_ = sdl2::SDL_AllocFormat(format.getAsSdlType());
+    if (pix_ == nullptr)
+    {
+        // Error handling here
+    }
 }
 
-uint8_t GfxPixelFormat::getBitsPerPixel(void) const
+void GfxPixelFormat::freeFormat(void)
 {
     if (pix_ != nullptr)
     {
-        return pix_->BitsPerPixel;
+       sdl2::SDL_FreeFormat(pix_);
+       pix_ = nullptr;
     }
-    return 0;
 }
 
-uint8_t GfxPixelFormat::getBytesPerPixel(void) const
+GfxPixelFormatEnum GfxPixelFormat::getFormat(void)
 {
     if (pix_ != nullptr)
     {
-        return pix_->BytesPerPixel;
+        return GfxPixelFormatEnum(pix_->format);
     }
-    return 0;
+    return GfxPixelFormatEnum(GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
 }
 
-uint32_t GfxPixelFormat::getRedMask(void) const
+uint32_t GfxPixelFormat::pixelFlag(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Rmask;
+        return 0;
     }
-    return 0;
+    return SDL_PIXELFLAG(pix_->format);
 }
 
-uint32_t GfxPixelFormat::getGreenMask(void) const
+GfxPixelType GfxPixelFormat::pixelType(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Gmask;
+        return GfxPixelType(GfxPixelType::ValueType::pixelTypeUnknown);
     }
-    return 0;
+    return GfxPixelType(SDL_PIXELTYPE(pix_->format));
 }
 
-uint32_t GfxPixelFormat::getBlueMask(void) const
+GfxPackedOrder GfxPixelFormat::pixelOrderPacked(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Bmask;
+        return GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderNone);
     }
-    return 0;
+    return GfxPackedOrder(SDL_PIXELORDER(pix_->format));
 }
 
-uint32_t GfxPixelFormat::getAlphaMask(void) const
+GfxArrayOrder GfxPixelFormat::pixelOrderArray(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Amask;
+        return GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderNone);
     }
-    return 0;
+    return GfxArrayOrder(SDL_PIXELORDER(pix_->format));
 }
 
-/* for internal use by SDL */
-uint8_t GfxPixelFormat::getRloss(void) const
+GfxBitmapOrder GfxPixelFormat::pixelOrderBitmap(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Rloss;
+        return GfxBitmapOrder(GfxBitmapOrder::ValueType::bitmapOrderNone);
     }
-    return 0;
+    return GfxBitmapOrder(SDL_PIXELORDER(pix_->format));
 }
 
-uint8_t GfxPixelFormat::getGloss(void) const
+GfxPackedLayout GfxPixelFormat::pixelLayout(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Gloss;
+        return GfxPackedLayout(GfxPackedLayout::ValueType::packedLayoutNone);
     }
-    return 0;
+    return GfxPackedLayout(SDL_PIXELLAYOUT(pix_->format));
 }
 
-uint8_t GfxPixelFormat::getBloss(void) const
+uint32_t GfxPixelFormat::bitsPerPixel(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->Bloss;
+        return 0;
     }
-    return 0;
+    return SDL_BITSPERPIXEL(pix_->format);
 }
 
-uint8_t GfxPixelFormat::getAloss(void) const
+uint32_t GfxPixelFormat::bytesPerPixel(void) const
 {
-    if (pix_ != nullptr)
+    uint32_t temp;
+
+    if (pix_ == nullptr)
     {
-        return pix_->Aloss;
+        return 0;
     }
-    return 0;
+    if (isPixelFormatFourCC() == true)
+    {
+        if ((static_cast<GfxPixelFormatEnum::ValueType>(pix_->format) ==
+                                GfxPixelFormatEnum::ValueType::pixelFormatYUY2) ||
+            (static_cast<GfxPixelFormatEnum::ValueType>(pix_->format) ==
+                                GfxPixelFormatEnum::ValueType::pixelFormatUYVY) ||
+            (static_cast<GfxPixelFormatEnum::ValueType>(pix_->format) ==
+                                GfxPixelFormatEnum::ValueType::pixelFormatYVYU))
+        {
+            temp = 2;
+        }
+        else
+        {
+            temp = 1;
+        }
+    }
+    else
+    {
+        temp = pix_->format & 0xFF;
+    }
+    return temp;
 }
 
-uint8_t GfxPixelFormat::getRshift(void) const
+bool GfxPixelFormat::isPixelFormatIndexed(void) const
 {
-    if (pix_ != nullptr)
+    bool temp;
+
+    if (pix_ == nullptr)
     {
-        return pix_->Rshift;
+        return false;
     }
-    return 0;
+    temp = !isPixelFormatFourCC() &&
+            (
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeIndex1) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeIndex4) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeIndex8));
+    return temp;
 }
 
-uint8_t GfxPixelFormat::getGshift(void) const
+bool GfxPixelFormat::isPixelFormatPacked(void) const
 {
-    if (pix_ != nullptr)
+    bool temp;
+
+    if (pix_ == nullptr)
     {
-        return pix_->Gshift;
+        return false;
     }
-    return 0;
+    temp = !isPixelFormatFourCC() &&
+            (
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypePacked8) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypePacked16) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypePacked32));
+    return temp;
 }
 
-uint8_t GfxPixelFormat::getBshift(void) const
+bool GfxPixelFormat::isPixelFormatArray(void) const
 {
-    if (pix_ != nullptr)
+    bool temp;
+
+    if (pix_ == nullptr)
     {
-        return pix_->Bshift;
+        return false;
     }
-    return 0;
+    temp = !isPixelFormatFourCC() &&
+            (
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayU8) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayU16) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayU32) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayF16) ||
+                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayF32));
+    return temp;
 }
 
-uint8_t GfxPixelFormat::getAshift(void) const
+bool GfxPixelFormat::isPixelFormatAlpha(void) const
 {
-    if (pix_ != nullptr)
+    bool temp;
+
+    if (pix_ == nullptr)
     {
-        return pix_->Ashift;
+        return false;
     }
-    return 0;
+    temp = false;
+    if (isPixelFormatPacked() == true &&
+        (
+            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderARGB) ||
+            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderRGBA) ||
+            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderABGR) ||
+            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderBGRA)))
+    {
+        temp = true;
+    }
+    if (isPixelFormatArray() == true &&
+        (
+            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderARGB) ||
+            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderRGBA) ||
+            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderABGR) ||
+            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderBGRA)))
+    {
+        temp = true;
+    }
+    return temp;
 }
 
-int32_t GfxPixelFormat::getRefCount(void) const
+bool GfxPixelFormat::isPixelFormatFourCC(void) const
 {
-    if (pix_ != nullptr)
+    if (pix_ == nullptr)
     {
-        return pix_->refcount;
+        return false;
     }
-    return -1;
+    return ((pix_->format != 0) && (pixelFlag() != 1));
 }
 
-GfxPixelFormat::SdlTypePtr GfxPixelFormat::getNext(void) const
-{
-    if (pix_ != nullptr)
-    {
-        return pix_->next;
-    }
-    return nullptr;
-}
-
-std::string GfxPixelFormat::getFormatAsString(void) const
+std::string GfxPixelFormat::getPixelFormatName(void) const
 {
     std::string str {"$nullptr$"};
 
@@ -263,67 +326,35 @@ std::string GfxPixelFormat::getFormatAsString(void) const
     return str;
 }
 
-/*** Setters ***/
-void GfxPixelFormat::setFormat(const uint32_t format)
+GfxBool GfxPixelFormat::pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, uint32_t * Gmask,
+                    uint32_t * Bmask, uint32_t * Amask)
 {
-    assert(format > 0);
+    assert(bpp != nullptr);
+    assert(Rmask != nullptr);
+    assert(Gmask != nullptr);
+    assert(Bmask != nullptr);
+    assert(Amask != nullptr);
+
+    GfxBool::SdlType sdlbool;
 
     if (pix_ != nullptr)
     {
-        pix_->format = format;
+        sdlbool = sdl2::SDL_PixelFormatEnumToMasks(pix_->format, bpp, Rmask, Gmask, Bmask, Amask);
     }
+    else
+    {
+        sdlbool = sdl2::SDL_FALSE;
+    }
+    return GfxBool(sdlbool);
 }
 
-void GfxPixelFormat::setBitsPerPixel(const uint8_t bpp)
+GfxPixelFormatEnum GfxPixelFormat::masksToPixelFormatEnum(int32_t bpp, uint32_t Rmask, uint32_t Gmask,
+                    uint32_t Bmask, uint32_t Amask)
 {
-    assert(bpp > 0);
+    GfxPixelFormatEnum::SdlType sdlpixfmten;
 
-    if (pix_ != nullptr)
-    {
-        pix_->BitsPerPixel = bpp;
-    }
-}
-
-void GfxPixelFormat::setBytesPerPixel(const uint8_t bypp)
-{
-    assert(bypp > 0);
-
-    if (pix_ != nullptr)
-    {
-        pix_->BytesPerPixel = bypp;
-    }
-}
-
-void GfxPixelFormat::setRedMask(const uint32_t rmask)
-{
-    if (pix_ != nullptr)
-    {
-        pix_->Rmask = rmask;
-    }
-}
-
-void GfxPixelFormat::setGreenMask(const uint32_t gmask)
-{
-    if (pix_ != nullptr)
-    {
-        pix_->Gmask = gmask;
-    }
-}
-
-void GfxPixelFormat::setBlueMask(const uint32_t bmask)
-{
-    if (pix_ != nullptr)
-    {
-        pix_->Bmask = bmask;
-    }
-}
-
-void GfxPixelFormat::setAlphaMask(const uint32_t amask)
-{
-    if (pix_ != nullptr)
-    {
-        pix_->Amask = amask;
-    }
+    sdlpixfmten = sdl2::SDL_MasksToPixelFormatEnum(bpp, Rmask, Gmask, Bmask, Amask);
+    return GfxPixelFormatEnum(sdlpixfmten);
 }
 
 void GfxPixelFormat::clear(void)
@@ -333,6 +364,79 @@ void GfxPixelFormat::clear(void)
         SDL_FreeFormat(pix_);
         pix_ = nullptr;
     }
+}
+
+void GfxPixelFormat::setPixelFormatPalette(GfxPalette const& palette)
+{
+    assert(palette);
+
+    if (pix_ != nullptr)
+    {
+        sdl2::SDL_SetPixelFormatPalette(pix_, palette.getAsSdlTypePtr());
+    }
+}
+
+uint32_t GfxPixelFormat::mapRGB(uint8_t r, uint8_t g, uint8_t b)
+{
+    if (pix_ != nullptr)
+    {
+        return sdl2::SDL_MapRGB(pix_, r, g, b);
+    }
+    return 0;
+}
+
+uint32_t GfxPixelFormat::mapRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+    if (pix_ != nullptr)
+    {
+        return sdl2::SDL_MapRGBA(pix_, r, g, b, a);
+    }
+    return 0;
+}
+
+void GfxPixelFormat::getRGB(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b)
+{
+    assert(r != nullptr);
+    assert(g != nullptr);
+    assert(b != nullptr);
+
+    if (pix_ != nullptr)
+    {
+        sdl2::SDL_GetRGB(pixel, pix_, r, g, b);
+    }
+    else
+    {
+        *r = 0;
+        *g = 0;
+        *b = 0;
+    }
+}
+
+void GfxPixelFormat::getRGBA(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a)
+{
+    assert(r != nullptr);
+    assert(g != nullptr);
+    assert(b != nullptr);
+    assert(a != nullptr);
+
+    if (pix_ != nullptr)
+    {
+        sdl2::SDL_GetRGBA(pixel, pix_, r, g, b, a);
+    }
+    else
+    {
+        *r = 0;
+        *g = 0;
+        *b = 0;
+        *a = 0;
+    }
+}
+
+void GfxPixelFormat::calculateGammaRamp(float gamma, uint16_t * ramp)
+{
+    assert(ramp != nullptr);
+
+    sdl2::SDL_CalculateGammaRamp(gamma, ramp);
 }
 
 /*** SDL ***/
