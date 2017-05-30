@@ -405,10 +405,6 @@
 				19784EEE1EDC8DB30025DF95 /* GfxMessageBoxData.hpp */,
 				19784EEF1EDC8DB30025DF95 /* GfxMessageBoxFlags.cpp */,
 				19784EF01EDC8DB30025DF95 /* GfxMessageBoxFlags.hpp */,
-				19784EF11EDC8DB30025DF95 /* GfxPalette.cpp */,
-				19784EF21EDC8DB30025DF95 /* GfxPalette.hpp */,
-				19784EF31EDC8DB30025DF95 /* GfxPixelFormat.cpp */,
-				19784EF41EDC8DB30025DF95 /* GfxPixelFormat.hpp */,
 				19784EF51EDC8DB30025DF95 /* GfxPlatform.cpp */,
 				19784EF61EDC8DB30025DF95 /* GfxPlatform.hpp */,
 				19784EF71EDC8DB30025DF95 /* GfxPoint.cpp */,
@@ -631,6 +627,10 @@
 		79AB8EC31EDD1DBC00B242C6 /* pixels */ = {
 			isa = PBXGroup;
 			children = (
+				19784EF11EDC8DB30025DF95 /* GfxPalette.cpp */,
+				19784EF21EDC8DB30025DF95 /* GfxPalette.hpp */,
+				19784EF31EDC8DB30025DF95 /* GfxPixelFormat.cpp */,
+				19784EF41EDC8DB30025DF95 /* GfxPixelFormat.hpp */,
 				79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */,
 				79AB8EC51EDD1DE200B242C6 /* GfxPixelType.hpp */,
 			);

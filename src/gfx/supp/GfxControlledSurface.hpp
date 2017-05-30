@@ -28,6 +28,7 @@
 #include <cstdint>
 #include <string>
 
+#include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
 #include "GfxSurface.hpp"
@@ -38,7 +39,7 @@ namespace gfx
 namespace supp
 {
 
-class GfxControlledSurface final
+class GfxControlledSurface final : public GfxRootClass
 {
 public:
     static const char ClassName[];

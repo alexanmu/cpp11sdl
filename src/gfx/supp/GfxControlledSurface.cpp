@@ -36,7 +36,7 @@ namespace supp
 
 const char GfxControlledSurface::ClassName[] = "GfxControlledSurface";
 
-GfxControlledSurface::GfxControlledSurface()
+GfxControlledSurface::GfxControlledSurface() : gfx::GfxRootClass(ClassName)
 {
     surf_ = nullptr;
     surfaceConstructed_ = false;
