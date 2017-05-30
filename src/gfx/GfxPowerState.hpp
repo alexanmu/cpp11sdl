@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxPowerStateValues : int32_t
+    enum class ValueType : int32_t
     {
         stateUnknown = sdl2::SDL_POWERSTATE_UNKNOWN,
         stateOnBattery = sdl2::SDL_POWERSTATE_ON_BATTERY,
@@ -52,7 +52,7 @@ public:
 
     GfxPowerState();
 
-    explicit GfxPowerState(const GfxPowerStateValues value);
+    explicit GfxPowerState(const ValueType value);
     explicit GfxPowerState(const SdlType value);
 
     GfxPowerState(GfxPowerState const& other);

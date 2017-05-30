@@ -37,7 +37,7 @@ GfxRendererFlip::GfxRendererFlip() : GfxRootClass(ClassName)
 
 GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootClass(ClassName)
 {
-    flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
+    flip_ = static_cast<SdlType>(ValueType::flipNone);
     if (fliph == true)
     {
         flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_HORIZONTAL);
@@ -95,7 +95,7 @@ bool GfxRendererFlip::isFlipVertical(void) const
 
 void GfxRendererFlip::clear(void)
 {
-    flip_ = static_cast<SdlType>(GfxRendererFlipValues::flipNone);
+    flip_ = static_cast<SdlType>(ValueType::flipNone);
 }
 
 GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const

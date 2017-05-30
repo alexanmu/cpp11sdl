@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxTextureModulateValues : int32_t
+    enum class ValueType : int32_t
     {
         modulateNone = sdl2::SDL_TEXTUREMODULATE_NONE,
         modulateColor = sdl2::SDL_TEXTUREMODULATE_COLOR,
@@ -50,7 +50,7 @@ public:
 
     GfxTextureModulate();
 
-    explicit GfxTextureModulate(const GfxTextureModulateValues modulate);
+    explicit GfxTextureModulate(const ValueType modulate);
     explicit GfxTextureModulate(const SdlType modulate);
     explicit GfxTextureModulate(const SdlTypePtr modulate);
 

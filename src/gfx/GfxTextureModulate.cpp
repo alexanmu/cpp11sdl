@@ -36,7 +36,7 @@ GfxTextureModulate::GfxTextureModulate() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulateValues flags) : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(ValueType flags) : GfxRootClass(ClassName)
 {
     modulate_ = static_cast<SdlType>(flags);
 }
@@ -89,7 +89,7 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other)
 
 bool GfxTextureModulate::isNone(void) const
 {
-    return (modulate_ == static_cast<SdlType>(GfxTextureModulateValues::modulateNone));
+    return (modulate_ == static_cast<SdlType>(ValueType::modulateNone));
 }
 
 bool GfxTextureModulate::isColor(void) const
@@ -128,7 +128,7 @@ void GfxTextureModulate::resetAlpha(void)
 
 void GfxTextureModulate::clear(void)
 {
-    modulate_ = static_cast<SdlType>(GfxTextureModulateValues::modulateNone);
+    modulate_ = static_cast<SdlType>(ValueType::modulateNone);
 }
 
 GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const

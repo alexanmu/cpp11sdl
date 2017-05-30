@@ -33,7 +33,7 @@ const char GfxPowerInfo::ClassName[] = "GfxPowerInfo";
 
 GfxPowerInfo::GfxPowerInfo() : GfxRootClass(ClassName)
 {
-    pstate_ = GfxPowerState(GfxPowerState::GfxPowerStateValues::stateUnknown);
+    pstate_ = GfxPowerState(GfxPowerState::ValueType::stateUnknown);
     seconds_ = -1;
     percentage_ = -1;
 }

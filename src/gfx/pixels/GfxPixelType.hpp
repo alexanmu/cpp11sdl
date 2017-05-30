@@ -43,7 +43,7 @@ public:
 
     static const char ClassName[];
 
-    enum class ValuesType : uint32_t
+    enum class ValueType : uint32_t
     {
         pixelTypeUnknown = sdl2::SDL_PIXELTYPE_UNKNOWN,
         pixelTypeIndex1 = sdl2::SDL_PIXELTYPE_INDEX1,

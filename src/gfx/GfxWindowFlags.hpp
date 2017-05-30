@@ -42,7 +42,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxWindowFlagsValues : uint32_t
+    enum class ValueType : uint32_t
     {
         windowFlagUnknown = 0,
         windowFlagFullscreen = sdl2::SDL_WINDOW_FULLSCREEN,
@@ -70,7 +70,7 @@ public:
 
     GfxWindowFlags() noexcept;
 
-    explicit GfxWindowFlags(const GfxWindowFlagsValues flags) noexcept;
+    explicit GfxWindowFlags(const ValueType flags) noexcept;
     explicit GfxWindowFlags(const SdlType flags) noexcept;
 
     GfxWindowFlags(GfxWindowFlags const& other) noexcept;

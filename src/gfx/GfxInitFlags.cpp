@@ -44,7 +44,7 @@ GfxInitFlags::GfxInitFlags(const int32_t flags) : GfxRootClass(ClassName)
     flags_ = flags;
 }
 
-GfxInitFlags::GfxInitFlags(GfxInitFlagsValues const& flags) : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(ValueType const& flags) : GfxRootClass(ClassName)
 {
     flags_ = static_cast<int32_t>(flags);
 }
@@ -246,7 +246,7 @@ void GfxInitFlags::resetNoParachute(void)
 
 void GfxInitFlags::clear(void)
 {
-    flags_ = static_cast<uint32_t>(GfxInitFlagsValues::initNothing);
+    flags_ = static_cast<uint32_t>(ValueType::initNothing);
 }
 
 GfxInitFlags::SdlType GfxInitFlags::getAsSdlType(void) const

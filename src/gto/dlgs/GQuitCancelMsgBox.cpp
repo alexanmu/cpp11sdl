@@ -63,19 +63,19 @@ GQuitCancelMsgBox::GQuitCancelMsgBox(std::string const& vname, GObject* parent, 
 
 void GQuitCancelMsgBox::showModal(void)
 {
-    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
+    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::ValueType::flagError };
 
     gfx::GfxMessageBoxButtonData buttons[2] {
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                    gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::returnKeyDefault),
+                                    gfx::GfxMessageBoxButtonFlags::ValueType::returnKeyDefault),
                                     1, "Quit"),
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                    gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::escKeyDefault),
+                                    gfx::GfxMessageBoxButtonFlags::ValueType::escKeyDefault),
                                     2, "Cancel"),
     };
 
     gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(
-                                    gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
+                                    gfx::GfxMessageBoxColorType::ValueType::colorMax)] = {
         gfx::GfxMessageBoxColor(255, 0, 0),
         gfx::GfxMessageBoxColor(250, 220, 190),
         gfx::GfxMessageBoxColor(192, 92, 9),

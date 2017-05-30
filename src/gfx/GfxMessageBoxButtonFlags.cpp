@@ -36,7 +36,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlagsValues flags) :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const ValueType flags) :
         GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
@@ -105,7 +105,7 @@ bool GfxMessageBoxButtonFlags::isEscDefault(void) const
 
 void GfxMessageBoxButtonFlags::clear(void)
 {
-    flags_ = static_cast<SdlType>(GfxMessageBoxButtonFlagsValues::noneDefault);
+    flags_ = static_cast<SdlType>(ValueType::noneDefault);
 }
 
 GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) const

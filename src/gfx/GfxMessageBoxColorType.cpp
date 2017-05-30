@@ -43,7 +43,7 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) : GfxRootClas
     type_ = type;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(const GfxMessageBoxColorTypeValues type) :
+GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) :
         GfxRootClass(ClassName)
 {
     type_ = static_cast<SdlType>(type);
@@ -87,14 +87,14 @@ GfxMessageBoxColorType::operator bool() const
     return true;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorTypeValues GfxMessageBoxColorType::getType(void) const
+GfxMessageBoxColorType::ValueType GfxMessageBoxColorType::getType(void) const
 {
-    return static_cast<GfxMessageBoxColorTypeValues>(type_);
+    return static_cast<ValueType>(type_);
 }
 
 void GfxMessageBoxColorType::clear(void)
 {
-    type_ = static_cast<SdlType>(GfxMessageBoxColorTypeValues::colorMax);
+    type_ = static_cast<SdlType>(ValueType::colorMax);
 }
 
 GfxMessageBoxColorType::SdlType GfxMessageBoxColorType::getAsSdllType(void) const

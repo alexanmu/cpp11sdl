@@ -40,7 +40,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxInitFlagsValues : int32_t
+    enum class ValueType : int32_t
     {
         initNothing = 0,
         initTimer = SDL_INIT_TIMER,
@@ -57,7 +57,7 @@ public:
     GfxInitFlags();
 
     explicit GfxInitFlags(const int32_t flags);
-    explicit GfxInitFlags(GfxInitFlagsValues const& flags);
+    explicit GfxInitFlags(ValueType const& flags);
 
     GfxInitFlags(const GfxInitFlags&);
     GfxInitFlags(GfxInitFlags&&);

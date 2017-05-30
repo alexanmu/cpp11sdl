@@ -35,7 +35,7 @@ GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventIDValues eventid) : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(ValueType eventid) : GfxRootClass(ClassName)
 {
     eventid_ = static_cast<SdlType>(eventid);
 }
@@ -161,7 +161,7 @@ bool GfxWindowEventID::hitTest(void) const
 
 void GfxWindowEventID::clear(void)
 {
-    eventid_ = static_cast<SdlType>(GfxWindowEventIDValues::eventNone);
+    eventid_ = static_cast<SdlType>(ValueType::eventNone);
 }
 
 GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const

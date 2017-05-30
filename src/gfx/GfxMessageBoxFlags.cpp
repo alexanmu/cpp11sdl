@@ -36,7 +36,7 @@ GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlagsValues flag) : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(ValueType flag) : GfxRootClass(ClassName)
 {
     flag_ = static_cast<SdlType>(flag);
 }
@@ -90,9 +90,9 @@ GfxMessageBoxFlags::operator bool() const
     return true;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlagsValues GfxMessageBoxFlags::getFlag(void) const
+GfxMessageBoxFlags::ValueType GfxMessageBoxFlags::getFlag(void) const
 {
-    return static_cast<GfxMessageBoxFlagsValues>(flag_);
+    return static_cast<ValueType>(flag_);
 }
 
 bool GfxMessageBoxFlags::isError(void) const
@@ -112,7 +112,7 @@ bool GfxMessageBoxFlags::isInformation(void) const
 
 void GfxMessageBoxFlags::clear(void)
 {
-    flag_ = static_cast<SdlType>(GfxMessageBoxFlagsValues::flagError);
+    flag_ = static_cast<SdlType>(ValueType::flagError);
 }
 
 GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const

@@ -38,7 +38,7 @@ GfxWindowFlags::GfxWindowFlags() noexcept : GfxRootClass(ClassName)
     clear();
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlagsValues flags) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(ValueType flags) noexcept : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
@@ -437,7 +437,7 @@ void GfxWindowFlags::resetPopupMenu(void) noexcept
 
 void GfxWindowFlags::clear(void) noexcept
 {
-    flags_ = static_cast<SdlType>(GfxWindowFlagsValues::windowFlagUnknown);
+    flags_ = static_cast<SdlType>(ValueType::windowFlagUnknown);
 }
 
 // SDL type access

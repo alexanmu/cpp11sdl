@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxRendererFlagsValues : int32_t
+    enum class ValueType : int32_t
     {
         flagUnknown,
         flagSoftware = sdl2::SDL_RENDERER_SOFTWARE,
@@ -52,7 +52,7 @@ public:
 
     GfxRendererFlags();
 
-    explicit GfxRendererFlags(const GfxRendererFlagsValues flags);
+    explicit GfxRendererFlags(const ValueType flags);
     explicit GfxRendererFlags(const SdlType flags);
 
     GfxRendererFlags(GfxRendererFlags const& other);

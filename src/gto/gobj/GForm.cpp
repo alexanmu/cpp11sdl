@@ -82,8 +82,8 @@ void GForm::setTitle(const std::string& title)
 
 void GForm::create(void)
 {
-    gfx::GfxWindowFlags winFlags(gfx::GfxWindowFlags::GfxWindowFlagsValues::windowFlagResizable);
-    gfx::GfxWindowPosition winPosCenter(gfx::GfxWindowPosition::GfxWindowPositionValues::positionCentered);
+    gfx::GfxWindowFlags winFlags(gfx::GfxWindowFlags::ValueType::windowFlagResizable);
+    gfx::GfxWindowPosition winPosCenter(gfx::GfxWindowPosition::ValueType::positionCentered);
 
     window_ = std::make_shared<gfx::GfxWindow>(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
     canvas_ = nullptr;

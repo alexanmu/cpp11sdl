@@ -182,9 +182,9 @@ void GfxWindow::getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y)
         return;
     }
     sdl2::SDL_GetWindowPosition(window_, &xcoord, &ycoord);
-    x->setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
+    x->setPosition(GfxWindowPosition::ValueType::positionSpecified);
     x->setCoordinate(xcoord);
-    y->setPosition(GfxWindowPosition::GfxWindowPositionValues::positionSpecified);
+    y->setPosition(GfxWindowPosition::ValueType::positionSpecified);
     y->setCoordinate(ycoord);
 }
 

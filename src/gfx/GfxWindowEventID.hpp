@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxWindowEventIDValues : int32_t
+    enum class ValueType : int32_t
     {
         eventNone = sdl2::SDL_WINDOWEVENT_NONE,
         eventShown = sdl2::SDL_WINDOWEVENT_SHOWN,
@@ -64,7 +64,7 @@ public:
 
     GfxWindowEventID();
 
-    explicit GfxWindowEventID(const GfxWindowEventIDValues eventid);
+    explicit GfxWindowEventID(const ValueType eventid);
     explicit GfxWindowEventID(const SdlType eventid);
 
     GfxWindowEventID(GfxWindowEventID const& other);

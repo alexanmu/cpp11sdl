@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
 #include <cassert>
 #include <cstdint>
 #include <string>
@@ -37,7 +38,7 @@ GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlagsValues flags) : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(const ValueType flags) : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
@@ -114,29 +115,29 @@ bool GfxSurfaceFlags::isDontFree(void) const
     return (r != 0);
 }
 
-void GfxSurfaceFlags::setSwSurface(void) throw()
+void GfxSurfaceFlags::setSwSurface(void) throw(std::runtime_error)
 {
-    throw;
+    throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::setPreAlloc(void) throw()
+void GfxSurfaceFlags::setPreAlloc(void) throw(std::runtime_error)
 {
-    throw;
+    throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::setRLEAccel(void) throw()
+void GfxSurfaceFlags::setRLEAccel(void) throw(std::runtime_error)
 {
-    throw;
+    throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::setDontFree(void) throw()
+void GfxSurfaceFlags::setDontFree(void) throw(std::runtime_error)
 {
-    throw;
+    throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::clear(void)
 {
-    flags_ = static_cast<SdlType>(GfxSurfaceFlagsValues::flagSwSurface);
+    flags_ = static_cast<SdlType>(ValueType::flagSwSurface);
 }
 
 GfxSurfaceFlags::SdlType GfxSurfaceFlags::getAsSdlType(void) const

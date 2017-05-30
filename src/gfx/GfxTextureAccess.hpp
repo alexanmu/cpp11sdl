@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxTextureAccessValues : uint32_t
+    enum class ValueType : uint32_t
     {
         accessStatic = sdl2::SDL_TEXTUREACCESS_STATIC,
         accessStreaming = sdl2::SDL_TEXTUREACCESS_STREAMING,
@@ -50,7 +50,7 @@ public:
 
     GfxTextureAccess();
 
-    explicit GfxTextureAccess(const GfxTextureAccessValues access);
+    explicit GfxTextureAccess(const ValueType access);
 
     GfxTextureAccess(GfxTextureAccess const& other);
     GfxTextureAccess(GfxTextureAccess&& other);

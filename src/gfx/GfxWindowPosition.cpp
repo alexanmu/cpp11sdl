@@ -37,12 +37,12 @@ GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPositionValues pos, int32_t coord) : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) : GfxRootClass(ClassName)
 {
     assert(coord >= 0);
 
     pos_ = pos;
-    if (pos_ == GfxWindowPosition::GfxWindowPositionValues::positionSpecified)
+    if (pos_ == GfxWindowPosition::ValueType::positionSpecified)
     {
         if (coord <= 16384)
         {
@@ -96,12 +96,12 @@ GfxWindowPosition::operator bool() const
     return true;
 }
 
-void GfxWindowPosition::setPosition(GfxWindowPositionValues pos)
+void GfxWindowPosition::setPosition(ValueType pos)
 {
     pos_ = pos;
 }
 
-GfxWindowPosition::GfxWindowPositionValues GfxWindowPosition::getPosition(void) const
+GfxWindowPosition::ValueType GfxWindowPosition::getPosition(void) const
 {
     return pos_;
 }
@@ -119,13 +119,13 @@ int32_t GfxWindowPosition::getCoordinate(void) const
 
     switch (pos_)
     {
-        case GfxWindowPositionValues::positionUndefined:
+        case ValueType::positionUndefined:
             ret = SDL_WINDOWPOS_UNDEFINED;
             break;
-        case GfxWindowPositionValues::positionCentered:
+        case ValueType::positionCentered:
             ret = SDL_WINDOWPOS_CENTERED;
             break;
-        case GfxWindowPositionValues::positionSpecified:
+        case ValueType::positionSpecified:
             ret = coord_;
             break;
         default:
@@ -137,7 +137,7 @@ int32_t GfxWindowPosition::getCoordinate(void) const
 
 void GfxWindowPosition::clear(void)
 {
-    pos_ = GfxWindowPositionValues::positionUndefined;
+    pos_ = ValueType::positionUndefined;
     coord_ = -1;
 }
 

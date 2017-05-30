@@ -63,7 +63,7 @@ public:
     void destroyTexture(void);
 
     void setBlendMode(const GfxBlendMode& blendmode);
-    void setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode);
+    void setBlendMode(const GfxBlendMode::ValueType blendmode);
     GfxBlendMode getBlendMode(void);
 
     SdlTypePtr getAsSdlTypePtr(void) const;

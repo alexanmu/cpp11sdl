@@ -44,7 +44,7 @@ public:
     static const char ClassName[];
 
     static constexpr int32_t colorsArraySize = static_cast<int32_t>(
-                                            GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax);
+                                            GfxMessageBoxColorType::ValueType::colorMax);
 
     GfxMessageBoxColorScheme();
 

@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxMessageBoxFlagsValues : int32_t
+    enum class ValueType : int32_t
     {
         flagError = sdl2::SDL_MESSAGEBOX_ERROR,
         flagWarning = sdl2::SDL_MESSAGEBOX_WARNING,
@@ -50,7 +50,7 @@ public:
 
     GfxMessageBoxFlags();
 
-    explicit GfxMessageBoxFlags(const GfxMessageBoxFlagsValues flag);
+    explicit GfxMessageBoxFlags(const ValueType flag);
     explicit GfxMessageBoxFlags(const SdlType flag);
 
     GfxMessageBoxFlags(const GfxMessageBoxFlags& other);
@@ -63,7 +63,7 @@ public:
 
     virtual explicit operator bool() const;
 
-    GfxMessageBoxFlagsValues getFlag(void) const;
+    ValueType getFlag(void) const;
 
     bool isError(void) const;
     bool isWarning(void) const;

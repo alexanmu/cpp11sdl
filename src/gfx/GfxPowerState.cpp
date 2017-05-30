@@ -36,7 +36,7 @@ GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxPowerState::GfxPowerState(const GfxPowerStateValues value) : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(const ValueType value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
@@ -112,28 +112,28 @@ bool GfxPowerState::isCharged(void) const
 
 void GfxPowerState::clear(void)
 {
-    value_ = static_cast<SdlType>(GfxPowerStateValues::stateUnknown);
+    value_ = static_cast<SdlType>(ValueType::stateUnknown);
 }
 
 const std::string GfxPowerState::getAsString() const
 {
     std::string str;
 
-    switch (static_cast<GfxPowerStateValues>(value_))
+    switch (static_cast<ValueType>(value_))
     {
-        case GfxPowerStateValues::stateUnknown:
+        case ValueType::stateUnknown:
             str = "Unknwon";
             break;
-        case GfxPowerStateValues::stateOnBattery:
+        case ValueType::stateOnBattery:
             str = "On Battery";
             break;
-        case GfxPowerStateValues::stateNoBattery:
+        case ValueType::stateNoBattery:
             str = "No Battery";
             break;
-        case GfxPowerStateValues::stateCharging:
+        case ValueType::stateCharging:
             str = "Charging";
             break;
-        case GfxPowerStateValues::stateCharged:
+        case ValueType::stateCharged:
             str = "Charged";
             break;
     }

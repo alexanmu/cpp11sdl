@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxMessageBoxColorTypeValues : int32_t
+    enum class ValueType : int32_t
     {
         colorBackground = sdl2::SDL_MESSAGEBOX_COLOR_BACKGROUND,
         colorText = sdl2::SDL_MESSAGEBOX_COLOR_TEXT,
@@ -54,7 +54,7 @@ public:
     GfxMessageBoxColorType();
 
     explicit GfxMessageBoxColorType(const SdlType type);
-    explicit GfxMessageBoxColorType(const GfxMessageBoxColorTypeValues type);
+    explicit GfxMessageBoxColorType(const ValueType type);
 
     GfxMessageBoxColorType(GfxMessageBoxColorType const& other);
     GfxMessageBoxColorType(GfxMessageBoxColorType&& other);
@@ -64,7 +64,7 @@ public:
 
     virtual explicit operator bool() const;
 
-    GfxMessageBoxColorTypeValues getType(void) const;
+    ValueType getType(void) const;
 
     void clear(void);
 

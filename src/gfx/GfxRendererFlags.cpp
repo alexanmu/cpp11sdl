@@ -37,7 +37,7 @@ GfxRendererFlags::GfxRendererFlags() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlagsValues flags) : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(ValueType flags) : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
@@ -88,7 +88,7 @@ GfxRendererFlags::operator bool() const
 
 bool GfxRendererFlags::isUnknown(void) const
 {
-    return (flags_ == static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown));
+    return (flags_ == static_cast<SdlType>(ValueType::flagUnknown));
 }
 
 bool GfxRendererFlags::isSoftware(void) const
@@ -161,7 +161,7 @@ void GfxRendererFlags::resetTargetTexture(void)
 
 void GfxRendererFlags::clear(void)
 {
-    flags_ = static_cast<SdlType>(GfxRendererFlagsValues::flagUnknown);
+    flags_ = static_cast<SdlType>(ValueType::flagUnknown);
 }
 
 GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const

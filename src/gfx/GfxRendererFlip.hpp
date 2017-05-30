@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxRendererFlipValues : int32_t
+    enum class ValueType : int32_t
     {
         flipNone = sdl2::SDL_FLIP_NONE,
         flipHorizontal = sdl2::SDL_FLIP_HORIZONTAL,
@@ -51,7 +51,7 @@ public:
     GfxRendererFlip();
 
     GfxRendererFlip(const bool fliph, const bool flipv);
-    explicit GfxRendererFlip(const GfxRendererFlipValues values);
+    explicit GfxRendererFlip(const ValueType values);
 
     GfxRendererFlip(const GfxRendererFlip& other);
     GfxRendererFlip(GfxRendererFlip&& other);

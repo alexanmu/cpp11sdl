@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxMessageBoxButtonFlagsValues : uint32_t
+    enum class ValueType : uint32_t
     {
         noneDefault = 0,
         returnKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
@@ -50,7 +50,7 @@ public:
 
     GfxMessageBoxButtonFlags();
 
-    explicit GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlagsValues flags);
+    explicit GfxMessageBoxButtonFlags(const ValueType flags);
     explicit GfxMessageBoxButtonFlags(const SdlType flags);
 
     GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other);

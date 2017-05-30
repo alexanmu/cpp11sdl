@@ -118,7 +118,7 @@ void GfxTexture::setBlendMode(const GfxBlendMode& blendmode)
     sdl2::SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
 }
 
-void GfxTexture::setBlendMode(const GfxBlendMode::GfxBlendModeValues blendmode)
+void GfxTexture::setBlendMode(const GfxBlendMode::ValueType blendmode)
 {
     if (tex_ == nullptr)
     {

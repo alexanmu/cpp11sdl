@@ -63,16 +63,16 @@ GOKMsgBox::GOKMsgBox(std::string const& vname, GObject* parent, const std::strin
 
 void GOKMsgBox::showModal(void)
 {
-    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::GfxMessageBoxFlagsValues::flagError };
+    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::ValueType::flagError };
 
     gfx::GfxMessageBoxButtonData buttons[1] {
         gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                        gfx::GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlagsValues::noneDefault),
+                                        gfx::GfxMessageBoxButtonFlags::ValueType::noneDefault),
                                         1, "OK"),
     };
 
     gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(
-                                    gfx::GfxMessageBoxColorType::GfxMessageBoxColorTypeValues::colorMax)] = {
+                                    gfx::GfxMessageBoxColorType::ValueType::colorMax)] = {
         gfx::GfxMessageBoxColor(255, 0, 0),
         gfx::GfxMessageBoxColor(250, 220, 190),
         gfx::GfxMessageBoxColor(192, 92, 9),

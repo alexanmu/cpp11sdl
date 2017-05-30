@@ -41,7 +41,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxBlendModeValues : int32_t
+    enum class ValueType : int32_t
     {
         blendNone = sdl2::SDL_BLENDMODE_NONE,
         blendBlend = sdl2::SDL_BLENDMODE_BLEND,
@@ -51,7 +51,7 @@ public:
 
     GfxBlendMode();
 
-    explicit GfxBlendMode(const GfxBlendModeValues blendmode);
+    explicit GfxBlendMode(const ValueType blendmode);
     explicit GfxBlendMode(const SdlType blendmode);
 
     GfxBlendMode(const GfxBlendMode& other);
@@ -64,7 +64,7 @@ public:
 
     virtual explicit operator bool() const;
 
-    GfxBlendModeValues getBlendMode(void) const;
+    ValueType getBlendMode(void) const;
 
     bool isBlend(void) const;
     bool isAdd(void) const;

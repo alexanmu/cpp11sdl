@@ -24,6 +24,7 @@
 #ifndef GfxSurfaceFlags_hpp
 #define GfxSurfaceFlags_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 
@@ -41,7 +42,7 @@ public:
 
     static const char ClassName[];
 
-    enum class GfxSurfaceFlagsValues : uint32_t
+    enum class ValueType : uint32_t
     {
         flagSwSurface = SDL_SWSURFACE,
         flagPreAlloc = SDL_PREALLOC,
@@ -51,7 +52,7 @@ public:
 
     GfxSurfaceFlags();
 
-    explicit GfxSurfaceFlags(const GfxSurfaceFlagsValues flags);
+    explicit GfxSurfaceFlags(const ValueType flags);
     explicit GfxSurfaceFlags(const SdlType flags);
 
     GfxSurfaceFlags(GfxSurfaceFlags const& other);
@@ -67,10 +68,10 @@ public:
     bool isRLEAccel(void) const;
     bool isDontFree(void) const;
 
-    void setSwSurface(void) throw();
-    void setPreAlloc(void) throw();
-    void setRLEAccel(void) throw();
-    void setDontFree(void) throw();
+    void setSwSurface(void) throw(std::runtime_error);
+    void setPreAlloc(void) throw(std::runtime_error);
+    void setRLEAccel(void) throw(std::runtime_error);
+    void setDontFree(void) throw(std::runtime_error);
 
     void clear(void);
 
