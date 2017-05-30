@@ -588,28 +588,28 @@ void Playground::_doPaletteSdl(void)
 
 void Playground::_doPaletteGfx(void)
 {
-    gfx::GfxPalette g1;
-    gfx::GfxPalette g2(16);
+    gfx::pixels::GfxPalette g1;
+    gfx::pixels::GfxPalette g2(16);
     gfx::sdl2::SDL_Palette* pal = gfx::sdl2::SDL_AllocPalette(256);
-    gfx::GfxPalette g3(pal);
+    gfx::pixels::GfxPalette g3(pal);
     gfx::sdl2::SDL_FreePalette(pal);
-    gfx::GfxPalette::GfxColorVector vec { { 0xFF, 0xFE, 0xFD }, { 0xFC, 0xFB, 0xFA }, { 0xF9, 0xF8, 0xF7 }, { 0xF6, 0xF5, 0xF4} };
-    gfx::GfxPalette g4(vec);
+    gfx::pixels::GfxPalette::GfxColorVector vec { { 0xFF, 0xFE, 0xFD }, { 0xFC, 0xFB, 0xFA }, { 0xF9, 0xF8, 0xF7 }, { 0xF6, 0xF5, 0xF4} };
+    gfx::pixels::GfxPalette g4(vec);
     
     printSdlPalette(g1.getAsSdlTypePtr(), false);
     printSdlPalette(g2.getAsSdlTypePtr(), false);
     printSdlPalette(g3.getAsSdlTypePtr(), true);
     printSdlPalette(g4.getAsSdlTypePtr(), false);
     
-    gfx::GfxPixelFormat pf1;
+    gfx::pixels::GfxPixelFormat pf1;
     gfx::sdl2::SDL_PixelFormat* pix = gfx::sdl2::SDL_AllocFormat(gfx::sdl2::SDL_PIXELFORMAT_INDEX8);
-    gfx::GfxPixelFormat pf2(pix);
+    gfx::pixels::GfxPixelFormat pf2(pix);
     SDL_FreeFormat(pix);
-    gfx::GfxPixelFormat pf3(gfx::sdl2::SDL_PIXELFORMAT_RGB24);
+    gfx::pixels::GfxPixelFormat pf3(static_cast<gfx::pixels::GfxPixelFormatEnum>(gfx::sdl2::SDL_PIXELFORMAT_RGB24));
     
-    std::cout << "pf1.getFormatAsString()=" << pf1.getFormatAsString() << '\n';
-    std::cout << "pf2.getFormatAsString()=" << pf2.getFormatAsString() << '\n';
-    std::cout << "pf3.getFormatAsString()=" << pf3.getFormatAsString() << '\n';
+    std::cout << "pf1.getFormatAsString()=" << pf1.getPixelFormatName() << '\n';
+    std::cout << "pf2.getFormatAsString()=" << pf2.getPixelFormatName() << '\n';
+    std::cout << "pf3.getFormatAsString()=" << pf3.getPixelFormatName() << '\n';
     std::cout << "SDL_GetPixelFormatName(...)=" << gfx::sdl2::SDL_GetPixelFormatName(gfx::sdl2::SDL_PIXELFORMAT_INDEX8) << '\n';
 }
 
