@@ -1,7 +1,19 @@
 # Giotto
 C++11 Graphics Library based on SDL2 (https://www.libsdl.org/)
 
-Tested with SDL2.0.5
+Components:
+  - 'gfx' namespace: wrapper objects for SDL
+  - 'gto' namespace: GUI
+
+Supported platforms:
+  - RedHat Enterprise Linux Server Release 6.7
+  - macOS X 10.11 El Capitan
+  - macOS 10.12 Sierra
+
+Supported compilers:
+  - GNU gcc 6.1.0a-2
+  - clang 802.0.41
+  - clang 802.0.42
 
 Licensed under the zlib licence (http://zlib.net/zlib_license.html).
 
