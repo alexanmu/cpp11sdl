@@ -58,34 +58,34 @@ public:
 
     gfx::supp::GfxControlledSurface const& getSurface(void) const noexcept;
 
-    gfx::GfxColor const& getForegroundColor(void) const noexcept;
-    void setForegroundColor(gfx::GfxColor const& color) noexcept;
+    gfx::pixels::GfxColor const& getForegroundColor(void) const noexcept;
+    void setForegroundColor(gfx::pixels::GfxColor const& color) noexcept;
 
-    gfx::GfxColor const& getBackgroundColor(void) const noexcept;
-    void setBackgroundColor(gfx::GfxColor const& color) noexcept;
+    gfx::pixels::GfxColor const& getBackgroundColor(void) const noexcept;
+    void setBackgroundColor(gfx::pixels::GfxColor const& color) noexcept;
 
-    gfx::GfxColor const& getBorderColor(void) const noexcept;
-    void setBorderColor(gfx::GfxColor const& color) noexcept;
+    gfx::pixels::GfxColor const& getBorderColor(void) const noexcept;
+    void setBorderColor(gfx::pixels::GfxColor const& color) noexcept;
 
-    gfx::GfxColor const& getBorderShadowColor(void) const noexcept;
-    void setBorderShadowColor(gfx::GfxColor const& color) noexcept;
+    gfx::pixels::GfxColor const& getBorderShadowColor(void) const noexcept;
+    void setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept;
 
     virtual void draw(void);
 protected:
     gfx::supp::GfxControlledSurface surf_;
-    gfx::GfxColor backgroundColor_;
-    gfx::GfxColor foregroundColor_;
-    gfx::GfxColor borderColor_;
-    gfx::GfxColor borderShadowColor_;
+    gfx::pixels::GfxColor backgroundColor_;
+    gfx::pixels::GfxColor foregroundColor_;
+    gfx::pixels::GfxColor borderColor_;
+    gfx::pixels::GfxColor borderShadowColor_;
 
 private:
     void drawBorder(void) noexcept;
     void drawBackground(void) noexcept;
 
-    static const gfx::GfxColor kDefaultForegroundColor;
-    static const gfx::GfxColor kDefaultBackgroundColor;
-    static const gfx::GfxColor kDefaultBorderColor;
-    static const gfx::GfxColor kDefaultBorderShadowColor;
+    static const gfx::pixels::GfxColor kDefaultForegroundColor;
+    static const gfx::pixels::GfxColor kDefaultBackgroundColor;
+    static const gfx::pixels::GfxColor kDefaultBorderColor;
+    static const gfx::pixels::GfxColor kDefaultBorderShadowColor;
 };
 
 }  // namespace gobj
