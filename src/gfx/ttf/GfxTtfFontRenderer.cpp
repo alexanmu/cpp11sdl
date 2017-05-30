@@ -90,7 +90,7 @@ bool GfxTtfFontRenderer::sizeUnicode(std::string text, int32_t * w, int32_t * h)
     throw std::runtime_error("Not supported");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, gfx::GfxColor const& fg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, gfx::pixels::GfxColor const& fg) const
 {
     assert(text.length() > 0);
 
@@ -100,7 +100,8 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, g
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text, gfx::GfxColor const& fg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text,
+            gfx::pixels::GfxColor const& fg) const
 {
     assert(text.length() > 0);
 
@@ -110,15 +111,16 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& tex
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, gfx::GfxColor fg)
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, gfx::pixels::GfxColor const& fg)
         const throw(std::runtime_error)
 {
     assert(text.length() > 0);
     assert(fg);
+
     throw std::runtime_error("Not implemented");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::GfxColor const& fg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pixels::GfxColor const& fg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 
@@ -126,8 +128,8 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::GfxColo
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::GfxColor const& fg,
-            gfx::GfxColor const& bg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
+            gfx::pixels::GfxColor const& bg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 
@@ -135,8 +137,8 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, 
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::GfxColor const& fg,
-            gfx::GfxColor const& bg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
+            gfx::pixels::GfxColor const& bg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 
@@ -144,17 +146,18 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& te
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string text, gfx::GfxColor fg,
-            gfx::GfxColor bg) const throw(std::runtime_error)
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string text, gfx::pixels::GfxColor const& fg,
+            gfx::pixels::GfxColor const& bg) const throw(std::runtime_error)
 {
-    text = text;
-    fg = fg;
-    bg = bg;
+    assert(text.length() > 0);
+    assert(fg);
+    assert(bg);
+
     throw std::runtime_error("Not implemented");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::GfxColor const& fg,
-            gfx::GfxColor const& bg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pixels::GfxColor const& fg,
+            gfx::pixels::GfxColor const& bg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 
@@ -162,7 +165,7 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::GfxCol
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text, gfx::GfxColor const& fg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 
@@ -170,7 +173,8 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text,
     return new gfx::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text, gfx::GfxColor const& fg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text,
+            gfx::pixels::GfxColor const& fg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 
@@ -179,14 +183,15 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& t
 }
 
 gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string text,
-            gfx::GfxColor fg) const throw(std::runtime_error)
+            gfx::pixels::GfxColor const& fg) const throw(std::runtime_error)
 {
-    text = text;
-    fg = fg;
+    assert(text.length() > 0);
+    assert(fg);
+
     throw std::runtime_error("Not implemented");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch, gfx::GfxColor const& fg) const
+gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch, gfx::pixels::GfxColor const& fg) const
 {
     gfx::GfxSurface::SdlTypePtr surf;
 

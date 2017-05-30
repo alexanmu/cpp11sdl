@@ -62,24 +62,26 @@ public:
     bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const;
     bool sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error);
 
-    gfx::GfxSurface * renderTextSolid(std::string const& text, gfx::GfxColor const& fg) const;
-    gfx::GfxSurface * renderTextUtf8Solid(std::string const& text, gfx::GfxColor const& fg) const;
-    gfx::GfxSurface * renderTextUnicodeSolid(std::string text, gfx::GfxColor fg) const throw(std::runtime_error);
-    gfx::GfxSurface * renderGlyphSolid(uint16_t ch, gfx::GfxColor const& fg) const;
+    gfx::GfxSurface * renderTextSolid(std::string const& text, gfx::pixels::GfxColor const& fg) const;
+    gfx::GfxSurface * renderTextUtf8Solid(std::string const& text, gfx::pixels::GfxColor const& fg) const;
+    gfx::GfxSurface * renderTextUnicodeSolid(std::string text, gfx::pixels::GfxColor const& fg)
+                                                const throw(std::runtime_error);
+    gfx::GfxSurface * renderGlyphSolid(uint16_t ch, gfx::pixels::GfxColor const& fg) const;
 
-    gfx::GfxSurface * renderTextShaded(std::string const& text, gfx::GfxColor const& fg,
-                                        gfx::GfxColor const& bg) const;
-    gfx::GfxSurface * renderTextUtf8Shaded(std::string const& text, gfx::GfxColor const& fg,
-                                        gfx::GfxColor const& bg) const;
-    gfx::GfxSurface * renderTextUnicodeShaded(std::string text, gfx::GfxColor fg,
-                                        gfx::GfxColor bg) const throw(std::runtime_error);
-    gfx::GfxSurface * renderGlyphShaded(uint16_t ch, gfx::GfxColor const& fg,
-                                        gfx::GfxColor const& bg) const;
+    gfx::GfxSurface * renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
+                                        gfx::pixels::GfxColor const& bg) const;
+    gfx::GfxSurface * renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
+                                        gfx::pixels::GfxColor const& bg) const;
+    gfx::GfxSurface * renderTextUnicodeShaded(std::string text, gfx::pixels::GfxColor const& fg,
+                                        gfx::pixels::GfxColor const& bg) const throw(std::runtime_error);
+    gfx::GfxSurface * renderGlyphShaded(uint16_t ch, gfx::pixels::GfxColor const& fg,
+                                        gfx::pixels::GfxColor const& bg) const;
 
-    gfx::GfxSurface * renderTextBlended(std::string const& text, gfx::GfxColor const& fg) const;
-    gfx::GfxSurface * renderTextUtf8Blended(std::string const& text, gfx::GfxColor const& fg) const;
-    gfx::GfxSurface * renderTextUnicodeBlended(std::string text, gfx::GfxColor fg) const throw(std::runtime_error);
-    gfx::GfxSurface * renderGlyphBlended(uint16_t ch, gfx::GfxColor const& fg) const;
+    gfx::GfxSurface * renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const;
+    gfx::GfxSurface * renderTextUtf8Blended(std::string const& text, gfx::pixels::GfxColor const& fg) const;
+    gfx::GfxSurface * renderTextUnicodeBlended(std::string text, gfx::pixels::GfxColor const& fg)
+                                                const throw(std::runtime_error);
+    gfx::GfxSurface * renderGlyphBlended(uint16_t ch, gfx::pixels::GfxColor const& fg) const;
 private:
     GfxTtfFont * ttf_;
 };
