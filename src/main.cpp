@@ -306,7 +306,7 @@ void _doStuff(void)
         gtf = ri.getTextureFormats();
         for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
         {
-            gfx::pixels::GfxPixelFormat gpf(gfx::pixels::GfxPixelFormatEnum(gtf[i]));
+            gfx::pixels::GfxPixelFormat gpf { gfx::pixels::GfxPixelFormatEnum(gtf[i]) };
             std::cout << "gpf.getPixelFormatName()=" << gpf.getPixelFormatName() << '\n';
         }
     }
