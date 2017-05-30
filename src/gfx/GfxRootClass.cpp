@@ -90,6 +90,7 @@
 #include "GfxTtfFontRenderer.hpp"  // 2017.05.19
 #include "GfxFontInfo.hpp"  // 2017.05.19
 #include "GfxControlledSurface.hpp"
+#include "GfxPixelType.hpp"  // 2017.05.30
 
 namespace gfx
 {
@@ -159,7 +160,8 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::ttf::GfxTtfFontHinting::ClassName, sizeof(gfx::ttf::GfxTtfFontHinting) },  // 2017.05.18
     { gfx::ttf::GfxTtfFontRenderer::ClassName, sizeof(gfx::ttf::GfxTtfFontRenderer) },  // 2017.05.19
     { gfx::supp::GfxFontInfo::ClassName, sizeof(gfx::supp::GfxFontInfo) },  // 2017.05.19
-    { gfx::supp::GfxControlledSurface::ClassName, sizeof(gfx::supp::GfxControlledSurface) }
+    { gfx::supp::GfxControlledSurface::ClassName, sizeof(gfx::supp::GfxControlledSurface) },
+    { gfx::pixels::GfxPixelType::ClassName, sizeof(gfx::pixels::GfxPixelType) }  // 2017.05.30
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
