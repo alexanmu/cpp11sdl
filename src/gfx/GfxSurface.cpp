@@ -188,14 +188,14 @@ int32_t GfxSurface::getDepth(void) const
     return surf_->format->BitsPerPixel;
 }
 
-GfxPixelFormat * GfxSurface::getFormat(void)
+pixels::GfxPixelFormat * GfxSurface::getFormat(void)
 {
     if (surf_ == nullptr)
     {
-        return new GfxPixelFormat();
+        return new pixels::GfxPixelFormat();
     }
 
-    return new GfxPixelFormat(surf_->format);
+    return new pixels::GfxPixelFormat(surf_->format);
 }
 
 void GfxSurface::fillRect(const GfxRect& rect, const GfxColor& color)

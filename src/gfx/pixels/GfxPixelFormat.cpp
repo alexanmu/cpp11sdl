@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace pixels
+{
+
 const char GfxPixelFormat::ClassName[] = "GfxPixelFormat";
 
 GfxPixelFormat::GfxPixelFormat() : GfxRootClass(ClassName)
@@ -337,6 +340,8 @@ GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)pix_;
 }
+
+}  // namespace pixels
 
 }  // namespace gfx
 

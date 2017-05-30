@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace pixels
+{
+
 class GfxPixelFormat final : public GfxRootClass
 {
 public:
@@ -92,6 +95,8 @@ public:
 private:
     SdlTypePtr pix_;
 };
+
+}  // namespace pixels
 
 }  // namespace gfx
 

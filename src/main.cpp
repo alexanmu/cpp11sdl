@@ -221,8 +221,8 @@ void AfterDeInit(void)
 
 void bmpSurfaceInfo(gfx::GfxSurface* bmps)
 {
-    gfx::GfxPixelFormat * ptr;
-    gfx::GfxPalette::GfxColorVector vec;
+    gfx::pixels::GfxPixelFormat * ptr;
+    gfx::pixels::GfxPalette::GfxColorVector vec;
 
     ptr = bmps->getFormat();
     std::cout << "ptr.getFormat()=" << ptr->getFormat() << '\n';
@@ -309,7 +309,7 @@ void _doStuff(void)
         gtf = ri.getTextureFormats();
         for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
         {
-            gfx::GfxPixelFormat gpf(gtf[i]);
+            gfx::pixels::GfxPixelFormat gpf(gtf[i]);
             std::cout << "gpf.getFormatAsString()=" << gpf.getFormatAsString() << '\n';
         }
     }

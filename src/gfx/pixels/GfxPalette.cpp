@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace pixels
+{
+
 const char GfxPalette::ClassName[] = "GfxPalette";
 
 GfxPalette::GfxPalette() : GfxRootClass(ClassName)
@@ -195,6 +198,8 @@ GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)pal_;
 }
+
+}  // namespace pixels
 
 }  // namespace gfx
 

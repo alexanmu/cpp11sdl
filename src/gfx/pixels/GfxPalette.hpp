@@ -36,6 +36,9 @@
 namespace gfx
 {
 
+namespace pixels
+{
+
 class GfxPalette final : public GfxRootClass
 {
 public:
@@ -83,6 +86,8 @@ private:
 
     SdlTypePtr pal_;
 };
+
+}  // namespace pixels
 
 }  // namespace gfx
 

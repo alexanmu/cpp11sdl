@@ -70,7 +70,7 @@ public:
     int32_t getHeight(void) const;
     int32_t getDepth(void) const;
 
-    GfxPixelFormat * getFormat(void);
+    pixels::GfxPixelFormat * getFormat(void);
 
     void fillRect(const GfxRect& rect, const GfxColor& color);
     void fillRect(const GfxColor& color);
