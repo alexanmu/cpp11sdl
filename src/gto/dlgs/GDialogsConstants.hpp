@@ -26,11 +26,15 @@
 
 #include <cstdint>
 
+#include "GDialog.hpp"
+
 namespace gto
 {
 
 namespace dlgs
 {
+
+using gto::gobj::GDialog;
 
 enum class GDialogsConstants : uint16_t
 {

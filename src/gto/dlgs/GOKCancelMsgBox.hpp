@@ -35,7 +35,7 @@ namespace gto
 namespace dlgs
 {
 
-class GOKCancelMsgBox : public gobj::GDialog
+class GOKCancelMsgBox : public GDialog
 {
 public:
     GOKCancelMsgBox() = delete;

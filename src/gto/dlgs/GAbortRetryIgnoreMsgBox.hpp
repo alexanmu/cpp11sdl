@@ -34,7 +34,7 @@ namespace gto
 namespace dlgs
 {
 
-class GAbortRetryIgnoreMsgBox : public gobj::GDialog
+class GAbortRetryIgnoreMsgBox : public GDialog
 {
 public:
     GAbortRetryIgnoreMsgBox() = delete;

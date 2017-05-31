@@ -458,8 +458,8 @@ void GfxWindow::updateWindowSurfaceRects(GfxRectVector vec) const
 
     assert(vec.size() > 0);
 
-    rects_count = vec.size();
-    rects_ptr = reinterpret_cast<GfxRect::SdlTypePtr>(std::malloc(sizeof(GfxRect::SdlType) * rects_count));
+    rects_count = static_cast<int32_t>(vec.size());
+    rects_ptr = reinterpret_cast<GfxRect::SdlTypePtr>(malloc(sizeof(GfxRect::SdlType) * rects_count));
     index = 0;
     for (auto& it : vec)
     {
@@ -471,7 +471,7 @@ void GfxWindow::updateWindowSurfaceRects(GfxRectVector vec) const
         ret = sdl2::SDL_UpdateWindowSurfaceRects(window_, rects_ptr, rects_count);
         assert((ret == -1) || (ret == 0));
     }
-    std::free(rects_ptr);
+    free(rects_ptr);
 }
 
 void GfxWindow::setWindowGrab(GfxBool const& grabbed) const
