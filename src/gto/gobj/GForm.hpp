@@ -66,7 +66,7 @@ public:
 
     std::shared_ptr<gfx::bgi::GfxCanvas> getCanvas(void);
 protected:
-    std::shared_ptr<gfx::GfxWindow> window_;
+    std::shared_ptr<gfx::video::GfxWindow> window_;
     gfx::GfxSurface* windowsurface_;
 
 private:

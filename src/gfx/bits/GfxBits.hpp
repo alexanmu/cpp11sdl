@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace bits
+{
+
 class GfxBits final : public GfxRootClass
 {
 public:
@@ -49,6 +52,8 @@ public:
 
     int mostSignificantBitIndex32(const uint32_t x) const;
 };
+
+}  // namespace bits
 
 }  // namespace gfx
 

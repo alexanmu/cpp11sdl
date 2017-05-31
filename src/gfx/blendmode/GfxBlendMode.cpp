@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace blendmode
+{
+
 const char GfxBlendMode::ClassName[] = "GfxBlendMode";
 
 GfxBlendMode::GfxBlendMode() : GfxRootClass(ClassName)
@@ -124,6 +127,8 @@ GfxBlendMode::SdlTypePtr GfxBlendMode::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)blendmode_;
 }
+
+}  // namespace blendmode
 
 }  // namespace gfx
 

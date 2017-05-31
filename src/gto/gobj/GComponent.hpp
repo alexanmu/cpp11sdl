@@ -56,7 +56,7 @@ public:
     GComponent* getParentComponent(void) const noexcept;
     bool hasParent(void) const noexcept;
 
-    bool equals(GObject * object);
+    bool equals(GComponent * object);
 
     void insertComponent(GComponent * const component) throw(std::runtime_error);
     void removeComponent(GComponent * const component) throw(std::runtime_error);
@@ -65,7 +65,7 @@ public:
     uint64_t getTag(void) const noexcept;
     void setTag(uint64_t tag) noexcept;
 
-    std::string const& getName(void) const;
+    std::string const& getVName(void) const;
 protected:
     std::string vname_;
     uint64_t tag_;

@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBoxFlags::ClassName[] = "GfxMessageBoxFlags";
 
 GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass(ClassName)
@@ -124,6 +127,8 @@ GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flag_;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 const char GfxScreenSaver::ClassName[] = "GfxScreenSaver";
 
 GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
@@ -60,6 +63,8 @@ void GfxScreenSaver::disableScreenSaver(void)
     sdl2::SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
 }
+
+}  // namespace video
 
 }  // namespace gfx
 

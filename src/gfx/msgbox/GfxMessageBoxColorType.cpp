@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBoxColorType::ClassName[] = "GfxMessageBoxColorType";
 
 GfxMessageBoxColorType::GfxMessageBoxColorType() : GfxRootClass(ClassName)
@@ -106,6 +109,8 @@ GfxMessageBoxColorType::SdlTypePtr GfxMessageBoxColorType::getAsSdlTypePtr(void)
 {
     return (SdlTypePtr)&type_;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

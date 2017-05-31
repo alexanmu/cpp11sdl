@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace bits
+{
+
 const char GfxBits::ClassName[] = "GfxBits";
 
 GfxBits::GfxBits() : GfxRootClass(ClassName)
@@ -46,6 +49,8 @@ int GfxBits::mostSignificantBitIndex32(const uint32_t x) const
 {
     return sdl2::SDL_MostSignificantBitIndex32(x);
 }
+
+}  // namespace bits
 
 }  // namespace gfx
 

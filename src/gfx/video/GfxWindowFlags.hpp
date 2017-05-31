@@ -34,6 +34,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 class GfxWindowFlags final : public GfxRootClass
 {
 public:
@@ -72,6 +75,7 @@ public:
 
     explicit GfxWindowFlags(const ValueType flags) noexcept;
     explicit GfxWindowFlags(const SdlType flags) noexcept;
+    explicit GfxWindowFlags(const uint32_t flags) noexcept;
 
     GfxWindowFlags(GfxWindowFlags const& other) noexcept;
     GfxWindowFlags(GfxWindowFlags&& other) noexcept;
@@ -153,6 +157,8 @@ public:
 private:
     SdlType flags_;
 };
+
+}  // namespace video
 
 }  // namespace gfx
 

@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GObject.hpp"
+#include "GDialog.hpp"
 #include "GDialogsConstants.hpp"
 
 namespace gto
@@ -35,12 +35,14 @@ namespace gto
 namespace dlgs
 {
 
-class GRetryCancelMsgBox : public gobj::GObject
+class GRetryCancelMsgBox : public gobj::GDialog
 {
 public:
-    explicit GRetryCancelMsgBox(std::string const& vname, GObject* parent);
+    GRetryCancelMsgBox() = delete;
 
-    GRetryCancelMsgBox(std::string const& vname, GObject* parent, const std::string& title,
+    explicit GRetryCancelMsgBox(std::string const& vname, GComponent* owner);
+
+    GRetryCancelMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
                         const std::string& message);
 
     GRetryCancelMsgBox(GRetryCancelMsgBox const&) = delete;
@@ -49,13 +51,15 @@ public:
     GRetryCancelMsgBox& operator=(GRetryCancelMsgBox const&) = delete;
     GRetryCancelMsgBox& operator=(GRetryCancelMsgBox&&) = delete;
 
-    void showModal(void);
+    void setTitle(std::string const& title) noexcept;
+    void setMessage(std::string const& message) noexcept;
+
+    virtual void showModal(void);
     GDialogsConstants getSelection(void) const;
 private:
     std::string title_;
     std::string message_;
     GDialogsConstants selection_;
-    GObject* parent_;
 };
 
 }  // namespace dlgs

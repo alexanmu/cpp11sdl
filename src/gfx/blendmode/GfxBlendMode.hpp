@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace blendmode
+{
+
 class GfxBlendMode final : public GfxRootClass
 {
 public:
@@ -77,6 +80,8 @@ public:
 private:
     SdlType blendmode_;
 };
+
+}  // namespace blendmode
 
 }  // namespace gfx
 

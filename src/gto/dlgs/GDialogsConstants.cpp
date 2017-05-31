@@ -29,6 +29,7 @@ namespace dlgs
 {
 
 }  // namespace dlgs
+
 }  // namespace gto
 
 /* EOF */

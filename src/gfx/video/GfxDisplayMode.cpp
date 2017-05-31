@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 const char GfxDisplayMode::ClassName[] = "GfxDisplayMode";
 
 GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
@@ -125,6 +128,8 @@ GfxDisplayMode::SdlTypePtr GfxDisplayMode::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&dmode_;
 }
+
+}  // namespace video
 
 }  // namespace gfx
 

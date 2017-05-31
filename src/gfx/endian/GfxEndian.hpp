@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace endian
+{
+
 class GfxEndian final : public GfxRootClass
 {
 public:
@@ -62,6 +65,8 @@ public:
     uint64_t swapBE64(const uint64_t x) const;
     float swapFloatBE(const float x) const;
 };
+
+}  // namespace endian
 
 }  // namespace gfx
 

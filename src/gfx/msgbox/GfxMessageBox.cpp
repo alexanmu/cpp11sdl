@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBox::ClassName[] = "GfxMessageBox";
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass(ClassName)
@@ -55,7 +58,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
 }
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
-                             const std::string& message, GfxWindow const& win)
+                             const std::string& message, video::GfxWindow const& win)
 {
     assert(flag);
     assert(title.length() > 0);
@@ -65,7 +68,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
     flag_ = flag;
     title_ = title;
     message_ = message;
-    winptr_ = reinterpret_cast<GfxWindow const *>(&win);
+    winptr_ = reinterpret_cast<video::GfxWindow const *>(&win);
     type_ = GfxMessageBoxType::typeSimple;
 }
 
@@ -113,6 +116,8 @@ int32_t GfxMessageBox::showModalComplex(void) const
     sdl2::SDL_ShowMessageBox(p, &buttonid);
     return buttonid;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

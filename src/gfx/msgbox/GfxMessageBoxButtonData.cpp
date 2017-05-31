@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBoxButtonData::ClassName[] = "GfxMessageBoxButtonData";
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
@@ -116,6 +119,8 @@ GfxMessageBoxButtonData::SdlTypePtr GfxMessageBoxButtonData::getAsSdlTypePtr(voi
 {
     return (SdlTypePtr)&data_;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

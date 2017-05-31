@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace cpuinfo
+{
+
 class GfxCpuInfo final : public GfxRootClass
 {
 public:
@@ -79,6 +82,8 @@ private:
     bool hasAvx2_;
     int32_t systemRam_;
 };
+
+}  // namespace cpuinfo
 
 }  // namespace gfx
 

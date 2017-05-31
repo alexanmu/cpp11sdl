@@ -37,6 +37,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 class GfxVideo final : public GfxRootClass
 {
 public:
@@ -74,6 +77,8 @@ private:
     int32_t numvideodisplays_;
     std::map<int32_t, int32_t> numdisplaymodes_;
 };
+
+}  // namespace video
 
 }  // namespace gfx
 

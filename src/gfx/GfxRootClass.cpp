@@ -96,6 +96,7 @@
 #include "GfxArrayOrder.hpp"  // 2017.05.30
 #include "GfxPackedLayout.hpp"  // 2017.05.30
 #include "GfxPixelFormatEnum.hpp"  // 2017.05.30
+#include "GfxHitTestResult.hpp"  // 2017.05.31
 
 namespace gfx
 {
@@ -104,27 +105,27 @@ int32_t GfxRootClass::i32InstanceCounter_ = 0;
 
 const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
 {
-    { gfx::GfxBits::ClassName, sizeof(gfx::GfxBits) },
-    { gfx::GfxBlendMode::ClassName, sizeof(gfx::GfxBlendMode) },
+    { gfx::bits::GfxBits::ClassName, sizeof(gfx::bits::GfxBits) },
+    { gfx::blendmode::GfxBlendMode::ClassName, sizeof(gfx::blendmode::GfxBlendMode) },
     { gfx::GfxBool::ClassName, sizeof(gfx::GfxBool) },
-    { gfx::GfxClipboard::ClassName, sizeof(gfx::GfxClipboard) },
+    { gfx::clipboard::GfxClipboard::ClassName, sizeof(gfx::clipboard::GfxClipboard) },
     { gfx::pixels::GfxColor::ClassName, sizeof(gfx::pixels::GfxColor) },
-    { gfx::GfxCpuInfo::ClassName, sizeof(gfx::GfxCpuInfo) },
-    { gfx::GfxDisplayMode::ClassName, sizeof(gfx::GfxDisplayMode) },
-    { gfx::GfxEndian::ClassName, sizeof(gfx::GfxEndian) },
+    { gfx::cpuinfo::GfxCpuInfo::ClassName, sizeof(gfx::cpuinfo::GfxCpuInfo) },
+    { gfx::video::GfxDisplayMode::ClassName, sizeof(gfx::video::GfxDisplayMode) },
+    { gfx::endian::GfxEndian::ClassName, sizeof(gfx::endian::GfxEndian) },
     { gfx::GfxError::ClassName, sizeof(gfx::GfxError) },
     { gfx::GfxFileSystem::ClassName, sizeof(gfx::GfxFileSystem) },
     { gfx::GfxGetRendererInfo::ClassName, sizeof(gfx::GfxGetRendererInfo) },
     { gfx::GfxGetVersion::ClassName, sizeof(gfx::GfxGetVersion) },
     { gfx::GfxInitQuit::ClassName, sizeof(gfx::GfxInitQuit) },
     { gfx::GfxLoadSo::ClassName, sizeof(gfx::GfxLoadSo) },
-    { gfx::GfxMessageBox::ClassName, sizeof(gfx::GfxMessageBox) },
-    { gfx::GfxMessageBoxButtonData::ClassName, sizeof(gfx::GfxMessageBoxButtonData) },
-    { gfx::GfxMessageBoxButtonFlags::ClassName, sizeof(gfx::GfxMessageBoxButtonFlags) },
-    { gfx::GfxMessageBoxColor::ClassName, sizeof(gfx::GfxMessageBoxColor) },
-    { gfx::GfxMessageBoxColorScheme::ClassName, sizeof(gfx::GfxMessageBoxColorScheme) },
-    { gfx::GfxMessageBoxData::ClassName, sizeof(gfx::GfxMessageBoxData) },
-    { gfx::GfxMessageBoxFlags::ClassName, sizeof(gfx::GfxMessageBoxFlags) },
+    { gfx::msgbox::GfxMessageBox::ClassName, sizeof(gfx::msgbox::GfxMessageBox) },
+    { gfx::msgbox::GfxMessageBoxButtonData::ClassName, sizeof(gfx::msgbox::GfxMessageBoxButtonData) },
+    { gfx::msgbox::GfxMessageBoxButtonFlags::ClassName, sizeof(gfx::msgbox::GfxMessageBoxButtonFlags) },
+    { gfx::msgbox::GfxMessageBoxColor::ClassName, sizeof(gfx::msgbox::GfxMessageBoxColor) },
+    { gfx::msgbox::GfxMessageBoxColorScheme::ClassName, sizeof(gfx::msgbox::GfxMessageBoxColorScheme) },
+    { gfx::msgbox::GfxMessageBoxData::ClassName, sizeof(gfx::msgbox::GfxMessageBoxData) },
+    { gfx::msgbox::GfxMessageBoxFlags::ClassName, sizeof(gfx::msgbox::GfxMessageBoxFlags) },
     { gfx::pixels::GfxPalette::ClassName, sizeof(gfx::pixels::GfxPalette) },
     { gfx::pixels::GfxPixelFormat::ClassName, sizeof(gfx::pixels::GfxPixelFormat) },
     { gfx::GfxPlatform::ClassName, sizeof(gfx::GfxPlatform) },
@@ -136,18 +137,18 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::GfxRendererFlags::ClassName, sizeof(gfx::GfxRendererFlags) },
     { gfx::GfxRendererFlip::ClassName, sizeof(gfx::GfxRendererFlip) },
     { gfx::GfxRendererInfo::ClassName, sizeof(gfx::GfxRendererInfo) },
-    { gfx::GfxScreenSaver::ClassName, sizeof(gfx::GfxScreenSaver) },
+    { gfx::video::GfxScreenSaver::ClassName, sizeof(gfx::video::GfxScreenSaver) },
     { gfx::GfxSurface::ClassName, sizeof(gfx::GfxSurface) },
     { gfx::GfxSurfaceFlags::ClassName, sizeof(gfx::GfxSurfaceFlags) },
     { gfx::GfxTexture::ClassName, sizeof(gfx::GfxTexture) },
     { gfx::GfxTextureAccess::ClassName, sizeof(gfx::GfxTextureAccess) },
     { gfx::GfxTextureModulate::ClassName, sizeof(gfx::GfxTextureModulate) },
     { gfx::GfxVersion::ClassName, sizeof(gfx::GfxVersion) },
-    { gfx::GfxVideo::ClassName, sizeof(gfx::GfxVideo) },
-    { gfx::GfxWindow::ClassName, sizeof(gfx::GfxWindow) },
-    { gfx::GfxWindowEventID::ClassName, sizeof(gfx::GfxWindowEventID) },
-    { gfx::GfxWindowFlags::ClassName, sizeof(gfx::GfxWindowFlags) },
-    { gfx::GfxWindowPosition::ClassName, sizeof(gfx::GfxWindowPosition) },
+    { gfx::video::GfxVideo::ClassName, sizeof(gfx::video::GfxVideo) },
+    { gfx::video::GfxWindow::ClassName, sizeof(gfx::video::GfxWindow) },
+    { gfx::video::GfxWindowEventID::ClassName, sizeof(gfx::video::GfxWindowEventID) },
+    { gfx::video::GfxWindowFlags::ClassName, sizeof(gfx::video::GfxWindowFlags) },
+    { gfx::video::GfxWindowPosition::ClassName, sizeof(gfx::video::GfxWindowPosition) },
     { gfx::bgi::GfxAngle::ClassName, sizeof(gfx::bgi::GfxAngle) },
     { gfx::bgi::fnt::GfxBitmapFont::ClassName, sizeof(gfx::bgi::fnt::GfxBitmapFont) },
     { gfx::bgi::GfxCanvas::ClassName, sizeof(gfx::bgi::GfxCanvas) },
@@ -171,7 +172,8 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::pixels::GfxPackedOrder::ClassName, sizeof(gfx::pixels::GfxPackedOrder) },  // 2017.05.30
     { gfx::pixels::GfxArrayOrder::ClassName, sizeof(gfx::pixels::GfxArrayOrder) },  // 2017.05.30
     { gfx::pixels::GfxPackedLayout::ClassName, sizeof(gfx::pixels::GfxPackedLayout) },  // 2017.05.30
-    { gfx::pixels::GfxPixelFormatEnum::ClassName, sizeof(gfx::pixels::GfxPixelFormatEnum) }  // 2017.05.30
+    { gfx::pixels::GfxPixelFormatEnum::ClassName, sizeof(gfx::pixels::GfxPixelFormatEnum) },  // 2017.05.30
+    { gfx::video::GfxHitTestResult::ClassName, sizeof(gfx::video::GfxHitTestResult) }  // 2017.05.31
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /

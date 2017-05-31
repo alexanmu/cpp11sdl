@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 class GfxWindowPosition final : public GfxRootClass
 {
 public:
@@ -67,6 +70,8 @@ private:
     ValueType pos_;
     uint32_t coord_;
 };
+
+}  // namespace video
 
 }  // namespace gfx
 

@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 const char GfxVideo::ClassName[] = "GfxVideo";
 
 GfxVideo::GfxVideo() : GfxRootClass(ClassName)
@@ -242,6 +245,8 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int32_t di
     }
     return dm;
 }
+
+}  // namespace video
 
 }  // namespace gfx
 

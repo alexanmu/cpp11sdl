@@ -28,6 +28,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 const char GfxWindowEventID::ClassName[] = "GfxWindowEventID";
 
 GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
@@ -173,6 +176,8 @@ GfxWindowEventID::SdlTypePtr GfxWindowEventID::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&eventid_;
 }
+
+}  // namespace video
 
 }  // namespace gfx
 

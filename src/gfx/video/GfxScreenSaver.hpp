@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 class GfxScreenSaver final : public GfxRootClass
 {
 public:
@@ -58,6 +61,8 @@ private:
 
     ScreenSaverStatus ssstatus_;
 };
+
+}  // namespace video
 
 }  // namespace gfx
 

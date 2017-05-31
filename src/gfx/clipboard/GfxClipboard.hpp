@@ -27,8 +27,12 @@
 #include <string>
 
 #include "GfxRootClass.hpp"
+#include "GfxBool.hpp"
 
 namespace gfx
+{
+
+namespace clipboard
 {
 
 class GfxClipboard final : public GfxRootClass
@@ -48,8 +52,10 @@ public:
 
     void setClipboardText(const std::string& str) const;
     std::string getClipboardText(void) const;
-    bool hasClipboardText(void) const;
+    GfxBool hasClipboardText(void) const;
 };
+
+}  // namespace clipboard
 
 }  // namespace gfx
 

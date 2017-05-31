@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 const char GfxWindowFlags::ClassName[] = "GfxWindowFlags";
 
 GfxWindowFlags::GfxWindowFlags() noexcept : GfxRootClass(ClassName)
@@ -38,16 +41,21 @@ GfxWindowFlags::GfxWindowFlags() noexcept : GfxRootClass(ClassName)
     clear();
 }
 
-GfxWindowFlags::GfxWindowFlags(ValueType flags) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(SdlType flags) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags >= 0);
 
     flags_ = flags;
+}
+
+GfxWindowFlags::GfxWindowFlags(const uint32_t flags) noexcept : GfxRootClass(ClassName)
+{
+    flags_ = static_cast<SdlType>(flags);
 }
 
 GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxRootClass(ClassName)
@@ -450,6 +458,8 @@ GfxWindowFlags::SdlTypePtr GfxWindowFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace video
 
 }  // namespace gfx
 

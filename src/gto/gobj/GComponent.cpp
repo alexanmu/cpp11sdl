@@ -66,7 +66,7 @@ bool GComponent::hasParent(void) const noexcept
     return (owner_ != nullptr);
 }
 
-bool GComponent::equals(GObject * object)
+bool GComponent::equals(GComponent * object)
 {
     return (this == object);
 }
@@ -81,7 +81,7 @@ void GComponent::insertComponent(GComponent * const component) throw(std::runtim
     }
     if (components_.size() > 0)
     {
-        if (findComponent(component->getName()) != nullptr)
+        if (findComponent(component->getVName()) != nullptr)
         {
             throw std::runtime_error("Component name is not unique");
         }
@@ -113,7 +113,7 @@ GComponent* GComponent::findComponent(const std::string& name)
     auto pos = std::find_if(components_.begin(), components_.end(),
             [=](GComponent * const c)
                 {
-                    return (c->getName() == name);
+                    return (c->getVName() == name);
                 });
     if (pos != components_.end())
     {
@@ -132,7 +132,7 @@ void GComponent::setTag(uint64_t tag) noexcept
     tag_ = tag;
 }
 
-std::string const& GComponent::getName(void) const
+std::string const& GComponent::getVName(void) const
 {
     return vname_;
 }

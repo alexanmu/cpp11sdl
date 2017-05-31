@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GObject.hpp"
+#include "GDialog.hpp"
 #include "GDialogsConstants.hpp"
 
 namespace gto
@@ -34,12 +34,14 @@ namespace gto
 namespace dlgs
 {
 
-class GAbortRetryIgnoreMsgBox : public gobj::GObject
+class GAbortRetryIgnoreMsgBox : public gobj::GDialog
 {
 public:
-    explicit GAbortRetryIgnoreMsgBox(std::string const& name, gobj::GObject* parent);
+    GAbortRetryIgnoreMsgBox() = delete;
 
-    GAbortRetryIgnoreMsgBox(std::string const& name, gobj::GObject* parent, const std::string& title,
+    explicit GAbortRetryIgnoreMsgBox(std::string const& name, gobj::GComponent* owner);
+
+    GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner, const std::string& title,
                             const std::string& message);
 
     GAbortRetryIgnoreMsgBox(GAbortRetryIgnoreMsgBox const&) = delete;
@@ -48,13 +50,15 @@ public:
     GAbortRetryIgnoreMsgBox& operator=(GAbortRetryIgnoreMsgBox const&) = delete;
     GAbortRetryIgnoreMsgBox& operator=(GAbortRetryIgnoreMsgBox&&) = delete;
 
-    void showModal(void);
+    void setTitle(std::string const& title) noexcept;
+    void setMessage(std::string const& message) noexcept;
+
+    virtual void showModal(void);
     GDialogsConstants getSelection(void) const;
 private:
     std::string title_;
     std::string message_;
     GDialogsConstants selection_;
-    gobj::GObject* parent_;
 };
 
 }  // namespace dlgs

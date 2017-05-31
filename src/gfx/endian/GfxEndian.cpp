@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace endian
+{
+
 const char GfxEndian::ClassName[] = "GfxEndian";
 
 GfxEndian::GfxEndian() : GfxRootClass(ClassName)
@@ -101,6 +104,8 @@ float GfxEndian::swapFloatBE(const float x) const
 {
     return sdl2::SDL_SwapFloatBE(x);
 }
+
+}  // namespace endian
 
 }  // namespace gfx
 

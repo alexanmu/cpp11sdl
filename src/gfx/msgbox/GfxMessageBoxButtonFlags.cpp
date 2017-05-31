@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBoxButtonFlags::ClassName[] = "GfxMessageBoxButtonFlags";
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass(ClassName)
@@ -117,6 +120,8 @@ GfxMessageBoxButtonFlags::SdlTypePtr GfxMessageBoxButtonFlags::getAsSdlTypePtr(v
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

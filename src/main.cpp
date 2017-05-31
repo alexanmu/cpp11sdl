@@ -62,66 +62,66 @@
 #include "GfxBgiFontConstants.hpp"
 #include "GfxPixelFormatEnum.hpp"
 
-void MsgBox(gfx::GfxWindow const& win)
+void MsgBox(gfx::video::GfxWindow const& win)
 {
     gfx::GfxPlatform plat;
     plat.queryPlatform();
     gfx::GfxPowerInfo pinfo;
     pinfo.queryPowerInfo();
 
-    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::ValueType::flagInformation };
+    gfx::msgbox::GfxMessageBoxFlags flags { gfx::msgbox::GfxMessageBoxFlags::ValueType::flagInformation };
     std::string title = "Title";
     std::string message = pinfo.getAsString();
     int numbuttons = 4;
     std::string btn1 = "1 " + plat.getPlatform();
-    gfx::GfxMessageBoxButtonData buttons[4] {
-        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                    gfx::GfxMessageBoxButtonFlags::ValueType::noneDefault), 1, btn1),
-        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                    gfx::GfxMessageBoxButtonFlags::ValueType::escKeyDefault), 2, "Button2"),
-        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                    gfx::GfxMessageBoxButtonFlags::ValueType::returnKeyDefault), 3, "Button3"),
-        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                    gfx::GfxMessageBoxButtonFlags::ValueType::noneDefault), 4, "4 Test")
+    gfx::msgbox::GfxMessageBoxButtonData buttons[4] {
+        gfx::msgbox::GfxMessageBoxButtonData(gfx::msgbox::GfxMessageBoxButtonFlags(
+                    gfx::msgbox::GfxMessageBoxButtonFlags::ValueType::noneDefault), 1, btn1),
+        gfx::msgbox::GfxMessageBoxButtonData(gfx::msgbox::GfxMessageBoxButtonFlags(
+                    gfx::msgbox::GfxMessageBoxButtonFlags::ValueType::escKeyDefault), 2, "Button2"),
+        gfx::msgbox::GfxMessageBoxButtonData(gfx::msgbox::GfxMessageBoxButtonFlags(
+                    gfx::msgbox::GfxMessageBoxButtonFlags::ValueType::returnKeyDefault), 3, "Button3"),
+        gfx::msgbox::GfxMessageBoxButtonData(gfx::msgbox::GfxMessageBoxButtonFlags(
+                    gfx::msgbox::GfxMessageBoxButtonFlags::ValueType::noneDefault), 4, "4 Test")
     };
-    gfx::GfxMessageBoxColor c[5] = {
-        gfx::GfxMessageBoxColor(255, 0, 0),
-        gfx::GfxMessageBoxColor(250, 220, 190),
-        gfx::GfxMessageBoxColor(192, 92, 9),
-        gfx::GfxMessageBoxColor(50, 100, 200),
-        gfx::GfxMessageBoxColor(255, 255, 255)
+    gfx::msgbox::GfxMessageBoxColor c[5] = {
+        gfx::msgbox::GfxMessageBoxColor(255, 0, 0),
+        gfx::msgbox::GfxMessageBoxColor(250, 220, 190),
+        gfx::msgbox::GfxMessageBoxColor(192, 92, 9),
+        gfx::msgbox::GfxMessageBoxColor(50, 100, 200),
+        gfx::msgbox::GfxMessageBoxColor(255, 255, 255)
     };
-    gfx::GfxMessageBoxColorScheme colorScheme(c);
-    colorScheme.setColor(gfx::GfxMessageBoxColorType(
-                            gfx::GfxMessageBoxColorType::ValueType::colorBackground),
-                         gfx::GfxMessageBoxColor(
+    gfx::msgbox::GfxMessageBoxColorScheme colorScheme(c);
+    colorScheme.setColor(gfx::msgbox::GfxMessageBoxColorType(
+                            gfx::msgbox::GfxMessageBoxColorType::ValueType::colorBackground),
+                         gfx::msgbox::GfxMessageBoxColor(
                                             gfx::bgi::GfxBgiConstants::vgaDarkGray().getRed(),
                                             gfx::bgi::GfxBgiConstants::vgaDarkGray().getGreen(),
                                             gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue()));
 
-    gfx::GfxMessageBoxData m(flags, const_cast<gfx::GfxWindow *>(&win), title, message, numbuttons, buttons,
-                                colorScheme);
+    gfx::msgbox::GfxMessageBoxData m(flags, const_cast<gfx::video::GfxWindow *>(&win), title, message, numbuttons,
+                                        buttons, colorScheme);
     // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
 
-    gfx::GfxMessageBox g(m);
+    gfx::msgbox::GfxMessageBox g(m);
     int r = g.showModal();
 
     std::string rez;
 
-    gfx::GfxBits b;
+    gfx::bits::GfxBits b;
     rez = "R=" + std::to_string((b.mostSignificantBitIndex32(r) << 8) | (r & 0x00FF));
 
     /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              rez.c_str(),
                              "File is missing. Please reinstall the program.",
                              NULL);*/
-    gfx::GfxCpuInfo cinfo;
+    gfx::cpuinfo::GfxCpuInfo cinfo;
     cinfo.queryCpuInfo();
-    gfx::GfxMessageBox k(gfx::GfxMessageBoxFlags(gfx::GfxMessageBoxFlags::ValueType::flagError),
+    gfx::msgbox::GfxMessageBox k(gfx::msgbox::GfxMessageBoxFlags(gfx::msgbox::GfxMessageBoxFlags::ValueType::flagError),
                          rez, cinfo.getAsString(), win);
     k.showModal();
 
-    gfx::GfxClipboard clipb;
+    gfx::clipboard::GfxClipboard clipb;
     clipb.setClipboardText(cinfo.getAsString());
 }
 
@@ -129,7 +129,7 @@ void BeforeInit(void)
 {
     std::cout << "BeforeInit()" << std::endl;
 
-    gfx::GfxVideo v;
+    gfx::video::GfxVideo v;
 
     std::cout << "v.getNumVideoDrivers()=" << v.getNumVideoDrivers() << '\n';
     for (int i = 0; i < v.getNumVideoDrivers(); i++)
@@ -154,7 +154,7 @@ void AfterInit(void)
 {
     std::cout << "AfterInit()" << std::endl;
 
-    gfx::GfxVideo v;
+    gfx::video::GfxVideo v;
 
     std::cout << "v.getCurrentVideoDriver()=" << v.getCurrentVideoDriver() << '\n';
     std::cout << "v.getNumVideoDisplays()=" << v.getNumVideoDisplays() << '\n';
@@ -165,7 +165,7 @@ void AfterInit(void)
         v.getDisplayDPI(i, &d, &h, &v1);
         std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
         std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
-        std::unique_ptr<gfx::GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
+        std::unique_ptr<gfx::video::GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
         std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
                     std::setw(8) << std::hex << dm.get()->getFormat() << std::dec << '\n';
         std::cout << "dm.get()->getFormat()=" << dm.get()->getFormat() << '\n';
@@ -173,7 +173,7 @@ void AfterInit(void)
         std::cout << "dm.get()->getHeight()=" << dm.get()->getHeight() << '\n';
         std::cout << "dm.get()->getRefreshRate()=" << dm.get()->getRefreshRate() << "Hz" << '\n';
 
-        gfx::GfxEndian e;
+        gfx::endian::GfxEndian e;
 
         std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
     }
@@ -281,10 +281,10 @@ void _doStuff(void)
         std::cout << "Init failed\n";
         return;
     }
-    gfx::GfxWindowFlags wf(gfx::GfxWindowFlags::ValueType::windowFlagResizable);
-    gfx::GfxWindow win("Window title",
-                        gfx::GfxWindowPosition(gfx::GfxWindowPosition::ValueType::positionCentered),
-                        gfx::GfxWindowPosition(gfx::GfxWindowPosition::ValueType::positionCentered),
+    gfx::video::GfxWindowFlags wf(gfx::video::GfxWindowFlags::ValueType::windowFlagResizable);
+    gfx::video::GfxWindow win("Window title",
+                        gfx::video::GfxWindowPosition(gfx::video::GfxWindowPosition::ValueType::positionCentered),
+                        gfx::video::GfxWindowPosition(gfx::video::GfxWindowPosition::ValueType::positionCentered),
                         WIN_W,
                         WIN_H,
                         wf);
@@ -407,7 +407,7 @@ void _doStuff(void)
     int b1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue();
     int a1 = 0;
 
-    gfx::GfxScreenSaver ss;
+    gfx::video::GfxScreenSaver ss;
     if (ss.isScreenSaverEnabled() == false)
     {
         ss.enableScreenSaver();
@@ -509,11 +509,11 @@ void _doStuff(void)
                 str_title += ".";
             }
             str_title += "][A(" + std::to_string(a1) +")]";
-            win.setTitle(str_title);
+            win.setWindowTitle(str_title);
             surfcanvas.blitSurface(sbitmap, gfx::GfxRect(0, 0, sbitmap.getWidth(), sbitmap.getHeight()),
                                    gfx::GfxRect(160, 640, WIN_W, WIN_H));
             gfx::GfxTexture canvas_tex(&rend, surfcanvas);
-            canvas_tex.setBlendMode(gfx::GfxBlendMode::ValueType::blendNone);
+            canvas_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendNone);
 
             rt.setX(0);
             rt.setY(0);
@@ -524,7 +524,7 @@ void _doStuff(void)
             colors_surf.fillRect(rt, gfx::pixels::GfxColor(255-r1, 255-g1, 255-b1, a1));
 
             gfx::GfxTexture colors_tex(&rend, colors_surf);
-            colors_tex.setBlendMode(gfx::GfxBlendMode::ValueType::blendBlend);
+            colors_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendBlend);
 
             rend.renderCopy(canvas_tex);
             rend.renderCopy(colors_tex);

@@ -47,7 +47,7 @@ public:
 
     static const char ClassName[];
 
-    explicit GfxRenderer(const GfxWindow& win);
+    explicit GfxRenderer(const video::GfxWindow& win);
 
     GfxRenderer() = delete;
     GfxRenderer(const GfxRenderer&) = delete;
@@ -87,7 +87,7 @@ public:
     SdlTypePtr getAsSdlTypePtr() const;
 private:
     SdlTypePtr renderer_;
-    GfxWindow const& window_;
+    video::GfxWindow const& window_;
 };
 
 }  // namespace gfx

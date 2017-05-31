@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 class GfxMessageBoxFlags final : public GfxRootClass
 {
 public:
@@ -76,6 +79,8 @@ public:
 private:
     SdlType flag_;
 };
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

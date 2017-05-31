@@ -76,16 +76,16 @@ void GForm::setTitle(const std::string& title)
     title_ = title;
     if (window_ != nullptr)
     {
-        window_->setTitle(title_);
+        window_->setWindowTitle(title_);
     }
 }
 
 void GForm::create(void)
 {
-    gfx::GfxWindowFlags winFlags(gfx::GfxWindowFlags::ValueType::windowFlagResizable);
-    gfx::GfxWindowPosition winPosCenter(gfx::GfxWindowPosition::ValueType::positionCentered);
+    gfx::video::GfxWindowFlags winFlags(gfx::video::GfxWindowFlags::ValueType::windowFlagResizable);
+    gfx::video::GfxWindowPosition winPosCenter(gfx::video::GfxWindowPosition::ValueType::positionCentered);
 
-    window_ = std::make_shared<gfx::GfxWindow>(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
+    window_ = std::make_shared<gfx::video::GfxWindow>(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
     canvas_ = nullptr;
 }
 

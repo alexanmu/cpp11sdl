@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 const char GfxWindowPosition::ClassName[] = "GfxWindowPosition";
 
 GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
@@ -140,6 +143,8 @@ void GfxWindowPosition::clear(void)
     pos_ = ValueType::positionUndefined;
     coord_ = -1;
 }
+
+}  // namespace video
 
 }  // namespace gfx
 

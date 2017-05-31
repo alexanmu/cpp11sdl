@@ -34,6 +34,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 class GfxMessageBoxButtonData final : public GfxRootClass
 {
 public:
@@ -64,6 +67,8 @@ public:
 private:
     SdlType data_;
 };
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

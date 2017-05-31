@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace video
+{
+
 class GfxWindowEventID final : public GfxRootClass
 {
 public:
@@ -98,6 +101,8 @@ public:
 private:
     SdlType eventid_;
 };
+
+}  // namespace video
 
 }  // namespace gfx
 

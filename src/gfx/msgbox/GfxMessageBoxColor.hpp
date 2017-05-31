@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 class GfxMessageBoxColor final : public GfxRootClass
 {
 public:
@@ -75,6 +78,8 @@ public:
 private:
     SdlType clr_;
 };
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

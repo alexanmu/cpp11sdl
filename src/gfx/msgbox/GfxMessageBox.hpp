@@ -35,6 +35,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 class GfxMessageBox final : public GfxRootClass
 {
 public:
@@ -45,7 +48,7 @@ public:
     explicit GfxMessageBox(GfxMessageBoxData const& data);
     GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title, std::string const& message);
     GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
-                    std::string const& message, GfxWindow const& win);
+                    std::string const& message, video::GfxWindow const& win);
 
     GfxMessageBox(GfxMessageBox const&) = delete;
     GfxMessageBox(GfxMessageBox&&) = delete;
@@ -71,8 +74,10 @@ private:
     GfxMessageBoxFlags flag_;
     std::string title_;
     std::string message_;
-    GfxWindow const* winptr_;
+    video::GfxWindow const* winptr_;
 };
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

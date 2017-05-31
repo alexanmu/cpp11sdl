@@ -26,8 +26,6 @@
 
 #include <cstdint>
 
-#include "GObject.hpp"
-
 namespace gto
 {
 

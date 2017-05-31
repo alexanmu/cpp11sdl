@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBoxData::ClassName[] = "GfxMessageBoxData";
 
 GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
@@ -52,7 +55,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
     data_.flags = flags.getAsSdlType();
     if (win != nullptr)
     {
-        data_.window = reinterpret_cast<GfxWindow *>(win)->getAsSdlTypePtr();
+        data_.window = reinterpret_cast<video::GfxWindow *>(win)->getAsSdlTypePtr();
     }
     else
     {
@@ -72,7 +75,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
     data_.colorScheme = colorScheme.getAsSdlTypePtr();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const GfxWindow& win,
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win,
                                      const std::string& title, const std::string& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[]) :
         GfxRootClass(ClassName)
@@ -177,6 +180,8 @@ GfxMessageBoxData::SdlTypePtr GfxMessageBoxData::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&data_;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

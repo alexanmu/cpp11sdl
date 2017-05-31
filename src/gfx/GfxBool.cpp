@@ -35,11 +35,6 @@ GfxBool::GfxBool() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxBool::operator bool() const
-{
-    return true;
-}
-
 GfxBool::GfxBool(const ValueType value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
@@ -48,6 +43,11 @@ GfxBool::GfxBool(const ValueType value) : GfxRootClass(ClassName)
 GfxBool::GfxBool(const SdlType value) : GfxRootClass(ClassName)
 {
     value_ = value;
+}
+
+GfxBool::GfxBool(const bool value) : GfxRootClass(ClassName)
+{
+    value_ = static_cast<SdlType>(value);
 }
 
 GfxBool::GfxBool(const GfxBool& other) : GfxRootClass(ClassName)
@@ -60,6 +60,11 @@ GfxBool::GfxBool(GfxBool&& other) : GfxRootClass(ClassName)
     value_ = other.value_;
     // Delete other's data
     other.clear();
+}
+
+GfxBool::operator bool() const
+{
+    return true;
 }
 
 GfxBool& GfxBool::operator=(const GfxBool& other)

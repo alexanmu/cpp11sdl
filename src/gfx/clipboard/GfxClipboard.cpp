@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace clipboard
+{
+
 const char GfxClipboard::ClassName[] = "GfxClipboard";
 
 GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
@@ -64,10 +67,15 @@ std::string GfxClipboard::getClipboardText(void) const
     return str;
 }
 
-bool GfxClipboard::hasClipboardText(void) const
+GfxBool GfxClipboard::hasClipboardText(void) const
 {
-    return sdl2::SDL_HasClipboardText();
+    bool ret;
+
+    ret = sdl2::SDL_HasClipboardText();
+    return GfxBool(ret);
 }
+
+}  // namespace clipboard
 
 }  // namespace gfx
 

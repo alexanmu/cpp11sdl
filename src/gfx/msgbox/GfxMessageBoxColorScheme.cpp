@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace msgbox
+{
+
 const char GfxMessageBoxColorScheme::ClassName[] = "GfxMessageBoxColorScheme";
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
@@ -116,6 +119,8 @@ GfxMessageBoxColorScheme::SdlTypePtr GfxMessageBoxColorScheme::getAsSdlTypePtr(v
 {
     return (SdlTypePtr)&clrscheme_;
 }
+
+}  // namespace msgbox
 
 }  // namespace gfx
 

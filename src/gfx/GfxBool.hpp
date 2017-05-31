@@ -49,6 +49,7 @@ public:
 
     explicit GfxBool(const ValueType value);
     explicit GfxBool(const SdlType value);
+    explicit GfxBool(const bool value);
 
     GfxBool(const GfxBool& other);
     GfxBool(GfxBool&& other);

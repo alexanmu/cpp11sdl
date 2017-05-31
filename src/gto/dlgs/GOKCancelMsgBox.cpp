@@ -41,53 +41,66 @@ namespace gto
 namespace dlgs
 {
 
-GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GObject* parent) :
-        GObject(), parent_(parent)
+GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GComponent* owner) :
+        GDialog(vname, owner)
 {
-    assert(vname.length() > 0);
-    assert(parent_ != nullptr);
     title_ = "";
     message_ = "";
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GObject* parent, const std::string& title,
-        const std::string& message) : GObject(), parent_(parent)
+GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
+        const std::string& message) : GDialog(vname, owner)
 {
-    assert(vname.length() > 0);
-    assert(parent_ != nullptr);
+    assert(title.length() > 0);
+    assert(message.length() > 0);
+
     title_ = title;
     message_ = message;
     selection_ = GDialogsConstants::kNoSelection;
 }
 
+void GOKCancelMsgBox::setTitle(std::string const& title) noexcept
+{
+    assert(title.length() > 0);
+
+    title_ = title;
+}
+
+void GOKCancelMsgBox::setMessage(std::string const& message) noexcept
+{
+    assert(message.length() > 0);
+
+    message_ = message;
+}
+
 void GOKCancelMsgBox::showModal(void)
 {
-    gfx::GfxMessageBoxFlags flags { gfx::GfxMessageBoxFlags::ValueType::flagError };
+    gfx::msgbox::GfxMessageBoxFlags flags { gfx::msgbox::GfxMessageBoxFlags::ValueType::flagError };
 
-    gfx::GfxMessageBoxButtonData buttons[2] {
-        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                        gfx::GfxMessageBoxButtonFlags::ValueType::noneDefault),
+    gfx::msgbox::GfxMessageBoxButtonData buttons[2] {
+        gfx::msgbox::GfxMessageBoxButtonData(gfx::msgbox::GfxMessageBoxButtonFlags(
+                                        gfx::msgbox::GfxMessageBoxButtonFlags::ValueType::noneDefault),
                                         1, "OK"),
-        gfx::GfxMessageBoxButtonData(gfx::GfxMessageBoxButtonFlags(
-                                        gfx::GfxMessageBoxButtonFlags::ValueType::noneDefault),
+        gfx::msgbox::GfxMessageBoxButtonData(gfx::msgbox::GfxMessageBoxButtonFlags(
+                                        gfx::msgbox::GfxMessageBoxButtonFlags::ValueType::noneDefault),
                                         2, "Cancel"),
     };
 
-    gfx::GfxMessageBoxColor colors[static_cast<uint32_t>(
-                                    gfx::GfxMessageBoxColorType::ValueType::colorMax)] = {
-        gfx::GfxMessageBoxColor(255, 0, 0),
-        gfx::GfxMessageBoxColor(250, 220, 190),
-        gfx::GfxMessageBoxColor(192, 92, 9),
-        gfx::GfxMessageBoxColor(50, 100, 200),
-        gfx::GfxMessageBoxColor(255, 255, 255)
+    gfx::msgbox::GfxMessageBoxColor colors[static_cast<uint32_t>(
+                                    gfx::msgbox::GfxMessageBoxColorType::ValueType::colorMax)] = {
+        gfx::msgbox::GfxMessageBoxColor(255, 0, 0),
+        gfx::msgbox::GfxMessageBoxColor(250, 220, 190),
+        gfx::msgbox::GfxMessageBoxColor(192, 92, 9),
+        gfx::msgbox::GfxMessageBoxColor(50, 100, 200),
+        gfx::msgbox::GfxMessageBoxColor(255, 255, 255)
     };
 
-    gfx::GfxMessageBoxColorScheme colorScheme(colors);
+    gfx::msgbox::GfxMessageBoxColorScheme colorScheme(colors);
 
-    gfx::GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 2, buttons, colorScheme);
+    gfx::msgbox::GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 2, buttons, colorScheme);
 
-    gfx::GfxMessageBox messageBox(msgBoxData);
+    gfx::msgbox::GfxMessageBox messageBox(msgBoxData);
 
     int result = messageBox.showModal();
     switch (result) {

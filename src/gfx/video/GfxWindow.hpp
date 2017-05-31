@@ -26,14 +26,22 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
 #include "GfxSurface.hpp"
 #include "GfxWindowPosition.hpp"
 #include "GfxWindowFlags.hpp"
+#include "GfxDisplayMode.hpp"
+#include "GfxBool.hpp"
+#include "GfxHitTestResult.hpp"
+#include "GfxPoint.hpp"
 
 namespace gfx
+{
+
+namespace video
 {
 
 class GfxWindow final : public GfxRootClass
@@ -42,11 +50,16 @@ public:
     typedef sdl2::SDL_Window SdlType;
     typedef sdl2::SDL_Window* SdlTypePtr;
 
+    typedef uint32_t fullscreenflags_t;
+    typedef std::vector<gfx::GfxRect> GfxRectVector;
+    typedef gfx::video::GfxHitTestResult (*GfxHitTest)(gfx::GfxPoint * area, void * data);
+
     static const char ClassName[];
 
     GfxWindow(const std::string& title, const int32_t width, const int32_t height);
     GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
                 const int32_t width, const int32_t height, const GfxWindowFlags& flags);
+    explicit GfxWindow(void * data);
 
     GfxWindow() = delete;
     GfxWindow(const GfxWindow&) = delete;
@@ -55,82 +68,65 @@ public:
     GfxWindow& operator=(GfxWindow&&) = delete;
 
     virtual ~GfxWindow();
+    void destroyWindow(void);
 
     virtual explicit operator bool() const;
 
-    void destroyWindow();
+    int32_t getWindowDisplayIndex(void) const;
+    GfxDisplayMode * getWindowDisplayMode(void) const;
+    uint32_t getWindowPixelFormat(void) const;
 
-    std::string getTitle() const;
-    void setTitle(const std::string& title);
+    uint32_t getWindowID(void) const;
+    GfxWindow const * getWindowFromID(const uint32_t id) const;
+    GfxWindowFlags * getWindowFlags(void) const;
+    void setWindowTitle(const std::string& title);
+    std::string getWindowTitle() const;
+    void setWindowIcon(GfxSurface const& icon);
+    void * setWindowData(std::string const& name, void * userdata) const;
+    void * getWindowData(std::string const& name) const;
+    void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
+    void getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y);
+    void setWindowSize(const int32_t w, const int32_t h) const;
+    void getWindowSize(int32_t * pw, int32_t * ph) const;
+    void getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bottom, int32_t * right) const;
+    void setWindowMinimumSize(const int32_t min_w, const int32_t min_h) const;
+    void getWindowMinimumSize(int32_t * w, int32_t * h) const;
+    void setWindowMaximumSize(const int32_t max_w, const int32_t max_h) const;
+    void getWindowMaximumSize(int32_t * w, int32_t * h) const;
+    void setWindowBordered(GfxBool const& bordered) const;
+    void setWindowResizable(GfxBool const& resizable) const;
+    void showWindow(void) const;
+    void hideWindow(void) const;
+    void raiseWindow(void) const;
+    void maximizeWindow(void) const;
+    void minimizeWindow(void) const;
+    void restoreWindow(void) const;
+    void setWindowFullscreen(const fullscreenflags_t flags) const;
+    GfxSurface * getWindowSurface(void);
+    void updateWindowSurface(void);
+    void updateWindowSurfaceRects(GfxRectVector vec) const;
+    void setWindowGrab(GfxBool const& grabbed) const;
+    GfxBool getWindowGrab(void) const;
+    GfxWindow const * getGrabbedWindow(void) const;
+    void setWindowBrightness(const float brightness) const;
+    float getWindowBrightness(void) const;
+    void setWindowOpacity(const float opacity) const;
+    float getWindowOpacity(void) const;
+    void setWindowModalFor(GfxWindow const& modal_window) const;
+    void setWindowInputFocus(void) const;
+    void setWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * blue) const;
+    void getWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * blue) const;
+    void setWindowHitTest(const GfxHitTest callback, void * callback_data) const;
 
     int32_t getWidth() const;
     int32_t getHeight() const;
-
-    void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
-    void getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y);
-
-    void setWindowSize(const int32_t w, const int32_t h);
-    void getWindowSize(int32_t * pw, int32_t * ph);
-
-    GfxSurface * getWindowSurface(void);
-    void updateWindowSurface(void);
-
-    /*
-    SDL_UpdateWindowSurface
-    SDL_UpdateWindowSurfaceRects
-    SDL_GetWindowFromID()
-
-    SDL_SetWindowData()
-    SDL_GetWindowData()
-
-    SDL_GetWindowFlags()
-    SDL_SetWindowFullscreen()
-
-    SDL_HideWindow()
-    SDL_ShowWindow()
-
-    SDL_MaximizeWindow()
-    SDL_MinimizeWindow()
-    SDL_RestoreWindow()
-
-    SDL_RaiseWindow()
-
-    SDL_SetWindowGrab()
-    SDL_GetWindowGrab()
-*/
-    void setWindowIcon(GfxSurface const& icon);
-
-    /*SDL_SetWindowPosition()
-    SDL_SetWindowBordered()
-    SDL_GetWindowBordersSize
-    SDL_SetWindowResizable()
-    SDL_SetWindowMinimumSize
-    SDL_GetWindowMinimumSize
-    SDL_SetWindowMaximumSize
-    SDL_GetWindowMaximumSize
-    SDL_SetWindowBrightness
-    SDL_GetWindowBrightness
-    SDL_SetWindowOpacity
-    SDL_GetWindowOpacity
-    SDL_SetWindowModalFor
-    SDL_SetWindowInputFocus
-    SDL_SetWindowGammaRamp
-    SDL_GetWindowGammaRamp
-    static class method
-    SDL_GetGrabbedWindow
-
-     extern DECLSPEC int SDLCALL SDL_GetWindowDisplayIndex(SDL_Window * window);
-     extern DECLSPEC int SDLCALL SDL_SetWindowDisplayMode(SDL_Window * window,
-                                                         const SDL_DisplayMode
-                                                         * mode);
-     extern DECLSPEC Uint32 SDLCALL SDL_GetWindowPixelFormat(SDL_Window * window);
-     etc.
-     */
 
     SdlTypePtr getAsSdlTypePtr() const;
 private:
     SdlTypePtr window_;
 };
+
+}  // namespace video
 
 }  // namespace gfx
 
