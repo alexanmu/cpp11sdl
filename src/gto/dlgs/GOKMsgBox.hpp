@@ -60,7 +60,6 @@ private:
     std::string title_;
     std::string message_;
     GDialogsConstants selection_;
-    GComponent* parent_;
 };
 
 }  // namespace dlgs

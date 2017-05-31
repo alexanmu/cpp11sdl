@@ -691,7 +691,7 @@ void Playground::_doComponent(void)
     GComponent* c5 = c->findComponent(GVarName(c2));
     if (c5 != nullptr)
     {
-        std::cout << "c5->getName()=" << c5->getName() << '\n';
+        std::cout << "c5->getVName()=" << c5->getVName() << '\n';
     }
     else
     {
