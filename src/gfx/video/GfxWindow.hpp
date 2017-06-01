@@ -37,6 +37,7 @@
 #include "GfxBool.hpp"
 #include "GfxHitTestResult.hpp"
 #include "GfxPoint.hpp"
+#include "GfxGammaRamp.hpp"
 
 namespace gfx
 {
@@ -114,8 +115,10 @@ public:
     float getWindowOpacity(void) const;
     void setWindowModalFor(GfxWindow const& modal_window) const;
     void setWindowInputFocus(void) const;
-    void setWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * blue) const;
-    void getWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * blue) const;
+    void setWindowGammaRamp(supp::GfxGammaRamp const& red, supp::GfxGammaRamp const& green,
+                            supp::GfxGammaRamp const& blue) const;
+    void getWindowGammaRamp(supp::GfxGammaRamp * red, supp::GfxGammaRamp * green,
+                            supp::GfxGammaRamp * blue) const;
     void setWindowHitTest(const GfxHitTest callback, void * callback_data) const;
 
     int32_t getWidth() const;

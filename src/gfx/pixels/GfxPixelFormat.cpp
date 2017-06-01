@@ -432,11 +432,11 @@ void GfxPixelFormat::getRGBA(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t *
     }
 }
 
-void GfxPixelFormat::calculateGammaRamp(float gamma, uint16_t * ramp)
+void GfxPixelFormat::calculateGammaRamp(float gamma, supp::GfxGammaRamp const& ramp)
 {
-    assert(ramp != nullptr);
+    assert(ramp);
 
-    sdl2::SDL_CalculateGammaRamp(gamma, ramp);
+    sdl2::SDL_CalculateGammaRamp(gamma, ramp.getAsSdlTypePtr());
 }
 
 /*** SDL ***/

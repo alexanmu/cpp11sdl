@@ -37,6 +37,7 @@
 #include "GfxBitmapOrder.hpp"
 #include "GfxBool.hpp"
 #include "GfxPalette.hpp"
+#include "GfxGammaRamp.hpp"
 
 namespace gfx
 {
@@ -97,7 +98,7 @@ public:
     uint32_t mapRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
     void getRGB(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b);
     void getRGBA(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a);
-    void calculateGammaRamp(float gamma, uint16_t * ramp);
+    void calculateGammaRamp(float gamma, supp::GfxGammaRamp const& ramp);
 
     void clear(void);
 

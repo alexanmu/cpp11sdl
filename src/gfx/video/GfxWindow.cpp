@@ -581,22 +581,25 @@ void GfxWindow::setWindowInputFocus(void) const
     }
 }
 
-void GfxWindow::setWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * blue) const
+void GfxWindow::setWindowGammaRamp(supp::GfxGammaRamp const& red, supp::GfxGammaRamp const& green,
+                                   supp::GfxGammaRamp const& blue) const
 {
     int32_t ret = 1;
 
-    assert(red != nullptr);
-    assert(green != nullptr);
-    assert(blue != nullptr);
+    assert(red);
+    assert(green);
+    assert(blue);
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowGammaRamp(window_, red, green, blue);
+        ret = sdl2::SDL_SetWindowGammaRamp(window_, red.getAsSdlTypePtr(), green.getAsSdlTypePtr(),
+                                           blue.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
 
-void GfxWindow::getWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * blue) const
+void GfxWindow::getWindowGammaRamp(supp::GfxGammaRamp * red, supp::GfxGammaRamp * green,
+                                   supp::GfxGammaRamp * blue) const
 {
     int32_t ret = 1;
 
@@ -604,13 +607,14 @@ void GfxWindow::getWindowGammaRamp(uint16_t * red, uint16_t * green, uint16_t * 
     assert(green != nullptr);
     assert(blue != nullptr);
 
-    std::memset(red, 0, 256 * sizeof(uint16_t));
-    std::memset(green, 0, 256 * sizeof(uint16_t));
-    std::memset(blue, 0, 256 * sizeof(uint16_t));
+    red->clear();
+    green->clear();
+    blue->clear();
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_GetWindowGammaRamp(window_, red, green, blue);
+        ret = sdl2::SDL_GetWindowGammaRamp(window_, red->getAsSdlTypePtr(), green->getAsSdlTypePtr(),
+                                           blue->getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
