@@ -68,12 +68,12 @@ void GLabel::setText(std::string const& text) noexcept
     text_ = text;
 }
 
-gfx::supp::GfxFontInfo& GLabel::getFontInfo(void) noexcept
+gfx::xtra::GfxFontInfo& GLabel::getFontInfo(void) noexcept
 {
     return fontInfo_;
 }
 
-void GLabel::setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept
+void GLabel::setFontInfo(gfx::xtra::GfxFontInfo const& fontinfo) noexcept
 {
     assert(fontinfo);
 

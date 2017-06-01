@@ -33,7 +33,7 @@
 namespace gfx
 {
 
-namespace supp
+namespace xtra
 {
 
 class GfxGammaRamp final : public GfxRootClass
@@ -66,7 +66,7 @@ private:
     uint16_t gammaRamp_[kGammaRampNumberOfElements];
 };
 
-}  // namespace supp
+}  // namespace xtra
 
 }  // namespace gfx
 

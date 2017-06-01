@@ -56,7 +56,7 @@ public:
     virtual void load(void) throw(std::runtime_error);
     virtual void draw(void) throw(std::runtime_error);
 private:
-    gfx::supp::GfxControlledSurface imgSurf_;
+    gfx::xtra::GfxControlledSurface imgSurf_;
 };
 
 }  // namespace gobj

@@ -31,7 +31,7 @@
 namespace gfx
 {
 
-namespace supp
+namespace xtra
 {
 
 const char GfxControlledSurface::ClassName[] = "GfxControlledSurface";
@@ -100,7 +100,7 @@ gfx::GfxSurface& GfxControlledSurface::operator()(void) const throw(std::runtime
     return *surf_;
 }
 
-}  // namespace supp
+}  // namespace xtra
 
 }  // namespace gfx
 

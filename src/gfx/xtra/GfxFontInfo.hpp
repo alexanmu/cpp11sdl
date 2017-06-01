@@ -32,7 +32,7 @@
 namespace gfx
 {
 
-namespace supp
+namespace xtra
 {
 
 class GfxFontInfo final : public GfxRootClass
@@ -113,7 +113,7 @@ private:
     bool fontKerning_;
 };
 
-}  // namespace supp
+}  // namespace xtra
 
 }  // namespace gfx
 

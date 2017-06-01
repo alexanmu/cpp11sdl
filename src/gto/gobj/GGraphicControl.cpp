@@ -61,7 +61,7 @@ GGraphicControl::~GGraphicControl()
     // nothing to do yet
 }
 
-gfx::supp::GfxControlledSurface const& GGraphicControl::getSurface(void) const noexcept
+gfx::xtra::GfxControlledSurface const& GGraphicControl::getSurface(void) const noexcept
 {
     return surf_;
 }

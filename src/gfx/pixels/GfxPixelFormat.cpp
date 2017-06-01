@@ -432,7 +432,7 @@ void GfxPixelFormat::getRGBA(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t *
     }
 }
 
-void GfxPixelFormat::calculateGammaRamp(float gamma, supp::GfxGammaRamp const& ramp)
+void GfxPixelFormat::calculateGammaRamp(float gamma, xtra::GfxGammaRamp const& ramp)
 {
     assert(ramp);
 

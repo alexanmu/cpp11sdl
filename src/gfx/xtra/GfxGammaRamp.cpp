@@ -31,7 +31,7 @@
 namespace gfx
 {
 
-namespace supp
+namespace xtra
 {
 
 const char GfxGammaRamp::ClassName[] = "GfxGammaRamp";
@@ -41,7 +41,7 @@ GfxGammaRamp::GfxGammaRamp() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxGammaRamp::GfxGammaRamp(SdlTypePtr gammaRamp)
+GfxGammaRamp::GfxGammaRamp(SdlTypePtr gammaRamp) : GfxRootClass(ClassName)
 {
     int32_t index;
 
@@ -52,7 +52,7 @@ GfxGammaRamp::GfxGammaRamp(SdlTypePtr gammaRamp)
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) : GfxRootClass(ClassName)
 {
     int32_t index;
 
@@ -62,7 +62,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other)
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) : GfxRootClass(ClassName)
 {
     int32_t index;
 
@@ -109,7 +109,7 @@ GfxGammaRamp::operator bool() const
 
 uint16_t& GfxGammaRamp::operator [](int32_t index) throw(std::runtime_error)
 {
-    if ((index >= 0) and (index <= kGammaRampNumberOfElements))
+    if ((index >= 0) and (index < kGammaRampNumberOfElements))
     {
         return gammaRamp_[index];
     }
@@ -131,7 +131,7 @@ GfxGammaRamp::SdlTypePtr GfxGammaRamp::getAsSdlTypePtr(void) const
     return const_cast<SdlTypePtr>(&gammaRamp_[0]);
 }
 
-}  // namespace supp
+}  // namespace xtra
 
 }  // namespace gfx
 

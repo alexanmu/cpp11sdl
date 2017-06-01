@@ -581,8 +581,8 @@ void GfxWindow::setWindowInputFocus(void) const
     }
 }
 
-void GfxWindow::setWindowGammaRamp(supp::GfxGammaRamp const& red, supp::GfxGammaRamp const& green,
-                                   supp::GfxGammaRamp const& blue) const
+void GfxWindow::setWindowGammaRamp(xtra::GfxGammaRamp const& red, xtra::GfxGammaRamp const& green,
+                                   xtra::GfxGammaRamp const& blue) const
 {
     int32_t ret = 1;
 
@@ -598,8 +598,8 @@ void GfxWindow::setWindowGammaRamp(supp::GfxGammaRamp const& red, supp::GfxGamma
     }
 }
 
-void GfxWindow::getWindowGammaRamp(supp::GfxGammaRamp * red, supp::GfxGammaRamp * green,
-                                   supp::GfxGammaRamp * blue) const
+void GfxWindow::getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp * green,
+                                   xtra::GfxGammaRamp * blue) const
 {
     int32_t ret = 1;
 

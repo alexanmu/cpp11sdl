@@ -56,7 +56,7 @@ public:
                                 const uint16_t height);
     virtual ~GGraphicControl();
 
-    gfx::supp::GfxControlledSurface const& getSurface(void) const noexcept;
+    gfx::xtra::GfxControlledSurface const& getSurface(void) const noexcept;
 
     gfx::pixels::GfxColor const& getForegroundColor(void) const noexcept;
     void setForegroundColor(gfx::pixels::GfxColor const& color) noexcept;
@@ -72,7 +72,7 @@ public:
 
     virtual void draw(void);
 protected:
-    gfx::supp::GfxControlledSurface surf_;
+    gfx::xtra::GfxControlledSurface surf_;
     gfx::pixels::GfxColor backgroundColor_;
     gfx::pixels::GfxColor foregroundColor_;
     gfx::pixels::GfxColor borderColor_;

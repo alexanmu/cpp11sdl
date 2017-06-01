@@ -166,8 +166,8 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::ttf::GfxTtfFontStyle::ClassName, sizeof(gfx::ttf::GfxTtfFontStyle) },  // 2017.05.18
     { gfx::ttf::GfxTtfFontHinting::ClassName, sizeof(gfx::ttf::GfxTtfFontHinting) },  // 2017.05.18
     { gfx::ttf::GfxTtfFontRenderer::ClassName, sizeof(gfx::ttf::GfxTtfFontRenderer) },  // 2017.05.19
-    { gfx::supp::GfxFontInfo::ClassName, sizeof(gfx::supp::GfxFontInfo) },  // 2017.05.19
-    { gfx::supp::GfxControlledSurface::ClassName, sizeof(gfx::supp::GfxControlledSurface) },
+    { gfx::xtra::GfxFontInfo::ClassName, sizeof(gfx::xtra::GfxFontInfo) },  // 2017.05.19
+    { gfx::xtra::GfxControlledSurface::ClassName, sizeof(gfx::xtra::GfxControlledSurface) },
     { gfx::pixels::GfxPixelType::ClassName, sizeof(gfx::pixels::GfxPixelType) },  // 2017.05.30
     { gfx::pixels::GfxBitmapOrder::ClassName, sizeof(gfx::pixels::GfxBitmapOrder) },  // 2017.05.30
     { gfx::pixels::GfxPackedOrder::ClassName, sizeof(gfx::pixels::GfxPackedOrder) },  // 2017.05.30
@@ -175,7 +175,7 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::pixels::GfxPackedLayout::ClassName, sizeof(gfx::pixels::GfxPackedLayout) },  // 2017.05.30
     { gfx::pixels::GfxPixelFormatEnum::ClassName, sizeof(gfx::pixels::GfxPixelFormatEnum) },  // 2017.05.30
     { gfx::video::GfxHitTestResult::ClassName, sizeof(gfx::video::GfxHitTestResult) },  // 2017.05.31
-    { gfx::supp::GfxGammaRamp::ClassName, sizeof(gfx::supp::GfxGammaRamp) }  // 2017.06.01
+    { gfx::xtra::GfxGammaRamp::ClassName, sizeof(gfx::xtra::GfxGammaRamp) }  // 2017.06.01
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /

@@ -115,10 +115,10 @@ public:
     float getWindowOpacity(void) const;
     void setWindowModalFor(GfxWindow const& modal_window) const;
     void setWindowInputFocus(void) const;
-    void setWindowGammaRamp(supp::GfxGammaRamp const& red, supp::GfxGammaRamp const& green,
-                            supp::GfxGammaRamp const& blue) const;
-    void getWindowGammaRamp(supp::GfxGammaRamp * red, supp::GfxGammaRamp * green,
-                            supp::GfxGammaRamp * blue) const;
+    void setWindowGammaRamp(xtra::GfxGammaRamp const& red, xtra::GfxGammaRamp const& green,
+                            xtra::GfxGammaRamp const& blue) const;
+    void getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp * green,
+                            xtra::GfxGammaRamp * blue) const;
     void setWindowHitTest(const GfxHitTest callback, void * callback_data) const;
 
     int32_t getWidth() const;

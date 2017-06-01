@@ -36,7 +36,7 @@
 namespace gfx
 {
 
-namespace supp
+namespace xtra
 {
 
 class GfxControlledSurface final : public GfxRootClass
@@ -67,7 +67,7 @@ private:
     bool surfaceConstructed_;
 };
 
-}  // namespace supp
+}  // namespace xtra
 
 }  // namespace gfx
 

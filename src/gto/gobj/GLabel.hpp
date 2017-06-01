@@ -56,8 +56,8 @@ public:
     std::string const& getText(void) const noexcept;
     void setText(std::string const& text) noexcept;
 
-    gfx::supp::GfxFontInfo& getFontInfo(void) noexcept;
-    void setFontInfo(gfx::supp::GfxFontInfo const& fontinfo) noexcept;
+    gfx::xtra::GfxFontInfo& getFontInfo(void) noexcept;
+    void setFontInfo(gfx::xtra::GfxFontInfo const& fontinfo) noexcept;
 
     GTextRenderMode getTextRenderMode(void) const noexcept;
     void setTextRenderMode(GTextRenderMode const textrendermode) noexcept;
@@ -69,7 +69,7 @@ protected:
     static const GTextRenderMode kDefaultTextRenderMode = GTextRenderMode::solidText;
 private:
     std::string text_;
-    gfx::supp::GfxFontInfo fontInfo_;
+    gfx::xtra::GfxFontInfo fontInfo_;
 };
 
 }  // namespace gobj

@@ -30,7 +30,7 @@
 namespace gfx
 {
 
-namespace supp
+namespace xtra
 {
 
 const char GfxFontInfo::ClassName[] = "GfxFontInfo";
@@ -295,7 +295,7 @@ void GfxFontInfo::clear(void)
     fontKerning_ = kDefaultFontKerning;
 }
 
-}  // namespace supp
+}  // namespace xtra
 
 }  // namespace gfx
 
