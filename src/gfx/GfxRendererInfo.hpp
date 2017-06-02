@@ -29,6 +29,7 @@
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
+#include "GfxTextureFormats.hpp"
 
 namespace gfx
 {
@@ -40,17 +41,6 @@ public:
     typedef sdl2::SDL_RendererInfo* SdlTypePtr;
 
     static const char ClassName[];
-
-    static constexpr int32_t kTextureFormatsArrayLength = 16;
-
-    struct GfxTextureFormats
-    {
-        uint32_t formats[kTextureFormatsArrayLength];
-        uint32_t& operator[](int index)
-        {
-            return formats[index];
-        }
-    };
 
     GfxRendererInfo();
 

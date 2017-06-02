@@ -97,20 +97,21 @@ uint32_t GfxRendererInfo::getNumTextureFormats(void) const
     return info_.num_texture_formats;
 }
 
-GfxRendererInfo::GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const
+GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const
 {
     GfxTextureFormats tf;
     uint32_t max;
 
-    std::memset(reinterpret_cast<void *>(&tf.formats[0]), 0, sizeof(tf.formats));
-    if (info_.num_texture_formats > kTextureFormatsArrayLength)
+    tf.clear();
+    if (info_.num_texture_formats > tf.getMaxFormatsCount())
     {
-        max = kTextureFormatsArrayLength;
+        max = tf.getMaxFormatsCount();
     }
     else
     {
         max = info_.num_texture_formats;
     }
+    tf.setCount(max);
     for (uint32_t i = 0; i < max; i++)
     {
         tf[i] = info_.texture_formats[i];
@@ -138,7 +139,7 @@ void GfxRendererInfo::clear(void)
     info_.name = nullptr;
     info_.flags = 0;
     info_.num_texture_formats = 0;
-    for (int i = 0; i < kTextureFormatsArrayLength; i++)
+    for (int i = 0; i < 16; i++)
     {
         info_.texture_formats[i] = 0;
     }

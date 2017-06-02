@@ -301,7 +301,7 @@ void _doStuff(void)
 
     if (ri.getNumTextureFormats() > 0)
     {
-        gfx::GfxRendererInfo::GfxTextureFormats gtf;
+        gfx::GfxTextureFormats gtf;
 
         gtf = ri.getTextureFormats();
         for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)

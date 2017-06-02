@@ -36,6 +36,7 @@
 		791435561EDDD98200315A5C /* GfxPackedOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7914354E1EDDD98200315A5C /* GfxPackedOrder.cpp */; };
 		791435571EDDD98200315A5C /* GfxPixelFormatEnum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791435501EDDD98200315A5C /* GfxPixelFormatEnum.cpp */; };
 		791459C91EE135B500830214 /* GfxHitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791459C71EE135B500830214 /* GfxHitTest.cpp */; };
+		791459CC1EE1416500830214 /* GfxTextureFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791459CA1EE1416500830214 /* GfxTextureFormats.cpp */; };
 		791EAD3F1EDCB9BE0032ED1D /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784ED51EDC8DB30025DF95 /* GfxFileSystem.cpp */; };
 		791EAD401EDCB9BE0032ED1D /* GfxInitFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EDB1EDC8DB30025DF95 /* GfxInitFlags.cpp */; };
 		791EAD411EDCB9BE0032ED1D /* GfxBool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EC71EDC8DB30025DF95 /* GfxBool.cpp */; };
@@ -328,6 +329,8 @@
 		791435511EDDD98200315A5C /* GfxPixelFormatEnum.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPixelFormatEnum.hpp; path = pixels/GfxPixelFormatEnum.hpp; sourceTree = "<group>"; };
 		791459C71EE135B500830214 /* GfxHitTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxHitTest.cpp; path = video/GfxHitTest.cpp; sourceTree = "<group>"; };
 		791459C81EE135B500830214 /* GfxHitTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxHitTest.hpp; path = video/GfxHitTest.hpp; sourceTree = "<group>"; };
+		791459CA1EE1416500830214 /* GfxTextureFormats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxTextureFormats.cpp; sourceTree = "<group>"; };
+		791459CB1EE1416500830214 /* GfxTextureFormats.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxTextureFormats.hpp; sourceTree = "<group>"; };
 		791EADA11EDCB9BE0032ED1D /* tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tool; sourceTree = BUILT_PRODUCTS_DIR; };
 		7953F7C31EDD27F600A27C41 /* GfxPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPalette.cpp; path = pixels/GfxPalette.cpp; sourceTree = "<group>"; };
 		7953F7C41EDD27F600A27C41 /* GfxPalette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPalette.hpp; path = pixels/GfxPalette.hpp; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				19784F101EDC8DB30025DF95 /* GfxTexture.hpp */,
 				19784F111EDC8DB30025DF95 /* GfxTextureAccess.cpp */,
 				19784F121EDC8DB30025DF95 /* GfxTextureAccess.hpp */,
+				791459CA1EE1416500830214 /* GfxTextureFormats.cpp */,
+				791459CB1EE1416500830214 /* GfxTextureFormats.hpp */,
 				19784F131EDC8DB30025DF95 /* GfxTextureModulate.cpp */,
 				19784F141EDC8DB30025DF95 /* GfxTextureModulate.hpp */,
 				19784F151EDC8DB30025DF95 /* GfxVersion.cpp */,
@@ -442,9 +447,9 @@
 				198015ED1EDF27FD00AEDB49 /* msgbox */,
 				79AB8EC31EDD1DBC00B242C6 /* pixels */,
 				19784F211EDC8DB30025DF95 /* sdl2 */,
-				19784F231EDC8DB30025DF95 /* xtra */,
 				19784F281EDC8DB30025DF95 /* ttf */,
 				198016061EDF281C00AEDB49 /* video */,
+				19784F231EDC8DB30025DF95 /* xtra */,
 			);
 			path = gfx;
 			sourceTree = "<group>";
@@ -865,6 +870,7 @@
 				791EAD7E1EDCB9BE0032ED1D /* GfxCanvas.cpp in Sources */,
 				7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */,
 				791EAD801EDCB9BE0032ED1D /* GfxInitQuit.cpp in Sources */,
+				791459CC1EE1416500830214 /* GfxTextureFormats.cpp in Sources */,
 				791EAD821EDCB9BE0032ED1D /* GfxRendererInfo.cpp in Sources */,
 				1980161D1EDF283C00AEDB49 /* GfxWindowFlags.cpp in Sources */,
 				791EAD831EDCB9BE0032ED1D /* GForm.cpp in Sources */,
