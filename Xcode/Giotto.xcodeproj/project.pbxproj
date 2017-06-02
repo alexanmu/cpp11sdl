@@ -35,6 +35,7 @@
 		791435551EDDD98200315A5C /* GfxPackedLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7914354C1EDDD98200315A5C /* GfxPackedLayout.cpp */; };
 		791435561EDDD98200315A5C /* GfxPackedOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7914354E1EDDD98200315A5C /* GfxPackedOrder.cpp */; };
 		791435571EDDD98200315A5C /* GfxPixelFormatEnum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791435501EDDD98200315A5C /* GfxPixelFormatEnum.cpp */; };
+		791459C91EE135B500830214 /* GfxHitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791459C71EE135B500830214 /* GfxHitTest.cpp */; };
 		791EAD3F1EDCB9BE0032ED1D /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784ED51EDC8DB30025DF95 /* GfxFileSystem.cpp */; };
 		791EAD401EDCB9BE0032ED1D /* GfxInitFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EDB1EDC8DB30025DF95 /* GfxInitFlags.cpp */; };
 		791EAD411EDCB9BE0032ED1D /* GfxBool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EC71EDC8DB30025DF95 /* GfxBool.cpp */; };
@@ -325,6 +326,8 @@
 		7914354F1EDDD98200315A5C /* GfxPackedOrder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPackedOrder.hpp; path = pixels/GfxPackedOrder.hpp; sourceTree = "<group>"; };
 		791435501EDDD98200315A5C /* GfxPixelFormatEnum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPixelFormatEnum.cpp; path = pixels/GfxPixelFormatEnum.cpp; sourceTree = "<group>"; };
 		791435511EDDD98200315A5C /* GfxPixelFormatEnum.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPixelFormatEnum.hpp; path = pixels/GfxPixelFormatEnum.hpp; sourceTree = "<group>"; };
+		791459C71EE135B500830214 /* GfxHitTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxHitTest.cpp; path = video/GfxHitTest.cpp; sourceTree = "<group>"; };
+		791459C81EE135B500830214 /* GfxHitTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxHitTest.hpp; path = video/GfxHitTest.hpp; sourceTree = "<group>"; };
 		791EADA11EDCB9BE0032ED1D /* tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tool; sourceTree = BUILT_PRODUCTS_DIR; };
 		7953F7C31EDD27F600A27C41 /* GfxPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPalette.cpp; path = pixels/GfxPalette.cpp; sourceTree = "<group>"; };
 		7953F7C41EDD27F600A27C41 /* GfxPalette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPalette.hpp; path = pixels/GfxPalette.hpp; sourceTree = "<group>"; };
@@ -673,6 +676,8 @@
 			children = (
 				198016071EDF283C00AEDB49 /* GfxDisplayMode.cpp */,
 				198016081EDF283C00AEDB49 /* GfxDisplayMode.hpp */,
+				791459C71EE135B500830214 /* GfxHitTest.cpp */,
+				791459C81EE135B500830214 /* GfxHitTest.hpp */,
 				198016091EDF283C00AEDB49 /* GfxHitTestResult.cpp */,
 				1980160A1EDF283C00AEDB49 /* GfxHitTestResult.hpp */,
 				1980160B1EDF283C00AEDB49 /* GfxScreenSaver.cpp */,
@@ -811,6 +816,7 @@
 				79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */,
 				791EAD591EDCB9BE0032ED1D /* GfxError.cpp in Sources */,
 				791EAD5A1EDCB9BE0032ED1D /* GOKMsgBox.cpp in Sources */,
+				791459C91EE135B500830214 /* GfxHitTest.cpp in Sources */,
 				791435541EDDD98200315A5C /* GfxColor.cpp in Sources */,
 				791EAD5B1EDCB9BE0032ED1D /* GfxTtfFontHinting.cpp in Sources */,
 				791EAD5C1EDCB9BE0032ED1D /* GImage.cpp in Sources */,

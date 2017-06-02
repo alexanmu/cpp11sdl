@@ -36,9 +36,9 @@ namespace video
 
 const char GfxWindow::ClassName[] = "GfxWindow";
 
-static GfxWindow::GfxHitTest hitTest_ = nullptr;
+static GfxHitTest * hitTest_ = nullptr;
 
-static gfx::sdl2::SDL_HitTestResult WindowHitTestFunction(gfx::sdl2::SDL_Window * win,
+static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window * win,
         const gfx::sdl2::SDL_Point * area, void * data)
 {
     assert(win != nullptr);
@@ -54,7 +54,7 @@ static gfx::sdl2::SDL_HitTestResult WindowHitTestFunction(gfx::sdl2::SDL_Window 
     {
         pt.setX(area->x);
         pt.setY(area->y);
-        htr = hitTest_(&pt, data);
+        htr = (*hitTest_)(reinterpret_cast<void *>(win), &pt, data);
         htrsdl = htr.getAsSdlType();
     }
     return htrsdl;
@@ -449,7 +449,7 @@ void GfxWindow::updateWindowSurface(void)
     }
 }
 
-void GfxWindow::updateWindowSurfaceRects(GfxRectVector vec) const
+void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::GfxRect> const& vec) const
 {
     int32_t ret = 1;
     GfxRect::SdlTypePtr rects_ptr;
@@ -619,16 +619,18 @@ void GfxWindow::getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp 
     }
 }
 
-void GfxWindow::setWindowHitTest(GfxHitTest callback, void * callback_data) const
+void GfxWindow::setWindowHitTest(GfxHitTest const& callback, void * callback_data) const
 {
     int32_t ret = 1;
 
+    assert(callback);
+
     if (window_ != nullptr)
     {
-        if (callback != nullptr)
+        if (callback)
         {
-            hitTest_ = callback;
-            ret = sdl2::SDL_SetWindowHitTest(window_, WindowHitTestFunction, callback_data);
+            hitTest_ = const_cast<GfxHitTest *>(&callback);
+            ret = sdl2::SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
             assert((ret == -1) || (ret == 0));
         }
         else

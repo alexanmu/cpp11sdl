@@ -98,6 +98,7 @@
 #include "GfxPixelFormatEnum.hpp"  // 2017.05.30
 #include "GfxHitTestResult.hpp"  // 2017.05.31
 #include "GfxGammaRamp.hpp"  // 2017.06.01
+#include "GfxHitTest.hpp"  // 2017.06.02
 
 namespace gfx
 {
@@ -175,7 +176,8 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::pixels::GfxPackedLayout::ClassName, sizeof(gfx::pixels::GfxPackedLayout) },  // 2017.05.30
     { gfx::pixels::GfxPixelFormatEnum::ClassName, sizeof(gfx::pixels::GfxPixelFormatEnum) },  // 2017.05.30
     { gfx::video::GfxHitTestResult::ClassName, sizeof(gfx::video::GfxHitTestResult) },  // 2017.05.31
-    { gfx::xtra::GfxGammaRamp::ClassName, sizeof(gfx::xtra::GfxGammaRamp) }  // 2017.06.01
+    { gfx::xtra::GfxGammaRamp::ClassName, sizeof(gfx::xtra::GfxGammaRamp) },  // 2017.06.01
+    { gfx::video::GfxHitTest::ClassName, sizeof(gfx::video::GfxHitTest) }  // 2017.06.02
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /

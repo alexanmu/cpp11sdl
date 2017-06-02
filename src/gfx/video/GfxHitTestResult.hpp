@@ -69,6 +69,7 @@ public:
 
     virtual explicit operator bool() const;
 
+    void set(const ValueType value) noexcept;
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;

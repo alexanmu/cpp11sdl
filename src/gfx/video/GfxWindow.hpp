@@ -38,6 +38,7 @@
 #include "GfxHitTestResult.hpp"
 #include "GfxPoint.hpp"
 #include "GfxGammaRamp.hpp"
+#include "GfxHitTest.hpp"
 
 namespace gfx
 {
@@ -52,8 +53,6 @@ public:
     typedef sdl2::SDL_Window* SdlTypePtr;
 
     typedef uint32_t fullscreenflags_t;
-    typedef std::vector<gfx::GfxRect> GfxRectVector;
-    typedef gfx::video::GfxHitTestResult (*GfxHitTest)(gfx::GfxPoint * area, void * data);
 
     static const char ClassName[];
 
@@ -105,7 +104,7 @@ public:
     void setWindowFullscreen(const fullscreenflags_t flags) const;
     GfxSurface * getWindowSurface(void);
     void updateWindowSurface(void);
-    void updateWindowSurfaceRects(GfxRectVector vec) const;
+    void updateWindowSurfaceRects(std::vector<gfx::GfxRect> const& vec) const;
     void setWindowGrab(GfxBool const& grabbed) const;
     GfxBool getWindowGrab(void) const;
     GfxWindow const * getGrabbedWindow(void) const;
@@ -119,7 +118,7 @@ public:
                             xtra::GfxGammaRamp const& blue) const;
     void getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp * green,
                             xtra::GfxGammaRamp * blue) const;
-    void setWindowHitTest(const GfxHitTest callback, void * callback_data) const;
+    void setWindowHitTest(GfxHitTest const& callback, void * callback_data) const;
 
     int32_t getWidth() const;
     int32_t getHeight() const;

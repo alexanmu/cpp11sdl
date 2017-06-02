@@ -87,6 +87,11 @@ GfxHitTestResult::operator bool() const
     return true;
 }
 
+void GfxHitTestResult::set(const ValueType value) noexcept
+{
+    value_ = static_cast<SdlType>(value);
+}
+
 GfxHitTestResult::ValueType GfxHitTestResult::getValue(void) const noexcept
 {
     return static_cast<ValueType>(value_);
