@@ -190,9 +190,9 @@ endif
 
 ######################################## All ########################################
 all : clean clean-test tool test
-	$(RM) -rf $(BUILDDIR)/DerivedData
 
 clean-all: clean clean-play clean-test clean-lint
+	$(RM) -rf $(BUILDDIR)/DerivedData
 
 .PHONY:
 	empty clean test clean-test play clean-play lint clean-lint valgrind all clean-all
