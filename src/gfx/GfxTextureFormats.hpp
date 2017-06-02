@@ -63,6 +63,6 @@ private:
     int32_t formatsCount_;
 };
 
-}  // namespce gfx
+}  // namespace gfx
 
 #endif /* GfxTextureFormats_hpp */

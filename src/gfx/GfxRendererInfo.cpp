@@ -103,7 +103,7 @@ GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const
     uint32_t max;
 
     tf.clear();
-    if (info_.num_texture_formats > tf.getMaxFormatsCount())
+    if (static_cast<int32_t>(info_.num_texture_formats) > tf.getMaxFormatsCount())
     {
         max = tf.getMaxFormatsCount();
     }

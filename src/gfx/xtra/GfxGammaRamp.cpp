@@ -109,7 +109,7 @@ GfxGammaRamp::operator bool() const
 
 uint16_t& GfxGammaRamp::operator [](int32_t index) throw(std::runtime_error)
 {
-    if ((index >= 0) and (index < kGammaRampNumberOfElements))
+    if ((index >= 0) && (index < kGammaRampNumberOfElements))
     {
         return gammaRamp_[index];
     }

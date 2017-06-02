@@ -33,16 +33,18 @@ GfxTextureFormats::GfxTextureFormats() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxTextureFormats::GfxTextureFormats(int32_t formatsCount) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxTextureFormats::GfxTextureFormats(int32_t formatsCount) throw(std::runtime_error) :
+        GfxRootClass(ClassName)
 {
     clear();
     setCount(formatsCount);
 }
 
-GfxTextureFormats::GfxTextureFormats(int32_t formatsCount, uint32_t formats[]) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxTextureFormats::GfxTextureFormats(int32_t formatsCount, uint32_t formats[]) throw(std::runtime_error) :
+        GfxRootClass(ClassName)
 {
     setCount(formatsCount);
-    for(int32_t index = 0; index < formatsCount_; index++)
+    for (int32_t index = 0; index < formatsCount_; index++)
     {
         formats_[index] = formats[index];
     }
@@ -98,7 +100,7 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other)
 
 void GfxTextureFormats::setCount(const int32_t formatsCount) throw(std::runtime_error)
 {
-    if ((formatsCount <= 0) or (formatsCount > kTextureFormatsArrayLength))
+    if ((formatsCount <= 0) || (formatsCount > kTextureFormatsArrayLength))
     {
         throw std::runtime_error("Count out of bounds");
     }
@@ -106,7 +108,7 @@ void GfxTextureFormats::setCount(const int32_t formatsCount) throw(std::runtime_
 
 void GfxTextureFormats::setFormat(const int32_t formatIndex, const uint32_t formatValue) throw(std::runtime_error)
 {
-    if ((formatIndex < 0) or (formatIndex >= formatsCount_))
+    if ((formatIndex < 0) || (formatIndex >= formatsCount_))
     {
         throw std::runtime_error("Index of ouf bounds");
     }
@@ -116,7 +118,7 @@ void GfxTextureFormats::setFormat(const int32_t formatIndex, const uint32_t form
 void GfxTextureFormats::setAllFormats(const uint32_t formats[])
 {
     formatsCount_ = kTextureFormatsArrayLength;
-    for(int32_t index = 0; index < kTextureFormatsArrayLength; index++)
+    for (int32_t index = 0; index < kTextureFormatsArrayLength; index++)
     {
         formats_[index] = formats[index];
     }
@@ -134,7 +136,7 @@ int32_t GfxTextureFormats::getFormatsCount(void) const
 
 uint32_t& GfxTextureFormats::operator[](const int32_t formatIndex) throw(std::runtime_error)
 {
-    if ((formatIndex < 0) or (formatIndex >= kTextureFormatsArrayLength))
+    if ((formatIndex < 0) || (formatIndex >= kTextureFormatsArrayLength))
     {
         throw std::runtime_error("Index out of bounds");
     }
@@ -143,7 +145,7 @@ uint32_t& GfxTextureFormats::operator[](const int32_t formatIndex) throw(std::ru
 
 uint32_t const& GfxTextureFormats::operator[](const int32_t formatIndex) const throw(std::runtime_error)
 {
-    if ((formatIndex < 0) or (formatIndex >= kTextureFormatsArrayLength))
+    if ((formatIndex < 0) || (formatIndex >= kTextureFormatsArrayLength))
     {
         throw std::runtime_error("Index out of bounds");
     }
@@ -159,3 +161,4 @@ void GfxTextureFormats::clear(void)
 }  // namespace gfx
 
 /* EOF */
+
