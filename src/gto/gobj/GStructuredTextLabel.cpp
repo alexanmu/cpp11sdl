@@ -21,23 +21,15 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GStructuredTextLabel.hpp"
-
 #include <stdexcept>
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <regex>
 
+#include "GStructuredTextLabel.hpp"
 #include "GLabel.hpp"
 #include "GTypes.hpp"
-#include "GfxColor.hpp"
-#include "GfxRect.hpp"
-#include "GfxSdlHeader.hpp"
-#include "GfxSurface.hpp"
-#include "GfxTtfFont.hpp"
-#include "GfxTtfFontStyle.hpp"
-#include "GfxTtfFontRenderer.hpp"
-#include "GfxFontInfo.hpp"
 
 namespace gto
 {
@@ -45,17 +37,60 @@ namespace gto
 namespace gobj
 {
 
+/* Regular expressions taken from here:
+    https://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149 */
+const std::map<GStructuredTextType, std::string> GStructuredTextLabel::exprMapObject = {
+    { GStructuredTextType::hexValue, "/^#?([a-f0-9]{6}|[a-f0-9]{3})$/" },
+    { GStructuredTextType::emailAddress, "/^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$/" },
+    { GStructuredTextType::hyperLink, "/^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$/" },
+    { GStructuredTextType::ipAddress, "/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/" }
+};
+
 GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, uint16_t width,
-                                           uint16_t height, std::string const& text, uint8_t const& textsize) :
+                                           uint16_t height, std::string const& text, uint8_t const& textsize,
+                                           GStructuredTextType const& sttexttype, std::string regexp) :
         GLabel(vname, owner, width, height, text, textsize)
 {
     assert(vname.length() > 0);
     assert(owner != nullptr);
+
+    if (stTextType_ == GStructuredTextType::customRegex)
+    {
+        assert(regexp.length() > 0);
+    }
+    stTextType_ = sttexttype;
+    regExp_ = regexp;
 }
 
-void GStructuredTextLabel::draw(void)
+void GStructuredTextLabel::draw(void) throw(std::runtime_error)
 {
+    std::string actregexp;
+
+    if (stTextType_ == GStructuredTextType::customRegex)
+    {
+        actregexp = regExp_;
+    }
+    else
+    {
+        actregexp = exprMapObject.at(stTextType_);
+    }
+    if (evalRegExp(actregexp) == false)
+    {
+        GLabel::setText("regExp failed!");
+    }
     GLabel::draw();
+}
+
+bool GStructuredTextLabel::evalRegExp(std::string const& actregexp)
+{
+    assert(actregexp.length() > 0);
+
+    bool result;
+
+    std::regex self_regex = std::regex(actregexp, std::regex_constants::ECMAScript);
+    result = std::regex_search(GLabel::getText(), self_regex);
+
+    return result;
 }
 
 }  // namespace gobj

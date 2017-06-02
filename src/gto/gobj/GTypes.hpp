@@ -66,6 +66,15 @@ enum class GTextRenderMode : uint8_t
     blendedText = 2
 };
 
+enum class GStructuredTextType : uint8_t
+{
+    hexValue = 0,
+    emailAddress = 1,
+    hyperLink = 2,
+    ipAddress = 3,
+    customRegex = 4
+};
+
 extern const uint16_t kMaxObjectWidth;
 extern const uint16_t kMaxObjectHeight;
 

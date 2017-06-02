@@ -27,6 +27,7 @@
 #include <stdexcept>
 #include <cstdint>
 #include <string>
+#include <map>
 
 #include "GComponent.hpp"
 #include "GLabel.hpp"
@@ -51,9 +52,17 @@ public:
     GStructuredTextLabel& operator=(GStructuredTextLabel&& other) = delete;
 
     explicit GStructuredTextLabel(std::string const& vname, GComponent* owner, uint16_t width,
-                                  uint16_t height, std::string const& text, uint8_t const& textsize);
+                                  uint16_t height, std::string const& text, uint8_t const& textsize,
+                                  GStructuredTextType const& sttexttype, std::string regexp = "");
 
-    virtual void draw(void);
+    virtual void draw(void) throw(std::runtime_error);
+private:
+    bool evalRegExp(std::string const& actregexp);
+
+    GStructuredTextType stTextType_;
+    std::string regExp_;
+
+    static const std::map<GStructuredTextType, std::string> exprMapObject;
 };
 
 }  // namespace gobj
