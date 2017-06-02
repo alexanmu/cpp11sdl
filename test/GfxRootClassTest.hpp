@@ -42,7 +42,7 @@ protected:
 
 TEST_F(GfxRootClassTest, emptyConstructor)
 {
-    // will fail; all const classes are initialized by now
+    // will fail if value != 31; all const classes are initialized by now
     EXPECT_EQ(31, object.getInstanceId());
     EXPECT_EQ("$init$", object.getClassName());
 }
