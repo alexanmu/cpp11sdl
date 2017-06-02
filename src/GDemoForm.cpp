@@ -45,6 +45,7 @@
 #include "GTypes.hpp"
 #include "GLabel.hpp"
 #include "GfxTtfGetVersion.hpp"
+#include "GStructuredTextLabel.hpp"
 
 uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -135,8 +136,21 @@ void GDemoForm::draw(void)
     g2.getFontInfo().setFontUnderline(true);
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g2.draw();
-    windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(600, 10, 120, 60));
+    windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(640, 10, 120, 60));
 
+    labelText = "john.doe@example.com";
+    gto::gobj::GStructuredTextLabel g3(GVarName(g3), this, 280, 60, labelText, 24);
+    g3.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
+    g3.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+    g3.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    g3.setBorderStyle(gto::gobj::GBorderStyle::raised3DBorder);
+    g3.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
+    g3.setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightCyan());
+    g3.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
+    g3.getFontInfo().setFontUnderline(true);
+    g3.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
+    g3.draw();
+    windowsurface_->blitSurface(g3.getSurface()(), gfx::GfxRect(0, 0, 300, 60), gfx::GfxRect(310, 10, 120, 60));
     GForm::draw();
 }
 
