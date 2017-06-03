@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace filesystem
+{
+
 const char GfxFileSystem::ClassName[] = "GfxFileSystem";
 
 GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
@@ -87,6 +90,8 @@ std::string GfxFileSystem::getThisFolder(void) const
     return "./";
 #endif
 }
+
+}  // namespace filesystem
 
 }  // namespace gfx
 

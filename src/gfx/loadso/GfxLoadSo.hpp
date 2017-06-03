@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace loadso
+{
+
 class GfxLoadSo final : public GfxRootClass
 {
 public:
@@ -61,6 +64,8 @@ private:
     std::string objectname_;
     void * handle_;
 };
+
+}  // namespace loadso
 
 }  // namespace gfx
 

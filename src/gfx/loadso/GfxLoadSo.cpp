@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace loadso
+{
+
 const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
 GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
@@ -103,6 +106,8 @@ void GfxLoadSo::unloadObject()
     sdl2::SDL_UnloadObject(handle_);
     handle_ = nullptr;
 }
+
+}  // namespace loadso
 
 }  // namespace gfx
 

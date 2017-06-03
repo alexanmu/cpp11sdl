@@ -144,7 +144,7 @@ void BeforeInit(void)
     std::cout << "gv.getRevision()=" << gv.getRevision() << '\n';
     std::cout << "gv.getRevisionNumber()=" << gv.getRevisionNumber() << '\n';
 
-    gfx::GfxFileSystem fs;
+    gfx::filesystem::GfxFileSystem fs;
 
     std::cout << "fs.getBasePath()=" << fs.getBasePath() << '\n';
     std::cout << std::endl;
@@ -208,7 +208,7 @@ void AfterDeInit(void)
     std::cout << "AfterDeInit()" << std::endl;
 
     // We expect this to fail
-    gfx::GfxLoadSo lso("whatever.so");
+    gfx::loadso::GfxLoadSo lso("whatever.so");
     void * f;
 
     f = lso.loadFunction("whatever_function");

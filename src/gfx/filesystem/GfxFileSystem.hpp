@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace filesystem
+{
+
 class GfxFileSystem final : public GfxRootClass
 {
 public:
@@ -51,6 +54,8 @@ public:
 private:
     std::string getThisFolder(void) const;
 };
+
+}  // namespace filesystem
 
 }  // namespace gfx
 
