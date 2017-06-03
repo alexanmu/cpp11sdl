@@ -43,13 +43,13 @@ GfxTtfGetVersion::operator bool() const
     return true;
 }
 
-void GfxTtfGetVersion::getVersion(gfx::GfxVersion * ver) const
+void GfxTtfGetVersion::getVersion(gfx::version::GfxVersion * ver) const
 {
     assert(ver != nullptr);
 
-    gfx::GfxVersion::SdlTypePtr v;
+    gfx::version::GfxVersion::SdlTypePtr v;
 
-    v = const_cast<gfx::GfxVersion::SdlTypePtr>(sdl2::TTF_Linked_Version());
+    v = const_cast<gfx::version::GfxVersion::SdlTypePtr>(sdl2::TTF_Linked_Version());
     ver->set(*v);
 }
 

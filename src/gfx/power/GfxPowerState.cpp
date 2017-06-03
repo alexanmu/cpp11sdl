@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace power
+{
+
 const char GfxPowerState::ClassName[] = "GfxPowerState";
 
 GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
@@ -149,6 +152,8 @@ GfxPowerState::SdlTypePtr GfxPowerState::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)value_;
 }
+
+}  // namespace power
 
 }  // namespace gfx
 

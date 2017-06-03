@@ -64,9 +64,9 @@
 
 void MsgBox(gfx::video::GfxWindow const& win)
 {
-    gfx::GfxPlatform plat;
+    gfx::platform::GfxPlatform plat;
     plat.queryPlatform();
-    gfx::GfxPowerInfo pinfo;
+    gfx::power::GfxPowerInfo pinfo;
     pinfo.queryPowerInfo();
 
     gfx::msgbox::GfxMessageBoxFlags flags { gfx::msgbox::GfxMessageBoxFlags::ValueType::flagInformation };
@@ -136,8 +136,8 @@ void BeforeInit(void)
     {
         std::cout << "v.getVideoDriver(i)=" << v.getVideoDriver(i) << '\n';
     }
-    gfx::GfxGetVersion gv;
-    gfx::GfxVersion ver;
+    gfx::version::GfxGetVersion gv;
+    gfx::version::GfxVersion ver;
 
     gv.getVersion(&ver);
     std::cout << "ver.getAsString()=" << ver.getAsString() << '\n';

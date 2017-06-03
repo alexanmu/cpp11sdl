@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace version
+{
+
 const char GfxVersion::ClassName[] = "GfxVersion";
 
 GfxVersion::GfxVersion() : GfxRootClass(ClassName)
@@ -129,6 +132,8 @@ GfxVersion::SdlTypePtr GfxVersion::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&ver_;
 }
+
+}  // namespace version
 
 }  // namespace gfx
 

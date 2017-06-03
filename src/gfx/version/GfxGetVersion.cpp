@@ -21,35 +21,54 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
+#include <cstdint>
 #include <string>
 
-#include "GfxPlatform.hpp"
-#include "GfxSdlHeader.hpp"
+#include "GfxGetVersion.hpp"
 
 namespace gfx
 {
 
-const char GfxPlatform::ClassName[] = "GfxPlatform";
-
-GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
+namespace version
 {
-    platform_ = "";
+
+const char GfxGetVersion::ClassName[] = "GfxGetVersion";
+
+GfxGetVersion::GfxGetVersion() : GfxRootClass(ClassName)
+{
+    // Nothing to do
 }
 
-GfxPlatform::operator bool() const
+GfxGetVersion::operator bool() const
 {
     return true;
 }
 
-void GfxPlatform::queryPlatform(void)
+void GfxGetVersion::getVersion(GfxVersion * ver) const
 {
-    platform_ = sdl2::SDL_GetPlatform();
+    assert(ver != nullptr);
+
+    GfxVersion::SdlType v;
+
+    sdl2::SDL_GetVersion(&v);
+    ver->set(v);
 }
 
-std::string const& GfxPlatform::getPlatform(void) const
+std::string GfxGetVersion::getRevision(void) const
 {
-    return platform_;
+    std::string str;
+
+    str = sdl2::SDL_GetRevision();
+    return str;
 }
+
+int32_t GfxGetVersion::getRevisionNumber(void) const
+{
+    return sdl2::SDL_GetRevisionNumber();
+}
+
+}  // namespace version
 
 }  // namespace gfx
 

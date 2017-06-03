@@ -21,8 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxVersion_hpp
-#define GfxVersion_hpp
+#ifndef GfxPowerState_hpp
+#define GfxPowerState_hpp
 
 #include <cstdint>
 #include <string>
@@ -33,42 +33,58 @@
 namespace gfx
 {
 
-class GfxVersion final : public GfxRootClass
+namespace power
+{
+
+class GfxPowerState final : public GfxRootClass
 {
 public:
-    typedef sdl2::SDL_version SdlType;
-    typedef sdl2::SDL_version* SdlTypePtr;
+    typedef sdl2::SDL_PowerState SdlType;
+    typedef sdl2::SDL_PowerState* SdlTypePtr;
 
     static const char ClassName[];
 
-    GfxVersion();
+    enum class ValueType : int32_t
+    {
+        stateUnknown = sdl2::SDL_POWERSTATE_UNKNOWN,
+        stateOnBattery = sdl2::SDL_POWERSTATE_ON_BATTERY,
+        stateNoBattery = sdl2::SDL_POWERSTATE_NO_BATTERY,
+        stateCharging = sdl2::SDL_POWERSTATE_CHARGING,
+        stateCharged = sdl2::SDL_POWERSTATE_CHARGED
+    };
 
-    GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch);
-    explicit GfxVersion(const SdlType ver);
+    GfxPowerState();
 
-    GfxVersion(GfxVersion const& other);
-    GfxVersion(GfxVersion&& other);
+    explicit GfxPowerState(const ValueType value);
+    explicit GfxPowerState(const SdlType value);
 
-    GfxVersion& operator=(GfxVersion const& other);
-    GfxVersion& operator=(GfxVersion&& other);
+    GfxPowerState(GfxPowerState const& other);
+    GfxPowerState(GfxPowerState&& other);
+
+    GfxPowerState& operator=(GfxPowerState const& other);
+    GfxPowerState& operator=(GfxPowerState&& other);
 
     virtual explicit operator bool() const;
 
-    uint8_t getMajor(void) const;
-    uint8_t getMinor(void) const;
-    uint8_t getPatch(void) const;
+    bool isUnknown(void) const;
+    bool isOnBattery(void) const;
+    bool isNoBattery(void) const;
+    bool isCharging(void) const;
+    bool isCharged(void) const;
 
-    void set(const SdlType ver);
     void clear(void);
 
-    std::string getAsString(void) const;
+    const std::string getAsString(void) const;
 
     SdlType getAsSdlType(void) const;
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    SdlType ver_;
+    SdlType value_;
 };
+
+}  // namespace power
 
 }  // namespace gfx
 
-#endif /* GfxVersion_hpp */
+#endif /* GfxPowerState_hpp */
+

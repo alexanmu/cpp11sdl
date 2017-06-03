@@ -21,50 +21,51 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <cassert>
+#ifndef GfxPowerInfo_hpp
+#define GfxPowerInfo_hpp
+
 #include <cstdint>
 #include <string>
 
-#include "GfxGetVersion.hpp"
+#include "GfxRootClass.hpp"
+#include "GfxPowerState.hpp"
 
 namespace gfx
 {
 
-const char GfxGetVersion::ClassName[] = "GfxGetVersion";
-
-GfxGetVersion::GfxGetVersion() : GfxRootClass(ClassName)
+namespace power
 {
-    // Nothing to do
-}
 
-GfxGetVersion::operator bool() const
+class GfxPowerInfo final : public GfxRootClass
 {
-    return true;
-}
+public:
+    static const char ClassName[];
 
-void GfxGetVersion::getVersion(GfxVersion * ver) const
-{
-    assert(ver != nullptr);
+    GfxPowerInfo();
 
-    GfxVersion::SdlType v;
+    GfxPowerInfo(GfxPowerInfo const&) = delete;
+    GfxPowerInfo(GfxPowerInfo&&) = delete;
 
-    sdl2::SDL_GetVersion(&v);
-    ver->set(v);
-}
+    GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
+    GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
 
-std::string GfxGetVersion::getRevision(void) const
-{
-    std::string str;
+    virtual explicit operator bool() const;
 
-    str = sdl2::SDL_GetRevision();
-    return str;
-}
+    void queryPowerInfo(void);
 
-int32_t GfxGetVersion::getRevisionNumber(void) const
-{
-    return sdl2::SDL_GetRevisionNumber();
-}
+    GfxPowerState const& getPowerState(void) const;
+    int32_t getRemainingSeconds(void) const;
+    int32_t getRemainingPercentage(void) const;
+
+    const std::string getAsString(void) const;
+private:
+    GfxPowerState pstate_;
+    int32_t seconds_;
+    int32_t percentage_;
+};
+
+}  // namespace power
 
 }  // namespace gfx
 
-/* EOF */
+#endif /* GfxPowerInfo_hpp */

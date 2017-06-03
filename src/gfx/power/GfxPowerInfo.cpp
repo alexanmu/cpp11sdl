@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace power
+{
+
 const char GfxPowerInfo::ClassName[] = "GfxPowerInfo";
 
 GfxPowerInfo::GfxPowerInfo() : GfxRootClass(ClassName)
@@ -75,6 +78,8 @@ const std::string GfxPowerInfo::getAsString(void) const
     str += "Percentage left " + std::to_string(percentage_) + "%";
     return str;
 }
+
+}  // namespace power
 
 }  // namespace gfx
 

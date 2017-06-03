@@ -48,7 +48,7 @@ public:
 
     virtual explicit operator bool() const;
 
-    void getVersion(gfx::GfxVersion* ver) const;
+    void getVersion(gfx::version::GfxVersion* ver) const;
 };
 
 }  // namespace ttf
@@ -56,3 +56,4 @@ public:
 }  // namespace gfx
 
 #endif  // GfxTtfGetVersion_hpp
+

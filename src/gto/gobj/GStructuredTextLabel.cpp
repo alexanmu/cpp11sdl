@@ -25,6 +25,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <map>
 #include <regex>
 
 #include "GStructuredTextLabel.hpp"

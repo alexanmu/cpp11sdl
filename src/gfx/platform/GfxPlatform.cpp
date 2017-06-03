@@ -21,46 +21,41 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxPowerInfo_hpp
-#define GfxPowerInfo_hpp
-
-#include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
-#include "GfxPowerState.hpp"
+#include "GfxPlatform.hpp"
+#include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
 
-class GfxPowerInfo final : public GfxRootClass
+namespace platform
 {
-public:
-    static const char ClassName[];
 
-    GfxPowerInfo();
+const char GfxPlatform::ClassName[] = "GfxPlatform";
 
-    GfxPowerInfo(GfxPowerInfo const&) = delete;
-    GfxPowerInfo(GfxPowerInfo&&) = delete;
+GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
+{
+    platform_ = "";
+}
 
-    GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
-    GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
+GfxPlatform::operator bool() const
+{
+    return true;
+}
 
-    virtual explicit operator bool() const;
+void GfxPlatform::queryPlatform(void)
+{
+    platform_ = sdl2::SDL_GetPlatform();
+}
 
-    void queryPowerInfo(void);
+std::string const& GfxPlatform::getPlatform(void) const
+{
+    return platform_;
+}
 
-    GfxPowerState const& getPowerState(void) const;
-    int32_t getRemainingSeconds(void) const;
-    int32_t getRemainingPercentage(void) const;
-
-    const std::string getAsString(void) const;
-private:
-    GfxPowerState pstate_;
-    int32_t seconds_;
-    int32_t percentage_;
-};
+}  // namespace platform
 
 }  // namespace gfx
 
-#endif /* GfxPowerInfo_hpp */
+/* EOF */

@@ -120,7 +120,7 @@ void GDemoForm::draw(void)
     bmp.draw();
     windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::GfxRect(90, 90, 384, 384));
 
-    gfx::GfxVersion v;
+    gfx::version::GfxVersion v;
     gfx::ttf::GfxTtfGetVersion gv;
     gv.getVersion(&v);
     std::string labelText = "Label text " + v.getAsString();
@@ -141,7 +141,8 @@ void GDemoForm::draw(void)
     // labelText = "john.doe@example.com";
     // labelText = "https://www.apple.com";
     labelText = "192.168.100.1";
-    gto::gobj::GStructuredTextLabel g3(GVarName(g3), this, 280, 60, labelText, 18, gto::gobj::GStructuredTextType::ipAddress);
+    gto::gobj::GStructuredTextLabel g3(GVarName(g3), this, 280, 60, labelText, 18,
+            gto::gobj::GStructuredTextType::ipAddress);
     g3.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
     g3.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g3.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());

@@ -21,38 +21,43 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxGetVersion_hpp
-#define GfxGetVersion_hpp
+#ifndef GfxPlatform_hpp
+#define GfxPlatform_hpp
 
-#include <cstdint>
 #include <string>
 
 #include "GfxRootClass.hpp"
-#include "GfxVersion.hpp"
 
 namespace gfx
 {
 
-class GfxGetVersion final : public GfxRootClass
+namespace platform
+{
+
+class GfxPlatform final : public GfxRootClass
 {
 public:
     static const char ClassName[];
 
-    GfxGetVersion();
+    GfxPlatform();
 
-    GfxGetVersion(GfxGetVersion const&) = delete;
-    GfxGetVersion(GfxGetVersion&&) = delete;
+    GfxPlatform(GfxPlatform const&) = delete;
+    GfxPlatform(GfxPlatform&&) = delete;
 
-    GfxGetVersion& operator=(GfxGetVersion const&) = delete;
-    GfxGetVersion& operator=(GfxGetVersion&&) = delete;
+    GfxPlatform& operator=(GfxPlatform const &) = delete;
+    GfxPlatform& operator=(GfxPlatform&&) = delete;
 
     virtual explicit operator bool() const;
 
-    void getVersion(GfxVersion * ver) const;
-    std::string getRevision(void) const;
-    int32_t getRevisionNumber(void) const;
+    void queryPlatform(void);
+
+    std::string const& getPlatform(void) const;
+private:
+    std::string platform_;
 };
+
+}  // namespace platform
 
 }  // namespace gfx
 
-#endif /* GfxGetVersion_hpp */
+#endif /* GfxPlatform_hpp */
