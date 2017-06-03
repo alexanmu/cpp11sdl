@@ -68,11 +68,10 @@ enum class GTextRenderMode : uint8_t
 
 enum class GStructuredTextType : uint8_t
 {
-    hexValue = 0,
-    emailAddress = 1,
-    hyperLink = 2,
-    ipAddress = 3,
-    customRegex = 4
+    emailAddress = 0,
+    hyperLink = 1,
+    ipAddress = 2,
+    customRegex = 3
 };
 
 extern const uint16_t kMaxObjectWidth;

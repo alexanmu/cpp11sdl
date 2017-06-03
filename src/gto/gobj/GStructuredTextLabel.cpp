@@ -30,6 +30,7 @@
 #include "GStructuredTextLabel.hpp"
 #include "GLabel.hpp"
 #include "GTypes.hpp"
+#include "GfxBgiConstants.hpp"
 
 namespace gto
 {
@@ -38,12 +39,18 @@ namespace gobj
 {
 
 /* Regular expressions taken from here:
-    https://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149 */
+    https://stackoverflow.com/questions/36903985/email-validation-in-c
+    https://stackoverflow.com/questions/161738/what-is-the-best-regular-expression-to-check-if-a-string-is-a-valid-url
+    https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp */
+
 const std::map<GStructuredTextType, std::string> GStructuredTextLabel::exprMapObject = {
-    { GStructuredTextType::hexValue, "/^#?([a-f0-9]{6}|[a-f0-9]{3})$/" },
-    { GStructuredTextType::emailAddress, "/^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$/" },
-    { GStructuredTextType::hyperLink, "/^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$/" },
-    { GStructuredTextType::ipAddress, "/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/" }
+    { GStructuredTextType::emailAddress,
+        R"((\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+)" },
+    { GStructuredTextType::hyperLink,
+        R"((([\w]+:)?//)?(([\d\w]|%[a-fA-F\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+\
+        [\w]{2,4}(:[\d]+)?(/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?)" },
+    { GStructuredTextType::ipAddress,
+        R"(^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$)" }
 };
 
 GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, uint16_t width,
@@ -78,6 +85,7 @@ void GStructuredTextLabel::draw(void) throw(std::runtime_error)
     {
         GLabel::setText("regExp failed!");
     }
+    setColorScheme();
     GLabel::draw();
 }
 
@@ -87,10 +95,50 @@ bool GStructuredTextLabel::evalRegExp(std::string const& actregexp)
 
     bool result;
 
-    std::regex self_regex = std::regex(actregexp, std::regex_constants::ECMAScript);
-    result = std::regex_search(GLabel::getText(), self_regex);
+    try
+    {
+        std::regex self_regex = std::regex(actregexp, std::regex_constants::ECMAScript);
+        result = std::regex_search(GLabel::getText(), self_regex);
+    }
+    catch (std::regex_error)
+    {
+        result = false;
+    };
 
     return result;
+}
+
+void GStructuredTextLabel::setColorScheme(void)
+{
+    switch (stTextType_)
+    {
+        case GStructuredTextType::emailAddress:
+            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightBlue());
+            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            getFontInfo().clear();
+            getFontInfo().setFontItalic(true);
+            getFontInfo().setFontUnderline(false);
+            break;
+        case GStructuredTextType::hyperLink:
+            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaBlue());
+            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            getFontInfo().clear();
+            getFontInfo().setFontItalic(true);
+            getFontInfo().setFontUnderline(true);
+            break;
+        case GStructuredTextType::ipAddress:
+            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaBlack());
+            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            getFontInfo().clear();
+            getFontInfo().setFontBold(true);
+            break;
+        case GStructuredTextType::customRegex:
+            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaBlack());
+            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            getFontInfo().clear();
+            getFontInfo().setFontUnderline(true);
+            break;
+    }
 }
 
 }  // namespace gobj

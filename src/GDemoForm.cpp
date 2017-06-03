@@ -138,8 +138,10 @@ void GDemoForm::draw(void)
     g2.draw();
     windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(640, 10, 120, 60));
 
-    labelText = "john.doe@example.com";
-    gto::gobj::GStructuredTextLabel g3(GVarName(g3), this, 280, 60, labelText, 18, gto::gobj::GStructuredTextType::emailAddress);
+    // labelText = "john.doe@example.com";
+    // labelText = "https://www.apple.com";
+    labelText = "192.168.100.1";
+    gto::gobj::GStructuredTextLabel g3(GVarName(g3), this, 280, 60, labelText, 18, gto::gobj::GStructuredTextType::ipAddress);
     g3.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
     g3.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
     g3.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
