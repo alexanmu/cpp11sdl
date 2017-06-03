@@ -120,7 +120,7 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::filesystem::GfxFileSystem::ClassName, sizeof(gfx::filesystem::GfxFileSystem) },
     { gfx::GfxGetRendererInfo::ClassName, sizeof(gfx::GfxGetRendererInfo) },
     { gfx::version::GfxGetVersion::ClassName, sizeof(gfx::version::GfxGetVersion) },
-    { gfx::GfxInitQuit::ClassName, sizeof(gfx::GfxInitQuit) },
+    { gfx::initquit::GfxInitQuit::ClassName, sizeof(gfx::initquit::GfxInitQuit) },
     { gfx::loadso::GfxLoadSo::ClassName, sizeof(gfx::loadso::GfxLoadSo) },
     { gfx::msgbox::GfxMessageBox::ClassName, sizeof(gfx::msgbox::GfxMessageBox) },
     { gfx::msgbox::GfxMessageBoxButtonData::ClassName, sizeof(gfx::msgbox::GfxMessageBoxButtonData) },
@@ -161,7 +161,7 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::bgi::fnt::GfxBgiFontConstants::ClassName, sizeof(gfx::bgi::fnt::GfxBgiFontConstants) },
     { gfx::bgi::GfxRadius::ClassName, sizeof(gfx::bgi::GfxRadius) },
     { gfx::bgi::GfxString::ClassName, sizeof(gfx::bgi::GfxString) },
-    { gfx::GfxInitFlags::ClassName, sizeof(gfx::GfxInitFlags) },  // 2017.05.17
+    { gfx::initquit::GfxInitFlags::ClassName, sizeof(gfx::initquit::GfxInitFlags) },  // 2017.05.17
     { gfx::ttf::GfxTtfFont::ClassName, sizeof(gfx::ttf::GfxTtfFont) },  // 2017.05.17
     { gfx::ttf::GfxTtfInitQuit::ClassName, sizeof(gfx::ttf::GfxTtfInitQuit) },  // 2017.05.17
     { gfx::ttf::GfxTtfGetVersion::ClassName, sizeof(gfx::ttf::GfxTtfGetVersion) },  // 2017.05.18

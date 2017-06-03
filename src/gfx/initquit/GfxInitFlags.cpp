@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace initquit
+{
+
 const char GfxInitFlags::ClassName[] = "GfxInitFlags";
 
 GfxInitFlags::GfxInitFlags() : GfxRootClass(ClassName)
@@ -258,6 +261,8 @@ GfxInitFlags::SdlTypePtr GfxInitFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace initquit
 
 }  // namespace gfx
 

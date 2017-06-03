@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace initquit
+{
+
 const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
 GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) :
@@ -86,6 +89,8 @@ int32_t GfxInitQuit::getErrorCode() const
 {
     return errorCode_;
 }
+
+}  // namespace initquit
 
 }  // namespace gfx
 

@@ -73,11 +73,11 @@ void GApplication::loadAppConfiguration(void)
 
 void GApplication::run()
 {
-    gfx::GfxInitFlags iflags;
+    gfx::initquit::GfxInitFlags iflags;
 
     iflags.setVideo();
     iflags.setEvents();
-    iq_ = new gfx::GfxInitQuit(iflags);
+    iq_ = new gfx::initquit::GfxInitQuit(iflags);
     if (!iq_)
     {
         return;

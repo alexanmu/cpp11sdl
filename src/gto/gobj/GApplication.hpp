@@ -59,7 +59,7 @@ public:
 private:
     std::string appName_;
     GForm * mainForm_;
-    gfx::GfxInitQuit * iq_;
+    gfx::initquit::GfxInitQuit * iq_;
     gfx::ttf::GfxTtfInitQuit * ttfiq_;
 };
 

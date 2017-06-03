@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace initquit
+{
+
 class GfxInitFlags final : public GfxRootClass
 {
 public:
@@ -104,6 +107,8 @@ public:
 private:
     uint32_t flags_;
 };
+
+}  // namespace initquit
 
 }  // namespace gfx
 

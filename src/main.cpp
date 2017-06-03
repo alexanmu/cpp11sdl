@@ -269,11 +269,11 @@ void dec(int* a)
 void _doStuff(void)
 {
     BeforeInit();
-    gfx::GfxInitFlags iflags;
+    gfx::initquit::GfxInitFlags iflags;
 
     iflags.setVideo();
     iflags.setEvents();
-    gfx::GfxInitQuit iq(iflags);
+    gfx::initquit::GfxInitQuit iq(iflags);
     AfterInit();
     std::cout << "_doStuff()" << std::endl;
     if (iq.getErrorCode() != 0)
