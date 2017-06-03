@@ -104,7 +104,7 @@ public:
     void setWindowFullscreen(const fullscreenflags_t flags) const;
     GfxSurface * getWindowSurface(void);
     void updateWindowSurface(void);
-    void updateWindowSurfaceRects(std::vector<gfx::GfxRect> const& vec) const;
+    void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const;
     void setWindowGrab(GfxBool const& grabbed) const;
     GfxBool getWindowGrab(void) const;
     GfxWindow const * getGrabbedWindow(void) const;

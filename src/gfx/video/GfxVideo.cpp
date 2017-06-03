@@ -110,12 +110,12 @@ std::string GfxVideo::getDisplayName(const int32_t displayindex) const
     return str;
 }
 
-std::unique_ptr<GfxRect> GfxVideo::getDisplayBounds(const int32_t displayindex) const
+std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayBounds(const int32_t displayindex) const
 {
     assert(displayindex >= 0);
 
-    std::unique_ptr<GfxRect> r { new GfxRect() };
-    GfxRect::SdlType rt;
+    std::unique_ptr<rect::GfxRect> r { new rect::GfxRect() };
+    rect::GfxRect::SdlType rt;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
@@ -125,12 +125,12 @@ std::unique_ptr<GfxRect> GfxVideo::getDisplayBounds(const int32_t displayindex) 
     return r;
 }
 
-std::unique_ptr<GfxRect> GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const
+std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const
 {
     assert(displayindex >= 0);
 
-    std::unique_ptr<GfxRect> r { new GfxRect() };
-    GfxRect::SdlType rt;
+    std::unique_ptr<rect::GfxRect> r { new rect::GfxRect() };
+    rect::GfxRect::SdlType rt;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {

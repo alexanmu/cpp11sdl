@@ -53,9 +53,9 @@ public:
     explicit GControl(std::string const& vname, GComponent* owner);
     virtual ~GControl();
 
-    void setBounds(gfx::GfxRect const& bounds) noexcept;
-    gfx::GfxRect const& getBounds(void) const noexcept;
-    gfx::GfxRect const& getClientBounds(void) const noexcept;
+    void setBounds(gfx::rect::GfxRect const& bounds) noexcept;
+    gfx::rect::GfxRect const& getBounds(void) const noexcept;
+    gfx::rect::GfxRect const& getClientBounds(void) const noexcept;
 
     void setEnabled(void) noexcept;
     bool getEnabled(void) const noexcept;
@@ -85,8 +85,8 @@ public:
     int32_t getHeight(void) const noexcept;
 protected:
     // Properties
-    gfx::GfxRect bounds_;
-    gfx::GfxRect clientBounds_;
+    gfx::rect::GfxRect bounds_;
+    gfx::rect::GfxRect clientBounds_;
     bool enabled_;
     GBorderThikness borderThikness_;
     GBorderStyle borderStyle_;

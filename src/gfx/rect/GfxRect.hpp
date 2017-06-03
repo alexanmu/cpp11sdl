@@ -26,11 +26,17 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
+#include "GfxBool.hpp"
+#include "GfxPoint.hpp"
 
 namespace gfx
+{
+
+namespace rect
 {
 
 class GfxRect final : public GfxRootClass
@@ -46,13 +52,13 @@ public:
     GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h);
     explicit GfxRect(const SdlType rect);
 
-    GfxRect(const GfxRect& other);
+    GfxRect(GfxRect const& other);
     GfxRect(GfxRect&& other);
 
-    GfxRect& operator=(const GfxRect& other);
+    GfxRect& operator=(GfxRect const& other);
     GfxRect& operator=(GfxRect&& other);
 
-    bool operator==(const GfxRect& other);
+    bool operator==(GfxRect const& other);
 
     virtual explicit operator bool() const;
 
@@ -67,6 +73,15 @@ public:
     void setHeight(const int32_t h);
     void set(SdlType r);
 
+    GfxBool pointInRect(GfxPoint const& p) const;
+    GfxBool rectEmpty(void) const;
+    GfxBool rectEquals(GfxRect const& r) const;
+    GfxBool hasIntersection(GfxRect const& r) const;
+    GfxBool intersectRect(GfxRect const &r, GfxRect * result) const;
+    void unionRect(GfxRect const &r, GfxRect * result) const;
+    GfxBool enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const;
+    GfxBool intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const;
+
     void clear(void);
 
     SdlType getAsSdlType() const;
@@ -74,6 +89,8 @@ public:
 private:
     SdlType rect_;
 };
+
+}  // namespace rect
 
 }  // namespace gfx
 

@@ -63,8 +63,8 @@ void GBitmap::load(void) throw(std::runtime_error)
 
 void GBitmap::draw(void) throw(std::runtime_error)
 {
-    gfx::GfxRect imgBounds(0, 0, imgSurf_().getWidth(), imgSurf_().getHeight());
-    gfx::GfxRect dstBounds;
+    gfx::rect::GfxRect imgBounds(0, 0, imgSurf_().getWidth(), imgSurf_().getHeight());
+    gfx::rect::GfxRect dstBounds;
 
     switch (scaleMode_)
     {

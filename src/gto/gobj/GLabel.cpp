@@ -134,7 +134,7 @@ void GLabel::draw(void)
     }
     if (rendsurf)
     {
-        gfx::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
+        gfx::rect::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
 
         surf_().blitSurface(*rendsurf, textbounds, clientBounds_);
         delete rendsurf;

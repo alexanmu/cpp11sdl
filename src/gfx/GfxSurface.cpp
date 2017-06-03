@@ -198,7 +198,7 @@ pixels::GfxPixelFormat * GfxSurface::getFormat(void)
     return new pixels::GfxPixelFormat(surf_->format);
 }
 
-void GfxSurface::fillRect(const GfxRect& rect, const pixels::GfxColor& color)
+void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& color)
 {
     assert(rect);
     assert(color);
@@ -227,13 +227,13 @@ void GfxSurface::fillRect(const pixels::GfxColor& color)
     sdl2::SDL_FillRect(surf_, NULL, clr);
 }
 
-void GfxSurface::fillRects(const std::vector<GfxRect>& rects, const pixels::GfxColor& color)
+void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels::GfxColor& color)
 {
     assert(color);
 
     if (rects.size() > 0)
     {
-        for (const GfxRect& r : rects)
+        for (const rect::GfxRect& r : rects)
         {
             assert(r);
             fillRect(r, color);
@@ -241,7 +241,7 @@ void GfxSurface::fillRects(const std::vector<GfxRect>& rects, const pixels::GfxC
     }
 }
 
-void GfxSurface::blitSurface(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr)
+void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr)
 {
     assert(src);
     assert(srcr);
@@ -265,7 +265,7 @@ void GfxSurface::blitSurface(const GfxSurface& src)
     sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
 }
 
-void GfxSurface::blitScaled(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr)
+void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr)
 {
     assert(src);
     assert(srcr);

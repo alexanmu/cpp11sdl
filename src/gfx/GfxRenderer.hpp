@@ -63,12 +63,12 @@ public:
     void renderClear(void);
     void getRendererInfo(GfxRendererInfo* infoptr);
 
-    void renderCopy(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest);
+    void renderCopy(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest);
     void renderCopy(const GfxTexture& tex);
 
-    void renderCopyEx(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest,
-                        const double angle, const GfxPoint& pt, const GfxRendererFlip& flip);
-    void renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt, const GfxRendererFlip& flip);
+    void renderCopyEx(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest,
+                        const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip);
+    void renderCopyEx(const GfxTexture& tex, const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip);
 
     void renderPresent(void);
 

@@ -47,13 +47,13 @@ public:
     GPanel& operator=(GPanel const& other) = delete;
     GPanel& operator=(GPanel&& other) = delete;
 
-    explicit GPanel(std::string const& vname, GComponent* owner, gfx::GfxRect bounds);
+    explicit GPanel(std::string const& vname, GComponent* owner, gfx::rect::GfxRect bounds);
 
     void draw(void);
 
     void clear(void);
 private:
-    gfx::GfxRect bounds_;
+    gfx::rect::GfxRect bounds_;
 };
 
 }  // namespace gobj

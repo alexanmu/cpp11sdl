@@ -72,15 +72,15 @@ public:
 
     pixels::GfxPixelFormat * getFormat(void);
 
-    void fillRect(const GfxRect& rect, const pixels::GfxColor& color);
+    void fillRect(const rect::GfxRect& rect, const pixels::GfxColor& color);
     void fillRect(const pixels::GfxColor& color);
 
-    void fillRects(const std::vector<GfxRect>& rects, const pixels::GfxColor& color);
+    void fillRects(const std::vector<rect::GfxRect>& rects, const pixels::GfxColor& color);
 
-    void blitSurface(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
+    void blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr);
     void blitSurface(const GfxSurface& src);
 
-    void blitScaled(const GfxSurface& src, const GfxRect& srcr, const GfxRect& dstr);
+    void blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr);
 
     void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr);
     pixels::GfxColor getPixel(const int32_t x, const int32_t y);

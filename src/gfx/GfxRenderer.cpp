@@ -91,7 +91,7 @@ void GfxRenderer::getRendererInfo(GfxRendererInfo * infoptr)
     }
 }
 
-void GfxRenderer::renderCopy(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest)
+void GfxRenderer::renderCopy(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest)
 {
     assert(tex);
     assert(src);
@@ -116,8 +116,8 @@ void GfxRenderer::renderCopy(const GfxTexture& tex)
     }
 }
 
-void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const GfxRect& dest,
-                                const double angle, const GfxPoint& pt, const GfxRendererFlip& flip)
+void GfxRenderer::renderCopyEx(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest,
+                                const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip)
 {
     assert(tex);
     assert(src);
@@ -137,7 +137,7 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const GfxRect& src, const 
     }
 }
 
-void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const GfxPoint& pt,
+void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const rect::GfxPoint& pt,
                                 const GfxRendererFlip& flip)
 {
     assert(tex);

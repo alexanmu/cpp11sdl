@@ -43,7 +43,7 @@ public:
 
     virtual explicit operator bool() const;
 
-    virtual GfxHitTestResult const& operator()(void * win, gfx::GfxPoint * area, void * data) = 0;
+    virtual GfxHitTestResult const& operator()(void * win, rect::GfxPoint * area, void * data) = 0;
 protected:
     GfxHitTestResult hitTestResult_;
 };

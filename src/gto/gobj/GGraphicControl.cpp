@@ -48,7 +48,7 @@ GGraphicControl::GGraphicControl(std::string const& vname, GComponent * owner, c
     assert(width <= kMaxObjectWidth);
     assert(height <= kMaxObjectHeight);
 
-    setBounds(gfx::GfxRect(0, 0, width, height));
+    setBounds(gfx::rect::GfxRect(0, 0, width, height));
     foregroundColor_ = kDefaultForegroundColor;
     backgroundColor_ = kDefaultBackgroundColor;
     borderColor_ = kDefaultBorderColor;
@@ -123,10 +123,10 @@ void GGraphicControl::draw(void)
 //  Private methods
 void GGraphicControl::drawBorder(void) noexcept
 {
-    gfx::GfxRect east;
-    gfx::GfxRect west;
-    gfx::GfxRect north;
-    gfx::GfxRect south;
+    gfx::rect::GfxRect east;
+    gfx::rect::GfxRect west;
+    gfx::rect::GfxRect north;
+    gfx::rect::GfxRect south;
 
     gfx::pixels::GfxColor color1;
     gfx::pixels::GfxColor color2;

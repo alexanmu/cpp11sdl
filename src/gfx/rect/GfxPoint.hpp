@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace rect
+{
+
 class GfxPoint final : public GfxRootClass
 {
 public:
@@ -46,13 +49,13 @@ public:
     GfxPoint(const int32_t x, const int32_t y);
     explicit GfxPoint(const SdlType pt);
 
-    GfxPoint(const GfxPoint& other);
+    GfxPoint(GfxPoint const& other);
     GfxPoint(GfxPoint&& other);
 
-    GfxPoint& operator=(const GfxPoint& other);
+    GfxPoint& operator=(GfxPoint const& other);
     GfxPoint& operator=(GfxPoint&& other);
 
-    bool operator==(const GfxPoint& other);
+    bool operator==(GfxPoint const& other);
 
     virtual explicit operator bool() const;
 
@@ -71,6 +74,8 @@ public:
 private:
     SdlType pt_;
 };
+
+}  // namespace rect
 
 }  // namespace gfx
 

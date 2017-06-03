@@ -54,7 +54,7 @@ GControl::~GControl()
     // nothing to do yet
 }
 
-void GControl::setBounds(gfx::GfxRect const& bounds) noexcept
+void GControl::setBounds(gfx::rect::GfxRect const& bounds) noexcept
 {
     assert(bounds);
 
@@ -62,16 +62,15 @@ void GControl::setBounds(gfx::GfxRect const& bounds) noexcept
     adjustClientBounds();
 }
 
-gfx::GfxRect const& GControl::getBounds(void) const noexcept
+gfx::rect::GfxRect const& GControl::getBounds(void) const noexcept
 {
     return bounds_;
 }
 
-gfx::GfxRect const& GControl::getClientBounds(void) const noexcept
+gfx::rect::GfxRect const& GControl::getClientBounds(void) const noexcept
 {
     return clientBounds_;
 }
-
 
 void GControl::setEnabled(void) noexcept
 {

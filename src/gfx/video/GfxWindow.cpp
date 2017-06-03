@@ -48,7 +48,7 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
 
     gfx::video::GfxHitTestResult htr;
     gfx::video::GfxHitTestResult::SdlType htrsdl;
-    gfx::GfxPoint pt;
+    rect::GfxPoint pt;
 
     htrsdl = sdl2::SDL_HITTEST_NORMAL;
     if (hitTest_ != nullptr)
@@ -450,21 +450,21 @@ void GfxWindow::updateWindowSurface(void)
     }
 }
 
-void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::GfxRect> const& vec) const
+    void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const
 {
     int32_t ret = 1;
-    GfxRect::SdlTypePtr rects_ptr;
+    rect::GfxRect::SdlTypePtr rects_ptr;
     int32_t rects_count;
     int32_t index;
 
     assert(vec.size() > 0);
 
     rects_count = static_cast<int32_t>(vec.size());
-    rects_ptr = reinterpret_cast<GfxRect::SdlTypePtr>(malloc(sizeof(GfxRect::SdlType) * rects_count));
+    rects_ptr = reinterpret_cast<rect::GfxRect::SdlTypePtr>(malloc(sizeof(rect::GfxRect::SdlType) * rects_count));
     index = 0;
     for (auto& it : vec)
     {
-        std::memcpy(&rects_ptr[index], it.getAsSdlTypePtr(), sizeof(GfxRect::SdlType));
+        std::memcpy(&rects_ptr[index], it.getAsSdlTypePtr(), sizeof(rect::GfxRect::SdlType));
         index += 1;
     }
     if (window_ != nullptr)

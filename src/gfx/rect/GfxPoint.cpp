@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace rect
+{
+
 const char GfxPoint::ClassName[] = "GfxPoint";
 
 GfxPoint::GfxPoint() : GfxRootClass(ClassName)
@@ -51,7 +54,7 @@ GfxPoint::GfxPoint(const SdlType pt) : GfxRootClass(ClassName)
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(const GfxPoint& other) : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(GfxPoint const& other) : GfxRootClass(ClassName)
 {
     pt_ = other.pt_;
 }
@@ -64,7 +67,7 @@ GfxPoint::GfxPoint(GfxPoint&& other) : GfxRootClass(ClassName)
 }
 
 /* No assignement operators */
-GfxPoint& GfxPoint::operator=(const GfxPoint& other)
+GfxPoint& GfxPoint::operator=(GfxPoint const& other)
 {
     if (this != &other)
     {
@@ -84,7 +87,7 @@ GfxPoint& GfxPoint::operator=(GfxPoint&& other)
     return *this;
 }
 
-bool GfxPoint::operator==(const GfxPoint& other)
+bool GfxPoint::operator==(GfxPoint const& other)
 {
     return ((pt_.x == other.pt_.x) && (pt_.y == other.pt_.y));
 }
@@ -133,6 +136,8 @@ GfxPoint::SdlTypePtr GfxPoint::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&pt_;
 }
+
+}  // namespace rect
 
 }  // namespace gfx
 

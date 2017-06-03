@@ -63,8 +63,8 @@ public:
     std::string getCurrentVideoDriver(void) const;
     int32_t getNumVideoDisplays(void);
     std::string getDisplayName(const int32_t displayindex) const;
-    std::unique_ptr<GfxRect> getDisplayBounds(const int32_t displayindex) const;
-    std::unique_ptr<GfxRect> getDisplayUsableBounds(const int32_t displayindex) const;
+    std::unique_ptr<rect::GfxRect> getDisplayBounds(const int32_t displayindex) const;
+    std::unique_ptr<rect::GfxRect> getDisplayUsableBounds(const int32_t displayindex) const;
     void getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const;
     int32_t getNumDisplayModes(const int32_t displayindex);
     std::unique_ptr<GfxDisplayMode> getDisplayMode(const int32_t displayindex, const int32_t modeindex);

@@ -89,11 +89,13 @@ GDemoForm::GDemoForm(const std::string& appName) : gto::gobj::GForm(appName)
 void GDemoForm::draw(void)
 {
     auto canvas = getCanvas();
-    canvas->Bar(gfx::GfxRect(0, 0, 300, 300), gfx::pixels::GfxColor(200, 200, 200));
-    canvas->Line(gfx::GfxPoint(110, 110), gfx::GfxPoint(110, 190), gfx::bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(gfx::GfxPoint(110, 110), gfx::GfxPoint(190, 110), gfx::bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(gfx::GfxPoint(190, 110), gfx::GfxPoint(190, 190), gfx::bgi::GfxBgiConstants::vgaDarkGray());
-    canvas->Line(gfx::GfxPoint(110, 190), gfx::GfxPoint(190, 190), gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    canvas->Bar(gfx::rect::GfxRect(0, 0, 300, 300), gfx::pixels::GfxColor(200, 200, 200));
+    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(190, 110), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::rect::GfxPoint(190, 110), gfx::rect::GfxPoint(190, 190),
+                 gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    canvas->Line(gfx::rect::GfxPoint(110, 190), gfx::rect::GfxPoint(190, 190),
+                 gfx::bgi::GfxBgiConstants::vgaDarkGray());
 
     auto surf = gfx::GfxSurface(pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
     window_.get()->setWindowIcon(surf);
@@ -107,7 +109,7 @@ void GDemoForm::draw(void)
     g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
     g.setBackgroundStyle(gto::gobj::GBackgroundStyle::solidColor);
     g.draw();
-    windowsurface_->blitSurface(g.getSurface()(), gfx::GfxRect(0, 0, 50, 50), gfx::GfxRect(10, 10, 60, 60));
+    windowsurface_->blitSurface(g.getSurface()(), gfx::rect::GfxRect(0, 0, 50, 50), gfx::rect::GfxRect(10, 10, 60, 60));
 
     gto::gobj::GBitmap bmp(GVarName(bmp), this, 384, 384,
                 gto::gobj::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
@@ -118,7 +120,7 @@ void GDemoForm::draw(void)
     bmp.setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
     bmp.setScaleMode(gto::gobj::GImageScaleMode::strechScaled);
     bmp.draw();
-    windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::GfxRect(90, 90, 384, 384));
+    windowsurface_->blitSurface(bmp.getSurface()(), bmp.getBounds(), gfx::rect::GfxRect(90, 90, 384, 384));
 
     gfx::version::GfxVersion v;
     gfx::ttf::GfxTtfGetVersion gv;
@@ -136,7 +138,8 @@ void GDemoForm::draw(void)
     g2.getFontInfo().setFontUnderline(true);
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g2.draw();
-    windowsurface_->blitSurface(g2.getSurface()(), gfx::GfxRect(0, 0, 280, 60), gfx::GfxRect(640, 10, 120, 60));
+    windowsurface_->blitSurface(g2.getSurface()(), gfx::rect::GfxRect(0, 0, 280, 60),
+                                gfx::rect::GfxRect(640, 10, 120, 60));
 
     // labelText = "john.doe@example.com";
     // labelText = "https://www.apple.com";
@@ -153,7 +156,8 @@ void GDemoForm::draw(void)
     g3.getFontInfo().setFontUnderline(true);
     g3.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g3.draw();
-    windowsurface_->blitSurface(g3.getSurface()(), gfx::GfxRect(0, 0, 300, 60), gfx::GfxRect(310, 10, 120, 60));
+    windowsurface_->blitSurface(g3.getSurface()(), gfx::rect::GfxRect(0, 0, 300, 60),
+                                gfx::rect::GfxRect(310, 10, 120, 60));
     GForm::draw();
 }
 

@@ -48,7 +48,7 @@ GfxCanvas::operator bool() const
     return true;
 }
 
-void GfxCanvas::Circle(const GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr)
+void GfxCanvas::Circle(const rect::GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr)
 {
     assert(pt);
     assert(r);
@@ -58,7 +58,7 @@ void GfxCanvas::Circle(const GfxPoint& pt, const GfxRadius& r, const pixels::Gfx
     bgi_.circle(pt.getX(), pt.getY(), r.getValue());
 }
 
-void GfxCanvas::Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+void GfxCanvas::Arc(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
                     const GfxRadius& radius, const pixels::GfxColor& clr)
 {
     assert(pt);
@@ -71,7 +71,7 @@ void GfxCanvas::Arc(const GfxPoint& pt, const GfxAngle& stangle, const GfxAngle&
     bgi_.arc(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
-void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr,
+void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr,
                         const fnt::GfxBitmapFont& font)
 {
     assert(pt);
@@ -85,7 +85,7 @@ void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const pixels:
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr)
+void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr)
 {
     assert(pt);
     assert(text);
@@ -95,7 +95,7 @@ void GfxCanvas::OutText(const GfxPoint& pt, const GfxString& text, const pixels:
     bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
 }
 
-void GfxCanvas::Bar(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxColor& clr)
+void GfxCanvas::Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr)
 {
     assert(pt1);
     assert(pt2);
@@ -105,7 +105,7 @@ void GfxCanvas::Bar(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxC
     bgi_.bar(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Bar(const GfxRect& r, const pixels::GfxColor& clr)
+void GfxCanvas::Bar(const rect::GfxRect& r, const pixels::GfxColor& clr)
 {
     assert(r);
     assert(clr);
@@ -114,7 +114,7 @@ void GfxCanvas::Bar(const GfxRect& r, const pixels::GfxColor& clr)
     bgi_.bar(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::PutPixel(const GfxPoint& pt, const pixels::GfxColor& clr)
+void GfxCanvas::PutPixel(const rect::GfxPoint& pt, const pixels::GfxColor& clr)
 {
     assert(pt);
     assert(clr);
@@ -125,7 +125,7 @@ void GfxCanvas::PutPixel(const GfxPoint& pt, const pixels::GfxColor& clr)
     bgi_._putpixel(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::Rect(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxColor& clr)
+void GfxCanvas::Rect(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr)
 {
     assert(pt1);
     assert(pt2);
@@ -137,7 +137,7 @@ void GfxCanvas::Rect(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::Gfx
     bgi_.rectangle(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Rect(const GfxRect& r, const pixels::GfxColor& clr)
+void GfxCanvas::Rect(const rect::GfxRect& r, const pixels::GfxColor& clr)
 {
     assert(r);
     assert(clr);
@@ -148,7 +148,7 @@ void GfxCanvas::Rect(const GfxRect& r, const pixels::GfxColor& clr)
     bgi_.rectangle(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::Line(const GfxPoint& pt1, const GfxPoint& pt2, const pixels::GfxColor& clr)
+void GfxCanvas::Line(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr)
 {
     assert(pt1);
     assert(pt2);
