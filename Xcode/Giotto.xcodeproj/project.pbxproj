@@ -37,6 +37,8 @@
 		791435571EDDD98200315A5C /* GfxPixelFormatEnum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791435501EDDD98200315A5C /* GfxPixelFormatEnum.cpp */; };
 		791459C91EE135B500830214 /* GfxHitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791459C71EE135B500830214 /* GfxHitTest.cpp */; };
 		791459CC1EE1416500830214 /* GfxTextureFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791459CA1EE1416500830214 /* GfxTextureFormats.cpp */; };
+		791E52671EE2DB2800DD9788 /* GfxGetError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791E52651EE2DB2800DD9788 /* GfxGetError.cpp */; };
+		791E526A1EE2DCAA00DD9788 /* GfxError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791E52691EE2DCAA00DD9788 /* GfxError.cpp */; };
 		791EAD411EDCB9BE0032ED1D /* GfxBool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EC71EDC8DB30025DF95 /* GfxBool.cpp */; };
 		791EAD431EDCB9BE0032ED1D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F691EDC8DB30025DF95 /* main.cpp */; };
 		791EAD451EDCB9BE0032ED1D /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F581EDC8DB30025DF95 /* GTypes.cpp */; };
@@ -53,7 +55,6 @@
 		791EAD561EDCB9BE0032ED1D /* GFolderCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F611EDC8DB30025DF95 /* GFolderCollectionElement.cpp */; };
 		791EAD571EDCB9BE0032ED1D /* GfxRendererFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F011EDC8DB30025DF95 /* GfxRendererFlags.cpp */; };
 		791EAD581EDCB9BE0032ED1D /* GApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F441EDC8DB30025DF95 /* GApplication.cpp */; };
-		791EAD591EDCB9BE0032ED1D /* GfxError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784ED31EDC8DB30025DF95 /* GfxError.cpp */; };
 		791EAD5A1EDCB9BE0032ED1D /* GOKMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F3D1EDC8DB30025DF95 /* GOKMsgBox.cpp */; };
 		791EAD5B1EDCB9BE0032ED1D /* GfxTtfFontHinting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F2B1EDC8DB30025DF95 /* GfxTtfFontHinting.cpp */; };
 		791EAD5C1EDCB9BE0032ED1D /* GImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F501EDC8DB30025DF95 /* GImage.cpp */; };
@@ -164,8 +165,6 @@
 		19784EC21EDC8DB30025DF95 /* GfxString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxString.hpp; sourceTree = "<group>"; };
 		19784EC71EDC8DB30025DF95 /* GfxBool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxBool.cpp; sourceTree = "<group>"; };
 		19784EC81EDC8DB30025DF95 /* GfxBool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxBool.hpp; sourceTree = "<group>"; };
-		19784ED31EDC8DB30025DF95 /* GfxError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxError.cpp; sourceTree = "<group>"; };
-		19784ED41EDC8DB30025DF95 /* GfxError.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxError.hpp; sourceTree = "<group>"; };
 		19784ED71EDC8DB30025DF95 /* GfxGetRendererInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxGetRendererInfo.cpp; sourceTree = "<group>"; };
 		19784ED81EDC8DB30025DF95 /* GfxGetRendererInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxGetRendererInfo.hpp; sourceTree = "<group>"; };
 		19784EFF1EDC8DB30025DF95 /* GfxRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxRenderer.cpp; sourceTree = "<group>"; };
@@ -310,6 +309,10 @@
 		791459C81EE135B500830214 /* GfxHitTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxHitTest.hpp; path = video/GfxHitTest.hpp; sourceTree = "<group>"; };
 		791459CA1EE1416500830214 /* GfxTextureFormats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxTextureFormats.cpp; sourceTree = "<group>"; };
 		791459CB1EE1416500830214 /* GfxTextureFormats.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxTextureFormats.hpp; sourceTree = "<group>"; };
+		791E52651EE2DB2800DD9788 /* GfxGetError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGetError.cpp; path = error/GfxGetError.cpp; sourceTree = "<group>"; };
+		791E52661EE2DB2800DD9788 /* GfxGetError.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGetError.hpp; path = error/GfxGetError.hpp; sourceTree = "<group>"; };
+		791E52681EE2DB6700DD9788 /* GfxError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GfxError.hpp; path = error/GfxError.hpp; sourceTree = "<group>"; };
+		791E52691EE2DCAA00DD9788 /* GfxError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxError.cpp; path = error/GfxError.cpp; sourceTree = "<group>"; };
 		791EADA11EDCB9BE0032ED1D /* tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tool; sourceTree = BUILT_PRODUCTS_DIR; };
 		793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFileSystem.cpp; path = filesystem/GfxFileSystem.cpp; sourceTree = "<group>"; };
 		793FD16D1EE2BC4900274C24 /* GfxFileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFileSystem.hpp; path = filesystem/GfxFileSystem.hpp; sourceTree = "<group>"; };
@@ -397,11 +400,10 @@
 				198015E11EDF27B600AEDB49 /* clipboard */,
 				198015E51EDF27CB00AEDB49 /* cpuinfo */,
 				198015E91EDF27EA00AEDB49 /* endian */,
+				791E52641EE2DB1A00DD9788 /* error */,
 				793FD16B1EE2BC3900274C24 /* filesystem */,
 				19784EC71EDC8DB30025DF95 /* GfxBool.cpp */,
 				19784EC81EDC8DB30025DF95 /* GfxBool.hpp */,
-				19784ED31EDC8DB30025DF95 /* GfxError.cpp */,
-				19784ED41EDC8DB30025DF95 /* GfxError.hpp */,
 				19784ED71EDC8DB30025DF95 /* GfxGetRendererInfo.cpp */,
 				19784ED81EDC8DB30025DF95 /* GfxGetRendererInfo.hpp */,
 				19784EFF1EDC8DB30025DF95 /* GfxRenderer.cpp */,
@@ -708,6 +710,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		791E52641EE2DB1A00DD9788 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				791E52651EE2DB2800DD9788 /* GfxGetError.cpp */,
+				791E52661EE2DB2800DD9788 /* GfxGetError.hpp */,
+				791E52681EE2DB6700DD9788 /* GfxError.hpp */,
+				791E52691EE2DCAA00DD9788 /* GfxError.cpp */,
+			);
+			name = error;
+			sourceTree = "<group>";
+		};
 		793FD16B1EE2BC3900274C24 /* filesystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +878,7 @@
 				791EAD4B1EDCB9BE0032ED1D /* GfxRendererFlip.cpp in Sources */,
 				793FD16E1EE2BC4900274C24 /* GfxFileSystem.cpp in Sources */,
 				791EAD4D1EDCB9BE0032ED1D /* GBitmap.cpp in Sources */,
+				791E526A1EE2DCAA00DD9788 /* GfxError.cpp in Sources */,
 				791EAD4E1EDCB9BE0032ED1D /* GfxRadius.cpp in Sources */,
 				198015E81EDF27E000AEDB49 /* GfxCpuInfo.cpp in Sources */,
 				791EAD501EDCB9BE0032ED1D /* GfxBgiConstants.cpp in Sources */,
@@ -882,7 +896,6 @@
 				198015FE1EDF281700AEDB49 /* GfxMessageBox.cpp in Sources */,
 				791EAD581EDCB9BE0032ED1D /* GApplication.cpp in Sources */,
 				79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */,
-				791EAD591EDCB9BE0032ED1D /* GfxError.cpp in Sources */,
 				791EAD5A1EDCB9BE0032ED1D /* GOKMsgBox.cpp in Sources */,
 				791459C91EE135B500830214 /* GfxHitTest.cpp in Sources */,
 				791435541EDDD98200315A5C /* GfxColor.cpp in Sources */,
@@ -910,6 +923,7 @@
 				791EAD6B1EDCB9BE0032ED1D /* GQuitCancelMsgBox.cpp in Sources */,
 				791EAD6C1EDCB9BE0032ED1D /* GOKCancelMsgBox.cpp in Sources */,
 				791435571EDDD98200315A5C /* GfxPixelFormatEnum.cpp in Sources */,
+				791E52671EE2DB2800DD9788 /* GfxGetError.cpp in Sources */,
 				198015DC1EDF279500AEDB49 /* GfxBits.cpp in Sources */,
 				791EAD701EDCB9BE0032ED1D /* GfxAngle.cpp in Sources */,
 				198016181EDF283C00AEDB49 /* GfxHitTestResult.cpp in Sources */,

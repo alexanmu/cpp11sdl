@@ -53,7 +53,7 @@
 #include "GfxClipboard.hpp"
 #include "GfxEndian.hpp"
 #include "GfxLoadSo.hpp"
-#include "GfxError.hpp"
+#include "GfxGetError.hpp"
 #include "GfxRendererInfo.hpp"
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererFlags.hpp"
@@ -215,7 +215,7 @@ void AfterDeInit(void)
     if (f == nullptr)
     {
         std::cout << "lso.loadFunction(\"whatever_function\")=" << "nullptr" << '\n';
-        std::cout << "err.getError()=" << gfx::GfxError::getError() << '\n';
+        std::cout << "err.getError()=" << gfx::error::GfxGetError::getErrorObject().get() << '\n';
     }
     std::cout << std::endl;
 }

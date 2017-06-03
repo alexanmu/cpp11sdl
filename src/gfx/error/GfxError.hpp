@@ -21,8 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxError_hpp
-#define GfxError_hpp
+#ifndef GfxError_h
+#define GfxError_h
 
 #include <string>
 
@@ -31,23 +31,35 @@
 namespace gfx
 {
 
+namespace error
+{
+
 class GfxError final : public GfxRootClass
 {
 public:
     static const char ClassName[];
 
-    GfxError() = delete;
+    GfxError();
 
-    GfxError(GfxError const&) = delete;
-    GfxError(GfxError&&) = delete;
+    explicit GfxError(std::string const& error);
 
-    GfxError& operator=(GfxError const &) = delete;
-    GfxError& operator=(GfxError&&) = delete;
+    GfxError(GfxError const& other);
+    GfxError(GfxError&& other);
 
-    static std::string getError(void);
-    static void clearError(void);
+    GfxError& operator=(GfxError const& other);
+    GfxError& operator=(GfxError&& other);
+
+    virtual explicit operator bool() const;
+
+    std::string get() const;
+
+    void clear(void);
+private:
+    std::string error_;
 };
+
+}  // namespace error
 
 }  // namespace gfx
 
-#endif /* GfxError_hpp */
+#endif /* GfxError_h */

@@ -31,7 +31,7 @@
 #include "GfxRenderer.hpp"
 #include "GAbortRetryIgnoreMsgBox.hpp"
 #include "GRetryCancelMsgBox.hpp"
-#include "GfxError.hpp"
+#include "GfxGetError.hpp"
 #include "GForm.hpp"
 #include "GOKMsgBox.hpp"
 #include "GOKCancelMsgBox.hpp"

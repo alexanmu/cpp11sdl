@@ -24,25 +24,73 @@
 #include <string>
 
 #include "GfxError.hpp"
-#include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
 
+namespace error
+{
+
 const char GfxError::ClassName[] = "GfxError";
 
-std::string GfxError::getError(void)
+GfxError::GfxError() : GfxRootClass(ClassName)
 {
-    std::string str;
-
-    str = sdl2::SDL_GetError();
-    return str;
+    clear();
 }
 
-void GfxError::clearError(void)
+GfxError::GfxError(std::string const& error) : GfxRootClass(ClassName)
 {
-    sdl2::SDL_ClearError();
+    error_ = error;
 }
+
+GfxError::GfxError(GfxError const& other) : GfxRootClass(ClassName)
+{
+    error_ = other.error_;
+}
+
+GfxError::GfxError(GfxError&& other) : GfxRootClass(ClassName)
+{
+    error_ = other.error_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxError& GfxError::operator=(GfxError const& other)
+{
+    if (this != &other)
+    {
+        error_ = other.error_;
+    }
+    return *this;
+}
+
+GfxError& GfxError::operator=(GfxError&& other)
+{
+    if (this != &other)
+    {
+        error_ = other.error_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
+}
+
+GfxError::operator bool() const
+{
+    return (error_.length() > 0);
+}
+
+std::string GfxError::get() const
+{
+    return error_;
+}
+
+void GfxError::clear(void)
+{
+    error_ = "";
+}
+
+}  // namespace error
 
 }  // namespace gfx
 

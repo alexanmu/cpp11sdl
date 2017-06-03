@@ -36,7 +36,7 @@
 #include "GfxCpuInfo.hpp"
 #include "GfxDisplayMode.hpp"
 #include "GfxEndian.hpp"
-#include "GfxError.hpp"
+#include "GfxGetError.hpp"
 #include "GfxFileSystem.hpp"
 #include "GfxGetRendererInfo.hpp"
 #include "GfxGetVersion.hpp"
@@ -100,6 +100,7 @@
 #include "GfxGammaRamp.hpp"  // 2017.06.01
 #include "GfxHitTest.hpp"  // 2017.06.02
 #include "GfxTextureFormats.hpp"  // 2017.06.02
+#include "GfxError.hpp"  // 2017.06.03
 
 namespace gfx
 {
@@ -116,7 +117,7 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::cpuinfo::GfxCpuInfo::ClassName, sizeof(gfx::cpuinfo::GfxCpuInfo) },
     { gfx::video::GfxDisplayMode::ClassName, sizeof(gfx::video::GfxDisplayMode) },
     { gfx::endian::GfxEndian::ClassName, sizeof(gfx::endian::GfxEndian) },
-    { gfx::GfxError::ClassName, sizeof(gfx::GfxError) },
+    { gfx::error::GfxGetError::ClassName, sizeof(gfx::error::GfxGetError) },
     { gfx::filesystem::GfxFileSystem::ClassName, sizeof(gfx::filesystem::GfxFileSystem) },
     { gfx::GfxGetRendererInfo::ClassName, sizeof(gfx::GfxGetRendererInfo) },
     { gfx::version::GfxGetVersion::ClassName, sizeof(gfx::version::GfxGetVersion) },
@@ -179,7 +180,8 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::video::GfxHitTestResult::ClassName, sizeof(gfx::video::GfxHitTestResult) },  // 2017.05.31
     { gfx::xtra::GfxGammaRamp::ClassName, sizeof(gfx::xtra::GfxGammaRamp) },  // 2017.06.01
     { gfx::video::GfxHitTest::ClassName, sizeof(gfx::video::GfxHitTest) },  // 2017.06.02
-    { gfx::GfxTextureFormats::ClassName, sizeof(gfx::GfxTextureFormats) }  // 2017.06.02
+    { gfx::GfxTextureFormats::ClassName, sizeof(gfx::GfxTextureFormats) },  // 2017.06.02
+    { gfx::error::GfxError::ClassName, sizeof(gfx::error::GfxError) }  // 2017.06.03
 };
 
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
