@@ -81,7 +81,7 @@ public:
     GfxWindowFlags * getWindowFlags(void) const;
     void setWindowTitle(const std::string& title);
     std::string getWindowTitle() const;
-    void setWindowIcon(GfxSurface const& icon);
+    void setWindowIcon(surface::GfxSurface const& icon);
     void * setWindowData(std::string const& name, void * userdata) const;
     void * getWindowData(std::string const& name) const;
     void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
@@ -102,7 +102,7 @@ public:
     void minimizeWindow(void) const;
     void restoreWindow(void) const;
     void setWindowFullscreen(const fullscreenflags_t flags) const;
-    GfxSurface * getWindowSurface(void);
+    surface::GfxSurface * getWindowSurface(void);
     void updateWindowSurface(void);
     void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const;
     void setWindowGrab(GfxBool const& grabbed) const;

@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace surface
+{
+
 const char GfxSurface::ClassName[] = "GfxSurface";
 
 GfxSurface::GfxSurface(const GfxSurfaceFlags& flags, const int32_t w, const int32_t h) throw(std::runtime_error) :
@@ -354,6 +357,8 @@ pixels::GfxColor GfxSurface::getPixelPrv(const int32_t x, const int32_t y)
     return pixels::GfxColor { pixels::GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],
                                ptr[y * surf_->w + x + 2], ptr[y * surf_->w + x + 3]) };
 }
+
+}  // namespace surface
 
 }  // namespace gfx
 

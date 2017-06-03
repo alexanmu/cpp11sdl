@@ -61,9 +61,9 @@ public:
 
     void free(void) noexcept;
 
-    gfx::GfxSurface& operator()(void) const throw(std::runtime_error);
+    surface::GfxSurface& operator()(void) const throw(std::runtime_error);
 private:
-    gfx::GfxSurface * surf_;
+    surface::GfxSurface * surf_;
     bool surfaceConstructed_;
 };
 

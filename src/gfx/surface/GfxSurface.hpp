@@ -40,6 +40,9 @@
 namespace gfx
 {
 
+namespace surface
+{
+
 class GfxSurface final : public GfxRootClass
 {
 public:
@@ -99,6 +102,8 @@ private:
 
     SdlTypePtr surf_;
 };
+
+}  // namespace surface
 
 }  // namespace gfx
 

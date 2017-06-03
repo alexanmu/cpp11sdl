@@ -48,7 +48,7 @@ public:
     GfxTexture() = delete;
 
     explicit GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h);
-    explicit GfxTexture(GfxRootClass * rend, const GfxSurface& surf);
+    explicit GfxTexture(GfxRootClass * rend, const surface::GfxSurface& surf);
 
     virtual ~GfxTexture();
 

@@ -97,7 +97,7 @@ void GDemoForm::draw(void)
     canvas->Line(gfx::rect::GfxPoint(110, 190), gfx::rect::GfxPoint(190, 190),
                  gfx::bgi::GfxBgiConstants::vgaDarkGray());
 
-    auto surf = gfx::GfxSurface(pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
+    auto surf = gfx::surface::GfxSurface(pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
     window_.get()->setWindowIcon(surf);
 
     /*************************************************************************************************/

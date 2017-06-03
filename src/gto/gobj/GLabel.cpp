@@ -97,7 +97,7 @@ void GLabel::draw(void)
     int32_t h;
     gfx::ttf::GfxTtfFont font(fontfile, fontInfo_.getFontSize());
     gfx::ttf::GfxTtfFontRenderer rend(&font);
-    gfx::GfxSurface * rendsurf;
+    gfx::surface::GfxSurface * rendsurf;
 
     surf_().fillRect(clientBounds_, backgroundColor_);
 

@@ -51,7 +51,7 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const i
                                    w, h);
 }
 
-GfxTexture::GfxTexture(GfxRootClass * rend, const GfxSurface& surf) : GfxRootClass(ClassName)
+GfxTexture::GfxTexture(GfxRootClass * rend, const surface::GfxSurface& surf) : GfxRootClass(ClassName)
 {
     assert(rend != nullptr);
     assert(surf);

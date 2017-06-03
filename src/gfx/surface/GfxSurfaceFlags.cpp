@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace surface
+{
+
 const char GfxSurfaceFlags::ClassName[] = "GfxSurfaceFlags";
 
 GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass(ClassName)
@@ -149,6 +152,8 @@ GfxSurfaceFlags::SdlTypePtr GfxSurfaceFlags::getAsSdlTypePtr(void) const
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace surface
 
 }  // namespace gfx
 

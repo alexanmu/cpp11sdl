@@ -35,7 +35,7 @@ namespace bgi
 
 const char GfxCanvas::ClassName[] = "GfxCanvas";
 
-GfxCanvas::GfxCanvas(GfxSurface const& surf) : GfxRootClass(ClassName)
+GfxCanvas::GfxCanvas(surface::GfxSurface const& surf) : GfxRootClass(ClassName)
 {
     assert(surf);
 

@@ -90,28 +90,28 @@ bool GfxTtfFontRenderer::sizeUnicode(std::string text, int32_t * w, int32_t * h)
     throw std::runtime_error("Not supported");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, gfx::pixels::GfxColor const& fg) const
 {
     assert(text.length() > 0);
 
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text,
+surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text,
             gfx::pixels::GfxColor const& fg) const
 {
     assert(text.length() > 0);
 
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, gfx::pixels::GfxColor const& fg)
+surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, gfx::pixels::GfxColor const& fg)
         const throw(std::runtime_error)
 {
     assert(text.length() > 0);
@@ -120,33 +120,33 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, g
     throw std::runtime_error("Not implemented");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pixels::GfxColor const& fg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderGlyph_Solid(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
+surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
+surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string text, gfx::pixels::GfxColor const& fg,
+surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string text, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const throw(std::runtime_error)
 {
     assert(text.length() > 0);
@@ -156,33 +156,33 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string text, 
     throw std::runtime_error("Not implemented");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pixels::GfxColor const& fg,
+surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderGlyph_Shaded(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType(), bg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text,
+surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text,
             gfx::pixels::GfxColor const& fg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string text,
+surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string text,
             gfx::pixels::GfxColor const& fg) const throw(std::runtime_error)
 {
     assert(text.length() > 0);
@@ -191,12 +191,12 @@ gfx::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string text,
     throw std::runtime_error("Not implemented");
 }
 
-gfx::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch, gfx::pixels::GfxColor const& fg) const
 {
-    gfx::GfxSurface::SdlTypePtr surf;
+    surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderGlyph_Blended(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
-    return new gfx::GfxSurface(surf);
+    return new surface::GfxSurface(surf);
 }
 
 }  // namespace ttf

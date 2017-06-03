@@ -39,6 +39,7 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
 
@@ -48,7 +49,7 @@ public:
     static const char ClassName[];
 
     GfxCanvas() = delete;
-    explicit GfxCanvas(GfxSurface const& surf);
+    explicit GfxCanvas(surface::GfxSurface const& surf);
 
     GfxCanvas(GfxCanvas const&) = delete;
     GfxCanvas(GfxCanvas&&) = delete;
@@ -75,6 +76,7 @@ private:
 };
 
 }  // namespace bgi
+
 }  // namespace gfx
 
 #endif /* GfxCanvas_hpp */

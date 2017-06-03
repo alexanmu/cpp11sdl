@@ -34,6 +34,9 @@
 namespace gfx
 {
 
+namespace surface
+{
+
 class GfxSurfaceFlags final : public GfxRootClass
 {
 public:
@@ -80,6 +83,8 @@ public:
 private:
     SdlType flags_;
 };
+
+}  // namespace surface
 
 }  // namespace gfx
 

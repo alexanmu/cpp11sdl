@@ -226,7 +226,7 @@ std::string GfxWindow::getWindowTitle() const
     return std::string(pch);
 }
 
-void GfxWindow::setWindowIcon(GfxSurface const& icon)
+void GfxWindow::setWindowIcon(surface::GfxSurface const& icon)
 {
     assert(icon);
 
@@ -424,14 +424,14 @@ void GfxWindow::setWindowFullscreen(fullscreenflags_t flags) const
     }
 }
 
-GfxSurface * GfxWindow::getWindowSurface(void)
+surface::GfxSurface * GfxWindow::getWindowSurface(void)
 {
     if (window_ != nullptr)
     {
         sdl2::SDL_Surface* surf = sdl2::SDL_GetWindowSurface(window_);
         if (surf != nullptr)
         {
-            GfxSurface * ptr { new GfxSurface(surf) };
+            surface::GfxSurface * ptr { new surface::GfxSurface(surf) };
 
             return ptr;
         }

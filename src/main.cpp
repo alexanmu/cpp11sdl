@@ -220,7 +220,7 @@ void AfterDeInit(void)
     std::cout << std::endl;
 }
 
-void bmpSurfaceInfo(gfx::GfxSurface* bmps)
+void bmpSurfaceInfo(gfx::surface::GfxSurface* bmps)
 {
     gfx::pixels::GfxPixelFormat * fmt;
     gfx::pixels::GfxPalette::GfxColorVector vec;
@@ -310,10 +310,10 @@ void _doStuff(void)
             std::cout << "gpf.getPixelFormatName()=" << gpf.getPixelFormatName() << '\n';
         }
     }
-    gfx::GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
+    gfx::surface::GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
-    gfx::GfxSurface surfcanvas(gfx::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::surface::GfxSurface surfcanvas(gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
 
     int c = 0;
     for (int i = 0; i < WIN_W; i++)
@@ -399,7 +399,7 @@ void _doStuff(void)
         }
     }
 
-    gfx::GfxSurface colors_surf(gfx::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::surface::GfxSurface colors_surf(gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
     gfx::rect::GfxRect rt;
 
     gfx::sdl2::SDL_Event e;
