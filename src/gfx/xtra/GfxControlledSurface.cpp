@@ -62,7 +62,7 @@ void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) thr
 
     if (surfaceConstructed_ == false)
     {
-        surf_ = new surface::GfxSurface(surface::GfxSurfaceFlags(), w, h);
+        surf_ = new surface::GfxSurface("GfxControlledSurface::createSurface 1", surface::GfxSurfaceFlags(), w, h);
         surfaceConstructed_ = true;
         return;
     }
@@ -75,7 +75,7 @@ void GfxControlledSurface::createSurface(std::string const& filename) throw(std:
 
     if (surfaceConstructed_ == false)
     {
-        surf_ = new surface::GfxSurface(filename);
+        surf_ = new surface::GfxSurface("GfxControlledSurface::createSurface 2", filename);
         surfaceConstructed_ = true;
         return;
     }

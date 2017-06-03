@@ -49,6 +49,7 @@ public:
     GfxColor(const uint8_t r, const uint8_t g, const uint8_t b);
     GfxColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a);
     explicit GfxColor(const SdlType clr);
+    explicit GfxColor(const uint32_t clr);
 
     GfxColor(const GfxColor& other);
     GfxColor(GfxColor&& other);

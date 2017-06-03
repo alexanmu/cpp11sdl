@@ -97,7 +97,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& tex
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderTextSolid", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text,
@@ -108,7 +108,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const&
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Solid", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string text, gfx::pixels::GfxColor const& fg)
@@ -125,7 +125,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pix
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderGlyph_Solid(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphSolid", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
@@ -134,7 +134,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& te
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderTextShaded", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
@@ -143,7 +143,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Shaded", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string text, gfx::pixels::GfxColor const& fg,
@@ -162,7 +162,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pi
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderGlyph_Shaded(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType(), bg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphShaded", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const
@@ -170,7 +170,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& t
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderText_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderTextBlended", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text,
@@ -179,7 +179,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string cons
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderUTF8_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Blended", surf);
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string text,
@@ -196,7 +196,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch, gfx::p
     surface::GfxSurface::SdlTypePtr surf;
 
     surf = sdl2::TTF_RenderGlyph_Blended(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
-    return new surface::GfxSurface(surf);
+    return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphBlended", surf);
 }
 
 }  // namespace ttf

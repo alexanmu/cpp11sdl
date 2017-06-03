@@ -46,7 +46,7 @@ GfxPalette::GfxPalette() : GfxRootClass(ClassName)
     }
 };
 
-GfxPalette::GfxPalette(const GfxColorVector& colors) : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) : GfxRootClass(ClassName)
 {
     uint32_t colorIndex;
     uint16_t nColors;
@@ -91,14 +91,6 @@ GfxPalette::GfxPalette(const SdlTypePtr pal)
     SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
 }
 
-GfxPalette::~GfxPalette()
-{
-    if (pal_ != nullptr)
-    {
-        SDL_FreePalette(pal_);
-    }
-}
-
 GfxPalette& GfxPalette::operator=(GfxPalette&& other)
 {
     if (this != &other)
@@ -114,12 +106,28 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
     return *this;
 }
 
+GfxPalette::~GfxPalette()
+{
+    if (pal_ != nullptr)
+    {
+        SDL_FreePalette(pal_);
+    }
+}
+
 GfxPalette::operator bool() const
 {
     return (pal_ != nullptr);
 }
 
-void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t firstColor)
+void GfxPalette::freePalette(void)
+{
+    if (pal_ != nullptr)
+    {
+        SDL_FreePalette(pal_);
+    }
+}
+
+void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uint16_t firstColor)
 {
     int32_t errorCode = 0;
     int32_t currentColorIndex = firstColor;
@@ -141,11 +149,11 @@ void GfxPalette::setPaletteColors(const GfxColorVector& colors, const uint16_t f
     }
 }
 
-GfxPalette::GfxColorVector GfxPalette::getPaletteColors(void) const
+std::vector<GfxColor> GfxPalette::getPaletteColors(void) const
 {
     if (pal_ != nullptr)
     {
-        GfxColorVector clrs(pal_->ncolors);
+        std::vector<GfxColor> clrs(pal_->ncolors);
 
         for (int32_t i = 0; i < pal_->ncolors; i++)
         {
@@ -154,7 +162,7 @@ GfxPalette::GfxColorVector GfxPalette::getPaletteColors(void) const
         }
         return clrs;
     }
-    return GfxColorVector();
+    return std::vector<GfxColor>();
 }
 
 uint16_t GfxPalette::getNumColors(void) const
@@ -186,11 +194,7 @@ int GfxPalette::getRefCount(void) const
 
 void GfxPalette::clear(void)
 {
-    if (pal_ != nullptr)
-    {
-        sdl2::SDL_FreePalette(pal_);
-        pal_ = nullptr;
-    }
+    pal_ = nullptr;
 }
 
 GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const

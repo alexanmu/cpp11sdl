@@ -431,7 +431,7 @@ surface::GfxSurface * GfxWindow::getWindowSurface(void)
         sdl2::SDL_Surface* surf = sdl2::SDL_GetWindowSurface(window_);
         if (surf != nullptr)
         {
-            surface::GfxSurface * ptr { new surface::GfxSurface(surf) };
+            surface::GfxSurface * ptr { new surface::GfxSurface("GfxWindow::getWindowSurface", surf) };
 
             return ptr;
         }

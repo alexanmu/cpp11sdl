@@ -36,12 +36,12 @@ GfxPixelFormatEnum::GfxPixelFormatEnum() : GfxRootClass(ClassName)
     clear();
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(ValueType value)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const ValueType value) : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(SdlType value)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) : GfxRootClass(ClassName)
 {
     value_ = value;
 }

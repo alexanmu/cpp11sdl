@@ -55,10 +55,18 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  u
     clr_.a = a;
 }
 
-GfxColor::GfxColor(SdlType clr) : GfxRootClass(ClassName)
+GfxColor::GfxColor(const SdlType clr) : GfxRootClass(ClassName)
 {
     /* Copy structure; hope SDL_Color assignement operator works ... */
     clr_ = clr;
+}
+
+GfxColor::GfxColor(const uint32_t clr) : GfxRootClass(ClassName)
+{
+    clr_.r = (clr & 0x000000FF);
+    clr_.g = (clr & 0x0000FF00) >> 8;
+    clr_.b = (clr & 0x00FF0000) >> 16;
+    clr_.a = (clr & 0xFF000000) >> 24;
 }
 
 /* Copy constructor */

@@ -37,13 +37,13 @@ GfxTextureFormats::GfxTextureFormats(int32_t formatsCount) throw(std::runtime_er
         GfxRootClass(ClassName)
 {
     clear();
-    setCount(formatsCount);
+    formatsCount_ = formatsCount;
 }
 
 GfxTextureFormats::GfxTextureFormats(int32_t formatsCount, uint32_t formats[]) throw(std::runtime_error) :
         GfxRootClass(ClassName)
 {
-    setCount(formatsCount);
+    formatsCount_ = formatsCount;
     for (int32_t index = 0; index < formatsCount_; index++)
     {
         formats_[index] = formats[index];
@@ -104,6 +104,7 @@ void GfxTextureFormats::setCount(const int32_t formatsCount) throw(std::runtime_
     {
         throw std::runtime_error("Count out of bounds");
     }
+    formatsCount_ = formatsCount;
 }
 
 void GfxTextureFormats::setFormat(const int32_t formatIndex, const uint32_t formatValue) throw(std::runtime_error)

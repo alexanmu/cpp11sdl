@@ -89,8 +89,8 @@ public:
     };
 
     GfxPixelFormatEnum();
-    explicit GfxPixelFormatEnum(ValueType value);
-    explicit GfxPixelFormatEnum(SdlType value);
+    explicit GfxPixelFormatEnum(const ValueType value);
+    explicit GfxPixelFormatEnum(const SdlType value);
 
     GfxPixelFormatEnum(GfxPixelFormatEnum const& other);
     GfxPixelFormatEnum(GfxPixelFormatEnum&& other);

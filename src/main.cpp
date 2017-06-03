@@ -222,20 +222,22 @@ void AfterDeInit(void)
 
 void bmpSurfaceInfo(gfx::surface::GfxSurface* bmps)
 {
-    gfx::pixels::GfxPixelFormat * fmt;
-    gfx::pixels::GfxPalette::GfxColorVector vec;
+    gfx::pixels::GfxPixelFormat fmt;
+    gfx::pixels::GfxPixelFormatEnum fmten;
+    std::vector<gfx::pixels::GfxColor> vec;
     int32_t bpp;
     uint32_t redMask;
     uint32_t greenMask;
     uint32_t blueMask;
     uint32_t alphaMask;
 
-    fmt = bmps->getFormat();
-    std::cout << "fmt->getFormat()=" << fmt->getFormat().getAsSdlType() << '\n';
+    fmten = bmps->getPixelFormat();
+    fmt = gfx::pixels::GfxPixelFormat(fmten);
+    std::cout << "fmt->getFormat()=" << fmt.getFormat().getAsSdlType() << '\n';
     // palette goes here
-    std::cout << "fmt->getBitsPerPixel()=" << static_cast<int>(fmt->bitsPerPixel()) << '\n';
-    std::cout << "fmt->getBytesPerPixel()=" << static_cast<int>(fmt->bytesPerPixel()) << '\n';
-    fmt->pixelFormatEnumToMasks(&bpp, &redMask, &greenMask, &blueMask, &alphaMask);
+    std::cout << "fmt->getBitsPerPixel()=" << static_cast<int>(fmt.bitsPerPixel()) << '\n';
+    std::cout << "fmt->getBytesPerPixel()=" << static_cast<int>(fmt.bytesPerPixel()) << '\n';
+    fmt.pixelFormatEnumToMasks(&bpp, &redMask, &greenMask, &blueMask, &alphaMask);
     std::cout << "fmt->getRmask()=" << redMask << '\n';
     std::cout << "fmt->getGmask()=" << greenMask << '\n';
     std::cout << "fmt->getBmask()=" << blueMask<< '\n';
@@ -310,10 +312,10 @@ void _doStuff(void)
             std::cout << "gpf.getPixelFormatName()=" << gpf.getPixelFormatName() << '\n';
         }
     }
-    gfx::surface::GfxSurface sbitmap(std::string(__base_path) + std::string("/Image2.bmp"));
+    gfx::surface::GfxSurface sbitmap("sbitmap", std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
-    gfx::surface::GfxSurface surfcanvas(gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::surface::GfxSurface surfcanvas("surfcanvas", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
 
     int c = 0;
     for (int i = 0; i < WIN_W; i++)
@@ -399,7 +401,7 @@ void _doStuff(void)
         }
     }
 
-    gfx::surface::GfxSurface colors_surf(gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::surface::GfxSurface colors_surf("colors_surf", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
     gfx::rect::GfxRect rt;
 
     gfx::sdl2::SDL_Event e;

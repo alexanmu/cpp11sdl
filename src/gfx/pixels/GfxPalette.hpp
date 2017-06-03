@@ -27,7 +27,6 @@
 #include <cstdint>
 #include <string>
 #include <vector>
-#include <memory>
 
 #include "GfxSdlHeader.hpp"
 #include "GfxRootClass.hpp"
@@ -47,28 +46,28 @@ public:
 
     static const char ClassName[];
 
-    using GfxColorVector = std::vector<GfxColor>;
-
     GfxPalette();
     explicit GfxPalette(const uint16_t nColors);
     explicit GfxPalette(const SdlTypePtr pal);
-    explicit GfxPalette(const GfxColorVector& colors);
+    explicit GfxPalette(std::vector<GfxColor> const& colors);
 
     // No copy-ctor
     GfxPalette(const GfxPalette& other) = delete;
     GfxPalette(GfxPalette&& other);
 
-    virtual ~GfxPalette();
-
-    virtual explicit operator bool() const;
-
     // No copy-oprtr
     GfxPalette& operator=(const GfxPalette& other) = delete;
     GfxPalette& operator=(GfxPalette&& other);
 
+    virtual ~GfxPalette();
+    
+    virtual explicit operator bool() const;
+
+    void freePalette(void);
+
     /* Methods */
-    void setPaletteColors(const GfxColorVector& vec, const uint16_t firstColor);
-    GfxColorVector getPaletteColors(void) const;
+    void setPaletteColors(std::vector<GfxColor> const& vec, const uint16_t firstColor);
+    std::vector<GfxColor> getPaletteColors(void) const;
 
     /* Getters */
     uint16_t getNumColors(void) const;

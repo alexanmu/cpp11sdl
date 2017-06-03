@@ -56,7 +56,6 @@ public:
     static const int32_t kGfxAlphaTransparent = 0;
 
     GfxPixelFormat();
-    explicit GfxPixelFormat(const SdlTypePtr pix);
     explicit GfxPixelFormat(GfxPixelFormatEnum const& format);
 
     /* No copy-ctor */
@@ -90,15 +89,19 @@ public:
     bool isPixelFormatFourCC(void) const;
     std::string getPixelFormatName(void) const;
     GfxBool pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, uint32_t * Gmask,
-                            uint32_t * Bmask, uint32_t * Amask);
-    GfxPixelFormatEnum masksToPixelFormatEnum(int32_t bpp, uint32_t Rmask, uint32_t Gmask,
-                            uint32_t Bmask, uint32_t Amask);
-    void setPixelFormatPalette(GfxPalette const& palette);
-    uint32_t mapRGB(uint8_t r, uint8_t g, uint8_t b);
-    uint32_t mapRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-    void getRGB(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b);
-    void getRGBA(uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a);
-    void calculateGammaRamp(float gamma, xtra::GfxGammaRamp const& ramp);
+                                   uint32_t * Bmask, uint32_t * Amask) const;
+    GfxPixelFormatEnum masksToPixelFormatEnum(const int32_t bpp, const uint32_t Rmask, const uint32_t Gmask,
+                                              const uint32_t Bmask, const uint32_t Amask) const;
+    void setPixelFormatPalette(GfxPalette const& palette) const;
+    uint32_t mapRGB(const uint8_t r, const uint8_t g, const uint8_t b) const;
+    pixels::GfxColor mapRGB(pixels::GfxColor const& color) const;
+    uint32_t mapRGBA(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a) const;
+    pixels::GfxColor mapRGBA(pixels::GfxColor const& color) const;
+    void getRGB(const uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b) const;
+    pixels::GfxColor getRGB(const uint32_t pixel) const;
+    void getRGBA(const uint32_t pixel, uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a) const;
+    pixels::GfxColor getRGBA(const uint32_t pixel) const;
+    void calculateGammaRamp(const float gamma, xtra::GfxGammaRamp const& ramp) const;
 
     void clear(void);
 
