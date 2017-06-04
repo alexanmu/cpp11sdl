@@ -31,6 +31,7 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
 
@@ -64,6 +65,7 @@ private:
 };
 
 }  // namespace bgi
+
 }  // namespace gfx
 
 #endif /* GfxAngle_hpp */

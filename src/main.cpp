@@ -28,6 +28,7 @@
 #include <iomanip>
 #include <memory>
 #include <cstring>
+#include <vector>
 
 #include "GfxInitQuit.hpp"
 #include "GfxWindow.hpp"
@@ -315,12 +316,14 @@ void _doStuff(void)
     gfx::surface::GfxSurface sbitmap("sbitmap", std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
-    gfx::surface::GfxSurface surfcanvas("surfcanvas", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::surface::GfxSurface surfcanvas("surfcanvas", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H, 32,
+                                        gfx::pixels::GfxPixelFormatEnum(
+                                                gfx::pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888));
 
-    int c = 0;
-    for (int i = 0; i < WIN_W; i++)
+    int32_t c = 0;
+    for (int32_t i = 0; i < WIN_W; i++)
     {
-        for (int j = 480; j < WIN_H; j++)
+        for (int32_t j = 480; j < WIN_H; j++)
         {
             surfcanvas.putPixel(i, j, gfx::bgi::GfxBgiConstants::vgaGetColorByIndex(
                         static_cast<gfx::bgi::GfxBgiConstants::GfxVga16ColorIndex>(c)));
@@ -348,13 +351,13 @@ void _doStuff(void)
                gfx::pixels::GfxColor(150, 100, 200));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
-    for (int i = 0; i < gfx::bgi::fnt::GfxBgiFontConstants::fntNumFonts; i++)
+    for (int32_t i = 0; i < gfx::bgi::fnt::GfxBgiFontConstants::fntNumFonts; i++)
     {
-        int x = 30;
-        int y = 60 + i * 16;
-        int r = 210 - i * 10;
-        int g = 200 + i * 5;
-        int b = 20 + i * 10;
+        int32_t x = 30;
+        int32_t y = 60 + i * 16;
+        int32_t r = 210 - i * 10;
+        int32_t g = 200 + i * 5;
+        int32_t b = 20 + i * 10;
         cv.OutText(gfx::rect::GfxPoint(x, y), gfx::bgi::GfxString(fontMsg),
                    gfx::pixels::GfxColor(r, g, b),
                    gfx::bgi::fnt::GfxBgiFontConstants::fntGetFontByIndex(
@@ -378,9 +381,9 @@ void _doStuff(void)
     cv.OutText(gfx::rect::GfxPoint(1010, 150), gfx::bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
                gfx::bgi::GfxBgiConstants::vgaLightGray(), gfx::bgi::fnt::GfxBgiFontConstants::fntWacky());
     c = 0;
-    for (int i = 0; i < WIN_W; i++)
+    for (int32_t i = 0; i < WIN_W; i++)
     {
-        for (int j = 240; j < 480; j++)
+        for (int32_t j = 240; j < 480; j++)
         {
             uint8_t r;
             uint8_t g;
@@ -401,15 +404,17 @@ void _doStuff(void)
         }
     }
 
-    gfx::surface::GfxSurface colors_surf("colors_surf", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H);
+    gfx::surface::GfxSurface colors_surf("colors_surf", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H, 32,
+                                         gfx::pixels::GfxPixelFormatEnum(
+                                            gfx::pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888));
     gfx::rect::GfxRect rt;
 
     gfx::sdl2::SDL_Event e;
     bool quit = false;
-    int r1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getRed();
-    int g1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getGreen();
-    int b1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue();
-    int a1 = 0;
+    int32_t r1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getRed();
+    int32_t g1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getGreen();
+    int32_t b1 = gfx::bgi::GfxBgiConstants::vgaDarkGray().getBlue();
+    int32_t a1 = 0;
 
     gfx::video::GfxScreenSaver ss;
     if (ss.isScreenSaverEnabled() == false)

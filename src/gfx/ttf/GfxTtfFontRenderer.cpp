@@ -90,7 +90,8 @@ bool GfxTtfFontRenderer::sizeUnicode(std::string text, int32_t * w, int32_t * h)
     throw std::runtime_error("Not supported");
 }
 
-surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text,
+                                                          gfx::pixels::GfxColor const& fg) const
 {
     assert(text.length() > 0);
 
@@ -165,7 +166,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pi
     return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphShaded", surf);
 }
 
-surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text,
+                                                            gfx::pixels::GfxColor const& fg) const
 {
     surface::GfxSurface::SdlTypePtr surf;
 

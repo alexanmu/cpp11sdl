@@ -29,8 +29,10 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
+
 namespace fnt
 {
 
@@ -295,7 +297,9 @@ const uint8_t GfxBgiFontConstants::fntStandard8x16Data_[16 * 256] =
 };
 
 }  // namespace fnt
+
 }  // namespace bgi
+
 }  // namespace gfx
 
 #endif  // __fntStandard8x16_hpp__

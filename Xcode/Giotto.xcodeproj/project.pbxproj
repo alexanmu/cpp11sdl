@@ -70,7 +70,6 @@
 		791EAD701EDCB9BE0032ED1D /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EB11EDC8DB30025DF95 /* GfxAngle.cpp */; };
 		791EAD711EDCB9BE0032ED1D /* GfxTextureAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F111EDC8DB30025DF95 /* GfxTextureAccess.cpp */; };
 		791EAD721EDCB9BE0032ED1D /* GfxBgiFontConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EB51EDC8DB30025DF95 /* GfxBgiFontConstants.cpp */; };
-		791EAD731EDCB9BE0032ED1D /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EB71EDC8DB30025DF95 /* GfxBitmapFont.cpp */; };
 		791EAD771EDCB9BE0032ED1D /* GDialogsConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F391EDC8DB30025DF95 /* GDialogsConstants.cpp */; };
 		791EAD791EDCB9BE0032ED1D /* GFileSystemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5F1EDC8DB30025DF95 /* GFileSystemObject.cpp */; };
 		791EAD7A1EDCB9BE0032ED1D /* GFSBaseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F651EDC8DB30025DF95 /* GFSBaseClass.cpp */; };
@@ -93,6 +92,7 @@
 		791EAD9A1EDCB9BE0032ED1D /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E581EDC89590022BB5B /* SDL2_ttf.framework */; };
 		791EAD9B1EDCB9BE0032ED1D /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
 		791EADA21EDCB9DA0032ED1D /* tool in Copy Files */ = {isa = PBXBuildFile; fileRef = 791EADA11EDCB9BE0032ED1D /* tool */; };
+		7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */; };
 		793FD16E1EE2BC4900274C24 /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */; };
 		793FD1721EE2BC5C00274C24 /* GfxLoadSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793FD1701EE2BC5C00274C24 /* GfxLoadSo.cpp */; };
 		794D05F71EE29ECB001BD5D9 /* GfxGetVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D05F31EE29ECB001BD5D9 /* GfxGetVersion.cpp */; };
@@ -135,24 +135,12 @@
 		191B2E591EDC89590022BB5B /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		19784EA31EDC8DB30025DF95 /* GDemoForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDemoForm.cpp; sourceTree = "<group>"; };
 		19784EA41EDC8DB30025DF95 /* GDemoForm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDemoForm.hpp; sourceTree = "<group>"; };
-		19784EA71EDC8DB30025DF95 /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntAntique.hpp; sourceTree = "<group>"; };
-		19784EA81EDC8DB30025DF95 /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntBroadway.hpp; sourceTree = "<group>"; };
-		19784EA91EDC8DB30025DF95 /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntCourrier.hpp; sourceTree = "<group>"; };
-		19784EAA1EDC8DB30025DF95 /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntDragon.hpp; sourceTree = "<group>"; };
-		19784EAB1EDC8DB30025DF95 /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntMedieval.hpp; sourceTree = "<group>"; };
-		19784EAC1EDC8DB30025DF95 /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntRoman.hpp; sourceTree = "<group>"; };
-		19784EAD1EDC8DB30025DF95 /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntSansserif.hpp; sourceTree = "<group>"; };
-		19784EAE1EDC8DB30025DF95 /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntScript.hpp; sourceTree = "<group>"; };
-		19784EAF1EDC8DB30025DF95 /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntStandard8x16.hpp; sourceTree = "<group>"; };
-		19784EB01EDC8DB30025DF95 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fntWacky.hpp; sourceTree = "<group>"; };
 		19784EB11EDC8DB30025DF95 /* GfxAngle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxAngle.cpp; sourceTree = "<group>"; };
 		19784EB21EDC8DB30025DF95 /* GfxAngle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxAngle.hpp; sourceTree = "<group>"; };
 		19784EB31EDC8DB30025DF95 /* GfxBgiConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxBgiConstants.cpp; sourceTree = "<group>"; };
 		19784EB41EDC8DB30025DF95 /* GfxBgiConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxBgiConstants.hpp; sourceTree = "<group>"; };
 		19784EB51EDC8DB30025DF95 /* GfxBgiFontConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxBgiFontConstants.cpp; sourceTree = "<group>"; };
 		19784EB61EDC8DB30025DF95 /* GfxBgiFontConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxBgiFontConstants.hpp; sourceTree = "<group>"; };
-		19784EB71EDC8DB30025DF95 /* GfxBitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxBitmapFont.cpp; sourceTree = "<group>"; };
-		19784EB81EDC8DB30025DF95 /* GfxBitmapFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxBitmapFont.hpp; sourceTree = "<group>"; };
 		19784EB91EDC8DB30025DF95 /* GfxCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxCanvas.cpp; sourceTree = "<group>"; };
 		19784EBA1EDC8DB30025DF95 /* GfxCanvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxCanvas.hpp; sourceTree = "<group>"; };
 		19784EBB1EDC8DB30025DF95 /* GfxCanvasBgi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxCanvasBgi.cpp; sourceTree = "<group>"; };
@@ -310,6 +298,18 @@
 		791E52681EE2DB6700DD9788 /* GfxError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GfxError.hpp; path = error/GfxError.hpp; sourceTree = "<group>"; };
 		791E52691EE2DCAA00DD9788 /* GfxError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxError.cpp; path = error/GfxError.cpp; sourceTree = "<group>"; };
 		791EADA11EDCB9BE0032ED1D /* tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tool; sourceTree = BUILT_PRODUCTS_DIR; };
+		7922FC421EE3C736001D91A6 /* fntAntique.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntAntique.hpp; path = fnt/fntAntique.hpp; sourceTree = "<group>"; };
+		7922FC431EE3C736001D91A6 /* fntBroadway.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntBroadway.hpp; path = fnt/fntBroadway.hpp; sourceTree = "<group>"; };
+		7922FC441EE3C736001D91A6 /* fntCourrier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntCourrier.hpp; path = fnt/fntCourrier.hpp; sourceTree = "<group>"; };
+		7922FC451EE3C736001D91A6 /* fntDragon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntDragon.hpp; path = fnt/fntDragon.hpp; sourceTree = "<group>"; };
+		7922FC461EE3C736001D91A6 /* fntMedieval.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntMedieval.hpp; path = fnt/fntMedieval.hpp; sourceTree = "<group>"; };
+		7922FC471EE3C736001D91A6 /* fntRoman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntRoman.hpp; path = fnt/fntRoman.hpp; sourceTree = "<group>"; };
+		7922FC481EE3C736001D91A6 /* fntSansserif.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntSansserif.hpp; path = fnt/fntSansserif.hpp; sourceTree = "<group>"; };
+		7922FC491EE3C736001D91A6 /* fntScript.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntScript.hpp; path = fnt/fntScript.hpp; sourceTree = "<group>"; };
+		7922FC4A1EE3C736001D91A6 /* fntStandard8x16.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntStandard8x16.hpp; path = fnt/fntStandard8x16.hpp; sourceTree = "<group>"; };
+		7922FC4B1EE3C736001D91A6 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = fnt/fntWacky.hpp; sourceTree = "<group>"; };
+		7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBitmapFont.cpp; path = fnt/GfxBitmapFont.cpp; sourceTree = "<group>"; };
+		7922FC4D1EE3C736001D91A6 /* GfxBitmapFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBitmapFont.hpp; path = fnt/GfxBitmapFont.hpp; sourceTree = "<group>"; };
 		793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFileSystem.cpp; path = filesystem/GfxFileSystem.cpp; sourceTree = "<group>"; };
 		793FD16D1EE2BC4900274C24 /* GfxFileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFileSystem.hpp; path = filesystem/GfxFileSystem.hpp; sourceTree = "<group>"; };
 		793FD1701EE2BC5C00274C24 /* GfxLoadSo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxLoadSo.cpp; path = loadso/GfxLoadSo.cpp; sourceTree = "<group>"; };
@@ -444,24 +444,13 @@
 		19784EA61EDC8DB30025DF95 /* bgi */ = {
 			isa = PBXGroup;
 			children = (
-				19784EA71EDC8DB30025DF95 /* fntAntique.hpp */,
-				19784EA81EDC8DB30025DF95 /* fntBroadway.hpp */,
-				19784EA91EDC8DB30025DF95 /* fntCourrier.hpp */,
-				19784EAA1EDC8DB30025DF95 /* fntDragon.hpp */,
-				19784EAB1EDC8DB30025DF95 /* fntMedieval.hpp */,
-				19784EAC1EDC8DB30025DF95 /* fntRoman.hpp */,
-				19784EAD1EDC8DB30025DF95 /* fntSansserif.hpp */,
-				19784EAE1EDC8DB30025DF95 /* fntScript.hpp */,
-				19784EAF1EDC8DB30025DF95 /* fntStandard8x16.hpp */,
-				19784EB01EDC8DB30025DF95 /* fntWacky.hpp */,
+				7922FC411EE3C723001D91A6 /* fnt */,
 				19784EB11EDC8DB30025DF95 /* GfxAngle.cpp */,
 				19784EB21EDC8DB30025DF95 /* GfxAngle.hpp */,
 				19784EB31EDC8DB30025DF95 /* GfxBgiConstants.cpp */,
 				19784EB41EDC8DB30025DF95 /* GfxBgiConstants.hpp */,
 				19784EB51EDC8DB30025DF95 /* GfxBgiFontConstants.cpp */,
 				19784EB61EDC8DB30025DF95 /* GfxBgiFontConstants.hpp */,
-				19784EB71EDC8DB30025DF95 /* GfxBitmapFont.cpp */,
-				19784EB81EDC8DB30025DF95 /* GfxBitmapFont.hpp */,
 				19784EB91EDC8DB30025DF95 /* GfxCanvas.cpp */,
 				19784EBA1EDC8DB30025DF95 /* GfxCanvas.hpp */,
 				19784EBB1EDC8DB30025DF95 /* GfxCanvasBgi.cpp */,
@@ -718,6 +707,25 @@
 			name = error;
 			sourceTree = "<group>";
 		};
+		7922FC411EE3C723001D91A6 /* fnt */ = {
+			isa = PBXGroup;
+			children = (
+				7922FC421EE3C736001D91A6 /* fntAntique.hpp */,
+				7922FC431EE3C736001D91A6 /* fntBroadway.hpp */,
+				7922FC441EE3C736001D91A6 /* fntCourrier.hpp */,
+				7922FC451EE3C736001D91A6 /* fntDragon.hpp */,
+				7922FC461EE3C736001D91A6 /* fntMedieval.hpp */,
+				7922FC471EE3C736001D91A6 /* fntRoman.hpp */,
+				7922FC481EE3C736001D91A6 /* fntSansserif.hpp */,
+				7922FC491EE3C736001D91A6 /* fntScript.hpp */,
+				7922FC4A1EE3C736001D91A6 /* fntStandard8x16.hpp */,
+				7922FC4B1EE3C736001D91A6 /* fntWacky.hpp */,
+				7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */,
+				7922FC4D1EE3C736001D91A6 /* GfxBitmapFont.hpp */,
+			);
+			name = fnt;
+			sourceTree = "<group>";
+		};
 		793FD16B1EE2BC3900274C24 /* filesystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,6 +905,7 @@
 				791EAD541EDCB9BE0032ED1D /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */,
 				791EAD561EDCB9BE0032ED1D /* GFolderCollectionElement.cpp in Sources */,
+				7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */,
 				796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */,
 				791EAD571EDCB9BE0032ED1D /* GfxRendererFlags.cpp in Sources */,
 				198015E01EDF27AC00AEDB49 /* GfxBlendMode.cpp in Sources */,
@@ -938,7 +947,6 @@
 				791EAD721EDCB9BE0032ED1D /* GfxBgiFontConstants.cpp in Sources */,
 				79C887571EE2D43800378B54 /* GfxPoint.cpp in Sources */,
 				198015FF1EDF281700AEDB49 /* GfxMessageBoxButtonData.cpp in Sources */,
-				791EAD731EDCB9BE0032ED1D /* GfxBitmapFont.cpp in Sources */,
 				7953F7C81EDD27F600A27C41 /* GfxPixelFormat.cpp in Sources */,
 				791EAD771EDCB9BE0032ED1D /* GDialogsConstants.cpp in Sources */,
 				791EAD791EDCB9BE0032ED1D /* GFileSystemObject.cpp in Sources */,

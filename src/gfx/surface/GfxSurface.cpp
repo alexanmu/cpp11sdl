@@ -37,24 +37,26 @@ namespace surface
 
 const char GfxSurface::ClassName[] = "GfxSurface";
 
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height, int32_t depth, uint32_t Rmask,
-                       uint32_t Gmask, uint32_t Bmask, uint32_t Amask) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
+                       int32_t depth, uint32_t Rmask, uint32_t Gmask, uint32_t Bmask, uint32_t Amask)
+            throw(std::runtime_error) : GfxRootClass(ClassName)
 {
     surf_ = sdl2::SDL_CreateRGBSurface(flags.getAsSdlType(), width, height, depth, Rmask,
                                        Gmask, Bmask, Amask);
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height, int32_t depth,
-                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
+                       int32_t depth, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
+            GfxRootClass(ClassName)
 {
     surf_ = sdl2::SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), width, height, depth, format.getAsSdlType());
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height, const int32_t depth,
-                       const int32_t pitch, const uint32_t rmask, const uint32_t gmask, const uint32_t bmask,
-                       const uint32_t amask) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                       const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
+                       const uint32_t bmask, const uint32_t amask) throw(std::runtime_error) : GfxRootClass(ClassName)
 {
     assert(pixels != nullptr);
     assert(width >= 0);
@@ -86,14 +88,16 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth, int32_t pitch,
-                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
+                       int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
+            GfxRootClass(ClassName)
 {
     surf_ = sdl2::SDL_CreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format.getAsSdlType());
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) :
+            GfxRootClass(ClassName)
 {
     assert(filename.length() > 0);
 
@@ -127,7 +131,8 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error) :
+            GfxRootClass(ClassName)
 {
     if (surf == nullptr)
     {
@@ -135,14 +140,6 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
         throw std::runtime_error("Not implemented; branch 2");
     }
     surf_ = surf;
-    surfName_ = surfname;
-}
-
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height) throw(std::runtime_error)
-{
-    pixels::GfxPixelFormatEnum fmt = pixels::GfxPixelFormatEnum(pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888);
-
-    surf_ = sdl2::SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), width, height, 32, fmt.getAsSdlType());
     surfName_ = surfname;
 }
 
@@ -238,7 +235,7 @@ void GfxSurface::saveBMP(std::string const& filename) const
 void GfxSurface::setSurfaceRLE(GfxBool const& flag) const
 {
     int32_t ret = 1;
-    
+
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_SetSurfaceRLE(surf_, static_cast<int32_t>(flag.getBool()));
@@ -249,7 +246,7 @@ void GfxSurface::setSurfaceRLE(GfxBool const& flag) const
 void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const
 {
     int32_t ret = 1;
-    
+
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_SetColorKey(surf_, static_cast<int32_t>(flag.getBool()), color.getColor());
@@ -257,23 +254,23 @@ void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color)
     }
 }
 
-uint32_t GfxSurface::getColorKey(void) const
+pixels::GfxColor GfxSurface::getColorKey(void) const
 {
     int32_t ret = 1;
-    uint32_t key;
+    uint32_t key = 0;
 
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_GetColorKey(surf_, &key);
         assert((ret == 1) || (ret == 0));
     }
-    return key;
+    return pixels::GfxColor(key);
 }
 
 void GfxSurface::setSurfaceColorMod(pixels::GfxColor const& color) const
 {
     int32_t ret = 1;
-    
+
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_SetSurfaceColorMod(surf_, color.getRed(), color.getGreen(), color.getBlue());
@@ -284,22 +281,22 @@ void GfxSurface::setSurfaceColorMod(pixels::GfxColor const& color) const
 pixels::GfxColor GfxSurface::getSurfaceColorMod(void) const
 {
     int32_t ret = 1;
-    uint8_t * r;
-    uint8_t * g;
-    uint8_t * b;
+    uint8_t r = 0;
+    uint8_t g = 0;
+    uint8_t b = 0;
 
     if (surf_ != nullptr)
     {
-        ret = sdl2::SDL_GetSurfaceColorMod(surf_, r, g, b);
+        ret = sdl2::SDL_GetSurfaceColorMod(surf_, &r, &g, &b);
         assert((ret == 1) || (ret == 0));
     }
-    return pixels::GfxColor(*r,*g,*b);
+    return pixels::GfxColor(r, g, b);
 }
 
 void GfxSurface::setSurfaceAlphaMod(uint8_t alpha) const
 {
     int32_t ret = 1;
-    
+
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_SetSurfaceAlphaMod(surf_, alpha);
@@ -310,7 +307,7 @@ void GfxSurface::setSurfaceAlphaMod(uint8_t alpha) const
 uint8_t GfxSurface::getSurfaceAlphaMod(void) const
 {
     int32_t ret = 1;
-    uint8_t alpha;
+    uint8_t alpha = 0;
 
     if (surf_ != nullptr)
     {
@@ -323,7 +320,7 @@ uint8_t GfxSurface::getSurfaceAlphaMod(void) const
 void GfxSurface::setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) const
 {
     int32_t ret = 1;
-    
+
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_SetSurfaceBlendMode(surf_, blendmode.getAsSdlType());
@@ -335,18 +332,19 @@ blendmode::GfxBlendMode GfxSurface::getSurfaceBlendMode(void) const
 {
     int32_t ret = 1;
     blendmode::GfxBlendMode::SdlType bm;
-    
+
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_GetSurfaceBlendMode(surf_, &bm);
         assert((ret == 1) || (ret == 0));
+        return blendmode::GfxBlendMode(bm);
     }
-    return blendmode::GfxBlendMode(bm);
+    return blendmode::GfxBlendMode();
 }
 
-GfxBool GfxSurface::setClipRect(void) const
+GfxBool GfxSurface::setClipRectOff(void) const
 {
-    bool ret;
+    bool ret = false;
 
     if (surf_ != nullptr)
     {
@@ -359,7 +357,7 @@ GfxBool GfxSurface::setClipRect(rect::GfxRect const& rect) const
 {
     assert(rect);
 
-    bool ret;
+    bool ret = false;
 
     if (surf_ != nullptr)
     {
@@ -376,7 +374,8 @@ rect::GfxRect GfxSurface::getClipRect(void) const
     return rect::GfxRect(r);
 }
 
-GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& fmt, GfxSurfaceFlags const& sflags) const
+GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& fmt,
+                                                  GfxSurfaceFlags const& sflags) const
 {
     assert(fmt);
     assert(sflags);
@@ -390,7 +389,8 @@ GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& 
     return ptr;
 }
 
-GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten, GfxSurfaceFlags const& sflags) const
+GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten,
+                                                        GfxSurfaceFlags const& sflags) const
 {
     assert(fmten);
     assert(sflags);
@@ -404,8 +404,9 @@ GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(pixels::GfxPixelFormatEn
     return ptr;
 }
 
-void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels::GfxPixelFormatEnum const& srcfmten, void * src,
-                               const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst, const int32_t dst_pitch) const
+void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels::GfxPixelFormatEnum const& srcfmten,
+                               void * src, const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst,
+                               const int32_t dst_pitch) const
 {
     assert(width >= 0);
     assert(height >= 0);
@@ -418,7 +419,8 @@ void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels
 
     int32_t ret;
 
-    ret = sdl2::SDL_ConvertPixels(width, height, srcfmten.getAsSdlType(), src, pitch, dstfmten.getAsSdlType(), dst, dst_pitch);
+    ret = sdl2::SDL_ConvertPixels(width, height, srcfmten.getAsSdlType(), src, pitch, dstfmten.getAsSdlType(),
+                                  dst, dst_pitch);
     assert((ret == -1) || (ret == 0));
 }
 
@@ -470,7 +472,7 @@ void GfxSurface::upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect, 
     assert(src);
     assert(srcrect);
     assert(dstrect);
-    
+
     if (surf_ == nullptr)
     {
         return;
@@ -483,7 +485,7 @@ void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect, 
     assert(src);
     assert(srcrect);
     assert(dstrect);
-    
+
     if (surf_ == nullptr)
     {
         return;
@@ -509,7 +511,7 @@ void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     assert(src);
     assert(srcrect);
     assert(dstrect);
-    
+
     if (surf_ == nullptr)
     {
         return;
@@ -522,7 +524,7 @@ void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     assert(src);
     assert(srcrect);
     assert(dstrect);
-    
+
     if (surf_ == nullptr)
     {
         return;

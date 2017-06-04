@@ -24,7 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
-#include <memory>
+#include <vector>
 
 #include "GfxPalette.hpp"
 

@@ -56,19 +56,18 @@ public:
 
     GfxSurface() = delete;
 
-    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height, int32_t depth, uint32_t Rmask,
-                        uint32_t Gmask, uint32_t Bmask, uint32_t Amask) throw(std::runtime_error);
-    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height, int32_t depth,
-                        pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
-    explicit GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height, const int32_t depth,
-                        const int32_t pitch, const uint32_t rmask, const uint32_t gmask, const uint32_t bmask,
-                        const uint32_t amask) throw(std::runtime_error);
-    explicit GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth, int32_t pitch,
-                        pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width,
+                        int32_t height, int32_t depth, uint32_t Rmask, uint32_t Gmask, uint32_t Bmask,
+                        uint32_t Amask) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
+                        int32_t depth, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                        const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
+                        const uint32_t bmask, const uint32_t amask) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
+                        int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
     explicit GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error);
     explicit GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error);
-
-    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height) throw(std::runtime_error);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& surf);
@@ -88,20 +87,20 @@ public:
     void saveBMP(std::string const& filename) const;
     void setSurfaceRLE(GfxBool const& flag) const;
     void setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const;
-    uint32_t getColorKey(void) const;
+    pixels::GfxColor getColorKey(void) const;
     void setSurfaceColorMod(pixels::GfxColor const& color) const;
     pixels::GfxColor getSurfaceColorMod(void) const;
     void setSurfaceAlphaMod(const uint8_t alpha) const;
     uint8_t getSurfaceAlphaMod(void) const;
     void setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) const;
     blendmode::GfxBlendMode getSurfaceBlendMode(void) const;
-    GfxBool setClipRect(void) const;
+    GfxBool setClipRectOff(void) const;
     GfxBool setClipRect(rect::GfxRect const& rect) const;
     rect::GfxRect getClipRect(void) const;
     SdlTypePtr convertSurface(pixels::GfxPixelFormat const& fmt, GfxSurfaceFlags const& sflags) const;
     SdlTypePtr convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten, GfxSurfaceFlags const& sflags) const;
-    void convertPixels(const int32_t width, const int32_t height, pixels::GfxPixelFormatEnum const& srcfmten, void * src,
-                       const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst,
+    void convertPixels(const int32_t width, const int32_t height, pixels::GfxPixelFormatEnum const& srcfmten,
+                       void * src, const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst,
                        const int32_t dst_pitch) const;
     void fillRect(rect::GfxRect const& rect, pixels::GfxColor const& color);
     void fillRect(pixels::GfxColor const& color);

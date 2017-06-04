@@ -69,6 +69,7 @@ public:
 
     ValueType getBlendMode(void) const;
 
+    bool isNone(void) const;
     bool isBlend(void) const;
     bool isAdd(void) const;
     bool isMod(void) const;

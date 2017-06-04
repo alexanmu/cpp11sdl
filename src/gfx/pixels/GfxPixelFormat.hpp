@@ -57,6 +57,7 @@ public:
 
     GfxPixelFormat();
     explicit GfxPixelFormat(GfxPixelFormatEnum const& format);
+    explicit GfxPixelFormat(const uint32_t format);
 
     /* No copy-ctor */
     GfxPixelFormat(const GfxPixelFormat& other) = delete;

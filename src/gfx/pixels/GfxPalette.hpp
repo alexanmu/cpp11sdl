@@ -60,7 +60,7 @@ public:
     GfxPalette& operator=(GfxPalette&& other);
 
     virtual ~GfxPalette();
-    
+
     virtual explicit operator bool() const;
 
     void freePalette(void);

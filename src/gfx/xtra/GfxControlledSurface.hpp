@@ -32,6 +32,7 @@
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
 #include "GfxSurface.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 namespace gfx
 {
@@ -63,6 +64,9 @@ public:
 
     surface::GfxSurface& operator()(void) const throw(std::runtime_error);
 private:
+    static const int32_t kDefaultSurfaceColorDepth = 32;
+    static const pixels::GfxPixelFormatEnum::ValueType kDefaultSurfaceColorFormatValue;
+
     surface::GfxSurface * surf_;
     bool surfaceConstructed_;
 };

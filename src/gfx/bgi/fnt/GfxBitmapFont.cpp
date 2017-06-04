@@ -29,8 +29,10 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
+
 namespace fnt
 {
 
@@ -155,7 +157,9 @@ uint8_t GfxBitmapFont::getFontHeight(void) const
 }
 
 }  // namespace fnt
+
 }  // namespace bgi
+
 }  // namespace gfx
 
 /* EOF */

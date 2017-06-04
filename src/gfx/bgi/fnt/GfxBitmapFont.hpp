@@ -31,8 +31,10 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
+
 namespace fnt
 {
 
@@ -67,7 +69,9 @@ private:
 };
 
 }  // namespace fnt
+
 }  // namespace bgi
+
 }  // namespace gfx
 
 #endif  // gfxbitmapfont_hpp

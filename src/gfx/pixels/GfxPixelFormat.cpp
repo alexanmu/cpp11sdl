@@ -51,6 +51,17 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) : GfxRootClass(
     }
 }
 
+GfxPixelFormat::GfxPixelFormat(const uint32_t format) : GfxRootClass(ClassName)
+{
+    assert(format);
+
+    pix_ = sdl2::SDL_AllocFormat(format);
+    if (pix_ == nullptr)
+    {
+        // Error handling here
+    }
+}
+
 GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) : GfxRootClass(ClassName)
 {
     if (pix_ != nullptr)

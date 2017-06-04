@@ -25,8 +25,9 @@
 #include <string>
 
 #include "GfxControlledSurface.hpp"
-
 #include "GfxSurfaceFlags.hpp"
+#include "GfxPixelFormat.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 namespace gfx
 {
@@ -35,6 +36,8 @@ namespace xtra
 {
 
 const char GfxControlledSurface::ClassName[] = "GfxControlledSurface";
+const pixels::GfxPixelFormatEnum::ValueType GfxControlledSurface::kDefaultSurfaceColorFormatValue =
+    pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888;
 
 GfxControlledSurface::GfxControlledSurface() : gfx::GfxRootClass(ClassName)
 {
@@ -60,9 +63,12 @@ void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) thr
     assert((w > 1) && (w < 8192));
     assert((h > 1) && (h < 8192));
 
+    pixels::GfxPixelFormatEnum pixFmtEn(kDefaultSurfaceColorFormatValue);
+
     if (surfaceConstructed_ == false)
     {
-        surf_ = new surface::GfxSurface("GfxControlledSurface::createSurface 1", surface::GfxSurfaceFlags(), w, h);
+        surf_ = new surface::GfxSurface("GfxControlledSurface::createSurface 1", surface::GfxSurfaceFlags(), w, h,
+                                        kDefaultSurfaceColorDepth, pixFmtEn);
         surfaceConstructed_ = true;
         return;
     }

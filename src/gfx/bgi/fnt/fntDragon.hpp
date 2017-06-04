@@ -29,8 +29,10 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
+
 namespace fnt
 {
 
@@ -294,7 +296,9 @@ const uint8_t GfxBgiFontConstants::fntDragonData_[16 * 256] = {
 };
 
 }  // namespace fnt
+
 }  // namespace bgi
+
 }  // namespace gfx
 
 #endif  // __fntDragon_hpp__

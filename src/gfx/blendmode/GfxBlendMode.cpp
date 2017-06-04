@@ -98,6 +98,11 @@ GfxBlendMode::ValueType GfxBlendMode::getBlendMode(void) const
     return static_cast<ValueType>(blendmode_);
 }
 
+bool GfxBlendMode::isNone(void) const
+{
+    return (blendmode_ == sdl2::SDL_BLENDMODE_NONE);
+}
+
 bool GfxBlendMode::isBlend(void) const
 {
     return (blendmode_ == sdl2::SDL_BLENDMODE_BLEND);

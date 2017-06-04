@@ -39,8 +39,10 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
+
 namespace fnt
 {
 
@@ -115,7 +117,9 @@ const GfxBitmapFont& GfxBgiFontConstants::fntGetFontByIndex(const GfxFontIndex i
 }
 
 }  // namespace fnt
+
 }  // namespace bgi
+
 }  // namespace gfx
 
 /* EOF */

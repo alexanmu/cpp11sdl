@@ -29,6 +29,7 @@
 
 namespace gfx
 {
+
 namespace bgi
 {
 
@@ -139,6 +140,7 @@ const pixels::GfxColor& GfxBgiConstants::vgaGetColorByIndex(const GfxVga16ColorI
 }
 
 }  // namespace bgi
+
 }  // namespace gfx
 
 /* EOF */
