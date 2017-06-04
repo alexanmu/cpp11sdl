@@ -33,24 +33,28 @@ namespace ttf
 
 const char GfxTtfGetVersion::ClassName[] = "GfxTtfGetVersion";
 
-GfxTtfGetVersion::GfxTtfGetVersion() : GfxRootClass(ClassName)
+GfxTtfGetVersion::GfxTtfGetVersion() noexcept : GfxRootClass(ClassName)
 {
     // Nothing to do
 }
 
-GfxTtfGetVersion::operator bool() const
+GfxTtfGetVersion::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxTtfGetVersion::getVersion(gfx::version::GfxVersion * ver) const
+void GfxTtfGetVersion::getVersion(gfx::version::GfxVersion * ver) const noexcept
 {
     assert(ver != nullptr);
 
     gfx::version::GfxVersion::SdlTypePtr v;
 
+    ver->clear();
     v = const_cast<gfx::version::GfxVersion::SdlTypePtr>(sdl2::TTF_Linked_Version());
-    ver->set(*v);
+    if (v != nullptr)
+    {
+        ver->set(*v);
+    }
 }
 
 }  // namespace ttf

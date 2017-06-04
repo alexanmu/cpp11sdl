@@ -36,7 +36,7 @@ namespace rect
 
 const char GfxRect::ClassName[] = "GfxRect";
 
-GfxRect::GfxRect() : GfxRootClass(ClassName)
+GfxRect::GfxRect() noexcept : GfxRootClass(ClassName)
 {
     rect_.x = -1;
     rect_.y = -1;
@@ -44,7 +44,7 @@ GfxRect::GfxRect() : GfxRootClass(ClassName)
     rect_.h = -1;
 }
 
-GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) : GfxRootClass(ClassName)
+GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) noexcept : GfxRootClass(ClassName)
 {
     assert(x >= 0);
     assert(y >= 0);
@@ -57,23 +57,23 @@ GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_
     rect_.h = h;
 }
 
-GfxRect::GfxRect(SdlType rect) : GfxRootClass(ClassName)
+GfxRect::GfxRect(const SdlType rect) noexcept : GfxRootClass(ClassName)
 {
     rect_ = rect;
 }
 
-GfxRect::GfxRect(GfxRect const& other) : GfxRootClass(ClassName)
+GfxRect::GfxRect(GfxRect const& other) noexcept : GfxRootClass(ClassName)
 {
     rect_ = other.rect_;
 }
 
-GfxRect::GfxRect(GfxRect&& other) : GfxRootClass(ClassName)
+GfxRect::GfxRect(GfxRect&& other) noexcept : GfxRootClass(ClassName)
 {
     rect_ = other.rect_;
     other.clear();
 }
 
-GfxRect& GfxRect::operator=(GfxRect const& other)
+GfxRect& GfxRect::operator=(GfxRect const& other) noexcept
 {
     if (this != &other)
     {
@@ -82,7 +82,7 @@ GfxRect& GfxRect::operator=(GfxRect const& other)
     return *this;
 }
 
-GfxRect& GfxRect::operator=(GfxRect&& other)
+GfxRect& GfxRect::operator=(GfxRect&& other) noexcept
 {
     if (this != &other)
     {
@@ -92,71 +92,71 @@ GfxRect& GfxRect::operator=(GfxRect&& other)
     return *this;
 }
 
-bool GfxRect::operator==(GfxRect const& other)
+bool GfxRect::operator==(GfxRect const& other) const noexcept
 {
     return ((rect_.x == other.rect_.x) && (rect_.y == other.rect_.y) &&
             (rect_.w == other.rect_.w) && (rect_.h == other.rect_.h));
 }
 
-GfxRect::operator bool() const
+GfxRect::operator bool() const noexcept
 {
     return true;
 }
 
-int32_t GfxRect::getX(void) const
+int32_t GfxRect::getX(void) const noexcept
 {
     return rect_.x;
 }
 
-int32_t GfxRect::getY(void) const
+int32_t GfxRect::getY(void) const noexcept
 {
     return rect_.y;
 }
 
-int32_t GfxRect::getWidth(void) const
+int32_t GfxRect::getWidth(void) const noexcept
 {
     return rect_.w;
 }
 
-int32_t GfxRect::getHeight(void) const
+int32_t GfxRect::getHeight(void) const noexcept
 {
     return rect_.h;
 }
 
-void GfxRect::setX(const int32_t x)
+void GfxRect::setX(const int32_t x) noexcept
 {
     assert(x >= 0);
 
     rect_.x = x;
 }
 
-void GfxRect::setY(const int32_t y)
+void GfxRect::setY(const int32_t y) noexcept
 {
     assert(y >= 0);
 
     rect_.y = y;
 }
 
-void GfxRect::setWidth(const int32_t w)
+void GfxRect::setWidth(const int32_t w) noexcept
 {
     assert(w >= 0);
 
     rect_.w = w;
 }
 
-void GfxRect::setHeight(const int32_t h)
+void GfxRect::setHeight(const int32_t h) noexcept
 {
     assert(h >= 0);
 
     rect_.h = h;
 }
 
-void GfxRect::set(SdlType r)
+void GfxRect::set(const SdlType r) noexcept
 {
     rect_ = r;
 };
 
-GfxBool GfxRect::pointInRect(GfxPoint const& p) const
+GfxBool GfxRect::pointInRect(GfxPoint const& p) const noexcept
 {
     assert(p);
 
@@ -166,7 +166,7 @@ GfxBool GfxRect::pointInRect(GfxPoint const& p) const
     return GfxBool(res);
 }
 
-GfxBool GfxRect::rectEmpty(void) const
+GfxBool GfxRect::rectEmpty(void) const noexcept
 {
     bool res;
 
@@ -174,7 +174,7 @@ GfxBool GfxRect::rectEmpty(void) const
     return GfxBool(res);
 }
 
-GfxBool GfxRect::rectEquals(GfxRect const& r) const
+GfxBool GfxRect::rectEquals(GfxRect const& r) const noexcept
 {
     assert(r);
 
@@ -184,7 +184,7 @@ GfxBool GfxRect::rectEquals(GfxRect const& r) const
     return GfxBool(res);
 }
 
-GfxBool GfxRect::hasIntersection(GfxRect const& r) const
+GfxBool GfxRect::hasIntersection(GfxRect const& r) const noexcept
 {
     assert(r);
 
@@ -194,7 +194,7 @@ GfxBool GfxRect::hasIntersection(GfxRect const& r) const
     return GfxBool(res);
 }
 
-GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect * result) const
+GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect * result) const noexcept
 {
     assert(r);
     assert(result == nullptr);
@@ -207,7 +207,7 @@ GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect * result) const
     return GfxBool(res);
 }
 
-void GfxRect::unionRect(GfxRect const &r, GfxRect * result) const
+void GfxRect::unionRect(GfxRect const &r, GfxRect * result) const noexcept
 {
     assert(r);
     assert(result == nullptr);
@@ -217,7 +217,7 @@ void GfxRect::unionRect(GfxRect const &r, GfxRect * result) const
     result = new GfxRect(rt);
 }
 
-GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const
+GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const noexcept
 {
     assert(points.size() > 0);
     assert(result == nullptr);
@@ -240,7 +240,7 @@ GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect * res
     return GfxBool(res);
 }
 
-GfxBool GfxRect::intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const
+GfxBool GfxRect::intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept
 {
     assert(x1 != nullptr);
     assert(x2 != nullptr);
@@ -253,7 +253,7 @@ GfxBool GfxRect::intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, 
     return GfxBool(res);
 }
 
-void GfxRect::clear(void)
+void GfxRect::clear(void) noexcept
 {
     rect_.x = -1;
     rect_.y = -1;
@@ -261,12 +261,12 @@ void GfxRect::clear(void)
     rect_.h = -1;
 }
 
-GfxRect::SdlType GfxRect::getAsSdlType() const
+GfxRect::SdlType GfxRect::getAsSdlType() const noexcept
 {
     return rect_;
 }
 
-GfxRect::SdlTypePtr GfxRect::getAsSdlTypePtr() const
+GfxRect::SdlTypePtr GfxRect::getAsSdlTypePtr() const noexcept
 {
     return (SdlTypePtr)&rect_;
 }

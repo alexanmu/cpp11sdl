@@ -41,7 +41,7 @@ class GfxTtfInitQuit final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxTtfInitQuit();
+    GfxTtfInitQuit() noexcept;
 
     GfxTtfInitQuit(GfxTtfInitQuit const&) = delete;
     GfxTtfInitQuit(GfxTtfInitQuit&&) = delete;
@@ -49,13 +49,13 @@ public:
     GfxTtfInitQuit& operator=(GfxTtfInitQuit const&) = delete;
     GfxTtfInitQuit& operator=(GfxTtfInitQuit&&) = delete;
 
-    virtual ~GfxTtfInitQuit();
+    virtual ~GfxTtfInitQuit() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    int32_t wasInit(void) const;
+    int32_t wasInit(void) const noexcept;
 
-    int32_t getErrorCode(void) const;
+    int32_t getErrorCode(void) const noexcept;
 private:
     int32_t errorCode_;
 };

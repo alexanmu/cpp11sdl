@@ -44,30 +44,31 @@ public:
 
     static const char ClassName[];
 
-    GfxVersion();
+    GfxVersion() noexcept;
 
-    GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch);
-    explicit GfxVersion(const SdlType ver);
+    GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) noexcept;
+    explicit GfxVersion(const SdlType ver) noexcept;
 
-    GfxVersion(GfxVersion const& other);
-    GfxVersion(GfxVersion&& other);
+    GfxVersion(GfxVersion const& other) noexcept;
+    GfxVersion(GfxVersion&& other) noexcept;
 
-    GfxVersion& operator=(GfxVersion const& other);
-    GfxVersion& operator=(GfxVersion&& other);
+    GfxVersion& operator=(GfxVersion const& other) noexcept;
+    GfxVersion& operator=(GfxVersion&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    uint8_t getMajor(void) const;
-    uint8_t getMinor(void) const;
-    uint8_t getPatch(void) const;
+    uint8_t getMajor(void) const noexcept;
+    uint8_t getMinor(void) const noexcept;
+    uint8_t getPatch(void) const noexcept;
 
-    void set(const SdlType ver);
-    void clear(void);
+    void set(const SdlType ver) noexcept;
 
-    std::string getAsString(void) const;
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    std::string getAsString(void) const noexcept;
+
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType ver_;
 };

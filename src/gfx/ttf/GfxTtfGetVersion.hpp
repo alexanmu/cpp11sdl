@@ -38,7 +38,7 @@ class GfxTtfGetVersion final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxTtfGetVersion();
+    GfxTtfGetVersion() noexcept;
 
     GfxTtfGetVersion(GfxTtfGetVersion const&) = delete;
     GfxTtfGetVersion(GfxTtfGetVersion&&) = delete;
@@ -46,9 +46,9 @@ public:
     GfxTtfGetVersion& operator=(GfxTtfGetVersion const&) = delete;
     GfxTtfGetVersion& operator=(GfxTtfGetVersion&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void getVersion(gfx::version::GfxVersion* ver) const;
+    void getVersion(gfx::version::GfxVersion* ver) const noexcept;
 };
 
 }  // namespace ttf

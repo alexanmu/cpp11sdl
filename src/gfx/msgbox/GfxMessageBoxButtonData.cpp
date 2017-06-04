@@ -35,13 +35,13 @@ namespace msgbox
 
 const char GfxMessageBoxButtonData::ClassName[] = "GfxMessageBoxButtonData";
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData() : GfxRootClass(ClassName)
+GfxMessageBoxButtonData::GfxMessageBoxButtonData() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
-                            const int32_t buttonid, const std::string& text) : GfxRootClass(ClassName)
+                            const int32_t buttonid, const std::string& text) noexcept : GfxRootClass(ClassName)
 {
     assert(flags);
     assert(buttonid >= 0);
@@ -52,13 +52,13 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const&
     data_.text = text.c_str();
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) :
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept :
          GfxRootClass(ClassName)
 {
     data_ = other.data_;
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) :
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept :
         GfxRootClass(ClassName)
 {
     data_ = other.data_;
@@ -66,7 +66,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other
     other.clear();
 }
 
-GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonData const& other)
+GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonData const& other) noexcept
 {
     if (this != &other)
     {
@@ -75,7 +75,7 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
     return *this;
 }
 
-GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonData&& other)
+GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonData&& other) noexcept
 {
     if (this != &other)
     {
@@ -86,36 +86,36 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
     return *this;
 }
 
-GfxMessageBoxButtonData::operator bool() const
+GfxMessageBoxButtonData::operator bool() const noexcept
 {
     return true;
 }
 
-int32_t GfxMessageBoxButtonData::getButtonId(void) const
+int32_t GfxMessageBoxButtonData::getButtonId(void) const noexcept
 {
     return data_.buttonid;
 }
 
-const std::string GfxMessageBoxButtonData::getText(void) const
+const std::string GfxMessageBoxButtonData::getText(void) const noexcept
 {
     std::string text { data_.text };
 
     return text;
 }
 
-void GfxMessageBoxButtonData::clear(void)
+void GfxMessageBoxButtonData::clear(void) noexcept
 {
     data_.flags = 0;
     data_.buttonid = -1;
     data_.text = nullptr;
 }
 
-GfxMessageBoxButtonData::SdlType GfxMessageBoxButtonData::getAsSdlType(void) const
+GfxMessageBoxButtonData::SdlType GfxMessageBoxButtonData::getAsSdlType(void) const noexcept
 {
     return data_;
 }
 
-GfxMessageBoxButtonData::SdlTypePtr GfxMessageBoxButtonData::getAsSdlTypePtr(void) const
+GfxMessageBoxButtonData::SdlTypePtr GfxMessageBoxButtonData::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&data_;
 }

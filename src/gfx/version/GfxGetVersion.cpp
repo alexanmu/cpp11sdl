@@ -35,17 +35,17 @@ namespace version
 
 const char GfxGetVersion::ClassName[] = "GfxGetVersion";
 
-GfxGetVersion::GfxGetVersion() : GfxRootClass(ClassName)
+GfxGetVersion::GfxGetVersion() noexcept : GfxRootClass(ClassName)
 {
     // Nothing to do
 }
 
-GfxGetVersion::operator bool() const
+GfxGetVersion::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxGetVersion::getVersion(GfxVersion * ver) const
+void GfxGetVersion::getVersion(GfxVersion * ver) const noexcept
 {
     assert(ver != nullptr);
 
@@ -55,15 +55,20 @@ void GfxGetVersion::getVersion(GfxVersion * ver) const
     ver->set(v);
 }
 
-std::string GfxGetVersion::getRevision(void) const
+std::string GfxGetVersion::getRevision(void) const noexcept
 {
-    std::string str;
+    const char * chptr;
+    std::string str = "";
 
-    str = sdl2::SDL_GetRevision();
+    chptr = sdl2::SDL_GetRevision();
+    if (chptr != nullptr)
+    {
+        str = chptr;
+    }
     return str;
 }
 
-int32_t GfxGetVersion::getRevisionNumber(void) const
+int32_t GfxGetVersion::getRevisionNumber(void) const noexcept
 {
     return sdl2::SDL_GetRevisionNumber();
 }

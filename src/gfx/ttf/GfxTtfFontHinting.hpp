@@ -49,32 +49,32 @@ public:
         hintingNone = TTF_HINTING_NONE
     };
 
-    GfxTtfFontHinting();
-    explicit GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting);
-    explicit GfxTtfFontHinting(SdlType hinting);
+    GfxTtfFontHinting() noexcept;
+    explicit GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept;
+    explicit GfxTtfFontHinting(SdlType hinting) noexcept;
 
-    GfxTtfFontHinting(GfxTtfFontHinting const& other);
-    GfxTtfFontHinting(GfxTtfFontHinting&& other);
+    GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept;
+    GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept;
 
-    GfxTtfFontHinting& operator=(GfxTtfFontHinting const& other);
-    GfxTtfFontHinting& operator=(GfxTtfFontHinting&& other);
+    GfxTtfFontHinting& operator=(GfxTtfFontHinting const& other) noexcept;
+    GfxTtfFontHinting& operator=(GfxTtfFontHinting&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isNormal(void) const;
-    bool isLight(void) const;
-    bool isMono(void) const;
-    bool isNone(void) const;
+    bool isNormal(void) const noexcept;
+    bool isLight(void) const noexcept;
+    bool isMono(void) const noexcept;
+    bool isNone(void) const noexcept;
 
-    void setNormal(void);
-    void setLight(void);
-    void setMono(void);
-    void setNone(void);
+    void setNormal(void) noexcept;
+    void setLight(void) noexcept;
+    void setMono(void) noexcept;
+    void setNone(void) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType hinting_;
 };

@@ -31,34 +31,34 @@ namespace pixels
 
 const char GfxPixelFormatEnum::ClassName[] = "GfxPixelFormatEnum";
 
-GfxPixelFormatEnum::GfxPixelFormatEnum() : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(const ValueType value) : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const ValueType value) noexcept : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) noexcept : GfxRootClass(ClassName)
 {
     value_ = value;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& other)
+GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& other) noexcept
 {
     if (this != &other)
     {
@@ -67,7 +67,7 @@ GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& othe
     return *this;
 }
 
-GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum&& other)
+GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum&& other)
     return *this;
 }
 
-GfxPixelFormatEnum::operator bool() const
+GfxPixelFormatEnum::operator bool() const noexcept
 {
     return true;
 }
@@ -93,7 +93,7 @@ void GfxPixelFormatEnum::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::pixelFormatUnknown);
 }
 
-GfxPixelFormatEnum::SdlType GfxPixelFormatEnum::getAsSdlType(void) const
+GfxPixelFormatEnum::SdlType GfxPixelFormatEnum::getAsSdlType(void) const noexcept
 {
     return value_;
 }

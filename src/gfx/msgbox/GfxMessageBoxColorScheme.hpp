@@ -49,24 +49,24 @@ public:
     static constexpr int32_t colorsArraySize = static_cast<int32_t>(
                                             GfxMessageBoxColorType::ValueType::colorMax);
 
-    GfxMessageBoxColorScheme();
+    GfxMessageBoxColorScheme() noexcept;
 
-    explicit GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[colorsArraySize]);
+    explicit GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[colorsArraySize]) noexcept;
 
-    GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other);
-    GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other);
+    GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept;
+    GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) noexcept;
 
-    GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other);
-    GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other);
+    GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other) noexcept;
+    GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color);
+    void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType clrscheme_;
 };

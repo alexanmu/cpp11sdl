@@ -31,34 +31,34 @@ namespace pixels
 
 const char GfxArrayOrder::ClassName[] = "GfxArrayOrder";
 
-GfxArrayOrder::GfxArrayOrder() : GfxRootClass(ClassName)
+GfxArrayOrder::GfxArrayOrder() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxArrayOrder::GfxArrayOrder(ValueType value)
+GfxArrayOrder::GfxArrayOrder(const ValueType value) noexcept
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxArrayOrder::GfxArrayOrder(SdlType value)
+GfxArrayOrder::GfxArrayOrder(const SdlType value) noexcept
 {
     value_ = value;
 }
 
-GfxArrayOrder::GfxArrayOrder(GfxArrayOrder const& other) : GfxRootClass(ClassName)
+GfxArrayOrder::GfxArrayOrder(GfxArrayOrder const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) : GfxRootClass(ClassName)
+GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder const& other)
+GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder const& other) noexcept
 {
     if (this != &other)
     {
@@ -67,7 +67,7 @@ GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder const& other)
     return *this;
 }
 
-GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder&& other)
+GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder&& other)
     return *this;
 }
 
-GfxArrayOrder::operator bool() const
+GfxArrayOrder::operator bool() const noexcept
 {
     return true;
 }
@@ -93,7 +93,7 @@ void GfxArrayOrder::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::arrayOrderNone);
 }
 
-GfxArrayOrder::SdlType GfxArrayOrder::getAsSdlType(void) const
+GfxArrayOrder::SdlType GfxArrayOrder::getAsSdlType(void) const noexcept
 {
     return value_;
 }

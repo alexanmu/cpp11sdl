@@ -49,7 +49,7 @@ GfxTtfFontRenderer::operator bool() const
     return true;
 }
 
-GfxTtfFont * GfxTtfFontRenderer::getFont(void) const
+GfxTtfFont * GfxTtfFontRenderer::getFont(void) const noexcept
 {
     return ttf_;
 }
@@ -63,7 +63,7 @@ void GfxTtfFontRenderer::setFont(GfxTtfFont * ttf) throw(std::runtime_error)
     ttf_ = ttf;
 }
 
-bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t * h) const
+bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept
 {
     assert(text.length() > 0);
     assert(w != nullptr);
@@ -72,7 +72,7 @@ bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t 
     return (sdl2::TTF_SizeText(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
 }
 
-bool GfxTtfFontRenderer::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const
+bool GfxTtfFontRenderer::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept
 {
     assert(text.length() > 0);
     assert(w != nullptr);
@@ -91,7 +91,7 @@ bool GfxTtfFontRenderer::sizeUnicode(std::string text, int32_t * w, int32_t * h)
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text,
-                                                          gfx::pixels::GfxColor const& fg) const
+                                                          gfx::pixels::GfxColor const& fg) const noexcept
 {
     assert(text.length() > 0);
 
@@ -102,7 +102,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& tex
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text,
-            gfx::pixels::GfxColor const& fg) const
+            gfx::pixels::GfxColor const& fg) const noexcept
 {
     assert(text.length() > 0);
 
@@ -121,7 +121,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string tex
     throw std::runtime_error("Not implemented");
 }
 
-surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pixels::GfxColor const& fg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 
@@ -130,7 +130,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(uint16_t ch, gfx::pix
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
-            gfx::pixels::GfxColor const& bg) const
+            gfx::pixels::GfxColor const& bg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 
@@ -139,7 +139,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& te
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
-            gfx::pixels::GfxColor const& bg) const
+            gfx::pixels::GfxColor const& bg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 
@@ -158,7 +158,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string te
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pixels::GfxColor const& fg,
-            gfx::pixels::GfxColor const& bg) const
+            gfx::pixels::GfxColor const& bg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 
@@ -167,7 +167,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(uint16_t ch, gfx::pi
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text,
-                                                            gfx::pixels::GfxColor const& fg) const
+                                                            gfx::pixels::GfxColor const& fg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 
@@ -176,7 +176,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& t
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text,
-            gfx::pixels::GfxColor const& fg) const
+            gfx::pixels::GfxColor const& fg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 
@@ -193,7 +193,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string t
     throw std::runtime_error("Not implemented");
 }
 
-surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch, gfx::pixels::GfxColor const& fg) const
+surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(uint16_t ch,
+                                                             gfx::pixels::GfxColor const& fg) const noexcept
 {
     surface::GfxSurface::SdlTypePtr surf;
 

@@ -30,12 +30,12 @@ namespace video
 
 const char GfxHitTest::ClassName[] = "GfxHitTest";
 
-GfxHitTest::GfxHitTest()
+GfxHitTest::GfxHitTest() noexcept
 {
     hitTestResult_.set(GfxHitTestResult::ValueType::hittestNormal);
 }
 
-GfxHitTest::operator bool() const
+GfxHitTest::operator bool() const noexcept
 {
     return true;
 }

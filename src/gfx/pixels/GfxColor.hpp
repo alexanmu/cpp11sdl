@@ -44,41 +44,41 @@ public:
 
     static const char ClassName[];
 
-    GfxColor();
+    GfxColor() noexcept;
 
-    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b);
-    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a);
-    explicit GfxColor(const SdlType clr);
-    explicit GfxColor(const uint32_t clr);
+    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b) noexcept;
+    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a) noexcept;
+    explicit GfxColor(const SdlType clr) noexcept;
+    explicit GfxColor(const uint32_t clr) noexcept;
 
-    GfxColor(const GfxColor& other);
-    GfxColor(GfxColor&& other);
+    GfxColor(const GfxColor& other) noexcept;
+    GfxColor(GfxColor&& other) noexcept;
 
-    GfxColor& operator=(const GfxColor& other);
-    GfxColor& operator=(GfxColor&& other);
+    GfxColor& operator=(const GfxColor& other) noexcept;
+    GfxColor& operator=(GfxColor&& other) noexcept;
 
-    bool operator==(const GfxColor& other);
+    bool operator==(const GfxColor& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     /* Getters ... */
-    uint8_t getRed(void) const;
-    uint8_t getGreen(void) const;
-    uint8_t getBlue(void) const;
-    uint8_t getAlpha(void) const;
+    uint8_t getRed(void) const noexcept;
+    uint8_t getGreen(void) const noexcept;
+    uint8_t getBlue(void) const noexcept;
+    uint8_t getAlpha(void) const noexcept;
 
-    uint32_t getColor(void) const;
+    uint32_t getColor(void) const noexcept;
 
     /* Setters ... */
-    void setRed(const uint8_t r);
-    void setGreen(const uint8_t g);
-    void setBlue(const uint8_t b);
-    void setAlpha(const uint8_t a);
+    void setRed(const uint8_t r) noexcept;
+    void setGreen(const uint8_t g) noexcept;
+    void setBlue(const uint8_t b) noexcept;
+    void setAlpha(const uint8_t a) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType clr_;
 };

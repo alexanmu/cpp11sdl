@@ -35,7 +35,7 @@ namespace loadso
 
 const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
-GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
+GfxLoadSo::GfxLoadSo(const std::string& objectname) noexcept : GfxRootClass(ClassName)
 {
     assert(objectname.length() > 0);
 
@@ -43,7 +43,7 @@ GfxLoadSo::GfxLoadSo(const std::string& objectname) : GfxRootClass(ClassName)
     handle_ = sdl2::SDL_LoadObject(objectname_.c_str());
 }
 
-GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) : GfxRootClass(ClassName)
+GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxRootClass(ClassName)
 {
     objectname_ = other.objectname_;
     handle_ = other.handle_;
@@ -52,15 +52,22 @@ GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) : GfxRootClass(ClassName)
     other.handle_ = nullptr;
 }
 
-GfxLoadSo::~GfxLoadSo()
+GfxLoadSo::~GfxLoadSo() noexcept
 {
     if (handle_ != nullptr)
     {
-        sdl2::SDL_UnloadObject(handle_);
+        try
+        {
+            sdl2::SDL_UnloadObject(handle_);
+        }
+        catch (...)
+        {
+            throw std::runtime_error("std::terminate call will follow!");
+        }
     }
 }
 
-GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other)
+GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other) noexcept
 {
     if (this != &other)
     {
@@ -73,22 +80,22 @@ GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other)
     return *this;
 }
 
-GfxLoadSo::operator bool() const
+GfxLoadSo::operator bool() const noexcept
 {
     return (handle_ != nullptr);
 }
 
-bool GfxLoadSo::isObjectLoaded(void) const
+bool GfxLoadSo::isObjectLoaded(void) const noexcept
 {
     return (handle_ != nullptr);
 }
 
-std::string const& GfxLoadSo::getObjectName(void) const
+std::string const& GfxLoadSo::getObjectName(void) const noexcept
 {
     return objectname_;
 }
 
-void * GfxLoadSo::loadFunction(const std::string& function)
+void * GfxLoadSo::loadFunction(const std::string& function) const noexcept
 {
     assert(function.length() > 0);
 
@@ -101,7 +108,7 @@ void * GfxLoadSo::loadFunction(const std::string& function)
     return func;
 }
 
-void GfxLoadSo::unloadObject()
+void GfxLoadSo::unloadObject() noexcept
 {
     sdl2::SDL_UnloadObject(handle_);
     handle_ = nullptr;

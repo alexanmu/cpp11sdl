@@ -34,22 +34,22 @@ namespace platform
 
 const char GfxPlatform::ClassName[] = "GfxPlatform";
 
-GfxPlatform::GfxPlatform() : GfxRootClass(ClassName)
+GfxPlatform::GfxPlatform() noexcept : GfxRootClass(ClassName)
 {
     platform_ = "";
 }
 
-GfxPlatform::operator bool() const
+GfxPlatform::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxPlatform::queryPlatform(void)
+void GfxPlatform::queryPlatform(void) noexcept
 {
     platform_ = sdl2::SDL_GetPlatform();
 }
 
-std::string const& GfxPlatform::getPlatform(void) const
+std::string const& GfxPlatform::getPlatform(void) const noexcept
 {
     return platform_;
 }

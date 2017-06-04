@@ -44,37 +44,37 @@ public:
 
     static const char ClassName[];
 
-    GfxMessageBoxColor();
+    GfxMessageBoxColor() noexcept;
 
-    explicit GfxMessageBoxColor(const uint8_t r, const uint8_t g, const uint8_t b);
-    explicit GfxMessageBoxColor(const SdlType clr);
+    explicit GfxMessageBoxColor(const uint8_t r, const uint8_t g, const uint8_t b) noexcept;
+    explicit GfxMessageBoxColor(const SdlType clr) noexcept;
 
-    GfxMessageBoxColor(const GfxMessageBoxColor& other);
-    GfxMessageBoxColor(GfxMessageBoxColor&& other);
+    GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept;
+    GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept;
 
-    GfxMessageBoxColor& operator=(const GfxMessageBoxColor& other);
-    GfxMessageBoxColor& operator=(GfxMessageBoxColor&& other);
+    GfxMessageBoxColor& operator=(const GfxMessageBoxColor& other) noexcept;
+    GfxMessageBoxColor& operator=(GfxMessageBoxColor&& other) noexcept;
 
-    bool operator==(const GfxMessageBoxColor& other);
+    bool operator==(const GfxMessageBoxColor& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     /* Getters ... */
-    uint8_t getRed(void) const;
-    uint8_t getGreen(void) const;
-    uint8_t getBlue(void) const;
+    uint8_t getRed(void) const noexcept;
+    uint8_t getGreen(void) const noexcept;
+    uint8_t getBlue(void) const noexcept;
 
-    uint32_t getColor(void) const;
+    uint32_t getColor(void) const noexcept;
 
     /* Setters ... */
-    void setRed(const uint8_t r);
-    void setGreen(const uint8_t g);
-    void setBlue(const uint8_t b);
+    void setRed(const uint8_t r) noexcept;
+    void setGreen(const uint8_t g) noexcept;
+    void setBlue(const uint8_t b) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType clr_;
 };

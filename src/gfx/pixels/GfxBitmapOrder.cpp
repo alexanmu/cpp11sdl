@@ -31,34 +31,34 @@ namespace pixels
 
 const char GfxBitmapOrder::ClassName[] = "GfxBitmapOrder";
 
-GfxBitmapOrder::GfxBitmapOrder() : GfxRootClass(ClassName)
+GfxBitmapOrder::GfxBitmapOrder() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxBitmapOrder::GfxBitmapOrder(ValueType value)
+GfxBitmapOrder::GfxBitmapOrder(const ValueType value) noexcept
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBitmapOrder::GfxBitmapOrder(SdlType value)
+GfxBitmapOrder::GfxBitmapOrder(const SdlType value) noexcept
 {
     value_ = value;
 }
 
-GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder const& other) : GfxRootClass(ClassName)
+GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) : GfxRootClass(ClassName)
+GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder const& other)
+GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder const& other) noexcept
 {
     if (this != &other)
     {
@@ -67,7 +67,7 @@ GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder const& other)
     return *this;
 }
 
-GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder&& other)
+GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder&& other)
     return *this;
 }
 
-GfxBitmapOrder::operator bool() const
+GfxBitmapOrder::operator bool() const noexcept
 {
     return true;
 }
@@ -93,7 +93,7 @@ void GfxBitmapOrder::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::bitmapOrderNone);
 }
 
-GfxBitmapOrder::SdlType GfxBitmapOrder::getAsSdlType(void) const
+GfxBitmapOrder::SdlType GfxBitmapOrder::getAsSdlType(void) const noexcept
 {
     return value_;
 }

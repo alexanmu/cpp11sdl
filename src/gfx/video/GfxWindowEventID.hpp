@@ -65,39 +65,39 @@ public:
         eventHitTest = sdl2::SDL_WINDOWEVENT_HIT_TEST
     };
 
-    GfxWindowEventID();
+    GfxWindowEventID() noexcept;
 
-    explicit GfxWindowEventID(const ValueType eventid);
-    explicit GfxWindowEventID(const SdlType eventid);
+    explicit GfxWindowEventID(const ValueType eventid) noexcept;
+    explicit GfxWindowEventID(const SdlType eventid) noexcept;
 
-    GfxWindowEventID(GfxWindowEventID const& other);
-    GfxWindowEventID(GfxWindowEventID&& other);
+    GfxWindowEventID(GfxWindowEventID const& other) noexcept;
+    GfxWindowEventID(GfxWindowEventID&& other) noexcept;
 
-    GfxWindowEventID& operator=(GfxWindowEventID const& other);
-    GfxWindowEventID& operator=(GfxWindowEventID&& other);
+    GfxWindowEventID& operator=(GfxWindowEventID const& other) noexcept;
+    GfxWindowEventID& operator=(GfxWindowEventID&& other) noexcept;
 
     // Getters
-    bool isShown(void) const;
-    bool isHidden(void) const;
-    bool isExposed(void) const;
-    bool isMoved(void) const;
-    bool isResized(void) const;
-    bool isSizeChanged(void) const;
-    bool isMinimized(void) const;
-    bool isMaximized(void) const;
-    bool isRestored(void) const;
-    bool enter(void) const;
-    bool leave(void) const;
-    bool isFocusGained(void) const;
-    bool isFocusLost(void) const;
-    bool close(void) const;
-    bool takeFocus(void) const;
-    bool hitTest(void) const;
+    bool isShown(void) const noexcept;
+    bool isHidden(void) const noexcept;
+    bool isExposed(void) const noexcept;
+    bool isMoved(void) const noexcept;
+    bool isResized(void) const noexcept;
+    bool isSizeChanged(void) const noexcept;
+    bool isMinimized(void) const noexcept;
+    bool isMaximized(void) const noexcept;
+    bool isRestored(void) const noexcept;
+    bool enter(void) const noexcept;
+    bool leave(void) const noexcept;
+    bool isFocusGained(void) const noexcept;
+    bool isFocusLost(void) const noexcept;
+    bool close(void) const noexcept;
+    bool takeFocus(void) const noexcept;
+    bool hitTest(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType eventid_;
 };

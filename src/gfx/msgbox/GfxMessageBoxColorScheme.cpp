@@ -35,12 +35,12 @@ namespace msgbox
 
 const char GfxMessageBoxColorScheme::ClassName[] = "GfxMessageBoxColorScheme";
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() : GfxRootClass(ClassName)
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) :
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) noexcept :
         GfxRootClass(ClassName)
 {
     for (int32_t index = 0; index < colorsArraySize; index++)
@@ -51,13 +51,13 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
     }
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) :
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept :
     GfxRootClass(ClassName)
 {
     clrscheme_ = other.clrscheme_;
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) :
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) noexcept :
     GfxRootClass(ClassName)
 {
     clrscheme_ = other.clrscheme_;
@@ -65,7 +65,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& ot
     other.clear();
 }
 
-GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColorScheme const& other)
+GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColorScheme const& other) noexcept
 {
     if (this != &other)
     {
@@ -74,7 +74,7 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
     return *this;
 }
 
-GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColorScheme&& other)
+GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColorScheme&& other) noexcept
 {
     if (this != &other)
     {
@@ -85,12 +85,12 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
     return *this;
 }
 
-GfxMessageBoxColorScheme::operator bool() const
+GfxMessageBoxColorScheme::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color)
+void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color) noexcept
 {
     assert(type);
     assert(color);
@@ -100,7 +100,7 @@ void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxM
     clrscheme_.colors[index] = color.getAsSdlType();
 }
 
-void GfxMessageBoxColorScheme::clear(void)
+void GfxMessageBoxColorScheme::clear(void) noexcept
 {
     for (int32_t index = 0; index < colorsArraySize; index++)
     {
@@ -110,12 +110,12 @@ void GfxMessageBoxColorScheme::clear(void)
     }
 }
 
-GfxMessageBoxColorScheme::SdlType GfxMessageBoxColorScheme::getAsSdlType(void) const
+GfxMessageBoxColorScheme::SdlType GfxMessageBoxColorScheme::getAsSdlType(void) const noexcept
 {
     return (SdlType)clrscheme_;
 }
 
-GfxMessageBoxColorScheme::SdlTypePtr GfxMessageBoxColorScheme::getAsSdlTypePtr(void) const
+GfxMessageBoxColorScheme::SdlTypePtr GfxMessageBoxColorScheme::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&clrscheme_;
 }

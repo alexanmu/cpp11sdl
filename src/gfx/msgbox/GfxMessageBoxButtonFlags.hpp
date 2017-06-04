@@ -51,28 +51,28 @@ public:
         escKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT
     };
 
-    GfxMessageBoxButtonFlags();
+    GfxMessageBoxButtonFlags() noexcept;
 
-    explicit GfxMessageBoxButtonFlags(const ValueType flags);
-    explicit GfxMessageBoxButtonFlags(const SdlType flags);
+    explicit GfxMessageBoxButtonFlags(const ValueType flags) noexcept;
+    explicit GfxMessageBoxButtonFlags(const SdlType flags) noexcept;
 
-    GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other);
-    GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other);
+    GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) noexcept;
+    GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) noexcept;
 
-    GfxMessageBoxButtonFlags& operator=(const GfxMessageBoxButtonFlags& other);
-    GfxMessageBoxButtonFlags& operator=(GfxMessageBoxButtonFlags&& other);
+    GfxMessageBoxButtonFlags& operator=(const GfxMessageBoxButtonFlags& other) noexcept;
+    GfxMessageBoxButtonFlags& operator=(GfxMessageBoxButtonFlags&& other) noexcept;
 
-    bool operator==(const GfxMessageBoxButtonFlags& other);
+    bool operator==(const GfxMessageBoxButtonFlags& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isReturnDefault(void) const;
-    bool isEscDefault(void) const;
+    bool isReturnDefault(void) const noexcept;
+    bool isEscDefault(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flags_;
 };

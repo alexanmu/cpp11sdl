@@ -34,12 +34,12 @@ namespace msgbox
 
 const char GfxMessageBoxColor::ClassName[] = "GfxMessageBoxColor";
 
-GfxMessageBoxColor::GfxMessageBoxColor() : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) :
+GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept :
         GfxRootClass(ClassName)
 {
     clr_.r = r;
@@ -47,20 +47,20 @@ GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const 
     clr_.b = b;
 }
 
-GfxMessageBoxColor::GfxMessageBoxColor(SdlType clr) : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxRootClass(ClassName)
 {
     /* Copy structure; hope SDL_MessageBoxColor assignement operator works ... */
     clr_ = clr;
 }
 
 /* Copy constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
 }
 
 /* Move constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */
@@ -68,7 +68,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) : GfxRootClas
 }
 
 /* Delete copy and move assign operators */
-GfxMessageBoxColor& GfxMessageBoxColor::operator=(const GfxMessageBoxColor& other)
+GfxMessageBoxColor& GfxMessageBoxColor::operator=(const GfxMessageBoxColor& other) noexcept
 {
     if (this != &other)
     {
@@ -77,7 +77,7 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(const GfxMessageBoxColor& othe
     return *this;
 }
 
-GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other)
+GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other) noexcept
 {
     if (this != &other)
     {
@@ -87,32 +87,32 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other)
     return *this;
 }
 
-bool GfxMessageBoxColor::operator==(const GfxMessageBoxColor& other)
+bool GfxMessageBoxColor::operator==(const GfxMessageBoxColor& other) noexcept
 {
     return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) && (clr_.b == other.clr_.b));
 }
 
-GfxMessageBoxColor::operator bool() const
+GfxMessageBoxColor::operator bool() const noexcept
 {
     return true;
 }
 
-uint8_t GfxMessageBoxColor::getRed(void) const
+uint8_t GfxMessageBoxColor::getRed(void) const noexcept
 {
     return clr_.r;
 }
 
-uint8_t GfxMessageBoxColor::getGreen(void) const
+uint8_t GfxMessageBoxColor::getGreen(void) const noexcept
 {
     return clr_.g;
 }
 
-uint8_t GfxMessageBoxColor::getBlue(void) const
+uint8_t GfxMessageBoxColor::getBlue(void) const noexcept
 {
     return clr_.b;
 }
 
-uint32_t GfxMessageBoxColor::getColor() const
+uint32_t GfxMessageBoxColor::getColor() const noexcept
 {
     uint32_t c = 0;
 
@@ -120,34 +120,34 @@ uint32_t GfxMessageBoxColor::getColor() const
     return c;
 }
 
-void GfxMessageBoxColor::setRed(const uint8_t r)
+void GfxMessageBoxColor::setRed(const uint8_t r) noexcept
 {
     clr_.r = r;
 }
 
-void GfxMessageBoxColor::setGreen(const uint8_t g)
+void GfxMessageBoxColor::setGreen(const uint8_t g) noexcept
 {
     clr_.g = g;
 }
 
-void GfxMessageBoxColor::setBlue(const uint8_t b)
+void GfxMessageBoxColor::setBlue(const uint8_t b) noexcept
 {
     clr_.b = b;
 }
 
-void GfxMessageBoxColor::clear(void)
+void GfxMessageBoxColor::clear(void) noexcept
 {
     clr_.r = 0;
     clr_.g = 0;
     clr_.b = 0;
 }
 
-GfxMessageBoxColor::SdlType GfxMessageBoxColor::getAsSdlType() const
+GfxMessageBoxColor::SdlType GfxMessageBoxColor::getAsSdlType() const noexcept
 {
     return clr_;
 }
 
-GfxMessageBoxColor::SdlTypePtr GfxMessageBoxColor::getAsSdlTypePtr(void) const
+GfxMessageBoxColor::SdlTypePtr GfxMessageBoxColor::getAsSdlTypePtr(void) const noexcept
 {
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)&clr_;

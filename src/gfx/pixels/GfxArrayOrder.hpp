@@ -53,23 +53,23 @@ public:
         arrayOrderABGR = sdl2::SDL_ARRAYORDER_ABGR
     };
 
-    GfxArrayOrder();
-    explicit GfxArrayOrder(ValueType value);
-    explicit GfxArrayOrder(SdlType value);
+    GfxArrayOrder() noexcept;
+    explicit GfxArrayOrder(const ValueType value) noexcept;
+    explicit GfxArrayOrder(const SdlType value) noexcept;
 
-    GfxArrayOrder(GfxArrayOrder const& other);
-    GfxArrayOrder(GfxArrayOrder&& other);
+    GfxArrayOrder(GfxArrayOrder const& other) noexcept;
+    GfxArrayOrder(GfxArrayOrder&& other) noexcept;
 
-    GfxArrayOrder& operator=(GfxArrayOrder const& other);
-    GfxArrayOrder& operator=(GfxArrayOrder&& other);
+    GfxArrayOrder& operator=(GfxArrayOrder const& other) noexcept;
+    GfxArrayOrder& operator=(GfxArrayOrder&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

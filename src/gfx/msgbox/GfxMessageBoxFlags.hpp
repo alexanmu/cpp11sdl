@@ -51,31 +51,31 @@ public:
         flagInformation = sdl2::SDL_MESSAGEBOX_INFORMATION
     };
 
-    GfxMessageBoxFlags();
+    GfxMessageBoxFlags() noexcept;
 
-    explicit GfxMessageBoxFlags(const ValueType flag);
-    explicit GfxMessageBoxFlags(const SdlType flag);
+    explicit GfxMessageBoxFlags(const ValueType flag) noexcept;
+    explicit GfxMessageBoxFlags(const SdlType flag) noexcept;
 
-    GfxMessageBoxFlags(const GfxMessageBoxFlags& other);
-    GfxMessageBoxFlags(GfxMessageBoxFlags&& other);
+    GfxMessageBoxFlags(const GfxMessageBoxFlags& other) noexcept;
+    GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept;
 
-    GfxMessageBoxFlags& operator=(const GfxMessageBoxFlags& other);
-    GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other);
+    GfxMessageBoxFlags& operator=(const GfxMessageBoxFlags& other) noexcept;
+    GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other) noexcept;
 
-    bool operator==(const GfxMessageBoxFlags& other);
+    bool operator==(const GfxMessageBoxFlags& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    ValueType getFlag(void) const;
+    ValueType getFlag(void) const noexcept;
 
-    bool isError(void) const;
-    bool isWarning(void) const;
-    bool isInformation(void) const;
+    bool isError(void) const noexcept;
+    bool isWarning(void) const noexcept;
+    bool isInformation(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flag_;
 };

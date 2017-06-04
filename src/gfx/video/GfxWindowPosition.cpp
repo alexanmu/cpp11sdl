@@ -35,12 +35,12 @@ namespace video
 
 const char GfxWindowPosition::ClassName[] = "GfxWindowPosition";
 
-GfxWindowPosition::GfxWindowPosition() : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : GfxRootClass(ClassName)
 {
     assert(coord >= 0);
 
@@ -58,13 +58,13 @@ GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) : GfxRootClas
     }
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxRootClass(ClassName)
 {
     pos_ = other.pos_;
     coord_ = other.coord_;
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxRootClass(ClassName)
 {
     pos_ = other.pos_;
     coord_ = other.coord_;
@@ -72,7 +72,7 @@ GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) : GfxRootClass(C
     other.clear();
 }
 
-GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other)
+GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other) noexcept
 {
     if (this != &other)
     {
@@ -82,7 +82,7 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other)
     return *this;
 }
 
-GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other)
+GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other) noexcept
 {
     if (this != &other)
     {
@@ -94,29 +94,29 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other)
     return *this;
 }
 
-GfxWindowPosition::operator bool() const
+GfxWindowPosition::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxWindowPosition::setPosition(ValueType pos)
+void GfxWindowPosition::setPosition(const ValueType pos) noexcept
 {
     pos_ = pos;
 }
 
-GfxWindowPosition::ValueType GfxWindowPosition::getPosition(void) const
+GfxWindowPosition::ValueType GfxWindowPosition::getPosition(void) const noexcept
 {
     return pos_;
 }
 
-void GfxWindowPosition::setCoordinate(int32_t coord)
+void GfxWindowPosition::setCoordinate(const int32_t coord) noexcept
 {
     assert(coord >= 0);
 
     coord_ = coord;
 }
 
-int32_t GfxWindowPosition::getCoordinate(void) const
+int32_t GfxWindowPosition::getCoordinate(void) const noexcept
 {
     int32_t ret;
 
@@ -138,7 +138,7 @@ int32_t GfxWindowPosition::getCoordinate(void) const
     return ret;
 }
 
-void GfxWindowPosition::clear(void)
+void GfxWindowPosition::clear(void) noexcept
 {
     pos_ = ValueType::positionUndefined;
     coord_ = -1;

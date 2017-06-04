@@ -53,33 +53,33 @@ public:
         flagDontFree = SDL_DONTFREE
     };
 
-    GfxSurfaceFlags();
+    GfxSurfaceFlags() noexcept;
 
-    explicit GfxSurfaceFlags(const ValueType flags);
-    explicit GfxSurfaceFlags(const SdlType flags);
+    explicit GfxSurfaceFlags(const ValueType flags) noexcept;
+    explicit GfxSurfaceFlags(const SdlType flags) noexcept;
 
-    GfxSurfaceFlags(GfxSurfaceFlags const& other);
-    GfxSurfaceFlags(GfxSurfaceFlags&& other);
+    GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept;
+    GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept;
 
-    GfxSurfaceFlags& operator=(GfxSurfaceFlags const& other);
-    GfxSurfaceFlags& operator=(GfxSurfaceFlags&& other);
+    GfxSurfaceFlags& operator=(GfxSurfaceFlags const& other) noexcept;
+    GfxSurfaceFlags& operator=(GfxSurfaceFlags&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isSwSurface(void) const;
-    bool isPreAlloc(void) const;
-    bool isRLEAccel(void) const;
-    bool isDontFree(void) const;
+    bool isSwSurface(void) const noexcept;
+    bool isPreAlloc(void) const noexcept;
+    bool isRLEAccel(void) const noexcept;
+    bool isDontFree(void) const noexcept;
 
-    void setSwSurface(void) throw(std::runtime_error);
-    void setPreAlloc(void) throw(std::runtime_error);
-    void setRLEAccel(void) throw(std::runtime_error);
-    void setDontFree(void) throw(std::runtime_error);
+    void setSwSurface(void) const throw(std::runtime_error);
+    void setPreAlloc(void) const throw(std::runtime_error);
+    void setRLEAccel(void) const throw(std::runtime_error);
+    void setDontFree(void) const throw(std::runtime_error);
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flags_;
 };

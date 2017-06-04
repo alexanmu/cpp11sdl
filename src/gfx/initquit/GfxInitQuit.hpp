@@ -45,7 +45,7 @@ public:
     // No default constructor
     GfxInitQuit() = delete;
 
-    explicit GfxInitQuit(GfxInitFlags const& flags);
+    explicit GfxInitQuit(GfxInitFlags const& flags) noexcept;
 
     // Copy/Move constructors don't make sense
     GfxInitQuit(const GfxInitQuit&) = delete;
@@ -56,18 +56,18 @@ public:
     GfxInitQuit& operator=(GfxInitQuit&&) = delete;
 
     // Explicit destructor to de-init SDL lib
-    virtual ~GfxInitQuit();
+    virtual ~GfxInitQuit() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void initSubSystem(GfxInitFlags const& flags);
-    void quitSubSystem(GfxInitFlags const& flags);
+    void initSubSystem(GfxInitFlags const& flags) noexcept;
+    void quitSubSystem(GfxInitFlags const& flags) const noexcept;
 
-    GfxInitFlags * wasInit(GfxInitFlags const& flags);
+    GfxInitFlags * wasInit(GfxInitFlags const& flags) const noexcept;
 
-    void quitRequested(void);
+    void quitRequested(void) const noexcept;
 
-    int32_t getErrorCode() const;
+    int32_t getErrorCode() const noexcept;
 private:
     GfxInitFlags flags_;
     int32_t errorCode_;

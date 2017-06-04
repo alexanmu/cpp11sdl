@@ -39,13 +39,13 @@ const char GfxControlledSurface::ClassName[] = "GfxControlledSurface";
 const pixels::GfxPixelFormatEnum::ValueType GfxControlledSurface::kDefaultSurfaceColorFormatValue =
     pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888;
 
-GfxControlledSurface::GfxControlledSurface() : gfx::GfxRootClass(ClassName)
+GfxControlledSurface::GfxControlledSurface() noexcept : gfx::GfxRootClass(ClassName)
 {
     surf_ = nullptr;
     surfaceConstructed_ = false;
 }
 
-GfxControlledSurface::~GfxControlledSurface()
+GfxControlledSurface::~GfxControlledSurface() noexcept
 {
     if (surfaceConstructed_ == true)
     {
@@ -53,7 +53,7 @@ GfxControlledSurface::~GfxControlledSurface()
     }
 }
 
-GfxControlledSurface::operator bool() const
+GfxControlledSurface::operator bool() const noexcept
 {
     return (surf_ != nullptr);
 }

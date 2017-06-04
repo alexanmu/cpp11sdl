@@ -34,38 +34,39 @@ namespace msgbox
 
 const char GfxMessageBoxColorType::ClassName[] = "GfxMessageBoxColorType";
 
-GfxMessageBoxColorType::GfxMessageBoxColorType() : GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) : GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : GfxRootClass(ClassName)
 {
     assert(type >= 0);
 
     type_ = type;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) :
-        GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) noexcept :
+            GfxRootClass(ClassName)
 {
     type_ = static_cast<SdlType>(type);
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) :
-        GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept :
+            GfxRootClass(ClassName)
 {
     type_ = other.type_;
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) : GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) noexcept :
+            GfxRootClass(ClassName)
 {
     type_ = other.type_;
     // Delete other's data
     other.clear();
 }
 
-GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType const& other)
+GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType const& other) noexcept
 {
     if (this != &other)
     {
@@ -74,7 +75,7 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
     return *this;
 }
 
-GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType&& other)
+GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType&& other) noexcept
 {
     if (this != &other)
     {
@@ -85,27 +86,27 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
     return *this;
 }
 
-GfxMessageBoxColorType::operator bool() const
+GfxMessageBoxColorType::operator bool() const noexcept
 {
     return true;
 }
 
-GfxMessageBoxColorType::ValueType GfxMessageBoxColorType::getType(void) const
+GfxMessageBoxColorType::ValueType GfxMessageBoxColorType::getType(void) const noexcept
 {
     return static_cast<ValueType>(type_);
 }
 
-void GfxMessageBoxColorType::clear(void)
+void GfxMessageBoxColorType::clear(void) noexcept
 {
     type_ = static_cast<SdlType>(ValueType::colorMax);
 }
 
-GfxMessageBoxColorType::SdlType GfxMessageBoxColorType::getAsSdllType(void) const
+GfxMessageBoxColorType::SdlType GfxMessageBoxColorType::getAsSdllType(void) const noexcept
 {
     return type_;
 }
 
-GfxMessageBoxColorType::SdlTypePtr GfxMessageBoxColorType::getAsSdlTypePtr(void) const
+GfxMessageBoxColorType::SdlTypePtr GfxMessageBoxColorType::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&type_;
 }

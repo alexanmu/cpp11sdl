@@ -35,12 +35,12 @@ namespace rect
 
 const char GfxPoint::ClassName[] = "GfxPoint";
 
-GfxPoint::GfxPoint() : GfxRootClass(ClassName)
+GfxPoint::GfxPoint() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxPoint::GfxPoint(const int32_t x, const int32_t y) : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(const int32_t x, const int32_t y) noexcept : GfxRootClass(ClassName)
 {
     assert(x >= 0);
     assert(y >= 0);
@@ -49,17 +49,17 @@ GfxPoint::GfxPoint(const int32_t x, const int32_t y) : GfxRootClass(ClassName)
     pt_.y = y;
 }
 
-GfxPoint::GfxPoint(const SdlType pt) : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(const SdlType pt) noexcept : GfxRootClass(ClassName)
 {
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(GfxPoint const& other) : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxRootClass(ClassName)
 {
     pt_ = other.pt_;
 }
 
-GfxPoint::GfxPoint(GfxPoint&& other) : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxRootClass(ClassName)
 {
     pt_ = other.pt_;
     /* Delete other's data */
@@ -67,7 +67,7 @@ GfxPoint::GfxPoint(GfxPoint&& other) : GfxRootClass(ClassName)
 }
 
 /* No assignement operators */
-GfxPoint& GfxPoint::operator=(GfxPoint const& other)
+GfxPoint& GfxPoint::operator=(GfxPoint const& other) noexcept
 {
     if (this != &other)
     {
@@ -76,7 +76,7 @@ GfxPoint& GfxPoint::operator=(GfxPoint const& other)
     return *this;
 }
 
-GfxPoint& GfxPoint::operator=(GfxPoint&& other)
+GfxPoint& GfxPoint::operator=(GfxPoint&& other) noexcept
 {
     if (this != &other)
     {
@@ -87,52 +87,52 @@ GfxPoint& GfxPoint::operator=(GfxPoint&& other)
     return *this;
 }
 
-bool GfxPoint::operator==(GfxPoint const& other)
+bool GfxPoint::operator==(GfxPoint const& other) const noexcept
 {
     return ((pt_.x == other.pt_.x) && (pt_.y == other.pt_.y));
 }
 
-GfxPoint::operator bool() const
+GfxPoint::operator bool() const noexcept
 {
     return true;
 }
 
-int32_t GfxPoint::getX(void) const
+int32_t GfxPoint::getX(void) const noexcept
 {
     return pt_.x;
 }
 
-int32_t GfxPoint::getY(void) const
+int32_t GfxPoint::getY(void) const noexcept
 {
     return pt_.y;
 }
 
-void GfxPoint::setX(const int32_t x)
+void GfxPoint::setX(const int32_t x) noexcept
 {
     assert(x >= 0);
 
     pt_.x = x;
 }
 
-void GfxPoint::setY(const int32_t y)
+void GfxPoint::setY(const int32_t y) noexcept
 {
     assert(y >= 0);
 
     pt_.y = y;
 }
 
-void GfxPoint::clear(void)
+void GfxPoint::clear(void) noexcept
 {
     pt_.x = -1;
     pt_.y = -1;
 }
 
-GfxPoint::SdlType GfxPoint::getAsSdlType(void) const
+GfxPoint::SdlType GfxPoint::getAsSdlType(void) const noexcept
 {
     return pt_;
 }
 
-GfxPoint::SdlTypePtr GfxPoint::getAsSdlTypePtr(void) const
+GfxPoint::SdlTypePtr GfxPoint::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&pt_;
 }

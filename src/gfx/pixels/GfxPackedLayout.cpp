@@ -31,34 +31,34 @@ namespace pixels
 
 const char GfxPackedLayout::ClassName[] = "GfxPackedLayout";
 
-GfxPackedLayout::GfxPackedLayout() : GfxRootClass(ClassName)
+GfxPackedLayout::GfxPackedLayout() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxPackedLayout::GfxPackedLayout(ValueType value)
+GfxPackedLayout::GfxPackedLayout(const ValueType value) noexcept
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPackedLayout::GfxPackedLayout(SdlType value)
+GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept
 {
     value_ = value;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) : GfxRootClass(ClassName)
+GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) : GfxRootClass(ClassName)
+GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other)
+GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other) noexcept
 {
     if (this != &other)
     {
@@ -67,7 +67,7 @@ GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other)
     return *this;
 }
 
-GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout&& other)
+GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout&& other)
     return *this;
 }
 
-GfxPackedLayout::operator bool() const
+GfxPackedLayout::operator bool() const noexcept
 {
     return true;
 }
@@ -93,7 +93,7 @@ void GfxPackedLayout::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::packedLayoutNone);
 }
 
-GfxPackedLayout::SdlType GfxPackedLayout::getAsSdlType(void) const
+GfxPackedLayout::SdlType GfxPackedLayout::getAsSdlType(void) const noexcept
 {
     return value_;
 }

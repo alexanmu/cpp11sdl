@@ -49,23 +49,23 @@ public:
         bitmapOrder1234 = sdl2::SDL_BITMAPORDER_1234,
     };
 
-    GfxBitmapOrder();
-    explicit GfxBitmapOrder(ValueType value);
-    explicit GfxBitmapOrder(SdlType value);
+    GfxBitmapOrder() noexcept;
+    explicit GfxBitmapOrder(const ValueType value) noexcept;
+    explicit GfxBitmapOrder(const SdlType value) noexcept;
 
-    GfxBitmapOrder(GfxBitmapOrder const& other);
-    GfxBitmapOrder(GfxBitmapOrder&& other);
+    GfxBitmapOrder(GfxBitmapOrder const& other) noexcept;
+    GfxBitmapOrder(GfxBitmapOrder&& other) noexcept;
 
-    GfxBitmapOrder& operator=(GfxBitmapOrder const& other);
-    GfxBitmapOrder& operator=(GfxBitmapOrder&& other);
+    GfxBitmapOrder& operator=(GfxBitmapOrder const& other) noexcept;
+    GfxBitmapOrder& operator=(GfxBitmapOrder&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

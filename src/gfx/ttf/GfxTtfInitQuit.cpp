@@ -31,27 +31,34 @@ namespace ttf
 
 const char GfxTtfInitQuit::ClassName[] = "GfxTtfInitQuit";
 
-GfxTtfInitQuit::GfxTtfInitQuit() : GfxRootClass(ClassName)
+GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxRootClass(ClassName)
 {
     errorCode_ = sdl2::TTF_Init();
 }
 
-GfxTtfInitQuit::~GfxTtfInitQuit(void)
+GfxTtfInitQuit::~GfxTtfInitQuit(void) noexcept
 {
-    sdl2::TTF_Quit();
+    try
+    {
+        sdl2::TTF_Quit();
+    }
+    catch (...)
+    {
+        throw std::runtime_error("std::terminate call will follow!");
+    }
 }
 
-GfxTtfInitQuit::operator bool() const
+GfxTtfInitQuit::operator bool() const noexcept
 {
     return (errorCode_ == 0);
 }
 
-int32_t GfxTtfInitQuit::wasInit(void) const
+int32_t GfxTtfInitQuit::wasInit(void) const noexcept
 {
     return sdl2::TTF_WasInit();
 }
 
-int32_t GfxTtfInitQuit::getErrorCode(void) const
+int32_t GfxTtfInitQuit::getErrorCode(void) const noexcept
 {
     return errorCode_;
 }

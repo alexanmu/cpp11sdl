@@ -31,34 +31,34 @@ namespace pixels
 
 const char GfxPackedOrder::ClassName[] = "GfxPackedOrder";
 
-GfxPackedOrder::GfxPackedOrder() : GfxRootClass(ClassName)
+GfxPackedOrder::GfxPackedOrder() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxPackedOrder::GfxPackedOrder(ValueType value)
+GfxPackedOrder::GfxPackedOrder(const ValueType value) noexcept
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPackedOrder::GfxPackedOrder(SdlType value)
+GfxPackedOrder::GfxPackedOrder(const SdlType value) noexcept
 {
     value_ = value;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) : GfxRootClass(ClassName)
+GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) : GfxRootClass(ClassName)
+GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other)
+GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other) noexcept
 {
     if (this != &other)
     {
@@ -67,7 +67,7 @@ GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other)
     return *this;
 }
 
-GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder&& other)
+GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder&& other)
     return *this;
 }
 
-GfxPackedOrder::operator bool() const
+GfxPackedOrder::operator bool() const noexcept
 {
     return true;
 }
@@ -93,7 +93,7 @@ void GfxPackedOrder::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::packedOrderNone);
 }
 
-GfxPackedOrder::SdlType GfxPackedOrder::getAsSdlType(void) const
+GfxPackedOrder::SdlType GfxPackedOrder::getAsSdlType(void) const noexcept
 {
     return value_;
 }

@@ -31,34 +31,34 @@ namespace pixels
 
 const char GfxPixelType::ClassName[] = "GfxPixelType";
 
-GfxPixelType::GfxPixelType() : GfxRootClass(ClassName)
+GfxPixelType::GfxPixelType() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxPixelType::GfxPixelType(ValueType value)
+GfxPixelType::GfxPixelType(const ValueType value) noexcept
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPixelType::GfxPixelType(SdlType value)
+GfxPixelType::GfxPixelType(const SdlType value) noexcept
 {
     value_ = value;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType const& other) : GfxRootClass(ClassName)
+GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType&& other) : GfxRootClass(ClassName)
+GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other)
+GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other) noexcept
 {
     if (this != &other)
     {
@@ -67,7 +67,7 @@ GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other)
     return *this;
 }
 
-GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other)
+GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other)
     return *this;
 }
 
-GfxPixelType::operator bool() const
+GfxPixelType::operator bool() const noexcept
 {
     return true;
 }
@@ -93,7 +93,7 @@ void GfxPixelType::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::pixelTypeUnknown);
 }
 
-GfxPixelType::SdlType GfxPixelType::getAsSdlType(void) const
+GfxPixelType::SdlType GfxPixelType::getAsSdlType(void) const noexcept
 {
     return value_;
 }

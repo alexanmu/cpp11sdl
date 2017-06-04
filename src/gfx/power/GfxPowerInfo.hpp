@@ -41,7 +41,7 @@ class GfxPowerInfo final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxPowerInfo();
+    GfxPowerInfo() noexcept;
 
     GfxPowerInfo(GfxPowerInfo const&) = delete;
     GfxPowerInfo(GfxPowerInfo&&) = delete;
@@ -49,15 +49,15 @@ public:
     GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
     GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void queryPowerInfo(void);
+    void queryPowerInfo(void) noexcept;
 
-    GfxPowerState const& getPowerState(void) const;
-    int32_t getRemainingSeconds(void) const;
-    int32_t getRemainingPercentage(void) const;
+    GfxPowerState const& getPowerState(void) const noexcept;
+    int32_t getRemainingSeconds(void) const noexcept;
+    int32_t getRemainingPercentage(void) const noexcept;
 
-    const std::string getAsString(void) const;
+    const std::string getAsString(void) const noexcept;
 private:
     GfxPowerState pstate_;
     int32_t seconds_;

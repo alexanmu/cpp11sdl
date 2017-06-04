@@ -56,10 +56,10 @@ public:
 
     static const char ClassName[];
 
-    GfxWindow(const std::string& title, const int32_t width, const int32_t height);
+    GfxWindow(const std::string& title, const int32_t width, const int32_t height) noexcept;
     GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
-                const int32_t width, const int32_t height, const GfxWindowFlags& flags);
-    explicit GfxWindow(void * data);
+                const int32_t width, const int32_t height, const GfxWindowFlags& flags) noexcept;
+    explicit GfxWindow(void * data) noexcept;
 
     GfxWindow() = delete;
     GfxWindow(const GfxWindow&) = delete;
@@ -67,63 +67,63 @@ public:
     GfxWindow& operator=(const GfxWindow&) = delete;
     GfxWindow& operator=(GfxWindow&&) = delete;
 
-    virtual ~GfxWindow();
-    void destroyWindow(void);
+    virtual ~GfxWindow() noexcept;
+    void destroyWindow(void) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    int32_t getWindowDisplayIndex(void) const;
-    GfxDisplayMode * getWindowDisplayMode(void) const;
-    uint32_t getWindowPixelFormat(void) const;
+    int32_t getWindowDisplayIndex(void) const noexcept;
+    GfxDisplayMode * getWindowDisplayMode(void) const noexcept;
+    uint32_t getWindowPixelFormat(void) const noexcept;
 
-    uint32_t getWindowID(void) const;
-    GfxWindow const * getWindowFromID(const uint32_t id) const;
-    GfxWindowFlags * getWindowFlags(void) const;
-    void setWindowTitle(const std::string& title);
-    std::string getWindowTitle() const;
-    void setWindowIcon(surface::GfxSurface const& icon);
-    void * setWindowData(std::string const& name, void * userdata) const;
-    void * getWindowData(std::string const& name) const;
-    void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y);
-    void getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y);
-    void setWindowSize(const int32_t w, const int32_t h) const;
-    void getWindowSize(int32_t * pw, int32_t * ph) const;
-    void getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bottom, int32_t * right) const;
-    void setWindowMinimumSize(const int32_t min_w, const int32_t min_h) const;
-    void getWindowMinimumSize(int32_t * w, int32_t * h) const;
-    void setWindowMaximumSize(const int32_t max_w, const int32_t max_h) const;
-    void getWindowMaximumSize(int32_t * w, int32_t * h) const;
-    void setWindowBordered(GfxBool const& bordered) const;
-    void setWindowResizable(GfxBool const& resizable) const;
-    void showWindow(void) const;
-    void hideWindow(void) const;
-    void raiseWindow(void) const;
-    void maximizeWindow(void) const;
-    void minimizeWindow(void) const;
-    void restoreWindow(void) const;
-    void setWindowFullscreen(const fullscreenflags_t flags) const;
-    surface::GfxSurface * getWindowSurface(void);
-    void updateWindowSurface(void);
-    void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const;
-    void setWindowGrab(GfxBool const& grabbed) const;
-    GfxBool getWindowGrab(void) const;
-    GfxWindow const * getGrabbedWindow(void) const;
-    void setWindowBrightness(const float brightness) const;
-    float getWindowBrightness(void) const;
-    void setWindowOpacity(const float opacity) const;
-    float getWindowOpacity(void) const;
-    void setWindowModalFor(GfxWindow const& modal_window) const;
-    void setWindowInputFocus(void) const;
+    uint32_t getWindowID(void) const noexcept;
+    GfxWindow const * getWindowFromID(const uint32_t id) const noexcept;
+    GfxWindowFlags * getWindowFlags(void) const noexcept;
+    void setWindowTitle(const std::string& title) noexcept;
+    std::string getWindowTitle() const noexcept;
+    void setWindowIcon(surface::GfxSurface const& icon) noexcept;
+    void * setWindowData(std::string const& name, void * userdata) const noexcept;
+    void * getWindowData(std::string const& name) const noexcept;
+    void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y) noexcept;
+    void getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y) noexcept;
+    void setWindowSize(const int32_t w, const int32_t h) const noexcept;
+    void getWindowSize(int32_t * pw, int32_t * ph) const noexcept;
+    void getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bottom, int32_t * right) const noexcept;
+    void setWindowMinimumSize(const int32_t min_w, const int32_t min_h) const noexcept;
+    void getWindowMinimumSize(int32_t * w, int32_t * h) const noexcept;
+    void setWindowMaximumSize(const int32_t max_w, const int32_t max_h) const noexcept;
+    void getWindowMaximumSize(int32_t * w, int32_t * h) const noexcept;
+    void setWindowBordered(GfxBool const& bordered) const noexcept;
+    void setWindowResizable(GfxBool const& resizable) const noexcept;
+    void showWindow(void) const noexcept;
+    void hideWindow(void) const noexcept;
+    void raiseWindow(void) const noexcept;
+    void maximizeWindow(void) const noexcept;
+    void minimizeWindow(void) const noexcept;
+    void restoreWindow(void) const noexcept;
+    void setWindowFullscreen(const fullscreenflags_t flags) const noexcept;
+    surface::GfxSurface * getWindowSurface(void) noexcept;
+    void updateWindowSurface(void) noexcept;
+    void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const noexcept;
+    void setWindowGrab(GfxBool const& grabbed) const noexcept;
+    GfxBool getWindowGrab(void) const noexcept;
+    GfxWindow const * getGrabbedWindow(void) const noexcept;
+    void setWindowBrightness(const float brightness) const noexcept;
+    float getWindowBrightness(void) const noexcept;
+    void setWindowOpacity(const float opacity) const noexcept;
+    float getWindowOpacity(void) const noexcept;
+    void setWindowModalFor(GfxWindow const& modal_window) const noexcept;
+    void setWindowInputFocus(void) const noexcept;
     void setWindowGammaRamp(xtra::GfxGammaRamp const& red, xtra::GfxGammaRamp const& green,
-                            xtra::GfxGammaRamp const& blue) const;
+                            xtra::GfxGammaRamp const& blue) const noexcept;
     void getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp * green,
-                            xtra::GfxGammaRamp * blue) const;
-    void setWindowHitTest(GfxHitTest const& callback, void * callback_data) const;
+                            xtra::GfxGammaRamp * blue) const noexcept;
+    void setWindowHitTest(GfxHitTest const& callback, void * callback_data) const noexcept;
 
-    int32_t getWidth() const;
-    int32_t getHeight() const;
+    int32_t getWidth() const noexcept;
+    int32_t getHeight() const noexcept;
 
-    SdlTypePtr getAsSdlTypePtr() const;
+    SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
     SdlTypePtr window_;
 };

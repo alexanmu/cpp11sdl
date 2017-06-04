@@ -50,39 +50,39 @@ public:
         styleStrikethrough = TTF_STYLE_STRIKETHROUGH
     };
 
-    GfxTtfFontStyle();
-    explicit GfxTtfFontStyle(bool bold, bool italic, bool underline, bool strikethrough);
-    explicit GfxTtfFontStyle(SdlType style);
+    GfxTtfFontStyle() noexcept;
+    explicit GfxTtfFontStyle(bool bold, bool italic, bool underline, bool strikethrough) noexcept;
+    explicit GfxTtfFontStyle(SdlType style) noexcept;
 
-    GfxTtfFontStyle(GfxTtfFontStyle const& other);
-    GfxTtfFontStyle(GfxTtfFontStyle&& other);
+    GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept;
+    GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept;
 
-    GfxTtfFontStyle& operator=(GfxTtfFontStyle const& other);
-    GfxTtfFontStyle& operator=(GfxTtfFontStyle&& other);
+    GfxTtfFontStyle& operator=(GfxTtfFontStyle const& other) noexcept;
+    GfxTtfFontStyle& operator=(GfxTtfFontStyle&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isNormal(void) const;
-    bool isBold(void) const;
-    bool isItalic(void) const;
-    bool isUnderline(void) const;
-    bool isStrikethrough(void) const;
+    bool isNormal(void) const noexcept;
+    bool isBold(void) const noexcept;
+    bool isItalic(void) const noexcept;
+    bool isUnderline(void) const noexcept;
+    bool isStrikethrough(void) const noexcept;
 
-    void setNormal(void);
+    void setNormal(void) noexcept;
 
-    void setBold(void);
-    void resetBold(void);
-    void setItalic(void);
-    void resetItalic(void);
-    void setUnderline(void);
-    void resetUnderline(void);
-    void setStrikethrough(void);
-    void resetStrikethrough(void);
+    void setBold(void) noexcept;
+    void resetBold(void) noexcept;
+    void setItalic(void) noexcept;
+    void resetItalic(void) noexcept;
+    void setUnderline(void) noexcept;
+    void resetUnderline(void) noexcept;
+    void setStrikethrough(void) noexcept;
+    void resetStrikethrough(void) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType style_;
 };

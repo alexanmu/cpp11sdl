@@ -57,53 +57,53 @@ public:
         initNoParachute = SDL_INIT_NOPARACHUTE
     };
 
-    GfxInitFlags();
+    GfxInitFlags() noexcept;
 
-    explicit GfxInitFlags(const int32_t flags);
-    explicit GfxInitFlags(ValueType const& flags);
+    explicit GfxInitFlags(const int32_t flags) noexcept;
+    explicit GfxInitFlags(const ValueType flags) noexcept;
 
-    GfxInitFlags(const GfxInitFlags&);
-    GfxInitFlags(GfxInitFlags&&);
+    GfxInitFlags(GfxInitFlags const& other) noexcept;
+    GfxInitFlags(GfxInitFlags&& other) noexcept;
 
-    GfxInitFlags& operator=(GfxInitFlags const&);
-    GfxInitFlags& operator=(GfxInitFlags&&);
+    GfxInitFlags& operator=(GfxInitFlags const& other) noexcept;
+    GfxInitFlags& operator=(GfxInitFlags&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isNothing(void) const;
-    bool isTimer(void) const;
-    bool isAudio(void) const;
-    bool isVideo(void) const;
-    bool isJoystick(void) const;
-    bool isHaptic(void) const;
-    bool isGameController(void) const;
-    bool isEvents(void) const;
-    bool isEverything(void) const;
-    bool isNoParachute(void) const;
+    bool isNothing(void) const noexcept;
+    bool isTimer(void) const noexcept;
+    bool isAudio(void) const noexcept;
+    bool isVideo(void) const noexcept;
+    bool isJoystick(void) const noexcept;
+    bool isHaptic(void) const noexcept;
+    bool isGameController(void) const noexcept;
+    bool isEvents(void) const noexcept;
+    bool isEverything(void) const noexcept;
+    bool isNoParachute(void) const noexcept;
 
-    void setTimer(void);
-    void resetTimer(void);
-    void setAudio(void);
-    void resetAudio(void);
-    void setVideo(void);
-    void resetVideo(void);
-    void setJoystick(void);
-    void resetJoystick(void);
-    void setHaptic(void);
-    void resetHaptic(void);
-    void setGameController(void);
-    void resetGameController(void);
-    void setEvents(void);
-    void resetEvents(void);
-    void setEverything(void);
-    void resetEverything(void);
-    void setNoParachute(void);
-    void resetNoParachute(void);
+    void setTimer(void) noexcept;
+    void resetTimer(void) noexcept;
+    void setAudio(void) noexcept;
+    void resetAudio(void) noexcept;
+    void setVideo(void) noexcept;
+    void resetVideo(void) noexcept;
+    void setJoystick(void) noexcept;
+    void resetJoystick(void) noexcept;
+    void setHaptic(void) noexcept;
+    void resetHaptic(void) noexcept;
+    void setGameController(void) noexcept;
+    void resetGameController(void) noexcept;
+    void setEvents(void) noexcept;
+    void resetEvents(void) noexcept;
+    void setEverything(void) noexcept;
+    void resetEverything(void) noexcept;
+    void setNoParachute(void) noexcept;
+    void resetNoParachute(void) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     uint32_t flags_;
 };

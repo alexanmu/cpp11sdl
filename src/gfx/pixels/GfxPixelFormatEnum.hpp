@@ -88,23 +88,23 @@ public:
         pixelFormatNV21 = sdl2::SDL_PIXELFORMAT_NV21
     };
 
-    GfxPixelFormatEnum();
-    explicit GfxPixelFormatEnum(const ValueType value);
-    explicit GfxPixelFormatEnum(const SdlType value);
+    GfxPixelFormatEnum() noexcept;
+    explicit GfxPixelFormatEnum(const ValueType value) noexcept;
+    explicit GfxPixelFormatEnum(const SdlType value) noexcept;
 
-    GfxPixelFormatEnum(GfxPixelFormatEnum const& other);
-    GfxPixelFormatEnum(GfxPixelFormatEnum&& other);
+    GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept;
+    GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept;
 
-    GfxPixelFormatEnum& operator=(GfxPixelFormatEnum const& other);
-    GfxPixelFormatEnum& operator=(GfxPixelFormatEnum&& other);
+    GfxPixelFormatEnum& operator=(GfxPixelFormatEnum const& other) noexcept;
+    GfxPixelFormatEnum& operator=(GfxPixelFormatEnum&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

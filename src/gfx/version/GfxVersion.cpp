@@ -34,41 +34,42 @@ namespace version
 
 const char GfxVersion::ClassName[] = "GfxVersion";
 
-GfxVersion::GfxVersion() : GfxRootClass(ClassName)
+GfxVersion::GfxVersion() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxVersion::operator bool() const
+GfxVersion::operator bool() const noexcept
 {
     return true;
 }
 
-GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) noexcept :
+            GfxRootClass(ClassName)
 {
     ver_.major = major;
     ver_.minor = minor;
     ver_.patch = patch;
 }
 
-GfxVersion::GfxVersion(const SdlType ver) : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(const SdlType ver) noexcept : GfxRootClass(ClassName)
 {
     ver_ = ver;
 }
 
-GfxVersion::GfxVersion(GfxVersion const& other) : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxRootClass(ClassName)
 {
     ver_ = other.ver_;
 }
 
-GfxVersion::GfxVersion(GfxVersion&& other) : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxRootClass(ClassName)
 {
     ver_ = other.ver_;
     // Delete other's data
     other.clear();
 }
 
-GfxVersion& GfxVersion::operator=(GfxVersion const& other)
+GfxVersion& GfxVersion::operator=(GfxVersion const& other) noexcept
 {
     if (this != &other)
     {
@@ -77,7 +78,7 @@ GfxVersion& GfxVersion::operator=(GfxVersion const& other)
     return *this;
 }
 
-GfxVersion& GfxVersion::operator=(GfxVersion&& other)
+GfxVersion& GfxVersion::operator=(GfxVersion&& other) noexcept
 {
     if (this != &other)
     {
@@ -88,34 +89,34 @@ GfxVersion& GfxVersion::operator=(GfxVersion&& other)
     return *this;
 }
 
-uint8_t GfxVersion::getMajor(void) const
+uint8_t GfxVersion::getMajor(void) const noexcept
 {
     return ver_.major;
 }
 
-uint8_t GfxVersion::getMinor(void) const
+uint8_t GfxVersion::getMinor(void) const noexcept
 {
     return ver_.minor;
 }
 
-uint8_t GfxVersion::getPatch(void) const
+uint8_t GfxVersion::getPatch(void) const noexcept
 {
     return ver_.patch;
 }
 
-void GfxVersion::set(const SdlType ver)
+void GfxVersion::set(const SdlType ver) noexcept
 {
     ver_ = ver;
 }
 
-void GfxVersion::clear(void)
+void GfxVersion::clear(void) noexcept
 {
     ver_.major = 0;
     ver_.minor = 0;
     ver_.patch = 0;
 }
 
-std::string GfxVersion::getAsString(void) const
+std::string GfxVersion::getAsString(void) const noexcept
 {
     std::string str;
 
@@ -123,12 +124,12 @@ std::string GfxVersion::getAsString(void) const
     return str;
 }
 
-GfxVersion::SdlType GfxVersion::getAsSdlType(void) const
+GfxVersion::SdlType GfxVersion::getAsSdlType(void) const noexcept
 {
     return ver_;
 }
 
-GfxVersion::SdlTypePtr GfxVersion::getAsSdlTypePtr(void) const
+GfxVersion::SdlTypePtr GfxVersion::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&ver_;
 }

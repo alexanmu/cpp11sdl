@@ -55,23 +55,23 @@ public:
         packedOrderBGRA = sdl2::SDL_PACKEDORDER_BGRA
     };
 
-    GfxPackedOrder();
-    explicit GfxPackedOrder(ValueType value);
-    explicit GfxPackedOrder(SdlType value);
+    GfxPackedOrder() noexcept;
+    explicit GfxPackedOrder(const ValueType value) noexcept;
+    explicit GfxPackedOrder(const SdlType value) noexcept;
 
-    GfxPackedOrder(GfxPackedOrder const& other);
-    GfxPackedOrder(GfxPackedOrder&& other);
+    GfxPackedOrder(GfxPackedOrder const& other) noexcept;
+    GfxPackedOrder(GfxPackedOrder&& other) noexcept;
 
-    GfxPackedOrder& operator=(GfxPackedOrder const& other);
-    GfxPackedOrder& operator=(GfxPackedOrder&& other);
+    GfxPackedOrder& operator=(GfxPackedOrder const& other) noexcept;
+    GfxPackedOrder& operator=(GfxPackedOrder&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

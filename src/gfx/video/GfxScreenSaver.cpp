@@ -35,30 +35,30 @@ namespace video
 
 const char GfxScreenSaver::ClassName[] = "GfxScreenSaver";
 
-GfxScreenSaver::GfxScreenSaver() : GfxRootClass(ClassName)
+GfxScreenSaver::GfxScreenSaver() noexcept : GfxRootClass(ClassName)
 {
     GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
 
     ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
 }
 
-GfxScreenSaver::operator bool() const
+GfxScreenSaver::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxScreenSaver::isScreenSaverEnabled(void) const
+bool GfxScreenSaver::isScreenSaverEnabled(void) const noexcept
 {
     return static_cast<bool>(ssstatus_);
 }
 
-void GfxScreenSaver::enableScreenSaver(void)
+void GfxScreenSaver::enableScreenSaver(void) noexcept
 {
     sdl2::SDL_EnableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusEnabled;
 }
 
-void GfxScreenSaver::disableScreenSaver(void)
+void GfxScreenSaver::disableScreenSaver(void) noexcept
 {
     sdl2::SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;

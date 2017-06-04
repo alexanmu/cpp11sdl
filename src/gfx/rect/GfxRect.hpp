@@ -47,45 +47,45 @@ public:
 
     static const char ClassName[];
 
-    GfxRect();
+    GfxRect() noexcept;
 
-    GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h);
-    explicit GfxRect(const SdlType rect);
+    GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) noexcept;
+    explicit GfxRect(const SdlType rect) noexcept;
 
-    GfxRect(GfxRect const& other);
-    GfxRect(GfxRect&& other);
+    GfxRect(GfxRect const& other) noexcept;
+    GfxRect(GfxRect&& other) noexcept;
 
-    GfxRect& operator=(GfxRect const& other);
-    GfxRect& operator=(GfxRect&& other);
+    GfxRect& operator=(GfxRect const& other) noexcept;
+    GfxRect& operator=(GfxRect&& other) noexcept;
 
-    bool operator==(GfxRect const& other);
+    bool operator==(GfxRect const& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    int32_t getX(void) const;
-    int32_t getY(void) const;
-    int32_t getWidth(void) const;
-    int32_t getHeight(void) const;
+    int32_t getX(void) const noexcept;
+    int32_t getY(void) const noexcept;
+    int32_t getWidth(void) const noexcept;
+    int32_t getHeight(void) const noexcept;
 
-    void setX(const int32_t x);
-    void setY(const int32_t y);
-    void setWidth(const int32_t w);
-    void setHeight(const int32_t h);
-    void set(SdlType r);
+    void setX(const int32_t x) noexcept;
+    void setY(const int32_t y) noexcept;
+    void setWidth(const int32_t w) noexcept;
+    void setHeight(const int32_t h) noexcept;
+    void set(const SdlType r) noexcept;
 
-    GfxBool pointInRect(GfxPoint const& p) const;
-    GfxBool rectEmpty(void) const;
-    GfxBool rectEquals(GfxRect const& r) const;
-    GfxBool hasIntersection(GfxRect const& r) const;
-    GfxBool intersectRect(GfxRect const &r, GfxRect * result) const;
-    void unionRect(GfxRect const &r, GfxRect * result) const;
-    GfxBool enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const;
-    GfxBool intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const;
+    GfxBool pointInRect(GfxPoint const& p) const noexcept;
+    GfxBool rectEmpty(void) const noexcept;
+    GfxBool rectEquals(GfxRect const& r) const noexcept;
+    GfxBool hasIntersection(GfxRect const& r) const noexcept;
+    GfxBool intersectRect(GfxRect const &r, GfxRect * result) const noexcept;
+    void unionRect(GfxRect const &r, GfxRect * result) const noexcept;
+    GfxBool enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const noexcept;
+    GfxBool intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType() const;
-    SdlTypePtr getAsSdlTypePtr() const;
+    SdlType getAsSdlType() const noexcept;
+    SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
     SdlType rect_;
 };

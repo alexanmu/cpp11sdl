@@ -54,25 +54,25 @@ public:
         colorMax = sdl2::SDL_MESSAGEBOX_COLOR_MAX
     };
 
-    GfxMessageBoxColorType();
+    GfxMessageBoxColorType() noexcept;
 
-    explicit GfxMessageBoxColorType(const SdlType type);
-    explicit GfxMessageBoxColorType(const ValueType type);
+    explicit GfxMessageBoxColorType(const SdlType type) noexcept;
+    explicit GfxMessageBoxColorType(const ValueType type) noexcept;
 
-    GfxMessageBoxColorType(GfxMessageBoxColorType const& other);
-    GfxMessageBoxColorType(GfxMessageBoxColorType&& other);
+    GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept;
+    GfxMessageBoxColorType(GfxMessageBoxColorType&& other) noexcept;
 
-    GfxMessageBoxColorType& operator=(GfxMessageBoxColorType const& other);
-    GfxMessageBoxColorType& operator=(GfxMessageBoxColorType&& other);
+    GfxMessageBoxColorType& operator=(GfxMessageBoxColorType const& other) noexcept;
+    GfxMessageBoxColorType& operator=(GfxMessageBoxColorType&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    ValueType getType(void) const;
+    ValueType getType(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdllType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdllType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType type_;
 };

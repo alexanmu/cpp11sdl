@@ -35,7 +35,7 @@ namespace msgbox
 
 const char GfxMessageBoxData::ClassName[] = "GfxMessageBoxData";
 
-GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
+GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxRootClass(ClassName)
 {
     btndataptr = nullptr;
     clear();
@@ -43,7 +43,8 @@ GfxMessageBoxData::GfxMessageBoxData() : GfxRootClass(ClassName)
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win,
                                      const std::string& title, const std::string& message, const int32_t numbuttons,
-                                     GfxMessageBoxButtonData buttons[], const GfxMessageBoxColorScheme& colorScheme) :
+                                     GfxMessageBoxButtonData buttons[],
+                                     const GfxMessageBoxColorScheme& colorScheme) noexcept :
         GfxRootClass(ClassName)
 {
     assert(flags);
@@ -77,7 +78,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
 
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win,
                                      const std::string& title, const std::string& message, const int32_t numbuttons,
-                                     GfxMessageBoxButtonData buttons[]) :
+                                     GfxMessageBoxButtonData buttons[]) noexcept :
         GfxRootClass(ClassName)
 {
     assert(flags);
@@ -101,14 +102,14 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const vide
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) : GfxRootClass(ClassName)
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxRootClass(ClassName)
 {
     data_ = other.data_;
     title_ = other.title_;
     message_ = other.message_;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) : GfxRootClass(ClassName)
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxRootClass(ClassName)
 {
     data_ = other.data_;
     title_ = other.title_;
@@ -117,7 +118,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) : GfxRootClass(C
     other.clear();
 }
 
-GfxMessageBoxData::~GfxMessageBoxData()
+GfxMessageBoxData::~GfxMessageBoxData() noexcept
 {
     if (btndataptr != nullptr)
     {
@@ -125,7 +126,7 @@ GfxMessageBoxData::~GfxMessageBoxData()
     }
 }
 
-GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other)
+GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) noexcept
 {
     if (this != &other)
     {
@@ -136,7 +137,7 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other)
     return *this;
 }
 
-GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other)
+GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other) noexcept
 {
     if (this != &other)
     {
@@ -149,12 +150,12 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other)
     return *this;
 }
 
-GfxMessageBoxData::operator bool() const
+GfxMessageBoxData::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxMessageBoxData::clear(void)
+void GfxMessageBoxData::clear(void) noexcept
 {
     data_.flags = 0;
     data_.window = nullptr;
@@ -163,20 +164,16 @@ void GfxMessageBoxData::clear(void)
     message_ = "";
     data_.message = "'";
     data_.numbuttons = 0;
-    if (btndataptr != nullptr)
-    {
-        delete btndataptr;
-        btndataptr = nullptr;
-    }
+    btndataptr = nullptr;
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::SdlType GfxMessageBoxData::getAsSdlType(void) const
+GfxMessageBoxData::SdlType GfxMessageBoxData::getAsSdlType(void) const noexcept
 {
     return data_;
 }
 
-GfxMessageBoxData::SdlTypePtr GfxMessageBoxData::getAsSdlTypePtr(void) const
+GfxMessageBoxData::SdlTypePtr GfxMessageBoxData::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&data_;
 }

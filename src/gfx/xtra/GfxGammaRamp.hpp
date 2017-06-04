@@ -43,22 +43,22 @@ public:
 
     static const char ClassName[];
 
-    GfxGammaRamp();
-    explicit GfxGammaRamp(SdlTypePtr gammaRamp);
+    GfxGammaRamp() noexcept;
+    explicit GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept;
 
-    GfxGammaRamp(GfxGammaRamp const& other);
-    GfxGammaRamp(GfxGammaRamp&& other);
+    GfxGammaRamp(GfxGammaRamp const& other) noexcept;
+    GfxGammaRamp(GfxGammaRamp&& other) noexcept;
 
-    GfxGammaRamp& operator=(GfxGammaRamp const& other);
-    GfxGammaRamp& operator=(GfxGammaRamp&& other);
+    GfxGammaRamp& operator=(GfxGammaRamp const& other) noexcept;
+    GfxGammaRamp& operator=(GfxGammaRamp&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    uint16_t& operator [](int32_t index) throw(std::runtime_error);
+    uint16_t& operator [](const int32_t index) throw(std::runtime_error);
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     static const int32_t kGammaRampNumberOfElements = 256;
     static const uint16_t kInvalidValue = 0xFFFF;

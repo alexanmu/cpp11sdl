@@ -33,36 +33,36 @@ namespace ttf
 
 const char GfxTtfFontHinting::ClassName[] = "GfxTtfFontHinting";
 
-GfxTtfFontHinting::GfxTtfFontHinting() : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept : GfxRootClass(ClassName)
 {
     hinting_ = static_cast<SdlType>(hinting);
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) noexcept : GfxRootClass(ClassName)
 {
     assert(hinting >= 0);
 
     hinting_ = hinting;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept : GfxRootClass(ClassName)
 {
     hinting_ = other.hinting_;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept : GfxRootClass(ClassName)
 {
     hinting_ = other.hinting_;
     // Delete other's data
     other.clear();
 }
 
-GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting const& other)
+GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting const& other) noexcept
 {
     if (this != &other)
     {
@@ -71,7 +71,7 @@ GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting const& other)
     return *this;
 }
 
-GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting&& other)
+GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting&& other) noexcept
 {
     if (this != &other)
     {
@@ -82,62 +82,62 @@ GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting&& other)
     return *this;
 }
 
-GfxTtfFontHinting::operator bool() const
+GfxTtfFontHinting::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxTtfFontHinting::isNormal(void) const
+bool GfxTtfFontHinting::isNormal(void) const noexcept
 {
     return (hinting_ == TTF_HINTING_NORMAL);
 }
 
-bool GfxTtfFontHinting::isLight(void) const
+bool GfxTtfFontHinting::isLight(void) const noexcept
 {
     return (hinting_ == TTF_HINTING_LIGHT);
 }
 
-bool GfxTtfFontHinting::isMono(void) const
+bool GfxTtfFontHinting::isMono(void) const noexcept
 {
     return (hinting_ == TTF_HINTING_MONO);
 }
 
-bool GfxTtfFontHinting::isNone(void) const
+bool GfxTtfFontHinting::isNone(void) const noexcept
 {
     return (hinting_ == TTF_HINTING_NONE);
 }
 
-void GfxTtfFontHinting::setNormal(void)
+void GfxTtfFontHinting::setNormal(void) noexcept
 {
     hinting_ = TTF_HINTING_NORMAL;
 }
 
-void GfxTtfFontHinting::setLight(void)
+void GfxTtfFontHinting::setLight(void) noexcept
 {
     hinting_ = TTF_HINTING_LIGHT;
 }
 
-void GfxTtfFontHinting::setMono(void)
+void GfxTtfFontHinting::setMono(void) noexcept
 {
     hinting_ = TTF_HINTING_MONO;
 }
 
-void GfxTtfFontHinting::setNone(void)
+void GfxTtfFontHinting::setNone(void) noexcept
 {
     hinting_ = TTF_HINTING_NONE;
 }
 
-void GfxTtfFontHinting::clear(void)
+void GfxTtfFontHinting::clear(void) noexcept
 {
     hinting_ = static_cast<SdlType>(GfxTtfFontHintingValues::hintingNormal);
 }
 
-GfxTtfFontHinting::SdlType GfxTtfFontHinting::getAsSdlType(void) const
+GfxTtfFontHinting::SdlType GfxTtfFontHinting::getAsSdlType(void) const noexcept
 {
     return hinting_;
 }
 
-GfxTtfFontHinting::SdlTypePtr GfxTtfFontHinting::getAsSdlTypePtr(void) const
+GfxTtfFontHinting::SdlTypePtr GfxTtfFontHinting::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&hinting_;
 }

@@ -46,64 +46,65 @@ public:
 
     static const char ClassName[];
 
-    GfxTtfFont();
-    GfxTtfFont(std::string const& filename, int32_t pointsize);
-    GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t index);
+    GfxTtfFont() noexcept;
+    GfxTtfFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error);
+    GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error);
 
+    // RWops not supported yet!
     /* GfxTtfFont(SDL_RWops * src ...)
     GfxTtfFont(SDL_RWops * src ..., long index) */
 
     GfxTtfFont(GfxTtfFont const& other) = delete;
-    GfxTtfFont(GfxTtfFont&& other);
+    GfxTtfFont(GfxTtfFont&& other) noexcept;
 
     GfxTtfFont& operator=(GfxTtfFont const& other) = delete;
-    GfxTtfFont& operator=(GfxTtfFont&& other);
+    GfxTtfFont& operator=(GfxTtfFont&& other) noexcept;
 
-    virtual ~GfxTtfFont();
+    virtual ~GfxTtfFont() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     void openFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error);
     void openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error);
-    void closeFont(void);
+    void closeFont(void) noexcept;
 
-    void setByteSwappedUnicode(bool swapped) const;
+    void setByteSwappedUnicode(bool swapped) const noexcept;
 
-    GfxTtfFontStyle const& getFontStyle(void) const;
-    void setFontStyle(GfxTtfFontStyle const& fontstyle);
+    GfxTtfFontStyle const& getFontStyle(void) const noexcept;
+    void setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept;
 
-    GfxTtfFontHinting const& getFontHinting(void) const;
-    void setFontHinting(GfxTtfFontHinting const& fonthinting);
+    GfxTtfFontHinting const& getFontHinting(void) const noexcept;
+    void setFontHinting(GfxTtfFontHinting const& fonthinting) noexcept;
 
-    int32_t getFontOutline(void) const;
-    void setFontOutline(int32_t const& outline);
+    int32_t getFontOutline(void) const noexcept;
+    void setFontOutline(int32_t const& outline) noexcept;
 
-    bool getFontKerning(void) const;
-    void setFontKerning(bool const& kerning);
+    bool getFontKerning(void) const noexcept;
+    void setFontKerning(bool const& kerning) noexcept;
 
-    int32_t getFontHeight(void) const;
-    int32_t getFontAscent(void) const;
-    int32_t getFontDescent(void) const;
-    int32_t getFontLineSkip(void) const;
+    int32_t getFontHeight(void) const noexcept;
+    int32_t getFontAscent(void) const noexcept;
+    int32_t getFontDescent(void) const noexcept;
+    int32_t getFontLineSkip(void) const noexcept;
 
-    int64_t getFontFaces(void) const;
+    int64_t getFontFaces(void) const noexcept;
 
-    bool isFontFaceFixedWidth(void) const;
+    bool isFontFaceFixedWidth(void) const noexcept;
 
-    std::string getFontFaceFamilyName(void) const;
-    std::string getFontFaceStyleName(void) const;
+    std::string getFontFaceFamilyName(void) const noexcept;
+    std::string getFontFaceStyleName(void) const noexcept;
 
-    int32_t glyphIsProvided(uint16_t ch) const;
+    int32_t glyphIsProvided(uint16_t ch) const noexcept;
     bool glyphMetrics(uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
-                        int32_t * maxy, int32_t * advance) const;
+                      int32_t * maxy, int32_t * advance) const noexcept;
 
-    bool sizeText(std::string const& text, int32_t * w, int32_t * h) const;
-    bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const;
+    bool sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept;
+    bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept;
     bool sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error);
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlTypePtr ttf_;
     std::string fileName_;

@@ -53,31 +53,31 @@ public:
         stateCharged = sdl2::SDL_POWERSTATE_CHARGED
     };
 
-    GfxPowerState();
+    GfxPowerState() noexcept;
 
-    explicit GfxPowerState(const ValueType value);
-    explicit GfxPowerState(const SdlType value);
+    explicit GfxPowerState(const ValueType value) noexcept;
+    explicit GfxPowerState(const SdlType value) noexcept;
 
-    GfxPowerState(GfxPowerState const& other);
-    GfxPowerState(GfxPowerState&& other);
+    GfxPowerState(GfxPowerState const& other) noexcept;
+    GfxPowerState(GfxPowerState&& other) noexcept;
 
-    GfxPowerState& operator=(GfxPowerState const& other);
-    GfxPowerState& operator=(GfxPowerState&& other);
+    GfxPowerState& operator=(GfxPowerState const& other) noexcept;
+    GfxPowerState& operator=(GfxPowerState&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isUnknown(void) const;
-    bool isOnBattery(void) const;
-    bool isNoBattery(void) const;
-    bool isCharging(void) const;
-    bool isCharged(void) const;
+    bool isUnknown(void) const noexcept;
+    bool isOnBattery(void) const noexcept;
+    bool isNoBattery(void) const noexcept;
+    bool isCharging(void) const noexcept;
+    bool isCharged(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    const std::string getAsString(void) const;
+    const std::string getAsString(void) const noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType value_;
 };

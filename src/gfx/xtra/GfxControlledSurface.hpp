@@ -45,7 +45,7 @@ class GfxControlledSurface final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxControlledSurface();
+    GfxControlledSurface() noexcept;
 
     GfxControlledSurface(const GfxControlledSurface&) = delete;
     GfxControlledSurface(GfxControlledSurface&& surf) = delete;
@@ -53,9 +53,9 @@ public:
     GfxControlledSurface& operator=(const GfxControlledSurface&) = delete;
     GfxControlledSurface& operator=(GfxControlledSurface&& surf) = delete;
 
-    virtual ~GfxControlledSurface();
+    virtual ~GfxControlledSurface() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     void createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error);
     void createSurface(std::string const& filename) throw(std::runtime_error);

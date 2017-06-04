@@ -39,11 +39,11 @@ class GfxHitTest : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxHitTest();
+    GfxHitTest() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    virtual GfxHitTestResult const& operator()(void * win, rect::GfxPoint * area, void * data) = 0;
+    virtual GfxHitTestResult const& operator()(void * win, rect::GfxPoint * area, void * data) noexcept = 0;
 protected:
     GfxHitTestResult hitTestResult_;
 };

@@ -44,33 +44,33 @@ public:
 
     static const char ClassName[];
 
-    GfxPoint();
+    GfxPoint() noexcept;
 
-    GfxPoint(const int32_t x, const int32_t y);
-    explicit GfxPoint(const SdlType pt);
+    GfxPoint(const int32_t x, const int32_t y) noexcept;
+    explicit GfxPoint(const SdlType pt) noexcept;
 
-    GfxPoint(GfxPoint const& other);
-    GfxPoint(GfxPoint&& other);
+    GfxPoint(GfxPoint const& other) noexcept;
+    GfxPoint(GfxPoint&& other) noexcept;
 
-    GfxPoint& operator=(GfxPoint const& other);
-    GfxPoint& operator=(GfxPoint&& other);
+    GfxPoint& operator=(GfxPoint const& other) noexcept;
+    GfxPoint& operator=(GfxPoint&& other) noexcept;
 
-    bool operator==(GfxPoint const& other);
+    bool operator==(GfxPoint const& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     /* Getters */
-    int32_t getX(void) const;
-    int32_t getY(void) const;
+    int32_t getX(void) const noexcept;
+    int32_t getY(void) const noexcept;
 
     /* Setters */
-    void setX(const int32_t x);
-    void setY(const int32_t y);
+    void setX(const int32_t x) noexcept;
+    void setY(const int32_t y) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType pt_;
 };

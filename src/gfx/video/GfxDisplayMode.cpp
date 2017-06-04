@@ -35,13 +35,13 @@ namespace video
 
 const char GfxDisplayMode::ClassName[] = "GfxDisplayMode";
 
-GfxDisplayMode::GfxDisplayMode() : GfxRootClass(ClassName)
+GfxDisplayMode::GfxDisplayMode() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t const h, int32_t const refresh) :
-        GfxRootClass(ClassName)
+GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t const h,
+                               int32_t const refresh) noexcept : GfxRootClass(ClassName)
 {
     assert(w >= 0);
     assert(h >= 0);
@@ -54,7 +54,7 @@ GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t c
     dmode_.driverdata = NULL;
 }
 
-GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) : GfxRootClass(ClassName)
+GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxRootClass(ClassName)
 {
     dmode_.format = other.dmode_.format;
     dmode_.w = other.dmode_.w;
@@ -65,7 +65,7 @@ GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) : GfxRootClass(ClassName)
     other.clear();
 }
 
-GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other)
+GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other) noexcept
 {
     if (this != &other)
     {
@@ -80,37 +80,37 @@ GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other)
     return *this;
 }
 
-GfxDisplayMode::operator bool() const
+GfxDisplayMode::operator bool() const noexcept
 {
     return true;
 }
 
-uint32_t GfxDisplayMode::getFormat(void) const
+uint32_t GfxDisplayMode::getFormat(void) const noexcept
 {
     return dmode_.format;
 }
 
-int GfxDisplayMode::getWidth(void) const
+int GfxDisplayMode::getWidth(void) const noexcept
 {
     return dmode_.w;
 }
 
-int GfxDisplayMode::getHeight(void) const
+int GfxDisplayMode::getHeight(void) const noexcept
 {
     return dmode_.h;
 }
 
-int GfxDisplayMode::getRefreshRate(void) const
+int GfxDisplayMode::getRefreshRate(void) const noexcept
 {
     return dmode_.refresh_rate;
 }
 
-void GfxDisplayMode::set(const SdlType dm)
+void GfxDisplayMode::set(const SdlType dm) noexcept
 {
     dmode_ = dm;
 }
 
-void GfxDisplayMode::clear(void)
+void GfxDisplayMode::clear(void) noexcept
 {
     dmode_.format = 0;
     dmode_.w = -1;
@@ -119,12 +119,12 @@ void GfxDisplayMode::clear(void)
     dmode_.driverdata = NULL;
 }
 
-GfxDisplayMode::SdlType GfxDisplayMode::getAsSdlType(void) const
+GfxDisplayMode::SdlType GfxDisplayMode::getAsSdlType(void) const noexcept
 {
     return dmode_;
 }
 
-GfxDisplayMode::SdlTypePtr GfxDisplayMode::getAsSdlTypePtr(void) const
+GfxDisplayMode::SdlTypePtr GfxDisplayMode::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&dmode_;
 }

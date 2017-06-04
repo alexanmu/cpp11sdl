@@ -58,23 +58,23 @@ public:
         pixelTypeArrayF32 = sdl2::SDL_PIXELTYPE_ARRAYF32
     };
 
-    GfxPixelType();
-    explicit GfxPixelType(ValueType value);
-    explicit GfxPixelType(SdlType value);
+    GfxPixelType() noexcept;
+    explicit GfxPixelType(const ValueType value) noexcept;
+    explicit GfxPixelType(const SdlType value) noexcept;
 
-    GfxPixelType(GfxPixelType const& other);
-    GfxPixelType(GfxPixelType&& other);
+    GfxPixelType(GfxPixelType const& other) noexcept;
+    GfxPixelType(GfxPixelType&& other) noexcept;
 
-    GfxPixelType& operator=(GfxPixelType const& other);
-    GfxPixelType& operator=(GfxPixelType&& other);
+    GfxPixelType& operator=(GfxPixelType const& other) noexcept;
+    GfxPixelType& operator=(GfxPixelType&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

@@ -70,68 +70,77 @@ public:
     explicit GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error);
 
     GfxSurface(const GfxSurface&) = delete;
-    GfxSurface(GfxSurface&& surf);
+    GfxSurface(GfxSurface&& other) noexcept;
 
     GfxSurface& operator=(const GfxSurface&) = delete;
-    GfxSurface& operator=(GfxSurface&& surf);
+    GfxSurface& operator=(GfxSurface&& other) noexcept;
 
-    virtual ~GfxSurface();
+    virtual ~GfxSurface() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void freeSurface(void);
+    void freeSurface(void) noexcept;
 
-    void setSurfacePalette(pixels::GfxPalette const& palette) const;
-    void lockSurface(void) const;
-    void unlockSurface(void) const;
-    void saveBMP(std::string const& filename) const;
-    void setSurfaceRLE(GfxBool const& flag) const;
-    void setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const;
-    pixels::GfxColor getColorKey(void) const;
-    void setSurfaceColorMod(pixels::GfxColor const& color) const;
-    pixels::GfxColor getSurfaceColorMod(void) const;
-    void setSurfaceAlphaMod(const uint8_t alpha) const;
-    uint8_t getSurfaceAlphaMod(void) const;
-    void setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) const;
-    blendmode::GfxBlendMode getSurfaceBlendMode(void) const;
-    GfxBool setClipRectOff(void) const;
-    GfxBool setClipRect(rect::GfxRect const& rect) const;
-    rect::GfxRect getClipRect(void) const;
-    SdlTypePtr convertSurface(pixels::GfxPixelFormat const& fmt, GfxSurfaceFlags const& sflags) const;
-    SdlTypePtr convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten, GfxSurfaceFlags const& sflags) const;
+    void setSurfacePalette(pixels::GfxPalette const& palette) const noexcept;
+    void lockSurface(void) const noexcept;
+    void unlockSurface(void) const noexcept;
+    void saveBMP(std::string const& filename) const noexcept;
+    void setSurfaceRLE(GfxBool const& flag) const noexcept;
+    void setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const noexcept;
+    pixels::GfxColor getColorKey(void) const noexcept;
+    void setSurfaceColorMod(pixels::GfxColor const& color) const noexcept;
+    pixels::GfxColor getSurfaceColorMod(void) const noexcept;
+    void setSurfaceAlphaMod(const uint8_t alpha) const noexcept;
+    uint8_t getSurfaceAlphaMod(void) const noexcept;
+    void setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
+    blendmode::GfxBlendMode getSurfaceBlendMode(void) const noexcept;
+    GfxBool setClipRectOff(void) const noexcept;
+    GfxBool setClipRect(rect::GfxRect const& rect) const noexcept;
+    rect::GfxRect getClipRect(void) const noexcept;
+    SdlTypePtr convertSurface(pixels::GfxPixelFormat const& fmt, GfxSurfaceFlags const& sflags) const noexcept;
+    SdlTypePtr convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten,
+                                    GfxSurfaceFlags const& sflags) const noexcept;
     void convertPixels(const int32_t width, const int32_t height, pixels::GfxPixelFormatEnum const& srcfmten,
                        void * src, const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst,
-                       const int32_t dst_pitch) const;
-    void fillRect(rect::GfxRect const& rect, pixels::GfxColor const& color);
-    void fillRect(pixels::GfxColor const& color);
-    void fillRects(std::vector<rect::GfxRect> const& rects, pixels::GfxColor const& color);
-    void upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect);
-    void lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect);
-    void softStrech(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect);
-    void upperBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect);
-    void lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect);
+                       const int32_t dst_pitch) const noexcept;
+    void fillRect(rect::GfxRect const& rect, pixels::GfxColor const& color) const noexcept;
+    void fillRect(pixels::GfxColor const& color) const noexcept;
+    void fillRects(std::vector<rect::GfxRect> const& rects, pixels::GfxColor const& color) const noexcept;
+    void upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect) const noexcept;
+    void lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect) const noexcept;
+    void softStrech(GfxSurface const& src, rect::GfxRect const& srcrect, rect::GfxRect const& dstrect) const noexcept;
+    void upperBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
+                         rect::GfxRect const& dstrect) const noexcept;
+    void lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
+                         rect::GfxRect const& dstrect) const noexcept;
 
-    void blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr);
-    void blitSurface(const GfxSurface& src);
-    void blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr);
+    void blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept;
+    void blitSurface(const GfxSurface& src) const noexcept;
+    void blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept;
 
-    GfxSurfaceFlags getSurfaceFlags(void) const;
-    pixels::GfxPixelFormatEnum getPixelFormat(void);
-    int32_t getWidth(void) const;
-    int32_t getHeight(void) const;
-    int32_t getPitch(void) const;
-    void * getPixels(void) const;
-    void * getUserData(void) const;
-    bool locked(void) const;
-    void * lockData(void) const;
+    GfxSurfaceFlags getSurfaceFlags(void) const noexcept;
+    pixels::GfxPixelFormatEnum getPixelFormat(void) const noexcept;
+    int32_t getWidth(void) const noexcept;
+    int32_t getHeight(void) const noexcept;
+    int32_t getPitch(void) const noexcept;
+    void * getPixels(void) const noexcept;
+    void * getUserData(void) const noexcept;
+    bool locked(void) const noexcept;
+    void * lockData(void) const noexcept;
+    uint32_t getBitsPerPixel(void) const noexcept;
+    uint32_t getBytesPerPixel(void) const noexcept;
 
-    void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr);
-    pixels::GfxColor getPixel(const int32_t x, const int32_t y);
+    std::string const& getSurfaceName(void) const noexcept;
 
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
+    pixels::GfxColor getPixel(const int32_t x, const int32_t y) const noexcept;
+
+    void clear(void) noexcept;
+
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
-    void putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& clr);
-    pixels::GfxColor getPixelPrv(const int32_t x, const int32_t y);
+    void putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
+    pixels::GfxColor getPixelPrv(const int32_t x, const int32_t y) const noexcept;
 
     SdlTypePtr surf_;
     std::string surfName_;

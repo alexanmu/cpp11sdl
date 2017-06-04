@@ -36,36 +36,36 @@ namespace surface
 
 const char GfxSurfaceFlags::ClassName[] = "GfxSurfaceFlags";
 
-GfxSurfaceFlags::GfxSurfaceFlags() : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const ValueType flags) : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags > 0);
 
     flags_ = flags;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
 }
 
-GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other)
+GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other) noexcept
 {
     if (this != &other)
     {
@@ -74,7 +74,7 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other)
     return *this;
 }
 
-GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other)
+GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other) noexcept
 {
     if (this != &other)
     {
@@ -85,70 +85,70 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other)
     return *this;
 }
 
-GfxSurfaceFlags::operator bool() const
+GfxSurfaceFlags::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxSurfaceFlags::isSwSurface(void) const
+bool GfxSurfaceFlags::isSwSurface(void) const noexcept
 {
     uint32_t r = flags_ & SDL_SWSURFACE;
 
     return (r != 0);
 }
 
-bool GfxSurfaceFlags::isPreAlloc(void) const
+bool GfxSurfaceFlags::isPreAlloc(void) const noexcept
 {
     uint32_t r = flags_ & SDL_PREALLOC;
 
     return (r != 0);
 }
 
-bool GfxSurfaceFlags::isRLEAccel(void) const
+bool GfxSurfaceFlags::isRLEAccel(void) const noexcept
 {
     uint32_t r = flags_ & SDL_RLEACCEL;
 
     return (r != 0);
 }
 
-bool GfxSurfaceFlags::isDontFree(void) const
+bool GfxSurfaceFlags::isDontFree(void) const noexcept
 {
     uint32_t r = flags_ & SDL_DONTFREE;
 
     return (r != 0);
 }
 
-void GfxSurfaceFlags::setSwSurface(void) throw(std::runtime_error)
+void GfxSurfaceFlags::setSwSurface(void) const throw(std::runtime_error)
 {
     throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::setPreAlloc(void) throw(std::runtime_error)
+void GfxSurfaceFlags::setPreAlloc(void) const throw(std::runtime_error)
 {
     throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::setRLEAccel(void) throw(std::runtime_error)
+void GfxSurfaceFlags::setRLEAccel(void) const throw(std::runtime_error)
 {
     throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::setDontFree(void) throw(std::runtime_error)
+void GfxSurfaceFlags::setDontFree(void) const throw(std::runtime_error)
 {
     throw std::runtime_error("Not supported");
 }
 
-void GfxSurfaceFlags::clear(void)
+void GfxSurfaceFlags::clear(void) noexcept
 {
     flags_ = static_cast<SdlType>(ValueType::flagSwSurface);
 }
 
-GfxSurfaceFlags::SdlType GfxSurfaceFlags::getAsSdlType(void) const
+GfxSurfaceFlags::SdlType GfxSurfaceFlags::getAsSdlType(void) const noexcept
 {
     return flags_;
 }
 
-GfxSurfaceFlags::SdlTypePtr GfxSurfaceFlags::getAsSdlTypePtr(void) const
+GfxSurfaceFlags::SdlTypePtr GfxSurfaceFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flags_;
 }

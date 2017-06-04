@@ -34,12 +34,12 @@ namespace pixels
 
 const char GfxColor::ClassName[] = "GfxColor";
 
-GfxColor::GfxColor() : GfxRootClass(ClassName)
+GfxColor::GfxColor() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRootClass(ClassName)
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept : GfxRootClass(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
@@ -47,7 +47,8 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) : GfxRoo
     clr_.a = 0xFFu;
 }
 
-GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) : GfxRootClass(ClassName)
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) noexcept :
+            GfxRootClass(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
@@ -55,13 +56,13 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  u
     clr_.a = a;
 }
 
-GfxColor::GfxColor(const SdlType clr) : GfxRootClass(ClassName)
+GfxColor::GfxColor(const SdlType clr) noexcept : GfxRootClass(ClassName)
 {
     /* Copy structure; hope SDL_Color assignement operator works ... */
     clr_ = clr;
 }
 
-GfxColor::GfxColor(const uint32_t clr) : GfxRootClass(ClassName)
+GfxColor::GfxColor(const uint32_t clr) noexcept : GfxRootClass(ClassName)
 {
     clr_.r = (clr & 0x000000FF);
     clr_.g = (clr & 0x0000FF00) >> 8;
@@ -70,13 +71,13 @@ GfxColor::GfxColor(const uint32_t clr) : GfxRootClass(ClassName)
 }
 
 /* Copy constructor */
-GfxColor::GfxColor(const GfxColor& other) : GfxRootClass(ClassName)
+GfxColor::GfxColor(const GfxColor& other) noexcept : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
 }
 
 /* Move constructor */
-GfxColor::GfxColor(GfxColor&& other) : GfxRootClass(ClassName)
+GfxColor::GfxColor(GfxColor&& other) noexcept : GfxRootClass(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */
@@ -84,7 +85,7 @@ GfxColor::GfxColor(GfxColor&& other) : GfxRootClass(ClassName)
 }
 
 /* Delete copy and move assign operators */
-GfxColor& GfxColor::operator=(const GfxColor& other)
+GfxColor& GfxColor::operator=(const GfxColor& other) noexcept
 {
     if (this != &other)
     {
@@ -93,7 +94,7 @@ GfxColor& GfxColor::operator=(const GfxColor& other)
     return *this;
 }
 
-GfxColor& GfxColor::operator=(GfxColor&& other)
+GfxColor& GfxColor::operator=(GfxColor&& other) noexcept
 {
     if (this != &other)
     {
@@ -103,64 +104,64 @@ GfxColor& GfxColor::operator=(GfxColor&& other)
     return *this;
 }
 
-bool GfxColor::operator==(const GfxColor& other)
+bool GfxColor::operator==(const GfxColor& other) const noexcept
 {
     return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) &&
             (clr_.b == other.clr_.b) && (clr_.a == other.clr_.a));
 }
 
-GfxColor::operator bool() const
+GfxColor::operator bool() const noexcept
 {
     return true;
 }
 
-uint8_t GfxColor::getRed(void) const
+uint8_t GfxColor::getRed(void) const noexcept
 {
     return clr_.r;
 }
 
-uint8_t GfxColor::getGreen(void) const
+uint8_t GfxColor::getGreen(void) const noexcept
 {
     return clr_.g;
 }
 
-uint8_t GfxColor::getBlue(void) const
+uint8_t GfxColor::getBlue(void) const noexcept
 {
     return clr_.b;
 }
 
-uint8_t GfxColor::getAlpha(void) const
+uint8_t GfxColor::getAlpha(void) const noexcept
 {
     return clr_.a;
 }
 
-uint32_t GfxColor::getColor() const
+uint32_t GfxColor::getColor() const noexcept
 {
     uint32_t c = clr_.a << 24 | clr_.r << 16 | clr_.g << 8 | clr_.b;
     return c;
 }
 
-void GfxColor::setRed(const uint8_t r)
+void GfxColor::setRed(const uint8_t r) noexcept
 {
     clr_.r = r;
 }
 
-void GfxColor::setGreen(const uint8_t g)
+void GfxColor::setGreen(const uint8_t g) noexcept
 {
     clr_.g = g;
 }
 
-void GfxColor::setBlue(const uint8_t b)
+void GfxColor::setBlue(const uint8_t b) noexcept
 {
     clr_.b = b;
 }
 
-void GfxColor::setAlpha(const uint8_t a)
+void GfxColor::setAlpha(const uint8_t a) noexcept
 {
     clr_.a = a;
 }
 
-void GfxColor::clear(void)
+void GfxColor::clear(void) noexcept
 {
     clr_.r = 0;
     clr_.g = 0;
@@ -168,12 +169,12 @@ void GfxColor::clear(void)
     clr_.a = 0xFFu;
 }
 
-GfxColor::SdlType GfxColor::getAsSdlType() const
+GfxColor::SdlType GfxColor::getAsSdlType() const noexcept
 {
     return clr_;
 }
 
-GfxColor::SdlTypePtr GfxColor::getAsSdlTypePtr(void) const
+GfxColor::SdlTypePtr GfxColor::getAsSdlTypePtr(void) const noexcept
 {
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)&clr_;

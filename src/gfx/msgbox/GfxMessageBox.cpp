@@ -36,7 +36,7 @@ namespace msgbox
 
 const char GfxMessageBox::ClassName[] = "GfxMessageBox";
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass(ClassName)
+GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxRootClass(ClassName)
 {
     assert(data);
 
@@ -44,7 +44,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) : GfxRootClass(Class
     type_ = GfxMessageBoxType::typeComplex;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title, const std::string& message)
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
+                             const std::string& message) noexcept
 {
     assert(flag);
     assert(title.length() > 0);
@@ -58,7 +59,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
 }
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
-                             const std::string& message, video::GfxWindow const& win)
+                             const std::string& message, video::GfxWindow const& win) noexcept
 {
     assert(flag);
     assert(title.length() > 0);
@@ -72,12 +73,12 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-GfxMessageBox::operator bool() const
+GfxMessageBox::operator bool() const noexcept
 {
     return true;
 }
 
-int32_t GfxMessageBox::showModal() const
+int32_t GfxMessageBox::showModal() const noexcept
 {
     int32_t ret;
 
@@ -92,7 +93,7 @@ int32_t GfxMessageBox::showModal() const
     return ret;
 }
 
-int32_t GfxMessageBox::showModalSimple(void) const
+int32_t GfxMessageBox::showModalSimple(void) const noexcept
 {
     if (winptr_ == nullptr)
     {
@@ -107,7 +108,7 @@ int32_t GfxMessageBox::showModalSimple(void) const
     return 1;
 }
 
-int32_t GfxMessageBox::showModalComplex(void) const
+int32_t GfxMessageBox::showModalComplex(void) const noexcept
 {
     int32_t buttonid;
     GfxMessageBoxData::SdlTypePtr p;

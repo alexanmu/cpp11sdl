@@ -39,7 +39,7 @@ class GfxPlatform final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxPlatform();
+    GfxPlatform() noexcept;
 
     GfxPlatform(GfxPlatform const&) = delete;
     GfxPlatform(GfxPlatform&&) = delete;
@@ -47,11 +47,11 @@ public:
     GfxPlatform& operator=(GfxPlatform const &) = delete;
     GfxPlatform& operator=(GfxPlatform&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void queryPlatform(void);
+    void queryPlatform(void) noexcept;
 
-    std::string const& getPlatform(void) const;
+    std::string const& getPlatform(void) const noexcept;
 private:
     std::string platform_;
 };

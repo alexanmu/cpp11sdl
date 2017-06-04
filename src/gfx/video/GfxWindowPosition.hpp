@@ -47,25 +47,25 @@ public:
         positionSpecified
     };
 
-    GfxWindowPosition();
+    GfxWindowPosition() noexcept;
 
-    explicit GfxWindowPosition(const ValueType pos, const int32_t coord = 0);
+    explicit GfxWindowPosition(const ValueType pos, const int32_t coord = 0) noexcept;
 
-    GfxWindowPosition(GfxWindowPosition const& other);
-    GfxWindowPosition(GfxWindowPosition&& other);
+    GfxWindowPosition(GfxWindowPosition const& other) noexcept;
+    GfxWindowPosition(GfxWindowPosition&& other) noexcept;
 
-    GfxWindowPosition& operator=(GfxWindowPosition const& other);
-    GfxWindowPosition& operator=(GfxWindowPosition&& other);
+    GfxWindowPosition& operator=(GfxWindowPosition const& other) noexcept;
+    GfxWindowPosition& operator=(GfxWindowPosition&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void setPosition(const ValueType pos);
-    ValueType getPosition(void) const;
+    void setPosition(const ValueType pos) noexcept;
+    ValueType getPosition(void) const noexcept;
 
-    void setCoordinate(int32_t coord = 0);
-    int32_t getCoordinate(void) const;
+    void setCoordinate(const int32_t coord = 0) noexcept;
+    int32_t getCoordinate(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 private:
     ValueType pos_;
     uint32_t coord_;

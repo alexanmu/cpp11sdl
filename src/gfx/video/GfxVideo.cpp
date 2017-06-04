@@ -37,14 +37,14 @@ namespace video
 
 const char GfxVideo::ClassName[] = "GfxVideo";
 
-GfxVideo::GfxVideo() : GfxRootClass(ClassName)
+GfxVideo::GfxVideo() noexcept : GfxRootClass(ClassName)
 {
     numvideodrivers_ = -1;
     numvideodisplays_ = -1;
     numdisplaymodes_.clear();
 }
 
-GfxVideo::operator bool() const
+GfxVideo::operator bool() const noexcept
 {
     return true;
 }
@@ -59,13 +59,13 @@ void GfxVideo::videoQuit(void) throw(std::runtime_error)
     throw std::runtime_error("Use GfxInitQuit.hpp");
 }
 
-int32_t GfxVideo::getNumVideoDrivers(void)
+int32_t GfxVideo::getNumVideoDrivers(void) noexcept
 {
     numvideodrivers_ = sdl2::SDL_GetNumVideoDrivers();
     return numvideodrivers_;
 }
 
-std::string GfxVideo::getVideoDriver(const int32_t driverindex) const
+std::string GfxVideo::getVideoDriver(const int32_t driverindex) const noexcept
 {
     assert(driverindex >= 0);
 
@@ -78,7 +78,7 @@ std::string GfxVideo::getVideoDriver(const int32_t driverindex) const
     return str;
 }
 
-std::string GfxVideo::getCurrentVideoDriver(void) const
+std::string GfxVideo::getCurrentVideoDriver(void) const noexcept
 {
     const char * c;
     std::string str = "Not initialized";
@@ -91,13 +91,13 @@ std::string GfxVideo::getCurrentVideoDriver(void) const
     return str;
 }
 
-int32_t GfxVideo::getNumVideoDisplays(void)
+int32_t GfxVideo::getNumVideoDisplays(void) noexcept
 {
     numvideodisplays_ = sdl2::SDL_GetNumVideoDisplays();
     return numvideodisplays_;
 }
 
-std::string GfxVideo::getDisplayName(const int32_t displayindex) const
+std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
@@ -110,7 +110,7 @@ std::string GfxVideo::getDisplayName(const int32_t displayindex) const
     return str;
 }
 
-std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayBounds(const int32_t displayindex) const
+std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayBounds(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
@@ -125,7 +125,7 @@ std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayBounds(const int32_t displayi
     return r;
 }
 
-std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const
+std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
@@ -140,7 +140,7 @@ std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayUsableBounds(const int32_t di
     return r;
 }
 
-void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const
+void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const noexcept
 {
     assert(displayindex >= 0);
     assert(ddpi != nullptr);
@@ -153,7 +153,7 @@ void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * h
     }
 }
 
-int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex)
+int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex) noexcept
 {
     assert(displayindex >= 0);
 
@@ -167,7 +167,7 @@ int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex)
     return numdisplaymodes;
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex)
+std::unique_ptr<GfxDisplayMode> GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept
 {
     assert(displayindex >= 0);
     assert(modeindex >= 0);
@@ -195,7 +195,7 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getDisplayMode(const int32_t displayin
     return dm;
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const
+std::unique_ptr<GfxDisplayMode> GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
@@ -210,7 +210,7 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getDesktopDisplayMode(const int32_t di
     return dm;
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const
+std::unique_ptr<GfxDisplayMode> GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
@@ -226,7 +226,7 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getCurrentDisplayMode(const int32_t di
 }
 
 std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int32_t displayindex,
-                                                                GfxDisplayMode const& mode) const
+                                                                GfxDisplayMode const& mode) const noexcept
 {
     assert(displayindex >= 0);
     assert(mode);

@@ -36,7 +36,7 @@ namespace pixels
 
 const char GfxPalette::ClassName[] = "GfxPalette";
 
-GfxPalette::GfxPalette() : GfxRootClass(ClassName)
+GfxPalette::GfxPalette() noexcept : GfxRootClass(ClassName)
 {
     pal_ = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
     for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
@@ -46,7 +46,7 @@ GfxPalette::GfxPalette() : GfxRootClass(ClassName)
     }
 };
 
-GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) noexcept : GfxRootClass(ClassName)
 {
     uint32_t colorIndex;
     uint16_t nColors;
@@ -63,7 +63,7 @@ GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) : GfxRootClass(Class
     }
 }
 
-GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(const uint16_t nColors) noexcept : GfxRootClass(ClassName)
 {
     assert(nColors > 0);
 
@@ -76,14 +76,14 @@ GfxPalette::GfxPalette(const uint16_t nColors) : GfxRootClass(ClassName)
     }
 }
 
-GfxPalette::GfxPalette(GfxPalette&& other) : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxRootClass(ClassName)
 {
     pal_ = other.pal_;
     // Delete other's data
     other.pal_ = nullptr;
 }
 
-GfxPalette::GfxPalette(const SdlTypePtr pal)
+GfxPalette::GfxPalette(const SdlTypePtr pal) noexcept
 {
     assert(pal != nullptr);
 
@@ -91,7 +91,7 @@ GfxPalette::GfxPalette(const SdlTypePtr pal)
     SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
 }
 
-GfxPalette& GfxPalette::operator=(GfxPalette&& other)
+GfxPalette& GfxPalette::operator=(GfxPalette&& other) noexcept
 {
     if (this != &other)
     {
@@ -106,20 +106,27 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other)
     return *this;
 }
 
-GfxPalette::~GfxPalette()
+GfxPalette::~GfxPalette() noexcept
 {
     if (pal_ != nullptr)
     {
-        SDL_FreePalette(pal_);
+        try
+        {
+            sdl2::SDL_FreePalette(pal_);
+        }
+        catch (...)
+        {
+            throw std::runtime_error("std::terminate call will follow!");
+        }
     }
 }
 
-GfxPalette::operator bool() const
+GfxPalette::operator bool() const noexcept
 {
     return (pal_ != nullptr);
 }
 
-void GfxPalette::freePalette(void)
+void GfxPalette::freePalette(void) noexcept
 {
     if (pal_ != nullptr)
     {
@@ -127,7 +134,7 @@ void GfxPalette::freePalette(void)
     }
 }
 
-void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uint16_t firstColor)
+void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uint16_t firstColor) noexcept
 {
     int32_t errorCode = 0;
     int32_t currentColorIndex = firstColor;
@@ -149,7 +156,7 @@ void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uin
     }
 }
 
-std::vector<GfxColor> GfxPalette::getPaletteColors(void) const
+std::vector<GfxColor> GfxPalette::getPaletteColors(void) const noexcept
 {
     if (pal_ != nullptr)
     {
@@ -165,7 +172,7 @@ std::vector<GfxColor> GfxPalette::getPaletteColors(void) const
     return std::vector<GfxColor>();
 }
 
-uint16_t GfxPalette::getNumColors(void) const
+uint16_t GfxPalette::getNumColors(void) const noexcept
 {
     if (pal_ != nullptr)
     {
@@ -174,7 +181,7 @@ uint16_t GfxPalette::getNumColors(void) const
     return 0;
 }
 
-uint32_t GfxPalette::getVersion(void) const
+uint32_t GfxPalette::getVersion(void) const noexcept
 {
     if (pal_ != nullptr)
     {
@@ -183,7 +190,7 @@ uint32_t GfxPalette::getVersion(void) const
     return 0;
 }
 
-int GfxPalette::getRefCount(void) const
+int GfxPalette::getRefCount(void) const noexcept
 {
     if (pal_ != nullptr)
     {
@@ -192,12 +199,12 @@ int GfxPalette::getRefCount(void) const
     return 0;
 }
 
-void GfxPalette::clear(void)
+void GfxPalette::clear(void) noexcept
 {
     pal_ = nullptr;
 }
 
-GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const
+GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const noexcept
 {
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)pal_;

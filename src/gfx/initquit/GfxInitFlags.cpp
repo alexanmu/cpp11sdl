@@ -35,36 +35,36 @@ namespace initquit
 
 const char GfxInitFlags::ClassName[] = "GfxInitFlags";
 
-GfxInitFlags::GfxInitFlags() : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags() noexcept : GfxRootClass(ClassName)
 {
     flags_ = 0;
 }
 
-GfxInitFlags::GfxInitFlags(const int32_t flags) : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(const int32_t flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags >= 0);
 
     flags_ = flags;
 }
 
-GfxInitFlags::GfxInitFlags(ValueType const& flags) : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
 {
     flags_ = static_cast<int32_t>(flags);
 }
 
-GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
 }
 
-GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags const& other)
+GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags const& other) noexcept
 {
     if (this != &other)
     {
@@ -73,7 +73,7 @@ GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags const& other)
     return *this;
 }
 
-GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags&& other)
+GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags&& other) noexcept
 {
     if (this != &other)
     {
@@ -84,180 +84,180 @@ GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags&& other)
     return *this;
 }
 
-GfxInitFlags::operator bool() const
+GfxInitFlags::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxInitFlags::isNothing(void) const
+bool GfxInitFlags::isNothing(void) const noexcept
 {
     return (flags_ == 0);
 }
 
-bool GfxInitFlags::isTimer(void) const
+bool GfxInitFlags::isTimer(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_TIMER;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isAudio(void) const
+bool GfxInitFlags::isAudio(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_AUDIO;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isVideo(void) const
+bool GfxInitFlags::isVideo(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_VIDEO;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isJoystick(void) const
+bool GfxInitFlags::isJoystick(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_JOYSTICK;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isHaptic(void) const
+bool GfxInitFlags::isHaptic(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_HAPTIC;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isGameController(void) const
+bool GfxInitFlags::isGameController(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_GAMECONTROLLER;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isEvents(void) const
+bool GfxInitFlags::isEvents(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_EVENTS;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isEverything(void) const
+bool GfxInitFlags::isEverything(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_EVERYTHING;
 
     return (r != 0);
 }
 
-bool GfxInitFlags::isNoParachute(void) const
+bool GfxInitFlags::isNoParachute(void) const noexcept
 {
     int32_t r = flags_ & SDL_INIT_NOPARACHUTE;
 
     return (r != 0);
 }
 
-void GfxInitFlags::setTimer(void)
+void GfxInitFlags::setTimer(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_TIMER;
 }
 
-void GfxInitFlags::resetTimer(void)
+void GfxInitFlags::resetTimer(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_TIMER;
 }
 
-void GfxInitFlags::setAudio(void)
+void GfxInitFlags::setAudio(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_AUDIO;
 }
 
-void GfxInitFlags::resetAudio(void)
+void GfxInitFlags::resetAudio(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_AUDIO;
 }
 
-void GfxInitFlags::setVideo(void)
+void GfxInitFlags::setVideo(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_VIDEO;
 }
 
-void GfxInitFlags::resetVideo(void)
+void GfxInitFlags::resetVideo(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_VIDEO;
 }
 
-void GfxInitFlags::setJoystick(void)
+void GfxInitFlags::setJoystick(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_JOYSTICK;
 }
 
-void GfxInitFlags::resetJoystick(void)
+void GfxInitFlags::resetJoystick(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_JOYSTICK;
 }
 
-void GfxInitFlags::setHaptic(void)
+void GfxInitFlags::setHaptic(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_HAPTIC;
 }
 
-void GfxInitFlags::resetHaptic(void)
+void GfxInitFlags::resetHaptic(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_HAPTIC;
 }
 
-void GfxInitFlags::setGameController(void)
+void GfxInitFlags::setGameController(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_GAMECONTROLLER;
 }
 
-void GfxInitFlags::resetGameController(void)
+void GfxInitFlags::resetGameController(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_GAMECONTROLLER;
 }
 
-void GfxInitFlags::setEvents(void)
+void GfxInitFlags::setEvents(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_EVENTS;
 }
 
-void GfxInitFlags::resetEvents(void)
+void GfxInitFlags::resetEvents(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_EVENTS;
 }
 
-void GfxInitFlags::setEverything(void)
+void GfxInitFlags::setEverything(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_EVERYTHING;
 }
 
-void GfxInitFlags::resetEverything(void)
+void GfxInitFlags::resetEverything(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_EVERYTHING;
 }
 
-void GfxInitFlags::setNoParachute(void)
+void GfxInitFlags::setNoParachute(void) noexcept
 {
     flags_ = flags_ | SDL_INIT_NOPARACHUTE;
 }
 
-void GfxInitFlags::resetNoParachute(void)
+void GfxInitFlags::resetNoParachute(void) noexcept
 {
     flags_ = flags_ & ~SDL_INIT_NOPARACHUTE;
 }
 
-void GfxInitFlags::clear(void)
+void GfxInitFlags::clear(void) noexcept
 {
     flags_ = static_cast<uint32_t>(ValueType::initNothing);
 }
 
-GfxInitFlags::SdlType GfxInitFlags::getAsSdlType(void) const
+GfxInitFlags::SdlType GfxInitFlags::getAsSdlType(void) const noexcept
 {
     return flags_;
 }
 
-GfxInitFlags::SdlTypePtr GfxInitFlags::getAsSdlTypePtr(void) const
+GfxInitFlags::SdlTypePtr GfxInitFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flags_;
 }

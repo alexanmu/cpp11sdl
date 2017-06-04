@@ -35,7 +35,7 @@ namespace initquit
 
 const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
-GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) :
+GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
                 GfxRootClass(ClassName), flags_(flags), errorCode_(0)
 {
     assert(flags);
@@ -43,31 +43,38 @@ GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) :
     errorCode_ = sdl2::SDL_Init(flags.getAsSdlType());
 }
 
-GfxInitQuit::~GfxInitQuit()
+GfxInitQuit::~GfxInitQuit() noexcept
 {
-    sdl2::SDL_Quit();
+    try
+    {
+        sdl2::SDL_Quit();
+    }
+    catch (...)
+    {
+        throw std::runtime_error("std::terminate call will follow!");
+    }
 }
 
-GfxInitQuit::operator bool() const
+GfxInitQuit::operator bool() const noexcept
 {
     return (errorCode_ != 0);
 }
 
-void GfxInitQuit::initSubSystem(GfxInitFlags const& flags)
+void GfxInitQuit::initSubSystem(GfxInitFlags const& flags) noexcept
 {
     assert(flags);
 
     errorCode_ = sdl2::SDL_InitSubSystem(flags.getAsSdlType());
 }
 
-void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags)
+void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags) const noexcept
 {
     assert(flags);
 
     sdl2::SDL_QuitSubSystem(flags.getAsSdlType());
 }
 
-GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags)
+GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags) const noexcept
 {
     assert(flags);
 
@@ -77,7 +84,7 @@ GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags)
     return new GfxInitFlags(ret);
 }
 
-void GfxInitQuit::quitRequested(void)
+void GfxInitQuit::quitRequested(void) const noexcept
 {
     // sdl2::SDL_QuitRequested();
     sdl2::SDL_PumpEvents();
@@ -85,7 +92,7 @@ void GfxInitQuit::quitRequested(void)
 }
 
 // Return error code after init call
-int32_t GfxInitQuit::getErrorCode() const
+int32_t GfxInitQuit::getErrorCode() const noexcept
 {
     return errorCode_;
 }

@@ -57,24 +57,24 @@ public:
         hittestResizeLeft = sdl2::SDL_HITTEST_RESIZE_LEFT
     };
 
-    GfxHitTestResult();
-    explicit GfxHitTestResult(const ValueType value);
-    explicit GfxHitTestResult(const SdlType value);
+    GfxHitTestResult() noexcept;
+    explicit GfxHitTestResult(const ValueType value) noexcept;
+    explicit GfxHitTestResult(const SdlType value) noexcept;
 
-    GfxHitTestResult(GfxHitTestResult const& other);
-    GfxHitTestResult(GfxHitTestResult&& other);
+    GfxHitTestResult(GfxHitTestResult const& other) noexcept;
+    GfxHitTestResult(GfxHitTestResult&& other) noexcept;
 
-    GfxHitTestResult& operator=(GfxHitTestResult const& other);
-    GfxHitTestResult& operator=(GfxHitTestResult&& other);
+    GfxHitTestResult& operator=(GfxHitTestResult const& other) noexcept;
+    GfxHitTestResult& operator=(GfxHitTestResult&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     void set(const ValueType value) noexcept;
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

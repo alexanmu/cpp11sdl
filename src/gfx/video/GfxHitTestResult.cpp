@@ -35,34 +35,34 @@ namespace video
 
 const char GfxHitTestResult::ClassName[] = "GfxHitTestResult";
 
-GfxHitTestResult::GfxHitTestResult() : GfxRootClass(ClassName)
+GfxHitTestResult::GfxHitTestResult() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxHitTestResult::GfxHitTestResult(const ValueType value)
+GfxHitTestResult::GfxHitTestResult(const ValueType value) noexcept
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxHitTestResult::GfxHitTestResult(const SdlType value)
+GfxHitTestResult::GfxHitTestResult(const SdlType value) noexcept
 {
     value_ = value;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) : GfxRootClass(ClassName)
+GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) : GfxRootClass(ClassName)
+GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other)
+GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other) noexcept
 {
     if (this != &other)
     {
@@ -71,7 +71,7 @@ GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other)
     return *this;
 }
 
-GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult&& other)
+GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult&& other) noexcept
 {
     if (this != &other)
     {
@@ -82,7 +82,7 @@ GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult&& other)
     return *this;
 }
 
-GfxHitTestResult::operator bool() const
+GfxHitTestResult::operator bool() const noexcept
 {
     return true;
 }
@@ -102,7 +102,7 @@ void GfxHitTestResult::clear(void) noexcept
     value_ = static_cast<SdlType>(ValueType::hittestNormal);
 }
 
-GfxHitTestResult::SdlType GfxHitTestResult::getAsSdlType(void) const
+GfxHitTestResult::SdlType GfxHitTestResult::getAsSdlType(void) const noexcept
 {
     return value_;
 }

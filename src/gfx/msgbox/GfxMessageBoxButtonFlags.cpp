@@ -34,18 +34,18 @@ namespace msgbox
 
 const char GfxMessageBoxButtonFlags::ClassName[] = "GfxMessageBoxButtonFlags";
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() : GfxRootClass(ClassName)
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const ValueType flags) :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const ValueType flags) noexcept :
         GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) : GfxRootClass(ClassName)
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags > 0);
     assert(flags < 3);
@@ -53,12 +53,12 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) : GfxRoo
     flags_ = flags;
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) noexcept :
         GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) noexcept :
         GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
@@ -66,7 +66,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& ot
     other.clear();
 }
 
-GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(const GfxMessageBoxButtonFlags& other)
+GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(const GfxMessageBoxButtonFlags& other) noexcept
 {
     if (this != &other)
     {
@@ -75,7 +75,7 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(const GfxMessageBo
     return *this;
 }
 
-GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButtonFlags&& other)
+GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButtonFlags&& other) noexcept
 {
     if (this != &other)
     {
@@ -86,37 +86,37 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
     return *this;
 }
 
-bool GfxMessageBoxButtonFlags::operator==(const GfxMessageBoxButtonFlags& other)
+bool GfxMessageBoxButtonFlags::operator==(const GfxMessageBoxButtonFlags& other) noexcept
 {
     return (flags_ == other.flags_);
 }
 
-GfxMessageBoxButtonFlags::operator bool() const
+GfxMessageBoxButtonFlags::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxMessageBoxButtonFlags::isReturnDefault(void) const
+bool GfxMessageBoxButtonFlags::isReturnDefault(void) const noexcept
 {
     return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT);
 }
 
-bool GfxMessageBoxButtonFlags::isEscDefault(void) const
+bool GfxMessageBoxButtonFlags::isEscDefault(void) const noexcept
 {
     return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT);
 }
 
-void GfxMessageBoxButtonFlags::clear(void)
+void GfxMessageBoxButtonFlags::clear(void) noexcept
 {
     flags_ = static_cast<SdlType>(ValueType::noneDefault);
 }
 
-GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) const
+GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) const noexcept
 {
     return flags_;
 }
 
-GfxMessageBoxButtonFlags::SdlTypePtr GfxMessageBoxButtonFlags::getAsSdlTypePtr(void) const
+GfxMessageBoxButtonFlags::SdlTypePtr GfxMessageBoxButtonFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flags_;
 }

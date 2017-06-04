@@ -45,25 +45,26 @@ public:
 
     static const char ClassName[];
 
-    GfxMessageBoxButtonData();
+    GfxMessageBoxButtonData() noexcept;
 
-    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid, const std::string& text);
+    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid,
+                            const std::string& text) noexcept;
 
-    GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other);
-    GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other);
+    GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept;
+    GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept;
 
-    GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData const& other);
-    GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other);
+    GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData const& other) noexcept;
+    GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    int32_t getButtonId(void) const;
-    const std::string getText(void) const;
+    int32_t getButtonId(void) const noexcept;
+    const std::string getText(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType data_;
 };

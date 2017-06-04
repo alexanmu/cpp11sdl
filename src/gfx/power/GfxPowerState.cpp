@@ -34,36 +34,36 @@ namespace power
 
 const char GfxPowerState::ClassName[] = "GfxPowerState";
 
-GfxPowerState::GfxPowerState() : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxPowerState::GfxPowerState(const ValueType value) : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(const ValueType value) noexcept : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPowerState::GfxPowerState(const SdlType value) : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxRootClass(ClassName)
 {
     assert(value >= 0);
 
     value_ = value;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState const& other) : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState&& other) : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
     other.clear();
 }
 
-GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other)
+GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other) noexcept
 {
     if (this != &other)
     {
@@ -72,7 +72,7 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other)
     return *this;
 }
 
-GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
+GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other) noexcept
 {
     if (this != &other)
     {
@@ -83,42 +83,42 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other)
     return *this;
 }
 
-GfxPowerState::operator bool() const
+GfxPowerState::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxPowerState::isUnknown(void) const
+bool GfxPowerState::isUnknown(void) const noexcept
 {
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_UNKNOWN));
 }
 
-bool GfxPowerState::isOnBattery(void) const
+bool GfxPowerState::isOnBattery(void) const noexcept
 {
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_ON_BATTERY));
 }
 
-bool GfxPowerState::isNoBattery(void) const
+bool GfxPowerState::isNoBattery(void) const noexcept
 {
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_NO_BATTERY));
 }
 
-bool GfxPowerState::isCharging(void) const
+bool GfxPowerState::isCharging(void) const noexcept
 {
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGING));
 }
 
-bool GfxPowerState::isCharged(void) const
+bool GfxPowerState::isCharged(void) const noexcept
 {
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGED));
 }
 
-void GfxPowerState::clear(void)
+void GfxPowerState::clear(void) noexcept
 {
     value_ = static_cast<SdlType>(ValueType::stateUnknown);
 }
 
-const std::string GfxPowerState::getAsString() const
+const std::string GfxPowerState::getAsString() const noexcept
 {
     std::string str;
 
@@ -143,12 +143,12 @@ const std::string GfxPowerState::getAsString() const
     return str;
 }
 
-GfxPowerState::SdlType GfxPowerState::getAsSdlType(void) const
+GfxPowerState::SdlType GfxPowerState::getAsSdlType(void) const noexcept
 {
     return value_;
 }
 
-GfxPowerState::SdlTypePtr GfxPowerState::getAsSdlTypePtr(void) const
+GfxPowerState::SdlTypePtr GfxPowerState::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)value_;
 }

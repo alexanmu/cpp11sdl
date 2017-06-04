@@ -46,37 +46,37 @@ public:
 
     static const char ClassName[];
 
-    GfxPalette();
-    explicit GfxPalette(const uint16_t nColors);
-    explicit GfxPalette(const SdlTypePtr pal);
-    explicit GfxPalette(std::vector<GfxColor> const& colors);
+    GfxPalette() noexcept;
+    explicit GfxPalette(const uint16_t nColors) noexcept;
+    explicit GfxPalette(const SdlTypePtr pal) noexcept;
+    explicit GfxPalette(std::vector<GfxColor> const& colors) noexcept;
 
     // No copy-ctor
     GfxPalette(const GfxPalette& other) = delete;
-    GfxPalette(GfxPalette&& other);
+    GfxPalette(GfxPalette&& other) noexcept;
 
     // No copy-oprtr
     GfxPalette& operator=(const GfxPalette& other) = delete;
-    GfxPalette& operator=(GfxPalette&& other);
+    GfxPalette& operator=(GfxPalette&& other) noexcept;
 
-    virtual ~GfxPalette();
+    virtual ~GfxPalette() noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void freePalette(void);
+    void freePalette(void) noexcept;
 
     /* Methods */
-    void setPaletteColors(std::vector<GfxColor> const& vec, const uint16_t firstColor);
-    std::vector<GfxColor> getPaletteColors(void) const;
+    void setPaletteColors(std::vector<GfxColor> const& vec, const uint16_t firstColor) noexcept;
+    std::vector<GfxColor> getPaletteColors(void) const noexcept;
 
     /* Getters */
-    uint16_t getNumColors(void) const;
-    uint32_t getVersion(void) const;
-    int32_t getRefCount(void) const;
+    uint16_t getNumColors(void) const noexcept;
+    uint32_t getVersion(void) const noexcept;
+    int32_t getRefCount(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     static constexpr uint16_t kDefaultPaletteSize = 256;
     static constexpr uint8_t kDefaultPaletteColorRed = 0xFF;

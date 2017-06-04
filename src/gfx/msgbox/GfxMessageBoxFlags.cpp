@@ -34,36 +34,36 @@ namespace msgbox
 
 const char GfxMessageBoxFlags::ClassName[] = "GfxMessageBoxFlags";
 
-GfxMessageBoxFlags::GfxMessageBoxFlags() : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(ValueType flag) : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(const ValueType flag) noexcept : GfxRootClass(ClassName)
 {
     flag_ = static_cast<SdlType>(flag);
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) noexcept : GfxRootClass(ClassName)
 {
     assert(flag > 0);
 
     flag_ = flag;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) noexcept : GfxRootClass(ClassName)
 {
     flag_ = other.flag_;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : GfxRootClass(ClassName)
 {
     flag_ = other.flag_;
     // Delete other's data
     other.clear();
 }
 
-GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(const GfxMessageBoxFlags& other)
+GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(const GfxMessageBoxFlags& other) noexcept
 {
     if (this != &other)
     {
@@ -72,7 +72,7 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(const GfxMessageBoxFlags& othe
     return *this;
 }
 
-GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other)
+GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other) noexcept
 {
     if (this != &other)
     {
@@ -83,47 +83,47 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other)
     return *this;
 }
 
-bool GfxMessageBoxFlags::operator==(const GfxMessageBoxFlags& other)
+bool GfxMessageBoxFlags::operator==(const GfxMessageBoxFlags& other) const noexcept
 {
     return (flag_ == other.flag_);
 }
 
-GfxMessageBoxFlags::operator bool() const
+GfxMessageBoxFlags::operator bool() const noexcept
 {
     return true;
 }
 
-GfxMessageBoxFlags::ValueType GfxMessageBoxFlags::getFlag(void) const
+GfxMessageBoxFlags::ValueType GfxMessageBoxFlags::getFlag(void) const noexcept
 {
     return static_cast<ValueType>(flag_);
 }
 
-bool GfxMessageBoxFlags::isError(void) const
+bool GfxMessageBoxFlags::isError(void) const noexcept
 {
     return (flag_ == sdl2::SDL_MESSAGEBOX_ERROR);
 }
 
-bool GfxMessageBoxFlags::isWarning(void) const
+bool GfxMessageBoxFlags::isWarning(void) const noexcept
 {
     return (flag_ == sdl2::SDL_MESSAGEBOX_WARNING);
 }
 
-bool GfxMessageBoxFlags::isInformation(void) const
+bool GfxMessageBoxFlags::isInformation(void) const noexcept
 {
     return (flag_ == sdl2::SDL_MESSAGEBOX_INFORMATION);
 }
 
-void GfxMessageBoxFlags::clear(void)
+void GfxMessageBoxFlags::clear(void) noexcept
 {
     flag_ = static_cast<SdlType>(ValueType::flagError);
 }
 
-GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const
+GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const noexcept
 {
     return (SdlType)flag_;
 }
 
-GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const
+GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flag_;
 }

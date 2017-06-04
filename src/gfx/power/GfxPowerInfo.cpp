@@ -34,19 +34,19 @@ namespace power
 
 const char GfxPowerInfo::ClassName[] = "GfxPowerInfo";
 
-GfxPowerInfo::GfxPowerInfo() : GfxRootClass(ClassName)
+GfxPowerInfo::GfxPowerInfo() noexcept : GfxRootClass(ClassName)
 {
     pstate_ = GfxPowerState(GfxPowerState::ValueType::stateUnknown);
     seconds_ = -1;
     percentage_ = -1;
 }
 
-GfxPowerInfo::operator bool() const
+GfxPowerInfo::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxPowerInfo::queryPowerInfo(void)
+void GfxPowerInfo::queryPowerInfo(void) noexcept
 {
     GfxPowerState::SdlType pstate;
 
@@ -54,22 +54,22 @@ void GfxPowerInfo::queryPowerInfo(void)
     pstate_ = GfxPowerState(pstate);
 }
 
-GfxPowerState const& GfxPowerInfo::getPowerState(void) const
+GfxPowerState const& GfxPowerInfo::getPowerState(void) const noexcept
 {
     return (GfxPowerState&)pstate_;
 }
 
-int32_t GfxPowerInfo::getRemainingSeconds(void) const
+int32_t GfxPowerInfo::getRemainingSeconds(void) const noexcept
 {
     return seconds_;
 }
 
-int32_t GfxPowerInfo::getRemainingPercentage(void) const
+int32_t GfxPowerInfo::getRemainingPercentage(void) const noexcept
 {
     return percentage_;
 }
 
-const std::string GfxPowerInfo::getAsString(void) const
+const std::string GfxPowerInfo::getAsString(void) const noexcept
 {
     std::string str;
 

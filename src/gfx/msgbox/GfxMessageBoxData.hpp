@@ -48,28 +48,29 @@ public:
 
     static const char ClassName[];
 
-    GfxMessageBoxData();
+    GfxMessageBoxData() noexcept;
 
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win, const std::string& title,
                       const std::string& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[],
-                      const GfxMessageBoxColorScheme& colorScheme);
+                      const GfxMessageBoxColorScheme& colorScheme) noexcept;
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win, const std::string& title,
-                      const std::string& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[]);
+                      const std::string& message, const int32_t numbuttons,
+                      GfxMessageBoxButtonData buttons[]) noexcept;
 
-    GfxMessageBoxData(GfxMessageBoxData const& other);
-    GfxMessageBoxData(GfxMessageBoxData&& other);
+    GfxMessageBoxData(GfxMessageBoxData const& other) noexcept;
+    GfxMessageBoxData(GfxMessageBoxData&& other) noexcept;
 
-    virtual ~GfxMessageBoxData();
+    virtual ~GfxMessageBoxData() noexcept;
 
-    GfxMessageBoxData& operator=(GfxMessageBoxData const& other);
-    GfxMessageBoxData& operator=(GfxMessageBoxData&& other);
+    GfxMessageBoxData& operator=(GfxMessageBoxData const& other) noexcept;
+    GfxMessageBoxData& operator=(GfxMessageBoxData&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType data_;
     GfxMessageBoxButtonData::SdlTypePtr btndataptr;

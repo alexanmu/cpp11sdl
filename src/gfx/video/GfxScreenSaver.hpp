@@ -39,7 +39,7 @@ class GfxScreenSaver final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxScreenSaver();
+    GfxScreenSaver() noexcept;
 
     GfxScreenSaver(GfxScreenSaver const&) = delete;
     GfxScreenSaver(GfxScreenSaver&&) = delete;
@@ -47,11 +47,11 @@ public:
     GfxScreenSaver& operator=(GfxScreenSaver const&) = delete;
     GfxScreenSaver& operator=(GfxScreenSaver&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isScreenSaverEnabled(void) const;
-    void enableScreenSaver(void);
-    void disableScreenSaver(void);
+    bool isScreenSaverEnabled(void) const noexcept;
+    void enableScreenSaver(void) noexcept;
+    void disableScreenSaver(void) noexcept;
 private:
     enum class ScreenSaverStatus : bool
     {

@@ -55,23 +55,23 @@ public:
         packedLayout1010102 = sdl2::SDL_PACKEDLAYOUT_1010102
     };
 
-    GfxPackedLayout();
-    explicit GfxPackedLayout(ValueType value);
-    explicit GfxPackedLayout(SdlType value);
+    GfxPackedLayout() noexcept;
+    explicit GfxPackedLayout(const ValueType value) noexcept;
+    explicit GfxPackedLayout(const SdlType value) noexcept;
 
-    GfxPackedLayout(GfxPackedLayout const& other);
-    GfxPackedLayout(GfxPackedLayout&& other);
+    GfxPackedLayout(GfxPackedLayout const& other) noexcept;
+    GfxPackedLayout(GfxPackedLayout&& other) noexcept;
 
-    GfxPackedLayout& operator=(GfxPackedLayout const& other);
-    GfxPackedLayout& operator=(GfxPackedLayout&& other);
+    GfxPackedLayout& operator=(GfxPackedLayout const& other) noexcept;
+    GfxPackedLayout& operator=(GfxPackedLayout&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

@@ -41,7 +41,7 @@ class GfxGetVersion final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxGetVersion();
+    GfxGetVersion() noexcept;
 
     GfxGetVersion(GfxGetVersion const&) = delete;
     GfxGetVersion(GfxGetVersion&&) = delete;
@@ -49,11 +49,11 @@ public:
     GfxGetVersion& operator=(GfxGetVersion const&) = delete;
     GfxGetVersion& operator=(GfxGetVersion&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void getVersion(GfxVersion * ver) const;
-    std::string getRevision(void) const;
-    int32_t getRevisionNumber(void) const;
+    void getVersion(GfxVersion * ver) const noexcept;
+    std::string getRevision(void) const noexcept;
+    int32_t getRevisionNumber(void) const noexcept;
 };
 
 }  // namespace version

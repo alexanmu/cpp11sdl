@@ -40,55 +40,55 @@ class GfxFontInfo final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxFontInfo();
-    explicit GfxFontInfo(std::string const& fontName);
-    explicit GfxFontInfo(std::string const& fontName, const uint8_t fontSize);
+    GfxFontInfo() noexcept;
+    explicit GfxFontInfo(std::string const& fontName) noexcept;
+    explicit GfxFontInfo(std::string const& fontName, const uint8_t fontSize) noexcept;
 
-    GfxFontInfo(GfxFontInfo const& other);
-    GfxFontInfo(GfxFontInfo&& other);
+    GfxFontInfo(GfxFontInfo const& other) noexcept;
+    GfxFontInfo(GfxFontInfo&& other) noexcept;
 
-    GfxFontInfo& operator=(GfxFontInfo const& other);
-    GfxFontInfo& operator=(GfxFontInfo&& other);
+    GfxFontInfo& operator=(GfxFontInfo const& other) noexcept;
+    GfxFontInfo& operator=(GfxFontInfo&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void setFontName(std::string const& fontName);
-    void setFontNameDefault(void);
-    std::string const& getFontName(void) const;
+    void setFontName(std::string const& fontName) noexcept;
+    void setFontNameDefault(void) noexcept;
+    std::string const& getFontName(void) const noexcept;
 
-    void setFontSize(const uint8_t fontSize);
-    void setFontSizeDefault(void);
-    uint8_t getFontSize(void) const;
+    void setFontSize(const uint8_t fontSize) noexcept;
+    void setFontSizeDefault(void) noexcept;
+    uint8_t getFontSize(void) const noexcept;
 
-    void setFontOutline(const int32_t fontOutline);
-    void setFontOutlineDefault(void);
-    int32_t getFontOutline(void) const;
+    void setFontOutline(const int32_t fontOutline) noexcept;
+    void setFontOutlineDefault(void) noexcept;
+    int32_t getFontOutline(void) const noexcept;
 
-    void setFontBold(const bool fontBold);
-    void setFontBoldDefault(void);
-    bool getFontBold(void) const;
+    void setFontBold(const bool fontBold) noexcept;
+    void setFontBoldDefault(void) noexcept;
+    bool getFontBold(void) const noexcept;
 
-    void setFontItalic(const bool fontItalic);
-    void setFontItalicDefault(void);
-    bool getFontItalic(void) const;
+    void setFontItalic(const bool fontItalic) noexcept;
+    void setFontItalicDefault(void) noexcept;
+    bool getFontItalic(void) const noexcept;
 
-    void setFontUnderline(const bool fontUnderline);
-    void setFontUnderlineDefault(void);
-    bool getFontUnderline(void) const;
+    void setFontUnderline(const bool fontUnderline) noexcept;
+    void setFontUnderlineDefault(void) noexcept;
+    bool getFontUnderline(void) const noexcept;
 
-    void setFontStrikethrough(const bool fontStrikethrough);
-    void setFontStrikethroughDefault(void);
-    bool getFontStrikethrough(void) const;
+    void setFontStrikethrough(const bool fontStrikethrough) noexcept;
+    void setFontStrikethroughDefault(void) noexcept;
+    bool getFontStrikethrough(void) const noexcept;
 
-    void setFontHinting(const int32_t fontHinting);
-    void setFontHintingDefault(void);
-    int32_t getFontHinting(void) const;
+    void setFontHinting(const int32_t fontHinting) noexcept;
+    void setFontHintingDefault(void) noexcept;
+    int32_t getFontHinting(void) const noexcept;
 
-    void setFontKerning(const bool fontKerning);
-    void setFontKerningDefault(void);
-    bool getFontKerning(void) const;
+    void setFontKerning(const bool fontKerning) noexcept;
+    void setFontKerningDefault(void) noexcept;
+    bool getFontKerning(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 private:
     static const char kDefaultFontName[];
     static const uint8_t kDefaultFontSize;

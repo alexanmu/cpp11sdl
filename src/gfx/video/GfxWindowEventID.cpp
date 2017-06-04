@@ -33,36 +33,36 @@ namespace video
 
 const char GfxWindowEventID::ClassName[] = "GfxWindowEventID";
 
-GfxWindowEventID::GfxWindowEventID() : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxWindowEventID::GfxWindowEventID(ValueType eventid) : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(ValueType eventid) noexcept : GfxRootClass(ClassName)
 {
     eventid_ = static_cast<SdlType>(eventid);
 }
 
-GfxWindowEventID::GfxWindowEventID(SdlType eventid) : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(SdlType eventid) noexcept : GfxRootClass(ClassName)
 {
     assert(eventid >= 0);
 
     eventid_ = eventid;
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxRootClass(ClassName)
 {
     eventid_ = other.eventid_;
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxRootClass(ClassName)
 {
     eventid_ = other.eventid_;
     // Delete other's data
     other.clear();
 }
 
-GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other)
+GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other) noexcept
 {
     if (this != &other)
     {
@@ -71,7 +71,7 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other)
     return *this;
 }
 
-GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other)
+GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other) noexcept
 {
     if (this != &other)
     {
@@ -82,97 +82,97 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other)
     return *this;
 }
 
-bool GfxWindowEventID::isShown(void) const
+bool GfxWindowEventID::isShown(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_SHOWN);
 }
 
-bool GfxWindowEventID::isHidden(void) const
+bool GfxWindowEventID::isHidden(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_HIDDEN);
 }
 
-bool GfxWindowEventID::isExposed(void) const
+bool GfxWindowEventID::isExposed(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_EXPOSED);
 }
 
-bool GfxWindowEventID::isMoved(void) const
+bool GfxWindowEventID::isMoved(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_MOVED);
 }
 
-bool GfxWindowEventID::isResized(void) const
+bool GfxWindowEventID::isResized(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_RESIZED);
 }
 
-bool GfxWindowEventID::isSizeChanged(void) const
+bool GfxWindowEventID::isSizeChanged(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_SIZE_CHANGED);
 }
 
-bool GfxWindowEventID::isMinimized(void) const
+bool GfxWindowEventID::isMinimized(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_MINIMIZED);
 }
 
-bool GfxWindowEventID::isMaximized(void) const
+bool GfxWindowEventID::isMaximized(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_MAXIMIZED);
 }
 
-bool GfxWindowEventID::isRestored(void) const
+bool GfxWindowEventID::isRestored(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_RESTORED);
 }
 
-bool GfxWindowEventID::enter(void) const
+bool GfxWindowEventID::enter(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_ENTER);
 }
 
-bool GfxWindowEventID::leave(void) const
+bool GfxWindowEventID::leave(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_LEAVE);
 }
 
-bool GfxWindowEventID::isFocusGained(void) const
+bool GfxWindowEventID::isFocusGained(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_GAINED);
 }
 
-bool GfxWindowEventID::isFocusLost(void) const
+bool GfxWindowEventID::isFocusLost(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_LOST);
 }
 
-bool GfxWindowEventID::close(void) const
+bool GfxWindowEventID::close(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_CLOSE);
 }
 
-bool GfxWindowEventID::takeFocus(void) const
+bool GfxWindowEventID::takeFocus(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_TAKE_FOCUS);
 }
 
-bool GfxWindowEventID::hitTest(void) const
+bool GfxWindowEventID::hitTest(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_HIT_TEST);
 }
 
-void GfxWindowEventID::clear(void)
+void GfxWindowEventID::clear(void) noexcept
 {
     eventid_ = static_cast<SdlType>(ValueType::eventNone);
 }
 
-GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const
+GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const noexcept
 {
     return eventid_;
 }
 
-GfxWindowEventID::SdlTypePtr GfxWindowEventID::getAsSdlTypePtr(void) const
+GfxWindowEventID::SdlTypePtr GfxWindowEventID::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&eventid_;
 }

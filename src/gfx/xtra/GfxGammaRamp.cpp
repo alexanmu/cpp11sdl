@@ -36,23 +36,24 @@ namespace xtra
 
 const char GfxGammaRamp::ClassName[] = "GfxGammaRamp";
 
-GfxGammaRamp::GfxGammaRamp() : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxGammaRamp::GfxGammaRamp(SdlTypePtr gammaRamp) : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxRootClass(ClassName)
 {
     int32_t index;
+    SdlTypePtr gammaRampCtr = gammaRamp;
 
     for (index = 0; index < kGammaRampNumberOfElements; index++)
     {
-        gammaRamp_[index] = *gammaRamp;
-        gammaRamp++;
+        gammaRamp_[index] = *gammaRampCtr;
+        gammaRampCtr++;
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxRootClass(ClassName)
 {
     int32_t index;
 
@@ -62,7 +63,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) : GfxRootClass(ClassName)
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxRootClass(ClassName)
 {
     int32_t index;
 
@@ -73,7 +74,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) : GfxRootClass(ClassName)
     other.clear();
 }
 
-GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other)
+GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other) noexcept
 {
     int32_t index;
 
@@ -87,7 +88,7 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other)
     return *this;
 }
 
-GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other)
+GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other) noexcept
 {
     int32_t index;
 
@@ -102,12 +103,12 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other)
     return *this;
 }
 
-GfxGammaRamp::operator bool() const
+GfxGammaRamp::operator bool() const noexcept
 {
     return true;
 }
 
-uint16_t& GfxGammaRamp::operator [](int32_t index) throw(std::runtime_error)
+uint16_t& GfxGammaRamp::operator [](const int32_t index) throw(std::runtime_error)
 {
     if ((index >= 0) && (index < kGammaRampNumberOfElements))
     {
@@ -116,7 +117,7 @@ uint16_t& GfxGammaRamp::operator [](int32_t index) throw(std::runtime_error)
     throw std::runtime_error("Index out of bounds");
 }
 
-void GfxGammaRamp::clear(void)
+void GfxGammaRamp::clear(void) noexcept
 {
     int32_t index;
 
@@ -126,7 +127,7 @@ void GfxGammaRamp::clear(void)
     }
 }
 
-GfxGammaRamp::SdlTypePtr GfxGammaRamp::getAsSdlTypePtr(void) const
+GfxGammaRamp::SdlTypePtr GfxGammaRamp::getAsSdlTypePtr(void) const noexcept
 {
     return const_cast<SdlTypePtr>(&gammaRamp_[0]);
 }

@@ -44,30 +44,30 @@ public:
 
     static const char ClassName[];
 
-    GfxDisplayMode();
+    GfxDisplayMode() noexcept;
 
-    GfxDisplayMode(const uint32_t format, const int32_t w, const int32_t h, const int32_t refresh);
+    GfxDisplayMode(const uint32_t format, const int32_t w, const int32_t h, const int32_t refresh) noexcept;
 
     // Copy Ctor not supported due to driver_data ptr
     GfxDisplayMode(GfxDisplayMode const&) = delete;
-    GfxDisplayMode(GfxDisplayMode&& other);
+    GfxDisplayMode(GfxDisplayMode&& other) noexcept;
 
     // Copy operator not supported due to driver_data ptr
     GfxDisplayMode& operator=(GfxDisplayMode const&) = delete;
-    GfxDisplayMode& operator=(GfxDisplayMode&& other);
+    GfxDisplayMode& operator=(GfxDisplayMode&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    uint32_t getFormat(void) const;
-    int32_t getWidth(void) const;
-    int32_t getHeight(void) const;
-    int getRefreshRate(void) const;
+    uint32_t getFormat(void) const noexcept;
+    int32_t getWidth(void) const noexcept;
+    int32_t getHeight(void) const noexcept;
+    int getRefreshRate(void) const noexcept;
 
-    void set(const SdlType dm);
-    void clear(void);
+    void set(const SdlType dm) noexcept;
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType dmode_;
 };
