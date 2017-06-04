@@ -40,7 +40,7 @@ class GfxClipboard final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxClipboard();
+    GfxClipboard() noexcept;
 
     GfxClipboard(GfxClipboard const&) = delete;
     GfxClipboard(GfxClipboard&&) = delete;
@@ -48,11 +48,11 @@ public:
     GfxClipboard& operator=(GfxClipboard const&) = delete;
     GfxClipboard& operator=(GfxClipboard&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void setClipboardText(const std::string& str) const;
-    std::string getClipboardText(void) const;
-    GfxBool hasClipboardText(void) const;
+    void setClipboardText(std::string const& str) const noexcept;
+    std::string getClipboardText(void) const noexcept;
+    GfxBool hasClipboardText(void) const noexcept;
 };
 
 }  // namespace clipboard

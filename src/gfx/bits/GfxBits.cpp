@@ -35,17 +35,17 @@ namespace bits
 
 const char GfxBits::ClassName[] = "GfxBits";
 
-GfxBits::GfxBits() : GfxRootClass(ClassName)
+GfxBits::GfxBits() noexcept : GfxRootClass(ClassName)
 {
     // Nothing to do
 }
 
-GfxBits::operator bool() const
+GfxBits::operator bool() const noexcept
 {
     return true;
 }
 
-int GfxBits::mostSignificantBitIndex32(const uint32_t x) const
+int GfxBits::mostSignificantBitIndex32(const uint32_t x) const noexcept
 {
     return sdl2::SDL_MostSignificantBitIndex32(x);
 }

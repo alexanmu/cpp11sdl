@@ -31,43 +31,43 @@ namespace gfx
 
 const char GfxTextureModulate::ClassName[] = "GfxTextureModulate";
 
-GfxTextureModulate::GfxTextureModulate() : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxTextureModulate::GfxTextureModulate(ValueType flags) : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(const ValueType flags) noexcept : GfxRootClass(ClassName)
 {
     modulate_ = static_cast<SdlType>(flags);
 }
 
-GfxTextureModulate::GfxTextureModulate(SdlType flags) : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags >= 0);
 
     modulate_ = flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(SdlTypePtr flags) : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(const SdlTypePtr flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags != nullptr);
 
     modulate_ = *flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxRootClass(ClassName)
 {
     modulate_ = other.modulate_;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : GfxRootClass(ClassName)
 {
     modulate_ = other.modulate_;
     // Delete other's data
     other.clear();
 }
 
-GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& other)
+GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& other) noexcept
 {
     if (this != &other)
     {
@@ -76,7 +76,7 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& othe
     return *this;
 }
 
-GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other)
+GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other) noexcept
 {
     if (this != &other)
     {
@@ -87,56 +87,56 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other)
     return *this;
 }
 
-bool GfxTextureModulate::isNone(void) const
+bool GfxTextureModulate::isNone(void) const noexcept
 {
     return (modulate_ == static_cast<SdlType>(ValueType::modulateNone));
 }
 
-bool GfxTextureModulate::isColor(void) const
+bool GfxTextureModulate::isColor(void) const noexcept
 {
     int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_COLOR;
 
     return (r != 0);
 }
 
-bool GfxTextureModulate::isAlpha(void) const
+bool GfxTextureModulate::isAlpha(void) const noexcept
 {
     int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_ALPHA;
 
     return (r != 0);
 }
 
-void GfxTextureModulate::setColor(void)
+void GfxTextureModulate::setColor(void) noexcept
 {
     modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_COLOR);
 }
 
-void GfxTextureModulate::resetColor(void)
+void GfxTextureModulate::resetColor(void) noexcept
 {
     modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_COLOR);
 }
 
-void GfxTextureModulate::setAlpha(void)
+void GfxTextureModulate::setAlpha(void) noexcept
 {
     modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_ALPHA);
 }
 
-void GfxTextureModulate::resetAlpha(void)
+void GfxTextureModulate::resetAlpha(void) noexcept
 {
     modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_ALPHA);
 }
 
-void GfxTextureModulate::clear(void)
+void GfxTextureModulate::clear(void) noexcept
 {
     modulate_ = static_cast<SdlType>(ValueType::modulateNone);
 }
 
-GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const
+GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const noexcept
 {
     return modulate_;
 }
 
-GfxTextureModulate::SdlTypePtr GfxTextureModulate::getAsSdlTypePtr(void) const
+GfxTextureModulate::SdlTypePtr GfxTextureModulate::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&modulate_;
 }

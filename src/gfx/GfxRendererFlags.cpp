@@ -32,36 +32,36 @@ namespace gfx
 
 const char GfxRendererFlags::ClassName[] = "GfxRendererFlags";
 
-GfxRendererFlags::GfxRendererFlags() : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxRendererFlags::GfxRendererFlags(ValueType flags) : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxRendererFlags::GfxRendererFlags(SdlType flags) : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
 {
     assert(flags > 0);
 
     flags_ = flags;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) noexcept : GfxRootClass(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
 }
 
-GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other)
+GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other) noexcept
 {
     if (this != &other)
     {
@@ -70,7 +70,7 @@ GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other)
     return *this;
 }
 
-GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other)
+GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other) noexcept
 {
     if (this != &other)
     {
@@ -81,95 +81,95 @@ GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other)
     return *this;
 }
 
-GfxRendererFlags::operator bool() const
+GfxRendererFlags::operator bool() const noexcept
 {
     return true;
 }
 
-bool GfxRendererFlags::isUnknown(void) const
+bool GfxRendererFlags::isUnknown(void) const noexcept
 {
     return (flags_ == static_cast<SdlType>(ValueType::flagUnknown));
 }
 
-bool GfxRendererFlags::isSoftware(void) const
+bool GfxRendererFlags::isSoftware(void) const noexcept
 {
     int32_t r = flags_ & sdl2::SDL_RENDERER_SOFTWARE;
 
     return (r != 0);
 }
 
-bool GfxRendererFlags::isAccelerated(void) const
+bool GfxRendererFlags::isAccelerated(void) const noexcept
 {
     int32_t r = flags_ & sdl2::SDL_RENDERER_ACCELERATED;
 
     return (r != 0);
 }
 
-bool GfxRendererFlags::getPresentVSync(void) const
+bool GfxRendererFlags::getPresentVSync(void) const noexcept
 {
     int32_t r = flags_ & sdl2::SDL_RENDERER_PRESENTVSYNC;
 
     return (r != 0);
 }
 
-bool GfxRendererFlags::getTargetTexture(void) const
+bool GfxRendererFlags::getTargetTexture(void) const noexcept
 {
     int32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
 
     return (r != 0);
 }
 
-void GfxRendererFlags::setSoftware(void)
+void GfxRendererFlags::setSoftware(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_SOFTWARE);
 }
 
-void GfxRendererFlags::resetSoftware(void)
+void GfxRendererFlags::resetSoftware(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_SOFTWARE);
 }
 
-void GfxRendererFlags::setAccelerated(void)
+void GfxRendererFlags::setAccelerated(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_ACCELERATED);
 }
 
-void GfxRendererFlags::resetAccelerated(void)
+void GfxRendererFlags::resetAccelerated(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_ACCELERATED);
 }
 
-void GfxRendererFlags::setPresentVSync(void)
+void GfxRendererFlags::setPresentVSync(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_PRESENTVSYNC);
 }
 
-void GfxRendererFlags::resetPresentVSync(void)
+void GfxRendererFlags::resetPresentVSync(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_PRESENTVSYNC);
 }
 
-void GfxRendererFlags::setTargetTexture(void)
+void GfxRendererFlags::setTargetTexture(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_TARGETTEXTURE);
 }
 
-void GfxRendererFlags::resetTargetTexture(void)
+void GfxRendererFlags::resetTargetTexture(void) noexcept
 {
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_TARGETTEXTURE);
 }
 
-void GfxRendererFlags::clear(void)
+void GfxRendererFlags::clear(void) noexcept
 {
     flags_ = static_cast<SdlType>(ValueType::flagUnknown);
 }
 
-GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const
+GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const noexcept
 {
     return flags_;
 }
 
-GfxRendererFlags::SdlTypePtr GfxRendererFlags::getAsSdlTypePtr(void) const
+GfxRendererFlags::SdlTypePtr GfxRendererFlags::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flags_;
 }

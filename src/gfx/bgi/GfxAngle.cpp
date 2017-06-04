@@ -33,29 +33,29 @@ namespace bgi
 
 const char GfxAngle::ClassName[] = "GfxAngle";
 
-GfxAngle::GfxAngle() : GfxRootClass(ClassName), value_(0)
+GfxAngle::GfxAngle() noexcept : GfxRootClass(ClassName), value_(0)
 {
     // Nothing to do
 }
 
-GfxAngle::GfxAngle(const GfxValueType value) : GfxRootClass(ClassName), value_(value)
+GfxAngle::GfxAngle(const GfxValueType value) noexcept : GfxRootClass(ClassName), value_(value)
 {
     value_ = value_ % 360;
 }
 
-GfxAngle::GfxAngle(const GfxAngle& other) : GfxRootClass(ClassName)
+GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxAngle::GfxAngle(GfxAngle&& other) : GfxRootClass(ClassName)
+GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
     other.value_ = 0;
 }
 
-GfxAngle& GfxAngle::operator=(const GfxAngle& other)
+GfxAngle& GfxAngle::operator=(GfxAngle const& other) noexcept
 {
     if (this != &other)
     {
@@ -64,7 +64,7 @@ GfxAngle& GfxAngle::operator=(const GfxAngle& other)
     return *this;
 }
 
-GfxAngle& GfxAngle::operator=(GfxAngle&& other)
+GfxAngle& GfxAngle::operator=(GfxAngle&& other) noexcept
 {
     if (this != &other)
     {
@@ -75,32 +75,32 @@ GfxAngle& GfxAngle::operator=(GfxAngle&& other)
     return *this;
 }
 
-bool GfxAngle::operator==(const GfxAngle& other)
+bool GfxAngle::operator==(GfxAngle const& other) const noexcept
 {
     return (value_ == other.value_);
 }
 
-bool GfxAngle::operator>(const GfxAngle& other)
+bool GfxAngle::operator>(GfxAngle const& other) const noexcept
 {
     return (value_ > other.value_);
 }
 
-bool GfxAngle::operator<(const GfxAngle& other)
+bool GfxAngle::operator<(GfxAngle const& other) const noexcept
 {
     return (value_ < other.value_);
 }
 
-GfxAngle::operator bool() const
+GfxAngle::operator bool() const noexcept
 {
     return true;
 }
 
-GfxAngle::GfxValueType GfxAngle::getValue() const
+GfxAngle::GfxValueType GfxAngle::getValue() const noexcept
 {
     return value_;
 }
 
-void GfxAngle::setValue(const GfxValueType& value)
+void GfxAngle::setValue(const GfxValueType& value) noexcept
 {
     value_ = value;
 }

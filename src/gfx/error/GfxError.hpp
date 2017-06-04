@@ -39,21 +39,21 @@ class GfxError final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxError();
+    GfxError() noexcept;
 
-    explicit GfxError(std::string const& error);
+    explicit GfxError(std::string const& error) noexcept;
 
-    GfxError(GfxError const& other);
-    GfxError(GfxError&& other);
+    GfxError(GfxError const& other) noexcept;
+    GfxError(GfxError&& other) noexcept;
 
-    GfxError& operator=(GfxError const& other);
-    GfxError& operator=(GfxError&& other);
+    GfxError& operator=(GfxError const& other) noexcept;
+    GfxError& operator=(GfxError&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    std::string get() const;
+    std::string get() const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 private:
     std::string error_;
 };

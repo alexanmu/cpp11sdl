@@ -30,44 +30,44 @@ namespace gfx
 
 const char GfxBool::ClassName[] = "GfxBool";
 
-GfxBool::GfxBool() : GfxRootClass(ClassName)
+GfxBool::GfxBool() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxBool::GfxBool(const ValueType value) : GfxRootClass(ClassName)
+GfxBool::GfxBool(const ValueType value) noexcept : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const SdlType value) : GfxRootClass(ClassName)
+GfxBool::GfxBool(const SdlType value) noexcept : GfxRootClass(ClassName)
 {
     value_ = value;
 }
 
-GfxBool::GfxBool(const bool value) : GfxRootClass(ClassName)
+GfxBool::GfxBool(const bool value) noexcept : GfxRootClass(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const GfxBool& other) : GfxRootClass(ClassName)
+GfxBool::GfxBool(const GfxBool& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBool::GfxBool(GfxBool&& other) : GfxRootClass(ClassName)
+GfxBool::GfxBool(GfxBool&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxBool::operator bool() const
+GfxBool::operator bool() const noexcept
 {
     return true;
 }
 
-GfxBool& GfxBool::operator=(const GfxBool& other)
+GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
 {
     if (this != &other)
     {
@@ -76,7 +76,7 @@ GfxBool& GfxBool::operator=(const GfxBool& other)
     return *this;
 }
 
-GfxBool& GfxBool::operator=(GfxBool&& other)
+GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
 {
     if (this != &other)
     {
@@ -87,17 +87,17 @@ GfxBool& GfxBool::operator=(GfxBool&& other)
     return *this;
 }
 
-bool GfxBool::getBool(void) const
+bool GfxBool::getBool(void) const noexcept
 {
     return static_cast<bool>(value_);
 }
 
-void GfxBool::clear(void)
+void GfxBool::clear(void) noexcept
 {
     value_ = static_cast<SdlType>(false);
 }
 
-GfxBool::SdlType GfxBool::getAsSdlType(void) const
+GfxBool::SdlType GfxBool::getAsSdlType(void) const noexcept
 {
     return value_;
 }

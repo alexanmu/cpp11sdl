@@ -40,7 +40,7 @@ class GfxBits final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxBits();
+    GfxBits() noexcept;
 
     GfxBits(GfxBits const&) = delete;
     GfxBits(GfxBits&&) = delete;
@@ -48,9 +48,9 @@ public:
     GfxBits& operator=(GfxBits const&) = delete;
     GfxBits& operator=(GfxBits&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    int mostSignificantBitIndex32(const uint32_t x) const;
+    int mostSignificantBitIndex32(const uint32_t x) const noexcept;
 };
 
 }  // namespace bits

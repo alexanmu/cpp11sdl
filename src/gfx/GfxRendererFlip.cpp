@@ -30,12 +30,12 @@ namespace gfx
 
 const char GfxRendererFlip::ClassName[] = "GfxRendererFlip";
 
-GfxRendererFlip::GfxRendererFlip() : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : GfxRootClass(ClassName)
 {
     flip_ = static_cast<SdlType>(ValueType::flipNone);
     if (fliph == true)
@@ -48,18 +48,18 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) : GfxRootCl
     }
 }
 
-GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other) : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxRootClass(ClassName)
 {
     flip_ = other.flip_;
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxRootClass(ClassName)
 {
     flip_ = other.flip_;
     other.clear();
 }
 
-GfxRendererFlip& GfxRendererFlip::operator=(const GfxRendererFlip& other)
+GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip const& other) noexcept
 {
     if (this != &other)
     {
@@ -68,7 +68,7 @@ GfxRendererFlip& GfxRendererFlip::operator=(const GfxRendererFlip& other)
     return *this;
 }
 
-GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other)
+GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other) noexcept
 {
     if (this != &other)
     {
@@ -78,32 +78,37 @@ GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other)
     return *this;
 }
 
-bool GfxRendererFlip::operator==(const GfxRendererFlip& other)
+GfxRendererFlip::operator bool() const noexcept
+{
+    return true;
+}
+
+bool GfxRendererFlip::operator==(GfxRendererFlip const& other) noexcept
 {
     return (flip_ == other.flip_);
 }
 
-bool GfxRendererFlip::isFlipHorizontal(void) const
+bool GfxRendererFlip::isFlipHorizontal(void) const noexcept
 {
     return ((flip_ & sdl2::SDL_FLIP_HORIZONTAL) != 0);
 }
 
-bool GfxRendererFlip::isFlipVertical(void) const
+bool GfxRendererFlip::isFlipVertical(void) const noexcept
 {
     return ((flip_ & sdl2::SDL_FLIP_VERTICAL) != 0);
 }
 
-void GfxRendererFlip::clear(void)
+void GfxRendererFlip::clear(void) noexcept
 {
     flip_ = static_cast<SdlType>(ValueType::flipNone);
 }
 
-GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const
+GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const noexcept
 {
     return (SdlType)flip_;
 }
 
-GfxRendererFlip::SdlTypePtr GfxRendererFlip::getAsSdlTypePtr(void) const
+GfxRendererFlip::SdlTypePtr GfxRendererFlip::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&flip_;
 }

@@ -187,14 +187,14 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
 const int32_t GfxRootClass::i32ClassNamesCount = sizeof(GfxRootClass::astClassInfo) /
                                                 sizeof(GfxRootClass::astClassInfo[0]);
 
-GfxRootClass::GfxRootClass()
+GfxRootClass::GfxRootClass() noexcept
 {
     GfxRootClass::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
     strClassName_ = "$init$";
 }
 
-GfxRootClass::GfxRootClass(const std::string& strClassName) : strClassName_(strClassName)
+GfxRootClass::GfxRootClass(const std::string& strClassName) noexcept : strClassName_(strClassName)
 {
     assert(strClassName.length() > 0);
 
@@ -202,14 +202,14 @@ GfxRootClass::GfxRootClass(const std::string& strClassName) : strClassName_(strC
     i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
 }
 
-GfxRootClass::GfxRootClass(const GfxRootClass& other)
+GfxRootClass::GfxRootClass(const GfxRootClass& other) noexcept
 {
     GfxRootClass::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
     strClassName_ = "$cpctor$" + other.strClassName_;
 }
 
-GfxRootClass::GfxRootClass(GfxRootClass&& other)
+GfxRootClass::GfxRootClass(GfxRootClass&& other) noexcept
 {
     GfxRootClass::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxRootClass::i32InstanceCounter_;
@@ -219,13 +219,13 @@ GfxRootClass::GfxRootClass(GfxRootClass&& other)
     other.strClassName_ = "$null$";
 }
 
-GfxRootClass::~GfxRootClass()
+GfxRootClass::~GfxRootClass() noexcept
 {
     strClassName_ = "$null$";
     i32InstanceId_ = -1;
 }
 
-GfxRootClass& GfxRootClass::operator=(const GfxRootClass& other)
+GfxRootClass& GfxRootClass::operator=(const GfxRootClass& other) noexcept
 {
     if (this != &other)
     {
@@ -236,7 +236,7 @@ GfxRootClass& GfxRootClass::operator=(const GfxRootClass& other)
     return *this;
 }
 
-GfxRootClass& GfxRootClass::operator=(GfxRootClass&& other)
+GfxRootClass& GfxRootClass::operator=(GfxRootClass&& other) noexcept
 {
     if (this != &other)
     {
@@ -250,22 +250,22 @@ GfxRootClass& GfxRootClass::operator=(GfxRootClass&& other)
     return *this;
 }
 
-bool GfxRootClass::operator==(const GfxRootClass& other) const
+bool GfxRootClass::operator==(const GfxRootClass& other) const noexcept
 {
     return ((i32InstanceId_ == other.i32InstanceId_) && (strClassName_ == other.strClassName_));
 }
 
-GfxRootClass::operator bool() const
+GfxRootClass::operator bool() const /* noexcept -> enable later! */
 {
     return true;
 }
 
-std::string const& GfxRootClass::getClassName(void) const
+std::string const& GfxRootClass::getClassName(void) const noexcept
 {
     return strClassName_;
 }
 
-int32_t GfxRootClass::getInstanceId(void) const
+int32_t GfxRootClass::getInstanceId(void) const noexcept
 {
     return i32InstanceId_;
 }

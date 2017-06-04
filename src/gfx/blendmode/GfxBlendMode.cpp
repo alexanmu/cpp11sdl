@@ -34,36 +34,36 @@ namespace blendmode
 
 const char GfxBlendMode::ClassName[] = "GfxBlendMode";
 
-GfxBlendMode::GfxBlendMode() : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxBlendMode::GfxBlendMode(const ValueType blendmode) : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(const ValueType blendmode) noexcept : GfxRootClass(ClassName)
 {
     blendmode_ = static_cast<SdlType>(blendmode);
 }
 
-GfxBlendMode::GfxBlendMode(const SdlType blendmode) : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxRootClass(ClassName)
 {
     assert(blendmode >= 0);
 
     blendmode_ = blendmode;
 }
 
-GfxBlendMode::GfxBlendMode(const GfxBlendMode& other) : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxRootClass(ClassName)
 {
     blendmode_ = other.blendmode_;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxRootClass(ClassName)
 {
     blendmode_ = other.blendmode_;
     // Destroy other's data
     other.clear();
 }
 
-GfxBlendMode& GfxBlendMode::operator=(const GfxBlendMode& other)
+GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode const& other) noexcept
 {
     if (this != &other)
     {
@@ -72,7 +72,7 @@ GfxBlendMode& GfxBlendMode::operator=(const GfxBlendMode& other)
     return *this;
 }
 
-GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other)
+GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other) noexcept
 {
     if (this != &other)
     {
@@ -83,52 +83,52 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other)
     return *this;
 }
 
-bool GfxBlendMode::operator==(const GfxBlendMode& other)
+bool GfxBlendMode::operator==(GfxBlendMode const& other) noexcept
 {
     return (blendmode_ == other.blendmode_);
 }
 
-GfxBlendMode::operator bool() const
+GfxBlendMode::operator bool() const noexcept
 {
     return true;
 }
 
-GfxBlendMode::ValueType GfxBlendMode::getBlendMode(void) const
+GfxBlendMode::ValueType GfxBlendMode::getBlendMode(void) const noexcept
 {
     return static_cast<ValueType>(blendmode_);
 }
 
-bool GfxBlendMode::isNone(void) const
+bool GfxBlendMode::isNone(void) const noexcept
 {
     return (blendmode_ == sdl2::SDL_BLENDMODE_NONE);
 }
 
-bool GfxBlendMode::isBlend(void) const
+bool GfxBlendMode::isBlend(void) const noexcept
 {
     return (blendmode_ == sdl2::SDL_BLENDMODE_BLEND);
 }
 
-bool GfxBlendMode::isAdd(void) const
+bool GfxBlendMode::isAdd(void) const noexcept
 {
     return (blendmode_ == sdl2::SDL_BLENDMODE_ADD);
 }
 
-bool GfxBlendMode::isMod(void) const
+bool GfxBlendMode::isMod(void) const noexcept
 {
     return (blendmode_ == sdl2::SDL_BLENDMODE_MOD);
 }
 
-void GfxBlendMode::clear(void)
+void GfxBlendMode::clear(void) noexcept
 {
     blendmode_ = static_cast<SdlType>(ValueType::blendNone);
 }
 
-GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const
+GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const noexcept
 {
     return (SdlType)blendmode_;
 }
 
-GfxBlendMode::SdlTypePtr GfxBlendMode::getAsSdlTypePtr(void) const
+GfxBlendMode::SdlTypePtr GfxBlendMode::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)blendmode_;
 }

@@ -42,24 +42,24 @@ public:
 
     static const char ClassName[];
 
-    GfxAngle();
+    GfxAngle() noexcept;
 
-    explicit GfxAngle(const GfxValueType value);
+    explicit GfxAngle(const GfxValueType value) noexcept;
 
-    GfxAngle(const GfxAngle& other);
-    GfxAngle(GfxAngle&& other);
+    GfxAngle(GfxAngle const& other) noexcept;
+    GfxAngle(GfxAngle&& other) noexcept;
 
-    GfxAngle& operator=(const GfxAngle& other);
-    GfxAngle& operator=(GfxAngle&& other);
+    GfxAngle& operator=(GfxAngle const& other) noexcept;
+    GfxAngle& operator=(GfxAngle&& other) noexcept;
 
-    bool operator==(const GfxAngle& other);
-    bool operator>(const GfxAngle& other);
-    bool operator<(const GfxAngle& other);
+    bool operator==(GfxAngle const& other) const noexcept;
+    bool operator>(GfxAngle const& other) const noexcept;
+    bool operator<(GfxAngle const& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    GfxValueType getValue() const;
-    void setValue(const GfxValueType& angle);
+    GfxValueType getValue() const noexcept;
+    void setValue(const GfxValueType& angle) noexcept;
 private:
     GfxValueType value_;
 };

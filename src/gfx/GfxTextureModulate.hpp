@@ -48,32 +48,32 @@ public:
         modulateAlpha = sdl2::SDL_TEXTUREMODULATE_ALPHA
     };
 
-    GfxTextureModulate();
+    GfxTextureModulate() noexcept;
 
-    explicit GfxTextureModulate(const ValueType modulate);
-    explicit GfxTextureModulate(const SdlType modulate);
-    explicit GfxTextureModulate(const SdlTypePtr modulate);
+    explicit GfxTextureModulate(const ValueType modulate) noexcept;
+    explicit GfxTextureModulate(const SdlType modulate) noexcept;
+    explicit GfxTextureModulate(const SdlTypePtr modulate) noexcept;
 
-    GfxTextureModulate(GfxTextureModulate const& other);
-    GfxTextureModulate(GfxTextureModulate&& other);
+    GfxTextureModulate(GfxTextureModulate const& other) noexcept;
+    GfxTextureModulate(GfxTextureModulate&& other) noexcept;
 
-    GfxTextureModulate& operator=(GfxTextureModulate const& other);
-    GfxTextureModulate& operator=(GfxTextureModulate&& other);
+    GfxTextureModulate& operator=(GfxTextureModulate const& other) noexcept;
+    GfxTextureModulate& operator=(GfxTextureModulate&& other) noexcept;
 
-    bool isNone(void) const;
-    bool isColor(void) const;
-    bool isAlpha(void) const;
+    bool isNone(void) const noexcept;
+    bool isColor(void) const noexcept;
+    bool isAlpha(void) const noexcept;
 
-    void setColor(void);
-    void resetColor(void);
+    void setColor(void) noexcept;
+    void resetColor(void) noexcept;
 
-    void setAlpha(void);
-    void resetAlpha(void);
+    void setAlpha(void) noexcept;
+    void resetAlpha(void) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType modulate_;
 };

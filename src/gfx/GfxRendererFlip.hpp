@@ -48,26 +48,28 @@ public:
         flipVertical = sdl2::SDL_FLIP_VERTICAL
     };
 
-    GfxRendererFlip();
+    GfxRendererFlip() noexcept;
 
-    GfxRendererFlip(const bool fliph, const bool flipv);
-    explicit GfxRendererFlip(const ValueType values);
+    GfxRendererFlip(const bool fliph, const bool flipv) noexcept;
+    explicit GfxRendererFlip(const ValueType value) noexcept;
 
-    GfxRendererFlip(const GfxRendererFlip& other);
-    GfxRendererFlip(GfxRendererFlip&& other);
+    GfxRendererFlip(GfxRendererFlip const& other) noexcept;
+    GfxRendererFlip(GfxRendererFlip&& other) noexcept;
 
-    GfxRendererFlip& operator=(const GfxRendererFlip& other);
-    GfxRendererFlip& operator=(GfxRendererFlip&& other);
+    GfxRendererFlip& operator=(GfxRendererFlip const& other) noexcept;
+    GfxRendererFlip& operator=(GfxRendererFlip&& other) noexcept;
 
-    bool operator==(const GfxRendererFlip& other);
+    virtual explicit operator bool() const noexcept;
 
-    bool isFlipHorizontal(void) const;
-    bool isFlipVertical(void) const;
+    bool operator==(GfxRendererFlip const& other) noexcept;
 
-    void clear(void);
+    bool isFlipHorizontal(void) const noexcept;
+    bool isFlipVertical(void) const noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    void clear(void) noexcept;
+
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flip_;
 };

@@ -33,29 +33,29 @@ namespace bgi
 
 const char GfxString::ClassName[] = "GfxString";
 
-GfxString::GfxString() : GfxRootClass(ClassName), value_("")
+GfxString::GfxString() noexcept : GfxRootClass(ClassName), value_("")
 {
     // Nothing to do
 }
 
-GfxString::GfxString(GfxValueType value) : GfxRootClass(ClassName), value_(value)
+GfxString::GfxString(GfxValueType const& value) noexcept : GfxRootClass(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxString::GfxString(const GfxString& other) : GfxRootClass(ClassName)
+GfxString::GfxString(GfxString const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxString::GfxString(GfxString&& other) : GfxRootClass(ClassName)
+GfxString::GfxString(GfxString&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
     other.value_ = "";
 }
 
-GfxString& GfxString::operator=(const GfxString& other)
+GfxString& GfxString::operator=(GfxString const& other) noexcept
 {
     if (this != &other)
     {
@@ -64,7 +64,7 @@ GfxString& GfxString::operator=(const GfxString& other)
     return *this;
 }
 
-GfxString& GfxString::operator=(GfxString&& other)
+GfxString& GfxString::operator=(GfxString&& other) noexcept
 {
     if (this != &other)
     {
@@ -75,32 +75,32 @@ GfxString& GfxString::operator=(GfxString&& other)
     return *this;
 }
 
-bool GfxString::operator==(const GfxString& other)
+bool GfxString::operator==(GfxString const& other) const noexcept
 {
     return (value_ == other.value_);
 }
 
-bool GfxString::operator>(const GfxString& other)
+bool GfxString::operator>(GfxString const& other) const noexcept
 {
     return (value_ > other.value_);
 }
 
-bool GfxString::operator<(const GfxString& other)
+bool GfxString::operator<(GfxString const& other) const noexcept
 {
     return (value_ < other.value_);
 }
 
-GfxString::operator bool() const
+GfxString::operator bool() const noexcept
 {
     return true;
 }
 
-GfxString::GfxValueType GfxString::getValue() const
+GfxString::GfxValueType GfxString::getValue() const noexcept
 {
     return value_;
 }
 
-void GfxString::setValue(const GfxValueType& value)
+void GfxString::setValue(GfxValueType const& value) noexcept
 {
     value_ = value;
 }

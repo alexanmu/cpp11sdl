@@ -33,29 +33,29 @@ namespace bgi
 
 const char GfxRadius::ClassName[] = "GfxRadius";
 
-GfxRadius::GfxRadius() : GfxRootClass(ClassName), value_(0)
+GfxRadius::GfxRadius() noexcept : GfxRootClass(ClassName), value_(0)
 {
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(GfxValueType value) : GfxRootClass(ClassName), value_(value)
+GfxRadius::GfxRadius(const GfxValueType value) noexcept : GfxRootClass(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(const GfxRadius& other) : GfxRootClass(ClassName)
+GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxRadius::GfxRadius(GfxRadius&& other) : GfxRootClass(ClassName)
+GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxRootClass(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
     other.value_ = 0;
 }
 
-GfxRadius& GfxRadius::operator=(const GfxRadius& other)
+GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
 {
     if (this != &other)
     {
@@ -64,7 +64,7 @@ GfxRadius& GfxRadius::operator=(const GfxRadius& other)
     return *this;
 }
 
-GfxRadius& GfxRadius::operator=(GfxRadius&& other)
+GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
 {
     if (this != &other)
     {
@@ -75,32 +75,32 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other)
     return *this;
 }
 
-bool GfxRadius::operator==(const GfxRadius& other)
+bool GfxRadius::operator==(GfxRadius const& other) noexcept
 {
     return (value_ == other.value_);
 }
 
-bool GfxRadius::operator>(const GfxRadius& other)
+bool GfxRadius::operator>(GfxRadius const& other) noexcept
 {
     return (value_ > other.value_);
 }
 
-bool GfxRadius::operator<(const GfxRadius& other)
+bool GfxRadius::operator<(GfxRadius const& other) noexcept
 {
     return (value_ < other.value_);
 }
 
-GfxRadius::operator bool() const
+GfxRadius::operator bool() const noexcept
 {
     return true;
 }
 
-GfxRadius::GfxValueType GfxRadius::getValue() const
+GfxRadius::GfxValueType GfxRadius::getValue() const noexcept
 {
     return value_;
 }
 
-void GfxRadius::setValue(const GfxValueType& value)
+void GfxRadius::setValue(const GfxValueType value) noexcept
 {
     value_ = value;
 }

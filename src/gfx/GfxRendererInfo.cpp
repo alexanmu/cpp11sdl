@@ -32,29 +32,29 @@ namespace gfx
 
 const char GfxRendererInfo::ClassName[] = "GfxRendererInfo";
 
-GfxRendererInfo::GfxRendererInfo() : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxRendererInfo::GfxRendererInfo(SdlType info) : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo(SdlType info) noexcept : GfxRootClass(ClassName)
 {
     info_ = info;
 }
 
-GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) noexcept : GfxRootClass(ClassName)
 {
     info_ = other.info_;
 }
 
-GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxRootClass(ClassName)
 {
     info_ = other.info_;
     // Delete other's data
     other.clear();
 }
 
-GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other)
+GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other) noexcept
 {
     if (this != &other)
     {
@@ -63,7 +63,7 @@ GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other)
     return *this;
 }
 
-GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other)
+GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other) noexcept
 {
     if (this != &other)
     {
@@ -74,12 +74,12 @@ GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other)
     return *this;
 }
 
-GfxRendererInfo::operator bool() const
+GfxRendererInfo::operator bool() const noexcept
 {
     return true;
 }
 
-std::string GfxRendererInfo::getName(void) const
+std::string GfxRendererInfo::getName(void) const noexcept
 {
     std::string str;
 
@@ -87,17 +87,17 @@ std::string GfxRendererInfo::getName(void) const
     return str;
 }
 
-uint32_t GfxRendererInfo::getFlags(void) const
+uint32_t GfxRendererInfo::getFlags(void) const noexcept
 {
     return info_.flags;
 }
 
-uint32_t GfxRendererInfo::getNumTextureFormats(void) const
+uint32_t GfxRendererInfo::getNumTextureFormats(void) const noexcept
 {
     return info_.num_texture_formats;
 }
 
-GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const
+GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const noexcept
 {
     GfxTextureFormats tf;
     uint32_t max;
@@ -119,22 +119,22 @@ GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const
     return tf;
 }
 
-int32_t GfxRendererInfo::getMaxTextureWidth(void) const
+int32_t GfxRendererInfo::getMaxTextureWidth(void) const noexcept
 {
     return info_.max_texture_width;
 }
 
-int32_t GfxRendererInfo::getMaxTextureHeight(void) const
+int32_t GfxRendererInfo::getMaxTextureHeight(void) const noexcept
 {
     return info_.max_texture_height;
 }
 
-void GfxRendererInfo::set(const SdlType info)
+void GfxRendererInfo::set(const SdlType info) noexcept
 {
     info_ = info;
 }
 
-void GfxRendererInfo::clear(void)
+void GfxRendererInfo::clear(void) noexcept
 {
     info_.name = nullptr;
     info_.flags = 0;
@@ -147,12 +147,12 @@ void GfxRendererInfo::clear(void)
     info_.max_texture_height = -1;
 }
 
-GfxRendererInfo::SdlType GfxRendererInfo::getAsSdlType(void) const
+GfxRendererInfo::SdlType GfxRendererInfo::getAsSdlType(void) const noexcept
 {
     return (SdlType)info_;
 }
 
-GfxRendererInfo::SdlTypePtr GfxRendererInfo::getAsSdlTypePtr(void) const
+GfxRendererInfo::SdlTypePtr GfxRendererInfo::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&info_;
 }

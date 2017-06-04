@@ -33,29 +33,29 @@ namespace error
 
 const char GfxError::ClassName[] = "GfxError";
 
-GfxError::GfxError() : GfxRootClass(ClassName)
+GfxError::GfxError() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxError::GfxError(std::string const& error) : GfxRootClass(ClassName)
+GfxError::GfxError(std::string const& error) noexcept : GfxRootClass(ClassName)
 {
     error_ = error;
 }
 
-GfxError::GfxError(GfxError const& other) : GfxRootClass(ClassName)
+GfxError::GfxError(GfxError const& other) noexcept : GfxRootClass(ClassName)
 {
     error_ = other.error_;
 }
 
-GfxError::GfxError(GfxError&& other) : GfxRootClass(ClassName)
+GfxError::GfxError(GfxError&& other) noexcept : GfxRootClass(ClassName)
 {
     error_ = other.error_;
     // Delete other's data
     other.clear();
 }
 
-GfxError& GfxError::operator=(GfxError const& other)
+GfxError& GfxError::operator=(GfxError const& other) noexcept
 {
     if (this != &other)
     {
@@ -64,7 +64,7 @@ GfxError& GfxError::operator=(GfxError const& other)
     return *this;
 }
 
-GfxError& GfxError::operator=(GfxError&& other)
+GfxError& GfxError::operator=(GfxError&& other) noexcept
 {
     if (this != &other)
     {
@@ -75,17 +75,17 @@ GfxError& GfxError::operator=(GfxError&& other)
     return *this;
 }
 
-GfxError::operator bool() const
+GfxError::operator bool() const noexcept
 {
     return (error_.length() > 0);
 }
 
-std::string GfxError::get() const
+std::string GfxError::get() const noexcept
 {
     return error_;
 }
 
-void GfxError::clear(void)
+void GfxError::clear(void) noexcept
 {
     error_ = "";
 }

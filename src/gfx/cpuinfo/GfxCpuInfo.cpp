@@ -34,7 +34,7 @@ namespace cpuinfo
 
 const char GfxCpuInfo::ClassName[]  = "GfxCpuInfo";
 
-GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
+GfxCpuInfo::GfxCpuInfo() noexcept : GfxRootClass(ClassName)
 {
     cpuCount_ = 0;
     cpuCacheLineSize_ = 0;
@@ -51,12 +51,12 @@ GfxCpuInfo::GfxCpuInfo() : GfxRootClass(ClassName)
     systemRam_ = 0;
 }
 
-GfxCpuInfo::operator bool() const
+GfxCpuInfo::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxCpuInfo::queryCpuInfo(void)
+void GfxCpuInfo::queryCpuInfo(void) noexcept
 {
     cpuCount_ = sdl2::SDL_GetCPUCount();
     cpuCacheLineSize_ = sdl2::SDL_GetCPUCacheLineSize();
@@ -73,72 +73,72 @@ void GfxCpuInfo::queryCpuInfo(void)
     systemRam_ = sdl2::SDL_GetSystemRAM();
 }
 
-int32_t GfxCpuInfo::getCpuCount(void) const
+int32_t GfxCpuInfo::getCpuCount(void) const noexcept
 {
     return cpuCount_;
 }
 
-int32_t GfxCpuInfo::getCpuCacheLineSize(void) const
+int32_t GfxCpuInfo::getCpuCacheLineSize(void) const noexcept
 {
     return cpuCacheLineSize_;
 }
 
-bool GfxCpuInfo::hasRdtsc(void) const
+bool GfxCpuInfo::hasRdtsc(void) const noexcept
 {
     return hasRdtsc_;
 }
 
-bool GfxCpuInfo::hasAltiVec(void) const
+bool GfxCpuInfo::hasAltiVec(void) const noexcept
 {
     return hasAltiVec_;
 }
 
-bool GfxCpuInfo::hasMmx(void) const
+bool GfxCpuInfo::hasMmx(void) const noexcept
 {
     return hasMmx_;
 }
 
-bool GfxCpuInfo::hasSse(void) const
+bool GfxCpuInfo::hasSse(void) const noexcept
 {
     return hasSse_;
 }
 
-bool GfxCpuInfo::hasSse2(void) const
+bool GfxCpuInfo::hasSse2(void) const noexcept
 {
     return hasSse2_;
 }
 
-bool GfxCpuInfo::hasSse3(void) const
+bool GfxCpuInfo::hasSse3(void) const noexcept
 {
     return hasSse3_;
 }
 
-bool GfxCpuInfo::hasSse41(void) const
+bool GfxCpuInfo::hasSse41(void) const noexcept
 {
     return hasSse41_;
 }
 
-bool GfxCpuInfo::hasSse42(void) const
+bool GfxCpuInfo::hasSse42(void) const noexcept
 {
     return hasSse42_;
 }
 
-bool GfxCpuInfo::hasAvx(void) const
+bool GfxCpuInfo::hasAvx(void) const noexcept
 {
     return hasAvx_;
 }
 
-bool GfxCpuInfo::hasAvx2(void) const
+bool GfxCpuInfo::hasAvx2(void) const noexcept
 {
     return hasAvx2_;
 }
 
-int32_t GfxCpuInfo::getSystemRam(void) const
+int32_t GfxCpuInfo::getSystemRam(void) const noexcept
 {
     return systemRam_;
 }
 
-const std::string GfxCpuInfo::getAsString(void) const
+const std::string GfxCpuInfo::getAsString(void) const noexcept
 {
     std::string str1;
 

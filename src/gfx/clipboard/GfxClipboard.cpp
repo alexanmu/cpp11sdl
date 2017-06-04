@@ -36,24 +36,24 @@ namespace clipboard
 
 const char GfxClipboard::ClassName[] = "GfxClipboard";
 
-GfxClipboard::GfxClipboard() : GfxRootClass(ClassName)
+GfxClipboard::GfxClipboard() noexcept : GfxRootClass(ClassName)
 {
     // Nothing to do
 }
 
-GfxClipboard::operator bool() const
+GfxClipboard::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxClipboard::setClipboardText(const std::string& str) const
+void GfxClipboard::setClipboardText(std::string const& str) const noexcept
 {
     assert(str.length() > 0);
 
     sdl2::SDL_SetClipboardText(str.c_str());
 }
 
-std::string GfxClipboard::getClipboardText(void) const
+std::string GfxClipboard::getClipboardText(void) const noexcept
 {
     char * c;
     std::string str { "" };
@@ -67,7 +67,7 @@ std::string GfxClipboard::getClipboardText(void) const
     return str;
 }
 
-GfxBool GfxClipboard::hasClipboardText(void) const
+GfxBool GfxClipboard::hasClipboardText(void) const noexcept
 {
     bool ret;
 

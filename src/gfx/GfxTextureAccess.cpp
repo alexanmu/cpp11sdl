@@ -30,29 +30,29 @@ namespace gfx
 
 const char GfxTextureAccess::ClassName[] = "GfxTextureAccess";
 
-GfxTextureAccess::GfxTextureAccess() : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxTextureAccess::GfxTextureAccess(const ValueType access) : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess(const ValueType access) noexcept : GfxRootClass(ClassName)
 {
     access_ = static_cast<SdlType>(access);
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxRootClass(ClassName)
 {
     access_ = other.access_;
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxRootClass(ClassName)
 {
     access_ = other.access_;
     // Delete other's data
     other.clear();
 }
 
-GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other)
+GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other) noexcept
 {
     if (this != &other)
     {
@@ -61,7 +61,7 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other)
     return *this;
 }
 
-GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other)
+GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other) noexcept
 {
     if (this != &other)
     {
@@ -72,17 +72,17 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other)
     return *this;
 }
 
-void GfxTextureAccess::clear(void)
+void GfxTextureAccess::clear(void) noexcept
 {
     access_ = static_cast<SdlType>(ValueType::accessStatic);
 }
 
-GfxTextureAccess::SdlType GfxTextureAccess::getAsSdlType(void) const
+GfxTextureAccess::SdlType GfxTextureAccess::getAsSdlType(void) const noexcept
 {
     return access_;
 }
 
-GfxTextureAccess::SdlTypePtr GfxTextureAccess::getAsSdlTypePtr(void) const
+GfxTextureAccess::SdlTypePtr GfxTextureAccess::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)&access_;
 }

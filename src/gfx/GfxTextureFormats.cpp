@@ -28,19 +28,19 @@ namespace gfx
 
 const char GfxTextureFormats::ClassName[] = "GfxTextureFormats";
 
-GfxTextureFormats::GfxTextureFormats() : GfxRootClass(ClassName)
+GfxTextureFormats::GfxTextureFormats() noexcept : GfxRootClass(ClassName)
 {
     clear();
 }
 
-GfxTextureFormats::GfxTextureFormats(int32_t formatsCount) throw(std::runtime_error) :
+GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount) throw(std::runtime_error) :
         GfxRootClass(ClassName)
 {
     clear();
     formatsCount_ = formatsCount;
 }
 
-GfxTextureFormats::GfxTextureFormats(int32_t formatsCount, uint32_t formats[]) throw(std::runtime_error) :
+GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount, const uint32_t formats[]) throw(std::runtime_error) :
         GfxRootClass(ClassName)
 {
     formatsCount_ = formatsCount;
@@ -50,7 +50,7 @@ GfxTextureFormats::GfxTextureFormats(int32_t formatsCount, uint32_t formats[]) t
     }
 }
 
-GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) : GfxRootClass(ClassName)
+GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : GfxRootClass(ClassName)
 {
     formatsCount_ = other.formatsCount_;
     for (int32_t index = 0; index < other.formatsCount_; index++)
@@ -59,7 +59,7 @@ GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) : GfxRootCl
     }
 }
 
-GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) : GfxRootClass(ClassName)
+GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) noexcept : GfxRootClass(ClassName)
 {
     formatsCount_ = other.formatsCount_;
     for (int32_t index = 0; index < other.formatsCount_; index++)
@@ -70,7 +70,7 @@ GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) : GfxRootClass(C
     other.clear();
 }
 
-GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other)
+GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other) noexcept
 {
     if (this != &other)
     {
@@ -83,7 +83,7 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other)
     return *this;
 }
 
-GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other)
+GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other) noexcept
 {
     if (this != &other)
     {
@@ -116,7 +116,7 @@ void GfxTextureFormats::setFormat(const int32_t formatIndex, const uint32_t form
     formats_[formatIndex] = formatValue;
 }
 
-void GfxTextureFormats::setAllFormats(const uint32_t formats[])
+void GfxTextureFormats::setAllFormats(const uint32_t formats[]) noexcept
 {
     formatsCount_ = kTextureFormatsArrayLength;
     for (int32_t index = 0; index < kTextureFormatsArrayLength; index++)
@@ -125,12 +125,12 @@ void GfxTextureFormats::setAllFormats(const uint32_t formats[])
     }
 }
 
-int32_t GfxTextureFormats::getMaxFormatsCount(void) const
+int32_t GfxTextureFormats::getMaxFormatsCount(void) const noexcept
 {
     return kTextureFormatsArrayLength;
 }
 
-int32_t GfxTextureFormats::getFormatsCount(void) const
+int32_t GfxTextureFormats::getFormatsCount(void) const noexcept
 {
     return formatsCount_;
 }
@@ -153,7 +153,7 @@ uint32_t const& GfxTextureFormats::operator[](const int32_t formatIndex) const t
     return formats_[formatIndex];
 }
 
-void GfxTextureFormats::clear(void)
+void GfxTextureFormats::clear(void) noexcept
 {
     formatsCount_ = -1;
     std::memset(reinterpret_cast<void *>(&formats_[0]), 0, sizeof(formats_));

@@ -49,7 +49,7 @@ public:
     static const char ClassName[];
 
     GfxCanvas() = delete;
-    explicit GfxCanvas(surface::GfxSurface const& surf);
+    explicit GfxCanvas(surface::GfxSurface const& surf) noexcept;
 
     GfxCanvas(GfxCanvas const&) = delete;
     GfxCanvas(GfxCanvas&&) = delete;
@@ -57,20 +57,20 @@ public:
     GfxCanvas& operator=(GfxCanvas const&) = delete;
     GfxCanvas& operator=(GfxCanvas&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void Circle(const rect::GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr);
+    void Circle(const rect::GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr) noexcept;
     void Arc(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
-             const GfxRadius& radius, const pixels::GfxColor& clr);
-    void OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr);
+             const GfxRadius& radius, const pixels::GfxColor& clr) noexcept;
+    void OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr) noexcept;
     void OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr,
-                  const fnt::GfxBitmapFont& font);
-    void Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr);
-    void Bar(const rect::GfxRect& r, const pixels::GfxColor& clr);
-    void PutPixel(const rect::GfxPoint& pt, const pixels::GfxColor& clr);
-    void Rect(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr);
-    void Rect(const rect::GfxRect& r, const pixels::GfxColor& clr);
-    void Line(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr);
+                  const fnt::GfxBitmapFont& font) noexcept;
+    void Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr) noexcept;
+    void Bar(const rect::GfxRect& r, const pixels::GfxColor& clr) noexcept;
+    void PutPixel(const rect::GfxPoint& pt, const pixels::GfxColor& clr) noexcept;
+    void Rect(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr) noexcept;
+    void Rect(const rect::GfxRect& r, const pixels::GfxColor& clr) noexcept;
+    void Line(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr) noexcept;
 private:
     GfxCanvasBgi bgi_;
 };

@@ -33,17 +33,17 @@ namespace gfx
 
 const char GfxGetRendererInfo::ClassName[] = "GfxGetRendererInfo";
 
-GfxGetRendererInfo::GfxGetRendererInfo() : GfxRootClass(ClassName)
+GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxRootClass(ClassName)
 {
     numRenderDrivers_ = -1;
 }
 
-GfxGetRendererInfo::operator bool() const
+GfxGetRendererInfo::operator bool() const noexcept
 {
     return true;
 }
 
-int32_t GfxGetRendererInfo::getNumRenderDrivers(void)
+int32_t GfxGetRendererInfo::getNumRenderDrivers(void) noexcept
 {
     int32_t nrd;
 
@@ -55,7 +55,7 @@ int32_t GfxGetRendererInfo::getNumRenderDrivers(void)
     return nrd;
 }
 
-void GfxGetRendererInfo::getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr)
+void GfxGetRendererInfo::getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr) noexcept
 {
     assert(index >= 0);
     assert(infoptr != nullptr);

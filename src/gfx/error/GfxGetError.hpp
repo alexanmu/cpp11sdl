@@ -48,8 +48,8 @@ public:
     GfxGetError& operator=(GfxGetError const &) = delete;
     GfxGetError& operator=(GfxGetError&&) = delete;
 
-    static GfxError getErrorObject(void);
-    static void clearSDL2Error(void);
+    static GfxError getErrorObject(void) noexcept;
+    static void clearSDL2Error(void) noexcept;
 };
 
 }  // namespace error

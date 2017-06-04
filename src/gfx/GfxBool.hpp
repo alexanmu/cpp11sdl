@@ -45,25 +45,25 @@ public:
         boolTrue = sdl2::SDL_TRUE
     };
 
-    GfxBool();
+    GfxBool() noexcept;
 
-    explicit GfxBool(const ValueType value);
-    explicit GfxBool(const SdlType value);
-    explicit GfxBool(const bool value);
+    explicit GfxBool(const ValueType value) noexcept;
+    explicit GfxBool(const SdlType value) noexcept;
+    explicit GfxBool(const bool value) noexcept;
 
-    GfxBool(const GfxBool& other);
-    GfxBool(GfxBool&& other);
+    GfxBool(const GfxBool& other) noexcept;
+    GfxBool(GfxBool&& other) noexcept;
 
-    GfxBool& operator=(const GfxBool& other);
-    GfxBool& operator=(GfxBool&& other);
+    GfxBool& operator=(const GfxBool& other) noexcept;
+    GfxBool& operator=(GfxBool&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool getBool(void) const;
+    bool getBool(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
+    SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType value_;
 };

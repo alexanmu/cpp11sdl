@@ -41,24 +41,24 @@ public:
 
     static const char ClassName[];
 
-    GfxString();
+    GfxString() noexcept;
 
-    explicit GfxString(GfxValueType value);
+    explicit GfxString(GfxValueType const& value) noexcept;
 
-    GfxString(const GfxString& other);
-    GfxString(GfxString&& other);
+    GfxString(GfxString const& other) noexcept;
+    GfxString(GfxString&& other) noexcept;
 
-    GfxString& operator=(const GfxString& other);
-    GfxString& operator=(GfxString&& other);
+    GfxString& operator=(GfxString const& other) noexcept;
+    GfxString& operator=(GfxString&& other) noexcept;
 
-    bool operator==(const GfxString& other);
-    bool operator>(const GfxString& other);
-    bool operator<(const GfxString& other);
+    bool operator==(GfxString const& other) const noexcept;
+    bool operator>(GfxString const& other) const noexcept;
+    bool operator<(GfxString const& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    GfxValueType getValue() const;
-    void setValue(const GfxValueType& value);
+    GfxValueType getValue() const noexcept;
+    void setValue(GfxValueType const& value) noexcept;
 private:
     GfxValueType value_;
 };

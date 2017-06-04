@@ -33,24 +33,24 @@ namespace gfx
 class GfxRootClass
 {
 public:
-    GfxRootClass();
+    GfxRootClass() noexcept;
 
-    explicit GfxRootClass(const std::string& strClassName);
+    explicit GfxRootClass(const std::string& strClassName) noexcept;
 
-    GfxRootClass(const GfxRootClass& other);
-    GfxRootClass(GfxRootClass&& other);
+    GfxRootClass(const GfxRootClass& other) noexcept;
+    GfxRootClass(GfxRootClass&& other) noexcept;
 
-    virtual ~GfxRootClass();
+    virtual ~GfxRootClass() noexcept;
 
-    GfxRootClass& operator=(const GfxRootClass& other);
-    GfxRootClass& operator=(GfxRootClass&& other);
+    GfxRootClass& operator=(const GfxRootClass& other) noexcept;
+    GfxRootClass& operator=(GfxRootClass&& other) noexcept;
 
-    bool operator==(const GfxRootClass& other) const;
+    bool operator==(const GfxRootClass& other) const noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const /* noexcept -> enable later! */;
 
-    std::string const& getClassName(void) const;
-    int32_t getInstanceId(void) const;
+    std::string const& getClassName(void) const noexcept;
+    int32_t getInstanceId(void) const noexcept;
 private:
     std::string strClassName_;
     int32_t i32InstanceId_;

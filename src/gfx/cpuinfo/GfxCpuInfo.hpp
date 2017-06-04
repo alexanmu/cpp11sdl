@@ -40,7 +40,7 @@ class GfxCpuInfo final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxCpuInfo();
+    GfxCpuInfo() noexcept;
 
     GfxCpuInfo(GfxCpuInfo const&) = delete;
     GfxCpuInfo(GfxCpuInfo&&) = delete;
@@ -48,25 +48,25 @@ public:
     GfxCpuInfo& operator=(GfxCpuInfo const&) = delete;
     GfxCpuInfo& operator=(GfxCpuInfo&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    void queryCpuInfo(void);
+    void queryCpuInfo(void) noexcept;
 
-    int32_t getCpuCount(void) const;
-    int32_t getCpuCacheLineSize(void) const;
-    bool hasRdtsc(void) const;
-    bool hasAltiVec(void) const;
-    bool hasMmx(void) const;
-    bool hasSse(void) const;
-    bool hasSse2(void) const;
-    bool hasSse3(void) const;
-    bool hasSse41(void) const;
-    bool hasSse42(void) const;
-    bool hasAvx(void) const;
-    bool hasAvx2(void) const;
-    int32_t getSystemRam(void) const;
+    int32_t getCpuCount(void) const noexcept;
+    int32_t getCpuCacheLineSize(void) const noexcept;
+    bool hasRdtsc(void) const noexcept;
+    bool hasAltiVec(void) const noexcept;
+    bool hasMmx(void) const noexcept;
+    bool hasSse(void) const noexcept;
+    bool hasSse2(void) const noexcept;
+    bool hasSse3(void) const noexcept;
+    bool hasSse41(void) const noexcept;
+    bool hasSse42(void) const noexcept;
+    bool hasAvx(void) const noexcept;
+    bool hasAvx2(void) const noexcept;
+    int32_t getSystemRam(void) const noexcept;
 
-    const std::string getAsString(void) const;
+    const std::string getAsString(void) const noexcept;
 private:
     int32_t cpuCount_;
     int32_t cpuCacheLineSize_;

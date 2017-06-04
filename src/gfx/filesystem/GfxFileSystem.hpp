@@ -39,7 +39,7 @@ class GfxFileSystem final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxFileSystem();
+    GfxFileSystem() noexcept;
 
     GfxFileSystem(GfxFileSystem const&) = delete;
     GfxFileSystem(GfxFileSystem&&) = delete;
@@ -47,12 +47,13 @@ public:
     GfxFileSystem& operator=(GfxFileSystem const&) = delete;
     GfxFileSystem& operator=(GfxFileSystem&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    const std::string getBasePath(void) const;
-    const std::string getPrefPath(const std::string& organization, const std::string& appname) const;
+    const std::string getBasePath(void) const noexcept;
+    const std::string getPrefPath(const std::string& organization,
+                                  const std::string& appname) const noexcept;
 private:
-    std::string getThisFolder(void) const;
+    std::string getThisFolder(void) const noexcept;
 };
 
 }  // namespace filesystem

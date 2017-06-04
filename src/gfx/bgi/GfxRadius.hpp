@@ -42,24 +42,24 @@ public:
 
     static const char ClassName[];
 
-    GfxRadius();
+    GfxRadius() noexcept;
 
-    explicit GfxRadius(const GfxValueType value);
+    explicit GfxRadius(const GfxValueType value) noexcept;
 
-    GfxRadius(const GfxRadius& other);
-    GfxRadius(GfxRadius&& other);
+    GfxRadius(GfxRadius const& other) noexcept;
+    GfxRadius(GfxRadius&& other) noexcept;
 
-    GfxRadius& operator=(const GfxRadius& other);
-    GfxRadius& operator=(GfxRadius&& other);
+    GfxRadius& operator=(const GfxRadius& other) noexcept;
+    GfxRadius& operator=(GfxRadius&& other) noexcept;
 
-    bool operator==(const GfxRadius& other);
-    bool operator>(const GfxRadius& other);
-    bool operator<(const GfxRadius& other);
+    bool operator==(GfxRadius const& other) noexcept;
+    bool operator>(GfxRadius const& other) noexcept;
+    bool operator<(GfxRadius const& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    GfxValueType getValue() const;
-    void setValue(const GfxValueType& value);
+    GfxValueType getValue() const noexcept;
+    void setValue(const GfxValueType value) noexcept;
 private:
     GfxValueType value_;
 };

@@ -48,20 +48,20 @@ public:
         accessTarget = sdl2::SDL_TEXTUREACCESS_TARGET
     };
 
-    GfxTextureAccess();
+    GfxTextureAccess() noexcept;
 
-    explicit GfxTextureAccess(const ValueType access);
+    explicit GfxTextureAccess(const ValueType access) noexcept;
 
-    GfxTextureAccess(GfxTextureAccess const& other);
-    GfxTextureAccess(GfxTextureAccess&& other);
+    GfxTextureAccess(GfxTextureAccess const& other) noexcept;
+    GfxTextureAccess(GfxTextureAccess&& other) noexcept;
 
-    GfxTextureAccess& operator=(GfxTextureAccess const& other);
-    GfxTextureAccess& operator=(GfxTextureAccess&& other);
+    GfxTextureAccess& operator=(GfxTextureAccess const& other) noexcept;
+    GfxTextureAccess& operator=(GfxTextureAccess&& other) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType access_;
 };

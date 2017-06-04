@@ -36,7 +36,7 @@ namespace bgi
 
 const char GfxCanvas::ClassName[] = "GfxCanvas";
 
-GfxCanvas::GfxCanvas(surface::GfxSurface const& surf) : GfxRootClass(ClassName)
+GfxCanvas::GfxCanvas(surface::GfxSurface const& surf) noexcept : GfxRootClass(ClassName)
 {
     assert(surf);
 
@@ -44,12 +44,12 @@ GfxCanvas::GfxCanvas(surface::GfxSurface const& surf) : GfxRootClass(ClassName)
                     surf.getAsSdlTypePtr()->h);
 }
 
-GfxCanvas::operator bool() const
+GfxCanvas::operator bool() const noexcept
 {
     return true;
 }
 
-void GfxCanvas::Circle(const rect::GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr)
+void GfxCanvas::Circle(const rect::GfxPoint& pt, const GfxRadius& r, const pixels::GfxColor& clr) noexcept
 {
     assert(pt);
     assert(r);
@@ -60,7 +60,7 @@ void GfxCanvas::Circle(const rect::GfxPoint& pt, const GfxRadius& r, const pixel
 }
 
 void GfxCanvas::Arc(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
-                    const GfxRadius& radius, const pixels::GfxColor& clr)
+                    const GfxRadius& radius, const pixels::GfxColor& clr) noexcept
 {
     assert(pt);
     assert(stangle);
@@ -73,7 +73,7 @@ void GfxCanvas::Arc(const rect::GfxPoint& pt, const GfxAngle& stangle, const Gfx
 }
 
 void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr,
-                        const fnt::GfxBitmapFont& font)
+                        const fnt::GfxBitmapFont& font) noexcept
 {
     assert(pt);
     assert(text);
@@ -86,7 +86,7 @@ void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const p
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr)
+void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const pixels::GfxColor& clr) noexcept
 {
     assert(pt);
     assert(text);
@@ -96,7 +96,7 @@ void GfxCanvas::OutText(const rect::GfxPoint& pt, const GfxString& text, const p
     bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
 }
 
-void GfxCanvas::Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr)
+void GfxCanvas::Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr) noexcept
 {
     assert(pt1);
     assert(pt2);
@@ -106,7 +106,7 @@ void GfxCanvas::Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const 
     bgi_.bar(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Bar(const rect::GfxRect& r, const pixels::GfxColor& clr)
+void GfxCanvas::Bar(const rect::GfxRect& r, const pixels::GfxColor& clr) noexcept
 {
     assert(r);
     assert(clr);
@@ -115,7 +115,7 @@ void GfxCanvas::Bar(const rect::GfxRect& r, const pixels::GfxColor& clr)
     bgi_.bar(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::PutPixel(const rect::GfxPoint& pt, const pixels::GfxColor& clr)
+void GfxCanvas::PutPixel(const rect::GfxPoint& pt, const pixels::GfxColor& clr) noexcept
 {
     assert(pt);
     assert(clr);
@@ -126,7 +126,7 @@ void GfxCanvas::PutPixel(const rect::GfxPoint& pt, const pixels::GfxColor& clr)
     bgi_._putpixel(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::Rect(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr)
+void GfxCanvas::Rect(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr) noexcept
 {
     assert(pt1);
     assert(pt2);
@@ -138,7 +138,7 @@ void GfxCanvas::Rect(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const
     bgi_.rectangle(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Rect(const rect::GfxRect& r, const pixels::GfxColor& clr)
+void GfxCanvas::Rect(const rect::GfxRect& r, const pixels::GfxColor& clr) noexcept
 {
     assert(r);
     assert(clr);
@@ -149,7 +149,7 @@ void GfxCanvas::Rect(const rect::GfxRect& r, const pixels::GfxColor& clr)
     bgi_.rectangle(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::Line(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr)
+void GfxCanvas::Line(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const pixels::GfxColor& clr) noexcept
 {
     assert(pt1);
     assert(pt2);

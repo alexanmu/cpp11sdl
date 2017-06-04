@@ -50,41 +50,41 @@ public:
         flagTargetTexture = sdl2::SDL_RENDERER_TARGETTEXTURE
     };
 
-    GfxRendererFlags();
+    GfxRendererFlags() noexcept;
 
-    explicit GfxRendererFlags(const ValueType flags);
-    explicit GfxRendererFlags(const SdlType flags);
+    explicit GfxRendererFlags(const ValueType flags) noexcept;
+    explicit GfxRendererFlags(const SdlType flags) noexcept;
 
-    GfxRendererFlags(GfxRendererFlags const& other);
-    GfxRendererFlags(GfxRendererFlags&& other);
+    GfxRendererFlags(GfxRendererFlags const& other) noexcept;
+    GfxRendererFlags(GfxRendererFlags&& other) noexcept;
 
-    GfxRendererFlags& operator=(GfxRendererFlags const& other);
-    GfxRendererFlags& operator=(GfxRendererFlags&& other);
+    GfxRendererFlags& operator=(GfxRendererFlags const& other) noexcept;
+    GfxRendererFlags& operator=(GfxRendererFlags&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    bool isUnknown(void) const;
-    bool isSoftware(void) const;
-    bool isAccelerated(void) const;
-    bool getPresentVSync(void) const;
-    bool getTargetTexture(void) const;
+    bool isUnknown(void) const noexcept;
+    bool isSoftware(void) const noexcept;
+    bool isAccelerated(void) const noexcept;
+    bool getPresentVSync(void) const noexcept;
+    bool getTargetTexture(void) const noexcept;
 
-    void setSoftware(void);
-    void resetSoftware(void);
+    void setSoftware(void) noexcept;
+    void resetSoftware(void) noexcept;
 
-    void setAccelerated(void);
-    void resetAccelerated(void);
+    void setAccelerated(void) noexcept;
+    void resetAccelerated(void) noexcept;
 
-    void setPresentVSync(void);
-    void resetPresentVSync(void);
+    void setPresentVSync(void) noexcept;
+    void resetPresentVSync(void) noexcept;
 
-    void setTargetTexture(void);
-    void resetTargetTexture(void);
+    void setTargetTexture(void) noexcept;
+    void resetTargetTexture(void) noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flags_;
 };

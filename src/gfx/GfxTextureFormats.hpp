@@ -37,26 +37,26 @@ class GfxTextureFormats final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxTextureFormats();
-    explicit GfxTextureFormats(int32_t formatsCount) throw(std::runtime_error);
-    explicit GfxTextureFormats(int32_t formatsCount, uint32_t formats[]) throw(std::runtime_error);
+    GfxTextureFormats() noexcept;
+    explicit GfxTextureFormats(const int32_t formatsCount) throw(std::runtime_error);
+    explicit GfxTextureFormats(const int32_t formatsCount, const uint32_t formats[]) throw(std::runtime_error);
 
-    GfxTextureFormats(GfxTextureFormats const& other);
-    GfxTextureFormats(GfxTextureFormats&& other);
+    GfxTextureFormats(GfxTextureFormats const& other) noexcept;
+    GfxTextureFormats(GfxTextureFormats&& other) noexcept;
 
-    GfxTextureFormats& operator=(GfxTextureFormats const& other);
-    GfxTextureFormats& operator=(GfxTextureFormats&& other);
+    GfxTextureFormats& operator=(GfxTextureFormats const& other) noexcept;
+    GfxTextureFormats& operator=(GfxTextureFormats&& other) noexcept;
 
     void setCount(const int32_t formatsCount) throw(std::runtime_error);
     void setFormat(const int32_t formatIndex, const uint32_t formatValue) throw(std::runtime_error);
-    void setAllFormats(const uint32_t formats[]);
-    int32_t getMaxFormatsCount(void) const;
-    int32_t getFormatsCount(void) const;
+    void setAllFormats(const uint32_t formats[]) noexcept;
+    int32_t getMaxFormatsCount(void) const noexcept;
+    int32_t getFormatsCount(void) const noexcept;
 
     uint32_t& operator[](const int32_t formatIndex) throw(std::runtime_error);
     uint32_t const& operator[](const int32_t formatIndex) const throw(std::runtime_error);
 
-    void clear(void);
+    void clear(void) noexcept;
 private:
     static const int32_t kTextureFormatsArrayLength = 16;
     uint32_t formats_[kTextureFormatsArrayLength];

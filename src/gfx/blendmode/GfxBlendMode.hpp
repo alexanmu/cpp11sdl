@@ -52,32 +52,32 @@ public:
         blendMod = sdl2::SDL_BLENDMODE_MOD
     };
 
-    GfxBlendMode();
+    GfxBlendMode() noexcept;
 
-    explicit GfxBlendMode(const ValueType blendmode);
-    explicit GfxBlendMode(const SdlType blendmode);
+    explicit GfxBlendMode(const ValueType blendmode) noexcept;
+    explicit GfxBlendMode(const SdlType blendmode) noexcept;
 
-    GfxBlendMode(const GfxBlendMode& other);
-    GfxBlendMode(GfxBlendMode&& other);
+    GfxBlendMode(GfxBlendMode const& other) noexcept;
+    GfxBlendMode(GfxBlendMode&& other) noexcept;
 
-    GfxBlendMode& operator=(const GfxBlendMode& other);
-    GfxBlendMode& operator=(GfxBlendMode&& other);
+    GfxBlendMode& operator=(GfxBlendMode const& other) noexcept;
+    GfxBlendMode& operator=(GfxBlendMode&& other) noexcept;
 
-    bool operator==(const GfxBlendMode& other);
+    bool operator==(const GfxBlendMode& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    ValueType getBlendMode(void) const;
+    ValueType getBlendMode(void) const noexcept;
 
-    bool isNone(void) const;
-    bool isBlend(void) const;
-    bool isAdd(void) const;
-    bool isMod(void) const;
+    bool isNone(void) const noexcept;
+    bool isBlend(void) const noexcept;
+    bool isAdd(void) const noexcept;
+    bool isMod(void) const noexcept;
 
-    void clear(void);
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType blendmode_;
 };

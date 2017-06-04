@@ -34,7 +34,7 @@ namespace error
 
 const char GfxGetError::ClassName[] = "GfxGetError";
 
-GfxError GfxGetError::getErrorObject(void)
+GfxError GfxGetError::getErrorObject(void) noexcept
 {
     std::string str;
 
@@ -42,7 +42,7 @@ GfxError GfxGetError::getErrorObject(void)
     return GfxError(str);
 }
 
-void GfxGetError::clearSDL2Error(void)
+void GfxGetError::clearSDL2Error(void) noexcept
 {
     sdl2::SDL_ClearError();
 }

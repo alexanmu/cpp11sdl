@@ -42,30 +42,30 @@ public:
 
     static const char ClassName[];
 
-    GfxRendererInfo();
+    GfxRendererInfo() noexcept;
 
-    explicit GfxRendererInfo(const SdlType info);
+    explicit GfxRendererInfo(const SdlType info) noexcept;
 
-    GfxRendererInfo(const GfxRendererInfo& other);
-    GfxRendererInfo(GfxRendererInfo&& other);
+    GfxRendererInfo(const GfxRendererInfo& other) noexcept;
+    GfxRendererInfo(GfxRendererInfo&& other) noexcept;
 
-    GfxRendererInfo& operator=(const GfxRendererInfo& other);
-    GfxRendererInfo& operator=(GfxRendererInfo&& other);
+    GfxRendererInfo& operator=(const GfxRendererInfo& other) noexcept;
+    GfxRendererInfo& operator=(GfxRendererInfo&& other) noexcept;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    std::string getName(void) const;
-    uint32_t getFlags(void) const;
-    uint32_t getNumTextureFormats(void) const;
-    GfxTextureFormats getTextureFormats(void) const;
-    int32_t getMaxTextureWidth(void) const;
-    int32_t getMaxTextureHeight(void) const;
+    std::string getName(void) const noexcept;
+    uint32_t getFlags(void) const noexcept;
+    uint32_t getNumTextureFormats(void) const noexcept;
+    GfxTextureFormats getTextureFormats(void) const noexcept;
+    int32_t getMaxTextureWidth(void) const noexcept;
+    int32_t getMaxTextureHeight(void) const noexcept;
 
-    void set(const SdlType info);
-    void clear(void);
+    void set(const SdlType info) noexcept;
+    void clear(void) noexcept;
 
-    SdlType getAsSdlType(void) const;
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType info_;
 };

@@ -40,7 +40,7 @@ class GfxEndian final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxEndian();
+    GfxEndian() noexcept;
 
     GfxEndian(GfxEndian const&) = delete;
     GfxEndian(GfxEndian&&) = delete;
@@ -48,22 +48,22 @@ public:
     GfxEndian& operator=(GfxEndian const&) = delete;
     GfxEndian& operator=(GfxEndian&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     /* Methods */
-    uint16_t swap16(const uint16_t x) const;
-    uint32_t swap32(const uint32_t x) const;
-    uint64_t swap64(const uint64_t x) const;
-    float swapFloat(const float x) const;
+    uint16_t swap16(const uint16_t x) const noexcept;
+    uint32_t swap32(const uint32_t x) const noexcept;
+    uint64_t swap64(const uint64_t x) const noexcept;
+    float swapFloat(const float x) const noexcept;
 
-    uint16_t swapLE16(const uint16_t x) const;
-    uint32_t swapLE32(const uint32_t x) const;
-    uint64_t swapLE64(const uint64_t x) const;
-    float swapFloatLE(const float x) const;
-    uint16_t swapBE16(const uint16_t x) const;
-    uint32_t swapBE32(const uint32_t x) const;
-    uint64_t swapBE64(const uint64_t x) const;
-    float swapFloatBE(const float x) const;
+    uint16_t swapLE16(const uint16_t x) const noexcept;
+    uint32_t swapLE32(const uint32_t x) const noexcept;
+    uint64_t swapLE64(const uint64_t x) const noexcept;
+    float swapFloatLE(const float x) const noexcept;
+    uint16_t swapBE16(const uint16_t x) const noexcept;
+    uint32_t swapBE32(const uint32_t x) const noexcept;
+    uint64_t swapBE64(const uint64_t x) const noexcept;
+    float swapFloatBE(const float x) const noexcept;
 };
 
 }  // namespace endian

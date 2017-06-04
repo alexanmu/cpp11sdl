@@ -35,17 +35,17 @@ namespace filesystem
 
 const char GfxFileSystem::ClassName[] = "GfxFileSystem";
 
-GfxFileSystem::GfxFileSystem() : GfxRootClass(ClassName)
+GfxFileSystem::GfxFileSystem() noexcept : GfxRootClass(ClassName)
 {
     // Nothing to do
 }
 
-GfxFileSystem::operator bool() const
+GfxFileSystem::operator bool() const noexcept
 {
     return true;
 }
 
-const std::string GfxFileSystem::getBasePath(void) const
+const std::string GfxFileSystem::getBasePath(void) const noexcept
 {
     char * base_path = NULL;
     std::string str;
@@ -62,7 +62,8 @@ const std::string GfxFileSystem::getBasePath(void) const
     return str;
 }
 
-const std::string GfxFileSystem::getPrefPath(const std::string& organization, const std::string& appname) const
+const std::string GfxFileSystem::getPrefPath(const std::string& organization,
+                                             const std::string& appname) const noexcept
 {
     assert(organization.length() > 0);
     assert(appname.length() > 0);
@@ -82,7 +83,7 @@ const std::string GfxFileSystem::getPrefPath(const std::string& organization, co
     return str;
 }
 
-std::string GfxFileSystem::getThisFolder(void) const
+std::string GfxFileSystem::getThisFolder(void) const noexcept
 {
 #ifdef __windows_machine
     return ".\\";

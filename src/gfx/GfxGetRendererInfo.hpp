@@ -38,7 +38,7 @@ class GfxGetRendererInfo final : public GfxRootClass
 public:
     static const char ClassName[];
 
-    GfxGetRendererInfo();
+    GfxGetRendererInfo() noexcept;
 
     GfxGetRendererInfo(GfxGetRendererInfo const&) = delete;
     GfxGetRendererInfo(GfxGetRendererInfo&&) = delete;
@@ -46,10 +46,10 @@ public:
     GfxGetRendererInfo& operator=(GfxGetRendererInfo const&) = delete;
     GfxGetRendererInfo& operator=(GfxGetRendererInfo&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
-    int32_t getNumRenderDrivers(void);
-    void getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr);
+    int32_t getNumRenderDrivers(void) noexcept;
+    void getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr) noexcept;
 private:
     int32_t numRenderDrivers_;
 };
