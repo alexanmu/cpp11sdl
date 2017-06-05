@@ -114,28 +114,28 @@ void GStructuredTextLabel::setColorScheme(void)
     switch (stTextType_)
     {
         case GStructuredTextType::emailAddress:
-            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightBlue());
-            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            setForegroundColor(gfx::bgi::kColorLightBlue());
+            setBackgroundColor(gfx::bgi::kColorWhite());
             getFontInfo().clear();
             getFontInfo().setFontItalic(true);
             getFontInfo().setFontUnderline(false);
             break;
         case GStructuredTextType::hyperLink:
-            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaBlue());
-            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            setForegroundColor(gfx::bgi::kColorBlue());
+            setBackgroundColor(gfx::bgi::kColorWhite());
             getFontInfo().clear();
             getFontInfo().setFontItalic(true);
             getFontInfo().setFontUnderline(true);
             break;
         case GStructuredTextType::ipAddress:
-            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaBlack());
-            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            setForegroundColor(gfx::bgi::kColorBlack());
+            setBackgroundColor(gfx::bgi::kColorWhite());
             getFontInfo().clear();
             getFontInfo().setFontBold(true);
             break;
         case GStructuredTextType::customRegex:
-            setForegroundColor(gfx::bgi::GfxBgiConstants::vgaBlack());
-            setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaWhite());
+            setForegroundColor(gfx::bgi::kColorBlack());
+            setBackgroundColor(gfx::bgi::kColorWhite());
             getFontInfo().clear();
             getFontInfo().setFontUnderline(true);
             break;

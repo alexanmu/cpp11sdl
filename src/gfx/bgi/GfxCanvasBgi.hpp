@@ -30,7 +30,7 @@
 #include <string>
 
 #include "GfxRootClass.hpp"
-#include "GfxCanvasBgiData.hpp"
+#include "GfxBgiConstants.hpp"
 
 namespace gfx
 {
@@ -42,6 +42,8 @@ class GfxCanvasBgi : public GfxRootClass
 {
 public:
     static const char ClassName[];
+
+    static const int32_t kMaxColors = 15;
 
     enum class bgiFonts : int
     {
@@ -164,7 +166,7 @@ public:
     struct palettetype
     {
         unsigned char size;
-        signed char colors[GfxCanvasBgiData::kMaxColors + 1];
+        signed char colors[kMaxColors + 1];
     };
 
     struct textsettingstype
@@ -294,7 +296,7 @@ private:
     // updated with the new bgi_activepage contents; bgi_texture is then
     // copied to bgi_renderer, and finally bgi_renderer is made present.
 
-    uint32_t palette[1 + GfxCanvasBgiData::kMaxColors + 3];  // all colors
+    uint32_t palette[1 + kMaxColors + 3];  // all colors
 
     bgiColors bgi_fg_color = bgiColors::WHITE;    // index of BGI foreground color
     bgiColors bgi_bg_color = bgiColors::BLACK;    // index of BGI background color
@@ -319,8 +321,11 @@ private:
     struct viewporttype vp;
     struct palettetype pal;
 
+    static uint16_t line_patterns[1 + static_cast<int>(bgiLineStyle::USERBIT_LINE)];
+    static uint8_t fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FILL)][8];
+
     // pointer to font array. Should I add more (ugly) bitmap fonts?
-    const uint8_t *fontptr = GfxCanvasBgiData::gfxPrimitivesFontdata;
+    static const uint8_t * fontptr;
 };  // class GfxCanvasBgi
 
 }  // namespace bgi

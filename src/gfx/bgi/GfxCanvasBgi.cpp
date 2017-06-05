@@ -30,6 +30,7 @@
 #include <cstring>
 
 #include "GfxCanvasBgi.hpp"
+#include "fntBgiStandardFont.hpp"
 
 namespace gfx
 {
@@ -38,6 +39,53 @@ namespace bgi
 {
 
 const char GfxCanvasBgi::ClassName[] = "GfxCanvasBgi";
+
+const uint8_t * GfxCanvasBgi::fontptr = gfxPrimitivesFontdata;
+
+const uint32_t bgi_palette[1 + GfxCanvasBgi::kMaxColors] = {  // 0 - 15
+    0xff000000,  // BLACK
+    0xff0000ff,  // BLUE
+    0xff00ff00,  // GREEN
+    0xff00ffff,  // CYAN
+    0xffff0000,  // RED
+    0xffff00ff,  // MAGENTA
+    0xffa52a2a,  // BROWN
+    0xffd3d3d3,  // LIGHTGRAY
+    0xffa9a9a9,  // DARKGRAY
+    0xffadd8e6,  // LIGHTBLUE
+    0xff90ee90,  // LIGHTGREEN
+    0xffe0ffff,  // LIGHTCYAN
+    0xfff08080,  // LIGHTRED
+    0xffdb7093,  // LIGHTMAGENTA
+    0xffffff00,  // YELLOW
+    0xffffffff   // WHITE
+};
+
+uint16_t GfxCanvasBgi::line_patterns[1 + static_cast<int>(bgiLineStyle::USERBIT_LINE)] = {
+    0xffff,  // SOLID_LINE  = 1111111111111111
+    0xcccc,  // DOTTED_LINE = 1100110011001100
+    0xf1f8,  // CENTER_LINE = 1111000111111000
+    0xf8f8,  // DASHED_LINE = 1111100011111000
+    0xffff   // USERBIT_LINE
+};
+
+// These are setfillpattern-compatible arrays for the tiling patterns.
+// Taken from TurboC, http://www.sandroid.org/TurboC/
+uint8_t GfxCanvasBgi::fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FILL)][8] = {
+    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},  // EMPTY_FILL
+    {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff},  // SOLID_FILL
+    {0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00},  // LINE_FILL
+    {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80},  // LTSLASH_FILL
+    {0x03, 0x06, 0x0c, 0x18, 0x30, 0x60, 0xc0, 0x81},  // SLASH_FILL
+    {0xc0, 0x60, 0x30, 0x18, 0x0c, 0x06, 0x03, 0x81},  // BKSLASH_FILL
+    {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01},  // LTBKSLASH_FILL
+    {0x22, 0x22, 0xff, 0x22, 0x22, 0x22, 0xff, 0x22},  // HATCH_FILL
+    {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81},  // XHATCH_FILL
+    {0x11, 0x44, 0x11, 0x44, 0x11, 0x44, 0x11, 0x44},  // INTERLEAVE_FILL
+    {0x10, 0x00, 0x01, 0x00, 0x10, 0x00, 0x01, 0x00},  // WIDE_DOT_FILL
+    {0x11, 0x00, 0x44, 0x00, 0x11, 0x00, 0x44, 0x00},  // CLOSE_DOT_FILL
+    {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}   // USER_FILL
+};
 
 GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
 {
@@ -96,7 +144,7 @@ void GfxCanvasBgi::setDefaultFont(void)
 {
     bgi_font_width = 8;
     bgi_font_height = 8;
-    fontptr = GfxCanvasBgiData::gfxPrimitivesFontdata;
+    fontptr = gfxPrimitivesFontdata;
 }
 
 // -----
@@ -693,7 +741,7 @@ void GfxCanvasBgi::ff_putpixel(int x, int y)
     y += vp.top;
 
     // if the corresponding bit in the pattern is 1
-    if ( (GfxCanvasBgiData::fill_patterns[static_cast<int>(bgi_fill_style.pattern)][y % 8] >> x % 8) & 1)
+    if ( (fill_patterns[static_cast<int>(bgi_fill_style.pattern)][y % 8] >> x % 8) & 1)
     {
         putpixel_copy(x, y, palette[static_cast<int>(bgi_fill_style.color)]);
     }
@@ -953,7 +1001,7 @@ void GfxCanvasBgi::getfillpattern(char *pattern)
 
     for (i = 0; i < 8; i++)
     {
-        pattern[i] = static_cast<char>(GfxCanvasBgiData::fill_patterns[
+        pattern[i] = static_cast<char>(fill_patterns[
                             static_cast<int>(bgiFillStyles::USER_FILL)][i]);
     }
 }  // getfillpattern ()
@@ -1020,7 +1068,7 @@ int GfxCanvasBgi::getmaxcolor(void)
 {
     // Returns the maximum color value available (MAXCOLORS).
 
-    return GfxCanvasBgiData::kMaxColors;
+    return kMaxColors;
 }  // getmaxcolor ()
 
 // -----
@@ -1049,7 +1097,7 @@ void GfxCanvasBgi::getpalette(struct palettetype *palette)
     // information about the current palette’s size and colors.
     int i;
 
-    for (i = 0; i <= GfxCanvasBgiData::kMaxColors; i++)
+    for (i = 0; i <= kMaxColors; i++)
     {
         palette->colors[i] = pal.colors[i];
     }
@@ -1062,7 +1110,7 @@ int GfxCanvasBgi::getpalettesize(struct palettetype *palette)
     // Returns the size of the palette.
     assert(palette != nullptr);
 
-    return (1 + GfxCanvasBgiData::kMaxColors);
+    return (1 + kMaxColors);
 }  // getpalettesize ()
 
 // -----
@@ -1196,8 +1244,8 @@ void GfxCanvasBgi::graphdefaults(void)
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
 
     // initialise the palette
-    pal.size = 1 + GfxCanvasBgiData::kMaxColors;
-    for (i = 0; i < (GfxCanvasBgiData::kMaxColors + 1); i++)
+    pal.size = 1 + kMaxColors;
+    for (i = 0; i < (kMaxColors + 1); i++)
     {
         pal.colors[i] = i;
     }
@@ -1222,7 +1270,7 @@ void GfxCanvasBgi::initpalette(void)
 
     for (i = static_cast<int>(bgiColors::BLACK); i < (static_cast<int>(bgiColors::WHITE) + 1); i++)
     {
-        palette[i] = GfxCanvasBgiData::bgi_palette[i];
+        palette[i] = bgi_palette[i];
     }
 }  // initpalette ()
 
@@ -1252,7 +1300,7 @@ void GfxCanvasBgi::line_copy(int x1, int y1, int x2, int y2)
         }
         else
         {
-            if ((GfxCanvasBgiData::line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
                 putpixel_copy(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
             }
@@ -1298,7 +1346,7 @@ void GfxCanvasBgi::line_xor(int x1, int y1, int x2, int y2)
         }
         else
         {
-            if ((GfxCanvasBgiData::line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
                 putpixel_xor(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
             }
@@ -1343,7 +1391,7 @@ void GfxCanvasBgi::line_and(int x1, int y1, int x2, int y2)
         }
         else
         {
-            if ((GfxCanvasBgiData::line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
                 putpixel_and(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
             }
@@ -1389,7 +1437,7 @@ void GfxCanvasBgi::line_or(int x1, int y1, int x2, int y2)
         }
         else
         {
-            if ((GfxCanvasBgiData::line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
                 putpixel_or(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
             }
@@ -1435,7 +1483,7 @@ void GfxCanvasBgi::line_not(int x1, int y1, int x2, int y2)
         }
         else
         {
-            if ((GfxCanvasBgiData::line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
                 putpixel_not(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
             }
@@ -2217,7 +2265,7 @@ void GfxCanvasBgi::setallpalette(struct palettetype *palette)
     // Sets the current palette to the values given in palette.
     int i;
 
-    for (i = 0; i <= GfxCanvasBgiData::kMaxColors; i++)
+    for (i = 0; i <= kMaxColors; i++)
     {
         if (palette->colors[i] != -1)
         {
@@ -2249,7 +2297,7 @@ void GfxCanvasBgi::setfillpattern(uint8_t *upattern, bgiColors color)
 
     for (i = 0; i < 8; i++)
     {
-        GfxCanvasBgiData::fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = *upattern;
+        fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = *upattern;
         upattern += 1;
     }
 
@@ -2275,7 +2323,7 @@ void GfxCanvasBgi::setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, 
     // lineto(), rectangle(), drawpoly(), etc.
 
     bgi_line_style.linestyle = linestyle;
-    GfxCanvasBgiData::line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = static_cast<uint16_t>(upattern);
+    line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = static_cast<uint16_t>(upattern);
     bgi_line_style.upattern = upattern;
     bgi_line_style.thickness = thickness;
 }  // setlinestyle ()
@@ -2286,7 +2334,7 @@ void GfxCanvasBgi::setpalette(int colornum, int color)
 {
     // Changes the standard palette colornum to color.
 
-    palette[colornum] = GfxCanvasBgiData::bgi_palette[color];
+    palette[colornum] = bgi_palette[color];
 }  // setpalette ()
 
 // -----

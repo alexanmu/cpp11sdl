@@ -24,8 +24,20 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxColor.hpp"
 #include "GfxBgiConstants.hpp"
+#include "GfxColor.hpp"
+#include "GfxBitmapFont.hpp"
+
+#include "fntStandard8x16.hpp"
+#include "fntAntique.hpp"
+#include "fntBroadway.hpp"
+#include "fntCourrier.hpp"
+#include "fntDragon.hpp"
+#include "fntMedieval.hpp"
+#include "fntRoman.hpp"
+#include "fntSansserif.hpp"
+#include "fntScript.hpp"
+#include "fntWacky.hpp"
 
 namespace gfx
 {
@@ -33,9 +45,7 @@ namespace gfx
 namespace bgi
 {
 
-const char GfxBgiConstants::ClassName[] = "GfxBgiConstants";
-
-const pixels::GfxColor GfxBgiConstants::kColorsVGA16_[kVgaNumColors] {
+const pixels::GfxColor kColorsVGA16_[kNumColors] {
     {0x00 << 2, 0x00 << 2, 0x00 << 2, 0xFF},
     {0x00 << 2, 0x00 << 2, 0x28 << 2, 0xFF},
     {0x00 << 2, 0x28 << 2, 0x00 << 2, 0xFF},
@@ -54,90 +64,163 @@ const pixels::GfxColor GfxBgiConstants::kColorsVGA16_[kVgaNumColors] {
     {0x3F << 2, 0x3F << 2, 0x3F << 2, 0xFF}
 };
 
-const pixels::GfxColor& GfxBgiConstants::vgaBlack(void)
+const pixels::GfxColor& kColorBlack(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexBlack)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexBlack)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaBlue(void)
+const pixels::GfxColor& kColorBlue(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexBlue)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexBlue)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaGreen(void)
+const pixels::GfxColor& kColorGreen(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexGreen)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexGreen)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaCyan(void)
+const pixels::GfxColor& kColorCyan(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexCyan)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexCyan)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaRed(void)
+const pixels::GfxColor& kColorRed(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexRed)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexRed)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaMagenta(void)
+const pixels::GfxColor& kColorMagenta(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexMagenta)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexMagenta)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaBrown(void)
+const pixels::GfxColor& kColorBrown(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexBrown)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexBrown)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaLightGray(void)
+const pixels::GfxColor& kColorLightGray(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexLightGray)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexLightGray)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaDarkGray(void)
+const pixels::GfxColor& kColorDarkGray(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexDarkGray)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexDarkGray)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaLightBlue(void)
+const pixels::GfxColor& kColorLightBlue(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexLightBlue)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexLightBlue)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaLightGreen(void)
+const pixels::GfxColor& kColorLightGreen(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexLightGreen)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexLightGreen)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaLightCyan(void)
+const pixels::GfxColor& kColorLightCyan(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexLightCyan)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexLightCyan)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaLightRed(void)
+const pixels::GfxColor& kColorLightRed(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexLightRed)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexLightRed)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaLightMagenta(void)
+const pixels::GfxColor& kColorLightMagenta(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexLightMagenta)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexLightMagenta)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaYellow(void)
+const pixels::GfxColor& kColorYellow(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexYellow)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexYellow)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaWhite(void)
+const pixels::GfxColor& kColorWhite(void)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(GfxVga16ColorIndex::indexWhite)];
+    return kColorsVGA16_[static_cast<int32_t>(GfxColorIndex::indexWhite)];
 }
 
-const pixels::GfxColor& GfxBgiConstants::vgaGetColorByIndex(const GfxVga16ColorIndex index)
+const pixels::GfxColor& kGetColorByIndex(const GfxColorIndex index)
 {
-    return GfxBgiConstants::kColorsVGA16_[static_cast<int32_t>(index)];
+    return kColorsVGA16_[static_cast<int32_t>(index)];
 }
+
+namespace fnt
+{
+
+static const GfxBitmapFont fonts_[kNumFonts] {
+    { &fntStandard8x16Data_[0], 8, 16 },
+    { &fntAntiqueData_[0], 8, 16 },
+    { &fntBroadwayData_[0], 8, 16 },
+    { &fntCourrierData_[0], 8, 16 },
+    { &fntDragonData_[0], 8, 16 },
+    { &fntMedievalData_[0], 8, 16 },
+    { &fntRomanData_[0], 8, 16 },
+    { &fntSansserifData_[0], 8, 16 },
+    { &fntScriptData_[0], 8, 16 },
+    { &fntWackyData_[0], 8, 16 }
+};
+
+const GfxBitmapFont& kFontStandard8x16(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexStandard8x16)];
+}
+
+const GfxBitmapFont& kFontAntique(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexAntique)];
+}
+
+const GfxBitmapFont& kFontBroadway(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexBroadway)];
+}
+
+const GfxBitmapFont& kFontCourrier(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexCourrier)];
+}
+
+const GfxBitmapFont& kFontDragon(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexDragon)];
+}
+
+const GfxBitmapFont& kFontMedieval(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexMedieval)];
+}
+
+const GfxBitmapFont& kFontRoman(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexRoman)];
+}
+
+const GfxBitmapFont& kFontSansserif(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexSansserif)];
+}
+
+const GfxBitmapFont& kFontScript(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexScript)];
+}
+
+const GfxBitmapFont& kFontWacky(void)
+{
+    return fonts_[static_cast<int>(GfxFontIndex::indexWacky)];
+}
+
+const GfxBitmapFont& kGetFontByIndex(const GfxFontIndex index)
+{
+    return fonts_[static_cast<int>(index)];
+}
+
+}  // namespace fnt
 
 }  // namespace bgi
 

@@ -90,12 +90,12 @@ void GDemoForm::draw(void)
 {
     auto canvas = getCanvas();
     canvas->Bar(gfx::rect::GfxRect(0, 0, 300, 300), gfx::pixels::GfxColor(200, 200, 200));
-    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190), gfx::bgi::GfxBgiConstants::vgaWhite());
-    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(190, 110), gfx::bgi::GfxBgiConstants::vgaWhite());
+    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190), gfx::bgi::kColorWhite());
+    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(190, 110), gfx::bgi::kColorWhite());
     canvas->Line(gfx::rect::GfxPoint(190, 110), gfx::rect::GfxPoint(190, 190),
-                 gfx::bgi::GfxBgiConstants::vgaDarkGray());
+                 gfx::bgi::kColorDarkGray());
     canvas->Line(gfx::rect::GfxPoint(110, 190), gfx::rect::GfxPoint(190, 190),
-                 gfx::bgi::GfxBgiConstants::vgaDarkGray());
+                 gfx::bgi::kColorDarkGray());
 
     auto surf = gfx::surface::GfxSurface("GDemoForm::draw", pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
     window_.get()->setWindowIcon(surf);
@@ -103,10 +103,10 @@ void GDemoForm::draw(void)
     /*************************************************************************************************/
     gto::gobj::GGraphicControl g(GVarName(g), this, 50, 50);
     g.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
-    g.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
-    g.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    g.setBorderColor(gfx::bgi::kColorWhite());
+    g.setBorderShadowColor(gfx::bgi::kColorDarkGray());
     g.setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
-    g.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
+    g.setBackgroundColor(gfx::bgi::kColorLightGray());
     g.setBackgroundStyle(gto::gobj::GBackgroundStyle::solidColor);
     g.draw();
     windowsurface_->blitSurface(g.getSurface()(), gfx::rect::GfxRect(0, 0, 50, 50), gfx::rect::GfxRect(10, 10, 60, 60));
@@ -114,9 +114,9 @@ void GDemoForm::draw(void)
     gto::gobj::GBitmap bmp(GVarName(bmp), this, 384, 384,
                 gto::gobj::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
     bmp.load();
-    bmp.setBorderColor(gfx::bgi::GfxBgiConstants::vgaLightGreen());
+    bmp.setBorderColor(gfx::bgi::kColorLightGreen());
     bmp.setBorderThikness(gto::gobj::GBorderThikness::thinBorder);
-    bmp.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaGreen());
+    bmp.setBorderShadowColor(gfx::bgi::kColorGreen());
     bmp.setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
     bmp.setScaleMode(gto::gobj::GImageScaleMode::strechScaled);
     bmp.draw();
@@ -129,11 +129,11 @@ void GDemoForm::draw(void)
 
     gto::gobj::GLabel g2(GVarName(g2), this, 280, 60, labelText, 32);
     g2.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
-    g2.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
-    g2.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    g2.setBorderColor(gfx::bgi::kColorWhite());
+    g2.setBorderShadowColor(gfx::bgi::kColorDarkGray());
     g2.setBorderStyle(gto::gobj::GBorderStyle::raised3DBorder);
-    g2.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
-    g2.setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightCyan());
+    g2.setBackgroundColor(gfx::bgi::kColorLightGray());
+    g2.setForegroundColor(gfx::bgi::kColorLightCyan());
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
     g2.getFontInfo().setFontUnderline(true);
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
@@ -147,11 +147,11 @@ void GDemoForm::draw(void)
     gto::gobj::GStructuredTextLabel g3(GVarName(g3), this, 280, 60, labelText, 18,
             gto::gobj::GStructuredTextType::ipAddress);
     g3.setBorderThikness(gto::gobj::GBorderThikness::thikBorder);
-    g3.setBorderColor(gfx::bgi::GfxBgiConstants::vgaWhite());
-    g3.setBorderShadowColor(gfx::bgi::GfxBgiConstants::vgaDarkGray());
+    g3.setBorderColor(gfx::bgi::kColorWhite());
+    g3.setBorderShadowColor(gfx::bgi::kColorDarkGray());
     g3.setBorderStyle(gto::gobj::GBorderStyle::raised3DBorder);
-    g3.setBackgroundColor(gfx::bgi::GfxBgiConstants::vgaLightGray());
-    g3.setForegroundColor(gfx::bgi::GfxBgiConstants::vgaLightCyan());
+    g3.setBackgroundColor(gfx::bgi::kColorLightGray());
+    g3.setForegroundColor(gfx::bgi::kColorLightCyan());
     g3.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
     g3.getFontInfo().setFontUnderline(true);
     g3.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);

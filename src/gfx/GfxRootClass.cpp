@@ -76,9 +76,6 @@
 #include "GfxBitmapFont.hpp"
 #include "GfxCanvas.hpp"
 #include "GfxCanvasBgi.hpp"
-#include "GfxCanvasBgiData.hpp"
-#include "GfxBgiConstants.hpp"
-#include "GfxBgiFontConstants.hpp"
 #include "GfxRadius.hpp"
 #include "GfxString.hpp"
 #include "GfxInitFlags.hpp"  // 2017.05.17
@@ -157,9 +154,6 @@ const struct GfxRootClass::stClassInfo GfxRootClass::astClassInfo[] =
     { gfx::bgi::fnt::GfxBitmapFont::ClassName, sizeof(gfx::bgi::fnt::GfxBitmapFont) },
     { gfx::bgi::GfxCanvas::ClassName, sizeof(gfx::bgi::GfxCanvas) },
     { gfx::bgi::GfxCanvasBgi::ClassName, sizeof(gfx::bgi::GfxCanvasBgi) },
-    { gfx::bgi::GfxCanvasBgiData::ClassName, sizeof(gfx::bgi::GfxCanvasBgiData) },
-    { gfx::bgi::GfxBgiConstants::ClassName, sizeof(gfx::bgi::GfxBgiConstants) },
-    { gfx::bgi::fnt::GfxBgiFontConstants::ClassName, sizeof(gfx::bgi::fnt::GfxBgiFontConstants) },
     { gfx::bgi::GfxRadius::ClassName, sizeof(gfx::bgi::GfxRadius) },
     { gfx::bgi::GfxString::ClassName, sizeof(gfx::bgi::GfxString) },
     { gfx::initquit::GfxInitFlags::ClassName, sizeof(gfx::initquit::GfxInitFlags) },  // 2017.05.17

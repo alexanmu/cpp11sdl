@@ -1,32 +1,28 @@
 /*
-  Giotto
-  Copyright (C) 2017 George Oros
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-  See copyright notice at http://lidsdl.org/license.php
-
-  Portions of this code are based on SDL_bgi. See http://libxgi.sourceforge.net/
+ Giotto
+ Copyright (C) 2017 George Oros
+ 
+ This software is provided 'as-is', without any express or implied
+ warranty.  In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ 
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ 
+ 1. The origin of this software must not be misrepresented; you must not
+ claim that you wrote the original software. If you use this software
+ in a product, an acknowledgment in the product documentation would be
+ appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+ misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
+ 
+ See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <cstdint>
-#include <string>
-
-#include "GfxCanvasBgiData.hpp"
+#ifndef fntBgiStandardFont_h
+#define fntBgiStandardFont_h
 
 namespace gfx
 {
@@ -34,60 +30,11 @@ namespace gfx
 namespace bgi
 {
 
-const char GfxCanvasBgiData::ClassName[] = "GfxCanvasBgiData";
-
-const uint32_t GfxCanvasBgiData::bgi_palette[1 + GfxCanvasBgiData::kMaxColors] = {  // 0 - 15
-    0xff000000,  // BLACK
-    0xff0000ff,  // BLUE
-    0xff00ff00,  // GREEN
-    0xff00ffff,  // CYAN
-    0xffff0000,  // RED
-    0xffff00ff,  // MAGENTA
-    0xffa52a2a,  // BROWN
-    0xffd3d3d3,  // LIGHTGRAY
-    0xffa9a9a9,  // DARKGRAY
-    0xffadd8e6,  // LIGHTBLUE
-    0xff90ee90,  // LIGHTGREEN
-    0xffe0ffff,  // LIGHTCYAN
-    0xfff08080,  // LIGHTRED
-    0xffdb7093,  // LIGHTMAGENTA
-    0xffffff00,  // YELLOW
-    0xffffffff   // WHITE
-};
-
-/*const*/ uint16_t GfxCanvasBgiData::line_patterns[1 + 4/*static_cast<int>(bgiLineStyle::USERBIT_LINE)*/] = {
-    0xffff,  // SOLID_LINE  = 1111111111111111
-    0xcccc,  // DOTTED_LINE = 1100110011001100
-    0xf1f8,  // CENTER_LINE = 1111000111111000
-    0xf8f8,  // DASHED_LINE = 1111100011111000
-    0xffff   // USERBIT_LINE
-};
-
-// These are setfillpattern-compatible arrays for the tiling patterns.
-// Taken from TurboC, http://www.sandroid.org/TurboC/
-
-/*const*/ uint8_t GfxCanvasBgiData::fill_patterns[1 +
-                        12/*static_cast<int>(GfxCanvas::SDL_bgi::bgiFillStyles::USER_FILL)*/][8] = {
-    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},  // EMPTY_FILL
-    {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff},  // SOLID_FILL
-    {0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00},  // LINE_FILL
-    {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80},  // LTSLASH_FILL
-    {0x03, 0x06, 0x0c, 0x18, 0x30, 0x60, 0xc0, 0x81},  // SLASH_FILL
-    {0xc0, 0x60, 0x30, 0x18, 0x0c, 0x06, 0x03, 0x81},  // BKSLASH_FILL
-    {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01},  // LTBKSLASH_FILL
-    {0x22, 0x22, 0xff, 0x22, 0x22, 0x22, 0xff, 0x22},  // HATCH_FILL
-    {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81},  // XHATCH_FILL
-    {0x11, 0x44, 0x11, 0x44, 0x11, 0x44, 0x11, 0x44},  // INTERLEAVE_FILL
-    {0x10, 0x00, 0x01, 0x00, 0x10, 0x00, 0x01, 0x00},  // WIDE_DOT_FILL
-    {0x11, 0x00, 0x44, 0x00, 0x11, 0x00, 0x44, 0x00},  // CLOSE_DOT_FILL
-    {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}   // USER_FILL
-};
-
 /* ---- 8x8 font definition ---- */
 
 /*  ZLIB (c) A. Schiffler 2012 */
 
-const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFontDataMax] = {
+const uint8_t gfxPrimitivesFontdata[8 * 256] = {
     /*
      * 0 0x00 '^@'
      */
@@ -99,7 +46,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 1 0x01 '^A'
      */
@@ -111,7 +58,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x99,           /* 10011001 */
     0x81,           /* 10000001 */
     0x7e,           /* 01111110 */
-
+    
     /*
      * 2 0x02 '^B'
      */
@@ -123,7 +70,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xe7,           /* 11100111 */
     0xff,           /* 11111111 */
     0x7e,           /* 01111110 */
-
+    
     /*
      * 3 0x03 '^C'
      */
@@ -135,7 +82,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x38,           /* 00111000 */
     0x10,           /* 00010000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 4 0x04 '^D'
      */
@@ -147,7 +94,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x38,           /* 00111000 */
     0x10,           /* 00010000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 5 0x05 '^E'
      */
@@ -159,7 +106,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xd6,           /* 11010110 */
     0x10,           /* 00010000 */
     0x38,           /* 00111000 */
-
+    
     /*
      * 6 0x06 '^F'
      */
@@ -171,7 +118,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x10,           /* 00010000 */
     0x38,           /* 00111000 */
-
+    
     /*
      * 7 0x07 '^G'
      */
@@ -183,7 +130,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 8 0x08 '^H'
      */
@@ -195,7 +142,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xe7,           /* 11100111 */
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
-
+    
     /*
      * 9 0x09 '^I'
      */
@@ -207,7 +154,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 10 0x0a '^J'
      */
@@ -219,7 +166,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x99,           /* 10011001 */
     0xc3,           /* 11000011 */
     0xff,           /* 11111111 */
-
+    
     /*
      * 11 0x0b '^K'
      */
@@ -231,7 +178,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0xcc,           /* 11001100 */
     0x78,           /* 01111000 */
-
+    
     /*
      * 12 0x0c '^L'
      */
@@ -243,7 +190,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x7e,           /* 01111110 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 13 0x0d '^M'
      */
@@ -255,7 +202,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x70,           /* 01110000 */
     0xf0,           /* 11110000 */
     0xe0,           /* 11100000 */
-
+    
     /*
      * 14 0x0e '^N'
      */
@@ -267,7 +214,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x67,           /* 01100111 */
     0xe6,           /* 11100110 */
     0xc0,           /* 11000000 */
-
+    
     /*
      * 15 0x0f '^O'
      */
@@ -279,7 +226,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0xdb,           /* 11011011 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 16 0x10 '^P'
      */
@@ -291,7 +238,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xe0,           /* 11100000 */
     0x80,           /* 10000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 17 0x11 '^Q'
      */
@@ -303,7 +250,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x0e,           /* 00001110 */
     0x02,           /* 00000010 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 18 0x12 '^R'
      */
@@ -315,7 +262,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x3c,           /* 00111100 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 19 0x13 '^S'
      */
@@ -327,7 +274,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x66,           /* 01100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 20 0x14 '^T'
      */
@@ -339,7 +286,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x1b,           /* 00011011 */
     0x1b,           /* 00011011 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 21 0x15 '^U'
      */
@@ -351,7 +298,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0x86,           /* 10000110 */
     0x7c,           /* 01111100 */
-
+    
     /*
      * 22 0x16 '^V'
      */
@@ -363,7 +310,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 23 0x17 '^W'
      */
@@ -375,7 +322,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0x18,           /* 00011000 */
     0xff,           /* 11111111 */
-
+    
     /*
      * 24 0x18 '^X'
      */
@@ -387,7 +334,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 25 0x19 '^Y'
      */
@@ -399,7 +346,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 26 0x1a '^Z'
      */
@@ -411,7 +358,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 27 0x1b '^['
      */
@@ -423,7 +370,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x30,           /* 00110000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 28 0x1c '^\'
      */
@@ -435,7 +382,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 29 0x1d '^]'
      */
@@ -447,7 +394,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x24,           /* 00100100 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 30 0x1e '^^'
      */
@@ -459,7 +406,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xff,           /* 11111111 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 31 0x1f '^_'
      */
@@ -471,7 +418,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 32 0x20 ' '
      */
@@ -483,7 +430,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 33 0x21 '!'
      */
@@ -495,7 +442,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 34 0x22 '"'
      */
@@ -507,7 +454,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 35 0x23 '#'
      */
@@ -519,7 +466,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x6c,           /* 01101100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 36 0x24 '$'
      */
@@ -531,7 +478,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 37 0x25 '%'
      */
@@ -543,7 +490,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 38 0x26 '&'
      */
@@ -555,7 +502,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 39 0x27 '''
      */
@@ -567,7 +514,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 40 0x28 '('
      */
@@ -579,7 +526,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x0c,           /* 00001100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 41 0x29 ')'
      */
@@ -591,7 +538,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x30,           /* 00110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 42 0x2a '*'
      */
@@ -603,7 +550,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 43 0x2b '+'
      */
@@ -615,7 +562,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 44 0x2c ','
      */
@@ -627,7 +574,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x30,           /* 00110000 */
-
+    
     /*
      * 45 0x2d '-'
      */
@@ -639,7 +586,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 46 0x2e '.'
      */
@@ -651,7 +598,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 47 0x2f '/'
      */
@@ -663,7 +610,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x80,           /* 10000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 48 0x30 '0'
      */
@@ -675,7 +622,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x38,           /* 00111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 49 0x31 '1'
      */
@@ -687,7 +634,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 50 0x32 '2'
      */
@@ -699,7 +646,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 51 0x33 '3'
      */
@@ -711,7 +658,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 52 0x34 '4'
      */
@@ -723,7 +670,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x0c,           /* 00001100 */
     0x1e,           /* 00011110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 53 0x35 '5'
      */
@@ -735,7 +682,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 54 0x36 '6'
      */
@@ -747,7 +694,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 55 0x37 '7'
      */
@@ -759,7 +706,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x30,           /* 00110000 */
     0x30,           /* 00110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 56 0x38 '8'
      */
@@ -771,7 +718,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 57 0x39 '9'
      */
@@ -783,7 +730,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x0c,           /* 00001100 */
     0x78,           /* 01111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 58 0x3a ':'
      */
@@ -795,7 +742,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 59 0x3b ';'
      */
@@ -807,7 +754,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x30,           /* 00110000 */
-
+    
     /*
      * 60 0x3c '<'
      */
@@ -819,7 +766,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x0c,           /* 00001100 */
     0x06,           /* 00000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 61 0x3d '='
      */
@@ -831,7 +778,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 62 0x3e '>'
      */
@@ -843,7 +790,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x30,           /* 00110000 */
     0x60,           /* 01100000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 63 0x3f '?'
      */
@@ -855,7 +802,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 64 0x40 '@'
      */
@@ -867,7 +814,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x78,           /* 01111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 65 0x41 'A'
      */
@@ -879,7 +826,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 66 0x42 'B'
      */
@@ -891,7 +838,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xfc,           /* 11111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 67 0x43 'C'
      */
@@ -903,7 +850,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 68 0x44 'D'
      */
@@ -915,7 +862,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0xf8,           /* 11111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 69 0x45 'E'
      */
@@ -927,7 +874,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x62,           /* 01100010 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 70 0x46 'F'
      */
@@ -939,7 +886,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x60,           /* 01100000 */
     0xf0,           /* 11110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 71 0x47 'G'
      */
@@ -951,7 +898,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x3a,           /* 00111010 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 72 0x48 'H'
      */
@@ -963,7 +910,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 73 0x49 'I'
      */
@@ -975,7 +922,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 74 0x4a 'J'
      */
@@ -987,7 +934,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x78,           /* 01111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 75 0x4b 'K'
      */
@@ -999,7 +946,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xe6,           /* 11100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 76 0x4c 'L'
      */
@@ -1011,7 +958,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 77 0x4d 'M'
      */
@@ -1023,7 +970,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 78 0x4e 'N'
      */
@@ -1035,7 +982,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 79 0x4f 'O'
      */
@@ -1047,7 +994,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 80 0x50 'P'
      */
@@ -1059,7 +1006,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x60,           /* 01100000 */
     0xf0,           /* 11110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 81 0x51 'Q'
      */
@@ -1071,7 +1018,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xce,           /* 11001110 */
     0x7c,           /* 01111100 */
     0x0e,           /* 00001110 */
-
+    
     /*
      * 82 0x52 'R'
      */
@@ -1083,7 +1030,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xe6,           /* 11100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 83 0x53 'S'
      */
@@ -1095,7 +1042,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 84 0x54 'T'
      */
@@ -1107,7 +1054,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 85 0x55 'U'
      */
@@ -1119,7 +1066,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 86 0x56 'V'
      */
@@ -1131,7 +1078,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x38,           /* 00111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 87 0x57 'W'
      */
@@ -1143,7 +1090,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xfe,           /* 11111110 */
     0x6c,           /* 01101100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 88 0x58 'X'
      */
@@ -1155,7 +1102,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 89 0x59 'Y'
      */
@@ -1167,7 +1114,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 90 0x5a 'Z'
      */
@@ -1179,7 +1126,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 91 0x5b '['
      */
@@ -1191,7 +1138,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x30,           /* 00110000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 92 0x5c '\'
      */
@@ -1203,7 +1150,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x06,           /* 00000110 */
     0x02,           /* 00000010 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 93 0x5d ']'
      */
@@ -1215,7 +1162,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x0c,           /* 00001100 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 94 0x5e '^'
      */
@@ -1227,7 +1174,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 95 0x5f '_'
      */
@@ -1239,7 +1186,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0xff,           /* 11111111 */
-
+    
     /*
      * 96 0x60 '`'
      */
@@ -1251,7 +1198,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 97 0x61 'a'
      */
@@ -1263,7 +1210,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 98 0x62 'b'
      */
@@ -1275,7 +1222,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xdc,           /* 11011100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 99 0x63 'c'
      */
@@ -1287,7 +1234,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 100 0x64 'd'
      */
@@ -1299,7 +1246,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 101 0x65 'e'
      */
@@ -1311,7 +1258,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 102 0x66 'f'
      */
@@ -1323,7 +1270,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x60,           /* 01100000 */
     0xf0,           /* 11110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 103 0x67 'g'
      */
@@ -1335,7 +1282,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x0c,           /* 00001100 */
     0xf8,           /* 11111000 */
-
+    
     /*
      * 104 0x68 'h'
      */
@@ -1347,7 +1294,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xe6,           /* 11100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 105 0x69 'i'
      */
@@ -1359,7 +1306,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 106 0x6a 'j'
      */
@@ -1371,7 +1318,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x66,           /* 01100110 */
     0x3c,           /* 00111100 */
-
+    
     /*
      * 107 0x6b 'k'
      */
@@ -1383,7 +1330,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0xe6,           /* 11100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 108 0x6c 'l'
      */
@@ -1395,7 +1342,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 109 0x6d 'm'
      */
@@ -1407,7 +1354,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xd6,           /* 11010110 */
     0xd6,           /* 11010110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 110 0x6e 'n'
      */
@@ -1419,7 +1366,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x66,           /* 01100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 111 0x6f 'o'
      */
@@ -1431,7 +1378,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 112 0x70 'p'
      */
@@ -1443,7 +1390,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x60,           /* 01100000 */
     0xf0,           /* 11110000 */
-
+    
     /*
      * 113 0x71 'q'
      */
@@ -1455,7 +1402,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x0c,           /* 00001100 */
     0x1e,           /* 00011110 */
-
+    
     /*
      * 114 0x72 'r'
      */
@@ -1467,7 +1414,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x60,           /* 01100000 */
     0xf0,           /* 11110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 115 0x73 's'
      */
@@ -1479,7 +1426,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x06,           /* 00000110 */
     0xfc,           /* 11111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 116 0x74 't'
      */
@@ -1491,7 +1438,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x1c,           /* 00011100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 117 0x75 'u'
      */
@@ -1503,7 +1450,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 118 0x76 'v'
      */
@@ -1515,7 +1462,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x38,           /* 00111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 119 0x77 'w'
      */
@@ -1527,7 +1474,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xfe,           /* 11111110 */
     0x6c,           /* 01101100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 120 0x78 'x'
      */
@@ -1539,7 +1486,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 121 0x79 'y'
      */
@@ -1551,7 +1498,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x06,           /* 00000110 */
     0xfc,           /* 11111100 */
-
+    
     /*
      * 122 0x7a 'z'
      */
@@ -1563,7 +1510,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x32,           /* 00110010 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 123 0x7b '{'
      */
@@ -1575,7 +1522,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x0e,           /* 00001110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 124 0x7c '|'
      */
@@ -1587,7 +1534,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 125 0x7d '}'
      */
@@ -1599,7 +1546,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x70,           /* 01110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 126 0x7e '~'
      */
@@ -1611,7 +1558,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 127 0x7f ''
      */
@@ -1623,7 +1570,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 128 0x80 '€'
      */
@@ -1635,7 +1582,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x0c,           /* 00001100 */
     0x78,           /* 01111000 */
-
+    
     /*
      * 129 0x81 ''
      */
@@ -1647,7 +1594,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 130 0x82 '‚'
      */
@@ -1659,7 +1606,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 131 0x83 'ƒ'
      */
@@ -1671,7 +1618,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 132 0x84 '„'
      */
@@ -1683,7 +1630,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 133 0x85 '…'
      */
@@ -1695,7 +1642,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 134 0x86 '†'
      */
@@ -1707,7 +1654,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 135 0x87 '‡'
      */
@@ -1719,7 +1666,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x0c,           /* 00001100 */
     0x38,           /* 00111000 */
-
+    
     /*
      * 136 0x88 'ˆ'
      */
@@ -1731,7 +1678,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 137 0x89 '‰'
      */
@@ -1743,7 +1690,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 138 0x8a 'Š'
      */
@@ -1755,7 +1702,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 139 0x8b '‹'
      */
@@ -1767,7 +1714,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 140 0x8c 'Œ'
      */
@@ -1779,7 +1726,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 141 0x8d ''
      */
@@ -1791,7 +1738,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 142 0x8e 'Ž'
      */
@@ -1803,7 +1750,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 143 0x8f ''
      */
@@ -1815,7 +1762,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 144 0x90 ''
      */
@@ -1827,7 +1774,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 145 0x91 '‘'
      */
@@ -1839,7 +1786,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xd8,           /* 11011000 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 146 0x92 '’'
      */
@@ -1851,7 +1798,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0xce,           /* 11001110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 147 0x93 '“'
      */
@@ -1863,7 +1810,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 148 0x94 '”'
      */
@@ -1875,7 +1822,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 149 0x95 '•'
      */
@@ -1887,7 +1834,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 150 0x96 '–'
      */
@@ -1899,7 +1846,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 151 0x97 '—'
      */
@@ -1911,7 +1858,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 152 0x98 '˜'
      */
@@ -1923,7 +1870,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x06,           /* 00000110 */
     0xfc,           /* 11111100 */
-
+    
     /*
      * 153 0x99 '™'
      */
@@ -1935,7 +1882,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x38,           /* 00111000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 154 0x9a 'š'
      */
@@ -1947,7 +1894,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 155 0x9b '›'
      */
@@ -1959,7 +1906,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 156 0x9c 'œ'
      */
@@ -1971,7 +1918,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xfc,           /* 11111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 157 0x9d ''
      */
@@ -1983,7 +1930,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 158 0x9e 'ž'
      */
@@ -1995,7 +1942,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcf,           /* 11001111 */
     0xc6,           /* 11000110 */
     0xc7,           /* 11000111 */
-
+    
     /*
      * 159 0x9f 'Ÿ'
      */
@@ -2007,7 +1954,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xd8,           /* 11011000 */
     0x70,           /* 01110000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 160 0xa0 ' '
      */
@@ -2019,7 +1966,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 161 0xa1 '¡'
      */
@@ -2031,7 +1978,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 162 0xa2 '¢'
      */
@@ -2043,7 +1990,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 163 0xa3 '£'
      */
@@ -2055,7 +2002,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 164 0xa4 '¤'
      */
@@ -2067,7 +2014,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x66,           /* 01100110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 165 0xa5 '¥'
      */
@@ -2079,7 +2026,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xde,           /* 11011110 */
     0xce,           /* 11001110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 166 0xa6 '¦'
      */
@@ -2091,7 +2038,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 167 0xa7 '§'
      */
@@ -2103,7 +2050,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7c,           /* 01111100 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 168 0xa8 '¨'
      */
@@ -2115,7 +2062,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x63,           /* 01100011 */
     0x3e,           /* 00111110 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 169 0xa9 '©'
      */
@@ -2127,7 +2074,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 170 0xaa 'ª'
      */
@@ -2139,7 +2086,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x06,           /* 00000110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 171 0xab '«'
      */
@@ -2151,7 +2098,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0xcc,           /* 11001100 */
     0x0f,           /* 00001111 */
-
+    
     /*
      * 172 0xac '¬'
      */
@@ -2163,7 +2110,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6a,           /* 01101010 */
     0xdf,           /* 11011111 */
     0x06,           /* 00000110 */
-
+    
     /*
      * 173 0xad '­'
      */
@@ -2175,7 +2122,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 174 0xae '®'
      */
@@ -2187,7 +2134,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x33,           /* 00110011 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 175 0xaf '¯'
      */
@@ -2199,7 +2146,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xcc,           /* 11001100 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 176 0xb0 '°'
      */
@@ -2211,7 +2158,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x88,           /* 10001000 */
     0x22,           /* 00100010 */
     0x88,           /* 10001000 */
-
+    
     /*
      * 177 0xb1 '±'
      */
@@ -2223,7 +2170,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xaa,           /* 10101010 */
     0x55,           /* 01010101 */
     0xaa,           /* 10101010 */
-
+    
     /*
      * 178 0xb2 '²'
      */
@@ -2235,7 +2182,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xdd,           /* 11011101 */
     0x77,           /* 01110111 */
     0xdd,           /* 11011101 */
-
+    
     /*
      * 179 0xb3 '³'
      */
@@ -2247,7 +2194,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 180 0xb4 '´'
      */
@@ -2259,7 +2206,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 181 0xb5 'µ'
      */
@@ -2271,7 +2218,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 182 0xb6 '¶'
      */
@@ -2283,7 +2230,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 183 0xb7 '·'
      */
@@ -2295,7 +2242,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 184 0xb8 '¸'
      */
@@ -2307,7 +2254,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 185 0xb9 '¹'
      */
@@ -2319,7 +2266,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 186 0xba 'º'
      */
@@ -2331,7 +2278,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 187 0xbb '»'
      */
@@ -2343,7 +2290,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 188 0xbc '¼'
      */
@@ -2355,7 +2302,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 189 0xbd '½'
      */
@@ -2367,7 +2314,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 190 0xbe '¾'
      */
@@ -2379,7 +2326,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 191 0xbf '¿'
      */
@@ -2391,7 +2338,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 192 0xc0 'À'
      */
@@ -2403,7 +2350,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 193 0xc1 'Á'
      */
@@ -2415,7 +2362,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 194 0xc2 'Â'
      */
@@ -2427,7 +2374,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 195 0xc3 'Ã'
      */
@@ -2439,7 +2386,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 196 0xc4 'Ä'
      */
@@ -2451,7 +2398,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 197 0xc5 'Å'
      */
@@ -2463,7 +2410,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 198 0xc6 'Æ'
      */
@@ -2475,7 +2422,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 199 0xc7 'Ç'
      */
@@ -2487,7 +2434,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 200 0xc8 'È'
      */
@@ -2499,7 +2446,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 201 0xc9 'É'
      */
@@ -2511,7 +2458,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 202 0xca 'Ê'
      */
@@ -2523,7 +2470,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 203 0xcb 'Ë'
      */
@@ -2535,7 +2482,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 204 0xcc 'Ì'
      */
@@ -2547,7 +2494,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 205 0xcd 'Í'
      */
@@ -2559,7 +2506,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 206 0xce 'Î'
      */
@@ -2571,7 +2518,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 207 0xcf 'Ï'
      */
@@ -2583,7 +2530,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 208 0xd0 'Ð'
      */
@@ -2595,7 +2542,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 209 0xd1 'Ñ'
      */
@@ -2607,7 +2554,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 210 0xd2 'Ò'
      */
@@ -2619,7 +2566,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 211 0xd3 'Ó'
      */
@@ -2631,7 +2578,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 212 0xd4 'Ô'
      */
@@ -2643,7 +2590,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
      * 213 0xd5 'Õ'
      */
@@ -2655,7 +2602,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 214 0xd6 'Ö'
      */
@@ -2667,7 +2614,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 215 0xd7 '×'
      */
@@ -2679,7 +2626,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
     0x36,           /* 00110110 */
-
+    
     /*
      * 216 0xd8 'Ø'
      */
@@ -2691,7 +2638,7 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
      * 217 0xd9 'Ù'
      */
@@ -2703,9 +2650,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 218 0xda 'Ú' 
+     * 218 0xda 'Ú'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2715,9 +2662,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
-     * 219 0xdb 'Û' 
+     * 219 0xdb 'Û'
      */
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
@@ -2727,9 +2674,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
-
+    
     /*
-     * 220 0xdc 'Ü' 
+     * 220 0xdc 'Ü'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2739,9 +2686,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
-
+    
     /*
-     * 221 0xdd 'Ý' 
+     * 221 0xdd 'Ý'
      */
     0xf0,           /* 11110000 */
     0xf0,           /* 11110000 */
@@ -2751,9 +2698,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xf0,           /* 11110000 */
     0xf0,           /* 11110000 */
     0xf0,           /* 11110000 */
-
+    
     /*
-     * 222 0xde 'Þ' 
+     * 222 0xde 'Þ'
      */
     0x0f,           /* 00001111 */
     0x0f,           /* 00001111 */
@@ -2763,9 +2710,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x0f,           /* 00001111 */
     0x0f,           /* 00001111 */
     0x0f,           /* 00001111 */
-
+    
     /*
-     * 223 0xdf 'ß' 
+     * 223 0xdf 'ß'
      */
     0xff,           /* 11111111 */
     0xff,           /* 11111111 */
@@ -2775,9 +2722,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 224 0xe0 'à' 
+     * 224 0xe0 'à'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2787,9 +2734,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xdc,           /* 11011100 */
     0x76,           /* 01110110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 225 0xe1 'á' 
+     * 225 0xe1 'á'
      */
     0x78,           /* 01111000 */
     0xcc,           /* 11001100 */
@@ -2799,9 +2746,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xcc,           /* 11001100 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 226 0xe2 'â' 
+     * 226 0xe2 'â'
      */
     0xfe,           /* 11111110 */
     0xc6,           /* 11000110 */
@@ -2811,9 +2758,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc0,           /* 11000000 */
     0xc0,           /* 11000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 227 0xe3 'ã' 
+     * 227 0xe3 'ã'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2823,9 +2770,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x6c,           /* 01101100 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 228 0xe4 'ä' 
+     * 228 0xe4 'ä'
      */
     0xfe,           /* 11111110 */
     0xc6,           /* 11000110 */
@@ -2835,9 +2782,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 229 0xe5 'å' 
+     * 229 0xe5 'å'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2847,9 +2794,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xd8,           /* 11011000 */
     0x70,           /* 01110000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 230 0xe6 'æ' 
+     * 230 0xe6 'æ'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2859,9 +2806,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x7c,           /* 01111100 */
     0xc0,           /* 11000000 */
-
+    
     /*
-     * 231 0xe7 'ç' 
+     * 231 0xe7 'ç'
      */
     0x00,           /* 00000000 */
     0x76,           /* 01110110 */
@@ -2871,9 +2818,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 232 0xe8 'è' 
+     * 232 0xe8 'è'
      */
     0x7e,           /* 01111110 */
     0x18,           /* 00011000 */
@@ -2883,9 +2830,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0x18,           /* 00011000 */
     0x7e,           /* 01111110 */
-
+    
     /*
-     * 233 0xe9 'é' 
+     * 233 0xe9 'é'
      */
     0x38,           /* 00111000 */
     0x6c,           /* 01101100 */
@@ -2895,9 +2842,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x38,           /* 00111000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 234 0xea 'ê' 
+     * 234 0xea 'ê'
      */
     0x38,           /* 00111000 */
     0x6c,           /* 01101100 */
@@ -2907,9 +2854,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0xee,           /* 11101110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 235 0xeb 'ë' 
+     * 235 0xeb 'ë'
      */
     0x0e,           /* 00001110 */
     0x18,           /* 00011000 */
@@ -2919,9 +2866,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x66,           /* 01100110 */
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 236 0xec 'ì' 
+     * 236 0xec 'ì'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -2931,9 +2878,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 237 0xed 'í' 
+     * 237 0xed 'í'
      */
     0x06,           /* 00000110 */
     0x0c,           /* 00001100 */
@@ -2943,9 +2890,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x7e,           /* 01111110 */
     0x60,           /* 01100000 */
     0xc0,           /* 11000000 */
-
+    
     /*
-     * 238 0xee 'î' 
+     * 238 0xee 'î'
      */
     0x1e,           /* 00011110 */
     0x30,           /* 00110000 */
@@ -2955,9 +2902,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x30,           /* 00110000 */
     0x1e,           /* 00011110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 239 0xef 'ï' 
+     * 239 0xef 'ï'
      */
     0x00,           /* 00000000 */
     0x7c,           /* 01111100 */
@@ -2967,9 +2914,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xc6,           /* 11000110 */
     0xc6,           /* 11000110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 240 0xf0 'ð' 
+     * 240 0xf0 'ð'
      */
     0x00,           /* 00000000 */
     0xfe,           /* 11111110 */
@@ -2979,9 +2926,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xfe,           /* 11111110 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 241 0xf1 'ñ' 
+     * 241 0xf1 'ñ'
      */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
@@ -2991,9 +2938,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 242 0xf2 'ò' 
+     * 242 0xf2 'ò'
      */
     0x30,           /* 00110000 */
     0x18,           /* 00011000 */
@@ -3003,9 +2950,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 243 0xf3 'ó' 
+     * 243 0xf3 'ó'
      */
     0x0c,           /* 00001100 */
     0x18,           /* 00011000 */
@@ -3015,9 +2962,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x7e,           /* 01111110 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 244 0xf4 'ô' 
+     * 244 0xf4 'ô'
      */
     0x0e,           /* 00001110 */
     0x1b,           /* 00011011 */
@@ -3027,9 +2974,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
-
+    
     /*
-     * 245 0xf5 'õ' 
+     * 245 0xf5 'õ'
      */
     0x18,           /* 00011000 */
     0x18,           /* 00011000 */
@@ -3039,9 +2986,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xd8,           /* 11011000 */
     0xd8,           /* 11011000 */
     0x70,           /* 01110000 */
-
+    
     /*
-     * 246 0xf6 'ö' 
+     * 246 0xf6 'ö'
      */
     0x00,           /* 00000000 */
     0x18,           /* 00011000 */
@@ -3051,9 +2998,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x18,           /* 00011000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 247 0xf7 '÷' 
+     * 247 0xf7 '÷'
      */
     0x00,           /* 00000000 */
     0x76,           /* 01110110 */
@@ -3063,9 +3010,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0xdc,           /* 11011100 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 248 0xf8 'ø' 
+     * 248 0xf8 'ø'
      */
     0x38,           /* 00111000 */
     0x6c,           /* 01101100 */
@@ -3075,9 +3022,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 249 0xf9 'ù' 
+     * 249 0xf9 'ù'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -3087,9 +3034,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 250 0xfa 'ú' 
+     * 250 0xfa 'ú'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -3099,9 +3046,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 251 0xfb 'û' 
+     * 251 0xfb 'û'
      */
     0x0f,           /* 00001111 */
     0x0c,           /* 00001100 */
@@ -3111,9 +3058,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x6c,           /* 01101100 */
     0x3c,           /* 00111100 */
     0x1c,           /* 00011100 */
-
+    
     /*
-     * 252 0xfc 'ü' 
+     * 252 0xfc 'ü'
      */
     0x6c,           /* 01101100 */
     0x36,           /* 00110110 */
@@ -3123,9 +3070,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 253 0xfd 'ý' 
+     * 253 0xfd 'ý'
      */
     0x78,           /* 01111000 */
     0x0c,           /* 00001100 */
@@ -3135,9 +3082,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 254 0xfe 'þ' 
+     * 254 0xfe 'þ'
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -3147,9 +3094,9 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
     0x3c,           /* 00111100 */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
-
+    
     /*
-     * 255 0xff ' ' 
+     * 255 0xff ' '
      */
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
@@ -3165,4 +3112,4 @@ const uint8_t GfxCanvasBgiData::gfxPrimitivesFontdata[GfxCanvasBgiData::kGfxFont
 
 }  // namespace gfx
 
-/* EOF */
+#endif /* fntBgiStandardFont_h */

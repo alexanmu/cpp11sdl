@@ -25,10 +25,9 @@
 #define GfxBgiConstants_hpp
 
 #include <cstdint>
-#include <string>
 
-#include "GfxRootClass.hpp"
 #include "GfxColor.hpp"
+#include "GfxBitmapFont.hpp"
 
 namespace gfx
 {
@@ -36,62 +35,80 @@ namespace gfx
 namespace bgi
 {
 
-class GfxBgiConstants final : public GfxRootClass
+static const int32_t kNumColors = 16;
+
+enum class GfxColorIndex : int32_t
 {
-public:
-    static const char ClassName[];
-
-    GfxBgiConstants() = delete;
-
-    GfxBgiConstants(const GfxBgiConstants&) = delete;
-    GfxBgiConstants(GfxBgiConstants&&) = delete;
-
-    GfxBgiConstants& operator=(const GfxBgiConstants&) = delete;
-    GfxBgiConstants& operator=(GfxBgiConstants&&) = delete;
-
-    static const int32_t kVgaNumColors = 16;
-
-    enum class GfxVga16ColorIndex : int32_t
-    {
-        indexBlack = 0,
-        indexBlue = 1,
-        indexGreen = 2,
-        indexCyan = 3,
-        indexRed = 4,
-        indexMagenta = 5,
-        indexBrown = 6,
-        indexLightGray = 7,
-        indexDarkGray = 8,
-        indexLightBlue = 9,
-        indexLightGreen = 10,
-        indexLightCyan = 11,
-        indexLightRed = 12,
-        indexLightMagenta = 13,
-        indexYellow = 14,
-        indexWhite = 15
-    };
-
-    static const pixels::GfxColor& vgaBlack(void);
-    static const pixels::GfxColor& vgaBlue(void);
-    static const pixels::GfxColor& vgaGreen(void);
-    static const pixels::GfxColor& vgaCyan(void);
-    static const pixels::GfxColor& vgaRed(void);
-    static const pixels::GfxColor& vgaMagenta(void);
-    static const pixels::GfxColor& vgaBrown(void);
-    static const pixels::GfxColor& vgaLightGray(void);
-    static const pixels::GfxColor& vgaDarkGray(void);
-    static const pixels::GfxColor& vgaLightBlue(void);
-    static const pixels::GfxColor& vgaLightGreen(void);
-    static const pixels::GfxColor& vgaLightCyan(void);
-    static const pixels::GfxColor& vgaLightRed(void);
-    static const pixels::GfxColor& vgaLightMagenta(void);
-    static const pixels::GfxColor& vgaYellow(void);
-    static const pixels::GfxColor& vgaWhite(void);
-
-    static const pixels::GfxColor& vgaGetColorByIndex(const GfxVga16ColorIndex index);
-private:
-    static const pixels::GfxColor kColorsVGA16_[kVgaNumColors];
+    indexBlack = 0,
+    indexBlue = 1,
+    indexGreen = 2,
+    indexCyan = 3,
+    indexRed = 4,
+    indexMagenta = 5,
+    indexBrown = 6,
+    indexLightGray = 7,
+    indexDarkGray = 8,
+    indexLightBlue = 9,
+    indexLightGreen = 10,
+    indexLightCyan = 11,
+    indexLightRed = 12,
+    indexLightMagenta = 13,
+    indexYellow = 14,
+    indexWhite = 15
 };
+
+const pixels::GfxColor& kColorBlack(void);
+const pixels::GfxColor& kColorBlue(void);
+const pixels::GfxColor& kColorGreen(void);
+const pixels::GfxColor& kColorCyan(void);
+const pixels::GfxColor& kColorRed(void);
+const pixels::GfxColor& kColorMagenta(void);
+const pixels::GfxColor& kColorBrown(void);
+const pixels::GfxColor& kColorLightGray(void);
+const pixels::GfxColor& kColorDarkGray(void);
+const pixels::GfxColor& kColorLightBlue(void);
+const pixels::GfxColor& kColorLightGreen(void);
+const pixels::GfxColor& kColorLightCyan(void);
+const pixels::GfxColor& kColorLightRed(void);
+const pixels::GfxColor& kColorLightMagenta(void);
+const pixels::GfxColor& kColorYellow(void);
+const pixels::GfxColor& kColorWhite(void);
+
+const pixels::GfxColor& kGetColorByIndex(const GfxColorIndex index);
+
+namespace fnt
+{
+
+static const int kNumFonts = 10;
+
+enum class GfxFontIndex : int32_t
+{
+    indexStandard8x16 = 0,
+    indexAntique = 1,
+    indexBroadway = 2,
+    indexCourrier = 3,
+    indexDragon = 4,
+    indexMedieval = 5,
+    indexRoman = 6,
+    indexSansserif = 7,
+    indexScript = 8,
+    indexWacky = 9
+};
+
+const GfxBitmapFont& kFontStandard8x16(void);
+const GfxBitmapFont& kFontAntique(void);
+const GfxBitmapFont& kFontBroadway(void);
+const GfxBitmapFont& kFontCourrier(void);
+const GfxBitmapFont& kFontDragon(void);
+const GfxBitmapFont& kFontMedieval(void);
+const GfxBitmapFont& kFontRoman(void);
+const GfxBitmapFont& kFontSansserif(void);
+const GfxBitmapFont& kFontScript(void);
+const GfxBitmapFont& kFontWacky(void);
+
+const GfxBitmapFont& kGetFontByIndex(const GfxFontIndex index);
+
+}  // namespace fnt
 
 }  // namespace bgi
 
