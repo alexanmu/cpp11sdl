@@ -24,6 +24,7 @@
 #ifndef GfxMeta_hpp
 #define GfxMeta_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 
@@ -36,13 +37,24 @@ namespace _gfx
 class GfxMeta final
 {
 public:
-    struct ClassInfo
+    struct ClassInfoStatic
     {
-        const char * pchClassName;
-        int32_t iSize;
+        const char * ClassName;
+        int32_t Size;
     };
 
-    GfxMeta() noexcept;
+    struct ClassInfoDynamic
+    {
+        int32_t instanceCount;
+    };
+
+    struct ClassInfo
+    {
+        ClassInfoStatic staticInfo;
+        ClassInfoDynamic dynamicInfo;
+    };
+
+    static GfxMeta& getInstance(void) noexcept;
 
     GfxMeta(GfxMeta const&) = delete;
     GfxMeta(GfxMeta&&) = delete;
@@ -54,12 +66,19 @@ public:
 	ClassInfo const& getClassInfo(const int32_t index) noexcept;
 	int32_t getClassCount(void) const noexcept;
 
-    void clear(void) noexcept;
+    void constructObject(const char * ClassName) noexcept;
+    void destructObject(const char * ClassName) noexcept;
 private:
-    ClassInfo classInfo_;
+    GfxMeta() noexcept;
+    ~GfxMeta() noexcept;
 
-    static const ClassInfo classInfoArray_[];
+    void clear(void) noexcept;
+
     static const int32_t classNamesCount_;
+    static const ClassInfoStatic classInfoArraySta_[];
+
+    ClassInfo classInfo_;
+    ClassInfo classInfoArray_[100];
 };
 
 }  // namespace _gfx

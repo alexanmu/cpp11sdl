@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <cstdint>
+#include <cstring>
 
 #include "GfxMeta.hpp"
 
@@ -103,7 +104,7 @@ namespace gfx
 namespace _gfx
 {
 
-const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
+const struct GfxMeta::ClassInfoStatic GfxMeta::classInfoArraySta_[] =
 {
     { gfx::bits::GfxBits::ClassName, sizeof(gfx::bits::GfxBits) },
     { gfx::blendmode::GfxBlendMode::ClassName, sizeof(gfx::blendmode::GfxBlendMode) },
@@ -177,22 +178,25 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     { gfx::error::GfxError::ClassName, sizeof(gfx::error::GfxError) }  // 2017.06.03
 };
 
-const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /
-                                          sizeof(GfxMeta::classInfoArray_[0]);
+const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArraySta_) /
+                                          sizeof(GfxMeta::classInfoArraySta_[0]);
 
-GfxMeta::GfxMeta() noexcept
+GfxMeta& GfxMeta::getInstance(void) noexcept
 {
-    clear();
+    static GfxMeta instance_;
+
+    return instance_;
 }
 
 GfxMeta::ClassInfo const& GfxMeta::getClassInfo(std::string const& className) noexcept
 {
     clear();
-    for (const auto& it : classInfoArray_)
+    for (const auto& it : classInfoArraySta_)
     {
-        if (className == std::string(it.pchClassName))
+        if (className == std::string(it.ClassName))
         {
-            classInfo_ = it;
+            classInfo_.staticInfo = it;
+            classInfo_.dynamicInfo.instanceCount = 0;
         }
     }
     return classInfo_;
@@ -203,7 +207,8 @@ GfxMeta::ClassInfo const& GfxMeta::getClassInfo(const int32_t index) noexcept
     clear();
     if (index < GfxMeta::classNamesCount_)
     {
-        classInfo_ = GfxMeta::classInfoArray_[index];
+        classInfo_.staticInfo = GfxMeta::classInfoArraySta_[index];
+        classInfo_.dynamicInfo.instanceCount = 0;
     }
     return classInfo_;
 }
@@ -213,10 +218,55 @@ int32_t GfxMeta::getClassCount(void) const noexcept
     return GfxMeta::classNamesCount_;
 }
 
+void GfxMeta::constructObject(const char * ClassName) noexcept
+{
+    const char * activeClassName;
+
+    for (int32_t index = 0; index < classNamesCount_; index++)
+    {
+        activeClassName = classInfoArraySta_[index].ClassName;
+        if (std::strcmp(ClassName, activeClassName) == 0)
+        {
+            classInfoArray_[index].dynamicInfo.instanceCount += 1;
+        }
+    }
+}
+
+void GfxMeta::destructObject(const char * ClassName) noexcept
+{
+    const char * activeClassName;
+
+    for (int32_t index = 0; index < classNamesCount_; index++)
+    {
+        activeClassName = classInfoArraySta_[index].ClassName;
+        if (std::strcmp(ClassName, activeClassName) == 0)
+        {
+            classInfoArray_[index].dynamicInfo.instanceCount -= 1;
+        }
+    }
+}
+
+// Private methods
+GfxMeta::GfxMeta() noexcept
+{
+    clear();
+}
+
+GfxMeta::~GfxMeta() noexcept
+{
+    // Nothing to do
+}
+
 void GfxMeta::clear(void) noexcept
 {
-    classInfo_.pchClassName = nullptr;
-    classInfo_.iSize = -1;
+    classInfo_.staticInfo.ClassName = nullptr;
+    classInfo_.staticInfo.Size = -1;
+    classInfo_.dynamicInfo.instanceCount = 0;
+    for (int32_t index = 0; index < classNamesCount_; index++)
+    {
+        classInfoArray_[index].staticInfo.ClassName = classInfoArraySta_[index].ClassName;
+        classInfoArray_[index].staticInfo.Size = classInfoArraySta_[index].Size;
+    }
 }
 
 }  // namespace _gfx
