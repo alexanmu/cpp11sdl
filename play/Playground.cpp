@@ -756,6 +756,23 @@ void Playground::_doFSO(void)
     }
 }
 
+/******************************************************* Meta *******************************************************/
+#include "GfxMeta.hpp"
+
+void Playground::_doMeta(void)
+{
+    gfx::_gfx::GfxMeta meta;
+    gfx::_gfx::GfxMeta::ClassInfo classInfo;
+
+	for (int32_t index = 0; index < meta.getClassCount(); index++)
+	{
+	    classInfo = meta.getClassInfo(index);
+	    std::cout << "Name=" << classInfo.pchClassName << " ";
+	    std::cout << "Size[bytes]=" << classInfo.iSize << '\n';
+	}
+	std::cout.flush();
+}
+
 /******************************************************* main *******************************************************/
 void Playground::_doPlayground(void)
 {
@@ -765,7 +782,8 @@ void Playground::_doPlayground(void)
     //_doPaletteGfx();
     //_doCallback();
     //_doComponent();
-    _doFSO();
+    //_doFSO();
+    _doMeta();
 }
 
 int main(int argc, char *argv[])

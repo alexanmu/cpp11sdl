@@ -38,17 +38,17 @@ class GfxObject
 public:
     GfxObject() noexcept;
 
-    explicit GfxObject(const std::string& strClassName) noexcept;
+    explicit GfxObject(std::string const& strClassName) noexcept;
 
-    GfxObject(const GfxObject& other) noexcept;
+    GfxObject(GfxObject const& other) noexcept;
     GfxObject(GfxObject&& other) noexcept;
 
     virtual ~GfxObject() noexcept;
 
-    GfxObject& operator=(const GfxObject& other) noexcept;
+    GfxObject& operator=(GfxObject const& other) noexcept;
     GfxObject& operator=(GfxObject&& other) noexcept;
 
-    bool operator==(const GfxObject& other) const noexcept;
+    bool operator==(GfxObject const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
 
@@ -57,15 +57,6 @@ public:
 private:
     std::string strClassName_;
     int32_t i32InstanceId_;
-
-    struct stClassInfo
-    {
-        const char * pchClassName;
-        int32_t iSize;
-    };
-
-    static const struct stClassInfo astClassInfo[];
-    static const int32_t i32ClassNamesCount;
 
     static int32_t i32InstanceCounter_;
 };
