@@ -33,13 +33,13 @@ namespace ttf
 
 const char GfxTtfFontStyle::ClassName[] = "GfxTtfFontStyle";
 
-GfxTtfFontStyle::GfxTtfFontStyle() noexcept : GfxRootClass(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool strikethrough) noexcept :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     clear();
     if (bold == true)
@@ -60,19 +60,19 @@ GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool st
     }
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) noexcept : GfxRootClass(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) noexcept : GfxObject(ClassName)
 {
     assert(style >= 0);
 
     style_ = style;
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept : GfxRootClass(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept : GfxObject(ClassName)
 {
     style_ = other.style_;
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxRootClass(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxObject(ClassName)
 {
     style_ = other.style_;
     // Delete other's data

@@ -34,7 +34,7 @@ namespace version
 
 const char GfxVersion::ClassName[] = "GfxVersion";
 
-GfxVersion::GfxVersion() noexcept : GfxRootClass(ClassName)
+GfxVersion::GfxVersion() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -45,24 +45,24 @@ GfxVersion::operator bool() const noexcept
 }
 
 GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) noexcept :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     ver_.major = major;
     ver_.minor = minor;
     ver_.patch = patch;
 }
 
-GfxVersion::GfxVersion(const SdlType ver) noexcept : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(const SdlType ver) noexcept : GfxObject(ClassName)
 {
     ver_ = ver;
 }
 
-GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxObject(ClassName)
 {
     ver_ = other.ver_;
 }
 
-GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxRootClass(ClassName)
+GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxObject(ClassName)
 {
     ver_ = other.ver_;
     // Delete other's data

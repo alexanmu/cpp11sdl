@@ -29,7 +29,7 @@
 #include <vector>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSurface.hpp"
 #include "GfxWindowPosition.hpp"
 #include "GfxWindowFlags.hpp"
@@ -46,7 +46,7 @@ namespace gfx
 namespace video
 {
 
-class GfxWindow final : public GfxRootClass
+class GfxWindow final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Window SdlType;

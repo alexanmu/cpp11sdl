@@ -28,7 +28,7 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxInitFlags.hpp"
 
 namespace gfx
@@ -37,7 +37,7 @@ namespace gfx
 namespace initquit
 {
 
-class GfxInitQuit final : public GfxRootClass
+class GfxInitQuit final : public GfxObject
 {
 public:
     static const char ClassName[];

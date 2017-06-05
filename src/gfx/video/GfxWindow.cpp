@@ -62,7 +62,7 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
 }
 
 GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     assert(title.length() > 0);
     assert(width >= 0);
@@ -77,7 +77,7 @@ GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_
 
 GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
                      const int32_t width, const int32_t height, const GfxWindowFlags& flags) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     assert(title.length() > 0);
     assert(x);
@@ -94,7 +94,7 @@ GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const
     }
 }
 
-GfxWindow::GfxWindow(void * data) noexcept : GfxRootClass(ClassName)
+GfxWindow::GfxWindow(void * data) noexcept : GfxObject(ClassName)
 {
     assert(data != nullptr);
 

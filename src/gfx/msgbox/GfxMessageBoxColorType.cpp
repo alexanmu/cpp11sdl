@@ -34,12 +34,12 @@ namespace msgbox
 
 const char GfxMessageBoxColorType::ClassName[] = "GfxMessageBoxColorType";
 
-GfxMessageBoxColorType::GfxMessageBoxColorType() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : GfxObject(ClassName)
 {
     assert(type >= 0);
 
@@ -47,19 +47,19 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : Gf
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) noexcept :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     type_ = static_cast<SdlType>(type);
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     type_ = other.type_;
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) noexcept :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     type_ = other.type_;
     // Delete other's data

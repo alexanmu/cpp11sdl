@@ -30,22 +30,22 @@ namespace gfx
 
 const char GfxTextureAccess::ClassName[] = "GfxTextureAccess";
 
-GfxTextureAccess::GfxTextureAccess() noexcept : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxTextureAccess::GfxTextureAccess(const ValueType access) noexcept : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess(const ValueType access) noexcept : GfxObject(ClassName)
 {
     access_ = static_cast<SdlType>(access);
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxObject(ClassName)
 {
     access_ = other.access_;
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxRootClass(ClassName)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxObject(ClassName)
 {
     access_ = other.access_;
     // Delete other's data

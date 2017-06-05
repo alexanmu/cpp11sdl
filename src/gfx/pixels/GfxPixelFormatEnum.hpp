@@ -26,7 +26,7 @@
 
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -35,7 +35,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxPixelFormatEnum : public gfx::GfxRootClass
+class GfxPixelFormatEnum : public GfxObject
 {
 public:
     typedef uint32_t SdlType;

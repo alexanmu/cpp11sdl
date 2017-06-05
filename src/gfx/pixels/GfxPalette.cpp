@@ -36,7 +36,7 @@ namespace pixels
 
 const char GfxPalette::ClassName[] = "GfxPalette";
 
-GfxPalette::GfxPalette() noexcept : GfxRootClass(ClassName)
+GfxPalette::GfxPalette() noexcept : GfxObject(ClassName)
 {
     pal_ = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
     for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
@@ -46,7 +46,7 @@ GfxPalette::GfxPalette() noexcept : GfxRootClass(ClassName)
     }
 };
 
-GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) noexcept : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) noexcept : GfxObject(ClassName)
 {
     uint32_t colorIndex;
     uint16_t nColors;
@@ -63,7 +63,7 @@ GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) noexcept : GfxRootCl
     }
 }
 
-GfxPalette::GfxPalette(const uint16_t nColors) noexcept : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(const uint16_t nColors) noexcept : GfxObject(ClassName)
 {
     assert(nColors > 0);
 
@@ -76,7 +76,7 @@ GfxPalette::GfxPalette(const uint16_t nColors) noexcept : GfxRootClass(ClassName
     }
 }
 
-GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxRootClass(ClassName)
+GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxObject(ClassName)
 {
     pal_ = other.pal_;
     // Delete other's data

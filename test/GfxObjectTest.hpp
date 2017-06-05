@@ -20,11 +20,14 @@
 
  See copyright notice at http://lidsdl.org/license.php
 */
+#ifndef GfxObjectTest_hpp
+#define GfxObjectTest_hpp
+
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
-class GfxRootClassTest : public ::testing::Test
+class GfxObjectTest : public ::testing::Test
 {
 protected:
     virtual void SetUp()
@@ -37,12 +40,15 @@ protected:
         //
     }
 
-    gfx::GfxRootClass object;
+    gfx::_gfx::GfxObject object;
 };
 
-TEST_F(GfxRootClassTest, emptyConstructor)
+TEST_F(GfxObjectTest, emptyConstructor)
 {
     // will fail if value != 31; all const classes are initialized by now
     EXPECT_EQ(31, object.getInstanceId());
     EXPECT_EQ("$init$", object.getClassName());
 }
+
+#endif  // GfxObjectTest_hpp
+

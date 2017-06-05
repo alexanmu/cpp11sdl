@@ -35,13 +35,13 @@ namespace msgbox
 
 const char GfxMessageBoxColorScheme::ClassName[] = "GfxMessageBoxColorScheme";
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[]) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     for (int32_t index = 0; index < colorsArraySize; index++)
     {
@@ -52,13 +52,13 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept :
-    GfxRootClass(ClassName)
+    GfxObject(ClassName)
 {
     clrscheme_ = other.clrscheme_;
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) noexcept :
-    GfxRootClass(ClassName)
+    GfxObject(ClassName)
 {
     clrscheme_ = other.clrscheme_;
     // Delete other's data

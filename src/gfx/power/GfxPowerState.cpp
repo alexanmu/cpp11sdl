@@ -34,29 +34,29 @@ namespace power
 
 const char GfxPowerState::ClassName[] = "GfxPowerState";
 
-GfxPowerState::GfxPowerState() noexcept : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxPowerState::GfxPowerState(const ValueType value) noexcept : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxObject(ClassName)
 {
     assert(value >= 0);
 
     value_ = value;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxRootClass(ClassName)
+GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

@@ -31,7 +31,7 @@ namespace pixels
 
 const char GfxPackedOrder::ClassName[] = "GfxPackedOrder";
 
-GfxPackedOrder::GfxPackedOrder() noexcept : GfxRootClass(ClassName)
+GfxPackedOrder::GfxPackedOrder() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -46,12 +46,12 @@ GfxPackedOrder::GfxPackedOrder(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxRootClass(ClassName)
+GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxRootClass(ClassName)
+GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

@@ -35,17 +35,17 @@ namespace msgbox
 
 const char GfxMessageBoxData::ClassName[] = "GfxMessageBoxData";
 
-GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
 {
     btndataptr = nullptr;
     clear();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win,
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxObject* win,
                                      const std::string& title, const std::string& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[],
                                      const GfxMessageBoxColorScheme& colorScheme) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     assert(flags);
     assert(title.length() > 0);
@@ -79,7 +79,7 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootCla
 GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win,
                                      const std::string& title, const std::string& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[]) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     assert(flags);
     assert(title.length() > 0);
@@ -102,14 +102,14 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const vide
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxObject(ClassName)
 {
     data_ = other.data_;
     title_ = other.title_;
     message_ = other.message_;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxObject(ClassName)
 {
     data_ = other.data_;
     title_ = other.title_;

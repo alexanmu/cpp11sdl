@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -35,7 +35,7 @@ namespace gfx
 namespace video
 {
 
-class GfxWindowPosition final : public GfxRootClass
+class GfxWindowPosition final : public GfxObject
 {
 public:
     static const char ClassName[];

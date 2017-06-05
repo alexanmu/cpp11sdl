@@ -35,7 +35,7 @@ namespace endian
 
 const char GfxEndian::ClassName[] = "GfxEndian";
 
-GfxEndian::GfxEndian() noexcept : GfxRootClass(ClassName)
+GfxEndian::GfxEndian() noexcept : GfxObject(ClassName)
 {
     // Nothing to do
 }

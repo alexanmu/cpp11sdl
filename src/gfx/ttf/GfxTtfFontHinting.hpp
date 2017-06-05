@@ -24,7 +24,7 @@
 #ifndef GfxTtfFontHinting_hpp
 #define GfxTtfFontHinting_hpp
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -33,7 +33,7 @@ namespace gfx
 namespace ttf
 {
 
-class GfxTtfFontHinting final : public GfxRootClass
+class GfxTtfFontHinting final : public GfxObject
 {
 public:
     typedef int32_t SdlType;

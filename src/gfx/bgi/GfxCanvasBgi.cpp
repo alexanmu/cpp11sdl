@@ -87,7 +87,7 @@ uint8_t GfxCanvasBgi::fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FIL
     {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}   // USER_FILL
 };
 
-GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
+GfxCanvasBgi::GfxCanvasBgi() : GfxObject(ClassName)
 {
     bgi_activepage = nullptr;
     bgi_maxx = -1;

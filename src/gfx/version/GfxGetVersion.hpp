@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxVersion.hpp"
 
 namespace gfx
@@ -36,7 +36,7 @@ namespace gfx
 namespace version
 {
 
-class GfxGetVersion final : public GfxRootClass
+class GfxGetVersion final : public GfxObject
 {
 public:
     static const char ClassName[];

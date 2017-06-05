@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -36,7 +36,7 @@ namespace gfx
 namespace video
 {
 
-class GfxWindowEventID final : public GfxRootClass
+class GfxWindowEventID final : public GfxObject
 {
 public:
     typedef sdl2::SDL_WindowEventID SdlType;

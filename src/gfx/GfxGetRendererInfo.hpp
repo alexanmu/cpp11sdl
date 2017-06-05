@@ -27,13 +27,13 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxRendererInfo.hpp"
 
 namespace gfx
 {
 
-class GfxGetRendererInfo final : public GfxRootClass
+class GfxGetRendererInfo final : public GfxObject
 {
 public:
     static const char ClassName[];

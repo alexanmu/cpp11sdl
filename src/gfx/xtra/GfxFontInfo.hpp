@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -35,7 +35,7 @@ namespace gfx
 namespace xtra
 {
 
-class GfxFontInfo final : public GfxRootClass
+class GfxFontInfo final : public GfxObject
 {
 public:
     static const char ClassName[];

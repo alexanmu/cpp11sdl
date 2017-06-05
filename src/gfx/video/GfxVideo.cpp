@@ -37,7 +37,7 @@ namespace video
 
 const char GfxVideo::ClassName[] = "GfxVideo";
 
-GfxVideo::GfxVideo() noexcept : GfxRootClass(ClassName)
+GfxVideo::GfxVideo() noexcept : GfxObject(ClassName)
 {
     numvideodrivers_ = -1;
     numvideodisplays_ = -1;

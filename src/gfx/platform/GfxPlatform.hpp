@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -34,7 +34,7 @@ namespace gfx
 namespace platform
 {
 
-class GfxPlatform final : public GfxRootClass
+class GfxPlatform final : public GfxObject
 {
 public:
     static const char ClassName[];

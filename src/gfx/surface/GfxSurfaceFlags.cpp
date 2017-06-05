@@ -36,29 +36,29 @@ namespace surface
 
 const char GfxSurfaceFlags::ClassName[] = "GfxSurfaceFlags";
 
-GfxSurfaceFlags::GfxSurfaceFlags() noexcept : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
     assert(flags > 0);
 
     flags_ = flags;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxRootClass(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

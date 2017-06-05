@@ -35,7 +35,7 @@ namespace version
 
 const char GfxGetVersion::ClassName[] = "GfxGetVersion";
 
-GfxGetVersion::GfxGetVersion() noexcept : GfxRootClass(ClassName)
+GfxGetVersion::GfxGetVersion() noexcept : GfxObject(ClassName)
 {
     // Nothing to do
 }

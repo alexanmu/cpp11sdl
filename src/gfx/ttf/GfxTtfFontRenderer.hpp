@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxTtfFont.hpp"
 #include "GfxSurface.hpp"
 #include "GfxColor.hpp"
@@ -39,7 +39,7 @@ namespace gfx
 namespace ttf
 {
 
-class GfxTtfFontRenderer final : public GfxRootClass
+class GfxTtfFontRenderer final : public GfxObject
 {
 public:
     static const char ClassName[];

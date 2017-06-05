@@ -27,13 +27,13 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
 
-class GfxRendererFlags final : public GfxRootClass
+class GfxRendererFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererFlags SdlType;

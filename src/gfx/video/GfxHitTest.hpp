@@ -24,7 +24,7 @@
 #ifndef GfxHitTest_hpp
 #define GfxHitTest_hpp
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxHitTestResult.hpp"
 #include "GfxPoint.hpp"
 
@@ -34,7 +34,7 @@ namespace gfx
 namespace video
 {
 
-class GfxHitTest : public GfxRootClass
+class GfxHitTest : public GfxObject
 {
 public:
     static const char ClassName[];

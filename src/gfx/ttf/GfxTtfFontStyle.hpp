@@ -24,7 +24,7 @@
 #ifndef GfxTtfFontStyle_hpp
 #define GfxTtfFontStyle_hpp
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -33,7 +33,7 @@ namespace gfx
 namespace ttf
 {
 
-class GfxTtfFontStyle final : public GfxRootClass
+class GfxTtfFontStyle final : public GfxObject
 {
 public:
     typedef int32_t SdlType;

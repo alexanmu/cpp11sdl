@@ -34,7 +34,7 @@ namespace power
 
 const char GfxPowerInfo::ClassName[] = "GfxPowerInfo";
 
-GfxPowerInfo::GfxPowerInfo() noexcept : GfxRootClass(ClassName)
+GfxPowerInfo::GfxPowerInfo() noexcept : GfxObject(ClassName)
 {
     pstate_ = GfxPowerState(GfxPowerState::ValueType::stateUnknown);
     seconds_ = -1;

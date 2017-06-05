@@ -28,7 +28,7 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -36,7 +36,7 @@ namespace gfx
 namespace rect
 {
 
-class GfxPoint final : public GfxRootClass
+class GfxPoint final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Point SdlType;

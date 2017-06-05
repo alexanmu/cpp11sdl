@@ -21,8 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxRootClass_hpp
-#define GfxRootClass_hpp
+#ifndef GfxObject_hpp
+#define GfxObject_hpp
 
 #include <cstdint>
 #include <string>
@@ -30,22 +30,25 @@
 namespace gfx
 {
 
-class GfxRootClass
+namespace _gfx
+{
+
+class GfxObject
 {
 public:
-    GfxRootClass() noexcept;
+    GfxObject() noexcept;
 
-    explicit GfxRootClass(const std::string& strClassName) noexcept;
+    explicit GfxObject(const std::string& strClassName) noexcept;
 
-    GfxRootClass(const GfxRootClass& other) noexcept;
-    GfxRootClass(GfxRootClass&& other) noexcept;
+    GfxObject(const GfxObject& other) noexcept;
+    GfxObject(GfxObject&& other) noexcept;
 
-    virtual ~GfxRootClass() noexcept;
+    virtual ~GfxObject() noexcept;
 
-    GfxRootClass& operator=(const GfxRootClass& other) noexcept;
-    GfxRootClass& operator=(GfxRootClass&& other) noexcept;
+    GfxObject& operator=(const GfxObject& other) noexcept;
+    GfxObject& operator=(GfxObject&& other) noexcept;
 
-    bool operator==(const GfxRootClass& other) const noexcept;
+    bool operator==(const GfxObject& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
 
@@ -67,6 +70,11 @@ private:
     static int32_t i32InstanceCounter_;
 };
 
+}  // namespace _gfx
+
+using _gfx::GfxObject;
+
 }  // namespace gfx
 
-#endif /* GfxRootClass_hpp */
+#endif /* GfxObject_hpp */
+

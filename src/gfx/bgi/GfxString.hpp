@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -34,7 +34,7 @@ namespace gfx
 namespace bgi
 {
 
-class GfxString final : public GfxRootClass
+class GfxString final : public GfxObject
 {
 public:
     typedef std::string GfxValueType;

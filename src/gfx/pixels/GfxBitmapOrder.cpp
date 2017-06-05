@@ -31,7 +31,7 @@ namespace pixels
 
 const char GfxBitmapOrder::ClassName[] = "GfxBitmapOrder";
 
-GfxBitmapOrder::GfxBitmapOrder() noexcept : GfxRootClass(ClassName)
+GfxBitmapOrder::GfxBitmapOrder() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -46,12 +46,12 @@ GfxBitmapOrder::GfxBitmapOrder(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder const& other) noexcept : GfxRootClass(ClassName)
+GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) noexcept : GfxRootClass(ClassName)
+GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

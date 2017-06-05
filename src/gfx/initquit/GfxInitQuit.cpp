@@ -36,7 +36,7 @@ namespace initquit
 const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
 GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
-                GfxRootClass(ClassName), flags_(flags), errorCode_(0)
+                GfxObject(ClassName), flags_(flags), errorCode_(0)
 {
     assert(flags);
 

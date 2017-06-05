@@ -31,27 +31,27 @@ namespace pixels
 
 const char GfxPixelFormatEnum::ClassName[] = "GfxPixelFormatEnum";
 
-GfxPixelFormatEnum::GfxPixelFormatEnum() noexcept : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(const ValueType value) noexcept : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) noexcept : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : GfxRootClass(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
 #include "GfxSurface.hpp"
@@ -40,7 +40,7 @@ namespace gfx
 namespace xtra
 {
 
-class GfxControlledSurface final : public GfxRootClass
+class GfxControlledSurface final : public GfxObject
 {
 public:
     static const char ClassName[];

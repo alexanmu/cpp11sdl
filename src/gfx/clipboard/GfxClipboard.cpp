@@ -36,7 +36,7 @@ namespace clipboard
 
 const char GfxClipboard::ClassName[] = "GfxClipboard";
 
-GfxClipboard::GfxClipboard() noexcept : GfxRootClass(ClassName)
+GfxClipboard::GfxClipboard() noexcept : GfxObject(ClassName)
 {
     // Nothing to do
 }

@@ -34,29 +34,29 @@ namespace msgbox
 
 const char GfxMessageBoxFlags::ClassName[] = "GfxMessageBoxFlags";
 
-GfxMessageBoxFlags::GfxMessageBoxFlags() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const ValueType flag) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(const ValueType flag) noexcept : GfxObject(ClassName)
 {
     flag_ = static_cast<SdlType>(flag);
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) noexcept : GfxObject(ClassName)
 {
     assert(flag > 0);
 
     flag_ = flag;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(const GfxMessageBoxFlags& other) noexcept : GfxObject(ClassName)
 {
     flag_ = other.flag_;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : GfxObject(ClassName)
 {
     flag_ = other.flag_;
     // Delete other's data

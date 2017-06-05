@@ -34,7 +34,7 @@ namespace platform
 
 const char GfxPlatform::ClassName[] = "GfxPlatform";
 
-GfxPlatform::GfxPlatform() noexcept : GfxRootClass(ClassName)
+GfxPlatform::GfxPlatform() noexcept : GfxObject(ClassName)
 {
     platform_ = "";
 }

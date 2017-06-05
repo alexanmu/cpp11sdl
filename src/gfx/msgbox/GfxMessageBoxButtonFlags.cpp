@@ -34,18 +34,18 @@ namespace msgbox
 
 const char GfxMessageBoxButtonFlags::ClassName[] = "GfxMessageBoxButtonFlags";
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const ValueType flags) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
     assert(flags > 0);
     assert(flags < 3);
@@ -54,12 +54,12 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     flags_ = other.flags_;
 }
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

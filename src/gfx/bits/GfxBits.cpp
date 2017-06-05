@@ -35,7 +35,7 @@ namespace bits
 
 const char GfxBits::ClassName[] = "GfxBits";
 
-GfxBits::GfxBits() noexcept : GfxRootClass(ClassName)
+GfxBits::GfxBits() noexcept : GfxObject(ClassName)
 {
     // Nothing to do
 }

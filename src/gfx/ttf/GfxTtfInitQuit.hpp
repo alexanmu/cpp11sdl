@@ -27,7 +27,7 @@
 #include <string>
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -36,7 +36,7 @@ namespace gfx
 namespace ttf
 {
 
-class GfxTtfInitQuit final : public GfxRootClass
+class GfxTtfInitQuit final : public GfxObject
 {
 public:
     static const char ClassName[];

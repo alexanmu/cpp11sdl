@@ -35,7 +35,7 @@ namespace loadso
 
 const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
-GfxLoadSo::GfxLoadSo(const std::string& objectname) noexcept : GfxRootClass(ClassName)
+GfxLoadSo::GfxLoadSo(const std::string& objectname) noexcept : GfxObject(ClassName)
 {
     assert(objectname.length() > 0);
 
@@ -43,7 +43,7 @@ GfxLoadSo::GfxLoadSo(const std::string& objectname) noexcept : GfxRootClass(Clas
     handle_ = sdl2::SDL_LoadObject(objectname_.c_str());
 }
 
-GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxRootClass(ClassName)
+GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(ClassName)
 {
     objectname_ = other.objectname_;
     handle_ = other.handle_;

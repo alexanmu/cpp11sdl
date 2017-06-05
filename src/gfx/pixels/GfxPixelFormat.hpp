@@ -28,7 +28,7 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxPixelFormatEnum.hpp"
 #include "GfxPixelType.hpp"
 #include "GfxPackedOrder.hpp"
@@ -45,7 +45,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxPixelFormat final : public GfxRootClass
+class GfxPixelFormat final : public GfxObject
 {
 public:
     typedef sdl2::SDL_PixelFormat* SdlTypePtr;

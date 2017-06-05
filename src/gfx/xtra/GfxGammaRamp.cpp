@@ -36,12 +36,12 @@ namespace xtra
 
 const char GfxGammaRamp::ClassName[] = "GfxGammaRamp";
 
-GfxGammaRamp::GfxGammaRamp() noexcept : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxObject(ClassName)
 {
     int32_t index;
     SdlTypePtr gammaRampCtr = gammaRamp;
@@ -53,7 +53,7 @@ GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxRootClass(C
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(ClassName)
 {
     int32_t index;
 
@@ -63,7 +63,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxRootClass(Cl
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxRootClass(ClassName)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(ClassName)
 {
     int32_t index;
 

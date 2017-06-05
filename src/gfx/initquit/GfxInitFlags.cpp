@@ -35,29 +35,29 @@ namespace initquit
 
 const char GfxInitFlags::ClassName[] = "GfxInitFlags";
 
-GfxInitFlags::GfxInitFlags() noexcept : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags() noexcept : GfxObject(ClassName)
 {
     flags_ = 0;
 }
 
-GfxInitFlags::GfxInitFlags(const int32_t flags) noexcept : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(const int32_t flags) noexcept : GfxObject(ClassName)
 {
     assert(flags >= 0);
 
     flags_ = flags;
 }
 
-GfxInitFlags::GfxInitFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
     flags_ = static_cast<int32_t>(flags);
 }
 
-GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) noexcept : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) noexcept : GfxRootClass(ClassName)
+GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

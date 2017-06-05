@@ -32,22 +32,22 @@ namespace gfx
 
 const char GfxRendererInfo::ClassName[] = "GfxRendererInfo";
 
-GfxRendererInfo::GfxRendererInfo() noexcept : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxRendererInfo::GfxRendererInfo(SdlType info) noexcept : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo(SdlType info) noexcept : GfxObject(ClassName)
 {
     info_ = info;
 }
 
-GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) noexcept : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) noexcept : GfxObject(ClassName)
 {
     info_ = other.info_;
 }
 
-GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxRootClass(ClassName)
+GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxObject(ClassName)
 {
     info_ = other.info_;
     // Delete other's data

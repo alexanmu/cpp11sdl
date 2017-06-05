@@ -36,34 +36,34 @@ namespace video
 
 const char GfxWindowFlags::ClassName[] = "GfxWindowFlags";
 
-GfxWindowFlags::GfxWindowFlags() noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxWindowFlags::GfxWindowFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
     assert(flags >= 0);
 
     flags_ = flags;
 }
 
-GfxWindowFlags::GfxWindowFlags(const uint32_t flags) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(const uint32_t flags) noexcept : GfxObject(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) noexcept : GfxRootClass(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

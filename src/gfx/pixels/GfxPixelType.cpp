@@ -31,7 +31,7 @@ namespace pixels
 
 const char GfxPixelType::ClassName[] = "GfxPixelType";
 
-GfxPixelType::GfxPixelType() noexcept : GfxRootClass(ClassName)
+GfxPixelType::GfxPixelType() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -46,12 +46,12 @@ GfxPixelType::GfxPixelType(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxRootClass(ClassName)
+GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxRootClass(ClassName)
+GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

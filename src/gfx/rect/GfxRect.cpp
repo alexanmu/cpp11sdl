@@ -36,7 +36,7 @@ namespace rect
 
 const char GfxRect::ClassName[] = "GfxRect";
 
-GfxRect::GfxRect() noexcept : GfxRootClass(ClassName)
+GfxRect::GfxRect() noexcept : GfxObject(ClassName)
 {
     rect_.x = -1;
     rect_.y = -1;
@@ -44,7 +44,7 @@ GfxRect::GfxRect() noexcept : GfxRootClass(ClassName)
     rect_.h = -1;
 }
 
-GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) noexcept : GfxRootClass(ClassName)
+GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) noexcept : GfxObject(ClassName)
 {
     assert(x >= 0);
     assert(y >= 0);
@@ -57,17 +57,17 @@ GfxRect::GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_
     rect_.h = h;
 }
 
-GfxRect::GfxRect(const SdlType rect) noexcept : GfxRootClass(ClassName)
+GfxRect::GfxRect(const SdlType rect) noexcept : GfxObject(ClassName)
 {
     rect_ = rect;
 }
 
-GfxRect::GfxRect(GfxRect const& other) noexcept : GfxRootClass(ClassName)
+GfxRect::GfxRect(GfxRect const& other) noexcept : GfxObject(ClassName)
 {
     rect_ = other.rect_;
 }
 
-GfxRect::GfxRect(GfxRect&& other) noexcept : GfxRootClass(ClassName)
+GfxRect::GfxRect(GfxRect&& other) noexcept : GfxObject(ClassName)
 {
     rect_ = other.rect_;
     other.clear();

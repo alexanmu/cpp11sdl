@@ -34,12 +34,12 @@ namespace pixels
 
 const char GfxColor::ClassName[] = "GfxColor";
 
-GfxColor::GfxColor() noexcept : GfxRootClass(ClassName)
+GfxColor::GfxColor() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept : GfxRootClass(ClassName)
+GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept : GfxObject(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
@@ -48,7 +48,7 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept
 }
 
 GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) noexcept :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
@@ -56,13 +56,13 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  u
     clr_.a = a;
 }
 
-GfxColor::GfxColor(const SdlType clr) noexcept : GfxRootClass(ClassName)
+GfxColor::GfxColor(const SdlType clr) noexcept : GfxObject(ClassName)
 {
     /* Copy structure; hope SDL_Color assignement operator works ... */
     clr_ = clr;
 }
 
-GfxColor::GfxColor(const uint32_t clr) noexcept : GfxRootClass(ClassName)
+GfxColor::GfxColor(const uint32_t clr) noexcept : GfxObject(ClassName)
 {
     clr_.r = (clr & 0x000000FF);
     clr_.g = (clr & 0x0000FF00) >> 8;
@@ -71,13 +71,13 @@ GfxColor::GfxColor(const uint32_t clr) noexcept : GfxRootClass(ClassName)
 }
 
 /* Copy constructor */
-GfxColor::GfxColor(const GfxColor& other) noexcept : GfxRootClass(ClassName)
+GfxColor::GfxColor(const GfxColor& other) noexcept : GfxObject(ClassName)
 {
     clr_ = other.clr_;
 }
 
 /* Move constructor */
-GfxColor::GfxColor(GfxColor&& other) noexcept : GfxRootClass(ClassName)
+GfxColor::GfxColor(GfxColor&& other) noexcept : GfxObject(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */

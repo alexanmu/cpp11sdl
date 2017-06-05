@@ -35,7 +35,7 @@ namespace filesystem
 
 const char GfxFileSystem::ClassName[] = "GfxFileSystem";
 
-GfxFileSystem::GfxFileSystem() noexcept : GfxRootClass(ClassName)
+GfxFileSystem::GfxFileSystem() noexcept : GfxObject(ClassName)
 {
     // Nothing to do
 }

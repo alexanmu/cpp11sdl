@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxMessageBoxColor.hpp"
 #include "GfxMessageBoxColorType.hpp"
@@ -38,7 +38,7 @@ namespace gfx
 namespace msgbox
 {
 
-class GfxMessageBoxColorScheme final : public GfxRootClass
+class GfxMessageBoxColorScheme final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxColorScheme SdlType;

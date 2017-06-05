@@ -31,7 +31,7 @@ namespace gfx
 
 const char GfxRenderer::ClassName[] = "GfxRenderer";
 
-GfxRenderer::GfxRenderer(const video::GfxWindow& win) : GfxRootClass(ClassName), renderer_(nullptr), window_(win)
+GfxRenderer::GfxRenderer(const video::GfxWindow& win) : GfxObject(ClassName), renderer_(nullptr), window_(win)
 {
     SdlType* renderertmp;
 

@@ -31,36 +31,36 @@ namespace gfx
 
 const char GfxTextureModulate::ClassName[] = "GfxTextureModulate";
 
-GfxTextureModulate::GfxTextureModulate() noexcept : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxTextureModulate::GfxTextureModulate(const ValueType flags) noexcept : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(const ValueType flags) noexcept : GfxObject(ClassName)
 {
     modulate_ = static_cast<SdlType>(flags);
 }
 
-GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxObject(ClassName)
 {
     assert(flags >= 0);
 
     modulate_ = flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(const SdlTypePtr flags) noexcept : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(const SdlTypePtr flags) noexcept : GfxObject(ClassName)
 {
     assert(flags != nullptr);
 
     modulate_ = *flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxObject(ClassName)
 {
     modulate_ = other.modulate_;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : GfxRootClass(ClassName)
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : GfxObject(ClassName)
 {
     modulate_ = other.modulate_;
     // Delete other's data

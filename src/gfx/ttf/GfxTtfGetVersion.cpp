@@ -33,7 +33,7 @@ namespace ttf
 
 const char GfxTtfGetVersion::ClassName[] = "GfxTtfGetVersion";
 
-GfxTtfGetVersion::GfxTtfGetVersion() noexcept : GfxRootClass(ClassName)
+GfxTtfGetVersion::GfxTtfGetVersion() noexcept : GfxObject(ClassName)
 {
     // Nothing to do
 }

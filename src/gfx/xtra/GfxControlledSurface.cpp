@@ -39,7 +39,7 @@ const char GfxControlledSurface::ClassName[] = "GfxControlledSurface";
 const pixels::GfxPixelFormatEnum::ValueType GfxControlledSurface::kDefaultSurfaceColorFormatValue =
     pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888;
 
-GfxControlledSurface::GfxControlledSurface() noexcept : gfx::GfxRootClass(ClassName)
+GfxControlledSurface::GfxControlledSurface() noexcept : gfx::GfxObject(ClassName)
 {
     surf_ = nullptr;
     surfaceConstructed_ = false;

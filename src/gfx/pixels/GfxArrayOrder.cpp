@@ -31,7 +31,7 @@ namespace pixels
 
 const char GfxArrayOrder::ClassName[] = "GfxArrayOrder";
 
-GfxArrayOrder::GfxArrayOrder() noexcept : GfxRootClass(ClassName)
+GfxArrayOrder::GfxArrayOrder() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -46,12 +46,12 @@ GfxArrayOrder::GfxArrayOrder(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxArrayOrder::GfxArrayOrder(GfxArrayOrder const& other) noexcept : GfxRootClass(ClassName)
+GfxArrayOrder::GfxArrayOrder(GfxArrayOrder const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) noexcept : GfxRootClass(ClassName)
+GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

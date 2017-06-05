@@ -28,12 +28,12 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
 
-class GfxRendererFlip final : public GfxRootClass
+class GfxRendererFlip final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererFlip SdlType;

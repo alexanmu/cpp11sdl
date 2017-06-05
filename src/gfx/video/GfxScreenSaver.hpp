@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -34,7 +34,7 @@ namespace gfx
 namespace video
 {
 
-class GfxScreenSaver final : public GfxRootClass
+class GfxScreenSaver final : public GfxObject
 {
 public:
     static const char ClassName[];

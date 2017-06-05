@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxTtfFontStyle.hpp"
 #include "GfxTtfFontHinting.hpp"
@@ -39,7 +39,7 @@ namespace gfx
 namespace ttf
 {
 
-class GfxTtfFont final : public GfxRootClass
+class GfxTtfFont final : public GfxObject
 {
 public:
     typedef sdl2::TTF_Font* SdlTypePtr;

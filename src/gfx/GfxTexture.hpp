@@ -28,7 +28,7 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSurface.hpp"
 #include "GfxBlendMode.hpp"
 #include "GfxTextureModulate.hpp"
@@ -37,7 +37,7 @@
 namespace gfx
 {
 
-class GfxTexture final : public GfxRootClass
+class GfxTexture final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Texture SdlType;
@@ -47,8 +47,8 @@ public:
 
     GfxTexture() = delete;
 
-    explicit GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h);
-    explicit GfxTexture(GfxRootClass * rend, const surface::GfxSurface& surf);
+    explicit GfxTexture(GfxObject * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h);
+    explicit GfxTexture(GfxObject * rend, const surface::GfxSurface& surf);
 
     virtual ~GfxTexture();
 
@@ -68,7 +68,7 @@ public:
 
     SdlTypePtr getAsSdlTypePtr(void) const;
 private:
-    GfxRootClass * rend_;
+    GfxObject * rend_;
     SdlTypePtr tex_;
 };
 

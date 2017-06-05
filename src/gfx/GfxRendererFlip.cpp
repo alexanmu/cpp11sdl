@@ -30,12 +30,12 @@ namespace gfx
 
 const char GfxRendererFlip::ClassName[] = "GfxRendererFlip";
 
-GfxRendererFlip::GfxRendererFlip() noexcept : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : GfxObject(ClassName)
 {
     flip_ = static_cast<SdlType>(ValueType::flipNone);
     if (fliph == true)
@@ -48,12 +48,12 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : 
     }
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxObject(ClassName)
 {
     flip_ = other.flip_;
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxRootClass(ClassName)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxObject(ClassName)
 {
     flip_ = other.flip_;
     other.clear();

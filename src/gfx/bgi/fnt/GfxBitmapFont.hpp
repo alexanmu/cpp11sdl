@@ -27,7 +27,7 @@
 #include <string>
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -38,7 +38,7 @@ namespace bgi
 namespace fnt
 {
 
-class GfxBitmapFont final : public GfxRootClass
+class GfxBitmapFont final : public GfxObject
 {
 public:
     static const char ClassName[];

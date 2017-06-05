@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxPowerState.hpp"
 
 namespace gfx
@@ -36,7 +36,7 @@ namespace gfx
 namespace power
 {
 
-class GfxPowerInfo final : public GfxRootClass
+class GfxPowerInfo final : public GfxObject
 {
 public:
     static const char ClassName[];

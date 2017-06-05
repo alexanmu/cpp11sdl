@@ -35,12 +35,12 @@ namespace video
 
 const char GfxWindowPosition::ClassName[] = "GfxWindowPosition";
 
-GfxWindowPosition::GfxWindowPosition() noexcept : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : GfxObject(ClassName)
 {
     assert(coord >= 0);
 
@@ -58,13 +58,13 @@ GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : Gf
     }
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxObject(ClassName)
 {
     pos_ = other.pos_;
     coord_ = other.coord_;
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxRootClass(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxObject(ClassName)
 {
     pos_ = other.pos_;
     coord_ = other.coord_;

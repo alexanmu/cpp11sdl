@@ -35,7 +35,7 @@ namespace video
 
 const char GfxScreenSaver::ClassName[] = "GfxScreenSaver";
 
-GfxScreenSaver::GfxScreenSaver() noexcept : GfxRootClass(ClassName)
+GfxScreenSaver::GfxScreenSaver() noexcept : GfxObject(ClassName)
 {
     GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
 

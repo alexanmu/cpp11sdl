@@ -47,12 +47,12 @@ const bool GfxFontInfo::kDefaultFontKerning = true;
 
 const uint8_t GfxFontInfo::kMinFontSize = 4;
 
-GfxFontInfo::GfxFontInfo() noexcept : GfxRootClass(ClassName)
+GfxFontInfo::GfxFontInfo() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxFontInfo::GfxFontInfo(std::string const& fontName) noexcept : GfxRootClass(ClassName)
+GfxFontInfo::GfxFontInfo(std::string const& fontName) noexcept : GfxObject(ClassName)
 {
     assert(fontName.length() > 0);
 
@@ -60,7 +60,7 @@ GfxFontInfo::GfxFontInfo(std::string const& fontName) noexcept : GfxRootClass(Cl
     fontName_ = fontName;
 }
 
-GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) noexcept : GfxRootClass(ClassName)
+GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) noexcept : GfxObject(ClassName)
 {
     assert(fontName.length() > 0);
     assert(fontSize >= kMinFontSize);
@@ -70,7 +70,7 @@ GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) no
     fontSize_ = fontSize;
 }
 
-GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxRootClass(ClassName)
+GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxObject(ClassName)
 {
     fontName_ = other.fontName_;
     fontSize_ = other.fontSize_;
@@ -83,7 +83,7 @@ GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxRootClass(Class
     fontKerning_ = other.fontKerning_;
 }
 
-GfxFontInfo::GfxFontInfo(GfxFontInfo&& other) noexcept : GfxRootClass(ClassName)
+GfxFontInfo::GfxFontInfo(GfxFontInfo&& other) noexcept : GfxObject(ClassName)
 {
     fontName_ = other.fontName_;
     fontSize_ = other.fontSize_;

@@ -34,29 +34,29 @@ namespace blendmode
 
 const char GfxBlendMode::ClassName[] = "GfxBlendMode";
 
-GfxBlendMode::GfxBlendMode() noexcept : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxBlendMode::GfxBlendMode(const ValueType blendmode) noexcept : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(const ValueType blendmode) noexcept : GfxObject(ClassName)
 {
     blendmode_ = static_cast<SdlType>(blendmode);
 }
 
-GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxObject(ClassName)
 {
     assert(blendmode >= 0);
 
     blendmode_ = blendmode;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxObject(ClassName)
 {
     blendmode_ = other.blendmode_;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxRootClass(ClassName)
+GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxObject(ClassName)
 {
     blendmode_ = other.blendmode_;
     // Destroy other's data

@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxBool.hpp"
 
 namespace gfx
@@ -35,7 +35,7 @@ namespace gfx
 namespace clipboard
 {
 
-class GfxClipboard final : public GfxRootClass
+class GfxClipboard final : public GfxObject
 {
 public:
     static const char ClassName[];

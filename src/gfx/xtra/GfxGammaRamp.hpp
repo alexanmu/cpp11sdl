@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -36,7 +36,7 @@ namespace gfx
 namespace xtra
 {
 
-class GfxGammaRamp final : public GfxRootClass
+class GfxGammaRamp final : public GfxObject
 {
 public:
     typedef uint16_t * SdlTypePtr;

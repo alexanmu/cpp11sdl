@@ -34,7 +34,7 @@ namespace cpuinfo
 
 const char GfxCpuInfo::ClassName[]  = "GfxCpuInfo";
 
-GfxCpuInfo::GfxCpuInfo() noexcept : GfxRootClass(ClassName)
+GfxCpuInfo::GfxCpuInfo() noexcept : GfxObject(ClassName)
 {
     cpuCount_ = 0;
     cpuCacheLineSize_ = 0;

@@ -35,12 +35,12 @@ namespace pixels
 
 const char GfxPixelFormat::ClassName[] = "GfxPixelFormat";
 
-GfxPixelFormat::GfxPixelFormat() noexcept : GfxRootClass(ClassName)
+GfxPixelFormat::GfxPixelFormat() noexcept : GfxObject(ClassName)
 {
     clear();
 };
 
-GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) noexcept : GfxRootClass(ClassName)
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) noexcept : GfxObject(ClassName)
 {
     assert(format);
 
@@ -51,7 +51,7 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) noexcept : GfxR
     }
 }
 
-GfxPixelFormat::GfxPixelFormat(const uint32_t format) noexcept : GfxRootClass(ClassName)
+GfxPixelFormat::GfxPixelFormat(const uint32_t format) noexcept : GfxObject(ClassName)
 {
     assert(format);
 
@@ -62,7 +62,7 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) noexcept : GfxRootClass(Cl
     }
 }
 
-GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) noexcept : GfxRootClass(ClassName)
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) noexcept : GfxObject(ClassName)
 {
     if (pix_ != nullptr)
     {

@@ -35,7 +35,7 @@ namespace video
 
 const char GfxHitTestResult::ClassName[] = "GfxHitTestResult";
 
-GfxHitTestResult::GfxHitTestResult() noexcept : GfxRootClass(ClassName)
+GfxHitTestResult::GfxHitTestResult() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -50,12 +50,12 @@ GfxHitTestResult::GfxHitTestResult(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxRootClass(ClassName)
+GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxRootClass(ClassName)
+GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

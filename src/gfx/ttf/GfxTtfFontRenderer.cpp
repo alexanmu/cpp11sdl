@@ -35,7 +35,7 @@ namespace ttf
 
 const char GfxTtfFontRenderer::ClassName[] = "GfxTtfFontRenderer";
 
-GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_error) : GfxRootClass(ClassName)
+GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_error) : GfxObject(ClassName)
 {
     if (ttf == nullptr)
     {

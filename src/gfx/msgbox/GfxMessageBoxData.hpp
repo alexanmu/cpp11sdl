@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxMessageBoxFlags.hpp"
 #include "GfxWindow.hpp"
@@ -40,7 +40,7 @@ namespace gfx
 namespace msgbox
 {
 
-class GfxMessageBoxData final : public GfxRootClass
+class GfxMessageBoxData final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxData SdlType;
@@ -50,7 +50,7 @@ public:
 
     GfxMessageBoxData() noexcept;
 
-    GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxRootClass* win, const std::string& title,
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxObject* win, const std::string& title,
                       const std::string& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[],
                       const GfxMessageBoxColorScheme& colorScheme) noexcept;
     GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win, const std::string& title,

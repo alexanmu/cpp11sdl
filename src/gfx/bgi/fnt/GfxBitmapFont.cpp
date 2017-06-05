@@ -38,14 +38,14 @@ namespace fnt
 
 const char GfxBitmapFont::ClassName[] = "GfxBitmapFont";
 
-GfxBitmapFont::GfxBitmapFont() : GfxRootClass(ClassName), fontData_(nullptr),
+GfxBitmapFont::GfxBitmapFont() : GfxObject(ClassName), fontData_(nullptr),
         fontDataSize_(0), fontWidth_(0), fontHeight_(0)
 {
     //
 }
 
 GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight) :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     assert(fontData != nullptr);
 
@@ -67,7 +67,7 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, c
     }
 }
 
-GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxRootClass(ClassName)
+GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxObject(ClassName)
 {
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;
@@ -76,7 +76,7 @@ GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxRootClass(ClassNam
     std::memcpy(fontData_, other.fontData_, fontDataSize_);
 }
 
-GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) : GfxRootClass(ClassName)
+GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) : GfxObject(ClassName)
 {
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;

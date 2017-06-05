@@ -27,13 +27,13 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
 
-class GfxTextureModulate final : public GfxRootClass
+class GfxTextureModulate final : public GfxObject
 {
 public:
     typedef sdl2::SDL_TextureModulate SdlType;

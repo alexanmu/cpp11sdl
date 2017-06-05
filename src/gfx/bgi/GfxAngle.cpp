@@ -33,22 +33,22 @@ namespace bgi
 
 const char GfxAngle::ClassName[] = "GfxAngle";
 
-GfxAngle::GfxAngle() noexcept : GfxRootClass(ClassName), value_(0)
+GfxAngle::GfxAngle() noexcept : GfxObject(ClassName), value_(0)
 {
     // Nothing to do
 }
 
-GfxAngle::GfxAngle(const GfxValueType value) noexcept : GfxRootClass(ClassName), value_(value)
+GfxAngle::GfxAngle(const GfxValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
     value_ = value_ % 360;
 }
 
-GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxRootClass(ClassName)
+GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxRootClass(ClassName)
+GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

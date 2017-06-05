@@ -27,12 +27,12 @@
 #include <stdexcept>
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
 
-class GfxTextureFormats final : public GfxRootClass
+class GfxTextureFormats final : public GfxObject
 {
 public:
     static const char ClassName[];

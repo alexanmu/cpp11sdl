@@ -33,29 +33,29 @@ namespace video
 
 const char GfxWindowEventID::ClassName[] = "GfxWindowEventID";
 
-GfxWindowEventID::GfxWindowEventID() noexcept : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxWindowEventID::GfxWindowEventID(ValueType eventid) noexcept : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(ValueType eventid) noexcept : GfxObject(ClassName)
 {
     eventid_ = static_cast<SdlType>(eventid);
 }
 
-GfxWindowEventID::GfxWindowEventID(SdlType eventid) noexcept : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(SdlType eventid) noexcept : GfxObject(ClassName)
 {
     assert(eventid >= 0);
 
     eventid_ = eventid;
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxObject(ClassName)
 {
     eventid_ = other.eventid_;
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxRootClass(ClassName)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxObject(ClassName)
 {
     eventid_ = other.eventid_;
     // Delete other's data

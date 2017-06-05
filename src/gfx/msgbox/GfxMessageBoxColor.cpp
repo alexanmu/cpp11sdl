@@ -34,33 +34,33 @@ namespace msgbox
 
 const char GfxMessageBoxColor::ClassName[] = "GfxMessageBoxColor";
 
-GfxMessageBoxColor::GfxMessageBoxColor() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     clr_.r = r;
     clr_.g = g;
     clr_.b = b;
 }
 
-GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxObject(ClassName)
 {
     /* Copy structure; hope SDL_MessageBoxColor assignement operator works ... */
     clr_ = clr;
 }
 
 /* Copy constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept : GfxObject(ClassName)
 {
     clr_ = other.clr_;
 }
 
 /* Move constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : GfxRootClass(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : GfxObject(ClassName)
 {
     clr_ = other.clr_;
     /* Delete other's data */

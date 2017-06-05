@@ -33,29 +33,29 @@ namespace ttf
 
 const char GfxTtfFontHinting::ClassName[] = "GfxTtfFontHinting";
 
-GfxTtfFontHinting::GfxTtfFontHinting() noexcept : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept : GfxObject(ClassName)
 {
     hinting_ = static_cast<SdlType>(hinting);
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) noexcept : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) noexcept : GfxObject(ClassName)
 {
     assert(hinting >= 0);
 
     hinting_ = hinting;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept : GfxObject(ClassName)
 {
     hinting_ = other.hinting_;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept : GfxRootClass(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept : GfxObject(ClassName)
 {
     hinting_ = other.hinting_;
     // Delete other's data

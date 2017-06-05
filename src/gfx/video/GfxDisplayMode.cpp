@@ -35,13 +35,13 @@ namespace video
 
 const char GfxDisplayMode::ClassName[] = "GfxDisplayMode";
 
-GfxDisplayMode::GfxDisplayMode() noexcept : GfxRootClass(ClassName)
+GfxDisplayMode::GfxDisplayMode() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t const h,
-                               int32_t const refresh) noexcept : GfxRootClass(ClassName)
+                               int32_t const refresh) noexcept : GfxObject(ClassName)
 {
     assert(w >= 0);
     assert(h >= 0);
@@ -54,7 +54,7 @@ GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t c
     dmode_.driverdata = NULL;
 }
 
-GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxRootClass(ClassName)
+GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(ClassName)
 {
     dmode_.format = other.dmode_.format;
     dmode_.w = other.dmode_.w;

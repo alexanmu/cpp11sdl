@@ -27,7 +27,7 @@
 #include <string>
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -35,7 +35,7 @@ namespace gfx
 namespace bits
 {
 
-class GfxBits final : public GfxRootClass
+class GfxBits final : public GfxObject
 {
 public:
     static const char ClassName[];

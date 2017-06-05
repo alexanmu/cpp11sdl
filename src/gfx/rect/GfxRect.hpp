@@ -29,7 +29,7 @@
 #include <vector>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxBool.hpp"
 #include "GfxPoint.hpp"
 
@@ -39,7 +39,7 @@ namespace gfx
 namespace rect
 {
 
-class GfxRect final : public GfxRootClass
+class GfxRect final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Rect SdlType;

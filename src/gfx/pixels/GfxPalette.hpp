@@ -29,7 +29,7 @@
 #include <vector>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxColor.hpp"
 
 namespace gfx
@@ -38,7 +38,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxPalette final : public GfxRootClass
+class GfxPalette final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Palette SdlType;

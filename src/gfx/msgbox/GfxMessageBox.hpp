@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxMessageBoxData.hpp"
 #include "GfxMessageBoxFlags.hpp"
 #include "GfxWindow.hpp"
@@ -38,7 +38,7 @@ namespace gfx
 namespace msgbox
 {
 
-class GfxMessageBox final : public GfxRootClass
+class GfxMessageBox final : public GfxObject
 {
 public:
     static const char ClassName[];

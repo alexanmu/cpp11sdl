@@ -33,22 +33,22 @@ namespace bgi
 
 const char GfxRadius::ClassName[] = "GfxRadius";
 
-GfxRadius::GfxRadius() noexcept : GfxRootClass(ClassName), value_(0)
+GfxRadius::GfxRadius() noexcept : GfxObject(ClassName), value_(0)
 {
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(const GfxValueType value) noexcept : GfxRootClass(ClassName), value_(value)
+GfxRadius::GfxRadius(const GfxValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxRootClass(ClassName)
+GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxRootClass(ClassName)
+GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

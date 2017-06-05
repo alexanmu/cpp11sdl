@@ -30,7 +30,7 @@
 #include <vector>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxBool.hpp"
 #include "GfxPixelFormatEnum.hpp"
 #include "GfxRect.hpp"
@@ -46,7 +46,7 @@ namespace gfx
 namespace surface
 {
 
-class GfxSurface final : public GfxRootClass
+class GfxSurface final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Surface SdlType;

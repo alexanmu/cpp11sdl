@@ -35,13 +35,13 @@ namespace msgbox
 
 const char GfxMessageBoxButtonData::ClassName[] = "GfxMessageBoxButtonData";
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData() noexcept : GfxRootClass(ClassName)
+GfxMessageBoxButtonData::GfxMessageBoxButtonData() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
-                            const int32_t buttonid, const std::string& text) noexcept : GfxRootClass(ClassName)
+                            const int32_t buttonid, const std::string& text) noexcept : GfxObject(ClassName)
 {
     assert(flags);
     assert(buttonid >= 0);
@@ -53,13 +53,13 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const&
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept :
-         GfxRootClass(ClassName)
+         GfxObject(ClassName)
 {
     data_ = other.data_;
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept :
-        GfxRootClass(ClassName)
+        GfxObject(ClassName)
 {
     data_ = other.data_;
     // Delete other's data

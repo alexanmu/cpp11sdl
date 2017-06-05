@@ -36,7 +36,7 @@ namespace msgbox
 
 const char GfxMessageBox::ClassName[] = "GfxMessageBox";
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxRootClass(ClassName)
+GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject(ClassName)
 {
     assert(data);
 

@@ -30,32 +30,32 @@ namespace gfx
 
 const char GfxBool::ClassName[] = "GfxBool";
 
-GfxBool::GfxBool() noexcept : GfxRootClass(ClassName)
+GfxBool::GfxBool() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxBool::GfxBool(const ValueType value) noexcept : GfxRootClass(ClassName)
+GfxBool::GfxBool(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const SdlType value) noexcept : GfxRootClass(ClassName)
+GfxBool::GfxBool(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }
 
-GfxBool::GfxBool(const bool value) noexcept : GfxRootClass(ClassName)
+GfxBool::GfxBool(const bool value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const GfxBool& other) noexcept : GfxRootClass(ClassName)
+GfxBool::GfxBool(const GfxBool& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBool::GfxBool(GfxBool&& other) noexcept : GfxRootClass(ClassName)
+GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

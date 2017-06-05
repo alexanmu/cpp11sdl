@@ -29,7 +29,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxBgiConstants.hpp"
 
 namespace gfx
@@ -38,7 +38,7 @@ namespace gfx
 namespace bgi
 {
 
-class GfxCanvasBgi : public GfxRootClass
+class GfxCanvasBgi : public GfxObject
 {
 public:
     static const char ClassName[];

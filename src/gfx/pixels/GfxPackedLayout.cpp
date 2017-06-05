@@ -31,7 +31,7 @@ namespace pixels
 
 const char GfxPackedLayout::ClassName[] = "GfxPackedLayout";
 
-GfxPackedLayout::GfxPackedLayout() noexcept : GfxRootClass(ClassName)
+GfxPackedLayout::GfxPackedLayout() noexcept : GfxObject(ClassName)
 {
     clear();
 }
@@ -46,12 +46,12 @@ GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxRootClass(ClassName)
+GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxRootClass(ClassName)
+GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data

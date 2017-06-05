@@ -30,7 +30,7 @@
 #include <map>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxRect.hpp"
 #include "GfxDisplayMode.hpp"
 
@@ -40,7 +40,7 @@ namespace gfx
 namespace video
 {
 
-class GfxVideo final : public GfxRootClass
+class GfxVideo final : public GfxObject
 {
 public:
     static const char ClassName[];

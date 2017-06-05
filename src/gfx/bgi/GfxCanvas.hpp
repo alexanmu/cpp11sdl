@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxBgiConstants.hpp"
 #include "GfxSurface.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -43,7 +43,7 @@ namespace gfx
 namespace bgi
 {
 
-class GfxCanvas final : public GfxRootClass
+class GfxCanvas final : public GfxObject
 {
 public:
     static const char ClassName[];

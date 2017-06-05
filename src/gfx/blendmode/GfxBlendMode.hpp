@@ -28,7 +28,7 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -36,7 +36,7 @@ namespace gfx
 namespace blendmode
 {
 
-class GfxBlendMode final : public GfxRootClass
+class GfxBlendMode final : public GfxObject
 {
 public:
     typedef sdl2::SDL_BlendMode SdlType;

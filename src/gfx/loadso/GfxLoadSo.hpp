@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -34,7 +34,7 @@ namespace gfx
 namespace loadso
 {
 
-class GfxLoadSo final : public GfxRootClass
+class GfxLoadSo final : public GfxObject
 {
 public:
     static const char ClassName[];

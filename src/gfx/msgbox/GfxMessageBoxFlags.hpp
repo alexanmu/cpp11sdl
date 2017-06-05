@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -36,7 +36,7 @@ namespace gfx
 namespace msgbox
 {
 
-class GfxMessageBoxFlags final : public GfxRootClass
+class GfxMessageBoxFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxFlags SdlType;

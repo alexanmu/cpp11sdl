@@ -33,7 +33,7 @@ namespace gfx
 
 const char GfxGetRendererInfo::ClassName[] = "GfxGetRendererInfo";
 
-GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxRootClass(ClassName)
+GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxObject(ClassName)
 {
     numRenderDrivers_ = -1;
 }

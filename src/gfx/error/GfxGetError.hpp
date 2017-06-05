@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxError.hpp"
 
 namespace gfx
@@ -35,7 +35,7 @@ namespace gfx
 namespace error
 {
 
-class GfxGetError final : public GfxRootClass
+class GfxGetError final : public GfxObject
 {
 public:
     static const char ClassName[];

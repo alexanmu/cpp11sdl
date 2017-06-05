@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -37,7 +37,7 @@ namespace gfx
 namespace surface
 {
 
-class GfxSurfaceFlags final : public GfxRootClass
+class GfxSurfaceFlags final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;

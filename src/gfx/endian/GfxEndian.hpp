@@ -27,7 +27,7 @@
 #include <string>
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -35,7 +35,7 @@ namespace gfx
 namespace endian
 {
 
-class GfxEndian final : public GfxRootClass
+class GfxEndian final : public GfxObject
 {
 public:
     static const char ClassName[];

@@ -39,7 +39,7 @@ const char GfxSurface::ClassName[] = "GfxSurface";
 
 GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
                        int32_t depth, uint32_t Rmask, uint32_t Gmask, uint32_t Bmask, uint32_t Amask)
-            throw(std::runtime_error) : GfxRootClass(ClassName)
+            throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(surfname.length() > 0);
     assert(flags);
@@ -61,7 +61,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
 
 GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
                        int32_t depth, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     assert(surfname.length() > 0);
     assert(flags);
@@ -84,7 +84,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
 
 GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
                        const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
-                       const uint32_t bmask, const uint32_t amask) throw(std::runtime_error) : GfxRootClass(ClassName)
+                       const uint32_t bmask, const uint32_t amask) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(surfname.length() > 0);
     assert(pixels != nullptr);
@@ -106,7 +106,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
 
 GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
                        int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     assert(surfname.length() > 0);
     assert(pixels != nullptr);
@@ -128,7 +128,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     assert(surfname.length() > 0);
     assert(filename.length() > 0);
@@ -151,7 +151,7 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error) :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     if (surf == nullptr)
     {
@@ -162,7 +162,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxRootClass(ClassName)
+GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(ClassName)
 {
     surf_ = other.surf_;
     other.clear();

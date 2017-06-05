@@ -28,13 +28,13 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxTextureFormats.hpp"
 
 namespace gfx
 {
 
-class GfxRendererInfo final : public GfxRootClass
+class GfxRendererInfo final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererInfo SdlType;

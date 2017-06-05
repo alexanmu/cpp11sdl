@@ -27,7 +27,7 @@
 #include <cstdint>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -35,7 +35,7 @@ namespace gfx
 namespace initquit
 {
 
-class GfxInitFlags final : public GfxRootClass
+class GfxInitFlags final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;

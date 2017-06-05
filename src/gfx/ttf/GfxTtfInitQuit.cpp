@@ -31,7 +31,7 @@ namespace ttf
 
 const char GfxTtfInitQuit::ClassName[] = "GfxTtfInitQuit";
 
-GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxRootClass(ClassName)
+GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxObject(ClassName)
 {
     errorCode_ = sdl2::TTF_Init();
 }

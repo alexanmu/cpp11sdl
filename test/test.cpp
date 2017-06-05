@@ -30,4 +30,4 @@ TEST(MainCpp, Working)
 	EXPECT_EQ(1, 1);
 }
 
-#include "GfxRootClassTest.hpp"
+#include "GfxObjectTest.hpp"

@@ -26,13 +26,13 @@
 
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
 
-class GfxBool final : public GfxRootClass
+class GfxBool final : public GfxObject
 {
 public:
     typedef sdl2::SDL_bool SdlType;

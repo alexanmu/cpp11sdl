@@ -27,7 +27,7 @@
 #include <string>
 #include <cstdint>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
 namespace gfx
@@ -36,7 +36,7 @@ namespace gfx
 namespace video
 {
 
-class GfxHitTestResult final : public GfxRootClass
+class GfxHitTestResult final : public GfxObject
 {
 public:
     typedef sdl2::SDL_HitTestResult SdlType;

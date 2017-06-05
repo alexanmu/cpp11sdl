@@ -35,12 +35,12 @@ namespace rect
 
 const char GfxPoint::ClassName[] = "GfxPoint";
 
-GfxPoint::GfxPoint() noexcept : GfxRootClass(ClassName)
+GfxPoint::GfxPoint() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxPoint::GfxPoint(const int32_t x, const int32_t y) noexcept : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(const int32_t x, const int32_t y) noexcept : GfxObject(ClassName)
 {
     assert(x >= 0);
     assert(y >= 0);
@@ -49,17 +49,17 @@ GfxPoint::GfxPoint(const int32_t x, const int32_t y) noexcept : GfxRootClass(Cla
     pt_.y = y;
 }
 
-GfxPoint::GfxPoint(const SdlType pt) noexcept : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(const SdlType pt) noexcept : GfxObject(ClassName)
 {
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxObject(ClassName)
 {
     pt_ = other.pt_;
 }
 
-GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxRootClass(ClassName)
+GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxObject(ClassName)
 {
     pt_ = other.pt_;
     /* Delete other's data */

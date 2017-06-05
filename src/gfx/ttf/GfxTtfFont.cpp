@@ -36,13 +36,13 @@ namespace ttf
 
 const char GfxTtfFont::ClassName[] = "GfxTtfFont";
 
-GfxTtfFont::GfxTtfFont() noexcept : GfxRootClass(ClassName)
+GfxTtfFont::GfxTtfFont() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
 GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error) :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     assert(filename.length() > 0);
     assert(pointsize > 0);
@@ -62,7 +62,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) throw(std
 }
 
 GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error) :
-            GfxRootClass(ClassName)
+            GfxObject(ClassName)
 {
     assert(filename.length() > 0);
     assert(pointsize > 0);
@@ -82,7 +82,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t i
     kerning_ = true;
 }
 
-GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxRootClass(ClassName)
+GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxObject(ClassName)
 {
     ttf_ = other.ttf_;
     fileName_ = other.fileName_;

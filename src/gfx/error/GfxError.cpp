@@ -33,22 +33,22 @@ namespace error
 
 const char GfxError::ClassName[] = "GfxError";
 
-GfxError::GfxError() noexcept : GfxRootClass(ClassName)
+GfxError::GfxError() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxError::GfxError(std::string const& error) noexcept : GfxRootClass(ClassName)
+GfxError::GfxError(std::string const& error) noexcept : GfxObject(ClassName)
 {
     error_ = error;
 }
 
-GfxError::GfxError(GfxError const& other) noexcept : GfxRootClass(ClassName)
+GfxError::GfxError(GfxError const& other) noexcept : GfxObject(ClassName)
 {
     error_ = other.error_;
 }
 
-GfxError::GfxError(GfxError&& other) noexcept : GfxRootClass(ClassName)
+GfxError::GfxError(GfxError&& other) noexcept : GfxObject(ClassName)
 {
     error_ = other.error_;
     // Delete other's data

@@ -24,7 +24,7 @@
 #ifndef GfxTtfGetVersion_hpp
 #define GfxTtfGetVersion_hpp
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 #include "GfxVersion.hpp"
 
 namespace gfx
@@ -33,7 +33,7 @@ namespace gfx
 namespace ttf
 {
 
-class GfxTtfGetVersion final : public GfxRootClass
+class GfxTtfGetVersion final : public GfxObject
 {
 public:
     static const char ClassName[];

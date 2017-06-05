@@ -33,8 +33,8 @@ namespace gfx
 
 const char GfxTexture::ClassName[] = "GfxTexture";
 
-GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) :
-    GfxRootClass(ClassName)
+GfxTexture::GfxTexture(GfxObject * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) :
+    GfxObject(ClassName)
 {
     assert(rend != nullptr);
     assert(acc);
@@ -51,7 +51,7 @@ GfxTexture::GfxTexture(GfxRootClass * rend, const GfxTextureAccess& acc, const i
                                    w, h);
 }
 
-GfxTexture::GfxTexture(GfxRootClass * rend, const surface::GfxSurface& surf) : GfxRootClass(ClassName)
+GfxTexture::GfxTexture(GfxObject * rend, const surface::GfxSurface& surf) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
     assert(surf);

@@ -33,22 +33,22 @@ namespace bgi
 
 const char GfxString::ClassName[] = "GfxString";
 
-GfxString::GfxString() noexcept : GfxRootClass(ClassName), value_("")
+GfxString::GfxString() noexcept : GfxObject(ClassName), value_("")
 {
     // Nothing to do
 }
 
-GfxString::GfxString(GfxValueType const& value) noexcept : GfxRootClass(ClassName), value_(value)
+GfxString::GfxString(GfxValueType const& value) noexcept : GfxObject(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxString::GfxString(GfxString const& other) noexcept : GfxRootClass(ClassName)
+GfxString::GfxString(GfxString const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxString::GfxString(GfxString&& other) noexcept : GfxRootClass(ClassName)
+GfxString::GfxString(GfxString&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's value

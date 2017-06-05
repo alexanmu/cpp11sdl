@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 namespace gfx
 {
@@ -35,7 +35,7 @@ namespace gfx
 namespace bgi
 {
 
-class GfxAngle final : public GfxRootClass
+class GfxAngle final : public GfxObject
 {
 public:
     typedef int32_t GfxValueType;

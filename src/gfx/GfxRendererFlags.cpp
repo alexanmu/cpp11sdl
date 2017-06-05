@@ -32,29 +32,29 @@ namespace gfx
 
 const char GfxRendererFlags::ClassName[] = "GfxRendererFlags";
 
-GfxRendererFlags::GfxRendererFlags() noexcept : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxRendererFlags::GfxRendererFlags(const ValueType flags) noexcept : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxRendererFlags::GfxRendererFlags(const SdlType flags) noexcept : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
     assert(flags > 0);
 
     flags_ = flags;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) noexcept : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) noexcept : GfxRootClass(ClassName)
+GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) noexcept : GfxObject(ClassName)
 {
     flags_ = other.flags_;
     // Delete other's data

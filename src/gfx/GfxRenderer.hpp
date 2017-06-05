@@ -27,7 +27,7 @@
 #include <string>
 
 #include "GfxSdlHeader.hpp"
-#include "GfxRootClass.hpp"
+#include "GfxObject.hpp"
 
 #include "GfxWindow.hpp"
 #include "GfxRect.hpp"
@@ -39,7 +39,7 @@
 namespace gfx
 {
 
-class GfxRenderer final : public GfxRootClass
+class GfxRenderer final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Renderer SdlType;
