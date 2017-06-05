@@ -76,6 +76,8 @@ public:
     GfxWindowEventID& operator=(GfxWindowEventID const& other) noexcept;
     GfxWindowEventID& operator=(GfxWindowEventID&& other) noexcept;
 
+    virtual explicit operator bool() const noexcept;
+
     // Getters
     bool isShown(void) const noexcept;
     bool isHidden(void) const noexcept;

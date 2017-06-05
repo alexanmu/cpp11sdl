@@ -93,7 +93,7 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
     return *this;
 }
 
-GfxTexture::operator bool() const
+GfxTexture::operator bool() const noexcept
 {
     return (tex_ != nullptr);
 }

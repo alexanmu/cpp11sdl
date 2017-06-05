@@ -249,7 +249,7 @@ bool GfxRootClass::operator==(const GfxRootClass& other) const noexcept
     return ((i32InstanceId_ == other.i32InstanceId_) && (strClassName_ == other.strClassName_));
 }
 
-GfxRootClass::operator bool() const /* noexcept -> enable later! */
+GfxRootClass::operator bool() const noexcept
 {
     return true;
 }

@@ -44,7 +44,7 @@ GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_erro
     ttf_ = ttf;
 }
 
-GfxTtfFontRenderer::operator bool() const
+GfxTtfFontRenderer::operator bool() const noexcept
 {
     return true;
 }

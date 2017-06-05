@@ -47,7 +47,7 @@ public:
 
     bool operator==(const GfxRootClass& other) const noexcept;
 
-    virtual explicit operator bool() const /* noexcept -> enable later! */;
+    virtual explicit operator bool() const noexcept;
 
     std::string const& getClassName(void) const noexcept;
     int32_t getInstanceId(void) const noexcept;

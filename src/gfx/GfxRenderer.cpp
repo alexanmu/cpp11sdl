@@ -51,7 +51,7 @@ GfxRenderer::~GfxRenderer()
     }
 }
 
-GfxRenderer::operator bool() const
+GfxRenderer::operator bool() const noexcept
 {
     return (renderer_ != nullptr);
 }

@@ -58,7 +58,7 @@ public:
     GfxTexture& operator=(const GfxTexture&) = delete;
     GfxTexture& operator=(GfxTexture&& tex);
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     void destroyTexture(void);
 

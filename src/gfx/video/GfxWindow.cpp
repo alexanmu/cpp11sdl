@@ -117,6 +117,7 @@ GfxWindow::~GfxWindow() noexcept
         {
             throw std::runtime_error("std::terminate call will follow!");
         }
+        window_ = nullptr;
     }
 }
 

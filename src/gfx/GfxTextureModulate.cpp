@@ -87,6 +87,11 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other) no
     return *this;
 }
 
+GfxTextureModulate::operator bool() const noexcept
+{
+    return true;
+}
+
 bool GfxTextureModulate::isNone(void) const noexcept
 {
     return (modulate_ == static_cast<SdlType>(ValueType::modulateNone));

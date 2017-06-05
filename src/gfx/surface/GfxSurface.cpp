@@ -194,6 +194,7 @@ GfxSurface::~GfxSurface() noexcept
         {
             throw std::runtime_error("std::terminate call will follow!");
         }
+        surf_ = nullptr;
     }
 }
 

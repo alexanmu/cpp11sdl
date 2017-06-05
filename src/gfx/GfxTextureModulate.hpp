@@ -60,6 +60,8 @@ public:
     GfxTextureModulate& operator=(GfxTextureModulate const& other) noexcept;
     GfxTextureModulate& operator=(GfxTextureModulate&& other) noexcept;
 
+    virtual explicit operator bool() const noexcept;
+
     bool isNone(void) const noexcept;
     bool isColor(void) const noexcept;
     bool isAlpha(void) const noexcept;

@@ -98,6 +98,11 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other) noexc
     return *this;
 }
 
+GfxTextureFormats::operator bool() const noexcept
+{
+    return true;
+}
+
 void GfxTextureFormats::setCount(const int32_t formatsCount) throw(std::runtime_error)
 {
     if ((formatsCount <= 0) || (formatsCount > kTextureFormatsArrayLength))

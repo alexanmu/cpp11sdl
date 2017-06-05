@@ -58,6 +58,8 @@ public:
     GfxTextureAccess& operator=(GfxTextureAccess const& other) noexcept;
     GfxTextureAccess& operator=(GfxTextureAccess&& other) noexcept;
 
+    virtual explicit operator bool() const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

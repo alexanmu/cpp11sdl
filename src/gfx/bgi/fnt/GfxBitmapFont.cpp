@@ -131,7 +131,7 @@ GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other)
     return *this;
 }
 
-GfxBitmapFont::operator bool() const
+GfxBitmapFont::operator bool() const noexcept
 {
     return (fontData_ != nullptr);
 }

@@ -82,6 +82,11 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other) noexcept
     return *this;
 }
 
+GfxWindowEventID::operator bool() const noexcept
+{
+    return true;
+}
+
 bool GfxWindowEventID::isShown(void) const noexcept
 {
     return (eventid_ == sdl2::SDL_WINDOWEVENT_SHOWN);

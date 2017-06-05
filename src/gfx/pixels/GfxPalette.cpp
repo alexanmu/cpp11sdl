@@ -118,6 +118,7 @@ GfxPalette::~GfxPalette() noexcept
         {
             throw std::runtime_error("std::terminate call will follow!");
         }
+        pal_ = nullptr;
     }
 }
 

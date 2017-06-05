@@ -72,6 +72,11 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other) noexcept
     return *this;
 }
 
+GfxTextureAccess::operator bool() const noexcept
+{
+    return true;
+}
+
 void GfxTextureAccess::clear(void) noexcept
 {
     access_ = static_cast<SdlType>(ValueType::accessStatic);

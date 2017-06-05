@@ -195,7 +195,7 @@ public:
     GfxCanvasBgi& operator=(const GfxCanvasBgi&) = delete;
     GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     void setCanvas(const uint32_t* ptr, const int maxx, const int maxy);
     void setCustomForegroundColor(const uint32_t color);

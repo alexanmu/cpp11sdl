@@ -53,7 +53,7 @@ public:
     GfxTtfFontRenderer& operator=(GfxTtfFontRenderer const&) = delete;
     GfxTtfFontRenderer& operator=(GfxTtfFontRenderer&&) = delete;
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     GfxTtfFont * getFont(void) const noexcept;
     void setFont(GfxTtfFont * ttf) throw(std::runtime_error);

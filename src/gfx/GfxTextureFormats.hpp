@@ -47,6 +47,8 @@ public:
     GfxTextureFormats& operator=(GfxTextureFormats const& other) noexcept;
     GfxTextureFormats& operator=(GfxTextureFormats&& other) noexcept;
 
+    virtual explicit operator bool() const noexcept;
+
     void setCount(const int32_t formatsCount) throw(std::runtime_error);
     void setFormat(const int32_t formatIndex, const uint32_t formatValue) throw(std::runtime_error);
     void setAllFormats(const uint32_t formats[]) noexcept;

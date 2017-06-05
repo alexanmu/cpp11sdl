@@ -64,6 +64,7 @@ GfxLoadSo::~GfxLoadSo() noexcept
         {
             throw std::runtime_error("std::terminate call will follow!");
         }
+        handle_ = nullptr;
     }
 }
 

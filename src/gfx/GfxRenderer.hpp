@@ -57,7 +57,7 @@ public:
 
     virtual ~GfxRenderer();
 
-    virtual explicit operator bool() const;
+    virtual explicit operator bool() const noexcept;
 
     void destroyRenderer(void);
     void renderClear(void);

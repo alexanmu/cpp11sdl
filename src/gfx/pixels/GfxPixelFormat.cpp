@@ -100,6 +100,7 @@ GfxPixelFormat::~GfxPixelFormat() noexcept
         {
             throw std::runtime_error("std::terminate call will follow!");
         }
+        pix_ = nullptr;
     }
 }
 

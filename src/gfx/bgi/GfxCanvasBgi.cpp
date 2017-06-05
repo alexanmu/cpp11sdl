@@ -94,7 +94,7 @@ GfxCanvasBgi::GfxCanvasBgi() : GfxRootClass(ClassName)
     bgi_maxy = -1;
 }
 
-GfxCanvasBgi::operator bool() const
+GfxCanvasBgi::operator bool() const noexcept
 {
     return (bgi_activepage != nullptr);
 }

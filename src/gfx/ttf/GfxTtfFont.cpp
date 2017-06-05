@@ -126,6 +126,7 @@ GfxTtfFont::~GfxTtfFont(void) noexcept
         {
             throw std::runtime_error("std::terminate call will follow!");
         }
+        ttf_ = nullptr;
     }
 }
 
