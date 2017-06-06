@@ -61,14 +61,17 @@ ifeq ($(OS),macOS)
 else
  CXX:=g++
 endif
-CXXFLAGS:=-std=c++11 -Wall -Wextra -Werror $(DEBUG)
+CXXFLAGS_LINUX:=-std=c++11 -Wall -Wextra -Werror -Wno-terminate $(DEBUG)
+CXXFLAGS_MACOS:=-std=c++11 -Wall -Wextra -Werror $(DEBUG)
 CXXLINK_LINUX:=-static-libstdc++ -lpthread -lrt -lm -ldl -lz $(DEBUG)
 CXXLINK_MACOS_HELPER=$(shell echo ~)
 CXXLINK_MACOS:=-lpthread -lm -ldl -lz -F$(CXXLINK_MACOS_HELPER)/Library/Frameworks -framework SDL2 -framework SDL2_ttf $(DEBUG)
 
 ifeq ($(OS),macOS)
+ CXXFLAGS:=$(CXXFLAGS_MACOS)
  CXXLINK:=$(CXXLINK_MACOS)
 else
+ CXXFLAGS:=$(CXXFLAGS_LINUX)
  CXXLINK:=$(CXXLINK_LINUX)
 endif
 
@@ -97,7 +100,7 @@ OBJECTSWITHSRCPATH:=$(patsubst $(SRCDIR)/%,%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
 OBJECTS:=$(foreach owp,$(OBJECTSWITHSRCPATH),$(BUILDDIR)/$(notdir $(owp)))
 
 # Includes
-INC:=-I$(INCLUDEDIR)/sdl2 -I$(INCLUDEDIR)/sdl2_ttf $(patsubst %,-I%,$(FOLDERS))
+INC:=-I$(INCLUDEDIR) -I$(INCLUDEDIR)/sdl2 -I$(INCLUDEDIR)/sdl2_ttf $(patsubst %,-I%,$(FOLDERS))
 
 # Dependencies
 DEPS=$(OBJECTS:%.$(OBJEXT)=%.$(DEPSEXT))
@@ -149,7 +152,7 @@ clean-test:
 ######################################## Play ########################################
 OBJECTS_FOR_PLAY:=$(filter-out %main.o,$(OBJECTS))
 
-$(BINDIR)/play: $(OBJECTS_FOR_PLAY) $(PLAYDIR)/Playground.hpp
+$(BINDIR)/play: $(OBJECTS_FOR_PLAY) $(PLAYDIR)/Playground.cpp $(PLAYDIR)/Playground.hpp
 	$(CXX) $(CXXFLAGS) $(CXXLINK) -o $(BINDIR)/play $(PLAYDIR)/Playground.cpp $(INC) $(OBJECTS_FOR_PLAY) $(LIBS)
 
 play : $(BINDIR)/play

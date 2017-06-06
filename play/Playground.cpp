@@ -758,6 +758,38 @@ void Playground::_doFSO(void)
 
 /******************************************************* Meta *******************************************************/
 #include "GfxMeta.hpp"
+#include "GfxRuntimeMeta.hpp"
+
+#include "GfxColor.hpp"
+#include "GfxRect.hpp"
+
+void Playground::RuntimeMeta(void)
+{
+    gfx::rect::GfxPoint pt1;
+    gfx::rect::GfxRect rect1;
+
+    gfx::_gfx::GfxRuntimeMeta& rmeta = gfx::_gfx::GfxRuntimeMeta::getInstance();
+
+    std::cout << "rmeta.getClassCount()=" << rmeta.getClassCount() << std::endl;
+    for (int32_t index = 0; index < rmeta.getClassCount(); index++)
+    {
+        auto cinfo = rmeta.getClassInfo(index);
+        std::cout << "cinfo.objectInstanceCount_=" << cinfo.objectInstanceCount_ << std::endl;
+        std::cout << "cinfo.firstInstanceId_=" << cinfo.firstInstanceId_ << std::endl;
+        std::cout << "cinfo.lastInstanceId_=" << cinfo.lastInstanceId_ << std::endl;
+    }
+    // force scope for variable rect2
+    {
+        gfx::rect::GfxRect rect2 = rect1;
+        rmeta.printToStream(std::cout) << std::endl;
+    }
+    gfx::pixels::GfxArrayOrder ao1;
+    gfx::pixels::GfxArrayOrder ao2;
+    gfx::pixels::GfxArrayOrder ao3;
+
+    ao3.~GfxArrayOrder();
+    rmeta.printToStream(std::cout) << std::endl;
+}
 
 void Playground::_doMeta(void)
 {
@@ -767,10 +799,11 @@ void Playground::_doMeta(void)
 	for (int32_t index = 0; index < meta.getClassCount(); index++)
 	{
 	    classInfo = meta.getClassInfo(index);
-	    std::cout << "Name=" << classInfo.pchClassName << " ";
-	    std::cout << "Size[bytes]=" << classInfo.iSize << '\n';
+	    std::cout << "Name=" << classInfo.className_ << " ";
+	    std::cout << "Size[bytes]=" << classInfo.size_ << '\n';
 	}
-	std::cout.flush();
+    std::cout << std::endl;
+    RuntimeMeta();
 }
 
 /******************************************************* main *******************************************************/
