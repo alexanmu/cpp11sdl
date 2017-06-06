@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cstring>
+
 #include "GfxTextureFormats.hpp"
 
 namespace gfx
@@ -161,7 +163,7 @@ uint32_t const& GfxTextureFormats::operator[](const int32_t formatIndex) const t
 void GfxTextureFormats::clear(void) noexcept
 {
     formatsCount_ = -1;
-    std::memset(reinterpret_cast<void *>(&formats_[0]), 0, sizeof(formats_));
+    memset(reinterpret_cast<void *>(&formats_[0]), 0, sizeof(formats_));
 }
 
 }  // namespace gfx

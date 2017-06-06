@@ -35,38 +35,38 @@ namespace _gfx
 
 int32_t GfxObject::i32InstanceCounter_ = 0;
 
-GfxObject::GfxObject() noexcept : meta_(&GfxMeta::getInstance())
+GfxObject::GfxObject() noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
 {
     GfxObject::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxObject::i32InstanceCounter_;
     strClassName_ = "$init$";
-    meta_->constructObject(strClassName_.c_str());
+    rmeta_->constructObject(strClassName_.c_str(), i32InstanceId_);
 }
 
-GfxObject::GfxObject(std::string const& strClassName) noexcept : meta_(&GfxMeta::getInstance())
+GfxObject::GfxObject(std::string const& strClassName) noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
 {
     assert(strClassName.length() > 0);
 
     strClassName_ = strClassName;
     GfxObject::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxObject::i32InstanceCounter_;
-    meta_->constructObject(strClassName_.c_str());
+    rmeta_->constructObject(strClassName_.c_str(), i32InstanceId_);
 }
 
-GfxObject::GfxObject(GfxObject const& other) noexcept : meta_(&GfxMeta::getInstance())
+GfxObject::GfxObject(GfxObject const& other) noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
 {
     GfxObject::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxObject::i32InstanceCounter_;
     strClassName_ = "$cpctor$" + other.strClassName_;
-    meta_->constructObject(strClassName_.c_str());
+    rmeta_->constructObject(strClassName_.c_str(), i32InstanceId_);
 }
 
-GfxObject::GfxObject(GfxObject&& other) noexcept : meta_(&GfxMeta::getInstance())
+GfxObject::GfxObject(GfxObject&& other) noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
 {
     GfxObject::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxObject::i32InstanceCounter_;
     strClassName_ = "$mvctor$" + other.strClassName_;
-    meta_->constructObject(strClassName_.c_str());
+    rmeta_->constructObject(strClassName_.c_str(), i32InstanceId_);
     // Delete other's data
     other.i32InstanceId_ = -1;
     other.strClassName_ = "$null$";
@@ -74,7 +74,7 @@ GfxObject::GfxObject(GfxObject&& other) noexcept : meta_(&GfxMeta::getInstance()
 
 GfxObject::~GfxObject() noexcept
 {
-    meta_->destructObject(strClassName_.c_str());
+    rmeta_->destructObject(strClassName_.c_str(), i32InstanceId_);
     strClassName_ = "$null$";
     i32InstanceId_ = -1;
 }

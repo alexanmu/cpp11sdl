@@ -29,8 +29,8 @@
 #include <string>
 #include <vector>
 
-#include "GfxSdlHeader.hpp"
 #include "GfxObject.hpp"
+#include "GfxSdlHeader.hpp"
 #include "GfxBool.hpp"
 #include "GfxPixelFormatEnum.hpp"
 #include "GfxRect.hpp"

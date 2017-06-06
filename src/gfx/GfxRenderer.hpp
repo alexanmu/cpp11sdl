@@ -26,8 +26,8 @@
 
 #include <string>
 
-#include "GfxSdlHeader.hpp"
 #include "GfxObject.hpp"
+#include "GfxSdlHeader.hpp"
 
 #include "GfxWindow.hpp"
 #include "GfxRect.hpp"

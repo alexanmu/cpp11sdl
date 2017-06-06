@@ -28,8 +28,8 @@
 #include <string>
 #include <vector>
 
-#include "GfxSdlHeader.hpp"
 #include "GfxObject.hpp"
+#include "GfxSdlHeader.hpp"
 #include "GfxBool.hpp"
 #include "GfxPoint.hpp"
 

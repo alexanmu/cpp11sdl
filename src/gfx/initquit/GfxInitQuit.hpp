@@ -27,8 +27,8 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxSdlHeader.hpp"
 #include "GfxObject.hpp"
+#include "GfxSdlHeader.hpp"
 #include "GfxInitFlags.hpp"
 
 namespace gfx

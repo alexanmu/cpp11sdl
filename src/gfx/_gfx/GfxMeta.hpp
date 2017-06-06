@@ -37,24 +37,14 @@ namespace _gfx
 class GfxMeta final
 {
 public:
-    struct ClassInfoStatic
-    {
-        const char * ClassName;
-        int32_t Size;
-    };
-
-    struct ClassInfoDynamic
-    {
-        int32_t instanceCount;
-    };
-
     struct ClassInfo
     {
-        ClassInfoStatic staticInfo;
-        ClassInfoDynamic dynamicInfo;
+        const char * className_;
+        int32_t size_;
     };
 
-    static GfxMeta& getInstance(void) noexcept;
+    GfxMeta() noexcept;
+    ~GfxMeta() noexcept;
 
     GfxMeta(GfxMeta const&) = delete;
     GfxMeta(GfxMeta&&) = delete;
@@ -62,23 +52,16 @@ public:
     GfxMeta& operator=(GfxMeta const&) = delete;
     GfxMeta& operator=(GfxMeta&&) = delete;
 
-	ClassInfo const& getClassInfo(std::string const& className) noexcept;
-	ClassInfo const& getClassInfo(const int32_t index) noexcept;
-	int32_t getClassCount(void) const noexcept;
-
-    void constructObject(const char * ClassName) noexcept;
-    void destructObject(const char * ClassName) noexcept;
+    ClassInfo const& getClassInfo(std::string const& className) noexcept;
+    ClassInfo const& getClassInfo(const int32_t index) noexcept;
+    int32_t getClassCount(void) const noexcept;
 private:
-    GfxMeta() noexcept;
-    ~GfxMeta() noexcept;
-
     void clear(void) noexcept;
 
     static const int32_t classNamesCount_;
-    static const ClassInfoStatic classInfoArraySta_[];
+    static const ClassInfo classInfoArray_[];
 
     ClassInfo classInfo_;
-    ClassInfo classInfoArray_[100];
 };
 
 }  // namespace _gfx

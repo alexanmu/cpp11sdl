@@ -112,6 +112,7 @@
 		79B2C6C81EE2D9270060EFD8 /* GfxInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C51EE2D9270060EFD8 /* GfxInitQuit.cpp */; };
 		79C887571EE2D43800378B54 /* GfxPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C887531EE2D43800378B54 /* GfxPoint.cpp */; };
 		79C887581EE2D43800378B54 /* GfxRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C887551EE2D43800378B54 /* GfxRect.cpp */; };
+		79F67FD11EE716940007F97D /* GfxRuntimeMeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79F67FCF1EE716940007F97D /* GfxRuntimeMeta.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -348,6 +349,8 @@
 		79C887541EE2D43800378B54 /* GfxPoint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPoint.hpp; path = rect/GfxPoint.hpp; sourceTree = "<group>"; };
 		79C887551EE2D43800378B54 /* GfxRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRect.cpp; path = rect/GfxRect.cpp; sourceTree = "<group>"; };
 		79C887561EE2D43800378B54 /* GfxRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRect.hpp; path = rect/GfxRect.hpp; sourceTree = "<group>"; };
+		79F67FCF1EE716940007F97D /* GfxRuntimeMeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRuntimeMeta.cpp; path = _gfx/GfxRuntimeMeta.cpp; sourceTree = "<group>"; };
+		79F67FD01EE716940007F97D /* GfxRuntimeMeta.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRuntimeMeta.hpp; path = _gfx/GfxRuntimeMeta.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -680,6 +683,8 @@
 				19D5E6FF1EE56F38000E187B /* GfxMeta.hpp */,
 				19D5E7001EE56F38000E187B /* GfxObject.cpp */,
 				19D5E7011EE56F38000E187B /* GfxObject.hpp */,
+				79F67FCF1EE716940007F97D /* GfxRuntimeMeta.cpp */,
+				79F67FD01EE716940007F97D /* GfxRuntimeMeta.hpp */,
 			);
 			name = _gfx;
 			sourceTree = "<group>";
@@ -904,6 +909,7 @@
 				198015E81EDF27E000AEDB49 /* GfxCpuInfo.cpp in Sources */,
 				791EAD501EDCB9BE0032ED1D /* GfxBgiConstants.cpp in Sources */,
 				79B2C6C81EE2D9270060EFD8 /* GfxInitQuit.cpp in Sources */,
+				79F67FD11EE716940007F97D /* GfxRuntimeMeta.cpp in Sources */,
 				791EAD511EDCB9BE0032ED1D /* GfxTexture.cpp in Sources */,
 				791EAD531EDCB9BE0032ED1D /* GLabel.cpp in Sources */,
 				7979CDDE1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp in Sources */,
@@ -1095,6 +1101,7 @@
 				HEADER_SEARCH_PATHS = (
 					../include/sdl2,
 					../include/sdl2_ttf,
+					../include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1111,6 +1118,7 @@
 				HEADER_SEARCH_PATHS = (
 					../include/sdl2,
 					../include/sdl2_ttf,
+					../include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";

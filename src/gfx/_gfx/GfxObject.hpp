@@ -27,7 +27,7 @@
 #include <cstdint>
 #include <string>
 
-#include "GfxMeta.hpp"
+#include "GfxRuntimeMeta.hpp"
 
 namespace gfx
 {
@@ -59,7 +59,7 @@ public:
 private:
     std::string strClassName_;
     int32_t i32InstanceId_;
-    GfxMeta * meta_;
+    GfxRuntimeMeta * rmeta_;
 
     static int32_t i32InstanceCounter_;
 };

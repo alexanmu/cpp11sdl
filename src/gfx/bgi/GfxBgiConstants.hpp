@@ -26,6 +26,7 @@
 
 #include <cstdint>
 
+#include "GfxObject.hpp"
 #include "GfxColor.hpp"
 #include "GfxBitmapFont.hpp"
 

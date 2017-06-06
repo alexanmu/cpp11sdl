@@ -62,6 +62,8 @@
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormatEnum.hpp"
 
+void at_exit_callback(void);
+
 void MsgBox(gfx::video::GfxWindow const& win)
 {
     gfx::platform::GfxPlatform plat;
@@ -540,8 +542,11 @@ void _doStuff(void)
         }
         gfx::sdl2::SDL_Delay(25);
     }
-    sbitmap.~GfxSurface();
+    sbitmap.~GfxSurface();  // This call should not be made explicitly. Results in a second call
+                            // to ~GfxSurface() when variable sbitmap goes out of scope.
     AfterDeInit();
+    // register exit handler
+    std::atexit(at_exit_callback);
 }
 
 void _doPlay(void)
@@ -562,6 +567,14 @@ void _doGApp(void)
     gApp.run();
 
     delete demoForm;
+    // register exit handler
+    std::atexit(at_exit_callback);
+}
+
+void at_exit_callback(void)
+{
+    // print runtime meta-info
+    gfx::_gfx::GfxRuntimeMeta::getInstance().printToStream(std::cout) << std::endl;
 }
 
 #ifdef __windows_machine

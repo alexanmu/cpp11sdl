@@ -26,8 +26,8 @@
 
 #include <cstdint>
 
-#include "GfxSdlHeader.hpp"
 #include "GfxObject.hpp"
+#include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
