@@ -110,6 +110,9 @@
 		79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */; };
 		79B2C6C71EE2D9270060EFD8 /* GfxInitFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C31EE2D9270060EFD8 /* GfxInitFlags.cpp */; };
 		79B2C6C81EE2D9270060EFD8 /* GfxInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C51EE2D9270060EFD8 /* GfxInitQuit.cpp */; };
+		79C387671EE85F69003EDE07 /* GfxLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C387611EE85F69003EDE07 /* GfxLog.cpp */; };
+		79C387681EE85F69003EDE07 /* GfxLogCategory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C387631EE85F69003EDE07 /* GfxLogCategory.cpp */; };
+		79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C387651EE85F69003EDE07 /* GfxLogPriority.cpp */; };
 		79C887571EE2D43800378B54 /* GfxPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C887531EE2D43800378B54 /* GfxPoint.cpp */; };
 		79C887581EE2D43800378B54 /* GfxRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C887551EE2D43800378B54 /* GfxRect.cpp */; };
 		79F67FD11EE716940007F97D /* GfxRuntimeMeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79F67FCF1EE716940007F97D /* GfxRuntimeMeta.cpp */; };
@@ -345,6 +348,12 @@
 		79B2C6C41EE2D9270060EFD8 /* GfxInitFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxInitFlags.hpp; path = initquit/GfxInitFlags.hpp; sourceTree = "<group>"; };
 		79B2C6C51EE2D9270060EFD8 /* GfxInitQuit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxInitQuit.cpp; path = initquit/GfxInitQuit.cpp; sourceTree = "<group>"; };
 		79B2C6C61EE2D9270060EFD8 /* GfxInitQuit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxInitQuit.hpp; path = initquit/GfxInitQuit.hpp; sourceTree = "<group>"; };
+		79C387611EE85F69003EDE07 /* GfxLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxLog.cpp; path = log/GfxLog.cpp; sourceTree = "<group>"; };
+		79C387621EE85F69003EDE07 /* GfxLog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxLog.hpp; path = log/GfxLog.hpp; sourceTree = "<group>"; };
+		79C387631EE85F69003EDE07 /* GfxLogCategory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxLogCategory.cpp; path = log/GfxLogCategory.cpp; sourceTree = "<group>"; };
+		79C387641EE85F69003EDE07 /* GfxLogCategory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxLogCategory.hpp; path = log/GfxLogCategory.hpp; sourceTree = "<group>"; };
+		79C387651EE85F69003EDE07 /* GfxLogPriority.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxLogPriority.cpp; path = log/GfxLogPriority.cpp; sourceTree = "<group>"; };
+		79C387661EE85F69003EDE07 /* GfxLogPriority.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxLogPriority.hpp; path = log/GfxLogPriority.hpp; sourceTree = "<group>"; };
 		79C887531EE2D43800378B54 /* GfxPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPoint.cpp; path = rect/GfxPoint.cpp; sourceTree = "<group>"; };
 		79C887541EE2D43800378B54 /* GfxPoint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPoint.hpp; path = rect/GfxPoint.hpp; sourceTree = "<group>"; };
 		79C887551EE2D43800378B54 /* GfxRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRect.cpp; path = rect/GfxRect.cpp; sourceTree = "<group>"; };
@@ -426,6 +435,7 @@
 				19784F141EDC8DB30025DF95 /* GfxTextureModulate.hpp */,
 				79B2C6C21EE2D9150060EFD8 /* initquit */,
 				793FD16F1EE2BC4C00274C24 /* loadso */,
+				79C387601EE85F4E003EDE07 /* log */,
 				198015ED1EDF27FD00AEDB49 /* msgbox */,
 				79AB8EC31EDD1DBC00B242C6 /* pixels */,
 				794D05F91EE29ED4001BD5D9 /* platform */,
@@ -832,6 +842,19 @@
 			name = initquit;
 			sourceTree = "<group>";
 		};
+		79C387601EE85F4E003EDE07 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				79C387611EE85F69003EDE07 /* GfxLog.cpp */,
+				79C387621EE85F69003EDE07 /* GfxLog.hpp */,
+				79C387631EE85F69003EDE07 /* GfxLogCategory.cpp */,
+				79C387641EE85F69003EDE07 /* GfxLogCategory.hpp */,
+				79C387651EE85F69003EDE07 /* GfxLogPriority.cpp */,
+				79C387661EE85F69003EDE07 /* GfxLogPriority.hpp */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
 		79C887521EE2D42800378B54 /* rect */ = {
 			isa = PBXGroup;
 			children = (
@@ -970,10 +993,12 @@
 				791EAD7E1EDCB9BE0032ED1D /* GfxCanvas.cpp in Sources */,
 				7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */,
 				791459CC1EE1416500830214 /* GfxTextureFormats.cpp in Sources */,
+				79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */,
 				791EAD821EDCB9BE0032ED1D /* GfxRendererInfo.cpp in Sources */,
 				1980161D1EDF283C00AEDB49 /* GfxWindowFlags.cpp in Sources */,
 				791EAD831EDCB9BE0032ED1D /* GForm.cpp in Sources */,
 				198015E41EDF27C500AEDB49 /* GfxClipboard.cpp in Sources */,
+				79C387681EE85F69003EDE07 /* GfxLogCategory.cpp in Sources */,
 				791EAD851EDCB9BE0032ED1D /* GfxTtfFontStyle.cpp in Sources */,
 				791EAD861EDCB9BE0032ED1D /* GFileCollectionElement.cpp in Sources */,
 				791EAD871EDCB9BE0032ED1D /* GFolderObject.cpp in Sources */,
@@ -988,6 +1013,7 @@
 				1980161E1EDF283C00AEDB49 /* GfxWindowPosition.cpp in Sources */,
 				791EAD911EDCB9BE0032ED1D /* GObject.cpp in Sources */,
 				798203741EE2E56E005D610C /* GfxSurfaceFlags.cpp in Sources */,
+				79C387671EE85F69003EDE07 /* GfxLog.cpp in Sources */,
 				791EAD921EDCB9BE0032ED1D /* GFileObject.cpp in Sources */,
 				198016191EDF283C00AEDB49 /* GfxScreenSaver.cpp in Sources */,
 				796D33FB1EE06AB40013C496 /* GfxGammaRamp.cpp in Sources */,

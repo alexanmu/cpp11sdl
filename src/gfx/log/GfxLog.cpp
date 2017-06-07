@@ -21,51 +21,60 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxBool_hpp
-#define GfxBool_hpp
+#include <cassert>
 
-#include "GfxObject.hpp"
-#include "GfxSdlHeader.hpp"
+#include "GfxLog.hpp"
 
 namespace gfx
 {
 
-class GfxBool final : public GfxObject
+namespace log
 {
-public:
-    typedef sdl2::SDL_bool SdlType;
 
-    static const char ClassName[];
+const char GfxLog::ClassName[] = "GfxLog";
 
-    enum class ValueType : bool
-    {
-        boolFalse = sdl2::SDL_FALSE,
-        boolTrue = sdl2::SDL_TRUE
-    };
+GfxLog::GfxLog() noexcept : GfxObject(ClassName)
+{
+    // Nothing to do
+}
 
-    GfxBool() noexcept;
+GfxLog::operator bool() const noexcept
+{
+    return true;
+}
 
-    explicit GfxBool(const ValueType value) noexcept;
-    explicit GfxBool(const SdlType value) noexcept;
-    explicit GfxBool(const bool value) noexcept;
+void GfxLog::setAllPriority(GfxLogPriority const& prio) const noexcept
+{
+    assert(prio);
 
-    GfxBool(const GfxBool& other) noexcept;
-    GfxBool(GfxBool&& other) noexcept;
+    sdl2::SDL_LogSetAllPriority(prio.getAsSdlType());
+}
 
-    GfxBool& operator=(const GfxBool& other) noexcept;
-    GfxBool& operator=(GfxBool&& other) noexcept;
+void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept
+{
+    assert(cat);
+    assert(prio);
 
-    virtual explicit operator bool() const noexcept;
+    sdl2::SDL_LogSetPriority(cat.getAsSdlType(), prio.getAsSdlType());
+}
 
-    bool getBool(void) const noexcept;
+GfxLogPriority GfxLog::getPriority(GfxLogCategory const& cat) const noexcept
+{
+    assert(cat);
 
-    void clear(void) noexcept;
+    GfxLogPriority::SdlType sdlprio;
 
-    SdlType getAsSdlType(void) const noexcept;
-private:
-    SdlType value_;
-};
+    sdlprio = sdl2::SDL_LogGetPriority(cat.getAsSdlType());
+    return GfxLogPriority(sdlprio);
+}
+
+void GfxLog::resetPriorities(void) const noexcept
+{
+    sdl2::SDL_LogResetPriorities();
+}
+
+}  // namespace log
 
 }  // namespace gfx
 
-#endif /* GfxBool_hpp */
+/* EOF */

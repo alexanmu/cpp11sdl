@@ -21,51 +21,49 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GfxBool.hpp"
+#include "GfxLogCategory.hpp"
 
 namespace gfx
 {
 
-const char GfxBool::ClassName[] = "GfxBool";
+namespace log
+{
 
-GfxBool::GfxBool() noexcept : GfxObject(ClassName)
+const char GfxLogCategory::ClassName[] = "GfxLogCategory";
+
+GfxLogCategory::GfxLogCategory() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxBool::GfxBool(const ValueType value) noexcept : GfxObject(ClassName)
+GfxLogCategory::GfxLogCategory(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const SdlType value) noexcept : GfxObject(ClassName)
+GfxLogCategory::GfxLogCategory(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }
 
-GfxBool::GfxBool(const bool value) noexcept : GfxObject(ClassName)
-{
-    value_ = static_cast<SdlType>(value);
-}
-
-GfxBool::GfxBool(const GfxBool& other) noexcept : GfxObject(ClassName)
+GfxLogCategory::GfxLogCategory(GfxLogCategory const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(ClassName)
+GfxLogCategory::GfxLogCategory(GfxLogCategory&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxBool::operator bool() const noexcept
+GfxLogCategory::operator bool() const noexcept
 {
     return true;
 }
 
-GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
+GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory const& other) noexcept
 {
     if (this != &other)
     {
@@ -74,7 +72,7 @@ GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
     return *this;
 }
 
-GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
+GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory&& other) noexcept
 {
     if (this != &other)
     {
@@ -85,20 +83,17 @@ GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
     return *this;
 }
 
-bool GfxBool::getBool(void) const noexcept
+void GfxLogCategory::clear(void) noexcept
 {
-    return static_cast<bool>(value_);
+    value_ = static_cast<SdlType>(ValueType::logCategoryCustom);
 }
 
-void GfxBool::clear(void) noexcept
-{
-    value_ = static_cast<SdlType>(false);
-}
-
-GfxBool::SdlType GfxBool::getAsSdlType(void) const noexcept
+GfxLogCategory::SdlType GfxLogCategory::getAsSdlType(void) const noexcept
 {
     return value_;
 }
+
+}  // namespace log
 
 }  // namespace gfx
 

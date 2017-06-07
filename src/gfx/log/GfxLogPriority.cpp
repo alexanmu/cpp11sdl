@@ -21,51 +21,58 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GfxBool.hpp"
+#include <cassert>
+
+#include "GfxLogPriority.hpp"
 
 namespace gfx
 {
 
-const char GfxBool::ClassName[] = "GfxBool";
+namespace log
+{
 
-GfxBool::GfxBool() noexcept : GfxObject(ClassName)
+const char GfxLogPriority::ClassName[] = "GfxLogPriority";
+
+GfxLogPriority::GfxLogPriority() noexcept : GfxObject(ClassName)
 {
     clear();
 }
 
-GfxBool::GfxBool(const ValueType value) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const SdlType value) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }
 
-GfxBool::GfxBool(const bool value) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(const int32_t value) noexcept : GfxObject(ClassName)
 {
+    assert(value <= static_cast<int32_t>(ValueType::logPriorityNumLogPriorities));
+
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const GfxBool& other) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(GfxLogPriority const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(GfxLogPriority&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxBool::operator bool() const noexcept
+GfxLogPriority::operator bool() const noexcept
 {
     return true;
 }
 
-GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
+GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority const& other) noexcept
 {
     if (this != &other)
     {
@@ -74,7 +81,7 @@ GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
     return *this;
 }
 
-GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
+GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority&& other) noexcept
 {
     if (this != &other)
     {
@@ -85,20 +92,27 @@ GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
     return *this;
 }
 
-bool GfxBool::getBool(void) const noexcept
+GfxLogPriority::ValueType GfxLogPriority::getPriority(void) const noexcept
 {
-    return static_cast<bool>(value_);
+    return static_cast<ValueType>(value_);
 }
 
-void GfxBool::clear(void) noexcept
+void GfxLogPriority::clear(void) noexcept
 {
-    value_ = static_cast<SdlType>(false);
+    value_ = static_cast<SdlType>(ValueType::logPriorityNumLogPriorities);
 }
 
-GfxBool::SdlType GfxBool::getAsSdlType(void) const noexcept
+GfxLogPriority::SdlType GfxLogPriority::getAsSdlType(void) const noexcept
 {
     return value_;
 }
+
+GfxLogPriority::SdlTypePtr GfxLogPriority::getAsSdlTypePtr(void) const noexcept
+{
+    return (SdlTypePtr)&value_;
+}
+
+}  // namespace log
 
 }  // namespace gfx
 

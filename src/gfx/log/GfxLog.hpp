@@ -21,51 +21,47 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxBool_hpp
-#define GfxBool_hpp
+#ifndef GfxLog_hpp
+#define GfxLog_hpp
+
+#include <cstdint>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxLogCategory.hpp"
+#include "GfxLogPriority.hpp"
 
 namespace gfx
 {
 
-class GfxBool final : public GfxObject
+namespace log
+{
+
+class GfxLog final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_bool SdlType;
-
     static const char ClassName[];
 
-    enum class ValueType : bool
-    {
-        boolFalse = sdl2::SDL_FALSE,
-        boolTrue = sdl2::SDL_TRUE
-    };
+    GfxLog() noexcept __attribute__((deprecated("SDL log deprecated, use gfx::_gfx::GfxLogger")));
 
-    GfxBool() noexcept;
+    GfxLog(GfxLog const& other) = delete;
+    GfxLog(GfxLog&& other) = delete;
 
-    explicit GfxBool(const ValueType value) noexcept;
-    explicit GfxBool(const SdlType value) noexcept;
-    explicit GfxBool(const bool value) noexcept;
-
-    GfxBool(const GfxBool& other) noexcept;
-    GfxBool(GfxBool&& other) noexcept;
-
-    GfxBool& operator=(const GfxBool& other) noexcept;
-    GfxBool& operator=(GfxBool&& other) noexcept;
+    GfxLog& operator=(GfxLog const& other) = delete;
+    GfxLog& operator=(GfxLog&& other) = delete;
 
     virtual explicit operator bool() const noexcept;
 
-    bool getBool(void) const noexcept;
+    void setAllPriority(GfxLogPriority const& prio) const noexcept;
+    void setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept;
+    GfxLogPriority getPriority(GfxLogCategory const& cat) const noexcept;
+    void resetPriorities(void) const noexcept;
 
-    void clear(void) noexcept;
-
-    SdlType getAsSdlType(void) const noexcept;
-private:
-    SdlType value_;
+    /*  -Wsuggest-attribute=const|pure */
 };
+
+}  // namespace log
 
 }  // namespace gfx
 
-#endif /* GfxBool_hpp */
+#endif /* GfxLog_hpp */
