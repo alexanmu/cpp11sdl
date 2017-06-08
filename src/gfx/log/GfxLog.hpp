@@ -57,7 +57,8 @@ public:
     GfxLogPriority getPriority(GfxLogCategory const& cat) const noexcept;
     void resetPriorities(void) const noexcept;
 
-    /*  -Wsuggest-attribute=const|pure */
+    template <typename... Args>
+    void log(std::string const& fmt, Args&&... args);
 };
 
 }  // namespace log

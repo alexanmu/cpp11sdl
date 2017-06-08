@@ -73,6 +73,13 @@ void GfxLog::resetPriorities(void) const noexcept
     sdl2::SDL_LogResetPriorities();
 }
 
+template <typename... Args> void GfxLog::log(std::string const& fmt, Args&&... args)
+{
+    assert(fmt.length() > 0);
+
+    sdl2::SDL_Log(fmt.c_str(), std::forward<Args>(args)...);
+}
+
 }  // namespace log
 
 }  // namespace gfx
