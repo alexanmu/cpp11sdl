@@ -25,6 +25,9 @@
 #define GfxLog_hpp
 
 #include <cstdint>
+#include <string>
+#include <utility>
+#include <tuple>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -37,12 +40,15 @@ namespace gfx
 namespace log
 {
 
+typedef void (*LogOutputFunction)(void * userdata, GfxLogCategory const& cat,
+    GfxLogPriority const& prio, std::string const& message);
+
 class GfxLog final : public GfxObject
 {
 public:
     static const char ClassName[];
 
-    GfxLog() noexcept __attribute__((deprecated("SDL log deprecated, use gfx::_gfx::GfxLogger")));
+    GfxLog() noexcept  /* __attribute__((deprecated("SDL log deprecated, use gfx::_gfx::GfxLogger"))) */;
 
     GfxLog(GfxLog const& other) = delete;
     GfxLog(GfxLog&& other) = delete;
@@ -58,7 +64,94 @@ public:
     void resetPriorities(void) const noexcept;
 
     template <typename... Args>
-    void log(std::string const& fmt, Args&&... args);
+    void log(std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_Log(fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logVerbose(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogVerbose(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logDebug(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogDebug(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logInfo(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogInfo(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logWarn(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogWarn(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logError(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogError(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logCritical(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogCritical(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logMessage(GfxLogCategory const& cat, GfxLogPriority const& prio, std::string const& fmt,
+                    Args&&... args) const noexcept
+    {
+        assert(cat);
+        assert(prio);
+        assert(fmt.length() > 0);
+
+        sdl2::SDL_LogMessage(cat.getAsSdlType(), prio.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+    }
+
+    template <typename... Args>
+    void logMessageV(GfxLogCategory const& cat, GfxLogPriority const& prio, std::string const& fmt,
+                        Args&&... args) throw(std::runtime_error)
+    {
+        assert(cat);
+        assert(prio);
+        assert(fmt.length() > 0);
+
+        std::tuple<Args...> tup(std::forward<Args>(args)...);
+        assert(tup.tupple_size() > 0);
+
+        throw std::runtime_error("Use method logMessage(...)");
+    }
+
+    void logGetOutputFunction(LogOutputFunction * callback, void ** userdata) throw(std::runtime_error);
+    void logSetOutputFunction(LogOutputFunction callback, void * userdata) throw(std::runtime_error);
 };
 
 }  // namespace log

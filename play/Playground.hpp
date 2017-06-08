@@ -41,6 +41,7 @@ protected:
     void _doComponent(void);
     void _doFSO(void);
     void _doMeta(void);
+    void _doLog(void);
 private:
     void DoAlgo(int algo_index);
 

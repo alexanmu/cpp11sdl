@@ -806,6 +806,34 @@ void Playground::_doMeta(void)
     RuntimeMeta();
 }
 
+/******************************************************* log *******************************************************/
+#include "GfxLog.hpp"
+#include "GfxLogCategory.hpp"
+#include "GfxLogPriority.hpp"
+
+void Playground::_doLog(void)
+{
+    gfx::log::GfxLog log;
+    using gfx::log::GfxLogCategory;
+    using gfx::log::GfxLogPriority;
+
+    log.setPriority(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),
+                    GfxLogPriority(GfxLogPriority::ValueType::logPriorityVerbose));
+    log.log("char=%c", 'a');
+    log.log("value=%d", 128);
+    log.log("float1=%f float2=%f", 1.5, 2.6);
+    log.log("str=%s char=%c int=%d", "string", ';', 5);
+    log.logVerbose(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),"verbose=0x%x", 127);
+    log.logDebug(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),"debug=0x%x", 127);
+    log.logInfo(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),"info=0x%x", 127);
+    log.logWarn(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),"warn=0x%x", 127);
+    log.logError(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),"error=0x%x", 127);
+    log.logCritical(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),"critical=0x%x", 127);
+    log.logMessage(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),
+                    GfxLogPriority(GfxLogPriority::ValueType::logPriorityCritical),
+                    "logMessage=%s",":-)");
+}
+
 /******************************************************* main *******************************************************/
 void Playground::_doPlayground(void)
 {
@@ -816,7 +844,8 @@ void Playground::_doPlayground(void)
     //_doCallback();
     //_doComponent();
     //_doFSO();
-    _doMeta();
+    //_doMeta();
+    _doLog();
 }
 
 int main(int argc, char *argv[])

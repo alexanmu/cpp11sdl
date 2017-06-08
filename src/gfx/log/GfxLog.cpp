@@ -73,11 +73,20 @@ void GfxLog::resetPriorities(void) const noexcept
     sdl2::SDL_LogResetPriorities();
 }
 
-template <typename... Args> void GfxLog::log(std::string const& fmt, Args&&... args)
+void GfxLog::logGetOutputFunction(LogOutputFunction * callback, void ** userdata) throw(std::runtime_error)
 {
-    assert(fmt.length() > 0);
+    assert(callback != nullptr);
+    assert(userdata != nullptr);
 
-    sdl2::SDL_Log(fmt.c_str(), std::forward<Args>(args)...);
+    throw std::runtime_error("Not supported");
+}
+
+void GfxLog::logSetOutputFunction(LogOutputFunction callback, void * userdata) throw(std::runtime_error)
+{
+    assert(callback != nullptr);
+    assert(userdata != nullptr);
+
+    throw std::runtime_error("Not supported");
 }
 
 }  // namespace log

@@ -39,6 +39,8 @@ const char GfxWindow::ClassName[] = "GfxWindow";
 
 static GfxHitTest * hitTest_ = nullptr;
 
+extern "C" {
+
 static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window * win,
         const gfx::sdl2::SDL_Point * area, void * data)
 {
@@ -60,6 +62,7 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
     }
     return htrsdl;
 }
+}  // extern "C"
 
 GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height) noexcept :
         GfxObject(ClassName)
