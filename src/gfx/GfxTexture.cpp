@@ -31,12 +31,16 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxTexture::ClassName[] = "GfxTexture";
 
-GfxTexture::GfxTexture(GfxObject * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h) :
-    GfxObject(ClassName)
+GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, const GfxTextureAccess& acc,
+            const int32_t w, const int32_t h) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
+    assert(format);
     assert(acc);
     assert(w >= 0);
     assert(h >= 0);
@@ -46,12 +50,12 @@ GfxTexture::GfxTexture(GfxObject * rend, const GfxTextureAccess& acc, const int3
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
     tex_ = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
-                                   sdl2::SDL_PIXELFORMAT_ARGB8888,
+                                   format.getAsSdlType(),
                                    acc.getAsSdlType(),
                                    w, h);
 }
 
-GfxTexture::GfxTexture(GfxObject * rend, const surface::GfxSurface& surf) : GfxObject(ClassName)
+GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
     assert(surf);
@@ -96,6 +100,25 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex)
 GfxTexture::operator bool() const noexcept
 {
     return (tex_ != nullptr);
+}
+
+void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAccess * acc, int * w,
+                                int * h) const noexcept
+{
+    assert(format != nullptr);
+    assert(acc != nullptr);
+    assert(w != nullptr);
+    assert(h != nullptr);
+
+    pixels::GfxPixelFormatEnum::SdlType sdlfmt;
+    int32_t u32sdlacc;
+
+    if (tex_ != nullptr)
+    {
+        sdl2::SDL_QueryTexture(tex_, &sdlfmt, &u32sdlacc, w, h);
+        format = new pixels::GfxPixelFormatEnum(sdlfmt);
+        acc = new GfxTextureAccess(u32sdlacc);
+    }
 }
 
 void GfxTexture::destroyTexture(void)
@@ -144,6 +167,8 @@ GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const
 {
     return tex_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

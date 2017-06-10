@@ -28,6 +28,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxRendererFlip::ClassName[] = "GfxRendererFlip";
 
 GfxRendererFlip::GfxRendererFlip() noexcept : GfxObject(ClassName)
@@ -98,6 +101,26 @@ bool GfxRendererFlip::isFlipVertical(void) const noexcept
     return ((flip_ & sdl2::SDL_FLIP_VERTICAL) != 0);
 }
 
+void GfxRendererFlip::setFlipHorizontal(void) noexcept
+{
+    flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_HORIZONTAL);
+}
+
+void GfxRendererFlip::setFlipVertical(void) noexcept
+{
+    flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_VERTICAL);
+}
+
+void GfxRendererFlip::resetFlipHorizontal(void) noexcept
+{
+    flip_ = static_cast<SdlType>(flip_ & ~sdl2::SDL_FLIP_HORIZONTAL);
+}
+
+void GfxRendererFlip::resetFlipVertical(void) noexcept
+{
+    flip_ = static_cast<SdlType>(flip_ & ~sdl2::SDL_FLIP_VERTICAL);
+}
+
 void GfxRendererFlip::clear(void) noexcept
 {
     flip_ = static_cast<SdlType>(ValueType::flipNone);
@@ -112,6 +135,8 @@ GfxRendererFlip::SdlTypePtr GfxRendererFlip::getAsSdlTypePtr(void) const noexcep
 {
     return (SdlTypePtr)&flip_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

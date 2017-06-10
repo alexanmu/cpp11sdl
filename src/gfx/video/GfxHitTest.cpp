@@ -30,9 +30,9 @@ namespace video
 
 const char GfxHitTest::ClassName[] = "GfxHitTest";
 
-GfxHitTest::GfxHitTest() noexcept
+GfxHitTest::GfxHitTest() noexcept : GfxObject(ClassName)
 {
-    hitTestResult_.set(GfxHitTestResult::ValueType::hittestNormal);
+    // Nothing to do
 }
 
 GfxHitTest::operator bool() const noexcept

@@ -29,6 +29,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxTextureModulate::ClassName[] = "GfxTextureModulate";
 
 GfxTextureModulate::GfxTextureModulate() noexcept : GfxObject(ClassName)
@@ -145,6 +148,8 @@ GfxTextureModulate::SdlTypePtr GfxTextureModulate::getAsSdlTypePtr(void) const n
 {
     return (SdlTypePtr)&modulate_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxRendererInfo::ClassName[] = "GfxRendererInfo";
 
 GfxRendererInfo::GfxRendererInfo() noexcept : GfxObject(ClassName)
@@ -87,9 +90,9 @@ std::string GfxRendererInfo::getName(void) const noexcept
     return str;
 }
 
-uint32_t GfxRendererInfo::getFlags(void) const noexcept
+GfxRendererFlags GfxRendererInfo::getFlags(void) const noexcept
 {
-    return info_.flags;
+    return GfxRendererFlags(static_cast<GfxRendererFlags::SdlType>(info_.flags));
 }
 
 uint32_t GfxRendererInfo::getNumTextureFormats(void) const noexcept
@@ -156,6 +159,8 @@ GfxRendererInfo::SdlTypePtr GfxRendererInfo::getAsSdlTypePtr(void) const noexcep
 {
     return (SdlTypePtr)&info_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

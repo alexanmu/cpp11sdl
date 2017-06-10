@@ -32,6 +32,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxTextureFormats final : public GfxObject
 {
 public:
@@ -64,6 +67,8 @@ private:
     uint32_t formats_[kTextureFormatsArrayLength];
     int32_t formatsCount_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 

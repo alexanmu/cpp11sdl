@@ -30,6 +30,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxRendererFlags::ClassName[] = "GfxRendererFlags";
 
 GfxRendererFlags::GfxRendererFlags() noexcept : GfxObject(ClassName)
@@ -173,6 +176,8 @@ GfxRendererFlags::SdlTypePtr GfxRendererFlags::getAsSdlTypePtr(void) const noexc
 {
     return (SdlTypePtr)&flags_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

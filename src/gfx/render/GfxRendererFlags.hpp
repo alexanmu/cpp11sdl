@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxRendererFlags final : public GfxObject
 {
 public:
@@ -88,6 +91,8 @@ public:
 private:
     SdlType flags_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 

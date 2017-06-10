@@ -44,8 +44,6 @@ public:
     virtual explicit operator bool() const noexcept;
 
     virtual GfxHitTestResult const& operator()(void * win, rect::GfxPoint * area, void * data) noexcept = 0;
-protected:
-    GfxHitTestResult hitTestResult_;
 };
 
 }  // namespace video

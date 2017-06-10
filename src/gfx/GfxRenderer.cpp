@@ -29,21 +29,42 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxRenderer::ClassName[] = "GfxRenderer";
 
-GfxRenderer::GfxRenderer(const video::GfxWindow& win) : GfxObject(ClassName), renderer_(nullptr), window_(win)
+GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) noexcept :
+            GfxObject(ClassName)
 {
-    SdlType* renderertmp;
+    assert(win);
+    assert(flags);
 
-    renderertmp = sdl2::SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_ACCELERATED);
+    SdlTypePtr renderertmp;
+
+    renderertmp = sdl2::SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
     if (renderertmp == nullptr)
     {
-        renderertmp = sdl2::SDL_CreateRenderer(window_.getAsSdlTypePtr(), -1, sdl2::SDL_RENDERER_SOFTWARE);
+        // error handling here
     }
     renderer_ = renderertmp;
 }
 
-GfxRenderer::~GfxRenderer()
+GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) noexcept : GfxObject(ClassName)
+{
+    assert(surf);
+
+    SdlTypePtr renderertmp;
+
+    renderertmp = sdl2::SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
+    if (renderertmp == nullptr)
+    {
+        // error handling here
+    }
+    renderer_ = renderertmp;
+}
+
+GfxRenderer::~GfxRenderer() noexcept
 {
     if (renderer_ != nullptr)
     {
@@ -56,6 +77,38 @@ GfxRenderer::operator bool() const noexcept
     return (renderer_ != nullptr);
 }
 
+GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const &win) const noexcept
+{
+    assert(win);
+
+    SdlTypePtr rd;
+
+    rd = sdl2::SDL_GetRenderer(win.getAsSdlTypePtr());
+    if (rd == renderer_)
+    {
+        return renderer_;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
+void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
+{
+    assert(w != nullptr);
+    assert(h != nullptr);
+
+    int32_t ret = 1;
+
+    if (renderer_ != nullptr)
+    {
+        ret = sdl2::SDL_GetRendererOutputSize(renderer_, w, h);
+        assert((ret == -1) || (ret == 0));
+    }
+}
+
+/******************************************** old ******************************************************/
 void GfxRenderer::destroyRenderer()
 {
     if (renderer_ != nullptr)
@@ -74,20 +127,18 @@ void GfxRenderer::renderClear()
     }
 }
 
-void GfxRenderer::getRendererInfo(GfxRendererInfo * infoptr)
+GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
 {
-    assert(infoptr != nullptr);
-
     GfxRendererInfo::SdlType ri;
 
     if (renderer_ != nullptr)
     {
         sdl2::SDL_GetRendererInfo(renderer_, &ri);
-        infoptr->set(ri);
+        return new GfxRendererInfo(ri);
     }
     else
     {
-        infoptr = nullptr;
+        return nullptr;
     }
 }
 
@@ -168,6 +219,8 @@ GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const
 {
     return renderer_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

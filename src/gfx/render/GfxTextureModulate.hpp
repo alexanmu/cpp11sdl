@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxTextureModulate final : public GfxObject
 {
 public:
@@ -79,6 +82,8 @@ public:
 private:
     SdlType modulate_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 

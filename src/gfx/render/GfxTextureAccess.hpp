@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxTextureAccess final : public GfxObject
 {
 public:
@@ -41,7 +44,7 @@ public:
 
     static const char ClassName[];
 
-    enum class ValueType : uint32_t
+    enum class ValueType : int32_t
     {
         accessStatic = sdl2::SDL_TEXTUREACCESS_STATIC,
         accessStreaming = sdl2::SDL_TEXTUREACCESS_STREAMING,
@@ -51,6 +54,8 @@ public:
     GfxTextureAccess() noexcept;
 
     explicit GfxTextureAccess(const ValueType access) noexcept;
+    explicit GfxTextureAccess(const SdlType access) noexcept;
+    explicit GfxTextureAccess(const int32_t access) noexcept;
 
     GfxTextureAccess(GfxTextureAccess const& other) noexcept;
     GfxTextureAccess(GfxTextureAccess&& other) noexcept;
@@ -67,6 +72,8 @@ public:
 private:
     SdlType access_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 

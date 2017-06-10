@@ -28,6 +28,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxTextureAccess::ClassName[] = "GfxTextureAccess";
 
 GfxTextureAccess::GfxTextureAccess() noexcept : GfxObject(ClassName)
@@ -36,6 +39,16 @@ GfxTextureAccess::GfxTextureAccess() noexcept : GfxObject(ClassName)
 }
 
 GfxTextureAccess::GfxTextureAccess(const ValueType access) noexcept : GfxObject(ClassName)
+{
+    access_ = static_cast<SdlType>(access);
+}
+
+GfxTextureAccess::GfxTextureAccess(const SdlType access) noexcept : GfxObject(ClassName)
+{
+    access_ = access;
+}
+
+GfxTextureAccess::GfxTextureAccess(const int32_t access) noexcept : GfxObject(ClassName)
 {
     access_ = static_cast<SdlType>(access);
 }
@@ -91,6 +104,8 @@ GfxTextureAccess::SdlTypePtr GfxTextureAccess::getAsSdlTypePtr(void) const noexc
 {
     return (SdlTypePtr)&access_;
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

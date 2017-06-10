@@ -31,6 +31,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxGetRendererInfo::ClassName[] = "GfxGetRendererInfo";
 
 GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxObject(ClassName)
@@ -55,23 +58,24 @@ int32_t GfxGetRendererInfo::getNumRenderDrivers(void) noexcept
     return nrd;
 }
 
-void GfxGetRendererInfo::getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr) noexcept
+GfxRendererInfo * GfxGetRendererInfo::getRenderDriverInfo(const int32_t index) noexcept
 {
     assert(index >= 0);
-    assert(infoptr != nullptr);
 
     GfxRendererInfo::SdlType rdi;
 
     if (index < numRenderDrivers_)
     {
         sdl2::SDL_GetRenderDriverInfo(index, &rdi);
-        infoptr->set(rdi);
+        return new GfxRendererInfo(rdi);
     }
     else
     {
-        infoptr = nullptr;
+        return nullptr;
     }
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

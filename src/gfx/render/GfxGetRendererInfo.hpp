@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxGetRendererInfo final : public GfxObject
 {
 public:
@@ -49,10 +52,12 @@ public:
     virtual explicit operator bool() const noexcept;
 
     int32_t getNumRenderDrivers(void) noexcept;
-    void getRenderDriverInfo(const int32_t index, GfxRendererInfo * infoptr) noexcept;
+    GfxRendererInfo * getRenderDriverInfo(const int32_t index) noexcept;
 private:
     int32_t numRenderDrivers_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 
