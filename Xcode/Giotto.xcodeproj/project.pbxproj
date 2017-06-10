@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		194648941EEC2BB100299B55 /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194648921EEC2BB100299B55 /* Playground.cpp */; };
+		19314B5E1EEC384400A46376 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E571EDC89590022BB5B /* SDL2_image.framework */; };
+		19314B5F1EEC384400A46376 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E581EDC89590022BB5B /* SDL2_ttf.framework */; };
+		19314B601EEC384400A46376 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
+		19314B611EEC396100A46376 /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19314B5B1EEC37EA00A46376 /* Playground.cpp */; };
 		194648971EEC2BFB00299B55 /* GfxLogOutputFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194648951EEC2BFB00299B55 /* GfxLogOutputFunction.cpp */; };
 		194648981EEC2C6E00299B55 /* GfxLogOutputFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194648951EEC2BFB00299B55 /* GfxLogOutputFunction.cpp */; };
 		194648991EEC2CDE00299B55 /* GfxMeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D5E6FE1EE56F38000E187B /* GfxMeta.cpp */; };
@@ -248,12 +251,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		191B2E571EDC89590022BB5B /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
-		191B2E581EDC89590022BB5B /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
-		191B2E591EDC89590022BB5B /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		191B2E571EDC89590022BB5B /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		191B2E581EDC89590022BB5B /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		191B2E591EDC89590022BB5B /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		19314B5B1EEC37EA00A46376 /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = ../play/Playground.cpp; sourceTree = SOURCE_ROOT; };
+		19314B5C1EEC37EA00A46376 /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = ../play/Playground.hpp; sourceTree = SOURCE_ROOT; };
 		1946488B1EEC2B7400299B55 /* play */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = play; sourceTree = BUILT_PRODUCTS_DIR; };
-		194648921EEC2BB100299B55 /* Playground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Playground.cpp; path = ../../play/Playground.cpp; sourceTree = "<group>"; };
-		194648931EEC2BB100299B55 /* Playground.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Playground.hpp; path = ../../play/Playground.hpp; sourceTree = "<group>"; };
 		194648951EEC2BFB00299B55 /* GfxLogOutputFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxLogOutputFunction.cpp; path = log/GfxLogOutputFunction.cpp; sourceTree = "<group>"; };
 		194648961EEC2BFB00299B55 /* GfxLogOutputFunction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxLogOutputFunction.hpp; path = log/GfxLogOutputFunction.hpp; sourceTree = "<group>"; };
 		19784EA31EDC8DB30025DF95 /* GDemoForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDemoForm.cpp; sourceTree = "<group>"; };
@@ -487,6 +490,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19314B5E1EEC384400A46376 /* SDL2_image.framework in Frameworks */,
+				19314B5F1EEC384400A46376 /* SDL2_ttf.framework in Frameworks */,
+				19314B601EEC384400A46376 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,8 +522,8 @@
 		1946488C1EEC2B7400299B55 /* play */ = {
 			isa = PBXGroup;
 			children = (
-				194648921EEC2BB100299B55 /* Playground.cpp */,
-				194648931EEC2BB100299B55 /* Playground.hpp */,
+				19314B5B1EEC37EA00A46376 /* Playground.cpp */,
+				19314B5C1EEC37EA00A46376 /* Playground.hpp */,
 			);
 			path = play;
 			sourceTree = "<group>";
@@ -1092,7 +1098,7 @@
 				194648AA1EEC2D4C00299B55 /* GfxFileSystem.cpp in Sources */,
 				194648E81EEC2E9400299B55 /* GDialogsConstants.cpp in Sources */,
 				1946489E1EEC2CFA00299B55 /* GfxBgiConstants.cpp in Sources */,
-				194648941EEC2BB100299B55 /* Playground.cpp in Sources */,
+				19314B611EEC396100A46376 /* Playground.cpp in Sources */,
 				194648C21EEC2DC100299B55 /* GfxPixelFormat.cpp in Sources */,
 				194648FC1EEC2EE200299B55 /* GFileSystemObject.cpp in Sources */,
 				194648CF1EEC2E0C00299B55 /* GfxTextureFormats.cpp in Sources */,
@@ -1474,6 +1480,7 @@
 				194648911EEC2B7400299B55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19F7144F1EDC889B00F04982 /* Build configuration list for PBXProject "Giotto" */ = {
 			isa = XCConfigurationList;

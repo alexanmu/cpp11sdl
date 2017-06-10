@@ -891,7 +891,7 @@ void Playground::_doLog(void)
     }
     catch (std::runtime_error ex)
     {
-        std::cout << "Exception: " << ex.what() << std::endl;
+        std::cout << "Exception: " << ex.what() << "; as expected" << std::endl;
     }
     log.logMessage(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),
                     GfxLogPriority(GfxLogPriority::ValueType::logPriorityCritical),

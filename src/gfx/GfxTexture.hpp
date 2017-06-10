@@ -44,7 +44,6 @@ namespace render
 class GfxTexture final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Texture SdlType;
     typedef sdl2::SDL_Texture* SdlTypePtr;
 
     static const char ClassName[];
