@@ -101,6 +101,7 @@
 #include "GfxLogPriority.hpp"  // 2017.06.07
 #include "GfxLogCategory.hpp"  // 2017.06.07
 #include "GfxLog.hpp"  // 2017.06.07
+#include "GfxLogOutputFunction.hpp"  // 2017.06.09
 
 namespace gfx
 {
@@ -197,6 +198,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     { gfx::log::GfxLogPriority::ClassName, sizeof(gfx::log::GfxLogPriority) },  // 2017.06.07
     { gfx::log::GfxLogCategory::ClassName, sizeof(gfx::log::GfxLogCategory) },  // 2017.06.07
     { gfx::log::GfxLog::ClassName, sizeof(gfx::log::GfxLog) },  // 2017.06.07
+    { gfx::log::GfxLogOutputFunction::ClassName, sizeof(gfx::log::GfxLogOutputFunction) },  // 2017.06.09
     // gfx::render
     { gfx::render::GfxGetRendererInfo::ClassName, sizeof(gfx::render::GfxGetRendererInfo) },
     { gfx::render::GfxRenderer::ClassName, sizeof(gfx::render::GfxRenderer) },

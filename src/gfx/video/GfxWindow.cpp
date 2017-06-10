@@ -37,10 +37,13 @@ namespace video
 
 const char GfxWindow::ClassName[] = "GfxWindow";
 
+namespace prv
+{
+
 static GfxHitTest * hitTest_ = nullptr;
 
-extern "C" {
-
+extern "C"
+{
 static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window * win,
         const gfx::sdl2::SDL_Point * area, void * data)
 {
@@ -64,6 +67,8 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
 }
 }  // extern "C"
 
+}  // namespace prv
+
 GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height) noexcept :
         GfxObject(ClassName)
 {
@@ -71,11 +76,14 @@ GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_
     assert(width >= 0);
     assert(height >= 0);
 
-    window_ = sdl2::SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
-    if (window_ == nullptr)
+    SdlTypePtr tmpwinptr;
+
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
+    if (tmpwinptr == nullptr)
     {
         // error handling here
     }
+    window_ = tmpwinptr;
 }
 
 GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
@@ -89,23 +97,29 @@ GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const
     assert(height >= 0);
     assert(flags);
 
-    window_ = sdl2::SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
-                                     width, height, flags.getAsSdlType());
-    if (window_ == nullptr)
+    SdlTypePtr tmpwinptr;
+
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
+                                       width, height, flags.getAsSdlType());
+    if (tmpwinptr == nullptr)
     {
         // error handling here
     }
+    window_ = tmpwinptr;
 }
 
 GfxWindow::GfxWindow(void * data) noexcept : GfxObject(ClassName)
 {
     assert(data != nullptr);
 
-    window_ = sdl2::SDL_CreateWindowFrom(data);
-    if (window_ == nullptr)
+    SdlTypePtr tmpwinptr;
+
+    tmpwinptr = sdl2::SDL_CreateWindowFrom(data);
+    if (tmpwinptr == nullptr)
     {
         // error handling here
     }
+    window_ = tmpwinptr;
 }
 
 GfxWindow::~GfxWindow() noexcept
@@ -641,13 +655,13 @@ void GfxWindow::setWindowHitTest(GfxHitTest const& callback, void * callback_dat
     {
         if (callback)
         {
-            hitTest_ = const_cast<GfxHitTest *>(&callback);
-            ret = sdl2::SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
+            prv::hitTest_ = const_cast<GfxHitTest *>(&callback);
+            ret = sdl2::SDL_SetWindowHitTest(window_, prv::windowHitTestFunction, callback_data);
             assert((ret == -1) || (ret == 0));
         }
         else
         {
-            hitTest_ = nullptr;
+            prv::hitTest_ = nullptr;
             // if HitTest was enabled, disable it; don't care about the result
             (void)sdl2::SDL_SetWindowHitTest(window_, NULL, NULL);
         }

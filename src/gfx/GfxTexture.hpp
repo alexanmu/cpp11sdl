@@ -33,6 +33,7 @@
 #include "GfxBlendMode.hpp"
 #include "GfxTextureModulate.hpp"
 #include "GfxTextureAccess.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 namespace gfx
 {
@@ -50,10 +51,10 @@ public:
 
     GfxTexture() = delete;
 
-    explicit GfxTexture(GfxObject * rend, const GfxTextureAccess& acc, const int32_t w, const int32_t h);
-    explicit GfxTexture(GfxObject * rend, const surface::GfxSurface& surf);
     explicit GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, const GfxTextureAccess& acc,
-               const int32_t w, const int32_t h);
+                        const int32_t w, const int32_t h);
+    explicit GfxTexture(GfxObject * rend, surface::GfxSurface const& surf);
+
     virtual ~GfxTexture();
 
     GfxTexture(const GfxTexture&) = delete;
@@ -64,8 +65,8 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    void queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAccess * acc, int * w,
-                                  int * h) const noexcept;
+    void queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAccess * acc, int * w, int * h) const noexcept;
+
     void destroyTexture(void);
 
     void setBlendMode(const blendmode::GfxBlendMode& blendmode);

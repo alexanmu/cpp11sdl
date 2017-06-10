@@ -35,6 +35,8 @@
 #include "GfxRendererFlip.hpp"
 #include "GfxTexture.hpp"
 #include "GfxRendererInfo.hpp"
+#include "GfxRendererFlags.hpp"
+#include "GfxSurface.hpp"
 
 namespace gfx
 {
@@ -45,12 +47,10 @@ namespace render
 class GfxRenderer final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Renderer SdlType;
     typedef sdl2::SDL_Renderer* SdlTypePtr;
 
     static const char ClassName[];
 
-    explicit GfxRenderer(const video::GfxWindow& win);
     explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) noexcept;
     explicit GfxRenderer(surface::GfxSurface const& surf) noexcept;
 
@@ -65,12 +65,11 @@ public:
     virtual explicit operator bool() const noexcept;
 
     SdlTypePtr getRenderer(video::GfxWindow const &win) const noexcept;
+    GfxRendererInfo * getRendererInfo() const noexcept;
     void getRendererOutputSize(int32_t * w, int32_t * h) const noexcept;
-    GfxRendererInfo * getRendererInfo(void) const noexcept;
 
     void destroyRenderer(void);
     void renderClear(void);
-    void getRendererInfo(GfxRendererInfo* infoptr);
 
     void renderCopy(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest);
     void renderCopy(const GfxTexture& tex);

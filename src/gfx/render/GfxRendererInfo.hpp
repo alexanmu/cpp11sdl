@@ -50,10 +50,10 @@ public:
 
     explicit GfxRendererInfo(const SdlType info) noexcept;
 
-    GfxRendererInfo(const GfxRendererInfo& other) noexcept;
+    GfxRendererInfo(GfxRendererInfo const& other) noexcept;
     GfxRendererInfo(GfxRendererInfo&& other) noexcept;
 
-    GfxRendererInfo& operator=(const GfxRendererInfo& other) noexcept;
+    GfxRendererInfo& operator=(GfxRendererInfo const& other) noexcept;
     GfxRendererInfo& operator=(GfxRendererInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
