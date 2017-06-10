@@ -24,6 +24,7 @@
 #ifndef GfxLog_hpp
 #define GfxLog_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 #include <utility>
@@ -33,6 +34,7 @@
 #include "GfxSdlHeader.hpp"
 #include "GfxLogCategory.hpp"
 #include "GfxLogPriority.hpp"
+#include "GfxLogOutputFunction.hpp"
 
 namespace gfx
 {
@@ -40,13 +42,12 @@ namespace gfx
 namespace log
 {
 
-typedef void (*LogOutputFunction)(void * userdata, GfxLogCategory const& cat,
-    GfxLogPriority const& prio, std::string const& message);
-
 class GfxLog final : public GfxObject
 {
 public:
     static const char ClassName[];
+
+    static const int32_t maxLogMessage = 4096;
 
     GfxLog() noexcept  /* __attribute__((deprecated("SDL log deprecated, use gfx::_gfx::GfxLogger"))) */;
 
@@ -150,8 +151,8 @@ public:
         throw std::runtime_error("Use method logMessage(...)");
     }
 
-    void logGetOutputFunction(LogOutputFunction * callback, void ** userdata) throw(std::runtime_error);
-    void logSetOutputFunction(LogOutputFunction callback, void * userdata) throw(std::runtime_error);
+    GfxLogOutputFunction * logGetOutputFunction(void ** userdata) const noexcept;
+    void logSetOutputFunction(GfxLogOutputFunction * callback, void * userdata) const throw(std::runtime_error);
 };
 
 }  // namespace log

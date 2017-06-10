@@ -61,7 +61,6 @@
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormatEnum.hpp"
-#include "GfxRendererFlags.hpp"
 
 void at_exit_callback(void);
 

@@ -22,8 +22,10 @@
 */
 
 #include <cassert>
+#include <string>
 
 #include "GfxLog.hpp"
+#include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
@@ -32,6 +34,27 @@ namespace log
 {
 
 const char GfxLog::ClassName[] = "GfxLog";
+
+namespace prv
+{
+
+GfxLogOutputFunction * logOutputFunctionObject = nullptr;
+
+extern "C" {
+static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char *message)
+{
+    if (logOutputFunctionObject != nullptr)
+    {
+        GfxLogCategory cat(category);
+        GfxLogPriority prio(priority);
+        std::string msg(message);
+
+        (*logOutputFunctionObject)(userdata, cat, prio, msg);
+    }
+}
+}  // extern "C"
+
+}  // namespace prv
 
 GfxLog::GfxLog() noexcept : GfxObject(ClassName)
 {
@@ -73,20 +96,40 @@ void GfxLog::resetPriorities(void) const noexcept
     sdl2::SDL_LogResetPriorities();
 }
 
-void GfxLog::logGetOutputFunction(LogOutputFunction * callback, void ** userdata) throw(std::runtime_error)
+GfxLogOutputFunction * GfxLog::logGetOutputFunction(void ** userdata) const noexcept
 {
-    assert(callback != nullptr);
-    assert(userdata != nullptr);
+    sdl2::SDL_LogOutputFunction sdlLogOutFunc = nullptr;
 
-    throw std::runtime_error("Not supported");
+    sdl2::SDL_LogGetOutputFunction(&sdlLogOutFunc, userdata);
+    if (sdlLogOutFunc != nullptr &&
+        *sdlLogOutFunc == &prv::logOutputFunction)
+    {
+        return prv::logOutputFunctionObject;
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 
-void GfxLog::logSetOutputFunction(LogOutputFunction callback, void * userdata) throw(std::runtime_error)
+void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback, void * userdata) const throw(std::runtime_error)
 {
-    assert(callback != nullptr);
-    assert(userdata != nullptr);
-
-    throw std::runtime_error("Not supported");
+    if (callback != nullptr)
+    {
+        if (prv::logOutputFunctionObject == nullptr)
+        {
+            prv::logOutputFunctionObject = callback;
+            sdl2::SDL_LogSetOutputFunction(prv::logOutputFunction, userdata);
+        }
+    }
+    else
+    {
+        // SDL bugzilla issue 3666; revert does not work; just throw
+        throw std::runtime_error("SDL Bugzilla, issue 3666");
+        // These lines will not be executed before issue 3666 is fixed
+        sdl2::SDL_LogSetOutputFunction(NULL, NULL);
+        prv::logOutputFunctionObject = nullptr;
+    }
 }
 
 }  // namespace log
