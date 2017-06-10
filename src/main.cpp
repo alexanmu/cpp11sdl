@@ -61,6 +61,7 @@
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormatEnum.hpp"
+#include "GfxRendererFlags.hpp"
 
 void at_exit_callback(void);
 
@@ -294,27 +295,32 @@ void _doStuff(void)
                         WIN_H,
                         wf);
     MsgBox(win);
-    gfx::render::GfxRenderer rend(win);
 
-    gfx::render::GfxRendererInfo ri;
-    rend.getRendererInfo(&ri);
-    std::cout << "ri.getName()=" << ri.getName() << '\n';
-    std::cout << "ri.getFlags()=" << ri.getFlags().getAsSdlType() << '\n';
-    std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
-    std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
-    std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
+    gfx::render::GfxRendererFlags rflags;
+    rflags.setSoftware();
+    gfx::render::GfxRenderer rend(win, rflags);
 
-    if (ri.getNumTextureFormats() > 0)
+    gfx::render::GfxRendererInfo * ri;
+    ri = rend.getRendererInfo();
+    std::cout << "ri.getName()=" << ri->getName() << '\n';
+    std::cout << "ri.getFlags()=" << ri->getFlags().getAsSdlType() << '\n';
+    std::cout << "ri.getMaxTextureWidth()=" << ri->getMaxTextureWidth() << '\n';
+    std::cout << "ri.getMaxTextureHeight()=" << ri->getMaxTextureHeight() << '\n';
+    std::cout << "ri.getNumTextureFormats()=" << ri->getNumTextureFormats() << '\n';
+
+    if (ri->getNumTextureFormats() > 0)
     {
         gfx::render::GfxTextureFormats gtf;
 
-        gtf = ri.getTextureFormats();
-        for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
+        gtf = ri->getTextureFormats();
+        for (uint32_t i = 0; i < ri->getNumTextureFormats(); i++)
         {
             gfx::pixels::GfxPixelFormat gpf { gfx::pixels::GfxPixelFormatEnum(gtf[i]) };
             std::cout << "gpf.getPixelFormatName()=" << gpf.getPixelFormatName() << '\n';
         }
     }
+    delete ri;
+
     gfx::surface::GfxSurface sbitmap("sbitmap", std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
 
