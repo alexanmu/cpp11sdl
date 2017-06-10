@@ -197,16 +197,16 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     { gfx::log::GfxLogPriority::ClassName, sizeof(gfx::log::GfxLogPriority) },  // 2017.06.07
     { gfx::log::GfxLogCategory::ClassName, sizeof(gfx::log::GfxLogCategory) },  // 2017.06.07
     { gfx::log::GfxLog::ClassName, sizeof(gfx::log::GfxLog) },  // 2017.06.07
-    // In-Work
-    { gfx::GfxGetRendererInfo::ClassName, sizeof(gfx::GfxGetRendererInfo) },
-    { gfx::GfxRenderer::ClassName, sizeof(gfx::GfxRenderer) },
-    { gfx::GfxRendererFlags::ClassName, sizeof(gfx::GfxRendererFlags) },
-    { gfx::GfxRendererFlip::ClassName, sizeof(gfx::GfxRendererFlip) },
-    { gfx::GfxRendererInfo::ClassName, sizeof(gfx::GfxRendererInfo) },
-    { gfx::GfxTexture::ClassName, sizeof(gfx::GfxTexture) },
-    { gfx::GfxTextureAccess::ClassName, sizeof(gfx::GfxTextureAccess) },
-    { gfx::GfxTextureModulate::ClassName, sizeof(gfx::GfxTextureModulate) },
-    { gfx::GfxTextureFormats::ClassName, sizeof(gfx::GfxTextureFormats) }  // 2017.06.02
+    // gfx::render
+    { gfx::render::GfxGetRendererInfo::ClassName, sizeof(gfx::render::GfxGetRendererInfo) },
+    { gfx::render::GfxRenderer::ClassName, sizeof(gfx::render::GfxRenderer) },
+    { gfx::render::GfxRendererFlags::ClassName, sizeof(gfx::render::GfxRendererFlags) },
+    { gfx::render::GfxRendererFlip::ClassName, sizeof(gfx::render::GfxRendererFlip) },
+    { gfx::render::GfxRendererInfo::ClassName, sizeof(gfx::render::GfxRendererInfo) },
+    { gfx::render::GfxTexture::ClassName, sizeof(gfx::render::GfxTexture) },
+    { gfx::render::GfxTextureAccess::ClassName, sizeof(gfx::render::GfxTextureAccess) },
+    { gfx::render::GfxTextureModulate::ClassName, sizeof(gfx::render::GfxTextureModulate) },
+    { gfx::render::GfxTextureFormats::ClassName, sizeof(gfx::render::GfxTextureFormats) }  // 2017.06.02
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

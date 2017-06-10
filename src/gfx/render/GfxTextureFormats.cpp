@@ -28,6 +28,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 const char GfxTextureFormats::ClassName[] = "GfxTextureFormats";
 
 GfxTextureFormats::GfxTextureFormats() noexcept : GfxObject(ClassName)
@@ -165,6 +168,8 @@ void GfxTextureFormats::clear(void) noexcept
     formatsCount_ = -1;
     memset(reinterpret_cast<void *>(&formats_[0]), 0, sizeof(formats_));
 }
+
+}  // namespace render
 
 }  // namespace gfx
 

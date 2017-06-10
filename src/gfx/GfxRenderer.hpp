@@ -39,6 +39,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxRenderer final : public GfxObject
 {
 public:
@@ -48,6 +51,8 @@ public:
     static const char ClassName[];
 
     explicit GfxRenderer(const video::GfxWindow& win);
+    explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) noexcept;
+    explicit GfxRenderer(surface::GfxSurface const& surf) noexcept;
 
     GfxRenderer() = delete;
     GfxRenderer(const GfxRenderer&) = delete;
@@ -55,9 +60,13 @@ public:
     GfxRenderer& operator=(const GfxRenderer&) = delete;
     GfxRenderer& operator=(GfxRenderer&& rend) = delete;
 
-    virtual ~GfxRenderer();
+    virtual ~GfxRenderer() noexcept;
 
     virtual explicit operator bool() const noexcept;
+
+    SdlTypePtr getRenderer(video::GfxWindow const &win) const noexcept;
+    void getRendererOutputSize(int32_t * w, int32_t * h) const noexcept;
+    GfxRendererInfo * getRendererInfo(void) const noexcept;
 
     void destroyRenderer(void);
     void renderClear(void);
@@ -87,8 +96,9 @@ public:
     SdlTypePtr getAsSdlTypePtr() const;
 private:
     SdlTypePtr renderer_;
-    video::GfxWindow const& window_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 

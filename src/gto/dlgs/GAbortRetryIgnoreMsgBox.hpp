@@ -39,7 +39,7 @@ class GAbortRetryIgnoreMsgBox : public GDialog
 public:
     GAbortRetryIgnoreMsgBox() = delete;
 
-    explicit GAbortRetryIgnoreMsgBox(std::string const& name, gobj::GComponent* owner);
+    explicit GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner);
 
     GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner, const std::string& title,
                             const std::string& message);

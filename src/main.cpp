@@ -179,29 +179,30 @@ void AfterInit(void)
 
         std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
     }
-    gfx::GfxGetRendererInfo gri;
-    gfx::GfxRendererInfo ri;
+    gfx::render::GfxGetRendererInfo gri;
+    gfx::render::GfxRendererInfo * ri = nullptr;
 
     std::cout << "gri.getNumRenderDrivers()=" << gri.getNumRenderDrivers() << '\n';
     for (int i = 0; i < gri.getNumRenderDrivers(); i++)
     {
-        gri.getRenderDriverInfo(i, &ri);
-        std::cout << "ri.getName()=" << ri.getName() << '\n';
-        std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
-        std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
-        std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
-        std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
-        for (uint32_t j = 0; j < ri.getNumTextureFormats(); j++)
+        ri = gri.getRenderDriverInfo(i);
+        std::cout << "ri.getName()=" << ri->getName() << '\n';
+        std::cout << "ri.getFlags()=" << ri->getFlags().getAsSdlType() << '\n';
+        std::cout << "ri.getMaxTextureWidth()=" << ri->getMaxTextureWidth() << '\n';
+        std::cout << "ri.getMaxTextureHeight()=" << ri->getMaxTextureHeight() << '\n';
+        std::cout << "ri.getNumTextureFormats()=" << ri->getNumTextureFormats() << '\n';
+        for (uint32_t j = 0; j < ri->getNumTextureFormats(); j++)
         {
-            std::cout << "ri.getTextureFormats()[j]=" << ri.getTextureFormats()[j] << '\n';
+            std::cout << "ri.getTextureFormats()[j]=" << ri->getTextureFormats()[j] << '\n';
         }
-        gfx::GfxRendererFlags rf(static_cast<gfx::GfxRendererFlags::SdlType>(ri.getFlags()));
+        gfx::render::GfxRendererFlags rf = ri->getFlags();
         std::cout << "rf.isUnknown()=" << rf.isUnknown() << '\n';
         std::cout << "rf.isSoftware()=" << rf.isSoftware() << '\n';
         std::cout << "rf.isAccelerated()=" << rf.isAccelerated() << '\n';
         std::cout << "rf.getPresentVSync()=" << rf.getPresentVSync() << '\n';
         std::cout << "rf.getTargetTexture()=" << rf.getTargetTexture() << '\n';
     }
+    delete ri;
     std::cout << std::endl;
 }
 
@@ -293,19 +294,19 @@ void _doStuff(void)
                         WIN_H,
                         wf);
     MsgBox(win);
-    gfx::GfxRenderer rend(win);
+    gfx::render::GfxRenderer rend(win);
 
-    gfx::GfxRendererInfo ri;
+    gfx::render::GfxRendererInfo ri;
     rend.getRendererInfo(&ri);
     std::cout << "ri.getName()=" << ri.getName() << '\n';
-    std::cout << "ri.getFlags()=" << ri.getFlags() << '\n';
+    std::cout << "ri.getFlags()=" << ri.getFlags().getAsSdlType() << '\n';
     std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
     std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
     std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
 
     if (ri.getNumTextureFormats() > 0)
     {
-        gfx::GfxTextureFormats gtf;
+        gfx::render::GfxTextureFormats gtf;
 
         gtf = ri.getTextureFormats();
         for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
@@ -522,7 +523,7 @@ void _doStuff(void)
             win.setWindowTitle(str_title);
             surfcanvas.blitSurface(sbitmap, gfx::rect::GfxRect(0, 0, sbitmap.getWidth(), sbitmap.getHeight()),
                                    gfx::rect::GfxRect(160, 640, WIN_W, WIN_H));
-            gfx::GfxTexture canvas_tex(&rend, surfcanvas);
+            gfx::render::GfxTexture canvas_tex(&rend, surfcanvas);
             canvas_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendNone);
 
             rt.setX(0);
@@ -533,7 +534,7 @@ void _doStuff(void)
             rt.setX(WIN_W / 2);
             colors_surf.fillRect(rt, gfx::pixels::GfxColor(255-r1, 255-g1, 255-b1, a1));
 
-            gfx::GfxTexture colors_tex(&rend, colors_surf);
+            gfx::render::GfxTexture colors_tex(&rend, colors_surf);
             colors_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendBlend);
 
             rend.renderCopy(canvas_tex);

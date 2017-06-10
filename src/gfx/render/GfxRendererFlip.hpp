@@ -33,6 +33,9 @@
 namespace gfx
 {
 
+namespace render
+{
+
 class GfxRendererFlip final : public GfxObject
 {
 public:
@@ -66,6 +69,12 @@ public:
     bool isFlipHorizontal(void) const noexcept;
     bool isFlipVertical(void) const noexcept;
 
+    void setFlipHorizontal(void) noexcept;
+    void setFlipVertical(void) noexcept;
+
+    void resetFlipHorizontal(void) noexcept;
+    void resetFlipVertical(void) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
@@ -73,6 +82,8 @@ public:
 private:
     SdlType flip_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 

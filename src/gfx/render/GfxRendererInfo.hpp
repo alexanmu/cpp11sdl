@@ -30,8 +30,12 @@
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxTextureFormats.hpp"
+#include "GfxRendererFlags.hpp"
 
 namespace gfx
+{
+
+namespace render
 {
 
 class GfxRendererInfo final : public GfxObject
@@ -55,7 +59,7 @@ public:
     virtual explicit operator bool() const noexcept;
 
     std::string getName(void) const noexcept;
-    uint32_t getFlags(void) const noexcept;
+    GfxRendererFlags getFlags(void) const noexcept;
     uint32_t getNumTextureFormats(void) const noexcept;
     GfxTextureFormats getTextureFormats(void) const noexcept;
     int32_t getMaxTextureWidth(void) const noexcept;
@@ -69,6 +73,8 @@ public:
 private:
     SdlType info_;
 };
+
+}  // namespace render
 
 }  // namespace gfx
 
