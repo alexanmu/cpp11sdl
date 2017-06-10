@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19314B5E1EEC384400A46376 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E571EDC89590022BB5B /* SDL2_image.framework */; };
-		19314B5F1EEC384400A46376 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E581EDC89590022BB5B /* SDL2_ttf.framework */; };
-		19314B601EEC384400A46376 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
 		19314B611EEC396100A46376 /* Playground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19314B5B1EEC37EA00A46376 /* Playground.cpp */; };
 		194648971EEC2BFB00299B55 /* GfxLogOutputFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194648951EEC2BFB00299B55 /* GfxLogOutputFunction.cpp */; };
 		194648981EEC2C6E00299B55 /* GfxLogOutputFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194648951EEC2BFB00299B55 /* GfxLogOutputFunction.cpp */; };
@@ -145,6 +142,10 @@
 		19A871391EEBC69D00A8C84C /* GfxTextureAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A8712F1EEBC69D00A8C84C /* GfxTextureAccess.cpp */; };
 		19A8713A1EEBC69D00A8C84C /* GfxTextureFormats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A871311EEBC69D00A8C84C /* GfxTextureFormats.cpp */; };
 		19A8713B1EEBC69D00A8C84C /* GfxTextureModulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A871331EEBC69D00A8C84C /* GfxTextureModulate.cpp */; };
+		19BEDAF21EEC41D200E81F42 /* play in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1946488B1EEC2B7400299B55 /* play */; };
+		19BEDAF31EEC41F000E81F42 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E571EDC89590022BB5B /* SDL2_image.framework */; };
+		19BEDAF41EEC41F000E81F42 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E581EDC89590022BB5B /* SDL2_ttf.framework */; };
+		19BEDAF51EEC41F000E81F42 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
 		19D5E7021EE56F38000E187B /* GfxMeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D5E6FE1EE56F38000E187B /* GfxMeta.cpp */; };
 		19D5E7031EE56F38000E187B /* GfxObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D5E7001EE56F38000E187B /* GfxObject.cpp */; };
 		791435521EDDD98200315A5C /* GfxArrayOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 791435461EDDD98200315A5C /* GfxArrayOrder.cpp */; };
@@ -230,12 +231,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		194648891EEC2B7400299B55 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = ../../../../../../bin;
+			dstSubfolderSpec = 16;
 			files = (
+				19BEDAF21EEC41D200E81F42 /* play in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		791EAD9C1EDCB9BE0032ED1D /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -490,9 +492,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19314B5E1EEC384400A46376 /* SDL2_image.framework in Frameworks */,
-				19314B5F1EEC384400A46376 /* SDL2_ttf.framework in Frameworks */,
-				19314B601EEC384400A46376 /* SDL2.framework in Frameworks */,
+				19BEDAF31EEC41F000E81F42 /* SDL2_image.framework in Frameworks */,
+				19BEDAF41EEC41F000E81F42 /* SDL2_ttf.framework in Frameworks */,
+				19BEDAF51EEC41F000E81F42 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1322,6 +1324,10 @@
 		194648901EEC2B7400299B55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					../include,
 					../include/sdl2_ttf,
@@ -1336,6 +1342,10 @@
 		194648911EEC2B7400299B55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					../include,
 					../include/sdl2_ttf,

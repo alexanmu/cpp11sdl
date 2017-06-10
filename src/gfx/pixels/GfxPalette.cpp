@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
 #include <cassert>
 #include <cstdint>
 #include <string>
@@ -36,9 +37,16 @@ namespace pixels
 
 const char GfxPalette::ClassName[] = "GfxPalette";
 
-GfxPalette::GfxPalette() noexcept : GfxObject(ClassName)
+GfxPalette::GfxPalette() throw(std::runtime_error) : GfxObject(ClassName)
 {
-    pal_ = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
+    SdlTypePtr palptr;
+
+    palptr = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
+    if (palptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create palette");
+    }
+    pal_ = palptr;
     for (uint32_t i = 0; i < kDefaultPaletteSize; i++)
     {
         SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen, \
@@ -46,13 +54,21 @@ GfxPalette::GfxPalette() noexcept : GfxObject(ClassName)
     }
 };
 
-GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) noexcept : GfxObject(ClassName)
+GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    assert(colors.size() > 0);
+
     uint32_t colorIndex;
     uint16_t nColors;
+    SdlTypePtr palptr;
 
     nColors = colors.size();
-    pal_ = sdl2::SDL_AllocPalette(nColors);
+    palptr = sdl2::SDL_AllocPalette(nColors);
+    if (palptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create palette");
+    }
+    pal_ = palptr;
     colorIndex = 0;
     for (GfxColor clr : colors)
     {
@@ -63,12 +79,18 @@ GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) noexcept : GfxObject
     }
 }
 
-GfxPalette::GfxPalette(const uint16_t nColors) noexcept : GfxObject(ClassName)
+GfxPalette::GfxPalette(const uint16_t nColors) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(nColors > 0);
 
-    pal_ = sdl2::SDL_AllocPalette(nColors);
+    SdlTypePtr palptr;
 
+    palptr = sdl2::SDL_AllocPalette(nColors);
+    if (palptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create palette");
+    }
+    pal_ = palptr;
     for (uint32_t i = 0; i < nColors; i++)
     {
         SDL_SetPaletteColors(pal_, GfxColor(kDefaultPaletteColorRed, kDefaultPaletteColorGreen, \
@@ -76,19 +98,26 @@ GfxPalette::GfxPalette(const uint16_t nColors) noexcept : GfxObject(ClassName)
     }
 }
 
+GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error)
+{
+    assert(pal != nullptr);
+
+    SdlTypePtr palptr;
+
+    palptr = sdl2::SDL_AllocPalette(pal->ncolors);
+    if (palptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create palette");
+    }
+    SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
+    pal_ = palptr;
+}
+
 GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxObject(ClassName)
 {
     pal_ = other.pal_;
     // Delete other's data
     other.pal_ = nullptr;
-}
-
-GfxPalette::GfxPalette(const SdlTypePtr pal) noexcept
-{
-    assert(pal != nullptr);
-
-    pal_ = sdl2::SDL_AllocPalette(pal->ncolors);
-    SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
 }
 
 GfxPalette& GfxPalette::operator=(GfxPalette&& other) noexcept

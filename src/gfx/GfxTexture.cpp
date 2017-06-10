@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
 #include <cassert>
 #include <cstdint>
 #include <string>
@@ -37,7 +38,7 @@ namespace render
 const char GfxTexture::ClassName[] = "GfxTexture";
 
 GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, const GfxTextureAccess& acc,
-            const int32_t w, const int32_t h) : GfxObject(ClassName)
+            const int32_t w, const int32_t h) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
     assert(format);
@@ -46,32 +47,51 @@ GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& forma
     assert(h >= 0);
 
     GfxRenderer * rendptr;
+    SdlTypePtr texptr;
 
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    tex_ = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
-                                   format.getAsSdlType(),
-                                   acc.getAsSdlType(),
-                                   w, h);
+    texptr = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
+                                     format.getAsSdlType(),
+                                     acc.getAsSdlType(),
+                                     w, h);
+    if (texptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create texture");
+    }
+    tex_ = texptr;
 }
 
-GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) : GfxObject(ClassName)
+GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
     assert(surf);
 
     GfxRenderer * rendptr;
+    SdlTypePtr texptr;
 
     rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    tex_ = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    texptr = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    if (texptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create texture");
+    }
+    tex_ = texptr;
 }
 
-GfxTexture::~GfxTexture()
+GfxTexture::~GfxTexture() noexcept
 {
     if (tex_ != nullptr)
     {
-        sdl2::SDL_DestroyTexture(tex_);
+        try
+        {
+            sdl2::SDL_DestroyTexture(tex_);
+        }
+        catch (...)
+        {
+            throw std::runtime_error("std::terminate call will follow!");
+        }
     }
 }
 

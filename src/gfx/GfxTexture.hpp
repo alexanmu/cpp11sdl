@@ -24,6 +24,7 @@
 #ifndef GfxTexture_hpp
 #define GfxTexture_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 
@@ -51,10 +52,10 @@ public:
     GfxTexture() = delete;
 
     explicit GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, const GfxTextureAccess& acc,
-                        const int32_t w, const int32_t h);
-    explicit GfxTexture(GfxObject * rend, surface::GfxSurface const& surf);
+                        const int32_t w, const int32_t h) throw(std::runtime_error);
+    explicit GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error);
 
-    virtual ~GfxTexture();
+    virtual ~GfxTexture() noexcept;
 
     GfxTexture(const GfxTexture&) = delete;
     GfxTexture(GfxTexture&& tex);

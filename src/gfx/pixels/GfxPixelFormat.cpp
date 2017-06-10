@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
 #include <cassert>
 #include <cstdint>
 #include <string>
@@ -40,25 +41,25 @@ GfxPixelFormat::GfxPixelFormat() noexcept : GfxObject(ClassName)
     clear();
 };
 
-GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) noexcept : GfxObject(ClassName)
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(format);
 
     pix_ = sdl2::SDL_AllocFormat(format.getAsSdlType());
     if (pix_ == nullptr)
     {
-        // Error handling here
+        throw std::runtime_error("Unable to create pixel format");
     }
 }
 
-GfxPixelFormat::GfxPixelFormat(const uint32_t format) noexcept : GfxObject(ClassName)
+GfxPixelFormat::GfxPixelFormat(const uint32_t format) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(format);
 
     pix_ = sdl2::SDL_AllocFormat(format);
     if (pix_ == nullptr)
     {
-        // Error handling here
+        throw std::runtime_error("Unable to create pixel format");
     }
 }
 

@@ -24,6 +24,7 @@
 #ifndef GfxPixelFormat_hpp
 #define GfxPixelFormat_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 
@@ -56,8 +57,8 @@ public:
     static const int32_t kGfxAlphaTransparent = 0;
 
     GfxPixelFormat() noexcept;
-    explicit GfxPixelFormat(GfxPixelFormatEnum const& format) noexcept;
-    explicit GfxPixelFormat(const uint32_t format) noexcept;
+    explicit GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    explicit GfxPixelFormat(const uint32_t format) throw(std::runtime_error);
 
     /* No copy-ctor */
     GfxPixelFormat(const GfxPixelFormat& other) = delete;

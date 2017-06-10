@@ -24,6 +24,8 @@
 #ifndef GfxRenderer_hpp
 #define GfxRenderer_hpp
 
+#include <stdexcept>
+#include <cstdint>
 #include <string>
 
 #include "GfxObject.hpp"
@@ -51,8 +53,8 @@ public:
 
     static const char ClassName[];
 
-    explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) noexcept;
-    explicit GfxRenderer(surface::GfxSurface const& surf) noexcept;
+    explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) throw(std::runtime_error);
+    explicit GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error);
 
     GfxRenderer() = delete;
     GfxRenderer(const GfxRenderer&) = delete;

@@ -24,6 +24,7 @@
 #ifndef GfxWindow_hpp
 #define GfxWindow_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -56,10 +57,10 @@ public:
 
     static const char ClassName[];
 
-    GfxWindow(const std::string& title, const int32_t width, const int32_t height) noexcept;
+    GfxWindow(const std::string& title, const int32_t width, const int32_t height) throw(std::runtime_error);
     GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
-                const int32_t width, const int32_t height, const GfxWindowFlags& flags) noexcept;
-    explicit GfxWindow(void * data) noexcept;
+                const int32_t width, const int32_t height, const GfxWindowFlags& flags) throw(std::runtime_error);
+    explicit GfxWindow(void * data) throw(std::runtime_error);
 
     GfxWindow() = delete;
     GfxWindow(const GfxWindow&) = delete;

@@ -24,6 +24,7 @@
 #ifndef GfxPalette_hpp
 #define GfxPalette_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -46,10 +47,10 @@ public:
 
     static const char ClassName[];
 
-    GfxPalette() noexcept;
-    explicit GfxPalette(const uint16_t nColors) noexcept;
-    explicit GfxPalette(const SdlTypePtr pal) noexcept;
-    explicit GfxPalette(std::vector<GfxColor> const& colors) noexcept;
+    GfxPalette() throw(std::runtime_error);
+    explicit GfxPalette(const uint16_t nColors) throw(std::runtime_error);
+    explicit GfxPalette(const SdlTypePtr pal) throw(std::runtime_error);
+    explicit GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error);
 
     // No copy-ctor
     GfxPalette(const GfxPalette& other) = delete;

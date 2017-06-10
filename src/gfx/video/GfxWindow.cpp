@@ -69,8 +69,8 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
 
 }  // namespace prv
 
-GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height) noexcept :
-        GfxObject(ClassName)
+GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height)
+    throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(title.length() > 0);
     assert(width >= 0);
@@ -81,13 +81,13 @@ GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_
     tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
     if (tmpwinptr == nullptr)
     {
-        // error handling here
+        throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
 }
 
 GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
-                     const int32_t width, const int32_t height, const GfxWindowFlags& flags) noexcept :
+                     const int32_t width, const int32_t height, const GfxWindowFlags& flags) throw(std::runtime_error) :
         GfxObject(ClassName)
 {
     assert(title.length() > 0);
@@ -103,12 +103,12 @@ GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
-        // error handling here
+        throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
 }
 
-GfxWindow::GfxWindow(void * data) noexcept : GfxObject(ClassName)
+GfxWindow::GfxWindow(void * data) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(data != nullptr);
 
@@ -117,7 +117,7 @@ GfxWindow::GfxWindow(void * data) noexcept : GfxObject(ClassName)
     tmpwinptr = sdl2::SDL_CreateWindowFrom(data);
     if (tmpwinptr == nullptr)
     {
-        // error handling here
+        throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
 }

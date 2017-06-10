@@ -21,6 +21,7 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
 #include <cassert>
 #include <string>
 
@@ -34,8 +35,8 @@ namespace render
 
 const char GfxRenderer::ClassName[] = "GfxRenderer";
 
-GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) noexcept :
-            GfxObject(ClassName)
+GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags)
+    throw (std::runtime_error) : GfxObject(ClassName)
 {
     assert(win);
     assert(flags);
@@ -45,12 +46,12 @@ GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& fl
     renderertmp = sdl2::SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
     if (renderertmp == nullptr)
     {
-        // error handling here
+        throw std::runtime_error("Unable to create renderer");
     }
     renderer_ = renderertmp;
 }
 
-GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) noexcept : GfxObject(ClassName)
+GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(surf);
 
@@ -59,7 +60,7 @@ GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) noexcept : GfxObject(C
     renderertmp = sdl2::SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
     if (renderertmp == nullptr)
     {
-        // error handling here
+        throw std::runtime_error("Unable to create renderer");
     }
     renderer_ = renderertmp;
 }
@@ -68,7 +69,14 @@ GfxRenderer::~GfxRenderer() noexcept
 {
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_DestroyRenderer(renderer_);
+        try
+        {
+            sdl2::SDL_DestroyRenderer(renderer_);
+        }
+        catch (...)
+        {
+            throw std::runtime_error("std::terminate call will follow!");
+        }
     }
 }
 
