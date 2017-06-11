@@ -139,16 +139,9 @@ GfxPalette::~GfxPalette() noexcept
 {
     if (pal_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_FreePalette(pal_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
-        pal_ = nullptr;
+        sdl2::SDL_FreePalette(pal_);
     }
+    pal_ = nullptr;
 }
 
 GfxPalette::operator bool() const noexcept

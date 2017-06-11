@@ -69,15 +69,9 @@ GfxRenderer::~GfxRenderer() noexcept
 {
     if (renderer_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_DestroyRenderer(renderer_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
+        sdl2::SDL_DestroyRenderer(renderer_);
     }
+    renderer_ = nullptr;
 }
 
 GfxRenderer::operator bool() const noexcept

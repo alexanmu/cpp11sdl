@@ -126,16 +126,9 @@ GfxWindow::~GfxWindow() noexcept
 {
     if (window_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_DestroyWindow(window_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
-        window_ = nullptr;
+        sdl2::SDL_DestroyWindow(window_);
     }
+    window_ = nullptr;
 }
 
 void GfxWindow::destroyWindow() noexcept

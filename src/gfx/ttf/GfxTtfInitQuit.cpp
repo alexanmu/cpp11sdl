@@ -38,14 +38,7 @@ GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxObject(ClassName)
 
 GfxTtfInitQuit::~GfxTtfInitQuit(void) noexcept
 {
-    try
-    {
-        sdl2::TTF_Quit();
-    }
-    catch (...)
-    {
-        throw std::runtime_error("std::terminate call will follow!");
-    }
+    sdl2::TTF_Quit();
 }
 
 GfxTtfInitQuit::operator bool() const noexcept

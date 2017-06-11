@@ -186,16 +186,9 @@ GfxSurface::~GfxSurface() noexcept
 {
     if (surf_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_FreeSurface(surf_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
-        surf_ = nullptr;
+        sdl2::SDL_FreeSurface(surf_);
     }
+    surf_ = nullptr;
 }
 
 GfxSurface::operator bool() const noexcept

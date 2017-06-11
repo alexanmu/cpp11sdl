@@ -56,16 +56,9 @@ GfxLoadSo::~GfxLoadSo() noexcept
 {
     if (handle_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_UnloadObject(handle_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
-        handle_ = nullptr;
+        sdl2::SDL_UnloadObject(handle_);
     }
+    handle_ = nullptr;
 }
 
 GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other) noexcept

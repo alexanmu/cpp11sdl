@@ -118,16 +118,9 @@ GfxTtfFont::~GfxTtfFont(void) noexcept
 {
     if (ttf_ != nullptr)
     {
-        try
-        {
-            sdl2::TTF_CloseFont(ttf_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
-        ttf_ = nullptr;
+        sdl2::TTF_CloseFont(ttf_);
     }
+    ttf_ = nullptr;
 }
 
 GfxTtfFont::operator bool() const noexcept

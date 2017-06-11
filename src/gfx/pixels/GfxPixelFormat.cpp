@@ -93,16 +93,9 @@ GfxPixelFormat::~GfxPixelFormat() noexcept
 {
     if (pix_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_FreeFormat(pix_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
-        pix_ = nullptr;
+        sdl2::SDL_FreeFormat(pix_);
     }
+    pix_ = nullptr;
 }
 
 GfxPixelFormat::operator bool() const noexcept

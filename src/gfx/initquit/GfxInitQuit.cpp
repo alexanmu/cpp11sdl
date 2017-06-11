@@ -45,14 +45,7 @@ GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
 
 GfxInitQuit::~GfxInitQuit() noexcept
 {
-    try
-    {
-        sdl2::SDL_Quit();
-    }
-    catch (...)
-    {
-        throw std::runtime_error("std::terminate call will follow!");
-    }
+    sdl2::SDL_Quit();
 }
 
 GfxInitQuit::operator bool() const noexcept

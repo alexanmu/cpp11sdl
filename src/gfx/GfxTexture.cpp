@@ -84,15 +84,9 @@ GfxTexture::~GfxTexture() noexcept
 {
     if (tex_ != nullptr)
     {
-        try
-        {
-            sdl2::SDL_DestroyTexture(tex_);
-        }
-        catch (...)
-        {
-            throw std::runtime_error("std::terminate call will follow!");
-        }
+        sdl2::SDL_DestroyTexture(tex_);
     }
+    tex_ = nullptr;
 }
 
 GfxTexture::GfxTexture(GfxTexture&& tex)
