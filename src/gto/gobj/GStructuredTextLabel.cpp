@@ -72,7 +72,7 @@ GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent*
 
 void GStructuredTextLabel::draw(void) throw(std::runtime_error)
 {
-    std::string actregexp;
+    std::string actregexp = "";
 
     if (stTextType_ == GStructuredTextType::customRegex)
     {
@@ -82,7 +82,14 @@ void GStructuredTextLabel::draw(void) throw(std::runtime_error)
     {
         actregexp = exprMapObject.at(stTextType_);
     }
-    if (evalRegExp(actregexp) == false)
+    if (actregexp.length() > 0)
+    {
+        if (evalRegExp(actregexp, GLabel::getText()) == false)
+        {
+            GLabel::setText("regExp failed!");
+        }
+    }
+    else
     {
         GLabel::setText("regExp failed!");
     }
@@ -90,16 +97,17 @@ void GStructuredTextLabel::draw(void) throw(std::runtime_error)
     GLabel::draw();
 }
 
-bool GStructuredTextLabel::evalRegExp(std::string const& actregexp)
+bool GStructuredTextLabel::evalRegExp(std::string const& actregexp, std::string const& text)
 {
     assert(actregexp.length() > 0);
+    assert(text.length() > 0);
 
     bool result;
 
     try
     {
         std::regex self_regex = std::regex(actregexp, std::regex_constants::ECMAScript);
-        result = std::regex_search(GLabel::getText(), self_regex);
+        result = std::regex_search(text, self_regex);
     }
     catch (std::regex_error)
     {

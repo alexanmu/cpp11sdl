@@ -78,9 +78,9 @@ public:
     GfxBool rectEmpty(void) const noexcept;
     GfxBool rectEquals(GfxRect const& r) const noexcept;
     GfxBool hasIntersection(GfxRect const& r) const noexcept;
-    GfxBool intersectRect(GfxRect const &r, GfxRect * result) const noexcept;
-    void unionRect(GfxRect const &r, GfxRect * result) const noexcept;
-    GfxBool enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const noexcept;
+    GfxBool intersectRect(GfxRect const &r, GfxRect ** result) const noexcept;
+    void unionRect(GfxRect const &r, GfxRect ** result) const noexcept;
+    GfxBool enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** result) const noexcept;
     GfxBool intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept;
 
     void clear(void) noexcept;

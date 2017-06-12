@@ -66,7 +66,7 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    void queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAccess * acc, int * w, int * h) const noexcept;
+    void queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int * w, int * h) const noexcept;
     /* Todo */void setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
     /* Todo */void getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
     /* Todo */void setTextureAlphaMod(const uint8_t a) const noexcept;

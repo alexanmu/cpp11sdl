@@ -57,7 +57,7 @@ public:
 
     virtual void draw(void) throw(std::runtime_error);
 private:
-    bool evalRegExp(std::string const& actregexp);
+    bool evalRegExp(std::string const& actregexp, std::string const& text);
     void setColorScheme(void);
 
     GStructuredTextType stTextType_;

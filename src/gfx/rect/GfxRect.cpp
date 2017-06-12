@@ -194,7 +194,7 @@ GfxBool GfxRect::hasIntersection(GfxRect const& r) const noexcept
     return GfxBool(res);
 }
 
-GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect * result) const noexcept
+GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect ** result) const noexcept
 {
     assert(r);
     assert(result == nullptr);
@@ -203,21 +203,21 @@ GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect * result) const noexcep
     GfxRect::SdlType rt;
 
     res = sdl2::SDL_IntersectRect(r.getAsSdlTypePtr(), &rect_, &rt);
-    result = new GfxRect(rt);
+    *result = new GfxRect(rt);
     return GfxBool(res);
 }
 
-void GfxRect::unionRect(GfxRect const &r, GfxRect * result) const noexcept
+void GfxRect::unionRect(GfxRect const &r, GfxRect ** result) const noexcept
 {
     assert(r);
     assert(result == nullptr);
 
     GfxRect::SdlType rt;
     sdl2::SDL_UnionRect(r.getAsSdlTypePtr(), &rect_, &rt);
-    result = new GfxRect(rt);
+    *result = new GfxRect(rt);
 }
 
-GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect * result) const noexcept
+GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** result) const noexcept
 {
     assert(points.size() > 0);
     assert(result == nullptr);
@@ -236,7 +236,7 @@ GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect * res
         index += 1;
     }
     res = sdl2::SDL_EnclosePoints(&ptarr[0], ptcount, &rect_, &rt);
-    result = new GfxRect(rt);
+    *result = new GfxRect(rt);
     return GfxBool(res);
 }
 

@@ -117,7 +117,7 @@ GfxTexture::operator bool() const noexcept
     return (tex_ != nullptr);
 }
 
-void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAccess * acc, int * w,
+void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int * w,
                                 int * h) const noexcept
 {
     assert(format != nullptr);
@@ -131,8 +131,8 @@ void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAcc
     if (tex_ != nullptr)
     {
         sdl2::SDL_QueryTexture(tex_, &sdlfmt, &u32sdlacc, w, h);
-        format = new pixels::GfxPixelFormatEnum(sdlfmt);
-        acc = new GfxTextureAccess(u32sdlacc);
+        *format = new pixels::GfxPixelFormatEnum(sdlfmt);
+        *acc = new GfxTextureAccess(u32sdlacc);
     }
 }
 
