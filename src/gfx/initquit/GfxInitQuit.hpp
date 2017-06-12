@@ -41,6 +41,7 @@ class GfxInitQuit final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     // No default constructor
     GfxInitQuit() = delete;

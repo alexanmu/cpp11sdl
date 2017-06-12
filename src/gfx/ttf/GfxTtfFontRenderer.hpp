@@ -43,6 +43,7 @@ class GfxTtfFontRenderer final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     GfxTtfFontRenderer() = delete;
     explicit GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_error);

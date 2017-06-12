@@ -454,11 +454,6 @@ GfxWindowFlags::SdlType GfxWindowFlags::getAsSdlType(void) const noexcept
     return flags_;
 }
 
-GfxWindowFlags::SdlTypePtr GfxWindowFlags::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flags_;
-}
-
 }  // namespace video
 
 }  // namespace gfx

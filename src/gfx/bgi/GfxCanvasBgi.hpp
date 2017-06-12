@@ -42,6 +42,7 @@ class GfxCanvasBgi : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     static const int32_t kMaxColors = 15;
 

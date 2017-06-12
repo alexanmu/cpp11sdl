@@ -177,11 +177,6 @@ GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const noexcept
     return eventid_;
 }
 
-GfxWindowEventID::SdlTypePtr GfxWindowEventID::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&eventid_;
-}
-
 }  // namespace video
 
 }  // namespace gfx

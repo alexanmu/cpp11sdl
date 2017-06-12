@@ -48,10 +48,11 @@ public:
     typedef sdl2::SDL_Texture* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     GfxTexture() = delete;
 
-    explicit GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, const GfxTextureAccess& acc,
+    explicit GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
                         const int32_t w, const int32_t h) throw(std::runtime_error);
     explicit GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error);
 
@@ -66,14 +67,23 @@ public:
     virtual explicit operator bool() const noexcept;
 
     void queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAccess * acc, int * w, int * h) const noexcept;
+    /* Todo */void setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
+    /* Todo */void getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
+    /* Todo */void setTextureAlphaMod(const uint8_t a) const noexcept;
+    /* Todo */void getTextureAlphaMod(uint8_t * a) const noexcept;
+    void setBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
+    void setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode) const noexcept;
+    blendmode::GfxBlendMode getBlendMode(void) const noexcept;
+    /* Todo */void updateTexture(rect::GfxRect const& rect, const void * pixels, const int pitch) const noexcept;
+    /* Todo */void updateYUVTexture(rect::GfxRect const& rect, const uint8_t * Yplane, const int Ypitch,
+                            const uint8_t * Uplane, const int Upitch,
+                            const uint8_t * Vplane, const int Vpitch) const noexcept;
+    /* Todo */void lockTexture(rect::GfxRect const& rect, void ** pixels, int * pitch) const noexcept;
+    /* Todo */void lockTexture(void ** pixels, int * pitch) const noexcept;
+    /* Todo */void unlockTexture(void) const noexcept;
+    void destroyTexture(void) noexcept;
 
-    void destroyTexture(void);
-
-    void setBlendMode(const blendmode::GfxBlendMode& blendmode);
-    void setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode);
-    blendmode::GfxBlendMode getBlendMode(void);
-
-    SdlTypePtr getAsSdlTypePtr(void) const;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     GfxObject * rend_;
     SdlTypePtr tex_;

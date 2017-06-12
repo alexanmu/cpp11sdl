@@ -40,6 +40,7 @@ protected:
     void _doCallback(void);
     void _doComponent(void);
     void _doFSO(void);
+    void _doRuntimeMeta(void);
     void _doMeta(void);
     void _doLog(void);
 private:
@@ -59,8 +60,6 @@ private:
     void printSdlPalette(void * palptr, bool const printclrs);
     void printSdlPixFormat(void * pixptr);
     template <typename T> std::string IntToHexStr(T value);
-
-    void RuntimeMeta(void);
 };
 
 #endif /* Playground_hpp */

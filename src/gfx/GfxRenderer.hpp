@@ -27,6 +27,7 @@
 #include <stdexcept>
 #include <cstdint>
 #include <string>
+#include <vector>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -39,6 +40,7 @@
 #include "GfxRendererInfo.hpp"
 #include "GfxRendererFlags.hpp"
 #include "GfxSurface.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 namespace gfx
 {
@@ -52,6 +54,7 @@ public:
     typedef sdl2::SDL_Renderer* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) throw(std::runtime_error);
     explicit GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error);
@@ -67,34 +70,46 @@ public:
     virtual explicit operator bool() const noexcept;
 
     SdlTypePtr getRenderer(video::GfxWindow const &win) const noexcept;
-    GfxRendererInfo * getRendererInfo() const noexcept;
+    GfxRendererInfo * getRendererInfo(void) const noexcept;
     void getRendererOutputSize(int32_t * w, int32_t * h) const noexcept;
+    /* Todo */void setRenderTarget(GfxTexture const& tex) const noexcept;
+    /* Todo */GfxTexture::SdlTypePtr getRenderTarget(void) const noexcept;
+    /* Todo */void renderSetLogicalsSize(const int32_t w, const int32_t h) const noexcept;
+    /* Todo */void renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept;
+    /* Todo */void renderSetIntegerScale(GfxBool const& enable) const noexcept;
+    /* Todo */GfxBool renderGetIntegerScale(void) const noexcept;
+    /* Todo */void renderSetViewport(rect::GfxRect const& rect) const noexcept;
+    /* Todo */rect::GfxRect renderGetViewport(void) const noexcept;
+    /* Todo */void renderSetClipRect(rect::GfxRect const& rect) const noexcept;
+    /* Todo */rect::GfxRect renderGetClipRect(void) const noexcept;
+    /* Todo */GfxBool renderIsClipEnabled(void) const noexcept;
+    /* Todo */void renderSetScale(const float scaleX, const float scaleY) const noexcept;
+    /* Todo */void renderGetScale(float * scaleX, float * scaleY) const noexcept;
+    /* Todo */void renderSetDrawColor(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
+    /* Todo */void renderGetDrawColor(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
+    /* Todo */void setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
+    void renderClear(void) const noexcept;
+    /* Todo */void renderDrawPoint(const int32_t x, const int32_t y) const noexcept;
+    /* Todo */void renderDrawPoints(std::vector<rect::GfxPoint> const& points) const noexcept;
+    /* Todo */void renderDrawLine(const int32_t x1, const int32_t y1, const int32_t x2,
+                                    const int32_t y2) const noexcept;
+    /* Todo */void renderDrawLines(std::vector<rect::GfxPoint> const& points) const noexcept;
+    /* Todo */void renderDrawRect(rect::GfxRect const& rect) const noexcept;
+    /* Todo */void renderDrawRects(std::vector<rect::GfxRect> const& rects) const noexcept;
+    /* Todo */void renderFillRect(rect::GfxRect const& rect) const noexcept;
+    /* Todo */void renderFillRects(std::vector<rect::GfxRect> const& rects) const noexcept;
+    void renderCopy(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest) const noexcept;
+    void renderCopy(GfxTexture const& tex) const noexcept;
+    void renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest,
+                    const double angle, rect::GfxPoint const& pt, GfxRendererFlip const& flip) const noexcept;
+    void renderCopyEx(GfxTexture const& tex, const double angle, rect::GfxPoint const& pt,
+                        GfxRendererFlip const& flip) const noexcept;
+    /* Todo */void renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFormatEnum const& format,
+                    void * pixels, const int32_t pitch) const noexcept;
+    void renderPresent(void) const noexcept;
+    void destroyRenderer(void) noexcept;
 
-    void destroyRenderer(void);
-    void renderClear(void);
-
-    void renderCopy(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest);
-    void renderCopy(const GfxTexture& tex);
-
-    void renderCopyEx(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest,
-                        const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip);
-    void renderCopyEx(const GfxTexture& tex, const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip);
-
-    void renderPresent(void);
-
-    /*struct SDL_RendererInfo
-    SDL_TextureAccess
-    SDL_TextureModulate
-    SDL_LockTexture(…)
-    SDL_UnlockTexture(…)
-    SDL_Set{/Get}RenderDraw{/Blend}Color(…)
-    SDL_RenderDrawPoint{/s}(…)
-    SDL_RenderDrawLine{/s}(…)
-    SDL_RenderDrawRect{/s}(…)
-    SDL_RenderFillRect{/s}(…)
-    SDL_RenderReadPixels(…)*/
-
-    SdlTypePtr getAsSdlTypePtr() const;
+    SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
     SdlTypePtr renderer_;
 };

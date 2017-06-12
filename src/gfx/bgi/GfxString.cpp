@@ -38,7 +38,7 @@ GfxString::GfxString() noexcept : GfxObject(ClassName), value_("")
     // Nothing to do
 }
 
-GfxString::GfxString(GfxValueType const& value) noexcept : GfxObject(ClassName), value_(value)
+GfxString::GfxString(ValueType const& value) noexcept : GfxObject(ClassName), value_(value)
 {
     // Nothing to do
 }
@@ -95,12 +95,12 @@ GfxString::operator bool() const noexcept
     return true;
 }
 
-GfxString::GfxValueType GfxString::getValue() const noexcept
+GfxString::ValueType GfxString::getValue() const noexcept
 {
     return value_;
 }
 
-void GfxString::setValue(GfxValueType const& value) noexcept
+void GfxString::setValue(ValueType const& value) noexcept
 {
     value_ = value;
 }

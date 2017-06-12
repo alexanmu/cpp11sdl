@@ -41,9 +41,9 @@ class GfxWindowFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_WindowFlags SdlType;
-    typedef sdl2::SDL_WindowFlags* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : uint32_t
     {
@@ -153,7 +153,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flags_;
 };

@@ -40,6 +40,7 @@ class GfxPowerInfo final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxPowerInfo() noexcept;
 

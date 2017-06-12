@@ -38,6 +38,7 @@ class GfxLoadSo final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     GfxLoadSo() = delete;
 

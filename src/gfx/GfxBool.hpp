@@ -36,6 +36,7 @@ public:
     typedef sdl2::SDL_bool SdlType;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : bool
     {

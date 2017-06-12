@@ -44,6 +44,7 @@ class GfxVideo final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     GfxVideo() noexcept;
 

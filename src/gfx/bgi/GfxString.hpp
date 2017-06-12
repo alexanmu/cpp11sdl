@@ -37,13 +37,14 @@ namespace bgi
 class GfxString final : public GfxObject
 {
 public:
-    typedef std::string GfxValueType;
+    typedef std::string ValueType;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxString() noexcept;
 
-    explicit GfxString(GfxValueType const& value) noexcept;
+    explicit GfxString(ValueType const& value) noexcept;
 
     GfxString(GfxString const& other) noexcept;
     GfxString(GfxString&& other) noexcept;
@@ -57,10 +58,10 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    GfxValueType getValue() const noexcept;
-    void setValue(GfxValueType const& value) noexcept;
+    ValueType getValue() const noexcept;
+    void setValue(ValueType const& value) noexcept;
 private:
-    GfxValueType value_;
+    ValueType value_;
 };
 
 }  // namespace bgi

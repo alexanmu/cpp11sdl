@@ -45,6 +45,7 @@ public:
     typedef sdl2::TTF_Font* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     GfxTtfFont() noexcept;
     GfxTtfFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error);

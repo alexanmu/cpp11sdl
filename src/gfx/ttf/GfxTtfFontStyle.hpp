@@ -40,6 +40,7 @@ public:
     typedef int32_t* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class GfxTtfFontStyleValues : int32_t
     {

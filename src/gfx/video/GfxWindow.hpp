@@ -50,12 +50,12 @@ namespace video
 class GfxWindow final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Window SdlType;
     typedef sdl2::SDL_Window* SdlTypePtr;
 
     typedef uint32_t fullscreenflags_t;
 
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     GfxWindow(const std::string& title, const int32_t width, const int32_t height) throw(std::runtime_error);
     GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,

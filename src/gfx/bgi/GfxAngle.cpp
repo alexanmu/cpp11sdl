@@ -38,7 +38,7 @@ GfxAngle::GfxAngle() noexcept : GfxObject(ClassName), value_(0)
     // Nothing to do
 }
 
-GfxAngle::GfxAngle(const GfxValueType value) noexcept : GfxObject(ClassName), value_(value)
+GfxAngle::GfxAngle(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
     value_ = value_ % 360;
 }
@@ -95,12 +95,12 @@ GfxAngle::operator bool() const noexcept
     return true;
 }
 
-GfxAngle::GfxValueType GfxAngle::getValue() const noexcept
+GfxAngle::ValueType GfxAngle::getValue() const noexcept
 {
     return value_;
 }
 
-void GfxAngle::setValue(const GfxValueType& value) noexcept
+void GfxAngle::setValue(const ValueType& value) noexcept
 {
     value_ = value;
 }

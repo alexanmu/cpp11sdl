@@ -52,6 +52,7 @@ public:
     typedef sdl2::SDL_PixelFormat* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     static const int32_t kGfxAlphaOpaque = 255;
     static const int32_t kGfxAlphaTransparent = 0;

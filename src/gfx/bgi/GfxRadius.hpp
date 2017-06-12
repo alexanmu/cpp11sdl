@@ -38,13 +38,14 @@ namespace bgi
 class GfxRadius final : public GfxObject
 {
 public:
-    typedef int32_t GfxValueType;
+    typedef int32_t ValueType;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxRadius() noexcept;
 
-    explicit GfxRadius(const GfxValueType value) noexcept;
+    explicit GfxRadius(const ValueType value) noexcept;
 
     GfxRadius(GfxRadius const& other) noexcept;
     GfxRadius(GfxRadius&& other) noexcept;
@@ -58,10 +59,10 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    GfxValueType getValue() const noexcept;
-    void setValue(const GfxValueType value) noexcept;
+    ValueType getValue() const noexcept;
+    void setValue(const ValueType value) noexcept;
 private:
-    GfxValueType value_;
+    ValueType value_;
 };
 
 }  // namespace bgi

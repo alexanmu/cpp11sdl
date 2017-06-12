@@ -38,13 +38,14 @@ namespace bgi
 class GfxAngle final : public GfxObject
 {
 public:
-    typedef int32_t GfxValueType;
+    typedef int32_t ValueType;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxAngle() noexcept;
 
-    explicit GfxAngle(const GfxValueType value) noexcept;
+    explicit GfxAngle(const ValueType value) noexcept;
 
     GfxAngle(GfxAngle const& other) noexcept;
     GfxAngle(GfxAngle&& other) noexcept;
@@ -58,10 +59,10 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    GfxValueType getValue() const noexcept;
-    void setValue(const GfxValueType& angle) noexcept;
+    ValueType getValue() const noexcept;
+    void setValue(const ValueType& angle) noexcept;
 private:
-    GfxValueType value_;
+    ValueType value_;
 };
 
 }  // namespace bgi

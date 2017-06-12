@@ -46,10 +46,11 @@ class GfxLog final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = true;
 
     static const int32_t maxLogMessage = 4096;
 
-    GfxLog() noexcept  /* __attribute__((deprecated("SDL log deprecated, use gfx::_gfx::GfxLogger"))) */;
+    GfxLog() noexcept;
 
     GfxLog(GfxLog const& other) = delete;
     GfxLog(GfxLog&& other) = delete;

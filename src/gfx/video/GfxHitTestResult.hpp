@@ -42,6 +42,7 @@ public:
     typedef sdl2::SDL_HitTestResult SdlType;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : int32_t
     {

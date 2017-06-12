@@ -43,6 +43,13 @@ public:
         int32_t size_;
         bool hasSdlType_;
         bool hasSdlTypePtr_;
+        bool isAbstract_;
+        bool isPolymorphic_;
+        bool isMoveConstructible_;
+        bool isMoveAssignable_;
+        bool isDerivedFromGfxObject_;
+        bool sdlResource_;
+        bool hasValueType_;
     };
 
     GfxMeta() noexcept;

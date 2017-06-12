@@ -43,6 +43,7 @@ public:
     typedef sdl2::SDL_DisplayMode* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxDisplayMode() noexcept;
 

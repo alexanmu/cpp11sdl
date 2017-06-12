@@ -38,7 +38,7 @@ GfxRadius::GfxRadius() noexcept : GfxObject(ClassName), value_(0)
     // Nothing to do
 }
 
-GfxRadius::GfxRadius(const GfxValueType value) noexcept : GfxObject(ClassName), value_(value)
+GfxRadius::GfxRadius(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
     // Nothing to do
 }
@@ -95,12 +95,12 @@ GfxRadius::operator bool() const noexcept
     return true;
 }
 
-GfxRadius::GfxValueType GfxRadius::getValue() const noexcept
+GfxRadius::ValueType GfxRadius::getValue() const noexcept
 {
     return value_;
 }
 
-void GfxRadius::setValue(const GfxValueType value) noexcept
+void GfxRadius::setValue(const ValueType value) noexcept
 {
     value_ = value;
 }

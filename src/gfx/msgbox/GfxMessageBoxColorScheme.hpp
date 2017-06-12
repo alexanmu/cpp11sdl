@@ -45,6 +45,7 @@ public:
     typedef sdl2::SDL_MessageBoxColorScheme* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     static constexpr int32_t colorsArraySize = static_cast<int32_t>(
                                             GfxMessageBoxColorType::ValueType::colorMax);

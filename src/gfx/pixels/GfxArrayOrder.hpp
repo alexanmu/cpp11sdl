@@ -41,6 +41,7 @@ public:
     typedef uint32_t SdlType;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : uint32_t
     {

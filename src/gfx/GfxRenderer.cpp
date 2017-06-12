@@ -79,7 +79,7 @@ GfxRenderer::operator bool() const noexcept
     return (renderer_ != nullptr);
 }
 
-GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const &win) const noexcept
+GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) const noexcept
 {
     assert(win);
 
@@ -111,7 +111,7 @@ void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
 }
 
 /******************************************** old ******************************************************/
-void GfxRenderer::destroyRenderer()
+void GfxRenderer::destroyRenderer() noexcept
 {
     if (renderer_ != nullptr)
     {
@@ -120,7 +120,7 @@ void GfxRenderer::destroyRenderer()
     }
 }
 
-void GfxRenderer::renderClear()
+void GfxRenderer::renderClear() const noexcept
 {
     if (renderer_ != nullptr)
     {
@@ -144,7 +144,7 @@ GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
     }
 }
 
-void GfxRenderer::renderCopy(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest)
+void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest) const noexcept
 {
     assert(tex);
     assert(src);
@@ -159,7 +159,7 @@ void GfxRenderer::renderCopy(const GfxTexture& tex, const rect::GfxRect& src, co
     }
 }
 
-void GfxRenderer::renderCopy(const GfxTexture& tex)
+void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
 {
     assert(tex);
 
@@ -169,8 +169,9 @@ void GfxRenderer::renderCopy(const GfxTexture& tex)
     }
 }
 
-void GfxRenderer::renderCopyEx(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest,
-                                const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip)
+void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest,
+                                const double angle, rect::GfxPoint const& pt, GfxRendererFlip const& flip)
+                                const noexcept
 {
     assert(tex);
     assert(src);
@@ -190,8 +191,8 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const rect::GfxRect& src, 
     }
 }
 
-void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const rect::GfxPoint& pt,
-                                const GfxRendererFlip& flip)
+void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::GfxPoint const& pt,
+                                GfxRendererFlip const& flip) const noexcept
 {
     assert(tex);
     assert(pt);
@@ -209,7 +210,7 @@ void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const 
     }
 }
 
-void GfxRenderer::renderPresent(void)
+void GfxRenderer::renderPresent(void) const noexcept
 {
     if (renderer_ != nullptr)
     {
@@ -217,7 +218,7 @@ void GfxRenderer::renderPresent(void)
     }
 }
 
-GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const
+GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const noexcept
 {
     return renderer_;
 }

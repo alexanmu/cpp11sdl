@@ -45,6 +45,7 @@ public:
     typedef sdl2::SDL_RendererInfo* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxRendererInfo() noexcept;
 

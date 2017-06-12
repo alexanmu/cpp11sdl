@@ -42,6 +42,7 @@ public:
     typedef uint16_t * SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxGammaRamp() noexcept;
     explicit GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept;

@@ -37,7 +37,7 @@ namespace render
 
 const char GfxTexture::ClassName[] = "GfxTexture";
 
-GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, const GfxTextureAccess& acc,
+GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
             const int32_t w, const int32_t h) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
@@ -136,7 +136,7 @@ void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum * format, GfxTextureAcc
     }
 }
 
-void GfxTexture::destroyTexture(void)
+void GfxTexture::destroyTexture(void) noexcept
 {
     if (tex_ != nullptr)
     {
@@ -145,7 +145,7 @@ void GfxTexture::destroyTexture(void)
     }
 }
 
-void GfxTexture::setBlendMode(const blendmode::GfxBlendMode& blendmode)
+void GfxTexture::setBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
 {
     assert(blendmode);
 
@@ -156,7 +156,7 @@ void GfxTexture::setBlendMode(const blendmode::GfxBlendMode& blendmode)
     sdl2::SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
 }
 
-void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode)
+void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode) const noexcept
 {
     if (tex_ == nullptr)
     {
@@ -165,7 +165,7 @@ void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode
     sdl2::SDL_SetTextureBlendMode(tex_, static_cast<blendmode::GfxBlendMode::SdlType>(blendmode));
 }
 
-blendmode::GfxBlendMode GfxTexture::getBlendMode(void)
+blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
 {
     blendmode::GfxBlendMode::SdlType bm;
 
@@ -178,7 +178,7 @@ blendmode::GfxBlendMode GfxTexture::getBlendMode(void)
     return blendmode::GfxBlendMode(bm);
 }
 
-GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const
+GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const noexcept
 {
     return tex_;
 }

@@ -43,6 +43,7 @@ public:
     typedef sdl2::SDL_BlendMode* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : int32_t
     {

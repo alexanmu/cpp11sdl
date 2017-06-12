@@ -763,7 +763,7 @@ void Playground::_doFSO(void)
 #include "GfxColor.hpp"
 #include "GfxRect.hpp"
 
-void Playground::RuntimeMeta(void)
+void Playground::_doRuntimeMeta(void)
 {
     gfx::rect::GfxPoint pt1;
     gfx::rect::GfxRect rect1;
@@ -799,13 +799,19 @@ void Playground::_doMeta(void)
 	for (int32_t index = 0; index < meta.getClassCount(); index++)
 	{
 	    classInfo = meta.getClassInfo(index);
-	    std::cout << "Name=" << classInfo.className_ << "\n";
-	    std::cout << "Size[bytes]=" << classInfo.size_ << '\n';
-	    std::cout << "typedef * SdlType=" << classInfo.hasSdlType_ << '\n';
-	    std::cout << "typedef * SdlTypePtr=" << classInfo.hasSdlTypePtr_ << '\n';
+	    std::cout << "Name=" << classInfo.className_ << "\t\t";
+	    std::cout << "Size[bytes]=" << classInfo.size_ << '\t';
+	    std::cout << "hasSdlType=" << classInfo.hasSdlType_ << '\t';
+	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << '\t';
+        std::cout << "isAbstract<>=" << classInfo.isAbstract_ << '\t';
+        std::cout << "isPolym<>=" << classInfo.isPolymorphic_ << '\t';
+        std::cout << "isMoveCtor<>=" << classInfo.isMoveConstructible_ << '\t';
+        std::cout << "isMoveAssign<>=" << classInfo.isMoveAssignable_ << '\t';
+        std::cout << "isGfxObjChild<>=" << classInfo.isDerivedFromGfxObject_ << '\t';
+        std::cout << "sdlResource=" << classInfo.sdlResource_ << '\t';
+        std::cout << "hasValueType<>=" << classInfo.hasValueType_ << '\n';
 	}
     std::cout << std::endl;
-    RuntimeMeta();
 }
 
 /******************************************************* log *******************************************************/
@@ -910,6 +916,7 @@ void Playground::_doPlayground(void)
     //_doCallback();
     //_doComponent();
     //_doFSO();
+    //_doRuntimeMeta();
     _doMeta();
     //_doLog();
 }

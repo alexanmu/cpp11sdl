@@ -40,9 +40,9 @@ class GfxWindowEventID final : public GfxObject
 {
 public:
     typedef sdl2::SDL_WindowEventID SdlType;
-    typedef sdl2::SDL_WindowEventID* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : int32_t
     {
@@ -99,7 +99,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType eventid_;
 };

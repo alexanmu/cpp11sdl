@@ -38,6 +38,7 @@ class GfxError final : public GfxObject
 {
 public:
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxError() noexcept;
 

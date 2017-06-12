@@ -43,6 +43,7 @@ public:
     typedef sdl2::SDL_Point* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxPoint() noexcept;
 

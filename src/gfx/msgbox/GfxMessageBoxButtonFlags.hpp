@@ -43,6 +43,7 @@ public:
     typedef sdl2::SDL_MessageBoxButtonFlags* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     enum class ValueType : uint32_t
     {

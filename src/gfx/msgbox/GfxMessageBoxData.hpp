@@ -47,6 +47,7 @@ public:
     typedef sdl2::SDL_MessageBoxData* SdlTypePtr;
 
     static const char ClassName[];
+    static const bool SdlResource = false;
 
     GfxMessageBoxData() noexcept;
 
