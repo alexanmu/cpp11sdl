@@ -20,15 +20,23 @@
 # See copyright notice at http://lidsdl.org/license.php
 
 # Detect OS
-UNAME_S:=$(shell uname -s)
-ifeq ($(UNAME_S),Darwin)
- OS:=macOS
+ifeq ($(OS), Windows_NT)
+ HOSTOS:=WinNT
 else
- ifeq ($(UNAME_S),Linux)
-  OS:=Linux
+ UNAME_S:=$(shell uname -s)
+ ifeq ($(UNAME_S),Darwin)
+  HOSTOS:=macOS
  else
-  $(error OS not supported)
+  ifeq ($(UNAME_S),Linux)
+   HOSTOS:=Linux
+  else
+   $(error OS not supported)
+  endif
  endif
+endif
+
+ifeq ($(HOSTOS), WinNT)
+ $(error Windows not supported yet!)
 endif
 
 # Commands
@@ -60,7 +68,7 @@ DEPSEXT=d
 DEBUG:=-g -ggdb -gdwarf-3
 
 # Compiler/linker
-ifeq ($(OS),macOS)
+ifeq ($(HOSTOS),macOS)
  CXX:=clang++
 else
  CXX:=g++
@@ -71,7 +79,7 @@ CXXLINK_LINUX:=-static-libstdc++ -lpthread -lrt -lm -ldl -lz $(DEBUG)
 CXXLINK_MACOS_HELPER=$(shell echo ~)
 CXXLINK_MACOS:=-lpthread -lm -ldl -lz -F$(CXXLINK_MACOS_HELPER)/Library/Frameworks -framework SDL2 -framework SDL2_ttf $(DEBUG)
 
-ifeq ($(OS),macOS)
+ifeq ($(HOSTOS),macOS)
  CXXFLAGS:=$(CXXFLAGS_MACOS)
  CXXLINK:=$(CXXLINK_MACOS)
 else
@@ -83,7 +91,7 @@ endif
 LIBS_LINUX:=$(LIBDIR)/linux/libSDL2.a $(LIBDIR)/linux/libSDL2_ttf.a $(LIBDIR)/linux/libfreetype.a
 LIBS_MACOS:=
 
-ifeq ($(OS),macOS)
+ifeq ($(HOSTOS),macOS)
  LIBS:=$(LIBS_MACOS)
 else
  LIBS:=$(LIBS_LINUX)
@@ -115,9 +123,9 @@ empty:
 
 ######################################## Folders ########################################
 make_folders:
-	-$(MKDIR) -p $(BINDIR)
-	-$(MKDIR) -p $(BUILDDIR)
-	-$(MKDIR) -p $(LINTBUILDDIR)
+	@-$(MKDIR) -p $(BINDIR)
+	@-$(MKDIR) -p $(BUILDDIR)
+	@-$(MKDIR) -p $(LINTBUILDDIR)
 
 ######################################## Tool ########################################
 -include $(DEPS)
@@ -139,7 +147,7 @@ clean:
 -include $(BUILDDIR)/test.$(DEPSEXT)
 
 OBJECTS_FOR_TEST:=$(filter-out %main.o,$(OBJECTS))
-ifeq ($(OS),macOS)
+ifeq ($(HOSTOS),macOS)
  LIBS_FOR_TEST:=$(LIBDIR)/macos/gtest_main.a $(LIBDIR)/macos/gmock_main.a
 else
  LIBS_FOR_TEST:=$(LIBDIR)/linux/gtest_main.a $(LIBDIR)/linux/gmock_main.a
@@ -193,7 +201,7 @@ VALGRIND_BIN=valgrind
 VALGRIND_PARAMS:=--leak-check=full --show-leak-kinds=all --demangle=yes
 VALGRIND_TOOL_CMD_LINE:=giotto
 
-ifeq ($(OS),macOS)
+ifeq ($(HOSTOS),macOS)
 valgrind:
 	@echo "valgrind not supported on Darwin/macOS"
 else
