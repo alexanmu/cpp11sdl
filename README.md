@@ -16,8 +16,12 @@ Supported platforms:
 
 Supported compilers:
   - GNU gcc 6.1.0a-2
-  - clang 802.0.41
-  - clang 802.0.42
+  - clang-802.0.41
+  - clang-802.0.42
+
+Supported IDEs:
+  - Apple Xcode 8.3.2
+  - Apple Xcode 8.3.3
 
 Licensed under the zlib licence (http://zlib.net/zlib_license.html).
 
