@@ -36,7 +36,7 @@ namespace render
 const char GfxRenderer::ClassName[] = "GfxRenderer";
 
 GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags)
-    throw (std::runtime_error) : GfxObject(ClassName)
+    throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(win);
     assert(flags);

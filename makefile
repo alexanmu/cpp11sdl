@@ -31,6 +31,10 @@ else
  endif
 endif
 
+# Commands
+MKDIR:=mkdir
+RM:=rm -f
+
 # Folders
 BINDIR:=bin
 BUILDDIR:=build
@@ -109,6 +113,12 @@ DEPS=$(OBJECTS:%.$(OBJEXT)=%.$(DEPSEXT))
 empty:
 	@echo "Please specify a command!"
 
+######################################## Folders ########################################
+make_folders:
+	-$(MKDIR) -p $(BINDIR)
+	-$(MKDIR) -p $(BUILDDIR)
+	-$(MKDIR) -p $(LINTBUILDDIR)
+
 ######################################## Tool ########################################
 -include $(DEPS)
 
@@ -118,12 +128,12 @@ $(TARGET) : $(OBJECTS) $(LIBS)
 $(BUILDDIR)/%.$(OBJEXT) : %.$(SRCEXT)
 	$(CXX) $(CXXFLAGS) $(INC) -MMD -c -o $@ $<
 
-tool: $(TARGET)
+tool: make_folders $(TARGET)
 
 clean:
-	$(RM) $(BUILDDIR)/*.$(OBJEXT)
-	$(RM) $(BUILDDIR)/*.$(DEPSEXT)
-	$(RM) $(TARGET)
+	-$(RM) $(BUILDDIR)/*.$(OBJEXT)
+	-$(RM) $(BUILDDIR)/*.$(DEPSEXT)
+	-$(RM) $(TARGET)
 
 ######################################## Test ########################################
 -include $(BUILDDIR)/test.$(DEPSEXT)
@@ -142,12 +152,12 @@ $(BUILDDIR)/test.$(OBJEXT) : $(TESTDIR)/test.$(SRCEXT)
 $(BINDIR)/test: $(OBJECTS_FOR_TEST) $(BUILDDIR)/test.$(OBJEXT) $(LIBS) $(LIBS_FOR_TEST)
 	$(CXX) $(CXXLINK) -o $@ $^
 
-test: $(BINDIR)/test
+test: make_folders $(BINDIR)/test
 
 clean-test:
-	$(RM) $(BINDIR)/test
-	$(RM) $(BUILDDIR)/test.$(OBJEXT)
-	$(RM) $(BUILDDIR)/test.$(DEPSEXT)
+	-$(RM) $(BINDIR)/test
+	-$(RM) $(BUILDDIR)/test.$(OBJEXT)
+	-$(RM) $(BUILDDIR)/test.$(DEPSEXT)
 
 ######################################## Play ########################################
 OBJECTS_FOR_PLAY:=$(filter-out %main.o,$(OBJECTS))
@@ -155,10 +165,10 @@ OBJECTS_FOR_PLAY:=$(filter-out %main.o,$(OBJECTS))
 $(BINDIR)/play: $(OBJECTS_FOR_PLAY) $(PLAYDIR)/Playground.cpp $(PLAYDIR)/Playground.hpp
 	$(CXX) $(CXXFLAGS) $(CXXLINK) -o $(BINDIR)/play $(PLAYDIR)/Playground.cpp $(INC) $(OBJECTS_FOR_PLAY) $(LIBS)
 
-play : $(BINDIR)/play
+play : make_folders $(BINDIR)/play
 
 clean-play:
-	$(RM) $(BINDIR)/play
+	-$(RM) $(BINDIR)/play
 
 ######################################## Lint ########################################
 LINTCPPWITHSRCPATH:=$(patsubst $(SRCDIR)/%,%,$(SOURCES:.$(SRCEXT)=.$(SRCEXT).$(LINTEXT)))
@@ -172,11 +182,11 @@ $(LINTBUILDDIR)/%.$(SRCEXT).$(LINTEXT) : %.$(SRCEXT)
 $(LINTBUILDDIR)/%.$(HDREXT).$(LINTEXT) : %.$(HDREXT)
 	$(TOOLSDIR)/$(CPPLINT) $< 2>$@
 
-lint: $(LINTCPP) $(LINTHPP)
+lint: make_folders $(LINTCPP) $(LINTHPP)
 
 clean-lint:
-	$(RM) $(LINTBUILDDIR)/*.$(SRCEXT).$(LINTEXT)
-	$(RM) $(LINTBUILDDIR)/*.$(HDREXT).$(LINTEXT)
+	-$(RM) $(LINTBUILDDIR)/*.$(SRCEXT).$(LINTEXT)
+	-$(RM) $(LINTBUILDDIR)/*.$(HDREXT).$(LINTEXT)
 
 ######################################## Valgrind ########################################
 VALGRIND_BIN=valgrind
@@ -187,7 +197,7 @@ ifeq ($(OS),macOS)
 valgrind:
 	@echo "valgrind not supported on Darwin/macOS"
 else
-valgrind: tool
+valgrind: make-folders tool
 	$(VALGRIND_BIN) $(VALGRIND_PARAMS) --suppressions=$(TOOLSDIR)/suppress_sdl.supp $(TARGET) $(VALGRIND_TOOL_CMD_LINE)
 endif
 
@@ -195,7 +205,7 @@ endif
 all : clean clean-test tool test
 
 clean-all: clean clean-play clean-test clean-lint
-	$(RM) -rf $(BUILDDIR)/DerivedData
+	-$(RM) -rf $(BUILDDIR)/DerivedData
 
 .PHONY:
 	empty clean test clean-test play clean-play lint clean-lint valgrind all clean-all

@@ -62,7 +62,8 @@ GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& forma
     tex_ = texptr;
 }
 
-GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error) : GfxObject(ClassName)
+GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error)
+            : GfxObject(ClassName)
 {
     assert(rend != nullptr);
     assert(surf);
