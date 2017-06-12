@@ -41,6 +41,8 @@ public:
     {
         const char * className_;
         int32_t size_;
+        bool hasSdlType_;
+        bool hasSdlTypePtr_;
     };
 
     GfxMeta() noexcept;

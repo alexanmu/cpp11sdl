@@ -799,8 +799,10 @@ void Playground::_doMeta(void)
 	for (int32_t index = 0; index < meta.getClassCount(); index++)
 	{
 	    classInfo = meta.getClassInfo(index);
-	    std::cout << "Name=" << classInfo.className_ << " ";
+	    std::cout << "Name=" << classInfo.className_ << "\n";
 	    std::cout << "Size[bytes]=" << classInfo.size_ << '\n';
+	    std::cout << "typedef * SdlType=" << classInfo.hasSdlType_ << '\n';
+	    std::cout << "typedef * SdlTypePtr=" << classInfo.hasSdlTypePtr_ << '\n';
 	}
     std::cout << std::endl;
     RuntimeMeta();
@@ -908,8 +910,8 @@ void Playground::_doPlayground(void)
     //_doCallback();
     //_doComponent();
     //_doFSO();
-    //_doMeta();
-    _doLog();
+    _doMeta();
+    //_doLog();
 }
 
 int main(int argc, char *argv[])

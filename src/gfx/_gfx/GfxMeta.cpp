@@ -109,106 +109,518 @@ namespace gfx
 namespace _gfx
 {
 
+namespace prv
+{
+
+// Based on https://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error
+template <typename T>
+struct hasSdlTypeNested {
+    // Types "yes" and "no" are guaranteed to have different sizes,
+    // specifically sizeof(yes) == 1 and sizeof(no) == 2.
+    typedef char yes[1];
+    typedef char no[2];
+
+    template <typename C>
+    static yes& test(typename C::SdlType *);
+
+    template <typename>
+    static no& test(...);
+
+    // If the "sizeof" of the result of calling test<T>(nullptr) is equal to sizeof(yes),
+    // the first overload worked and T has a nested type named foobar.
+    static const bool value = sizeof(test<T>(nullptr)) == sizeof(yes);
+};
+
+template <typename T>
+struct hasSdlTypePtrNested {
+    // Types "yes" and "no" are guaranteed to have different sizes,
+    // specifically sizeof(yes) == 1 and sizeof(no) == 2.
+    typedef char yes[1];
+    typedef char no[2];
+
+    template <typename C>
+    static yes& test(typename C::SdlTypePtr *);
+
+    template <typename>
+    static no& test(...);
+
+    // If the "sizeof" of the result of calling test<T>(nullptr) is equal to sizeof(yes),
+    // the first overload worked and T has a nested type named foobar.
+    static const bool value = sizeof(test<T>(nullptr)) == sizeof(yes);
+};
+
+}  // namespace prv
+
 const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
 {
     // gfx::bits
-    { gfx::bits::GfxBits::ClassName, sizeof(gfx::bits::GfxBits) },
+    {
+      gfx::bits::GfxBits::ClassName,
+      sizeof(gfx::bits::GfxBits),
+      prv::hasSdlTypeNested<gfx::bits::GfxBits>::value,
+      prv::hasSdlTypePtrNested<gfx::bits::GfxBits>::value
+    },
     // gfx::blendmode
-    { gfx::blendmode::GfxBlendMode::ClassName, sizeof(gfx::blendmode::GfxBlendMode) },
+    {
+      gfx::blendmode::GfxBlendMode::ClassName,
+      sizeof(gfx::blendmode::GfxBlendMode),
+      prv::hasSdlTypeNested<gfx::blendmode::GfxBlendMode>::value,
+      prv::hasSdlTypePtrNested<gfx::blendmode::GfxBlendMode>::value
+    },
     // gfx
-    { gfx::GfxBool::ClassName, sizeof(gfx::GfxBool) },
+    {
+      gfx::GfxBool::ClassName,
+      sizeof(gfx::GfxBool),
+      prv::hasSdlTypeNested<gfx::GfxBool>::value,
+      prv::hasSdlTypePtrNested<gfx::GfxBool>::value
+    },
     // gfx::clipboard
-    { gfx::clipboard::GfxClipboard::ClassName, sizeof(gfx::clipboard::GfxClipboard) },
+    {
+      gfx::clipboard::GfxClipboard::ClassName,
+      sizeof(gfx::clipboard::GfxClipboard),
+      prv::hasSdlTypeNested<gfx::clipboard::GfxClipboard>::value,
+      prv::hasSdlTypePtrNested<gfx::clipboard::GfxClipboard>::value
+    },
     // gfx::pixels
-    { gfx::pixels::GfxColor::ClassName, sizeof(gfx::pixels::GfxColor) },
-    { gfx::pixels::GfxPalette::ClassName, sizeof(gfx::pixels::GfxPalette) },
-    { gfx::pixels::GfxPixelFormat::ClassName, sizeof(gfx::pixels::GfxPixelFormat) },
-    { gfx::pixels::GfxPixelType::ClassName, sizeof(gfx::pixels::GfxPixelType) },  // 2017.05.30
-    { gfx::pixels::GfxBitmapOrder::ClassName, sizeof(gfx::pixels::GfxBitmapOrder) },  // 2017.05.30
-    { gfx::pixels::GfxPackedOrder::ClassName, sizeof(gfx::pixels::GfxPackedOrder) },  // 2017.05.30
-    { gfx::pixels::GfxArrayOrder::ClassName, sizeof(gfx::pixels::GfxArrayOrder) },  // 2017.05.30
-    { gfx::pixels::GfxPackedLayout::ClassName, sizeof(gfx::pixels::GfxPackedLayout) },  // 2017.05.30
-    { gfx::pixels::GfxPixelFormatEnum::ClassName, sizeof(gfx::pixels::GfxPixelFormatEnum) },  // 2017.05.30
+    {
+      gfx::pixels::GfxColor::ClassName,
+      sizeof(gfx::pixels::GfxColor),
+      prv::hasSdlTypeNested<gfx::pixels::GfxColor>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxColor>::value
+    },
+    {
+      gfx::pixels::GfxPalette::ClassName,
+      sizeof(gfx::pixels::GfxPalette),
+      prv::hasSdlTypeNested<gfx::pixels::GfxPalette>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxPalette>::value
+    },
+    {
+      gfx::pixels::GfxPixelFormat::ClassName,
+      sizeof(gfx::pixels::GfxPixelFormat),
+      prv::hasSdlTypeNested<gfx::pixels::GfxPixelFormat>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxPixelFormat>::value
+    },
+    {
+      gfx::pixels::GfxPixelType::ClassName,
+      sizeof(gfx::pixels::GfxPixelType),
+      prv::hasSdlTypeNested<gfx::pixels::GfxPixelType>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxPixelType>::value
+    },  // 2017.05.30
+    {
+      gfx::pixels::GfxBitmapOrder::ClassName,
+      sizeof(gfx::pixels::GfxBitmapOrder),
+      prv::hasSdlTypeNested<gfx::pixels::GfxBitmapOrder>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxBitmapOrder>::value
+    },  // 2017.05.30
+    {
+      gfx::pixels::GfxPackedOrder::ClassName,
+      sizeof(gfx::pixels::GfxPackedOrder),
+      prv::hasSdlTypeNested<gfx::pixels::GfxPackedOrder>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxPackedOrder>::value
+    },  // 2017.05.30
+    {
+      gfx::pixels::GfxArrayOrder::ClassName,
+      sizeof(gfx::pixels::GfxArrayOrder),
+      prv::hasSdlTypeNested<gfx::pixels::GfxArrayOrder>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxArrayOrder>::value
+    },  // 2017.05.30
+    {
+      gfx::pixels::GfxPackedLayout::ClassName,
+      sizeof(gfx::pixels::GfxPackedLayout),
+      prv::hasSdlTypeNested<gfx::pixels::GfxPackedLayout>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxPackedLayout>::value
+    },  // 2017.05.30
+    {
+      gfx::pixels::GfxPixelFormatEnum::ClassName,
+      sizeof(gfx::pixels::GfxPixelFormatEnum),
+      prv::hasSdlTypeNested<gfx::pixels::GfxPixelFormatEnum>::value,
+      prv::hasSdlTypePtrNested<gfx::pixels::GfxPixelFormatEnum>::value
+    },  // 2017.05.30
     // gfx::cpuinfo
-    { gfx::cpuinfo::GfxCpuInfo::ClassName, sizeof(gfx::cpuinfo::GfxCpuInfo) },
+    {
+      gfx::cpuinfo::GfxCpuInfo::ClassName,
+      sizeof(gfx::cpuinfo::GfxCpuInfo),
+      prv::hasSdlTypeNested<gfx::cpuinfo::GfxCpuInfo>::value,
+      prv::hasSdlTypePtrNested<gfx::cpuinfo::GfxCpuInfo>::value
+    },
     // gfx::video
-    { gfx::video::GfxDisplayMode::ClassName, sizeof(gfx::video::GfxDisplayMode) },
-    { gfx::video::GfxScreenSaver::ClassName, sizeof(gfx::video::GfxScreenSaver) },
-    { gfx::video::GfxVideo::ClassName, sizeof(gfx::video::GfxVideo) },
-    { gfx::video::GfxWindow::ClassName, sizeof(gfx::video::GfxWindow) },
-    { gfx::video::GfxWindowEventID::ClassName, sizeof(gfx::video::GfxWindowEventID) },
-    { gfx::video::GfxWindowFlags::ClassName, sizeof(gfx::video::GfxWindowFlags) },
-    { gfx::video::GfxWindowPosition::ClassName, sizeof(gfx::video::GfxWindowPosition) },
-    { gfx::video::GfxHitTestResult::ClassName, sizeof(gfx::video::GfxHitTestResult) },  // 2017.05.31
-    { gfx::video::GfxHitTest::ClassName, sizeof(gfx::video::GfxHitTest) },  // 2017.06.02
+    {
+      gfx::video::GfxDisplayMode::ClassName,
+      sizeof(gfx::video::GfxDisplayMode),
+      prv::hasSdlTypeNested<gfx::video::GfxDisplayMode>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxDisplayMode>::value
+    },
+    {
+      gfx::video::GfxScreenSaver::ClassName,
+      sizeof(gfx::video::GfxScreenSaver),
+      prv::hasSdlTypeNested<gfx::video::GfxScreenSaver>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxScreenSaver>::value
+    },
+    {
+      gfx::video::GfxVideo::ClassName,
+      sizeof(gfx::video::GfxVideo),
+      prv::hasSdlTypeNested<gfx::video::GfxVideo>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxVideo>::value
+    },
+    {
+      gfx::video::GfxWindow::ClassName,
+      sizeof(gfx::video::GfxWindow),
+      prv::hasSdlTypeNested<gfx::video::GfxWindow>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxWindow>::value
+    },
+    {
+      gfx::video::GfxWindowEventID::ClassName,
+      sizeof(gfx::video::GfxWindowEventID),
+      prv::hasSdlTypeNested<gfx::video::GfxWindowEventID>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxWindowEventID>::value
+    },
+    {
+      gfx::video::GfxWindowFlags::ClassName,
+      sizeof(gfx::video::GfxWindowFlags),
+      prv::hasSdlTypeNested<gfx::video::GfxWindowFlags>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxWindowFlags>::value
+    },
+    {
+      gfx::video::GfxWindowPosition::ClassName,
+      sizeof(gfx::video::GfxWindowPosition),
+      prv::hasSdlTypeNested<gfx::video::GfxWindowPosition>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxWindowPosition>::value
+    },
+    {
+      gfx::video::GfxHitTestResult::ClassName,
+      sizeof(gfx::video::GfxHitTestResult),
+      prv::hasSdlTypeNested<gfx::video::GfxHitTestResult>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxHitTestResult>::value
+    },  // 2017.05.31
+    {
+      gfx::video::GfxHitTest::ClassName,
+      sizeof(gfx::video::GfxHitTest),
+      prv::hasSdlTypeNested<gfx::video::GfxHitTest>::value,
+      prv::hasSdlTypePtrNested<gfx::video::GfxHitTest>::value
+    },  // 2017.06.02
     // gfx::endian
-    { gfx::endian::GfxEndian::ClassName, sizeof(gfx::endian::GfxEndian) },
+    {
+      gfx::endian::GfxEndian::ClassName,
+      sizeof(gfx::endian::GfxEndian),
+      prv::hasSdlTypeNested<gfx::endian::GfxEndian>::value,
+      prv::hasSdlTypePtrNested<gfx::endian::GfxEndian>::value
+    },
     // gfx::error
-    { gfx::error::GfxGetError::ClassName, sizeof(gfx::error::GfxGetError) },
-    { gfx::error::GfxError::ClassName, sizeof(gfx::error::GfxError) },  // 2017.06.03
+    {
+      gfx::error::GfxGetError::ClassName,
+      sizeof(gfx::error::GfxGetError),
+      prv::hasSdlTypeNested<gfx::error::GfxGetError>::value,
+      prv::hasSdlTypePtrNested<gfx::error::GfxGetError>::value
+    },
+    {
+      gfx::error::GfxError::ClassName,
+      sizeof(gfx::error::GfxError),
+      prv::hasSdlTypeNested<gfx::error::GfxError>::value,
+      prv::hasSdlTypePtrNested<gfx::error::GfxError>::value
+    },  // 2017.06.03
     // gfx::filesystem
-    { gfx::filesystem::GfxFileSystem::ClassName, sizeof(gfx::filesystem::GfxFileSystem) },
+    {
+      gfx::filesystem::GfxFileSystem::ClassName,
+      sizeof(gfx::filesystem::GfxFileSystem),
+      prv::hasSdlTypeNested<gfx::filesystem::GfxFileSystem>::value,
+      prv::hasSdlTypePtrNested<gfx::filesystem::GfxFileSystem>::value
+    },
     // gfx::version
-    { gfx::version::GfxGetVersion::ClassName, sizeof(gfx::version::GfxGetVersion) },
-    { gfx::version::GfxVersion::ClassName, sizeof(gfx::version::GfxVersion) },
+    {
+      gfx::version::GfxGetVersion::ClassName,
+      sizeof(gfx::version::GfxGetVersion),
+      prv::hasSdlTypeNested<gfx::version::GfxGetVersion>::value,
+      prv::hasSdlTypePtrNested<gfx::version::GfxGetVersion>::value
+    },
+    {
+      gfx::version::GfxVersion::ClassName,
+      sizeof(gfx::version::GfxVersion),
+      prv::hasSdlTypeNested<gfx::version::GfxVersion>::value,
+      prv::hasSdlTypePtrNested<gfx::version::GfxVersion>::value
+    },
     // gfx::initquit
-    { gfx::initquit::GfxInitQuit::ClassName, sizeof(gfx::initquit::GfxInitQuit) },
-    { gfx::initquit::GfxInitFlags::ClassName, sizeof(gfx::initquit::GfxInitFlags) },  // 2017.05.17
+    {
+      gfx::initquit::GfxInitQuit::ClassName,
+      sizeof(gfx::initquit::GfxInitQuit),
+      prv::hasSdlTypeNested<gfx::initquit::GfxInitQuit>::value,
+      prv::hasSdlTypePtrNested<gfx::initquit::GfxInitQuit>::value
+    },
+    {
+      gfx::initquit::GfxInitFlags::ClassName,
+      sizeof(gfx::initquit::GfxInitFlags),
+      prv::hasSdlTypeNested<gfx::initquit::GfxInitFlags>::value,
+      prv::hasSdlTypePtrNested<gfx::initquit::GfxInitFlags>::value
+    },  // 2017.05.17
     // gfx::loadso
-    { gfx::loadso::GfxLoadSo::ClassName, sizeof(gfx::loadso::GfxLoadSo) },
+    {
+      gfx::loadso::GfxLoadSo::ClassName,
+      sizeof(gfx::loadso::GfxLoadSo),
+      prv::hasSdlTypeNested<gfx::loadso::GfxLoadSo>::value,
+      prv::hasSdlTypePtrNested<gfx::loadso::GfxLoadSo>::value
+    },
     // gfx::msgbox
-    { gfx::msgbox::GfxMessageBox::ClassName, sizeof(gfx::msgbox::GfxMessageBox) },
-    { gfx::msgbox::GfxMessageBoxButtonData::ClassName, sizeof(gfx::msgbox::GfxMessageBoxButtonData) },
-    { gfx::msgbox::GfxMessageBoxButtonFlags::ClassName, sizeof(gfx::msgbox::GfxMessageBoxButtonFlags) },
-    { gfx::msgbox::GfxMessageBoxColor::ClassName, sizeof(gfx::msgbox::GfxMessageBoxColor) },
-    { gfx::msgbox::GfxMessageBoxColorScheme::ClassName, sizeof(gfx::msgbox::GfxMessageBoxColorScheme) },
-    { gfx::msgbox::GfxMessageBoxData::ClassName, sizeof(gfx::msgbox::GfxMessageBoxData) },
-    { gfx::msgbox::GfxMessageBoxFlags::ClassName, sizeof(gfx::msgbox::GfxMessageBoxFlags) },
+    {
+      gfx::msgbox::GfxMessageBox::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBox),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBox>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBox>::value
+    },
+    {
+      gfx::msgbox::GfxMessageBoxButtonData::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBoxButtonData),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBoxButtonData>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBoxButtonData>::value
+    },
+    {
+      gfx::msgbox::GfxMessageBoxButtonFlags::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBoxButtonFlags),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBoxButtonFlags>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBoxButtonFlags>::value
+    },
+    {
+      gfx::msgbox::GfxMessageBoxColor::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBoxColor),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBoxColor>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBoxColor>::value
+    },
+    {
+      gfx::msgbox::GfxMessageBoxColorScheme::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBoxColorScheme),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBoxColorScheme>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBoxColorScheme>::value
+    },
+    {
+      gfx::msgbox::GfxMessageBoxData::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBoxData),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBoxData>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBoxData>::value
+    },
+    {
+      gfx::msgbox::GfxMessageBoxFlags::ClassName,
+      sizeof(gfx::msgbox::GfxMessageBoxFlags),
+      prv::hasSdlTypeNested<gfx::msgbox::GfxMessageBoxFlags>::value,
+      prv::hasSdlTypePtrNested<gfx::msgbox::GfxMessageBoxFlags>::value
+    },
     // gfx::platform
-    { gfx::platform::GfxPlatform::ClassName, sizeof(gfx::platform::GfxPlatform) },
+    {
+      gfx::platform::GfxPlatform::ClassName,
+      sizeof(gfx::platform::GfxPlatform),
+      prv::hasSdlTypeNested<gfx::platform::GfxPlatform>::value,
+      prv::hasSdlTypePtrNested<gfx::platform::GfxPlatform>::value
+    },
     // gfx::rect
-    { gfx::rect::GfxPoint::ClassName, sizeof(gfx::rect::GfxPoint) },
-    { gfx::rect::GfxRect::ClassName, sizeof(gfx::rect::GfxRect) },
+    {
+      gfx::rect::GfxPoint::ClassName,
+      sizeof(gfx::rect::GfxPoint),
+      prv::hasSdlTypeNested<gfx::rect::GfxPoint>::value,
+      prv::hasSdlTypePtrNested<gfx::rect::GfxPoint>::value
+    },
+    {
+      gfx::rect::GfxRect::ClassName,
+      sizeof(gfx::rect::GfxRect),
+      prv::hasSdlTypeNested<gfx::rect::GfxRect>::value,
+      prv::hasSdlTypePtrNested<gfx::rect::GfxRect>::value
+    },
     // gfx::power
-    { gfx::power::GfxPowerInfo::ClassName, sizeof(gfx::power::GfxPowerInfo) },
-    { gfx::power::GfxPowerState::ClassName, sizeof(gfx::power::GfxPowerState) },
+    {
+      gfx::power::GfxPowerInfo::ClassName,
+      sizeof(gfx::power::GfxPowerInfo),
+      prv::hasSdlTypeNested<gfx::power::GfxPowerInfo>::value,
+      prv::hasSdlTypePtrNested<gfx::power::GfxPowerInfo>::value
+    },
+    {
+      gfx::power::GfxPowerState::ClassName,
+      sizeof(gfx::power::GfxPowerState),
+      prv::hasSdlTypeNested<gfx::power::GfxPowerState>::value,
+      prv::hasSdlTypePtrNested<gfx::power::GfxPowerState>::value
+    },
     // gfx::surface
-    { gfx::surface::GfxSurface::ClassName, sizeof(gfx::surface::GfxSurface) },
-    { gfx::surface::GfxSurfaceFlags::ClassName, sizeof(gfx::surface::GfxSurfaceFlags) },
+    {
+      gfx::surface::GfxSurface::ClassName,
+      sizeof(gfx::surface::GfxSurface),
+      prv::hasSdlTypeNested<gfx::surface::GfxSurface>::value,
+      prv::hasSdlTypePtrNested<gfx::surface::GfxSurface>::value
+    },
+    {
+      gfx::surface::GfxSurfaceFlags::ClassName,
+      sizeof(gfx::surface::GfxSurfaceFlags),
+      prv::hasSdlTypeNested<gfx::surface::GfxSurfaceFlags>::value,
+      prv::hasSdlTypePtrNested<gfx::surface::GfxSurfaceFlags>::value
+    },
     // gfx::bgi
-    { gfx::bgi::GfxAngle::ClassName, sizeof(gfx::bgi::GfxAngle) },
-    { gfx::bgi::GfxCanvas::ClassName, sizeof(gfx::bgi::GfxCanvas) },
-    { gfx::bgi::GfxCanvasBgi::ClassName, sizeof(gfx::bgi::GfxCanvasBgi) },
-    { gfx::bgi::GfxRadius::ClassName, sizeof(gfx::bgi::GfxRadius) },
-    { gfx::bgi::GfxString::ClassName, sizeof(gfx::bgi::GfxString) },
+    {
+      gfx::bgi::GfxAngle::ClassName,
+      sizeof(gfx::bgi::GfxAngle),
+      prv::hasSdlTypeNested<gfx::bgi::GfxAngle>::value,
+      prv::hasSdlTypePtrNested<gfx::bgi::GfxAngle>::value
+    },
+    {
+      gfx::bgi::GfxCanvas::ClassName,
+      sizeof(gfx::bgi::GfxCanvas),
+      prv::hasSdlTypeNested<gfx::bgi::GfxCanvas>::value,
+      prv::hasSdlTypePtrNested<gfx::bgi::GfxCanvas>::value
+    },
+    {
+      gfx::bgi::GfxCanvasBgi::ClassName,
+      sizeof(gfx::bgi::GfxCanvasBgi),
+      prv::hasSdlTypeNested<gfx::bgi::GfxCanvasBgi>::value,
+      prv::hasSdlTypePtrNested<gfx::bgi::GfxCanvasBgi>::value
+    },
+    {
+      gfx::bgi::GfxRadius::ClassName,
+      sizeof(gfx::bgi::GfxRadius),
+      prv::hasSdlTypeNested<gfx::bgi::GfxRadius>::value,
+      prv::hasSdlTypePtrNested<gfx::bgi::GfxRadius>::value
+    },
+    {
+      gfx::bgi::GfxString::ClassName,
+      sizeof(gfx::bgi::GfxString),
+      prv::hasSdlTypeNested<gfx::bgi::GfxString>::value,
+      prv::hasSdlTypePtrNested<gfx::bgi::GfxString>::value
+    },
     // gfx::bgi::fnt
-    { gfx::bgi::fnt::GfxBitmapFont::ClassName, sizeof(gfx::bgi::fnt::GfxBitmapFont) },
+    {
+      gfx::bgi::fnt::GfxBitmapFont::ClassName,
+      sizeof(gfx::bgi::fnt::GfxBitmapFont),
+      prv::hasSdlTypeNested<gfx::bgi::fnt::GfxBitmapFont>::value,
+      prv::hasSdlTypePtrNested<gfx::bgi::fnt::GfxBitmapFont>::value
+    },
     // gfx::tf
-    { gfx::ttf::GfxTtfFont::ClassName, sizeof(gfx::ttf::GfxTtfFont) },  // 2017.05.17
-    { gfx::ttf::GfxTtfInitQuit::ClassName, sizeof(gfx::ttf::GfxTtfInitQuit) },  // 2017.05.17
-    { gfx::ttf::GfxTtfGetVersion::ClassName, sizeof(gfx::ttf::GfxTtfGetVersion) },  // 2017.05.18
-    { gfx::ttf::GfxTtfFontStyle::ClassName, sizeof(gfx::ttf::GfxTtfFontStyle) },  // 2017.05.18
-    { gfx::ttf::GfxTtfFontHinting::ClassName, sizeof(gfx::ttf::GfxTtfFontHinting) },  // 2017.05.18
-    { gfx::ttf::GfxTtfFontRenderer::ClassName, sizeof(gfx::ttf::GfxTtfFontRenderer) },  // 2017.05.19
+    {
+      gfx::ttf::GfxTtfFont::ClassName,
+      sizeof(gfx::ttf::GfxTtfFont),
+      prv::hasSdlTypeNested<gfx::ttf::GfxTtfFont>::value,
+      prv::hasSdlTypePtrNested<gfx::ttf::GfxTtfFont>::value
+    },  // 2017.05.17
+    {
+      gfx::ttf::GfxTtfInitQuit::ClassName,
+      sizeof(gfx::ttf::GfxTtfInitQuit),
+      prv::hasSdlTypeNested<gfx::ttf::GfxTtfInitQuit>::value,
+      prv::hasSdlTypePtrNested<gfx::ttf::GfxTtfInitQuit>::value
+    },  // 2017.05.17
+    {
+      gfx::ttf::GfxTtfGetVersion::ClassName,
+      sizeof(gfx::ttf::GfxTtfGetVersion),
+      prv::hasSdlTypeNested<gfx::ttf::GfxTtfGetVersion>::value,
+      prv::hasSdlTypePtrNested<gfx::ttf::GfxTtfGetVersion>::value
+    },  // 2017.05.18
+    {
+      gfx::ttf::GfxTtfFontStyle::ClassName,
+      sizeof(gfx::ttf::GfxTtfFontStyle),
+      prv::hasSdlTypeNested<gfx::ttf::GfxTtfFontStyle>::value,
+      prv::hasSdlTypePtrNested<gfx::ttf::GfxTtfFontStyle>::value
+    },  // 2017.05.18
+    {
+      gfx::ttf::GfxTtfFontHinting::ClassName,
+      sizeof(gfx::ttf::GfxTtfFontHinting),
+      prv::hasSdlTypeNested<gfx::ttf::GfxTtfFontHinting>::value,
+      prv::hasSdlTypePtrNested<gfx::ttf::GfxTtfFontHinting>::value
+    },  // 2017.05.18
+    {
+      gfx::ttf::GfxTtfFontRenderer::ClassName,
+      sizeof(gfx::ttf::GfxTtfFontRenderer),
+      prv::hasSdlTypeNested<gfx::ttf::GfxTtfFontRenderer>::value,
+      prv::hasSdlTypePtrNested<gfx::ttf::GfxTtfFontRenderer>::value
+    },  // 2017.05.19
     // gfx::xtra
-    { gfx::xtra::GfxFontInfo::ClassName, sizeof(gfx::xtra::GfxFontInfo) },  // 2017.05.19
-    { gfx::xtra::GfxControlledSurface::ClassName, sizeof(gfx::xtra::GfxControlledSurface) },
-    { gfx::xtra::GfxGammaRamp::ClassName, sizeof(gfx::xtra::GfxGammaRamp) },  // 2017.06.01
+    {
+      gfx::xtra::GfxFontInfo::ClassName,
+      sizeof(gfx::xtra::GfxFontInfo),
+      prv::hasSdlTypeNested<gfx::xtra::GfxFontInfo>::value,
+      prv::hasSdlTypePtrNested<gfx::xtra::GfxFontInfo>::value
+    },  // 2017.05.19
+    {
+      gfx::xtra::GfxControlledSurface::ClassName,
+      sizeof(gfx::xtra::GfxControlledSurface),
+      prv::hasSdlTypeNested<gfx::xtra::GfxControlledSurface>::value,
+      prv::hasSdlTypePtrNested<gfx::xtra::GfxControlledSurface>::value
+    },
+    {
+      gfx::xtra::GfxGammaRamp::ClassName,
+      sizeof(gfx::xtra::GfxGammaRamp),
+      prv::hasSdlTypeNested<gfx::xtra::GfxGammaRamp>::value,
+      prv::hasSdlTypePtrNested<gfx::xtra::GfxGammaRamp>::value
+    },  // 2017.06.01
     // gfx::log
-    { gfx::log::GfxLogPriority::ClassName, sizeof(gfx::log::GfxLogPriority) },  // 2017.06.07
-    { gfx::log::GfxLogCategory::ClassName, sizeof(gfx::log::GfxLogCategory) },  // 2017.06.07
-    { gfx::log::GfxLog::ClassName, sizeof(gfx::log::GfxLog) },  // 2017.06.07
-    { gfx::log::GfxLogOutputFunction::ClassName, sizeof(gfx::log::GfxLogOutputFunction) },  // 2017.06.09
+    {
+      gfx::log::GfxLogPriority::ClassName,
+      sizeof(gfx::log::GfxLogPriority),
+      prv::hasSdlTypeNested<gfx::log::GfxLogPriority>::value,
+      prv::hasSdlTypePtrNested<gfx::log::GfxLogPriority>::value
+    },  // 2017.06.07
+    {
+      gfx::log::GfxLogCategory::ClassName,
+      sizeof(gfx::log::GfxLogCategory),
+      prv::hasSdlTypeNested<gfx::log::GfxLogCategory>::value,
+      prv::hasSdlTypePtrNested<gfx::log::GfxLogCategory>::value
+    },  // 2017.06.07
+    {
+      gfx::log::GfxLog::ClassName,
+      sizeof(gfx::log::GfxLog),
+      prv::hasSdlTypeNested<gfx::log::GfxLog>::value,
+      prv::hasSdlTypePtrNested<gfx::log::GfxLog>::value
+    },  // 2017.06.07
+    {
+      gfx::log::GfxLogOutputFunction::ClassName,
+      sizeof(gfx::log::GfxLogOutputFunction),
+      prv::hasSdlTypeNested<gfx::log::GfxLogOutputFunction>::value,
+      prv::hasSdlTypePtrNested<gfx::log::GfxLogOutputFunction>::value
+    },  // 2017.06.09
     // gfx::render
-    { gfx::render::GfxGetRendererInfo::ClassName, sizeof(gfx::render::GfxGetRendererInfo) },
-    { gfx::render::GfxRenderer::ClassName, sizeof(gfx::render::GfxRenderer) },
-    { gfx::render::GfxRendererFlags::ClassName, sizeof(gfx::render::GfxRendererFlags) },
-    { gfx::render::GfxRendererFlip::ClassName, sizeof(gfx::render::GfxRendererFlip) },
-    { gfx::render::GfxRendererInfo::ClassName, sizeof(gfx::render::GfxRendererInfo) },
-    { gfx::render::GfxTexture::ClassName, sizeof(gfx::render::GfxTexture) },
-    { gfx::render::GfxTextureAccess::ClassName, sizeof(gfx::render::GfxTextureAccess) },
-    { gfx::render::GfxTextureModulate::ClassName, sizeof(gfx::render::GfxTextureModulate) },
-    { gfx::render::GfxTextureFormats::ClassName, sizeof(gfx::render::GfxTextureFormats) }  // 2017.06.02
+    {
+      gfx::render::GfxGetRendererInfo::ClassName,
+      sizeof(gfx::render::GfxGetRendererInfo),
+      prv::hasSdlTypeNested<gfx::render::GfxGetRendererInfo>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxGetRendererInfo>::value
+    },
+    {
+      gfx::render::GfxRenderer::ClassName,
+      sizeof(gfx::render::GfxRenderer),
+      prv::hasSdlTypeNested<gfx::render::GfxRenderer>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxRenderer>::value
+    },
+    {
+      gfx::render::GfxRendererFlags::ClassName,
+      sizeof(gfx::render::GfxRendererFlags),
+      prv::hasSdlTypeNested<gfx::render::GfxRendererFlags>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxRendererFlags>::value
+    },
+    {
+      gfx::render::GfxRendererFlip::ClassName,
+      sizeof(gfx::render::GfxRendererFlip),
+      prv::hasSdlTypeNested<gfx::render::GfxRendererFlip>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxRendererFlip>::value
+    },
+    {
+      gfx::render::GfxRendererInfo::ClassName,
+      sizeof(gfx::render::GfxRendererInfo),
+      prv::hasSdlTypeNested<gfx::render::GfxRendererInfo>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxRendererInfo>::value
+    },
+    {
+      gfx::render::GfxTexture::ClassName,
+      sizeof(gfx::render::GfxTexture),
+      prv::hasSdlTypeNested<gfx::render::GfxTexture>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxTexture>::value
+    },
+    {
+      gfx::render::GfxTextureAccess::ClassName,
+      sizeof(gfx::render::GfxTextureAccess),
+      prv::hasSdlTypeNested<gfx::render::GfxTextureAccess>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxTextureAccess>::value
+    },
+    {
+      gfx::render::GfxTextureModulate::ClassName,
+      sizeof(gfx::render::GfxTextureModulate),
+      prv::hasSdlTypeNested<gfx::render::GfxTextureModulate>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxTextureModulate>::value
+    },
+    {
+      gfx::render::GfxTextureFormats::ClassName,
+      sizeof(gfx::render::GfxTextureFormats),
+      prv::hasSdlTypeNested<gfx::render::GfxTextureFormats>::value,
+      prv::hasSdlTypePtrNested<gfx::render::GfxTextureFormats>::value
+    }  // 2017.06.02
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /
@@ -257,6 +669,8 @@ void GfxMeta::clear(void) noexcept
 {
     classInfo_.className_ = nullptr;
     classInfo_.size_ = -1;
+    classInfo_.hasSdlType_ = false;
+    classInfo_.hasSdlTypePtr_ = false;
 }
 
 }  // namespace _gfx
