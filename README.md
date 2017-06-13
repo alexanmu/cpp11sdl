@@ -30,6 +30,7 @@ External code attributions:
 - Google Test/Google Mock (https://github.com/google/googletest)
 - prettyprint.hpp (https://github.com/louisdx/cxx-prettyprint/blob/master/prettyprint.hpp) Copyright Louis Delacroix; licensed under BOOST (http://www.boost.org/LICENSE_1_0.txt); 
 - Added some bitmap fonts I found many years ago on the internet. See ./Giotto/bgi/fntNAME.hpp files. All are based on binary files with the filename NAME.fnt and where converted to C++ header files by code in Playground.cpp. If you think there is a copyright issue at play please message me asap; I do not remember the original authors/copyright.
+- SFINAE code in GfxMeta based on https://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error
 
 Small demo app available. See main.cpp
 
