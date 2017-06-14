@@ -33,6 +33,7 @@
 #include "GfxRect.hpp"
 #include "GfxSurface.hpp"
 #include "GfxPixelFormatEnum.hpp"
+#include "GfxWindow.hpp"
 
 namespace gfx
 {
@@ -47,6 +48,9 @@ public:
     static const bool SdlResource = true;
 
     GfxControlledSurface() noexcept;
+    explicit GfxControlledSurface(const uint16_t w, const uint16_t h) noexcept;
+    explicit GfxControlledSurface(std::string const& filename) noexcept;
+    explicit GfxControlledSurface(video::GfxWindow const& win) noexcept;
 
     GfxControlledSurface(const GfxControlledSurface&) = delete;
     GfxControlledSurface(GfxControlledSurface&& surf) = delete;
@@ -60,8 +64,9 @@ public:
 
     void createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error);
     void createSurface(std::string const& filename) throw(std::runtime_error);
+    void createSurface(video::GfxWindow const& win) throw(std::runtime_error);
 
-    void free(void) noexcept;
+    void freeSurface(void) noexcept;
 
     surface::GfxSurface& operator()(void) const throw(std::runtime_error);
 private:

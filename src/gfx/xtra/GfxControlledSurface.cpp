@@ -45,11 +45,74 @@ GfxControlledSurface::GfxControlledSurface() noexcept : gfx::GfxObject(ClassName
     surfaceConstructed_ = false;
 }
 
+GfxControlledSurface::GfxControlledSurface(const uint16_t w, const uint16_t h) noexcept
+{
+    assert((w > 1) && (w < 8192));
+    assert((h > 1) && (h < 8192));
+
+    surface::GfxSurface * tmpsurf;
+
+    pixels::GfxPixelFormatEnum pixFmtEn(kDefaultSurfaceColorFormatValue);
+
+    tmpsurf = new surface::GfxSurface("GfxControlledSurface::createSurface 1", surface::GfxSurfaceFlags(), w, h,
+                                    kDefaultSurfaceColorDepth, pixFmtEn);
+    if (tmpsurf != nullptr)
+    {
+        surf_ = tmpsurf;
+        surfaceConstructed_ = true;
+    }
+    else
+    {
+        surf_ = tmpsurf;
+        surfaceConstructed_ = false;
+    }
+}
+
+GfxControlledSurface::GfxControlledSurface(std::string const& filename) noexcept
+{
+    assert(filename.length() > 0);
+
+    surface::GfxSurface * tmpsurf;
+
+    tmpsurf = new surface::GfxSurface("GfxControlledSurface::createSurface 2", filename);
+    if (tmpsurf != nullptr)
+    {
+        surf_ = tmpsurf;
+        surfaceConstructed_ = true;
+    }
+    else
+    {
+        surf_ = nullptr;
+        surfaceConstructed_ = false;
+    }
+}
+
+GfxControlledSurface::GfxControlledSurface(video::GfxWindow const& win) noexcept
+{
+    assert(win);
+
+    surface::GfxSurface * tmpsurf;
+
+    tmpsurf = win.getWindowSurface();
+    if (tmpsurf != nullptr)
+    {
+        surf_ = tmpsurf;
+        surfaceConstructed_ = true;
+    }
+    else
+    {
+        surf_ = nullptr;
+        surfaceConstructed_ = true;
+    }
+}
+
 GfxControlledSurface::~GfxControlledSurface() noexcept
 {
     if (surfaceConstructed_ == true)
     {
         delete surf_;
+        surfaceConstructed_ = false;
+        surf_ = nullptr;
     }
 }
 
@@ -63,13 +126,19 @@ void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) thr
     assert((w > 1) && (w < 8192));
     assert((h > 1) && (h < 8192));
 
+    surface::GfxSurface * tmpsurf;
+
     pixels::GfxPixelFormatEnum pixFmtEn(kDefaultSurfaceColorFormatValue);
 
     if (surfaceConstructed_ == false)
     {
-        surf_ = new surface::GfxSurface("GfxControlledSurface::createSurface 1", surface::GfxSurfaceFlags(), w, h,
-                                        kDefaultSurfaceColorDepth, pixFmtEn);
-        surfaceConstructed_ = true;
+        tmpsurf = new surface::GfxSurface("GfxControlledSurface::createSurface 1+", surface::GfxSurfaceFlags(), w, h,
+                                          kDefaultSurfaceColorDepth, pixFmtEn);
+        if (tmpsurf != nullptr)
+        {
+            surf_ = tmpsurf;
+            surfaceConstructed_ = true;
+        }
         return;
     }
     throw std::runtime_error("Object already constructed");
@@ -79,20 +148,46 @@ void GfxControlledSurface::createSurface(std::string const& filename) throw(std:
 {
     assert(filename.length() > 0);
 
+    surface::GfxSurface * tmpsurf;
+
     if (surfaceConstructed_ == false)
     {
-        surf_ = new surface::GfxSurface("GfxControlledSurface::createSurface 2", filename);
-        surfaceConstructed_ = true;
+        tmpsurf = new surface::GfxSurface("GfxControlledSurface::createSurface 2+", filename);
+        if (tmpsurf != nullptr)
+        {
+            surf_ = tmpsurf;
+            surfaceConstructed_ = true;
+        }
         return;
     }
     throw std::runtime_error("Object already constructed");
 }
 
-void GfxControlledSurface::free(void) noexcept
+void GfxControlledSurface::createSurface(video::GfxWindow const& win) throw(std::runtime_error)
+{
+    assert(win);
+
+    surface::GfxSurface * tmpsurf;
+
+    if (surfaceConstructed_ == false)
+    {
+        tmpsurf = win.getWindowSurface();
+        if (tmpsurf != nullptr)
+        {
+            surf_ = tmpsurf;
+            surfaceConstructed_ = true;
+        }
+        return;
+    }
+    throw std::runtime_error("Object already constructed");
+}
+
+void GfxControlledSurface::freeSurface(void) noexcept
 {
     if (surfaceConstructed_ == true)
     {
         delete surf_;
+        surfaceConstructed_ = false;
         surf_ = nullptr;
     }
 }

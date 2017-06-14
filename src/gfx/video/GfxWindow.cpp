@@ -442,7 +442,7 @@ void GfxWindow::setWindowFullscreen(fullscreenflags_t flags) const noexcept
     }
 }
 
-surface::GfxSurface * GfxWindow::getWindowSurface(void) noexcept
+surface::GfxSurface * GfxWindow::getWindowSurface(void) const noexcept
 {
     if (window_ != nullptr)
     {
@@ -457,7 +457,7 @@ surface::GfxSurface * GfxWindow::getWindowSurface(void) noexcept
     return nullptr;
 }
 
-void GfxWindow::updateWindowSurface(void) noexcept
+void GfxWindow::updateWindowSurface(void) const noexcept
 {
     int32_t ret = 1;
 

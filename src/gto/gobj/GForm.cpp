@@ -42,7 +42,6 @@ GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
     window_ = nullptr;
     canvas_ = nullptr;
     canvasInUse_ = false;
-    windowsurface_ = nullptr;
 }
 
 GForm::GForm(std::string const& vname, std::string const& title) : GComponent(vname, nullptr)
@@ -54,18 +53,17 @@ GForm::GForm(std::string const& vname, std::string const& title) : GComponent(vn
     window_ = nullptr;
     canvas_ = nullptr;
     canvasInUse_ = false;
-    windowsurface_ = nullptr;
 }
 
 GForm::~GForm()
 {
-    if (windowsurface_ != nullptr)
+    if (windowsurface_)
     {
-        delete windowsurface_;
+        windowsurface_.freeSurface();
     }
     if (window_ != nullptr)
     {
-        window_.get()->~GfxWindow();
+        delete window_;
     }
 }
 
@@ -85,7 +83,7 @@ void GForm::create(void)
     gfx::video::GfxWindowFlags winFlags(gfx::video::GfxWindowFlags::ValueType::windowFlagResizable);
     gfx::video::GfxWindowPosition winPosCenter(gfx::video::GfxWindowPosition::ValueType::positionCentered);
 
-    window_ = std::make_shared<gfx::video::GfxWindow>(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
+    window_ =  new gfx::video::GfxWindow(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
     canvas_ = nullptr;
 }
 
@@ -108,8 +106,8 @@ std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getCanvas(void)
 {
     if (window_ != nullptr)
     {
-        windowsurface_ = window_->getWindowSurface();
-        canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(*windowsurface_);
+        windowsurface_.createSurface(*window_);
+        canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(windowsurface_());
         canvasInUse_ = true;
 
         return canvas_;

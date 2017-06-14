@@ -53,7 +53,7 @@ GBitmap::GBitmap(std::string const& vname, GComponent* owner, uint16_t width, ui
 
 GBitmap::~GBitmap()
 {
-    imgSurf_.free();
+    imgSurf_.freeSurface();
 }
 
 void GBitmap::load(void) throw(std::runtime_error)

@@ -103,8 +103,8 @@ public:
     void minimizeWindow(void) const noexcept;
     void restoreWindow(void) const noexcept;
     void setWindowFullscreen(const fullscreenflags_t flags) const noexcept;
-    surface::GfxSurface * getWindowSurface(void) noexcept;
-    void updateWindowSurface(void) noexcept;
+    surface::GfxSurface * getWindowSurface(void) const noexcept;
+    void updateWindowSurface(void) const noexcept;
     void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const noexcept;
     void setWindowGrab(GfxBool const& grabbed) const noexcept;
     GfxBool getWindowGrab(void) const noexcept;

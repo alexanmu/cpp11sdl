@@ -30,7 +30,7 @@
 #include "GComponent.hpp"
 #include "GfxCanvas.hpp"
 #include "GfxWindow.hpp"
-#include "GfxSurface.hpp"
+#include "GfxControlledSurface.hpp"
 
 namespace gto
 {
@@ -66,8 +66,8 @@ public:
 
     std::shared_ptr<gfx::bgi::GfxCanvas> getCanvas(void);
 protected:
-    std::shared_ptr<gfx::video::GfxWindow> window_;
-    gfx::surface::GfxSurface* windowsurface_;
+    gfx::video::GfxWindow * window_;
+    gfx::xtra::GfxControlledSurface windowsurface_;
 
 private:
     std::string formName_;
