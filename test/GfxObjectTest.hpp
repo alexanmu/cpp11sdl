@@ -41,14 +41,23 @@ protected:
     }
 
     gfx::_gfx::GfxObject object;
+    gfx::_gfx::GfxObject object2 {"object2"};
 };
 
 TEST_F(GfxObjectTest, emptyConstructor)
 {
-    // will fail if value != 31; all const classes are initialized by now
-    EXPECT_EQ(31, object.getInstanceId());
+    // will fail if value != 32; all const classes are initialized by now
+    EXPECT_EQ(32, object.getInstanceId());
     EXPECT_EQ("$init$", object.getClassName());
 }
+
+TEST_F(GfxObjectTest, ConstructorWithString)
+{
+    // will fail if value != 35; all const classes are initialized by now
+    EXPECT_EQ(35, object2.getInstanceId());
+    EXPECT_EQ("object2", object2.getClassName());
+}
+
 
 #endif  // GfxObjectTest_hpp
 
