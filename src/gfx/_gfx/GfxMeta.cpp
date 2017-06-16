@@ -102,6 +102,9 @@
 #include "GfxLogCategory.hpp"  // 2017.06.07
 #include "GfxLog.hpp"  // 2017.06.07
 #include "GfxLogOutputFunction.hpp"  // 2017.06.09
+#include "GfxHintPriority.hpp"  // 2017.06.16
+#include "GfxHints.hpp"  // 2017.06.16
+#include "GfxHintCallback.hpp"  // 2017.06.16
 
 namespace gfx
 {
@@ -1156,7 +1159,47 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_base_of<GfxObject, gfx::render::GfxTextureFormats>::value,
         gfx::render::GfxTextureFormats::SdlResource,
         prv::hasValueType<gfx::render::GfxTextureFormats>::value
-    }  // 2017.06.02
+    },  // 2017.06.02
+    //  gfx::hints
+    {
+        gfx::hints::GfxHintPriority::ClassName,
+        sizeof(gfx::hints::GfxHintPriority),
+        prv::hasSdlTypeNested<gfx::hints::GfxHintPriority>::value,
+        prv::hasSdlTypePtrNested<gfx::hints::GfxHintPriority>::value,
+        std::is_abstract<gfx::hints::GfxHintPriority>::value,
+        std::is_polymorphic<gfx::hints::GfxHintPriority>::value,
+        std::is_move_constructible<gfx::hints::GfxHintPriority>::value,
+        std::is_move_assignable<gfx::hints::GfxHintPriority>::value,
+        std::is_base_of<GfxObject, gfx::hints::GfxHintPriority>::value,
+        gfx::hints::GfxHintPriority::SdlResource,
+        prv::hasValueType<gfx::hints::GfxHintPriority>::value
+    },  // 2017.06.16
+    {
+        gfx::hints::GfxHints::ClassName,
+        sizeof(gfx::hints::GfxHints),
+        prv::hasSdlTypeNested<gfx::hints::GfxHints>::value,
+        prv::hasSdlTypePtrNested<gfx::hints::GfxHints>::value,
+        std::is_abstract<gfx::hints::GfxHints>::value,
+        std::is_polymorphic<gfx::hints::GfxHints>::value,
+        std::is_move_constructible<gfx::hints::GfxHints>::value,
+        std::is_move_assignable<gfx::hints::GfxHints>::value,
+        std::is_base_of<GfxObject, gfx::hints::GfxHints>::value,
+        gfx::hints::GfxHints::SdlResource,
+        prv::hasValueType<gfx::hints::GfxHints>::value
+    },  // 2017.06.16
+    {
+        gfx::hints::GfxHintCallback::ClassName,
+        sizeof(gfx::hints::GfxHintCallback),
+        prv::hasSdlTypeNested<gfx::hints::GfxHintCallback>::value,
+        prv::hasSdlTypePtrNested<gfx::hints::GfxHintCallback>::value,
+        std::is_abstract<gfx::hints::GfxHintCallback>::value,
+        std::is_polymorphic<gfx::hints::GfxHintCallback>::value,
+        std::is_move_constructible<gfx::hints::GfxHintCallback>::value,
+        std::is_move_assignable<gfx::hints::GfxHintCallback>::value,
+        std::is_base_of<GfxObject, gfx::hints::GfxHintCallback>::value,
+        gfx::hints::GfxHintCallback::SdlResource,
+        prv::hasValueType<gfx::hints::GfxHintCallback>::value
+    }  // 2017.06.16
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

@@ -37,7 +37,7 @@ const char GfxInitFlags::ClassName[] = "GfxInitFlags";
 
 GfxInitFlags::GfxInitFlags() noexcept : GfxObject(ClassName)
 {
-    flags_ = 0;
+    clear();
 }
 
 GfxInitFlags::GfxInitFlags(const int32_t flags) noexcept : GfxObject(ClassName)
