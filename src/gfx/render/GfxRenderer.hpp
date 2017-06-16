@@ -41,6 +41,7 @@
 #include "GfxRendererFlags.hpp"
 #include "GfxSurface.hpp"
 #include "GfxPixelFormatEnum.hpp"
+#include "GfxColor.hpp"
 
 namespace gfx
 {
@@ -72,46 +73,53 @@ public:
     SdlTypePtr getRenderer(video::GfxWindow const &win) const noexcept;
     GfxRendererInfo * getRendererInfo(void) const noexcept;
     void getRendererOutputSize(int32_t * w, int32_t * h) const noexcept;
-    /* Todo */void setRenderTarget(GfxTexture const& tex) const noexcept;
-    /* Todo */GfxTexture::SdlTypePtr getRenderTarget(void) const noexcept;
-    /* Todo */void renderSetLogicalsSize(const int32_t w, const int32_t h) const noexcept;
-    /* Todo */void renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept;
-    /* Todo */void renderSetIntegerScale(GfxBool const& enable) const noexcept;
-    /* Todo */GfxBool renderGetIntegerScale(void) const noexcept;
-    /* Todo */void renderSetViewport(rect::GfxRect const& rect) const noexcept;
-    /* Todo */rect::GfxRect renderGetViewport(void) const noexcept;
-    /* Todo */void renderSetClipRect(rect::GfxRect const& rect) const noexcept;
-    /* Todo */rect::GfxRect renderGetClipRect(void) const noexcept;
-    /* Todo */GfxBool renderIsClipEnabled(void) const noexcept;
-    /* Todo */void renderSetScale(const float scaleX, const float scaleY) const noexcept;
-    /* Todo */void renderGetScale(float * scaleX, float * scaleY) const noexcept;
-    /* Todo */void renderSetDrawColor(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
-    /* Todo */void renderGetDrawColor(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
-    /* Todo */void setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
+    void setRenderTarget(GfxTexture const& tex) const noexcept;
+    GfxTexture::SdlTypePtr getRenderTarget(void) const noexcept;
+    void renderSetLogicalsSize(const int32_t w, const int32_t h) const noexcept;
+    void renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept;
+    void renderSetIntegerScale(GfxBool const& enable) const noexcept;
+    GfxBool renderGetIntegerScale(void) const noexcept;
+    void renderSetViewport(rect::GfxRect const& rect) const noexcept;
+    rect::GfxRect renderGetViewport(void) const noexcept;
+    void renderSetClipRect(rect::GfxRect const& rect) const noexcept;
+    rect::GfxRect renderGetClipRect(void) const noexcept;
+    GfxBool renderIsClipEnabled(void) const noexcept;
+    void renderSetScale(const float scaleX, const float scaleY) const noexcept;
+    void renderGetScale(float * scaleX, float * scaleY) const noexcept;
+    void setRenderDrawColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a) const noexcept;
+    void setRenderDrawColor(pixels::GfxColor const& color) const noexcept;
+    void getRenderDrawColor(uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a) const noexcept;
+    pixels::GfxColor getRenderDrawColor(void) const noexcept;
+    void setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
+    blendmode::GfxBlendMode getRenderDrawBlendMode(void) const noexcept;
     void renderClear(void) const noexcept;
-    /* Todo */void renderDrawPoint(const int32_t x, const int32_t y) const noexcept;
-    /* Todo */void renderDrawPoints(std::vector<rect::GfxPoint> const& points) const noexcept;
-    /* Todo */void renderDrawLine(const int32_t x1, const int32_t y1, const int32_t x2,
-                                    const int32_t y2) const noexcept;
-    /* Todo */void renderDrawLines(std::vector<rect::GfxPoint> const& points) const noexcept;
-    /* Todo */void renderDrawRect(rect::GfxRect const& rect) const noexcept;
-    /* Todo */void renderDrawRects(std::vector<rect::GfxRect> const& rects) const noexcept;
-    /* Todo */void renderFillRect(rect::GfxRect const& rect) const noexcept;
-    /* Todo */void renderFillRects(std::vector<rect::GfxRect> const& rects) const noexcept;
+    void renderDrawPoint(const int32_t x, const int32_t y) const noexcept;
+    void renderDrawPoint(rect::GfxPoint const& point) const noexcept;
+    void renderDrawPoints(std::vector<rect::GfxPoint> const& points) const noexcept;
+    void renderDrawLine(const int32_t x1, const int32_t y1, const int32_t x2,
+                        const int32_t y2) const noexcept;
+    void renderDrawLine(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) const noexcept;
+    void renderDrawLines(std::vector<rect::GfxPoint> const& points) const noexcept;
+    void renderDrawRect(rect::GfxRect const& rect) const noexcept;
+    void renderDrawRects(std::vector<rect::GfxRect> const& rects) const noexcept;
+    void renderFillRect(rect::GfxRect const& rect) const noexcept;
+    void renderFillRects(std::vector<rect::GfxRect> const& rects) const noexcept;
     void renderCopy(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest) const noexcept;
     void renderCopy(GfxTexture const& tex) const noexcept;
     void renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest,
                     const double angle, rect::GfxPoint const& pt, GfxRendererFlip const& flip) const noexcept;
     void renderCopyEx(GfxTexture const& tex, const double angle, rect::GfxPoint const& pt,
-                        GfxRendererFlip const& flip) const noexcept;
-    /* Todo */void renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFormatEnum const& format,
-                    void * pixels, const int32_t pitch) const noexcept;
+                      GfxRendererFlip const& flip) const noexcept;
+    void renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFormatEnum const& format,
+                        void * pixels, const int32_t pitch) const noexcept;
     void renderPresent(void) const noexcept;
     void destroyRenderer(void) noexcept;
 
     SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
     SdlTypePtr renderer_;
+
+    static const pixels::GfxColor kDefaultRenderDrawColor;
 };
 
 }  // namespace render

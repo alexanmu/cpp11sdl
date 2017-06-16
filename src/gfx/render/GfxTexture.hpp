@@ -59,28 +59,31 @@ public:
     virtual ~GfxTexture() noexcept;
 
     GfxTexture(const GfxTexture&) = delete;
-    GfxTexture(GfxTexture&& tex);
+    GfxTexture(GfxTexture&& tex) noexcept;
 
     GfxTexture& operator=(const GfxTexture&) = delete;
-    GfxTexture& operator=(GfxTexture&& tex);
+    GfxTexture& operator=(GfxTexture&& tex) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
-    void queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int * w, int * h) const noexcept;
-    /* Todo */void setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
-    /* Todo */void getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
-    /* Todo */void setTextureAlphaMod(const uint8_t a) const noexcept;
-    /* Todo */void getTextureAlphaMod(uint8_t * a) const noexcept;
+    void queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int32_t * w,
+                    int32_t * h) const noexcept;
+    void setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
+    void setTextureColorMod(pixels::GfxColor const& color) const noexcept;
+    void getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
+    pixels::GfxColor getTextureColorMod(void) const noexcept;
+    void setTextureAlphaMod(const uint8_t a) const noexcept;
+    void getTextureAlphaMod(uint8_t * a) const noexcept;
     void setBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
     void setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode) const noexcept;
     blendmode::GfxBlendMode getBlendMode(void) const noexcept;
-    /* Todo */void updateTexture(rect::GfxRect const& rect, const void * pixels, const int pitch) const noexcept;
-    /* Todo */void updateYUVTexture(rect::GfxRect const& rect, const uint8_t * Yplane, const int Ypitch,
-                            const uint8_t * Uplane, const int Upitch,
-                            const uint8_t * Vplane, const int Vpitch) const noexcept;
-    /* Todo */void lockTexture(rect::GfxRect const& rect, void ** pixels, int * pitch) const noexcept;
-    /* Todo */void lockTexture(void ** pixels, int * pitch) const noexcept;
-    /* Todo */void unlockTexture(void) const noexcept;
+    void updateTexture(rect::GfxRect const& rect, const void * pixels, const int32_t pitch) const noexcept;
+    void updateYUVTexture(rect::GfxRect const& rect, const uint8_t * Yplane, const int32_t Ypitch,
+                            const uint8_t * Uplane, const int32_t Upitch,
+                            const uint8_t * Vplane, const int32_t Vpitch) const noexcept;
+    void lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t * pitch) const noexcept;
+    void lockTexture(void ** pixels, int32_t * pitch) const noexcept;
+    void unlockTexture(void) const noexcept;
     void destroyTexture(void) noexcept;
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
