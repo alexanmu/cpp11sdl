@@ -29,6 +29,7 @@
 #include <string>
 #include <map>
 #include <utility>
+#include <vector>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -50,7 +51,62 @@ public:
 
     enum class ValueType : int32_t
     {
-        hintFramebufferAcceleration = 0
+        hintFramebufferAcceleration = 1,
+        hintRenderDriver = 2,
+        hintRenderOpenGLShaders = 3,
+        hintRenderDirect3DThreadSafe = 4,
+        hintRenderDirect3D11Debug = 5,
+        hintRenderLogicalSizeMode = 6,
+        hintRenderScaleQuality = 7,
+        hintRenderVSync = 8,
+        hintVideoAllowScreensaver = 9,
+        hintVideoX11XVidMode = 10,
+        hintVideoX11Xinerama = 11,
+        hintVideoX11XRandr = 12,
+        hintVideoX11NetWmPing = 13,
+        hintWindowFrameUsableWhileCursorHidden = 14,
+        hintWindowsEnableMessageloop = 15,
+        hintGrabKeyboard = 16,
+        hintMouseNormalSpeedScale = 17,
+        hintMouseRelativeSpeedScale = 18,
+        hintMouseRelativeModeWrap = 19,
+        hintMouseFocusClickthrough = 20,
+        hintVideoMinimizeOnFocusLoss = 21,
+        hintIdleTimerDisabled = 22,
+        hintOrientations = 23,
+        hintAppleTVControllerUIEvents = 24,
+        hintAppleTVRemoteAllowRotation = 25,
+        hintAccelerometerAsJoystick = 26,
+        hintXInputEnabled = 27,
+        hintXInputUseOldJoystickMapping = 28,
+        hintGamecontrollerconfig = 29,
+        hintJoystickAllowBackgroundEvents = 30,
+        hintAllowTopmost = 31,
+        hintTimerResolution = 32,
+        hintQTWaylandContentOrientation = 33,
+        hintQTWaylandWindowFlags = 34,
+        hintThreadStackSize = 35,
+        hintVideoHighDPIDisabled = 36,
+        hintMacCtrlClickEmulateRightClick = 37,
+        hintVideoWinD3DCompiler = 38,
+        hintVideoWindowSharePixelFormat = 39,
+        hintWinRTPrivacyPolicyURL = 40,
+        hintWinRTPrivacyPolicyLabel = 41,
+        hintWinRTHandleBackButton = 42,
+        hintVideoMacFullscreenSpaces = 43,
+        hintMacBackgroundApp = 44,
+        hintAndroidApkExpansionMainFileVersion = 45,
+        hintAndroidApkExpansionPatchFileVersion = 46,
+        hintIMEInternalEditing = 47,
+        hintAndroidSeparateMouseAndTouch = 48,
+        hintEmScriptenKeyboardElement = 49,
+        hintNoSignalHandlers = 50,
+        hintWindowsNoCloseOnAltF4 = 51,
+        hintBmpSaveLegacyFormat = 52,
+        hintWindowsDisableThreadNaming = 53,
+        hintRPIVideoLayer = 54,
+        hintOpenGLESVideoDriver = 55,
+        hintAudioResamplingMode = 56
     };
 
     GfxHints() noexcept;
@@ -71,9 +127,23 @@ public:
     void addHintCallback(std::string const& name, GfxHintCallback const& callback, void * userdata) noexcept;
     void delHintCallback(std::string const& name, GfxHintCallback const& callback, void * userdata)
                         throw(std::runtime_error);
+
+    GfxBool setHintWithPriority(const ValueType hint, std::string const& value,
+                                GfxHintPriority const& prio) const noexcept;
+    GfxBool setHint(const ValueType hint, std::string const& value) const noexcept;
+    std::string getHint(const ValueType hint) const noexcept;
+    GfxBool getHintBoolean(const ValueType hint, GfxBool const& defvalue) const noexcept;
+    void addHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata) noexcept;
+    void delHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata)
+                        throw(std::runtime_error);
+
     void clearHints(void) const noexcept;
 private:
+    std::string getHintNameByValue(const ValueType value) const noexcept;
+
     std::map<std::string, std::pair<GfxHintCallback *, void *>> callbackMap_;
+
+    static const std::vector<std::pair<ValueType, const char *>> hintsMap_;
 };
 
 }  // namespace hints

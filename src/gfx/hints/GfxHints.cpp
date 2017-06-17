@@ -25,6 +25,7 @@
 #include <string>
 #include <map>
 #include <utility>
+#include <vector>
 
 #include "GfxHints.hpp"
 
@@ -62,6 +63,67 @@ void hintCallbackFunction(void * userdata, const char * name, const char * oldv,
 }  // namespace prv
 
 const char GfxHints::ClassName[] = "GfxHints";
+
+const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsMap_ =
+{
+    { /*  1 */ GfxHints::ValueType::hintFramebufferAcceleration, SDL_HINT_FRAMEBUFFER_ACCELERATION },
+    { /*  2 */ GfxHints::ValueType::hintRenderDriver, SDL_HINT_RENDER_DRIVER },
+    { /*  3 */ GfxHints::ValueType::hintRenderOpenGLShaders, SDL_HINT_RENDER_OPENGL_SHADERS },
+    { /*  4 */ GfxHints::ValueType::hintRenderDirect3DThreadSafe, SDL_HINT_RENDER_DIRECT3D_THREADSAFE },
+    { /*  5 */ GfxHints::ValueType::hintRenderDirect3D11Debug, SDL_HINT_RENDER_DIRECT3D11_DEBUG },
+    { /*  6 */ GfxHints::ValueType::hintRenderLogicalSizeMode, NULL/*SDL_HINT_RENDER_LOGICAL_SIZE_MODE*/ },
+    { /*  7 */ GfxHints::ValueType::hintRenderScaleQuality, SDL_HINT_RENDER_SCALE_QUALITY },
+    { /*  8 */ GfxHints::ValueType::hintRenderVSync, SDL_HINT_RENDER_VSYNC },
+    { /*  9 */ GfxHints::ValueType::hintVideoAllowScreensaver, SDL_HINT_VIDEO_ALLOW_SCREENSAVER },
+    { /* 10 */ GfxHints::ValueType::hintVideoX11XVidMode, SDL_HINT_VIDEO_X11_XVIDMODE },
+    { /* 11 */ GfxHints::ValueType::hintVideoX11Xinerama, SDL_HINT_VIDEO_X11_XINERAMA },
+    { /* 12 */ GfxHints::ValueType::hintVideoX11XRandr, SDL_HINT_VIDEO_X11_XRANDR },
+    { /* 13 */ GfxHints::ValueType::hintVideoX11NetWmPing, SDL_HINT_VIDEO_X11_NET_WM_PING },
+    { /* 14 */ GfxHints::ValueType::hintWindowFrameUsableWhileCursorHidden, SDL_HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN },
+    { /* 15 */ GfxHints::ValueType::hintWindowsEnableMessageloop, SDL_HINT_WINDOWS_ENABLE_MESSAGELOOP },
+    { /* 16 */ GfxHints::ValueType::hintGrabKeyboard, SDL_HINT_GRAB_KEYBOARD },
+    { /* 17 */ GfxHints::ValueType::hintMouseNormalSpeedScale, NULL/*SDL_HINT_MOUSE_NORMAL_SPEED_SCALE*/ },
+    { /* 18 */ GfxHints::ValueType::hintMouseRelativeSpeedScale, NULL/*SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE*/ },
+    { /* 19 */ GfxHints::ValueType::hintMouseRelativeModeWrap, SDL_HINT_MOUSE_RELATIVE_MODE_WARP },
+    { /* 20 */ GfxHints::ValueType::hintMouseFocusClickthrough, SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH },
+    { /* 21 */ GfxHints::ValueType::hintVideoMinimizeOnFocusLoss, SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS },
+    { /* 22 */ GfxHints::ValueType::hintIdleTimerDisabled, SDL_HINT_IDLE_TIMER_DISABLED },
+    { /* 23 */ GfxHints::ValueType::hintOrientations, SDL_HINT_ORIENTATIONS },
+    { /* 24 */ GfxHints::ValueType::hintAppleTVControllerUIEvents, SDL_HINT_APPLE_TV_CONTROLLER_UI_EVENTS },
+    { /* 25 */ GfxHints::ValueType::hintAppleTVRemoteAllowRotation, SDL_HINT_APPLE_TV_REMOTE_ALLOW_ROTATION },
+    { /* 26 */ GfxHints::ValueType::hintAccelerometerAsJoystick, SDL_HINT_ACCELEROMETER_AS_JOYSTICK },
+    { /* 27 */ GfxHints::ValueType::hintXInputEnabled, SDL_HINT_XINPUT_ENABLED },
+    { /* 28 */ GfxHints::ValueType::hintXInputUseOldJoystickMapping, SDL_HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING },
+    { /* 29 */ GfxHints::ValueType::hintGamecontrollerconfig, SDL_HINT_GAMECONTROLLERCONFIG },
+    { /* 30 */ GfxHints::ValueType::hintJoystickAllowBackgroundEvents, SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS },
+    { /* 31 */ GfxHints::ValueType::hintAllowTopmost, SDL_HINT_ALLOW_TOPMOST },
+    { /* 32 */ GfxHints::ValueType::hintTimerResolution, SDL_HINT_TIMER_RESOLUTION },
+    { /* 33 */ GfxHints::ValueType::hintQTWaylandContentOrientation, NULL/*SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION*/ },
+    { /* 34 */ GfxHints::ValueType::hintQTWaylandWindowFlags, NULL/*SDL_HINT_QTWAYLAND_WINDOW_FLAGS*/ },
+    { /* 35 */ GfxHints::ValueType::hintThreadStackSize, SDL_HINT_THREAD_STACK_SIZE },
+    { /* 36 */ GfxHints::ValueType::hintVideoHighDPIDisabled, SDL_HINT_VIDEO_HIGHDPI_DISABLED },
+    { /* 37 */ GfxHints::ValueType::hintMacCtrlClickEmulateRightClick, SDL_HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK },
+    { /* 38 */ GfxHints::ValueType::hintVideoWinD3DCompiler, SDL_HINT_VIDEO_WIN_D3DCOMPILER },
+    { /* 39 */ GfxHints::ValueType::hintVideoWindowSharePixelFormat, SDL_HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT },
+    { /* 40 */ GfxHints::ValueType::hintWinRTPrivacyPolicyURL , SDL_HINT_WINRT_PRIVACY_POLICY_URL },
+    { /* 41 */ GfxHints::ValueType::hintWinRTPrivacyPolicyLabel, SDL_HINT_WINRT_PRIVACY_POLICY_LABEL },
+    { /* 42 */ GfxHints::ValueType::hintWinRTHandleBackButton, SDL_HINT_WINRT_HANDLE_BACK_BUTTON },
+    { /* 43 */ GfxHints::ValueType::hintVideoMacFullscreenSpaces, SDL_HINT_VIDEO_MAC_FULLSCREEN_SPACES },
+    { /* 44 */ GfxHints::ValueType::hintMacBackgroundApp, SDL_HINT_MAC_BACKGROUND_APP },
+    { /* 45 */ GfxHints::ValueType::hintAndroidApkExpansionMainFileVersion, SDL_HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION },
+    { /* 46 */ GfxHints::ValueType::hintAndroidApkExpansionPatchFileVersion, SDL_HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION },
+    { /* 47 */ GfxHints::ValueType::hintIMEInternalEditing, SDL_HINT_IME_INTERNAL_EDITING },
+    { /* 48 */ GfxHints::ValueType::hintAndroidSeparateMouseAndTouch, SDL_HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH },
+    { /* 49 */ GfxHints::ValueType::hintEmScriptenKeyboardElement, SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT },
+    { /* 50 */ GfxHints::ValueType::hintNoSignalHandlers, SDL_HINT_NO_SIGNAL_HANDLERS },
+    { /* 51 */ GfxHints::ValueType::hintWindowsNoCloseOnAltF4, SDL_HINT_WINDOWS_NO_CLOSE_ON_ALT_F4 },
+    { /* 52 */ GfxHints::ValueType::hintBmpSaveLegacyFormat, SDL_HINT_BMP_SAVE_LEGACY_FORMAT },
+    { /* 53 */ GfxHints::ValueType::hintWindowsDisableThreadNaming, SDL_HINT_WINDOWS_DISABLE_THREAD_NAMING },
+    { /* 54 */ GfxHints::ValueType::hintRPIVideoLayer, SDL_HINT_RPI_VIDEO_LAYER },
+    { /* 55 */ GfxHints::ValueType::hintOpenGLESVideoDriver, NULL/*SDL_HINT_OPENGLES_VIDEO_DRIVER*/ },
+    { /* 56 */ GfxHints::ValueType::hintAudioResamplingMode, NULL/*SDL_HINT_AUDIO_RESAMPLING_MODE*/ }
+
+};
 
 GfxHints::GfxHints() noexcept : GfxObject(ClassName)
 {
@@ -172,9 +234,61 @@ void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& c
     }
 }
 
+GfxBool GfxHints::setHintWithPriority(const ValueType hint, std::string const& value,
+                                GfxHintPriority const& prio) const noexcept
+{
+    return setHintWithPriority(getHintNameByValue(hint), value, prio);
+}
+
+GfxBool GfxHints::setHint(const ValueType hint, std::string const& value) const noexcept
+{
+    return setHint(getHintNameByValue(hint), value);
+}
+
+std::string GfxHints::getHint(const ValueType hint) const noexcept
+{
+    return getHint(getHintNameByValue(hint));
+}
+
+GfxBool GfxHints::getHintBoolean(const ValueType hint, GfxBool const& defvalue) const noexcept
+{
+    return getHintBoolean(getHintNameByValue(hint), defvalue);
+}
+
+void GfxHints::addHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata) noexcept
+{
+    addHintCallback(getHintNameByValue(hint), callback, userdata);
+}
+
+void GfxHints::delHintCallback(const ValueType hint, GfxHintCallback const& callback,
+                               void * userdata) throw(std::runtime_error)
+{
+    delHintCallback(getHintNameByValue(hint), callback, userdata);
+}
+
 void GfxHints::clearHints(void) const noexcept
 {
     sdl2::SDL_ClearHints();
+}
+
+// Private methods
+std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
+{
+    const char * chptr = nullptr;
+
+    // std::pair<GfxHints::ValueType, const char *>
+    for (auto const& it : GfxHints::hintsMap_)
+    {
+        if (it.first == value)
+        {
+            chptr = it.second;
+        }
+    }
+    if (chptr != nullptr)
+    {
+        return std::string(chptr);
+    }
+    return "";
 }
 
 }  // namespace hints
