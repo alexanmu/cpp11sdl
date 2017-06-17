@@ -48,6 +48,8 @@ public:
         int32_t lastInstanceId_;
     };
 
+    static bool runtimeMetaActive;
+
     static GfxRuntimeMeta& getInstance(void) noexcept;
 
     GfxRuntimeMeta(GfxRuntimeMeta const&) = delete;

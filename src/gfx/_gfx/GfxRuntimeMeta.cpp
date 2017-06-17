@@ -25,7 +25,7 @@
 #include <cstdint>
 #include <cstring>
 #include <string>
-#include <iostream>
+#include <ostream>
 
 #include "prettyprint.hpp"
 
@@ -50,6 +50,8 @@ inline std::ostream& operator<<(std::ostream& outstream, GfxRuntimeMeta::ClassIn
     return outstream;
 }
 
+bool GfxRuntimeMeta::runtimeMetaActive = true;
+
 GfxRuntimeMeta& GfxRuntimeMeta::getInstance(void) noexcept
 {
     static GfxRuntimeMeta instance_;
@@ -59,6 +61,8 @@ GfxRuntimeMeta& GfxRuntimeMeta::getInstance(void) noexcept
 
 GfxRuntimeMeta::ClassInfo const& GfxRuntimeMeta::getClassInfo(const int32_t index) noexcept
 {
+    assert(classUMap.size() > 0);
+
     int32_t ctr = 0;
 
     clear();
@@ -84,6 +88,12 @@ void GfxRuntimeMeta::constructObject(const char * className, int32_t instanceId)
     assert(className != nullptr);
     assert(instanceId > 0);
 
+    /* Disable RuntimeMeta feature */
+    if (GfxRuntimeMeta::runtimeMetaActive == false)
+    {
+        return;
+    }
+
     ClassInfo cinfo;
 
     auto find_it = classUMap.find(className);
@@ -107,6 +117,12 @@ void GfxRuntimeMeta::destructObject(const char * className, int32_t instanceId) 
 {
     assert(className != nullptr);
     assert((instanceId > 0) || ((instanceId == -1) && (std::strcmp(className, "$null$") == 0)));
+
+    /* Disable RuntimeMeta feature */
+    if (GfxRuntimeMeta::runtimeMetaActive == false)
+    {
+        return;
+    }
 
     auto find_it = classUMap.find(className);
     if (find_it != classUMap.end())

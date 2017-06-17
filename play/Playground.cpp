@@ -783,7 +783,9 @@ void Playground::_doRuntimeMeta(void)
         gfx::rect::GfxRect rect2 = rect1;
         rmeta.printToStream(std::cout) << std::endl;
     }
+    gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = false;
     gfx::pixels::GfxArrayOrder ao1;
+    gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = true;
     gfx::pixels::GfxArrayOrder ao2;
     gfx::pixels::GfxArrayOrder ao3;
 
@@ -900,7 +902,7 @@ void Playground::_doLog(void)
     }
     catch (std::runtime_error ex)
     {
-        std::cout << "Exception: " << ex.what() << "; as expected" << std::endl;
+        std::cout << "Exception: " << ex.what() << "; as expected; libSDL bugzilla issue #3666" << std::endl;
     }
     log.logMessage(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),
                     GfxLogPriority(GfxLogPriority::ValueType::logPriorityCritical),
@@ -917,8 +919,8 @@ void Playground::_doPlayground(void)
     //_doCallback();
     //_doComponent();
     //_doFSO();
-    //_doRuntimeMeta();
-    _doMeta();
+    _doRuntimeMeta();
+    //_doMeta();
     //_doLog();
 }
 
