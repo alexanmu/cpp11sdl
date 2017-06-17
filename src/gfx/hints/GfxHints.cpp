@@ -79,7 +79,7 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 11 */ GfxHints::ValueType::hintVideoX11Xinerama, SDL_HINT_VIDEO_X11_XINERAMA },
     { /* 12 */ GfxHints::ValueType::hintVideoX11XRandr, SDL_HINT_VIDEO_X11_XRANDR },
     { /* 13 */ GfxHints::ValueType::hintVideoX11NetWmPing, SDL_HINT_VIDEO_X11_NET_WM_PING },
-    { /* 14 */ GfxHints::ValueType::hintWindowFrameUsableWhileCursorHidden, SDL_HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN },
+    { /* 14 */ GfxHints::ValueType::hintWindowFrameUsableWhileCursorHidden, SDL_HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN }, // NOLINT
     { /* 15 */ GfxHints::ValueType::hintWindowsEnableMessageloop, SDL_HINT_WINDOWS_ENABLE_MESSAGELOOP },
     { /* 16 */ GfxHints::ValueType::hintGrabKeyboard, SDL_HINT_GRAB_KEYBOARD },
     { /* 17 */ GfxHints::ValueType::hintMouseNormalSpeedScale, NULL/*SDL_HINT_MOUSE_NORMAL_SPEED_SCALE*/ },
@@ -110,8 +110,8 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 42 */ GfxHints::ValueType::hintWinRTHandleBackButton, SDL_HINT_WINRT_HANDLE_BACK_BUTTON },
     { /* 43 */ GfxHints::ValueType::hintVideoMacFullscreenSpaces, SDL_HINT_VIDEO_MAC_FULLSCREEN_SPACES },
     { /* 44 */ GfxHints::ValueType::hintMacBackgroundApp, SDL_HINT_MAC_BACKGROUND_APP },
-    { /* 45 */ GfxHints::ValueType::hintAndroidApkExpansionMainFileVersion, SDL_HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION },
-    { /* 46 */ GfxHints::ValueType::hintAndroidApkExpansionPatchFileVersion, SDL_HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION },
+    { /* 45 */ GfxHints::ValueType::hintAndroidApkExpansionMainFileVersion, SDL_HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION }, // NOLINT
+    { /* 46 */ GfxHints::ValueType::hintAndroidApkExpansionPatchFileVersion, SDL_HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION }, // NOLINT
     { /* 47 */ GfxHints::ValueType::hintIMEInternalEditing, SDL_HINT_IME_INTERNAL_EDITING },
     { /* 48 */ GfxHints::ValueType::hintAndroidSeparateMouseAndTouch, SDL_HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH },
     { /* 49 */ GfxHints::ValueType::hintEmScriptenKeyboardElement, SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT },
@@ -122,7 +122,6 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 54 */ GfxHints::ValueType::hintRPIVideoLayer, SDL_HINT_RPI_VIDEO_LAYER },
     { /* 55 */ GfxHints::ValueType::hintOpenGLESVideoDriver, NULL/*SDL_HINT_OPENGLES_VIDEO_DRIVER*/ },
     { /* 56 */ GfxHints::ValueType::hintAudioResamplingMode, NULL/*SDL_HINT_AUDIO_RESAMPLING_MODE*/ }
-
 };
 
 GfxHints::GfxHints() noexcept : GfxObject(ClassName)

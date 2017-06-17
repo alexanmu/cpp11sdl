@@ -43,6 +43,7 @@ public:
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {

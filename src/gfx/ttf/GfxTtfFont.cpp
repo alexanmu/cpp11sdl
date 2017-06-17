@@ -41,7 +41,7 @@ GfxTtfFont::GfxTtfFont() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error) :
+GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
     assert(filename.length() > 0);
@@ -61,8 +61,8 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize) throw(std
     kerning_ = true;
 }
 
-GfxTtfFont::GfxTtfFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error) :
-            GfxObject(ClassName)
+GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, const int32_t index)
+            throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(filename.length() > 0);
     assert(pointsize > 0);
@@ -128,7 +128,7 @@ GfxTtfFont::operator bool() const noexcept
     return (ttf_ != nullptr);
 }
 
-void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize) throw(std::runtime_error)
+void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error)
 {
     assert(filename.length() > 0);
     assert(pointsize > 0);
@@ -154,7 +154,8 @@ void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize) throw(
     kerning_ = true;
 }
 
-void GfxTtfFont::openFont(std::string const& filename, int32_t pointsize, int32_t index) throw(std::runtime_error)
+void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize,
+                          const int32_t index) throw(std::runtime_error)
 {
     assert(filename.length() > 0);
     assert(pointsize > 0);
@@ -190,7 +191,7 @@ void GfxTtfFont::closeFont(void) noexcept
     }
 }
 
-void GfxTtfFont::setByteSwappedUnicode(bool swapped) const noexcept
+void GfxTtfFont::setByteSwappedUnicode(const bool swapped) const noexcept
 {
     sdl2::TTF_ByteSwappedUNICODE(static_cast<int>(swapped));
 }
@@ -228,7 +229,7 @@ int32_t GfxTtfFont::getFontOutline(void) const noexcept
     return outline_;
 }
 
-void GfxTtfFont::setFontOutline(int32_t const& outline) noexcept
+void GfxTtfFont::setFontOutline(const int32_t outline) noexcept
 {
     assert(outline >= 0);
 
@@ -244,7 +245,7 @@ bool GfxTtfFont::getFontKerning(void) const noexcept
     return kerning_;
 }
 
-void GfxTtfFont::setFontKerning(bool const& kerning) noexcept
+void GfxTtfFont::setFontKerning(const bool kerning) noexcept
 {
     kerning_ = kerning;
     if (ttf_ != nullptr)
@@ -349,7 +350,7 @@ std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
     return "";
 }
 
-int32_t GfxTtfFont::glyphIsProvided(uint16_t ch) const noexcept
+int32_t GfxTtfFont::glyphIsProvided(const uint16_t ch) const noexcept
 {
     bool is = false;
 
@@ -360,7 +361,7 @@ int32_t GfxTtfFont::glyphIsProvided(uint16_t ch) const noexcept
     return is;
 }
 
-bool GfxTtfFont::glyphMetrics(uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
+bool GfxTtfFont::glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
                               int32_t * maxy, int32_t * advance) const noexcept
 {
     assert(minx != nullptr);
@@ -406,7 +407,7 @@ bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) con
     return ret;
 }
 
-bool GfxTtfFont::sizeUnicode(std::string text, int32_t * w, int32_t * h) const throw(std::runtime_error)
+bool GfxTtfFont::sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error)
 {
     assert(text.length() > 0);
     assert(w != nullptr);

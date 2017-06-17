@@ -40,10 +40,11 @@ class GfxMessageBoxFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxFlags SdlType;
-    typedef sdl2::SDL_MessageBoxFlags* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxFlags * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {
@@ -57,10 +58,10 @@ public:
     explicit GfxMessageBoxFlags(const ValueType flag) noexcept;
     explicit GfxMessageBoxFlags(const SdlType flag) noexcept;
 
-    GfxMessageBoxFlags(const GfxMessageBoxFlags& other) noexcept;
+    GfxMessageBoxFlags(GfxMessageBoxFlags const& other) noexcept;
     GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept;
 
-    GfxMessageBoxFlags& operator=(const GfxMessageBoxFlags& other) noexcept;
+    GfxMessageBoxFlags& operator=(GfxMessageBoxFlags const& other) noexcept;
     GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other) noexcept;
 
     bool operator==(const GfxMessageBoxFlags& other) const noexcept;

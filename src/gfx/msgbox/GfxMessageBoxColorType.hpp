@@ -40,10 +40,11 @@ class GfxMessageBoxColorType final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxColorType SdlType;
-    typedef sdl2::SDL_MessageBoxColorType* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxColorType * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {

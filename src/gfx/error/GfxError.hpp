@@ -39,6 +39,7 @@ class GfxError final : public GfxObject
 public:
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxError() noexcept;
 
@@ -52,7 +53,7 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    std::string get() const noexcept;
+    std::string const& get() const noexcept;
 
     void clear(void) noexcept;
 private:

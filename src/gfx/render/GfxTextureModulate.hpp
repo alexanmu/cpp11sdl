@@ -40,10 +40,11 @@ class GfxTextureModulate final : public GfxObject
 {
 public:
     typedef sdl2::SDL_TextureModulate SdlType;
-    typedef sdl2::SDL_TextureModulate* SdlTypePtr;
+    typedef sdl2::SDL_TextureModulate * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {

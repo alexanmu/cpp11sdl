@@ -37,10 +37,11 @@ class GfxTtfFontStyle final : public GfxObject
 {
 public:
     typedef int32_t SdlType;
-    typedef int32_t* SdlTypePtr;
+    typedef int32_t * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class GfxTtfFontStyleValues : int32_t
     {

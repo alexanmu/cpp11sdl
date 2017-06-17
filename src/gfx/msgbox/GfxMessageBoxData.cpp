@@ -41,10 +41,10 @@ GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxObject* win,
-                                     const std::string& title, const std::string& message, const int32_t numbuttons,
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject * win,
+                                     std::string const& title, std::string const& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[],
-                                     const GfxMessageBoxColorScheme& colorScheme) noexcept :
+                                     GfxMessageBoxColorScheme const& colorScheme) noexcept :
         GfxObject(ClassName)
 {
     assert(flags);
@@ -76,8 +76,8 @@ GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxObject*
     data_.colorScheme = colorScheme.getAsSdlTypePtr();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win,
-                                     const std::string& title, const std::string& message, const int32_t numbuttons,
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win,
+                                     std::string const& title, std::string const& message, const int32_t numbuttons,
                                      GfxMessageBoxButtonData buttons[]) noexcept :
         GfxObject(ClassName)
 {

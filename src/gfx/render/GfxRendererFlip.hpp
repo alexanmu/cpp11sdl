@@ -40,10 +40,11 @@ class GfxRendererFlip final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererFlip SdlType;
-    typedef sdl2::SDL_RendererFlip* SdlTypePtr;
+    typedef sdl2::SDL_RendererFlip * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {

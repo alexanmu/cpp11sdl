@@ -45,10 +45,11 @@ namespace render
 class GfxTexture final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Texture* SdlTypePtr;
+    typedef sdl2::SDL_Texture * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;
+    static const bool CallsSdl = true;
 
     GfxTexture() = delete;
 

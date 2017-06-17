@@ -25,6 +25,7 @@
 
 namespace gfx
 {
+
 namespace hints
 {
 

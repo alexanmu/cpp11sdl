@@ -50,6 +50,7 @@ public:
         bool isDerivedFromGfxObject_;
         bool sdlResource_;
         bool hasValueType_;
+        bool callsSdl_;
     };
 
     GfxMeta() noexcept;

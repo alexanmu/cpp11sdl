@@ -50,22 +50,23 @@ namespace video
 class GfxWindow final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Window* SdlTypePtr;
+    typedef sdl2::SDL_Window * SdlTypePtr;
 
     typedef uint32_t fullscreenflags_t;
 
     static const char ClassName[];
     static const bool SdlResource = true;
+    static const bool CallsSdl = true;
 
-    GfxWindow(const std::string& title, const int32_t width, const int32_t height) throw(std::runtime_error);
-    GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
-                const int32_t width, const int32_t height, const GfxWindowFlags& flags) throw(std::runtime_error);
+    GfxWindow(std::string const& title, const int32_t width, const int32_t height) throw(std::runtime_error);
+    GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
+                const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
     explicit GfxWindow(void * data) throw(std::runtime_error);
 
     GfxWindow() = delete;
-    GfxWindow(const GfxWindow&) = delete;
+    GfxWindow(GfxWindow const&) = delete;
     GfxWindow(GfxWindow&&) = delete;
-    GfxWindow& operator=(const GfxWindow&) = delete;
+    GfxWindow& operator=(GfxWindow const&) = delete;
     GfxWindow& operator=(GfxWindow&&) = delete;
 
     virtual ~GfxWindow() noexcept;
@@ -80,12 +81,12 @@ public:
     uint32_t getWindowID(void) const noexcept;
     GfxWindow const * getWindowFromID(const uint32_t id) const noexcept;
     GfxWindowFlags * getWindowFlags(void) const noexcept;
-    void setWindowTitle(const std::string& title) noexcept;
-    std::string getWindowTitle() const noexcept;
+    void setWindowTitle(std::string const& title) noexcept;
+    std::string getWindowTitle(void) const noexcept;
     void setWindowIcon(surface::GfxSurface const& icon) noexcept;
     void * setWindowData(std::string const& name, void * userdata) const noexcept;
     void * getWindowData(std::string const& name) const noexcept;
-    void setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y) noexcept;
+    void setWindowPosition(GfxWindowPosition const& x, GfxWindowPosition const& y) noexcept;
     void getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y) noexcept;
     void setWindowSize(const int32_t w, const int32_t h) const noexcept;
     void getWindowSize(int32_t * pw, int32_t * ph) const noexcept;

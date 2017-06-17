@@ -48,6 +48,7 @@ class GfxCanvas final : public GfxObject
 public:
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxCanvas() = delete;
     explicit GfxCanvas(surface::GfxSurface const& surf) noexcept;

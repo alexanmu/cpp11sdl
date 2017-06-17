@@ -810,6 +810,7 @@ void Playground::_doMeta(void)
         std::cout << "isGfxObjChild<>=" << classInfo.isDerivedFromGfxObject_ << '\t';
         std::cout << "sdlResource=" << classInfo.sdlResource_ << '\t';
         std::cout << "hasValueType<>=" << classInfo.hasValueType_ << '\n';
+        std::cout << "CallsSdl=" << classInfo.callsSdl_ << '\n';
 	}
     std::cout << std::endl;
 }

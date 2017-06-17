@@ -52,10 +52,11 @@ namespace render
 class GfxRenderer final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Renderer* SdlTypePtr;
+    typedef sdl2::SDL_Renderer * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;
+    static const bool CallsSdl = true;
 
     explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) throw(std::runtime_error);
     explicit GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error);

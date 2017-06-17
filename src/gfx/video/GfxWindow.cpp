@@ -69,7 +69,7 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
 
 }  // namespace prv
 
-GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height)
+GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_t height)
     throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(title.length() > 0);
@@ -86,8 +86,8 @@ GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_
     window_ = tmpwinptr;
 }
 
-GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
-                     const int32_t width, const int32_t height, const GfxWindowFlags& flags) throw(std::runtime_error) :
+GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
+                     const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error) :
         GfxObject(ClassName)
 {
     assert(title.length() > 0);
@@ -181,7 +181,6 @@ uint32_t GfxWindow::getWindowPixelFormat(void) const noexcept
     return ret;
 }
 
-/**************************************** Window methods ****************************************/
 uint32_t GfxWindow::getWindowID(void) const noexcept
 {
     uint32_t id = 0;
@@ -222,7 +221,7 @@ GfxWindowFlags * GfxWindow::getWindowFlags(void) const noexcept
     return nullptr;
 }
 
-void GfxWindow::setWindowTitle(const std::string& title) noexcept
+void GfxWindow::setWindowTitle(std::string const& title) noexcept
 {
     assert(title.length() > 0);
 
@@ -232,7 +231,7 @@ void GfxWindow::setWindowTitle(const std::string& title) noexcept
     }
 }
 
-std::string GfxWindow::getWindowTitle() const noexcept
+std::string GfxWindow::getWindowTitle(void) const noexcept
 {
     const char * pch;
 
@@ -269,7 +268,7 @@ void * GfxWindow::getWindowData(std::string const& name) const noexcept
     return sdl2::SDL_GetWindowData(window_, name.c_str());
 }
 
-void GfxWindow::setWindowPosition(const GfxWindowPosition& x, const GfxWindowPosition& y) noexcept
+void GfxWindow::setWindowPosition(GfxWindowPosition const& x, GfxWindowPosition const& y) noexcept
 {
     assert(x);
     assert(y);
@@ -337,7 +336,7 @@ void GfxWindow::getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bo
     assert((ret == -1) || (ret == 0));
 }
 
-void GfxWindow::setWindowMinimumSize(int32_t min_w, int32_t min_h) const noexcept
+void GfxWindow::setWindowMinimumSize(const int32_t min_w, const int32_t min_h) const noexcept
 {
     assert(min_w > 0);
     assert(min_h > 0);
@@ -353,7 +352,7 @@ void GfxWindow::getWindowMinimumSize(int32_t * w, int32_t * h) const noexcept
     sdl2::SDL_GetWindowMinimumSize(window_, w, h);
 }
 
-void GfxWindow::setWindowMaximumSize(int32_t max_w, int32_t max_h) const noexcept
+void GfxWindow::setWindowMaximumSize(const int32_t max_w, const int32_t max_h) const noexcept
 {
     assert(max_w > 0);
     assert(max_h > 0);
@@ -431,7 +430,7 @@ void GfxWindow::restoreWindow(void) const noexcept
     }
 }
 
-void GfxWindow::setWindowFullscreen(fullscreenflags_t flags) const noexcept
+void GfxWindow::setWindowFullscreen(const fullscreenflags_t flags) const noexcept
 {
     int32_t ret = 1;
 
@@ -661,7 +660,6 @@ void GfxWindow::setWindowHitTest(GfxHitTest const& callback, void * callback_dat
     }
 }
 
-/**************************************** Custom ****************************************/
 int32_t GfxWindow::getWidth() const noexcept
 {
     int32_t w;

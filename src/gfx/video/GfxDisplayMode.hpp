@@ -40,10 +40,11 @@ class GfxDisplayMode final : public GfxObject
 {
 public:
     typedef sdl2::SDL_DisplayMode SdlType;
-    typedef sdl2::SDL_DisplayMode* SdlTypePtr;
+    typedef sdl2::SDL_DisplayMode * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxDisplayMode() noexcept;
 

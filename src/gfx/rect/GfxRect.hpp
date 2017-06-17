@@ -43,10 +43,11 @@ class GfxRect final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Rect SdlType;
-    typedef sdl2::SDL_Rect* SdlTypePtr;
+    typedef sdl2::SDL_Rect * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxRect() noexcept;
 

@@ -40,6 +40,7 @@ class GfxFontInfo final : public GfxObject
 public:
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxFontInfo() noexcept;
     explicit GfxFontInfo(std::string const& fontName) noexcept;

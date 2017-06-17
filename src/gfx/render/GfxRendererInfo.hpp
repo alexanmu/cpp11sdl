@@ -42,10 +42,11 @@ class GfxRendererInfo final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererInfo SdlType;
-    typedef sdl2::SDL_RendererInfo* SdlTypePtr;
+    typedef sdl2::SDL_RendererInfo * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxRendererInfo() noexcept;
 

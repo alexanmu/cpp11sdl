@@ -39,6 +39,7 @@ class GfxPlatform final : public GfxObject
 public:
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = true;
 
     GfxPlatform() noexcept;
 

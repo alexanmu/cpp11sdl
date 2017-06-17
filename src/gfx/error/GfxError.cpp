@@ -80,7 +80,7 @@ GfxError::operator bool() const noexcept
     return (error_.length() > 0);
 }
 
-std::string GfxError::get() const noexcept
+std::string const& GfxError::get() const noexcept
 {
     return error_;
 }

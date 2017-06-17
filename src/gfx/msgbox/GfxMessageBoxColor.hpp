@@ -40,10 +40,11 @@ class GfxMessageBoxColor final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxColor SdlType;
-    typedef sdl2::SDL_MessageBoxColor* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxColor * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxMessageBoxColor() noexcept;
 

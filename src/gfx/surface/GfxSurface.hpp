@@ -53,6 +53,7 @@ public:
 
     static const char ClassName[];
     static const bool SdlResource = true;
+    static const bool CallsSdl = true;
 
     GfxSurface() = delete;
 

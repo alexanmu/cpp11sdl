@@ -42,10 +42,11 @@ class GfxMessageBoxColorScheme final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxColorScheme SdlType;
-    typedef sdl2::SDL_MessageBoxColorScheme* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxColorScheme * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     static constexpr int32_t colorsArraySize = static_cast<int32_t>(
                                             GfxMessageBoxColorType::ValueType::colorMax);

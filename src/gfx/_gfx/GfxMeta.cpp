@@ -186,7 +186,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bits::GfxBits>::value,
         std::is_base_of<GfxObject, gfx::bits::GfxBits>::value,
         gfx::bits::GfxBits::SdlResource,
-        prv::hasValueType<gfx::bits::GfxBits>::value
+        prv::hasValueType<gfx::bits::GfxBits>::value,
+        gfx::bits::GfxBits::CallsSdl
     },
     // gfx::blendmode
     {
@@ -200,7 +201,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::blendmode::GfxBlendMode>::value,
         std::is_base_of<GfxObject, gfx::blendmode::GfxBlendMode>::value,
         gfx::blendmode::GfxBlendMode::SdlResource,
-        prv::hasValueType<gfx::blendmode::GfxBlendMode>::value
+        prv::hasValueType<gfx::blendmode::GfxBlendMode>::value,
+        gfx::blendmode::GfxBlendMode::CallsSdl
     },
     // gfx
     {
@@ -214,7 +216,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::GfxBool>::value,
         std::is_base_of<GfxObject, gfx::GfxBool>::value,
         gfx::GfxBool::SdlResource,
-        prv::hasValueType<gfx::GfxBool>::value
+        prv::hasValueType<gfx::GfxBool>::value,
+        gfx::GfxBool::CallsSdl
     },
     // gfx::clipboard
     {
@@ -228,7 +231,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::clipboard::GfxClipboard>::value,
         std::is_base_of<GfxObject, gfx::clipboard::GfxClipboard>::value,
         gfx::clipboard::GfxClipboard::SdlResource,
-        prv::hasValueType<gfx::clipboard::GfxClipboard>::value
+        prv::hasValueType<gfx::clipboard::GfxClipboard>::value,
+        gfx::clipboard::GfxClipboard::CallsSdl
     },
     // gfx::pixels
     {
@@ -242,7 +246,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxColor>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxColor>::value,
         gfx::pixels::GfxColor::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxColor>::value
+        prv::hasValueType<gfx::pixels::GfxColor>::value,
+        gfx::pixels::GfxColor::CallsSdl
     },
     {
         gfx::pixels::GfxPalette::ClassName,
@@ -255,7 +260,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxPalette>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxPalette>::value,
         gfx::pixels::GfxPalette::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxPalette>::value
+        prv::hasValueType<gfx::pixels::GfxPalette>::value,
+        gfx::pixels::GfxPalette::CallsSdl
     },
     {
         gfx::pixels::GfxPixelFormat::ClassName,
@@ -268,7 +274,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxPixelFormat>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxPixelFormat>::value,
         gfx::pixels::GfxPixelFormat::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxPixelFormat>::value
+        prv::hasValueType<gfx::pixels::GfxPixelFormat>::value,
+        gfx::pixels::GfxPixelFormat::CallsSdl
     },
     {
         gfx::pixels::GfxPixelType::ClassName,
@@ -281,7 +288,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxPixelType>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxPixelType>::value,
         gfx::pixels::GfxPixelType::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxPixelType>::value
+        prv::hasValueType<gfx::pixels::GfxPixelType>::value,
+        gfx::pixels::GfxPixelType::CallsSdl
     },  // 2017.05.30
     {
         gfx::pixels::GfxBitmapOrder::ClassName,
@@ -294,7 +302,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxBitmapOrder>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxBitmapOrder>::value,
         gfx::pixels::GfxBitmapOrder::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxBitmapOrder>::value
+        prv::hasValueType<gfx::pixels::GfxBitmapOrder>::value,
+        gfx::pixels::GfxBitmapOrder::CallsSdl
     },  // 2017.05.30
     {
         gfx::pixels::GfxPackedOrder::ClassName,
@@ -307,7 +316,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxPackedOrder>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxPackedOrder>::value,
         gfx::pixels::GfxPackedOrder::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxPackedOrder>::value
+        prv::hasValueType<gfx::pixels::GfxPackedOrder>::value,
+        gfx::pixels::GfxPackedOrder::CallsSdl
     },  // 2017.05.30
     {
         gfx::pixels::GfxArrayOrder::ClassName,
@@ -320,7 +330,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxArrayOrder>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxArrayOrder>::value,
         gfx::pixels::GfxArrayOrder::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxArrayOrder>::value
+        prv::hasValueType<gfx::pixels::GfxArrayOrder>::value,
+        gfx::pixels::GfxArrayOrder::CallsSdl
     },  // 2017.05.30
     {
         gfx::pixels::GfxPackedLayout::ClassName,
@@ -333,7 +344,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxPackedLayout>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxPackedLayout>::value,
         gfx::pixels::GfxPackedLayout::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxPackedLayout>::value
+        prv::hasValueType<gfx::pixels::GfxPackedLayout>::value,
+        gfx::pixels::GfxPackedLayout::CallsSdl
     },  // 2017.05.30
     {
         gfx::pixels::GfxPixelFormatEnum::ClassName,
@@ -346,7 +358,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::pixels::GfxPixelFormatEnum>::value,
         std::is_base_of<GfxObject, gfx::pixels::GfxPixelFormatEnum>::value,
         gfx::pixels::GfxPixelFormatEnum::SdlResource,
-        prv::hasValueType<gfx::pixels::GfxPixelFormatEnum>::value
+        prv::hasValueType<gfx::pixels::GfxPixelFormatEnum>::value,
+        gfx::pixels::GfxPixelFormatEnum::CallsSdl
     },  // 2017.05.30
     // gfx::cpuinfo
     {
@@ -360,7 +373,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::cpuinfo::GfxCpuInfo>::value,
         std::is_base_of<GfxObject, gfx::cpuinfo::GfxCpuInfo>::value,
         gfx::cpuinfo::GfxCpuInfo::SdlResource,
-        prv::hasValueType<gfx::cpuinfo::GfxCpuInfo>::value
+        prv::hasValueType<gfx::cpuinfo::GfxCpuInfo>::value,
+        gfx::cpuinfo::GfxCpuInfo::CallsSdl
     },
     // gfx::video
     {
@@ -374,7 +388,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxDisplayMode>::value,
         std::is_base_of<GfxObject, gfx::video::GfxDisplayMode>::value,
         gfx::video::GfxDisplayMode::SdlResource,
-        prv::hasValueType<gfx::video::GfxDisplayMode>::value
+        prv::hasValueType<gfx::video::GfxDisplayMode>::value,
+        gfx::video::GfxDisplayMode::CallsSdl
     },
     {
         gfx::video::GfxScreenSaver::ClassName,
@@ -387,7 +402,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxScreenSaver>::value,
         std::is_base_of<GfxObject, gfx::video::GfxScreenSaver>::value,
         gfx::video::GfxScreenSaver::SdlResource,
-        prv::hasValueType<gfx::video::GfxScreenSaver>::value
+        prv::hasValueType<gfx::video::GfxScreenSaver>::value,
+        gfx::video::GfxScreenSaver::CallsSdl
     },
     {
         gfx::video::GfxVideo::ClassName,
@@ -400,7 +416,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxVideo>::value,
         std::is_base_of<GfxObject, gfx::video::GfxVideo>::value,
         gfx::video::GfxVideo::SdlResource,
-        prv::hasValueType<gfx::video::GfxVideo>::value
+        prv::hasValueType<gfx::video::GfxVideo>::value,
+        gfx::video::GfxVideo::CallsSdl
     },
     {
         gfx::video::GfxWindow::ClassName,
@@ -413,7 +430,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxWindow>::value,
         std::is_base_of<GfxObject, gfx::video::GfxWindow>::value,
         gfx::video::GfxWindow::SdlResource,
-        prv::hasValueType<gfx::video::GfxWindow>::value
+        prv::hasValueType<gfx::video::GfxWindow>::value,
+        gfx::video::GfxWindow::CallsSdl
     },
     {
         gfx::video::GfxWindowEventID::ClassName,
@@ -426,7 +444,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxWindowEventID>::value,
         std::is_base_of<GfxObject, gfx::video::GfxWindowEventID>::value,
         gfx::video::GfxWindowEventID::SdlResource,
-        prv::hasValueType<gfx::video::GfxWindowEventID>::value
+        prv::hasValueType<gfx::video::GfxWindowEventID>::value,
+        gfx::video::GfxWindowEventID::CallsSdl
     },
     {
         gfx::video::GfxWindowFlags::ClassName,
@@ -439,7 +458,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxWindowFlags>::value,
         std::is_base_of<GfxObject, gfx::video::GfxWindowFlags>::value,
         gfx::video::GfxWindowFlags::SdlResource,
-        prv::hasValueType<gfx::video::GfxWindowFlags>::value
+        prv::hasValueType<gfx::video::GfxWindowFlags>::value,
+        gfx::video::GfxWindowFlags::CallsSdl
     },
     {
         gfx::video::GfxWindowPosition::ClassName,
@@ -452,7 +472,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxWindowPosition>::value,
         std::is_base_of<GfxObject, gfx::video::GfxWindowPosition>::value,
         gfx::video::GfxWindowPosition::SdlResource,
-        prv::hasValueType<gfx::video::GfxWindowPosition>::value
+        prv::hasValueType<gfx::video::GfxWindowPosition>::value,
+        gfx::video::GfxWindowPosition::CallsSdl
     },
     {
         gfx::video::GfxHitTestResult::ClassName,
@@ -465,7 +486,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxHitTestResult>::value,
         std::is_base_of<GfxObject, gfx::video::GfxHitTestResult>::value,
         gfx::video::GfxHitTestResult::SdlResource,
-        prv::hasValueType<gfx::video::GfxHitTestResult>::value
+        prv::hasValueType<gfx::video::GfxHitTestResult>::value,
+        gfx::video::GfxHitTestResult::CallsSdl
     },  // 2017.05.31
     {
         gfx::video::GfxHitTest::ClassName,
@@ -478,7 +500,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::video::GfxHitTest>::value,
         std::is_base_of<GfxObject, gfx::video::GfxHitTest>::value,
         gfx::video::GfxHitTest::SdlResource,
-        prv::hasValueType<gfx::video::GfxHitTest>::value
+        prv::hasValueType<gfx::video::GfxHitTest>::value,
+        gfx::video::GfxHitTest::CallsSdl
     },  // 2017.06.02
     // gfx::endian
     {
@@ -492,7 +515,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::endian::GfxEndian>::value,
         std::is_base_of<GfxObject, gfx::endian::GfxEndian>::value,
         gfx::endian::GfxEndian::SdlResource,
-        prv::hasValueType<gfx::endian::GfxEndian>::value
+        prv::hasValueType<gfx::endian::GfxEndian>::value,
+        gfx::endian::GfxEndian::CallsSdl
     },
     // gfx::error
     {
@@ -506,7 +530,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::error::GfxGetError>::value,
         std::is_base_of<GfxObject, gfx::error::GfxGetError>::value,
         gfx::error::GfxGetError::SdlResource,
-        prv::hasValueType<gfx::error::GfxGetError>::value
+        prv::hasValueType<gfx::error::GfxGetError>::value,
+        gfx::error::GfxGetError::CallsSdl
     },
     {
         gfx::error::GfxError::ClassName,
@@ -519,7 +544,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::error::GfxError>::value,
         std::is_base_of<GfxObject, gfx::error::GfxError>::value,
         gfx::error::GfxError::SdlResource,
-        prv::hasValueType<gfx::error::GfxError>::value
+        prv::hasValueType<gfx::error::GfxError>::value,
+        gfx::error::GfxError::CallsSdl
     },  // 2017.06.03
     // gfx::filesystem
     {
@@ -533,7 +559,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::filesystem::GfxFileSystem>::value,
         std::is_base_of<GfxObject, gfx::filesystem::GfxFileSystem>::value,
         gfx::filesystem::GfxFileSystem::SdlResource,
-        prv::hasValueType<gfx::filesystem::GfxFileSystem>::value
+        prv::hasValueType<gfx::filesystem::GfxFileSystem>::value,
+        gfx::filesystem::GfxFileSystem::CallsSdl
     },
     // gfx::version
     {
@@ -547,7 +574,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::version::GfxGetVersion>::value,
         std::is_base_of<GfxObject, gfx::version::GfxGetVersion>::value,
         gfx::version::GfxGetVersion::SdlResource,
-        prv::hasValueType<gfx::version::GfxGetVersion>::value
+        prv::hasValueType<gfx::version::GfxGetVersion>::value,
+        gfx::version::GfxGetVersion::CallsSdl
     },
     {
         gfx::version::GfxVersion::ClassName,
@@ -560,7 +588,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::version::GfxVersion>::value,
         std::is_base_of<GfxObject, gfx::version::GfxVersion>::value,
         gfx::version::GfxVersion::SdlResource,
-        prv::hasValueType<gfx::version::GfxVersion>::value
+        prv::hasValueType<gfx::version::GfxVersion>::value,
+        gfx::version::GfxVersion::CallsSdl
     },
     // gfx::initquit
     {
@@ -574,7 +603,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::initquit::GfxInitQuit>::value,
         std::is_base_of<GfxObject, gfx::initquit::GfxInitQuit>::value,
         gfx::initquit::GfxInitQuit::SdlResource,
-        prv::hasValueType<gfx::initquit::GfxInitQuit>::value
+        prv::hasValueType<gfx::initquit::GfxInitQuit>::value,
+        gfx::initquit::GfxInitQuit::CallsSdl
     },
     {
         gfx::initquit::GfxInitFlags::ClassName,
@@ -587,7 +617,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::initquit::GfxInitFlags>::value,
         std::is_base_of<GfxObject, gfx::initquit::GfxInitFlags>::value,
         gfx::initquit::GfxInitFlags::SdlResource,
-        prv::hasValueType<gfx::initquit::GfxInitFlags>::value
+        prv::hasValueType<gfx::initquit::GfxInitFlags>::value,
+        gfx::initquit::GfxInitFlags::CallsSdl
     },  // 2017.05.17
     // gfx::loadso
     {
@@ -601,7 +632,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::loadso::GfxLoadSo>::value,
         std::is_base_of<GfxObject, gfx::loadso::GfxLoadSo>::value,
         gfx::loadso::GfxLoadSo::SdlResource,
-        prv::hasValueType<gfx::loadso::GfxLoadSo>::value
+        prv::hasValueType<gfx::loadso::GfxLoadSo>::value,
+        gfx::loadso::GfxLoadSo::CallsSdl
     },
     // gfx::msgbox
     {
@@ -615,7 +647,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBox>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBox>::value,
         gfx::msgbox::GfxMessageBox::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBox>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBox>::value,
+        gfx::msgbox::GfxMessageBox::CallsSdl
     },
     {
         gfx::msgbox::GfxMessageBoxButtonData::ClassName,
@@ -628,7 +661,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBoxButtonData>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBoxButtonData>::value,
         gfx::msgbox::GfxMessageBoxButtonData::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBoxButtonData>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBoxButtonData>::value,
+        gfx::msgbox::GfxMessageBoxButtonData::CallsSdl
     },
     {
         gfx::msgbox::GfxMessageBoxButtonFlags::ClassName,
@@ -641,7 +675,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBoxButtonFlags>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBoxButtonFlags>::value,
         gfx::msgbox::GfxMessageBoxButtonFlags::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBoxButtonFlags>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBoxButtonFlags>::value,
+        gfx::msgbox::GfxMessageBoxButtonFlags::CallsSdl
     },
     {
         gfx::msgbox::GfxMessageBoxColor::ClassName,
@@ -654,7 +689,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBoxColor>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBoxColor>::value,
         gfx::msgbox::GfxMessageBoxColor::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBoxColor>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBoxColor>::value,
+        gfx::msgbox::GfxMessageBoxColor::CallsSdl
     },
     {
         gfx::msgbox::GfxMessageBoxColorScheme::ClassName,
@@ -667,7 +703,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBoxColorScheme>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBoxColorScheme>::value,
         gfx::msgbox::GfxMessageBoxColorScheme::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBoxColorScheme>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBoxColorScheme>::value,
+        gfx::msgbox::GfxMessageBoxColorScheme::CallsSdl
     },
     {
         gfx::msgbox::GfxMessageBoxData::ClassName,
@@ -680,7 +717,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBoxData>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBoxData>::value,
         gfx::msgbox::GfxMessageBoxData::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBoxData>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBoxData>::value,
+        gfx::msgbox::GfxMessageBoxData::CallsSdl
     },
     {
         gfx::msgbox::GfxMessageBoxFlags::ClassName,
@@ -693,7 +731,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::msgbox::GfxMessageBoxFlags>::value,
         std::is_base_of<GfxObject, gfx::msgbox::GfxMessageBoxFlags>::value,
         gfx::msgbox::GfxMessageBoxFlags::SdlResource,
-        prv::hasValueType<gfx::msgbox::GfxMessageBoxFlags>::value
+        prv::hasValueType<gfx::msgbox::GfxMessageBoxFlags>::value,
+        gfx::msgbox::GfxMessageBoxFlags::CallsSdl
     },
     // gfx::platform
     {
@@ -707,7 +746,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::platform::GfxPlatform>::value,
         std::is_base_of<GfxObject, gfx::platform::GfxPlatform>::value,
         gfx::platform::GfxPlatform::SdlResource,
-        prv::hasValueType<gfx::platform::GfxPlatform>::value
+        prv::hasValueType<gfx::platform::GfxPlatform>::value,
+        gfx::platform::GfxPlatform::CallsSdl
     },
     // gfx::rect
     {
@@ -721,7 +761,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::rect::GfxPoint>::value,
         std::is_base_of<GfxObject, gfx::rect::GfxPoint>::value,
         gfx::rect::GfxPoint::SdlResource,
-        prv::hasValueType<gfx::rect::GfxPoint>::value
+        prv::hasValueType<gfx::rect::GfxPoint>::value,
+        gfx::rect::GfxPoint::CallsSdl
     },
     {
         gfx::rect::GfxRect::ClassName,
@@ -734,7 +775,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::rect::GfxRect>::value,
         std::is_base_of<GfxObject, gfx::rect::GfxRect>::value,
         gfx::rect::GfxRect::SdlResource,
-        prv::hasValueType<gfx::rect::GfxRect>::value
+        prv::hasValueType<gfx::rect::GfxRect>::value,
+        gfx::rect::GfxRect::CallsSdl
     },
     // gfx::power
     {
@@ -748,7 +790,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::power::GfxPowerInfo>::value,
         std::is_base_of<GfxObject, gfx::power::GfxPowerInfo>::value,
         gfx::power::GfxPowerInfo::SdlResource,
-        prv::hasValueType<gfx::power::GfxPowerInfo>::value
+        prv::hasValueType<gfx::power::GfxPowerInfo>::value,
+        gfx::power::GfxPowerInfo::CallsSdl
     },
     {
         gfx::power::GfxPowerState::ClassName,
@@ -761,7 +804,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::power::GfxPowerState>::value,
         std::is_base_of<GfxObject, gfx::power::GfxPowerState>::value,
         gfx::power::GfxPowerState::SdlResource,
-        prv::hasValueType<gfx::power::GfxPowerState>::value
+        prv::hasValueType<gfx::power::GfxPowerState>::value,
+        gfx::power::GfxPowerState::CallsSdl
     },
     // gfx::surface
     {
@@ -775,7 +819,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::surface::GfxSurface>::value,
         std::is_base_of<GfxObject, gfx::surface::GfxSurface>::value,
         gfx::surface::GfxSurface::SdlResource,
-        prv::hasValueType<gfx::surface::GfxSurface>::value
+        prv::hasValueType<gfx::surface::GfxSurface>::value,
+        gfx::surface::GfxSurface::CallsSdl
     },
     {
         gfx::surface::GfxSurfaceFlags::ClassName,
@@ -788,7 +833,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::surface::GfxSurfaceFlags>::value,
         std::is_base_of<GfxObject, gfx::surface::GfxSurfaceFlags>::value,
         gfx::surface::GfxSurfaceFlags::SdlResource,
-        prv::hasValueType<gfx::surface::GfxSurfaceFlags>::value
+        prv::hasValueType<gfx::surface::GfxSurfaceFlags>::value,
+        gfx::surface::GfxSurfaceFlags::CallsSdl
     },
     // gfx::bgi
     {
@@ -802,7 +848,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bgi::GfxAngle>::value,
         std::is_base_of<GfxObject, gfx::bgi::GfxAngle>::value,
         gfx::bgi::GfxAngle::SdlResource,
-        prv::hasValueType<gfx::bgi::GfxAngle>::value
+        prv::hasValueType<gfx::bgi::GfxAngle>::value,
+        gfx::bgi::GfxAngle::CallsSdl
     },
     {
         gfx::bgi::GfxCanvas::ClassName,
@@ -815,7 +862,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bgi::GfxCanvas>::value,
         std::is_base_of<GfxObject, gfx::bgi::GfxCanvas>::value,
         gfx::bgi::GfxCanvas::SdlResource,
-        prv::hasValueType<gfx::bgi::GfxCanvas>::value
+        prv::hasValueType<gfx::bgi::GfxCanvas>::value,
+        gfx::bgi::GfxCanvas::CallsSdl
     },
     {
         gfx::bgi::GfxCanvasBgi::ClassName,
@@ -828,7 +876,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bgi::GfxCanvasBgi>::value,
         std::is_base_of<GfxObject, gfx::bgi::GfxCanvasBgi>::value,
         gfx::bgi::GfxCanvasBgi::SdlResource,
-        prv::hasValueType<gfx::bgi::GfxCanvasBgi>::value
+        prv::hasValueType<gfx::bgi::GfxCanvasBgi>::value,
+        gfx::bgi::GfxCanvasBgi::CallsSdl
     },
     {
         gfx::bgi::GfxRadius::ClassName,
@@ -841,7 +890,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bgi::GfxRadius>::value,
         std::is_base_of<GfxObject, gfx::bgi::GfxRadius>::value,
         gfx::bgi::GfxRadius::SdlResource,
-        prv::hasValueType<gfx::bgi::GfxRadius>::value
+        prv::hasValueType<gfx::bgi::GfxRadius>::value,
+        gfx::bgi::GfxRadius::CallsSdl
     },
     {
         gfx::bgi::GfxString::ClassName,
@@ -854,7 +904,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bgi::GfxString>::value,
         std::is_base_of<GfxObject, gfx::bgi::GfxString>::value,
         gfx::bgi::GfxString::SdlResource,
-        prv::hasValueType<gfx::bgi::GfxString>::value
+        prv::hasValueType<gfx::bgi::GfxString>::value,
+        gfx::bgi::GfxString::CallsSdl
     },
     // gfx::bgi::fnt
     {
@@ -868,7 +919,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::bgi::fnt::GfxBitmapFont>::value,
         std::is_base_of<GfxObject, gfx::bgi::fnt::GfxBitmapFont>::value,
         gfx::bgi::fnt::GfxBitmapFont::SdlResource,
-        prv::hasValueType<gfx::bgi::fnt::GfxBitmapFont>::value
+        prv::hasValueType<gfx::bgi::fnt::GfxBitmapFont>::value,
+        gfx::bgi::fnt::GfxBitmapFont::CallsSdl
     },
     // gfx::tf
     {
@@ -882,7 +934,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::ttf::GfxTtfFont>::value,
         std::is_base_of<GfxObject, gfx::ttf::GfxTtfFont>::value,
         gfx::ttf::GfxTtfFont::SdlResource,
-        prv::hasValueType<gfx::ttf::GfxTtfFont>::value
+        prv::hasValueType<gfx::ttf::GfxTtfFont>::value,
+        gfx::ttf::GfxTtfFont::CallsSdl
     },  // 2017.05.17
     {
         gfx::ttf::GfxTtfInitQuit::ClassName,
@@ -895,7 +948,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::ttf::GfxTtfInitQuit>::value,
         std::is_base_of<GfxObject, gfx::ttf::GfxTtfInitQuit>::value,
         gfx::ttf::GfxTtfInitQuit::SdlResource,
-        prv::hasValueType<gfx::ttf::GfxTtfInitQuit>::value
+        prv::hasValueType<gfx::ttf::GfxTtfInitQuit>::value,
+        gfx::ttf::GfxTtfInitQuit::CallsSdl
     },  // 2017.05.17
     {
         gfx::ttf::GfxTtfGetVersion::ClassName,
@@ -908,7 +962,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::ttf::GfxTtfGetVersion>::value,
         std::is_base_of<GfxObject, gfx::ttf::GfxTtfGetVersion>::value,
         gfx::ttf::GfxTtfGetVersion::SdlResource,
-        prv::hasValueType<gfx::ttf::GfxTtfGetVersion>::value
+        prv::hasValueType<gfx::ttf::GfxTtfGetVersion>::value,
+        gfx::ttf::GfxTtfGetVersion::CallsSdl
     },  // 2017.05.18
     {
         gfx::ttf::GfxTtfFontStyle::ClassName,
@@ -921,7 +976,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::ttf::GfxTtfFontStyle>::value,
         std::is_base_of<GfxObject, gfx::ttf::GfxTtfFontStyle>::value,
         gfx::ttf::GfxTtfFontStyle::SdlResource,
-        prv::hasValueType<gfx::ttf::GfxTtfFontStyle>::value
+        prv::hasValueType<gfx::ttf::GfxTtfFontStyle>::value,
+        gfx::ttf::GfxTtfFontStyle::CallsSdl
     },  // 2017.05.18
     {
         gfx::ttf::GfxTtfFontHinting::ClassName,
@@ -934,7 +990,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::ttf::GfxTtfFontHinting>::value,
         std::is_base_of<GfxObject, gfx::ttf::GfxTtfFontHinting>::value,
         gfx::ttf::GfxTtfFontHinting::SdlResource,
-        prv::hasValueType<gfx::ttf::GfxTtfFontHinting>::value
+        prv::hasValueType<gfx::ttf::GfxTtfFontHinting>::value,
+        gfx::ttf::GfxTtfFontHinting::CallsSdl
     },  // 2017.05.18
     {
         gfx::ttf::GfxTtfFontRenderer::ClassName,
@@ -947,7 +1004,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::ttf::GfxTtfFontRenderer>::value,
         std::is_base_of<GfxObject, gfx::ttf::GfxTtfFontRenderer>::value,
         gfx::ttf::GfxTtfFontRenderer::SdlResource,
-        prv::hasValueType<gfx::ttf::GfxTtfFontRenderer>::value
+        prv::hasValueType<gfx::ttf::GfxTtfFontRenderer>::value,
+        gfx::ttf::GfxTtfFontRenderer::CallsSdl
     },  // 2017.05.19
     // gfx::xtra
     {
@@ -961,7 +1019,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::xtra::GfxFontInfo>::value,
         std::is_base_of<GfxObject, gfx::xtra::GfxFontInfo>::value,
         gfx::xtra::GfxFontInfo::SdlResource,
-        prv::hasValueType<gfx::xtra::GfxFontInfo>::value
+        prv::hasValueType<gfx::xtra::GfxFontInfo>::value,
+        gfx::xtra::GfxFontInfo::CallsSdl
     },  // 2017.05.19
     {
         gfx::xtra::GfxControlledSurface::ClassName,
@@ -974,7 +1033,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::xtra::GfxControlledSurface>::value,
         std::is_base_of<GfxObject, gfx::xtra::GfxControlledSurface>::value,
         gfx::xtra::GfxControlledSurface::SdlResource,
-        prv::hasValueType<gfx::xtra::GfxControlledSurface>::value
+        prv::hasValueType<gfx::xtra::GfxControlledSurface>::value,
+        gfx::xtra::GfxControlledSurface::CallsSdl
     },
     {
         gfx::xtra::GfxGammaRamp::ClassName,
@@ -987,7 +1047,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::xtra::GfxGammaRamp>::value,
         std::is_base_of<GfxObject, gfx::xtra::GfxGammaRamp>::value,
         gfx::xtra::GfxGammaRamp::SdlResource,
-        prv::hasValueType<gfx::xtra::GfxGammaRamp>::value
+        prv::hasValueType<gfx::xtra::GfxGammaRamp>::value,
+        gfx::xtra::GfxGammaRamp::CallsSdl
     },  // 2017.06.01
     // gfx::log
     {
@@ -1001,7 +1062,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::log::GfxLogPriority>::value,
         std::is_base_of<GfxObject, gfx::log::GfxLogPriority>::value,
         gfx::log::GfxLogPriority::SdlResource,
-        prv::hasValueType<gfx::log::GfxLogPriority>::value
+        prv::hasValueType<gfx::log::GfxLogPriority>::value,
+        gfx::log::GfxLogPriority::CallsSdl
     },  // 2017.06.07
     {
         gfx::log::GfxLogCategory::ClassName,
@@ -1014,7 +1076,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::log::GfxLogCategory>::value,
         std::is_base_of<GfxObject, gfx::log::GfxLogCategory>::value,
         gfx::log::GfxLogCategory::SdlResource,
-        prv::hasValueType<gfx::log::GfxLogCategory>::value
+        prv::hasValueType<gfx::log::GfxLogCategory>::value,
+        gfx::log::GfxLogCategory::CallsSdl
     },  // 2017.06.07
     {
         gfx::log::GfxLog::ClassName,
@@ -1027,7 +1090,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::log::GfxLog>::value,
         std::is_base_of<GfxObject, gfx::log::GfxLog>::value,
         gfx::log::GfxLog::SdlResource,
-        prv::hasValueType<gfx::log::GfxLog>::value
+        prv::hasValueType<gfx::log::GfxLog>::value,
+        gfx::log::GfxLog::CallsSdl
     },  // 2017.06.07
     {
         gfx::log::GfxLogOutputFunction::ClassName,
@@ -1040,7 +1104,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::log::GfxLogOutputFunction>::value,
         std::is_base_of<GfxObject, gfx::log::GfxLogOutputFunction>::value,
         gfx::log::GfxLogOutputFunction::SdlResource,
-        prv::hasValueType<gfx::log::GfxLogOutputFunction>::value
+        prv::hasValueType<gfx::log::GfxLogOutputFunction>::value,
+        gfx::log::GfxLogOutputFunction::CallsSdl
     },  // 2017.06.09
     // gfx::render
     {
@@ -1054,7 +1119,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxGetRendererInfo>::value,
         std::is_base_of<GfxObject, gfx::render::GfxGetRendererInfo>::value,
         gfx::render::GfxGetRendererInfo::SdlResource,
-        prv::hasValueType<gfx::render::GfxGetRendererInfo>::value
+        prv::hasValueType<gfx::render::GfxGetRendererInfo>::value,
+        gfx::render::GfxGetRendererInfo::CallsSdl
     },
     {
         gfx::render::GfxRenderer::ClassName,
@@ -1067,7 +1133,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxRenderer>::value,
         std::is_base_of<GfxObject, gfx::render::GfxRenderer>::value,
         gfx::render::GfxRenderer::SdlResource,
-        prv::hasValueType<gfx::render::GfxRenderer>::value
+        prv::hasValueType<gfx::render::GfxRenderer>::value,
+        gfx::render::GfxRenderer::CallsSdl
     },
     {
         gfx::render::GfxRendererFlags::ClassName,
@@ -1080,7 +1147,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxRendererFlags>::value,
         std::is_base_of<GfxObject, gfx::render::GfxRendererFlags>::value,
         gfx::render::GfxRendererFlags::SdlResource,
-        prv::hasValueType<gfx::render::GfxRendererFlags>::value
+        prv::hasValueType<gfx::render::GfxRendererFlags>::value,
+        gfx::render::GfxRendererFlags::CallsSdl
     },
     {
         gfx::render::GfxRendererFlip::ClassName,
@@ -1093,7 +1161,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxRendererFlip>::value,
         std::is_base_of<GfxObject, gfx::render::GfxRendererFlip>::value,
         gfx::render::GfxRendererFlip::SdlResource,
-        prv::hasValueType<gfx::render::GfxRendererFlip>::value
+        prv::hasValueType<gfx::render::GfxRendererFlip>::value,
+        gfx::render::GfxRendererFlip::CallsSdl
     },
     {
         gfx::render::GfxRendererInfo::ClassName,
@@ -1106,7 +1175,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxRendererInfo>::value,
         std::is_base_of<GfxObject, gfx::render::GfxRendererInfo>::value,
         gfx::render::GfxRendererInfo::SdlResource,
-        prv::hasValueType<gfx::render::GfxRendererInfo>::value
+        prv::hasValueType<gfx::render::GfxRendererInfo>::value,
+        gfx::render::GfxRendererInfo::CallsSdl
     },
     {
         gfx::render::GfxTexture::ClassName,
@@ -1119,7 +1189,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxTexture>::value,
         std::is_base_of<GfxObject, gfx::render::GfxTexture>::value,
         gfx::render::GfxTexture::SdlResource,
-        prv::hasValueType<gfx::render::GfxTexture>::value
+        prv::hasValueType<gfx::render::GfxTexture>::value,
+        gfx::render::GfxTexture::CallsSdl
     },
     {
         gfx::render::GfxTextureAccess::ClassName,
@@ -1132,7 +1203,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxTextureAccess>::value,
         std::is_base_of<GfxObject, gfx::render::GfxTextureAccess>::value,
         gfx::render::GfxTextureAccess::SdlResource,
-        prv::hasValueType<gfx::render::GfxTextureAccess>::value
+        prv::hasValueType<gfx::render::GfxTextureAccess>::value,
+        gfx::render::GfxTextureAccess::CallsSdl
     },
     {
         gfx::render::GfxTextureModulate::ClassName,
@@ -1145,7 +1217,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxTextureModulate>::value,
         std::is_base_of<GfxObject, gfx::render::GfxTextureModulate>::value,
         gfx::render::GfxTextureModulate::SdlResource,
-        prv::hasValueType<gfx::render::GfxTextureModulate>::value
+        prv::hasValueType<gfx::render::GfxTextureModulate>::value,
+        gfx::render::GfxTextureModulate::CallsSdl
     },
     {
         gfx::render::GfxTextureFormats::ClassName,
@@ -1158,7 +1231,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::render::GfxTextureFormats>::value,
         std::is_base_of<GfxObject, gfx::render::GfxTextureFormats>::value,
         gfx::render::GfxTextureFormats::SdlResource,
-        prv::hasValueType<gfx::render::GfxTextureFormats>::value
+        prv::hasValueType<gfx::render::GfxTextureFormats>::value,
+        gfx::render::GfxTextureFormats::CallsSdl
     },  // 2017.06.02
     //  gfx::hints
     {
@@ -1172,7 +1246,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::hints::GfxHintPriority>::value,
         std::is_base_of<GfxObject, gfx::hints::GfxHintPriority>::value,
         gfx::hints::GfxHintPriority::SdlResource,
-        prv::hasValueType<gfx::hints::GfxHintPriority>::value
+        prv::hasValueType<gfx::hints::GfxHintPriority>::value,
+        gfx::hints::GfxHintPriority::CallsSdl
     },  // 2017.06.16
     {
         gfx::hints::GfxHints::ClassName,
@@ -1185,7 +1260,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::hints::GfxHints>::value,
         std::is_base_of<GfxObject, gfx::hints::GfxHints>::value,
         gfx::hints::GfxHints::SdlResource,
-        prv::hasValueType<gfx::hints::GfxHints>::value
+        prv::hasValueType<gfx::hints::GfxHints>::value,
+        gfx::hints::GfxHints::CallsSdl
     },  // 2017.06.16
     {
         gfx::hints::GfxHintCallback::ClassName,
@@ -1198,7 +1274,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
         std::is_move_assignable<gfx::hints::GfxHintCallback>::value,
         std::is_base_of<GfxObject, gfx::hints::GfxHintCallback>::value,
         gfx::hints::GfxHintCallback::SdlResource,
-        prv::hasValueType<gfx::hints::GfxHintCallback>::value
+        prv::hasValueType<gfx::hints::GfxHintCallback>::value,
+        gfx::hints::GfxHintCallback::CallsSdl
     }  // 2017.06.16
 };
 

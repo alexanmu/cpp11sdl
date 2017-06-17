@@ -44,18 +44,19 @@ class GfxMessageBoxData final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxData SdlType;
-    typedef sdl2::SDL_MessageBoxData* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxData * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxMessageBoxData() noexcept;
 
-    GfxMessageBoxData(const GfxMessageBoxFlags& flags, GfxObject* win, const std::string& title,
-                      const std::string& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[],
-                      const GfxMessageBoxColorScheme& colorScheme) noexcept;
-    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win, const std::string& title,
-                      const std::string& message, const int32_t numbuttons,
+    GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject * win, std::string const& title,
+                      std::string const& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[],
+                      GfxMessageBoxColorScheme const& colorScheme) noexcept;
+    GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win, std::string const& title,
+                      std::string const& message, const int32_t numbuttons,
                       GfxMessageBoxButtonData buttons[]) noexcept;
 
     GfxMessageBoxData(GfxMessageBoxData const& other) noexcept;

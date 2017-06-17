@@ -40,10 +40,11 @@ class GfxMessageBoxButtonFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxButtonFlags SdlType;
-    typedef sdl2::SDL_MessageBoxButtonFlags* SdlTypePtr;
+    typedef sdl2::SDL_MessageBoxButtonFlags * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : uint32_t
     {

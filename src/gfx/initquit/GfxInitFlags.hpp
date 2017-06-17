@@ -39,10 +39,11 @@ class GfxInitFlags final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
-    typedef uint32_t* SdlTypePtr;
+    typedef uint32_t * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {

@@ -46,7 +46,8 @@ class GfxLog final : public GfxObject
 {
 public:
     static const char ClassName[];
-    static const bool SdlResource = true;
+    static const bool SdlResource = false;
+    static const bool CallsSdl = true;
 
     static const int32_t maxLogMessage = 4096;
 

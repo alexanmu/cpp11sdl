@@ -40,6 +40,7 @@ class GfxTextureFormats final : public GfxObject
 public:
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxTextureFormats() noexcept;
     explicit GfxTextureFormats(const int32_t formatsCount) throw(std::runtime_error);

@@ -40,10 +40,11 @@ class GfxRendererFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererFlags SdlType;
-    typedef sdl2::SDL_RendererFlags* SdlTypePtr;
+    typedef sdl2::SDL_RendererFlags * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     enum class ValueType : int32_t
     {

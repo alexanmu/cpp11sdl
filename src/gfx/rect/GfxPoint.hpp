@@ -40,10 +40,11 @@ class GfxPoint final : public GfxObject
 {
 public:
     typedef sdl2::SDL_Point SdlType;
-    typedef sdl2::SDL_Point* SdlTypePtr;
+    typedef sdl2::SDL_Point * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxPoint() noexcept;
 
