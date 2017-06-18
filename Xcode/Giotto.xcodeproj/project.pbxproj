@@ -1443,7 +1443,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks,
 				);
 				HEADER_SEARCH_PATHS = (
 					../include,
@@ -1461,7 +1461,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks,
 				);
 				HEADER_SEARCH_PATHS = (
 					../include,
