@@ -169,9 +169,13 @@ clean-test:
 
 ######################################## Play ########################################
 OBJECTS_FOR_PLAY:=$(filter-out %main.o,$(OBJECTS))
+DEPS_FOR_PLAY:=$(shell find $(PLAYDIR) -type f -name *.$(SRCEXT))
+DEPS_FOR_PLAY+=$(shell find $(PLAYDIR) -type f -name *.$(HDREXT))
 
-$(BINDIR)/play: $(OBJECTS_FOR_PLAY) $(PLAYDIR)/Playground.cpp $(PLAYDIR)/Playground.hpp
-	$(CXX) $(CXXFLAGS) $(CXXLINK) -o $(BINDIR)/play $(PLAYDIR)/Playground.cpp $(INC) $(OBJECTS_FOR_PLAY) $(LIBS)
+CPPS_FOR_PLAY:=$(shell find $(PLAYDIR) -type f -name *.$(SRCEXT))
+
+$(BINDIR)/play: $(DEPS_FOR_PLAY) $(OBJECTS_FOR_PLAY) 
+	$(CXX) $(CXXFLAGS) $(CXXLINK) -o $(BINDIR)/play $(CPPS_FOR_PLAY) $(INC) $(OBJECTS_FOR_PLAY) $(LIBS)
 
 play : make_folders $(BINDIR)/play
 
@@ -205,8 +209,13 @@ ifeq ($(HOSTOS),macOS)
 valgrind:
 	@echo "valgrind not supported on Darwin/macOS"
 else
-valgrind: make-folders tool
+ ifeq ($(HOSTOS),WinNT)
+ valgrind:
+	@echo "valgrind not supported on Windows"
+ else
+ valgrind: make-folders tool
 	$(VALGRIND_BIN) $(VALGRIND_PARAMS) --suppressions=$(TOOLSDIR)/suppress_sdl.supp $(TARGET) $(VALGRIND_TOOL_CMD_LINE)
+ endif
 endif
 
 ######################################## All ########################################
