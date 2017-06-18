@@ -159,6 +159,14 @@ void GDemoForm::draw(void)
     g3.draw();
     windowsurface_().blitSurface(g3.getSurface()(), gfx::rect::GfxRect(0, 0, 300, 60),
                                 gfx::rect::GfxRect(310, 10, 120, 60));
+    
+    gto::gobj::GLabel g4(GVarName(g4), this, 280, 60, "Hello from Ale", 24);
+    g4.setBorderThikness(gto::gobj::GBorderThikness::thinBorder);
+    g4.setForegroundColor(gfx::bgi::kColorLightRed());
+    g4.draw();
+    windowsurface_().blitSurface(g4.getSurface()(), gfx::rect::GfxRect(0, 0, 320, 60),
+                                 gfx::rect::GfxRect(940, 10, 200, 60));
+    
     GForm::draw();
 }
 
