@@ -35,11 +35,6 @@ namespace gto
 namespace gobj
 {
 
-const gfx::pixels::GfxColor GGraphicControl::kDefaultForegroundColor { 0xFF, 0xFF, 0xFF, 0xFF };
-const gfx::pixels::GfxColor GGraphicControl::kDefaultBackgroundColor { 0x00, 0x00, 0x00, 0xFF };
-const gfx::pixels::GfxColor GGraphicControl::kDefaultBorderColor { 0xC0, 0xC0, 0xC0, 0xFF };
-const gfx::pixels::GfxColor GGraphicControl::kDefaultBorderShadowColor { 0x60, 0x60, 0x60, 0xFF };
-
 GGraphicControl::GGraphicControl(std::string const& vname, GComponent * owner, const uint16_t width,
         const uint16_t height) : GControl(vname, owner)
 {
@@ -49,10 +44,7 @@ GGraphicControl::GGraphicControl(std::string const& vname, GComponent * owner, c
     assert(height <= kMaxObjectHeight);
 
     setBounds(gfx::rect::GfxRect(0, 0, width, height));
-    foregroundColor_ = kDefaultForegroundColor;
-    backgroundColor_ = kDefaultBackgroundColor;
-    borderColor_ = kDefaultBorderColor;
-    borderShadowColor_ = kDefaultBorderShadowColor;
+    colorScheme_.setDefault();
     surf_.createSurface(width, height);
 }
 
@@ -68,52 +60,62 @@ gfx::xtra::GfxControlledSurface const& GGraphicControl::getSurface(void) const n
 
 gfx::pixels::GfxColor const& GGraphicControl::getForegroundColor(void) const noexcept
 {
-    return foregroundColor_;
+    return colorScheme_.getForegroundColor();
 }
 
 void GGraphicControl::setForegroundColor(gfx::pixels::GfxColor const& color) noexcept
 {
     assert(color);
 
-    foregroundColor_ = color;
+    colorScheme_.setForegroundColor(color);
 }
 
 gfx::pixels::GfxColor const& GGraphicControl::getBackgroundColor(void) const noexcept
 {
-    return backgroundColor_;
+    return colorScheme_.getBackgroundColor();
 }
 
 void GGraphicControl::setBackgroundColor(gfx::pixels::GfxColor const& color) noexcept
 {
     assert(color);
 
-    backgroundColor_ = color;
+    colorScheme_.setBackgroundColor(color);
 }
 
 gfx::pixels::GfxColor const& GGraphicControl::getBorderColor(void) const noexcept
 {
-    return borderColor_;
+    return colorScheme_.getBorderColor();
 }
 
 void GGraphicControl::setBorderColor(gfx::pixels::GfxColor const& color) noexcept
 {
     assert(color);
 
-    borderColor_ = color;
+    colorScheme_.setBorderColor(color);
 }
 
 gfx::pixels::GfxColor const& GGraphicControl::getBorderShadowColor(void) const noexcept
 {
-    return borderShadowColor_;
+    return colorScheme_.getBorderShadowColor();
 }
 
 void GGraphicControl::setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept
 {
     assert(color);
 
-    borderShadowColor_ = color;
+    colorScheme_.setBorderShadowColor(color);
 }
 
+GColorScheme const& GGraphicControl::getColorScheme(void) const noexcept
+{
+    return colorScheme_;
+}
+
+void GGraphicControl::setColorScheme(GColorScheme const& colorScheme) noexcept
+{
+    colorScheme_ = colorScheme;
+}
+    
 void GGraphicControl::draw(void)
 {
     drawBorder();
@@ -138,16 +140,16 @@ void GGraphicControl::drawBorder(void) noexcept
     switch (borderStyle_)
     {
         case GBorderStyle::flatBorder:
-            color1 = borderColor_;
-            color2 = borderColor_;
+            color1 = colorScheme_.getBorderColor();
+            color2 = colorScheme_.getBorderColor();
             break;
         case GBorderStyle::raised3DBorder:
-            color1 = borderColor_;
-            color2 = borderShadowColor_;
+            color1 = colorScheme_.getBorderColor();
+            color2 = colorScheme_.getBorderShadowColor();
             break;
         case GBorderStyle::sunken3DBorder:
-            color1 = borderShadowColor_;
-            color2 = borderColor_;
+            color1 = colorScheme_.getBorderShadowColor();
+            color2 = colorScheme_.getBorderColor();
             break;
     }
     east.setX(0);
@@ -209,7 +211,7 @@ void GGraphicControl::drawBackground(void) noexcept
     switch (backgroundStyle_)
     {
         case GBackgroundStyle::solidColor :
-            surf_().fillRect(clientBounds_, backgroundColor_);
+            surf_().fillRect(clientBounds_, colorScheme_.getBackgroundColor());
             break;
         case GBackgroundStyle::transparentColor :
             /* Nothing to do */

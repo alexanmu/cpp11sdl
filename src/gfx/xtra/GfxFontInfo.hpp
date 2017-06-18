@@ -90,6 +90,8 @@ public:
     void setFontKerningDefault(void) noexcept;
     bool getFontKerning(void) const noexcept;
 
+    void setDefault(void) noexcept;
+
     void clear(void) noexcept;
 private:
     static const char kDefaultFontName[];

@@ -282,6 +282,11 @@ bool GfxFontInfo::getFontKerning(void) const noexcept
     return fontKerning_;
 }
 
+void GfxFontInfo::setDefault(void) noexcept
+{
+    clear();
+}
+
 void GfxFontInfo::clear(void) noexcept
 {
     fontName_ = kDefaultFontName;

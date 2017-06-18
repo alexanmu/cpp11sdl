@@ -21,20 +21,11 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GGraphicControl_hpp
-#define GGraphicControl_hpp
+#ifndef GCOLORSCHEME_HPP
+#define GCOLORSCHEME_HPP
 
-#include <stdexcept>
-#include <cstdint>
-#include <vector>
-#include <string>
-
-#include "GComponent.hpp"
-#include "GControl.hpp"
-#include "GfxRect.hpp"
-#include "GfxControlledSurface.hpp"
+#include "GObject.hpp"
 #include "GfxColor.hpp"
-#include "GColorScheme.hpp"
 
 namespace gto
 {
@@ -42,22 +33,16 @@ namespace gto
 namespace gobj
 {
 
-class GGraphicControl : public GControl
+class GColorScheme : public GObject
 {
 public:
-    GGraphicControl() = delete;
+    GColorScheme();
 
-    GGraphicControl(GGraphicControl const& other) = delete;
-    GGraphicControl(GGraphicControl&& other) = delete;
+    GColorScheme(GColorScheme const& other);
+    GColorScheme(GColorScheme&& other);
 
-    GGraphicControl& operator=(GGraphicControl const& other) = delete;
-    GGraphicControl& operator=(GGraphicControl&& other) = delete;
-
-    explicit GGraphicControl(std::string const& vname, GComponent * owner, const uint16_t width,
-                                const uint16_t height);
-    virtual ~GGraphicControl();
-
-    gfx::xtra::GfxControlledSurface const& getSurface(void) const noexcept;
+    GColorScheme& operator=(GColorScheme const& other);
+    GColorScheme& operator=(GColorScheme&& other);
 
     gfx::pixels::GfxColor const& getForegroundColor(void) const noexcept;
     void setForegroundColor(gfx::pixels::GfxColor const& color) noexcept;
@@ -71,21 +56,23 @@ public:
     gfx::pixels::GfxColor const& getBorderShadowColor(void) const noexcept;
     void setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept;
 
-    GColorScheme const& getColorScheme(void) const noexcept;
-    void setColorScheme(GColorScheme const& colorScheme) noexcept;
+    void setDefault(void) noexcept;
 
-    virtual void draw(void);
-protected:
-    gfx::xtra::GfxControlledSurface surf_;
-    GColorScheme colorScheme_;
-
+    void clear(void) noexcept;
 private:
-    void drawBorder(void) noexcept;
-    void drawBackground(void) noexcept;
+    gfx::pixels::GfxColor backgroundColor_;
+    gfx::pixels::GfxColor foregroundColor_;
+    gfx::pixels::GfxColor borderColor_;
+    gfx::pixels::GfxColor borderShadowColor_;
+
+    static const gfx::pixels::GfxColor kDefaultForegroundColor;
+    static const gfx::pixels::GfxColor kDefaultBackgroundColor;
+    static const gfx::pixels::GfxColor kDefaultBorderColor;
+    static const gfx::pixels::GfxColor kDefaultBorderShadowColor;
 };
 
 }  // namespace gobj
 
 }  // namespace gto
 
-#endif /* GGraphicControl_hpp */
+#endif  // GCOLORSCHEME_HPP

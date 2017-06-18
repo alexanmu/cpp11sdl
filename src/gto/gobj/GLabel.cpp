@@ -53,7 +53,7 @@ GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint
     assert(height <= kMaxObjectHeight);
 
     text_ = text;
-    fontInfo_.clear();
+    fontInfo_.setDefault();
     fontInfo_.setFontSize(textsize);
     textRenderMode_ = kDefaultTextRenderMode;
 }
@@ -99,7 +99,7 @@ void GLabel::draw(void)
     gfx::ttf::GfxTtfFontRenderer rend(&font);
     gfx::surface::GfxSurface * rendsurf;
 
-    surf_().fillRect(clientBounds_, backgroundColor_);
+    surf_().fillRect(clientBounds_, getBackgroundColor());
 
     if (font.sizeText(text_, &w, &h) == true)
     {
@@ -123,13 +123,13 @@ void GLabel::draw(void)
     switch (textRenderMode_)
     {
         case GTextRenderMode::solidText:
-            rendsurf = rend.renderTextSolid(text_, foregroundColor_);
+            rendsurf = rend.renderTextSolid(text_, getForegroundColor());
             break;
         case GTextRenderMode::shadedText:
-            rendsurf = rend.renderTextShaded(text_ , foregroundColor_, backgroundColor_);
+            rendsurf = rend.renderTextShaded(text_ , getForegroundColor(), getBackgroundColor());
             break;
         case GTextRenderMode::blendedText:
-            rendsurf = rend.renderTextBlended(text_, foregroundColor_);
+            rendsurf = rend.renderTextBlended(text_, getForegroundColor());
             break;
     }
     if (rendsurf)
