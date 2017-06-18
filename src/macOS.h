@@ -30,7 +30,7 @@
 /* macOS specific stuff */
 
 #define __macosx_machine
-#define __base_path "../Data"
+#define __base_path "/Users/ale/Downloads/Giotto/data/"
 #define WIN_W 1280
 #define WIN_H 800
 #define __platform_default_action 2
