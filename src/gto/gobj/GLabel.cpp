@@ -132,7 +132,7 @@ void GLabel::draw(void)
             rendsurf = rend.renderTextBlended(text_, getForegroundColor());
             break;
     }
-    if (rendsurf)
+    if (rendsurf != nullptr)
     {
         gfx::rect::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
 

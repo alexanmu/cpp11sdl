@@ -115,7 +115,7 @@ void GGraphicControl::setColorScheme(GColorScheme const& colorScheme) noexcept
 {
     colorScheme_ = colorScheme;
 }
-    
+
 void GGraphicControl::draw(void)
 {
     drawBorder();

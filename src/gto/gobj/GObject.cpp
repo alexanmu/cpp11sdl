@@ -42,6 +42,7 @@ GObject::GObject(GObject const& other)
     // Avoid compiler warning
     static_cast<GObject>(other) = static_cast<GObject>(other);
 }
+
 GObject::GObject(GObject&& other)
 {
     initType_ = GInitType::moveCtor;

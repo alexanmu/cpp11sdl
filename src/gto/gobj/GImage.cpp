@@ -48,6 +48,7 @@ GImage::GImage(std::string const& vname, GComponent* owner, uint16_t width, uint
 
 GImage::~GImage()
 {
+    // Nothing to do
 }
 
 GImageScaleMode GImage::getScaleMode(void) const noexcept
