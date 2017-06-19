@@ -219,7 +219,7 @@ else
 endif
 
 ######################################## All ########################################
-all : clean clean-test tool test
+all : clean clean-test clean-lint lint tool test
 
 clean-all: clean clean-play clean-test clean-lint
 	-$(RM) -rf $(BUILDDIR)/DerivedData

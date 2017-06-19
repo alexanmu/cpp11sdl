@@ -20,7 +20,7 @@
  
  See copyright notice at http://lidsdl.org/license.php
 */
-#include <cassert>
+
 #include <string>
 
 #include "GfxWindowEventID.hpp"
@@ -38,16 +38,19 @@ GfxWindowEventID::GfxWindowEventID() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxWindowEventID::GfxWindowEventID(ValueType eventid) noexcept : GfxObject(ClassName)
+GfxWindowEventID::GfxWindowEventID(const ValueType eventid) noexcept : GfxObject(ClassName)
 {
     eventid_ = static_cast<SdlType>(eventid);
 }
 
-GfxWindowEventID::GfxWindowEventID(SdlType eventid) noexcept : GfxObject(ClassName)
+GfxWindowEventID::GfxWindowEventID(const SdlType eventid) noexcept : GfxObject(ClassName)
 {
-    assert(eventid >= 0);
-
     eventid_ = eventid;
+}
+
+GfxWindowEventID::GfxWindowEventID(const uint8_t eventid) noexcept : GfxObject(ClassName)
+{
+    eventid_ = static_cast<SdlType>(eventid);
 }
 
 GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxObject(ClassName)

@@ -43,6 +43,8 @@ void _doMeta(void)
 	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << '\t';
         std::cout << "isAbstract<>=" << classInfo.isAbstract_ << '\t';
         std::cout << "isPolym<>=" << classInfo.isPolymorphic_ << '\t';
+        std::cout << "isCopyCtor<>=" << classInfo.isCopyConstructible_ << '\t';
+        std::cout << "isCopyAssign<>=" << classInfo.isCopyAssignable_ << '\t';
         std::cout << "isMoveCtor<>=" << classInfo.isMoveConstructible_ << '\t';
         std::cout << "isMoveAssign<>=" << classInfo.isMoveAssignable_ << '\t';
         std::cout << "isGfxObjChild<>=" << classInfo.isDerivedFromGfxObject_ << '\t';
@@ -50,5 +52,7 @@ void _doMeta(void)
         std::cout << "hasValueType<>=" << classInfo.hasValueType_ << '\n';
         std::cout << "CallsSdl=" << classInfo.callsSdl_ << '\n';
 	}
+    std::cout << "meta.getClassCount()=" << meta.getClassCount() << '\n';
+    std::cout << "meta.getClassInfoTableSizeInBytes()=" << meta.getClassInfoTableSizeInBytes() << '\n';
     std::cout << std::endl;
 }

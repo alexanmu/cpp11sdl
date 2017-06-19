@@ -22,6 +22,7 @@
 */
 
 #include <iostream>
+#include <cstring>
 
 #include "Playground.hpp"
 
@@ -37,12 +38,35 @@
 #include "RuntimeMeta.hpp"
 
 /******************************************************* main *******************************************************/
+typedef struct _Command_t
+{
+    void (*func)(void);
+    const char * cmd;
+} _Command_t;
+
+/* Forward declaration */
+void _doPlayground(void);
+
+static _Command_t commands[] = {
+    { _doBenchmark, "benchmark" },
+    { _doFonts, "fonts" },
+    { _doPaletteSdl, "palettesdl" },
+    { _doPaletteGfx, "palettegfx" },
+    { _doCallback, "callback" },
+    { _doComponent, "component" },
+    { _doFSO, "fso" },
+    { _doRuntimeMeta, "rmeta" },
+    { _doMeta, "meta" },
+    { _doLog, "log" },
+    { _doPlayground, "all" }
+};
+
 void _doPlayground(void)
 {
 	_doBenchmark();
 	_doFonts();
 	_doPaletteSdl();
-	_doPaletteGfx();
+    _doPaletteGfx();
     _doCallback();
     _doComponent();
     _doFSO();
@@ -53,57 +77,28 @@ void _doPlayground(void)
 
 int main(int argc, char *argv[])
 {
-    if (argc == 2)
+    if (argc >= 2)
     {
-        if (std::strcmp(argv[1], "benchmark") == 0)
+        for (int32_t i = 1; i < argc; i++)
         {
-            _doBenchmark();
-        }
-        if (std::strcmp(argv[1], "fonts") == 0)
-        {
-            _doFonts();
-        }
-        if (std::strcmp(argv[1], "palettesdl") == 0)
-        {
-            _doPaletteSdl();
-        }
-        if (std::strcmp(argv[1], "palettegfx") == 0)
-        {
-            _doPaletteGfx();
-        }
-        if (std::strcmp(argv[1], "callback") == 0)
-        {
-            _doCallback();
-        }
-        if (std::strcmp(argv[1], "component") == 0)
-        {
-            _doComponent();
-        }
-        if (std::strcmp(argv[1], "fso") == 0)
-        {
-            _doFSO();
-        }
-        if (std::strcmp(argv[1], "rmeta") == 0)
-        {
-            _doRuntimeMeta();
-        }
-        if (std::strcmp(argv[1], "meta") == 0)
-        {
-            _doMeta();
-        }
-        if (std::strcmp(argv[1], "log") == 0)
-        {
-            _doLog();
-        }
-        // ALL
-        if (std::strcmp(argv[1], "all") == 0)
-        {
-            _doPlayground();
+            for (auto& it : commands)
+            {
+                if (std::strcmp(argv[i], it.cmd) == 0)
+                {
+                    it.func();
+                    break;
+                }
+            }
         }
     }
     else
     {
-    	std::cout << "Select option" << std::endl;
+    	std::cout << "Select one or more from: ";
+        for (auto& it : commands)
+        {
+            std::cout << it.cmd << ' ';
+        }
+        std::cout << std::endl;
     }
     return 0;
 }

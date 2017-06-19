@@ -39,18 +39,25 @@ class GfxMeta final
 public:
     struct ClassInfo
     {
+        /* Class attributes */
         const char * className_;
         int32_t size_;
+        bool sdlResource_;
+        bool callsSdl_;
+        /* ::prv templates */
         bool hasSdlType_;
         bool hasSdlTypePtr_;
+        bool hasValueType_;
+        /* ::std templates */
         bool isAbstract_;
         bool isPolymorphic_;
+        bool isCopyConstructible_;
+        bool isCopyAssignable_;
         bool isMoveConstructible_;
         bool isMoveAssignable_;
         bool isDerivedFromGfxObject_;
-        bool sdlResource_;
-        bool hasValueType_;
-        bool callsSdl_;
+        uint32_t padding1_;
+        uint32_t padding2_;
     };
 
     GfxMeta() noexcept;
@@ -65,6 +72,8 @@ public:
     ClassInfo const& getClassInfo(std::string const& className) noexcept;
     ClassInfo const& getClassInfo(const int32_t index) noexcept;
     int32_t getClassCount(void) const noexcept;
+
+    int32_t getClassInfoTableSizeInBytes(void) const noexcept;
 private:
     void clear(void) noexcept;
 

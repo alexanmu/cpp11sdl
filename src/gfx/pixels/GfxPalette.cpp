@@ -101,6 +101,8 @@ GfxPalette::GfxPalette(const uint16_t nColors) throw(std::runtime_error) : GfxOb
 GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error)
 {
     assert(pal != nullptr);
+    assert(pal->colors != nullptr);
+    assert(pal->ncolors > 0);
 
     SdlTypePtr palptr;
 
@@ -109,7 +111,7 @@ GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error)
     {
         throw std::runtime_error("Unable to create palette");
     }
-    SDL_SetPaletteColors(pal_, pal->colors, 0 , pal->ncolors);
+    SDL_SetPaletteColors(palptr, pal->colors, 0 , pal->ncolors);
     pal_ = palptr;
 }
 

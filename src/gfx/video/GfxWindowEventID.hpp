@@ -45,7 +45,7 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    enum class ValueType : int32_t
+    enum class ValueType : uint8_t
     {
         eventNone = sdl2::SDL_WINDOWEVENT_NONE,
         eventShown = sdl2::SDL_WINDOWEVENT_SHOWN,
@@ -70,6 +70,7 @@ public:
 
     explicit GfxWindowEventID(const ValueType eventid) noexcept;
     explicit GfxWindowEventID(const SdlType eventid) noexcept;
+    explicit GfxWindowEventID(const uint8_t eventid) noexcept;
 
     GfxWindowEventID(GfxWindowEventID const& other) noexcept;
     GfxWindowEventID(GfxWindowEventID&& other) noexcept;

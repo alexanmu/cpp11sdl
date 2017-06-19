@@ -46,6 +46,11 @@ GfxEventType::GfxEventType(const SdlType evtype) noexcept : GfxObject(ClassName)
     evType_ = evtype;
 }
 
+GfxEventType::GfxEventType(const uint32_t evtype) noexcept : GfxObject(ClassName)
+{
+    evType_ = static_cast<SdlType>(evtype);
+}
+
 GfxEventType::GfxEventType(const GfxEventType& other) noexcept : GfxObject(ClassName)
 {
     evType_ = other.evType_;
@@ -56,11 +61,6 @@ GfxEventType::GfxEventType(GfxEventType&& other) noexcept : GfxObject(ClassName)
     evType_ = other.evType_;
     // Delete other's data
     other.clear();
-}
-
-GfxEventType::operator bool() const noexcept
-{
-    return true;
 }
 
 GfxEventType& GfxEventType::operator=(const GfxEventType& other) noexcept
@@ -83,9 +83,49 @@ GfxEventType& GfxEventType::operator=(GfxEventType&& other) noexcept
     return *this;
 }
 
+GfxEventType::operator bool() const noexcept
+{
+    return true;
+}
+
 GfxEventType::ValueType GfxEventType::getEventType(void) const noexcept
 {
     return static_cast<ValueType>(false);
+}
+
+uint32_t GfxEventType::getEventTypeValue(void) const noexcept
+{
+    return static_cast<uint32_t>(evType_);
+}
+
+void GfxEventType::setEventType(const ValueType ev) noexcept
+{
+    evType_ = static_cast<SdlType>(ev);
+}
+
+void GfxEventType::setEventType(const SdlType ev) noexcept
+{
+    evType_ = ev;
+}
+
+void GfxEventType::setEventType(const uint32_t ev) noexcept
+{
+    evType_ = static_cast<SdlType>(ev);
+}
+
+bool GfxEventType::isUserEvent(void) const noexcept
+{
+    const uint32_t userEvValue = static_cast<const uint32_t>(ValueType::evUserEvent);
+    const uint32_t lastEvValue = static_cast<const uint32_t>(ValueType::evLastEvent);
+    uint32_t evTypeValue = static_cast<uint32_t>(evType_);
+
+    return ((evTypeValue >= userEvValue) && (evTypeValue < lastEvValue));
+}
+
+bool GfxEventType::isFirstOrLastEvent(void) const noexcept
+{
+    return (static_cast<ValueType>(evType_) == ValueType::evFirstEvent) ||
+            (static_cast<ValueType>(evType_) == ValueType::evLastEvent);
 }
 
 void GfxEventType::clear(void) noexcept
