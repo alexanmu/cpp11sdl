@@ -165,6 +165,8 @@
 		19F425131EF563CA00F7E2C5 /* GfxHintCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB03E1EF4410700B4F46B /* GfxHintCallback.cpp */; };
 		19F425141EF5641300F7E2C5 /* GfxRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */; };
 		19F425151EF5641500F7E2C5 /* GfxTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0391EF440EF00B4F46B /* GfxTexture.cpp */; };
+		7902A0201EF82D3700513746 /* GfxCommonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */; };
+		7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */; };
 		790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */; };
 		790BB03C1EF440EF00B4F46B /* GfxTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0391EF440EF00B4F46B /* GfxTexture.cpp */; };
 		790BB0441EF4410700B4F46B /* GfxHintCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB03E1EF4410700B4F46B /* GfxHintCallback.cpp */; };
@@ -445,6 +447,13 @@
 		19D5E6FF1EE56F38000E187B /* GfxMeta.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMeta.hpp; path = _gfx/GfxMeta.hpp; sourceTree = "<group>"; };
 		19D5E7001EE56F38000E187B /* GfxObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxObject.cpp; path = _gfx/GfxObject.cpp; sourceTree = "<group>"; };
 		19D5E7011EE56F38000E187B /* GfxObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxObject.hpp; path = _gfx/GfxObject.hpp; sourceTree = "<group>"; };
+		7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxCommonEvent.cpp; path = gfx/events/GfxCommonEvent.cpp; sourceTree = "<group>"; };
+		7902A01C1EF82D3700513746 /* GfxCommonEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxCommonEvent.hpp; path = gfx/events/GfxCommonEvent.hpp; sourceTree = "<group>"; };
+		7902A01D1EF82D3700513746 /* GfxEventConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxEventConstants.hpp; path = gfx/events/GfxEventConstants.hpp; sourceTree = "<group>"; };
+		7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxWindowEvent.cpp; path = gfx/events/GfxWindowEvent.cpp; sourceTree = "<group>"; };
+		7902A01F1EF82D3700513746 /* GfxWindowEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxWindowEvent.hpp; path = gfx/events/GfxWindowEvent.hpp; sourceTree = "<group>"; };
+		7902A0231EF82D4C00513746 /* IGetCommonEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetCommonEvent.hpp; path = gfx/events/prv/IGetCommonEvent.hpp; sourceTree = "<group>"; };
+		7902A0241EF82D4C00513746 /* IGetWindowID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetWindowID.hpp; path = gfx/events/prv/IGetWindowID.hpp; sourceTree = "<group>"; };
 		790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRenderer.cpp; path = render/GfxRenderer.cpp; sourceTree = "<group>"; };
 		790BB0381EF440EF00B4F46B /* GfxRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRenderer.hpp; path = render/GfxRenderer.hpp; sourceTree = "<group>"; };
 		790BB0391EF440EF00B4F46B /* GfxTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTexture.cpp; path = render/GfxTexture.cpp; sourceTree = "<group>"; };
@@ -564,8 +573,14 @@
 		190FD24B1EF6CF3900F88E04 /* events */ = {
 			isa = PBXGroup;
 			children = (
+				7902A0221EF82D3D00513746 /* prv */,
+				7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */,
+				7902A01C1EF82D3700513746 /* GfxCommonEvent.hpp */,
+				7902A01D1EF82D3700513746 /* GfxEventConstants.hpp */,
 				190FD24C1EF6CF6D00F88E04 /* GfxEventType.cpp */,
 				190FD24D1EF6CF6D00F88E04 /* GfxEventType.hpp */,
+				7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */,
+				7902A01F1EF82D3700513746 /* GfxWindowEvent.hpp */,
 			);
 			name = events;
 			path = ..;
@@ -952,6 +967,15 @@
 				1946488B1EEC2B7400299B55 /* play */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7902A0221EF82D3D00513746 /* prv */ = {
+			isa = PBXGroup;
+			children = (
+				7902A0231EF82D4C00513746 /* IGetCommonEvent.hpp */,
+				7902A0241EF82D4C00513746 /* IGetWindowID.hpp */,
+			);
+			name = prv;
 			sourceTree = "<group>";
 		};
 		790BB03D1EF440F600B4F46B /* hints */ = {
@@ -1345,6 +1369,7 @@
 				791EAD541EDCB9BE0032ED1D /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */,
 				794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */,
+				7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */,
 				19D5E7021EE56F38000E187B /* GfxMeta.cpp in Sources */,
 				791EAD561EDCB9BE0032ED1D /* GFolderCollectionElement.cpp in Sources */,
 				7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */,
@@ -1404,6 +1429,7 @@
 				198016171EDF283C00AEDB49 /* GfxDisplayMode.cpp in Sources */,
 				791EAD7E1EDCB9BE0032ED1D /* GfxCanvas.cpp in Sources */,
 				7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */,
+				7902A0201EF82D3700513746 /* GfxCommonEvent.cpp in Sources */,
 				79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */,
 				19B8D2D61EF6B62B00102304 /* GColorScheme.cpp in Sources */,
 				1980161D1EDF283C00AEDB49 /* GfxWindowFlags.cpp in Sources */,
