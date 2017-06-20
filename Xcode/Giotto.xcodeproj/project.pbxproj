@@ -107,12 +107,6 @@
 		194648F71EEC2ECC00299B55 /* GPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F561EDC8DB30025DF95 /* GPanel.cpp */; };
 		194648F81EEC2ECF00299B55 /* GStructuredTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7979CDDC1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp */; };
 		194648F91EEC2ED400299B55 /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F581EDC8DB30025DF95 /* GTypes.cpp */; };
-		194648FA1EEC2EDC00299B55 /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5B1EDC8DB30025DF95 /* GFileCollectionElement.cpp */; };
-		194648FB1EEC2EDF00299B55 /* GFileObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5D1EDC8DB30025DF95 /* GFileObject.cpp */; };
-		194648FC1EEC2EE200299B55 /* GFileSystemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5F1EDC8DB30025DF95 /* GFileSystemObject.cpp */; };
-		194648FD1EEC2EE500299B55 /* GFolderCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F611EDC8DB30025DF95 /* GFolderCollectionElement.cpp */; };
-		194648FE1EEC2EE900299B55 /* GFolderObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F631EDC8DB30025DF95 /* GFolderObject.cpp */; };
-		194648FF1EEC2EEC00299B55 /* GFSBaseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F651EDC8DB30025DF95 /* GFSBaseClass.cpp */; };
 		198015DC1EDF279500AEDB49 /* GfxBits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198015DA1EDF279500AEDB49 /* GfxBits.cpp */; };
 		198015E01EDF27AC00AEDB49 /* GfxBlendMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198015DE1EDF27AC00AEDB49 /* GfxBlendMode.cpp */; };
 		198015E41EDF27C500AEDB49 /* GfxClipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198015E21EDF27C500AEDB49 /* GfxClipboard.cpp */; };
@@ -191,7 +185,6 @@
 		791EAD501EDCB9BE0032ED1D /* GfxBgiConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EB31EDC8DB30025DF95 /* GfxBgiConstants.cpp */; };
 		791EAD531EDCB9BE0032ED1D /* GLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F521EDC8DB30025DF95 /* GLabel.cpp */; };
 		791EAD541EDCB9BE0032ED1D /* GAbortRetryIgnoreMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F371EDC8DB30025DF95 /* GAbortRetryIgnoreMsgBox.cpp */; };
-		791EAD561EDCB9BE0032ED1D /* GFolderCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F611EDC8DB30025DF95 /* GFolderCollectionElement.cpp */; };
 		791EAD581EDCB9BE0032ED1D /* GApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F441EDC8DB30025DF95 /* GApplication.cpp */; };
 		791EAD5A1EDCB9BE0032ED1D /* GOKMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F3D1EDC8DB30025DF95 /* GOKMsgBox.cpp */; };
 		791EAD5B1EDCB9BE0032ED1D /* GfxTtfFontHinting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F2B1EDC8DB30025DF95 /* GfxTtfFontHinting.cpp */; };
@@ -205,19 +198,14 @@
 		791EAD6C1EDCB9BE0032ED1D /* GOKCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F3B1EDC8DB30025DF95 /* GOKCancelMsgBox.cpp */; };
 		791EAD701EDCB9BE0032ED1D /* GfxAngle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EB11EDC8DB30025DF95 /* GfxAngle.cpp */; };
 		791EAD771EDCB9BE0032ED1D /* GDialogsConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F391EDC8DB30025DF95 /* GDialogsConstants.cpp */; };
-		791EAD791EDCB9BE0032ED1D /* GFileSystemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5F1EDC8DB30025DF95 /* GFileSystemObject.cpp */; };
-		791EAD7A1EDCB9BE0032ED1D /* GFSBaseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F651EDC8DB30025DF95 /* GFSBaseClass.cpp */; };
 		791EAD7E1EDCB9BE0032ED1D /* GfxCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EB91EDC8DB30025DF95 /* GfxCanvas.cpp */; };
 		791EAD831EDCB9BE0032ED1D /* GForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F4C1EDC8DB30025DF95 /* GForm.cpp */; };
 		791EAD851EDCB9BE0032ED1D /* GfxTtfFontStyle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F2F1EDC8DB30025DF95 /* GfxTtfFontStyle.cpp */; };
-		791EAD861EDCB9BE0032ED1D /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5B1EDC8DB30025DF95 /* GFileCollectionElement.cpp */; };
-		791EAD871EDCB9BE0032ED1D /* GFolderObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F631EDC8DB30025DF95 /* GFolderObject.cpp */; };
 		791EAD891EDCB9BE0032ED1D /* GPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F561EDC8DB30025DF95 /* GPanel.cpp */; };
 		791EAD8A1EDCB9BE0032ED1D /* GGraphicControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F4E1EDC8DB30025DF95 /* GGraphicControl.cpp */; };
 		791EAD8D1EDCB9BE0032ED1D /* GComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F481EDC8DB30025DF95 /* GComponent.cpp */; };
 		791EAD901EDCB9BE0032ED1D /* GRetryCancelMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F411EDC8DB30025DF95 /* GRetryCancelMsgBox.cpp */; };
 		791EAD911EDCB9BE0032ED1D /* GObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F541EDC8DB30025DF95 /* GObject.cpp */; };
-		791EAD921EDCB9BE0032ED1D /* GFileObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784F5D1EDC8DB30025DF95 /* GFileObject.cpp */; };
 		791EAD961EDCB9BE0032ED1D /* GfxCanvasBgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19784EBB1EDC8DB30025DF95 /* GfxCanvasBgi.cpp */; };
 		791EAD991EDCB9BE0032ED1D /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E571EDC89590022BB5B /* SDL2_image.framework */; };
 		791EAD9A1EDCB9BE0032ED1D /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E581EDC89590022BB5B /* SDL2_ttf.framework */; };
@@ -239,6 +227,23 @@
 		7979CDDE1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7979CDDC1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp */; };
 		798203731EE2E56E005D610C /* GfxSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7982036F1EE2E56E005D610C /* GfxSurface.cpp */; };
 		798203741EE2E56E005D610C /* GfxSurfaceFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798203711EE2E56E005D610C /* GfxSurfaceFlags.cpp */; };
+		798C0C6B1EF9799A006F1EEB /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */; };
+		798C0C6C1EF9799A006F1EEB /* GFileObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C611EF9799A006F1EEB /* GFileObject.cpp */; };
+		798C0C6D1EF9799A006F1EEB /* GFileSystemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C631EF9799A006F1EEB /* GFileSystemObject.cpp */; };
+		798C0C6E1EF9799A006F1EEB /* GFolderCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C651EF9799A006F1EEB /* GFolderCollectionElement.cpp */; };
+		798C0C6F1EF9799A006F1EEB /* GFolderObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C671EF9799A006F1EEB /* GFolderObject.cpp */; };
+		798C0C701EF9799A006F1EEB /* GFSBaseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C691EF9799A006F1EEB /* GFSBaseClass.cpp */; };
+		798C0C731EF979A5006F1EEB /* GFontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C711EF979A5006F1EEB /* GFontManager.cpp */; };
+		798C0C771EF97BA5006F1EEB /* FontMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C741EF97A3F006F1EEB /* FontMgr.cpp */; };
+		798C0C781EF97BAC006F1EEB /* GFontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C711EF979A5006F1EEB /* GFontManager.cpp */; };
+		798C0C791EF97BAF006F1EEB /* GFSBaseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C691EF9799A006F1EEB /* GFSBaseClass.cpp */; };
+		798C0C7A1EF97BB1006F1EEB /* GFolderObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C671EF9799A006F1EEB /* GFolderObject.cpp */; };
+		798C0C7B1EF97BB4006F1EEB /* GFolderCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C651EF9799A006F1EEB /* GFolderCollectionElement.cpp */; };
+		798C0C7C1EF97BB7006F1EEB /* GFileSystemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C631EF9799A006F1EEB /* GFileSystemObject.cpp */; };
+		798C0C7D1EF97BB9006F1EEB /* GFileObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C611EF9799A006F1EEB /* GFileObject.cpp */; };
+		798C0C7E1EF97BBD006F1EEB /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */; };
+		798C0C7F1EF97BFA006F1EEB /* GfxCommonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */; };
+		798C0C801EF97BFD006F1EEB /* GfxWindowEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */; };
 		79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */; };
 		79B2C6C71EE2D9270060EFD8 /* GfxInitFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C31EE2D9270060EFD8 /* GfxInitFlags.cpp */; };
 		79B2C6C81EE2D9270060EFD8 /* GfxInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C51EE2D9270060EFD8 /* GfxInitQuit.cpp */; };
@@ -348,20 +353,6 @@
 		19784F571EDC8DB30025DF95 /* GPanel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GPanel.hpp; sourceTree = "<group>"; };
 		19784F581EDC8DB30025DF95 /* GTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GTypes.cpp; sourceTree = "<group>"; };
 		19784F591EDC8DB30025DF95 /* GTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GTypes.hpp; sourceTree = "<group>"; };
-		19784F5B1EDC8DB30025DF95 /* GFileCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFileCollectionElement.cpp; sourceTree = "<group>"; };
-		19784F5C1EDC8DB30025DF95 /* GFileCollectionElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFileCollectionElement.hpp; sourceTree = "<group>"; };
-		19784F5D1EDC8DB30025DF95 /* GFileObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFileObject.cpp; sourceTree = "<group>"; };
-		19784F5E1EDC8DB30025DF95 /* GFileObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFileObject.hpp; sourceTree = "<group>"; };
-		19784F5F1EDC8DB30025DF95 /* GFileSystemObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFileSystemObject.cpp; sourceTree = "<group>"; };
-		19784F601EDC8DB30025DF95 /* GFileSystemObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFileSystemObject.hpp; sourceTree = "<group>"; };
-		19784F611EDC8DB30025DF95 /* GFolderCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFolderCollectionElement.cpp; sourceTree = "<group>"; };
-		19784F621EDC8DB30025DF95 /* GFolderCollectionElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFolderCollectionElement.hpp; sourceTree = "<group>"; };
-		19784F631EDC8DB30025DF95 /* GFolderObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFolderObject.cpp; sourceTree = "<group>"; };
-		19784F641EDC8DB30025DF95 /* GFolderObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFolderObject.hpp; sourceTree = "<group>"; };
-		19784F651EDC8DB30025DF95 /* GFSBaseClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFSBaseClass.cpp; sourceTree = "<group>"; };
-		19784F661EDC8DB30025DF95 /* GFSBaseClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFSBaseClass.hpp; sourceTree = "<group>"; };
-		19784F671EDC8DB30025DF95 /* Linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Linux.h; sourceTree = "<group>"; };
-		19784F681EDC8DB30025DF95 /* macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macOS.h; sourceTree = "<group>"; };
 		19784F691EDC8DB30025DF95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		198015DA1EDF279500AEDB49 /* GfxBits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBits.cpp; path = bits/GfxBits.cpp; sourceTree = "<group>"; };
 		198015DB1EDF279500AEDB49 /* GfxBits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBits.hpp; path = bits/GfxBits.hpp; sourceTree = "<group>"; };
@@ -526,6 +517,22 @@
 		798203711EE2E56E005D610C /* GfxSurfaceFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxSurfaceFlags.cpp; path = surface/GfxSurfaceFlags.cpp; sourceTree = "<group>"; };
 		798203721EE2E56E005D610C /* GfxSurfaceFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxSurfaceFlags.hpp; path = surface/GfxSurfaceFlags.hpp; sourceTree = "<group>"; };
 		7986D5F51EE52A4400711D74 /* fntBgiStandardFont.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fntBgiStandardFont.hpp; sourceTree = "<group>"; };
+		798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFileCollectionElement.cpp; path = fso/GFileCollectionElement.cpp; sourceTree = "<group>"; };
+		798C0C601EF9799A006F1EEB /* GFileCollectionElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFileCollectionElement.hpp; path = fso/GFileCollectionElement.hpp; sourceTree = "<group>"; };
+		798C0C611EF9799A006F1EEB /* GFileObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFileObject.cpp; path = fso/GFileObject.cpp; sourceTree = "<group>"; };
+		798C0C621EF9799A006F1EEB /* GFileObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFileObject.hpp; path = fso/GFileObject.hpp; sourceTree = "<group>"; };
+		798C0C631EF9799A006F1EEB /* GFileSystemObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFileSystemObject.cpp; path = fso/GFileSystemObject.cpp; sourceTree = "<group>"; };
+		798C0C641EF9799A006F1EEB /* GFileSystemObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFileSystemObject.hpp; path = fso/GFileSystemObject.hpp; sourceTree = "<group>"; };
+		798C0C651EF9799A006F1EEB /* GFolderCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFolderCollectionElement.cpp; path = fso/GFolderCollectionElement.cpp; sourceTree = "<group>"; };
+		798C0C661EF9799A006F1EEB /* GFolderCollectionElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFolderCollectionElement.hpp; path = fso/GFolderCollectionElement.hpp; sourceTree = "<group>"; };
+		798C0C671EF9799A006F1EEB /* GFolderObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFolderObject.cpp; path = fso/GFolderObject.cpp; sourceTree = "<group>"; };
+		798C0C681EF9799A006F1EEB /* GFolderObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFolderObject.hpp; path = fso/GFolderObject.hpp; sourceTree = "<group>"; };
+		798C0C691EF9799A006F1EEB /* GFSBaseClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFSBaseClass.cpp; path = fso/GFSBaseClass.cpp; sourceTree = "<group>"; };
+		798C0C6A1EF9799A006F1EEB /* GFSBaseClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFSBaseClass.hpp; path = fso/GFSBaseClass.hpp; sourceTree = "<group>"; };
+		798C0C711EF979A5006F1EEB /* GFontManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GFontManager.cpp; sourceTree = "<group>"; };
+		798C0C721EF979A5006F1EEB /* GFontManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFontManager.hpp; sourceTree = "<group>"; };
+		798C0C741EF97A3F006F1EEB /* FontMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FontMgr.cpp; path = ../play/FontMgr.cpp; sourceTree = SOURCE_ROOT; };
+		798C0C751EF97A3F006F1EEB /* FontMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FontMgr.hpp; path = ../play/FontMgr.hpp; sourceTree = SOURCE_ROOT; };
 		79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPixelType.cpp; path = pixels/GfxPixelType.cpp; sourceTree = "<group>"; };
 		79AB8EC51EDD1DE200B242C6 /* GfxPixelType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPixelType.hpp; path = pixels/GfxPixelType.hpp; sourceTree = "<group>"; };
 		79B2C6C31EE2D9270060EFD8 /* GfxInitFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxInitFlags.cpp; path = initquit/GfxInitFlags.cpp; sourceTree = "<group>"; };
@@ -605,6 +612,8 @@
 				19B8D2B91EF6B61B00102304 /* CCallback.hpp */,
 				19B8D2BA1EF6B61B00102304 /* Component.cpp */,
 				19B8D2BB1EF6B61B00102304 /* Component.hpp */,
+				798C0C741EF97A3F006F1EEB /* FontMgr.cpp */,
+				798C0C751EF97A3F006F1EEB /* FontMgr.hpp */,
 				19B8D2BC1EF6B61B00102304 /* Fonts.cpp */,
 				19B8D2BD1EF6B61B00102304 /* Fonts.hpp */,
 				19B8D2BE1EF6B61B00102304 /* FSO.cpp */,
@@ -617,10 +626,10 @@
 				19B8D2C51EF6B61B00102304 /* PaletteGFX.hpp */,
 				19B8D2C61EF6B61B00102304 /* PaletteSDL.cpp */,
 				19B8D2C71EF6B61B00102304 /* PaletteSDL.hpp */,
-				19B8D2C81EF6B61B00102304 /* RuntimeMeta.cpp */,
-				19B8D2C91EF6B61B00102304 /* RuntimeMeta.hpp */,
 				19314B5B1EEC37EA00A46376 /* Playground.cpp */,
 				19314B5C1EEC37EA00A46376 /* Playground.hpp */,
+				19B8D2C81EF6B61B00102304 /* RuntimeMeta.cpp */,
+				19B8D2C91EF6B61B00102304 /* RuntimeMeta.hpp */,
 			);
 			path = play;
 			sourceTree = "<group>";
@@ -632,8 +641,6 @@
 				19784EA41EDC8DB30025DF95 /* GDemoForm.hpp */,
 				19784EA51EDC8DB30025DF95 /* gfx */,
 				19784F351EDC8DB30025DF95 /* gto */,
-				19784F671EDC8DB30025DF95 /* Linux.h */,
-				19784F681EDC8DB30025DF95 /* macOS.h */,
 				19784F691EDC8DB30025DF95 /* main.cpp */,
 			);
 			name = src;
@@ -740,6 +747,7 @@
 			isa = PBXGroup;
 			children = (
 				19784F361EDC8DB30025DF95 /* dlgs */,
+				798C0C5E1EF9798C006F1EEB /* fso */,
 				19784F431EDC8DB30025DF95 /* gobj */,
 				19784F5A1EDC8DB30025DF95 /* util */,
 			);
@@ -803,18 +811,8 @@
 		19784F5A1EDC8DB30025DF95 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				19784F5B1EDC8DB30025DF95 /* GFileCollectionElement.cpp */,
-				19784F5C1EDC8DB30025DF95 /* GFileCollectionElement.hpp */,
-				19784F5D1EDC8DB30025DF95 /* GFileObject.cpp */,
-				19784F5E1EDC8DB30025DF95 /* GFileObject.hpp */,
-				19784F5F1EDC8DB30025DF95 /* GFileSystemObject.cpp */,
-				19784F601EDC8DB30025DF95 /* GFileSystemObject.hpp */,
-				19784F611EDC8DB30025DF95 /* GFolderCollectionElement.cpp */,
-				19784F621EDC8DB30025DF95 /* GFolderCollectionElement.hpp */,
-				19784F631EDC8DB30025DF95 /* GFolderObject.cpp */,
-				19784F641EDC8DB30025DF95 /* GFolderObject.hpp */,
-				19784F651EDC8DB30025DF95 /* GFSBaseClass.cpp */,
-				19784F661EDC8DB30025DF95 /* GFSBaseClass.hpp */,
+				798C0C711EF979A5006F1EEB /* GFontManager.cpp */,
+				798C0C721EF979A5006F1EEB /* GFontManager.hpp */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1081,6 +1079,25 @@
 			name = surface;
 			sourceTree = "<group>";
 		};
+		798C0C5E1EF9798C006F1EEB /* fso */ = {
+			isa = PBXGroup;
+			children = (
+				798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */,
+				798C0C601EF9799A006F1EEB /* GFileCollectionElement.hpp */,
+				798C0C611EF9799A006F1EEB /* GFileObject.cpp */,
+				798C0C621EF9799A006F1EEB /* GFileObject.hpp */,
+				798C0C631EF9799A006F1EEB /* GFileSystemObject.cpp */,
+				798C0C641EF9799A006F1EEB /* GFileSystemObject.hpp */,
+				798C0C651EF9799A006F1EEB /* GFolderCollectionElement.cpp */,
+				798C0C661EF9799A006F1EEB /* GFolderCollectionElement.hpp */,
+				798C0C671EF9799A006F1EEB /* GFolderObject.cpp */,
+				798C0C681EF9799A006F1EEB /* GFolderObject.hpp */,
+				798C0C691EF9799A006F1EEB /* GFSBaseClass.cpp */,
+				798C0C6A1EF9799A006F1EEB /* GFSBaseClass.hpp */,
+			);
+			name = fso;
+			sourceTree = "<group>";
+		};
 		79AB8EC31EDD1DBC00B242C6 /* pixels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1223,18 +1240,19 @@
 				1946489E1EEC2CFA00299B55 /* GfxBgiConstants.cpp in Sources */,
 				19314B611EEC396100A46376 /* Playground.cpp in Sources */,
 				194648C21EEC2DC100299B55 /* GfxPixelFormat.cpp in Sources */,
-				194648FC1EEC2EE200299B55 /* GFileSystemObject.cpp in Sources */,
 				194648CF1EEC2E0C00299B55 /* GfxTextureFormats.cpp in Sources */,
 				194648EC1EEC2EA000299B55 /* GRetryCancelMsgBox.cpp in Sources */,
 				194648A21EEC2D0E00299B55 /* GfxString.cpp in Sources */,
 				194648A01EEC2D0200299B55 /* GfxCanvasBgi.cpp in Sources */,
 				194648C41EEC2DC700299B55 /* GfxPixelType.cpp in Sources */,
+				798C0C801EF97BFD006F1EEB /* GfxWindowEvent.cpp in Sources */,
 				194648991EEC2CDE00299B55 /* GfxMeta.cpp in Sources */,
 				194648F91EEC2ED400299B55 /* GTypes.cpp in Sources */,
 				194648E61EEC2E8400299B55 /* GfxGammaRamp.cpp in Sources */,
 				194648E51EEC2E8100299B55 /* GfxFontInfo.cpp in Sources */,
 				194648E01EEC2E6800299B55 /* GfxWindow.cpp in Sources */,
 				194648C01EEC2DBA00299B55 /* GfxPackedOrder.cpp in Sources */,
+				798C0C7E1EF97BBD006F1EEB /* GFileCollectionElement.cpp in Sources */,
 				194648CC1EEC2E0200299B55 /* GfxRendererFlip.cpp in Sources */,
 				190FD24F1EF6CF6D00F88E04 /* GfxEventType.cpp in Sources */,
 				194648D41EEC2E2A00299B55 /* GfxTtfFontHinting.cpp in Sources */,
@@ -1257,8 +1275,10 @@
 				19F425121EF563C700F7E2C5 /* GfxHintPriority.cpp in Sources */,
 				194648B71EEC2D8A00299B55 /* GfxMessageBoxColor.cpp in Sources */,
 				194648DA1EEC2E4C00299B55 /* GfxVersion.cpp in Sources */,
+				798C0C781EF97BAC006F1EEB /* GFontManager.cpp in Sources */,
 				194648BA1EEC2D9900299B55 /* GfxMessageBoxData.cpp in Sources */,
 				19B8D2DC1EF6B64B00102304 /* FSO.cpp in Sources */,
+				798C0C7C1EF97BB7006F1EEB /* GFileSystemObject.cpp in Sources */,
 				194648BC1EEC2DA500299B55 /* GfxArrayOrder.cpp in Sources */,
 				194648CB1EEC2DFF00299B55 /* GfxRendererFlags.cpp in Sources */,
 				194648A91EEC2D3E00299B55 /* GfxError.cpp in Sources */,
@@ -1270,10 +1290,11 @@
 				19B8D2DB1EF6B64800102304 /* Fonts.cpp in Sources */,
 				194648D91EEC2E4500299B55 /* GfxGetVersion.cpp in Sources */,
 				194648B31EEC2D7500299B55 /* GfxLogPriority.cpp in Sources */,
-				194648FE1EEC2EE900299B55 /* GFolderObject.cpp in Sources */,
 				1946489C1EEC2CF000299B55 /* GfxBitmapFont.cpp in Sources */,
+				798C0C7D1EF97BB9006F1EEB /* GFileObject.cpp in Sources */,
 				194648F41EEC2EC100299B55 /* GImage.cpp in Sources */,
 				194648E21EEC2E7200299B55 /* GfxWindowFlags.cpp in Sources */,
+				798C0C791EF97BAF006F1EEB /* GFSBaseClass.cpp in Sources */,
 				194648A61EEC2D2700299B55 /* GfxCpuInfo.cpp in Sources */,
 				194648A31EEC2D1600299B55 /* GfxBits.cpp in Sources */,
 				194648D01EEC2E0F00299B55 /* GfxTextureModulate.cpp in Sources */,
@@ -1283,10 +1304,10 @@
 				194648AE1EEC2D5F00299B55 /* GfxInitFlags.cpp in Sources */,
 				1946489B1EEC2CE600299B55 /* GfxRuntimeMeta.cpp in Sources */,
 				19B8D2DE1EF6B65100102304 /* Meta.cpp in Sources */,
+				798C0C7F1EF97BFA006F1EEB /* GfxCommonEvent.cpp in Sources */,
 				194648E91EEC2E9700299B55 /* GOKCancelMsgBox.cpp in Sources */,
 				19B8D2D81EF6B63E00102304 /* Benchmark.cpp in Sources */,
 				194648B91EEC2D9500299B55 /* GfxMessageBoxColorType.cpp in Sources */,
-				194648FA1EEC2EDC00299B55 /* GFileCollectionElement.cpp in Sources */,
 				19B8D2D71EF6B63800102304 /* GColorScheme.cpp in Sources */,
 				194648BD1EEC2DA800299B55 /* GfxBitmapOrder.cpp in Sources */,
 				194648F81EEC2ECF00299B55 /* GStructuredTextLabel.cpp in Sources */,
@@ -1305,19 +1326,18 @@
 				194648E71EEC2E9100299B55 /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				194648A51EEC2D2000299B55 /* GfxClipboard.cpp in Sources */,
 				194648EB1EEC2E9D00299B55 /* GQuitCancelMsgBox.cpp in Sources */,
-				194648FB1EEC2EDF00299B55 /* GFileObject.cpp in Sources */,
 				194648971EEC2BFB00299B55 /* GfxLogOutputFunction.cpp in Sources */,
 				1946489D1EEC2CF600299B55 /* GfxAngle.cpp in Sources */,
-				194648FD1EEC2EE500299B55 /* GFolderCollectionElement.cpp in Sources */,
 				194648F51EEC2EC500299B55 /* GLabel.cpp in Sources */,
 				194648C11EEC2DBE00299B55 /* GfxPalette.cpp in Sources */,
+				798C0C771EF97BA5006F1EEB /* FontMgr.cpp in Sources */,
 				194648A11EEC2D0A00299B55 /* GfxRadius.cpp in Sources */,
+				798C0C7A1EF97BB1006F1EEB /* GFolderObject.cpp in Sources */,
 				19F425111EF563C400F7E2C5 /* GfxHints.cpp in Sources */,
 				194648A71EEC2D2D00299B55 /* GfxEndian.cpp in Sources */,
 				194648DE1EEC2E6200299B55 /* GfxScreenSaver.cpp in Sources */,
 				194648BE1EEC2DB400299B55 /* GfxColor.cpp in Sources */,
 				194648DF1EEC2E6500299B55 /* GfxVideo.cpp in Sources */,
-				194648FF1EEC2EEC00299B55 /* GFSBaseClass.cpp in Sources */,
 				194648C71EEC2DEB00299B55 /* GfxPowerState.cpp in Sources */,
 				19B8D2DD1EF6B64E00102304 /* Log.cpp in Sources */,
 				194648E31EEC2E7500299B55 /* GfxWindowPosition.cpp in Sources */,
@@ -1330,6 +1350,7 @@
 				194648F21EEC2EB900299B55 /* GForm.cpp in Sources */,
 				194648E41EEC2E7E00299B55 /* GfxControlledSurface.cpp in Sources */,
 				194648F01EEC2EB200299B55 /* GControl.cpp in Sources */,
+				798C0C7B1EF97BB4006F1EEB /* GFolderCollectionElement.cpp in Sources */,
 				194648A81EEC2D3300299B55 /* GfxGetError.cpp in Sources */,
 				194648B81EEC2D9100299B55 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				194648DC1EEC2E5700299B55 /* GfxHitTest.cpp in Sources */,
@@ -1371,7 +1392,6 @@
 				794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */,
 				7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */,
 				19D5E7021EE56F38000E187B /* GfxMeta.cpp in Sources */,
-				791EAD561EDCB9BE0032ED1D /* GFolderCollectionElement.cpp in Sources */,
 				7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */,
 				796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */,
 				198015E01EDF27AC00AEDB49 /* GfxBlendMode.cpp in Sources */,
@@ -1384,6 +1404,7 @@
 				791459C91EE135B500830214 /* GfxHitTest.cpp in Sources */,
 				791435541EDDD98200315A5C /* GfxColor.cpp in Sources */,
 				791EAD5B1EDCB9BE0032ED1D /* GfxTtfFontHinting.cpp in Sources */,
+				798C0C6E1EF9799A006F1EEB /* GFolderCollectionElement.cpp in Sources */,
 				791EAD5C1EDCB9BE0032ED1D /* GImage.cpp in Sources */,
 				198016211EDF285400AEDB49 /* GDialog.cpp in Sources */,
 				198016051EDF281700AEDB49 /* GfxMessageBoxFlags.cpp in Sources */,
@@ -1394,6 +1415,7 @@
 				791EAD631EDCB9BE0032ED1D /* GfxTtfFont.cpp in Sources */,
 				791EAD661EDCB9BE0032ED1D /* GfxTtfInitQuit.cpp in Sources */,
 				791EAD671EDCB9BE0032ED1D /* GfxTtfGetVersion.cpp in Sources */,
+				798C0C731EF979A5006F1EEB /* GFontManager.cpp in Sources */,
 				794D05F71EE29ECB001BD5D9 /* GfxGetVersion.cpp in Sources */,
 				791435551EDDD98200315A5C /* GfxPackedLayout.cpp in Sources */,
 				791EAD681EDCB9BE0032ED1D /* GControl.cpp in Sources */,
@@ -1416,29 +1438,30 @@
 				198015FF1EDF281700AEDB49 /* GfxMessageBoxButtonData.cpp in Sources */,
 				7953F7C81EDD27F600A27C41 /* GfxPixelFormat.cpp in Sources */,
 				791EAD771EDCB9BE0032ED1D /* GDialogsConstants.cpp in Sources */,
-				791EAD791EDCB9BE0032ED1D /* GFileSystemObject.cpp in Sources */,
 				194648981EEC2C6E00299B55 /* GfxLogOutputFunction.cpp in Sources */,
 				791435561EDDD98200315A5C /* GfxPackedOrder.cpp in Sources */,
 				198016021EDF281700AEDB49 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				79C887581EE2D43800378B54 /* GfxRect.cpp in Sources */,
 				19A8713B1EEBC69D00A8C84C /* GfxTextureModulate.cpp in Sources */,
+				798C0C701EF9799A006F1EEB /* GFSBaseClass.cpp in Sources */,
 				1980161A1EDF283C00AEDB49 /* GfxVideo.cpp in Sources */,
+				798C0C6B1EF9799A006F1EEB /* GFileCollectionElement.cpp in Sources */,
 				790BB0461EF4410700B4F46B /* GfxHints.cpp in Sources */,
 				198016031EDF281700AEDB49 /* GfxMessageBoxColorType.cpp in Sources */,
-				791EAD7A1EDCB9BE0032ED1D /* GFSBaseClass.cpp in Sources */,
+				798C0C6D1EF9799A006F1EEB /* GFileSystemObject.cpp in Sources */,
 				198016171EDF283C00AEDB49 /* GfxDisplayMode.cpp in Sources */,
 				791EAD7E1EDCB9BE0032ED1D /* GfxCanvas.cpp in Sources */,
 				7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */,
+				798C0C6C1EF9799A006F1EEB /* GFileObject.cpp in Sources */,
 				7902A0201EF82D3700513746 /* GfxCommonEvent.cpp in Sources */,
 				79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */,
 				19B8D2D61EF6B62B00102304 /* GColorScheme.cpp in Sources */,
 				1980161D1EDF283C00AEDB49 /* GfxWindowFlags.cpp in Sources */,
+				798C0C6F1EF9799A006F1EEB /* GFolderObject.cpp in Sources */,
 				791EAD831EDCB9BE0032ED1D /* GForm.cpp in Sources */,
 				198015E41EDF27C500AEDB49 /* GfxClipboard.cpp in Sources */,
 				79C387681EE85F69003EDE07 /* GfxLogCategory.cpp in Sources */,
 				791EAD851EDCB9BE0032ED1D /* GfxTtfFontStyle.cpp in Sources */,
-				791EAD861EDCB9BE0032ED1D /* GFileCollectionElement.cpp in Sources */,
-				791EAD871EDCB9BE0032ED1D /* GFolderObject.cpp in Sources */,
 				791EAD891EDCB9BE0032ED1D /* GPanel.cpp in Sources */,
 				19D5E7031EE56F38000E187B /* GfxObject.cpp in Sources */,
 				791EAD8A1EDCB9BE0032ED1D /* GGraphicControl.cpp in Sources */,
@@ -1450,7 +1473,6 @@
 				791EAD911EDCB9BE0032ED1D /* GObject.cpp in Sources */,
 				798203741EE2E56E005D610C /* GfxSurfaceFlags.cpp in Sources */,
 				79C387671EE85F69003EDE07 /* GfxLog.cpp in Sources */,
-				791EAD921EDCB9BE0032ED1D /* GFileObject.cpp in Sources */,
 				198016191EDF283C00AEDB49 /* GfxScreenSaver.cpp in Sources */,
 				796D33FB1EE06AB40013C496 /* GfxGammaRamp.cpp in Sources */,
 				79B2C6C71EE2D9270060EFD8 /* GfxInitFlags.cpp in Sources */,

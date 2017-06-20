@@ -83,7 +83,7 @@ uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff
  };
 
-GDemoForm::GDemoForm(const std::string& appName) : gto::gobj::GForm(appName)
+GDemoForm::GDemoForm(std::string const& appName) : gto::gobj::GForm(appName)
 {
 }
 

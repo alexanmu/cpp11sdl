@@ -41,7 +41,7 @@ GfxWindowEvent::GfxWindowEvent(const SdlType event) noexcept : GfxObject(ClassNa
     windowEvent_ = event;
 }
 
-GfxWindowEvent::GfxWindowEvent(const GfxWindowEvent& other) noexcept : GfxObject(ClassName)
+GfxWindowEvent::GfxWindowEvent(GfxWindowEvent const& other) noexcept : GfxObject(ClassName)
 {
     windowEvent_ = other.windowEvent_;
 }
@@ -53,7 +53,7 @@ GfxWindowEvent::GfxWindowEvent(GfxWindowEvent&& other) noexcept : GfxObject(Clas
     other.clear();
 }
 
-GfxWindowEvent& GfxWindowEvent::operator=(const GfxWindowEvent& other) noexcept
+GfxWindowEvent& GfxWindowEvent::operator=(GfxWindowEvent const& other) noexcept
 {
     if (this != &other)
     {
