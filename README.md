@@ -34,4 +34,7 @@ External code attributions:
 
 Small demo app available. See main.cpp
 
+Special note for macOS users with Xcode: following configuration must be set in Xcode for the built-in build system to be compatible with the makefile:
+*File -> Project Settings... -> Derived Data "Project-relative Location"; and path set to "../build/DerivedData"*
+
 ---eof---
