@@ -87,7 +87,7 @@ void GFolderObject::scanFolder(void)
     std::string fullpath;
 
     d = opendir(folderSpec_.c_str());
-    if (d)
+    if (d != NULL)
     {
         dir = readdir(d);
         while (dir != NULL)
@@ -108,8 +108,8 @@ void GFolderObject::scanFolder(void)
             }
             dir = readdir(d);
         }
+        closedir(d);
     }
-    closedir(d);
 }
 
 }  // namespace fso

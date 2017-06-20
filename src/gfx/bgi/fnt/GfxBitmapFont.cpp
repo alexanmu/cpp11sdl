@@ -48,8 +48,8 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, 
         noexcept : GfxObject(ClassName)
 {
     assert(fontData != nullptr);
-    assert(fontWidth_ > 0);
-    assert(fontHeight_ > 0);
+    assert(fontWidth > 0);
+    assert(fontHeight > 0);
 
     fontWidth_ = 0;
     fontHeight_ = 0;

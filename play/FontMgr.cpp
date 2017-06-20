@@ -34,7 +34,7 @@
 
 void _doFontMgr(void)
 {
-    gfx::initquit::GfxInitQuit iq {gfx::initquit::GfxInitFlags(gfx::initquit::GfxInitFlags::ValueType::initEverything) };
+    gfx::initquit::GfxInitQuit iq { gfx::initquit::GfxInitFlags(gfx::initquit::GfxInitFlags::ValueType::initEverything) };
     if (iq.getErrorCode() != 0)
     {
         std::cout << "Init error" << std::endl;
