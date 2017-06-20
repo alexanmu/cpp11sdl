@@ -34,7 +34,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 class GFSBaseClass : public gobj::GObject
@@ -64,7 +64,7 @@ private:
     std::string _lz(std::string const& str, const uint32_t elen) const;
 };
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

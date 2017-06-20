@@ -64,7 +64,7 @@ public:
     GfxMessageBoxFlags& operator=(GfxMessageBoxFlags const& other) noexcept;
     GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other) noexcept;
 
-    bool operator==(const GfxMessageBoxFlags& other) const noexcept;
+    bool operator==(GfxMessageBoxFlags const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
 

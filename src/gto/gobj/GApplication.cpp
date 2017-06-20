@@ -33,27 +33,40 @@ namespace gto
 namespace gobj
 {
 
+GApplication * GApplication::activeApp = nullptr;
+
 GApplication::GApplication(std::string const& appname) : GObject()
 {
     assert(appname.length() > 0);
 
+    if (GApplication::activeApp != nullptr)
+    {
+        throw std::runtime_error("App instance already running");
+    }
     appName_ = appname;
     mainForm_ = nullptr;
     iq_ = nullptr;
+    fontManager_ = nullptr;
+    /* Set global var */
+    GApplication::activeApp = this;
 }
 
 GApplication::~GApplication()
 {
     if (ttfiq_ != nullptr)
     {
-        ttfiq_->~GfxTtfInitQuit();
         delete ttfiq_;
     }
     if (iq_ != nullptr)
     {
-        iq_->~GfxInitQuit();
         delete iq_;
     }
+    if (fontManager_ != nullptr)
+    {
+        delete fontManager_;
+    }
+    /* Delete global var */
+    GApplication::activeApp = nullptr;
 }
 
 void GApplication::setMainForm(GForm * mainForm)
@@ -87,6 +100,12 @@ void GApplication::run()
     {
         return;
     }
+    fontManager_ = new util::GFontManager(getBasePath() + "/Raleway");
+    if (!fontManager_)
+    {
+        return;
+    }
+    fontManager_->loadFonts();
     if (mainForm_ != nullptr)
     {
         mainForm_->create();
@@ -94,6 +113,16 @@ void GApplication::run()
         mainForm_->run();
         mainForm_->close();
     }
+}
+
+util::GFontManager * GApplication::getActiveFontManager(void) const noexcept
+{
+    return fontManager_;
+}
+
+std::string GApplication::getBasePath(void) const noexcept
+{
+    return "data";
 }
 
 }  // namespace gobj

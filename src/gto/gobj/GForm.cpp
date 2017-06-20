@@ -83,7 +83,8 @@ void GForm::create(void)
     gfx::video::GfxWindowFlags winFlags(gfx::video::GfxWindowFlags::ValueType::windowFlagResizable);
     gfx::video::GfxWindowPosition winPosCenter(gfx::video::GfxWindowPosition::ValueType::positionCentered);
 
-    window_ =  new gfx::video::GfxWindow(title_, winPosCenter, winPosCenter, WIN_W, WIN_H, winFlags);
+    window_ =  new gfx::video::GfxWindow(title_, winPosCenter, winPosCenter, kDefaultFormWidth,
+                                        kDefaultFormHeight, winFlags);
     canvas_ = nullptr;
 }
 

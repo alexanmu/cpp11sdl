@@ -24,33 +24,16 @@
 #ifndef GfxSdlHeader_hpp
 #define GfxSdlHeader_hpp
 
-#include "Linux.h"
-#include "macOS.h"
-
 namespace gfx
 {
-#if defined(__linux_machine) && defined(__macosx_machine)
-#error "Only one machine should be defined!"
-#endif
 
-namespace sdl2 {
-#ifdef __linux_machine
-#include "SDL.h"
-#include "SDL_bits.h"
-#include "SDL_ttf.h"
-#endif
-
-#ifdef __macosx_machine
-
-// #include "SDL2/SDL.h"
-// #include "SDL2/SDL_bits.h"
-// #include "SDL2_ttf/SDL_ttf.h"
+namespace sdl2
+{
 
 #include "SDL.h"
 #include "SDL_bits.h"
 #include "SDL_ttf.h"
 
-#endif
 }  // namespace sdl2
 
 }  // namespace gfx

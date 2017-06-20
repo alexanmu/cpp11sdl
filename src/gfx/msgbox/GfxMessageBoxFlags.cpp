@@ -83,7 +83,7 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other) no
     return *this;
 }
 
-bool GfxMessageBoxFlags::operator==(const GfxMessageBoxFlags& other) const noexcept
+bool GfxMessageBoxFlags::operator==(GfxMessageBoxFlags const& other) const noexcept
 {
     return (flag_ == other.flag_);
 }

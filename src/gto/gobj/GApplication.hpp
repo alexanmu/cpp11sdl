@@ -31,6 +31,7 @@
 #include "GfxTtfInitQuit.hpp"
 #include "GObject.hpp"
 #include "GForm.hpp"
+#include "GFontManager.hpp"
 
 namespace gto
 {
@@ -38,7 +39,7 @@ namespace gto
 namespace gobj
 {
 
-class GApplication : public GObject
+class GApplication final : public GObject
 {
 public:
     GApplication() = delete;
@@ -56,11 +57,17 @@ public:
 
     void loadAppConfiguration(void);
     void run(void);
+
+    util::GFontManager * getActiveFontManager(void) const noexcept;
+    std::string getBasePath(void) const noexcept;
+
+    static GApplication * activeApp; /* read-only */
 private:
     std::string appName_;
     GForm * mainForm_;
     gfx::initquit::GfxInitQuit * iq_;
     gfx::ttf::GfxTtfInitQuit * ttfiq_;
+    util::GFontManager * fontManager_;
 };
 
 }  // namespace gobj

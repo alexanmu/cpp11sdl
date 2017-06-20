@@ -31,7 +31,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 GFolderObject::GFolderObject(std::string const& folderSpec) : GFSBaseClass()
@@ -109,9 +109,10 @@ void GFolderObject::scanFolder(void)
             dir = readdir(d);
         }
     }
+    closedir(d);
 }
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

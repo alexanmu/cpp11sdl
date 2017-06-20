@@ -35,7 +35,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 class GFileObject;
@@ -75,7 +75,7 @@ private:
     GFilesCollection files_;
 };
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

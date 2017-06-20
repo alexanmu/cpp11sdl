@@ -37,20 +37,20 @@ void _doMeta(void)
 	for (int32_t index = 0; index < meta.getClassCount(); index++)
 	{
 	    classInfo = meta.getClassInfo(index);
-	    std::cout << "Name=" << classInfo.className_ << "\t\t";
-	    std::cout << "Size[bytes]=" << classInfo.size_ << '\t';
-	    std::cout << "hasSdlType=" << classInfo.hasSdlType_ << '\t';
-	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << '\t';
-        std::cout << "isAbstract<>=" << classInfo.isAbstract_ << '\t';
-        std::cout << "isPolym<>=" << classInfo.isPolymorphic_ << '\t';
-        std::cout << "isCopyCtor<>=" << classInfo.isCopyConstructible_ << '\t';
-        std::cout << "isCopyAssign<>=" << classInfo.isCopyAssignable_ << '\t';
-        std::cout << "isMoveCtor<>=" << classInfo.isMoveConstructible_ << '\t';
-        std::cout << "isMoveAssign<>=" << classInfo.isMoveAssignable_ << '\t';
-        std::cout << "isGfxObjChild<>=" << classInfo.isDerivedFromGfxObject_ << '\t';
-        std::cout << "sdlResource=" << classInfo.sdlResource_ << '\t';
-        std::cout << "hasValueType<>=" << classInfo.hasValueType_ << '\n';
+	    std::cout << "Name=" << classInfo.className_ << ' ';
+	    std::cout << "Size=" << classInfo.size_ << ' ';
+        std::cout << "sdlResource=" << classInfo.sdlResource_ << ' ';
         std::cout << "CallsSdl=" << classInfo.callsSdl_ << '\n';
+	    std::cout << "hasSdlType=" << classInfo.hasSdlType_ << ' ';
+	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << ' ';
+        std::cout << "hasValueType=" << classInfo.hasValueType_ << ' ';
+        std::cout << "isAbstract=" << classInfo.isAbstract_ << ' ';
+        std::cout << "isPolym=" << classInfo.isPolymorphic_ << ' ';
+        std::cout << "isCopyCtor=" << classInfo.isCopyConstructible_ << ' ';
+        std::cout << "isCopyAssign=" << classInfo.isCopyAssignable_ << ' ';
+        std::cout << "isMoveCtor=" << classInfo.isMoveConstructible_ << ' ';
+        std::cout << "isMoveAssign=" << classInfo.isMoveAssignable_ << ' ';
+        std::cout << "isGfxObjChild=" << classInfo.isDerivedFromGfxObject_ << '\n';
 	}
     std::cout << "meta.getClassCount()=" << meta.getClassCount() << '\n';
     std::cout << "meta.getClassInfoTableSizeInBytes()=" << meta.getClassInfoTableSizeInBytes() << '\n';

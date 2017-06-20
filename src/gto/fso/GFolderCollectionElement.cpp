@@ -28,7 +28,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 GFolderCollectionElement::GFolderCollectionElement() : GFSBaseClass()
@@ -88,7 +88,7 @@ void GFolderCollectionElement::clear(void)
     folderSpec_ = "";
 }
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

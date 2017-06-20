@@ -98,7 +98,7 @@ GfxPalette::GfxPalette(const uint16_t nColors) throw(std::runtime_error) : GfxOb
     }
 }
 
-GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error)
+GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(pal != nullptr);
     assert(pal->colors != nullptr);

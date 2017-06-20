@@ -36,12 +36,12 @@ GfxPixelType::GfxPixelType() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxPixelType::GfxPixelType(const ValueType value) noexcept
+GfxPixelType::GfxPixelType(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPixelType::GfxPixelType(const SdlType value) noexcept
+GfxPixelType::GfxPixelType(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }

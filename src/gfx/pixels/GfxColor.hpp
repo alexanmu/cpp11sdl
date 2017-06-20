@@ -53,13 +53,13 @@ public:
     explicit GfxColor(const SdlType clr) noexcept;
     explicit GfxColor(const uint32_t clr) noexcept;
 
-    GfxColor(const GfxColor& other) noexcept;
+    GfxColor(GfxColor const& other) noexcept;
     GfxColor(GfxColor&& other) noexcept;
 
-    GfxColor& operator=(const GfxColor& other) noexcept;
+    GfxColor& operator=(GfxColor const& other) noexcept;
     GfxColor& operator=(GfxColor&& other) noexcept;
 
-    bool operator==(const GfxColor& other) const noexcept;
+    bool operator==(GfxColor const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
 

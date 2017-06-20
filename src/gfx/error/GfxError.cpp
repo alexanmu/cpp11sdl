@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <string>
 
 #include "GfxError.hpp"
@@ -40,6 +41,8 @@ GfxError::GfxError() noexcept : GfxObject(ClassName)
 
 GfxError::GfxError(std::string const& error) noexcept : GfxObject(ClassName)
 {
+    assert(error.length() > 0);
+
     error_ = error;
 }
 

@@ -52,8 +52,8 @@ public:
     virtual explicit operator bool() const noexcept;
 
     const std::string getBasePath(void) const noexcept;
-    const std::string getPrefPath(const std::string& organization,
-                                  const std::string& appname) const noexcept;
+    const std::string getPrefPath(std::string const& organization,
+                                  std::string const& appname) const noexcept;
 private:
     std::string getThisFolder(void) const noexcept;
 };

@@ -109,7 +109,7 @@ void _doLog(void)
     {
         log.logSetOutputFunction(nullptr, static_cast<void *>(usrdata));
     }
-    catch (std::runtime_error ex)
+    catch (std::runtime_error& ex)
     {
         std::cout << "Exception: " << ex.what() << "; as expected; libSDL bugzilla issue #3666" << std::endl;
     }

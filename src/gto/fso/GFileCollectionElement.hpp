@@ -32,7 +32,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 class GFileCollectionElement : public GFSBaseClass
@@ -57,7 +57,7 @@ private:
 
 typedef std::vector<GFileCollectionElement> GFilesCollection;
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

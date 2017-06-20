@@ -53,7 +53,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept
     flags_ = flags;
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) noexcept :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags const& other) noexcept :
         GfxObject(ClassName)
 {
     flags_ = other.flags_;
@@ -66,7 +66,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& ot
     other.clear();
 }
 
-GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(const GfxMessageBoxButtonFlags& other) noexcept
+GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButtonFlags const& other) noexcept
 {
     if (this != &other)
     {
@@ -86,7 +86,7 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
     return *this;
 }
 
-bool GfxMessageBoxButtonFlags::operator==(const GfxMessageBoxButtonFlags& other) noexcept
+bool GfxMessageBoxButtonFlags::operator==(GfxMessageBoxButtonFlags const& other) noexcept
 {
     return (flags_ == other.flags_);
 }

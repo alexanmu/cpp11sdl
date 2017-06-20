@@ -50,11 +50,11 @@ public:
     explicit GfxInitQuit(GfxInitFlags const& flags) noexcept;
 
     // Copy/Move constructors don't make sense
-    GfxInitQuit(const GfxInitQuit&) = delete;
+    GfxInitQuit(GfxInitQuit const&) = delete;
     GfxInitQuit(GfxInitQuit&&) = delete;
 
     // Forbid copy/move assignements
-    GfxInitQuit& operator=(const GfxInitQuit&) = delete;
+    GfxInitQuit& operator=(GfxInitQuit const&) = delete;
     GfxInitQuit& operator=(GfxInitQuit&&) = delete;
 
     // Explicit destructor to de-init SDL lib

@@ -35,7 +35,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 GFileObject::GFileObject(std::string const& fileSpec) throw(std::runtime_error) : GFSBaseClass()
@@ -441,7 +441,7 @@ bool GFileObject::isTmValid(std::tm const& tm) const noexcept
     return true;
 }
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

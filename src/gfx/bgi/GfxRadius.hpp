@@ -54,9 +54,9 @@ public:
     GfxRadius& operator=(const GfxRadius& other) noexcept;
     GfxRadius& operator=(GfxRadius&& other) noexcept;
 
-    bool operator==(GfxRadius const& other) noexcept;
-    bool operator>(GfxRadius const& other) noexcept;
-    bool operator<(GfxRadius const& other) noexcept;
+    bool operator==(GfxRadius const& other) const noexcept;
+    bool operator>(GfxRadius const& other) const noexcept;
+    bool operator<(GfxRadius const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
 

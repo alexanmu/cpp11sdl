@@ -54,7 +54,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxObject(C
 }
 
 /* Copy constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept : GfxObject(ClassName)
 {
     clr_ = other.clr_;
 }
@@ -68,7 +68,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : Gf
 }
 
 /* Delete copy and move assign operators */
-GfxMessageBoxColor& GfxMessageBoxColor::operator=(const GfxMessageBoxColor& other) noexcept
+GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor const& other) noexcept
 {
     if (this != &other)
     {
@@ -87,7 +87,7 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other) no
     return *this;
 }
 
-bool GfxMessageBoxColor::operator==(const GfxMessageBoxColor& other) noexcept
+bool GfxMessageBoxColor::operator==(GfxMessageBoxColor const& other) noexcept
 {
     return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) && (clr_.b == other.clr_.b));
 }

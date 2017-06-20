@@ -105,6 +105,8 @@ GfxPixelFormat::operator bool() const noexcept
 
 void GfxPixelFormat::allocFormat(GfxPixelFormatEnum const& format) noexcept
 {
+    assert(format);
+
     if (pix_ != nullptr)
     {
         sdl2::SDL_FreeFormat(pix_);
@@ -353,6 +355,8 @@ GfxBool GfxPixelFormat::pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, 
 GfxPixelFormatEnum GfxPixelFormat::masksToPixelFormatEnum(const int32_t bpp, const uint32_t Rmask, const uint32_t Gmask,
                                                           const uint32_t Bmask, const uint32_t Amask) const noexcept
 {
+    assert(bpp > 0);
+
     GfxPixelFormatEnum::SdlType sdlpixfmten;
 
     sdlpixfmten = sdl2::SDL_MasksToPixelFormatEnum(bpp, Rmask, Gmask, Bmask, Amask);
@@ -372,6 +376,7 @@ void GfxPixelFormat::setPixelFormatPalette(GfxPalette const& palette) const noex
 pixels::GfxColor GfxPixelFormat::mapRGB(pixels::GfxColor const& color) const noexcept
 {
     assert(color);
+
     uint32_t clru32;
 
     if (pix_ != nullptr)
@@ -385,6 +390,7 @@ pixels::GfxColor GfxPixelFormat::mapRGB(pixels::GfxColor const& color) const noe
 pixels::GfxColor GfxPixelFormat::mapRGBA(pixels::GfxColor const& color) const noexcept
 {
     assert(color);
+
     uint32_t clru32;
 
     if (pix_ != nullptr)

@@ -34,7 +34,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 GFileSystemObject::GFileSystemObject() : GFSBaseClass()
@@ -234,7 +234,7 @@ void GFileSystemObject::moveFolder(std::string const& source, std::string const&
     throw std::runtime_error("Not implemented");
 }
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

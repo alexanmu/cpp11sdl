@@ -93,7 +93,7 @@ public:
     void setDefault(void) noexcept;
 
     void clear(void) noexcept;
-private:
+
     static const char kDefaultFontName[];
     static const uint8_t kDefaultFontSize;
     static const int32_t kDefaultFontOutline;
@@ -105,7 +105,7 @@ private:
     static const bool kDefaultFontKerning;
 
     static const uint8_t kMinFontSize;
-
+private:
     std::string fontName_;
     uint8_t fontSize_;
     int32_t fontOutline_;

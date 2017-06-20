@@ -30,9 +30,9 @@
 #include "GFolderObject.hpp"
 #include "GFileObject.hpp"
 
-using gto::util::GFileSystemObject;
-using gto::util::GFolderObject;
-using gto::util::GFileObject;
+using gto::fso::GFileSystemObject;
+using gto::fso::GFolderObject;
+using gto::fso::GFileObject;
 
 void _doFSO(void)
 {
@@ -42,7 +42,7 @@ void _doFSO(void)
     std::cout << "pwd=" << fso._getWorkingDirectory() << std::endl;
     if (fo != nullptr)
     {
-        gto::util::GFilesCollection fcoll;
+        gto::fso::GFilesCollection fcoll;
         std::string lastfile;
 
         fcoll = fo->getFilesCollection();
@@ -56,7 +56,7 @@ void _doFSO(void)
             std::cout << it.getFileSpec() << "<>" << fn << "<>" << path << std::endl;
             lastfile = it.getFileSpec();
         }
-        gto::util::GFileObject fileo(lastfile);
+        gto::fso::GFileObject fileo(lastfile);
 
         std::cout << fileo.getFileName() << std::endl;
         std::cout << fileo.getFilePath() << std::endl;

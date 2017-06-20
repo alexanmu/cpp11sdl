@@ -43,7 +43,7 @@ public:
 
     GfxLoadSo() = delete;
 
-    explicit GfxLoadSo(const std::string& objectname) noexcept;
+    explicit GfxLoadSo(std::string const& objectname) noexcept;
 
     /* Copy ctor should not be used */
     GfxLoadSo(GfxLoadSo const&) = delete;
@@ -52,14 +52,14 @@ public:
     virtual ~GfxLoadSo() noexcept;
 
     /* Copy operator should not be used */
-    GfxLoadSo& operator=(GfxLoadSo&) = delete;
-    GfxLoadSo& operator=(GfxLoadSo&&) noexcept;
+    GfxLoadSo& operator=(GfxLoadSo const&) = delete;
+    GfxLoadSo& operator=(GfxLoadSo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
     bool isObjectLoaded(void) const noexcept;
     std::string const& getObjectName(void) const noexcept;
-    void * loadFunction(const std::string& function) const noexcept;
+    void * loadFunction(std::string const& function) const noexcept;
 
     void unloadObject() noexcept;
 private:

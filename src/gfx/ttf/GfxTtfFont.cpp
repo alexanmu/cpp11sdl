@@ -68,8 +68,11 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, con
     assert(pointsize > 0);
     assert(index >= 0);
 
-    ttf_ = sdl2::TTF_OpenFontIndex(filename.c_str(), pointsize, index);
-    if (ttf_ == nullptr)
+    SdlTypePtr ttfptr;
+
+    ttf_ = nullptr;
+    ttfptr = sdl2::TTF_OpenFontIndex(filename.c_str(), pointsize, index);
+    if (ttfptr == nullptr)
     {
         throw std::runtime_error("Unable to load font");
     }
@@ -80,6 +83,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, con
     fontHinting_.clear();
     outline_ = 0;
     kerning_ = true;
+    ttf_ = ttfptr;
 }
 
 GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxObject(ClassName)

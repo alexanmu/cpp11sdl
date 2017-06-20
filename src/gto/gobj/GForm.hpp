@@ -69,6 +69,8 @@ protected:
     gfx::video::GfxWindow * window_;
     gfx::xtra::GfxControlledSurface windowsurface_;
 
+    const int32_t kDefaultFormWidth = 1280;
+    const int32_t kDefaultFormHeight = 800;
 private:
     std::string formName_;
     std::string title_;

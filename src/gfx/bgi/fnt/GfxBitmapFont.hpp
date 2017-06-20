@@ -45,26 +45,26 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    GfxBitmapFont();
+    GfxBitmapFont() noexcept;
 
-    GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight);
+    GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, const uint8_t fontHeight) noexcept;
 
-    GfxBitmapFont(const GfxBitmapFont& other);
-    GfxBitmapFont(GfxBitmapFont&& other);
+    GfxBitmapFont(GfxBitmapFont const& other) noexcept;
+    GfxBitmapFont(GfxBitmapFont&& other) noexcept;
 
-    virtual ~GfxBitmapFont();
+    virtual ~GfxBitmapFont() noexcept;
 
-    GfxBitmapFont& operator=(const GfxBitmapFont& other);
-    GfxBitmapFont& operator=(GfxBitmapFont&& other);
+    GfxBitmapFont& operator=(GfxBitmapFont const& other) noexcept;
+    GfxBitmapFont& operator=(GfxBitmapFont&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
-    uint8_t* getFontData(void) const;
-    uint16_t getFontDataSize(void) const;
-    uint8_t getFontWidth(void) const;
-    uint8_t getFontHeight(void) const;
+    uint8_t * getFontData(void) const noexcept;
+    uint16_t getFontDataSize(void) const noexcept;
+    uint8_t getFontWidth(void) const noexcept;
+    uint8_t getFontHeight(void) const noexcept;
 private:
-    uint8_t* fontData_;
+    uint8_t * fontData_;
     uint16_t fontDataSize_;
     uint8_t fontWidth_;
     uint8_t fontHeight_;

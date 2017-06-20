@@ -35,7 +35,7 @@ namespace xtra
 
 const char GfxFontInfo::ClassName[] = "GfxFontInfo";
 
-const char GfxFontInfo::kDefaultFontName[] = "Raleway";
+const char GfxFontInfo::kDefaultFontName[] = "DefaultFontName";
 const uint8_t GfxFontInfo::kDefaultFontSize = 16;
 const int32_t GfxFontInfo::kDefaultFontOutline = 0;
 const bool GfxFontInfo::kDefaultFontBold = false;

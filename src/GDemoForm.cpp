@@ -46,6 +46,7 @@
 #include "GLabel.hpp"
 #include "GfxTtfGetVersion.hpp"
 #include "GStructuredTextLabel.hpp"
+#include "GApplication.hpp"
 
 uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -88,6 +89,8 @@ GDemoForm::GDemoForm(const std::string& appName) : gto::gobj::GForm(appName)
 
 void GDemoForm::draw(void)
 {
+    std::string __base_path = gto::gobj::GApplication::activeApp->getBasePath();
+
     auto canvas = getCanvas();
     canvas->Bar(gfx::rect::GfxRect(0, 0, 300, 300), gfx::pixels::GfxColor(200, 200, 200));
     canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190), gfx::bgi::kColorWhite());
@@ -113,7 +116,7 @@ void GDemoForm::draw(void)
                                 gfx::rect::GfxRect(10, 10, 60, 60));
 
     gto::gobj::GBitmap bmp(GVarName(bmp), this, 384, 384,
-                gto::gobj::GImageScaleMode::centerScaled, std::string(__base_path) + "/OKCheckMark.bmp");
+                gto::gobj::GImageScaleMode::centerScaled, __base_path + "/OKCheckMark.bmp");
     bmp.load();
     bmp.setBorderColor(gfx::bgi::kColorLightGreen());
     bmp.setBorderThikness(gto::gobj::GBorderThikness::thinBorder);
@@ -137,6 +140,7 @@ void GDemoForm::draw(void)
     g2.setForegroundColor(gfx::bgi::kColorLightCyan());
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
     g2.getFontInfo().setFontUnderline(true);
+    g2.getFontInfo().setFontName("Raleway-ExtraBold");
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g2.draw();
     windowsurface_().blitSurface(g2.getSurface()(), gfx::rect::GfxRect(0, 0, 280, 60),
@@ -164,7 +168,7 @@ void GDemoForm::draw(void)
 
 void GDemoForm::run(void)
 {
-    gto::dlgs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "An error occured. What should I do?");
+    gto::dlgs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "A thing occured. What should I do?");
     g.showModal();
 
     gto::dlgs::GDialogsConstants sel;

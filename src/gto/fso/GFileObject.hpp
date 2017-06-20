@@ -35,7 +35,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 class GFileObject : public GFSBaseClass
@@ -120,7 +120,7 @@ private:
     static const int32_t kTimeDateMaxDstValue = 1;
 };
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

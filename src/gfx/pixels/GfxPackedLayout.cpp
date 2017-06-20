@@ -36,12 +36,12 @@ GfxPackedLayout::GfxPackedLayout() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxPackedLayout::GfxPackedLayout(const ValueType value) noexcept
+GfxPackedLayout::GfxPackedLayout(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept
+GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }

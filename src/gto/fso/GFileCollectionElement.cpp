@@ -28,7 +28,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 GFileCollectionElement::GFileCollectionElement(std::string const& fileSpec) : GFSBaseClass()
@@ -83,7 +83,7 @@ void GFileCollectionElement::clear(void)
     fileSpec_ = "";
 }
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

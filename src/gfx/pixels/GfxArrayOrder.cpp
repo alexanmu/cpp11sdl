@@ -36,12 +36,12 @@ GfxArrayOrder::GfxArrayOrder() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxArrayOrder::GfxArrayOrder(const ValueType value) noexcept
+GfxArrayOrder::GfxArrayOrder(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxArrayOrder::GfxArrayOrder(const SdlType value) noexcept
+GfxArrayOrder::GfxArrayOrder(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }

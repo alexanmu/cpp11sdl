@@ -35,7 +35,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 GFSBaseClass::~GFSBaseClass()
@@ -291,7 +291,7 @@ std::string GFSBaseClass::_lz(std::string const& str, const uint32_t elen) const
     return s + str;
 }
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

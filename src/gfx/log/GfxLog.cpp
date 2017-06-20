@@ -41,7 +41,7 @@ namespace prv
 GfxLogOutputFunction * logOutputFunctionObject = nullptr;
 
 extern "C" {
-static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char *message)
+static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char * message)
 {
     if (logOutputFunctionObject != nullptr)
     {

@@ -53,11 +53,11 @@ public:
     GfxMessageBoxData() noexcept;
 
     GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject * win, std::string const& title,
-                      std::string const& message, const int32_t numbuttons, GfxMessageBoxButtonData buttons[],
+                      std::string const& message, const int32_t numbuttons, const GfxMessageBoxButtonData buttons[],
                       GfxMessageBoxColorScheme const& colorScheme) noexcept;
     GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win, std::string const& title,
                       std::string const& message, const int32_t numbuttons,
-                      GfxMessageBoxButtonData buttons[]) noexcept;
+                      const GfxMessageBoxButtonData buttons[]) noexcept;
 
     GfxMessageBoxData(GfxMessageBoxData const& other) noexcept;
     GfxMessageBoxData(GfxMessageBoxData&& other) noexcept;

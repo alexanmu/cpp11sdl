@@ -36,6 +36,7 @@
 #include "GfxTtfFontStyle.hpp"
 #include "GfxTtfFontRenderer.hpp"
 #include "GfxFontInfo.hpp"
+#include "GApplication.hpp"
 
 namespace gto
 {
@@ -92,16 +93,16 @@ void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
 
 void GLabel::draw(void)
 {
-    std::string fontfile = std::string(__base_path) + "/Raleway/Raleway-Regular.ttf";
     int32_t w;
     int32_t h;
-    gfx::ttf::GfxTtfFont font(fontfile, fontInfo_.getFontSize());
-    gfx::ttf::GfxTtfFontRenderer rend(&font);
+    gfx::ttf::GfxTtfFont * font = GApplication::activeApp->getActiveFontManager()->getFont(
+                                    fontInfo_.getFontName(), fontInfo_.getFontSize());
+    gfx::ttf::GfxTtfFontRenderer rend(font);
     gfx::surface::GfxSurface * rendsurf;
 
     surf_().fillRect(clientBounds_, getBackgroundColor());
 
-    if (font.sizeText(text_, &w, &h) == true)
+    if (font->sizeText(text_, &w, &h) == true)
     {
         if (w > getClientBounds().getWidth())
         {
@@ -113,11 +114,11 @@ void GLabel::draw(void)
         }
     }
 
-    font.setFontStyle(gfx::ttf::GfxTtfFontStyle(fontInfo_.getFontBold(), fontInfo_.getFontItalic(),
+    font->setFontStyle(gfx::ttf::GfxTtfFontStyle(fontInfo_.getFontBold(), fontInfo_.getFontItalic(),
                                                 fontInfo_.getFontUnderline(), fontInfo_.getFontStrikethrough()));
-    font.setFontHinting(gfx::ttf::GfxTtfFontHinting(fontInfo_.getFontHinting()));
-    font.setFontOutline(fontInfo_.getFontOutline());
-    font.setFontKerning(fontInfo_.getFontKerning());
+    font->setFontHinting(gfx::ttf::GfxTtfFontHinting(fontInfo_.getFontHinting()));
+    font->setFontOutline(fontInfo_.getFontOutline());
+    font->setFontKerning(fontInfo_.getFontKerning());
 
     rendsurf = nullptr;
     switch (textRenderMode_)

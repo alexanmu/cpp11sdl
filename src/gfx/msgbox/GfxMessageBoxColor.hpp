@@ -51,13 +51,13 @@ public:
     explicit GfxMessageBoxColor(const uint8_t r, const uint8_t g, const uint8_t b) noexcept;
     explicit GfxMessageBoxColor(const SdlType clr) noexcept;
 
-    GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept;
+    GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept;
     GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept;
 
-    GfxMessageBoxColor& operator=(const GfxMessageBoxColor& other) noexcept;
+    GfxMessageBoxColor& operator=(GfxMessageBoxColor const& other) noexcept;
     GfxMessageBoxColor& operator=(GfxMessageBoxColor&& other) noexcept;
 
-    bool operator==(const GfxMessageBoxColor& other) noexcept;
+    bool operator==(GfxMessageBoxColor const& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 

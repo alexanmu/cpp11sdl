@@ -44,8 +44,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject
     type_ = GfxMessageBoxType::typeComplex;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
-                             const std::string& message) noexcept
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
+                             std::string const& message) noexcept
 {
     assert(flag);
     assert(title.length() > 0);
@@ -58,8 +58,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& 
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, const std::string& title,
-                             const std::string& message, video::GfxWindow const& win) noexcept
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
+                             std::string const& message, video::GfxWindow const& win) noexcept
 {
     assert(flag);
     assert(title.length() > 0);

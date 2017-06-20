@@ -71,7 +71,7 @@ GfxColor::GfxColor(const uint32_t clr) noexcept : GfxObject(ClassName)
 }
 
 /* Copy constructor */
-GfxColor::GfxColor(const GfxColor& other) noexcept : GfxObject(ClassName)
+GfxColor::GfxColor(GfxColor const& other) noexcept : GfxObject(ClassName)
 {
     clr_ = other.clr_;
 }
@@ -85,7 +85,7 @@ GfxColor::GfxColor(GfxColor&& other) noexcept : GfxObject(ClassName)
 }
 
 /* Delete copy and move assign operators */
-GfxColor& GfxColor::operator=(const GfxColor& other) noexcept
+GfxColor& GfxColor::operator=(GfxColor const& other) noexcept
 {
     if (this != &other)
     {
@@ -104,7 +104,7 @@ GfxColor& GfxColor::operator=(GfxColor&& other) noexcept
     return *this;
 }
 
-bool GfxColor::operator==(const GfxColor& other) const noexcept
+bool GfxColor::operator==(GfxColor const& other) const noexcept
 {
     return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) &&
             (clr_.b == other.clr_.b) && (clr_.a == other.clr_.a));

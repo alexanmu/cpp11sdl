@@ -36,12 +36,12 @@ GfxBitmapOrder::GfxBitmapOrder() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxBitmapOrder::GfxBitmapOrder(const ValueType value) noexcept
+GfxBitmapOrder::GfxBitmapOrder(const ValueType value) noexcept : GfxObject(ClassName)
 {
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBitmapOrder::GfxBitmapOrder(const SdlType value) noexcept
+GfxBitmapOrder::GfxBitmapOrder(const SdlType value) noexcept : GfxObject(ClassName)
 {
     value_ = value;
 }

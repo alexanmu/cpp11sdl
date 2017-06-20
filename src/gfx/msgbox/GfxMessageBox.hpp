@@ -77,7 +77,7 @@ private:
     GfxMessageBoxFlags flag_;
     std::string title_;
     std::string message_;
-    video::GfxWindow const* winptr_;
+    video::GfxWindow const * winptr_;
 };
 
 }  // namespace msgbox

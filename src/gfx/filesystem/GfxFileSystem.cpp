@@ -85,11 +85,7 @@ const std::string GfxFileSystem::getPrefPath(const std::string& organization,
 
 std::string GfxFileSystem::getThisFolder(void) const noexcept
 {
-#ifdef __windows_machine
-    return ".\\";
-#else
-    return "./";
-#endif
+    return ".";
 }
 
 }  // namespace filesystem

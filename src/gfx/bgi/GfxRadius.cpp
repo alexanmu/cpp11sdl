@@ -75,17 +75,17 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
     return *this;
 }
 
-bool GfxRadius::operator==(GfxRadius const& other) noexcept
+bool GfxRadius::operator==(GfxRadius const& other) const noexcept
 {
     return (value_ == other.value_);
 }
 
-bool GfxRadius::operator>(GfxRadius const& other) noexcept
+bool GfxRadius::operator>(GfxRadius const& other) const noexcept
 {
     return (value_ > other.value_);
 }
 
-bool GfxRadius::operator<(GfxRadius const& other) noexcept
+bool GfxRadius::operator<(GfxRadius const& other) const noexcept
 {
     return (value_ < other.value_);
 }

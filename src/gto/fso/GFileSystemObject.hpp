@@ -33,7 +33,7 @@
 namespace gto
 {
 
-namespace util
+namespace fso
 {
 
 class GFileObject;
@@ -80,7 +80,7 @@ private:
     GFSOErrorCode errorCode_;
 };
 
-}  // namespace util
+}  // namespace fso
 
 }  // namespace gto
 

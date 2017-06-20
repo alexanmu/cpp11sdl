@@ -38,36 +38,35 @@ namespace fnt
 
 const char GfxBitmapFont::ClassName[] = "GfxBitmapFont";
 
-GfxBitmapFont::GfxBitmapFont() : GfxObject(ClassName), fontData_(nullptr),
+GfxBitmapFont::GfxBitmapFont() noexcept : GfxObject(ClassName), fontData_(nullptr),
         fontDataSize_(0), fontWidth_(0), fontHeight_(0)
 {
     //
 }
 
-GfxBitmapFont::GfxBitmapFont(const uint8_t* fontData, const uint8_t fontWidth, const uint8_t fontHeight) :
-        GfxObject(ClassName)
+GfxBitmapFont::GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, const uint8_t fontHeight)
+        noexcept : GfxObject(ClassName)
 {
     assert(fontData != nullptr);
+    assert(fontWidth_ > 0);
+    assert(fontHeight_ > 0);
 
     fontWidth_ = 0;
     fontHeight_ = 0;
     fontDataSize_ = 0;
     fontData_ = nullptr;
 
-    if ((fontWidth > 0) && (fontHeight > 0))
+    if (((fontWidth % 8) == 0) && ((fontHeight % 8) == 0))
     {
-        if (((fontWidth % 8) == 0) && ((fontHeight % 8) == 0))
-        {
-            fontWidth_ = fontWidth;
-            fontHeight_ = fontHeight;
-            fontDataSize_ = fontWidth / 8 * fontHeight * 256;
-            fontData_ = new uint8_t[fontDataSize_];
-            std::memcpy(fontData_, fontData, fontDataSize_);
-        }
+        fontWidth_ = fontWidth;
+        fontHeight_ = fontHeight;
+        fontDataSize_ = fontWidth / 8 * fontHeight * 256;
+        fontData_ = new uint8_t[fontDataSize_];
+        std::memcpy(fontData_, fontData, fontDataSize_);
     }
 }
 
-GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxObject(ClassName)
+GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(ClassName)
 {
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;
@@ -76,7 +75,7 @@ GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) : GfxObject(ClassName)
     std::memcpy(fontData_, other.fontData_, fontDataSize_);
 }
 
-GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) : GfxObject(ClassName)
+GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) noexcept : GfxObject(ClassName)
 {
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;
@@ -89,7 +88,7 @@ GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) : GfxObject(ClassName)
     other.fontData_ = nullptr;
 }
 
-GfxBitmapFont::~GfxBitmapFont()
+GfxBitmapFont::~GfxBitmapFont() noexcept
 {
     if (fontData_ != nullptr)
     {
@@ -97,7 +96,7 @@ GfxBitmapFont::~GfxBitmapFont()
     }
 }
 
-GfxBitmapFont& GfxBitmapFont::operator=(const GfxBitmapFont& other)
+GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont const& other) noexcept
 {
     if (this != &other)
     {
@@ -114,7 +113,7 @@ GfxBitmapFont& GfxBitmapFont::operator=(const GfxBitmapFont& other)
     return *this;
 }
 
-GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other)
+GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other) noexcept
 {
     if (this != &other)
     {
@@ -136,22 +135,22 @@ GfxBitmapFont::operator bool() const noexcept
     return (fontData_ != nullptr);
 }
 
-uint8_t* GfxBitmapFont::getFontData(void) const
+uint8_t* GfxBitmapFont::getFontData(void) const noexcept
 {
     return fontData_;
 }
 
-uint16_t GfxBitmapFont::getFontDataSize(void) const
+uint16_t GfxBitmapFont::getFontDataSize(void) const noexcept
 {
     return fontDataSize_;
 }
 
-uint8_t GfxBitmapFont::getFontWidth(void) const
+uint8_t GfxBitmapFont::getFontWidth(void) const noexcept
 {
     return fontWidth_;
 }
 
-uint8_t GfxBitmapFont::getFontHeight(void) const
+uint8_t GfxBitmapFont::getFontHeight(void) const noexcept
 {
     return fontHeight_;
 }

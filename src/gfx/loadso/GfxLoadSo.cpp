@@ -35,7 +35,7 @@ namespace loadso
 
 const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
-GfxLoadSo::GfxLoadSo(const std::string& objectname) noexcept : GfxObject(ClassName)
+GfxLoadSo::GfxLoadSo(std::string const& objectname) noexcept : GfxObject(ClassName)
 {
     assert(objectname.length() > 0);
 
@@ -89,7 +89,7 @@ std::string const& GfxLoadSo::getObjectName(void) const noexcept
     return objectname_;
 }
 
-void * GfxLoadSo::loadFunction(const std::string& function) const noexcept
+void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
 {
     assert(function.length() > 0);
 

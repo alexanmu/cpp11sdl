@@ -50,7 +50,7 @@ public:
     GfxMessageBoxButtonData() noexcept;
 
     GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid,
-                            const std::string& text) noexcept;
+                            std::string const& text) noexcept;
 
     GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept;
     GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept;

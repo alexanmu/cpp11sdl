@@ -28,8 +28,6 @@
 #include <sstream>
 #include <iostream>
 
-#include "Linux.h"
-#include "macOS.h"
 #include "GfxSdlHeader.hpp"
 
 // http://stackoverflow.com/questions/5100718/integer-to-hex-string-in-c

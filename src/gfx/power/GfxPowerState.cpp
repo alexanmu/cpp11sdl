@@ -120,7 +120,7 @@ void GfxPowerState::clear(void) noexcept
 
 const std::string GfxPowerState::getAsString() const noexcept
 {
-    std::string str;
+    std::string str = "";
 
     switch (static_cast<ValueType>(value_))
     {

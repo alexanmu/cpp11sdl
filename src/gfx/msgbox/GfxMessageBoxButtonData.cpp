@@ -41,7 +41,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData() noexcept : GfxObject(ClassNam
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
-                            const int32_t buttonid, const std::string& text) noexcept : GfxObject(ClassName)
+                            const int32_t buttonid, std::string const& text) noexcept : GfxObject(ClassName)
 {
     assert(flags);
     assert(buttonid >= 0);

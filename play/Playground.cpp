@@ -36,6 +36,7 @@
 #include "Log.hpp"
 #include "Meta.hpp"
 #include "RuntimeMeta.hpp"
+#include "FontMgr.hpp"
 
 /******************************************************* main *******************************************************/
 typedef struct _Command_t
@@ -58,6 +59,7 @@ static _Command_t commands[] = {
     { _doRuntimeMeta, "rmeta" },
     { _doMeta, "meta" },
     { _doLog, "log" },
+    { _doFontMgr, "fontmgr" },
     { _doPlayground, "all" }
 };
 
@@ -73,6 +75,7 @@ void _doPlayground(void)
     _doRuntimeMeta();
     _doMeta();
     _doLog();
+    _doFontMgr();
 }
 
 int main(int argc, char *argv[])

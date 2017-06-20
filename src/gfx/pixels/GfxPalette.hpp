@@ -55,11 +55,11 @@ public:
     explicit GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error);
 
     // No copy-ctor
-    GfxPalette(const GfxPalette& other) = delete;
+    GfxPalette(GfxPalette const& other) = delete;
     GfxPalette(GfxPalette&& other) noexcept;
 
     // No copy-oprtr
-    GfxPalette& operator=(const GfxPalette& other) = delete;
+    GfxPalette& operator=(GfxPalette const& other) = delete;
     GfxPalette& operator=(GfxPalette&& other) noexcept;
 
     virtual ~GfxPalette() noexcept;

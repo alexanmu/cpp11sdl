@@ -37,8 +37,6 @@
 #include "GfxTexture.hpp"
 #include "GfxBgiConstants.hpp"
 #include "GfxCanvas.hpp"
-#include "Linux.h"
-#include "macOS.h"
 #include "GfxMessageBox.hpp"
 #include "GfxCpuInfo.hpp"
 #include "GfxPlatform.hpp"
@@ -61,6 +59,10 @@
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormatEnum.hpp"
+
+#define WIN_W 1280
+#define WIN_H 800
+#define __base_path "data"
 
 void at_exit_callback(void);
 
@@ -113,10 +115,6 @@ void MsgBox(gfx::video::GfxWindow const& win)
     gfx::bits::GfxBits b;
     rez = "R=" + std::to_string((b.mostSignificantBitIndex32(r) << 8) | (r & 0x00FF));
 
-    /*SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
-                             rez.c_str(),
-                             "File is missing. Please reinstall the program.",
-                             NULL);*/
     gfx::cpuinfo::GfxCpuInfo cinfo;
     cinfo.queryCpuInfo();
     gfx::msgbox::GfxMessageBox k(gfx::msgbox::GfxMessageBoxFlags(gfx::msgbox::GfxMessageBoxFlags::ValueType::flagError),
@@ -583,13 +581,9 @@ void at_exit_callback(void)
     gfx::_gfx::GfxRuntimeMeta::getInstance().printToStream(std::cout) << std::endl;
 }
 
-#ifdef __windows_machine
-int WinMain(int argc, const char * argv[])
-#else
 int main(int argc, const char * argv[])
-#endif
 {
-    int action = __platform_default_action;
+    int action = 0;
 
     if (argc == 2)
     {
