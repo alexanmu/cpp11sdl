@@ -1491,7 +1491,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Library/Frameworks,
+					"$(USER_LIBRARY_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					../include,
@@ -1509,7 +1509,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Library/Frameworks,
+					"$(USER_LIBRARY_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					../include,
@@ -1616,7 +1616,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Library/Frameworks,
+					"$(USER_LIBRARY_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					../include/sdl2,
@@ -1633,7 +1633,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Library/Frameworks,
+					"$(USER_LIBRARY_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					../include/sdl2,
