@@ -44,8 +44,6 @@ public:
     virtual ~IGetCommonEvent() {}
 
     virtual GfxCommonEvent getCommonEvent(void) const noexcept = 0;
-    virtual GfxEventType getEventType(void) const noexcept = 0;
-    virtual uint32_t getTimeStamp(void) const noexcept = 0;
 };
 
 }  // namespace prv

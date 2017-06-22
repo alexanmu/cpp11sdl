@@ -38,30 +38,25 @@ GfxCommonEvent::GfxCommonEvent() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxCommonEvent::GfxCommonEvent(GfxEventType const& evtype, const uint32_t timestamp) noexcept : GfxObject(ClassName)
+GfxCommonEvent::GfxCommonEvent(const uint32_t type, const uint32_t timestamp) noexcept : GfxObject(ClassName)
 {
-    assert(evtype);
-
-    evType_ = evtype;
-    timeStamp_ = timestamp;
+    commonEvent_.type = type;
+    commonEvent_.timestamp = timestamp;
 }
 
-GfxCommonEvent::GfxCommonEvent(const SdlType ev) noexcept
+GfxCommonEvent::GfxCommonEvent(const SdlType ev) noexcept : GfxObject(ClassName)
 {
-    evType_.setEventType(ev.type);
-    timeStamp_ = ev.timestamp;
+    commonEvent_ = ev;
 }
 
 GfxCommonEvent::GfxCommonEvent(const GfxCommonEvent& other) noexcept : GfxObject(ClassName)
 {
-    evType_ = other.evType_;
-    timeStamp_ = other.timeStamp_;
+    commonEvent_ = other.commonEvent_;
 }
 
 GfxCommonEvent::GfxCommonEvent(GfxCommonEvent&& other) noexcept : GfxObject(ClassName)
 {
-    evType_ = other.evType_;
-    timeStamp_ = other.timeStamp_;
+    commonEvent_ = other.commonEvent_;
     // Delete other's data
     other.clear();
 }
@@ -70,8 +65,7 @@ GfxCommonEvent& GfxCommonEvent::operator=(const GfxCommonEvent& other) noexcept
 {
     if (this != &other)
     {
-        evType_ = other.evType_;
-        timeStamp_ = other.timeStamp_;
+        commonEvent_ = other.commonEvent_;
     }
     return *this;
 }
@@ -80,8 +74,7 @@ GfxCommonEvent& GfxCommonEvent::operator=(GfxCommonEvent&& other) noexcept
 {
     if (this != &other)
     {
-        evType_ = other.evType_;
-        timeStamp_ = other.timeStamp_;
+        commonEvent_ = other.commonEvent_;
         // Delete other's data
         other.clear();
     }
@@ -93,32 +86,32 @@ GfxCommonEvent::operator bool() const noexcept
     return true;
 }
 
-GfxEventType const& GfxCommonEvent::getType(void) const noexcept
+GfxEventType GfxCommonEvent::getType(void) const noexcept
 {
-    return evType_;
+    return GfxEventType(commonEvent_.type);
 }
 
 uint32_t GfxCommonEvent::getTimeStamp(void) const noexcept
 {
-    return timeStamp_;
+    return commonEvent_.timestamp;
 }
 
 void GfxCommonEvent::setType(GfxEventType const& evtype) noexcept
 {
     assert(evtype);
 
-    evType_ = evtype;
+    commonEvent_.type = evtype.getEventTypeValue();
 }
 
 void GfxCommonEvent::setTimeStamp(const uint32_t timestamp) noexcept
 {
-    timeStamp_ = timestamp;
+    commonEvent_.timestamp = timestamp;
 }
 
 void GfxCommonEvent::clear(void) noexcept
 {
-    evType_.clear();
-    timeStamp_ = 0;
+    commonEvent_.type = 0;
+    commonEvent_.timestamp = 0;
 }
 
 }  // namespace events

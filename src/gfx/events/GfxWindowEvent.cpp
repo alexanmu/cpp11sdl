@@ -80,20 +80,9 @@ GfxWindowEvent::operator bool() const noexcept
 
 GfxCommonEvent GfxWindowEvent::getCommonEvent(void) const noexcept
 {
-    GfxEventType evType(windowEvent_.type);
-    GfxCommonEvent cEv(evType, windowEvent_.timestamp);
+    GfxCommonEvent cEv(windowEvent_.type, windowEvent_.timestamp);
 
     return cEv;
-}
-
-GfxEventType GfxWindowEvent::getEventType(void) const noexcept
-{
-    return GfxEventType(windowEvent_.type);
-}
-
-uint32_t GfxWindowEvent::getTimeStamp(void) const noexcept
-{
-    return windowEvent_.timestamp;
 }
 
 uint32_t GfxWindowEvent::getWindowID(void) const noexcept

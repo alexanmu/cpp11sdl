@@ -25,7 +25,6 @@
 #define GfxAngle_hpp
 
 #include <cstdint>
-#include <string>
 
 #include "GfxObject.hpp"
 

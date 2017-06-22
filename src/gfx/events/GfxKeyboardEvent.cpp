@@ -80,20 +80,9 @@ GfxKeyboardEvent::operator bool() const noexcept
 
 GfxCommonEvent GfxKeyboardEvent::getCommonEvent(void) const noexcept
 {
-    GfxEventType evType(keyboardEvent_.type);
-    GfxCommonEvent cEv(evType, keyboardEvent_.timestamp);
+    GfxCommonEvent cEv(keyboardEvent_.type, keyboardEvent_.timestamp);
 
     return cEv;
-}
-
-GfxEventType GfxKeyboardEvent::getEventType(void) const noexcept
-{
-    return GfxEventType(keyboardEvent_.type);
-}
-
-uint32_t GfxKeyboardEvent::getTimeStamp(void) const noexcept
-{
-    return keyboardEvent_.timestamp;
 }
 
 uint32_t GfxKeyboardEvent::getWindowID(void) const noexcept

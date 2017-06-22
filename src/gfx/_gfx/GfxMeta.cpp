@@ -114,6 +114,9 @@
 #include "GfxKeysym.hpp"  // 2017.06.21
 #include "GfxKeyboard.hpp"  // 2017.06.21
 #include "GfxKeyboardEvent.hpp"  // 2017.06.21
+#include "GfxTextEditingEvent.hpp"  // 2017.06.22
+#include "GfxTextInputEvent.hpp"  // 2017.06.22
+#include "GfxDrawingMode.hpp"  // 2017.06.22
 
 namespace gfx
 {
@@ -255,7 +258,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::msgbox::GfxMessageBox>()        },
     {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxButtonData>()  },
     {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxButtonFlags>() },
-    {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxColor>()   },
+    {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxColor>()       },
     {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxColorScheme>() },
     {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxData>()    },
     {   prv::makeClassInfo<gfx::msgbox::GfxMessageBoxFlags>()   },
@@ -273,12 +276,14 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     // gfx::bgi
     {   prv::makeClassInfo<gfx::bgi::GfxAngle>()                },
     {   prv::makeClassInfo<gfx::bgi::GfxCanvas>()               },
-    {   prv::makeClassInfo<gfx::bgi::GfxCanvasBgi>()            },
     {   prv::makeClassInfo<gfx::bgi::GfxRadius>()               },
     {   prv::makeClassInfo<gfx::bgi::GfxString>()               },
+    {   prv::makeClassInfo<gfx::bgi::GfxDrawingMode>()          },  // 2017.06.22
+    // gfx::bgi::prv
+    {   prv::makeClassInfo<gfx::bgi::prv::GfxCanvasBgi>()       },
     // gfx::bgi::fnt
     {   prv::makeClassInfo<gfx::bgi::fnt::GfxBitmapFont>()      },
-    // gfx::tf
+    // gfx::ttf
     {   prv::makeClassInfo<gfx::ttf::GfxTtfFont>()              },  // 2017.05.17
     {   prv::makeClassInfo<gfx::ttf::GfxTtfInitQuit>()          },  // 2017.05.17
     {   prv::makeClassInfo<gfx::ttf::GfxTtfGetVersion>()        },  // 2017.05.18
@@ -313,6 +318,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::events::GfxCommonEvent>()       },  // 2017.06.19
     {   prv::makeClassInfo<gfx::events::GfxWindowEvent>()       },  // 2017.06.19
     {   prv::makeClassInfo<gfx::events::GfxKeyboardEvent>()     },  // 2017.06.21
+    {   prv::makeClassInfo<gfx::events::GfxTextEditingEvent>()  },  // 2017.06.22
+    {   prv::makeClassInfo<gfx::events::GfxTextInputEvent>()    },  // 2017.06.22
     //  gfx::scancode
     {   prv::makeClassInfo<gfx::scancode::GfxScancode>()        },  // 2017.06.21
     //  gfx::keycode

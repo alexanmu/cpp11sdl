@@ -46,7 +46,7 @@ public:
     static const bool CallsSdl = false;
 
     GfxCommonEvent() noexcept;
-    explicit GfxCommonEvent(GfxEventType const& evtype, const uint32_t timestamp) noexcept;
+    explicit GfxCommonEvent(const uint32_t type, const uint32_t timestamp) noexcept;
     explicit GfxCommonEvent(const SdlType ev) noexcept;
 
     GfxCommonEvent(GfxCommonEvent const& other) noexcept;
@@ -57,7 +57,7 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    GfxEventType const& getType(void) const noexcept;
+    GfxEventType getType(void) const noexcept;
     uint32_t getTimeStamp(void) const noexcept;
 
     void setType(GfxEventType const& evtype) noexcept;
@@ -67,8 +67,7 @@ public:
 
     SdlType getAsSdlType(void) const noexcept;
 private:
-    GfxEventType evType_;
-    uint32_t timeStamp_;
+    SdlType commonEvent_;
 };
 
 }  // namespace events

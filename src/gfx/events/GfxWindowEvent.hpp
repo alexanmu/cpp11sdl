@@ -61,8 +61,6 @@ public:
     virtual explicit operator bool() const noexcept;
 
     virtual GfxCommonEvent getCommonEvent(void) const noexcept;
-    virtual GfxEventType getEventType(void) const noexcept;
-    virtual uint32_t getTimeStamp(void) const noexcept;
 
     virtual uint32_t getWindowID(void) const noexcept;
 

@@ -345,13 +345,13 @@ void _doStuff(void)
     auto color = gfx::bgi::kColorRed();
     cv.Arc(gfx::rect::GfxPoint(480, 240), gfx::bgi::GfxAngle(60), gfx::bgi::GfxAngle(300),
            gfx::bgi::GfxRadius(239), color);
-    cv.OutText(gfx::rect::GfxPoint(360, 232), gfx::bgi::GfxString("SDL_bgi"), gfx::pixels::GfxColor(50, 100, 200));
+    cv.OutTextXY(gfx::rect::GfxPoint(360, 232), gfx::bgi::GfxString("SDL_bgi"), gfx::pixels::GfxColor(50, 100, 200));
     cv.Bar(gfx::rect::GfxPoint(480, 0), gfx::rect::GfxPoint(960, 240), gfx::bgi::kColorLightRed());
     cv.Bar(gfx::rect::GfxRect(10, 10, 20, 20), gfx::bgi::kColorRed());
-    cv.Rect(gfx::rect::GfxPoint(20, 20), gfx::rect::GfxPoint(30, 30), gfx::bgi::kColorGreen());
-    cv.Rect(gfx::rect::GfxRect(30, 30, 40, 40), gfx::pixels::GfxColor(128, 128, 128));
+    cv.Rectangle(gfx::rect::GfxPoint(20, 20), gfx::rect::GfxPoint(30, 30), gfx::bgi::kColorGreen());
+    cv.Rectangle(gfx::rect::GfxRect(30, 30, 40, 40), gfx::pixels::GfxColor(128, 128, 128));
     cv.Line(gfx::rect::GfxPoint(10, 10), gfx::rect::GfxPoint(40, 40), gfx::bgi::kColorYellow());
-    cv.OutText(gfx::rect::GfxPoint(50, 50),
+    cv.OutTextXY(gfx::rect::GfxPoint(50, 50),
                gfx::bgi::GfxString("The quick brown fox jumped over the lazy dog 0123456789!"),
                gfx::pixels::GfxColor(150, 100, 200));
 
@@ -363,7 +363,7 @@ void _doStuff(void)
         int32_t r = 210 - i * 10;
         int32_t g = 200 + i * 5;
         int32_t b = 20 + i * 10;
-        cv.OutText(gfx::rect::GfxPoint(x, y), gfx::bgi::GfxString(fontMsg),
+        cv.OutTextXY(gfx::rect::GfxPoint(x, y), gfx::bgi::GfxString(fontMsg),
                    gfx::pixels::GfxColor(r, g, b),
                    gfx::bgi::fnt::kGetFontByIndex(
                         static_cast<gfx::bgi::fnt::GfxFontIndex>(i)));
@@ -371,19 +371,19 @@ void _doStuff(void)
 
 
     cv.Bar(gfx::rect::GfxPoint(600, 100), gfx::rect::GfxPoint(800, 200), gfx::bgi::kColorLightGray());
-    cv.OutText(gfx::rect::GfxPoint(620, 120), gfx::bgi::GfxString("3D Text, custom font"),
+    cv.OutTextXY(gfx::rect::GfxPoint(620, 120), gfx::bgi::GfxString("3D Text, custom font"),
                gfx::bgi::kColorWhite(), gfx::bgi::fnt::kFontScript());
-    cv.OutText(gfx::rect::GfxPoint(621, 121), gfx::bgi::GfxString("3D Text, custom font"),
+    cv.OutTextXY(gfx::rect::GfxPoint(621, 121), gfx::bgi::GfxString("3D Text, custom font"),
                gfx::bgi::kColorBlack(), gfx::bgi::fnt::kFontScript());
-    cv.OutText(gfx::rect::GfxPoint(620, 140), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
+    cv.OutTextXY(gfx::rect::GfxPoint(620, 140), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
                gfx::bgi::kColorWhite());
-    cv.OutText(gfx::rect::GfxPoint(621, 141), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
+    cv.OutTextXY(gfx::rect::GfxPoint(621, 141), gfx::bgi::GfxString("3D Text, SDL_bgi font"),
                gfx::bgi::kColorBlack());
 
 
-    cv.OutText(gfx::rect::GfxPoint(1010, 120), gfx::bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
+    cv.OutTextXY(gfx::rect::GfxPoint(1010, 120), gfx::bgi::GfxString("WIN_W=" + std::to_string(WIN_W)),
                gfx::bgi::kColorGreen(), gfx::bgi::fnt::kFontAntique());
-    cv.OutText(gfx::rect::GfxPoint(1010, 150), gfx::bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
+    cv.OutTextXY(gfx::rect::GfxPoint(1010, 150), gfx::bgi::GfxString("WIN_H=" + std::to_string(WIN_H)),
                gfx::bgi::kColorLightGray(), gfx::bgi::fnt::kFontWacky());
     c = 0;
     for (int32_t i = 0; i < WIN_W; i++)
