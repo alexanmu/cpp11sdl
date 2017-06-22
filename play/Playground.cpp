@@ -37,6 +37,7 @@
 #include "Meta.hpp"
 #include "RuntimeMeta.hpp"
 #include "FontMgr.hpp"
+#include "Keyboard.hpp"
 
 /******************************************************* main *******************************************************/
 typedef struct _Command_t
@@ -60,6 +61,7 @@ static _Command_t commands[] = {
     { _doMeta, "meta" },
     { _doLog, "log" },
     { _doFontMgr, "fontmgr" },
+    { _doKeyboard, "keyboard" },
     { _doPlayground, "all" }
 };
 
@@ -76,6 +78,7 @@ void _doPlayground(void)
     _doMeta();
     _doLog();
     _doFontMgr();
+    _doKeyboard();
 }
 
 int main(int argc, char *argv[])

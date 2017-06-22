@@ -48,6 +48,7 @@ public:
     enum class ValueType : uint16_t
     {
         evFirstEvent = sdl2::SDL_FIRSTEVENT,
+        evQuit = sdl2::SDL_QUIT,
         evAppTerminating = sdl2::SDL_APP_TERMINATING,
         evLowMemory = sdl2::SDL_APP_LOWMEMORY,
         evAppWillEnterBackground = sdl2::SDL_APP_WILLENTERBACKGROUND,
@@ -117,6 +118,7 @@ public:
     void setEventType(const SdlType ev) noexcept;
     void setEventType(const uint32_t ev) noexcept;
 
+    inline bool isQuit(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evQuit); }  // NOLINT
     inline bool isAppTerminating(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evAppTerminating); }  // NOLINT
     inline bool isLowMemory(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evLowMemory); }  // NOLINT
     inline bool isAppWillEnterBackground(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evAppWillEnterBackground); }  // NOLINT

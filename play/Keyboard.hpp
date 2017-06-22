@@ -21,9 +21,9 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef __FONTMGR_HPP__
-#define __FONTMGR_HPP__
+#ifndef __Keyboard_hpp__
+#define __Keyboard_hpp__
 
-void _doFontMgr(void);
+void _doKeyboard(void);
 
 #endif
