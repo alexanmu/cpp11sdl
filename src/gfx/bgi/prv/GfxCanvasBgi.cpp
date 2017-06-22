@@ -38,6 +38,9 @@ namespace gfx
 namespace bgi
 {
 
+namespace prv
+{
+
 const char GfxCanvasBgi::ClassName[] = "GfxCanvasBgi";
 
 const uint8_t * GfxCanvasBgi::fontptr = gfxPrimitivesFontdata;
@@ -2429,6 +2432,8 @@ int GfxCanvasBgi::textwidth(char *textstring)
 }  // textwidth ()
 
 // --- end of file SDL_bgi.c
+
+}  // namespace prv
 
 }  // namespace bgi
 

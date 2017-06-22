@@ -30,6 +30,9 @@ namespace gfx
 namespace bgi
 {
 
+namespace prv
+{
+
 /* ---- 8x8 font definition ---- */
 
 /*  ZLIB (c) A. Schiffler 2012 */
@@ -2852,6 +2855,8 @@ const uint8_t gfxPrimitivesFontdata[8 * 256] = {
     0x00,           /* 00000000 */
     0x00,           /* 00000000 */
 };
+
+}  // namespace prv
 
 }  // namespace bgi
 

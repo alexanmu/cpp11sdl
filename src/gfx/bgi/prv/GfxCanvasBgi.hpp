@@ -38,6 +38,9 @@ namespace gfx
 namespace bgi
 {
 
+namespace prv
+{
+
 class GfxCanvasBgi : public GfxObject
 {
 public:
@@ -191,10 +194,10 @@ public:
 
     GfxCanvasBgi();
 
-    GfxCanvasBgi(const GfxCanvasBgi&) = delete;
+    GfxCanvasBgi(GfxCanvasBgi const&) = delete;
     GfxCanvasBgi(GfxCanvasBgi&&) = delete;
 
-    GfxCanvasBgi& operator=(const GfxCanvasBgi&) = delete;
+    GfxCanvasBgi& operator=(GfxCanvasBgi const&) = delete;
     GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
 
     virtual explicit operator bool() const noexcept;
@@ -237,55 +240,55 @@ public:
     int getx(void);
     int gety(void);
     void graphdefaults(void);
-    unsigned imagesize(int, int, int, int);
-    void line(int, int, int, int);
+    unsigned imagesize(int left, int top, int right, int bottom);
+    void line(int x1, int y1, int x2, int y2);
     void linerel(int dx, int dy);
     void lineto(int x, int y);
-    void moverel(int, int);
-    void moveto(int, int);
-    void outtext(char *);
-    void outtextxy(int, int, char *);
-    void pieslice(int, int, int, int, int);
-    void _putpixel(int, int);
-    void putimage(int, int, void *, bgiDrawingMode);
-    void putpixel(int, int, int);
-    void rectangle(int, int, int, int);
-    void sector(int, int, int, int, int, int);
-    void setallpalette(struct palettetype *);
-    void setbkcolor(bgiColors);
-    void setcolor(bgiColors);
+    void moverel(int dx, int dy);
+    void moveto(int x, int y);
+    void outtext(char * textstring);
+    void outtextxy(int x, int y, char * textstring);
+    void pieslice(int x, int y, int stangle, int endangle, int radius);
+    void _putpixel(int x, int y);
+    void putimage(int left, int top, void * bitmap, bgiDrawingMode op);
+    void putpixel(int x, int y, int color);
+    void rectangle(int x1, int y1, int x2, int y2);
+    void sector(int x, int y, int stangle, int endangle, int xradius, int yradius);
+    void setallpalette(struct palettetype *palette);
+    void setbkcolor(bgiColors col);
+    void setcolor(bgiColors col);
     void setfillpattern(uint8_t* upattern, bgiColors color);
     void setfillstyle(bgiFillStyles pattern, bgiColors color);
     void setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
-    void setpalette(int, int);
-    void settextjustify(bgiTextJustification, bgiTextJustification);
-    void settextstyle(int, bgiDirection, int);
-    void setusercharsize(int, int, int, int);
-    void setviewport(int, int, int, int, int);
-    void setwritemode(bgiDrawingMode);
-    int textheight(char *);
-    int textwidth(char *);
+    void setpalette(int colornum, int color);
+    void settextjustify(bgiTextJustification horiz, bgiTextJustification vert);
+    void settextstyle(int font, bgiDirection direction, int charsize);
+    void setusercharsize(int multx, int divx, int multy, int divy);
+    void setviewport(int left, int top, int right, int bottom, int clip);
+    void setwritemode(bgiDrawingMode mode);
+    int textheight(char * textstring);
+    int textwidth(char * textstring);
 private:
     void initpalette(void);
-    void putpixel_copy(int, int, uint32_t);
-    void putpixel_xor(int, int, uint32_t);
-    void putpixel_and(int, int, uint32_t);
-    void putpixel_or(int, int, uint32_t);
-    void putpixel_not(int, int, uint32_t);
-    void ff_putpixel(int x, int);
-    uint32_t getpixel_raw(int, int);
-    void line_copy(int, int, int, int);
-    void line_xor(int, int, int, int);
-    void line_and(int, int, int, int);
-    void line_or(int, int, int, int);
-    void line_not(int, int, int, int);
-    void line_fill(int, int, int, int);
-    void _floodfill(int, int, bgiColors);
-    int  is_in_range(int, int, int);
-    void swap_if_greater(int *, int *);
-    void circle_bresenham(int, int, int);
-    int  octant(int, int);
-    void _ellipse(int, int, int, int);
+    void putpixel_copy(int x, int y, uint32_t pixel);
+    void putpixel_xor(int x, int y, uint32_t pixel);
+    void putpixel_and(int x, int y, uint32_t pixel);
+    void putpixel_or(int x, int y, uint32_t pixel);
+    void putpixel_not(int x, int y, uint32_t pixel);
+    void ff_putpixel(int x, int y);
+    uint32_t getpixel_raw(int x, int y);
+    void line_copy(int x1, int y1, int x2, int y2);
+    void line_xor(int x1, int y1, int x2, int y2);
+    void line_and(int x1, int y1, int x2, int y2);
+    void line_or(int x1, int y1, int x2, int y2);
+    void line_not(int x1, int y1, int x2, int y2);
+    void line_fill(int x1, int y1, int x2, int y2);
+    void _floodfill(int x, int y, bgiColors border);
+    int  is_in_range(int x, int x1, int x2);
+    void swap_if_greater(int *x1, int *x2);
+    void circle_bresenham(int x, int y, int radius);
+    int  octant(int x, int y);
+    void _ellipse(int cx, int cy, int xradius, int yradius);
     void drawchar(unsigned char ch);
     void _bar(int left, int top, int right, int bottom);
 
@@ -329,6 +332,8 @@ private:
     // pointer to font array. Should I add more (ugly) bitmap fonts?
     static const uint8_t * fontptr;
 };  // class GfxCanvasBgi
+
+}  // namespace prv
 
 }  // namespace bgi
 
