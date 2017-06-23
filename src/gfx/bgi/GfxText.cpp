@@ -23,7 +23,7 @@
 
 #include <string>
 
-#include "GfxString.hpp"
+#include "GfxText.hpp"
 
 namespace gfx
 {
@@ -31,31 +31,31 @@ namespace gfx
 namespace bgi
 {
 
-const char GfxString::ClassName[] = "GfxString";
+const char GfxText::ClassName[] = "GfxText";
 
-GfxString::GfxString() noexcept : GfxObject(ClassName), value_("")
+GfxText::GfxText() noexcept : GfxObject(ClassName), value_("")
 {
     // Nothing to do
 }
 
-GfxString::GfxString(ValueType const& value) noexcept : GfxObject(ClassName), value_(value)
+GfxText::GfxText(ValueType const& value) noexcept : GfxObject(ClassName), value_(value)
 {
     // Nothing to do
 }
 
-GfxString::GfxString(GfxString const& other) noexcept : GfxObject(ClassName)
+GfxText::GfxText(GfxText const& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
 }
 
-GfxString::GfxString(GfxString&& other) noexcept : GfxObject(ClassName)
+GfxText::GfxText(GfxText&& other) noexcept : GfxObject(ClassName)
 {
     value_ = other.value_;
     // Delete other's value
     other.value_ = "";
 }
 
-GfxString& GfxString::operator=(GfxString const& other) noexcept
+GfxText& GfxText::operator=(GfxText const& other) noexcept
 {
     if (this != &other)
     {
@@ -64,7 +64,7 @@ GfxString& GfxString::operator=(GfxString const& other) noexcept
     return *this;
 }
 
-GfxString& GfxString::operator=(GfxString&& other) noexcept
+GfxText& GfxText::operator=(GfxText&& other) noexcept
 {
     if (this != &other)
     {
@@ -75,32 +75,32 @@ GfxString& GfxString::operator=(GfxString&& other) noexcept
     return *this;
 }
 
-bool GfxString::operator==(GfxString const& other) const noexcept
+bool GfxText::operator==(GfxText const& other) const noexcept
 {
     return (value_ == other.value_);
 }
 
-bool GfxString::operator>(GfxString const& other) const noexcept
+bool GfxText::operator>(GfxText const& other) const noexcept
 {
     return (value_ > other.value_);
 }
 
-bool GfxString::operator<(GfxString const& other) const noexcept
+bool GfxText::operator<(GfxText const& other) const noexcept
 {
     return (value_ < other.value_);
 }
 
-GfxString::operator bool() const noexcept
+GfxText::operator bool() const noexcept
 {
     return true;
 }
 
-GfxString::ValueType GfxString::getValue() const noexcept
+GfxText::ValueType GfxText::getValue(void) const noexcept
 {
     return value_;
 }
 
-void GfxString::setValue(ValueType const& value) noexcept
+void GfxText::setValue(ValueType const& value) noexcept
 {
     value_ = value;
 }

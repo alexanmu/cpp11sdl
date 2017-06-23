@@ -21,8 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxString_hpp
-#define GfxString_hpp
+#ifndef GfxText_hpp
+#define GfxText_hpp
 
 #include <string>
 
@@ -34,7 +34,7 @@ namespace gfx
 namespace bgi
 {
 
-class GfxString final : public GfxObject
+class GfxText final : public GfxObject
 {
 public:
     typedef std::string ValueType;
@@ -43,23 +43,23 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    GfxString() noexcept;
+    GfxText() noexcept;
 
-    explicit GfxString(ValueType const& value) noexcept;
+    explicit GfxText(ValueType const& value) noexcept;
 
-    GfxString(GfxString const& other) noexcept;
-    GfxString(GfxString&& other) noexcept;
+    GfxText(GfxText const& other) noexcept;
+    GfxText(GfxText&& other) noexcept;
 
-    GfxString& operator=(GfxString const& other) noexcept;
-    GfxString& operator=(GfxString&& other) noexcept;
+    GfxText& operator=(GfxText const& other) noexcept;
+    GfxText& operator=(GfxText&& other) noexcept;
 
-    bool operator==(GfxString const& other) const noexcept;
-    bool operator>(GfxString const& other) const noexcept;
-    bool operator<(GfxString const& other) const noexcept;
+    bool operator==(GfxText const& other) const noexcept;
+    bool operator>(GfxText const& other) const noexcept;
+    bool operator<(GfxText const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
 
-    ValueType getValue() const noexcept;
+    ValueType getValue(void) const noexcept;
     void setValue(ValueType const& value) noexcept;
 private:
     ValueType value_;
@@ -69,4 +69,4 @@ private:
 
 }  // namespace gfx
 
-#endif /* GfxString_hpp */
+#endif /* GfxText_hpp */
