@@ -145,7 +145,9 @@ public:
     void SetFillStyle(GfxFillStyles const& pattern, pixels::GfxColor const& clr) noexcept;
     void SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,
                     GfxLineThickness const& thickness) noexcept;
-    void SetPalette(int32_t colornum, pixels::GfxColor const& clr) noexcept;
+    /* HERE */
+    void SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept;
+    /* HERE */
     void SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept;
     void SetTextStyle(GfxFonts const& font, GfxDirection const& direction, int32_t charsize) noexcept;
     void SetUserCharSize(const int32_t multx, const int32_t divx, const int32_t multy, const int32_t divy) noexcept;

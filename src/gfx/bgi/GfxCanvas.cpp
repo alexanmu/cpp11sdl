@@ -566,7 +566,13 @@ void GfxCanvas::SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const&
     bgi_.setlinestyle(linestyle.getAsBgiType(), upattern.getAsBgiType(), thickness.getAsBgiType());
 }
 
-/*void GfxCanvas::SetPalette(int32_t colornum, pixels::GfxColor const& clr) noexcept;*/
+void GfxCanvas::SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept
+{
+    assert(colornum >= 0);
+    assert(clr);
+
+    bgi_.setpalette(colornum, clr.getAsBgiType());
+}
 
 void GfxCanvas::SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept
 {

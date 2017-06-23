@@ -77,7 +77,7 @@
 #include "GfxCanvas.hpp"
 #include "GfxCanvasBgi.hpp"
 #include "GfxRadius.hpp"
-#include "GfxString.hpp"
+#include "GfxText.hpp"
 #include "GfxInitFlags.hpp"  // 2017.05.17
 #include "GfxTtfFont.hpp"  // 2017.05.17
 #include "GfxTtfInitQuit.hpp"  // 2017.05.17
@@ -117,6 +117,19 @@
 #include "GfxTextEditingEvent.hpp"  // 2017.06.22
 #include "GfxTextInputEvent.hpp"  // 2017.06.22
 #include "GfxDrawingMode.hpp"  // 2017.06.22
+#include "GfxArcCoordsType.hpp"  // 2017.06.23
+#include "GfxPaletteType.hpp"  // 2017.06.23
+#include "GfxFillSettingsType.hpp"  // 2017.06.23
+#include "GfxLineSettingsType.hpp"  // 2017.06.23
+#include "GfxTextSettingsType.hpp"  // 2017.06.23
+#include "GfxViewPortType.hpp"  // 2017.06.23
+#include "GfxLineStyle.hpp"  // 2017.06.23
+#include "GfxFillStyles.hpp"  // 2017.06.23
+#include "GfxLineThickness.hpp"  // 2017.06.23
+#include "GfxTextJustification.hpp"  // 2017.06.23
+#include "GfxDirection.hpp"  // 2017.06.23
+#include "GfxFonts.hpp"  // 2017.06.23
+#include "GfxColors2.hpp"  // 2017.06.23
 
 namespace gfx
 {
@@ -137,6 +150,24 @@ struct hasSdlTypeNested {
 
     template <typename C>
     static yes& test(typename C::SdlType *);
+
+    template <typename>
+    static no& test(...);
+
+    // If the "sizeof" of the result of calling test<T>(nullptr) is equal to sizeof(yes),
+    // the first overload worked and T has a nested type named foobar.
+    static const bool value = sizeof(test<T>(nullptr)) == sizeof(yes);
+};
+
+template <typename T>
+struct hasBgiTypeNested {
+    // Types "yes" and "no" are guaranteed to have different sizes,
+    // specifically sizeof(yes) == 1 and sizeof(no) == 2.
+    typedef char yes[1];
+    typedef char no[2];
+
+    template <typename C>
+    static yes& test(typename C::BgiType *);
 
     template <typename>
     static no& test(...);
@@ -190,7 +221,7 @@ constexpr GfxMeta::ClassInfo makeClassInfo(void)
         sizeof(T),
         T::SdlResource,
         T::CallsSdl,
-        prv::hasSdlTypeNested<T>::value,
+        prv::hasSdlTypeNested<T>::value || prv::hasBgiTypeNested<T>::value,
         prv::hasSdlTypePtrNested<T>::value,
         prv::hasValueType<T>::value,
         std::is_abstract<T>::value,
@@ -277,8 +308,21 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::bgi::GfxAngle>()                },
     {   prv::makeClassInfo<gfx::bgi::GfxCanvas>()               },
     {   prv::makeClassInfo<gfx::bgi::GfxRadius>()               },
-    {   prv::makeClassInfo<gfx::bgi::GfxString>()               },
+    {   prv::makeClassInfo<gfx::bgi::GfxText>()                 },
     {   prv::makeClassInfo<gfx::bgi::GfxDrawingMode>()          },  // 2017.06.22
+    {   prv::makeClassInfo<gfx::bgi::GfxArcCoordsType>()        },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxPaletteType>()          },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxFillSettingsType>()     },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxLineSettingsType>()     },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxTextSettingsType>()     },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxViewPortType>()         },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxLineStyle>()            },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxFillStyles>()           },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxLineThickness>()        },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxTextJustification>()    },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxDirection>()            },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxFonts>()                },  // 2017.06.23
+    {   prv::makeClassInfo<gfx::bgi::GfxColors2>()              },  // 2017.06.23
     // gfx::bgi::prv
     {   prv::makeClassInfo<gfx::bgi::prv::GfxCanvasBgi>()       },
     // gfx::bgi::fnt
