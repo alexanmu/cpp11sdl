@@ -38,15 +38,25 @@ namespace bgi
 class GfxDrawingMode final : public GfxObject
 {
 public:
-    typedef prv::GfxCanvasBgi::bgiDrawingMode ValueType;
+    typedef prv::GfxCanvasBgi::bgiDrawingMode BgiType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
+    enum class ValueType : int32_t
+    {
+        copyPut = prv::GfxCanvasBgi::bgiDrawingMode::COPY_PUT,
+        xorPut = prv::GfxCanvasBgi::bgiDrawingMode::XOR_PUT,
+        orPut = prv::GfxCanvasBgi::bgiDrawingMode::OR_PUT,
+        andPut = prv::GfxCanvasBgi::bgiDrawingMode::AND_PUT,
+        notPut = prv::GfxCanvasBgi::bgiDrawingMode::NOT_PUT
+    };
+
     GfxDrawingMode() noexcept;
 
-    explicit GfxDrawingMode(const ValueType value) noexcept;
+    explicit GfxDrawingMode(const ValueType dmode) noexcept;
+    explicit GfxDrawingMode(const BgiType dmode) noexcept;
 
     GfxDrawingMode(GfxDrawingMode const& other) noexcept;
     GfxDrawingMode(GfxDrawingMode&& other) noexcept;
@@ -56,10 +66,14 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    ValueType getValue() const noexcept;
-    void setValue(const ValueType value) noexcept;
+    ValueType getValue(void) const noexcept;
+    void setValue(const ValueType dmode) noexcept;
+
+    void clear(void) noexcept;
+
+    BgiType getAsBgiType(void) const noexcept;
 private:
-    ValueType value_;
+    BgiType dmode_;
 };
 
 }  // namespace bgi

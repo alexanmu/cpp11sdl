@@ -43,9 +43,9 @@ namespace prv
 
 const char GfxCanvasBgi::ClassName[] = "GfxCanvasBgi";
 
-const uint8_t * GfxCanvasBgi::fontptr = gfxPrimitivesFontdata;
+const uint8_t * GfxCanvasBgi::bgi_fontptr = gfxPrimitivesFontdata;
 
-const uint32_t bgi_palette[1 + GfxCanvasBgi::kMaxColors] = {  // 0 - 15
+const uint32_t GfxCanvasBgi::bgi_default_palette[1 + GfxCanvasBgi::kMaxColors] = {  // 0 - 15
     0xff000000,  // BLACK
     0xff0000ff,  // BLUE
     0xff00ff00,  // GREEN
@@ -64,17 +64,16 @@ const uint32_t bgi_palette[1 + GfxCanvasBgi::kMaxColors] = {  // 0 - 15
     0xffffffff   // WHITE
 };
 
-uint16_t GfxCanvasBgi::line_patterns[1 + static_cast<int>(bgiLineStyle::USERBIT_LINE)] = {
+const uint16_t GfxCanvasBgi::bgi_default_line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = {
     0xffff,  // SOLID_LINE  = 1111111111111111
     0xcccc,  // DOTTED_LINE = 1100110011001100
     0xf1f8,  // CENTER_LINE = 1111000111111000
     0xf8f8,  // DASHED_LINE = 1111100011111000
-    0xffff   // USERBIT_LINE
 };
 
 // These are setfillpattern-compatible arrays for the tiling patterns.
 // Taken from TurboC, http://www.sandroid.org/TurboC/
-uint8_t GfxCanvasBgi::fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FILL)][8] = {
+const uint8_t GfxCanvasBgi::bgi_default_fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][8] = {
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},  // EMPTY_FILL
     {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff},  // SOLID_FILL
     {0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00},  // LINE_FILL
@@ -87,7 +86,6 @@ uint8_t GfxCanvasBgi::fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FIL
     {0x11, 0x44, 0x11, 0x44, 0x11, 0x44, 0x11, 0x44},  // INTERLEAVE_FILL
     {0x10, 0x00, 0x01, 0x00, 0x10, 0x00, 0x01, 0x00},  // WIDE_DOT_FILL
     {0x11, 0x00, 0x44, 0x00, 0x11, 0x00, 0x44, 0x00},  // CLOSE_DOT_FILL
-    {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}   // USER_FILL
 };
 
 GfxCanvasBgi::GfxCanvasBgi() : GfxObject(ClassName)
@@ -102,7 +100,7 @@ GfxCanvasBgi::operator bool() const noexcept
     return (bgi_activepage != nullptr);
 }
 
-void GfxCanvasBgi::setCanvas(const uint32_t* ptr, const int maxx, const int maxy)
+void GfxCanvasBgi::setCanvas(const uint32_t * ptr, const int32_t maxx, const int32_t maxy) noexcept
 {
     assert(ptr != nullptr);
     assert(maxx > 0);
@@ -114,25 +112,41 @@ void GfxCanvasBgi::setCanvas(const uint32_t* ptr, const int maxx, const int maxy
     bgi_maxy = maxy - 1;
 }
 
-void GfxCanvasBgi::setCustomForegroundColor(const uint32_t color)
+void GfxCanvasBgi::setCustomForegroundColor(const uint32_t color) noexcept
 {
-    palette[static_cast<int>(bgiColors::CUSTOM_FG)] = color;
+    bgi_palette[static_cast<int>(bgiColors::CUSTOM_FG)] = color;
     bgi_fg_color = bgiColors::CUSTOM_FG;
 }
 
-void GfxCanvasBgi::setCustomBackgroundColor(const uint32_t color)
+uint32_t GfxCanvasBgi::getCustomForegroundColor(void) const noexcept
 {
-    palette[static_cast<int>(bgiColors::CUSTOM_BG)] = color;
+    return bgi_palette[static_cast<int>(bgiColors::CUSTOM_FG)];
+}
+
+void GfxCanvasBgi::setCustomBackgroundColor(const uint32_t color) noexcept
+{
+    bgi_palette[static_cast<int>(bgiColors::CUSTOM_BG)] = color;
     bgi_bg_color = bgiColors::CUSTOM_BG;
 }
 
-void GfxCanvasBgi::setCustomFillColor(const uint32_t color)
+uint32_t GfxCanvasBgi::getCustomBackgroundColor(void) const noexcept
 {
-    palette[static_cast<int>(bgiColors::CUSTOM_FILL)] = color;
+    return bgi_palette[static_cast<int>(bgiColors::CUSTOM_BG)];
+}
+
+void GfxCanvasBgi::setCustomFillColor(const uint32_t color) noexcept
+{
+    bgi_palette[static_cast<int>(bgiColors::CUSTOM_FILL)] = color;
     bgi_fill_style.color = GfxCanvasBgi::bgiColors::CUSTOM_FILL;
 }
 
-void GfxCanvasBgi::setCustomFont(const uint8_t* fontBitmapData, const uint8_t fontWidth, const uint8_t fontHeight)
+uint32_t GfxCanvasBgi::getCustomFillColor(void) const noexcept
+{
+    return bgi_palette[static_cast<int>(bgiColors::CUSTOM_FILL)];
+}
+
+void GfxCanvasBgi::setCustomFont(const uint8_t * fontBitmapData, const uint8_t fontWidth,
+                                const uint8_t fontHeight) noexcept
 {
     assert(fontBitmapData != nullptr);
     assert(fontWidth % 8 == 0);
@@ -140,14 +154,14 @@ void GfxCanvasBgi::setCustomFont(const uint8_t* fontBitmapData, const uint8_t fo
 
     bgi_font_width = fontWidth;
     bgi_font_height = fontHeight;
-    fontptr = fontBitmapData;
+    bgi_fontptr = fontBitmapData;
 }
 
-void GfxCanvasBgi::setDefaultFont(void)
+void GfxCanvasBgi::setDefaultFont(void) noexcept
 {
     bgi_font_width = 8;
     bgi_font_height = 8;
-    fontptr = gfxPrimitivesFontdata;
+    bgi_fontptr = gfxPrimitivesFontdata;
 }
 
 // -----
@@ -345,7 +359,7 @@ void GfxCanvasBgi::cleardevice(void)
     {
         for (y = 0; y < bgi_maxy + 1; y++)
         {
-            bgi_activepage[y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
+            bgi_activepage[y * (bgi_maxx + 1) + x] = bgi_palette[static_cast<int>(bgi_bg_color)];
         }
     }
 }  // cleardevice ()
@@ -361,18 +375,18 @@ void GfxCanvasBgi::clearviewport(void)
 
     bgi_cp_x = bgi_cp_y = 0;
 
-    for (x = vp.left; x < vp.right + 1; x++)
+    for (x = bgi_vp.left; x < bgi_vp.right + 1; x++)
     {
-        for (y = vp.top; y < vp.bottom + 1; y++)
+        for (y = bgi_vp.top; y < bgi_vp.bottom + 1; y++)
         {
-            bgi_activepage[y * (bgi_maxx + 1) + x] = palette[static_cast<int>(bgi_bg_color)];
+            bgi_activepage[y * (bgi_maxx + 1) + x] = bgi_palette[static_cast<int>(bgi_bg_color)];
         }
     }
 }  // clearviewport ()
 
 // -----
 
-void GfxCanvasBgi::drawpoly(int numpoints, int *polypoints)
+void GfxCanvasBgi::drawpoly(int numpoints, int * polypoints)
 {
     // Draws a polygon of numpoints vertices.
     int n;
@@ -389,7 +403,7 @@ void GfxCanvasBgi::drawpoly(int numpoints, int *polypoints)
 
 // -----
 
-void GfxCanvasBgi::swap_if_greater(int *x1, int *x2)
+void GfxCanvasBgi::swap_if_greater(int * x1, int * x2)
 {
     int tmp;
 
@@ -623,7 +637,7 @@ void GfxCanvasBgi::fillellipse(int cx, int cy, int xradius, int yradius)
 
 // helper function for fillpoly ()
 
-static int intcmp(const void *n1, const void *n2)
+static int intcmp(const void * n1, const void * n2)
 {
     return (*(const int *) n1) - (*(const int *) n2);
 }
@@ -634,7 +648,7 @@ static int intcmp(const void *n1, const void *n2)
 // code by Darel Rex Finley,
 // http://alienryderflex.com/polygon_fill/
 
-void GfxCanvasBgi::fillpoly(int numpoints, int *polypoints)
+void GfxCanvasBgi::fillpoly(int numpoints, int * polypoints)
 {
     // Draws a polygon of numpoints vertices and fills it using the
     // current fill color.
@@ -740,17 +754,17 @@ void GfxCanvasBgi::ff_putpixel(int x, int y)
 {
     // similar to putpixel (), but uses fill patterns
 
-    x += vp.left;
-    y += vp.top;
+    x += bgi_vp.left;
+    y += bgi_vp.top;
 
     // if the corresponding bit in the pattern is 1
-    if ( (fill_patterns[static_cast<int>(bgi_fill_style.pattern)][y % 8] >> x % 8) & 1)
+    if ( (bgi_fill_patterns[static_cast<int>(bgi_fill_style.pattern)][y % 8] >> x % 8) & 1)
     {
-        putpixel_copy(x, y, palette[static_cast<int>(bgi_fill_style.color)]);
+        putpixel_copy(x, y, bgi_palette[static_cast<int>(bgi_fill_style.color)]);
     }
     else
     {
-        putpixel_copy(x, y, palette[static_cast<int>(bgi_bg_color)]);
+        putpixel_copy(x, y, bgi_palette[static_cast<int>(bgi_bg_color)]);
     }
 }  // ff_putpixel ()
 
@@ -774,7 +788,7 @@ typedef struct {
 #define STACKSIZE 2000
 
 Segment stack[STACKSIZE];
-Segment* sp = stack;  // stack of filled segments
+Segment * sp = stack;  // stack of filled segments
 
 // the following functions were implemented as unreadable macros
 
@@ -793,7 +807,7 @@ static inline void ff_push(int y, int xl, int xr, int dy, int bottom, int top)
 
 // -----
 
-static inline void ff_pop(int *y, int *xl, int *xr, int *dy)
+static inline void ff_pop(int * y, int * xl, int * xr, int * dy)
 {
     // pop segment off stack
     sp--;
@@ -821,8 +835,8 @@ void GfxCanvasBgi::_floodfill(int x, int y, bgiColors border)
     unsigned int oldcol;
 
     oldcol = getpixel(x, y);
-    ff_push(y, x, x, 1, vp.bottom, vp.top);           // needed in some cases
-    ff_push(y + 1, x, x, -1, vp.bottom, vp.top);      // seed segment (popped 1st)
+    ff_push(y, x, x, 1, bgi_vp.bottom, bgi_vp.top);           // needed in some cases
+    ff_push(y + 1, x, x, -1, bgi_vp.bottom, bgi_vp.top);      // seed segment (popped 1st)
 
     while (sp > stack)
     {
@@ -855,20 +869,20 @@ void GfxCanvasBgi::_floodfill(int x, int y, bgiColors border)
             start = x + 1;
             if (start < x1)
             {
-                ff_push(y, start, x1 - 1, -dy, vp.bottom , vp.top);    // leak on left?
+                ff_push(y, start, x1 - 1, -dy, bgi_vp.bottom , bgi_vp.top);    // leak on left?
             }
             x = x1 + 1;
         }
         do
         {
-            for (x1 = x; (x <= vp.right) && (getpixel(x, y) != static_cast<uint32_t>(border)); x++)
+            for (x1 = x; (x <= bgi_vp.right) && (getpixel(x, y) != static_cast<uint32_t>(border)); x++)
             {
                 ff_putpixel(x, y);
             }
-            ff_push(y, start, x - 1, dy, vp.bottom , vp.top);
+            ff_push(y, start, x - 1, dy, bgi_vp.bottom , bgi_vp.top);
             if (x > x2 + 1)
             {
-                ff_push(y, x2 + 1, x - 1, -dy, vp.bottom, vp.top);    // leak on right?
+                ff_push(y, x2 + 1, x - 1, -dy, bgi_vp.bottom, bgi_vp.top);    // leak on right?
             }
             for (x++; (x <= x2) && (getpixel(x, y) == static_cast<uint32_t>(border)); x++)
             {
@@ -898,8 +912,8 @@ void GfxCanvasBgi::floodfill(int x, int y, bgiColors border)
     // and the current shape's background color.
 
     if ((oldcol == border) || (oldcol == bgi_fill_style.color) ||
-        (x < 0) || (x > vp.right - vp.left) ||  // out of viewport/window?
-        (y < 0) || (y > vp.bottom - vp.top))
+        (x < 0) || (x > bgi_vp.right - bgi_vp.left) ||  // out of viewport/window?
+        (y < 0) || (y > bgi_vp.bottom - bgi_vp.top))
     {
         return;
     }
@@ -956,7 +970,7 @@ void GfxCanvasBgi::freeimage(void * bitmap)
 
 // -----
 
-void GfxCanvasBgi::getarccoords(struct arccoordstype *arccoords)
+void GfxCanvasBgi::getarccoords(struct arccoordstype * arccoords)
 {
     // Gets the coordinates of the last call to arc(), filling the
     // arccoords structure.
@@ -989,14 +1003,14 @@ GfxCanvasBgi::bgiColors GfxCanvasBgi::getcolor(void)
 
 // -----
 
-struct GfxCanvasBgi::palettetype *GfxCanvasBgi::getdefaultpalette(void)
+struct GfxCanvasBgi::palettetype * GfxCanvasBgi::getdefaultpalette(void)
 {
-    return &pal;
+    return &bgi_pal;
 }  // getdefaultpalette ()
 
 // -----
 
-void GfxCanvasBgi::getfillpattern(char *pattern)
+void GfxCanvasBgi::getfillpattern(char * pattern)
 {
     // Copies the user-defined fill pattern, as set by setfillpattern,
     // into the 8-byte area pointed to by pattern.
@@ -1004,14 +1018,14 @@ void GfxCanvasBgi::getfillpattern(char *pattern)
 
     for (i = 0; i < 8; i++)
     {
-        pattern[i] = static_cast<char>(fill_patterns[
+        pattern[i] = static_cast<char>(bgi_fill_patterns[
                             static_cast<int>(bgiFillStyles::USER_FILL)][i]);
     }
 }  // getfillpattern ()
 
 // -----
 
-void GfxCanvasBgi::getfillsettings(struct fillsettingstype *fillinfo)
+void GfxCanvasBgi::getfillsettings(struct fillsettingstype * fillinfo)
 {
     // Fills the fillsettingstype structure pointed to by fillinfo
     // with information about the current fill pattern and fill color.
@@ -1022,14 +1036,14 @@ void GfxCanvasBgi::getfillsettings(struct fillsettingstype *fillinfo)
 
 // -----
 
-void GfxCanvasBgi::getimage(int left, int top, int right, int bottom, void *bitmap)
+void GfxCanvasBgi::getimage(int left, int top, int right, int bottom, void * bitmap)
 {
     // Copies a bit image of the specified region into the memory
     // pointed by bitmap.
 
     uint32_t bitmap_w;
     uint32_t bitmap_h;
-    uint32_t* tmp;
+    uint32_t * tmp;
     int i = 2;
     int x;
     int y;
@@ -1044,9 +1058,9 @@ void GfxCanvasBgi::getimage(int left, int top, int right, int bottom, void *bitm
     std::memcpy(tmp + 1, &bitmap_h, sizeof(uint32_t));
 
     // copy image to bitmap
-    for (y = (top + vp.top); y <= (bottom + vp.top); y++)
+    for (y = (top + bgi_vp.top); y <= (bottom + bgi_vp.top); y++)
     {
-        for (x = (left + vp.left); x <= (right + vp.left); x++)
+        for (x = (left + bgi_vp.left); x <= (right + bgi_vp.left); x++)
         {
             tmp [i++] = getpixel_raw(x, y);
         }
@@ -1094,24 +1108,24 @@ int GfxCanvasBgi::getmaxy()
 
 // -----
 
-void GfxCanvasBgi::getpalette(struct palettetype *palette)
+void GfxCanvasBgi::getpalette(struct palettetype * palette)
 {
     // Fills the palettetype structure pointed by palette with
     // information about the current palette’s size and colors.
     int i;
 
+    palette->size = 1 + kMaxColors;
     for (i = 0; i <= kMaxColors; i++)
     {
-        palette->colors[i] = pal.colors[i];
+        palette->colors[i] = bgi_pal.colors[i];
     }
 }  // getpalette ()
 
 // -----
 
-int GfxCanvasBgi::getpalettesize(struct palettetype *palette)
+int GfxCanvasBgi::getpalettesize(void)
 {
     // Returns the size of the palette.
-    assert(palette != nullptr);
 
     return (1 + kMaxColors);
 }  // getpalettesize ()
@@ -1132,8 +1146,8 @@ unsigned int GfxCanvasBgi::getpixel(int x, int y)
     int col;
     uint32_t tmp;
 
-    x += vp.left;
-    y += vp.top;
+    x += bgi_vp.left;
+    y += bgi_vp.top;
 
     // out of screen?
     if (!is_in_range(x, 0, bgi_maxx) &&
@@ -1148,7 +1162,7 @@ unsigned int GfxCanvasBgi::getpixel(int x, int y)
 
     for (col = static_cast<int>(bgiColors::BLACK); col < (static_cast<int>(bgiColors::WHITE) + 1); col++)
     {
-        if (tmp == palette[col])
+        if (tmp == bgi_palette[col])
         {
             return static_cast<int>(col);
         }
@@ -1160,7 +1174,7 @@ unsigned int GfxCanvasBgi::getpixel(int x, int y)
 
 // -----
 
-void GfxCanvasBgi::gettextsettings(struct textsettingstype *texttypeinfo)
+void GfxCanvasBgi::gettextsettings(struct textsettingstype * texttypeinfo)
 {
     // Fills the textsettingstype structure pointed to by texttypeinfo
     // with information about the current text font, direction, size,
@@ -1175,16 +1189,16 @@ void GfxCanvasBgi::gettextsettings(struct textsettingstype *texttypeinfo)
 
 // -----
 
-void GfxCanvasBgi::getviewsettings(struct viewporttype *viewport)
+void GfxCanvasBgi::getviewsettings(struct viewporttype * viewport)
 {
     // Fills the viewporttype structure pointed to by viewport with
     // information about the current viewport.
 
-    viewport->left = vp.left;
-    viewport->top = vp.top;
-    viewport->right = vp.right;
-    viewport->bottom = vp.bottom;
-    viewport->clip = vp.clip;
+    viewport->left = bgi_vp.left;
+    viewport->top = bgi_vp.top;
+    viewport->right = bgi_vp.right;
+    viewport->bottom = bgi_vp.bottom;
+    viewport->clip = bgi_vp.clip;
 }  // getviewsettings ()
 
 // -----
@@ -1212,6 +1226,7 @@ void GfxCanvasBgi::graphdefaults(void)
     // Resets all graphics settings to their defaults.
 
     int i;
+    int j;
 
     initpalette();
 
@@ -1219,12 +1234,12 @@ void GfxCanvasBgi::graphdefaults(void)
     bgi_writemode = bgiDrawingMode::COPY_PUT;
 
     // initialise the viewport
-    vp.left = 0;
-    vp.top = 0;
+    bgi_vp.left = 0;
+    bgi_vp.top = 0;
 
-    vp.right = bgi_maxx;
-    vp.bottom = bgi_maxy;
-    vp.clip = false;
+    bgi_vp.right = bgi_maxx;
+    bgi_vp.bottom = bgi_maxy;
+    bgi_vp.clip = false;
 
     // initialise the CP
     bgi_cp_x = 0;
@@ -1247,10 +1262,30 @@ void GfxCanvasBgi::graphdefaults(void)
     bgi_line_style.thickness = bgiLineThickness::NORM_WIDTH;
 
     // initialise the palette
-    pal.size = 1 + kMaxColors;
+    bgi_pal.size = 1 + kMaxColors;
     for (i = 0; i < (kMaxColors + 1); i++)
     {
-        pal.colors[i] = i;
+        bgi_pal.colors[i] = i;
+    }
+
+    // initialize line_patterns
+    for (i = 0; i < static_cast<int>(bgiLineStyle::USERBIT_LINE); i++)
+    {
+        bgi_line_patterns[i] = bgi_default_line_patterns[i];
+    }
+    bgi_line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = 0xFF;
+
+    // initialize fill patterns
+    for (i = 0; i < static_cast<int>(bgiFillStyles::USER_FILL); i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            bgi_fill_patterns[i][j] = bgi_default_fill_patterns[i][j];
+        }
+    }
+    for (j = 0; j < 8; j++)
+    {
+        bgi_fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][j] = 0xFF;
     }
 }  // graphdefaults ()
 
@@ -1273,7 +1308,7 @@ void GfxCanvasBgi::initpalette(void)
 
     for (i = static_cast<int>(bgiColors::BLACK); i < (static_cast<int>(bgiColors::WHITE) + 1); i++)
     {
-        palette[i] = bgi_palette[i];
+        bgi_palette[i] = bgi_default_palette[i];
     }
 }  // initpalette ()
 
@@ -1299,13 +1334,13 @@ void GfxCanvasBgi::line_copy(int x1, int y1, int x2, int y2)
 
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
         {
-            putpixel_copy(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_copy(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
         }
         else
         {
-            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((bgi_line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
-                putpixel_copy(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+                putpixel_copy(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
             }
         }
 
@@ -1345,13 +1380,13 @@ void GfxCanvasBgi::line_xor(int x1, int y1, int x2, int y2)
     {
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
         {
-            putpixel_xor(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_xor(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
         }
         else
         {
-            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((bgi_line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
-                putpixel_xor(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+                putpixel_xor(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
             }
         }
 
@@ -1390,13 +1425,13 @@ void GfxCanvasBgi::line_and(int x1, int y1, int x2, int y2)
     {
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
         {
-            putpixel_and(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_and(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
         }
         else
         {
-            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((bgi_line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
-                putpixel_and(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+                putpixel_and(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
             }
         }
 
@@ -1436,13 +1471,13 @@ void GfxCanvasBgi::line_or(int x1, int y1, int x2, int y2)
     {
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
         {
-            putpixel_or(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_or(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
         }
         else
         {
-            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((bgi_line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
-                putpixel_or(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+                putpixel_or(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
             }
         }
 
@@ -1482,13 +1517,13 @@ void GfxCanvasBgi::line_not(int x1, int y1, int x2, int y2)
     {
         if (bgiLineStyle::SOLID_LINE == bgi_line_style.linestyle)
         {
-            putpixel_not(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_not(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
         }
         else
         {
-            if ((line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
+            if ((bgi_line_patterns[static_cast<int>(bgi_line_style.linestyle)] >> counter % 16) & 1)
             {
-                putpixel_not(x1, y1, palette[static_cast<int>(bgi_fg_color)]);
+                putpixel_not(x1, y1, bgi_palette[static_cast<int>(bgi_fg_color)]);
             }
         }
 
@@ -1586,10 +1621,10 @@ void GfxCanvasBgi::line(int x1, int y1, int x2, int y2)
     int oct;
 
     // viewport
-    x1 += vp.left;
-    y1 += vp.top;
-    x2 += vp.left;
-    y2 += vp.top;
+    x1 += bgi_vp.left;
+    y1 += bgi_vp.top;
+    x2 += bgi_vp.left;
+    y2 += bgi_vp.top;
 
     switch (bgi_writemode)
     {
@@ -1756,7 +1791,7 @@ void GfxCanvasBgi::drawchar(unsigned char ch)
 
     for (i = 0; i < bgi_font_height; i++)
     {
-        k = fontptr[bgi_font_height*ch + i];
+        k = bgi_fontptr[bgi_font_height*ch + i];
 
         // scan horizontal line
         for (j = 0; j < bgi_font_width; j++)
@@ -1795,7 +1830,7 @@ void GfxCanvasBgi::drawchar(unsigned char ch)
 
 // -----
 
-void GfxCanvasBgi::outtext(char *textstring)
+void GfxCanvasBgi::outtext(char * textstring)
 {
     // Outputs textstring at the CP.
 
@@ -1811,7 +1846,7 @@ void GfxCanvasBgi::outtext(char *textstring)
 
 // -----
 
-void GfxCanvasBgi::outtextxy(int x, int y, char *textstring)
+void GfxCanvasBgi::outtextxy(int x, int y, char * textstring)
 {
     // Outputs textstring at (x, y).
 
@@ -1978,9 +2013,9 @@ void GfxCanvasBgi::putimage(int left, int top, void *bitmap, bgiDrawingMode op)
     std::memcpy(&bitmap_h, tmp + 1, sizeof(uint32_t));
 
     // put bitmap to the screen
-    for (y = (top + vp.top); y < static_cast<int>((top + vp.top + bitmap_h)); y++)
+    for (y = (top + bgi_vp.top); y < static_cast<int>((top + bgi_vp.top + bitmap_h)); y++)
     {
-        for (x = (left + vp.left); x < static_cast<int>((left + vp.left + bitmap_w)); x++)
+        for (x = (left + bgi_vp.left); x < static_cast<int>((left + bgi_vp.left + bitmap_w)); x++)
         {
             switch (op)
             {
@@ -2013,26 +2048,26 @@ void GfxCanvasBgi::_putpixel(int x, int y)
     // viewport range is taken care of by this function only,
     // since all others use it to draw.
 
-    x += vp.left;
-    y += vp.top;
+    x += bgi_vp.left;
+    y += bgi_vp.top;
 
     switch (bgi_writemode)
     {
         case bgiDrawingMode::XOR_PUT:
-            putpixel_xor(x, y, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_xor(x, y, bgi_palette[static_cast<int>(bgi_fg_color)]);
             break;
         case bgiDrawingMode::AND_PUT:
-            putpixel_and(x, y, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_and(x, y, bgi_palette[static_cast<int>(bgi_fg_color)]);
             break;
         case bgiDrawingMode::OR_PUT:
-            putpixel_or(x, y, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_or(x, y, bgi_palette[static_cast<int>(bgi_fg_color)]);
             break;
         case bgiDrawingMode::NOT_PUT:
-            putpixel_not(x, y, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_not(x, y, bgi_palette[static_cast<int>(bgi_fg_color)]);
             break;
         default:
         case bgiDrawingMode::COPY_PUT:
-            putpixel_copy(x, y, palette[static_cast<int>(bgi_fg_color)]);
+            putpixel_copy(x, y, bgi_palette[static_cast<int>(bgi_fg_color)]);
             break;
     }  // switch
 }  // _putpixel ()
@@ -2049,9 +2084,9 @@ void GfxCanvasBgi::putpixel_copy(int x, int y, uint32_t pixel)
         return;
     }
 
-    if (true == vp.clip)
+    if (true == bgi_vp.clip)
     {
-        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        if ((x < bgi_vp.left) || (x > bgi_vp.right) || (y < bgi_vp.top) || (y > bgi_vp.bottom))
         {
             return;
         }
@@ -2076,9 +2111,9 @@ void GfxCanvasBgi::putpixel_xor(int x, int y, uint32_t pixel)
         return;
     }
 
-    if (true == vp.clip)
+    if (true == bgi_vp.clip)
     {
-        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        if ((x < bgi_vp.left) || (x > bgi_vp.right) || (y < bgi_vp.top) || (y > bgi_vp.bottom))
         {
             return;
         }
@@ -2099,9 +2134,9 @@ void GfxCanvasBgi::putpixel_and(int x, int y, uint32_t pixel)
         return;
     }
 
-    if (true == vp.clip)
+    if (true == bgi_vp.clip)
     {
-        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        if ((x < bgi_vp.left) || (x > bgi_vp.right) || (y < bgi_vp.top) || (y > bgi_vp.bottom))
         {
             return;
         }
@@ -2123,9 +2158,9 @@ void GfxCanvasBgi::putpixel_or(int x, int y, uint32_t pixel)
         return;
     }
 
-    if (true == vp.clip)
+    if (true == bgi_vp.clip)
     {
-        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        if ((x < bgi_vp.left) || (x > bgi_vp.right) || (y < bgi_vp.top) || (y > bgi_vp.bottom))
         {
             return;
         }
@@ -2139,7 +2174,7 @@ void GfxCanvasBgi::putpixel_or(int x, int y, uint32_t pixel)
 void GfxCanvasBgi::putpixel_not(int x, int y, uint32_t pixel)
 {
     // NOT-ed putpixel
-    assert(pixel < 0x00FFFFFF);
+    assert(pixel <= 0x00FFFFFF);
 
     // out of range?
     if ((x < 0) || (x > bgi_maxx) || (y < 0) || (y > bgi_maxy))
@@ -2147,9 +2182,9 @@ void GfxCanvasBgi::putpixel_not(int x, int y, uint32_t pixel)
         return;
     }
 
-    if (true == vp.clip)
+    if (true == bgi_vp.clip)
     {
-        if (x < vp.left || x > vp.right || y < vp.top || y > vp.bottom)
+        if (x < bgi_vp.left || x > bgi_vp.right || y < bgi_vp.top || y > bgi_vp.bottom)
         {
             return;
         }
@@ -2166,13 +2201,13 @@ void GfxCanvasBgi::putpixel(int x, int y, int color)
     // Plots a point at (x,y) in the color defined by color.
     int tmpcolor;
 
-    x += vp.left;
-    y += vp.top;
+    x += bgi_vp.left;
+    y += bgi_vp.top;
 
     // clip
-    if (true == vp.clip)
+    if (true == bgi_vp.clip)
     {
-        if ((x < vp.left) || (x > vp.right) || (y < vp.top) || (y > vp.bottom))
+        if ((x < bgi_vp.left) || (x > bgi_vp.right) || (y < bgi_vp.top) || (y > bgi_vp.bottom))
         {
             return;
         }
@@ -2183,20 +2218,20 @@ void GfxCanvasBgi::putpixel(int x, int y, int color)
     switch (bgi_writemode)
     {
         case bgiDrawingMode::XOR_PUT:
-            putpixel_xor(x, y, palette[tmpcolor]);
+            putpixel_xor(x, y, bgi_palette[tmpcolor]);
             break;
         case bgiDrawingMode::AND_PUT:
-            putpixel_and(x, y, palette[tmpcolor]);
+            putpixel_and(x, y, bgi_palette[tmpcolor]);
             break;
         case bgiDrawingMode::OR_PUT:
-            putpixel_or(x, y, palette[tmpcolor]);
+            putpixel_or(x, y, bgi_palette[tmpcolor]);
             break;
         case bgiDrawingMode::NOT_PUT:
-            putpixel_not(x, y, palette[tmpcolor]);
+            putpixel_not(x, y, bgi_palette[tmpcolor]);
             break;
         default:
         case bgiDrawingMode::COPY_PUT:
-            putpixel_copy(x, y, palette[tmpcolor]);
+            putpixel_copy(x, y, bgi_palette[tmpcolor]);
        }  // switch
 }  // putpixel ()
 
@@ -2293,14 +2328,14 @@ void GfxCanvasBgi::setcolor(bgiColors col)
 
 // -----
 
-void GfxCanvasBgi::setfillpattern(uint8_t *upattern, bgiColors color)
+void GfxCanvasBgi::setfillpattern(uint8_t * upattern, bgiColors color)
 {
     // Sets a user-defined fill pattern.
     int i;
 
     for (i = 0; i < 8; i++)
     {
-        fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = *upattern;
+        bgi_fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][i] = *upattern;
         upattern += 1;
     }
 
@@ -2326,7 +2361,7 @@ void GfxCanvasBgi::setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, 
     // lineto(), rectangle(), drawpoly(), etc.
 
     bgi_line_style.linestyle = linestyle;
-    line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = static_cast<uint16_t>(upattern);
+    bgi_line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)] = static_cast<uint16_t>(upattern);
     bgi_line_style.upattern = upattern;
     bgi_line_style.thickness = thickness;
 }  // setlinestyle ()
@@ -2337,7 +2372,7 @@ void GfxCanvasBgi::setpalette(int colornum, int color)
 {
     // Changes the standard palette colornum to color.
 
-    palette[colornum] = bgi_palette[color];
+    bgi_palette[colornum] = color;
 }  // setpalette ()
 
 // -----
@@ -2366,7 +2401,9 @@ void GfxCanvasBgi::settextstyle(int font, bgiDirection direction, int charsize)
     {
         bgi_txt_style.direction = bgiDirection::HORIZ_DIR;
     }
-    bgi_txt_style.charsize = bgi_font_mag_x = bgi_font_mag_y = charsize;
+    bgi_txt_style.charsize = charsize;
+    bgi_font_mag_x = charsize;
+    bgi_font_mag_y = charsize;
     // avoid compiler warning
     assert(font >= 0);
 }  // settextstyle ()
@@ -2392,11 +2429,11 @@ void GfxCanvasBgi::setviewport(int left, int top, int right, int bottom, int cli
         return;
     }
 
-    vp.left = left;
-    vp.top = top;
-    vp.right = right;
-    vp.bottom = bottom;
-    vp.clip = clip;
+    bgi_vp.left = left;
+    bgi_vp.top = top;
+    bgi_vp.right = right;
+    bgi_vp.bottom = bottom;
+    bgi_vp.clip = clip;
     bgi_cp_x = 0;
     bgi_cp_y = 0;
 }  // setviewport ()
@@ -2413,18 +2450,18 @@ void GfxCanvasBgi::setwritemode(bgiDrawingMode mode)
 
 // -----
 
-int GfxCanvasBgi::textheight(char *textstring)
+int GfxCanvasBgi::textheight(char * textstring)
 {
     // Returns the height in pixels of a string.
     // avoid compiler warning
-    assert(textstring != nullptr);;
+    assert(textstring != nullptr);
 
     return bgi_font_mag_y * bgi_font_height;
 }  // textheight ()
 
 // -----
 
-int GfxCanvasBgi::textwidth(char *textstring)
+int GfxCanvasBgi::textwidth(char * textstring)
 {
     // Returns the height in pixels of a string.
 

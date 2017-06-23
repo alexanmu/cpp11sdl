@@ -36,9 +36,22 @@
 #include "GfxRect.hpp"
 #include "GfxRadius.hpp"
 #include "GfxAngle.hpp"
-#include "GfxString.hpp"
+#include "GfxText.hpp"
 #include "GfxBitmapFont.hpp"
 #include "GfxDrawingMode.hpp"
+#include "GfxArcCoordsType.hpp"
+#include "GfxPaletteType.hpp"
+#include "GfxFillSettingsType.hpp"
+#include "GfxLineSettingsType.hpp"
+#include "GfxTextSettingsType.hpp"
+#include "GfxViewPortType.hpp"
+#include "GfxLineStyle.hpp"
+#include "GfxFillStyles.hpp"
+#include "GfxLineThickness.hpp"
+#include "GfxTextJustification.hpp"
+#include "GfxDirection.hpp"
+#include "GfxFonts.hpp"
+#include "GfxColors2.hpp"
 
 namespace gfx
 {
@@ -69,8 +82,8 @@ public:
     void Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept;
     void Bar(rect::GfxRect const& r, pixels::GfxColor const& clr) noexcept;
     void Bar3D(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, const int32_t depth,
-                const int32_t topflag, pixels::GfxColor const& clr) noexcept;
-    void Bar3D(rect::GfxRect const& r, const int32_t depth, const int32_t topflag,
+                const bool topflag, pixels::GfxColor const& clr) noexcept;
+    void Bar3D(rect::GfxRect const& r, const int32_t depth, const bool topflag,
                 pixels::GfxColor const& clr) noexcept;
     void Circle(rect::GfxPoint const& pt, GfxRadius const& r, pixels::GfxColor const& clr) noexcept;
     void ClearDevice(void) noexcept;
@@ -83,23 +96,23 @@ public:
     void FillPoly(std::vector<int32_t> const& polypoints, pixels::GfxColor const& clr) noexcept;
     void FloodFill(rect::GfxPoint const& pt, pixels::GfxColor const& border, pixels::GfxColor const& clr) noexcept;
     void FreeImage(void * bitmap) noexcept;
-    /* TODO void GetArcCoords(struct arccoordstype * arccoords) noexcept; */
-    pixels::GfxColor getBkColor(void) noexcept;
-    pixels::GfxColor getColor(void) noexcept;
-    /* TODO struct palettetype * GetDefaultPalette(void) noexcept; */
+    GfxArcCoordsType GetArcCoords(void) noexcept;
+    pixels::GfxColor GetBkColor(void) noexcept;
+    pixels::GfxColor GetColor(void) noexcept;
+    GfxPaletteType GetDefaultPalette(void) noexcept;
     void GetFillPattern(char * pattern) noexcept;
-    /* TODO void GetFillSettings(struct fillsettingstype * fillinfo) noexcept; */
+    GfxFillSettingsType GetFillSettings(void) noexcept;
     void GetImage(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, void * bitmap) noexcept;
     void GetImage(rect::GfxRect const& r, void * bitmap) noexcept;
-    /* TODO void GetLineSettings(struct linesettingstype * lineinfo) noexcept; */
+    GfxLineSettingsType GetLineSettings(void) noexcept;
     int32_t GetMaxColor(void) noexcept;
     int32_t GetMaxX(void) noexcept;
     int32_t GetMaxY(void) noexcept;
-    /* TODO void GetPalette(struct palettetype *) noexcept; */
-    /* TODO int32_t GetPaletteSize(struct palettetype *) noexcept; */
+    GfxPaletteType GetPalette(void) noexcept;
+    int32_t GetPaletteSize(void) noexcept;
     pixels::GfxColor GetPixel(rect::GfxPoint const& pt) noexcept;
-    /* TODO void GetTextSettings(struct textsettingstype *) noexcept; */
-    /* TODO void GetViewSettings(struct viewporttype *) noexcept; */
+    GfxTextSettingsType GetTextSettings(void) noexcept;
+    GfxViewPortType GetViewSettings(void) noexcept;
     int32_t GetX(void) noexcept;
     int32_t GetY(void) noexcept;
     void GraphDefaults(void) noexcept;
@@ -110,33 +123,37 @@ public:
     void LineTo(rect::GfxPoint const& pt) noexcept;
     void MoveRel(rect::GfxPoint const& pt) noexcept;
     void MoveTo(rect::GfxPoint const& pt) noexcept;
-    void OutText(GfxString const& text, pixels::GfxColor const& clr) noexcept;
-    void OutText(GfxString const& text, pixels::GfxColor const& clr, fnt::GfxBitmapFont const& font) noexcept;
-    void OutTextXY(rect::GfxPoint const& pt, GfxString const& text, pixels::GfxColor const& clr) noexcept;
-    void OutTextXY(rect::GfxPoint const& pt, GfxString const& text, pixels::GfxColor const& clr,
+    void OutText(GfxText const& text, pixels::GfxColor const& clr) noexcept;
+    void OutText(GfxText const& text, pixels::GfxColor const& clr, fnt::GfxBitmapFont const& font) noexcept;
+    void OutTextXY(rect::GfxPoint const& pt, GfxText const& text, pixels::GfxColor const& clr) noexcept;
+    void OutTextXY(rect::GfxPoint const& pt, GfxText const& text, pixels::GfxColor const& clr,
                   fnt::GfxBitmapFont const& font) noexcept;
+    /* HERE */
     void PieSlice(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                GfxRadius const& radius, pixels::GfxColor const& clr) noexcept;
+                GfxRadius const& radius, GfxColors2 const& clr) noexcept;
+    /* HERE */
     void PutImage(rect::GfxPoint const& pt, void * bitmap, GfxDrawingMode const& dmode) noexcept;
     void PutPixel(rect::GfxPoint const& pt, pixels::GfxColor const& clr) noexcept;
     void Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept;
     void Rectangle(rect::GfxRect const& r, pixels::GfxColor const& clr) noexcept;
-    /*void Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                GfxRadius const& xradius, GfxRadius const& yradius) noexcept;
-    void SetAllPalette(struct palettetype *palette) noexcept;
+    void Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
+                GfxRadius const& xradius, GfxRadius const& yradius, pixels::GfxColor const& clr) noexcept;
+    void SetAllPalette(GfxPaletteType const& palette) noexcept;
     void SetBkColor(pixels::GfxColor const& clr) noexcept;
     void SetColor(pixels::GfxColor const& clr) noexcept;
     void SetFillPattern(uint8_t * upattern, pixels::GfxColor const& clr) noexcept;
-    void setfillstyle(bgiFillStyles pattern, pixels::GfxColor const& clr);
-    void setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
-    void setpalette(int colornum, int color);
-    void settextjustify(bgiTextJustification horiz, bgiTextJustification vert);
-    void settextstyle(int font, bgiDirection direction, int charsize);
-    void setusercharsize(int multx, int divx, int multy, int divy);
-    void setviewport(int left, int top, int right, int bottom, int clip);
-    void SetWriteMode(GfxDrawingMode const& dmode);*/
-    int32_t TextHeight(GfxString const& textstring) noexcept;
-    int32_t TextWidth(GfxString const& textstring) noexcept;
+    void SetFillStyle(GfxFillStyles const& pattern, pixels::GfxColor const& clr) noexcept;
+    void SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,
+                    GfxLineThickness const& thickness) noexcept;
+    void SetPalette(int32_t colornum, pixels::GfxColor const& clr) noexcept;
+    void SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept;
+    void SetTextStyle(GfxFonts const& font, GfxDirection const& direction, int32_t charsize) noexcept;
+    void SetUserCharSize(const int32_t multx, const int32_t divx, const int32_t multy, const int32_t divy) noexcept;
+    void SetViewPort(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, const bool clip) noexcept;
+    void SetViewPort(rect::GfxRect const& r, const bool clip) noexcept;
+    void SetWriteMode(GfxDrawingMode const& dmode) noexcept;
+    int32_t TextHeight(GfxText const& textstring) noexcept;
+    int32_t TextWidth(GfxText const& textstring) noexcept;
 private:
     prv::GfxCanvasBgi bgi_;
 };

@@ -60,7 +60,7 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    ValueType getValue() const noexcept;
+    ValueType getValue(void) const noexcept;
     void setValue(const ValueType value) noexcept;
 private:
     ValueType value_;

@@ -93,12 +93,12 @@ GfxAngle::operator bool() const noexcept
     return true;
 }
 
-GfxAngle::ValueType GfxAngle::getValue() const noexcept
+GfxAngle::ValueType GfxAngle::getValue(void) const noexcept
 {
     return value_;
 }
 
-void GfxAngle::setValue(const ValueType& value) noexcept
+void GfxAngle::setValue(const ValueType value) noexcept
 {
     value_ = value;
 }

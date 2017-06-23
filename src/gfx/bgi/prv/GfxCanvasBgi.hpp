@@ -50,7 +50,7 @@ public:
 
     static const int32_t kMaxColors = 15;
 
-    enum class bgiFonts : int
+    enum bgiFonts
     {
         DEFAULT_FONT =     0,  // 8x8
         TRIPLEX_FONT =     1,  // all other fonts are not implemented
@@ -66,13 +66,13 @@ public:
         BOLD_FONT =        11,
     };
 
-    enum class bgiDirection : int
+    enum bgiDirection : int
     {
         HORIZ_DIR =      0,
         VERT_DIR =       1
     };
 
-    enum class bgiTextJustification : int
+    enum bgiTextJustification : int
     {
         LEFT_TEXT =      0,
         CENTER_TEXT =    1,
@@ -81,7 +81,7 @@ public:
         TOP_TEXT =       2
     };
 
-    enum class bgiColors : int
+    enum bgiColors : int
     {
         BLACK =           0,
         BLUE =            1,
@@ -104,13 +104,13 @@ public:
         CUSTOM_FILL =    18
     };
 
-    enum class bgiLineThickness : int
+    enum bgiLineThickness : int
     {
         NORM_WIDTH =      1,
         THICK_WIDTH =     3
     };
 
-    enum class bgiLineStyle : int
+    enum bgiLineStyle : int
     {
         SOLID_LINE =      0,
         DOTTED_LINE =     1,
@@ -119,7 +119,7 @@ public:
         USERBIT_LINE =    4
     };
 
-    enum class bgiDrawingMode : int
+    enum bgiDrawingMode : int
     {
         COPY_PUT  =       0,
         XOR_PUT =         1,
@@ -128,7 +128,7 @@ public:
         NOT_PUT =         4
     };
 
-    enum class bgiFillStyles : int
+    enum bgiFillStyles : int
     {
         EMPTY_FILL =      0,
         SOLID_FILL =      1,
@@ -202,12 +202,15 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    void setCanvas(const uint32_t* ptr, const int maxx, const int maxy);
-    void setCustomForegroundColor(const uint32_t color);
-    void setCustomBackgroundColor(const uint32_t color);
-    void setCustomFillColor(const uint32_t color);
-    void setCustomFont(const uint8_t* fontBitmapData, const uint8_t fontWidth, const uint8_t fontHeight);
-    void setDefaultFont(void);
+    void setCanvas(const uint32_t * ptr, const int32_t maxx, const int32_t maxy) noexcept;
+    void setCustomForegroundColor(const uint32_t color) noexcept;
+    uint32_t getCustomForegroundColor(void) const noexcept;
+    void setCustomBackgroundColor(const uint32_t color) noexcept;
+    uint32_t getCustomBackgroundColor(void) const noexcept;
+    void setCustomFillColor(const uint32_t color) noexcept;
+    uint32_t getCustomFillColor(void) const noexcept;
+    void setCustomFont(const uint8_t * fontBitmapData, const uint8_t fontWidth, const uint8_t fontHeight) noexcept;
+    void setDefaultFont(void) noexcept;
 
     void arc(int x, int y, int stangle, int endangle, int radius);
     void bar3d(int left, int top, int right, int bottom, int depth, int topflag);
@@ -224,7 +227,7 @@ public:
     void getarccoords(struct arccoordstype * arccoords);
     bgiColors getbkcolor(void);
     bgiColors getcolor(void);
-    struct palettetype *getdefaultpalette(void);
+    struct palettetype * getdefaultpalette(void);
     void getfillpattern(char * pattern);
     void getfillsettings(struct fillsettingstype * fillinfo);
     void getimage(int left, int top, int right, int bottom, void * bitmap);
@@ -232,11 +235,11 @@ public:
     int getmaxcolor(void);
     int getmaxx(void);
     int getmaxy(void);
-    void getpalette(struct palettetype *);
-    int getpalettesize(struct palettetype *);
+    void getpalette(struct palettetype * palette);
+    int getpalettesize(void);
     unsigned int getpixel(int x, int y);
-    void gettextsettings(struct textsettingstype *);
-    void getviewsettings(struct viewporttype *);
+    void gettextsettings(struct textsettingstype * texttypeinfo);
+    void getviewsettings(struct viewporttype * viewport);
     int getx(void);
     int gety(void);
     void graphdefaults(void);
@@ -257,7 +260,7 @@ public:
     void setallpalette(struct palettetype *palette);
     void setbkcolor(bgiColors col);
     void setcolor(bgiColors col);
-    void setfillpattern(uint8_t* upattern, bgiColors color);
+    void setfillpattern(uint8_t * upattern, bgiColors color);
     void setfillstyle(bgiFillStyles pattern, bgiColors color);
     void setlinestyle(bgiLineStyle linestyle, bgiFillStyles upattern, bgiLineThickness thickness);
     void setpalette(int colornum, int color);
@@ -285,7 +288,7 @@ private:
     void line_fill(int x1, int y1, int x2, int y2);
     void _floodfill(int x, int y, bgiColors border);
     int  is_in_range(int x, int x1, int x2);
-    void swap_if_greater(int *x1, int *x2);
+    void swap_if_greater(int * x1, int * x2);
     void circle_bresenham(int x, int y, int radius);
     int  octant(int x, int y);
     void _ellipse(int cx, int cy, int xradius, int yradius);
@@ -293,7 +296,7 @@ private:
     void _bar(int left, int top, int right, int bottom);
 
     // pixel data of active and visual pages
-    uint32_t* bgi_activepage;
+    uint32_t * bgi_activepage;
 
     // This is how we draw stuff on the screen. Pixels pointed to by
     // bgi_activepage (a pointer to pixel data in the active surface)
@@ -301,7 +304,9 @@ private:
     // updated with the new bgi_activepage contents; bgi_texture is then
     // copied to bgi_renderer, and finally bgi_renderer is made present.
 
-    uint32_t palette[1 + kMaxColors + 3];  // all colors
+    uint32_t bgi_palette[1 + kMaxColors + 3];  // all colors
+    uint16_t bgi_line_patterns[1 + static_cast<int>(bgiLineStyle::USERBIT_LINE)];
+    uint8_t bgi_fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FILL)][8];
 
     bgiColors bgi_fg_color = bgiColors::WHITE;    // index of BGI foreground color
     bgiColors bgi_bg_color = bgiColors::BLACK;    // index of BGI background color
@@ -323,14 +328,15 @@ private:
     struct fillsettingstype bgi_fill_style;
     struct linesettingstype bgi_line_style;
     struct textsettingstype bgi_txt_style;
-    struct viewporttype vp;
-    struct palettetype pal;
+    struct viewporttype bgi_vp;
+    struct palettetype bgi_pal;
 
-    static uint16_t line_patterns[1 + static_cast<int>(bgiLineStyle::USERBIT_LINE)];
-    static uint8_t fill_patterns[1 + static_cast<int>(bgiFillStyles::USER_FILL)][8];
+    static const uint32_t bgi_default_palette[1 + GfxCanvasBgi::kMaxColors];
+    static const uint16_t bgi_default_line_patterns[static_cast<int>(bgiLineStyle::USERBIT_LINE)];
+    static const uint8_t bgi_default_fill_patterns[static_cast<int>(bgiFillStyles::USER_FILL)][8];
 
     // pointer to font array. Should I add more (ugly) bitmap fonts?
-    static const uint8_t * fontptr;
+    static const uint8_t * bgi_fontptr;
 };  // class GfxCanvasBgi
 
 }  // namespace prv

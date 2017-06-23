@@ -95,7 +95,7 @@ GfxRadius::operator bool() const noexcept
     return true;
 }
 
-GfxRadius::ValueType GfxRadius::getValue() const noexcept
+GfxRadius::ValueType GfxRadius::getValue(void) const noexcept
 {
     return value_;
 }

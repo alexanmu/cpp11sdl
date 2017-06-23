@@ -80,7 +80,7 @@ const pixels::GfxColor& kGetColorByIndex(const GfxColorIndex index);
 namespace fnt
 {
 
-static const int kNumFonts = 10;
+static const int32_t kNumFonts = 10;
 
 enum class GfxFontIndex : int32_t
 {

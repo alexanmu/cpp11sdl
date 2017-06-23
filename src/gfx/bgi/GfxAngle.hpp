@@ -59,8 +59,8 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    ValueType getValue() const noexcept;
-    void setValue(const ValueType& angle) noexcept;
+    ValueType getValue(void) const noexcept;
+    void setValue(const ValueType angle) noexcept;
 private:
     ValueType value_;
 };

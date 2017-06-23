@@ -33,31 +33,36 @@ const char GfxDrawingMode::ClassName[] = "GfxDrawingMode";
 
 GfxDrawingMode::GfxDrawingMode() noexcept : GfxObject(ClassName)
 {
-    value_ = prv::GfxCanvasBgi::bgiDrawingMode::COPY_PUT;
+    clear();
 }
 
-GfxDrawingMode::GfxDrawingMode(const ValueType value) noexcept : GfxObject(ClassName)
+GfxDrawingMode::GfxDrawingMode(const ValueType dmode) noexcept : GfxObject(ClassName)
 {
-    value_ = value;
+    dmode_ = static_cast<BgiType>(dmode);
+}
+
+GfxDrawingMode::GfxDrawingMode(const BgiType dmode) noexcept : GfxObject(ClassName)
+{
+    dmode_ = dmode;
 }
 
 GfxDrawingMode::GfxDrawingMode(GfxDrawingMode const& other) noexcept : GfxObject(ClassName)
 {
-    value_ = other.value_;
+    dmode_ = other.dmode_;
 }
 
 GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(ClassName)
 {
-    value_ = other.value_;
+    dmode_ = other.dmode_;
     // Delete other's value
-    other.value_ = prv::GfxCanvasBgi::bgiDrawingMode::COPY_PUT;
+    other.clear();
 }
 
 GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
 {
     if (this != &other)
     {
-        value_ = other.value_;
+        dmode_ = other.dmode_;
     }
     return *this;
 }
@@ -66,27 +71,36 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode&& other) noexcept
 {
     if (this != &other)
     {
-        value_ = other.value_;
+        dmode_ = other.dmode_;
         // Delete other's value
-        other.value_ = prv::GfxCanvasBgi::bgiDrawingMode::COPY_PUT;
+        other.clear();
     }
     return *this;
 }
-
 
 GfxDrawingMode::operator bool() const noexcept
 {
     return true;
 }
 
-GfxDrawingMode::ValueType GfxDrawingMode::getValue() const noexcept
+GfxDrawingMode::ValueType GfxDrawingMode::getValue(void) const noexcept
 {
-    return value_;
+    return static_cast<ValueType>(dmode_);
 }
 
-void GfxDrawingMode::setValue(const ValueType value) noexcept
+void GfxDrawingMode::setValue(const ValueType dmode) noexcept
 {
-    value_ = value;
+    dmode_ = static_cast<BgiType>(dmode);
+}
+
+void GfxDrawingMode::clear(void) noexcept
+{
+    dmode_ = static_cast<BgiType>(ValueType::copyPut);
+}
+
+GfxDrawingMode::BgiType GfxDrawingMode::getAsBgiType(void) const noexcept
+{
+    return dmode_;
 }
 
 }  // namespace bgi
