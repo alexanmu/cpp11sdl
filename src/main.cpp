@@ -341,19 +341,29 @@ void _doStuff(void)
     }
 
     gfx::bgi::GfxCanvas cv(surfcanvas);
-    cv.Circle(gfx::rect::GfxPoint(480, 240), gfx::bgi::GfxRadius(230), gfx::bgi::kColorGreen());
-    auto color = gfx::bgi::kColorRed();
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::green));
+    cv.Circle(gfx::rect::GfxPoint(480, 240), gfx::bgi::GfxRadius(230));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::red));
     cv.Arc(gfx::rect::GfxPoint(480, 240), gfx::bgi::GfxAngle(60), gfx::bgi::GfxAngle(300),
-           gfx::bgi::GfxRadius(239), color);
-    cv.OutTextXY(gfx::rect::GfxPoint(360, 232), gfx::bgi::GfxText("SDL_bgi"), gfx::pixels::GfxColor(50, 100, 200));
-    cv.Bar(gfx::rect::GfxPoint(480, 0), gfx::rect::GfxPoint(960, 240), gfx::bgi::kColorLightRed());
-    cv.Bar(gfx::rect::GfxRect(10, 10, 20, 20), gfx::bgi::kColorRed());
-    cv.Rectangle(gfx::rect::GfxPoint(20, 20), gfx::rect::GfxPoint(30, 30), gfx::bgi::kColorGreen());
-    cv.Rectangle(gfx::rect::GfxRect(30, 30, 40, 40), gfx::pixels::GfxColor(128, 128, 128));
-    cv.Line(gfx::rect::GfxPoint(10, 10), gfx::rect::GfxPoint(40, 40), gfx::bgi::kColorYellow());
+           gfx::bgi::GfxRadius(239));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::customForeground,
+                gfx::pixels::GfxColor(50, 100, 200).getColor()));
+    cv.OutTextXY(gfx::rect::GfxPoint(360, 232), gfx::bgi::GfxText("SDL_bgi"));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::lightRed));
+    cv.Bar(gfx::rect::GfxPoint(480, 0), gfx::rect::GfxPoint(960, 240));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::red));
+    cv.Bar(gfx::rect::GfxRect(10, 10, 20, 20));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::green));
+    cv.Rectangle(gfx::rect::GfxPoint(20, 20), gfx::rect::GfxPoint(30, 30));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::customForeground,
+                                     gfx::pixels::GfxColor(128, 128, 128).getColor()));
+    cv.Rectangle(gfx::rect::GfxRect(30, 30, 40, 40));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::yellow));
+    cv.Line(gfx::rect::GfxPoint(10, 10), gfx::rect::GfxPoint(40, 40));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::customForeground,
+                                     gfx::pixels::GfxColor(150, 100, 200).getColor()));
     cv.OutTextXY(gfx::rect::GfxPoint(50, 50),
-               gfx::bgi::GfxText("The quick brown fox jumped over the lazy dog 0123456789!"),
-               gfx::pixels::GfxColor(150, 100, 200));
+               gfx::bgi::GfxText("The quick brown fox jumped over the lazy dog 0123456789!"));
 
     std::string fontMsg = "The quick brown fox jumped over the laxy dog 0123456789!";
     for (int32_t i = 0; i < gfx::bgi::fnt::kNumFonts; i++)
@@ -363,28 +373,29 @@ void _doStuff(void)
         int32_t r = 210 - i * 10;
         int32_t g = 200 + i * 5;
         int32_t b = 20 + i * 10;
+        cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::customForeground,
+                                         gfx::pixels::GfxColor(r, g, b).getColor()));
         cv.OutTextXY(gfx::rect::GfxPoint(x, y), gfx::bgi::GfxText(fontMsg),
-                   gfx::pixels::GfxColor(r, g, b),
-                   gfx::bgi::fnt::kGetFontByIndex(
-                        static_cast<gfx::bgi::fnt::GfxFontIndex>(i)));
+                     gfx::bgi::fnt::kGetFontByIndex(
+                                                    static_cast<gfx::bgi::fnt::GfxFontIndex>(i)));
     }
 
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::lightGray));
+    cv.Bar(gfx::rect::GfxPoint(600, 100), gfx::rect::GfxPoint(800, 200));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::white));
+    cv.OutTextXY(gfx::rect::GfxPoint(620, 120), gfx::bgi::GfxText("3D Text, custom font"), gfx::bgi::fnt::kFontScript());
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::black));
+    cv.OutTextXY(gfx::rect::GfxPoint(621, 121), gfx::bgi::GfxText("3D Text, custom font"), gfx::bgi::fnt::kFontScript());
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::white));
+    cv.OutTextXY(gfx::rect::GfxPoint(620, 140), gfx::bgi::GfxText("3D Text, SDL_bgi font"));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::black));
+    cv.OutTextXY(gfx::rect::GfxPoint(621, 141), gfx::bgi::GfxText("3D Text, SDL_bgi font"));
 
-    cv.Bar(gfx::rect::GfxPoint(600, 100), gfx::rect::GfxPoint(800, 200), gfx::bgi::kColorLightGray());
-    cv.OutTextXY(gfx::rect::GfxPoint(620, 120), gfx::bgi::GfxText("3D Text, custom font"),
-               gfx::bgi::kColorWhite(), gfx::bgi::fnt::kFontScript());
-    cv.OutTextXY(gfx::rect::GfxPoint(621, 121), gfx::bgi::GfxText("3D Text, custom font"),
-               gfx::bgi::kColorBlack(), gfx::bgi::fnt::kFontScript());
-    cv.OutTextXY(gfx::rect::GfxPoint(620, 140), gfx::bgi::GfxText("3D Text, SDL_bgi font"),
-               gfx::bgi::kColorWhite());
-    cv.OutTextXY(gfx::rect::GfxPoint(621, 141), gfx::bgi::GfxText("3D Text, SDL_bgi font"),
-               gfx::bgi::kColorBlack());
 
-
-    cv.OutTextXY(gfx::rect::GfxPoint(1010, 120), gfx::bgi::GfxText("WIN_W=" + std::to_string(WIN_W)),
-               gfx::bgi::kColorGreen(), gfx::bgi::fnt::kFontAntique());
-    cv.OutTextXY(gfx::rect::GfxPoint(1010, 150), gfx::bgi::GfxText("WIN_H=" + std::to_string(WIN_H)),
-               gfx::bgi::kColorLightGray(), gfx::bgi::fnt::kFontWacky());
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::green));
+    cv.OutTextXY(gfx::rect::GfxPoint(1010, 120), gfx::bgi::GfxText("WIN_W=" + std::to_string(WIN_W)), gfx::bgi::fnt::kFontAntique());
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::lightGray));
+    cv.OutTextXY(gfx::rect::GfxPoint(1010, 150), gfx::bgi::GfxText("WIN_H=" + std::to_string(WIN_H)), gfx::bgi::fnt::kFontWacky());
     c = 0;
     for (int32_t i = 0; i < WIN_W; i++)
     {
@@ -400,7 +411,8 @@ void _doStuff(void)
                     static_cast<gfx::bgi::GfxColorIndex>(c)).getGreen();
             b = gfx::bgi::kGetColorByIndex(
                     static_cast<gfx::bgi::GfxColorIndex>(c)).getBlue();
-            cv.PutPixel(gfx::rect::GfxPoint(i, j), gfx::pixels::GfxColor(r, g, b, 224));
+            gfx::bgi::GfxColors2 c = gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::customForeground, gfx::pixels::GfxColor(r, g, b, 224).getColor());
+            cv.PutPixel(gfx::rect::GfxPoint(i, j), c);
         }
         if (((i + 1) % 60) == 0)
         {

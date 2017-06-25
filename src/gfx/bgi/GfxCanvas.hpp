@@ -78,27 +78,25 @@ public:
     virtual explicit operator bool() const noexcept;
 
     void Arc(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-             GfxRadius const& radius, pixels::GfxColor const& clr) noexcept;
-    void Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept;
-    void Bar(rect::GfxRect const& r, pixels::GfxColor const& clr) noexcept;
+             GfxRadius const& radius) noexcept;
+    void Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept;
+    void Bar(rect::GfxRect const& r) noexcept;
     void Bar3D(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, const int32_t depth,
-                const bool topflag, pixels::GfxColor const& clr) noexcept;
-    void Bar3D(rect::GfxRect const& r, const int32_t depth, const bool topflag,
-                pixels::GfxColor const& clr) noexcept;
-    void Circle(rect::GfxPoint const& pt, GfxRadius const& r, pixels::GfxColor const& clr) noexcept;
+                const bool topflag) noexcept;
+    void Bar3D(rect::GfxRect const& r, const int32_t depth, const bool topflag) noexcept;
+    void Circle(rect::GfxPoint const& pt, GfxRadius const& r) noexcept;
     void ClearDevice(void) noexcept;
     void ClearViewPort(void) noexcept;
-    void DrawPoly(std::vector<int32_t> const& polypoints, pixels::GfxColor const& clr) noexcept;
+    void DrawPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept;
     void Ellipse(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                GfxRadius const& xradius, GfxRadius const& yradius, pixels::GfxColor const& clr) noexcept;
-    void FillEllipse(rect::GfxPoint const& pt, GfxRadius const& xradius, GfxRadius const& yradius,
-                    pixels::GfxColor const& clr) noexcept;
-    void FillPoly(std::vector<int32_t> const& polypoints, pixels::GfxColor const& clr) noexcept;
-    void FloodFill(rect::GfxPoint const& pt, pixels::GfxColor const& border, pixels::GfxColor const& clr) noexcept;
+                GfxRadius const& xradius, GfxRadius const& yradius) noexcept;
+    void FillEllipse(rect::GfxPoint const& pt, GfxRadius const& xradius, GfxRadius const& yradius) noexcept;
+    void FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept;
+    void FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) noexcept;
     void FreeImage(void * bitmap) noexcept;
     GfxArcCoordsType GetArcCoords(void) noexcept;
-    pixels::GfxColor GetBkColor(void) noexcept;
-    pixels::GfxColor GetColor(void) noexcept;
+    GfxColors2 GetBkColor(void) noexcept;
+    GfxColors2 GetColor(void) noexcept;
     GfxPaletteType GetDefaultPalette(void) noexcept;
     void GetFillPattern(char * pattern) noexcept;
     GfxFillSettingsType GetFillSettings(void) noexcept;
@@ -110,7 +108,7 @@ public:
     int32_t GetMaxY(void) noexcept;
     GfxPaletteType GetPalette(void) noexcept;
     int32_t GetPaletteSize(void) noexcept;
-    pixels::GfxColor GetPixel(rect::GfxPoint const& pt) noexcept;
+    GfxColors2 GetPixel(rect::GfxPoint const& pt) noexcept;
     GfxTextSettingsType GetTextSettings(void) noexcept;
     GfxViewPortType GetViewSettings(void) noexcept;
     int32_t GetX(void) noexcept;
@@ -118,36 +116,31 @@ public:
     void GraphDefaults(void) noexcept;
     uint32_t ImageSize(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept;
     uint32_t ImageSize(rect::GfxRect const& r) noexcept;
-    void Line(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept;
+    void Line(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept;
     void LineRel(rect::GfxPoint const& pt) noexcept;
     void LineTo(rect::GfxPoint const& pt) noexcept;
     void MoveRel(rect::GfxPoint const& pt) noexcept;
     void MoveTo(rect::GfxPoint const& pt) noexcept;
-    void OutText(GfxText const& text, pixels::GfxColor const& clr) noexcept;
-    void OutText(GfxText const& text, pixels::GfxColor const& clr, fnt::GfxBitmapFont const& font) noexcept;
-    void OutTextXY(rect::GfxPoint const& pt, GfxText const& text, pixels::GfxColor const& clr) noexcept;
-    void OutTextXY(rect::GfxPoint const& pt, GfxText const& text, pixels::GfxColor const& clr,
-                  fnt::GfxBitmapFont const& font) noexcept;
-    /* HERE */
+    void OutText(GfxText const& text) noexcept;
+    void OutText(GfxText const& text, fnt::GfxBitmapFont const& font) noexcept;
+    void OutTextXY(rect::GfxPoint const& pt, GfxText const& text) noexcept;
+    void OutTextXY(rect::GfxPoint const& pt, GfxText const& text, fnt::GfxBitmapFont const& font) noexcept;
     void PieSlice(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                GfxRadius const& radius, GfxColors2 const& clr) noexcept;
-    /* HERE */
+                GfxRadius const& radius) noexcept;
     void PutImage(rect::GfxPoint const& pt, void * bitmap, GfxDrawingMode const& dmode) noexcept;
-    void PutPixel(rect::GfxPoint const& pt, pixels::GfxColor const& clr) noexcept;
-    void Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept;
-    void Rectangle(rect::GfxRect const& r, pixels::GfxColor const& clr) noexcept;
+    void PutPixel(rect::GfxPoint const& pt, GfxColors2 const& clr) noexcept;
+    void Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept;
+    void Rectangle(rect::GfxRect const& r) noexcept;
     void Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                GfxRadius const& xradius, GfxRadius const& yradius, pixels::GfxColor const& clr) noexcept;
+                GfxRadius const& xradius, GfxRadius const& yradius) noexcept;
     void SetAllPalette(GfxPaletteType const& palette) noexcept;
-    void SetBkColor(pixels::GfxColor const& clr) noexcept;
-    void SetColor(pixels::GfxColor const& clr) noexcept;
-    void SetFillPattern(uint8_t * upattern, pixels::GfxColor const& clr) noexcept;
-    void SetFillStyle(GfxFillStyles const& pattern, pixels::GfxColor const& clr) noexcept;
+    void SetBkColor(GfxColors2 const& clr) noexcept;
+    void SetColor(GfxColors2 const& clr) noexcept;
+    void SetFillPattern(uint8_t * upattern, GfxColors2 const& clr) noexcept;
+    void SetFillStyle(GfxFillStyles const& pattern, GfxColors2 const& clr) noexcept;
     void SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,
                     GfxLineThickness const& thickness) noexcept;
-    /* HERE */
     void SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept;
-    /* HERE */
     void SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept;
     void SetTextStyle(GfxFonts const& font, GfxDirection const& direction, int32_t charsize) noexcept;
     void SetUserCharSize(const int32_t multx, const int32_t divx, const int32_t multy, const int32_t divy) noexcept;

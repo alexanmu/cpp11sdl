@@ -24,6 +24,7 @@
 #ifndef GfxColors2_hpp
 #define GfxColors2_hpp
 
+#include <stdexcept>
 #include <cstdint>
 
 #include "GfxObject.hpp"
@@ -69,8 +70,8 @@ public:
 
     GfxColors2() noexcept;
 
-    explicit GfxColors2(const ValueType clr) noexcept;
-    explicit GfxColors2(const BgiType clr) noexcept;
+    explicit GfxColors2(const ValueType clr, uint32_t argb = 0) noexcept;
+    explicit GfxColors2(const BgiType clr, uint32_t argb = 0) noexcept;
 
     GfxColors2(GfxColors2 const& other) noexcept;
     GfxColors2(GfxColors2&& other) noexcept;
@@ -82,12 +83,15 @@ public:
 
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType clr) noexcept;
+    uint32_t getARGB(void) const throw(std::runtime_error);
+    void setARGB(const uint32_t argb) noexcept;
 
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;
 private:
     BgiType clr_;
+    uint32_t argb_;
 };
 
 }  // namespace bgi

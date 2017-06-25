@@ -52,71 +52,58 @@ GfxCanvas::operator bool() const noexcept
 }
 
 void GfxCanvas::Arc(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                    GfxRadius const& radius, pixels::GfxColor const& clr) noexcept
+                    GfxRadius const& radius) noexcept
 {
     assert(pt);
     assert(stangle);
     assert(endangle);
     assert(radius);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.arc(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
-void GfxCanvas::Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
 {
     assert(pt1);
     assert(pt2);
-    assert(clr);
 
-    bgi_.setCustomFillColor(clr.getColor());
     bgi_.bar(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Bar(rect::GfxRect const& r, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Bar(rect::GfxRect const& r) noexcept
 {
     assert(r);
-    assert(clr);
 
-    bgi_.setCustomFillColor(clr.getColor());
     bgi_.bar(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
 void GfxCanvas::Bar3D(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, const int32_t depth,
-                        const bool topflag, pixels::GfxColor const& clr) noexcept
+                        const bool topflag) noexcept
 {
     assert(pt1);
     assert(pt2);
     assert(depth > 0);
-    assert(clr);
 
     int32_t int_topflag = static_cast<int32_t>(topflag);
 
-    bgi_.setCustomFillColor(clr.getColor());
     bgi_.bar3d(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY(), depth, int_topflag);
 }
 
-void GfxCanvas::Bar3D(rect::GfxRect const& r, const int32_t depth, const bool topflag,
-                    pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Bar3D(rect::GfxRect const& r, const int32_t depth, const bool topflag) noexcept
 {
     assert(r);
     assert(depth > 0);
-    assert(clr);
 
     int32_t int_topflag = static_cast<int32_t>(topflag);
 
-    bgi_.setCustomFillColor(clr.getColor());
     bgi_.bar3d(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1, depth, int_topflag);
 }
 
-void GfxCanvas::Circle(rect::GfxPoint const& pt, GfxRadius const& r, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Circle(rect::GfxPoint const& pt, GfxRadius const& r) noexcept
 {
     assert(pt);
     assert(r);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.circle(pt.getX(), pt.getY(), r.getValue());
 }
 
@@ -130,64 +117,68 @@ void GfxCanvas::ClearViewPort(void) noexcept
     bgi_.clearviewport();
 }
 
-void GfxCanvas::DrawPoly(std::vector<int32_t> const& polypoints, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::DrawPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
 {
     assert(polypoints.size() > 0);
-    assert(clr);
 
-    const int * points = &polypoints.front();
+    int * points = new int[polypoints.size() * 2];  // NOLINT
+    int index = 0;
 
-    bgi_.setCustomForegroundColor(clr.getColor());
+    for (auto& it : polypoints)
+    {
+        points[index + 0] = it.getX();
+        points[index + 1] = it.getY();
+        index += 2;
+    }
     bgi_.drawpoly(static_cast<int>(polypoints.size()), const_cast<int *>(points));
+    delete[] points;
 }
 
 void GfxCanvas::Ellipse(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                    GfxRadius const& xradius, GfxRadius const& yradius, pixels::GfxColor const& clr) noexcept
+                    GfxRadius const& xradius, GfxRadius const& yradius) noexcept
 {
     assert(pt);
     assert(stangle);
     assert(endangle);
     assert(xradius);
     assert(yradius);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.ellipse(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), xradius.getValue(),
                 yradius.getValue());
 }
 
-void GfxCanvas::FillEllipse(rect::GfxPoint const& pt, GfxRadius const& xradius, GfxRadius const& yradius,
-                            pixels::GfxColor const& clr) noexcept
+void GfxCanvas::FillEllipse(rect::GfxPoint const& pt, GfxRadius const& xradius, GfxRadius const& yradius) noexcept
 {
     assert(pt);
     assert(xradius);
     assert(yradius);
-    assert(clr);
 
-    bgi_.setCustomFillColor(clr.getColor());
     bgi_.fillellipse(pt.getX(), pt.getY(), xradius.getValue(), yradius.getValue());
 }
 
-void GfxCanvas::FillPoly(std::vector<int32_t> const& polypoints, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
 {
     assert(polypoints.size() > 0);
-    assert(clr);
 
-    const int * points = &polypoints.front();
-
-    bgi_.setCustomFillColor(clr.getColor());
+    int * points = new int[polypoints.size() * 2];  // NOLINT
+    int index = 0;
+    
+    for (auto& it : polypoints)
+    {
+        points[index + 0] = it.getX();
+        points[index + 1] = it.getY();
+        index += 2;
+    }
     bgi_.fillpoly(static_cast<int>(polypoints.size()), const_cast<int *>(points));
+    delete[] points;
 }
 
-void GfxCanvas::FloodFill(rect::GfxPoint const& pt, pixels::GfxColor const& border,
-                        pixels::GfxColor const& clr) noexcept
+void GfxCanvas::FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) noexcept
 {
     assert(pt);
     assert(border);
-    assert(clr);
 
-    bgi_.setCustomFillColor(clr.getColor());
-    bgi_.floodfill(pt.getX(), pt.getY(), static_cast<prv::GfxCanvasBgi::bgiColors>(border.getColor()));
+    bgi_.floodfill(pt.getX(), pt.getY(), border.getAsBgiType());
 }
 
 void GfxCanvas::FreeImage(void * bitmap) noexcept
@@ -205,20 +196,44 @@ GfxArcCoordsType GfxCanvas::GetArcCoords(void) noexcept
     return GfxArcCoordsType(arccoords);
 }
 
-pixels::GfxColor GfxCanvas::GetBkColor(void) noexcept
+GfxColors2 GfxCanvas::GetBkColor(void) noexcept
 {
-    // prv::GfxCanvasBgi::bgiColors clr = bgi_.getbkcolor();
-    // return kGetColorByIndex(static_cast<GfxColorIndex>(clr));
+    prv::GfxCanvasBgi::bgiColors clr = bgi_.getbkcolor();
+    uint32_t argb = 0;
 
-    return pixels::GfxColor(bgi_.getCustomForegroundColor());
+    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_BG)
+    {
+        argb = bgi_.getCustomBackgroundColor();
+    }
+    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FG)
+    {
+        argb = bgi_.getCustomForegroundColor();
+    }
+    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FILL)
+    {
+        argb = bgi_.getCustomFillColor();
+    }
+    return GfxColors2(clr, argb);
 }
 
-pixels::GfxColor GfxCanvas::GetColor(void) noexcept
+GfxColors2 GfxCanvas::GetColor(void) noexcept
 {
-    // prv::GfxCanvasBgi::bgiColors clr = bgi_.getcolor();
-    // return kGetColorByIndex(static_cast<GfxColorIndex>(clr));
-
-    return pixels::GfxColor(bgi_.getCustomBackgroundColor());
+    prv::GfxCanvasBgi::bgiColors clr = bgi_.getcolor();
+    uint32_t argb = 0;
+    
+    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_BG)
+    {
+        argb = bgi_.getCustomBackgroundColor();
+    }
+    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FG)
+    {
+        argb = bgi_.getCustomForegroundColor();
+    }
+    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FILL)
+    {
+        argb = bgi_.getCustomFillColor();
+    }
+    return GfxColors2(clr, argb);
 }
 
 GfxPaletteType GfxCanvas::GetDefaultPalette(void) noexcept
@@ -303,14 +318,14 @@ int32_t GfxCanvas::GetPaletteSize(void) noexcept
     return bgi_.getpalettesize();
 }
 
-pixels::GfxColor GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
+GfxColors2 GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
 {
     assert(pt);
 
     uint32_t clr;
 
     clr = bgi_.getpixel(pt.getX(), pt.getY());
-    return pixels::GfxColor(clr);
+    return GfxColors2(prv::GfxCanvasBgi::bgiColors::CUSTOM_FG, clr);
 }
 
 GfxTextSettingsType GfxCanvas::GetTextSettings(void) noexcept
@@ -359,15 +374,11 @@ uint32_t GfxCanvas::ImageSize(rect::GfxRect const& r) noexcept
     return bgi_.imagesize(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::Line(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Line(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
 {
     assert(pt1);
     assert(pt2);
-    assert(clr);
 
-    uint32_t c = clr.getColor();
-
-    bgi_.setCustomForegroundColor(c);
     bgi_.line(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
@@ -397,61 +408,50 @@ void GfxCanvas::MoveTo(rect::GfxPoint const& pt) noexcept
     bgi_.moveto(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::OutText(GfxText const& text, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::OutText(GfxText const& text) noexcept
 {
     assert(text);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.outtext(const_cast<char *>(text.getValue().c_str()));
 }
 
-void GfxCanvas::OutText(GfxText const& text, pixels::GfxColor const& clr, fnt::GfxBitmapFont const& font) noexcept
+void GfxCanvas::OutText(GfxText const& text, fnt::GfxBitmapFont const& font) noexcept
 {
     assert(text);
-    assert(clr);
     assert(font);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.setCustomFont(font.getFontData(), font.getFontWidth(), font.getFontHeight());
     bgi_.outtext(const_cast<char *>(text.getValue().c_str()));
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text, pixels::GfxColor const& clr,
-                        fnt::GfxBitmapFont const& font) noexcept
+void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text, fnt::GfxBitmapFont const& font) noexcept
 {
     assert(pt);
     assert(text);
-    assert(clr);
     assert(font);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.setCustomFont(font.getFontData(), font.getFontWidth(), font.getFontHeight());
     bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text) noexcept
 {
     assert(pt);
     assert(text);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
 }
 
 void GfxCanvas::PieSlice(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                        GfxRadius const& radius, GfxColors2 const& clr) noexcept
+                        GfxRadius const& radius) noexcept
 {
     assert(pt);
     assert(stangle);
     assert(endangle);
     assert(radius);
-    assert(clr);
 
-    bgi_.setcolor(clr.getAsBgiType());
     bgi_.pieslice(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
@@ -464,42 +464,30 @@ void GfxCanvas::PutImage(rect::GfxPoint const& pt, void * bitmap, GfxDrawingMode
     bgi_.putimage(pt.getX(), pt.getY(), bitmap, dmode.getAsBgiType());
 }
 
-void GfxCanvas::PutPixel(rect::GfxPoint const& pt, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::PutPixel(rect::GfxPoint const& pt, GfxColors2 const& clr) noexcept
 {
     assert(pt);
-    assert(clr);
 
-    uint32_t c = clr.getColor();
-
-    bgi_.setCustomForegroundColor(c);
-    bgi_._putpixel(pt.getX(), pt.getY());
+    bgi_.putpixel(pt.getX(), pt.getY(), clr.getAsBgiType());
 }
 
-void GfxCanvas::Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
 {
     assert(pt1);
     assert(pt2);
-    assert(clr);
 
-    uint32_t c = clr.getColor();
-
-    bgi_.setCustomForegroundColor(c);
     bgi_.rectangle(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Rectangle(rect::GfxRect const& r, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::Rectangle(rect::GfxRect const& r) noexcept
 {
     assert(r);
-    assert(clr);
 
-    uint32_t c = clr.getColor();
-
-    bgi_.setCustomForegroundColor(c);
     bgi_.rectangle(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
 void GfxCanvas::Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                    GfxRadius const& xradius, GfxRadius const& yradius, pixels::GfxColor const& clr) noexcept
+                    GfxRadius const& xradius, GfxRadius const& yradius) noexcept
 {
     assert(pt);
     assert(stangle);
@@ -507,7 +495,6 @@ void GfxCanvas::Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAng
     assert(xradius);
     assert(yradius);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
     bgi_.sector(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(),
                 xradius.getValue(), yradius.getValue());
 }
@@ -522,38 +509,60 @@ void GfxCanvas::SetAllPalette(GfxPaletteType const& palette) noexcept
     bgi_.setallpalette(&pal);
 }
 
-void GfxCanvas::SetBkColor(pixels::GfxColor const& clr) noexcept
+void GfxCanvas::SetBkColor(GfxColors2 const& clr) noexcept
 {
     assert(clr);
 
-    // bgi_.setbkcolor(clr.getColor());
-    bgi_.setCustomBackgroundColor(clr.getColor());
+    switch (clr.getValue())
+    {
+        case GfxColors2::ValueType::customForeground:
+            bgi_.setCustomForegroundColor(clr.getARGB());
+            break;
+        case GfxColors2::ValueType::customBackground:
+            bgi_.setCustomBackgroundColor(clr.getARGB());
+            break;
+        case GfxColors2::ValueType::customFill:
+            bgi_.setCustomFillColor(clr.getARGB());
+            break;
+        default:
+            bgi_.setbkcolor(clr.getAsBgiType());
+            break;
+    }
 }
 
-void GfxCanvas::SetColor(pixels::GfxColor const& clr) noexcept
+void GfxCanvas::SetColor(GfxColors2 const& clr) noexcept
 {
     assert(clr);
 
-    // bgi_.setcolor(clr.getColor());
-    bgi_.setCustomForegroundColor(clr.getColor());
+    switch (clr.getValue())
+    {
+        case GfxColors2::ValueType::customForeground:
+            bgi_.setCustomForegroundColor(clr.getARGB());
+            break;
+        case GfxColors2::ValueType::customBackground:
+            bgi_.setCustomBackgroundColor(clr.getARGB());
+            break;
+        case GfxColors2::ValueType::customFill:
+            bgi_.setCustomFillColor(clr.getARGB());
+            break;
+        default:
+            bgi_.setcolor(clr.getAsBgiType());
+            break;
+    }
 }
 
-void GfxCanvas::SetFillPattern(uint8_t * upattern, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::SetFillPattern(uint8_t * upattern, GfxColors2 const& clr) noexcept
 {
     assert(upattern != nullptr);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
-    bgi_.setfillpattern(upattern, prv::GfxCanvasBgi::bgiColors::BLACK);
+    bgi_.setfillpattern(upattern, clr.getAsBgiType());
 }
 
-void GfxCanvas::SetFillStyle(GfxFillStyles const& pattern, pixels::GfxColor const& clr) noexcept
+void GfxCanvas::SetFillStyle(GfxFillStyles const& pattern, GfxColors2 const& clr) noexcept
 {
     assert(pattern);
-    assert(clr);
 
-    bgi_.setCustomForegroundColor(clr.getColor());
-    bgi_.setfillstyle(pattern.getAsBgiType(), prv::GfxCanvasBgi::bgiColors::BLACK);
+    bgi_.setfillstyle(pattern.getAsBgiType(), clr.getAsBgiType());
 }
 
 void GfxCanvas::SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,

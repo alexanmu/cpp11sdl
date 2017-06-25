@@ -92,13 +92,20 @@ void GDemoForm::draw(void)
     std::string __base_path = gto::gobj::GApplication::activeApp->getBasePath();
 
     auto canvas = getCanvas();
-    canvas->Bar(gfx::rect::GfxRect(0, 0, 300, 300), gfx::pixels::GfxColor(200, 200, 200));
-    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190), gfx::bgi::kColorWhite());
-    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(190, 110), gfx::bgi::kColorWhite());
-    canvas->Line(gfx::rect::GfxPoint(190, 110), gfx::rect::GfxPoint(190, 190),
-                 gfx::bgi::kColorDarkGray());
-    canvas->Line(gfx::rect::GfxPoint(110, 190), gfx::rect::GfxPoint(190, 190),
-                 gfx::bgi::kColorDarkGray());
+    auto clr2 = gfx::bgi::GfxColors2();
+
+    clr2.setValue(gfx::bgi::GfxColors2::ValueType::customForeground);
+    clr2.setARGB(gfx::pixels::GfxColor(200, 200, 200).getColor());
+    canvas->SetColor(clr2);
+    canvas->Bar(gfx::rect::GfxRect(0, 0, 300, 300));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::white));
+    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::white));
+    canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(190, 110));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::darkGray));
+    canvas->Line(gfx::rect::GfxPoint(190, 110), gfx::rect::GfxPoint(190, 190));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::ValueType::darkGray));
+    canvas->Line(gfx::rect::GfxPoint(110, 190), gfx::rect::GfxPoint(190, 190));
 
     auto surf = gfx::surface::GfxSurface("GDemoForm::draw", pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
     window_->setWindowIcon(surf);

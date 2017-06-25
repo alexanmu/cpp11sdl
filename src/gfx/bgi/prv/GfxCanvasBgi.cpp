@@ -1310,6 +1310,9 @@ void GfxCanvasBgi::initpalette(void)
     {
         bgi_palette[i] = bgi_default_palette[i];
     }
+    bgi_palette[static_cast<int>(bgiColors::CUSTOM_BG)] = bgi_default_palette[0];
+    bgi_palette[static_cast<int>(bgiColors::CUSTOM_FG)] = bgi_default_palette[0];
+    bgi_palette[static_cast<int>(bgiColors::CUSTOM_FILL)] = bgi_default_palette[0];
 }  // initpalette ()
 
 // -----
