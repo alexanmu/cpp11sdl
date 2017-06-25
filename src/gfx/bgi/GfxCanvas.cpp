@@ -162,7 +162,7 @@ void GfxCanvas::FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
 
     int * points = new int[polypoints.size() * 2];  // NOLINT
     int index = 0;
-    
+
     for (auto& it : polypoints)
     {
         points[index + 0] = it.getX();
@@ -178,6 +178,17 @@ void GfxCanvas::FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) no
     assert(pt);
     assert(border);
 
+    prv::GfxCanvasBgi::bgiColors color;
+
+    if (border.isCustomColor() == true)
+    {
+        color = prv::GfxCanvasBgi::CUSTOM_FILL;
+        bgi_.setCustomFillColor(border.getValue());
+    }
+    else
+    {
+        color = border.getAsBgiType();
+    }
     bgi_.floodfill(pt.getX(), pt.getY(), border.getAsBgiType());
 }
 
@@ -199,41 +210,33 @@ GfxArcCoordsType GfxCanvas::GetArcCoords(void) noexcept
 GfxColors2 GfxCanvas::GetBkColor(void) noexcept
 {
     prv::GfxCanvasBgi::bgiColors clr = bgi_.getbkcolor();
-    uint32_t argb = 0;
+    GfxColors2::ValueType retclr;
 
-    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_BG)
+    if (clr == prv::GfxCanvasBgi::CUSTOM_BG)
     {
-        argb = bgi_.getCustomBackgroundColor();
+        retclr = bgi_.getCustomBackgroundColor();
     }
-    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FG)
+    else
     {
-        argb = bgi_.getCustomForegroundColor();
+        retclr = clr;
     }
-    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FILL)
-    {
-        argb = bgi_.getCustomFillColor();
-    }
-    return GfxColors2(clr, argb);
+    return GfxColors2(retclr);
 }
 
 GfxColors2 GfxCanvas::GetColor(void) noexcept
 {
     prv::GfxCanvasBgi::bgiColors clr = bgi_.getcolor();
-    uint32_t argb = 0;
-    
-    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_BG)
+    GfxColors2::ValueType retclr;
+
+    if (clr == prv::GfxCanvasBgi::CUSTOM_FG)
     {
-        argb = bgi_.getCustomBackgroundColor();
+        retclr = bgi_.getCustomForegroundColor();
     }
-    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FG)
+    else
     {
-        argb = bgi_.getCustomForegroundColor();
+        retclr = clr;
     }
-    if (clr == prv::GfxCanvasBgi::bgiColors::CUSTOM_FILL)
-    {
-        argb = bgi_.getCustomFillColor();
-    }
-    return GfxColors2(clr, argb);
+    return GfxColors2(retclr);
 }
 
 GfxPaletteType GfxCanvas::GetDefaultPalette(void) noexcept
@@ -325,7 +328,7 @@ GfxColors2 GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
     uint32_t clr;
 
     clr = bgi_.getpixel(pt.getX(), pt.getY());
-    return GfxColors2(prv::GfxCanvasBgi::bgiColors::CUSTOM_FG, clr);
+    return GfxColors2(clr);
 }
 
 GfxTextSettingsType GfxCanvas::GetTextSettings(void) noexcept
@@ -468,7 +471,18 @@ void GfxCanvas::PutPixel(rect::GfxPoint const& pt, GfxColors2 const& clr) noexce
 {
     assert(pt);
 
-    bgi_.putpixel(pt.getX(), pt.getY(), clr.getAsBgiType());
+    GfxColors2::BgiType c;
+
+    if (clr.isCustomColor() == true)
+    {
+        c = prv::GfxCanvasBgi::CUSTOM_FG;
+        bgi_.setCustomForegroundColor(clr.getValue());
+    }
+    else
+    {
+        c = clr.getAsBgiType();
+    }
+    bgi_.putpixel(pt.getX(), pt.getY(), c);
 }
 
 void GfxCanvas::Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
@@ -513,56 +527,73 @@ void GfxCanvas::SetBkColor(GfxColors2 const& clr) noexcept
 {
     assert(clr);
 
-    switch (clr.getValue())
+    GfxColors2::BgiType c;
+
+    if (clr.isCustomColor() == true)
     {
-        case GfxColors2::ValueType::customForeground:
-            bgi_.setCustomForegroundColor(clr.getARGB());
-            break;
-        case GfxColors2::ValueType::customBackground:
-            bgi_.setCustomBackgroundColor(clr.getARGB());
-            break;
-        case GfxColors2::ValueType::customFill:
-            bgi_.setCustomFillColor(clr.getARGB());
-            break;
-        default:
-            bgi_.setbkcolor(clr.getAsBgiType());
-            break;
+        c = prv::GfxCanvasBgi::CUSTOM_BG;
+        bgi_.setCustomBackgroundColor(clr.getValue());
     }
+    else
+    {
+        c = clr.getAsBgiType();
+    }
+    bgi_.setbkcolor(c);
 }
 
 void GfxCanvas::SetColor(GfxColors2 const& clr) noexcept
 {
     assert(clr);
 
-    switch (clr.getValue())
+    GfxColors2::BgiType c;
+
+    if (clr.isCustomColor() == true)
     {
-        case GfxColors2::ValueType::customForeground:
-            bgi_.setCustomForegroundColor(clr.getARGB());
-            break;
-        case GfxColors2::ValueType::customBackground:
-            bgi_.setCustomBackgroundColor(clr.getARGB());
-            break;
-        case GfxColors2::ValueType::customFill:
-            bgi_.setCustomFillColor(clr.getARGB());
-            break;
-        default:
-            bgi_.setcolor(clr.getAsBgiType());
-            break;
+        c = prv::GfxCanvasBgi::CUSTOM_FG;
+        bgi_.setCustomForegroundColor(clr.getValue());
     }
+    else
+    {
+        c = clr.getAsBgiType();
+    }
+    bgi_.setcolor(c);
 }
 
 void GfxCanvas::SetFillPattern(uint8_t * upattern, GfxColors2 const& clr) noexcept
 {
     assert(upattern != nullptr);
 
-    bgi_.setfillpattern(upattern, clr.getAsBgiType());
+    GfxColors2::BgiType c;
+
+    if (clr.isCustomColor() == true)
+    {
+        c = prv::GfxCanvasBgi::CUSTOM_FILL;
+        bgi_.setCustomFillColor(clr.getValue());
+    }
+    else
+    {
+        c = clr.getAsBgiType();
+    }
+    bgi_.setfillpattern(upattern, c);
 }
 
 void GfxCanvas::SetFillStyle(GfxFillStyles const& pattern, GfxColors2 const& clr) noexcept
 {
     assert(pattern);
+    assert(clr);
 
-    bgi_.setfillstyle(pattern.getAsBgiType(), clr.getAsBgiType());
+    GfxColors2::BgiType c;
+
+    if (clr.isCustomColor() == true)
+    {
+        c = prv::GfxCanvasBgi::CUSTOM_FILL;
+        bgi_.setCustomFillColor(clr.getValue());
+    }
+    else
+    {
+        c = clr.getAsBgiType();
+    }
+    bgi_.setfillstyle(pattern.getAsBgiType(), c);
 }
 
 void GfxCanvas::SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,
@@ -580,7 +611,7 @@ void GfxCanvas::SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept
     assert(colornum >= 0);
     assert(clr);
 
-    bgi_.setpalette(colornum, clr.getAsBgiType());
+    bgi_.setpalette(colornum, clr.getValue());
 }
 
 void GfxCanvas::SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept

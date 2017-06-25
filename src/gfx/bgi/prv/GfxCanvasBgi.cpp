@@ -927,7 +927,8 @@ void GfxCanvasBgi::floodfill(int x, int y, bgiColors border)
         return;
     }
     else
-    {  // fill patterns
+    {
+        // fill patterns
         if (bgi_bg_color == oldcol)
         {
             // solid fill first...

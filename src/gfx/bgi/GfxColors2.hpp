@@ -29,6 +29,7 @@
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
+#include "GfxBgiConstants.hpp"
 
 namespace gfx
 {
@@ -45,33 +46,29 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    enum class ValueType : int32_t
-    {
-        black = prv::GfxCanvasBgi::bgiColors::BLACK,
-        blue = prv::GfxCanvasBgi::bgiColors::BLUE,
-        green = prv::GfxCanvasBgi::bgiColors::GREEN,
-        cyan = prv::GfxCanvasBgi::bgiColors::CYAN,
-        red = prv::GfxCanvasBgi::bgiColors::RED,
-        magenta = prv::GfxCanvasBgi::bgiColors::MAGENTA,
-        brown = prv::GfxCanvasBgi::bgiColors::BROWN,
-        lightGray = prv::GfxCanvasBgi::bgiColors::LIGHTGRAY,
-        darkGray = prv::GfxCanvasBgi::bgiColors::DARKGRAY,
-        lightBlue = prv::GfxCanvasBgi::bgiColors::LIGHTBLUE,
-        lightGreen = prv::GfxCanvasBgi::bgiColors::LIGHTGREEN,
-        lightCyan = prv::GfxCanvasBgi::bgiColors::LIGHTCYAN,
-        lightRed = prv::GfxCanvasBgi::bgiColors::LIGHTRED,
-        lightMagenta = prv::GfxCanvasBgi::bgiColors::LIGHTMAGENTA,
-        yellow = prv::GfxCanvasBgi::bgiColors::YELLOW,
-        white = prv::GfxCanvasBgi::bgiColors::WHITE,
-        customForeground = prv::GfxCanvasBgi::bgiColors::CUSTOM_FG,
-        customBackground = prv::GfxCanvasBgi::bgiColors::CUSTOM_BG,
-        customFill = prv::GfxCanvasBgi::bgiColors::CUSTOM_FILL
-    };
+    typedef uint32_t ValueType;
+
+    static const uint32_t black = 0xff000000;
+    static const uint32_t blue = 0xff0000ff;
+    static const uint32_t green = 0xff00ff00;
+    static const uint32_t cyan = 0xff00ffff;
+    static const uint32_t red = 0xffff0000;
+    static const uint32_t magenta = 0xffff00ff;
+    static const uint32_t brown = 0xffa52a2a;
+    static const uint32_t lightGray = 0xffd3d3d3;
+    static const uint32_t darkGray = 0xffa9a9a9;
+    static const uint32_t lightBlue = 0xffadd8e6;
+    static const uint32_t lightGreen = 0xff90ee90;
+    static const uint32_t lightCyan = 0xffe0ffff;
+    static const uint32_t lightRed = 0xfff08080;
+    static const uint32_t lightMagenta = 0xffdb7093;
+    static const uint32_t yellow = 0xffffff00;
+    static const uint32_t white = 0xffffffff;
 
     GfxColors2() noexcept;
 
-    explicit GfxColors2(const ValueType clr, uint32_t argb = 0) noexcept;
-    explicit GfxColors2(const BgiType clr, uint32_t argb = 0) noexcept;
+    explicit GfxColors2(const ValueType clr) noexcept;
+    explicit GfxColors2(const BgiType clr) noexcept;
 
     GfxColors2(GfxColors2 const& other) noexcept;
     GfxColors2(GfxColors2&& other) noexcept;
@@ -83,15 +80,17 @@ public:
 
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType clr) noexcept;
-    uint32_t getARGB(void) const throw(std::runtime_error);
-    void setARGB(const uint32_t argb) noexcept;
+
+    bool isCustomColor(void) const noexcept;
 
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;
 private:
-    BgiType clr_;
-    uint32_t argb_;
+    bool isBgiColor(void) const noexcept;
+    BgiType getBgiColor(void) const noexcept;
+
+    ValueType clr_;
 };
 
 }  // namespace bgi

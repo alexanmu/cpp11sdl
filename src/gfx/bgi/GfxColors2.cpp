@@ -38,16 +38,14 @@ GfxColors2::GfxColors2() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxColors2::GfxColors2(const ValueType clr, uint32_t argb) noexcept : GfxObject(ClassName)
-{
-    clr_ = static_cast<BgiType>(clr);
-    argb_ = argb;
-}
-
-GfxColors2::GfxColors2(const BgiType clr, uint32_t argb) noexcept : GfxObject(ClassName)
+GfxColors2::GfxColors2(const ValueType clr) noexcept : GfxObject(ClassName)
 {
     clr_ = clr;
-    argb_ = argb;
+}
+
+GfxColors2::GfxColors2(const BgiType clr) noexcept : GfxObject(ClassName)
+{
+    clr_ = clr;
 }
 
 GfxColors2::GfxColors2(GfxColors2 const& other) noexcept : GfxObject(ClassName)
@@ -97,32 +95,61 @@ void GfxColors2::setValue(const ValueType clr) noexcept
     clr_ = static_cast<BgiType>(clr);
 }
 
-uint32_t GfxColors2::getARGB(void) const throw(std::runtime_error)
+bool GfxColors2::isCustomColor(void) const noexcept
 {
-    ValueType clr = static_cast<ValueType>(clr_);
-
-    if ((clr != ValueType::customForeground) && (clr != ValueType::customBackground) &&
-        (clr != ValueType::customFill))
-    {
-        throw std::runtime_error("argb not set; standard color");
-    }
-    return argb_;
-}
-
-void GfxColors2::setARGB(const uint32_t argb) noexcept
-{
-    argb_ = argb;
+    return !isBgiColor();
 }
 
 void GfxColors2::clear(void) noexcept
 {
-    clr_ = static_cast<BgiType>(ValueType::black);
-    argb_ = 0;
+    clr_ = static_cast<BgiType>(0);
 }
 
 GfxColors2::BgiType GfxColors2::getAsBgiType(void) const noexcept
 {
-    return clr_;
+    return getBgiColor();
+}
+
+bool GfxColors2::isBgiColor(void) const noexcept
+{
+    if (clr_ == black) return true;
+    if (clr_ == blue) return true;
+    if (clr_ == green) return true;
+    if (clr_ == cyan) return true;
+    if (clr_ == red) return true;
+    if (clr_ == magenta) return true;
+    if (clr_ == brown) return true;
+    if (clr_ == lightGray) return true;
+    if (clr_ == darkGray) return true;
+    if (clr_ == lightBlue) return true;
+    if (clr_ == lightGreen) return true;
+    if (clr_ == lightCyan) return true;
+    if (clr_ == lightRed) return true;
+    if (clr_ == lightMagenta) return true;
+    if (clr_ == yellow) return true;
+    if (clr_ == white) return true;
+    return false;
+}
+
+GfxColors2::BgiType GfxColors2::getBgiColor(void) const noexcept
+{
+    if (clr_ == black) return prv::GfxCanvasBgi::BLACK;
+    if (clr_ == blue) return prv::GfxCanvasBgi::BLUE;
+    if (clr_ == green) return prv::GfxCanvasBgi::GREEN;
+    if (clr_ == cyan) return prv::GfxCanvasBgi::CYAN;
+    if (clr_ == red) return prv::GfxCanvasBgi::RED;
+    if (clr_ == magenta) return prv::GfxCanvasBgi::MAGENTA;
+    if (clr_ == brown) return prv::GfxCanvasBgi::BROWN;
+    if (clr_ == lightGray) return prv::GfxCanvasBgi::LIGHTGRAY;
+    if (clr_ == darkGray) return prv::GfxCanvasBgi::DARKGRAY;
+    if (clr_ == lightBlue) return prv::GfxCanvasBgi::LIGHTBLUE;
+    if (clr_ == lightGreen) return prv::GfxCanvasBgi::LIGHTGREEN;
+    if (clr_ == lightCyan) return prv::GfxCanvasBgi::LIGHTCYAN;
+    if (clr_ == lightRed) return prv::GfxCanvasBgi::LIGHTRED;
+    if (clr_ == lightMagenta) return prv::GfxCanvasBgi::LIGHTMAGENTA;
+    if (clr_ == yellow) return prv::GfxCanvasBgi::YELLOW;
+    if (clr_ == white) return prv::GfxCanvasBgi::WHITE;
+    return prv::GfxCanvasBgi::BLACK;
 }
 
 }  // namespace bgi
