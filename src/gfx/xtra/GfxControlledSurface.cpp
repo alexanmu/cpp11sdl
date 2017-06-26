@@ -92,10 +92,17 @@ GfxControlledSurface::GfxControlledSurface(video::GfxWindow const& win) noexcept
     assert(win);
 
     surface::GfxSurface * tmpsurf;
+    std::string wintitle;
 
     tmpsurf = win.getWindowSurface();
     if (tmpsurf != nullptr)
     {
+        wintitle = win.getWindowTitle();
+        if (wintitle.length() == 0)
+        {
+            wintitle = "No title";
+        }
+        tmpsurf->setSurfaceName(wintitle);
         surf_ = tmpsurf;
         surfaceConstructed_ = true;
     }

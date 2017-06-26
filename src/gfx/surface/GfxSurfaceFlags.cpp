@@ -123,7 +123,17 @@ void GfxSurfaceFlags::setSwSurface(void) const throw(std::runtime_error)
     throw std::runtime_error("Not supported");
 }
 
+void GfxSurfaceFlags::resetSwSurface(void) const throw(std::runtime_error)
+{
+    throw std::runtime_error("Not supported");
+}
+
 void GfxSurfaceFlags::setPreAlloc(void) const throw(std::runtime_error)
+{
+    throw std::runtime_error("Not supported");
+}
+
+void GfxSurfaceFlags::resetPreAlloc(void) const throw(std::runtime_error)
 {
     throw std::runtime_error("Not supported");
 }
@@ -133,7 +143,17 @@ void GfxSurfaceFlags::setRLEAccel(void) const throw(std::runtime_error)
     throw std::runtime_error("Not supported");
 }
 
+void GfxSurfaceFlags::resetRLEAccel(void) const throw(std::runtime_error)
+{
+    throw std::runtime_error("Not supported");
+}
+
 void GfxSurfaceFlags::setDontFree(void) const throw(std::runtime_error)
+{
+    throw std::runtime_error("Not supported");
+}
+
+void GfxSurfaceFlags::resetDontFree(void) const throw(std::runtime_error)
 {
     throw std::runtime_error("Not supported");
 }

@@ -78,7 +78,26 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
 
     SdlTypePtr tmpwinptr;
 
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), 100, 100, width, height, 0);
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+                                       width, height, kDefaultFlagsValue);
+    if (tmpwinptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create window");
+    }
+    window_ = tmpwinptr;
+}
+
+GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_t height,
+        GfxWindowFlags const& flags) throw(std::runtime_error) : GfxObject(ClassName)
+{
+    assert(title.length() > 0);
+    assert(width >= 0);
+    assert(height >= 0);
+
+    SdlTypePtr tmpwinptr;
+
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+                                       width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
         throw std::runtime_error("Unable to create window");

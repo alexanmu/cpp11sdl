@@ -74,9 +74,13 @@ public:
     bool isDontFree(void) const noexcept;
 
     void setSwSurface(void) const throw(std::runtime_error);
+    void resetSwSurface(void) const throw(std::runtime_error);
     void setPreAlloc(void) const throw(std::runtime_error);
+    void resetPreAlloc(void) const throw(std::runtime_error);
     void setRLEAccel(void) const throw(std::runtime_error);
+    void resetRLEAccel(void) const throw(std::runtime_error);
     void setDontFree(void) const throw(std::runtime_error);
+    void resetDontFree(void) const throw(std::runtime_error);
 
     void clear(void) noexcept;
 

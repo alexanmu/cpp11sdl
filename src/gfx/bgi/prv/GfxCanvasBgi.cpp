@@ -1144,7 +1144,9 @@ unsigned int GfxCanvasBgi::getpixel(int x, int y)
 {
     // Returns the color of the pixel located at (x, y).
 
+#if 0
     int col;
+#endif
     uint32_t tmp;
 
     x += bgi_vp.left;
@@ -1161,6 +1163,7 @@ unsigned int GfxCanvasBgi::getpixel(int x, int y)
 
     // now find the colour
 
+#if 0
     for (col = static_cast<int>(bgiColors::BLACK); col < (static_cast<int>(bgiColors::WHITE) + 1); col++)
     {
         if (tmp == bgi_palette[col])
@@ -1168,6 +1171,7 @@ unsigned int GfxCanvasBgi::getpixel(int x, int y)
             return static_cast<int>(col);
         }
     }
+#endif
 
     // if it's not a BGI color, just return the 0xAARRGGBB value
     return tmp;

@@ -701,6 +701,13 @@ std::string const& GfxSurface::getSurfaceName(void) const noexcept
     return surfName_;
 }
 
+void GfxSurface::setSurfaceName(std::string const& name) noexcept
+{
+    assert(name.length() > 0);
+
+    surfName_ = name;
+}
+
 void GfxSurface::putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
 {
     assert(x >= 0);

@@ -38,6 +38,7 @@
 #include "RuntimeMeta.hpp"
 #include "FontMgr.hpp"
 #include "Keyboard.hpp"
+#include "BgiDemo.hpp"
 
 /******************************************************* main *******************************************************/
 typedef struct _Command_t
@@ -62,6 +63,7 @@ static _Command_t commands[] = {
     { _doLog, "log" },
     { _doFontMgr, "fontmgr" },
     { _doKeyboard, "keyboard" },
+    { _doBgiDemo, "bgidemo" },
     { _doPlayground, "all" }
 };
 
@@ -79,6 +81,7 @@ void _doPlayground(void)
     _doLog();
     _doFontMgr();
     _doKeyboard();
+    _doBgiDemo();
 }
 
 int main(int argc, char *argv[])

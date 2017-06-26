@@ -65,6 +65,8 @@ public:
     static const uint32_t yellow = 0xffffff00;
     static const uint32_t white = 0xffffffff;
 
+    static const int32_t numColors = 16;
+
     GfxColors2() noexcept;
 
     explicit GfxColors2(const ValueType clr) noexcept;

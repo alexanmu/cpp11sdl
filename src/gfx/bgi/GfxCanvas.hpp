@@ -29,7 +29,6 @@
 #include <vector>
 
 #include "GfxObject.hpp"
-#include "GfxBgiConstants.hpp"
 #include "GfxSurface.hpp"
 #include "GfxCanvasBgi.hpp"
 #include "GfxPoint.hpp"

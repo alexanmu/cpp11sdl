@@ -189,7 +189,7 @@ void GfxCanvas::FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) no
     {
         color = border.getAsBgiType();
     }
-    bgi_.floodfill(pt.getX(), pt.getY(), border.getAsBgiType());
+    bgi_.floodfill(pt.getX(), pt.getY(), color);
 }
 
 void GfxCanvas::FreeImage(void * bitmap) noexcept

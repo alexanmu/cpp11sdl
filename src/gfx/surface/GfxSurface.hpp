@@ -132,6 +132,7 @@ public:
     uint32_t getBytesPerPixel(void) const noexcept;
 
     std::string const& getSurfaceName(void) const noexcept;
+    void setSurfaceName(std::string const& name) noexcept;
 
     void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
     pixels::GfxColor getPixel(const int32_t x, const int32_t y) const noexcept;

@@ -240,9 +240,9 @@ bool GfxPixelFormat::isPixelFormatIndexed(void) const noexcept
     }
     temp = !isPixelFormatFourCC() &&
             (
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeIndex1) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeIndex4) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeIndex8));
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeIndex1) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeIndex4) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeIndex8));
     return temp;
 }
 
@@ -256,9 +256,9 @@ bool GfxPixelFormat::isPixelFormatPacked(void) const noexcept
     }
     temp = !isPixelFormatFourCC() &&
             (
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypePacked8) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypePacked16) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypePacked32));
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypePacked8) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypePacked16) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypePacked32));
     return temp;
 }
 
@@ -272,11 +272,11 @@ bool GfxPixelFormat::isPixelFormatArray(void) const noexcept
     }
     temp = !isPixelFormatFourCC() &&
             (
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayU8) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayU16) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayU32) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayF16) ||
-                pixelType() == GfxPixelType(GfxPixelType::ValueType::pixelTypeArrayF32));
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeArrayU8) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeArrayU16) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeArrayU32) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeArrayF16) ||
+                (pixelType().getValue() == GfxPixelType::ValueType::pixelTypeArrayF32));
     return temp;
 }
 
@@ -291,19 +291,19 @@ bool GfxPixelFormat::isPixelFormatAlpha(void) const noexcept
     temp = false;
     if (isPixelFormatPacked() == true &&
         (
-            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderARGB) ||
-            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderRGBA) ||
-            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderABGR) ||
-            pixelOrderPacked() == GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderBGRA)))
+            (pixelOrderPacked().getValue() == GfxPackedOrder::ValueType::packedOrderARGB) ||
+            (pixelOrderPacked().getValue() == GfxPackedOrder::ValueType::packedOrderRGBA) ||
+            (pixelOrderPacked().getValue() == GfxPackedOrder::ValueType::packedOrderABGR) ||
+            (pixelOrderPacked().getValue() == GfxPackedOrder::ValueType::packedOrderBGRA)))
     {
         temp = true;
     }
     if (isPixelFormatArray() == true &&
         (
-            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderARGB) ||
-            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderRGBA) ||
-            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderABGR) ||
-            pixelOrderArray() == GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderBGRA)))
+            (pixelOrderArray().getValue() == GfxArrayOrder::ValueType::arrayOrderARGB) ||
+            (pixelOrderArray().getValue() == GfxArrayOrder::ValueType::arrayOrderRGBA) ||
+            (pixelOrderArray().getValue() == GfxArrayOrder::ValueType::arrayOrderABGR) ||
+            (pixelOrderArray().getValue() == GfxArrayOrder::ValueType::arrayOrderBGRA)))
     {
         temp = true;
     }

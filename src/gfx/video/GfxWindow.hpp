@@ -59,6 +59,8 @@ public:
     static const bool CallsSdl = true;
 
     GfxWindow(std::string const& title, const int32_t width, const int32_t height) throw(std::runtime_error);
+    GfxWindow(std::string const& title, const int32_t width, const int32_t height,
+            GfxWindowFlags const& flags) throw(std::runtime_error);
     GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
                 const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
     explicit GfxWindow(void * data) throw(std::runtime_error);
@@ -127,6 +129,10 @@ public:
 
     SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
+    static const int32_t kDefaultWindowPositionX = 100;
+    static const int32_t kDefaultWindowPositionY = 100;
+    static const int32_t kDefaultFlagsValue = 0;
+
     SdlTypePtr window_;
 };
 
