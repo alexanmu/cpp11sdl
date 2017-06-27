@@ -45,11 +45,11 @@ public:
 
     GfxPowerInfo() noexcept;
 
-    GfxPowerInfo(GfxPowerInfo const&) = delete;
-    GfxPowerInfo(GfxPowerInfo&&) = delete;
+    GfxPowerInfo(GfxPowerInfo const& other) noexcept;
+    GfxPowerInfo(GfxPowerInfo&& other) noexcept;
 
-    GfxPowerInfo& operator=(GfxPowerInfo const&) = delete;
-    GfxPowerInfo& operator=(GfxPowerInfo&&) = delete;
+    GfxPowerInfo& operator=(GfxPowerInfo const& other) noexcept;
+    GfxPowerInfo& operator=(GfxPowerInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
@@ -60,6 +60,8 @@ public:
     int32_t getRemainingPercentage(void) const noexcept;
 
     const std::string getAsString(void) const noexcept;
+
+    void clear(void) noexcept;
 private:
     GfxPowerState pstate_;
     int32_t seconds_;

@@ -53,11 +53,11 @@ public:
     explicit GfxControlledSurface(std::string const& filename) noexcept;
     explicit GfxControlledSurface(video::GfxWindow const& win) noexcept;
 
-    GfxControlledSurface(const GfxControlledSurface&) = delete;
-    GfxControlledSurface(GfxControlledSurface&& surf) = delete;
+    GfxControlledSurface(GfxControlledSurface const&) = delete;
+    GfxControlledSurface(GfxControlledSurface&&) = delete;
 
-    GfxControlledSurface& operator=(const GfxControlledSurface&) = delete;
-    GfxControlledSurface& operator=(GfxControlledSurface&& surf) = delete;
+    GfxControlledSurface& operator=(GfxControlledSurface const&) = delete;
+    GfxControlledSurface& operator=(GfxControlledSurface&&) = delete;
 
     virtual ~GfxControlledSurface() noexcept;
 

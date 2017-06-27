@@ -172,11 +172,6 @@ GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const noexcept
     return flags_;
 }
 
-GfxRendererFlags::SdlTypePtr GfxRendererFlags::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flags_;
-}
-
 }  // namespace render
 
 }  // namespace gfx

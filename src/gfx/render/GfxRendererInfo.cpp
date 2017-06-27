@@ -155,11 +155,6 @@ GfxRendererInfo::SdlType GfxRendererInfo::getAsSdlType(void) const noexcept
     return (SdlType)info_;
 }
 
-GfxRendererInfo::SdlTypePtr GfxRendererInfo::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&info_;
-}
-
 }  // namespace render
 
 }  // namespace gfx

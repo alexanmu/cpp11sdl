@@ -23,9 +23,9 @@
 
 #include <cassert>
 #include <cstdint>
-#include <memory>
 #include <map>
 #include <string>
+#include <utility>
 
 #include "GfxVideo.hpp"
 
@@ -39,9 +39,29 @@ const char GfxVideo::ClassName[] = "GfxVideo";
 
 GfxVideo::GfxVideo() noexcept : GfxObject(ClassName)
 {
-    numvideodrivers_ = -1;
-    numvideodisplays_ = -1;
-    numdisplaymodes_.clear();
+    clear();
+}
+
+GfxVideo::GfxVideo(GfxVideo&& other) noexcept : GfxObject(ClassName)
+{
+    numvideodrivers_ = other.numvideodrivers_;
+    numvideodisplays_ = other.numvideodisplays_;
+    numdisplaymodes_ = std::move(other.numdisplaymodes_);
+    // Delete other's data
+    other.clear();
+}
+
+GfxVideo& GfxVideo::operator=(GfxVideo&& other) noexcept
+{
+    if (this != &other)
+    {
+        numvideodrivers_ = other.numvideodrivers_;
+        numvideodisplays_ = other.numvideodisplays_;
+        numdisplaymodes_ = std::move(other.numdisplaymodes_);
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
 }
 
 GfxVideo::operator bool() const noexcept
@@ -110,34 +130,32 @@ std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
     return str;
 }
 
-std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayBounds(const int32_t displayindex) const noexcept
+rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
-    std::unique_ptr<rect::GfxRect> r { new rect::GfxRect() };
     rect::GfxRect::SdlType rt;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
         (void)SDL_GetDisplayBounds(displayindex, &rt);
-        r.get()->set(rt);
+        return rect::GfxRect(rt);
     }
-    return r;
+    return rect::GfxRect();
 }
 
-std::unique_ptr<rect::GfxRect> GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const noexcept
+rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
-    std::unique_ptr<rect::GfxRect> r { new rect::GfxRect() };
     rect::GfxRect::SdlType rt;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
         (void)SDL_GetDisplayUsableBounds(displayindex, &rt);
-        r.get()->set(rt);
+        return rect::GfxRect(rt);
     }
-    return r;
+    return rect::GfxRect();
 }
 
 void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const noexcept
@@ -167,13 +185,12 @@ int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex) noexcept
     return numdisplaymodes;
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept
+GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept
 {
     assert(displayindex >= 0);
     assert(modeindex >= 0);
 
     int32_t mcount;
-    std::unique_ptr<GfxDisplayMode> dm { new GfxDisplayMode() };
     GfxDisplayMode::SdlType dms;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
@@ -182,56 +199,53 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getDisplayMode(const int32_t displayin
         {
             mcount = numdisplaymodes_.at(displayindex);
         }
-        catch(std::out_of_range e)
+        catch(std::out_of_range& e)
         {
             mcount = -1;
         }
         if ((mcount >= 0) && (modeindex < mcount))
         {
             SDL_GetDisplayMode(displayindex, modeindex, &dms);
-            dm.get()->set(dms);
+            return GfxDisplayMode(dms);
         }
     }
-    return dm;
+    return GfxDisplayMode();
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const noexcept
+GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
-    std::unique_ptr<GfxDisplayMode> dm { new GfxDisplayMode() };
     GfxDisplayMode::SdlType dms;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
         SDL_GetDesktopDisplayMode(displayindex, &dms);
-        dm.get()->set(dms);
+        return GfxDisplayMode(dms);
     }
-    return dm;
+    return GfxDisplayMode();
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const noexcept
+GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const noexcept
 {
     assert(displayindex >= 0);
 
-    std::unique_ptr<GfxDisplayMode> dm { new GfxDisplayMode() };
     GfxDisplayMode::SdlType dms;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
         SDL_GetCurrentDisplayMode(displayindex, &dms);
-        dm.get()->set(dms);
+        return GfxDisplayMode(dms);
     }
-    return dm;
+    return GfxDisplayMode();
 }
 
-std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int32_t displayindex,
-                                                                GfxDisplayMode const& mode) const noexcept
+GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
+                                               GfxDisplayMode const& mode) const noexcept
 {
     assert(displayindex >= 0);
     assert(mode);
 
-    std::unique_ptr<GfxDisplayMode> dm { new GfxDisplayMode() };
     GfxDisplayMode::SdlType dms;
     GfxDisplayMode::SdlTypePtr dmsptr;
 
@@ -240,10 +254,18 @@ std::unique_ptr<GfxDisplayMode> GfxVideo::getClosestDisplayMode(const int32_t di
         dmsptr = SDL_GetClosestDisplayMode(displayindex, mode.getAsSdlTypePtr(), &dms);
         if (dmsptr == &dms)
         {
-            dm.get()->set(dms);
+            return GfxDisplayMode(dms);
         }
     }
-    return dm;
+    return GfxDisplayMode();
+}
+
+// Private methods
+void GfxVideo::clear(void) noexcept
+{
+    numvideodrivers_ = -1;
+    numvideodisplays_ = -1;
+    numdisplaymodes_.clear();
 }
 
 }  // namespace video

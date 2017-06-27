@@ -128,11 +128,6 @@ GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const noexcept
     return (SdlType)blendmode_;
 }
 
-GfxBlendMode::SdlTypePtr GfxBlendMode::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)blendmode_;
-}
-
 }  // namespace blendmode
 
 }  // namespace gfx

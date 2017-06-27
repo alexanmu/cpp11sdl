@@ -39,6 +39,38 @@ GfxPlatform::GfxPlatform() noexcept : GfxObject(ClassName)
     platform_ = "";
 }
 
+GfxPlatform::GfxPlatform(GfxPlatform const& other) noexcept : GfxObject(ClassName)
+{
+    platform_ = other.platform_;
+}
+
+GfxPlatform::GfxPlatform(GfxPlatform&& other) noexcept : GfxObject(ClassName)
+{
+    platform_ = other.platform_;
+    // Delete other's data
+    other.platform_.clear();
+}
+
+GfxPlatform& GfxPlatform::operator=(GfxPlatform const& other) noexcept
+{
+    if (this != &other)
+    {
+        platform_ = other.platform_;
+    }
+    return *this;
+}
+
+GfxPlatform& GfxPlatform::operator=(GfxPlatform&& other) noexcept
+{
+    if (this != &other)
+    {
+        platform_ = other.platform_;
+        // Delete other's data
+        other.platform_.clear();
+    }
+    return *this;
+}
+
 GfxPlatform::operator bool() const noexcept
 {
     return true;

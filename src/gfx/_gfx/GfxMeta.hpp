@@ -48,6 +48,7 @@ public:
         bool hasSdlType_;
         bool hasSdlTypePtr_;
         bool hasValueType_;
+        bool hasClearMethod_;
         /* ::std templates */
         bool isAbstract_;
         bool isPolymorphic_;
@@ -56,9 +57,12 @@ public:
         bool isMoveConstructible_;
         bool isMoveAssignable_;
         bool isDerivedFromGfxObject_;
-        uint32_t padding1_;
-        uint32_t padding2_;
+        uint8_t padding1_;
+        uint16_t padding2_;
+        uint32_t padding3_;
     };
+
+    static_assert(sizeof(ClassInfo) == 32);
 
     GfxMeta() noexcept;
     ~GfxMeta() noexcept;

@@ -58,14 +58,15 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
+    GfxRenderer() = delete;
+
     explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) throw(std::runtime_error);
     explicit GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error);
 
-    GfxRenderer() = delete;
-    GfxRenderer(const GfxRenderer&) = delete;
-    GfxRenderer(GfxRenderer&&) = delete;
-    GfxRenderer& operator=(const GfxRenderer&) = delete;
-    GfxRenderer& operator=(GfxRenderer&& rend) = delete;
+    GfxRenderer(GfxRenderer const&) = delete;
+    GfxRenderer(GfxRenderer&& other) noexcept;
+    GfxRenderer& operator=(GfxRenderer const&) = delete;
+    GfxRenderer& operator=(GfxRenderer&& other) noexcept;
 
     virtual ~GfxRenderer() noexcept;
 

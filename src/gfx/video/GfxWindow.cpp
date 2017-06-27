@@ -141,6 +141,24 @@ GfxWindow::GfxWindow(void * data) throw(std::runtime_error) : GfxObject(ClassNam
     window_ = tmpwinptr;
 }
 
+GfxWindow::GfxWindow(GfxWindow&& other) noexcept : GfxObject(ClassName)
+{
+    window_ = other.window_;
+    // Delete other's data
+    other.window_ = nullptr;
+}
+
+GfxWindow& GfxWindow::operator=(GfxWindow&& other) noexcept
+{
+    if (this != &other)
+    {
+        window_ = other.window_;
+        // Delete other's data
+        other.window_ = nullptr;
+    }
+    return *this;
+}
+
 GfxWindow::~GfxWindow() noexcept
 {
     if (window_ != nullptr)
@@ -150,6 +168,11 @@ GfxWindow::~GfxWindow() noexcept
     window_ = nullptr;
 }
 
+GfxWindow::operator bool() const noexcept
+{
+    return (window_ != nullptr);
+}
+
 void GfxWindow::destroyWindow() noexcept
 {
     if (window_ != nullptr)
@@ -157,11 +180,6 @@ void GfxWindow::destroyWindow() noexcept
         sdl2::SDL_DestroyWindow(window_);
         window_ = nullptr;
     }
-}
-
-GfxWindow::operator bool() const noexcept
-{
-    return (window_ != nullptr);
 }
 
 int32_t GfxWindow::getWindowDisplayIndex(void) const noexcept
@@ -175,18 +193,16 @@ int32_t GfxWindow::getWindowDisplayIndex(void) const noexcept
     return ret;
 }
 
-GfxDisplayMode * GfxWindow::getWindowDisplayMode(void) const noexcept
+GfxDisplayMode GfxWindow::getWindowDisplayMode(void) const noexcept
 {
     GfxDisplayMode::SdlType dm;
-    GfxDisplayMode * dmptr = nullptr;
 
     if (window_ != nullptr)
     {
         sdl2::SDL_GetWindowDisplayMode(window_, &dm);
-        dmptr = new gfx::video::GfxDisplayMode();
-        dmptr->set(dm);
+        return gfx::video::GfxDisplayMode(dm);
     }
-    return dmptr;
+    return gfx::video::GfxDisplayMode();
 }
 
 uint32_t GfxWindow::getWindowPixelFormat(void) const noexcept

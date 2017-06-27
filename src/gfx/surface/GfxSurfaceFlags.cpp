@@ -168,11 +168,6 @@ GfxSurfaceFlags::SdlType GfxSurfaceFlags::getAsSdlType(void) const noexcept
     return flags_;
 }
 
-GfxSurfaceFlags::SdlTypePtr GfxSurfaceFlags::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flags_;
-}
-
 }  // namespace surface
 
 }  // namespace gfx

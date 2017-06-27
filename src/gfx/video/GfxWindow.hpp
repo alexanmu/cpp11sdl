@@ -58,6 +58,8 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
+    GfxWindow() = delete;
+
     GfxWindow(std::string const& title, const int32_t width, const int32_t height) throw(std::runtime_error);
     GfxWindow(std::string const& title, const int32_t width, const int32_t height,
             GfxWindowFlags const& flags) throw(std::runtime_error);
@@ -65,19 +67,20 @@ public:
                 const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
     explicit GfxWindow(void * data) throw(std::runtime_error);
 
-    GfxWindow() = delete;
     GfxWindow(GfxWindow const&) = delete;
-    GfxWindow(GfxWindow&&) = delete;
+    GfxWindow(GfxWindow&& other) noexcept;
+
     GfxWindow& operator=(GfxWindow const&) = delete;
-    GfxWindow& operator=(GfxWindow&&) = delete;
+    GfxWindow& operator=(GfxWindow&& other) noexcept;
 
     virtual ~GfxWindow() noexcept;
-    void destroyWindow(void) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
+    void destroyWindow(void) noexcept;
+
     int32_t getWindowDisplayIndex(void) const noexcept;
-    GfxDisplayMode * getWindowDisplayMode(void) const noexcept;
+    GfxDisplayMode getWindowDisplayMode(void) const noexcept;
     uint32_t getWindowPixelFormat(void) const noexcept;
 
     uint32_t getWindowID(void) const noexcept;

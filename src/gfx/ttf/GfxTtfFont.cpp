@@ -420,6 +420,12 @@ bool GfxTtfFont::sizeUnicode(std::string const& text, int32_t * w, int32_t * h) 
     throw std::runtime_error("Not supported");
 }
 
+GfxTtfFont::SdlTypePtr GfxTtfFont::getAsSdlTypePtr(void) const noexcept
+{
+    return ttf_;
+}
+
+// Private methods
 void GfxTtfFont::clear(void) noexcept
 {
     ttf_ = nullptr;
@@ -430,11 +436,6 @@ void GfxTtfFont::clear(void) noexcept
     fontHinting_.clear();
     outline_ = 0;
     kerning_ = true;
-}
-
-GfxTtfFont::SdlTypePtr GfxTtfFont::getAsSdlTypePtr(void) const noexcept
-{
-    return ttf_;
 }
 
 }  // namespace ttf

@@ -103,10 +103,10 @@ public:
     pixels::GfxColor getRGBA(const uint32_t pixel) const noexcept;
     void calculateGammaRamp(const float gamma, xtra::GfxGammaRamp const& ramp) const noexcept;
 
-    void clear(void) noexcept;
-
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
+    void clear(void) noexcept;
+
     SdlTypePtr pix_;
 };
 

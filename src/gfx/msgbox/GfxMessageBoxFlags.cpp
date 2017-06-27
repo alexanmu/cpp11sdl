@@ -123,11 +123,6 @@ GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const noexcep
     return (SdlType)flag_;
 }
 
-GfxMessageBoxFlags::SdlTypePtr GfxMessageBoxFlags::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flag_;
-}
-
 }  // namespace msgbox
 
 }  // namespace gfx

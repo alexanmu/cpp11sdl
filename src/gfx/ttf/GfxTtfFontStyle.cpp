@@ -192,11 +192,6 @@ GfxTtfFontStyle::SdlType GfxTtfFontStyle::getAsSdlType(void) const noexcept
     return style_;
 }
 
-GfxTtfFontStyle::SdlTypePtr GfxTtfFontStyle::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&style_;
-}
-
 }  // namespace ttf
 
 }  // namespace gfx

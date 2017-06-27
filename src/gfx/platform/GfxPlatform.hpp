@@ -43,11 +43,11 @@ public:
 
     GfxPlatform() noexcept;
 
-    GfxPlatform(GfxPlatform const&) = delete;
-    GfxPlatform(GfxPlatform&&) = delete;
+    GfxPlatform(GfxPlatform const& other) noexcept;
+    GfxPlatform(GfxPlatform&& other) noexcept;
 
-    GfxPlatform& operator=(GfxPlatform const&) = delete;
-    GfxPlatform& operator=(GfxPlatform&&) = delete;
+    GfxPlatform& operator=(GfxPlatform const& other) noexcept;
+    GfxPlatform& operator=(GfxPlatform&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 

@@ -37,7 +37,7 @@ namespace render
 
 const char GfxTexture::ClassName[] = "GfxTexture";
 
-GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
+GfxTexture::GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
             const int32_t w, const int32_t h) throw(std::runtime_error) : GfxObject(ClassName)
 {
     assert(rend != nullptr);
@@ -49,7 +49,6 @@ GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& forma
     GfxRenderer * rendptr;
     SdlTypePtr texptr;
 
-    rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
     texptr = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
                                      format.getAsSdlType(),
@@ -62,7 +61,7 @@ GfxTexture::GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& forma
     tex_ = texptr;
 }
 
-GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error)
+GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error)
             : GfxObject(ClassName)
 {
     assert(rend != nullptr);
@@ -71,7 +70,6 @@ GfxTexture::GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(
     GfxRenderer * rendptr;
     SdlTypePtr texptr;
 
-    rend_ = rend;
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
     texptr = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)

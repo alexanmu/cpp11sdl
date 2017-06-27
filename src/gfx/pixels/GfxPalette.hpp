@@ -42,7 +42,6 @@ namespace pixels
 class GfxPalette final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Palette SdlType;
     typedef sdl2::SDL_Palette * SdlTypePtr;
 
     static const char ClassName[];
@@ -77,10 +76,10 @@ public:
     uint32_t getVersion(void) const noexcept;
     int32_t getRefCount(void) const noexcept;
 
-    void clear(void) noexcept;
-
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
+    void clear(void) noexcept;
+
     static constexpr uint16_t kDefaultPaletteSize = 256;
     static constexpr uint8_t kDefaultPaletteColorRed = 0xFF;
     static constexpr uint8_t kDefaultPaletteColorGreen = 0xFF;

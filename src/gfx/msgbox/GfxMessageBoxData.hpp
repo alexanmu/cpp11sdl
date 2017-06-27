@@ -75,7 +75,7 @@ public:
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType data_;
-    GfxMessageBoxButtonData::SdlTypePtr btndataptr;
+    GfxMessageBoxButtonData::SdlType * btndataptr;
     std::string title_;
     std::string message_;
 };

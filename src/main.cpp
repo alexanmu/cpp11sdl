@@ -165,13 +165,13 @@ void AfterInit(void)
         v.getDisplayDPI(i, &d, &h, &v1);
         std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
         std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
-        std::unique_ptr<gfx::video::GfxDisplayMode> dm = v.getCurrentDisplayMode(i);
+        gfx::video::GfxDisplayMode dm = v.getCurrentDisplayMode(i);
         std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
-                    std::setw(8) << std::hex << dm.get()->getFormat() << std::dec << '\n';
-        std::cout << "dm.get()->getFormat()=" << dm.get()->getFormat() << '\n';
-        std::cout << "dm.get()->getWidth()=" << dm.get()->getWidth() << '\n';
-        std::cout << "dm.get()->getHeight()=" << dm.get()->getHeight() << '\n';
-        std::cout << "dm.get()->getRefreshRate()=" << dm.get()->getRefreshRate() << "Hz" << '\n';
+                    std::setw(8) << std::hex << dm.getFormat() << std::dec << '\n';
+        std::cout << "dm.get()->getFormat()=" << dm.getFormat() << '\n';
+        std::cout << "dm.get()->getWidth()=" << dm.getWidth() << '\n';
+        std::cout << "dm.get()->getHeight()=" << dm.getHeight() << '\n';
+        std::cout << "dm.get()->getRefreshRate()=" << dm.getRefreshRate() << "Hz" << '\n';
 
         gfx::endian::GfxEndian e;
 
@@ -342,29 +342,29 @@ void _doStuff(void)
 
     gfx::bgi::GfxCanvas cv(surfcanvas);
     // Circle
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::green));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kGreen));
     cv.Circle(gfx::rect::GfxPoint(480, 240), gfx::bgi::GfxRadius(230));
     // Arc
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::red));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kRed));
     cv.Arc(gfx::rect::GfxPoint(480, 240), gfx::bgi::GfxAngle(60), gfx::bgi::GfxAngle(300),
            gfx::bgi::GfxRadius(239));
     // OutTextXY
     cv.SetColor(gfx::bgi::GfxColors2(gfx::pixels::GfxColor(50, 100, 200).getColor()));
     cv.OutTextXY(gfx::rect::GfxPoint(360, 232), gfx::bgi::GfxText("SDL_bgi"));
     // Bar
-    cv.SetFillStyle(gfx::bgi::GfxFillStyles(), gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::lightMagenta));
+    cv.SetFillStyle(gfx::bgi::GfxFillStyles(), gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kLightMagenta));
     cv.Bar(gfx::rect::GfxPoint(480, 0), gfx::rect::GfxPoint(960, 240));
     // Bar
-    cv.SetFillStyle(gfx::bgi::GfxFillStyles(), gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::red));
+    cv.SetFillStyle(gfx::bgi::GfxFillStyles(), gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kRed));
     cv.Bar(gfx::rect::GfxRect(10, 10, 20, 20));
     // Rectangle
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::green));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kGreen));
     cv.Rectangle(gfx::rect::GfxPoint(20, 20), gfx::rect::GfxPoint(30, 30));
     // Rectangle
     cv.SetColor(gfx::bgi::GfxColors2(gfx::pixels::GfxColor(128, 128, 128).getColor()));
     cv.Rectangle(gfx::rect::GfxRect(30, 30, 40, 40));
     // Line
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::yellow));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kYellow));
     cv.Line(gfx::rect::GfxPoint(10, 10), gfx::rect::GfxPoint(40, 40));
     // OutTextXY
     cv.SetColor(gfx::bgi::GfxColors2(gfx::pixels::GfxColor(150, 100, 200).getColor()));
@@ -386,31 +386,36 @@ void _doStuff(void)
     }
 
     // Bar
-    cv.SetFillStyle(gfx::bgi::GfxFillStyles(), gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::lightGray));
+    cv.SetFillStyle(gfx::bgi::GfxFillStyles(), gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kLightGray));
     cv.Bar(gfx::rect::GfxPoint(600, 100), gfx::rect::GfxPoint(800, 200));
     // OutTextXY
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::white));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kWhite));
     cv.OutTextXY(gfx::rect::GfxPoint(620, 120), gfx::bgi::GfxText("3D Text, custom font"),
                  gfx::bgi::fnt::kFontScript());
     // OutTextXY
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::black));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kBlack));
     cv.OutTextXY(gfx::rect::GfxPoint(621, 121), gfx::bgi::GfxText("3D Text, custom font"),
                  gfx::bgi::fnt::kFontScript());
     // OutTextXY
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::white));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kWhite));
     cv.OutTextXY(gfx::rect::GfxPoint(620, 140), gfx::bgi::GfxText("3D Text, SDL_bgi font"));
     // OutTextXY
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::black));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kBlack));
     cv.OutTextXY(gfx::rect::GfxPoint(621, 141), gfx::bgi::GfxText("3D Text, SDL_bgi font"));
 
     // OutTextXY
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::green));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kGreen));
     cv.OutTextXY(gfx::rect::GfxPoint(1010, 120), gfx::bgi::GfxText("WIN_W=" + std::to_string(WIN_W)),
                  gfx::bgi::fnt::kFontAntique());
     // OutTextXY
-    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::lightGray));
+    cv.SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kLightGray));
     cv.OutTextXY(gfx::rect::GfxPoint(1010, 150), gfx::bgi::GfxText("WIN_H=" + std::to_string(WIN_H)),
                  gfx::bgi::fnt::kFontWacky());
+
+    gfx::pixels::GfxColor clrCalc;
+    gfx::bgi::GfxColors2 pixClr;
+    gfx::rect::GfxPoint pixPt;
+
     c = 0;
     for (int32_t i = 0; i < WIN_W; i++)
     {
@@ -426,8 +431,14 @@ void _doStuff(void)
                     static_cast<gfx::bgi::GfxColorIndex>(c)).getGreen();
             b = gfx::bgi::kGetColorByIndex(
                     static_cast<gfx::bgi::GfxColorIndex>(c)).getBlue();
-            gfx::bgi::GfxColors2 c = gfx::bgi::GfxColors2(gfx::pixels::GfxColor(r, g, b, 224).getColor());
-            cv.PutPixel(gfx::rect::GfxPoint(i, j), c);
+            clrCalc.setRed(r);
+            clrCalc.setGreen(g);
+            clrCalc.setBlue(b);
+            clrCalc.setAlpha(224);
+            pixClr.setValue(clrCalc.getColor());
+            pixPt.setX(i);
+            pixPt.setY(j);
+            cv.PutPixel(pixPt, pixClr);
         }
         if (((i + 1) % 60) == 0)
         {
@@ -438,7 +449,7 @@ void _doStuff(void)
 
     gfx::surface::GfxSurface colors_surf("colors_surf", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H, 32,
                                          gfx::pixels::GfxPixelFormatEnum(
-                                            gfx::pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888));
+                                         gfx::pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888));
     gfx::rect::GfxRect rt;
 
     gfx::sdl2::SDL_Event e;

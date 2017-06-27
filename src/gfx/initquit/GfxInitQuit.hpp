@@ -44,18 +44,15 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    // No default constructor
-    GfxInitQuit() = delete;
-
+    GfxInitQuit() noexcept;
     explicit GfxInitQuit(GfxInitFlags const& flags) noexcept;
 
-    // Copy/Move constructors don't make sense
     GfxInitQuit(GfxInitQuit const&) = delete;
-    GfxInitQuit(GfxInitQuit&&) = delete;
+    GfxInitQuit(GfxInitQuit&& other) noexcept;
 
     // Forbid copy/move assignements
     GfxInitQuit& operator=(GfxInitQuit const&) = delete;
-    GfxInitQuit& operator=(GfxInitQuit&&) = delete;
+    GfxInitQuit& operator=(GfxInitQuit&& other) noexcept;
 
     // Explicit destructor to de-init SDL lib
     virtual ~GfxInitQuit() noexcept;

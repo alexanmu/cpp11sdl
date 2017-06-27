@@ -40,7 +40,6 @@ class GfxTextureModulate final : public GfxObject
 {
 public:
     typedef sdl2::SDL_TextureModulate SdlType;
-    typedef sdl2::SDL_TextureModulate * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -57,7 +56,6 @@ public:
 
     explicit GfxTextureModulate(const ValueType modulate) noexcept;
     explicit GfxTextureModulate(const SdlType modulate) noexcept;
-    explicit GfxTextureModulate(const SdlTypePtr modulate) noexcept;
 
     GfxTextureModulate(GfxTextureModulate const& other) noexcept;
     GfxTextureModulate(GfxTextureModulate&& other) noexcept;
@@ -80,7 +78,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType modulate_;
 };

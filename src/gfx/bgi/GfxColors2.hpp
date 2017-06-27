@@ -48,24 +48,24 @@ public:
 
     typedef uint32_t ValueType;
 
-    static const uint32_t black = 0xff000000;
-    static const uint32_t blue = 0xff0000ff;
-    static const uint32_t green = 0xff00ff00;
-    static const uint32_t cyan = 0xff00ffff;
-    static const uint32_t red = 0xffff0000;
-    static const uint32_t magenta = 0xffff00ff;
-    static const uint32_t brown = 0xffa52a2a;
-    static const uint32_t lightGray = 0xffd3d3d3;
-    static const uint32_t darkGray = 0xffa9a9a9;
-    static const uint32_t lightBlue = 0xffadd8e6;
-    static const uint32_t lightGreen = 0xff90ee90;
-    static const uint32_t lightCyan = 0xffe0ffff;
-    static const uint32_t lightRed = 0xfff08080;
-    static const uint32_t lightMagenta = 0xffdb7093;
-    static const uint32_t yellow = 0xffffff00;
-    static const uint32_t white = 0xffffffff;
+    static const uint32_t kBlack = 0xff000000;
+    static const uint32_t kBlue = 0xff0000ff;
+    static const uint32_t kGreen = 0xff00ff00;
+    static const uint32_t kCyan = 0xff00ffff;
+    static const uint32_t kRed = 0xffff0000;
+    static const uint32_t kMagenta = 0xffff00ff;
+    static const uint32_t kBrown = 0xffa52a2a;
+    static const uint32_t kLightGray = 0xffd3d3d3;
+    static const uint32_t kDarkGray = 0xffa9a9a9;
+    static const uint32_t kLightBlue = 0xffadd8e6;
+    static const uint32_t kLightGreen = 0xff90ee90;
+    static const uint32_t kLightCyan = 0xffe0ffff;
+    static const uint32_t kLightRed = 0xfff08080;
+    static const uint32_t kLightMagenta = 0xffdb7093;
+    static const uint32_t kYellow = 0xffffff00;
+    static const uint32_t kWhite = 0xffffffff;
 
-    static const int32_t numColors = 16;
+    static const int32_t kNumColors = 16;
 
     GfxColors2() noexcept;
 

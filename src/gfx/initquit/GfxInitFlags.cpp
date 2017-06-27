@@ -257,11 +257,6 @@ GfxInitFlags::SdlType GfxInitFlags::getAsSdlType(void) const noexcept
     return flags_;
 }
 
-GfxInitFlags::SdlTypePtr GfxInitFlags::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flags_;
-}
-
 }  // namespace initquit
 
 }  // namespace gfx

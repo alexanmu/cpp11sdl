@@ -35,12 +35,40 @@ namespace initquit
 
 const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
+GfxInitQuit::GfxInitQuit() noexcept : GfxObject(ClassName)
+{
+    flags_.clear();
+    errorCode_ = sdl2::SDL_Init(flags_.getAsSdlType());
+}
+
 GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
                 GfxObject(ClassName), flags_(flags), errorCode_(0)
 {
     assert(flags);
 
     errorCode_ = sdl2::SDL_Init(flags.getAsSdlType());
+}
+
+GfxInitQuit::GfxInitQuit(GfxInitQuit&& other) noexcept : GfxObject(ClassName)
+{
+    flags_ = other.flags_;
+    errorCode_ = other.errorCode_;
+    // Delete other's data
+    other.flags_.clear();
+    other.errorCode_ = 0;
+}
+
+GfxInitQuit& GfxInitQuit::operator=(GfxInitQuit&& other) noexcept
+{
+    if (this != &other)
+    {
+        flags_ = other.flags_;
+        errorCode_ = other.errorCode_;
+        // Delete other's data
+        other.flags_.clear();
+        other.errorCode_ = 0;
+    }
+    return *this;
 }
 
 GfxInitQuit::~GfxInitQuit() noexcept

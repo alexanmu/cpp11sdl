@@ -39,7 +39,6 @@ class GfxLogPriority final : public GfxObject
 {
 public:
     typedef sdl2::SDL_LogPriority SdlType;
-    typedef sdl2::SDL_LogPriority * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -75,7 +74,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType value_;
 };

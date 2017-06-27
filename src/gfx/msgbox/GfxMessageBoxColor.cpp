@@ -112,14 +112,6 @@ uint8_t GfxMessageBoxColor::getBlue(void) const noexcept
     return clr_.b;
 }
 
-uint32_t GfxMessageBoxColor::getColor() const noexcept
-{
-    uint32_t c = 0;
-
-    c |= clr_.r << 16 | clr_.g << 8 | clr_.b;
-    return c;
-}
-
 void GfxMessageBoxColor::setRed(const uint8_t r) noexcept
 {
     clr_.r = r;
@@ -145,12 +137,6 @@ void GfxMessageBoxColor::clear(void) noexcept
 GfxMessageBoxColor::SdlType GfxMessageBoxColor::getAsSdlType() const noexcept
 {
     return clr_;
-}
-
-GfxMessageBoxColor::SdlTypePtr GfxMessageBoxColor::getAsSdlTypePtr(void) const noexcept
-{
-    /* This is dangerous; we allow access to object private data */
-    return (SdlTypePtr)&clr_;
 }
 
 }  // namespace msgbox

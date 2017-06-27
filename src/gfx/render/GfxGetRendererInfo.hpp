@@ -45,11 +45,11 @@ public:
 
     GfxGetRendererInfo() noexcept;
 
-    GfxGetRendererInfo(GfxGetRendererInfo const&) = delete;
-    GfxGetRendererInfo(GfxGetRendererInfo&&) = delete;
+    GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept;
+    GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept;
 
-    GfxGetRendererInfo& operator=(GfxGetRendererInfo const&) = delete;
-    GfxGetRendererInfo& operator=(GfxGetRendererInfo&&) = delete;
+    GfxGetRendererInfo& operator=(GfxGetRendererInfo const& other) noexcept;
+    GfxGetRendererInfo& operator=(GfxGetRendererInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 

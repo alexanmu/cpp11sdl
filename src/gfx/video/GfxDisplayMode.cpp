@@ -54,6 +54,11 @@ GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t c
     dmode_.driverdata = NULL;
 }
 
+GfxDisplayMode::GfxDisplayMode(const SdlType mode) noexcept : GfxObject(ClassName)
+{
+    dmode_ = mode;
+}
+
 GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(ClassName)
 {
     dmode_.format = other.dmode_.format;
@@ -103,11 +108,6 @@ int GfxDisplayMode::getHeight(void) const noexcept
 int GfxDisplayMode::getRefreshRate(void) const noexcept
 {
     return dmode_.refresh_rate;
-}
-
-void GfxDisplayMode::set(const SdlType dm) noexcept
-{
-    dmode_ = dm;
 }
 
 void GfxDisplayMode::clear(void) noexcept

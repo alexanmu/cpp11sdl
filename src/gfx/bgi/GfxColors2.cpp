@@ -112,43 +112,43 @@ GfxColors2::BgiType GfxColors2::getAsBgiType(void) const noexcept
 
 bool GfxColors2::isBgiColor(void) const noexcept
 {
-    if (clr_ == black) return true;
-    if (clr_ == blue) return true;
-    if (clr_ == green) return true;
-    if (clr_ == cyan) return true;
-    if (clr_ == red) return true;
-    if (clr_ == magenta) return true;
-    if (clr_ == brown) return true;
-    if (clr_ == lightGray) return true;
-    if (clr_ == darkGray) return true;
-    if (clr_ == lightBlue) return true;
-    if (clr_ == lightGreen) return true;
-    if (clr_ == lightCyan) return true;
-    if (clr_ == lightRed) return true;
-    if (clr_ == lightMagenta) return true;
-    if (clr_ == yellow) return true;
-    if (clr_ == white) return true;
+    if (clr_ == kBlack) return true;
+    if (clr_ == kBlue) return true;
+    if (clr_ == kGreen) return true;
+    if (clr_ == kCyan) return true;
+    if (clr_ == kRed) return true;
+    if (clr_ == kMagenta) return true;
+    if (clr_ == kBrown) return true;
+    if (clr_ == kLightGray) return true;
+    if (clr_ == kDarkGray) return true;
+    if (clr_ == kLightBlue) return true;
+    if (clr_ == kLightGreen) return true;
+    if (clr_ == kLightCyan) return true;
+    if (clr_ == kLightRed) return true;
+    if (clr_ == kLightMagenta) return true;
+    if (clr_ == kYellow) return true;
+    if (clr_ == kWhite) return true;
     return false;
 }
 
 GfxColors2::BgiType GfxColors2::getBgiColor(void) const noexcept
 {
-    if (clr_ == GfxColors2::black) return prv::GfxCanvasBgi::BLACK;
-    if (clr_ == GfxColors2::blue) return prv::GfxCanvasBgi::BLUE;
-    if (clr_ == GfxColors2::green) return prv::GfxCanvasBgi::GREEN;
-    if (clr_ == GfxColors2::cyan) return prv::GfxCanvasBgi::CYAN;
-    if (clr_ == GfxColors2::red) return prv::GfxCanvasBgi::RED;
-    if (clr_ == GfxColors2::magenta) return prv::GfxCanvasBgi::MAGENTA;
-    if (clr_ == GfxColors2::brown) return prv::GfxCanvasBgi::BROWN;
-    if (clr_ == GfxColors2::lightGray) return prv::GfxCanvasBgi::LIGHTGRAY;
-    if (clr_ == GfxColors2::darkGray) return prv::GfxCanvasBgi::DARKGRAY;
-    if (clr_ == GfxColors2::lightBlue) return prv::GfxCanvasBgi::LIGHTBLUE;
-    if (clr_ == GfxColors2::lightGreen) return prv::GfxCanvasBgi::LIGHTGREEN;
-    if (clr_ == GfxColors2::lightCyan) return prv::GfxCanvasBgi::LIGHTCYAN;
-    if (clr_ == GfxColors2::lightRed) return prv::GfxCanvasBgi::LIGHTRED;
-    if (clr_ == GfxColors2::lightMagenta) return prv::GfxCanvasBgi::LIGHTMAGENTA;
-    if (clr_ == GfxColors2::yellow) return prv::GfxCanvasBgi::YELLOW;
-    if (clr_ == GfxColors2::white) return prv::GfxCanvasBgi::WHITE;
+    if (clr_ == GfxColors2::kBlack) return prv::GfxCanvasBgi::BLACK;
+    if (clr_ == GfxColors2::kBlue) return prv::GfxCanvasBgi::BLUE;
+    if (clr_ == GfxColors2::kGreen) return prv::GfxCanvasBgi::GREEN;
+    if (clr_ == GfxColors2::kCyan) return prv::GfxCanvasBgi::CYAN;
+    if (clr_ == GfxColors2::kRed) return prv::GfxCanvasBgi::RED;
+    if (clr_ == GfxColors2::kMagenta) return prv::GfxCanvasBgi::MAGENTA;
+    if (clr_ == GfxColors2::kBrown) return prv::GfxCanvasBgi::BROWN;
+    if (clr_ == GfxColors2::kLightGray) return prv::GfxCanvasBgi::LIGHTGRAY;
+    if (clr_ == GfxColors2::kDarkGray) return prv::GfxCanvasBgi::DARKGRAY;
+    if (clr_ == GfxColors2::kLightBlue) return prv::GfxCanvasBgi::LIGHTBLUE;
+    if (clr_ == GfxColors2::kLightGreen) return prv::GfxCanvasBgi::LIGHTGREEN;
+    if (clr_ == GfxColors2::kLightCyan) return prv::GfxCanvasBgi::LIGHTCYAN;
+    if (clr_ == GfxColors2::kLightRed) return prv::GfxCanvasBgi::LIGHTRED;
+    if (clr_ == GfxColors2::kLightMagenta) return prv::GfxCanvasBgi::LIGHTMAGENTA;
+    if (clr_ == GfxColors2::kYellow) return prv::GfxCanvasBgi::YELLOW;
+    if (clr_ == GfxColors2::kWhite) return prv::GfxCanvasBgi::WHITE;
     // CUSTOM color; _FG, _BG or _FILL; I choose _FG
     return prv::GfxCanvasBgi::CUSTOM_FG;
 }

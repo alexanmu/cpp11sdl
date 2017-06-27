@@ -40,7 +40,6 @@ class GfxPowerState final : public GfxObject
 {
 public:
     typedef sdl2::SDL_PowerState SdlType;
-    typedef sdl2::SDL_PowerState* SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -79,7 +78,6 @@ public:
     const std::string getAsString(void) const noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType value_;
 };

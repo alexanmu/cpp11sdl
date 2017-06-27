@@ -224,15 +224,16 @@ int GfxPalette::getRefCount(void) const noexcept
     return 0;
 }
 
-void GfxPalette::clear(void) noexcept
-{
-    pal_ = nullptr;
-}
-
 GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const noexcept
 {
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)pal_;
+}
+
+// Private methods
+void GfxPalette::clear(void) noexcept
+{
+    pal_ = nullptr;
 }
 
 }  // namespace pixels

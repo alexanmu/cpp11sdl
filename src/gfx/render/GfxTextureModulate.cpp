@@ -51,13 +51,6 @@ GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxObject
     modulate_ = flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(const SdlTypePtr flags) noexcept : GfxObject(ClassName)
-{
-    assert(flags != nullptr);
-
-    modulate_ = *flags;
-}
-
 GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxObject(ClassName)
 {
     modulate_ = other.modulate_;
@@ -142,11 +135,6 @@ void GfxTextureModulate::clear(void) noexcept
 GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const noexcept
 {
     return modulate_;
-}
-
-GfxTextureModulate::SdlTypePtr GfxTextureModulate::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&modulate_;
 }
 
 }  // namespace render

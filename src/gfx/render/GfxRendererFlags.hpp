@@ -40,7 +40,6 @@ class GfxRendererFlags final : public GfxObject
 {
 public:
     typedef sdl2::SDL_RendererFlags SdlType;
-    typedef sdl2::SDL_RendererFlags * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -89,7 +88,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType flags_;
 };

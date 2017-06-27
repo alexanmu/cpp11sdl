@@ -93,11 +93,6 @@ GfxHintPriority::SdlType GfxHintPriority::getAsSdlType(void) const noexcept
     return hint_;
 }
 
-GfxHintPriority::SdlTypePtr GfxHintPriority::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&hint_;
-}
-
 }  // namespace hints
 
 }  // namespace gfx

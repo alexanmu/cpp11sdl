@@ -98,16 +98,16 @@ void GDemoForm::draw(void)
                          gfx::bgi::GfxColors2(gfx::pixels::GfxColor(200, 200, 200).getColor()));
     canvas->Bar(gfx::rect::GfxRect(0, 0, 300, 300));
     // Line
-    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::white));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kWhite));
     canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(110, 190));
     // Line
-    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::white));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kWhite));
     canvas->Line(gfx::rect::GfxPoint(110, 110), gfx::rect::GfxPoint(190, 110));
     // Line
-    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::darkGray));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kDarkGray));
     canvas->Line(gfx::rect::GfxPoint(190, 110), gfx::rect::GfxPoint(190, 190));
     // Line
-    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::darkGray));
+    canvas->SetColor(gfx::bgi::GfxColors2(gfx::bgi::GfxColors2::kDarkGray));
     canvas->Line(gfx::rect::GfxPoint(110, 190), gfx::rect::GfxPoint(190, 190));
 
     auto surf = gfx::surface::GfxSurface("GDemoForm::draw", pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);

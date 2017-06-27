@@ -39,7 +39,6 @@ class GfxInitFlags final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
-    typedef uint32_t * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -105,7 +104,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     uint32_t flags_;
 };

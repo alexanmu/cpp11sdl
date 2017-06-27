@@ -437,14 +437,15 @@ void GfxPixelFormat::calculateGammaRamp(const float gamma, xtra::GfxGammaRamp co
     sdl2::SDL_CalculateGammaRamp(gamma, ramp.getAsSdlTypePtr());
 }
 
-void GfxPixelFormat::clear(void) noexcept
-{
-    pix_ = nullptr;
-}
-
 GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const noexcept
 {
     return (SdlTypePtr)pix_;
+}
+
+// Private methods
+void GfxPixelFormat::clear(void) noexcept
+{
+    pix_ = nullptr;
 }
 
 }  // namespace pixels

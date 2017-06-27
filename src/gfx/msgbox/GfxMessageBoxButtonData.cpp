@@ -115,11 +115,6 @@ GfxMessageBoxButtonData::SdlType GfxMessageBoxButtonData::getAsSdlType(void) con
     return data_;
 }
 
-GfxMessageBoxButtonData::SdlTypePtr GfxMessageBoxButtonData::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&data_;
-}
-
 }  // namespace msgbox
 
 }  // namespace gfx

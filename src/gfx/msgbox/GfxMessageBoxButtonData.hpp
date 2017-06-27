@@ -41,7 +41,6 @@ class GfxMessageBoxButtonData final : public GfxObject
 {
 public:
     typedef sdl2::SDL_MessageBoxButtonData SdlType;
-    typedef sdl2::SDL_MessageBoxButtonData * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -66,7 +65,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType data_;
 };

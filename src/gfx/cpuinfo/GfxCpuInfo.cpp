@@ -36,19 +36,87 @@ const char GfxCpuInfo::ClassName[]  = "GfxCpuInfo";
 
 GfxCpuInfo::GfxCpuInfo() noexcept : GfxObject(ClassName)
 {
-    cpuCount_ = 0;
-    cpuCacheLineSize_ = 0;
-    hasRdtsc_ = false;
-    hasAltiVec_ = false;
-    hasMmx_ = false;
-    hasSse_ = false;
-    hasSse2_ = false;
-    hasSse3_ = false;
-    hasSse41_ = false;
-    hasSse42_ = false;
-    hasAvx_ = false;
-    hasAvx2_ = false;
-    systemRam_ = 0;
+    clear();
+}
+
+GfxCpuInfo::GfxCpuInfo(GfxCpuInfo const& other) noexcept : GfxObject(ClassName)
+{
+    cpuCount_ = other.cpuCount_;
+    cpuCacheLineSize_ = other.cpuCacheLineSize_;
+    hasRdtsc_ = other.hasRdtsc_;
+    hasAltiVec_ = other.hasAltiVec_;
+    hasMmx_ = other.hasMmx_;
+    hasSse_ = other.hasSse_;
+    hasSse2_ = other.hasSse2_;
+    hasSse3_ = other.hasSse3_;
+    hasSse41_ = other.hasSse41_;
+    hasSse42_ = other.hasSse42_;
+    hasAvx_ = other.hasAvx_;
+    hasAvx2_ = other.hasAvx2_;
+    systemRam_ = other.systemRam_;
+}
+
+GfxCpuInfo::GfxCpuInfo(GfxCpuInfo&& other) noexcept : GfxObject(ClassName)
+{
+    cpuCount_ = other.cpuCount_;
+    cpuCacheLineSize_ = other.cpuCacheLineSize_;
+    hasRdtsc_ = other.hasRdtsc_;
+    hasAltiVec_ = other.hasAltiVec_;
+    hasMmx_ = other.hasMmx_;
+    hasSse_ = other.hasSse_;
+    hasSse2_ = other.hasSse2_;
+    hasSse3_ = other.hasSse3_;
+    hasSse41_ = other.hasSse41_;
+    hasSse42_ = other.hasSse42_;
+    hasAvx_ = other.hasAvx_;
+    hasAvx2_ = other.hasAvx2_;
+    systemRam_ = other.systemRam_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo const& other) noexcept
+{
+    if (this != &other)
+    {
+        cpuCount_ = other.cpuCount_;
+        cpuCacheLineSize_ = other.cpuCacheLineSize_;
+        hasRdtsc_ = other.hasRdtsc_;
+        hasAltiVec_ = other.hasAltiVec_;
+        hasMmx_ = other.hasMmx_;
+        hasSse_ = other.hasSse_;
+        hasSse2_ = other.hasSse2_;
+        hasSse3_ = other.hasSse3_;
+        hasSse41_ = other.hasSse41_;
+        hasSse42_ = other.hasSse42_;
+        hasAvx_ = other.hasAvx_;
+        hasAvx2_ = other.hasAvx2_;
+        systemRam_ = other.systemRam_;
+    }
+    return *this;
+}
+
+GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo&& other) noexcept
+{
+    if (this != &other)
+    {
+        cpuCount_ = other.cpuCount_;
+        cpuCacheLineSize_ = other.cpuCacheLineSize_;
+        hasRdtsc_ = other.hasRdtsc_;
+        hasAltiVec_ = other.hasAltiVec_;
+        hasMmx_ = other.hasMmx_;
+        hasSse_ = other.hasSse_;
+        hasSse2_ = other.hasSse2_;
+        hasSse3_ = other.hasSse3_;
+        hasSse41_ = other.hasSse41_;
+        hasSse42_ = other.hasSse42_;
+        hasAvx_ = other.hasAvx_;
+        hasAvx2_ = other.hasAvx2_;
+        systemRam_ = other.systemRam_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
 }
 
 GfxCpuInfo::operator bool() const noexcept
@@ -156,6 +224,23 @@ const std::string GfxCpuInfo::getAsString(void) const noexcept
     str1 += "AVX2:" + std::to_string(hasAvx2_) + "\n";
     str1 += "RAM=" + std::to_string(systemRam_) + "MB";
     return str1;
+}
+
+void GfxCpuInfo::clear(void) noexcept
+{
+    cpuCount_ = 0;
+    cpuCacheLineSize_ = 0;
+    hasRdtsc_ = false;
+    hasAltiVec_ = false;
+    hasMmx_ = false;
+    hasSse_ = false;
+    hasSse2_ = false;
+    hasSse3_ = false;
+    hasSse41_ = false;
+    hasSse42_ = false;
+    hasAvx_ = false;
+    hasAvx2_ = false;
+    systemRam_ = 0;
 }
 
 }  // namespace cpuinfo

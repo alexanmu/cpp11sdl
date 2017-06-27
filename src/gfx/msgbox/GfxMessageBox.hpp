@@ -54,10 +54,10 @@ public:
                   std::string const& message, video::GfxWindow const& win) noexcept;
 
     GfxMessageBox(GfxMessageBox const&) = delete;
-    GfxMessageBox(GfxMessageBox&&) = delete;
+    GfxMessageBox(GfxMessageBox&& other) noexcept;
 
     GfxMessageBox& operator=(GfxMessageBox const&) = delete;
-    GfxMessageBox& operator=(GfxMessageBox&&) = delete;
+    GfxMessageBox& operator=(GfxMessageBox&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
@@ -65,6 +65,8 @@ public:
 private:
     int32_t showModalComplex(void) const noexcept;
     int32_t showModalSimple(void) const noexcept;
+
+    void clear(void) noexcept;
 
     enum class GfxMessageBoxType : int32_t
     {

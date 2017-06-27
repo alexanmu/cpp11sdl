@@ -56,6 +56,9 @@ public:
 
     std::string const& getClassName(void) const noexcept;
     int32_t getInstanceId(void) const noexcept;
+
+    // Don't use in code; just for testing
+    static int32_t getInstanceCounter(void) noexcept;
 private:
     std::string strClassName_;
     int32_t i32InstanceId_;

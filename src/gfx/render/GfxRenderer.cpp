@@ -68,6 +68,24 @@ GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_err
     renderer_ = renderertmp;
 }
 
+GfxRenderer::GfxRenderer(GfxRenderer&& other) noexcept : GfxObject(ClassName)
+{
+    renderer_ = other.renderer_;
+    // Delete other's data
+    other.renderer_ = nullptr;
+}
+
+GfxRenderer& GfxRenderer::operator=(GfxRenderer&& other) noexcept
+{
+    if (this != &other)
+    {
+        renderer_ = other.renderer_;
+        // Delete other's data
+        other.renderer_ = nullptr;
+    }
+    return *this;
+}
+
 GfxRenderer::~GfxRenderer() noexcept
 {
     if (renderer_ != nullptr)

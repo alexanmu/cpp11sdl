@@ -37,7 +37,6 @@ class GfxTtfFontStyle final : public GfxObject
 {
 public:
     typedef int32_t SdlType;
-    typedef int32_t * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -84,7 +83,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType style_;
 };

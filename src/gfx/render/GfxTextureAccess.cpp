@@ -100,11 +100,6 @@ GfxTextureAccess::SdlType GfxTextureAccess::getAsSdlType(void) const noexcept
     return access_;
 }
 
-GfxTextureAccess::SdlTypePtr GfxTextureAccess::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&access_;
-}
-
 }  // namespace render
 
 }  // namespace gfx

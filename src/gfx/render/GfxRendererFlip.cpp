@@ -131,11 +131,6 @@ GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const noexcept
     return (SdlType)flip_;
 }
 
-GfxRendererFlip::SdlTypePtr GfxRendererFlip::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flip_;
-}
-
 }  // namespace render
 
 }  // namespace gfx

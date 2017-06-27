@@ -46,14 +46,14 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxTtfFontRenderer() = delete;
+    GfxTtfFontRenderer() noexcept;
     explicit GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_error);
 
-    GfxTtfFontRenderer(GfxTtfFontRenderer const&) = delete;
-    GfxTtfFontRenderer(GfxTtfFontRenderer&&) = delete;
+    GfxTtfFontRenderer(GfxTtfFontRenderer const& other) noexcept;
+    GfxTtfFontRenderer(GfxTtfFontRenderer&& other) noexcept;
 
-    GfxTtfFontRenderer& operator=(GfxTtfFontRenderer const&) = delete;
-    GfxTtfFontRenderer& operator=(GfxTtfFontRenderer&&) = delete;
+    GfxTtfFontRenderer& operator=(GfxTtfFontRenderer const& other) noexcept;
+    GfxTtfFontRenderer& operator=(GfxTtfFontRenderer&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 

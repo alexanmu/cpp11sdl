@@ -47,9 +47,9 @@ GfxObject::GfxObject(std::string const& strClassName) noexcept : rmeta_(&GfxRunt
 {
     assert(strClassName.length() > 0);
 
-    strClassName_ = strClassName;
     GfxObject::i32InstanceCounter_ += 1;
     i32InstanceId_ = GfxObject::i32InstanceCounter_;
+    strClassName_ = strClassName;
     rmeta_->constructObject(strClassName_.c_str(), i32InstanceId_);
 }
 
@@ -68,13 +68,14 @@ GfxObject::GfxObject(GfxObject&& other) noexcept : rmeta_(&GfxRuntimeMeta::getIn
     strClassName_ = "$mvctor$" + other.strClassName_;
     rmeta_->constructObject(strClassName_.c_str(), i32InstanceId_);
     // Delete other's data
-    other.i32InstanceId_ = -1;
     other.strClassName_ = "$null$";
+    other.i32InstanceId_ = -1;
 }
 
 GfxObject::~GfxObject() noexcept
 {
     rmeta_->destructObject(strClassName_.c_str(), i32InstanceId_);
+    // Delete my data
     strClassName_ = "$null$";
     i32InstanceId_ = -1;
 }
@@ -98,8 +99,8 @@ GfxObject& GfxObject::operator=(GfxObject&& other) noexcept
         i32InstanceId_ = GfxObject::i32InstanceCounter_;
         strClassName_ = "$mvoprt$" + other.strClassName_;
         // Delete other's data
-        other.i32InstanceId_ = -1;
         other.strClassName_ = "$null$";
+        other.i32InstanceId_ = -1;
     }
     return *this;
 }
@@ -122,6 +123,12 @@ std::string const& GfxObject::getClassName(void) const noexcept
 int32_t GfxObject::getInstanceId(void) const noexcept
 {
     return i32InstanceId_;
+}
+
+// Don't use in code; just for testing
+int32_t GfxObject::getInstanceCounter(void) noexcept
+{
+    return GfxObject::i32InstanceCounter_;
 }
 
 }  // namespace _gfx

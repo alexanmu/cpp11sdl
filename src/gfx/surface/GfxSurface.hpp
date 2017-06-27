@@ -118,6 +118,7 @@ public:
     void blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept;
     void blitSurface(const GfxSurface& src) const noexcept;
     void blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept;
+    void blitScaled(const GfxSurface& src) const noexcept;
 
     GfxSurfaceFlags getSurfaceFlags(void) const noexcept;
     pixels::GfxPixelFormatEnum getPixelFormat(void) const noexcept;
@@ -136,8 +137,6 @@ public:
 
     void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
     pixels::GfxColor getPixel(const int32_t x, const int32_t y) const noexcept;
-
-    void clear(void) noexcept;
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:

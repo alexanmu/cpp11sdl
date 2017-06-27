@@ -26,7 +26,6 @@
 
 #include <stdexcept>
 #include <cstdint>
-#include <memory>
 #include <map>
 #include <string>
 
@@ -50,10 +49,10 @@ public:
     GfxVideo() noexcept;
 
     GfxVideo(GfxVideo const&) = delete;
-    GfxVideo(GfxVideo&&) = delete;
+    GfxVideo(GfxVideo&& other) noexcept;
 
     GfxVideo& operator=(GfxVideo const&) = delete;
-    GfxVideo& operator=(GfxVideo&&) = delete;
+    GfxVideo& operator=(GfxVideo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
@@ -65,16 +64,19 @@ public:
     std::string getCurrentVideoDriver(void) const noexcept;
     int32_t getNumVideoDisplays(void) noexcept;
     std::string getDisplayName(const int32_t displayindex) const noexcept;
-    std::unique_ptr<rect::GfxRect> getDisplayBounds(const int32_t displayindex) const noexcept;
-    std::unique_ptr<rect::GfxRect> getDisplayUsableBounds(const int32_t displayindex) const noexcept;
+    rect::GfxRect getDisplayBounds(const int32_t displayindex) const noexcept;
+    rect::GfxRect getDisplayUsableBounds(const int32_t displayindex) const noexcept;
     void getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const noexcept;
     int32_t getNumDisplayModes(const int32_t displayindex) noexcept;
-    std::unique_ptr<GfxDisplayMode> getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept;
-    std::unique_ptr<GfxDisplayMode> getDesktopDisplayMode(const int32_t displayindex) const noexcept;
-    std::unique_ptr<GfxDisplayMode> getCurrentDisplayMode(const int32_t displayindex) const noexcept;
-    std::unique_ptr<GfxDisplayMode> getClosestDisplayMode(const int32_t displayindex,
-                                                          GfxDisplayMode const& mode) const noexcept;
+    GfxDisplayMode getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept;
+    GfxDisplayMode getDesktopDisplayMode(const int32_t displayindex) const noexcept;
+    GfxDisplayMode getCurrentDisplayMode(const int32_t displayindex) const noexcept;
+    GfxDisplayMode getClosestDisplayMode(const int32_t displayindex,
+                                         GfxDisplayMode const& mode) const noexcept;
+
 private:
+    void clear(void) noexcept;
+
     int32_t numvideodrivers_;
     int32_t numvideodisplays_;
     std::map<int32_t, int32_t> numdisplaymodes_;

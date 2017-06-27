@@ -44,11 +44,11 @@ public:
 
     GfxCpuInfo() noexcept;
 
-    GfxCpuInfo(GfxCpuInfo const&) = delete;
-    GfxCpuInfo(GfxCpuInfo&&) = delete;
+    GfxCpuInfo(GfxCpuInfo const& other) noexcept;
+    GfxCpuInfo(GfxCpuInfo&& other) noexcept;
 
-    GfxCpuInfo& operator=(GfxCpuInfo const&) = delete;
-    GfxCpuInfo& operator=(GfxCpuInfo&&) = delete;
+    GfxCpuInfo& operator=(GfxCpuInfo const& other) noexcept;
+    GfxCpuInfo& operator=(GfxCpuInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
 
@@ -69,6 +69,8 @@ public:
     int32_t getSystemRam(void) const noexcept;
 
     const std::string getAsString(void) const noexcept;
+
+    void clear(void) noexcept;
 private:
     int32_t cpuCount_;
     int32_t cpuCacheLineSize_;

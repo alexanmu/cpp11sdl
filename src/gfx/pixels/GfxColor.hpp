@@ -69,7 +69,7 @@ public:
     uint8_t getBlue(void) const noexcept;
     uint8_t getAlpha(void) const noexcept;
 
-    uint32_t getColor(void) const noexcept;
+    uint32_t getColor(void) const noexcept /*__attribute__((warning("Endianess")))*/;
 
     /* Setters ... */
     void setRed(const uint8_t r) noexcept;

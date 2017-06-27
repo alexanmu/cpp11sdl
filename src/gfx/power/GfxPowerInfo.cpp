@@ -36,9 +36,46 @@ const char GfxPowerInfo::ClassName[] = "GfxPowerInfo";
 
 GfxPowerInfo::GfxPowerInfo() noexcept : GfxObject(ClassName)
 {
-    pstate_ = GfxPowerState(GfxPowerState::ValueType::stateUnknown);
-    seconds_ = -1;
-    percentage_ = -1;
+    clear();
+}
+
+GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(ClassName)
+{
+    pstate_ = other.pstate_;
+    seconds_ = other.seconds_;
+    percentage_ = other.percentage_;
+}
+
+GfxPowerInfo::GfxPowerInfo(GfxPowerInfo&& other) noexcept : GfxObject(ClassName)
+{
+    pstate_ = other.pstate_;
+    seconds_ = other.seconds_;
+    percentage_ = other.percentage_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo const& other) noexcept
+{
+    if (this != &other)
+    {
+        pstate_ = other.pstate_;
+        seconds_ = other.seconds_;
+        percentage_ = other.percentage_;
+    }
+    return *this;
+}
+
+GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo&& other) noexcept
+{
+    if (this != &other)
+    {
+        pstate_ = other.pstate_;
+        seconds_ = other.seconds_;
+        percentage_ = other.percentage_;
+        // Delete other's data
+    }
+    return *this;
 }
 
 GfxPowerInfo::operator bool() const noexcept
@@ -77,6 +114,13 @@ const std::string GfxPowerInfo::getAsString(void) const noexcept
     str += "Minutes remaining " + std::to_string(seconds_ / 60) + "\n";
     str += "Percentage left " + std::to_string(percentage_) + "%";
     return str;
+}
+
+void GfxPowerInfo::clear(void) noexcept
+{
+    pstate_ = GfxPowerState(GfxPowerState::ValueType::stateUnknown);
+    seconds_ = -1;
+    percentage_ = -1;
 }
 
 }  // namespace power

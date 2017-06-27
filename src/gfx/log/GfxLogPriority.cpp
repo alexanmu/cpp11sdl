@@ -107,11 +107,6 @@ GfxLogPriority::SdlType GfxLogPriority::getAsSdlType(void) const noexcept
     return value_;
 }
 
-GfxLogPriority::SdlTypePtr GfxLogPriority::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&value_;
-}
-
 }  // namespace log
 
 }  // namespace gfx

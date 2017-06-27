@@ -116,11 +116,6 @@ GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) c
     return flags_;
 }
 
-GfxMessageBoxButtonFlags::SdlTypePtr GfxMessageBoxButtonFlags::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&flags_;
-}
-
 }  // namespace msgbox
 
 }  // namespace gfx

@@ -41,6 +41,38 @@ GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxObject(ClassName)
     numRenderDrivers_ = -1;
 }
 
+GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept : GfxObject(ClassName)
+{
+    numRenderDrivers_ = other.numRenderDrivers_;
+}
+
+GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept : GfxObject(ClassName)
+{
+    numRenderDrivers_ = other.numRenderDrivers_;
+    // Delete other's data
+    other.numRenderDrivers_ = -1;
+}
+
+GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo const& other) noexcept
+{
+    if (this != &other)
+    {
+        numRenderDrivers_ = other.numRenderDrivers_;
+    }
+    return *this;
+}
+
+GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo&& other) noexcept
+{
+    if (this != &other)
+    {
+        numRenderDrivers_ = other.numRenderDrivers_;
+        // Delete other's data
+        other.numRenderDrivers_ = -1;
+    }
+    return *this;
+}
+
 GfxGetRendererInfo::operator bool() const noexcept
 {
     return true;

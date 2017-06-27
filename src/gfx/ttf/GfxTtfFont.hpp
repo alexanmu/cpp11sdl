@@ -104,10 +104,10 @@ public:
     bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept;
     bool sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error);
 
-    void clear(void) noexcept;
-
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
+    void clear(void) noexcept;
+
     SdlTypePtr ttf_;
     std::string fileName_;
     int32_t pointSize_;

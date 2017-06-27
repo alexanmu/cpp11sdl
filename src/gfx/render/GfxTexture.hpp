@@ -53,9 +53,9 @@ public:
 
     GfxTexture() = delete;
 
-    explicit GfxTexture(GfxObject * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
+    explicit GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
                         const int32_t w, const int32_t h) throw(std::runtime_error);
-    explicit GfxTexture(GfxObject * rend, surface::GfxSurface const& surf) throw(std::runtime_error);
+    explicit GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error);
 
     virtual ~GfxTexture() noexcept;
 
@@ -89,7 +89,6 @@ public:
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
-    GfxObject * rend_;
     SdlTypePtr tex_;
 };
 

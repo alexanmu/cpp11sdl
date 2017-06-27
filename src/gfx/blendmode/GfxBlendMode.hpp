@@ -40,7 +40,6 @@ class GfxBlendMode final : public GfxObject
 {
 public:
     typedef sdl2::SDL_BlendMode SdlType;
-    typedef sdl2::SDL_BlendMode * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -79,7 +78,6 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType blendmode_;
 };

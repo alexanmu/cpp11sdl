@@ -213,6 +213,27 @@ struct hasValueType {
     static const bool value = sizeof(test<T>(nullptr)) == sizeof(yes);
 };
 
+// Inspired by https:://jguegant.github.io/blogs/tech/sfinae-introduction.html
+template <typename T>
+struct hasClearMethod {
+    // Types "yes" and "no" are guaranteed to have different sizes,
+    // specifically sizeof(yes) == 1 and sizeof(no) == 2.
+    typedef char yes[1];
+    typedef char no[2];
+
+    template <typename U, U u> struct reallyHas;
+
+    template <typename C>
+    static yes& test(reallyHas<void (C::*)(), &C::clear> *);
+
+    template <typename>
+    static no& test(...);
+
+    // If the "sizeof" of the result of calling test<T>(nullptr) is equal to sizeof(yes),
+    // the first overload worked and T has a nested type named foobar.
+    static const bool value = sizeof(test<T>(nullptr)) == sizeof(yes);
+};
+
 template <typename T>
 constexpr GfxMeta::ClassInfo makeClassInfo(void)
 {
@@ -224,6 +245,7 @@ constexpr GfxMeta::ClassInfo makeClassInfo(void)
         prv::hasSdlTypeNested<T>::value || prv::hasBgiTypeNested<T>::value,
         prv::hasSdlTypePtrNested<T>::value,
         prv::hasValueType<T>::value,
+        prv::hasClearMethod<T>::value,
         std::is_abstract<T>::value,
         std::is_polymorphic<T>::value,
         std::is_copy_constructible<T>::value,
@@ -231,6 +253,7 @@ constexpr GfxMeta::ClassInfo makeClassInfo(void)
         std::is_move_constructible<T>::value,
         std::is_move_assignable<T>::value,
         std::is_base_of<GfxObject, T>::value,
+        0,
         0,
         0
     };

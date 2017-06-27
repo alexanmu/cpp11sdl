@@ -137,11 +137,6 @@ GfxTtfFontHinting::SdlType GfxTtfFontHinting::getAsSdlType(void) const noexcept
     return hinting_;
 }
 
-GfxTtfFontHinting::SdlTypePtr GfxTtfFontHinting::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)&hinting_;
-}
-
 }  // namespace ttf
 
 }  // namespace gfx

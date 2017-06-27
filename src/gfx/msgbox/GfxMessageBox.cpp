@@ -45,7 +45,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject
 }
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
-                             std::string const& message) noexcept
+                             std::string const& message) noexcept : GfxObject(ClassName)
 {
     assert(flag);
     assert(title.length() > 0);
@@ -58,8 +58,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& 
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
-                             std::string const& message, video::GfxWindow const& win) noexcept
+GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title, std::string const& message,
+                             video::GfxWindow const& win) noexcept : GfxObject(ClassName)
 {
     assert(flag);
     assert(title.length() > 0);
@@ -71,6 +71,34 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& 
     message_ = message;
     winptr_ = reinterpret_cast<video::GfxWindow const *>(&win);
     type_ = GfxMessageBoxType::typeSimple;
+}
+
+GfxMessageBox::GfxMessageBox(GfxMessageBox&& other) noexcept : GfxObject(ClassName)
+{
+    type_ = other.type_;
+    data_ = other.data_;
+    flag_ = other.flag_;
+    title_ = other.title_;
+    message_ = other.message_;
+    winptr_ = other.winptr_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxMessageBox& GfxMessageBox::operator=(GfxMessageBox&& other) noexcept
+{
+    if (this != &other)
+    {
+        type_ = other.type_;
+        data_ = other.data_;
+        flag_ = other.flag_;
+        title_ = other.title_;
+        message_ = other.message_;
+        winptr_ = other.winptr_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
 }
 
 GfxMessageBox::operator bool() const noexcept
@@ -116,6 +144,16 @@ int32_t GfxMessageBox::showModalComplex(void) const noexcept
     p = data_.getAsSdlTypePtr();
     sdl2::SDL_ShowMessageBox(p, &buttonid);
     return buttonid;
+}
+
+void GfxMessageBox::clear(void) noexcept
+{
+    type_ = GfxMessageBoxType::typeSimple;
+    data_.clear();
+    flag_.clear();
+    title_.clear();
+    message_.clear();
+    winptr_ = nullptr;
 }
 
 }  // namespace msgbox

@@ -43,6 +43,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
 {
     assert(surfname.length() > 0);
     assert(flags);
+    assert(flags.getAsSdlType() == 0);
     assert(width > 0);
     assert(height > 0);
     assert(depth > 0);
@@ -65,10 +66,12 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
 {
     assert(surfname.length() > 0);
     assert(flags);
+    assert(flags.getAsSdlType() == 0);
     assert(width > 0);
     assert(height > 0);
     assert(depth > 0);
     assert(format);
+    assert(format.getValue() != pixels::GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
 
     sdl2::SDL_Surface * tmpsurfptr;
 
@@ -115,6 +118,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
     assert(depth > 0);
     assert(pitch > 0);
     assert(format);
+    assert(format.getValue() != pixels::GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
 
     sdl2::SDL_Surface * tmpsurfptr;
 
@@ -165,7 +169,10 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
 GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(ClassName)
 {
     surf_ = other.surf_;
-    other.clear();
+    surfName_ = other.surfName_;
+    // Delete other's data
+    other.surf_ = nullptr;
+    other.surfName_.clear();
 }
 
 GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
@@ -177,7 +184,9 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
             sdl2::SDL_FreeSurface(surf_);
         }
         surf_ = other.surf_;
-        other.clear();
+        // Delete other's data
+        other.surf_ = nullptr;
+        other.surfName_.clear();
     }
     return *this;
 }
@@ -593,6 +602,17 @@ void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, co
     sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
+void GfxSurface::blitScaled(const GfxSurface& src) const noexcept
+{
+    assert(src);
+
+    if (surf_ == nullptr)
+    {
+        return;
+    }
+    sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), NULL, surf_, NULL);
+}
+
 GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
 {
     if (surf_ != nullptr)
@@ -750,11 +770,6 @@ pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y) const no
     pix = getPixelPrv(x, y);
     sdl2::SDL_UnlockSurface(surf_);
     return pix;
-}
-
-void GfxSurface::clear(void) noexcept
-{
-    surf_ = nullptr;
 }
 
 GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const noexcept

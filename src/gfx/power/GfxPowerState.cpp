@@ -148,11 +148,6 @@ GfxPowerState::SdlType GfxPowerState::getAsSdlType(void) const noexcept
     return value_;
 }
 
-GfxPowerState::SdlTypePtr GfxPowerState::getAsSdlTypePtr(void) const noexcept
-{
-    return (SdlTypePtr)value_;
-}
-
 }  // namespace power
 
 }  // namespace gfx
