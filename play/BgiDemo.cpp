@@ -446,6 +446,8 @@ bool BorlandGraphicsInterfaceDemo::drawWaitForQuit(void)
 {
     decltype(canvas_->GetPixel(GfxPoint(0, 0))) pixel;
     int32_t new_pixel;
+    GfxPoint pt;
+    GfxColors2 clrs;
 
     switch (waitForQuitStep_)
     {
@@ -458,9 +460,12 @@ bool BorlandGraphicsInterfaceDemo::drawWaitForQuit(void)
             {
                 for (int j = 0; j < winHeight_; j++)
                 {
-                    pixel = canvas_->GetPixel(GfxPoint(i, j));
+                    pt.setX(i);
+                    pt.setY(j);
+                    pixel = canvas_->GetPixel(pt);
                     new_pixel = 0xFF000000 | (~(pixel.getValue() & 0x00FFFFFF));
-                    canvas_->PutPixel(GfxPoint(i, j), GfxColors2(new_pixel));
+                    clrs.setValue(new_pixel);
+                    canvas_->PutPixel(pt, clrs);
                 }
             }
             waitForQuitStep_ = 2;
@@ -531,6 +536,9 @@ void BorlandGraphicsInterfaceDemo::demoStateMachine(void)
 
 void _doBgiDemo(void)
 {
+    // First disable 'performance hog' RuntimeMeta
+    gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = false;
+
     BorlandGraphicsInterfaceDemo b;
 
     b.doDemo();
