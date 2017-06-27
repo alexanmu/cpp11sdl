@@ -46,7 +46,7 @@ void _doMeta(void)
 	    std::cout << "hasSdlType=" << classInfo.hasSdlType_ << ' ';
 	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << ' ';
         std::cout << "hasValueType=" << classInfo.hasValueType_ << ' ';
-        std::cout << "hasClear=" << classInfo.hasClearMethod_ << ' ';
+        std::cout << "hasClear=" << classInfo.hasPublicClearMethod_ << ' ';
         std::cout << "isAbstract=" << classInfo.isAbstract_ << ' ';
         std::cout << "isPolym=" << classInfo.isPolymorphic_ << ' ';
         std::cout << "isCopyCtor=" << classInfo.isCopyConstructible_ << ' ';

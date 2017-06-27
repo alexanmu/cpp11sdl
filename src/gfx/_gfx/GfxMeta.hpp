@@ -48,7 +48,7 @@ public:
         bool hasSdlType_;
         bool hasSdlTypePtr_;
         bool hasValueType_;
-        bool hasClearMethod_;
+        bool hasPublicClearMethod_;
         /* ::std templates */
         bool isAbstract_;
         bool isPolymorphic_;
@@ -62,7 +62,7 @@ public:
         uint32_t padding3_;
     };
 
-    static_assert(sizeof(ClassInfo) == 32);
+    static_assert(sizeof(ClassInfo) == 32, "sizeof(ClassInfo) not 32 bytes");
 
     GfxMeta() noexcept;
     ~GfxMeta() noexcept;

@@ -215,7 +215,7 @@ struct hasValueType {
 
 // Inspired by https:://jguegant.github.io/blogs/tech/sfinae-introduction.html
 template <typename T>
-struct hasClearMethod {
+struct hasPublicClearMethod {
     // Types "yes" and "no" are guaranteed to have different sizes,
     // specifically sizeof(yes) == 1 and sizeof(no) == 2.
     typedef char yes[1];
@@ -245,7 +245,7 @@ constexpr GfxMeta::ClassInfo makeClassInfo(void)
         prv::hasSdlTypeNested<T>::value || prv::hasBgiTypeNested<T>::value,
         prv::hasSdlTypePtrNested<T>::value,
         prv::hasValueType<T>::value,
-        prv::hasClearMethod<T>::value,
+        prv::hasPublicClearMethod<T>::value,
         std::is_abstract<T>::value,
         std::is_polymorphic<T>::value,
         std::is_copy_constructible<T>::value,
