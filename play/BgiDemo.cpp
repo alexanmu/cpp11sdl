@@ -45,6 +45,8 @@
 #include "GfxScancode.hpp"
 #include "GfxWindowEvent.hpp"
 #include "GfxWindowEventID.hpp"
+#include "GfxError.hpp"
+#include "GfxGetError.hpp"
 
 #include "GfxColors2.hpp"
 #include "GfxPoint.hpp"
@@ -63,6 +65,7 @@ using namespace gfx::keyboard;
 using namespace gfx::scancode;
 using namespace gfx::bgi;
 using namespace gfx::rect;
+using namespace gfx::error;
 
 class BorlandGraphicsInterfaceDemo
 {
@@ -72,10 +75,12 @@ public:
 
     void doDemo(void);
 private:
+    bool initSdl(void);
     void setUpWindow(void);
-    bool setUpSurface(void);
+    bool checkWindowSurfaceAttrs(void);
     void setUpCanvas(void);
     void eventLoop(void);
+    void projectCanvasToWindow(void);
 
     bool drawColors(void);
     bool drawText(void);
@@ -91,7 +96,7 @@ private:
 
     GfxInitQuit * iqptr_;
     GfxWindow * winptr_;
-    GfxControlledSurface csurf_;
+    GfxSurface * surf_;
     GfxCanvas * canvas_;
 
     int32_t demoStep_;
@@ -106,13 +111,9 @@ const std::string BorlandGraphicsInterfaceDemo::winTitle_ = "BGI Demo";
 
 BorlandGraphicsInterfaceDemo::BorlandGraphicsInterfaceDemo()
 {
-    GfxInitFlags initFlags;
-
     iqptr_ = nullptr;
-    initFlags.setVideo();
-    initFlags.setEvents();
-    iqptr_ = new GfxInitQuit(initFlags);
     winptr_ = nullptr;
+    surf_ = nullptr;
     canvas_ = nullptr;
     demoStep_ = 0;
     waitForQuitStep_ = 0;
@@ -124,7 +125,10 @@ BorlandGraphicsInterfaceDemo::~BorlandGraphicsInterfaceDemo()
     {
         delete canvas_;
     }
-    csurf_.freeSurface();
+    if (surf_ != nullptr)
+    {
+        delete surf_;
+    }
     if (winptr_ != nullptr)
     {
         delete winptr_;
@@ -137,18 +141,40 @@ BorlandGraphicsInterfaceDemo::~BorlandGraphicsInterfaceDemo()
 
 void BorlandGraphicsInterfaceDemo::doDemo(void)
 {
-    setUpWindow();
-    if (setUpSurface() == true)
+    if (initSdl() == true)
     {
-        std::cout << "Starting demo" << std::endl;
+        setUpWindow();
+        if (checkWindowSurfaceAttrs() == true)
+        {
+            std::cout << "Starting demo" << std::endl;
+            setUpCanvas();
+            eventLoop();
+        }
+        else
+        {
+            std::cout << "Canvas requires 24/32bit surface. Exiting ..." << std::endl;
+        }
     }
     else
     {
-        std::cout << "Canvas requires 24/32bit surface. Exiting ..." << std::endl;
-        return;
+        std::cout << "SDL initialization failed. Exiting ..." << std::endl;
     }
-    setUpCanvas();
-    eventLoop();
+}
+
+bool BorlandGraphicsInterfaceDemo::initSdl(void)
+{
+    GfxInitFlags initFlags;
+    
+    initFlags.setVideo();
+    initFlags.setEvents();
+    iqptr_ = new GfxInitQuit(initFlags);
+    if (iqptr_->getErrorCode() != 0)
+    {
+        GfxError err = GfxGetError::getErrorObject();
+        std::cout << "SDL error: " << err.get() << std::endl;
+        return false;
+    }
+    return true;
 }
 
 void BorlandGraphicsInterfaceDemo::setUpWindow(void)
@@ -162,7 +188,7 @@ void BorlandGraphicsInterfaceDemo::setUpWindow(void)
     winptr_ = new GfxWindow(winTitle_, winWidth_, winHeight_, winflags);
 }
 
-bool BorlandGraphicsInterfaceDemo::setUpSurface(void)
+bool BorlandGraphicsInterfaceDemo::checkWindowSurfaceAttrs(void)
 {
     GfxSurfaceFlags sflags;
     GfxPixelFormatEnum pixfmt;
@@ -171,16 +197,15 @@ bool BorlandGraphicsInterfaceDemo::setUpSurface(void)
     uint32_t bypp;
 
     std::cout << "Get window surface. Attributes:" << std::endl;
-    csurf_.createSurface(*winptr_);
     // Surface flags
-    sflags = csurf_().getSurfaceFlags();
+    sflags = winptr_->getWindowSurface()->getSurfaceFlags();
     std::cout << "Software surface: " << std::boolalpha << sflags.isSwSurface() << std::noboolalpha << std::endl;
     std::cout << "Pre-allocated:    " << std::boolalpha << sflags.isPreAlloc() << std::noboolalpha << std::endl;
     std::cout << "RLE accelerated:  " << std::boolalpha << sflags.isRLEAccel() << std::noboolalpha << std::endl;
     std::cout << "Don't free:       " << std::boolalpha << sflags.isDontFree() << std::noboolalpha << std::endl;
     // Check pixel format of surface
     std::cout << "Window surface pixel format. Attributes:" << std::endl;
-    pixfmt = csurf_().getPixelFormat();
+    pixfmt = winptr_->getWindowSurface()->getPixelFormat();
     std::cout << "Pixel format code: " << pixfmt.getAsSdlType() << std::endl;
     pix = new GfxPixelFormat(pixfmt);
     std::cout << "Format name:       " << pix->getPixelFormatName() << std::endl;
@@ -204,7 +229,14 @@ bool BorlandGraphicsInterfaceDemo::setUpSurface(void)
 
 void BorlandGraphicsInterfaceDemo::setUpCanvas(void)
 {
-    canvas_ = new GfxCanvas(csurf_());
+    surf_ = new GfxSurface("Canvas surface", GfxSurfaceFlags(), winWidth_, winHeight_, 32,
+                           GfxPixelFormatEnum(GfxPixelFormatEnum::ValueType::pixelFormatRGB888));
+    if (surf_ == nullptr)
+    {
+        std::cout << "Canvas surface setup failed" << std::endl;
+        throw 1;
+    }
+    canvas_ = new GfxCanvas(*surf_);
 }
 
 void BorlandGraphicsInterfaceDemo::eventLoop(void)
@@ -240,66 +272,65 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
             {
                 GfxWindowEvent evWin(e.window);
 
-                processWindowEvent(evWin.getWindowEventID());
+                if (evWin.getWindowID() == winptr_->getWindowID())
+                {
+                    processWindowEvent(evWin.getWindowEventID());
+                }
             }
         }
         gfx::sdl2::SDL_Delay(25);
         demoStateMachine();
-        winptr_->updateWindowSurface();
+        projectCanvasToWindow();
     }
 }
 
 void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev)
 {
-    if (ev.isSizeChanged())
+    if (ev.isResized())
     {
-        if (canvas_ != nullptr)
-        {
-            delete canvas_;
-        }
-        csurf_.freeSurface();
         std::cout << "Size changed" << std::endl;
         int32_t w = winptr_->getWidth();
         int32_t h = winptr_->getHeight();
         std::cout << "New width " << w << ", new height " << h << " pixels" << std::endl;
-        if (setUpSurface() == true)
-        {
-            std::cout << "Starting demo" << std::endl;
-        }
-        else
-        {
-            std::cout << "Canvas requires 24/32bit surface. Exiting ..." << std::endl;
-            return;
-        }
-        setUpCanvas();
     }
+    if (ev.isMinimized())
+    {
+        winptr_->restoreWindow();
+        winptr_->raiseWindow();
+    }
+}
+
+void BorlandGraphicsInterfaceDemo::projectCanvasToWindow(void)
+{
+    winptr_->getWindowSurface()->blitScaled(*surf_);
+    winptr_->updateWindowSurface();
 }
 
 bool BorlandGraphicsInterfaceDemo::drawColors(void)
 {
     std::cout << "Draw colors ..." << std::endl;
 
-    int32_t step = winHeight_ / GfxColors2::numColors;
+    int32_t step = winHeight_ / GfxColors2::kNumColors;
     int32_t y = 0;
     const uint32_t clrs[] = {
-        GfxColors2::black,
-        GfxColors2::blue,
-        GfxColors2::green,
-        GfxColors2::cyan,
-        GfxColors2::red,
-        GfxColors2::magenta,
-        GfxColors2::brown,
-        GfxColors2::lightGray,
-        GfxColors2::darkGray,
-        GfxColors2::lightBlue,
-        GfxColors2::lightGreen,
-        GfxColors2::lightCyan,
-        GfxColors2::lightRed,
-        GfxColors2::lightMagenta,
-        GfxColors2::yellow,
-        GfxColors2::white
+        GfxColors2::kBlack,
+        GfxColors2::kBlue,
+        GfxColors2::kGreen,
+        GfxColors2::kCyan,
+        GfxColors2::kRed,
+        GfxColors2::kMagenta,
+        GfxColors2::kBrown,
+        GfxColors2::kLightGray,
+        GfxColors2::kDarkGray,
+        GfxColors2::kLightBlue,
+        GfxColors2::kLightGreen,
+        GfxColors2::kLightCyan,
+        GfxColors2::kLightRed,
+        GfxColors2::kLightMagenta,
+        GfxColors2::kYellow,
+        GfxColors2::kWhite
     };
-    for (int32_t index = 0; index < GfxColors2::numColors; index++)
+    for (int32_t index = 0; index < GfxColors2::kNumColors; index++)
     {
         canvas_->SetFillStyle(GfxFillStyles(), GfxColors2(clrs[index]));
         canvas_->Bar(GfxRect(0, y, winWidth_, y + step));
@@ -312,7 +343,7 @@ bool BorlandGraphicsInterfaceDemo::drawText(void)
 {
     std::cout << "Draw text ..." << std::endl;
 
-    int32_t step = winHeight_ / GfxColors2::numColors;
+    int32_t step = winHeight_ / GfxColors2::kNumColors;
     int32_t y = 0;
     GfxColors2 pixclr;
     int32_t text_x;
@@ -321,12 +352,12 @@ bool BorlandGraphicsInterfaceDemo::drawText(void)
     GfxColors2 text_color;
 
     text.setValue("The quick brown fox jumped over the lazy dog 0123456789!");
-    for (int32_t index = 0; index < GfxColors2::numColors; index++)
+    for (int32_t index = 0; index < GfxColors2::kNumColors; index++)
     {
         pixclr = canvas_->GetPixel(GfxPoint(1, y + 1));
         if (pixclr.isCustomColor() == true)
         {
-            text_color = GfxColors2(GfxColors2::white);
+            text_color = GfxColors2(GfxColors2::kWhite);
         }
         else
         {
@@ -347,11 +378,11 @@ bool BorlandGraphicsInterfaceDemo::drawRoundShapes(void)
 
     GfxPoint center(winWidth_ / 2, winHeight_ / 2);
 
-    canvas_->SetColor(GfxColors2(GfxColors2::blue));
+    canvas_->SetColor(GfxColors2(GfxColors2::kBlue));
     canvas_->Arc(center,GfxAngle(120),GfxAngle(240),GfxRadius(200));
     canvas_->Circle(center, GfxRadius(190));
     canvas_->Ellipse(center, GfxAngle(90), GfxAngle(270), GfxRadius(80), GfxRadius(170));
-    canvas_->SetFillStyle(GfxFillStyles(GfxFillStyles::ValueType::xHatchFill), GfxColors2(GfxColors2::red));
+    canvas_->SetFillStyle(GfxFillStyles(GfxFillStyles::ValueType::xHatchFill), GfxColors2(GfxColors2::kRed));
     canvas_->FillEllipse(center, GfxRadius(30), GfxRadius(90));
     center.setX(10);
     canvas_->PieSlice(center, GfxAngle(30), GfxAngle(330), GfxRadius(90));
@@ -367,7 +398,7 @@ bool BorlandGraphicsInterfaceDemo::drawVerticalAndZoomText(void)
     int32_t text_y;
     GfxText text("Draw vertical and zoom text");
 
-    canvas_->SetColor(GfxColors2(GfxColors2::darkGray));
+    canvas_->SetColor(GfxColors2(GfxColors2::kDarkGray));
     canvas_->SetTextStyle(GfxFonts(GfxFonts::ValueType::defaultFont),
                           GfxDirection(GfxDirection::ValueType::verticalDirection),
                           2);
@@ -375,7 +406,7 @@ bool BorlandGraphicsInterfaceDemo::drawVerticalAndZoomText(void)
     text_y = winHeight_ / 2 + canvas_->TextWidth(text) / 2;
     canvas_->MoveTo(GfxPoint(text_x, text_y));
     canvas_->OutText(text);
-    canvas_->SetColor(GfxColors2(GfxColors2::red));
+    canvas_->SetColor(GfxColors2(GfxColors2::kRed));
     canvas_->SetTextStyle(GfxFonts(GfxFonts::ValueType::defaultFont),
                           GfxDirection(GfxDirection::ValueType::horizontalDirection),
                           1);
@@ -388,7 +419,7 @@ bool BorlandGraphicsInterfaceDemo::drawLineStyle(void)
 {
     std::cout << "Draw line style ..." << std::endl;
 
-    canvas_->SetColor(GfxColors2(GfxColors2::lightGray));
+    canvas_->SetColor(GfxColors2(GfxColors2::kLightGray));
     canvas_->SetLineStyle(GfxLineStyle(GfxLineStyle::ValueType::dashedLine),
                           GfxFillStyles(GfxFillStyles::ValueType::solidFill),
                           GfxLineThickness(GfxLineThickness::ValueType::thickWidth));

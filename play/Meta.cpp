@@ -34,9 +34,11 @@ void _doMeta(void)
     gfx::_gfx::GfxMeta meta;
     gfx::_gfx::GfxMeta::ClassInfo classInfo;
 
+    std::cout << "meta.getClassCount()=" << meta.getClassCount() << '\n';
+    std::cout << "meta.getClassInfoTableSizeInBytes()=" << meta.getClassInfoTableSizeInBytes() << '\n';
 	for (int32_t index = 0; index < meta.getClassCount(); index++)
 	{
-	    classInfo = meta.getClassInfo(index);
+        classInfo = meta.getClassInfo(index);
 	    std::cout << "Name=" << classInfo.className_ << ' ';
 	    std::cout << "Size=" << classInfo.size_ << ' ';
         std::cout << "sdlResource=" << classInfo.sdlResource_ << ' ';
@@ -44,6 +46,7 @@ void _doMeta(void)
 	    std::cout << "hasSdlType=" << classInfo.hasSdlType_ << ' ';
 	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << ' ';
         std::cout << "hasValueType=" << classInfo.hasValueType_ << ' ';
+        std::cout << "hasClear=" << classInfo.hasClearMethod_ << ' ';
         std::cout << "isAbstract=" << classInfo.isAbstract_ << ' ';
         std::cout << "isPolym=" << classInfo.isPolymorphic_ << ' ';
         std::cout << "isCopyCtor=" << classInfo.isCopyConstructible_ << ' ';
@@ -52,7 +55,5 @@ void _doMeta(void)
         std::cout << "isMoveAssign=" << classInfo.isMoveAssignable_ << ' ';
         std::cout << "isGfxObjChild=" << classInfo.isDerivedFromGfxObject_ << '\n';
 	}
-    std::cout << "meta.getClassCount()=" << meta.getClassCount() << '\n';
-    std::cout << "meta.getClassInfoTableSizeInBytes()=" << meta.getClassInfoTableSizeInBytes() << '\n';
     std::cout << std::endl;
 }
