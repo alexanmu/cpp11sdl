@@ -27,9 +27,8 @@
 #include <stdexcept>
 #include <cstdint>
 #include <string>
-#include <unordered_map>
+#include <map>
 #include <ostream>
-
 
 namespace gfx
 {
@@ -52,26 +51,29 @@ public:
 
     static GfxRuntimeMeta& getInstance(void) noexcept;
 
+    ClassInfo const& getClassInfo(const int32_t index) noexcept;
+    int32_t getClassCount(void) const noexcept;
+
+    void constructObject(const char * className, const int32_t instanceId) noexcept;
+    void destructObject(const char * className, const int32_t instanceId) noexcept;
+
+    std::ostream& printToStream(std::ostream& ostream) const noexcept;
+private:
+    GfxRuntimeMeta() noexcept;
+
     GfxRuntimeMeta(GfxRuntimeMeta const&) = delete;
     GfxRuntimeMeta(GfxRuntimeMeta&&) = delete;
 
     GfxRuntimeMeta& operator=(GfxRuntimeMeta const&) = delete;
     GfxRuntimeMeta& operator=(GfxRuntimeMeta&&) = delete;
 
-    ClassInfo const& getClassInfo(const int32_t index) noexcept;
-    int32_t getClassCount(void) const noexcept;
-
-    void constructObject(const char * className, int32_t instanceId) noexcept;
-    void destructObject(const char * className, int32_t instanceId) noexcept;
-
-    std::ostream& printToStream(std::ostream& ostream) const noexcept;
-private:
-    GfxRuntimeMeta() noexcept;
     ~GfxRuntimeMeta() noexcept;
 
     void clear(void) noexcept;
 
-    std::unordered_map<std::string, ClassInfo> classUMap;
+    // std::map is faster! Hash computation in case of
+    // std::unordered_map is slow for my case
+    std::map<const char *, ClassInfo> classUMap;
 
     ClassInfo classInfo_;
 };

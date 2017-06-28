@@ -34,6 +34,8 @@
 
 void _doRuntimeMeta(void)
 {
+    gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = true;
+
     gfx::rect::GfxPoint pt1;
     gfx::rect::GfxRect rect1;
 
@@ -43,6 +45,7 @@ void _doRuntimeMeta(void)
     for (int32_t index = 0; index < rmeta.getClassCount(); index++)
     {
         auto cinfo = rmeta.getClassInfo(index);
+        std::cout << "cinfo.maxObjectInstanceCount_=" << cinfo.maxObjectInstanceCount_ << std::endl;
         std::cout << "cinfo.objectInstanceCount_=" << cinfo.objectInstanceCount_ << std::endl;
         std::cout << "cinfo.firstInstanceId_=" << cinfo.firstInstanceId_ << std::endl;
         std::cout << "cinfo.lastInstanceId_=" << cinfo.lastInstanceId_ << std::endl;

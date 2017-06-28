@@ -29,6 +29,7 @@
 #include <iostream>
 #include <random>
 #include <functional>
+#include <limits>
 
 #include "GfxInitQuit.hpp"
 #include "GfxInitFlags.hpp"
@@ -105,6 +106,8 @@ private:
     static const std::string winTitle_;
     int32_t winWidth_ = 640;
     int32_t winHeight_ = 480;
+
+    bool readyToQuit = false;
 };
 
 const std::string BorlandGraphicsInterfaceDemo::winTitle_ = "BGI Demo";
@@ -281,6 +284,11 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
         gfx::sdl2::SDL_Delay(25);
         demoStateMachine();
         projectCanvasToWindow();
+        if (readyToQuit == true)
+        {
+            std::cout << "Internal quit ..." << std::endl;
+            quit = true;
+        }
     }
 }
 
@@ -501,42 +509,50 @@ void BorlandGraphicsInterfaceDemo::demoStateMachine(void)
             {
                 demoStep_ = 3;
             }
+            break;
         case 3:
             if (drawRoundShapes() == true)
             {
                 demoStep_ = 4;
             }
+            break;
         case 4:
             if (drawVerticalAndZoomText() == true)
             {
                 demoStep_ = 5;
             }
+            break;
         case 5:
             if (drawLineStyle() == true)
             {
                 demoStep_ = 6;
             }
+            break;
         case 6:
             if (drawGetPutImage() == true)
             {
                 demoStep_ = 7;
             }
-        case 7:
+            break;
+        default:
             if (drawWaitForQuit() == true)
             {
                 // stay here
-                demoStep_ = 7;
+                demoStep_ += 1;
+                if (demoStep_ == std::numeric_limits<decltype(demoStep_)>::max())
+                {
+                    // Quit after some time ...
+                    readyToQuit = true;
+                }
             }
-        default:
-            // Should never be here
-            demoStep_ = 7;
             break;
     }
 }
 
 void _doBgiDemo(void)
 {
-    // First disable 'performance hog' RuntimeMeta
+    // First disable 'performance hog' RuntimeMeta; although after this
+    // round of optimizations we could let it active
     gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = false;
 
     BorlandGraphicsInterfaceDemo b;

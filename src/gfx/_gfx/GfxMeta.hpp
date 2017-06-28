@@ -65,13 +65,14 @@ public:
     static_assert(sizeof(ClassInfo) == 32, "sizeof(ClassInfo) not 32 bytes");
 
     GfxMeta() noexcept;
-    ~GfxMeta() noexcept;
 
     GfxMeta(GfxMeta const&) = delete;
     GfxMeta(GfxMeta&&) = delete;
 
     GfxMeta& operator=(GfxMeta const&) = delete;
     GfxMeta& operator=(GfxMeta&&) = delete;
+
+    ~GfxMeta() noexcept;
 
     ClassInfo const& getClassInfo(std::string const& className) noexcept;
     ClassInfo const& getClassInfo(const int32_t index) noexcept;

@@ -199,8 +199,8 @@ void AfterInit(void)
         std::cout << "rf.isAccelerated()=" << rf.isAccelerated() << '\n';
         std::cout << "rf.getPresentVSync()=" << rf.getPresentVSync() << '\n';
         std::cout << "rf.getTargetTexture()=" << rf.getTargetTexture() << '\n';
+        delete ri;
     }
-    delete ri;
     std::cout << std::endl;
 }
 

@@ -25,7 +25,6 @@
 #define GfxObject_hpp
 
 #include <cstdint>
-#include <string>
 
 #include "GfxRuntimeMeta.hpp"
 
@@ -40,7 +39,7 @@ class GfxObject
 public:
     GfxObject() noexcept;
 
-    explicit GfxObject(std::string const& strClassName) noexcept;
+    explicit GfxObject(const char * strClassName) noexcept;
 
     GfxObject(GfxObject const& other) noexcept;
     GfxObject(GfxObject&& other) noexcept;
@@ -54,15 +53,15 @@ public:
 
     virtual explicit operator bool() const noexcept;
 
-    std::string const& getClassName(void) const noexcept;
+    const char * getClassName(void) const noexcept;
     int32_t getInstanceId(void) const noexcept;
 
     // Don't use in code; just for testing
     static int32_t getInstanceCounter(void) noexcept;
 private:
-    std::string strClassName_;
-    int32_t i32InstanceId_;
+    const char * strClassName_;
     GfxRuntimeMeta * rmeta_;
+    int32_t i32InstanceId_;
 
     static int32_t i32InstanceCounter_;
 };

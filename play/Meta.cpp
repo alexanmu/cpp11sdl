@@ -28,6 +28,7 @@
 #include <cstdint>
 
 #include "GfxMeta.hpp"
+#include "GfxObject.hpp"
 
 void _doMeta(void)
 {
@@ -55,5 +56,7 @@ void _doMeta(void)
         std::cout << "isMoveAssign=" << classInfo.isMoveAssignable_ << ' ';
         std::cout << "isGfxObjChild=" << classInfo.isDerivedFromGfxObject_ << '\n';
 	}
+	std::cout << "Name=GfxObject" << ' ';
+	std::cout << "Size=" << sizeof(gfx::GfxObject);
     std::cout << std::endl;
 }

@@ -83,22 +83,22 @@ int32_t GfxRuntimeMeta::getClassCount(void) const noexcept
     return static_cast<int32_t>(classUMap.size());
 }
 
-void GfxRuntimeMeta::constructObject(const char * className, int32_t instanceId) noexcept
+void GfxRuntimeMeta::constructObject(const char * className, const int32_t instanceId) noexcept
 {
-    assert(className != nullptr);
-    assert(instanceId > 0);
-
     /* Disable RuntimeMeta feature */
     if (GfxRuntimeMeta::runtimeMetaActive == false)
     {
         return;
     }
 
-    ClassInfo cinfo;
+    assert(className != nullptr);
+    assert(instanceId > 0);
 
     auto find_it = classUMap.find(className);
     if (find_it == classUMap.end())
     {
+        ClassInfo cinfo;
+
         cinfo.objectInstanceCount_ = 1;
         cinfo.maxObjectInstanceCount_ = 1;
         cinfo.firstInstanceId_ = instanceId;
@@ -113,16 +113,16 @@ void GfxRuntimeMeta::constructObject(const char * className, int32_t instanceId)
     }
 }
 
-void GfxRuntimeMeta::destructObject(const char * className, int32_t instanceId) noexcept
+void GfxRuntimeMeta::destructObject(const char * className, const int32_t instanceId) noexcept
 {
-    assert(className != nullptr);
-    assert((instanceId > 0) || ((instanceId == -1) && (std::strcmp(className, "$null$") == 0)));
-
     /* Disable RuntimeMeta feature */
     if (GfxRuntimeMeta::runtimeMetaActive == false)
     {
         return;
     }
+
+    assert(className != nullptr);
+    assert((instanceId > 0) || ((instanceId == -1) && (std::strcmp(className, "$null$") == 0)));
 
     auto find_it = classUMap.find(className);
     if (find_it != classUMap.end())
@@ -142,6 +142,7 @@ std::ostream& GfxRuntimeMeta::printToStream(std::ostream& outstream) const noexc
 GfxRuntimeMeta::GfxRuntimeMeta() noexcept
 {
     clear();
+    classUMap.clear();
 }
 
 GfxRuntimeMeta::~GfxRuntimeMeta() noexcept
