@@ -85,6 +85,7 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
         throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
+    winSurface_ = nullptr;
 }
 
 GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_t height,
@@ -103,6 +104,7 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
         throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
+    winSurface_ = nullptr;
 }
 
 GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
@@ -125,6 +127,7 @@ GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWi
         throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
+    winSurface_ = nullptr;
 }
 
 GfxWindow::GfxWindow(void * data) throw(std::runtime_error) : GfxObject(ClassName)
@@ -139,13 +142,16 @@ GfxWindow::GfxWindow(void * data) throw(std::runtime_error) : GfxObject(ClassNam
         throw std::runtime_error("Unable to create window");
     }
     window_ = tmpwinptr;
+    winSurface_ = nullptr;
 }
 
 GfxWindow::GfxWindow(GfxWindow&& other) noexcept : GfxObject(ClassName)
 {
     window_ = other.window_;
+    winSurface_ = other.winSurface_;
     // Delete other's data
     other.window_ = nullptr;
+    other.winSurface_ = nullptr;
 }
 
 GfxWindow& GfxWindow::operator=(GfxWindow&& other) noexcept
@@ -153,14 +159,22 @@ GfxWindow& GfxWindow::operator=(GfxWindow&& other) noexcept
     if (this != &other)
     {
         window_ = other.window_;
+        winSurface_ = other.winSurface_;
         // Delete other's data
         other.window_ = nullptr;
+        other.winSurface_ = nullptr;
     }
     return *this;
 }
 
 GfxWindow::~GfxWindow() noexcept
 {
+    if (winSurface_ != nullptr)
+    {
+        /* Window surface should not be destroyed. Managed by SDL; just destroy GfxSurface object */
+        delete winSurface_;
+        winSurface_ = nullptr;
+    }
     if (window_ != nullptr)
     {
         sdl2::SDL_DestroyWindow(window_);
@@ -175,6 +189,12 @@ GfxWindow::operator bool() const noexcept
 
 void GfxWindow::destroyWindow() noexcept
 {
+    if (winSurface_ != nullptr)
+    {
+        /* Window surface should not be destroyed. Managed by SDL; just destroy GfxSurface object*/
+        delete winSurface_;
+        winSurface_ = nullptr;
+    }
     if (window_ != nullptr)
     {
         sdl2::SDL_DestroyWindow(window_);
@@ -476,19 +496,32 @@ void GfxWindow::setWindowFullscreen(const fullscreenflags_t flags) const noexcep
     }
 }
 
-surface::GfxSurface * GfxWindow::getWindowSurface(void) const noexcept
+surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_error)
 {
+    sdl2::SDL_Surface * tmpsurf;
+
     if (window_ != nullptr)
     {
-        sdl2::SDL_Surface* surf = sdl2::SDL_GetWindowSurface(window_);
-        if (surf != nullptr)
+        // Window has been created; try-get assoc. surface
+        tmpsurf = sdl2::SDL_GetWindowSurface(window_);
+        if (tmpsurf != nullptr)
         {
-            surface::GfxSurface * ptr { new surface::GfxSurface("GfxWindow::getWindowSurface", surf) };
-
-            return ptr;
+            // Win surface is valid;
+            if (winSurface_ != nullptr)
+            {
+                // Delete existing GfxSurface object
+                delete winSurface_;
+            }
+            // Create new GfxSurface object with new window surface
+            winSurface_ = new surface::GfxSurface("GfxWindow::getWindowSurface", tmpsurf);
         }
     }
-    return nullptr;
+    else
+    {
+        /* Window has been destroyed; winSurface_ is nullptr already; caller will have a problem */
+        throw std::runtime_error("Window has already been destroyed");
+    }
+    return *winSurface_;
 }
 
 void GfxWindow::updateWindowSurface(void) const noexcept

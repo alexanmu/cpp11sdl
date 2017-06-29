@@ -22,6 +22,7 @@
 */
 
 #include "GfxTextSettingsType.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -33,21 +34,25 @@ const char GfxTextSettingsType::ClassName[] = "GfxTextSettingsType";
 
 GfxTextSettingsType::GfxTextSettingsType() noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     clear();
 }
 
 GfxTextSettingsType::GfxTextSettingsType(const BgiType textsettings) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     textSettings_ = textsettings;
 }
 
 GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     textSettings_ = other.textSettings_;
 }
 
 GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     textSettings_ = other.textSettings_;
     // Delete other's value
     other.clear();
@@ -55,6 +60,7 @@ GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept :
 
 GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         textSettings_ = other.textSettings_;
@@ -64,6 +70,7 @@ GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType const& o
 
 GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         textSettings_ = other.textSettings_;
@@ -75,41 +82,49 @@ GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType&& other)
 
 GfxTextSettingsType::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 GfxFonts GfxTextSettingsType::getFont(void) const noexcept
 {
+    TRACE_P0();
     return GfxFonts(textSettings_.font);
 }
 
 GfxDirection GfxTextSettingsType::getDirection(void) const noexcept
 {
+    TRACE_P0();
     return GfxDirection(textSettings_.direction);
 }
 
 int32_t GfxTextSettingsType::getCharSize(void) const noexcept
 {
+    TRACE_P0();
     return textSettings_.charsize;
 }
 
 GfxTextJustification GfxTextSettingsType::getHorizontalJustification(void) const noexcept
 {
+    TRACE_P0();
     return GfxTextJustification(textSettings_.horiz);
 }
 
 GfxTextJustification GfxTextSettingsType::getVerticalJustification(void) const noexcept
 {
+    TRACE_P0();
     return GfxTextJustification(textSettings_.vert);
 }
 
 void GfxTextSettingsType::setValue(const BgiType textsettings) noexcept
 {
+    TRACE_P0();
     textSettings_ = textsettings;
 }
 
 void GfxTextSettingsType::clear(void) noexcept
 {
+    TRACE_P0();
     textSettings_.font = prv::GfxCanvasBgi::bgiFonts::DEFAULT_FONT;
     textSettings_.direction = prv::GfxCanvasBgi::bgiDirection::HORIZ_DIR;
     textSettings_.charsize = -1;
@@ -119,6 +134,7 @@ void GfxTextSettingsType::clear(void) noexcept
 
 GfxTextSettingsType::BgiType GfxTextSettingsType::getAsBgiType(void) const noexcept
 {
+    TRACE_P0();
     return textSettings_;
 }
 

@@ -22,6 +22,7 @@
 */
 
 #include "GfxDrawingMode.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -33,26 +34,31 @@ const char GfxDrawingMode::ClassName[] = "GfxDrawingMode";
 
 GfxDrawingMode::GfxDrawingMode() noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     clear();
 }
 
 GfxDrawingMode::GfxDrawingMode(const ValueType dmode) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dmode_ = static_cast<BgiType>(dmode);
 }
 
 GfxDrawingMode::GfxDrawingMode(const BgiType dmode) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dmode_ = dmode;
 }
 
 GfxDrawingMode::GfxDrawingMode(GfxDrawingMode const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dmode_ = other.dmode_;
 }
 
 GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dmode_ = other.dmode_;
     // Delete other's value
     other.clear();
@@ -60,6 +66,7 @@ GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(Clas
 
 GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         dmode_ = other.dmode_;
@@ -69,6 +76,7 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
 
 GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         dmode_ = other.dmode_;
@@ -80,26 +88,31 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode&& other) noexcept
 
 GfxDrawingMode::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 GfxDrawingMode::ValueType GfxDrawingMode::getValue(void) const noexcept
 {
+    TRACE_P0();
     return static_cast<ValueType>(dmode_);
 }
 
 void GfxDrawingMode::setValue(const ValueType dmode) noexcept
 {
+    TRACE_P0();
     dmode_ = static_cast<BgiType>(dmode);
 }
 
 void GfxDrawingMode::clear(void) noexcept
 {
+    TRACE_P0();
     dmode_ = static_cast<BgiType>(ValueType::copyPut);
 }
 
 GfxDrawingMode::BgiType GfxDrawingMode::getAsBgiType(void) const noexcept
 {
+    TRACE_P0();
     return dmode_;
 }
 

@@ -51,7 +51,6 @@ public:
     GfxControlledSurface() noexcept;
     explicit GfxControlledSurface(const uint16_t w, const uint16_t h) noexcept;
     explicit GfxControlledSurface(std::string const& filename) noexcept;
-    explicit GfxControlledSurface(video::GfxWindow const& win) noexcept;
 
     GfxControlledSurface(GfxControlledSurface const&) = delete;
     GfxControlledSurface(GfxControlledSurface&&) = delete;
@@ -65,7 +64,6 @@ public:
 
     void createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error);
     void createSurface(std::string const& filename) throw(std::runtime_error);
-    void createSurface(video::GfxWindow const& win) throw(std::runtime_error);
 
     void freeSurface(void) noexcept;
 

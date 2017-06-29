@@ -24,6 +24,7 @@
 #ifndef GfxLoadSo_hpp
 #define GfxLoadSo_hpp
 
+#include <stdexcept>
 #include <string>
 
 #include "GfxObject.hpp"
@@ -41,7 +42,7 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxLoadSo() = delete;
+    GfxLoadSo() noexcept;
 
     explicit GfxLoadSo(std::string const& objectname) noexcept;
 
@@ -61,9 +62,10 @@ public:
     std::string const& getObjectName(void) const noexcept;
     void * loadFunction(std::string const& function) const noexcept;
 
+    void loadObject(std::string const& objectName) noexcept;
     void unloadObject() noexcept;
 private:
-    std::string objectname_;
+    std::string objectName_;
     void * handle_;
 };
 

@@ -21,9 +21,10 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <string>
+#include <cassert>
 
 #include "GfxRadius.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -35,21 +36,24 @@ const char GfxRadius::ClassName[] = "GfxRadius";
 
 GfxRadius::GfxRadius() noexcept : GfxObject(ClassName), value_(0)
 {
-    // Nothing to do
+    TRACE_P0();
 }
 
 GfxRadius::GfxRadius(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
-    // Nothing to do
+    TRACE_P0();
+    assert(value > 0);
 }
 
 GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     value_ = other.value_;
 }
 
 GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     value_ = other.value_;
     // Delete other's value
     other.value_ = 0;
@@ -57,6 +61,7 @@ GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(ClassName)
 
 GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         value_ = other.value_;
@@ -66,6 +71,7 @@ GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
 
 GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         value_ = other.value_;
@@ -77,31 +83,39 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
 
 bool GfxRadius::operator==(GfxRadius const& other) const noexcept
 {
+    TRACE_P0();
     return (value_ == other.value_);
 }
 
 bool GfxRadius::operator>(GfxRadius const& other) const noexcept
 {
+    TRACE_P0();
     return (value_ > other.value_);
 }
 
 bool GfxRadius::operator<(GfxRadius const& other) const noexcept
 {
+    TRACE_P0();
     return (value_ < other.value_);
 }
 
 GfxRadius::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 GfxRadius::ValueType GfxRadius::getValue(void) const noexcept
 {
+    TRACE_P0();
     return value_;
 }
 
 void GfxRadius::setValue(const ValueType value) noexcept
 {
+    TRACE_P0();
+    assert(value > 0);
+
     value_ = value;
 }
 

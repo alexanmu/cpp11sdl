@@ -32,63 +32,63 @@ namespace gfx
 namespace _gfx
 {
 
-int32_t GfxObject::i32InstanceCounter_ = 0;
+int32_t GfxObject::instanceCounter_ = 0;
 
-static const char strInitMsg[] = "$init$";
-static const char strNullMsg[] = "$null$";
+const char GfxObject::initMsg[] = "$init$";
+const char GfxObject::nullMsg[] = "$null$";
 
-GfxObject::GfxObject() noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
+GfxObject::GfxObject() noexcept : rMeta_(&GfxRuntimeMeta::getInstance())
 {
-    GfxObject::i32InstanceCounter_ += 1;
-    i32InstanceId_ = GfxObject::i32InstanceCounter_;
-    strClassName_ = strInitMsg;
-    rmeta_->constructObject(strClassName_, i32InstanceId_);
+    GfxObject::instanceCounter_ += 1;
+    instanceId_ = GfxObject::instanceCounter_;
+    className_ = initMsg;
+    rMeta_->constructObject(className_, instanceId_);
 }
 
-GfxObject::GfxObject(const char * strClassName) noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
+GfxObject::GfxObject(const char * className) noexcept : rMeta_(&GfxRuntimeMeta::getInstance())
 {
-    assert(strClassName != nullptr);
+    assert(className != nullptr);
 
-    GfxObject::i32InstanceCounter_ += 1;
-    i32InstanceId_ = GfxObject::i32InstanceCounter_;
-    strClassName_ = strClassName;
-    rmeta_->constructObject(strClassName_, i32InstanceId_);
+    GfxObject::instanceCounter_ += 1;
+    instanceId_ = GfxObject::instanceCounter_;
+    className_ = className;
+    rMeta_->constructObject(className_, instanceId_);
 }
 
-GfxObject::GfxObject(GfxObject const& other) noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
+GfxObject::GfxObject(GfxObject const& other) noexcept : rMeta_(&GfxRuntimeMeta::getInstance())
 {
-    GfxObject::i32InstanceCounter_ += 1;
-    i32InstanceId_ = GfxObject::i32InstanceCounter_;
-    strClassName_ = other.strClassName_;
-    rmeta_->constructObject(strClassName_, i32InstanceId_);
+    GfxObject::instanceCounter_ += 1;
+    instanceId_ = GfxObject::instanceCounter_;
+    className_ = other.className_;
+    rMeta_->constructObject(className_, instanceId_);
 }
 
-GfxObject::GfxObject(GfxObject&& other) noexcept : rmeta_(&GfxRuntimeMeta::getInstance())
+GfxObject::GfxObject(GfxObject&& other) noexcept : rMeta_(&GfxRuntimeMeta::getInstance())
 {
-    GfxObject::i32InstanceCounter_ += 1;
-    i32InstanceId_ = GfxObject::i32InstanceCounter_;
-    strClassName_ = other.strClassName_;
-    rmeta_->constructObject(strClassName_, i32InstanceId_);
+    GfxObject::instanceCounter_ += 1;
+    instanceId_ = GfxObject::instanceCounter_;
+    className_ = other.className_;
+    rMeta_->constructObject(className_, instanceId_);
     // Delete other's data
-    other.strClassName_ = strNullMsg;
-    other.i32InstanceId_ = -1;
+    other.className_ = nullMsg;
+    other.instanceId_ = -1;
 }
 
 GfxObject::~GfxObject() noexcept
 {
-    rmeta_->destructObject(strClassName_, i32InstanceId_);
+    rMeta_->destructObject(className_, instanceId_);
     // Delete my data
-    strClassName_ = strNullMsg;
-    i32InstanceId_ = -1;
+    className_ = nullMsg;
+    instanceId_ = -1;
 }
 
 GfxObject& GfxObject::operator=(GfxObject const& other) noexcept
 {
     if (this != &other)
     {
-        GfxObject::i32InstanceCounter_ += 1;
-        i32InstanceId_ = GfxObject::i32InstanceCounter_;
-        strClassName_ = other.strClassName_;
+        GfxObject::instanceCounter_ += 1;
+        instanceId_ = GfxObject::instanceCounter_;
+        className_ = other.className_;
     }
     return *this;
 }
@@ -97,19 +97,19 @@ GfxObject& GfxObject::operator=(GfxObject&& other) noexcept
 {
     if (this != &other)
     {
-        GfxObject::i32InstanceCounter_ += 1;
-        i32InstanceId_ = GfxObject::i32InstanceCounter_;
-        strClassName_ = other.strClassName_;
+        GfxObject::instanceCounter_ += 1;
+        instanceId_ = GfxObject::instanceCounter_;
+        className_ = other.className_;
         // Delete other's data
-        other.strClassName_ = strNullMsg;
-        other.i32InstanceId_ = -1;
+        other.className_ = nullMsg;
+        other.instanceId_ = -1;
     }
     return *this;
 }
 
 bool GfxObject::operator==(GfxObject const& other) const noexcept
 {
-    return ((i32InstanceId_ == other.i32InstanceId_) && (strClassName_ == other.strClassName_));
+    return ((instanceId_ == other.instanceId_) && (className_ == other.className_));
 }
 
 GfxObject::operator bool() const noexcept
@@ -119,18 +119,18 @@ GfxObject::operator bool() const noexcept
 
 const char * GfxObject::getClassName(void) const noexcept
 {
-    return strClassName_;
+    return className_;
 }
 
 int32_t GfxObject::getInstanceId(void) const noexcept
 {
-    return i32InstanceId_;
+    return instanceId_;
 }
 
 // Don't use in code; just for testing
 int32_t GfxObject::getInstanceCounter(void) noexcept
 {
-    return GfxObject::i32InstanceCounter_;
+    return GfxObject::instanceCounter_;
 }
 
 }  // namespace _gfx

@@ -87,32 +87,6 @@ GfxControlledSurface::GfxControlledSurface(std::string const& filename) noexcept
     }
 }
 
-GfxControlledSurface::GfxControlledSurface(video::GfxWindow const& win) noexcept
-{
-    assert(win);
-
-    surface::GfxSurface * tmpsurf;
-    std::string wintitle;
-
-    tmpsurf = win.getWindowSurface();
-    if (tmpsurf != nullptr)
-    {
-        wintitle = win.getWindowTitle();
-        if (wintitle.length() == 0)
-        {
-            wintitle = "No title";
-        }
-        tmpsurf->setSurfaceName(wintitle);
-        surf_ = tmpsurf;
-        surfaceConstructed_ = true;
-    }
-    else
-    {
-        surf_ = nullptr;
-        surfaceConstructed_ = true;
-    }
-}
-
 GfxControlledSurface::~GfxControlledSurface() noexcept
 {
     if (surfaceConstructed_ == true)
@@ -160,25 +134,6 @@ void GfxControlledSurface::createSurface(std::string const& filename) throw(std:
     if (surfaceConstructed_ == false)
     {
         tmpsurf = new surface::GfxSurface("GfxControlledSurface::createSurface 2+", filename);
-        if (tmpsurf != nullptr)
-        {
-            surf_ = tmpsurf;
-            surfaceConstructed_ = true;
-        }
-        return;
-    }
-    throw std::runtime_error("Object already constructed");
-}
-
-void GfxControlledSurface::createSurface(video::GfxWindow const& win) throw(std::runtime_error)
-{
-    assert(win);
-
-    surface::GfxSurface * tmpsurf;
-
-    if (surfaceConstructed_ == false)
-    {
-        tmpsurf = win.getWindowSurface();
         if (tmpsurf != nullptr)
         {
             surf_ = tmpsurf;

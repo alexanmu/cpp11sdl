@@ -21,6 +21,7 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <stdexcept>
 #include <cassert>
 #include <string>
 
@@ -35,20 +36,26 @@ namespace loadso
 
 const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
-GfxLoadSo::GfxLoadSo(std::string const& objectname) noexcept : GfxObject(ClassName)
+GfxLoadSo::GfxLoadSo() noexcept : GfxObject(ClassName)
 {
-    assert(objectname.length() > 0);
+    objectName_.clear();
+    handle_ = nullptr;
+}
 
-    objectname_ = objectname;
-    handle_ = sdl2::SDL_LoadObject(objectname_.c_str());
+GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassName)
+{
+    assert(objectName.length() > 0);
+
+    objectName_ = objectName;
+    handle_ = sdl2::SDL_LoadObject(objectName_.c_str());
 }
 
 GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(ClassName)
 {
-    objectname_ = other.objectname_;
+    objectName_ = other.objectName_;
     handle_ = other.handle_;
     // Delete other's data
-    other.objectname_ = "";
+    other.objectName_ = "";
     other.handle_ = nullptr;
 }
 
@@ -65,10 +72,16 @@ GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other) noexcept
 {
     if (this != &other)
     {
-        objectname_ = other.objectname_;
+        // Free own resource
+        if (handle_ != nullptr)
+        {
+            unloadObject();
+        }
+        // Copy other's data
+        objectName_ = other.objectName_;
         handle_ = other.handle_;
         // Delete other's data
-        other.objectname_ = "";
+        other.objectName_ = "";
         other.handle_ = nullptr;
     }
     return *this;
@@ -86,7 +99,7 @@ bool GfxLoadSo::isObjectLoaded(void) const noexcept
 
 std::string const& GfxLoadSo::getObjectName(void) const noexcept
 {
-    return objectname_;
+    return objectName_;
 }
 
 void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
@@ -100,6 +113,18 @@ void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
         func = sdl2::SDL_LoadFunction(handle_, function.c_str());
     }
     return func;
+}
+
+void GfxLoadSo::loadObject(std::string const& objectName) noexcept
+{
+    assert(objectName.length() > 0);
+
+    if (handle_ != nullptr)
+    {
+        unloadObject();
+    }
+    objectName_ = objectName;
+    handle_ = sdl2::SDL_LoadObject(objectName_.c_str());
 }
 
 void GfxLoadSo::unloadObject() noexcept

@@ -42,6 +42,7 @@ public:
         /* Class attributes */
         const char * className_;
         int32_t size_;
+        int32_t sizeOfThis_;
         bool sdlResource_;
         bool callsSdl_;
         /* ::prv templates */
@@ -52,14 +53,13 @@ public:
         /* ::std templates */
         bool isAbstract_;
         bool isPolymorphic_;
+        bool isDefaultConstructible_;
         bool isCopyConstructible_;
         bool isCopyAssignable_;
         bool isMoveConstructible_;
         bool isMoveAssignable_;
         bool isDerivedFromGfxObject_;
-        uint8_t padding1_;
-        uint16_t padding2_;
-        uint32_t padding3_;
+        uint16_t padding1_;
     };
 
     static_assert(sizeof(ClassInfo) == 32, "sizeof(ClassInfo) not 32 bytes");

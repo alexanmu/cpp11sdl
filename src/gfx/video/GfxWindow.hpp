@@ -109,7 +109,7 @@ public:
     void minimizeWindow(void) const noexcept;
     void restoreWindow(void) const noexcept;
     void setWindowFullscreen(const fullscreenflags_t flags) const noexcept;
-    surface::GfxSurface * getWindowSurface(void) const noexcept;
+    surface::GfxSurface const& getWindowSurface(void) throw(std::runtime_error);
     void updateWindowSurface(void) const noexcept;
     void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const noexcept;
     void setWindowGrab(GfxBool const& grabbed) const noexcept;
@@ -137,6 +137,7 @@ private:
     static const int32_t kDefaultFlagsValue = 0;
 
     SdlTypePtr window_;
+    surface::GfxSurface * winSurface_;
 };
 
 }  // namespace video

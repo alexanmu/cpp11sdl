@@ -39,7 +39,7 @@ class GfxObject
 public:
     GfxObject() noexcept;
 
-    explicit GfxObject(const char * strClassName) noexcept;
+    explicit GfxObject(const char * className) noexcept;
 
     GfxObject(GfxObject const& other) noexcept;
     GfxObject(GfxObject&& other) noexcept;
@@ -59,16 +59,24 @@ public:
     // Don't use in code; just for testing
     static int32_t getInstanceCounter(void) noexcept;
 private:
-    const char * strClassName_;
-    GfxRuntimeMeta * rmeta_;
-    int32_t i32InstanceId_;
+    alignas(8) const char * className_;
+    alignas(8) GfxRuntimeMeta * rMeta_;
+    alignas(4) int32_t instanceId_;
+    alignas(4) int32_t padding1;
+    /* alignas(8) void * vtable; */
 
-    static int32_t i32InstanceCounter_;
+    static int32_t instanceCounter_;
+    static const char initMsg[];
+    static const char nullMsg[];
 };
 
 }  // namespace _gfx
 
 using _gfx::GfxObject;
+
+static_assert(sizeof(void *) == 8, "Size of pointer is not 8 bytes");
+static_assert(sizeof(int32_t) == 4, "Size of int32_t is not 4 bytes");
+static_assert(sizeof(GfxObject) == 32, "Size of GfxObject is not 32 bytes");
 
 }  // namespace gfx
 

@@ -22,6 +22,7 @@
 */
 
 #include "GfxDirection.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -33,26 +34,31 @@ const char GfxDirection::ClassName[] = "GfxDirection";
 
 GfxDirection::GfxDirection() noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     clear();
 }
 
 GfxDirection::GfxDirection(const ValueType dir) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dir_ = static_cast<BgiType>(dir);
 }
 
 GfxDirection::GfxDirection(const BgiType dir) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dir_ = dir;
 }
 
 GfxDirection::GfxDirection(GfxDirection const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dir_ = other.dir_;
 }
 
 GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     dir_ = other.dir_;
     // Delete other's value
     other.clear();
@@ -60,6 +66,7 @@ GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(ClassName)
 
 GfxDirection& GfxDirection::operator=(GfxDirection const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         dir_ = other.dir_;
@@ -69,6 +76,7 @@ GfxDirection& GfxDirection::operator=(GfxDirection const& other) noexcept
 
 GfxDirection& GfxDirection::operator=(GfxDirection&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         dir_ = other.dir_;
@@ -80,26 +88,31 @@ GfxDirection& GfxDirection::operator=(GfxDirection&& other) noexcept
 
 GfxDirection::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 GfxDirection::ValueType GfxDirection::getValue(void) const noexcept
 {
+    TRACE_P0();
     return static_cast<ValueType>(dir_);
 }
 
 void GfxDirection::setValue(const ValueType dir) noexcept
 {
+    TRACE_P0();
     dir_ = static_cast<BgiType>(dir);
 }
 
 void GfxDirection::clear(void) noexcept
 {
+    TRACE_P0();
     dir_ = static_cast<BgiType>(ValueType::horizontalDirection);
 }
 
 GfxDirection::BgiType GfxDirection::getAsBgiType(void) const noexcept
 {
+    TRACE_P0();
     return dir_;
 }
 

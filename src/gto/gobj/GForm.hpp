@@ -24,13 +24,12 @@
 #ifndef GWindowObject_hpp
 #define GWindowObject_hpp
 
-#include <memory>
 #include <string>
 
 #include "GComponent.hpp"
 #include "GfxCanvas.hpp"
 #include "GfxWindow.hpp"
-#include "GfxControlledSurface.hpp"
+#include "GfxSurface.hpp"
 
 namespace gto
 {
@@ -41,8 +40,6 @@ namespace gobj
 class GForm : public GComponent
 {
 public:
-    typedef std::shared_ptr<GForm> SharedPtr;
-
     explicit GForm(std::string const& vname);
     explicit GForm(std::string const& vname, std::string const& title);
 
@@ -64,17 +61,16 @@ public:
 
     virtual void draw(void);
 
-    std::shared_ptr<gfx::bgi::GfxCanvas> getCanvas(void);
+    gfx::bgi::GfxCanvas * getCanvas(void);
 protected:
     gfx::video::GfxWindow * window_;
-    gfx::xtra::GfxControlledSurface windowsurface_;
 
     const int32_t kDefaultFormWidth = 1280;
     const int32_t kDefaultFormHeight = 800;
 private:
     std::string formName_;
     std::string title_;
-    std::shared_ptr<gfx::bgi::GfxCanvas> canvas_;
+    gfx::bgi::GfxCanvas * canvas_;
     bool canvasInUse_;
 };
 

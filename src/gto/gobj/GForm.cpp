@@ -23,7 +23,6 @@
 
 #include <cassert>
 #include <string>
-#include <memory>
 
 #include "GForm.hpp"
 #include "GfxError.hpp"
@@ -57,10 +56,6 @@ GForm::GForm(std::string const& vname, std::string const& title) : GComponent(vn
 
 GForm::~GForm()
 {
-    if (windowsurface_)
-    {
-        windowsurface_.freeSurface();
-    }
     if (window_ != nullptr)
     {
         delete window_;
@@ -84,7 +79,7 @@ void GForm::create(void)
     gfx::video::GfxWindowPosition winPosCenter(gfx::video::GfxWindowPosition::ValueType::positionCentered);
 
     window_ =  new gfx::video::GfxWindow(title_, winPosCenter, winPosCenter, kDefaultFormWidth,
-                                        kDefaultFormHeight, winFlags);
+                                         kDefaultFormHeight, winFlags);
     canvas_ = nullptr;
 }
 
@@ -103,12 +98,11 @@ void GForm::run(void)
     //
 }
 
-std::shared_ptr<gfx::bgi::GfxCanvas> GForm::getCanvas(void)
+gfx::bgi::GfxCanvas * GForm::getCanvas(void)
 {
     if (window_ != nullptr)
     {
-        windowsurface_.createSurface(*window_);
-        canvas_ = std::make_shared<gfx::bgi::GfxCanvas>(windowsurface_());
+        canvas_ = new gfx::bgi::GfxCanvas(window_->getWindowSurface());
         canvasInUse_ = true;
 
         return canvas_;

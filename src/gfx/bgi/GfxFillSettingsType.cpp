@@ -22,6 +22,7 @@
 */
 
 #include "GfxFillSettingsType.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -33,21 +34,25 @@ const char GfxFillSettingsType::ClassName[] = "GfxFillSettingsType";
 
 GfxFillSettingsType::GfxFillSettingsType() noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     clear();
 }
 
 GfxFillSettingsType::GfxFillSettingsType(const BgiType fillsettings) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     fillSettings_ = fillsettings;
 }
 
 GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     fillSettings_ = other.fillSettings_;
 }
 
 GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     fillSettings_ = other.fillSettings_;
     // Delete other's value
     other.clear();
@@ -55,6 +60,7 @@ GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType&& other) noexcept :
 
 GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         fillSettings_ = other.fillSettings_;
@@ -64,6 +70,7 @@ GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType const& o
 
 GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         fillSettings_ = other.fillSettings_;
@@ -75,32 +82,38 @@ GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType&& other)
 
 GfxFillSettingsType::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 GfxFillStyles GfxFillSettingsType::getFillStyles(void) const noexcept
 {
+    TRACE_P0();
     return GfxFillStyles(fillSettings_.pattern);
 }
 
 GfxColors2 GfxFillSettingsType::getColors2(void) const noexcept
 {
+    TRACE_P0();
     return GfxColors2(fillSettings_.color);
 }
 
 void GfxFillSettingsType::setValue(const BgiType fillsettings) noexcept
 {
+    TRACE_P0();
     fillSettings_ = fillsettings;
 }
 
 void GfxFillSettingsType::clear(void) noexcept
 {
+    TRACE_P0();
     fillSettings_.pattern = prv::GfxCanvasBgi::bgiFillStyles::EMPTY_FILL;
     fillSettings_.color = prv::GfxCanvasBgi::bgiColors::BLACK;
 }
 
 GfxFillSettingsType::BgiType GfxFillSettingsType::getAsBgiType(void) const noexcept
 {
+    TRACE_P0();
     return fillSettings_;
 }
 

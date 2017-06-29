@@ -30,6 +30,7 @@
 #include <random>
 #include <functional>
 #include <limits>
+#include <chrono>
 
 #include "GfxInitQuit.hpp"
 #include "GfxInitFlags.hpp"
@@ -201,14 +202,14 @@ bool BorlandGraphicsInterfaceDemo::checkWindowSurfaceAttrs(void)
 
     std::cout << "Get window surface. Attributes:" << std::endl;
     // Surface flags
-    sflags = winptr_->getWindowSurface()->getSurfaceFlags();
+    sflags = winptr_->getWindowSurface().getSurfaceFlags();
     std::cout << "Software surface: " << std::boolalpha << sflags.isSwSurface() << std::noboolalpha << std::endl;
     std::cout << "Pre-allocated:    " << std::boolalpha << sflags.isPreAlloc() << std::noboolalpha << std::endl;
     std::cout << "RLE accelerated:  " << std::boolalpha << sflags.isRLEAccel() << std::noboolalpha << std::endl;
     std::cout << "Don't free:       " << std::boolalpha << sflags.isDontFree() << std::noboolalpha << std::endl;
     // Check pixel format of surface
     std::cout << "Window surface pixel format. Attributes:" << std::endl;
-    pixfmt = winptr_->getWindowSurface()->getPixelFormat();
+    pixfmt = winptr_->getWindowSurface().getPixelFormat();
     std::cout << "Pixel format code: " << pixfmt.getAsSdlType() << std::endl;
     pix = new GfxPixelFormat(pixfmt);
     std::cout << "Format name:       " << pix->getPixelFormatName() << std::endl;
@@ -310,7 +311,7 @@ void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev
 
 void BorlandGraphicsInterfaceDemo::projectCanvasToWindow(void)
 {
-    winptr_->getWindowSurface()->blitScaled(*surf_);
+    winptr_->getWindowSurface().blitScaled(*surf_);
     winptr_->updateWindowSurface();
 }
 
@@ -452,10 +453,13 @@ bool BorlandGraphicsInterfaceDemo::drawGetPutImage(void)
 
 bool BorlandGraphicsInterfaceDemo::drawWaitForQuit(void)
 {
-    decltype(canvas_->GetPixel(GfxPoint(0, 0))) pixel;
+    GfxColors2 pixel;
     int32_t new_pixel;
     GfxPoint pt;
     GfxColors2 clrs;
+    decltype(std::chrono::high_resolution_clock::now()) start;
+    decltype(std::chrono::high_resolution_clock::now()) end;
+    decltype(std::chrono::duration<double>(end - start).count()) duration;
 
     switch (waitForQuitStep_)
     {
@@ -464,6 +468,7 @@ bool BorlandGraphicsInterfaceDemo::drawWaitForQuit(void)
             waitForQuitStep_ = 1;
             break;
         case 1:
+            start = std::chrono::high_resolution_clock::now();
             for (int i = 0; i < winWidth_; i++)
             {
                 for (int j = 0; j < winHeight_; j++)
@@ -476,6 +481,9 @@ bool BorlandGraphicsInterfaceDemo::drawWaitForQuit(void)
                     canvas_->PutPixel(pt, clrs);
                 }
             }
+            end = std::chrono::high_resolution_clock::now();
+            duration = std::chrono::duration<double>(end - start).count();
+            std::cout << "Color flip duration " << duration << " seconds" << std::endl;
             waitForQuitStep_ = 2;
             break;
         default:

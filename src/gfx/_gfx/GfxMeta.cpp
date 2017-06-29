@@ -240,6 +240,7 @@ constexpr GfxMeta::ClassInfo makeClassInfo(void)
     return {
         T::ClassName,
         sizeof(T),
+        sizeof(T) - sizeof(GfxObject),
         T::SdlResource,
         T::CallsSdl,
         prv::hasSdlTypeNested<T>::value || prv::hasBgiTypeNested<T>::value,
@@ -248,13 +249,12 @@ constexpr GfxMeta::ClassInfo makeClassInfo(void)
         prv::hasPublicClearMethod<T>::value,
         std::is_abstract<T>::value,
         std::is_polymorphic<T>::value,
+        std::is_default_constructible<T>::value,
         std::is_copy_constructible<T>::value,
         std::is_copy_assignable<T>::value,
         std::is_move_constructible<T>::value,
         std::is_move_assignable<T>::value,
         std::is_base_of<GfxObject, T>::value,
-        0,
-        0,
         0
     };
 }
@@ -412,6 +412,8 @@ GfxMeta::~GfxMeta() noexcept
 
 GfxMeta::ClassInfo const& GfxMeta::getClassInfo(std::string const& className) noexcept
 {
+    assert(className.length() > 0);
+
     clear();
     for (const auto& it : classInfoArray_)
     {
@@ -425,6 +427,8 @@ GfxMeta::ClassInfo const& GfxMeta::getClassInfo(std::string const& className) no
 
 GfxMeta::ClassInfo const& GfxMeta::getClassInfo(const int32_t index) noexcept
 {
+    assert(index >= 0);
+
     clear();
     if (index < GfxMeta::classNamesCount_)
     {
@@ -448,15 +452,23 @@ void GfxMeta::clear(void) noexcept
 {
     classInfo_.className_ = nullptr;
     classInfo_.size_ = -1;
+    classInfo_.sizeOfThis_ = -1;
+    classInfo_.sdlResource_ = false;
+    classInfo_.callsSdl_ = false;
+    // prv::
     classInfo_.hasSdlType_ = false;
     classInfo_.hasSdlTypePtr_ = false;
+    classInfo_.hasValueType_ = false;
+    classInfo_.hasPublicClearMethod_ = false;
+    // std::
     classInfo_.isAbstract_ = false;
     classInfo_.isPolymorphic_ = false;
+    classInfo_.isDefaultConstructible_ = false;
+    classInfo_.isCopyConstructible_ = false;
+    classInfo_.isCopyAssignable_ = false;
     classInfo_.isMoveConstructible_ = false;
     classInfo_.isMoveAssignable_ = false;
     classInfo_.isDerivedFromGfxObject_ = false;
-    classInfo_.sdlResource_ = false;
-    classInfo_.hasValueType_ = false;
 }
 
 }  // namespace _gfx

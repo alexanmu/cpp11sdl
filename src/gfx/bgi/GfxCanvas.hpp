@@ -94,8 +94,8 @@ public:
     void FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) noexcept;
     void FreeImage(void * bitmap) noexcept;
     GfxArcCoordsType GetArcCoords(void) noexcept;
-    GfxColors2 GetBkColor(void) noexcept;
-    GfxColors2 GetColor(void) noexcept;
+    GfxColors2 const& GetBkColor(void) noexcept;
+    GfxColors2 const& GetColor(void) noexcept;
     GfxPaletteType GetDefaultPalette(void) noexcept;
     void GetFillPattern(char * pattern) noexcept;
     GfxFillSettingsType GetFillSettings(void) noexcept;
@@ -107,7 +107,7 @@ public:
     int32_t GetMaxY(void) noexcept;
     GfxPaletteType GetPalette(void) noexcept;
     int32_t GetPaletteSize(void) noexcept;
-    GfxColors2 GetPixel(rect::GfxPoint const& pt) noexcept;
+    GfxColors2 const& GetPixel(rect::GfxPoint const& pt) noexcept;
     GfxTextSettingsType GetTextSettings(void) noexcept;
     GfxViewPortType GetViewSettings(void) noexcept;
     int32_t GetX(void) noexcept;
@@ -150,6 +150,7 @@ public:
     int32_t TextWidth(GfxText const& textstring) noexcept;
 private:
     prv::GfxCanvasBgi bgi_;
+    GfxColors2 prvColor_;
 };
 
 }  // namespace bgi

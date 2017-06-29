@@ -22,6 +22,7 @@
 */
 
 #include "GfxArcCoordsType.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -33,21 +34,25 @@ const char GfxArcCoordsType::ClassName[] = "GfxArcCoordsType";
 
 GfxArcCoordsType::GfxArcCoordsType() noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     clear();
 }
 
 GfxArcCoordsType::GfxArcCoordsType(const BgiType arccoords) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     arccoords_ = arccoords;
 }
 
 GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     arccoords_ = other.arccoords_;
 }
 
 GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     arccoords_ = other.arccoords_;
     // Delete other's value
     other.clear();
@@ -55,6 +60,7 @@ GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObjec
 
 GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         arccoords_ = other.arccoords_;
@@ -64,6 +70,7 @@ GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType const& other) noe
 
 GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         arccoords_ = other.arccoords_;
@@ -75,46 +82,55 @@ GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType&& other) noexcept
 
 GfxArcCoordsType::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 int32_t GfxArcCoordsType::getX(void) const noexcept
 {
+    TRACE_P0();
     return arccoords_.x;
 }
 
 int32_t GfxArcCoordsType::getY(void) const noexcept
 {
+    TRACE_P0();
     return arccoords_.y;
 }
 
 int32_t GfxArcCoordsType::getXStart(void) const noexcept
 {
+    TRACE_P0();
     return arccoords_.xstart;
 }
 
 int32_t GfxArcCoordsType::getYStart(void) const noexcept
 {
+    TRACE_P0();
     return arccoords_.ystart;
 }
 
 int32_t GfxArcCoordsType::getXEnd(void) const noexcept
 {
+    TRACE_P0();
     return arccoords_.xend;
 }
 
 int32_t GfxArcCoordsType::getYEnd(void) const noexcept
 {
+    TRACE_P0();
     return arccoords_.yend;
 }
 
 void GfxArcCoordsType::setValue(const BgiType arccoords) noexcept
 {
+    TRACE_P0();
     arccoords_ = arccoords;
 }
 
 void GfxArcCoordsType::clear(void) noexcept
 {
+    TRACE_P0();
     arccoords_.x = -1;
     arccoords_.y = -1;
     arccoords_.xstart = -1;
@@ -125,6 +141,7 @@ void GfxArcCoordsType::clear(void) noexcept
 
 GfxArcCoordsType::BgiType GfxArcCoordsType::getAsBgiType() const noexcept
 {
+    TRACE_P0();
     return arccoords_;
 }
 

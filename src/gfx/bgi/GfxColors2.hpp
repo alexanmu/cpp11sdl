@@ -48,24 +48,26 @@ public:
 
     typedef uint32_t ValueType;
 
-    static const uint32_t kBlack = 0xff000000;
-    static const uint32_t kBlue = 0xff0000ff;
-    static const uint32_t kGreen = 0xff00ff00;
-    static const uint32_t kCyan = 0xff00ffff;
-    static const uint32_t kRed = 0xffff0000;
-    static const uint32_t kMagenta = 0xffff00ff;
-    static const uint32_t kBrown = 0xffa52a2a;
-    static const uint32_t kLightGray = 0xffd3d3d3;
-    static const uint32_t kDarkGray = 0xffa9a9a9;
-    static const uint32_t kLightBlue = 0xffadd8e6;
-    static const uint32_t kLightGreen = 0xff90ee90;
-    static const uint32_t kLightCyan = 0xffe0ffff;
-    static const uint32_t kLightRed = 0xfff08080;
-    static const uint32_t kLightMagenta = 0xffdb7093;
-    static const uint32_t kYellow = 0xffffff00;
-    static const uint32_t kWhite = 0xffffffff;
-
     static const int32_t kNumColors = 16;
+
+    static const ValueType kColors[kNumColors];
+
+    static constexpr const ValueType& kBlack = kColors[0];
+    static constexpr const ValueType& kBlue = kColors[1];
+    static constexpr const ValueType& kGreen = kColors[2];
+    static constexpr const ValueType& kCyan = kColors[3];
+    static constexpr const ValueType& kRed = kColors[4];
+    static constexpr const ValueType& kMagenta = kColors[5];
+    static constexpr const ValueType& kBrown = kColors[6];
+    static constexpr const ValueType& kLightGray = kColors[7];
+    static constexpr const ValueType& kDarkGray = kColors[8];
+    static constexpr const ValueType& kLightBlue = kColors[9];
+    static constexpr const ValueType& kLightGreen = kColors[10];
+    static constexpr const ValueType& kLightCyan = kColors[11];
+    static constexpr const ValueType& kLightRed = kColors[12];
+    static constexpr const ValueType& kLightMagenta = kColors[13];
+    static constexpr const ValueType& kYellow = kColors[14];
+    static constexpr const ValueType& kWhite = kColors[15];
 
     GfxColors2() noexcept;
 

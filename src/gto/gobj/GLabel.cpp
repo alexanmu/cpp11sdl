@@ -133,6 +133,7 @@ void GLabel::draw(void)
             rendsurf = rend.renderTextBlended(text_, getForegroundColor());
             break;
     }
+    GApplication::activeApp->getActiveFontManager()->freeFont(font);
     if (rendsurf != nullptr)
     {
         gfx::rect::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());

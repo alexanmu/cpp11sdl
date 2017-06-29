@@ -22,6 +22,7 @@
 */
 
 #include "GfxFonts.hpp"
+#include "GfxBasicLogger.hpp"
 
 namespace gfx
 {
@@ -33,26 +34,31 @@ const char GfxFonts::ClassName[] = "GfxFonts";
 
 GfxFonts::GfxFonts() noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     clear();
 }
 
 GfxFonts::GfxFonts(const ValueType font) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     font_ = static_cast<BgiType>(font);
 }
 
 GfxFonts::GfxFonts(const BgiType font) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     font_ = font;
 }
 
 GfxFonts::GfxFonts(GfxFonts const& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     font_ = other.font_;
 }
 
 GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(ClassName)
 {
+    TRACE_P0();
     font_ = other.font_;
     // Delete other's value
     other.clear();
@@ -60,6 +66,7 @@ GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(ClassName)
 
 GfxFonts& GfxFonts::operator=(GfxFonts const& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         font_ = other.font_;
@@ -69,6 +76,7 @@ GfxFonts& GfxFonts::operator=(GfxFonts const& other) noexcept
 
 GfxFonts& GfxFonts::operator=(GfxFonts&& other) noexcept
 {
+    TRACE_P0();
     if (this != &other)
     {
         font_ = other.font_;
@@ -80,26 +88,31 @@ GfxFonts& GfxFonts::operator=(GfxFonts&& other) noexcept
 
 GfxFonts::operator bool() const noexcept
 {
+    TRACE_P0();
     return true;
 }
 
 GfxFonts::ValueType GfxFonts::getValue(void) const noexcept
 {
+    TRACE_P0();
     return static_cast<ValueType>(font_);
 }
 
 void GfxFonts::setValue(const ValueType font) noexcept
 {
+    TRACE_P0();
     font_ = static_cast<BgiType>(font);
 }
 
 void GfxFonts::clear(void) noexcept
 {
+    TRACE_P0();
     font_ = static_cast<BgiType>(ValueType::defaultFont);
 }
 
 GfxFonts::BgiType GfxFonts::getAsBgiType(void) const noexcept
 {
+    TRACE_P0();
     return font_;
 }
 
