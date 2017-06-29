@@ -48,4 +48,5 @@ include/
 *.xcworkspace/
 *.xcshareddata/
 *.plist
+gfxbasiclog.log
 

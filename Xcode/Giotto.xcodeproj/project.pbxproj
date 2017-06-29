@@ -208,6 +208,8 @@
 		791EAD9B1EDCB9BE0032ED1D /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
 		791EADA21EDCB9DA0032ED1D /* tool in Copy Files */ = {isa = PBXBuildFile; fileRef = 791EADA11EDCB9BE0032ED1D /* tool */; };
 		7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */; };
+		793A42A61F055FB40083E63B /* GfxBasicLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */; };
+		793A42A71F0562120083E63B /* GfxBasicLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */; };
 		793FD16E1EE2BC4900274C24 /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */; };
 		793FD1721EE2BC5C00274C24 /* GfxLoadSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793FD1701EE2BC5C00274C24 /* GfxLoadSo.cpp */; };
 		794D05F71EE29ECB001BD5D9 /* GfxGetVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D05F31EE29ECB001BD5D9 /* GfxGetVersion.cpp */; };
@@ -528,6 +530,8 @@
 		7922FC4B1EE3C736001D91A6 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = fnt/fntWacky.hpp; sourceTree = "<group>"; };
 		7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBitmapFont.cpp; path = fnt/GfxBitmapFont.cpp; sourceTree = "<group>"; };
 		7922FC4D1EE3C736001D91A6 /* GfxBitmapFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBitmapFont.hpp; path = fnt/GfxBitmapFont.hpp; sourceTree = "<group>"; };
+		793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBasicLogger.cpp; path = _gfx/GfxBasicLogger.cpp; sourceTree = "<group>"; };
+		793A42A51F055FB40083E63B /* GfxBasicLogger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBasicLogger.hpp; path = _gfx/GfxBasicLogger.hpp; sourceTree = "<group>"; };
 		793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFileSystem.cpp; path = filesystem/GfxFileSystem.cpp; sourceTree = "<group>"; };
 		793FD16D1EE2BC4900274C24 /* GfxFileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFileSystem.hpp; path = filesystem/GfxFileSystem.hpp; sourceTree = "<group>"; };
 		793FD1701EE2BC5C00274C24 /* GfxLoadSo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxLoadSo.cpp; path = loadso/GfxLoadSo.cpp; sourceTree = "<group>"; };
@@ -1071,6 +1075,8 @@
 		19D5E6FD1EE56F24000E187B /* _gfx */ = {
 			isa = PBXGroup;
 			children = (
+				793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */,
+				793A42A51F055FB40083E63B /* GfxBasicLogger.hpp */,
 				19D5E6FE1EE56F38000E187B /* GfxMeta.cpp */,
 				19D5E6FF1EE56F38000E187B /* GfxMeta.hpp */,
 				19D5E7001EE56F38000E187B /* GfxObject.cpp */,
@@ -1488,6 +1494,7 @@
 				194648EE1EEC2EAB00299B55 /* GBitmap.cpp in Sources */,
 				194648AE1EEC2D5F00299B55 /* GfxInitFlags.cpp in Sources */,
 				1946489B1EEC2CE600299B55 /* GfxRuntimeMeta.cpp in Sources */,
+				793A42A71F0562120083E63B /* GfxBasicLogger.cpp in Sources */,
 				19B8D2DE1EF6B65100102304 /* Meta.cpp in Sources */,
 				79F2C7471EFD778A00FAE660 /* GfxLineSettingsType.cpp in Sources */,
 				79F759671EFC246600F48942 /* GfxTextEditingEvent.cpp in Sources */,
@@ -1573,6 +1580,7 @@
 				791EAD451EDCB9BE0032ED1D /* GTypes.cpp in Sources */,
 				791EAD491EDCB9BE0032ED1D /* GfxTtfFontRenderer.cpp in Sources */,
 				793FD16E1EE2BC4900274C24 /* GfxFileSystem.cpp in Sources */,
+				793A42A61F055FB40083E63B /* GfxBasicLogger.cpp in Sources */,
 				791EAD4D1EDCB9BE0032ED1D /* GBitmap.cpp in Sources */,
 				79F2C7331EFD775B00FAE660 /* GfxArcCoordsType.cpp in Sources */,
 				796543961EFB77B40086FBD1 /* GfxKeyboard.cpp in Sources */,

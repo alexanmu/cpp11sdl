@@ -561,9 +561,14 @@ void _doBgiDemo(void)
 {
     // First disable 'performance hog' RuntimeMeta; although after this
     // round of optimizations we could let it active
-    gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = false;
+    gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = true;
 
     BorlandGraphicsInterfaceDemo b;
 
     b.doDemo();
+    if (gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive == true)
+    {
+        // print runtime meta-info
+        gfx::_gfx::GfxRuntimeMeta::getInstance().printToStream(std::cout) << std::endl;
+    }
 }
