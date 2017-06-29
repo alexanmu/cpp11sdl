@@ -80,6 +80,7 @@ GfxObject::~GfxObject() noexcept
     // Delete my data
     className_ = nullMsg;
     instanceId_ = -1;
+    padding1 = -1;
 }
 
 GfxObject& GfxObject::operator=(GfxObject const& other) noexcept
