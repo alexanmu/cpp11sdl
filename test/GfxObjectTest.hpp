@@ -20,11 +20,11 @@
 
  See copyright notice at http://lidsdl.org/license.php
 */
+
 #ifndef GfxObjectTest_hpp
 #define GfxObjectTest_hpp
 
 #include <utility>
-#include <string>
 
 #include "GfxObject.hpp"
 
@@ -33,10 +33,12 @@ class GfxObjectTest : public ::testing::Test
 protected:
     virtual void SetUp()
     {
+        // nothing to do; yet
     }
 
     virtual void TearDown()
     {
+        // nothing to do; yet
     }
 };
 
@@ -46,7 +48,13 @@ TEST_F(GfxObjectTest, emptyConstructor)
     gfx::_gfx::GfxObject object;
 
     EXPECT_EQ(ctrOrg + 1, object.getInstanceId());
-    EXPECT_EQ("$init$", object.getClassName());
+    EXPECT_STREQ("$init$", object.getClassName());
+}
+
+TEST_F(GfxObjectTest, ConstructorWithStringAssertFail)
+{
+    // Expect assert failure here in class constructor
+    EXPECT_EXIT(gfx::_gfx::GfxObject object2 { nullptr }, ::testing::KilledBySignal(SIGABRT), "");
 }
 
 TEST_F(GfxObjectTest, ConstructorWithString)
@@ -55,7 +63,7 @@ TEST_F(GfxObjectTest, ConstructorWithString)
     gfx::_gfx::GfxObject object2 { "object2" };
 
     EXPECT_EQ(ctrOrg + 1, object2.getInstanceId());
-    EXPECT_EQ("object2", object2.getClassName());
+    EXPECT_STREQ("object2", object2.getClassName());
 }
 
 TEST_F(GfxObjectTest, CopyConstructor)
@@ -65,8 +73,8 @@ TEST_F(GfxObjectTest, CopyConstructor)
     gfx::_gfx::GfxObject object3 = object2;
 
     EXPECT_EQ(ctrOrg + 2, object3.getInstanceId());
-    EXPECT_EQ("$cpctor$object2", object3.getClassName());
-    EXPECT_EQ("object2", object2.getClassName());
+    EXPECT_STREQ("object2", object3.getClassName());
+    EXPECT_STREQ("object2", object2.getClassName());
     EXPECT_EQ(ctrOrg + 1, object2.getInstanceId());
 }
 
@@ -77,8 +85,8 @@ TEST_F(GfxObjectTest, MoveConstructor)
     gfx::_gfx::GfxObject object3 = std::move(object2);
 
     EXPECT_EQ(ctrOrg + 2, object3.getInstanceId());
-    EXPECT_EQ("$mvctor$object2", object3.getClassName());
-    EXPECT_EQ("$null$", object2.getClassName());
+    EXPECT_STREQ("object2", object3.getClassName());
+    EXPECT_STREQ("$null$", object2.getClassName());
     EXPECT_EQ(-1, object2.getInstanceId());
 }
 
@@ -88,9 +96,9 @@ TEST_F(GfxObjectTest, EqualOperator)
     gfx::_gfx::GfxObject object { "object" };
     gfx::_gfx::GfxObject object2 { "object2" };
 
-    EXPECT_EQ("object", object.getClassName());
+    EXPECT_STREQ("object", object.getClassName());
     EXPECT_EQ(ctrOrg + 1, object.getInstanceId());
-    EXPECT_EQ("object2", object2.getClassName());
+    EXPECT_STREQ("object2", object2.getClassName());
     EXPECT_EQ(ctrOrg + 2, object2.getInstanceId());
     
     // Move objects
@@ -99,10 +107,10 @@ TEST_F(GfxObjectTest, EqualOperator)
 
     EXPECT_EQ(ctrOrg + 3, object3.getInstanceId());
     EXPECT_EQ(ctrOrg + 4, object4.getInstanceId());
-    EXPECT_EQ("$null$", object.getClassName());
-    EXPECT_EQ("$null$", object2.getClassName());
-    EXPECT_EQ("$mvctor$object", object3.getClassName());
-    EXPECT_EQ("$mvctor$object2", object4.getClassName());
+    EXPECT_STREQ("$null$", object.getClassName());
+    EXPECT_STREQ("$null$", object2.getClassName());
+    EXPECT_STREQ("object", object3.getClassName());
+    EXPECT_STREQ("object2", object4.getClassName());
     // Expect empty object to be equal
     EXPECT_EQ(true, object.operator==(object2));
     // Expect objects that have been moved to ... to not be equal
@@ -122,8 +130,8 @@ TEST_F(GfxObjectTest, MoveOperator)
 
     // ctrOrg + 3 ... after std::move -> new InstanceId will be generated
     EXPECT_EQ(ctrOrg + 3, object.getInstanceId());
-    EXPECT_EQ("$mvoprt$object2", object.getClassName());
-    EXPECT_EQ("$null$", object2.getClassName());
+    EXPECT_STREQ("object2", object.getClassName());
+    EXPECT_STREQ("$null$", object2.getClassName());
     EXPECT_EQ(-1, object2.getInstanceId());
 }
 

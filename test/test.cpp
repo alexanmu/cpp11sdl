@@ -31,3 +31,6 @@ TEST(MainCpp, Working)
 }
 
 #include "GfxObjectTest.hpp"
+#include "GfxMetaTest.hpp"
+
+/* EOF */
