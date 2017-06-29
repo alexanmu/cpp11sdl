@@ -51,5 +51,5 @@ void _doFontMgr(void)
     {
         std::cout << "ok" << std::endl;
     }
-    delete ptr;
+    fm.freeFont(ptr);
 }

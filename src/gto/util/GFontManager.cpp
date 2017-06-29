@@ -82,7 +82,7 @@ void GFontManager::loadFonts(void) noexcept
     delete fo;
 }
 
-gfx::ttf::GfxTtfFont * GFontManager::getFont(std::string const& fontName, const int pointSize)
+gfx::ttf::GfxTtfFont * GFontManager::getFont(std::string const& fontName, const int pointSize) const noexcept
 {
     std::string fontFileName = "";
 
@@ -93,9 +93,14 @@ gfx::ttf::GfxTtfFont * GFontManager::getFont(std::string const& fontName, const 
     if (fontFileName.length() == 0)
     {
         fontFileName = getFileNameByFontName(std::string(kDefaultFontName) +
-                                            std::string(kDefaultFontFileExtension));
+                                             std::string(kDefaultFontFileExtension));
     }
     return new gfx::ttf::GfxTtfFont(fontFileName, pointSize);
+}
+
+void GFontManager::freeFont(gfx::ttf::GfxTtfFont * font) const noexcept
+{
+    delete font;
 }
 
 // Private methods

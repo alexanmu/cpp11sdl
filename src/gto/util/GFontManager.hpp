@@ -52,7 +52,8 @@ public:
     virtual ~GFontManager() noexcept;
 
     void loadFonts(void) noexcept;
-    gfx::ttf::GfxTtfFont * getFont(std::string const& fontName, const int pointSize);
+    gfx::ttf::GfxTtfFont * getFont(std::string const& fontName, const int pointSize) const noexcept;
+    void freeFont(gfx::ttf::GfxTtfFont * font) const noexcept;
 private:
     std::string getFileNameByFontName(std::string const& fontName) const noexcept;
 
