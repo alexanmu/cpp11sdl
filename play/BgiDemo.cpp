@@ -56,6 +56,8 @@
 #include "GfxFillStyles.hpp"
 #include "GfxText.hpp"
 
+#include "GfxBasicLogger.hpp"
+
 using namespace gfx::initquit;
 using namespace gfx::video;
 using namespace gfx::xtra;
@@ -562,6 +564,13 @@ void _doBgiDemo(void)
     // First disable 'performance hog' RuntimeMeta; although after this
     // round of optimizations we could let it active
     gfx::_gfx::GfxRuntimeMeta::runtimeMetaActive = true;
+
+    LOG_MESSAGE("BgiDemo");
+    LOG_TRACE_SET_TRACE_TO_FILE_ON();
+    LOG_TRACE_SET_TRACE_MIN_LOW();
+    LOG_TRACE_ADD_MODULE("gfxdirection::bgi::gfx");
+    LOG_TRACE_ADD_MODULE("gfxtext::bgi::gfx");
+    LOG_TRACE_ADD_MODULE("gfxangle::bgi::gfx");
 
     BorlandGraphicsInterfaceDemo b;
 
