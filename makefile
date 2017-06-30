@@ -122,7 +122,7 @@ empty:
 	@echo "Please specify a command!"
 
 ######################################## Folders ########################################
-make_folders:
+make-folders:
 	@-$(MKDIR) -p $(BINDIR)
 	@-$(MKDIR) -p $(BUILDDIR)
 	@-$(MKDIR) -p $(LINTBUILDDIR)
@@ -136,7 +136,7 @@ $(TARGET) : $(OBJECTS) $(LIBS)
 $(BUILDDIR)/%.$(OBJEXT) : %.$(SRCEXT)
 	$(CXX) $(CXXFLAGS) $(INC) -MMD -c -o $@ $<
 
-tool: make_folders $(TARGET)
+tool: make-folders $(TARGET)
 
 clean:
 	-$(RM) $(BUILDDIR)/*.$(OBJEXT)
@@ -160,7 +160,7 @@ $(BUILDDIR)/test.$(OBJEXT) : $(TESTDIR)/test.$(SRCEXT)
 $(BINDIR)/test: $(OBJECTS_FOR_TEST) $(BUILDDIR)/test.$(OBJEXT) $(LIBS) $(LIBS_FOR_TEST)
 	$(CXX) $(CXXLINK) -o $@ $^
 
-test: make_folders $(BINDIR)/test
+test: make-folders $(BINDIR)/test
 
 clean-test:
 	-$(RM) $(BINDIR)/test
@@ -177,7 +177,7 @@ CPPS_FOR_PLAY:=$(shell find $(PLAYDIR) -type f -name *.$(SRCEXT))
 $(BINDIR)/play: $(DEPS_FOR_PLAY) $(OBJECTS_FOR_PLAY) 
 	$(CXX) $(CXXFLAGS) $(CXXLINK) -o $(BINDIR)/play $(CPPS_FOR_PLAY) $(INC) $(OBJECTS_FOR_PLAY) $(LIBS)
 
-play : make_folders $(BINDIR)/play
+play : make-folders $(BINDIR)/play
 
 clean-play:
 	-$(RM) $(BINDIR)/play
@@ -194,7 +194,7 @@ $(LINTBUILDDIR)/%.$(SRCEXT).$(LINTEXT) : %.$(SRCEXT)
 $(LINTBUILDDIR)/%.$(HDREXT).$(LINTEXT) : %.$(HDREXT)
 	$(TOOLSDIR)/$(CPPLINT) $< 2>$@
 
-lint: make_folders $(LINTCPP) $(LINTHPP)
+lint: make-folders $(LINTCPP) $(LINTHPP)
 
 clean-lint:
 	-$(RM) $(LINTBUILDDIR)/*.$(SRCEXT).$(LINTEXT)
@@ -204,6 +204,7 @@ clean-lint:
 VALGRIND_BIN=valgrind
 VALGRIND_PARAMS:=--leak-check=full --show-leak-kinds=all --demangle=yes
 VALGRIND_TOOL_CMD_LINE:=giotto
+VALGRIND_TARGET:=$(TARGET)
 
 ifeq ($(HOSTOS),macOS)
 valgrind:
@@ -213,8 +214,8 @@ else
  valgrind:
 	@echo "valgrind not supported on Windows"
  else
- valgrind: make-folders tool
-	$(VALGRIND_BIN) $(VALGRIND_PARAMS) --suppressions=$(TOOLSDIR)/suppress_sdl.supp $(TARGET) $(VALGRIND_TOOL_CMD_LINE)
+ valgrind: make-folders $(TARGET)
+	$(VALGRIND_BIN) $(VALGRIND_PARAMS) --suppressions=$(TOOLSDIR)/suppress_sdl.supp $(VALGRIND_TARGET) $(VALGRIND_TOOL_CMD_LINE)
  endif
 endif
 
