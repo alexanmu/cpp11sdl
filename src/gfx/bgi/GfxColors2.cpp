@@ -26,6 +26,8 @@
 #include "GfxColors2.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxcolors2::bgi::gfx");
+
 namespace gfx
 {
 
@@ -56,31 +58,31 @@ const uint32_t GfxColors2::kColors[kNumColors] =
 
 GfxColors2::GfxColors2() noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clear();
 }
 
 GfxColors2::GfxColors2(const ValueType clr) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clr_ = clr;
 }
 
 GfxColors2::GfxColors2(const BgiType clr) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clr_ = clr;
 }
 
 GfxColors2::GfxColors2(GfxColors2 const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clr_ = other.clr_;
 }
 
 GfxColors2::GfxColors2(GfxColors2&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clr_ = other.clr_;
     // Delete other's value
     other.clear();
@@ -88,7 +90,7 @@ GfxColors2::GfxColors2(GfxColors2&& other) noexcept : GfxObject(ClassName)
 
 GfxColors2& GfxColors2::operator=(GfxColors2 const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         clr_ = other.clr_;
@@ -98,7 +100,7 @@ GfxColors2& GfxColors2::operator=(GfxColors2 const& other) noexcept
 
 GfxColors2& GfxColors2::operator=(GfxColors2&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         clr_ = other.clr_;
@@ -110,43 +112,43 @@ GfxColors2& GfxColors2::operator=(GfxColors2&& other) noexcept
 
 GfxColors2::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxColors2::ValueType GfxColors2::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return static_cast<ValueType>(clr_);
 }
 
 void GfxColors2::setValue(const ValueType clr) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clr_ = static_cast<BgiType>(clr);
 }
 
 bool GfxColors2::isCustomColor(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return !isBgiColor();
 }
 
 void GfxColors2::clear(void) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clr_ = static_cast<BgiType>(0);
 }
 
 GfxColors2::BgiType GfxColors2::getAsBgiType(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return getBgiColor();
 }
 
 bool GfxColors2::isBgiColor(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (clr_ == kBlack) return true;
     if (clr_ == kBlue) return true;
     if (clr_ == kGreen) return true;
@@ -168,7 +170,7 @@ bool GfxColors2::isBgiColor(void) const noexcept
 
 GfxColors2::BgiType GfxColors2::getBgiColor(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (clr_ == GfxColors2::kBlack) return prv::GfxCanvasBgi::BLACK;
     if (clr_ == GfxColors2::kBlue) return prv::GfxCanvasBgi::BLUE;
     if (clr_ == GfxColors2::kGreen) return prv::GfxCanvasBgi::GREEN;

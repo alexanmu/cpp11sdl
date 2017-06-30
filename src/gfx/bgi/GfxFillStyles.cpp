@@ -24,6 +24,8 @@
 #include "GfxFillStyles.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxfillstyles::bgi::gfx");
+
 namespace gfx
 {
 
@@ -34,31 +36,31 @@ const char GfxFillStyles::ClassName[] = "GfxFillStyles";
 
 GfxFillStyles::GfxFillStyles() noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clear();
 }
 
 GfxFillStyles::GfxFillStyles(const ValueType fill) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     fill_ = static_cast<BgiType>(fill);
 }
 
 GfxFillStyles::GfxFillStyles(const BgiType fill) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     fill_ = fill;
 }
 
 GfxFillStyles::GfxFillStyles(GfxFillStyles const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     fill_ = other.fill_;
 }
 
 GfxFillStyles::GfxFillStyles(GfxFillStyles&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     fill_ = other.fill_;
     // Delete other's value
     other.clear();
@@ -66,7 +68,7 @@ GfxFillStyles::GfxFillStyles(GfxFillStyles&& other) noexcept : GfxObject(ClassNa
 
 GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         fill_ = other.fill_;
@@ -76,7 +78,7 @@ GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles const& other) noexcept
 
 GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         fill_ = other.fill_;
@@ -88,31 +90,31 @@ GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles&& other) noexcept
 
 GfxFillStyles::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxFillStyles::ValueType GfxFillStyles::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return static_cast<ValueType>(fill_);
 }
 
 void GfxFillStyles::setValue(const ValueType fill) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     fill_ = static_cast<BgiType>(fill);
 }
 
 void GfxFillStyles::clear(void) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     fill_ = static_cast<BgiType>(ValueType::solidFill);
 }
 
 GfxFillStyles::BgiType GfxFillStyles::getAsBgiType(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return fill_;
 }
 

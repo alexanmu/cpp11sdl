@@ -26,6 +26,8 @@
 #include "GfxRadius.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxradius::bgi::gfx");
+
 namespace gfx
 {
 
@@ -36,24 +38,24 @@ const char GfxRadius::ClassName[] = "GfxRadius";
 
 GfxRadius::GfxRadius() noexcept : GfxObject(ClassName), value_(0)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
 }
 
 GfxRadius::GfxRadius(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     assert(value > 0);
 }
 
 GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = other.value_;
 }
 
 GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = other.value_;
     // Delete other's value
     other.value_ = 0;
@@ -61,7 +63,7 @@ GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(ClassName)
 
 GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         value_ = other.value_;
@@ -71,7 +73,7 @@ GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
 
 GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         value_ = other.value_;
@@ -83,37 +85,37 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
 
 bool GfxRadius::operator==(GfxRadius const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ == other.value_);
 }
 
 bool GfxRadius::operator>(GfxRadius const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ > other.value_);
 }
 
 bool GfxRadius::operator<(GfxRadius const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ < other.value_);
 }
 
 GfxRadius::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxRadius::ValueType GfxRadius::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return value_;
 }
 
 void GfxRadius::setValue(const ValueType value) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     assert(value > 0);
 
     value_ = value;

@@ -27,6 +27,8 @@
 #include "GfxText.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxtext::bgi::gfx");
+
 namespace gfx
 {
 
@@ -37,24 +39,24 @@ const char GfxText::ClassName[] = "GfxText";
 
 GfxText::GfxText() noexcept : GfxObject(ClassName), value_("")
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
 }
 
 GfxText::GfxText(ValueType const& value) noexcept : GfxObject(ClassName), value_(value)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     assert(value.length() > 0);
 }
 
 GfxText::GfxText(GfxText const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = other.value_;
 }
 
 GfxText::GfxText(GfxText&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = other.value_;
     // Delete other's value
     other.value_ = "";
@@ -62,7 +64,7 @@ GfxText::GfxText(GfxText&& other) noexcept : GfxObject(ClassName)
 
 GfxText& GfxText::operator=(GfxText const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         value_ = other.value_;
@@ -72,7 +74,7 @@ GfxText& GfxText::operator=(GfxText const& other) noexcept
 
 GfxText& GfxText::operator=(GfxText&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         value_ = other.value_;
@@ -84,37 +86,37 @@ GfxText& GfxText::operator=(GfxText&& other) noexcept
 
 bool GfxText::operator==(GfxText const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ == other.value_);
 }
 
 bool GfxText::operator>(GfxText const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ > other.value_);
 }
 
 bool GfxText::operator<(GfxText const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ < other.value_);
 }
 
 GfxText::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxText::ValueType GfxText::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return value_;
 }
 
 void GfxText::setValue(ValueType const& value) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = value;
 }
 

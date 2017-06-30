@@ -24,6 +24,8 @@
 #include "GfxDrawingMode.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxdrawingmode::bgi::gfx");
+
 namespace gfx
 {
 
@@ -34,31 +36,31 @@ const char GfxDrawingMode::ClassName[] = "GfxDrawingMode";
 
 GfxDrawingMode::GfxDrawingMode() noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clear();
 }
 
 GfxDrawingMode::GfxDrawingMode(const ValueType dmode) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     dmode_ = static_cast<BgiType>(dmode);
 }
 
 GfxDrawingMode::GfxDrawingMode(const BgiType dmode) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     dmode_ = dmode;
 }
 
 GfxDrawingMode::GfxDrawingMode(GfxDrawingMode const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     dmode_ = other.dmode_;
 }
 
 GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     dmode_ = other.dmode_;
     // Delete other's value
     other.clear();
@@ -66,7 +68,7 @@ GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(Clas
 
 GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         dmode_ = other.dmode_;
@@ -76,7 +78,7 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
 
 GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         dmode_ = other.dmode_;
@@ -88,31 +90,31 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode&& other) noexcept
 
 GfxDrawingMode::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxDrawingMode::ValueType GfxDrawingMode::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return static_cast<ValueType>(dmode_);
 }
 
 void GfxDrawingMode::setValue(const ValueType dmode) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     dmode_ = static_cast<BgiType>(dmode);
 }
 
 void GfxDrawingMode::clear(void) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     dmode_ = static_cast<BgiType>(ValueType::copyPut);
 }
 
 GfxDrawingMode::BgiType GfxDrawingMode::getAsBgiType(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return dmode_;
 }
 

@@ -24,6 +24,8 @@
 #include "GfxTextJustification.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxtextjustification::bgi::gfx");
+
 namespace gfx
 {
 
@@ -34,31 +36,31 @@ const char GfxTextJustification::ClassName[] = "GfxTextJustification";
 
 GfxTextJustification::GfxTextJustification() noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clear();
 }
 
 GfxTextJustification::GfxTextJustification(const ValueType just) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     just_ = static_cast<BgiType>(just);
 }
 
 GfxTextJustification::GfxTextJustification(const BgiType just) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     just_ = just;
 }
 
 GfxTextJustification::GfxTextJustification(GfxTextJustification const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     just_ = other.just_;
 }
 
 GfxTextJustification::GfxTextJustification(GfxTextJustification&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     just_ = other.just_;
     // Delete other's value
     other.clear();
@@ -66,7 +68,7 @@ GfxTextJustification::GfxTextJustification(GfxTextJustification&& other) noexcep
 
 GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         just_ = other.just_;
@@ -76,7 +78,7 @@ GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification const
 
 GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         just_ = other.just_;
@@ -89,31 +91,31 @@ GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification&& oth
 
 GfxTextJustification::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxTextJustification::ValueType GfxTextJustification::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return static_cast<ValueType>(just_);
 }
 
 void GfxTextJustification::setValue(const ValueType just) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     just_ = static_cast<BgiType>(just);
 }
 
 void GfxTextJustification::clear(void) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     just_ = static_cast<BgiType>(ValueType::centerText);
 }
 
 GfxTextJustification::BgiType GfxTextJustification::getAsBgiType(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return just_;
 }
 

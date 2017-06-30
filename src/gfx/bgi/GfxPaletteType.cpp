@@ -27,6 +27,8 @@
 #include "GfxPaletteType.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME(":gfxpalettetype::bgi::gfx");
+
 namespace gfx
 {
 
@@ -37,25 +39,25 @@ const char GfxPaletteType::ClassName[] = "GfxPaletteType";
 
 GfxPaletteType::GfxPaletteType() noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clear();
 }
 
 GfxPaletteType::GfxPaletteType(const BgiType pal) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     pal_ = pal;
 }
 
 GfxPaletteType::GfxPaletteType(GfxPaletteType const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     pal_ = other.pal_;
 }
 
 GfxPaletteType::GfxPaletteType(GfxPaletteType&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     pal_ = other.pal_;
     // Delete other's value
     other.clear();
@@ -63,7 +65,7 @@ GfxPaletteType::GfxPaletteType(GfxPaletteType&& other) noexcept : GfxObject(Clas
 
 GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         pal_ = other.pal_;
@@ -73,7 +75,7 @@ GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType const& other) noexcept
 
 GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         pal_ = other.pal_;
@@ -85,19 +87,19 @@ GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType&& other) noexcept
 
 GfxPaletteType::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 uint8_t GfxPaletteType::getSize(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return pal_.size;
 }
 
 std::vector<int8_t> GfxPaletteType::getColors(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     std::vector<int8_t> ret;
 
     ret.reserve(pal_.size);
@@ -110,20 +112,20 @@ std::vector<int8_t> GfxPaletteType::getColors(void) const noexcept
 
 void GfxPaletteType::setValue(const BgiType value) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     pal_ = value;
 }
 
 void GfxPaletteType::clear(void) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     pal_.size = 0;
     std::memset(&pal_.colors, 0, prv::GfxCanvasBgi::kMaxColors + 1);
 }
 
 GfxPaletteType::BgiType GfxPaletteType::getAsBgiType(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return pal_;
 }
 

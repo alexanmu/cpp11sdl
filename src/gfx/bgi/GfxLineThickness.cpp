@@ -24,6 +24,8 @@
 #include "GfxLineThickness.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxlinethickness::bgi::gfx");
+
 namespace gfx
 {
 
@@ -34,31 +36,31 @@ const char GfxLineThickness::ClassName[] = "GfxLineThickness";
 
 GfxLineThickness::GfxLineThickness() noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     clear();
 }
 
 GfxLineThickness::GfxLineThickness(const ValueType thick) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     thick_ = static_cast<BgiType>(thick);
 }
 
 GfxLineThickness::GfxLineThickness(const BgiType thick) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     thick_ = thick;
 }
 
 GfxLineThickness::GfxLineThickness(GfxLineThickness const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     thick_ = other.thick_;
 }
 
 GfxLineThickness::GfxLineThickness(GfxLineThickness&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     thick_ = other.thick_;
     // Delete other's value
     other.clear();
@@ -66,7 +68,7 @@ GfxLineThickness::GfxLineThickness(GfxLineThickness&& other) noexcept : GfxObjec
 
 GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         thick_ = other.thick_;
@@ -76,7 +78,7 @@ GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness const& other) noe
 
 GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         thick_ = other.thick_;
@@ -88,31 +90,31 @@ GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness&& other) noexcept
 
 GfxLineThickness::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxLineThickness::ValueType GfxLineThickness::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return static_cast<ValueType>(thick_);
 }
 
 void GfxLineThickness::setValue(const ValueType thick) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     thick_ = static_cast<BgiType>(thick);
 }
 
 void GfxLineThickness::clear(void) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     thick_ = static_cast<BgiType>(ValueType::normalWidth);
 }
 
 GfxLineThickness::BgiType GfxLineThickness::getAsBgiType(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return thick_;
 }
 

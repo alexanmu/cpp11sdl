@@ -21,10 +21,16 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <cassert>
 #include <cstdint>
 #include <fstream>
 #include <ctime>
 #include <string>
+#include <chrono>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 
 #include "GfxBasicLogger.hpp"
 
@@ -43,52 +49,116 @@ GfxBasicLogger& GfxBasicLogger::getInstance(void) noexcept
     return instance_;
 }
 
-void GfxBasicLogger::logTrace(const tracePriority prio, const char * file, const int32_t line,
-                              const char * func, const int32_t instance) noexcept
+// TRACE
+void GfxBasicLogger::logTrace(const char * module, const logTracePriority prio, const char * file,
+                              const int32_t line, const char * func, const int32_t instance) noexcept
 {
-    logFile_ << 'P' << getTextForPrio(prio) << ' ' << instance << ' ' << file << ':' << line << ' '\
-             <<  '[' << func << ']' << '\n';
+    if (static_cast<uint8_t>(prio) >= static_cast<uint8_t>(logMinTracePrio_))
+    {
+        auto pos = std::find(std::begin(logTraceFilterModules_), std::end(logTraceFilterModules_), module);
+        if (pos != std::end(logTraceFilterModules_))
+        {
+            auto nowtime = std::chrono::high_resolution_clock::now();
+            std::stringstream ss;
+
+            ss << "TRACE: ";
+            ss << 'P' << getTraceTextForPrio(prio) << ' ';
+            ss << std::chrono::duration_cast<std::chrono::milliseconds>(nowtime - startTime_).count() << "ms ";
+            ss << instance << ' ' << module << ' ' << file << ':' << line << ' ';
+            ss <<  '[' << func << ']';
+            // Try log to file
+            if (logTraceToFileState_ == logTraceToFileState::logTraceEnabled)
+            {
+                logFile_ << ss.str() << '\n';
+            }
+        }
+    }
+}
+
+GfxBasicLogger::logTracePriority GfxBasicLogger::getTracePriority(void) const noexcept
+{
+    return logMinTracePrio_;
+}
+
+void GfxBasicLogger::setTracePriority(const logTracePriority prio) noexcept
+{
+    logMinTracePrio_ = prio;
+}
+
+GfxBasicLogger::logTraceToFileState GfxBasicLogger::getTraceToFileState(void) const noexcept
+{
+    return logTraceToFileState_;
+}
+
+void GfxBasicLogger::setTraceToFileState(const logTraceToFileState state) noexcept
+{
+    logTraceToFileState_ = state;
+}
+
+std::vector<std::string> const& GfxBasicLogger::getTraceModules(void) const noexcept
+{
+    return logTraceFilterModules_;
+}
+
+void GfxBasicLogger::addTraceModule(std::string const& module) noexcept
+{
+    assert(module.length() > 0);
+
+    auto pos = std::find(std::begin(logTraceFilterModules_), std::end(logTraceFilterModules_), module);
+    if (pos == std::end(logTraceFilterModules_))
+    {
+        logTraceFilterModules_.push_back(module);
+    }
+}
+
+void GfxBasicLogger::clearTraceModules(void) noexcept
+{
+    logTraceFilterModules_.clear();
+}
+
+// LOG
+void GfxBasicLogger::logMessage(const char * msg) noexcept
+{
+    logFile_ << "MESSAGE: " << msg << '\n';
+}
+
+void GfxBasicLogger::logInfo(const char * msg) noexcept
+{
+    logFile_ << "INFO: " << msg << '\n';
 }
 
 // Private methods
 GfxBasicLogger::GfxBasicLogger() noexcept
 {
-    logFile_.open(logFileName_, std::fstream::out | std::fstream::trunc);
-    logFile_ << logFileName_ << ' ' << getCurrentDateAsString() << ' ' << getCurrentTimeAsString() << std::endl;
-    logFile_ << "Trace configuration:" << std::endl;
-    logFile_ << " _ENABLE_TRACE_PRIO_0=" << _ENABLE_TRACE_PRIO_0 << std::endl;
-    logFile_ << " _ENABLE_TRACE_PRIO_1=" << _ENABLE_TRACE_PRIO_1 << std::endl;
-    logFile_ << " _ENABLE_TRACE_PRIO_2=" << _ENABLE_TRACE_PRIO_2 << std::endl;
-    logFile_ << " _ENABLE_TRACE_PRIO_3=" << _ENABLE_TRACE_PRIO_3 << std::endl;
-    logFile_ << " _ENABLE_TRACE_PRIO_4=" << _ENABLE_TRACE_PRIO_4 << std::endl;
-    logFile_ << std::endl;
+    createLogFile();
+    logMinTracePrio_ = logTracePriority::logTracePrioMedium;
+    startTime_ = std::chrono::high_resolution_clock::now();
+    logTraceToFileState_ = logTraceToFileState::logTraceEnabled;
+    logTraceFilterModules_.clear();
 }
 
 GfxBasicLogger::~GfxBasicLogger() noexcept
 {
-    logFile_.close();
+    closeLogFile();
 }
 
-char GfxBasicLogger::getTextForPrio(const tracePriority prio) const noexcept
+char GfxBasicLogger::getTraceTextForPrio(const logTracePriority prio) const noexcept
 {
     char ret = 0;
 
     switch (prio)
     {
-        case tracePriority::prioPrio0:
-            ret = '0';
+        case logTracePriority::logTracePrioLow:
+            ret = 'L';
             break;
-        case tracePriority::prioPrio1:
-            ret = '1';
+        case logTracePriority::logTracePrioMedium:
+            ret = 'M';
             break;
-        case tracePriority::prioPrio2:
-            ret = '2';
+        case logTracePriority::logTracePrioHigh:
+            ret = 'H';
             break;
-        case tracePriority::prioPrio3:
-            ret = '3';
-            break;
-        case tracePriority::prioPrio4:
-            ret = '4';
+        case logTracePriority::logTracePrioTop:
+            ret = 'T';
             break;
     }
     return ret;
@@ -132,6 +202,30 @@ std::string GfxBasicLogger::_lz(std::string const& str, const uint32_t elen) con
         s = "";
     }
     return s + str;
+}
+
+void GfxBasicLogger::createLogFile(void) noexcept
+{
+    std::string fname = logFileName_;
+
+    std::transform(fname.begin(), fname.end(), fname.begin(), ::toupper);
+    logFile_.open(logFileName_, std::fstream::out | std::fstream::trunc);
+    logFile_ << fname << ' ' << getCurrentDateAsString() << ' ' << getCurrentTimeAsString() << std::endl;
+    logFile_ << "Trace configuration:" << std::endl;
+    logFile_ << " _ENABLE_LOG_PRIO_PRIO_LOW  = " << _ENABLE_LOG_PRIO_PRIO_LOW << std::endl;
+    logFile_ << " _ENABLE_LOG_PRIO_PRIO_MED  = " << _ENABLE_LOG_PRIO_PRIO_MED << std::endl;
+    logFile_ << " _ENABLE_LOG_PRIO_PRIO_HIGH = " << _ENABLE_LOG_PRIO_PRIO_HIGH << std::endl;
+    logFile_ << " _ENABLE_LOG_PRIO_PRIO_TOP  = " << _ENABLE_LOG_PRIO_PRIO_TOP << std::endl;
+    logFile_ << std::endl;
+}
+
+void GfxBasicLogger::closeLogFile(void) noexcept
+{
+    std::string fname = logFileName_;
+
+    std::transform(fname.begin(), fname.end(), fname.begin(), ::toupper);
+    logFile_ << fname << ' ' << getCurrentDateAsString() << ' ' << getCurrentTimeAsString() << std::endl;
+    logFile_.close();
 }
 
 }  // namespace _gfx

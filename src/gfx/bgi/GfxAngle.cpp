@@ -24,6 +24,8 @@
 #include "GfxAngle.hpp"
 #include "GfxBasicLogger.hpp"
 
+LOG_TRACE_MODULE_NAME("gfxangle::bgi::gfx");
+
 namespace gfx
 {
 
@@ -34,24 +36,24 @@ const char GfxAngle::ClassName[] = "GfxAngle";
 
 GfxAngle::GfxAngle() noexcept : GfxObject(ClassName), value_(0)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
 }
 
 GfxAngle::GfxAngle(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = value_ % 360;
 }
 
 GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = other.value_;
 }
 
 GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxObject(ClassName)
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = other.value_;
     // Delete other's value
     other.value_ = 0;
@@ -59,7 +61,7 @@ GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxObject(ClassName)
 
 GfxAngle& GfxAngle::operator=(GfxAngle const& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,7 +71,7 @@ GfxAngle& GfxAngle::operator=(GfxAngle const& other) noexcept
 
 GfxAngle& GfxAngle::operator=(GfxAngle&& other) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     if (this != &other)
     {
         value_ = other.value_;
@@ -81,37 +83,37 @@ GfxAngle& GfxAngle::operator=(GfxAngle&& other) noexcept
 
 bool GfxAngle::operator==(GfxAngle const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ == other.value_);
 }
 
 bool GfxAngle::operator>(GfxAngle const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ > other.value_);
 }
 
 bool GfxAngle::operator<(GfxAngle const& other) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return (value_ < other.value_);
 }
 
 GfxAngle::operator bool() const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return true;
 }
 
 GfxAngle::ValueType GfxAngle::getValue(void) const noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     return value_;
 }
 
 void GfxAngle::setValue(const ValueType value) noexcept
 {
-    TRACE_P0();
+    LOG_TRACE_PRIO_LOW();
     value_ = value;
 }
 
