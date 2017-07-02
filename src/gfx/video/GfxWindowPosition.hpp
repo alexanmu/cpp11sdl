@@ -60,6 +60,7 @@ public:
     GfxWindowPosition& operator=(GfxWindowPosition&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void setPosition(const ValueType pos) noexcept;
     ValueType getPosition(void) const noexcept;

@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxPowerState.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpowerstate::power::gfx");
 
 namespace gfx
 {
@@ -36,16 +39,22 @@ const char GfxPowerState::ClassName[] = "GfxPowerState";
 
 GfxPowerState::GfxPowerState() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     clear();
 }
 
 GfxPowerState::GfxPowerState(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(value >= 0);
 
     value_ = value;
@@ -53,11 +62,15 @@ GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxObject(ClassName
 
 GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = other.value_;
 }
 
 GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = other.value_;
     // Delete other's value
     other.clear();
@@ -74,6 +87,8 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other) noexcept
 
 GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -85,41 +100,64 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other) noexcept
 
 GfxPowerState::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPowerState::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxPowerState::isUnknown(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_UNKNOWN));
 }
 
 bool GfxPowerState::isOnBattery(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_ON_BATTERY));
 }
 
 bool GfxPowerState::isNoBattery(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_NO_BATTERY));
 }
 
 bool GfxPowerState::isCharging(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGING));
 }
 
 bool GfxPowerState::isCharged(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGED));
 }
 
 void GfxPowerState::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::stateUnknown);
 }
 
 const std::string GfxPowerState::getAsString() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     std::string str = "";
 
     switch (static_cast<ValueType>(value_))
@@ -145,6 +183,8 @@ const std::string GfxPowerState::getAsString() const noexcept
 
 GfxPowerState::SdlType GfxPowerState::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

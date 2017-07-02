@@ -58,6 +58,7 @@ public:
     virtual ~GfxInitQuit() noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void initSubSystem(GfxInitFlags const& flags) noexcept;
     void quitSubSystem(GfxInitFlags const& flags) const noexcept;

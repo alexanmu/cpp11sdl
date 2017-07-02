@@ -567,10 +567,13 @@ void _doBgiDemo(void)
 
     LOG_MESSAGE("BgiDemo");
     LOG_TRACE_SET_TRACE_TO_FILE_ON();
-    LOG_TRACE_SET_TRACE_MIN_LOW();
-    LOG_TRACE_ADD_MODULE("gfxdirection::bgi::gfx");
-    LOG_TRACE_ADD_MODULE("gfxtext::bgi::gfx");
-    LOG_TRACE_ADD_MODULE("gfxangle::bgi::gfx");
+    LOG_TRACE_SET_TRACE_LVL_LOW_OFF();
+    LOG_TRACE_SET_TRACE_LVL_MED_OFF();
+    LOG_TRACE_SET_TRACE_LVL_HIGH_ON();
+    LOG_TRACE_SET_TRACE_LVL_TOP_ON();
+    LOG_TRACE_TRACE_MODULE("*");
+    // LOG_TRACE_ADD_MODULE("gfxtext::bgi::gfx");
+    // LOG_TRACE_ADD_MODULE("gfxangle::bgi::gfx");
 
     BorlandGraphicsInterfaceDemo b;
 

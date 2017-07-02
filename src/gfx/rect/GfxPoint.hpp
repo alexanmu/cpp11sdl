@@ -60,6 +60,7 @@ public:
     bool operator==(GfxPoint const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     /* Getters */
     int32_t getX(void) const noexcept;

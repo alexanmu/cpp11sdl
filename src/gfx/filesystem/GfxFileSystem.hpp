@@ -50,6 +50,7 @@ public:
     GfxFileSystem& operator=(GfxFileSystem&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     const std::string getBasePath(void) const noexcept;
     const std::string getPrefPath(std::string const& organization,

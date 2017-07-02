@@ -25,6 +25,7 @@
 #define GfxEventType_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxEventConstants.hpp"
@@ -111,6 +112,7 @@ public:
     GfxEventType& operator=(GfxEventType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getEventType(void) const noexcept;
     uint32_t getEventTypeValue(void) const noexcept;

@@ -24,6 +24,9 @@
 #include <string>
 
 #include "GfxTextureAccess.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxtextureaccess::render::gfx");
 
 namespace gfx
 {
@@ -35,31 +38,43 @@ const char GfxTextureAccess::ClassName[] = "GfxTextureAccess";
 
 GfxTextureAccess::GfxTextureAccess() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTextureAccess::GfxTextureAccess(const ValueType access) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     access_ = static_cast<SdlType>(access);
 }
 
 GfxTextureAccess::GfxTextureAccess(const SdlType access) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     access_ = access;
 }
 
 GfxTextureAccess::GfxTextureAccess(const int32_t access) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     access_ = static_cast<SdlType>(access);
 }
 
 GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     access_ = other.access_;
 }
 
 GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     access_ = other.access_;
     // Delete other's data
     other.clear();
@@ -67,6 +82,8 @@ GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxObjec
 
 GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         access_ = other.access_;
@@ -76,6 +93,8 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other) noe
 
 GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         access_ = other.access_;
@@ -87,16 +106,29 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other) noexcept
 
 GfxTextureAccess::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTextureAccess::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxTextureAccess::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     access_ = static_cast<SdlType>(ValueType::accessStatic);
 }
 
 GfxTextureAccess::SdlType GfxTextureAccess::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return access_;
 }
 

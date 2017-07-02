@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxTextSettingsType.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,25 +38,29 @@ const char GfxTextSettingsType::ClassName[] = "GfxTextSettingsType";
 
 GfxTextSettingsType::GfxTextSettingsType() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTextSettingsType::GfxTextSettingsType(const BgiType textsettings) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     textSettings_ = textsettings;
 }
 
 GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     textSettings_ = other.textSettings_;
 }
 
 GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     textSettings_ = other.textSettings_;
     // Delete other's value
     other.clear();
@@ -62,7 +68,8 @@ GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept :
 
 GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         textSettings_ = other.textSettings_;
@@ -72,7 +79,8 @@ GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType const& o
 
 GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         textSettings_ = other.textSettings_;
@@ -85,48 +93,63 @@ GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType&& other)
 GfxTextSettingsType::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTextSettingsType::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxFonts GfxTextSettingsType::getFont(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxFonts(textSettings_.font);
 }
 
 GfxDirection GfxTextSettingsType::getDirection(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxDirection(textSettings_.direction);
 }
 
 int32_t GfxTextSettingsType::getCharSize(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return textSettings_.charsize;
 }
 
 GfxTextJustification GfxTextSettingsType::getHorizontalJustification(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxTextJustification(textSettings_.horiz);
 }
 
 GfxTextJustification GfxTextSettingsType::getVerticalJustification(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxTextJustification(textSettings_.vert);
 }
 
 void GfxTextSettingsType::setValue(const BgiType textsettings) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     textSettings_ = textsettings;
 }
 
 void GfxTextSettingsType::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     textSettings_.font = prv::GfxCanvasBgi::bgiFonts::DEFAULT_FONT;
     textSettings_.direction = prv::GfxCanvasBgi::bgiDirection::HORIZ_DIR;
     textSettings_.charsize = -1;
@@ -137,6 +160,7 @@ void GfxTextSettingsType::clear(void) noexcept
 GfxTextSettingsType::BgiType GfxTextSettingsType::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return textSettings_;
 }
 

@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxGetVersion.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxgetversion::version::gfx");
 
 namespace gfx
 {
@@ -37,26 +40,37 @@ const char GfxGetVersion::ClassName[] = "GfxGetVersion";
 
 GfxGetVersion::GfxGetVersion() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxGetVersion::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
 }
 
-void GfxGetVersion::getVersion(GfxVersion * ver) const noexcept
+std::string GfxGetVersion::to_string(void) const noexcept
 {
-    assert(ver != nullptr);
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
+
+GfxVersion GfxGetVersion::getVersion(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
 
     GfxVersion::SdlType v;
 
     sdl2::SDL_GetVersion(&v);
-    ver->set(v);
+    return GfxVersion(v);
 }
 
 std::string GfxGetVersion::getRevision(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     const char * chptr;
     std::string str = "";
 
@@ -70,6 +84,8 @@ std::string GfxGetVersion::getRevision(void) const noexcept
 
 int32_t GfxGetVersion::getRevisionNumber(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_GetRevisionNumber();
 }
 

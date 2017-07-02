@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxLineSettingsType.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,25 +38,29 @@ const char GfxLineSettingsType::ClassName[] = "GfxLineSettingsType";
 
 GfxLineSettingsType::GfxLineSettingsType() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxLineSettingsType::GfxLineSettingsType(const BgiType linesettings) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     lineSettings_ = linesettings;
 }
 
 GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     lineSettings_ = other.lineSettings_;
 }
 
 GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     lineSettings_ = other.lineSettings_;
     // Delete other's value
     other.clear();
@@ -62,7 +68,8 @@ GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType&& other) noexcept :
 
 GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         lineSettings_ = other.lineSettings_;
@@ -72,7 +79,8 @@ GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType const& o
 
 GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         lineSettings_ = other.lineSettings_;
@@ -85,36 +93,49 @@ GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType&& other)
 GfxLineSettingsType::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxLineSettingsType::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxLineStyle GfxLineSettingsType::getLineStyle(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxLineStyle(lineSettings_.linestyle);
 }
 
 GfxFillStyles GfxLineSettingsType::getFillStyles(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxFillStyles(lineSettings_.upattern);
 }
 
 GfxLineThickness GfxLineSettingsType::getLineThickness(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return GfxLineThickness(lineSettings_.thickness);
 }
 
 void GfxLineSettingsType::setValue(const BgiType linesettings) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     lineSettings_ = linesettings;
 }
 
 void GfxLineSettingsType::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     lineSettings_.linestyle = prv::GfxCanvasBgi::bgiLineStyle::SOLID_LINE;
     lineSettings_.upattern = prv::GfxCanvasBgi::bgiFillStyles::EMPTY_FILL;
     lineSettings_.thickness = prv::GfxCanvasBgi::bgiLineThickness::NORM_WIDTH;
@@ -123,6 +144,7 @@ void GfxLineSettingsType::clear(void) noexcept
 GfxLineSettingsType::BgiType GfxLineSettingsType::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return lineSettings_;
 }
 

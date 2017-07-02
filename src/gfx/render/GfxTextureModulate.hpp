@@ -64,6 +64,7 @@ public:
     GfxTextureModulate& operator=(GfxTextureModulate&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isNone(void) const noexcept;
     bool isColor(void) const noexcept;

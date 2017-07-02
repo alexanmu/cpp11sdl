@@ -56,6 +56,7 @@ public:
     GfxTtfFontRenderer& operator=(GfxTtfFontRenderer&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     GfxTtfFont * getFont(void) const noexcept;
     void setFont(GfxTtfFont * ttf) throw(std::runtime_error);

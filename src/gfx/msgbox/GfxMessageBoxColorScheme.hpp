@@ -62,6 +62,7 @@ public:
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color) noexcept;
 

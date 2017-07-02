@@ -26,6 +26,7 @@
 
 #include <stdexcept>
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -81,6 +82,7 @@ public:
     GfxColors2& operator=(GfxColors2&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType clr) noexcept;

@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxTtfFontRenderer.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxttffontrenderer::ttf::gfx");
 
 namespace gfx
 {
@@ -37,11 +40,15 @@ const char GfxTtfFontRenderer::ClassName[] = "GfxTtfFontRenderer";
 
 GfxTtfFontRenderer::GfxTtfFontRenderer() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ttf_ = nullptr;
 }
 
 GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     if (ttf == nullptr)
     {
         throw std::runtime_error("nullptr");
@@ -51,11 +58,15 @@ GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_erro
 
 GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ttf_ = other.ttf_;
 }
 
 GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ttf_ = other.ttf_;
     // Delete other's data
     other.ttf_ = nullptr;
@@ -63,6 +74,8 @@ GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer&& other) noexcept : Gf
 
 GfxTtfFontRenderer& GfxTtfFontRenderer::operator=(GfxTtfFontRenderer const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         ttf_ = other.ttf_;
@@ -72,6 +85,8 @@ GfxTtfFontRenderer& GfxTtfFontRenderer::operator=(GfxTtfFontRenderer const& othe
 
 GfxTtfFontRenderer& GfxTtfFontRenderer::operator=(GfxTtfFontRenderer&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         ttf_ = other.ttf_;
@@ -83,16 +98,29 @@ GfxTtfFontRenderer& GfxTtfFontRenderer::operator=(GfxTtfFontRenderer&& other) no
 
 GfxTtfFontRenderer::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTtfFontRenderer::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxTtfFont * GfxTtfFontRenderer::getFont(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ttf_;
 }
 
 void GfxTtfFontRenderer::setFont(GfxTtfFont * ttf) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (ttf == nullptr)
     {
         throw std::runtime_error("nullptr");
@@ -102,6 +130,8 @@ void GfxTtfFontRenderer::setFont(GfxTtfFont * ttf) throw(std::runtime_error)
 
 bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(w != nullptr);
     assert(h != nullptr);
@@ -115,6 +145,8 @@ bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t 
 
 bool GfxTtfFontRenderer::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(w != nullptr);
     assert(h != nullptr);
@@ -128,6 +160,8 @@ bool GfxTtfFontRenderer::sizeUtf8(std::string const& text, int32_t * w, int32_t 
 
 bool GfxTtfFontRenderer::sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(w != nullptr);
     assert(h != nullptr);
@@ -138,6 +172,8 @@ bool GfxTtfFontRenderer::sizeUnicode(std::string const& text, int32_t * w, int32
 surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text,
                                                           gfx::pixels::GfxColor const& fg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
 
     surface::GfxSurface::SdlTypePtr surf;
@@ -156,6 +192,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& tex
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const& text,
             gfx::pixels::GfxColor const& fg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
 
     surface::GfxSurface::SdlTypePtr surf;
@@ -174,6 +212,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const&
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string const& text,
                                     gfx::pixels::GfxColor const& fg) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(fg);
 
@@ -183,6 +223,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string con
 surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(const uint16_t ch,
                                     gfx::pixels::GfxColor const& fg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)
@@ -199,6 +241,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(const uint16_t ch,
 surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)
@@ -215,6 +259,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& te
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)
@@ -231,6 +277,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string const& text,
             gfx::pixels::GfxColor const& fg, gfx::pixels::GfxColor const& bg) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(fg);
     assert(bg);
@@ -241,6 +289,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeShaded(std::string co
 surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(const uint16_t ch, gfx::pixels::GfxColor const& fg,
             gfx::pixels::GfxColor const& bg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)
@@ -257,6 +307,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(const uint16_t ch, g
 surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text,
                                                             gfx::pixels::GfxColor const& fg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)
@@ -273,6 +325,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& t
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string const& text,
             gfx::pixels::GfxColor const& fg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)
@@ -289,6 +343,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string cons
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string const& text,
             gfx::pixels::GfxColor const& fg) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(fg);
 
@@ -298,6 +354,8 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string c
 surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(const uint16_t ch,
                                                              gfx::pixels::GfxColor const& fg) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     surface::GfxSurface::SdlTypePtr surf;
 
     if (ttf_ != nullptr)

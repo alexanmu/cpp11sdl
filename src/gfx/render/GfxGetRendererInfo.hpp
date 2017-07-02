@@ -52,6 +52,7 @@ public:
     GfxGetRendererInfo& operator=(GfxGetRendererInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     int32_t getNumRenderDrivers(void) noexcept;
     GfxRendererInfo * getRenderDriverInfo(const int32_t index) noexcept;

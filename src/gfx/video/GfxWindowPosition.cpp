@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxWindowPosition.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxwindowposition::video::gfx");
 
 namespace gfx
 {
@@ -37,11 +40,15 @@ const char GfxWindowPosition::ClassName[] = "GfxWindowPosition";
 
 GfxWindowPosition::GfxWindowPosition() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(coord >= 0);
 
     pos_ = pos;
@@ -60,12 +67,16 @@ GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : Gf
 
 GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     pos_ = other.pos_;
     coord_ = other.coord_;
 }
 
 GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     pos_ = other.pos_;
     coord_ = other.coord_;
     // Delete other's data
@@ -74,6 +85,8 @@ GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxOb
 
 GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         pos_ = other.pos_;
@@ -84,6 +97,8 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other) 
 
 GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         pos_ = other.pos_;
@@ -96,21 +111,36 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other) noexc
 
 GfxWindowPosition::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxWindowPosition::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxWindowPosition::setPosition(const ValueType pos) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     pos_ = pos;
 }
 
 GfxWindowPosition::ValueType GfxWindowPosition::getPosition(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return pos_;
 }
 
 void GfxWindowPosition::setCoordinate(const int32_t coord) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(coord >= 0);
 
     coord_ = coord;
@@ -118,6 +148,8 @@ void GfxWindowPosition::setCoordinate(const int32_t coord) noexcept
 
 int32_t GfxWindowPosition::getCoordinate(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret;
 
     switch (pos_)
@@ -140,6 +172,8 @@ int32_t GfxWindowPosition::getCoordinate(void) const noexcept
 
 void GfxWindowPosition::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     pos_ = ValueType::positionUndefined;
     coord_ = -1;
 }

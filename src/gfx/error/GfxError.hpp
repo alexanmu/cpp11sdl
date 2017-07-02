@@ -52,6 +52,7 @@ public:
     GfxError& operator=(GfxError&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     std::string const& get() const noexcept;
 

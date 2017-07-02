@@ -25,6 +25,7 @@
 #define GfxArcCoordsType_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -55,6 +56,7 @@ public:
     GfxArcCoordsType& operator=(GfxArcCoordsType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     int32_t getX(void) const noexcept;
     int32_t getY(void) const noexcept;

@@ -66,6 +66,7 @@ public:
     GfxSurfaceFlags& operator=(GfxSurfaceFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isSwSurface(void) const noexcept;
     bool isPreAlloc(void) const noexcept;

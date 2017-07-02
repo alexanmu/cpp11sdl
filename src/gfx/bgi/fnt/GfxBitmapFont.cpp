@@ -28,7 +28,7 @@
 #include "GfxBitmapFont.hpp"
 #include "GfxBasicLogger.hpp"
 
-LOG_TRACE_MODULE_NAME("gfxbitmapfont::bgi::gfx");
+LOG_TRACE_MODULE_NAME("gfxbitmapfont::fnt::bgi::gfx");
 
 namespace gfx
 {
@@ -44,13 +44,14 @@ const char GfxBitmapFont::ClassName[] = "GfxBitmapFont";
 GfxBitmapFont::GfxBitmapFont() noexcept : GfxObject(ClassName), fontData_(nullptr),
         fontDataSize_(0), fontWidth_(0), fontHeight_(0)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxBitmapFont::GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, const uint8_t fontHeight)
         noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     assert(fontData != nullptr);
     assert(fontWidth > 0);
     assert(fontHeight > 0);
@@ -72,7 +73,8 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, 
 
 GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;
     fontDataSize_ = other.fontDataSize_;
@@ -82,7 +84,8 @@ GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(Cl
 
 GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     fontWidth_ = other.fontWidth_;
     fontHeight_ = other.fontHeight_;
     fontDataSize_ = other.fontDataSize_;
@@ -94,18 +97,10 @@ GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) noexcept : GfxObject(ClassNa
     other.fontData_ = nullptr;
 }
 
-GfxBitmapFont::~GfxBitmapFont() noexcept
-{
-    LOG_TRACE_PRIO_LOW();
-    if (fontData_ != nullptr)
-    {
-        delete[] fontData_;
-    }
-}
-
 GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         fontWidth_ = other.fontWidth_;
@@ -123,7 +118,8 @@ GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont const& other) noexcept
 
 GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         fontWidth_ = other.fontWidth_;
@@ -139,33 +135,55 @@ GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other) noexcept
     return *this;
 }
 
+GfxBitmapFont::~GfxBitmapFont() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (fontData_ != nullptr)
+    {
+        delete[] fontData_;
+    }
+}
+
 GfxBitmapFont::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return (fontData_ != nullptr);
+}
+
+std::string GfxBitmapFont::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 uint8_t * GfxBitmapFont::getFontData(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return fontData_;
 }
 
 uint16_t GfxBitmapFont::getFontDataSize(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return fontDataSize_;
 }
 
 uint8_t GfxBitmapFont::getFontWidth(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return fontWidth_;
 }
 
 uint8_t GfxBitmapFont::getFontHeight(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return fontHeight_;
 }
 

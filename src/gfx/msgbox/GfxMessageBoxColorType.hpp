@@ -68,6 +68,7 @@ public:
     GfxMessageBoxColorType& operator=(GfxMessageBoxColorType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getType(void) const noexcept;
 

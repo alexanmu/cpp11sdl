@@ -55,6 +55,7 @@ public:
     GfxVideo& operator=(GfxVideo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void videoInit(void) throw(std::runtime_error);
     void videoQuit(void) throw(std::runtime_error);

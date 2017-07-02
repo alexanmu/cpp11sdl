@@ -201,6 +201,7 @@ public:
     GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void setCanvas(const uint32_t * ptr, const int32_t maxx, const int32_t maxy) noexcept;
     void setCustomForegroundColor(const uint32_t color) noexcept;

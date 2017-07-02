@@ -24,6 +24,9 @@
 #include <string>
 
 #include "GfxRendererFlip.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxrendererflip::render::gfx");
 
 namespace gfx
 {
@@ -35,11 +38,15 @@ const char GfxRendererFlip::ClassName[] = "GfxRendererFlip";
 
 GfxRendererFlip::GfxRendererFlip() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flip_ = static_cast<SdlType>(ValueType::flipNone);
     if (fliph == true)
     {
@@ -53,17 +60,23 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : 
 
 GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flip_ = other.flip_;
 }
 
 GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flip_ = other.flip_;
     other.clear();
 }
 
 GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flip_ = other.flip_;
@@ -73,6 +86,8 @@ GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip const& other) noexce
 
 GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flip_ = other.flip_;
@@ -83,51 +98,78 @@ GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other) noexcept
 
 GfxRendererFlip::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxRendererFlip::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxRendererFlip::operator==(GfxRendererFlip const& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flip_ == other.flip_);
 }
 
 bool GfxRendererFlip::isFlipHorizontal(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ((flip_ & sdl2::SDL_FLIP_HORIZONTAL) != 0);
 }
 
 bool GfxRendererFlip::isFlipVertical(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ((flip_ & sdl2::SDL_FLIP_VERTICAL) != 0);
 }
 
 void GfxRendererFlip::setFlipHorizontal(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_HORIZONTAL);
 }
 
 void GfxRendererFlip::setFlipVertical(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_VERTICAL);
 }
 
 void GfxRendererFlip::resetFlipHorizontal(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flip_ = static_cast<SdlType>(flip_ & ~sdl2::SDL_FLIP_HORIZONTAL);
 }
 
 void GfxRendererFlip::resetFlipVertical(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flip_ = static_cast<SdlType>(flip_ & ~sdl2::SDL_FLIP_VERTICAL);
 }
 
 void GfxRendererFlip::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flip_ = static_cast<SdlType>(ValueType::flipNone);
 }
 
 GfxRendererFlip::SdlType GfxRendererFlip::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlType)flip_;
 }
 

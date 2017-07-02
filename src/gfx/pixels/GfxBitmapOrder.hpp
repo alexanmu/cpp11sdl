@@ -25,6 +25,7 @@
 #define GfxBitmapOrder_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -62,6 +63,7 @@ public:
     GfxBitmapOrder& operator=(GfxBitmapOrder&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
 

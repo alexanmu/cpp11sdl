@@ -24,6 +24,9 @@
 #include <string>
 
 #include "GfxWindowEventID.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxwindoweventid::video::gfx");
 
 namespace gfx
 {
@@ -35,31 +38,43 @@ const char GfxWindowEventID::ClassName[] = "GfxWindowEventID";
 
 GfxWindowEventID::GfxWindowEventID() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxWindowEventID::GfxWindowEventID(const ValueType eventid) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     eventid_ = static_cast<SdlType>(eventid);
 }
 
 GfxWindowEventID::GfxWindowEventID(const SdlType eventid) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     eventid_ = eventid;
 }
 
 GfxWindowEventID::GfxWindowEventID(const uint8_t eventid) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     eventid_ = static_cast<SdlType>(eventid);
 }
 
 GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     eventid_ = other.eventid_;
 }
 
 GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     eventid_ = other.eventid_;
     // Delete other's data
     other.clear();
@@ -67,6 +82,8 @@ GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxObjec
 
 GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         eventid_ = other.eventid_;
@@ -76,6 +93,8 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other) noe
 
 GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         eventid_ = other.eventid_;
@@ -87,96 +106,141 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other) noexcept
 
 GfxWindowEventID::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxWindowEventID::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxWindowEventID::isShown(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_SHOWN);
 }
 
 bool GfxWindowEventID::isHidden(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_HIDDEN);
 }
 
 bool GfxWindowEventID::isExposed(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_EXPOSED);
 }
 
 bool GfxWindowEventID::isMoved(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_MOVED);
 }
 
 bool GfxWindowEventID::isResized(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_RESIZED);
 }
 
 bool GfxWindowEventID::isSizeChanged(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_SIZE_CHANGED);
 }
 
 bool GfxWindowEventID::isMinimized(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_MINIMIZED);
 }
 
 bool GfxWindowEventID::isMaximized(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_MAXIMIZED);
 }
 
 bool GfxWindowEventID::isRestored(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_RESTORED);
 }
 
 bool GfxWindowEventID::enter(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_ENTER);
 }
 
 bool GfxWindowEventID::leave(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_LEAVE);
 }
 
 bool GfxWindowEventID::isFocusGained(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_GAINED);
 }
 
 bool GfxWindowEventID::isFocusLost(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_LOST);
 }
 
 bool GfxWindowEventID::close(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_CLOSE);
 }
 
 bool GfxWindowEventID::takeFocus(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_TAKE_FOCUS);
 }
 
 bool GfxWindowEventID::hitTest(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (eventid_ == sdl2::SDL_WINDOWEVENT_HIT_TEST);
 }
 
 void GfxWindowEventID::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     eventid_ = static_cast<SdlType>(ValueType::eventNone);
 }
 
 GfxWindowEventID::SdlType GfxWindowEventID::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return eventid_;
 }
 

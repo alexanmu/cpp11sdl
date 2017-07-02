@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxLogOutputFunction.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxlogoutputfunction::log::gfx");
 
 namespace gfx
 {
@@ -32,12 +37,21 @@ const char GfxLogOutputFunction::ClassName[] = "GfxLogOutputFunction";
 
 GfxLogOutputFunction::GfxLogOutputFunction() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxLogOutputFunction::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxLogOutputFunction::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 }  // namespace log

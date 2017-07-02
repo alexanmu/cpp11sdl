@@ -39,6 +39,7 @@
 #include "FontMgr.hpp"
 #include "Keyboard.hpp"
 #include "BgiDemo.hpp"
+#include "ToString.hpp"
 
 /******************************************************* main *******************************************************/
 typedef struct _Command_t
@@ -64,6 +65,7 @@ static _Command_t commands[] = {
     { _doFontMgr, "fontmgr" },
     { _doKeyboard, "keyboard" },
     { _doBgiDemo, "bgidemo" },
+    { _doToString, "tostring" },
     { _doPlayground, "all" }
 };
 
@@ -82,6 +84,7 @@ void _doPlayground(void)
     _doFontMgr();
     _doKeyboard();
     _doBgiDemo();
+    _doToString();
 }
 
 int main(int argc, char *argv[])

@@ -26,6 +26,9 @@
 #include "GfxScreenSaver.hpp"
 #include "GfxSdlHeader.hpp"
 #include "GfxBool.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxscreensaver::video::gfx");
 
 namespace gfx
 {
@@ -37,6 +40,8 @@ const char GfxScreenSaver::ClassName[] = "GfxScreenSaver";
 
 GfxScreenSaver::GfxScreenSaver() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
 
     ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
@@ -44,22 +49,37 @@ GfxScreenSaver::GfxScreenSaver() noexcept : GfxObject(ClassName)
 
 GfxScreenSaver::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxScreenSaver::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxScreenSaver::isScreenSaverEnabled(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<bool>(ssstatus_);
 }
 
 void GfxScreenSaver::enableScreenSaver(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::SDL_EnableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusEnabled;
 }
 
 void GfxScreenSaver::disableScreenSaver(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
 }

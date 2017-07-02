@@ -24,6 +24,8 @@
 #ifndef GfxBool_hpp
 #define GfxBool_hpp
 
+#include <string>
+
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -58,6 +60,7 @@ public:
     GfxBool& operator=(GfxBool&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool getBool(void) const noexcept;
 

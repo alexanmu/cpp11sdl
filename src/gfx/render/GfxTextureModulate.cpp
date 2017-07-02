@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxTextureModulate.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxtexturemodulate::render::gfx");
 
 namespace gfx
 {
@@ -36,16 +39,22 @@ const char GfxTextureModulate::ClassName[] = "GfxTextureModulate";
 
 GfxTextureModulate::GfxTextureModulate() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTextureModulate::GfxTextureModulate(const ValueType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     modulate_ = static_cast<SdlType>(flags);
 }
 
 GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags >= 0);
 
     modulate_ = flags;
@@ -53,11 +62,15 @@ GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxObject
 
 GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     modulate_ = other.modulate_;
 }
 
 GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     modulate_ = other.modulate_;
     // Delete other's data
     other.clear();
@@ -65,6 +78,8 @@ GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : Gf
 
 GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         modulate_ = other.modulate_;
@@ -74,6 +89,8 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& othe
 
 GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         modulate_ = other.modulate_;
@@ -85,16 +102,29 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other) no
 
 GfxTextureModulate::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTextureModulate::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxTextureModulate::isNone(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (modulate_ == static_cast<SdlType>(ValueType::modulateNone));
 }
 
 bool GfxTextureModulate::isColor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_COLOR;
 
     return (r != 0);
@@ -102,6 +132,8 @@ bool GfxTextureModulate::isColor(void) const noexcept
 
 bool GfxTextureModulate::isAlpha(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_ALPHA;
 
     return (r != 0);
@@ -109,31 +141,43 @@ bool GfxTextureModulate::isAlpha(void) const noexcept
 
 void GfxTextureModulate::setColor(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_COLOR);
 }
 
 void GfxTextureModulate::resetColor(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_COLOR);
 }
 
 void GfxTextureModulate::setAlpha(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_ALPHA);
 }
 
 void GfxTextureModulate::resetAlpha(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_ALPHA);
 }
 
 void GfxTextureModulate::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     modulate_ = static_cast<SdlType>(ValueType::modulateNone);
 }
 
 GfxTextureModulate::SdlType GfxTextureModulate::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return modulate_;
 }
 

@@ -27,6 +27,9 @@
 
 #include "GfxClipboard.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxclipboard::clipboard::gfx");
 
 namespace gfx
 {
@@ -38,16 +41,27 @@ const char GfxClipboard::ClassName[] = "GfxClipboard";
 
 GfxClipboard::GfxClipboard() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxClipboard::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxClipboard::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxClipboard::setClipboardText(std::string const& str) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(str.length() > 0);
 
     sdl2::SDL_SetClipboardText(str.c_str());
@@ -55,6 +69,8 @@ void GfxClipboard::setClipboardText(std::string const& str) const noexcept
 
 std::string GfxClipboard::getClipboardText(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     char * c;
     std::string str { "" };
 
@@ -62,13 +78,15 @@ std::string GfxClipboard::getClipboardText(void) const noexcept
     if (c != nullptr)
     {
         str = c;
-        std::free(c);
+        sdl2::SDL_free(c);
     }
     return str;
 }
 
 GfxBool GfxClipboard::hasClipboardText(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool ret;
 
     ret = sdl2::SDL_HasClipboardText();

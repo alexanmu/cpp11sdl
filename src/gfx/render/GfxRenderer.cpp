@@ -27,6 +27,9 @@
 #include <vector>
 
 #include "GfxRenderer.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxrenderer::render::gfx");
 
 namespace gfx
 {
@@ -41,6 +44,8 @@ const char GfxRenderer::ClassName[] = "GfxRenderer";
 GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags)
     throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(win);
     assert(flags);
 
@@ -56,6 +61,8 @@ GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& fl
 
 GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(surf);
 
     SdlTypePtr renderertmp;
@@ -70,6 +77,8 @@ GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_err
 
 GfxRenderer::GfxRenderer(GfxRenderer&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     renderer_ = other.renderer_;
     // Delete other's data
     other.renderer_ = nullptr;
@@ -77,6 +86,8 @@ GfxRenderer::GfxRenderer(GfxRenderer&& other) noexcept : GfxObject(ClassName)
 
 GfxRenderer& GfxRenderer::operator=(GfxRenderer&& other) noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (this != &other)
     {
         renderer_ = other.renderer_;
@@ -88,6 +99,8 @@ GfxRenderer& GfxRenderer::operator=(GfxRenderer&& other) noexcept
 
 GfxRenderer::~GfxRenderer() noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (renderer_ != nullptr)
     {
         sdl2::SDL_DestroyRenderer(renderer_);
@@ -97,11 +110,22 @@ GfxRenderer::~GfxRenderer() noexcept
 
 GfxRenderer::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (renderer_ != nullptr);
+}
+
+std::string GfxRenderer::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(win);
 
     SdlTypePtr rd;
@@ -119,6 +143,8 @@ GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) co
 
 GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxRendererInfo::SdlType ri;
 
     if (renderer_ != nullptr)
@@ -134,6 +160,8 @@ GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
 
 void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(w != nullptr);
     assert(h != nullptr);
 
@@ -148,6 +176,8 @@ void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
 
 void GfxRenderer::setRenderTarget(GfxTexture const& tex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(tex);
 
     int32_t ret = 1;
@@ -161,6 +191,8 @@ void GfxRenderer::setRenderTarget(GfxTexture const& tex) const noexcept
 
 GfxTexture::SdlTypePtr GfxRenderer::getRenderTarget(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (renderer_ != nullptr)
     {
         return sdl2::SDL_GetRenderTarget(renderer_);
@@ -170,6 +202,8 @@ GfxTexture::SdlTypePtr GfxRenderer::getRenderTarget(void) const noexcept
 
 void GfxRenderer::renderSetLogicalsSize(const int32_t w, const int32_t h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(w >= 0);
     assert(h >= 0);
 
@@ -184,6 +218,8 @@ void GfxRenderer::renderSetLogicalsSize(const int32_t w, const int32_t h) const 
 
 void GfxRenderer::renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(w != nullptr);
     assert(h != nullptr);
 
@@ -197,6 +233,8 @@ void GfxRenderer::renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept
 
 void GfxRenderer::renderSetIntegerScale(GfxBool const& enable) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(enable);
 
     int32_t ret = 1;
@@ -210,6 +248,8 @@ void GfxRenderer::renderSetIntegerScale(GfxBool const& enable) const noexcept
 
 GfxBool GfxRenderer::renderGetIntegerScale(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxBool::SdlType sdlbo;
 
     if (renderer_ != nullptr)
@@ -222,6 +262,8 @@ GfxBool GfxRenderer::renderGetIntegerScale(void) const noexcept
 
 void GfxRenderer::renderSetViewport(rect::GfxRect const& rect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
 
     int32_t ret = 1;
@@ -235,6 +277,8 @@ void GfxRenderer::renderSetViewport(rect::GfxRect const& rect) const noexcept
 
 rect::GfxRect GfxRenderer::renderGetViewport(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     rect::GfxRect::SdlType rect;
 
     if (renderer_ != nullptr)
@@ -247,6 +291,8 @@ rect::GfxRect GfxRenderer::renderGetViewport(void) const noexcept
 
 void GfxRenderer::renderSetClipRect(rect::GfxRect const& rect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
 
     int32_t ret = 1;
@@ -260,6 +306,8 @@ void GfxRenderer::renderSetClipRect(rect::GfxRect const& rect) const noexcept
 
 rect::GfxRect GfxRenderer::renderGetClipRect(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     rect::GfxRect::SdlType rect;
 
     if (renderer_ != nullptr)
@@ -272,6 +320,8 @@ rect::GfxRect GfxRenderer::renderGetClipRect(void) const noexcept
 
 GfxBool GfxRenderer::renderIsClipEnabled(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxBool::SdlType ena;
 
     if (renderer_ != nullptr)
@@ -284,6 +334,8 @@ GfxBool GfxRenderer::renderIsClipEnabled(void) const noexcept
 
 void GfxRenderer::renderSetScale(const float scaleX, const float scaleY) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(scaleX >= 0.0f);
     assert(scaleY >= 0.0f);
 
@@ -298,6 +350,8 @@ void GfxRenderer::renderSetScale(const float scaleX, const float scaleY) const n
 
 void GfxRenderer::renderGetScale(float * scaleX, float * scaleY) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(scaleX != nullptr);
     assert(scaleY != nullptr);
 
@@ -312,6 +366,8 @@ void GfxRenderer::renderGetScale(float * scaleX, float * scaleY) const noexcept
 void GfxRenderer::setRenderDrawColor(const uint8_t r, const uint8_t g, const uint8_t b,
                                     const uint8_t a) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret;
 
     if (renderer_ != nullptr)
@@ -323,6 +379,8 @@ void GfxRenderer::setRenderDrawColor(const uint8_t r, const uint8_t g, const uin
 
 void GfxRenderer::setRenderDrawColor(pixels::GfxColor const& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(color);
 
     int32_t ret;
@@ -337,6 +395,8 @@ void GfxRenderer::setRenderDrawColor(pixels::GfxColor const& color) const noexce
 
 void GfxRenderer::getRenderDrawColor(uint8_t * r, uint8_t * g, uint8_t * b, uint8_t * a) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(r != nullptr);
     assert(g != nullptr);
     assert(b != nullptr);
@@ -357,6 +417,8 @@ void GfxRenderer::getRenderDrawColor(uint8_t * r, uint8_t * g, uint8_t * b, uint
 
 pixels::GfxColor GfxRenderer::getRenderDrawColor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint8_t r;
     uint8_t g;
     uint8_t b;
@@ -377,6 +439,8 @@ pixels::GfxColor GfxRenderer::getRenderDrawColor(void) const noexcept
 
 void GfxRenderer::setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(blendmode);
 
     int32_t ret = 1;
@@ -390,6 +454,8 @@ void GfxRenderer::setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmod
 
 blendmode::GfxBlendMode GfxRenderer::getRenderDrawBlendMode(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     blendmode::GfxBlendMode::SdlType bmode;
     int32_t ret = 1;
 
@@ -407,16 +473,27 @@ blendmode::GfxBlendMode GfxRenderer::getRenderDrawBlendMode(void) const noexcept
 
 void GfxRenderer::renderClear() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+    uint8_t a;
+
     if (renderer_ != nullptr)
     {
+        sdl2::SDL_GetRenderDrawColor(renderer_, &r, &g, &b, &a);
         sdl2::SDL_SetRenderDrawColor(renderer_, kDefaultRenderDrawColor.getRed(), kDefaultRenderDrawColor.getGreen(),
                                     kDefaultRenderDrawColor.getBlue(), kDefaultRenderDrawColor.getAlpha());
         sdl2::SDL_RenderClear(renderer_);
+        sdl2::SDL_SetRenderDrawColor(renderer_, r, g, b, a);
     }
 }
 
 void GfxRenderer::renderDrawPoint(const int32_t x, const int32_t y) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(x >= 0);
     assert(y >= 0);
 
@@ -431,6 +508,8 @@ void GfxRenderer::renderDrawPoint(const int32_t x, const int32_t y) const noexce
 
 void GfxRenderer::renderDrawPoint(rect::GfxPoint const& point) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(point);
 
     int32_t ret = 1;
@@ -444,6 +523,8 @@ void GfxRenderer::renderDrawPoint(rect::GfxPoint const& point) const noexcept
 
 void GfxRenderer::renderDrawPoints(std::vector<rect::GfxPoint> const& points) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(points.size() > 0);
 
     if (renderer_ != nullptr)
@@ -458,6 +539,8 @@ void GfxRenderer::renderDrawPoints(std::vector<rect::GfxPoint> const& points) co
 void GfxRenderer::renderDrawLine(const int32_t x1, const int32_t y1, const int32_t x2,
                                 const int32_t y2) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(x1 >= 0);
     assert(y1 >= 0);
     assert(x2 >= 0);
@@ -473,8 +556,10 @@ void GfxRenderer::renderDrawLine(const int32_t x1, const int32_t y1, const int32
 }
 
 void GfxRenderer::renderDrawLine(rect::GfxPoint const& pt1,
-                                rect::GfxPoint const& pt2) const noexcept
+                                 rect::GfxPoint const& pt2) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(pt1);
     assert(pt2);
 
@@ -490,6 +575,8 @@ void GfxRenderer::renderDrawLine(rect::GfxPoint const& pt1,
 
 void GfxRenderer::renderDrawLines(std::vector<rect::GfxPoint> const& points) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(points.size() > 0);
     assert(points.size() % 2 == 0);
 
@@ -504,6 +591,8 @@ void GfxRenderer::renderDrawLines(std::vector<rect::GfxPoint> const& points) con
 
 void GfxRenderer::renderDrawRect(rect::GfxRect const& rect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
 
     int32_t ret = 1;
@@ -517,6 +606,8 @@ void GfxRenderer::renderDrawRect(rect::GfxRect const& rect) const noexcept
 
 void GfxRenderer::renderDrawRects(std::vector<rect::GfxRect> const& rects) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rects.size() > 0);
 
     if (renderer_ != nullptr)
@@ -530,6 +621,8 @@ void GfxRenderer::renderDrawRects(std::vector<rect::GfxRect> const& rects) const
 
 void GfxRenderer::renderFillRect(rect::GfxRect const& rect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
 
     int32_t ret = 1;
@@ -543,6 +636,8 @@ void GfxRenderer::renderFillRect(rect::GfxRect const& rect) const noexcept
 
 void GfxRenderer::renderFillRects(std::vector<rect::GfxRect> const& rects) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rects.size() > 0);
 
     for (auto const& it : rects)
@@ -553,6 +648,8 @@ void GfxRenderer::renderFillRects(std::vector<rect::GfxRect> const& rects) const
 
 void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(tex);
     assert(src);
     assert(dest);
@@ -560,14 +657,16 @@ void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, re
     if (renderer_ != nullptr)
     {
         sdl2::SDL_RenderCopy(renderer_,
-                       tex.getAsSdlTypePtr(),
-                       src.getAsSdlTypePtr(),
-                       dest.getAsSdlTypePtr());
+                             tex.getAsSdlTypePtr(),
+                             src.getAsSdlTypePtr(),
+                             dest.getAsSdlTypePtr());
     }
 }
 
 void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(tex);
 
     if (renderer_ != nullptr)
@@ -577,9 +676,11 @@ void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
 }
 
 void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest,
-                                const double angle, rect::GfxPoint const& pt, GfxRendererFlip const& flip)
-                                const noexcept
+                               const double angle, rect::GfxPoint const& pt, GfxRendererFlip const& flip)
+                               const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(tex);
     assert(src);
     assert(dest);
@@ -601,6 +702,8 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, 
 void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::GfxPoint const& pt,
                                 GfxRendererFlip const& flip) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(tex);
     assert(pt);
     assert(flip);
@@ -620,6 +723,8 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::
 void GfxRenderer::renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFormatEnum const& format,
                                 void * pixels, const int32_t pitch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
     assert(format);
     assert(pixels != nullptr);
@@ -637,6 +742,8 @@ void GfxRenderer::renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFo
 
 void GfxRenderer::renderPresent(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (renderer_ != nullptr)
     {
         sdl2::SDL_RenderPresent(renderer_);
@@ -645,6 +752,8 @@ void GfxRenderer::renderPresent(void) const noexcept
 
 void GfxRenderer::destroyRenderer() noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (renderer_ != nullptr)
     {
         sdl2::SDL_DestroyRenderer(renderer_);
@@ -654,6 +763,8 @@ void GfxRenderer::destroyRenderer() noexcept
 
 GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return renderer_;
 }
 

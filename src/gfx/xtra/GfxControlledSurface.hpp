@@ -61,6 +61,7 @@ public:
     virtual ~GfxControlledSurface() noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error);
     void createSurface(std::string const& filename) throw(std::runtime_error);

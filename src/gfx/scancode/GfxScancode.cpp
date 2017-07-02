@@ -22,8 +22,12 @@
 */
 
 #include <cstdint>
+#include <string>
 
 #include "GfxScancode.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxscancode::scancode::gfx");
 
 namespace gfx
 {
@@ -35,26 +39,36 @@ const char GfxScancode::ClassName[] = "GfxScancode";
 
 GfxScancode::GfxScancode() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxScancode::GfxScancode(const int32_t code) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = static_cast<SdlType>(code);
 }
 
 GfxScancode::GfxScancode(const ValueType code) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = static_cast<SdlType>(code);
 }
 
 GfxScancode::GfxScancode(GfxScancode const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = other.code_;
 }
 
 GfxScancode::GfxScancode(GfxScancode&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = other.code_;
     // Delete other's data
     other.clear();
@@ -62,6 +76,8 @@ GfxScancode::GfxScancode(GfxScancode&& other) noexcept : GfxObject(ClassName)
 
 GfxScancode& GfxScancode::operator=(GfxScancode const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         code_ = other.code_;
@@ -71,6 +87,8 @@ GfxScancode& GfxScancode::operator=(GfxScancode const& other) noexcept
 
 GfxScancode& GfxScancode::operator=(GfxScancode&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         code_ = other.code_;
@@ -82,21 +100,36 @@ GfxScancode& GfxScancode::operator=(GfxScancode&& other) noexcept
 
 GfxScancode::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxScancode::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxScancode::ValueType GfxScancode::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(code_);
 }
 
 void GfxScancode::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     code_ = static_cast<SdlType>(ValueType::kScanCodeUnknown);
 }
 
 GfxScancode::SdlType GfxScancode::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return code_;
 }
 

@@ -27,6 +27,9 @@
 
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererInfo.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxgetrendererinfo::render::gfx");
 
 namespace gfx
 {
@@ -38,16 +41,22 @@ const char GfxGetRendererInfo::ClassName[] = "GfxGetRendererInfo";
 
 GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     numRenderDrivers_ = -1;
 }
 
 GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     numRenderDrivers_ = other.numRenderDrivers_;
 }
 
 GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     numRenderDrivers_ = other.numRenderDrivers_;
     // Delete other's data
     other.numRenderDrivers_ = -1;
@@ -55,6 +64,8 @@ GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept : Gf
 
 GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         numRenderDrivers_ = other.numRenderDrivers_;
@@ -64,6 +75,8 @@ GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo const& othe
 
 GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         numRenderDrivers_ = other.numRenderDrivers_;
@@ -75,11 +88,22 @@ GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo&& other) no
 
 GfxGetRendererInfo::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxGetRendererInfo::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int32_t GfxGetRendererInfo::getNumRenderDrivers(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t nrd;
 
     nrd = sdl2::SDL_GetNumRenderDrivers();
@@ -92,6 +116,8 @@ int32_t GfxGetRendererInfo::getNumRenderDrivers(void) noexcept
 
 GfxRendererInfo * GfxGetRendererInfo::getRenderDriverInfo(const int32_t index) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(index >= 0);
 
     GfxRendererInfo::SdlType rdi;

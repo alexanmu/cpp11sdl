@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxArrayOrder.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxarrayorder::pixels::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxArrayOrder::ClassName[] = "GfxArrayOrder";
 
 GfxArrayOrder::GfxArrayOrder() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxArrayOrder::GfxArrayOrder(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxArrayOrder::GfxArrayOrder(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxArrayOrder::GfxArrayOrder(GfxArrayOrder const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) noexcept : GfxObject(ClassNa
 
 GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,6 +86,8 @@ GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder const& other) noexcept
 
 GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -80,21 +99,36 @@ GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder&& other) noexcept
 
 GfxArrayOrder::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxArrayOrder::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxArrayOrder::ValueType GfxArrayOrder::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxArrayOrder::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::arrayOrderNone);
 }
 
 GfxArrayOrder::SdlType GfxArrayOrder::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

@@ -140,7 +140,7 @@ void GDemoForm::draw(void)
 
     gfx::version::GfxVersion v;
     gfx::ttf::GfxTtfGetVersion gv;
-    gv.getVersion(&v);
+    v = gv.getVersion();
     std::string labelText = "Label text " + v.getAsString();
 
     gto::gobj::GLabel g2(GVarName(g2), this, 280, 60, labelText, 32);

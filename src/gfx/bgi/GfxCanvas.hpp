@@ -75,6 +75,7 @@ public:
     GfxCanvas& operator=(GfxCanvas&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void Arc(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
              GfxRadius const& radius) noexcept;

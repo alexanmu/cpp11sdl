@@ -22,8 +22,12 @@
 */
 
 #include <cassert>
+#include <string>
 
 #include "GfxCommonEvent.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxcommonevent::events::gfx");
 
 namespace gfx
 {
@@ -35,27 +39,37 @@ const char GfxCommonEvent::ClassName[] = "GfxCommonEvent";
 
 GfxCommonEvent::GfxCommonEvent() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxCommonEvent::GfxCommonEvent(const uint32_t type, const uint32_t timestamp) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     commonEvent_.type = type;
     commonEvent_.timestamp = timestamp;
 }
 
 GfxCommonEvent::GfxCommonEvent(const SdlType ev) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     commonEvent_ = ev;
 }
 
 GfxCommonEvent::GfxCommonEvent(const GfxCommonEvent& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     commonEvent_ = other.commonEvent_;
 }
 
 GfxCommonEvent::GfxCommonEvent(GfxCommonEvent&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     commonEvent_ = other.commonEvent_;
     // Delete other's data
     other.clear();
@@ -63,6 +77,8 @@ GfxCommonEvent::GfxCommonEvent(GfxCommonEvent&& other) noexcept : GfxObject(Clas
 
 GfxCommonEvent& GfxCommonEvent::operator=(const GfxCommonEvent& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         commonEvent_ = other.commonEvent_;
@@ -72,6 +88,8 @@ GfxCommonEvent& GfxCommonEvent::operator=(const GfxCommonEvent& other) noexcept
 
 GfxCommonEvent& GfxCommonEvent::operator=(GfxCommonEvent&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         commonEvent_ = other.commonEvent_;
@@ -83,21 +101,36 @@ GfxCommonEvent& GfxCommonEvent::operator=(GfxCommonEvent&& other) noexcept
 
 GfxCommonEvent::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxCommonEvent::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxEventType GfxCommonEvent::getType(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return GfxEventType(commonEvent_.type);
 }
 
 uint32_t GfxCommonEvent::getTimeStamp(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return commonEvent_.timestamp;
 }
 
 void GfxCommonEvent::setType(GfxEventType const& evtype) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(evtype);
 
     commonEvent_.type = evtype.getEventTypeValue();
@@ -105,11 +138,15 @@ void GfxCommonEvent::setType(GfxEventType const& evtype) noexcept
 
 void GfxCommonEvent::setTimeStamp(const uint32_t timestamp) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     commonEvent_.timestamp = timestamp;
 }
 
 void GfxCommonEvent::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     commonEvent_.type = 0;
     commonEvent_.timestamp = 0;
 }

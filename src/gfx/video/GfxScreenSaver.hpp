@@ -50,6 +50,7 @@ public:
     GfxScreenSaver& operator=(GfxScreenSaver&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isScreenSaverEnabled(void) const noexcept;
     void enableScreenSaver(void) noexcept;

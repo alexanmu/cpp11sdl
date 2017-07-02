@@ -27,6 +27,9 @@
 
 #include "GfxLoadSo.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxloadso::loadso::gfx");
 
 namespace gfx
 {
@@ -38,12 +41,16 @@ const char GfxLoadSo::ClassName[] = "GfxLoadSo";
 
 GfxLoadSo::GfxLoadSo() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     objectName_.clear();
     handle_ = nullptr;
 }
 
 GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(objectName.length() > 0);
 
     objectName_ = objectName;
@@ -52,6 +59,8 @@ GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassNa
 
 GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     objectName_ = other.objectName_;
     handle_ = other.handle_;
     // Delete other's data
@@ -61,6 +70,8 @@ GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(ClassName)
 
 GfxLoadSo::~GfxLoadSo() noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (handle_ != nullptr)
     {
         sdl2::SDL_UnloadObject(handle_);
@@ -70,6 +81,8 @@ GfxLoadSo::~GfxLoadSo() noexcept
 
 GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (this != &other)
     {
         // Free own resource
@@ -89,21 +102,36 @@ GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other) noexcept
 
 GfxLoadSo::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (handle_ != nullptr);
+}
+
+std::string GfxLoadSo::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxLoadSo::isObjectLoaded(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (handle_ != nullptr);
 }
 
 std::string const& GfxLoadSo::getObjectName(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return objectName_;
 }
 
 void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(function.length() > 0);
 
     void * func = nullptr;
@@ -117,6 +145,8 @@ void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
 
 void GfxLoadSo::loadObject(std::string const& objectName) noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(objectName.length() > 0);
 
     if (handle_ != nullptr)
@@ -129,6 +159,8 @@ void GfxLoadSo::loadObject(std::string const& objectName) noexcept
 
 void GfxLoadSo::unloadObject() noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     sdl2::SDL_UnloadObject(handle_);
     handle_ = nullptr;
 }

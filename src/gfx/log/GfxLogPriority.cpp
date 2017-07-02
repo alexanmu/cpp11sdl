@@ -22,8 +22,12 @@
 */
 
 #include <cassert>
+#include <string>
 
 #include "GfxLogPriority.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxlogpriority::log::gfx");
 
 namespace gfx
 {
@@ -35,21 +39,29 @@ const char GfxLogPriority::ClassName[] = "GfxLogPriority";
 
 GfxLogPriority::GfxLogPriority() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxLogPriority::GfxLogPriority(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxLogPriority::GfxLogPriority(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxLogPriority::GfxLogPriority(const int32_t value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(value <= static_cast<int32_t>(ValueType::logPriorityNumLogPriorities));
 
     value_ = static_cast<SdlType>(value);
@@ -57,23 +69,24 @@ GfxLogPriority::GfxLogPriority(const int32_t value) noexcept : GfxObject(ClassNa
 
 GfxLogPriority::GfxLogPriority(GfxLogPriority const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxLogPriority::GfxLogPriority(GfxLogPriority&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxLogPriority::operator bool() const noexcept
-{
-    return true;
-}
-
 GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -83,6 +96,8 @@ GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority const& other) noexcept
 
 GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -92,18 +107,38 @@ GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority&& other) noexcept
     return *this;
 }
 
+GfxLogPriority::operator bool() const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return true;
+}
+
+std::string GfxLogPriority::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
+
 GfxLogPriority::ValueType GfxLogPriority::getPriority(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxLogPriority::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::logPriorityNumLogPriorities);
 }
 
 GfxLogPriority::SdlType GfxLogPriority::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

@@ -65,6 +65,7 @@ public:
     virtual ~GfxTtfFont() noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void openFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error);
     void openFont(std::string const& filename, const int32_t pointsize, const int32_t index) throw(std::runtime_error);

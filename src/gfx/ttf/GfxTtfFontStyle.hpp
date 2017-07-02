@@ -24,6 +24,9 @@
 #ifndef GfxTtfFontStyle_hpp
 #define GfxTtfFontStyle_hpp
 
+#include <cstdint>
+#include <string>
+
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -62,6 +65,7 @@ public:
     GfxTtfFontStyle& operator=(GfxTtfFontStyle&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isNormal(void) const noexcept;
     bool isBold(void) const noexcept;

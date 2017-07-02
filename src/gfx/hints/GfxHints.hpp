@@ -119,6 +119,7 @@ public:
     GfxHints& operator=(GfxHints&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     GfxBool setHintWithPriority(std::string const& name, std::string const& value,
                                 GfxHintPriority const& prio) const noexcept;

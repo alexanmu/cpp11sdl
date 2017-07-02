@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxLogCategory.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxlogcategory::log::gfx");
 
 namespace gfx
 {
@@ -33,38 +38,45 @@ const char GfxLogCategory::ClassName[] = "GfxLogCategory";
 
 GfxLogCategory::GfxLogCategory() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxLogCategory::GfxLogCategory(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxLogCategory::GfxLogCategory(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxLogCategory::GfxLogCategory(GfxLogCategory const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxLogCategory::GfxLogCategory(GfxLogCategory&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
 }
 
-GfxLogCategory::operator bool() const noexcept
-{
-    return true;
-}
-
 GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -74,6 +86,8 @@ GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory const& other) noexcept
 
 GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -83,13 +97,31 @@ GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory&& other) noexcept
     return *this;
 }
 
+GfxLogCategory::operator bool() const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return true;
+}
+
+std::string GfxLogCategory::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
+
 void GfxLogCategory::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::logCategoryCustom);
 }
 
 GfxLogCategory::SdlType GfxLogCategory::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

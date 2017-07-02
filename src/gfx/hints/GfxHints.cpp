@@ -28,6 +28,9 @@
 #include <vector>
 
 #include "GfxHints.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxhints::hints::gfx");
 
 namespace gfx
 {
@@ -126,17 +129,30 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
 
 GfxHints::GfxHints() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     callbackMap_.clear();
 }
 
 GfxHints::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxHints::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxBool GfxHints::setHintWithPriority(std::string const& name, std::string const& value,
                                      GfxHintPriority const& prio) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(name.length() > 0);
     assert(value.length() > 0);
     assert(prio);
@@ -149,6 +165,8 @@ GfxBool GfxHints::setHintWithPriority(std::string const& name, std::string const
 
 GfxBool GfxHints::setHint(std::string const& name, std::string const& value) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(name.length() > 0);
     assert(value.length() > 0);
 
@@ -160,6 +178,8 @@ GfxBool GfxHints::setHint(std::string const& name, std::string const& value) con
 
 std::string GfxHints::getHint(std::string const& name) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(name.length() > 0);
 
     const char * ret;
@@ -174,6 +194,8 @@ std::string GfxHints::getHint(std::string const& name) const noexcept
 
 GfxBool GfxHints::getHintBoolean(std::string const& name, GfxBool const& defvalue) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(name.length() > 0);
     assert(defvalue);
 
@@ -185,6 +207,8 @@ GfxBool GfxHints::getHintBoolean(std::string const& name, GfxBool const& defvalu
 
 void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& callback, void * userdata) noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(name.length() > 0);
     assert(callback);
     assert(userdata != nullptr);
@@ -197,6 +221,8 @@ void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& c
 void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& callback,
                                 void * userdata) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(name.length() > 0);
     assert(callback);
     assert(userdata != nullptr);
@@ -234,45 +260,61 @@ void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& c
 }
 
 GfxBool GfxHints::setHintWithPriority(const ValueType hint, std::string const& value,
-                                GfxHintPriority const& prio) const noexcept
+                                      GfxHintPriority const& prio) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return setHintWithPriority(getHintNameByValue(hint), value, prio);
 }
 
 GfxBool GfxHints::setHint(const ValueType hint, std::string const& value) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return setHint(getHintNameByValue(hint), value);
 }
 
 std::string GfxHints::getHint(const ValueType hint) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return getHint(getHintNameByValue(hint));
 }
 
 GfxBool GfxHints::getHintBoolean(const ValueType hint, GfxBool const& defvalue) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return getHintBoolean(getHintNameByValue(hint), defvalue);
 }
 
 void GfxHints::addHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata) noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     addHintCallback(getHintNameByValue(hint), callback, userdata);
 }
 
 void GfxHints::delHintCallback(const ValueType hint, GfxHintCallback const& callback,
                                void * userdata) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     delHintCallback(getHintNameByValue(hint), callback, userdata);
 }
 
 void GfxHints::clearHints(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     sdl2::SDL_ClearHints();
 }
 
 // Private methods
 std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     const char * chptr = nullptr;
 
     // std::pair<GfxHints::ValueType, const char *>

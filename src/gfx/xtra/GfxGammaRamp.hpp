@@ -55,6 +55,7 @@ public:
     GfxGammaRamp& operator=(GfxGammaRamp&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     uint16_t& operator [](const int32_t index) throw(std::runtime_error);
 

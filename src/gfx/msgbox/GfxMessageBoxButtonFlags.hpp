@@ -66,6 +66,7 @@ public:
     bool operator==(GfxMessageBoxButtonFlags const& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isReturnDefault(void) const noexcept;
     bool isEscDefault(void) const noexcept;

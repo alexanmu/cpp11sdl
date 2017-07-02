@@ -66,6 +66,7 @@ public:
     GfxTexture& operator=(GfxTexture&& tex) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int32_t * w,
                     int32_t * h) const noexcept;

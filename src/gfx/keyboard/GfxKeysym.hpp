@@ -25,6 +25,7 @@
 #define GfxKeysym_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -58,6 +59,7 @@ public:
     GfxKeysym& operator=(GfxKeysym&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     scancode::GfxScancode getScanCode(void) const noexcept;
     keycode::GfxKeycode getKeyCode(void) const noexcept;

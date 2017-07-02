@@ -51,6 +51,7 @@ public:
     GfxClipboard& operator=(GfxClipboard&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void setClipboardText(std::string const& str) const noexcept;
     std::string getClipboardText(void) const noexcept;

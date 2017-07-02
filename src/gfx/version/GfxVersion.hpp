@@ -58,12 +58,11 @@ public:
     GfxVersion& operator=(GfxVersion&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     uint8_t getMajor(void) const noexcept;
     uint8_t getMinor(void) const noexcept;
     uint8_t getPatch(void) const noexcept;
-
-    void set(const SdlType ver) noexcept;
 
     void clear(void) noexcept;
 

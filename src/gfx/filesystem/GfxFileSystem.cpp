@@ -26,6 +26,9 @@
 
 #include "GfxFileSystem.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxfilesystem::filesystem::gfx");
 
 namespace gfx
 {
@@ -37,16 +40,27 @@ const char GfxFileSystem::ClassName[] = "GfxFileSystem";
 
 GfxFileSystem::GfxFileSystem() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxFileSystem::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxFileSystem::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 const std::string GfxFileSystem::getBasePath(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     char * base_path = NULL;
     std::string str;
 
@@ -66,6 +80,8 @@ const std::string GfxFileSystem::getBasePath(void) const noexcept
 const std::string GfxFileSystem::getPrefPath(const std::string& organization,
                                              const std::string& appname) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(organization.length() > 0);
     assert(appname.length() > 0);
 
@@ -87,6 +103,8 @@ const std::string GfxFileSystem::getPrefPath(const std::string& organization,
 
 std::string GfxFileSystem::getThisFolder(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ".";
 }
 

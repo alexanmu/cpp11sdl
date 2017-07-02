@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxBool.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxbool::gfx");
 
 namespace gfx
 {
@@ -30,31 +35,43 @@ const char GfxBool::ClassName[] = "GfxBool";
 
 GfxBool::GfxBool() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxBool::GfxBool(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxBool::GfxBool(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxBool::GfxBool(const bool value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxBool::GfxBool(const GfxBool& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -62,11 +79,22 @@ GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(ClassName)
 
 GfxBool::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxBool::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -76,6 +104,8 @@ GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
 
 GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -87,16 +117,22 @@ GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
 
 bool GfxBool::getBool(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<bool>(value_);
 }
 
 void GfxBool::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(false);
 }
 
 GfxBool::SdlType GfxBool::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

@@ -27,6 +27,9 @@
 #include <string>
 
 #include "GfxSurfaceFlags.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxsurfaceflags::surface::gfx");
 
 namespace gfx
 {
@@ -38,16 +41,22 @@ const char GfxSurfaceFlags::ClassName[] = "GfxSurfaceFlags";
 
 GfxSurfaceFlags::GfxSurfaceFlags() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxSurfaceFlags::GfxSurfaceFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = static_cast<SdlType>(flags);
 }
 
 GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags > 0);
 
     flags_ = flags;
@@ -55,11 +64,15 @@ GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxObject(Class
 
 GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
 }
 
 GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
@@ -67,6 +80,8 @@ GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxObject(C
 
 GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -76,6 +91,8 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other) noexce
 
 GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -87,11 +104,22 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other) noexcept
 
 GfxSurfaceFlags::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxSurfaceFlags::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxSurfaceFlags::isSwSurface(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = flags_ & SDL_SWSURFACE;
 
     return (r != 0);
@@ -99,6 +127,8 @@ bool GfxSurfaceFlags::isSwSurface(void) const noexcept
 
 bool GfxSurfaceFlags::isPreAlloc(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = flags_ & SDL_PREALLOC;
 
     return (r != 0);
@@ -106,6 +136,8 @@ bool GfxSurfaceFlags::isPreAlloc(void) const noexcept
 
 bool GfxSurfaceFlags::isRLEAccel(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = flags_ & SDL_RLEACCEL;
 
     return (r != 0);
@@ -113,6 +145,8 @@ bool GfxSurfaceFlags::isRLEAccel(void) const noexcept
 
 bool GfxSurfaceFlags::isDontFree(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = flags_ & SDL_DONTFREE;
 
     return (r != 0);
@@ -120,51 +154,71 @@ bool GfxSurfaceFlags::isDontFree(void) const noexcept
 
 void GfxSurfaceFlags::setSwSurface(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::resetSwSurface(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::setPreAlloc(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::resetPreAlloc(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::setRLEAccel(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::resetRLEAccel(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::setDontFree(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::resetDontFree(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Not supported");
 }
 
 void GfxSurfaceFlags::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(ValueType::flagSwSurface);
 }
 
 GfxSurfaceFlags::SdlType GfxSurfaceFlags::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return flags_;
 }
 

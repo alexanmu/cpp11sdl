@@ -28,6 +28,9 @@
 #include <vector>
 
 #include "GfxPalette.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpalette::pixels::gfx");
 
 namespace gfx
 {
@@ -39,6 +42,8 @@ const char GfxPalette::ClassName[] = "GfxPalette";
 
 GfxPalette::GfxPalette() throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     SdlTypePtr palptr;
 
     palptr = sdl2::SDL_AllocPalette(kDefaultPaletteSize);
@@ -56,6 +61,8 @@ GfxPalette::GfxPalette() throw(std::runtime_error) : GfxObject(ClassName)
 
 GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(colors.size() > 0);
 
     uint32_t colorIndex;
@@ -81,6 +88,8 @@ GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_e
 
 GfxPalette::GfxPalette(const uint16_t nColors) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(nColors > 0);
 
     SdlTypePtr palptr;
@@ -100,6 +109,8 @@ GfxPalette::GfxPalette(const uint16_t nColors) throw(std::runtime_error) : GfxOb
 
 GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(pal != nullptr);
     assert(pal->colors != nullptr);
     assert(pal->ncolors > 0);
@@ -117,6 +128,8 @@ GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error) : GfxObje
 
 GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     pal_ = other.pal_;
     // Delete other's data
     other.pal_ = nullptr;
@@ -124,6 +137,8 @@ GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxObject(ClassName)
 
 GfxPalette& GfxPalette::operator=(GfxPalette&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         if (pal_ != nullptr)
@@ -139,6 +154,8 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other) noexcept
 
 GfxPalette::~GfxPalette() noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (pal_ != nullptr)
     {
         sdl2::SDL_FreePalette(pal_);
@@ -148,11 +165,22 @@ GfxPalette::~GfxPalette() noexcept
 
 GfxPalette::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (pal_ != nullptr);
+}
+
+std::string GfxPalette::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxPalette::freePalette(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (pal_ != nullptr)
     {
         SDL_FreePalette(pal_);
@@ -161,6 +189,8 @@ void GfxPalette::freePalette(void) noexcept
 
 void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uint16_t firstColor) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t errorCode = 0;
     int32_t currentColorIndex = firstColor;
 
@@ -183,6 +213,8 @@ void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uin
 
 std::vector<GfxColor> GfxPalette::getPaletteColors(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pal_ != nullptr)
     {
         std::vector<GfxColor> clrs(pal_->ncolors);
@@ -199,6 +231,8 @@ std::vector<GfxColor> GfxPalette::getPaletteColors(void) const noexcept
 
 uint16_t GfxPalette::getNumColors(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pal_ != nullptr)
     {
         return pal_->ncolors;
@@ -208,6 +242,8 @@ uint16_t GfxPalette::getNumColors(void) const noexcept
 
 uint32_t GfxPalette::getVersion(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pal_ != nullptr)
     {
         return pal_->version;
@@ -215,8 +251,10 @@ uint32_t GfxPalette::getVersion(void) const noexcept
     return 0;
 }
 
-int GfxPalette::getRefCount(void) const noexcept
+int32_t GfxPalette::getRefCount(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pal_ != nullptr)
     {
         return pal_->refcount;
@@ -226,6 +264,8 @@ int GfxPalette::getRefCount(void) const noexcept
 
 GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     /* This is dangerous; we allow access to object private data */
     return (SdlTypePtr)pal_;
 }
@@ -233,6 +273,8 @@ GfxPalette::SdlTypePtr GfxPalette::getAsSdlTypePtr(void) const noexcept
 // Private methods
 void GfxPalette::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     pal_ = nullptr;
 }
 

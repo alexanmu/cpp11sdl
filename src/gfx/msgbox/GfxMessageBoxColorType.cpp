@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxMessageBoxColorType.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxmessageboxcolortype::msgbox::gfx");
 
 namespace gfx
 {
@@ -36,11 +39,15 @@ const char GfxMessageBoxColorType::ClassName[] = "GfxMessageBoxColorType";
 
 GfxMessageBoxColorType::GfxMessageBoxColorType() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(type >= 0);
 
     type_ = type;
@@ -49,18 +56,24 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : Gf
 GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) noexcept :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     type_ = static_cast<SdlType>(type);
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     type_ = other.type_;
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) noexcept :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     type_ = other.type_;
     // Delete other's data
     other.clear();
@@ -68,6 +81,8 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) n
 
 GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         type_ = other.type_;
@@ -77,6 +92,8 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
 
 GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         type_ = other.type_;
@@ -88,26 +105,43 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
 
 GfxMessageBoxColorType::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxMessageBoxColorType::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxMessageBoxColorType::ValueType GfxMessageBoxColorType::getType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(type_);
 }
 
 void GfxMessageBoxColorType::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     type_ = static_cast<SdlType>(ValueType::colorMax);
 }
 
 GfxMessageBoxColorType::SdlType GfxMessageBoxColorType::getAsSdllType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return type_;
 }
 
 GfxMessageBoxColorType::SdlTypePtr GfxMessageBoxColorType::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlTypePtr)&type_;
 }
 

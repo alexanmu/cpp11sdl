@@ -25,6 +25,7 @@
 #define GfxKeymod_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -74,6 +75,7 @@ public:
     GfxKeymod& operator=(GfxKeymod&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isNone(void) const noexcept;
     bool isLeftShift(void) const noexcept;

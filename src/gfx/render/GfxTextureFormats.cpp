@@ -22,8 +22,12 @@
 */
 
 #include <cstring>
+#include <string>
 
 #include "GfxTextureFormats.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxtextureformats::render::gfx");
 
 namespace gfx
 {
@@ -35,12 +39,16 @@ const char GfxTextureFormats::ClassName[] = "GfxTextureFormats";
 
 GfxTextureFormats::GfxTextureFormats() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount) throw(std::runtime_error) :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
     formatsCount_ = formatsCount;
 }
@@ -48,6 +56,8 @@ GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount) throw(std::runt
 GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount, const uint32_t formats[]) throw(std::runtime_error) :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     formatsCount_ = formatsCount;
     for (int32_t index = 0; index < formatsCount_; index++)
     {
@@ -57,6 +67,8 @@ GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount, const uint32_t 
 
 GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     formatsCount_ = other.formatsCount_;
     for (int32_t index = 0; index < other.formatsCount_; index++)
     {
@@ -66,6 +78,8 @@ GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : 
 
 GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     formatsCount_ = other.formatsCount_;
     for (int32_t index = 0; index < other.formatsCount_; index++)
     {
@@ -77,6 +91,8 @@ GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) noexcept : GfxOb
 
 GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         formatsCount_ = other.formatsCount_;
@@ -90,6 +106,8 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other) 
 
 GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         formatsCount_ = other.formatsCount_;
@@ -105,11 +123,22 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other) noexc
 
 GfxTextureFormats::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTextureFormats::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxTextureFormats::setCount(const int32_t formatsCount) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if ((formatsCount <= 0) || (formatsCount > kTextureFormatsArrayLength))
     {
         throw std::runtime_error("Count out of bounds");
@@ -119,6 +148,8 @@ void GfxTextureFormats::setCount(const int32_t formatsCount) throw(std::runtime_
 
 void GfxTextureFormats::setFormat(const int32_t formatIndex, const uint32_t formatValue) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if ((formatIndex < 0) || (formatIndex >= formatsCount_))
     {
         throw std::runtime_error("Index of ouf bounds");
@@ -128,6 +159,8 @@ void GfxTextureFormats::setFormat(const int32_t formatIndex, const uint32_t form
 
 void GfxTextureFormats::setAllFormats(const uint32_t formats[]) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     formatsCount_ = kTextureFormatsArrayLength;
     for (int32_t index = 0; index < kTextureFormatsArrayLength; index++)
     {
@@ -137,16 +170,22 @@ void GfxTextureFormats::setAllFormats(const uint32_t formats[]) noexcept
 
 int32_t GfxTextureFormats::getMaxFormatsCount(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return kTextureFormatsArrayLength;
 }
 
 int32_t GfxTextureFormats::getFormatsCount(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return formatsCount_;
 }
 
 uint32_t& GfxTextureFormats::operator[](const int32_t formatIndex) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if ((formatIndex < 0) || (formatIndex >= kTextureFormatsArrayLength))
     {
         throw std::runtime_error("Index out of bounds");
@@ -156,6 +195,8 @@ uint32_t& GfxTextureFormats::operator[](const int32_t formatIndex) throw(std::ru
 
 uint32_t const& GfxTextureFormats::operator[](const int32_t formatIndex) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if ((formatIndex < 0) || (formatIndex >= kTextureFormatsArrayLength))
     {
         throw std::runtime_error("Index out of bounds");
@@ -165,6 +206,8 @@ uint32_t const& GfxTextureFormats::operator[](const int32_t formatIndex) const t
 
 void GfxTextureFormats::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     formatsCount_ = -1;
     memset(reinterpret_cast<void *>(&formats_[0]), 0, sizeof(formats_));
 }

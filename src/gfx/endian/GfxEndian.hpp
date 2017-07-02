@@ -51,6 +51,7 @@ public:
     GfxEndian& operator=(GfxEndian&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     /* Methods */
     uint16_t swap16(const uint16_t x) const noexcept;

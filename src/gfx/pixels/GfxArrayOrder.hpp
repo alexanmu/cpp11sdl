@@ -25,6 +25,7 @@
 #define GfxArrayOrder_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -66,6 +67,7 @@ public:
     GfxArrayOrder& operator=(GfxArrayOrder&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
 

@@ -28,6 +28,9 @@
 #include <vector>
 
 #include "GfxSurface.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxsurface::surface::gfx");
 
 namespace gfx
 {
@@ -41,6 +44,8 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
                        int32_t depth, uint32_t Rmask, uint32_t Gmask, uint32_t Bmask, uint32_t Amask)
             throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(surfname.length() > 0);
     assert(flags);
     assert(flags.getAsSdlType() == 0);
@@ -64,6 +69,8 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
                        int32_t depth, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(surfname.length() > 0);
     assert(flags);
     assert(flags.getAsSdlType() == 0);
@@ -89,6 +96,8 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
                        const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
                        const uint32_t bmask, const uint32_t amask) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(surfname.length() > 0);
     assert(pixels != nullptr);
     assert(width >= 0);
@@ -111,6 +120,8 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
                        int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(surfname.length() > 0);
     assert(pixels != nullptr);
     assert(width > 0);
@@ -134,6 +145,8 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
 GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(surfname.length() > 0);
     assert(filename.length() > 0);
 
@@ -157,6 +170,8 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
 GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (surf == nullptr)
     {
         // error handling here
@@ -168,6 +183,8 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
 
 GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     surf_ = other.surf_;
     surfName_ = other.surfName_;
     // Delete other's data
@@ -177,6 +194,8 @@ GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(ClassName)
 
 GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         if (surf_ != nullptr)
@@ -193,6 +212,8 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
 
 GfxSurface::~GfxSurface() noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (surf_ != nullptr)
     {
         sdl2::SDL_FreeSurface(surf_);
@@ -202,11 +223,22 @@ GfxSurface::~GfxSurface() noexcept
 
 GfxSurface::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (surf_ != nullptr);
+}
+
+std::string GfxSurface::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxSurface::freeSurface(void) noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (surf_ != nullptr)
     {
         sdl2::SDL_FreeSurface(surf_);
@@ -216,6 +248,8 @@ void GfxSurface::freeSurface(void) noexcept
 
 void GfxSurface::setSurfacePalette(pixels::GfxPalette const& palette) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(palette);
 
     int32_t ret = 1;
@@ -229,6 +263,8 @@ void GfxSurface::setSurfacePalette(pixels::GfxPalette const& palette) const noex
 
 void GfxSurface::lockSurface(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (surf_ != nullptr)
@@ -240,6 +276,8 @@ void GfxSurface::lockSurface(void) const noexcept
 
 void GfxSurface::unlockSurface(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ != nullptr)
     {
         sdl2::SDL_UnlockSurface(surf_);
@@ -248,6 +286,8 @@ void GfxSurface::unlockSurface(void) const noexcept
 
 void GfxSurface::saveBMP(std::string const& filename) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret;
 
     auto rw = sdl2::SDL_RWFromFile(filename.c_str(), "wb");
@@ -262,6 +302,8 @@ void GfxSurface::saveBMP(std::string const& filename) const noexcept
 
 void GfxSurface::setSurfaceRLE(GfxBool const& flag) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (surf_ != nullptr)
@@ -273,6 +315,8 @@ void GfxSurface::setSurfaceRLE(GfxBool const& flag) const noexcept
 
 void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (surf_ != nullptr)
@@ -284,6 +328,8 @@ void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color)
 
 pixels::GfxColor GfxSurface::getColorKey(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
     uint32_t key = 0;
 
@@ -297,6 +343,8 @@ pixels::GfxColor GfxSurface::getColorKey(void) const noexcept
 
 void GfxSurface::setSurfaceColorMod(pixels::GfxColor const& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (surf_ != nullptr)
@@ -308,6 +356,8 @@ void GfxSurface::setSurfaceColorMod(pixels::GfxColor const& color) const noexcep
 
 pixels::GfxColor GfxSurface::getSurfaceColorMod(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
     uint8_t r = 0;
     uint8_t g = 0;
@@ -323,6 +373,8 @@ pixels::GfxColor GfxSurface::getSurfaceColorMod(void) const noexcept
 
 void GfxSurface::setSurfaceAlphaMod(uint8_t alpha) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (surf_ != nullptr)
@@ -334,6 +386,8 @@ void GfxSurface::setSurfaceAlphaMod(uint8_t alpha) const noexcept
 
 uint8_t GfxSurface::getSurfaceAlphaMod(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
     uint8_t alpha = 0;
 
@@ -347,6 +401,8 @@ uint8_t GfxSurface::getSurfaceAlphaMod(void) const noexcept
 
 void GfxSurface::setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (surf_ != nullptr)
@@ -358,6 +414,8 @@ void GfxSurface::setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) c
 
 blendmode::GfxBlendMode GfxSurface::getSurfaceBlendMode(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
     blendmode::GfxBlendMode::SdlType bm;
 
@@ -372,6 +430,8 @@ blendmode::GfxBlendMode GfxSurface::getSurfaceBlendMode(void) const noexcept
 
 GfxBool GfxSurface::setClipRectOff(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool ret = false;
 
     if (surf_ != nullptr)
@@ -383,6 +443,8 @@ GfxBool GfxSurface::setClipRectOff(void) const noexcept
 
 GfxBool GfxSurface::setClipRect(rect::GfxRect const& rect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
 
     bool ret = false;
@@ -396,6 +458,8 @@ GfxBool GfxSurface::setClipRect(rect::GfxRect const& rect) const noexcept
 
 rect::GfxRect GfxSurface::getClipRect(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     rect::GfxRect::SdlType r;
 
     sdl2::SDL_GetClipRect(surf_, &r);
@@ -405,6 +469,8 @@ rect::GfxRect GfxSurface::getClipRect(void) const noexcept
 GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& fmt,
                                                   GfxSurfaceFlags const& sflags) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(fmt);
     assert(sflags);
 
@@ -420,6 +486,8 @@ GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& 
 GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten,
                                                         GfxSurfaceFlags const& sflags) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(fmten);
     assert(sflags);
 
@@ -436,6 +504,8 @@ void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels
                                void * src, const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst,
                                const int32_t dst_pitch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(width >= 0);
     assert(height >= 0);
     assert(srcfmten);
@@ -454,6 +524,8 @@ void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels
 
 void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
     assert(color);
 
@@ -469,6 +541,8 @@ void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& col
 
 void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(color);
 
     uint32_t clr;
@@ -483,6 +557,8 @@ void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
 
 void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels::GfxColor& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(color);
 
     if (rects.size() > 0)
@@ -498,6 +574,8 @@ void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels
 void GfxSurface::upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
                            rect::GfxRect const& dstrect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcrect);
     assert(dstrect);
@@ -512,6 +590,8 @@ void GfxSurface::upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
 void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
                            rect::GfxRect const& dstrect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcrect);
     assert(dstrect);
@@ -526,6 +606,8 @@ void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
 void GfxSurface::softStrech(GfxSurface const& src, rect::GfxRect const& srcrect,
                             rect::GfxRect const& dstrect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcrect);
     assert(dstrect);
@@ -540,6 +622,8 @@ void GfxSurface::softStrech(GfxSurface const& src, rect::GfxRect const& srcrect,
 void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
                                  rect::GfxRect const& dstrect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcrect);
     assert(dstrect);
@@ -554,6 +638,8 @@ void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& src
 void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
                                  rect::GfxRect const& dstrect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcrect);
     assert(dstrect);
@@ -567,6 +653,8 @@ void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& src
 
 void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcr);
     assert(dstr);
@@ -580,6 +668,8 @@ void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, c
 
 void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
 
     if (surf_ == nullptr)
@@ -591,6 +681,8 @@ void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
 
 void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
     assert(srcr);
     assert(dstr);
@@ -604,6 +696,8 @@ void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, co
 
 void GfxSurface::blitScaled(const GfxSurface& src) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(src);
 
     if (surf_ == nullptr)
@@ -615,6 +709,8 @@ void GfxSurface::blitScaled(const GfxSurface& src) const noexcept
 
 GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ != nullptr)
     {
         return GfxSurfaceFlags(surf_->flags);
@@ -624,6 +720,8 @@ GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
 
 pixels::GfxPixelFormatEnum GfxSurface::getPixelFormat(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ == nullptr)
     {
         return pixels::GfxPixelFormatEnum();
@@ -633,6 +731,8 @@ pixels::GfxPixelFormatEnum GfxSurface::getPixelFormat(void) const noexcept
 
 int32_t GfxSurface::getWidth(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ == nullptr)
     {
         return -1;
@@ -642,6 +742,8 @@ int32_t GfxSurface::getWidth(void) const noexcept
 
 int32_t GfxSurface::getHeight(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ == nullptr)
     {
         return -1;
@@ -651,6 +753,8 @@ int32_t GfxSurface::getHeight(void) const noexcept
 
 int32_t GfxSurface::getPitch(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ == nullptr)
     {
         return -1;
@@ -660,6 +764,8 @@ int32_t GfxSurface::getPitch(void) const noexcept
 
 void * GfxSurface::getPixels(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ != nullptr)
     {
         return surf_->pixels;
@@ -669,6 +775,8 @@ void * GfxSurface::getPixels(void) const noexcept
 
 void * GfxSurface::getUserData(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ != nullptr)
     {
         return surf_->userdata;
@@ -678,6 +786,8 @@ void * GfxSurface::getUserData(void) const noexcept
 
 bool GfxSurface::locked(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ != nullptr)
     {
         return static_cast<bool>(surf_->locked);
@@ -687,6 +797,8 @@ bool GfxSurface::locked(void) const noexcept
 
 void * GfxSurface::lockData(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (surf_ != nullptr)
     {
         return surf_->lock_data;
@@ -696,6 +808,8 @@ void * GfxSurface::lockData(void) const noexcept
 
 uint32_t GfxSurface::getBitsPerPixel(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t ret = 0;
 
     if (surf_ != nullptr)
@@ -707,6 +821,8 @@ uint32_t GfxSurface::getBitsPerPixel(void) const noexcept
 
 uint32_t GfxSurface::getBytesPerPixel(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t ret = 0;
 
     if (surf_ != nullptr)
@@ -718,11 +834,15 @@ uint32_t GfxSurface::getBytesPerPixel(void) const noexcept
 
 std::string const& GfxSurface::getSurfaceName(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return surfName_;
 }
 
 void GfxSurface::setSurfaceName(std::string const& name) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(name.length() > 0);
 
     surfName_ = name;
@@ -730,6 +850,8 @@ void GfxSurface::setSurfaceName(std::string const& name) noexcept
 
 void GfxSurface::putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(x >= 0);
     assert(y >= 0);
     assert(color);
@@ -751,6 +873,8 @@ void GfxSurface::putPixel(const int32_t x, const int32_t y, const pixels::GfxCol
 
 pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(x >= 0);
     assert(y >= 0);
 
@@ -774,11 +898,15 @@ pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y) const no
 
 GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return surf_;
 }
 
 void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t * ptr;
     uint32_t clr;
 
@@ -789,7 +917,9 @@ void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const pixels::Gfx
 
 pixels::GfxColor GfxSurface::getPixelPrv(const int32_t x, const int32_t y) const noexcept
 {
-    uint8_t* ptr;
+    LOG_TRACE_PRIO_LOW();
+
+    uint8_t * ptr;
 
     ptr = reinterpret_cast<uint8_t*>(surf_->pixels);
     return pixels::GfxColor { pixels::GfxColor(ptr[y * surf_->w + x + 0], ptr[y * surf_->w + x + 1],

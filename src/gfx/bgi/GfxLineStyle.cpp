@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxLineStyle.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,31 +38,36 @@ const char GfxLineStyle::ClassName[] = "GfxLineStyle";
 
 GfxLineStyle::GfxLineStyle() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxLineStyle::GfxLineStyle(const ValueType line) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     line_ = static_cast<BgiType>(line);
 }
 
 GfxLineStyle::GfxLineStyle(const BgiType line) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     line_ = line;
 }
 
 GfxLineStyle::GfxLineStyle(GfxLineStyle const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     line_ = other.line_;
 }
 
 GfxLineStyle::GfxLineStyle(GfxLineStyle&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     line_ = other.line_;
     // Delete other's value
     other.clear();
@@ -68,7 +75,8 @@ GfxLineStyle::GfxLineStyle(GfxLineStyle&& other) noexcept : GfxObject(ClassName)
 
 GfxLineStyle& GfxLineStyle::operator=(GfxLineStyle const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         line_ = other.line_;
@@ -78,7 +86,8 @@ GfxLineStyle& GfxLineStyle::operator=(GfxLineStyle const& other) noexcept
 
 GfxLineStyle& GfxLineStyle::operator=(GfxLineStyle&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         line_ = other.line_;
@@ -91,30 +100,42 @@ GfxLineStyle& GfxLineStyle::operator=(GfxLineStyle&& other) noexcept
 GfxLineStyle::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxLineStyle::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxLineStyle::ValueType GfxLineStyle::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(line_);
 }
 
 void GfxLineStyle::setValue(const ValueType line) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     line_ = static_cast<BgiType>(line);
 }
 
 void GfxLineStyle::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     line_ = static_cast<BgiType>(ValueType::solidLine);
 }
 
 GfxLineStyle::BgiType GfxLineStyle::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return line_;
 }
 

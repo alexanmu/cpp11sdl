@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxHintCallback.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxhintcallback::hints::gfx");
 
 namespace gfx
 {
@@ -33,12 +38,21 @@ const char GfxHintCallback::ClassName[] = "GfxHintCallback";
 
 GfxHintCallback::GfxHintCallback() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxHintCallback::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxHintCallback::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 }  // namespace hints

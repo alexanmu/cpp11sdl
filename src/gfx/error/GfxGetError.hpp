@@ -50,6 +50,9 @@ public:
     GfxGetError& operator=(GfxGetError const &) = delete;
     GfxGetError& operator=(GfxGetError&&) = delete;
 
+    virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
+
     static GfxError getErrorObject(void) noexcept;
     static void clearSDL2Error(void) noexcept;
 };

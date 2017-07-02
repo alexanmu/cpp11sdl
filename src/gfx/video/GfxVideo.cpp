@@ -28,6 +28,9 @@
 #include <utility>
 
 #include "GfxVideo.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxvideo::video::gfx");
 
 namespace gfx
 {
@@ -39,11 +42,15 @@ const char GfxVideo::ClassName[] = "GfxVideo";
 
 GfxVideo::GfxVideo() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxVideo::GfxVideo(GfxVideo&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     numvideodrivers_ = other.numvideodrivers_;
     numvideodisplays_ = other.numvideodisplays_;
     numdisplaymodes_ = std::move(other.numdisplaymodes_);
@@ -53,6 +60,8 @@ GfxVideo::GfxVideo(GfxVideo&& other) noexcept : GfxObject(ClassName)
 
 GfxVideo& GfxVideo::operator=(GfxVideo&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         numvideodrivers_ = other.numvideodrivers_;
@@ -66,27 +75,44 @@ GfxVideo& GfxVideo::operator=(GfxVideo&& other) noexcept
 
 GfxVideo::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxVideo::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxVideo::videoInit(void) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Use GfxInitQuit.hpp");
 }
 
 void GfxVideo::videoQuit(void) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     throw std::runtime_error("Use GfxInitQuit.hpp");
 }
 
 int32_t GfxVideo::getNumVideoDrivers(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     numvideodrivers_ = sdl2::SDL_GetNumVideoDrivers();
     return numvideodrivers_;
 }
 
 std::string GfxVideo::getVideoDriver(const int32_t driverindex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(driverindex >= 0);
 
     std::string str = "";
@@ -100,6 +126,8 @@ std::string GfxVideo::getVideoDriver(const int32_t driverindex) const noexcept
 
 std::string GfxVideo::getCurrentVideoDriver(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     const char * c;
     std::string str = "Not initialized";
 
@@ -113,12 +141,16 @@ std::string GfxVideo::getCurrentVideoDriver(void) const noexcept
 
 int32_t GfxVideo::getNumVideoDisplays(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     numvideodisplays_ = sdl2::SDL_GetNumVideoDisplays();
     return numvideodisplays_;
 }
 
 std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
 
     std::string str = "";
@@ -132,6 +164,8 @@ std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
 
 rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
 
     rect::GfxRect::SdlType rt;
@@ -146,6 +180,8 @@ rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexc
 
 rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
 
     rect::GfxRect::SdlType rt;
@@ -160,6 +196,8 @@ rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const
 
 void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * hdpi, float * vdpi) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
     assert(ddpi != nullptr);
     assert(hdpi != nullptr);
@@ -173,6 +211,8 @@ void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * h
 
 int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
 
     int32_t numdisplaymodes = -1;
@@ -187,6 +227,8 @@ int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex) noexcept
 
 GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
     assert(modeindex >= 0);
 
@@ -214,6 +256,8 @@ GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_
 
 GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
 
     GfxDisplayMode::SdlType dms;
@@ -228,6 +272,8 @@ GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const
 
 GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
 
     GfxDisplayMode::SdlType dms;
@@ -243,6 +289,8 @@ GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const
 GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
                                                GfxDisplayMode const& mode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(displayindex >= 0);
     assert(mode);
 
@@ -263,6 +311,8 @@ GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
 // Private methods
 void GfxVideo::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     numvideodrivers_ = -1;
     numvideodisplays_ = -1;
     numdisplaymodes_.clear();

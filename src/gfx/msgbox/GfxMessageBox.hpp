@@ -60,6 +60,7 @@ public:
     GfxMessageBox& operator=(GfxMessageBox&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     int32_t showModal(void) const noexcept;
 private:

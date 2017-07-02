@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxPixelFormatEnum.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpixelformatenum::pixels::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxPixelFormatEnum::ClassName[] = "GfxPixelFormatEnum";
 
 GfxPixelFormatEnum::GfxPixelFormatEnum() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxPixelFormatEnum::GfxPixelFormatEnum(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : Gf
 
 GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,6 +86,8 @@ GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& othe
 
 GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -80,21 +99,36 @@ GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum&& other) no
 
 GfxPixelFormatEnum::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPixelFormatEnum::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxPixelFormatEnum::ValueType GfxPixelFormatEnum::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxPixelFormatEnum::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::pixelFormatUnknown);
 }
 
 GfxPixelFormatEnum::SdlType GfxPixelFormatEnum::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

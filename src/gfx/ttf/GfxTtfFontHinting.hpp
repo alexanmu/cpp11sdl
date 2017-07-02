@@ -24,6 +24,9 @@
 #ifndef GfxTtfFontHinting_hpp
 #define GfxTtfFontHinting_hpp
 
+#include <cstdint>
+#include <string>
+
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
 
@@ -61,6 +64,7 @@ public:
     GfxTtfFontHinting& operator=(GfxTtfFontHinting&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isNormal(void) const noexcept;
     bool isLight(void) const noexcept;

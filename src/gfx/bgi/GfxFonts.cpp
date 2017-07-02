@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxFonts.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,31 +38,36 @@ const char GfxFonts::ClassName[] = "GfxFonts";
 
 GfxFonts::GfxFonts() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxFonts::GfxFonts(const ValueType font) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     font_ = static_cast<BgiType>(font);
 }
 
 GfxFonts::GfxFonts(const BgiType font) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     font_ = font;
 }
 
 GfxFonts::GfxFonts(GfxFonts const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     font_ = other.font_;
 }
 
 GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     font_ = other.font_;
     // Delete other's value
     other.clear();
@@ -68,7 +75,8 @@ GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(ClassName)
 
 GfxFonts& GfxFonts::operator=(GfxFonts const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         font_ = other.font_;
@@ -78,7 +86,8 @@ GfxFonts& GfxFonts::operator=(GfxFonts const& other) noexcept
 
 GfxFonts& GfxFonts::operator=(GfxFonts&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         font_ = other.font_;
@@ -91,30 +100,42 @@ GfxFonts& GfxFonts::operator=(GfxFonts&& other) noexcept
 GfxFonts::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxFonts::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxFonts::ValueType GfxFonts::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(font_);
 }
 
 void GfxFonts::setValue(const ValueType font) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     font_ = static_cast<BgiType>(font);
 }
 
 void GfxFonts::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     font_ = static_cast<BgiType>(ValueType::defaultFont);
 }
 
 GfxFonts::BgiType GfxFonts::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return font_;
 }
 

@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 
@@ -116,6 +117,11 @@ bool GfxObject::operator==(GfxObject const& other) const noexcept
 GfxObject::operator bool() const noexcept
 {
     return true;
+}
+
+std::string GfxObject::to_string(void) const noexcept
+{
+    return std::string("GfxObject");
 }
 
 const char * GfxObject::getClassName(void) const noexcept

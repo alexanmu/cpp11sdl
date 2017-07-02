@@ -66,6 +66,7 @@ public:
     GfxPowerState& operator=(GfxPowerState&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isUnknown(void) const noexcept;
     bool isOnBattery(void) const noexcept;

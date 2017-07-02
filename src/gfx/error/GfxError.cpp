@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxError.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxerror::error::gfx");
 
 namespace gfx
 {
@@ -36,11 +39,15 @@ const char GfxError::ClassName[] = "GfxError";
 
 GfxError::GfxError() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxError::GfxError(std::string const& error) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(error.length() > 0);
 
     error_ = error;
@@ -48,11 +55,15 @@ GfxError::GfxError(std::string const& error) noexcept : GfxObject(ClassName)
 
 GfxError::GfxError(GfxError const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     error_ = other.error_;
 }
 
 GfxError::GfxError(GfxError&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     error_ = other.error_;
     // Delete other's data
     other.clear();
@@ -60,6 +71,8 @@ GfxError::GfxError(GfxError&& other) noexcept : GfxObject(ClassName)
 
 GfxError& GfxError::operator=(GfxError const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         error_ = other.error_;
@@ -69,6 +82,8 @@ GfxError& GfxError::operator=(GfxError const& other) noexcept
 
 GfxError& GfxError::operator=(GfxError&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         error_ = other.error_;
@@ -80,17 +95,30 @@ GfxError& GfxError::operator=(GfxError&& other) noexcept
 
 GfxError::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (error_.length() > 0);
+}
+
+std::string GfxError::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 std::string const& GfxError::get() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return error_;
 }
 
 void GfxError::clear(void) noexcept
 {
-    error_ = "";
+    LOG_TRACE_PRIO_LOW();
+
+    error_.clear();
 }
 
 }  // namespace error

@@ -85,6 +85,7 @@ public:
     GfxWindowFlags& operator=(GfxWindowFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isUnkown(void) const noexcept;
     bool isFullscreen(void) const noexcept;

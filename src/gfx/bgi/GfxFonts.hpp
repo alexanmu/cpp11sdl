@@ -25,6 +25,7 @@
 #define GfxFonts_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -72,6 +73,7 @@ public:
     GfxFonts& operator=(GfxFonts&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType font) noexcept;

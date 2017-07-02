@@ -65,6 +65,7 @@ public:
     GfxTextureAccess& operator=(GfxTextureAccess&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void clear(void) noexcept;
 

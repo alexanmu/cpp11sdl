@@ -52,8 +52,9 @@ public:
     GfxGetVersion& operator=(GfxGetVersion&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
-    void getVersion(GfxVersion * ver) const noexcept;
+    GfxVersion getVersion(void) const noexcept;
     std::string getRevision(void) const noexcept;
     int32_t getRevisionNumber(void) const noexcept;
 };

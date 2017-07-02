@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxRendererInfo.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxrendererinfo::render::gfx");
 
 namespace gfx
 {
@@ -37,21 +40,29 @@ const char GfxRendererInfo::ClassName[] = "GfxRendererInfo";
 
 GfxRendererInfo::GfxRendererInfo() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxRendererInfo::GfxRendererInfo(SdlType info) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     info_ = info;
 }
 
 GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     info_ = other.info_;
 }
 
 GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     info_ = other.info_;
     // Delete other's data
     other.clear();
@@ -59,6 +70,8 @@ GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxObject(C
 
 GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         info_ = other.info_;
@@ -68,6 +81,8 @@ GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other) noexce
 
 GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         info_ = other.info_;
@@ -79,11 +94,22 @@ GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other) noexcept
 
 GfxRendererInfo::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxRendererInfo::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 std::string GfxRendererInfo::getName(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     std::string str;
 
     str = info_.name;
@@ -92,16 +118,22 @@ std::string GfxRendererInfo::getName(void) const noexcept
 
 GfxRendererFlags GfxRendererInfo::getFlags(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return GfxRendererFlags(static_cast<GfxRendererFlags::SdlType>(info_.flags));
 }
 
 uint32_t GfxRendererInfo::getNumTextureFormats(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return info_.num_texture_formats;
 }
 
 GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxTextureFormats tf;
     uint32_t max;
 
@@ -124,21 +156,22 @@ GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const noexcept
 
 int32_t GfxRendererInfo::getMaxTextureWidth(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return info_.max_texture_width;
 }
 
 int32_t GfxRendererInfo::getMaxTextureHeight(void) const noexcept
 {
-    return info_.max_texture_height;
-}
+    LOG_TRACE_PRIO_LOW();
 
-void GfxRendererInfo::set(const SdlType info) noexcept
-{
-    info_ = info;
+    return info_.max_texture_height;
 }
 
 void GfxRendererInfo::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     info_.name = nullptr;
     info_.flags = 0;
     info_.num_texture_formats = 0;
@@ -152,6 +185,8 @@ void GfxRendererInfo::clear(void) noexcept
 
 GfxRendererInfo::SdlType GfxRendererInfo::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlType)info_;
 }
 

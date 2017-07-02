@@ -22,8 +22,12 @@
 */
 
 #include <cstdint>
+#include <string>
 
 #include "GfxKeycode.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxkeycode::keycode::gfx");
 
 namespace gfx
 {
@@ -35,26 +39,36 @@ const char GfxKeycode::ClassName[] = "GfxKeycode";
 
 GfxKeycode::GfxKeycode() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxKeycode::GfxKeycode(const int32_t code) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = static_cast<SdlType>(code);
 }
 
 GfxKeycode::GfxKeycode(const ValueType code) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = static_cast<SdlType>(code);
 }
 
 GfxKeycode::GfxKeycode(GfxKeycode const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = other.code_;
 }
 
 GfxKeycode::GfxKeycode(GfxKeycode&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     code_ = other.code_;
     // Delete other's data
     other.clear();
@@ -62,6 +76,8 @@ GfxKeycode::GfxKeycode(GfxKeycode&& other) noexcept : GfxObject(ClassName)
 
 GfxKeycode& GfxKeycode::operator=(GfxKeycode const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         code_ = other.code_;
@@ -71,6 +87,8 @@ GfxKeycode& GfxKeycode::operator=(GfxKeycode const& other) noexcept
 
 GfxKeycode& GfxKeycode::operator=(GfxKeycode&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         code_ = other.code_;
@@ -82,26 +100,43 @@ GfxKeycode& GfxKeycode::operator=(GfxKeycode&& other) noexcept
 
 GfxKeycode::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxKeycode::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxKeycode::ValueType GfxKeycode::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(code_);
 }
 
 GfxKeycode::ValueType GfxKeycode::scancodeToKeycode(scancode::GfxScancode const& scancode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(SDL_SCANCODE_TO_KEYCODE(scancode.getAsSdlType()));
 }
 
 void GfxKeycode::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     code_ = static_cast<SdlType>(ValueType::kUnknown);
 }
 
 GfxKeycode::SdlType GfxKeycode::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return code_;
 }
 

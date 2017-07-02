@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxPixelType.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpixeltype::pixels::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxPixelType::ClassName[] = "GfxPixelType";
 
 GfxPixelType::GfxPixelType() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxPixelType::GfxPixelType(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxPixelType::GfxPixelType(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = other.value_;
 }
 
 GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxObject(ClassName)
 
 GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,6 +86,8 @@ GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other) noexcept
 
 GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -80,21 +99,36 @@ GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other) noexcept
 
 GfxPixelType::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPixelType::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxPixelType::ValueType GfxPixelType::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxPixelType::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::pixelTypeUnknown);
 }
 
 GfxPixelType::SdlType GfxPixelType::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

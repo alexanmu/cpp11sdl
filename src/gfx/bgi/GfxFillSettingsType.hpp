@@ -25,6 +25,7 @@
 #define GfxFillSettingsType_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -57,6 +58,7 @@ public:
     GfxFillSettingsType& operator=(GfxFillSettingsType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     GfxFillStyles getFillStyles(void) const noexcept;
     GfxColors2 getColors2(void) const noexcept;

@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxPackedOrder.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpackedorder::pixels::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxPackedOrder::ClassName[] = "GfxPackedOrder";
 
 GfxPackedOrder::GfxPackedOrder() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxPackedOrder::GfxPackedOrder(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxPackedOrder::GfxPackedOrder(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxObject(Clas
 
 GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,6 +86,8 @@ GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other) noexcept
 
 GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -80,21 +99,36 @@ GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder&& other) noexcept
 
 GfxPackedOrder::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPackedOrder::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxPackedOrder::ValueType GfxPackedOrder::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxPackedOrder::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::packedOrderNone);
 }
 
 GfxPackedOrder::SdlType GfxPackedOrder::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

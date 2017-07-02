@@ -58,6 +58,7 @@ public:
     bool operator<(GfxText const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
     void setValue(ValueType const& value) noexcept;

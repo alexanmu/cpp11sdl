@@ -53,6 +53,7 @@ public:
     GfxFontInfo& operator=(GfxFontInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void setFontName(std::string const& fontName) noexcept;
     void setFontNameDefault(void) noexcept;

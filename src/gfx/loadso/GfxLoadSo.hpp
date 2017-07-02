@@ -57,6 +57,7 @@ public:
     GfxLoadSo& operator=(GfxLoadSo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isObjectLoaded(void) const noexcept;
     std::string const& getObjectName(void) const noexcept;

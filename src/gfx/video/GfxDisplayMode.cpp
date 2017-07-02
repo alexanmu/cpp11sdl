@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxDisplayMode.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxdisplaymode::video::gfx");
 
 namespace gfx
 {
@@ -37,12 +40,16 @@ const char GfxDisplayMode::ClassName[] = "GfxDisplayMode";
 
 GfxDisplayMode::GfxDisplayMode() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
-GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t const h,
-                               int32_t const refresh) noexcept : GfxObject(ClassName)
+GfxDisplayMode::GfxDisplayMode(const uint32_t format, const int32_t w, const int32_t h,
+                               const int32_t refresh) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(w >= 0);
     assert(h >= 0);
     assert(refresh >= 0);
@@ -56,11 +63,15 @@ GfxDisplayMode::GfxDisplayMode(uint32_t const format, int32_t const w, int32_t c
 
 GfxDisplayMode::GfxDisplayMode(const SdlType mode) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     dmode_ = mode;
 }
 
 GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     dmode_.format = other.dmode_.format;
     dmode_.w = other.dmode_.w;
     dmode_.h = other.dmode_.h;
@@ -72,6 +83,8 @@ GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(Clas
 
 GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         dmode_.format = other.dmode_.format;
@@ -87,31 +100,50 @@ GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other) noexcept
 
 GfxDisplayMode::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxDisplayMode::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 uint32_t GfxDisplayMode::getFormat(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return dmode_.format;
 }
 
 int GfxDisplayMode::getWidth(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return dmode_.w;
 }
 
 int GfxDisplayMode::getHeight(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return dmode_.h;
 }
 
 int GfxDisplayMode::getRefreshRate(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return dmode_.refresh_rate;
 }
 
 void GfxDisplayMode::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     dmode_.format = 0;
     dmode_.w = -1;
     dmode_.h = -1;
@@ -121,11 +153,15 @@ void GfxDisplayMode::clear(void) noexcept
 
 GfxDisplayMode::SdlType GfxDisplayMode::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return dmode_;
 }
 
 GfxDisplayMode::SdlTypePtr GfxDisplayMode::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlTypePtr)&dmode_;
 }
 

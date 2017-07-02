@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxPackedLayout.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpackedlayout::pixels::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxPackedLayout::ClassName[] = "GfxPackedLayout";
 
 GfxPackedLayout::GfxPackedLayout() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxPackedLayout::GfxPackedLayout(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxObject(C
 
 GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,6 +86,8 @@ GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other) noexce
 
 GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -80,21 +99,36 @@ GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout&& other) noexcept
 
 GfxPackedLayout::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPackedLayout::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxPackedLayout::ValueType GfxPackedLayout::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxPackedLayout::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::packedLayoutNone);
 }
 
 GfxPackedLayout::SdlType GfxPackedLayout::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

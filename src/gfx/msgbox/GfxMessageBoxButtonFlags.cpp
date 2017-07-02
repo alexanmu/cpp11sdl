@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxMessageBoxButtonFlags.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxmessageboxbuttonflags::msgbox::gfx");
 
 namespace gfx
 {
@@ -36,17 +39,23 @@ const char GfxMessageBoxButtonFlags::ClassName[] = "GfxMessageBoxButtonFlags";
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const ValueType flags) noexcept :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = static_cast<SdlType>(flags);
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags > 0);
     assert(flags < 3);
 
@@ -56,11 +65,16 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags const& other) noexcept :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
 }
+
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) noexcept :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
@@ -68,6 +82,8 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& ot
 
 GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButtonFlags const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -77,6 +93,8 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
 
 GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButtonFlags&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -88,31 +106,50 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
 
 bool GfxMessageBoxButtonFlags::operator==(GfxMessageBoxButtonFlags const& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flags_ == other.flags_);
 }
 
 GfxMessageBoxButtonFlags::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxMessageBoxButtonFlags::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxMessageBoxButtonFlags::isReturnDefault(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT);
 }
 
 bool GfxMessageBoxButtonFlags::isEscDefault(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flags_ == sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT);
 }
 
 void GfxMessageBoxButtonFlags::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(ValueType::noneDefault);
 }
 
 GfxMessageBoxButtonFlags::SdlType GfxMessageBoxButtonFlags::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return flags_;
 }
 

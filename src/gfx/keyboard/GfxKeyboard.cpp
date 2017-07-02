@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxKeyboard.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxkeyboard::keyboard::gfx");
 
 namespace gfx
 {
@@ -37,21 +40,34 @@ const char GfxKeyboard::ClassName[] = "GfxKeyboard";
 
 GfxKeyboard::GfxKeyboard() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxKeyboard::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxKeyboard::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 video::GfxWindow::SdlTypePtr GfxKeyboard::getKeyboardFocus(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return sdl2::SDL_GetKeyboardFocus();
 }
 
 const uint8_t * GfxKeyboard::getKeyboardState(int32_t * numkeys) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(numkeys != nullptr);
 
     return sdl2::SDL_GetKeyboardState(numkeys);
@@ -59,6 +75,8 @@ const uint8_t * GfxKeyboard::getKeyboardState(int32_t * numkeys) const noexcept
 
 keycode::GfxKeymod GfxKeyboard::getModState(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     keycode::GfxKeymod::SdlType km;
 
     km = sdl2::SDL_GetModState();
@@ -67,6 +85,8 @@ keycode::GfxKeymod GfxKeyboard::getModState(void) const noexcept
 
 void GfxKeyboard::setModState(keycode::GfxKeymod const& mod) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(mod);
 
     sdl2::SDL_SetModState(mod.getAsSdlType());
@@ -74,6 +94,8 @@ void GfxKeyboard::setModState(keycode::GfxKeymod const& mod) const noexcept
 
 keycode::GfxKeycode GfxKeyboard::getKeyFromScancode(scancode::GfxScancode const& scancode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(scancode);
 
     keycode::GfxKeycode::SdlType kc;
@@ -84,6 +106,8 @@ keycode::GfxKeycode GfxKeyboard::getKeyFromScancode(scancode::GfxScancode const&
 
 scancode::GfxScancode GfxKeyboard::getScancodeFromKey(keycode::GfxKeycode const& keycode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(keycode);
 
     scancode::GfxScancode::SdlType sc;
@@ -94,6 +118,8 @@ scancode::GfxScancode GfxKeyboard::getScancodeFromKey(keycode::GfxKeycode const&
 
 const std::string GfxKeyboard::getScancodeName(scancode::GfxScancode const& scancode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(scancode);
 
     const char * chptr;
@@ -108,6 +134,8 @@ const std::string GfxKeyboard::getScancodeName(scancode::GfxScancode const& scan
 
 scancode::GfxScancode GfxKeyboard::getScancodeFromName(std::string const& name) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(name.length() > 0);
 
     scancode::GfxScancode::SdlType sc;
@@ -118,6 +146,8 @@ scancode::GfxScancode GfxKeyboard::getScancodeFromName(std::string const& name) 
 
 const std::string GfxKeyboard::getKeyName(keycode::GfxKeycode const& keycode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(keycode);
 
     const char * chptr;
@@ -132,6 +162,8 @@ const std::string GfxKeyboard::getKeyName(keycode::GfxKeycode const& keycode) co
 
 keycode::GfxKeycode GfxKeyboard::getKeyFromName(std::string const& name) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(name.length() > 0);
 
     keycode::GfxKeycode::SdlType kc;
@@ -142,11 +174,15 @@ keycode::GfxKeycode GfxKeyboard::getKeyFromName(std::string const& name) const n
 
 void GfxKeyboard::startTextInput(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::SDL_StartTextInput();
 }
 
 GfxBool GfxKeyboard::isTextInputActive(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxBool::SdlType sdlbool;
 
     sdlbool = sdl2::SDL_IsTextInputActive();
@@ -155,11 +191,15 @@ GfxBool GfxKeyboard::isTextInputActive(void) const noexcept
 
 void GfxKeyboard::stopTextInput(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::SDL_StopTextInput();
 }
 
 void GfxKeyboard::setTextInputRect(rect::GfxRect const& rect) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
 
     sdl2::SDL_SetTextInputRect(rect.getAsSdlTypePtr());
@@ -167,6 +207,8 @@ void GfxKeyboard::setTextInputRect(rect::GfxRect const& rect) const noexcept
 
 GfxBool GfxKeyboard::hasScreenKeyboardSupport(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxBool::SdlType sdlbool;
 
     sdlbool = sdl2::SDL_HasScreenKeyboardSupport();
@@ -175,6 +217,8 @@ GfxBool GfxKeyboard::hasScreenKeyboardSupport(void) const noexcept
 
 GfxBool GfxKeyboard::isScreenKeyboardShown(video::GfxWindow const& window) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(window);
 
     GfxBool::SdlType sdlbool;

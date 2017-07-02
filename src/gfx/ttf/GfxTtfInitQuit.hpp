@@ -54,6 +54,7 @@ public:
     virtual ~GfxTtfInitQuit() noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     int32_t wasInit(void) const noexcept;
 

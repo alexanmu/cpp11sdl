@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxBlendMode.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxblendmode::blendmode::gfx");
 
 namespace gfx
 {
@@ -36,16 +39,22 @@ const char GfxBlendMode::ClassName[] = "GfxBlendMode";
 
 GfxBlendMode::GfxBlendMode() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxBlendMode::GfxBlendMode(const ValueType blendmode) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     blendmode_ = static_cast<SdlType>(blendmode);
 }
 
 GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(blendmode >= 0);
 
     blendmode_ = blendmode;
@@ -53,11 +62,15 @@ GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxObject(ClassNa
 
 GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     blendmode_ = other.blendmode_;
 }
 
 GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     blendmode_ = other.blendmode_;
     // Destroy other's data
     other.clear();
@@ -65,6 +78,8 @@ GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxObject(ClassName)
 
 GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         blendmode_ = other.blendmode_;
@@ -74,6 +89,8 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode const& other) noexcept
 
 GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         blendmode_ = other.blendmode_;
@@ -85,46 +102,71 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other) noexcept
 
 bool GfxBlendMode::operator==(GfxBlendMode const& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (blendmode_ == other.blendmode_);
 }
 
 GfxBlendMode::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxBlendMode::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxBlendMode::ValueType GfxBlendMode::getBlendMode(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(blendmode_);
 }
 
 bool GfxBlendMode::isNone(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (blendmode_ == sdl2::SDL_BLENDMODE_NONE);
 }
 
 bool GfxBlendMode::isBlend(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (blendmode_ == sdl2::SDL_BLENDMODE_BLEND);
 }
 
 bool GfxBlendMode::isAdd(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (blendmode_ == sdl2::SDL_BLENDMODE_ADD);
 }
 
 bool GfxBlendMode::isMod(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (blendmode_ == sdl2::SDL_BLENDMODE_MOD);
 }
 
 void GfxBlendMode::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     blendmode_ = static_cast<SdlType>(ValueType::blendNone);
 }
 
 GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlType)blendmode_;
 }
 

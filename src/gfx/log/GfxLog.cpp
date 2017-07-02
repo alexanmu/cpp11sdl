@@ -26,6 +26,9 @@
 
 #include "GfxLog.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxlog::log::gfx");
 
 namespace gfx
 {
@@ -58,16 +61,27 @@ static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriori
 
 GfxLog::GfxLog() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxLog::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxLog::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxLog::setAllPriority(GfxLogPriority const& prio) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(prio);
 
     sdl2::SDL_LogSetAllPriority(prio.getAsSdlType());
@@ -75,6 +89,8 @@ void GfxLog::setAllPriority(GfxLogPriority const& prio) const noexcept
 
 void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(cat);
     assert(prio);
 
@@ -83,6 +99,8 @@ void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) 
 
 GfxLogPriority GfxLog::getPriority(GfxLogCategory const& cat) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(cat);
 
     GfxLogPriority::SdlType sdlprio;
@@ -93,11 +111,15 @@ GfxLogPriority GfxLog::getPriority(GfxLogCategory const& cat) const noexcept
 
 void GfxLog::resetPriorities(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::SDL_LogResetPriorities();
 }
 
 GfxLogOutputFunction * GfxLog::logGetOutputFunction(void ** userdata) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::SDL_LogOutputFunction sdlLogOutFunc = nullptr;
 
     sdl2::SDL_LogGetOutputFunction(&sdlLogOutFunc, userdata);
@@ -114,6 +136,8 @@ GfxLogOutputFunction * GfxLog::logGetOutputFunction(void ** userdata) const noex
 
 void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback, void * userdata) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (callback != nullptr)
     {
         if (prv::logOutputFunctionObject == nullptr)

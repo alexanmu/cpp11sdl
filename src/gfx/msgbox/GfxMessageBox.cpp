@@ -27,6 +27,9 @@
 
 #include "GfxMessageBox.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxmessagebox::msgbox::gfx");
 
 namespace gfx
 {
@@ -38,6 +41,8 @@ const char GfxMessageBox::ClassName[] = "GfxMessageBox";
 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(data);
 
     data_ = data;
@@ -47,6 +52,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
                              std::string const& message) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flag);
     assert(title.length() > 0);
     assert(message.length() > 0);
@@ -61,6 +68,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& 
 GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title, std::string const& message,
                              video::GfxWindow const& win) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flag);
     assert(title.length() > 0);
     assert(message.length() > 0);
@@ -75,6 +84,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& 
 
 GfxMessageBox::GfxMessageBox(GfxMessageBox&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     type_ = other.type_;
     data_ = other.data_;
     flag_ = other.flag_;
@@ -87,6 +98,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBox&& other) noexcept : GfxObject(ClassNa
 
 GfxMessageBox& GfxMessageBox::operator=(GfxMessageBox&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         type_ = other.type_;
@@ -103,11 +116,22 @@ GfxMessageBox& GfxMessageBox::operator=(GfxMessageBox&& other) noexcept
 
 GfxMessageBox::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxMessageBox::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int32_t GfxMessageBox::showModal() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret;
 
     if (type_ == GfxMessageBoxType::typeComplex)
@@ -123,6 +147,8 @@ int32_t GfxMessageBox::showModal() const noexcept
 
 int32_t GfxMessageBox::showModalSimple(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (winptr_ == nullptr)
     {
         sdl2::SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
@@ -138,6 +164,8 @@ int32_t GfxMessageBox::showModalSimple(void) const noexcept
 
 int32_t GfxMessageBox::showModalComplex(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t buttonid;
     GfxMessageBoxData::SdlTypePtr p;
 
@@ -148,6 +176,8 @@ int32_t GfxMessageBox::showModalComplex(void) const noexcept
 
 void GfxMessageBox::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     type_ = GfxMessageBoxType::typeSimple;
     data_.clear();
     flag_.clear();

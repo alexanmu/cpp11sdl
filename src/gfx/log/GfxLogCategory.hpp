@@ -25,6 +25,7 @@
 #define GfxLogCategory_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -82,6 +83,7 @@ public:
     GfxLogCategory& operator=(GfxLogCategory&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void clear(void) noexcept;
 

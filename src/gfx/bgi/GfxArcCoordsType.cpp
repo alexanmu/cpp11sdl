@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxArcCoordsType.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,25 +38,29 @@ const char GfxArcCoordsType::ClassName[] = "GfxArcCoordsType";
 
 GfxArcCoordsType::GfxArcCoordsType() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxArcCoordsType::GfxArcCoordsType(const BgiType arccoords) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     arccoords_ = arccoords;
 }
 
 GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     arccoords_ = other.arccoords_;
 }
 
 GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     arccoords_ = other.arccoords_;
     // Delete other's value
     other.clear();
@@ -62,7 +68,8 @@ GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObjec
 
 GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         arccoords_ = other.arccoords_;
@@ -72,7 +79,8 @@ GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType const& other) noe
 
 GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         arccoords_ = other.arccoords_;
@@ -85,54 +93,70 @@ GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType&& other) noexcept
 GfxArcCoordsType::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxArcCoordsType::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int32_t GfxArcCoordsType::getX(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_.x;
 }
 
 int32_t GfxArcCoordsType::getY(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_.y;
 }
 
 int32_t GfxArcCoordsType::getXStart(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_.xstart;
 }
 
 int32_t GfxArcCoordsType::getYStart(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_.ystart;
 }
 
 int32_t GfxArcCoordsType::getXEnd(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_.xend;
 }
 
 int32_t GfxArcCoordsType::getYEnd(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_.yend;
 }
 
 void GfxArcCoordsType::setValue(const BgiType arccoords) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     arccoords_ = arccoords;
 }
 
 void GfxArcCoordsType::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     arccoords_.x = -1;
     arccoords_.y = -1;
     arccoords_.xstart = -1;
@@ -144,6 +168,7 @@ void GfxArcCoordsType::clear(void) noexcept
 GfxArcCoordsType::BgiType GfxArcCoordsType::getAsBgiType() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return arccoords_;
 }
 

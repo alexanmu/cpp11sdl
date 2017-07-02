@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxVersion.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxversion::version::gfx");
 
 namespace gfx
 {
@@ -36,17 +39,16 @@ const char GfxVersion::ClassName[] = "GfxVersion";
 
 GfxVersion::GfxVersion() noexcept : GfxObject(ClassName)
 {
-    clear();
-}
+    LOG_TRACE_PRIO_MED();
 
-GfxVersion::operator bool() const noexcept
-{
-    return true;
+    clear();
 }
 
 GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) noexcept :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ver_.major = major;
     ver_.minor = minor;
     ver_.patch = patch;
@@ -54,11 +56,15 @@ GfxVersion::GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t p
 
 GfxVersion::GfxVersion(const SdlType ver) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ver_ = ver;
 }
 
 GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ver_ = other.ver_;
 }
 
@@ -71,6 +77,8 @@ GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxObject(ClassName)
 
 GfxVersion& GfxVersion::operator=(GfxVersion const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         ver_ = other.ver_;
@@ -80,6 +88,8 @@ GfxVersion& GfxVersion::operator=(GfxVersion const& other) noexcept
 
 GfxVersion& GfxVersion::operator=(GfxVersion&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         ver_ = other.ver_;
@@ -89,28 +99,45 @@ GfxVersion& GfxVersion::operator=(GfxVersion&& other) noexcept
     return *this;
 }
 
+GfxVersion::operator bool() const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return true;
+}
+
+std::string GfxVersion::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
+
 uint8_t GfxVersion::getMajor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ver_.major;
 }
 
 uint8_t GfxVersion::getMinor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ver_.minor;
 }
 
 uint8_t GfxVersion::getPatch(void) const noexcept
 {
-    return ver_.patch;
-}
+    LOG_TRACE_PRIO_LOW();
 
-void GfxVersion::set(const SdlType ver) noexcept
-{
-    ver_ = ver;
+    return ver_.patch;
 }
 
 void GfxVersion::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     ver_.major = 0;
     ver_.minor = 0;
     ver_.patch = 0;
@@ -118,6 +145,8 @@ void GfxVersion::clear(void) noexcept
 
 std::string GfxVersion::getAsString(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     std::string str;
 
     str = std::to_string(ver_.major) + "." + std::to_string(ver_.minor) + "." + std::to_string(ver_.patch);
@@ -126,11 +155,15 @@ std::string GfxVersion::getAsString(void) const noexcept
 
 GfxVersion::SdlType GfxVersion::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ver_;
 }
 
 GfxVersion::SdlTypePtr GfxVersion::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlTypePtr)&ver_;
 }
 

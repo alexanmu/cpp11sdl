@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxDirection.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,31 +38,36 @@ const char GfxDirection::ClassName[] = "GfxDirection";
 
 GfxDirection::GfxDirection() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxDirection::GfxDirection(const ValueType dir) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     dir_ = static_cast<BgiType>(dir);
 }
 
 GfxDirection::GfxDirection(const BgiType dir) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     dir_ = dir;
 }
 
 GfxDirection::GfxDirection(GfxDirection const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     dir_ = other.dir_;
 }
 
 GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     dir_ = other.dir_;
     // Delete other's value
     other.clear();
@@ -68,7 +75,8 @@ GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(ClassName)
 
 GfxDirection& GfxDirection::operator=(GfxDirection const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         dir_ = other.dir_;
@@ -78,7 +86,8 @@ GfxDirection& GfxDirection::operator=(GfxDirection const& other) noexcept
 
 GfxDirection& GfxDirection::operator=(GfxDirection&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         dir_ = other.dir_;
@@ -91,30 +100,42 @@ GfxDirection& GfxDirection::operator=(GfxDirection&& other) noexcept
 GfxDirection::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxDirection::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxDirection::ValueType GfxDirection::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(dir_);
 }
 
 void GfxDirection::setValue(const ValueType dir) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     dir_ = static_cast<BgiType>(dir);
 }
 
 void GfxDirection::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     dir_ = static_cast<BgiType>(ValueType::horizontalDirection);
 }
 
 GfxDirection::BgiType GfxDirection::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return dir_;
 }
 

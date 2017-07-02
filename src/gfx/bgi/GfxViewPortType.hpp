@@ -25,6 +25,7 @@
 #define GfxViewPortType_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -55,6 +56,7 @@ public:
     GfxViewPortType& operator=(GfxViewPortType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     int32_t getLeft() const noexcept;
     int32_t getTop() const noexcept;

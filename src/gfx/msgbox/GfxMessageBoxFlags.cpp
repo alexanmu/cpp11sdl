@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxMessageBoxFlags.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxmessageboxflags::msgbox::gfx");
 
 namespace gfx
 {
@@ -36,16 +39,22 @@ const char GfxMessageBoxFlags::ClassName[] = "GfxMessageBoxFlags";
 
 GfxMessageBoxFlags::GfxMessageBoxFlags() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(const ValueType flag) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     flag_ = static_cast<SdlType>(flag);
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flag > 0);
 
     flag_ = flag;
@@ -53,11 +62,15 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) noexcept : GfxObject(
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flag_ = other.flag_;
 }
 
 GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flag_ = other.flag_;
     // Delete other's data
     other.clear();
@@ -65,6 +78,8 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : Gf
 
 GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flag_ = other.flag_;
@@ -74,6 +89,8 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags const& othe
 
 GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flag_ = other.flag_;
@@ -85,41 +102,64 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other) no
 
 bool GfxMessageBoxFlags::operator==(GfxMessageBoxFlags const& other) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flag_ == other.flag_);
 }
 
 GfxMessageBoxFlags::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxMessageBoxFlags::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxMessageBoxFlags::ValueType GfxMessageBoxFlags::getFlag(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(flag_);
 }
 
 bool GfxMessageBoxFlags::isError(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flag_ == sdl2::SDL_MESSAGEBOX_ERROR);
 }
 
 bool GfxMessageBoxFlags::isWarning(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flag_ == sdl2::SDL_MESSAGEBOX_WARNING);
 }
 
 bool GfxMessageBoxFlags::isInformation(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flag_ == sdl2::SDL_MESSAGEBOX_INFORMATION);
 }
 
 void GfxMessageBoxFlags::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flag_ = static_cast<SdlType>(ValueType::flagError);
 }
 
 GfxMessageBoxFlags::SdlType GfxMessageBoxFlags::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlType)flag_;
 }
 

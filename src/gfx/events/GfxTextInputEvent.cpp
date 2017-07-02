@@ -24,6 +24,9 @@
 #include <string>
 
 #include "GfxTextInputEvent.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxtexteditingevent::events::gfx");
 
 namespace gfx
 {
@@ -35,21 +38,29 @@ const char GfxTextInputEvent::ClassName[] = "GfxTextInputEvent";
 
 GfxTextInputEvent::GfxTextInputEvent() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTextInputEvent::GfxTextInputEvent(const SdlType event) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     textInputEvent_ = event;
 }
 
 GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     textInputEvent_ = other.textInputEvent_;
 }
 
 GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     textInputEvent_ = other.textInputEvent_;
     // Delete other's data
     other.clear();
@@ -57,6 +68,8 @@ GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent&& other) noexcept : GfxOb
 
 GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         textInputEvent_ = other.textInputEvent_;
@@ -66,6 +79,8 @@ GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent const& other) 
 
 GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         textInputEvent_ = other.textInputEvent_;
@@ -77,11 +92,22 @@ GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent&& other) noexc
 
 GfxTextInputEvent::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTextInputEvent::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxCommonEvent GfxTextInputEvent::getCommonEvent(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxCommonEvent cEv(textInputEvent_.type, textInputEvent_.timestamp);
 
     return cEv;
@@ -89,16 +115,22 @@ GfxCommonEvent GfxTextInputEvent::getCommonEvent(void) const noexcept
 
 uint32_t GfxTextInputEvent::getWindowID(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return textInputEvent_.windowID;
 }
 
 std::string GfxTextInputEvent::getText(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return std::string(textInputEvent_.text);
 }
 
 void GfxTextInputEvent::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     textInputEvent_.type = 0;
     textInputEvent_.timestamp = 0;
     textInputEvent_.windowID = 0;
@@ -107,6 +139,8 @@ void GfxTextInputEvent::clear(void) noexcept
 
 GfxTextInputEvent::SdlType GfxTextInputEvent::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return textInputEvent_;
 }
 

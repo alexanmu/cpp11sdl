@@ -27,6 +27,9 @@
 #include <string>
 
 #include "GfxPixelFormat.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpixelformat::pixels::gfx");
 
 namespace gfx
 {
@@ -38,11 +41,15 @@ const char GfxPixelFormat::ClassName[] = "GfxPixelFormat";
 
 GfxPixelFormat::GfxPixelFormat() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     clear();
 };
 
 GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(format);
 
     pix_ = sdl2::SDL_AllocFormat(format.getAsSdlType());
@@ -54,6 +61,8 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runt
 
 GfxPixelFormat::GfxPixelFormat(const uint32_t format) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(format);
 
     pix_ = sdl2::SDL_AllocFormat(format);
@@ -65,6 +74,8 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) throw(std::runtime_error) 
 
 GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (pix_ != nullptr)
     {
         sdl2::SDL_FreeFormat(pix_);
@@ -76,6 +87,8 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) noexcept : GfxObject(Clas
 
 GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other) noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (this != &other)
     {
         if (pix_ != nullptr)
@@ -91,6 +104,8 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other) noexcept
 
 GfxPixelFormat::~GfxPixelFormat() noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (pix_ != nullptr)
     {
         sdl2::SDL_FreeFormat(pix_);
@@ -100,11 +115,22 @@ GfxPixelFormat::~GfxPixelFormat() noexcept
 
 GfxPixelFormat::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (pix_ != nullptr);
+}
+
+std::string GfxPixelFormat::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxPixelFormat::allocFormat(GfxPixelFormatEnum const& format) noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     assert(format);
 
     if (pix_ != nullptr)
@@ -120,6 +146,8 @@ void GfxPixelFormat::allocFormat(GfxPixelFormatEnum const& format) noexcept
 
 void GfxPixelFormat::freeFormat(void) noexcept
 {
+    LOG_TRACE_PRIO_HIGH();
+
     if (pix_ != nullptr)
     {
        sdl2::SDL_FreeFormat(pix_);
@@ -129,6 +157,8 @@ void GfxPixelFormat::freeFormat(void) noexcept
 
 GfxPixelFormatEnum GfxPixelFormat::getFormat(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ != nullptr)
     {
         return GfxPixelFormatEnum(pix_->format);
@@ -138,6 +168,8 @@ GfxPixelFormatEnum GfxPixelFormat::getFormat(void) noexcept
 
 uint32_t GfxPixelFormat::pixelFlag(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return 0;
@@ -147,6 +179,8 @@ uint32_t GfxPixelFormat::pixelFlag(void) const noexcept
 
 GfxPixelType GfxPixelFormat::pixelType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return GfxPixelType(GfxPixelType::ValueType::pixelTypeUnknown);
@@ -156,6 +190,8 @@ GfxPixelType GfxPixelFormat::pixelType(void) const noexcept
 
 GfxPackedOrder GfxPixelFormat::pixelOrderPacked(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return GfxPackedOrder(GfxPackedOrder::ValueType::packedOrderNone);
@@ -165,6 +201,8 @@ GfxPackedOrder GfxPixelFormat::pixelOrderPacked(void) const noexcept
 
 GfxArrayOrder GfxPixelFormat::pixelOrderArray(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return GfxArrayOrder(GfxArrayOrder::ValueType::arrayOrderNone);
@@ -174,6 +212,8 @@ GfxArrayOrder GfxPixelFormat::pixelOrderArray(void) const noexcept
 
 GfxBitmapOrder GfxPixelFormat::pixelOrderBitmap(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return GfxBitmapOrder(GfxBitmapOrder::ValueType::bitmapOrderNone);
@@ -183,6 +223,8 @@ GfxBitmapOrder GfxPixelFormat::pixelOrderBitmap(void) const noexcept
 
 GfxPackedLayout GfxPixelFormat::pixelLayout(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return GfxPackedLayout(GfxPackedLayout::ValueType::packedLayoutNone);
@@ -192,6 +234,8 @@ GfxPackedLayout GfxPixelFormat::pixelLayout(void) const noexcept
 
 uint32_t GfxPixelFormat::bitsPerPixel(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return 0;
@@ -201,6 +245,8 @@ uint32_t GfxPixelFormat::bitsPerPixel(void) const noexcept
 
 uint32_t GfxPixelFormat::bytesPerPixel(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t temp;
 
     if (pix_ == nullptr)
@@ -232,6 +278,8 @@ uint32_t GfxPixelFormat::bytesPerPixel(void) const noexcept
 
 bool GfxPixelFormat::isPixelFormatIndexed(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool temp;
 
     if (pix_ == nullptr)
@@ -248,6 +296,8 @@ bool GfxPixelFormat::isPixelFormatIndexed(void) const noexcept
 
 bool GfxPixelFormat::isPixelFormatPacked(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool temp;
 
     if (pix_ == nullptr)
@@ -264,6 +314,8 @@ bool GfxPixelFormat::isPixelFormatPacked(void) const noexcept
 
 bool GfxPixelFormat::isPixelFormatArray(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool temp;
 
     if (pix_ == nullptr)
@@ -282,6 +334,8 @@ bool GfxPixelFormat::isPixelFormatArray(void) const noexcept
 
 bool GfxPixelFormat::isPixelFormatAlpha(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool temp;
 
     if (pix_ == nullptr)
@@ -312,6 +366,8 @@ bool GfxPixelFormat::isPixelFormatAlpha(void) const noexcept
 
 bool GfxPixelFormat::isPixelFormatFourCC(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (pix_ == nullptr)
     {
         return false;
@@ -321,6 +377,8 @@ bool GfxPixelFormat::isPixelFormatFourCC(void) const noexcept
 
 std::string GfxPixelFormat::getPixelFormatName(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     std::string str {"$nullptr$"};
 
     if (pix_ != nullptr)
@@ -333,6 +391,8 @@ std::string GfxPixelFormat::getPixelFormatName(void) const noexcept
 GfxBool GfxPixelFormat::pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, uint32_t * Gmask,
                                                uint32_t * Bmask, uint32_t * Amask) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(bpp != nullptr);
     assert(Rmask != nullptr);
     assert(Gmask != nullptr);
@@ -355,6 +415,8 @@ GfxBool GfxPixelFormat::pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, 
 GfxPixelFormatEnum GfxPixelFormat::masksToPixelFormatEnum(const int32_t bpp, const uint32_t Rmask, const uint32_t Gmask,
                                                           const uint32_t Bmask, const uint32_t Amask) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(bpp > 0);
 
     GfxPixelFormatEnum::SdlType sdlpixfmten;
@@ -365,6 +427,8 @@ GfxPixelFormatEnum GfxPixelFormat::masksToPixelFormatEnum(const int32_t bpp, con
 
 void GfxPixelFormat::setPixelFormatPalette(GfxPalette const& palette) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(palette);
 
     if (pix_ != nullptr)
@@ -375,6 +439,8 @@ void GfxPixelFormat::setPixelFormatPalette(GfxPalette const& palette) const noex
 
 pixels::GfxColor GfxPixelFormat::mapRGB(pixels::GfxColor const& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(color);
 
     uint32_t clru32;
@@ -389,6 +455,8 @@ pixels::GfxColor GfxPixelFormat::mapRGB(pixels::GfxColor const& color) const noe
 
 pixels::GfxColor GfxPixelFormat::mapRGBA(pixels::GfxColor const& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(color);
 
     uint32_t clru32;
@@ -403,6 +471,8 @@ pixels::GfxColor GfxPixelFormat::mapRGBA(pixels::GfxColor const& color) const no
 
 pixels::GfxColor GfxPixelFormat::getRGB(const uint32_t pixel) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint8_t r;
     uint8_t g;
     uint8_t b;
@@ -417,6 +487,8 @@ pixels::GfxColor GfxPixelFormat::getRGB(const uint32_t pixel) const noexcept
 
 pixels::GfxColor GfxPixelFormat::getRGBA(const uint32_t pixel) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint8_t r;
     uint8_t g;
     uint8_t b;
@@ -432,6 +504,8 @@ pixels::GfxColor GfxPixelFormat::getRGBA(const uint32_t pixel) const noexcept
 
 void GfxPixelFormat::calculateGammaRamp(const float gamma, xtra::GfxGammaRamp const& ramp) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(ramp);
 
     sdl2::SDL_CalculateGammaRamp(gamma, ramp.getAsSdlTypePtr());
@@ -439,12 +513,16 @@ void GfxPixelFormat::calculateGammaRamp(const float gamma, xtra::GfxGammaRamp co
 
 GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlTypePtr)pix_;
 }
 
 // Private methods
 void GfxPixelFormat::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     pix_ = nullptr;
 }
 

@@ -26,6 +26,9 @@
 
 #include "GfxBits.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxbits::bits::gfx");
 
 namespace gfx
 {
@@ -37,16 +40,27 @@ const char GfxBits::ClassName[] = "GfxBits";
 
 GfxBits::GfxBits() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxBits::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxBits::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int GfxBits::mostSignificantBitIndex32(const uint32_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_MostSignificantBitIndex32(x);
 }
 

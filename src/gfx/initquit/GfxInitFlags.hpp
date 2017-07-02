@@ -25,6 +25,7 @@
 #define GfxInitFlags_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -70,6 +71,7 @@ public:
     GfxInitFlags& operator=(GfxInitFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     bool isNothing(void) const noexcept;
     bool isTimer(void) const noexcept;

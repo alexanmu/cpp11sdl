@@ -19,48 +19,11 @@
  3. This notice may not be removed or altered from any source distribution.
  
  See copyright notice at http://lidsdl.org/license.php
-*/
+ */
 
-#ifndef GfxPlatform_hpp
-#define GfxPlatform_hpp
+#ifndef ToString_hpp
+#define ToString_hpp
 
-#include <string>
+void _doToString(void);
 
-#include "GfxObject.hpp"
-
-namespace gfx
-{
-
-namespace platform
-{
-
-class GfxPlatform final : public GfxObject
-{
-public:
-    static const char ClassName[];
-    static const bool SdlResource = false;
-    static const bool CallsSdl = true;
-
-    GfxPlatform() noexcept;
-
-    GfxPlatform(GfxPlatform const& other) noexcept;
-    GfxPlatform(GfxPlatform&& other) noexcept;
-
-    GfxPlatform& operator=(GfxPlatform const& other) noexcept;
-    GfxPlatform& operator=(GfxPlatform&& other) noexcept;
-
-    virtual explicit operator bool() const noexcept;
-    virtual std::string to_string(void) const noexcept;
-
-    void queryPlatform(void) noexcept;
-
-    std::string const& getPlatform(void) const noexcept;
-private:
-    std::string platform_;
-};
-
-}  // namespace platform
-
-}  // namespace gfx
-
-#endif /* GfxPlatform_hpp */
+#endif /* ToString_hpp */

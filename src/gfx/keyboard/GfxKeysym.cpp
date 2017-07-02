@@ -22,8 +22,12 @@
 */
 
 #include <cstdint>
+#include <string>
 
 #include "GfxKeysym.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxkeysym::keyboard::gfx");
 
 namespace gfx
 {
@@ -35,21 +39,29 @@ const char GfxKeysym::ClassName[] = "GfxKeysym";
 
 GfxKeysym::GfxKeysym() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxKeysym::GfxKeysym(const SdlType sym) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     sym_ = sym;
 }
 
 GfxKeysym::GfxKeysym(GfxKeysym const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     sym_ = other.sym_;
 }
 
 GfxKeysym::GfxKeysym(GfxKeysym&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     sym_ = other.sym_;
     // Delete other's data
     other.clear();
@@ -57,6 +69,8 @@ GfxKeysym::GfxKeysym(GfxKeysym&& other) noexcept : GfxObject(ClassName)
 
 GfxKeysym& GfxKeysym::operator=(GfxKeysym const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         sym_ = other.sym_;
@@ -66,6 +80,8 @@ GfxKeysym& GfxKeysym::operator=(GfxKeysym const& other) noexcept
 
 GfxKeysym& GfxKeysym::operator=(GfxKeysym&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         sym_ = other.sym_;
@@ -77,26 +93,43 @@ GfxKeysym& GfxKeysym::operator=(GfxKeysym&& other) noexcept
 
 GfxKeysym::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxKeysym::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 scancode::GfxScancode GfxKeysym::getScanCode(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return scancode::GfxScancode(sym_.scancode);
 }
 
 keycode::GfxKeycode GfxKeysym::getKeyCode(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return keycode::GfxKeycode(sym_.sym);
 }
 
 keycode::GfxKeymod GfxKeysym::getKeyMod(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return keycode::GfxKeymod(sym_.mod);
 }
 
 void GfxKeysym::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sym_.scancode = sdl2::SDL_SCANCODE_UNKNOWN;
     sym_.sym = sdl2::SDLK_UNKNOWN;
     sym_.mod = 0;
@@ -105,6 +138,8 @@ void GfxKeysym::clear(void) noexcept
 
 GfxKeysym::SdlType GfxKeysym::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sym_;
 }
 

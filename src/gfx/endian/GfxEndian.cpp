@@ -26,6 +26,9 @@
 
 #include "GfxEndian.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxendian::endian::gfx");
 
 namespace gfx
 {
@@ -37,71 +40,104 @@ const char GfxEndian::ClassName[] = "GfxEndian";
 
 GfxEndian::GfxEndian() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxEndian::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxEndian::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 uint16_t GfxEndian::swap16(const uint16_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_Swap16(x);
 }
 
 uint32_t GfxEndian::swap32(const uint32_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_Swap32(x);
 }
 
 uint64_t GfxEndian::swap64(const uint64_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_Swap64(x);
 }
 
 float GfxEndian::swapFloat(const float x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_SwapFloat(x);
 }
 
 uint16_t GfxEndian::swapLE16(const uint16_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return SDL_SwapLE16(x);
 }
 
 uint32_t GfxEndian::swapLE32(const uint32_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return SDL_SwapLE32(x);
 }
 
 uint64_t GfxEndian::swapLE64(const uint64_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return SDL_SwapLE64(x);
 }
 
 float GfxEndian::swapFloatLE(const float x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return SDL_SwapFloatLE(x);
 }
 
 uint16_t GfxEndian::swapBE16(const uint16_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_SwapBE16(x);
 }
 
 uint32_t GfxEndian::swapBE32(const uint32_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_SwapBE32(x);
 }
 
 uint64_t GfxEndian::swapBE64(const uint64_t x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_SwapBE64(x);
 }
 
 float GfxEndian::swapFloatBE(const float x) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::SDL_SwapFloatBE(x);
 }
 

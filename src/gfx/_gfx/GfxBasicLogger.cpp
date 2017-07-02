@@ -53,10 +53,9 @@ GfxBasicLogger& GfxBasicLogger::getInstance(void) noexcept
 void GfxBasicLogger::logTrace(const char * module, const logTracePriority prio, const char * file,
                               const int32_t line, const char * func, const int32_t instance) noexcept
 {
-    if (static_cast<uint8_t>(prio) >= static_cast<uint8_t>(logMinTracePrio_))
+    if (logTraceLevels_[static_cast<uint8_t>(prio)] == logTraceEnaDisState::logTraceEnabled)
     {
-        auto pos = std::find(std::begin(logTraceFilterModules_), std::end(logTraceFilterModules_), module);
-        if (pos != std::end(logTraceFilterModules_))
+        if (doTrace(module) == true)
         {
             auto nowtime = std::chrono::high_resolution_clock::now();
             std::stringstream ss;
@@ -67,7 +66,7 @@ void GfxBasicLogger::logTrace(const char * module, const logTracePriority prio, 
             ss << instance << ' ' << module << ' ' << file << ':' << line << ' ';
             ss <<  '[' << func << ']';
             // Try log to file
-            if (logTraceToFileState_ == logTraceToFileState::logTraceEnabled)
+            if (logTraceToFileState_ == logTraceEnaDisState::logTraceEnabled)
             {
                 logFile_ << ss.str() << '\n';
             }
@@ -75,22 +74,22 @@ void GfxBasicLogger::logTrace(const char * module, const logTracePriority prio, 
     }
 }
 
-GfxBasicLogger::logTracePriority GfxBasicLogger::getTracePriority(void) const noexcept
+GfxBasicLogger::logTraceEnaDisState GfxBasicLogger::getTracePriority(const logTracePriority prio) const noexcept
 {
-    return logMinTracePrio_;
+    return logTraceLevels_[static_cast<uint8_t>(prio)];
 }
 
-void GfxBasicLogger::setTracePriority(const logTracePriority prio) noexcept
+void GfxBasicLogger::setTracePriority(const logTracePriority prio, const logTraceEnaDisState state) noexcept
 {
-    logMinTracePrio_ = prio;
+    logTraceLevels_[static_cast<uint8_t>(prio)] = state;
 }
 
-GfxBasicLogger::logTraceToFileState GfxBasicLogger::getTraceToFileState(void) const noexcept
+GfxBasicLogger::logTraceEnaDisState GfxBasicLogger::getTraceToFileState(void) const noexcept
 {
     return logTraceToFileState_;
 }
 
-void GfxBasicLogger::setTraceToFileState(const logTraceToFileState state) noexcept
+void GfxBasicLogger::setTraceToFileState(const logTraceEnaDisState state) noexcept
 {
     logTraceToFileState_ = state;
 }
@@ -104,6 +103,10 @@ void GfxBasicLogger::addTraceModule(std::string const& module) noexcept
 {
     assert(module.length() > 0);
 
+    if (module == "*")
+    {
+        logTraceAllowAll_ = true;
+    }
     auto pos = std::find(std::begin(logTraceFilterModules_), std::end(logTraceFilterModules_), module);
     if (pos == std::end(logTraceFilterModules_))
     {
@@ -130,11 +133,15 @@ void GfxBasicLogger::logInfo(const char * msg) noexcept
 // Private methods
 GfxBasicLogger::GfxBasicLogger() noexcept
 {
-    createLogFile();
-    logMinTracePrio_ = logTracePriority::logTracePrioMedium;
+    for (uint8_t index = 0; index < 4; index++)
+    {
+        logTraceLevels_[index] = logTraceEnaDisState::logTraceDisabled;
+    }
     startTime_ = std::chrono::high_resolution_clock::now();
-    logTraceToFileState_ = logTraceToFileState::logTraceEnabled;
+    logTraceToFileState_ = logTraceEnaDisState::logTraceDisabled;
     logTraceFilterModules_.clear();
+    logTraceAllowAll_ = false;
+    createLogFile();
 }
 
 GfxBasicLogger::~GfxBasicLogger() noexcept
@@ -226,6 +233,24 @@ void GfxBasicLogger::closeLogFile(void) noexcept
     std::transform(fname.begin(), fname.end(), fname.begin(), ::toupper);
     logFile_ << fname << ' ' << getCurrentDateAsString() << ' ' << getCurrentTimeAsString() << std::endl;
     logFile_.close();
+}
+
+bool GfxBasicLogger::doTrace(std::string const& module) const noexcept
+{
+    if (logTraceAllowAll_ == true)
+    {
+        return true;
+    }
+    else
+    {
+        auto pos = std::find(std::begin(logTraceFilterModules_), std::end(logTraceFilterModules_), module);
+
+        if (pos != std::end(logTraceFilterModules_))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 }  // namespace _gfx

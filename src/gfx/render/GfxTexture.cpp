@@ -28,6 +28,9 @@
 
 #include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxtexture::render::gfx");
 
 namespace gfx
 {
@@ -40,6 +43,8 @@ const char GfxTexture::ClassName[] = "GfxTexture";
 GfxTexture::GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
             const int32_t w, const int32_t h) throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(rend != nullptr);
     assert(format);
     assert(acc);
@@ -64,6 +69,8 @@ GfxTexture::GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, Gf
 GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error)
             : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(rend != nullptr);
     assert(surf);
 
@@ -81,6 +88,8 @@ GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::
 
 GfxTexture::~GfxTexture() noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (tex_ != nullptr)
     {
         sdl2::SDL_DestroyTexture(tex_);
@@ -90,6 +99,8 @@ GfxTexture::~GfxTexture() noexcept
 
 GfxTexture::GfxTexture(GfxTexture&& tex) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     tex_ = tex.tex_;
     // Destroy other's data
     tex.tex_ = nullptr;
@@ -97,6 +108,8 @@ GfxTexture::GfxTexture(GfxTexture&& tex) noexcept
 
 GfxTexture& GfxTexture::operator=(GfxTexture&& tex) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &tex)
     {
         if (tex_ != nullptr)
@@ -112,12 +125,23 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& tex) noexcept
 
 GfxTexture::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (tex_ != nullptr);
+}
+
+std::string GfxTexture::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int32_t * w,
                             int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(format != nullptr);
     assert(acc != nullptr);
     assert(w != nullptr);
@@ -136,6 +160,8 @@ void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAc
 
 void GfxTexture::setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (tex_ != nullptr)
@@ -147,6 +173,8 @@ void GfxTexture::setTextureColorMod(const uint8_t r, const uint8_t g, const uint
 
 void GfxTexture::setTextureColorMod(pixels::GfxColor const& color) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (tex_ != nullptr)
@@ -158,6 +186,8 @@ void GfxTexture::setTextureColorMod(pixels::GfxColor const& color) const noexcep
 
 void GfxTexture::getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(r != nullptr);
     assert(g != nullptr);
     assert(b != nullptr);
@@ -176,6 +206,8 @@ void GfxTexture::getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const
 
 pixels::GfxColor GfxTexture::getTextureColorMod(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint8_t r;
     uint8_t g;
     uint8_t b;
@@ -196,6 +228,8 @@ pixels::GfxColor GfxTexture::getTextureColorMod(void) const noexcept
 
 void GfxTexture::setTextureAlphaMod(const uint8_t a) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (tex_ != nullptr)
@@ -207,6 +241,8 @@ void GfxTexture::setTextureAlphaMod(const uint8_t a) const noexcept
 
 void GfxTexture::getTextureAlphaMod(uint8_t * a) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(a != nullptr);
 
     int32_t ret = 1;
@@ -220,6 +256,8 @@ void GfxTexture::getTextureAlphaMod(uint8_t * a) const noexcept
 
 void GfxTexture::setBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(blendmode);
 
     int32_t ret = 1;
@@ -233,6 +271,8 @@ void GfxTexture::setBlendMode(blendmode::GfxBlendMode const& blendmode) const no
 
 void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t ret = 1;
 
     if (tex_ != nullptr)
@@ -244,6 +284,8 @@ void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode
 
 blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     blendmode::GfxBlendMode::SdlType bm;
 
     int32_t ret = 1;
@@ -262,6 +304,8 @@ blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
 
 void GfxTexture::updateTexture(rect::GfxRect const& rect, const void * pixels, const int32_t pitch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
     assert(pixels != nullptr);
     assert(pitch > 0);
@@ -276,10 +320,12 @@ void GfxTexture::updateTexture(rect::GfxRect const& rect, const void * pixels, c
 }
 
 void GfxTexture::updateYUVTexture(rect::GfxRect const& rect,
-                        const uint8_t * Yplane, const int32_t Ypitch,
-                        const uint8_t * Uplane, const int32_t Upitch,
-                        const uint8_t * Vplane, const int32_t Vpitch) const noexcept
+                                  const uint8_t * Yplane, const int32_t Ypitch,
+                                  const uint8_t * Uplane, const int32_t Upitch,
+                                  const uint8_t * Vplane, const int32_t Vpitch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
     assert(Yplane != nullptr);
     assert(Ypitch > 0);
@@ -300,6 +346,8 @@ void GfxTexture::updateYUVTexture(rect::GfxRect const& rect,
 
 void GfxTexture::lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t * pitch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(rect);
     assert(pixels != nullptr);
     assert(pitch != nullptr);
@@ -315,6 +363,8 @@ void GfxTexture::lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t 
 
 void GfxTexture::lockTexture(void ** pixels, int * pitch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(pixels != nullptr);
     assert(pitch != nullptr);
 
@@ -329,6 +379,8 @@ void GfxTexture::lockTexture(void ** pixels, int * pitch) const noexcept
 
 void GfxTexture::unlockTexture(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (tex_ != nullptr)
     {
         sdl2::SDL_UnlockTexture(tex_);
@@ -337,6 +389,8 @@ void GfxTexture::unlockTexture(void) const noexcept
 
 void GfxTexture::destroyTexture(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (tex_ != nullptr)
     {
         sdl2::SDL_DestroyTexture(tex_);
@@ -346,6 +400,8 @@ void GfxTexture::destroyTexture(void) noexcept
 
 GfxTexture::SdlTypePtr GfxTexture::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return tex_;
 }
 

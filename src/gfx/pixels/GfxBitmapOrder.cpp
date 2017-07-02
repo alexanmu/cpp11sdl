@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxBitmapOrder.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxbitmaporder::pixels::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxBitmapOrder::ClassName[] = "GfxBitmapOrder";
 
 GfxBitmapOrder::GfxBitmapOrder() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxBitmapOrder::GfxBitmapOrder(const ValueType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxBitmapOrder::GfxBitmapOrder(const SdlType value) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 
 GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) noexcept : GfxObject(Clas
 
 GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -69,6 +86,8 @@ GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder const& other) noexcept
 
 GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -80,21 +99,36 @@ GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder&& other) noexcept
 
 GfxBitmapOrder::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxBitmapOrder::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxBitmapOrder::ValueType GfxBitmapOrder::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxBitmapOrder::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::bitmapOrderNone);
 }
 
 GfxBitmapOrder::SdlType GfxBitmapOrder::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

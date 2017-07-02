@@ -25,6 +25,9 @@
 
 #include "GfxCpuInfo.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxcpuinfo::cpuinfo::gfx");
 
 namespace gfx
 {
@@ -36,11 +39,15 @@ const char GfxCpuInfo::ClassName[]  = "GfxCpuInfo";
 
 GfxCpuInfo::GfxCpuInfo() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxCpuInfo::GfxCpuInfo(GfxCpuInfo const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     cpuCount_ = other.cpuCount_;
     cpuCacheLineSize_ = other.cpuCacheLineSize_;
     hasRdtsc_ = other.hasRdtsc_;
@@ -58,6 +65,8 @@ GfxCpuInfo::GfxCpuInfo(GfxCpuInfo const& other) noexcept : GfxObject(ClassName)
 
 GfxCpuInfo::GfxCpuInfo(GfxCpuInfo&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     cpuCount_ = other.cpuCount_;
     cpuCacheLineSize_ = other.cpuCacheLineSize_;
     hasRdtsc_ = other.hasRdtsc_;
@@ -77,6 +86,8 @@ GfxCpuInfo::GfxCpuInfo(GfxCpuInfo&& other) noexcept : GfxObject(ClassName)
 
 GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         cpuCount_ = other.cpuCount_;
@@ -98,6 +109,8 @@ GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo const& other) noexcept
 
 GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         cpuCount_ = other.cpuCount_;
@@ -121,11 +134,22 @@ GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo&& other) noexcept
 
 GfxCpuInfo::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxCpuInfo::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxCpuInfo::queryCpuInfo(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     cpuCount_ = sdl2::SDL_GetCPUCount();
     cpuCacheLineSize_ = sdl2::SDL_GetCPUCacheLineSize();
     hasRdtsc_ = sdl2::SDL_HasRDTSC();
@@ -143,71 +167,99 @@ void GfxCpuInfo::queryCpuInfo(void) noexcept
 
 int32_t GfxCpuInfo::getCpuCount(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return cpuCount_;
 }
 
 int32_t GfxCpuInfo::getCpuCacheLineSize(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return cpuCacheLineSize_;
 }
 
 bool GfxCpuInfo::hasRdtsc(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasRdtsc_;
 }
 
 bool GfxCpuInfo::hasAltiVec(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasAltiVec_;
 }
 
 bool GfxCpuInfo::hasMmx(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasMmx_;
 }
 
 bool GfxCpuInfo::hasSse(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasSse_;
 }
 
 bool GfxCpuInfo::hasSse2(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasSse2_;
 }
 
 bool GfxCpuInfo::hasSse3(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasSse3_;
 }
 
 bool GfxCpuInfo::hasSse41(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasSse41_;
 }
 
 bool GfxCpuInfo::hasSse42(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasSse42_;
 }
 
 bool GfxCpuInfo::hasAvx(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasAvx_;
 }
 
 bool GfxCpuInfo::hasAvx2(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hasAvx2_;
 }
 
 int32_t GfxCpuInfo::getSystemRam(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return systemRam_;
 }
 
 const std::string GfxCpuInfo::getAsString(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     std::string str1;
 
     str1 = "#CPU=" + std::to_string(cpuCount_) + "\n";
@@ -228,6 +280,8 @@ const std::string GfxCpuInfo::getAsString(void) const noexcept
 
 void GfxCpuInfo::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     cpuCount_ = 0;
     cpuCacheLineSize_ = 0;
     hasRdtsc_ = false;

@@ -24,6 +24,8 @@
 #ifndef GfxHitTest_hpp
 #define GfxHitTest_hpp
 
+#include <string>
+
 #include "GfxObject.hpp"
 #include "GfxHitTestResult.hpp"
 #include "GfxPoint.hpp"
@@ -44,6 +46,7 @@ public:
     GfxHitTest() noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     virtual GfxHitTestResult const& operator()(void * win, rect::GfxPoint * area, void * data) noexcept = 0;
 };

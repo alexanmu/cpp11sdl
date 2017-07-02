@@ -22,8 +22,12 @@
 */
 
 #include <cassert>
+#include <string>
 
 #include "GfxTtfFontStyle.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxttffontstyle::ttf::gfx");
 
 namespace gfx
 {
@@ -35,12 +39,16 @@ const char GfxTtfFontStyle::ClassName[] = "GfxTtfFontStyle";
 
 GfxTtfFontStyle::GfxTtfFontStyle() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool strikethrough) noexcept :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
     if (bold == true)
     {
@@ -62,6 +70,8 @@ GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool st
 
 GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(style >= 0);
 
     style_ = style;
@@ -69,11 +79,15 @@ GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) noexcept : GfxObject(ClassName)
 
 GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     style_ = other.style_;
 }
 
 GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     style_ = other.style_;
     // Delete other's data
     other.clear();
@@ -81,6 +95,8 @@ GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxObject(C
 
 GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         style_ = other.style_;
@@ -90,6 +106,8 @@ GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle const& other) noexce
 
 GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         style_ = other.style_;
@@ -101,16 +119,29 @@ GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle&& other) noexcept
 
 GfxTtfFontStyle::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxTtfFontStyle::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxTtfFontStyle::isNormal(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (style_ == 0);
 }
 
 bool GfxTtfFontStyle::isBold(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = style_ & TTF_STYLE_BOLD;
 
     return (r != 0);
@@ -118,6 +149,8 @@ bool GfxTtfFontStyle::isBold(void) const noexcept
 
 bool GfxTtfFontStyle::isItalic(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = style_ & TTF_STYLE_ITALIC;
 
     return (r != 0);
@@ -125,6 +158,8 @@ bool GfxTtfFontStyle::isItalic(void) const noexcept
 
 bool GfxTtfFontStyle::isUnderline(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = style_ & TTF_STYLE_UNDERLINE;
 
     return (r != 0);
@@ -132,6 +167,8 @@ bool GfxTtfFontStyle::isUnderline(void) const noexcept
 
 bool GfxTtfFontStyle::isStrikethrough(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = style_ & TTF_STYLE_STRIKETHROUGH;
 
     return (r != 0);
@@ -139,56 +176,78 @@ bool GfxTtfFontStyle::isStrikethrough(void) const noexcept
 
 void GfxTtfFontStyle::setBold(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ | TTF_STYLE_BOLD;
 }
 
 void GfxTtfFontStyle::resetBold(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ & ~TTF_STYLE_BOLD;
 }
 
 void GfxTtfFontStyle::setItalic(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ | TTF_STYLE_ITALIC;
 }
 
 void GfxTtfFontStyle::resetItalic(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ & ~TTF_STYLE_ITALIC;
 }
 
 void GfxTtfFontStyle::setUnderline(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ | TTF_STYLE_UNDERLINE;
 }
 
 void GfxTtfFontStyle::resetUnderline(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ & ~TTF_STYLE_UNDERLINE;
 }
 
 void GfxTtfFontStyle::setStrikethrough(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ | TTF_STYLE_STRIKETHROUGH;
 }
 
 void GfxTtfFontStyle::resetStrikethrough(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = style_ & ~TTF_STYLE_STRIKETHROUGH;
 }
 
 void GfxTtfFontStyle::setNormal(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     clear();
 }
 
 void GfxTtfFontStyle::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     style_ = static_cast<SdlType>(GfxTtfFontStyleValues::styleNormal);
 }
 
 GfxTtfFontStyle::SdlType GfxTtfFontStyle::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return style_;
 }
 

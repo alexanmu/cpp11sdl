@@ -24,6 +24,8 @@
 #ifndef GfxTtfGetVersion_hpp
 #define GfxTtfGetVersion_hpp
 
+#include <string>
+
 #include "GfxObject.hpp"
 #include "GfxVersion.hpp"
 
@@ -49,8 +51,9 @@ public:
     GfxTtfGetVersion& operator=(GfxTtfGetVersion&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
-    void getVersion(gfx::version::GfxVersion* ver) const noexcept;
+    gfx::version::GfxVersion getVersion(void) const noexcept;
 };
 
 }  // namespace ttf

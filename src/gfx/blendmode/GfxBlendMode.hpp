@@ -67,6 +67,7 @@ public:
     bool operator==(const GfxBlendMode& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getBlendMode(void) const noexcept;
 

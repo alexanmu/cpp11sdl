@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxWindowEvent.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxwindowevent::events::gfx");
 
 namespace gfx
 {
@@ -33,21 +38,29 @@ const char GfxWindowEvent::ClassName[] = "GfxWindowEvent";
 
 GfxWindowEvent::GfxWindowEvent() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxWindowEvent::GfxWindowEvent(const SdlType event) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     windowEvent_ = event;
 }
 
 GfxWindowEvent::GfxWindowEvent(GfxWindowEvent const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     windowEvent_ = other.windowEvent_;
 }
 
 GfxWindowEvent::GfxWindowEvent(GfxWindowEvent&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     windowEvent_ = other.windowEvent_;
     // Delete other's data
     other.clear();
@@ -55,6 +68,8 @@ GfxWindowEvent::GfxWindowEvent(GfxWindowEvent&& other) noexcept : GfxObject(Clas
 
 GfxWindowEvent& GfxWindowEvent::operator=(GfxWindowEvent const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         windowEvent_ = other.windowEvent_;
@@ -64,6 +79,8 @@ GfxWindowEvent& GfxWindowEvent::operator=(GfxWindowEvent const& other) noexcept
 
 GfxWindowEvent& GfxWindowEvent::operator=(GfxWindowEvent&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         windowEvent_ = other.windowEvent_;
@@ -75,11 +92,22 @@ GfxWindowEvent& GfxWindowEvent::operator=(GfxWindowEvent&& other) noexcept
 
 GfxWindowEvent::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxWindowEvent::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxCommonEvent GfxWindowEvent::getCommonEvent(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxCommonEvent cEv(windowEvent_.type, windowEvent_.timestamp);
 
     return cEv;
@@ -87,11 +115,15 @@ GfxCommonEvent GfxWindowEvent::getCommonEvent(void) const noexcept
 
 uint32_t GfxWindowEvent::getWindowID(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return windowEvent_.windowID;
 }
 
 video::GfxWindowEventID GfxWindowEvent::getWindowEventID(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     video::GfxWindowEventID evId(windowEvent_.event);
 
     return evId;
@@ -99,16 +131,22 @@ video::GfxWindowEventID GfxWindowEvent::getWindowEventID(void) const noexcept
 
 int32_t GfxWindowEvent::getData1(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return windowEvent_.data2;
 }
 
 int32_t GfxWindowEvent::getData2(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return windowEvent_.data1;
 }
 
 void GfxWindowEvent::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     windowEvent_.type = 0;
     windowEvent_.timestamp = 0;
     windowEvent_.windowID = 0;
@@ -122,6 +160,8 @@ void GfxWindowEvent::clear(void) noexcept
 
 GfxWindowEvent::SdlType GfxWindowEvent::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return windowEvent_;
 }
 

@@ -26,6 +26,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -56,6 +57,7 @@ public:
     GfxPaletteType& operator=(GfxPaletteType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     uint8_t getSize(void) const noexcept;
     std::vector<int8_t> getColors(void) const noexcept;

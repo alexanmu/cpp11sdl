@@ -26,6 +26,9 @@
 
 #include "GfxHitTestResult.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxhittestresult::video::gfx");
 
 namespace gfx
 {
@@ -37,26 +40,35 @@ const char GfxHitTestResult::ClassName[] = "GfxHitTestResult";
 
 GfxHitTestResult::GfxHitTestResult() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxHitTestResult::GfxHitTestResult(const ValueType value) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxHitTestResult::GfxHitTestResult(const SdlType value) noexcept
 {
+    LOG_TRACE_PRIO_MED();
     value_ = value;
 }
 
 GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
 }
 
 GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     value_ = other.value_;
     // Delete other's data
     other.clear();
@@ -64,6 +76,8 @@ GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxObjec
 
 GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -73,6 +87,8 @@ GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other) noe
 
 GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         value_ = other.value_;
@@ -84,26 +100,43 @@ GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult&& other) noexcept
 
 GfxHitTestResult::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
 }
 
-void GfxHitTestResult::set(const ValueType value) noexcept
+std::string GfxHitTestResult::to_string(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
+
+void GfxHitTestResult::setValue(const ValueType value) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(value);
 }
 
 GfxHitTestResult::ValueType GfxHitTestResult::getValue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return static_cast<ValueType>(value_);
 }
 
 void GfxHitTestResult::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     value_ = static_cast<SdlType>(ValueType::hittestNormal);
 }
 
 GfxHitTestResult::SdlType GfxHitTestResult::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return value_;
 }
 

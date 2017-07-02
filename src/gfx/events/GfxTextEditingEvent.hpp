@@ -59,6 +59,7 @@ public:
     GfxTextEditingEvent& operator=(GfxTextEditingEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     virtual GfxCommonEvent getCommonEvent(void) const noexcept;
 

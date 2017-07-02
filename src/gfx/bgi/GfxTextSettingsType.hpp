@@ -25,6 +25,7 @@
 #define GfxTextSettingsType_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -58,6 +59,7 @@ public:
     GfxTextSettingsType& operator=(GfxTextSettingsType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     GfxFonts getFont(void) const noexcept;
     GfxDirection getDirection(void) const noexcept;

@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxMessageBoxData.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxmessageboxdata::msgbox::gfx");
 
 namespace gfx
 {
@@ -37,6 +40,8 @@ const char GfxMessageBoxData::ClassName[] = "GfxMessageBoxData";
 
 GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     btndataptr = nullptr;
     clear();
 }
@@ -47,6 +52,8 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject 
                                      GfxMessageBoxColorScheme const& colorScheme) noexcept :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags);
     assert(title.length() > 0);
     assert(message.length() > 0);
@@ -81,6 +88,8 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
                                      const GfxMessageBoxButtonData buttons[]) noexcept :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags);
     assert(title.length() > 0);
     assert(message.length() > 0);
@@ -104,6 +113,8 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
 
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     data_ = other.data_;
     title_ = other.title_;
     message_ = other.message_;
@@ -111,6 +122,8 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : 
 
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     data_ = other.data_;
     title_ = other.title_;
     message_ = other.message_;
@@ -118,16 +131,10 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxMessageBoxData::~GfxMessageBoxData() noexcept
-{
-    if (btndataptr != nullptr)
-    {
-        delete btndataptr;
-    }
-}
-
 GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         data_ = other.data_;
@@ -139,6 +146,8 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) 
 
 GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         data_ = other.data_;
@@ -150,13 +159,34 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other) noexc
     return *this;
 }
 
+GfxMessageBoxData::~GfxMessageBoxData() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (btndataptr != nullptr)
+    {
+        delete btndataptr;
+    }
+}
+
 GfxMessageBoxData::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxMessageBoxData::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxMessageBoxData::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     data_.flags = 0;
     data_.window = nullptr;
     title_ = "";
@@ -170,11 +200,15 @@ void GfxMessageBoxData::clear(void) noexcept
 
 GfxMessageBoxData::SdlType GfxMessageBoxData::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return data_;
 }
 
 GfxMessageBoxData::SdlTypePtr GfxMessageBoxData::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlTypePtr)&data_;
 }
 

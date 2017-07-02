@@ -21,6 +21,8 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxViewPortType.hpp"
 #include "GfxBasicLogger.hpp"
 
@@ -36,25 +38,29 @@ const char GfxViewPortType::ClassName[] = "GfxViewPortType";
 
 GfxViewPortType::GfxViewPortType() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxViewPortType::GfxViewPortType(const BgiType viewport) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     viewPort_ = viewport;
 }
 
 GfxViewPortType::GfxViewPortType(GfxViewPortType const& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     viewPort_ = other.viewPort_;
 }
 
 GfxViewPortType::GfxViewPortType(GfxViewPortType&& other) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     viewPort_ = other.viewPort_;
     // Delete other's value
     other.clear();
@@ -62,7 +68,8 @@ GfxViewPortType::GfxViewPortType(GfxViewPortType&& other) noexcept : GfxObject(C
 
 GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType const& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         viewPort_ = other.viewPort_;
@@ -72,7 +79,8 @@ GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType const& other) noexce
 
 GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType&& other) noexcept
 {
-    LOG_TRACE_PRIO_LOW();
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         viewPort_ = other.viewPort_;
@@ -85,48 +93,63 @@ GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType&& other) noexcept
 GfxViewPortType::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxViewPortType::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int32_t GfxViewPortType::getLeft() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return viewPort_.left;
 }
 
 int32_t GfxViewPortType::getTop() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return viewPort_.top;
 }
 
 int32_t GfxViewPortType::getRight() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return viewPort_.right;
 }
 
 int32_t GfxViewPortType::getBottom() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return viewPort_.bottom;
 }
 
 bool GfxViewPortType::getClip(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return viewPort_.clip;
 }
 
 void GfxViewPortType::setValue(const BgiType viewport) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     viewPort_ = viewport;
 }
 
 void GfxViewPortType::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     viewPort_.left = -1;
     viewPort_.top = -1;
     viewPort_.right = -1;
@@ -137,6 +160,7 @@ void GfxViewPortType::clear(void) noexcept
 GfxViewPortType::BgiType GfxViewPortType::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return viewPort_;
 }
 

@@ -58,6 +58,7 @@ public:
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     int32_t getButtonId(void) const noexcept;
     const std::string getText(void) const noexcept;

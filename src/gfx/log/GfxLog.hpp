@@ -25,6 +25,7 @@
 #define GfxLog_hpp
 
 #include <stdexcept>
+#include <cassert>
 #include <cstdint>
 #include <string>
 #include <utility>
@@ -60,6 +61,7 @@ public:
     GfxLog& operator=(GfxLog&& other) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     void setAllPriority(GfxLogPriority const& prio) const noexcept;
     void setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept;

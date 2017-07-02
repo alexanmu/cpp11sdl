@@ -21,9 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include <cassert>
+#include <string>
 
 #include "GfxTtfGetVersion.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxttfgetversion::ttf::gfx");
 
 namespace gfx
 {
@@ -35,26 +38,35 @@ const char GfxTtfGetVersion::ClassName[] = "GfxTtfGetVersion";
 
 GfxTtfGetVersion::GfxTtfGetVersion() noexcept : GfxObject(ClassName)
 {
-    // Nothing to do
+    LOG_TRACE_PRIO_MED();
 }
 
 GfxTtfGetVersion::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
 }
 
-void GfxTtfGetVersion::getVersion(gfx::version::GfxVersion * ver) const noexcept
+std::string GfxTtfGetVersion::to_string() const noexcept
 {
-    assert(ver != nullptr);
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
+
+gfx::version::GfxVersion GfxTtfGetVersion::getVersion(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
 
     gfx::version::GfxVersion::SdlTypePtr v;
 
-    ver->clear();
     v = const_cast<gfx::version::GfxVersion::SdlTypePtr>(sdl2::TTF_Linked_Version());
     if (v != nullptr)
     {
-        ver->set(*v);
+        return gfx::version::GfxVersion(*v);
     }
+    return gfx::version::GfxVersion();
 }
 
 }  // namespace ttf

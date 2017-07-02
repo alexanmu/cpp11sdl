@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxPowerInfo.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpowerinfo::power::gfx");
 
 namespace gfx
 {
@@ -36,11 +39,15 @@ const char GfxPowerInfo::ClassName[] = "GfxPowerInfo";
 
 GfxPowerInfo::GfxPowerInfo() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     clear();
 }
 
 GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     pstate_ = other.pstate_;
     seconds_ = other.seconds_;
     percentage_ = other.percentage_;
@@ -48,6 +55,8 @@ GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(Class
 
 GfxPowerInfo::GfxPowerInfo(GfxPowerInfo&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     pstate_ = other.pstate_;
     seconds_ = other.seconds_;
     percentage_ = other.percentage_;
@@ -57,6 +66,8 @@ GfxPowerInfo::GfxPowerInfo(GfxPowerInfo&& other) noexcept : GfxObject(ClassName)
 
 GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo const& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (this != &other)
     {
         pstate_ = other.pstate_;
@@ -68,6 +79,8 @@ GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo const& other) noexcept
 
 GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo&& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     if (this != &other)
     {
         pstate_ = other.pstate_;
@@ -80,11 +93,22 @@ GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo&& other) noexcept
 
 GfxPowerInfo::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPowerInfo::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxPowerInfo::queryPowerInfo(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxPowerState::SdlType pstate;
 
     pstate = sdl2::SDL_GetPowerInfo(&seconds_, &percentage_);
@@ -93,16 +117,22 @@ void GfxPowerInfo::queryPowerInfo(void) noexcept
 
 GfxPowerState const& GfxPowerInfo::getPowerState(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (GfxPowerState&)pstate_;
 }
 
 int32_t GfxPowerInfo::getRemainingSeconds(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return seconds_;
 }
 
 int32_t GfxPowerInfo::getRemainingPercentage(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return percentage_;
 }
 
@@ -118,6 +148,8 @@ const std::string GfxPowerInfo::getAsString(void) const noexcept
 
 void GfxPowerInfo::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     pstate_ = GfxPowerState(GfxPowerState::ValueType::stateUnknown);
     seconds_ = -1;
     percentage_ = -1;

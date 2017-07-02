@@ -25,6 +25,9 @@
 
 #include "GfxPlatform.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxplatform::platform::gfx");
 
 namespace gfx
 {
@@ -36,16 +39,22 @@ const char GfxPlatform::ClassName[] = "GfxPlatform";
 
 GfxPlatform::GfxPlatform() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     platform_ = "";
 }
 
 GfxPlatform::GfxPlatform(GfxPlatform const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     platform_ = other.platform_;
 }
 
 GfxPlatform::GfxPlatform(GfxPlatform&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     platform_ = other.platform_;
     // Delete other's data
     other.platform_.clear();
@@ -53,6 +62,8 @@ GfxPlatform::GfxPlatform(GfxPlatform&& other) noexcept : GfxObject(ClassName)
 
 GfxPlatform& GfxPlatform::operator=(GfxPlatform const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         platform_ = other.platform_;
@@ -62,6 +73,8 @@ GfxPlatform& GfxPlatform::operator=(GfxPlatform const& other) noexcept
 
 GfxPlatform& GfxPlatform::operator=(GfxPlatform&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         platform_ = other.platform_;
@@ -73,16 +86,29 @@ GfxPlatform& GfxPlatform::operator=(GfxPlatform&& other) noexcept
 
 GfxPlatform::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPlatform::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxPlatform::queryPlatform(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     platform_ = sdl2::SDL_GetPlatform();
 }
 
 std::string const& GfxPlatform::getPlatform(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return platform_;
 }
 

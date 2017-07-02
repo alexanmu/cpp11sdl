@@ -25,6 +25,7 @@
 #define GfxLineSettingsType_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 #include "GfxCanvasBgi.hpp"
@@ -58,6 +59,7 @@ public:
     GfxLineSettingsType& operator=(GfxLineSettingsType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     GfxLineStyle getLineStyle(void) const noexcept;
     GfxFillStyles getFillStyles(void) const noexcept;

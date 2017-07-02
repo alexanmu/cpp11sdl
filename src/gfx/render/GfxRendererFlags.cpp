@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxRendererFlags.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxrendererflags::render::gfx");
 
 namespace gfx
 {
@@ -37,16 +40,22 @@ const char GfxRendererFlags::ClassName[] = "GfxRendererFlags";
 
 GfxRendererFlags::GfxRendererFlags() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxRendererFlags::GfxRendererFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = static_cast<SdlType>(flags);
 }
 
 GfxRendererFlags::GfxRendererFlags(const SdlType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags > 0);
 
     flags_ = flags;
@@ -54,11 +63,15 @@ GfxRendererFlags::GfxRendererFlags(const SdlType flags) noexcept : GfxObject(Cla
 
 GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
 }
 
 GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
@@ -66,6 +79,8 @@ GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) noexcept : GfxObjec
 
 GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -75,6 +90,8 @@ GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other) noe
 
 GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -86,16 +103,29 @@ GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags&& other) noexcept
 
 GfxRendererFlags::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxRendererFlags::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxRendererFlags::isUnknown(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flags_ == static_cast<SdlType>(ValueType::flagUnknown));
 }
 
 bool GfxRendererFlags::isSoftware(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & sdl2::SDL_RENDERER_SOFTWARE;
 
     return (r != 0);
@@ -103,6 +133,8 @@ bool GfxRendererFlags::isSoftware(void) const noexcept
 
 bool GfxRendererFlags::isAccelerated(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & sdl2::SDL_RENDERER_ACCELERATED;
 
     return (r != 0);
@@ -110,6 +142,8 @@ bool GfxRendererFlags::isAccelerated(void) const noexcept
 
 bool GfxRendererFlags::getPresentVSync(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & sdl2::SDL_RENDERER_PRESENTVSYNC;
 
     return (r != 0);
@@ -117,6 +151,8 @@ bool GfxRendererFlags::getPresentVSync(void) const noexcept
 
 bool GfxRendererFlags::getTargetTexture(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
 
     return (r != 0);
@@ -124,51 +160,71 @@ bool GfxRendererFlags::getTargetTexture(void) const noexcept
 
 void GfxRendererFlags::setSoftware(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_SOFTWARE);
 }
 
 void GfxRendererFlags::resetSoftware(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_SOFTWARE);
 }
 
 void GfxRendererFlags::setAccelerated(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_ACCELERATED);
 }
 
 void GfxRendererFlags::resetAccelerated(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_ACCELERATED);
 }
 
 void GfxRendererFlags::setPresentVSync(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_PRESENTVSYNC);
 }
 
 void GfxRendererFlags::resetPresentVSync(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_PRESENTVSYNC);
 }
 
 void GfxRendererFlags::setTargetTexture(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_TARGETTEXTURE);
 }
 
 void GfxRendererFlags::resetTargetTexture(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_TARGETTEXTURE);
 }
 
 void GfxRendererFlags::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<SdlType>(ValueType::flagUnknown);
 }
 
 GfxRendererFlags::SdlType GfxRendererFlags::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return flags_;
 }
 

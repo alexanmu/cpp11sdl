@@ -70,8 +70,9 @@ public:
     GfxHitTestResult& operator=(GfxHitTestResult&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
-    void set(const ValueType value) noexcept;
+    void setValue(const ValueType value) noexcept;
     ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;

@@ -60,6 +60,7 @@ public:
     GfxDisplayMode& operator=(GfxDisplayMode&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     uint32_t getFormat(void) const noexcept;
     int32_t getWidth(void) const noexcept;

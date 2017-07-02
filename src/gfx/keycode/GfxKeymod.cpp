@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxKeymod.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxkeymod::keycode::gfx");
 
 namespace gfx
 {
@@ -37,31 +40,43 @@ const char GfxKeymod::ClassName[] = "GfxKeymod";
 
 GfxKeymod::GfxKeymod() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxKeymod::GfxKeymod(const uint16_t mod) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     mod_ = static_cast<SdlType>(mod);
 }
 
 GfxKeymod::GfxKeymod(const ValueType mod) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     mod_ = static_cast<SdlType>(mod);
 }
 
 GfxKeymod::GfxKeymod(const SdlType mod) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     mod_ = mod;
 }
 
 GfxKeymod::GfxKeymod(GfxKeymod const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     mod_ = other.mod_;
 }
 
 GfxKeymod::GfxKeymod(GfxKeymod&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     mod_ = other.mod_;
     // Delete other's data
     other.clear();
@@ -69,6 +84,8 @@ GfxKeymod::GfxKeymod(GfxKeymod&& other) noexcept : GfxObject(ClassName)
 
 GfxKeymod& GfxKeymod::operator=(GfxKeymod const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         mod_ = other.mod_;
@@ -78,6 +95,8 @@ GfxKeymod& GfxKeymod::operator=(GfxKeymod const& other) noexcept
 
 GfxKeymod& GfxKeymod::operator=(GfxKeymod&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         mod_ = other.mod_;
@@ -89,96 +108,141 @@ GfxKeymod& GfxKeymod::operator=(GfxKeymod&& other) noexcept
 
 GfxKeymod::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxKeymod::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxKeymod::isNone(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodNone);
 }
 
 bool GfxKeymod::isLeftShift(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodLShift);
 }
 
 bool GfxKeymod::isRightShift(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodRShift);
 }
 
 bool GfxKeymod::isLeftControl(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodLCtrl);
 }
 
 bool GfxKeymod::isRightControl(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodRCtrl);
 }
 
 bool GfxKeymod::isLeftAlt(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodLAlt);
 }
 
 bool GfxKeymod::isRightAlt(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodRAlt);
 }
 
 bool GfxKeymod::isLeftGui(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodLGui);
 }
 
 bool GfxKeymod::isRightGui(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodRGui);
 }
 
 bool GfxKeymod::isNumLock(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodRGui);
 }
 
 bool GfxKeymod::isCapsLock(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodCaps);
 }
 
 bool GfxKeymod::isMode(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<ValueType>(mod_) == ValueType::kmodMode);
 }
 
 bool GfxKeymod::isControl(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<uint16_t>(mod_) == kmodCtrl);
 }
 
 bool GfxKeymod::isShift(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<uint16_t>(mod_) == kmodShift);
 }
 
 bool GfxKeymod::isAlt(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<uint16_t>(mod_) == kmodAlt);
 }
 
 bool GfxKeymod::isGui(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (static_cast<uint16_t>(mod_) == kmodGui);
 }
 
 void GfxKeymod::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     mod_ = static_cast<SdlType>(ValueType::kmodNone);
 }
 
 GfxKeymod::SdlType GfxKeymod::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return mod_;
 }
 

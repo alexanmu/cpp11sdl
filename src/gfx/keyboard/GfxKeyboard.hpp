@@ -58,6 +58,7 @@ public:
     GfxKeyboard& operator=(GfxKeyboard&&) = delete;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     video::GfxWindow::SdlTypePtr getKeyboardFocus(void) const noexcept;
     const uint8_t * getKeyboardState(int32_t * numkeys) const noexcept;

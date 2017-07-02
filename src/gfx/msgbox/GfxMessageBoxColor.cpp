@@ -25,6 +25,9 @@
 #include <string>
 
 #include "GfxMessageBoxColor.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxmessageboxcolor::msgbox::gfx");
 
 namespace gfx
 {
@@ -36,12 +39,16 @@ const char GfxMessageBoxColor::ClassName[] = "GfxMessageBoxColor";
 
 GfxMessageBoxColor::GfxMessageBoxColor() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept :
         GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clr_.r = r;
     clr_.g = g;
     clr_.b = b;
@@ -49,19 +56,24 @@ GfxMessageBoxColor::GfxMessageBoxColor(const uint8_t r, const  uint8_t g, const 
 
 GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxObject(ClassName)
 {
-    /* Copy structure; hope SDL_MessageBoxColor assignement operator works ... */
+    LOG_TRACE_PRIO_MED();
+
     clr_ = clr;
 }
 
 /* Copy constructor */
 GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clr_ = other.clr_;
 }
 
 /* Move constructor */
 GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clr_ = other.clr_;
     /* Delete other's data */
     other.clear();
@@ -70,6 +82,8 @@ GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : Gf
 /* Delete copy and move assign operators */
 GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         clr_ = other.clr_;
@@ -79,9 +93,12 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor const& othe
 
 GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         clr_ = other.clr_;
+        // Delete other's data
         other.clear();
     }
     return *this;
@@ -89,46 +106,71 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other) no
 
 bool GfxMessageBoxColor::operator==(GfxMessageBoxColor const& other) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ((clr_.r == other.clr_.r) && (clr_.g == other.clr_.g) && (clr_.b == other.clr_.b));
 }
 
 GfxMessageBoxColor::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxMessageBoxColor::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 uint8_t GfxMessageBoxColor::getRed(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return clr_.r;
 }
 
 uint8_t GfxMessageBoxColor::getGreen(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return clr_.g;
 }
 
 uint8_t GfxMessageBoxColor::getBlue(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return clr_.b;
 }
 
 void GfxMessageBoxColor::setRed(const uint8_t r) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     clr_.r = r;
 }
 
 void GfxMessageBoxColor::setGreen(const uint8_t g) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     clr_.g = g;
 }
 
 void GfxMessageBoxColor::setBlue(const uint8_t b) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     clr_.b = b;
 }
 
 void GfxMessageBoxColor::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     clr_.r = 0;
     clr_.g = 0;
     clr_.b = 0;
@@ -136,6 +178,8 @@ void GfxMessageBoxColor::clear(void) noexcept
 
 GfxMessageBoxColor::SdlType GfxMessageBoxColor::getAsSdlType() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return clr_;
 }
 

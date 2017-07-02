@@ -27,6 +27,9 @@
 #include <string>
 
 #include "GfxTtfFont.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxttffont::ttf::gfx");
 
 namespace gfx
 {
@@ -38,12 +41,16 @@ const char GfxTtfFont::ClassName[] = "GfxTtfFont";
 
 GfxTtfFont::GfxTtfFont() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(filename.length() > 0);
     assert(pointsize > 0);
 
@@ -64,6 +71,8 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize) thr
 GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, const int32_t index)
             throw(std::runtime_error) : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(filename.length() > 0);
     assert(pointsize > 0);
     assert(index >= 0);
@@ -88,6 +97,8 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, con
 
 GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     ttf_ = other.ttf_;
     fileName_ = other.fileName_;
     pointSize_ = other.pointSize_;
@@ -102,6 +113,8 @@ GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxObject(ClassName)
 
 GfxTtfFont& GfxTtfFont::operator=(GfxTtfFont&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         ttf_ = other.ttf_;
@@ -120,6 +133,8 @@ GfxTtfFont& GfxTtfFont::operator=(GfxTtfFont&& other) noexcept
 
 GfxTtfFont::~GfxTtfFont(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (ttf_ != nullptr)
     {
         sdl2::TTF_CloseFont(ttf_);
@@ -129,11 +144,22 @@ GfxTtfFont::~GfxTtfFont(void) noexcept
 
 GfxTtfFont::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (ttf_ != nullptr);
+}
+
+std::string GfxTtfFont::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(filename.length() > 0);
     assert(pointsize > 0);
 
@@ -161,6 +187,8 @@ void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize) 
 void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize,
                           const int32_t index) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(filename.length() > 0);
     assert(pointsize > 0);
     assert(index >= 0);
@@ -188,6 +216,8 @@ void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize,
 
 void GfxTtfFont::closeFont(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (ttf_ != nullptr)
     {
         sdl2::TTF_CloseFont(ttf_);
@@ -197,16 +227,22 @@ void GfxTtfFont::closeFont(void) noexcept
 
 void GfxTtfFont::setByteSwappedUnicode(const bool swapped) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     sdl2::TTF_ByteSwappedUNICODE(static_cast<int>(swapped));
 }
 
 GfxTtfFontStyle const& GfxTtfFont::getFontStyle(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return fontStyle_;
 }
 
 void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     fontStyle_ = fontstyle;
     if (ttf_ != nullptr)
     {
@@ -216,11 +252,15 @@ void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept
 
 GfxTtfFontHinting const& GfxTtfFont::getFontHinting(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return fontHinting_;
 }
 
 void GfxTtfFont::setFontHinting(GfxTtfFontHinting const& fonthinting) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     fontHinting_ = fonthinting;
     if (ttf_ != nullptr)
     {
@@ -230,11 +270,15 @@ void GfxTtfFont::setFontHinting(GfxTtfFontHinting const& fonthinting) noexcept
 
 int32_t GfxTtfFont::getFontOutline(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return outline_;
 }
 
 void GfxTtfFont::setFontOutline(const int32_t outline) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(outline >= 0);
 
     outline_ = outline;
@@ -246,11 +290,15 @@ void GfxTtfFont::setFontOutline(const int32_t outline) noexcept
 
 bool GfxTtfFont::getFontKerning(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return kerning_;
 }
 
 void GfxTtfFont::setFontKerning(const bool kerning) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     kerning_ = kerning;
     if (ttf_ != nullptr)
     {
@@ -260,6 +308,8 @@ void GfxTtfFont::setFontKerning(const bool kerning) noexcept
 
 int32_t GfxTtfFont::getFontHeight(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t h = 0;
 
     if (ttf_ != nullptr)
@@ -271,6 +321,8 @@ int32_t GfxTtfFont::getFontHeight(void) const noexcept
 
 int32_t GfxTtfFont::getFontAscent(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t a = 0;
 
     if (ttf_ != nullptr)
@@ -282,6 +334,8 @@ int32_t GfxTtfFont::getFontAscent(void) const noexcept
 
 int32_t GfxTtfFont::getFontDescent(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t d = 0;
 
     if (ttf_ != nullptr)
@@ -293,6 +347,8 @@ int32_t GfxTtfFont::getFontDescent(void) const noexcept
 
 int32_t GfxTtfFont::getFontLineSkip(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t s = 0;
 
     if (ttf_ != nullptr)
@@ -304,6 +360,8 @@ int32_t GfxTtfFont::getFontLineSkip(void) const noexcept
 
 int64_t GfxTtfFont::getFontFaces(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int64_t ff = 0;
 
     if (ttf_ != nullptr)
@@ -315,6 +373,8 @@ int64_t GfxTtfFont::getFontFaces(void) const noexcept
 
 bool GfxTtfFont::isFontFaceFixedWidth(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool ret = false;
 
     if (ttf_ != nullptr)
@@ -326,6 +386,8 @@ bool GfxTtfFont::isFontFaceFixedWidth(void) const noexcept
 
 std::string GfxTtfFont::getFontFaceFamilyName(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     char * pChar = nullptr;
 
     if (ttf_ != nullptr)
@@ -341,6 +403,8 @@ std::string GfxTtfFont::getFontFaceFamilyName(void) const noexcept
 
 std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     char * pChar = nullptr;
 
     if (ttf_ != nullptr)
@@ -356,6 +420,8 @@ std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
 
 int32_t GfxTtfFont::glyphIsProvided(const uint16_t ch) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bool is = false;
 
     if (ttf_ != nullptr)
@@ -368,6 +434,8 @@ int32_t GfxTtfFont::glyphIsProvided(const uint16_t ch) const noexcept
 bool GfxTtfFont::glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
                               int32_t * maxy, int32_t * advance) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(minx != nullptr);
     assert(maxx != nullptr);
     assert(miny != nullptr);
@@ -385,6 +453,9 @@ bool GfxTtfFont::glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx,
 
 bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
+    assert(text.length() > 0);
     assert(w != nullptr);
     assert(h != nullptr);
 
@@ -399,6 +470,9 @@ bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) con
 
 bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
+    assert(text.length() > 0);
     assert(w != nullptr);
     assert(h != nullptr);
 
@@ -413,6 +487,8 @@ bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) con
 
 bool GfxTtfFont::sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(text.length() > 0);
     assert(w != nullptr);
     assert(h != nullptr);
@@ -422,12 +498,16 @@ bool GfxTtfFont::sizeUnicode(std::string const& text, int32_t * w, int32_t * h) 
 
 GfxTtfFont::SdlTypePtr GfxTtfFont::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ttf_;
 }
 
 // Private methods
 void GfxTtfFont::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     ttf_ = nullptr;
     fileName_ = "";
     pointSize_ = -1;

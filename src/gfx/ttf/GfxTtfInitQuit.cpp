@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxTtfInitQuit.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxttfinitquit::ttf::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,43 @@ const char GfxTtfInitQuit::ClassName[] = "GfxTtfInitQuit";
 
 GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     errorCode_ = sdl2::TTF_Init();
 }
 
 GfxTtfInitQuit::~GfxTtfInitQuit(void) noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     sdl2::TTF_Quit();
 }
 
 GfxTtfInitQuit::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (errorCode_ == 0);
+}
+
+std::string GfxTtfInitQuit::to_string() const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int32_t GfxTtfInitQuit::wasInit(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return sdl2::TTF_WasInit();
 }
 
 int32_t GfxTtfInitQuit::getErrorCode(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return errorCode_;
 }
 

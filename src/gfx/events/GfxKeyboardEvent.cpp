@@ -21,7 +21,12 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxKeyboardEvent.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxkeyboardevent::events::gfx");
 
 namespace gfx
 {
@@ -33,21 +38,29 @@ const char GfxKeyboardEvent::ClassName[] = "GfxKeyboardEvent";
 
 GfxKeyboardEvent::GfxKeyboardEvent() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxKeyboardEvent::GfxKeyboardEvent(const SdlType event) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     keyboardEvent_ = event;
 }
 
 GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     keyboardEvent_ = other.keyboardEvent_;
 }
 
 GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     keyboardEvent_ = other.keyboardEvent_;
     // Delete other's data
     other.clear();
@@ -55,6 +68,8 @@ GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent&& other) noexcept : GfxObjec
 
 GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         keyboardEvent_ = other.keyboardEvent_;
@@ -64,6 +79,8 @@ GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent const& other) noe
 
 GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         keyboardEvent_ = other.keyboardEvent_;
@@ -75,11 +92,22 @@ GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent&& other) noexcept
 
 GfxKeyboardEvent::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxKeyboardEvent::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 GfxCommonEvent GfxKeyboardEvent::getCommonEvent(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxCommonEvent cEv(keyboardEvent_.type, keyboardEvent_.timestamp);
 
     return cEv;
@@ -87,26 +115,36 @@ GfxCommonEvent GfxKeyboardEvent::getCommonEvent(void) const noexcept
 
 uint32_t GfxKeyboardEvent::getWindowID(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return keyboardEvent_.windowID;
 }
 
 uint8_t GfxKeyboardEvent::getState(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return keyboardEvent_.state;
 }
 
 bool GfxKeyboardEvent::getRepeat(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (keyboardEvent_.repeat != 0);
 }
 
 keyboard::GfxKeysym GfxKeyboardEvent::getKeysym(void) const noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     return keyboard::GfxKeysym(keyboardEvent_.keysym);
 }
 
 void GfxKeyboardEvent::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     keyboardEvent_.type = 0;
     keyboardEvent_.timestamp = 0;
     keyboardEvent_.windowID = 0;
@@ -122,6 +160,8 @@ void GfxKeyboardEvent::clear(void) noexcept
 
 GfxKeyboardEvent::SdlType GfxKeyboardEvent::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return keyboardEvent_;
 }
 

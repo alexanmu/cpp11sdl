@@ -25,6 +25,7 @@
 #define GfxAngle_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxObject.hpp"
 
@@ -58,6 +59,7 @@ public:
     bool operator<(GfxAngle const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType angle) noexcept;

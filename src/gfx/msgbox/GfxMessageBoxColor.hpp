@@ -59,6 +59,7 @@ public:
     bool operator==(GfxMessageBoxColor const& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     /* Getters ... */
     uint8_t getRed(void) const noexcept;

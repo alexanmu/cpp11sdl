@@ -139,7 +139,7 @@ void BeforeInit(void)
     gfx::version::GfxGetVersion gv;
     gfx::version::GfxVersion ver;
 
-    gv.getVersion(&ver);
+    ver = gv.getVersion();
     std::cout << "ver.getAsString()=" << ver.getAsString() << '\n';
     std::cout << "gv.getRevision()=" << gv.getRevision() << '\n';
     std::cout << "gv.getRevisionNumber()=" << gv.getRevisionNumber() << '\n';

@@ -31,6 +31,9 @@
 
 #include "GfxCanvasBgi.hpp"
 #include "fntBgiStandardFont.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxcanvasbgi::prv::bgi::gfx");
 
 namespace gfx
 {
@@ -90,6 +93,8 @@ const uint8_t GfxCanvasBgi::bgi_default_fill_patterns[static_cast<int>(bgiFillSt
 
 GfxCanvasBgi::GfxCanvasBgi() : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     bgi_activepage = nullptr;
     bgi_maxx = -1;
     bgi_maxy = -1;
@@ -97,11 +102,22 @@ GfxCanvasBgi::GfxCanvasBgi() : GfxObject(ClassName)
 
 GfxCanvasBgi::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (bgi_activepage != nullptr);
+}
+
+std::string GfxCanvasBgi::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxCanvasBgi::setCanvas(const uint32_t * ptr, const int32_t maxx, const int32_t maxy) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(ptr != nullptr);
     assert(maxx > 0);
     assert(maxy > 0);
@@ -114,40 +130,54 @@ void GfxCanvasBgi::setCanvas(const uint32_t * ptr, const int32_t maxx, const int
 
 void GfxCanvasBgi::setCustomForegroundColor(const uint32_t color) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bgi_palette[static_cast<int>(bgiColors::CUSTOM_FG)] = color;
     bgi_fg_color = bgiColors::CUSTOM_FG;
 }
 
 uint32_t GfxCanvasBgi::getCustomForegroundColor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return bgi_palette[static_cast<int>(bgiColors::CUSTOM_FG)];
 }
 
 void GfxCanvasBgi::setCustomBackgroundColor(const uint32_t color) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bgi_palette[static_cast<int>(bgiColors::CUSTOM_BG)] = color;
     bgi_bg_color = bgiColors::CUSTOM_BG;
 }
 
 uint32_t GfxCanvasBgi::getCustomBackgroundColor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return bgi_palette[static_cast<int>(bgiColors::CUSTOM_BG)];
 }
 
 void GfxCanvasBgi::setCustomFillColor(const uint32_t color) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bgi_palette[static_cast<int>(bgiColors::CUSTOM_FILL)] = color;
     bgi_fill_style.color = GfxCanvasBgi::bgiColors::CUSTOM_FILL;
 }
 
 uint32_t GfxCanvasBgi::getCustomFillColor(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return bgi_palette[static_cast<int>(bgiColors::CUSTOM_FILL)];
 }
 
 void GfxCanvasBgi::setCustomFont(const uint8_t * fontBitmapData, const uint8_t fontWidth,
                                 const uint8_t fontHeight) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(fontBitmapData != nullptr);
     assert(fontWidth % 8 == 0);
     assert(fontHeight % 8 == 0);
@@ -159,6 +189,8 @@ void GfxCanvasBgi::setCustomFont(const uint8_t * fontBitmapData, const uint8_t f
 
 void GfxCanvasBgi::setDefaultFont(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     bgi_font_width = 8;
     bgi_font_height = 8;
     bgi_fontptr = gfxPrimitivesFontdata;

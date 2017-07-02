@@ -28,6 +28,9 @@
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormat.hpp"
 #include "GfxPixelFormatEnum.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxcontrolledsurface::xtra::gfx");
 
 namespace gfx
 {
@@ -41,12 +44,16 @@ const pixels::GfxPixelFormatEnum::ValueType GfxControlledSurface::kDefaultSurfac
 
 GfxControlledSurface::GfxControlledSurface() noexcept : gfx::GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_TOP();
+
     surf_ = nullptr;
     surfaceConstructed_ = false;
 }
 
 GfxControlledSurface::GfxControlledSurface(const uint16_t w, const uint16_t h) noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert((w > 1) && (w < 8192));
     assert((h > 1) && (h < 8192));
 
@@ -70,6 +77,8 @@ GfxControlledSurface::GfxControlledSurface(const uint16_t w, const uint16_t h) n
 
 GfxControlledSurface::GfxControlledSurface(std::string const& filename) noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(filename.length() > 0);
 
     surface::GfxSurface * tmpsurf;
@@ -89,6 +98,8 @@ GfxControlledSurface::GfxControlledSurface(std::string const& filename) noexcept
 
 GfxControlledSurface::~GfxControlledSurface() noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (surfaceConstructed_ == true)
     {
         delete surf_;
@@ -99,11 +110,22 @@ GfxControlledSurface::~GfxControlledSurface() noexcept
 
 GfxControlledSurface::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (surf_ != nullptr);
+}
+
+std::string GfxControlledSurface::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert((w > 1) && (w < 8192));
     assert((h > 1) && (h < 8192));
 
@@ -127,6 +149,8 @@ void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) thr
 
 void GfxControlledSurface::createSurface(std::string const& filename) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_TOP();
+
     assert(filename.length() > 0);
 
     surface::GfxSurface * tmpsurf;
@@ -146,6 +170,8 @@ void GfxControlledSurface::createSurface(std::string const& filename) throw(std:
 
 void GfxControlledSurface::freeSurface(void) noexcept
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (surfaceConstructed_ == true)
     {
         delete surf_;
@@ -156,6 +182,8 @@ void GfxControlledSurface::freeSurface(void) noexcept
 
 surface::GfxSurface& GfxControlledSurface::operator()(void) const throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_TOP();
+
     if (surfaceConstructed_ == false)
     {
         throw std::runtime_error("Object not constructed");

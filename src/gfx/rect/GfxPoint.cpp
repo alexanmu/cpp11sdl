@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxPoint.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxpoint::rect::gfx");
 
 namespace gfx
 {
@@ -37,11 +40,15 @@ const char GfxPoint::ClassName[] = "GfxPoint";
 
 GfxPoint::GfxPoint() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxPoint::GfxPoint(const int32_t x, const int32_t y) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(x >= 0);
     assert(y >= 0);
 
@@ -51,24 +58,31 @@ GfxPoint::GfxPoint(const int32_t x, const int32_t y) noexcept : GfxObject(ClassN
 
 GfxPoint::GfxPoint(const SdlType pt) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     pt_ = pt;
 }
 
 GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     pt_ = other.pt_;
 }
 
 GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     pt_ = other.pt_;
     /* Delete other's data */
     other.clear();
 }
 
-/* No assignement operators */
 GfxPoint& GfxPoint::operator=(GfxPoint const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         pt_ = other.pt_;
@@ -78,6 +92,8 @@ GfxPoint& GfxPoint::operator=(GfxPoint const& other) noexcept
 
 GfxPoint& GfxPoint::operator=(GfxPoint&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         pt_ = other.pt_;
@@ -89,26 +105,43 @@ GfxPoint& GfxPoint::operator=(GfxPoint&& other) noexcept
 
 bool GfxPoint::operator==(GfxPoint const& other) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return ((pt_.x == other.pt_.x) && (pt_.y == other.pt_.y));
 }
 
 GfxPoint::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxPoint::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 int32_t GfxPoint::getX(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return pt_.x;
 }
 
 int32_t GfxPoint::getY(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return pt_.y;
 }
 
 void GfxPoint::setX(const int32_t x) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(x >= 0);
 
     pt_.x = x;
@@ -116,6 +149,8 @@ void GfxPoint::setX(const int32_t x) noexcept
 
 void GfxPoint::setY(const int32_t y) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     assert(y >= 0);
 
     pt_.y = y;
@@ -123,17 +158,23 @@ void GfxPoint::setY(const int32_t y) noexcept
 
 void GfxPoint::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     pt_.x = -1;
     pt_.y = -1;
 }
 
 GfxPoint::SdlType GfxPoint::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return pt_;
 }
 
 GfxPoint::SdlTypePtr GfxPoint::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (SdlTypePtr)&pt_;
 }
 

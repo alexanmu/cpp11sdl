@@ -71,6 +71,7 @@ public:
     virtual ~GfxRenderer() noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     SdlTypePtr getRenderer(video::GfxWindow const &win) const noexcept;
     GfxRendererInfo * getRendererInfo(void) const noexcept;

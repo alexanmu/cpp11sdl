@@ -21,7 +21,12 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
+#include <string>
+
 #include "GfxHintPriority.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxhintpriority::hints::gfx");
 
 namespace gfx
 {
@@ -33,26 +38,36 @@ const char GfxHintPriority::ClassName[] = "GfxHintPriority";
 
 GfxHintPriority::GfxHintPriority() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxHintPriority::GfxHintPriority(const SdlType hint) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     hint_ = hint;
 }
 
 GfxHintPriority::GfxHintPriority(const ValueType hint) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     hint_ = static_cast<SdlType>(hint);
 }
 
 GfxHintPriority::GfxHintPriority(GfxHintPriority const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     hint_ = other.hint_;
 }
 
 GfxHintPriority::GfxHintPriority(GfxHintPriority&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     hint_ = other.hint_;
     // Delete other's data
     other.clear();
@@ -60,6 +75,8 @@ GfxHintPriority::GfxHintPriority(GfxHintPriority&& other) noexcept : GfxObject(C
 
 GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         hint_ = other.hint_;
@@ -69,6 +86,8 @@ GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority const& other) noexce
 
 GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         hint_ = other.hint_;
@@ -80,16 +99,29 @@ GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority&& other) noexcept
 
 GfxHintPriority::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxHintPriority::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 void GfxHintPriority::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     hint_ = sdl2::SDL_HINT_DEFAULT;
 }
 
 GfxHintPriority::SdlType GfxHintPriority::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return hint_;
 }
 

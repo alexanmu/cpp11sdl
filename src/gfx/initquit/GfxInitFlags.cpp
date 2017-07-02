@@ -26,6 +26,9 @@
 #include <string>
 
 #include "GfxInitFlags.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxinitflags::initquit::gfx");
 
 namespace gfx
 {
@@ -37,11 +40,15 @@ const char GfxInitFlags::ClassName[] = "GfxInitFlags";
 
 GfxInitFlags::GfxInitFlags() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxInitFlags::GfxInitFlags(const int32_t flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     assert(flags >= 0);
 
     flags_ = flags;
@@ -49,16 +56,22 @@ GfxInitFlags::GfxInitFlags(const int32_t flags) noexcept : GfxObject(ClassName)
 
 GfxInitFlags::GfxInitFlags(const ValueType flags) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = static_cast<int32_t>(flags);
 }
 
 GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = other.flags_;
 }
 
 GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = other.flags_;
     // Delete other's data
     other.clear();
@@ -66,6 +79,8 @@ GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) noexcept : GfxObject(ClassName)
 
 GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -75,6 +90,8 @@ GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags const& other) noexcept
 
 GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         flags_ = other.flags_;
@@ -86,16 +103,29 @@ GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags&& other) noexcept
 
 GfxInitFlags::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxInitFlags::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 bool GfxInitFlags::isNothing(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return (flags_ == 0);
 }
 
 bool GfxInitFlags::isTimer(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_TIMER;
 
     return (r != 0);
@@ -103,6 +133,8 @@ bool GfxInitFlags::isTimer(void) const noexcept
 
 bool GfxInitFlags::isAudio(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_AUDIO;
 
     return (r != 0);
@@ -110,6 +142,8 @@ bool GfxInitFlags::isAudio(void) const noexcept
 
 bool GfxInitFlags::isVideo(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_VIDEO;
 
     return (r != 0);
@@ -117,6 +151,8 @@ bool GfxInitFlags::isVideo(void) const noexcept
 
 bool GfxInitFlags::isJoystick(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_JOYSTICK;
 
     return (r != 0);
@@ -124,6 +160,8 @@ bool GfxInitFlags::isJoystick(void) const noexcept
 
 bool GfxInitFlags::isHaptic(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_HAPTIC;
 
     return (r != 0);
@@ -131,6 +169,8 @@ bool GfxInitFlags::isHaptic(void) const noexcept
 
 bool GfxInitFlags::isGameController(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_GAMECONTROLLER;
 
     return (r != 0);
@@ -138,6 +178,8 @@ bool GfxInitFlags::isGameController(void) const noexcept
 
 bool GfxInitFlags::isEvents(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_EVENTS;
 
     return (r != 0);
@@ -145,6 +187,8 @@ bool GfxInitFlags::isEvents(void) const noexcept
 
 bool GfxInitFlags::isEverything(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_EVERYTHING;
 
     return (r != 0);
@@ -152,6 +196,8 @@ bool GfxInitFlags::isEverything(void) const noexcept
 
 bool GfxInitFlags::isNoParachute(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t r = flags_ & SDL_INIT_NOPARACHUTE;
 
     return (r != 0);
@@ -159,101 +205,141 @@ bool GfxInitFlags::isNoParachute(void) const noexcept
 
 void GfxInitFlags::setTimer(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_TIMER;
 }
 
 void GfxInitFlags::resetTimer(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_TIMER;
 }
 
 void GfxInitFlags::setAudio(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_AUDIO;
 }
 
 void GfxInitFlags::resetAudio(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_AUDIO;
 }
 
 void GfxInitFlags::setVideo(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_VIDEO;
 }
 
 void GfxInitFlags::resetVideo(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_VIDEO;
 }
 
 void GfxInitFlags::setJoystick(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_JOYSTICK;
 }
 
 void GfxInitFlags::resetJoystick(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_JOYSTICK;
 }
 
 void GfxInitFlags::setHaptic(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_HAPTIC;
 }
 
 void GfxInitFlags::resetHaptic(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_HAPTIC;
 }
 
 void GfxInitFlags::setGameController(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_GAMECONTROLLER;
 }
 
 void GfxInitFlags::resetGameController(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_GAMECONTROLLER;
 }
 
 void GfxInitFlags::setEvents(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_EVENTS;
 }
 
 void GfxInitFlags::resetEvents(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_EVENTS;
 }
 
 void GfxInitFlags::setEverything(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_EVERYTHING;
 }
 
 void GfxInitFlags::resetEverything(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_EVERYTHING;
 }
 
 void GfxInitFlags::setNoParachute(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ | SDL_INIT_NOPARACHUTE;
 }
 
 void GfxInitFlags::resetNoParachute(void) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     flags_ = flags_ & ~SDL_INIT_NOPARACHUTE;
 }
 
 void GfxInitFlags::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     flags_ = static_cast<uint32_t>(ValueType::initNothing);
 }
 
 GfxInitFlags::SdlType GfxInitFlags::getAsSdlType(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return flags_;
 }
 

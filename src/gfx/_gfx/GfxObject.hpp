@@ -25,6 +25,7 @@
 #define GfxObject_hpp
 
 #include <cstdint>
+#include <string>
 
 #include "GfxRuntimeMeta.hpp"
 
@@ -52,6 +53,7 @@ public:
     bool operator==(GfxObject const& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     const char * getClassName(void) const noexcept;
     int32_t getInstanceId(void) const noexcept;

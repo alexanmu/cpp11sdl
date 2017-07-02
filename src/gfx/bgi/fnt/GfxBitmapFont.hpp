@@ -52,12 +52,13 @@ public:
     GfxBitmapFont(GfxBitmapFont const& other) noexcept;
     GfxBitmapFont(GfxBitmapFont&& other) noexcept;
 
-    virtual ~GfxBitmapFont() noexcept;
-
     GfxBitmapFont& operator=(GfxBitmapFont const& other) noexcept;
     GfxBitmapFont& operator=(GfxBitmapFont&& other) noexcept;
 
+    virtual ~GfxBitmapFont() noexcept;
+
     virtual explicit operator bool() const noexcept;
+    virtual std::string to_string(void) const noexcept;
 
     uint8_t * getFontData(void) const noexcept;
     uint16_t getFontDataSize(void) const noexcept;

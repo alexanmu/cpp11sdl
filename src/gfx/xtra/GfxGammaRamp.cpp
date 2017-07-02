@@ -27,6 +27,9 @@
 
 #include "GfxGammaRamp.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxgammaramp::xtra::gfx");
 
 namespace gfx
 {
@@ -38,11 +41,15 @@ const char GfxGammaRamp::ClassName[] = "GfxGammaRamp";
 
 GfxGammaRamp::GfxGammaRamp() noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     clear();
 }
 
 GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     int32_t index;
     SdlTypePtr gammaRampCtr = gammaRamp;
 
@@ -55,6 +62,8 @@ GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxObject(Clas
 
 GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     int32_t index;
 
     for (index = 0; index < kGammaRampNumberOfElements; index++)
@@ -65,6 +74,8 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(Class
 
 GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(ClassName)
 {
+    LOG_TRACE_PRIO_MED();
+
     int32_t index;
 
     for (index = 0; index < kGammaRampNumberOfElements; index++)
@@ -76,6 +87,8 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(ClassName)
 
 GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     int32_t index;
 
     if (this != &other)
@@ -90,6 +103,8 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other) noexcept
 
 GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     int32_t index;
 
     if (this != &other)
@@ -105,11 +120,22 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other) noexcept
 
 GfxGammaRamp::operator bool() const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return true;
+}
+
+std::string GfxGammaRamp::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
 }
 
 uint16_t& GfxGammaRamp::operator [](const int32_t index) throw(std::runtime_error)
 {
+    LOG_TRACE_PRIO_LOW();
+
     if ((index >= 0) && (index < kGammaRampNumberOfElements))
     {
         return gammaRamp_[index];
@@ -119,6 +145,8 @@ uint16_t& GfxGammaRamp::operator [](const int32_t index) throw(std::runtime_erro
 
 void GfxGammaRamp::clear(void) noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     int32_t index;
 
     for (index = 0; index < kGammaRampNumberOfElements; index++)
@@ -129,6 +157,8 @@ void GfxGammaRamp::clear(void) noexcept
 
 GfxGammaRamp::SdlTypePtr GfxGammaRamp::getAsSdlTypePtr(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     return const_cast<SdlTypePtr>(&gammaRamp_[0]);
 }
 
