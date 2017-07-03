@@ -23,7 +23,7 @@
 
 #include "Keyboard.hpp"
 
-/******************************************************* Keyboard *******************************************************/
+/******************************************************* Keyboard ****************************************************/
 
 #include <iostream>
 
@@ -36,20 +36,18 @@
 #include "GfxScancode.hpp"
 #include "GfxKeyboard.hpp"
 
-using namespace gfx;
-
-static initquit::GfxInitQuit * iq;
-static video::GfxWindow * win;
+static gfx::initquit::GfxInitQuit * iq;
+static gfx::video::GfxWindow * win;
 
 static void _init(void)
 {
-    initquit::GfxInitFlags flags;
+    gfx::initquit::GfxInitFlags flags;
 
     flags.clear();
     flags.setEvents();
     flags.setVideo();
-    iq = new initquit::GfxInitQuit(flags);
-    win = new video::GfxWindow("Title", 200, 200);
+    iq = new gfx::initquit::GfxInitQuit(flags);
+    win = new gfx::video::GfxWindow("Title", 200, 200);
 }
 
 static void _quit(void)
@@ -63,15 +61,15 @@ static void _do(void)
     gfx::sdl2::SDL_Event e;
     bool quit = false;
 
-    keyboard::GfxKeyboard kdb;
+    gfx::keyboard::GfxKeyboard kdb;
 
     std::cout << "start while(!quit)" << std::endl;
     while (!quit)
     {
         if (SDL_PollEvent(&e))
         {
-            events::GfxEventType evType(e.type);
-            events::GfxKeyboardEvent evKbd(e.key);
+            gfx::events::GfxEventType evType(e.type);
+            gfx::events::GfxKeyboardEvent evKbd(e.key);
 
             if (evType.isQuit())
             {
@@ -81,7 +79,7 @@ static void _do(void)
             if (evType.isKeyUp())
             {
                 std::cout << kdb.getKeyName(evKbd.getKeysym().getKeyCode()) << std::endl;
-                if (evKbd.getKeysym().getScanCode().getValue() == scancode::GfxScancode::ValueType::kScanCodeQ)
+                if (evKbd.getKeysym().getScanCode().getValue() == gfx::scancode::GfxScancode::ValueType::kScanCodeQ)
                 {
                     quit = true;
                 }

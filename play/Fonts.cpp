@@ -24,6 +24,8 @@
 #include "Fonts.hpp"
 
 /******************************************************* Fonts *******************************************************/
+#include <dirent.h>
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -33,8 +35,6 @@
 #include <cstdint>
 #include <iterator>
 #include <cstring>
-
-#include <dirent.h>
 
 static std::vector<std::string> FindAllFiles(std::string const& bpath)
 {

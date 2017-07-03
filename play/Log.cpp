@@ -26,6 +26,7 @@
 /******************************************************* log *******************************************************/
 #include <cassert>
 #include <iostream>
+#include <string>
 
 #include "GfxLog.hpp"
 #include "GfxLogCategory.hpp"
@@ -34,24 +35,24 @@
 
 namespace prv
 {
-    class LogOutFunc : public gfx::log::GfxLogOutputFunction
+class LogOutFunc : public gfx::log::GfxLogOutputFunction
+{
+public:
+    LogOutFunc() : GfxLogOutputFunction()
     {
-    public:
-        LogOutFunc() : GfxLogOutputFunction()
-        {
-            // nothing to do
-        }
-        virtual void operator()(void* userdata,gfx::log::GfxLogCategory const& cat,
-                        gfx::log::GfxLogPriority const& prio, std::string const& message) const noexcept
-        {
-            assert(userdata != nullptr);
-            assert(cat);
-            assert(prio);
+        // nothing to do
+    }
+    virtual void operator()(void* userdata, gfx::log::GfxLogCategory const& cat,
+                    gfx::log::GfxLogPriority const& prio, std::string const& message) const noexcept
+    {
+        assert(userdata != nullptr);
+        assert(cat);
+        assert(prio);
 
-            std::cout << "<" << message << ">" << std::endl;
-        }
-    };
-}
+        std::cout << "<" << message << ">" << std::endl;
+    }
+};
+}  // namespace prv
 
 void _doLog(void)
 {
@@ -115,5 +116,5 @@ void _doLog(void)
     }
     log.logMessage(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),
                     GfxLogPriority(GfxLogPriority::ValueType::logPriorityCritical),
-                    "logMessage=%s",":-)");
+                    "logMessage=%s", ":-)");
 }

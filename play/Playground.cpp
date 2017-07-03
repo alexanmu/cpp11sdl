@@ -71,9 +71,9 @@ static _Command_t commands[] = {
 
 void _doPlayground(void)
 {
-	_doBenchmark();
-	_doFonts();
-	_doPaletteSdl();
+    _doBenchmark();
+    _doFonts();
+    _doPaletteSdl();
     _doPaletteGfx();
     _doCallback();
     _doComponent();
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-    	std::cout << "Select one or more from: ";
+        std::cout << "Select one or more from: ";
         for (auto& it : commands)
         {
             std::cout << it.cmd << ' ';

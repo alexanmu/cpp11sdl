@@ -49,7 +49,7 @@ void _doComponent(void)
     c->insertComponent(c3);
     c->insertComponent(c4);
 
-    //c->removeComponent(c2);
+    // c->removeComponent(c2);
 
     GComponent* c5 = c->findComponent(GVarName(c2));
     if (c5 != nullptr)

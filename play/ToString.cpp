@@ -25,6 +25,8 @@
 
 /******************************************************* Meta *******************************************************/
 #include <iostream>
+#include <type_traits>
+#include <string>
 
 #include "GfxBits.hpp"
 #include "GfxBlendMode.hpp"
@@ -129,9 +131,6 @@
 #include "GfxFonts.hpp"  // 2017.06.23
 #include "GfxColors2.hpp"  // 2017.06.23
 
-#include <type_traits>
-#include <string>
-
 struct ToStringStruct
 {
     const char * className_;
@@ -144,88 +143,88 @@ namespace prv
     /*! The template `has_void_foo_no_args_const<T>` exports a
      boolean constant `value` that is true iff `T` provides
      `void foo() const`
-     
+
      It also provides `static void eval(T const & t)`, which
      invokes void `T::foo() const` upon `t` if such a public member
      function exists and is a no-op if there is no such member.
      */
-    template< typename T>
-    struct has_void_to_string_no_args_const
+template< typename T>
+struct has_void_to_string_no_args_const
+{
+    /* SFINAE foo-has-correct-sig :) */
+    template<typename A>
+    static std::true_type test(std::string (A::*)() const)
     {
-        /* SFINAE foo-has-correct-sig :) */
-        template<typename A>
-        static std::true_type test(std::string (A::*)() const)
-        {
-            return std::true_type();
-        }
-        
-        /* SFINAE foo-exists :) */
-        template <typename A>
-        static decltype(test(&A::to_string)) test(decltype(&A::to_string),void *)
-        {
-            /* foo exists. What about sig? */
-            typedef decltype(test(&A::to_string)) return_type;
-
-            return return_type();
-        }
-        
-        /* SFINAE game over :( */
-        template<typename A>
-        static std::false_type test(...)
-        {
-            return std::false_type();
-        }
-        
-        /* This will be either `std::true_type` or `std::false_type` */
-        typedef decltype(test<T>(0,0)) type;
-        
-        static const bool value = type::value; /* Which is it? */
-        
-        /*  `eval(T const &,std::true_type)`
-         delegates to `T::foo()` when `type` == `std::true_type`
-         */
-        static void eval(T const & t, std::true_type)
-        {
-            std::cout << t.to_string() << std::endl;
-        }
-
-        /* `eval(...)` is a no-op for otherwise unmatched arguments */
-        static void eval(...)
-        {
-            // This output for demo purposes. Delete
-            std::cout << "T::foo() not called" << std::endl;
-        }
-        
-        /* `eval(T const & t)` delegates to :-
-         - `eval(t,type()` when `type` == `std::true_type`
-         - `eval(...)` otherwise
-         */  
-        static void eval(T const & t)
-        {
-            eval(t,type());
-        }
-    };
-
-    // This is the desired implementation of `void f(T const& val)` 
-    template<class T>
-    void f(T const& val)
-    {
-        has_void_to_string_no_args_const<T>::eval(val);
+        return std::true_type();
     }
 
-    template <typename T>
-    constexpr ToStringStruct makeStringStruct(void)
+    /* SFINAE foo-exists :) */
+    template <typename A>
+    static decltype(test(&A::to_string)) test(decltype(&A::to_string), void *)
     {
-        return {
-            T::ClassName
-        };
+        /* foo exists. What about sig? */
+        typedef decltype(test(&A::to_string)) return_type;
+
+        return return_type();
     }
+
+    /* SFINAE game over :( */
+    template<typename A>
+    static std::false_type test(...)
+    {
+        return std::false_type();
+    }
+
+    /* This will be either `std::true_type` or `std::false_type` */
+    typedef decltype(test<T>(0, 0)) type;
+
+    static const bool value = type::value; /* Which is it? */
+
+    /*  `eval(T const &,std::true_type)`
+     delegates to `T::foo()` when `type` == `std::true_type`
+     */
+    static void eval(T const & t, std::true_type)
+    {
+        std::cout << t.to_string() << std::endl;
+    }
+
+    /* `eval(...)` is a no-op for otherwise unmatched arguments */
+    static void eval(...)
+    {
+        // This output for demo purposes. Delete
+        std::cout << "T::foo() not called" << std::endl;
+    }
+
+    /* `eval(T const & t)` delegates to :-
+     - `eval(t,type()` when `type` == `std::true_type`
+     - `eval(...)` otherwise
+     */
+    static void eval(T const & t)
+    {
+        eval(t, type());
+    }
+};
+
+// This is the desired implementation of `void f(T const& val)`
+template<class T>
+void f(T const& val)
+{
+    has_void_to_string_no_args_const<T>::eval(val);
 }
+
+template <typename T>
+constexpr ToStringStruct makeStringStruct(void)
+{
+    return {
+        T::ClassName
+    };
+}
+}  // namespace prv
 
 static void Other(void)
 {
     std::cout << "--> ::to_string()" << std::endl;
-    
+
     gfx::GfxBool b;
     prv::f(b);
 }

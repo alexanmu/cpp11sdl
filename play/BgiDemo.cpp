@@ -58,18 +58,36 @@
 
 #include "GfxBasicLogger.hpp"
 
-using namespace gfx::initquit;
-using namespace gfx::video;
-using namespace gfx::xtra;
-using namespace gfx::surface;
-using namespace gfx::pixels;
-using namespace gfx::bgi;
-using namespace gfx::events;
-using namespace gfx::keyboard;
-using namespace gfx::scancode;
-using namespace gfx::bgi;
-using namespace gfx::rect;
-using namespace gfx::error;
+using gfx::initquit::GfxInitQuit;
+using gfx::initquit::GfxInitFlags;
+using gfx::video::GfxWindow;
+using gfx::video::GfxWindowFlags;
+using gfx::video::GfxWindowEventID;
+using gfx::xtra::GfxControlledSurface;
+using gfx::surface::GfxSurface;
+using gfx::surface::GfxSurfaceFlags;
+using gfx::pixels::GfxPixelFormatEnum;
+using gfx::pixels::GfxPixelFormat;
+using gfx::events::GfxEventType;
+using gfx::events::GfxKeyboardEvent;
+using gfx::events::GfxWindowEvent;
+using gfx::keyboard::GfxKeyboard;
+using gfx::scancode::GfxScancode;
+using gfx::bgi::GfxCanvas;
+using gfx::bgi::GfxColors2;
+using gfx::bgi::GfxDirection;
+using gfx::bgi::GfxAngle;
+using gfx::bgi::GfxRadius;
+using gfx::bgi::GfxText;
+using gfx::bgi::GfxFillStyles;
+using gfx::bgi::GfxLineStyle;
+using gfx::bgi::GfxFonts;
+using gfx::bgi::GfxLineThickness;
+using gfx::bgi::GfxDrawingMode;
+using gfx::rect::GfxRect;
+using gfx::rect::GfxPoint;
+using gfx::error::GfxError;
+using gfx::error::GfxGetError;
 
 class BorlandGraphicsInterfaceDemo
 {
@@ -106,14 +124,14 @@ private:
     int32_t demoStep_;
     int32_t waitForQuitStep_;
 
-    static const std::string winTitle_;
+    static const char winTitle_[];
     int32_t winWidth_ = 640;
     int32_t winHeight_ = 480;
 
     bool readyToQuit = false;
 };
 
-const std::string BorlandGraphicsInterfaceDemo::winTitle_ = "BGI Demo";
+const char BorlandGraphicsInterfaceDemo::winTitle_[] = "BGI Demo";
 
 BorlandGraphicsInterfaceDemo::BorlandGraphicsInterfaceDemo()
 {
@@ -170,7 +188,7 @@ void BorlandGraphicsInterfaceDemo::doDemo(void)
 bool BorlandGraphicsInterfaceDemo::initSdl(void)
 {
     GfxInitFlags initFlags;
-    
+
     initFlags.setVideo();
     initFlags.setEvents();
     iqptr_ = new GfxInitQuit(initFlags);
@@ -214,14 +232,14 @@ bool BorlandGraphicsInterfaceDemo::checkWindowSurfaceAttrs(void)
     pixfmt = winptr_->getWindowSurface().getPixelFormat();
     std::cout << "Pixel format code: " << pixfmt.getAsSdlType() << std::endl;
     pix = new GfxPixelFormat(pixfmt);
-    std::cout << "Format name:       " << pix->getPixelFormatName() << std::endl;
-    std::cout << "Bits per pixel:    " << pix->bitsPerPixel() << std::endl;
-    std::cout << "Bytes per pixel:   " << pix->bytesPerPixel() << std::endl;
-    std::cout << "Indexed:           " << std::boolalpha << pix->isPixelFormatIndexed() << std::noboolalpha << std::endl;
-    std::cout << "Packed:            " << std::boolalpha << pix->isPixelFormatPacked() << std::noboolalpha << std::endl;
-    std::cout << "Array:             " << std::boolalpha << pix->isPixelFormatArray() << std::noboolalpha << std::endl;
-    std::cout << "Alpha:             " << std::boolalpha << pix->isPixelFormatAlpha() << std::noboolalpha << std::endl;
-    std::cout << "FourCC:            " << std::boolalpha << pix->isPixelFormatFourCC() << std::noboolalpha << std::endl;
+    std::cout << "Format name:    " << pix->getPixelFormatName() << std::endl;
+    std::cout << "Bits per pixel: " << pix->bitsPerPixel() << std::endl;
+    std::cout << "Bytes per pixel:" << pix->bytesPerPixel() << std::endl;
+    std::cout << "Indexed:        " << std::boolalpha << pix->isPixelFormatIndexed() << std::noboolalpha << std::endl;
+    std::cout << "Packed:         " << std::boolalpha << pix->isPixelFormatPacked() << std::noboolalpha << std::endl;
+    std::cout << "Array:          " << std::boolalpha << pix->isPixelFormatArray() << std::noboolalpha << std::endl;
+    std::cout << "Alpha:          " << std::boolalpha << pix->isPixelFormatAlpha() << std::noboolalpha << std::endl;
+    std::cout << "FourCC:         " << std::boolalpha << pix->isPixelFormatFourCC() << std::noboolalpha << std::endl;
     bpp = pix->bitsPerPixel();
     bypp = pix->bytesPerPixel();
     delete pix;
@@ -377,7 +395,7 @@ bool BorlandGraphicsInterfaceDemo::drawText(void)
         canvas_->SetColor(text_color);
         text_x = winWidth_ / 2 - canvas_->TextWidth(text) / 2;
         text_y = y + step / 2 - canvas_->TextHeight(text) / 2;
-        canvas_->OutTextXY(GfxPoint(text_x, text_y),text);
+        canvas_->OutTextXY(GfxPoint(text_x, text_y), text);
         y += step;
     }
     return true;
@@ -390,7 +408,7 @@ bool BorlandGraphicsInterfaceDemo::drawRoundShapes(void)
     GfxPoint center(winWidth_ / 2, winHeight_ / 2);
 
     canvas_->SetColor(GfxColors2(GfxColors2::kBlue));
-    canvas_->Arc(center,GfxAngle(120),GfxAngle(240),GfxRadius(200));
+    canvas_->Arc(center, GfxAngle(120), GfxAngle(240), GfxRadius(200));
     canvas_->Circle(center, GfxRadius(190));
     canvas_->Ellipse(center, GfxAngle(90), GfxAngle(270), GfxRadius(80), GfxRadius(170));
     canvas_->SetFillStyle(GfxFillStyles(GfxFillStyles::ValueType::xHatchFill), GfxColors2(GfxColors2::kRed));
@@ -434,7 +452,7 @@ bool BorlandGraphicsInterfaceDemo::drawLineStyle(void)
     canvas_->SetLineStyle(GfxLineStyle(GfxLineStyle::ValueType::dashedLine),
                           GfxFillStyles(GfxFillStyles::ValueType::solidFill),
                           GfxLineThickness(GfxLineThickness::ValueType::thickWidth));
-    canvas_->Rectangle(GfxPoint(20,20), GfxPoint(100,100));
+    canvas_->Rectangle(GfxPoint(20, 20), GfxPoint(100, 100));
     return true;
 }
 
@@ -445,10 +463,10 @@ bool BorlandGraphicsInterfaceDemo::drawGetPutImage(void)
     char * buffer;
     int32_t imagesize;
 
-    imagesize = canvas_->ImageSize(GfxPoint(20,20), GfxPoint(100,100));
+    imagesize = canvas_->ImageSize(GfxPoint(20, 20), GfxPoint(100, 100));
     buffer = new char[imagesize];
-    canvas_->GetImage(GfxPoint(20,20), GfxPoint(100,100), buffer);
-    canvas_->PutImage(GfxPoint(101,101), buffer, GfxDrawingMode(GfxDrawingMode::ValueType::copyPut));
+    canvas_->GetImage(GfxPoint(20, 20), GfxPoint(100, 100), buffer);
+    canvas_->PutImage(GfxPoint(101, 101), buffer, GfxDrawingMode(GfxDrawingMode::ValueType::copyPut));
     delete[] buffer;
     return true;
 }

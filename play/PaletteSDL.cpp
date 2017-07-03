@@ -23,10 +23,11 @@
 
 #include "PaletteSDL.hpp"
 
-/***************************************************** Palette (SDL) *****************************************************/
+/*************************************************** Palette (SDL) ***************************************************/
 #include <iomanip>
 #include <sstream>
 #include <iostream>
+#include <string>
 
 #include "GfxSdlHeader.hpp"
 

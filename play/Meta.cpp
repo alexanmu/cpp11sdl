@@ -37,16 +37,16 @@ void _doMeta(void)
 
     std::cout << "meta.getClassCount()=" << meta.getClassCount() << '\n';
     std::cout << "meta.getClassInfoTableSizeInBytes()=" << meta.getClassInfoTableSizeInBytes() << '\n';
-	for (int32_t index = 0; index < meta.getClassCount(); index++)
-	{
+    for (int32_t index = 0; index < meta.getClassCount(); index++)
+    {
         classInfo = meta.getClassInfo(index);
-	    std::cout << "Name=" << classInfo.className_ << ' ';
-	    std::cout << "Size=" << classInfo.size_ << ' ';
+        std::cout << "Name=" << classInfo.className_ << ' ';
+        std::cout << "Size=" << classInfo.size_ << ' ';
         std::cout << "SizeOfThis=" << classInfo.sizeOfThis_ << ' ';
         std::cout << "sdlResource=" << classInfo.sdlResource_ << ' ';
         std::cout << "CallsSdl=" << classInfo.callsSdl_ << '\n';
-	    std::cout << "hasSdlType=" << classInfo.hasSdlType_ << ' ';
-	    std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << ' ';
+        std::cout << "hasSdlType=" << classInfo.hasSdlType_ << ' ';
+        std::cout << "hasSdlTypePtr=" << classInfo.hasSdlTypePtr_ << ' ';
         std::cout << "hasValueType=" << classInfo.hasValueType_ << ' ';
         std::cout << "hasClear=" << classInfo.hasPublicClearMethod_ << ' ';
         std::cout << "is'=0'=" << classInfo.isAbstract_ << ' ';
@@ -57,8 +57,8 @@ void _doMeta(void)
         std::cout << "isMoveCtor=" << classInfo.isMoveConstructible_ << ' ';
         std::cout << "isMoveAssign=" << classInfo.isMoveAssignable_ << ' ';
         std::cout << "isGfxObjChild=" << classInfo.isDerivedFromGfxObject_ << '\n';
-	}
-	std::cout << "Name=GfxObject" << ' ';
-	std::cout << "Size=" << sizeof(gfx::GfxObject);
+    }
+    std::cout << "Name=GfxObject" << ' ';
+    std::cout << "Size=" << sizeof(gfx::GfxObject);
     std::cout << std::endl;
 }

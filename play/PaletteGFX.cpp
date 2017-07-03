@@ -23,11 +23,13 @@
 
 #include "PaletteGFX.hpp"
 
-/***************************************************** Palette (GFX) *****************************************************/
+/*************************************************** Palette (GFX) ****************************************************/
 #include <iostream>
 #include <cstdint>
 #include <sstream>
 #include <iomanip>
+#include <string>
+#include <vector>
 
 #include "GfxPalette.hpp"
 #include "GfxPixelFormat.hpp"
@@ -87,22 +89,24 @@ void _doPaletteGfx(void)
     gfx::sdl2::SDL_Palette* pal = gfx::sdl2::SDL_AllocPalette(256);
     gfx::pixels::GfxPalette g3(pal);
     gfx::sdl2::SDL_FreePalette(pal);
-    std::vector<gfx::pixels::GfxColor> vec { { 0xFF, 0xFE, 0xFD }, { 0xFC, 0xFB, 0xFA }, { 0xF9, 0xF8, 0xF7 }, { 0xF6, 0xF5, 0xF4} };
+    std::vector<gfx::pixels::GfxColor> vec { { 0xFF, 0xFE, 0xFD }, { 0xFC, 0xFB, 0xFA },
+                                            { 0xF9, 0xF8, 0xF7 }, { 0xF6, 0xF5, 0xF4} };
     gfx::pixels::GfxPalette g4(vec);
-    
+
     printSdlPalette(g1.getAsSdlTypePtr(), false);
     printSdlPalette(g2.getAsSdlTypePtr(), false);
     printSdlPalette(g3.getAsSdlTypePtr(), true);
     printSdlPalette(g4.getAsSdlTypePtr(), false);
-    
+
     gfx::pixels::GfxPixelFormat pf1;
     gfx::sdl2::SDL_PixelFormat* pix = gfx::sdl2::SDL_AllocFormat(gfx::sdl2::SDL_PIXELFORMAT_INDEX8);
     gfx::pixels::GfxPixelFormat pf2(pix->format);
     SDL_FreeFormat(pix);
     gfx::pixels::GfxPixelFormat pf3(static_cast<gfx::pixels::GfxPixelFormatEnum>(gfx::sdl2::SDL_PIXELFORMAT_RGB24));
-    
+
     std::cout << "pf1.getFormatAsString()=" << pf1.getPixelFormatName() << '\n';
     std::cout << "pf2.getFormatAsString()=" << pf2.getPixelFormatName() << '\n';
     std::cout << "pf3.getFormatAsString()=" << pf3.getPixelFormatName() << '\n';
-    std::cout << "SDL_GetPixelFormatName(...)=" << gfx::sdl2::SDL_GetPixelFormatName(gfx::sdl2::SDL_PIXELFORMAT_INDEX8) << '\n';
+    std::cout << "SDL_GetPixelFormatName(...)=" << gfx::sdl2::SDL_GetPixelFormatName(
+                                                                    gfx::sdl2::SDL_PIXELFORMAT_INDEX8) << '\n';
 }

@@ -25,6 +25,7 @@
 
 /******************************************************* FSO *******************************************************/
 #include <iostream>
+#include <string>
 
 #include "GFileSystemObject.hpp"
 #include "GFolderObject.hpp"
