@@ -86,7 +86,7 @@ public:
     void setSurfacePalette(pixels::GfxPalette const& palette) const noexcept;
     void lockSurface(void) const noexcept;
     void unlockSurface(void) const noexcept;
-    void saveBMP(std::string const& filename) const noexcept;
+    void saveBMP(std::string const& filename) const throw(std::runtime_error);
     void setSurfaceRLE(GfxBool const& flag) const noexcept;
     void setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const noexcept;
     pixels::GfxColor getColorKey(void) const noexcept;

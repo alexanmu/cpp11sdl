@@ -284,7 +284,7 @@ void GfxSurface::unlockSurface(void) const noexcept
     }
 }
 
-void GfxSurface::saveBMP(std::string const& filename) const noexcept
+    void GfxSurface::saveBMP(std::string const& filename) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
