@@ -44,7 +44,7 @@ TEST_F(GfxMetaTest, emptyConstructor)
 {
     gfx::_gfx::GfxMeta object;
 
-    EXPECT_EQ(102, object.getClassCount());
+    EXPECT_EQ(103, object.getClassCount());
 }
 
 TEST_F(GfxMetaTest, wrongClassIndexNegativeValue)

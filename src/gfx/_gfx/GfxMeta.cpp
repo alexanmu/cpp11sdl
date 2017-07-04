@@ -130,6 +130,7 @@
 #include "GfxDirection.hpp"  // 2017.06.23
 #include "GfxFonts.hpp"  // 2017.06.23
 #include "GfxColors2.hpp"  // 2017.06.23
+#include "GfxJoystickGUID.hpp"  // 2017.07.04
 
 namespace gfx
 {
@@ -394,7 +395,9 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::keycode::GfxKeymod>()           },  // 2017.06.21
     //  gfx::keyboard
     {   prv::makeClassInfo<gfx::keyboard::GfxKeysym>()          },  // 2017.06.21
-    {   prv::makeClassInfo<gfx::keyboard::GfxKeyboard>()        }  // 2017.06.21
+    {   prv::makeClassInfo<gfx::keyboard::GfxKeyboard>()        },  // 2017.06.21
+    //  gfx::joystick
+    {   prv::makeClassInfo<gfx::joystick::GfxJoystickGUID>()    }  // 2017.07.04
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

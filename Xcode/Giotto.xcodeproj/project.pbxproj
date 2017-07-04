@@ -219,6 +219,8 @@
 		794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D06001EE29EFD001BD5D9 /* GfxPowerState.cpp */; };
 		7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7953F7C31EDD27F600A27C41 /* GfxPalette.cpp */; };
 		7953F7C81EDD27F600A27C41 /* GfxPixelFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7953F7C51EDD27F600A27C41 /* GfxPixelFormat.cpp */; };
+		796309281F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */; };
+		796309291F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */; };
 		796543891EFB778B0086FBD1 /* GfxScancode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796543871EFB778B0086FBD1 /* GfxScancode.cpp */; };
 		7965438F1EFB77A10086FBD1 /* GfxKeycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7965438B1EFB77A10086FBD1 /* GfxKeycode.cpp */; };
 		796543901EFB77A10086FBD1 /* GfxKeymod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7965438D1EFB77A10086FBD1 /* GfxKeymod.cpp */; };
@@ -551,6 +553,8 @@
 		7953F7C41EDD27F600A27C41 /* GfxPalette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPalette.hpp; path = pixels/GfxPalette.hpp; sourceTree = "<group>"; };
 		7953F7C51EDD27F600A27C41 /* GfxPixelFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPixelFormat.cpp; path = pixels/GfxPixelFormat.cpp; sourceTree = "<group>"; };
 		7953F7C61EDD27F600A27C41 /* GfxPixelFormat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPixelFormat.hpp; path = pixels/GfxPixelFormat.hpp; sourceTree = "<group>"; };
+		796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickGUID.cpp; path = joystick/GfxJoystickGUID.cpp; sourceTree = "<group>"; };
+		796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickGUID.hpp; path = joystick/GfxJoystickGUID.hpp; sourceTree = "<group>"; };
 		796543871EFB778B0086FBD1 /* GfxScancode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxScancode.cpp; path = scancode/GfxScancode.cpp; sourceTree = "<group>"; };
 		796543881EFB778B0086FBD1 /* GfxScancode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxScancode.hpp; path = scancode/GfxScancode.hpp; sourceTree = "<group>"; };
 		7965438B1EFB77A10086FBD1 /* GfxKeycode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxKeycode.cpp; path = keycode/GfxKeycode.cpp; sourceTree = "<group>"; };
@@ -777,6 +781,7 @@
 				19784EC81EDC8DB30025DF95 /* GfxBool.hpp */,
 				790BB03D1EF440F600B4F46B /* hints */,
 				79B2C6C21EE2D9150060EFD8 /* initquit */,
+				796309251F0C0D11006CE84C /* joystick */,
 				796543911EFB77A60086FBD1 /* keyboard */,
 				7965438A1EFB77910086FBD1 /* keycode */,
 				793FD16F1EE2BC4C00274C24 /* loadso */,
@@ -1212,6 +1217,15 @@
 			name = power;
 			sourceTree = "<group>";
 		};
+		796309251F0C0D11006CE84C /* joystick */ = {
+			isa = PBXGroup;
+			children = (
+				796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */,
+				796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */,
+			);
+			name = joystick;
+			sourceTree = "<group>";
+		};
 		796543861EFB777B0086FBD1 /* scancode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1520,6 +1534,7 @@
 				194648C61EEC2DE800299B55 /* GfxPowerInfo.cpp in Sources */,
 				194648D31EEC2E2700299B55 /* GfxTtfFont.cpp in Sources */,
 				194648B21EEC2D7000299B55 /* GfxLogCategory.cpp in Sources */,
+				796309291F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */,
 				19B8D2D91EF6B64100102304 /* CCallback.cpp in Sources */,
 				796543A21EFB781C0086FBD1 /* GfxKeymod.cpp in Sources */,
 				194648EF1EEC2EAF00299B55 /* GComponent.cpp in Sources */,
@@ -1617,6 +1632,7 @@
 				198015FE1EDF281700AEDB49 /* GfxMessageBox.cpp in Sources */,
 				791EAD581EDCB9BE0032ED1D /* GApplication.cpp in Sources */,
 				19A871371EEBC69D00A8C84C /* GfxRendererFlip.cpp in Sources */,
+				796309281F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */,
 				79F759661EFC245B00F48942 /* GfxTextInputEvent.cpp in Sources */,
 				79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */,
 				791EAD5A1EDCB9BE0032ED1D /* GOKMsgBox.cpp in Sources */,
