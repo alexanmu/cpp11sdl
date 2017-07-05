@@ -21,14 +21,13 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxJoystickGUID_hpp
-#define GfxJoystickGUID_hpp
+#ifndef GfxJoystickID_hpp
+#define GfxJoystickID_hpp
 
 #include <cstdint>
 #include <string>
 
 #include "GfxObject.hpp"
-#include "GfxSdlHeader.hpp"
 
 namespace gfx
 {
@@ -36,46 +35,39 @@ namespace gfx
 namespace joystick
 {
 
-class GfxJoystickGUID final : public GfxObject
+class GfxJoystickID final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_JoystickGUID SdlType;
-    typedef sdl2::SDL_JoystickGUID * SdlTypePtr;
+    typedef int32_t SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    GfxJoystickGUID() noexcept;
+    GfxJoystickID() noexcept;
 
-    explicit GfxJoystickGUID(const uint8_t value[]) noexcept;
-    explicit GfxJoystickGUID(const SdlType value) noexcept;
+    explicit GfxJoystickID(const SdlType value) noexcept;
 
-    GfxJoystickGUID(const GfxJoystickGUID& other) noexcept;
-    GfxJoystickGUID(GfxJoystickGUID&& other) noexcept;
+    GfxJoystickID(const GfxJoystickID& other) noexcept;
+    GfxJoystickID(GfxJoystickID&& other) noexcept;
 
-    GfxJoystickGUID& operator=(const GfxJoystickGUID& other) noexcept;
-    GfxJoystickGUID& operator=(GfxJoystickGUID&& other) noexcept;
+    GfxJoystickID& operator=(const GfxJoystickID& other) noexcept;
+    GfxJoystickID& operator=(GfxJoystickID&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    uint8_t * getValue(void) const noexcept;
+    int32_t getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
-    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
-    void copyValues(uint8_t * values) noexcept;
-
-    SdlType guid_;
-
-    static const int32_t kGuidNumberOfBytes = 16;
+    SdlType id_;
 };
 
 }  // namespace joystick
 
 }  // namespace gfx
 
-#endif /* GfxJoystickGUID_hpp */
+#endif /* GfxJoystickID_hpp */

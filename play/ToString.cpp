@@ -131,6 +131,7 @@
 #include "GfxFonts.hpp"  // 2017.06.23
 #include "GfxColors2.hpp"  // 2017.06.23
 #include "GfxJoystickGUID.hpp"  // 2017.07.04
+#include "GfxJoystickID.hpp"  // 2017.07.05
 
 struct ToStringStruct
 {
@@ -365,7 +366,8 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::keyboard::GfxKeysym>()          },  // 2017.06.21
     {   prv::makeStringStruct<gfx::keyboard::GfxKeyboard>()        },  // 2017.06.21
     //  gfx::joystick
-    {   prv::makeStringStruct<gfx::joystick::GfxJoystickGUID>()    }  // 2017.07.04
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystickGUID>()    },  // 2017.07.04
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystickID>()      }  // 2017.07.05
 };
 
 void _doToString(void)

@@ -208,6 +208,8 @@
 		791EAD9B1EDCB9BE0032ED1D /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
 		791EADA21EDCB9DA0032ED1D /* tool in Copy Files */ = {isa = PBXBuildFile; fileRef = 791EADA11EDCB9BE0032ED1D /* tool */; };
 		7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */; };
+		79260A7E1F0D441A00011442 /* GfxJoystickID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */; };
+		79260A7F1F0D441A00011442 /* GfxJoystickID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */; };
 		793A42A61F055FB40083E63B /* GfxBasicLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */; };
 		793A42A71F0562120083E63B /* GfxBasicLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */; };
 		793FD16E1EE2BC4900274C24 /* GfxFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */; };
@@ -533,6 +535,8 @@
 		7922FC4B1EE3C736001D91A6 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = fnt/fntWacky.hpp; sourceTree = "<group>"; };
 		7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBitmapFont.cpp; path = fnt/GfxBitmapFont.cpp; sourceTree = "<group>"; };
 		7922FC4D1EE3C736001D91A6 /* GfxBitmapFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBitmapFont.hpp; path = fnt/GfxBitmapFont.hpp; sourceTree = "<group>"; };
+		79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickID.cpp; path = joystick/GfxJoystickID.cpp; sourceTree = "<group>"; };
+		79260A7D1F0D441A00011442 /* GfxJoystickID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickID.hpp; path = joystick/GfxJoystickID.hpp; sourceTree = "<group>"; };
 		793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBasicLogger.cpp; path = _gfx/GfxBasicLogger.cpp; sourceTree = "<group>"; };
 		793A42A51F055FB40083E63B /* GfxBasicLogger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBasicLogger.hpp; path = _gfx/GfxBasicLogger.hpp; sourceTree = "<group>"; };
 		793FD16C1EE2BC4900274C24 /* GfxFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFileSystem.cpp; path = filesystem/GfxFileSystem.cpp; sourceTree = "<group>"; };
@@ -1222,6 +1226,8 @@
 			children = (
 				796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */,
 				796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */,
+				79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */,
+				79260A7D1F0D441A00011442 /* GfxJoystickID.hpp */,
 			);
 			name = joystick;
 			sourceTree = "<group>";
@@ -1478,6 +1484,7 @@
 				194648B11EEC2D6D00299B55 /* GfxLog.cpp in Sources */,
 				194648B61EEC2D8700299B55 /* GfxMessageBoxButtonFlags.cpp in Sources */,
 				19F425121EF563C700F7E2C5 /* GfxHintPriority.cpp in Sources */,
+				79260A7F1F0D441A00011442 /* GfxJoystickID.cpp in Sources */,
 				194648B71EEC2D8A00299B55 /* GfxMessageBoxColor.cpp in Sources */,
 				194648DA1EEC2E4C00299B55 /* GfxVersion.cpp in Sources */,
 				798C0C781EF97BAC006F1EEB /* GFontManager.cpp in Sources */,
@@ -1595,6 +1602,7 @@
 				19A871381EEBC69D00A8C84C /* GfxRendererInfo.cpp in Sources */,
 				793FD1721EE2BC5C00274C24 /* GfxLoadSo.cpp in Sources */,
 				79F2C73B1EFD775B00FAE660 /* GfxLineThickness.cpp in Sources */,
+				79260A7E1F0D441A00011442 /* GfxJoystickID.cpp in Sources */,
 				791435531EDDD98200315A5C /* GfxBitmapOrder.cpp in Sources */,
 				791EAD411EDCB9BE0032ED1D /* GfxBool.cpp in Sources */,
 				791EAD431EDCB9BE0032ED1D /* main.cpp in Sources */,
