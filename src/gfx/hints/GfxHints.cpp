@@ -74,7 +74,7 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /*  3 */ GfxHints::ValueType::hintRenderOpenGLShaders, SDL_HINT_RENDER_OPENGL_SHADERS },
     { /*  4 */ GfxHints::ValueType::hintRenderDirect3DThreadSafe, SDL_HINT_RENDER_DIRECT3D_THREADSAFE },
     { /*  5 */ GfxHints::ValueType::hintRenderDirect3D11Debug, SDL_HINT_RENDER_DIRECT3D11_DEBUG },
-    { /*  6 */ GfxHints::ValueType::hintRenderLogicalSizeMode, NULL/*SDL_HINT_RENDER_LOGICAL_SIZE_MODE*/ },
+    { /*  6 */ GfxHints::ValueType::hintRenderLogicalSizeMode, SDL_HINT_RENDER_LOGICAL_SIZE_MODE },
     { /*  7 */ GfxHints::ValueType::hintRenderScaleQuality, SDL_HINT_RENDER_SCALE_QUALITY },
     { /*  8 */ GfxHints::ValueType::hintRenderVSync, SDL_HINT_RENDER_VSYNC },
     { /*  9 */ GfxHints::ValueType::hintVideoAllowScreensaver, SDL_HINT_VIDEO_ALLOW_SCREENSAVER },
@@ -85,8 +85,8 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 14 */ GfxHints::ValueType::hintWindowFrameUsableWhileCursorHidden, SDL_HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN }, // NOLINT
     { /* 15 */ GfxHints::ValueType::hintWindowsEnableMessageloop, SDL_HINT_WINDOWS_ENABLE_MESSAGELOOP },
     { /* 16 */ GfxHints::ValueType::hintGrabKeyboard, SDL_HINT_GRAB_KEYBOARD },
-    { /* 17 */ GfxHints::ValueType::hintMouseNormalSpeedScale, NULL/*SDL_HINT_MOUSE_NORMAL_SPEED_SCALE*/ },
-    { /* 18 */ GfxHints::ValueType::hintMouseRelativeSpeedScale, NULL/*SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE*/ },
+    { /* 17 */ GfxHints::ValueType::hintMouseNormalSpeedScale, SDL_HINT_MOUSE_NORMAL_SPEED_SCALE },
+    { /* 18 */ GfxHints::ValueType::hintMouseRelativeSpeedScale, SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE },
     { /* 19 */ GfxHints::ValueType::hintMouseRelativeModeWrap, SDL_HINT_MOUSE_RELATIVE_MODE_WARP },
     { /* 20 */ GfxHints::ValueType::hintMouseFocusClickthrough, SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH },
     { /* 21 */ GfxHints::ValueType::hintVideoMinimizeOnFocusLoss, SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS },
@@ -101,8 +101,8 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 30 */ GfxHints::ValueType::hintJoystickAllowBackgroundEvents, SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS },
     { /* 31 */ GfxHints::ValueType::hintAllowTopmost, SDL_HINT_ALLOW_TOPMOST },
     { /* 32 */ GfxHints::ValueType::hintTimerResolution, SDL_HINT_TIMER_RESOLUTION },
-    { /* 33 */ GfxHints::ValueType::hintQTWaylandContentOrientation, NULL/*SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION*/ },
-    { /* 34 */ GfxHints::ValueType::hintQTWaylandWindowFlags, NULL/*SDL_HINT_QTWAYLAND_WINDOW_FLAGS*/ },
+    { /* 33 */ GfxHints::ValueType::hintQTWaylandContentOrientation, SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION },
+    { /* 34 */ GfxHints::ValueType::hintQTWaylandWindowFlags, SDL_HINT_QTWAYLAND_WINDOW_FLAGS },
     { /* 35 */ GfxHints::ValueType::hintThreadStackSize, SDL_HINT_THREAD_STACK_SIZE },
     { /* 36 */ GfxHints::ValueType::hintVideoHighDPIDisabled, SDL_HINT_VIDEO_HIGHDPI_DISABLED },
     { /* 37 */ GfxHints::ValueType::hintMacCtrlClickEmulateRightClick, SDL_HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK },
@@ -123,8 +123,8 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 52 */ GfxHints::ValueType::hintBmpSaveLegacyFormat, SDL_HINT_BMP_SAVE_LEGACY_FORMAT },
     { /* 53 */ GfxHints::ValueType::hintWindowsDisableThreadNaming, SDL_HINT_WINDOWS_DISABLE_THREAD_NAMING },
     { /* 54 */ GfxHints::ValueType::hintRPIVideoLayer, SDL_HINT_RPI_VIDEO_LAYER },
-    { /* 55 */ GfxHints::ValueType::hintOpenGLESVideoDriver, NULL/*SDL_HINT_OPENGLES_VIDEO_DRIVER*/ },
-    { /* 56 */ GfxHints::ValueType::hintAudioResamplingMode, NULL/*SDL_HINT_AUDIO_RESAMPLING_MODE*/ }
+    { /* 55 */ GfxHints::ValueType::hintOpenGLESVideoDriver, SDL_HINT_OPENGLES_VIDEO_DRIVER },
+    { /* 56 */ GfxHints::ValueType::hintAudioResamplingMode, SDL_HINT_AUDIO_RESAMPLING_MODE }
 };
 
 GfxHints::GfxHints() noexcept : GfxObject(ClassName)

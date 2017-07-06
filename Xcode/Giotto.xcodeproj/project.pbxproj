@@ -269,6 +269,10 @@
 		79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C387651EE85F69003EDE07 /* GfxLogPriority.cpp */; };
 		79C887571EE2D43800378B54 /* GfxPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C887531EE2D43800378B54 /* GfxPoint.cpp */; };
 		79C887581EE2D43800378B54 /* GfxRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C887551EE2D43800378B54 /* GfxRect.cpp */; };
+		79C9C7EF1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C9C7EB1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp */; };
+		79C9C7F01F0E926B009F8C0B /* GfxJoystickType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C9C7ED1F0E926B009F8C0B /* GfxJoystickType.cpp */; };
+		79C9C7F11F0E9274009F8C0B /* GfxJoystickPowerLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C9C7EB1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp */; };
+		79C9C7F21F0E9277009F8C0B /* GfxJoystickType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C9C7ED1F0E926B009F8C0B /* GfxJoystickType.cpp */; };
 		79F2C7331EFD775B00FAE660 /* GfxArcCoordsType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79F2C7171EFD775B00FAE660 /* GfxArcCoordsType.cpp */; };
 		79F2C7341EFD775B00FAE660 /* GfxColors2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79F2C7191EFD775B00FAE660 /* GfxColors2.cpp */; };
 		79F2C7351EFD775B00FAE660 /* GfxDirection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79F2C71B1EFD775B00FAE660 /* GfxDirection.cpp */; };
@@ -621,6 +625,10 @@
 		79C887541EE2D43800378B54 /* GfxPoint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPoint.hpp; path = rect/GfxPoint.hpp; sourceTree = "<group>"; };
 		79C887551EE2D43800378B54 /* GfxRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRect.cpp; path = rect/GfxRect.cpp; sourceTree = "<group>"; };
 		79C887561EE2D43800378B54 /* GfxRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRect.hpp; path = rect/GfxRect.hpp; sourceTree = "<group>"; };
+		79C9C7EB1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickPowerLevel.cpp; path = joystick/GfxJoystickPowerLevel.cpp; sourceTree = "<group>"; };
+		79C9C7EC1F0E926B009F8C0B /* GfxJoystickPowerLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickPowerLevel.hpp; path = joystick/GfxJoystickPowerLevel.hpp; sourceTree = "<group>"; };
+		79C9C7ED1F0E926B009F8C0B /* GfxJoystickType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickType.cpp; path = joystick/GfxJoystickType.cpp; sourceTree = "<group>"; };
+		79C9C7EE1F0E926B009F8C0B /* GfxJoystickType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickType.hpp; path = joystick/GfxJoystickType.hpp; sourceTree = "<group>"; };
 		79F2C7171EFD775B00FAE660 /* GfxArcCoordsType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxArcCoordsType.cpp; sourceTree = "<group>"; };
 		79F2C7181EFD775B00FAE660 /* GfxArcCoordsType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GfxArcCoordsType.hpp; sourceTree = "<group>"; };
 		79F2C7191EFD775B00FAE660 /* GfxColors2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GfxColors2.cpp; sourceTree = "<group>"; };
@@ -1228,6 +1236,10 @@
 				796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */,
 				79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */,
 				79260A7D1F0D441A00011442 /* GfxJoystickID.hpp */,
+				79C9C7EB1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp */,
+				79C9C7EC1F0E926B009F8C0B /* GfxJoystickPowerLevel.hpp */,
+				79C9C7ED1F0E926B009F8C0B /* GfxJoystickType.cpp */,
+				79C9C7EE1F0E926B009F8C0B /* GfxJoystickType.hpp */,
 			);
 			name = joystick;
 			sourceTree = "<group>";
@@ -1484,6 +1496,7 @@
 				194648B11EEC2D6D00299B55 /* GfxLog.cpp in Sources */,
 				194648B61EEC2D8700299B55 /* GfxMessageBoxButtonFlags.cpp in Sources */,
 				19F425121EF563C700F7E2C5 /* GfxHintPriority.cpp in Sources */,
+				79C9C7F11F0E9274009F8C0B /* GfxJoystickPowerLevel.cpp in Sources */,
 				79260A7F1F0D441A00011442 /* GfxJoystickID.cpp in Sources */,
 				194648B71EEC2D8A00299B55 /* GfxMessageBoxColor.cpp in Sources */,
 				194648DA1EEC2E4C00299B55 /* GfxVersion.cpp in Sources */,
@@ -1582,6 +1595,7 @@
 				194648F01EEC2EB200299B55 /* GControl.cpp in Sources */,
 				798C0C7B1EF97BB4006F1EEB /* GFolderCollectionElement.cpp in Sources */,
 				194648A81EEC2D3300299B55 /* GfxGetError.cpp in Sources */,
+				79C9C7F21F0E9277009F8C0B /* GfxJoystickType.cpp in Sources */,
 				79F2C7441EFD778200FAE660 /* GfxFillSettingsType.cpp in Sources */,
 				194648B81EEC2D9100299B55 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				79F2C7461EFD778700FAE660 /* GfxFonts.cpp in Sources */,
@@ -1627,6 +1641,7 @@
 				79F2C7341EFD775B00FAE660 /* GfxColors2.cpp in Sources */,
 				79F67FD11EE716940007F97D /* GfxRuntimeMeta.cpp in Sources */,
 				791EAD531EDCB9BE0032ED1D /* GLabel.cpp in Sources */,
+				79C9C7EF1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp in Sources */,
 				7979CDDE1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp in Sources */,
 				791EAD541EDCB9BE0032ED1D /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */,
@@ -1635,6 +1650,7 @@
 				19D5E7021EE56F38000E187B /* GfxMeta.cpp in Sources */,
 				7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */,
 				796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */,
+				79C9C7F01F0E926B009F8C0B /* GfxJoystickType.cpp in Sources */,
 				198015E01EDF27AC00AEDB49 /* GfxBlendMode.cpp in Sources */,
 				79F2C7401EFD775B00FAE660 /* GfxViewPortType.cpp in Sources */,
 				198015FE1EDF281700AEDB49 /* GfxMessageBox.cpp in Sources */,
