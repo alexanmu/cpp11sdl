@@ -1,0 +1,27 @@
+// GfxJoystick.cpp
+
+sdl2::SDL_JoystickOpen
+sdl2::SDL_JoystickFromInstanceID
+sdl2::SDL_JoystickClose
+sdl2::SDL_NumJoysticks
+sdl2::SDL_JoystickNameForIndex
+sdl2::SDL_JoystickGetDeviceGUID
+sdl2::SDL_JoystickGetDeviceVendor
+sdl2::SDL_JoystickGetDeviceProduct
+sdl2::SDL_JoystickGetDeviceProductVersion
+sdl2::SDL_JoystickGetDeviceType
+sdl2::SDL_JoystickGetDeviceInstanceID
+sdl2::SDL_JoystickName
+sdl2::SDL_JoystickGetVendor
+sdl2::SDL_JoystickGetProduct
+sdl2::SDL_JoystickGetProductVersion
+sdl2::SDL_JoystickGetType
+
+sdl2::SDL_JoystickUpdate
+sdl2::SDL_JoystickEventState
+sdl2::SDL_JoystickGetAxis
+sdl2::SDL_JoystickGetAxisInitialState
+sdl2::SDL_JoystickGetHat
+sdl2::SDL_JoystickGetBall
+sdl2::SDL_JoystickGetButton
+sdl2::SDL_JoystickCurrentPowerLevel
