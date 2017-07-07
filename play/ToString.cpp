@@ -134,6 +134,8 @@
 #include "GfxJoystickID.hpp"  // 2017.07.05
 #include "GfxJoystickType.hpp"  // 2017.07.06
 #include "GfxJoystickPowerLevel.hpp"  // 2017.07.06
+#include "GfxHatPosition.hpp"  // 2017.07.07
+#include "GfxJoystick.hpp"  // 2017.07.07
 
 struct ToStringStruct
 {
@@ -236,142 +238,144 @@ static void Other(void)
 const struct ToStringStruct infoArray_[] =
 {
     // gfx::bits
-    {   prv::makeStringStruct<gfx::bits::GfxBits>()                },
+    {   prv::makeStringStruct<gfx::bits::GfxBits>()                 },
     // gfx::blendmode
-    {   prv::makeStringStruct<gfx::blendmode::GfxBlendMode>()      },
+    {   prv::makeStringStruct<gfx::blendmode::GfxBlendMode>()       },
     // gfx
-    {   prv::makeStringStruct<gfx::GfxBool>()                      },
+    {   prv::makeStringStruct<gfx::GfxBool>()                       },
     // gfx::clipboard
-    {   prv::makeStringStruct<gfx::clipboard::GfxClipboard>()      },
+    {   prv::makeStringStruct<gfx::clipboard::GfxClipboard>()       },
     // gfx::pixels
-    {   prv::makeStringStruct<gfx::pixels::GfxColor>()             },
-    {   prv::makeStringStruct<gfx::pixels::GfxPalette>()           },
-    {   prv::makeStringStruct<gfx::pixels::GfxPixelFormat>()       },
-    {   prv::makeStringStruct<gfx::pixels::GfxPixelType>()         },  // 2017.05.30
-    {   prv::makeStringStruct<gfx::pixels::GfxBitmapOrder>()       },  // 2017.05.30
-    {   prv::makeStringStruct<gfx::pixels::GfxPackedOrder>()       },  // 2017.05.30
-    {   prv::makeStringStruct<gfx::pixels::GfxArrayOrder>()        },  // 2017.05.30
-    {   prv::makeStringStruct<gfx::pixels::GfxPackedLayout>()      },  // 2017.05.30
-    {   prv::makeStringStruct<gfx::pixels::GfxPixelFormatEnum>()   },  // 2017.05.30
+    {   prv::makeStringStruct<gfx::pixels::GfxColor>()              },
+    {   prv::makeStringStruct<gfx::pixels::GfxPalette>()            },
+    {   prv::makeStringStruct<gfx::pixels::GfxPixelFormat>()        },
+    {   prv::makeStringStruct<gfx::pixels::GfxPixelType>()          },  // 2017.05.30
+    {   prv::makeStringStruct<gfx::pixels::GfxBitmapOrder>()        },  // 2017.05.30
+    {   prv::makeStringStruct<gfx::pixels::GfxPackedOrder>()        },  // 2017.05.30
+    {   prv::makeStringStruct<gfx::pixels::GfxArrayOrder>()         },  // 2017.05.30
+    {   prv::makeStringStruct<gfx::pixels::GfxPackedLayout>()       },  // 2017.05.30
+    {   prv::makeStringStruct<gfx::pixels::GfxPixelFormatEnum>()    },  // 2017.05.30
     // gfx::cpuinfo
-    {   prv::makeStringStruct<gfx::cpuinfo::GfxCpuInfo>()          },
+    {   prv::makeStringStruct<gfx::cpuinfo::GfxCpuInfo>()           },
     // gfx::video
-    {   prv::makeStringStruct<gfx::video::GfxDisplayMode>()        },
-    {   prv::makeStringStruct<gfx::video::GfxScreenSaver>()        },
-    {   prv::makeStringStruct<gfx::video::GfxVideo>()              },
-    {   prv::makeStringStruct<gfx::video::GfxWindow>()             },
-    {   prv::makeStringStruct<gfx::video::GfxWindowEventID>()      },
-    {   prv::makeStringStruct<gfx::video::GfxWindowFlags>()        },
-    {   prv::makeStringStruct<gfx::video::GfxWindowPosition>()     },
-    {   prv::makeStringStruct<gfx::video::GfxHitTestResult>()      },  // 2017.05.31
-    {   prv::makeStringStruct<gfx::video::GfxHitTest>()            },  // 2017.06.02
+    {   prv::makeStringStruct<gfx::video::GfxDisplayMode>()         },
+    {   prv::makeStringStruct<gfx::video::GfxScreenSaver>()         },
+    {   prv::makeStringStruct<gfx::video::GfxVideo>()               },
+    {   prv::makeStringStruct<gfx::video::GfxWindow>()              },
+    {   prv::makeStringStruct<gfx::video::GfxWindowEventID>()       },
+    {   prv::makeStringStruct<gfx::video::GfxWindowFlags>()         },
+    {   prv::makeStringStruct<gfx::video::GfxWindowPosition>()      },
+    {   prv::makeStringStruct<gfx::video::GfxHitTestResult>()       },  // 2017.05.31
+    {   prv::makeStringStruct<gfx::video::GfxHitTest>()             },  // 2017.06.02
     // gfx::endian
-    {   prv::makeStringStruct<gfx::endian::GfxEndian>()            },
+    {   prv::makeStringStruct<gfx::endian::GfxEndian>()             },
     // gfx::error
-    {   prv::makeStringStruct<gfx::error::GfxGetError>()           },
-    {   prv::makeStringStruct<gfx::error::GfxError>()              },  // 2017.06.03
+    {   prv::makeStringStruct<gfx::error::GfxGetError>()            },
+    {   prv::makeStringStruct<gfx::error::GfxError>()               },  // 2017.06.03
     // gfx::filesystem
-    {   prv::makeStringStruct<gfx::filesystem::GfxFileSystem>()    },
+    {   prv::makeStringStruct<gfx::filesystem::GfxFileSystem>()     },
     // gfx::version
-    {   prv::makeStringStruct<gfx::version::GfxGetVersion>()       },
-    {   prv::makeStringStruct<gfx::version::GfxVersion>()          },
+    {   prv::makeStringStruct<gfx::version::GfxGetVersion>()        },
+    {   prv::makeStringStruct<gfx::version::GfxVersion>()           },
     // gfx::initquit
-    {   prv::makeStringStruct<gfx::initquit::GfxInitQuit>()        },
-    {   prv::makeStringStruct<gfx::initquit::GfxInitFlags>()       },  // 2017.05.17
+    {   prv::makeStringStruct<gfx::initquit::GfxInitQuit>()         },
+    {   prv::makeStringStruct<gfx::initquit::GfxInitFlags>()        },  // 2017.05.17
     // gfx::loadso
-    {   prv::makeStringStruct<gfx::loadso::GfxLoadSo>()            },
+    {   prv::makeStringStruct<gfx::loadso::GfxLoadSo>()             },
     // gfx::msgbox
-    {   prv::makeStringStruct<gfx::msgbox::GfxMessageBox>()        },
+    {   prv::makeStringStruct<gfx::msgbox::GfxMessageBox>()         },
     {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxButtonData>()  },
     {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxButtonFlags>() },
     {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxColor>()       },
     {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxColorScheme>() },
-    {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxData>()    },
-    {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxFlags>()   },
+    {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxData>()     },
+    {   prv::makeStringStruct<gfx::msgbox::GfxMessageBoxFlags>()    },
     // gfx::platform
-    {   prv::makeStringStruct<gfx::platform::GfxPlatform>()        },
+    {   prv::makeStringStruct<gfx::platform::GfxPlatform>()         },
     // gfx::rect
-    {   prv::makeStringStruct<gfx::rect::GfxPoint>()               },
-    {   prv::makeStringStruct<gfx::rect::GfxRect>()                },
+    {   prv::makeStringStruct<gfx::rect::GfxPoint>()                },
+    {   prv::makeStringStruct<gfx::rect::GfxRect>()                 },
     // gfx::power
-    {   prv::makeStringStruct<gfx::power::GfxPowerInfo>()          },
-    {   prv::makeStringStruct<gfx::power::GfxPowerState>()         },
+    {   prv::makeStringStruct<gfx::power::GfxPowerInfo>()           },
+    {   prv::makeStringStruct<gfx::power::GfxPowerState>()          },
     // gfx::surface
-    {   prv::makeStringStruct<gfx::surface::GfxSurface>()          },
-    {   prv::makeStringStruct<gfx::surface::GfxSurfaceFlags>()     },
+    {   prv::makeStringStruct<gfx::surface::GfxSurface>()           },
+    {   prv::makeStringStruct<gfx::surface::GfxSurfaceFlags>()      },
     // gfx::bgi
-    {   prv::makeStringStruct<gfx::bgi::GfxAngle>()                },
-    {   prv::makeStringStruct<gfx::bgi::GfxCanvas>()               },
-    {   prv::makeStringStruct<gfx::bgi::GfxRadius>()               },
-    {   prv::makeStringStruct<gfx::bgi::GfxText>()                 },
-    {   prv::makeStringStruct<gfx::bgi::GfxDrawingMode>()          },  // 2017.06.22
-    {   prv::makeStringStruct<gfx::bgi::GfxArcCoordsType>()        },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxPaletteType>()          },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxFillSettingsType>()     },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxLineSettingsType>()     },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxTextSettingsType>()     },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxViewPortType>()         },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxLineStyle>()            },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxFillStyles>()           },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxLineThickness>()        },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxTextJustification>()    },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxDirection>()            },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxFonts>()                },  // 2017.06.23
-    {   prv::makeStringStruct<gfx::bgi::GfxColors2>()              },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxAngle>()                 },
+    {   prv::makeStringStruct<gfx::bgi::GfxCanvas>()                },
+    {   prv::makeStringStruct<gfx::bgi::GfxRadius>()                },
+    {   prv::makeStringStruct<gfx::bgi::GfxText>()                  },
+    {   prv::makeStringStruct<gfx::bgi::GfxDrawingMode>()           },  // 2017.06.22
+    {   prv::makeStringStruct<gfx::bgi::GfxArcCoordsType>()         },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxPaletteType>()           },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxFillSettingsType>()      },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxLineSettingsType>()      },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxTextSettingsType>()      },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxViewPortType>()          },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxLineStyle>()             },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxFillStyles>()            },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxLineThickness>()         },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxTextJustification>()     },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxDirection>()             },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxFonts>()                 },  // 2017.06.23
+    {   prv::makeStringStruct<gfx::bgi::GfxColors2>()               },  // 2017.06.23
     // gfx::bgi::prv
-    {   prv::makeStringStruct<gfx::bgi::prv::GfxCanvasBgi>()       },
+    {   prv::makeStringStruct<gfx::bgi::prv::GfxCanvasBgi>()        },
     // gfx::bgi::fnt
-    {   prv::makeStringStruct<gfx::bgi::fnt::GfxBitmapFont>()      },
+    {   prv::makeStringStruct<gfx::bgi::fnt::GfxBitmapFont>()       },
     // gfx::ttf
-    {   prv::makeStringStruct<gfx::ttf::GfxTtfFont>()              },  // 2017.05.17
-    {   prv::makeStringStruct<gfx::ttf::GfxTtfInitQuit>()          },  // 2017.05.17
-    {   prv::makeStringStruct<gfx::ttf::GfxTtfGetVersion>()        },  // 2017.05.18
-    {   prv::makeStringStruct<gfx::ttf::GfxTtfFontStyle>()         },  // 2017.05.18
-    {   prv::makeStringStruct<gfx::ttf::GfxTtfFontHinting>()       },  // 2017.05.18
-    {   prv::makeStringStruct<gfx::ttf::GfxTtfFontRenderer>()      },  // 2017.05.19
+    {   prv::makeStringStruct<gfx::ttf::GfxTtfFont>()               },  // 2017.05.17
+    {   prv::makeStringStruct<gfx::ttf::GfxTtfInitQuit>()           },  // 2017.05.17
+    {   prv::makeStringStruct<gfx::ttf::GfxTtfGetVersion>()         },  // 2017.05.18
+    {   prv::makeStringStruct<gfx::ttf::GfxTtfFontStyle>()          },  // 2017.05.18
+    {   prv::makeStringStruct<gfx::ttf::GfxTtfFontHinting>()        },  // 2017.05.18
+    {   prv::makeStringStruct<gfx::ttf::GfxTtfFontRenderer>()       },  // 2017.05.19
     // gfx::xtra
-    {   prv::makeStringStruct<gfx::xtra::GfxFontInfo>()            },  // 2017.05.19
-    {   prv::makeStringStruct<gfx::xtra::GfxControlledSurface>()   },
-    {   prv::makeStringStruct<gfx::xtra::GfxGammaRamp>()           },  // 2017.06.01
+    {   prv::makeStringStruct<gfx::xtra::GfxFontInfo>()             },  // 2017.05.19
+    {   prv::makeStringStruct<gfx::xtra::GfxControlledSurface>()    },
+    {   prv::makeStringStruct<gfx::xtra::GfxGammaRamp>()            },  // 2017.06.01
     // gfx::log
-    {   prv::makeStringStruct<gfx::log::GfxLogPriority>()          },  // 2017.06.07
-    {   prv::makeStringStruct<gfx::log::GfxLogCategory>()          },  // 2017.06.07
-    {   prv::makeStringStruct<gfx::log::GfxLog>()                  },  // 2017.06.07
-    {   prv::makeStringStruct<gfx::log::GfxLogOutputFunction>()    },  // 2017.06.09
+    {   prv::makeStringStruct<gfx::log::GfxLogPriority>()           },  // 2017.06.07
+    {   prv::makeStringStruct<gfx::log::GfxLogCategory>()           },  // 2017.06.07
+    {   prv::makeStringStruct<gfx::log::GfxLog>()                   },  // 2017.06.07
+    {   prv::makeStringStruct<gfx::log::GfxLogOutputFunction>()     },  // 2017.06.09
     // gfx::render
-    {   prv::makeStringStruct<gfx::render::GfxGetRendererInfo>()   },
-    {   prv::makeStringStruct<gfx::render::GfxRenderer>()          },
-    {   prv::makeStringStruct<gfx::render::GfxRendererFlags>()     },
-    {   prv::makeStringStruct<gfx::render::GfxRendererFlip>()      },
-    {   prv::makeStringStruct<gfx::render::GfxRendererInfo>()      },
-    {   prv::makeStringStruct<gfx::render::GfxTexture>()           },
-    {   prv::makeStringStruct<gfx::render::GfxTextureAccess>()     },
-    {   prv::makeStringStruct<gfx::render::GfxTextureModulate>()   },
-    {   prv::makeStringStruct<gfx::render::GfxTextureFormats>()    },  // 2017.06.02
+    {   prv::makeStringStruct<gfx::render::GfxGetRendererInfo>()    },
+    {   prv::makeStringStruct<gfx::render::GfxRenderer>()           },
+    {   prv::makeStringStruct<gfx::render::GfxRendererFlags>()      },
+    {   prv::makeStringStruct<gfx::render::GfxRendererFlip>()       },
+    {   prv::makeStringStruct<gfx::render::GfxRendererInfo>()       },
+    {   prv::makeStringStruct<gfx::render::GfxTexture>()            },
+    {   prv::makeStringStruct<gfx::render::GfxTextureAccess>()      },
+    {   prv::makeStringStruct<gfx::render::GfxTextureModulate>()    },
+    {   prv::makeStringStruct<gfx::render::GfxTextureFormats>()     },  // 2017.06.02
     //  gfx::hints
-    {   prv::makeStringStruct<gfx::hints::GfxHintPriority>()       },  // 2017.06.16
-    {   prv::makeStringStruct<gfx::hints::GfxHints>()              },  // 2017.06.16
-    {   prv::makeStringStruct<gfx::hints::GfxHintCallback>()       },  // 2017.06.16
+    {   prv::makeStringStruct<gfx::hints::GfxHintPriority>()        },  // 2017.06.16
+    {   prv::makeStringStruct<gfx::hints::GfxHints>()               },  // 2017.06.16
+    {   prv::makeStringStruct<gfx::hints::GfxHintCallback>()        },  // 2017.06.16
     //  gfx::events
-    {   prv::makeStringStruct<gfx::events::GfxEventType>()         },  // 2017.06.18
-    {   prv::makeStringStruct<gfx::events::GfxCommonEvent>()       },  // 2017.06.19
-    {   prv::makeStringStruct<gfx::events::GfxWindowEvent>()       },  // 2017.06.19
-    {   prv::makeStringStruct<gfx::events::GfxKeyboardEvent>()     },  // 2017.06.21
-    {   prv::makeStringStruct<gfx::events::GfxTextEditingEvent>()  },  // 2017.06.22
-    {   prv::makeStringStruct<gfx::events::GfxTextInputEvent>()    },  // 2017.06.22
+    {   prv::makeStringStruct<gfx::events::GfxEventType>()          },  // 2017.06.18
+    {   prv::makeStringStruct<gfx::events::GfxCommonEvent>()        },  // 2017.06.19
+    {   prv::makeStringStruct<gfx::events::GfxWindowEvent>()        },  // 2017.06.19
+    {   prv::makeStringStruct<gfx::events::GfxKeyboardEvent>()      },  // 2017.06.21
+    {   prv::makeStringStruct<gfx::events::GfxTextEditingEvent>()   },  // 2017.06.22
+    {   prv::makeStringStruct<gfx::events::GfxTextInputEvent>()     },  // 2017.06.22
     //  gfx::scancode
-    {   prv::makeStringStruct<gfx::scancode::GfxScancode>()        },  // 2017.06.21
+    {   prv::makeStringStruct<gfx::scancode::GfxScancode>()         },  // 2017.06.21
     //  gfx::keycode
-    {   prv::makeStringStruct<gfx::keycode::GfxKeycode>()          },  // 2017.06.21
-    {   prv::makeStringStruct<gfx::keycode::GfxKeymod>()           },  // 2017.06.21
+    {   prv::makeStringStruct<gfx::keycode::GfxKeycode>()           },  // 2017.06.21
+    {   prv::makeStringStruct<gfx::keycode::GfxKeymod>()            },  // 2017.06.21
     //  gfx::keyboard
-    {   prv::makeStringStruct<gfx::keyboard::GfxKeysym>()          },  // 2017.06.21
-    {   prv::makeStringStruct<gfx::keyboard::GfxKeyboard>()        },  // 2017.06.21
+    {   prv::makeStringStruct<gfx::keyboard::GfxKeysym>()           },  // 2017.06.21
+    {   prv::makeStringStruct<gfx::keyboard::GfxKeyboard>()         },  // 2017.06.21
     //  gfx::joystick
-    {   prv::makeStringStruct<gfx::joystick::GfxJoystickGUID>()    },  // 2017.07.04
-    {   prv::makeStringStruct<gfx::joystick::GfxJoystickID>()      },  // 2017.07.05
-    {   prv::makeStringStruct<gfx::joystick::GfxJoystickType>()    },  // 2017.07.06
-    {   prv::makeStringStruct<gfx::joystick::GfxJoystickPowerLevel>()   }  // 2017.07.06
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystickGUID>()     },  // 2017.07.04
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystickID>()       },  // 2017.07.05
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystickType>()     },  // 2017.07.06
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystickPowerLevel>()   },  // 2017.07.06
+    {   prv::makeStringStruct<gfx::joystick::GfxHatPosition>()      },  // 2017.07.07
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystick>()         }  // 2017.07.07
 };
 
 void _doToString(void)

@@ -16,7 +16,12 @@ sdl2::SDL_JoystickGetVendor
 sdl2::SDL_JoystickGetProduct
 sdl2::SDL_JoystickGetProductVersion
 sdl2::SDL_JoystickGetType
-
+sdl2::SDL_JoystickGetGUIDstring
+sdl2::SDL_JoystickGetGUIDFromString
+sdl2::SDL_JoystickInstanceID
+sdl2::SDL_JoystickNumAxes
+sdl2::SDL_JoystickNumHats
+sdl2::SDL_JoystickNumButtons
 sdl2::SDL_JoystickUpdate
 sdl2::SDL_JoystickEventState
 sdl2::SDL_JoystickGetAxis

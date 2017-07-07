@@ -44,32 +44,48 @@ namespace sdl2
 */
 namespace gfx
 {
+
 namespace sdl2
 {
-    /* GfxJoystickType.hpp */
-    typedef enum
-    {
-        SDL_JOYSTICK_TYPE_UNKNOWN,
-        SDL_JOYSTICK_TYPE_GAMECONTROLLER,
-        SDL_JOYSTICK_TYPE_WHEEL,
-        SDL_JOYSTICK_TYPE_ARCADE_STICK,
-        SDL_JOYSTICK_TYPE_FLIGHT_STICK,
-        SDL_JOYSTICK_TYPE_DANCE_PAD,
-        SDL_JOYSTICK_TYPE_GUITAR,
-        SDL_JOYSTICK_TYPE_DRUM_KIT,
-        SDL_JOYSTICK_TYPE_ARCADE_PAR,
-        SDL_JOYSTICK_TYPE_THROTTLE
-    } SDL_JoystickType;
 
-    /* GfxHints.cpp */
-    #define SDL_HINT_RENDER_LOGICAL_SIZE_MODE "SDL_HINT_RENDER_LOGICAL_SIZE_MODE"
-    #define SDL_HINT_MOUSE_NORMAL_SPEED_SCALE "SDL_HINT_MOUSE_NORMAL_SPEED_SCALE"
-    #define SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE "SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE"
-    #define SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION "SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION"
-    #define SDL_HINT_QTWAYLAND_WINDOW_FLAGS "SDL_HINT_QTWAYLAND_WINDOW_FLAGS"
-    #define SDL_HINT_OPENGLES_VIDEO_DRIVER "SDL_HINT_OPENGLES_VIDEO_DRIVER"
-    #define SDL_HINT_AUDIO_RESAMPLING_MODE "SDL_HINT_AUDIO_RESAMPLING_MODE"
+/* GfxJoystickType.hpp */
+typedef enum
+{
+    SDL_JOYSTICK_TYPE_UNKNOWN,
+    SDL_JOYSTICK_TYPE_GAMECONTROLLER,
+    SDL_JOYSTICK_TYPE_WHEEL,
+    SDL_JOYSTICK_TYPE_ARCADE_STICK,
+    SDL_JOYSTICK_TYPE_FLIGHT_STICK,
+    SDL_JOYSTICK_TYPE_DANCE_PAD,
+    SDL_JOYSTICK_TYPE_GUITAR,
+    SDL_JOYSTICK_TYPE_DRUM_KIT,
+    SDL_JOYSTICK_TYPE_ARCADE_PAR,
+    SDL_JOYSTICK_TYPE_THROTTLE
+} SDL_JoystickType;
+
+/* GfxHints.cpp */
+#define SDL_HINT_RENDER_LOGICAL_SIZE_MODE "SDL_HINT_RENDER_LOGICAL_SIZE_MODE"
+#define SDL_HINT_MOUSE_NORMAL_SPEED_SCALE "SDL_HINT_MOUSE_NORMAL_SPEED_SCALE"
+#define SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE "SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE"
+#define SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION "SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION"
+#define SDL_HINT_QTWAYLAND_WINDOW_FLAGS "SDL_HINT_QTWAYLAND_WINDOW_FLAGS"
+#define SDL_HINT_OPENGLES_VIDEO_DRIVER "SDL_HINT_OPENGLES_VIDEO_DRIVER"
+#define SDL_HINT_AUDIO_RESAMPLING_MODE "SDL_HINT_AUDIO_RESAMPLING_MODE"
+
+/* GfxJoystick.cpp */
+inline int SDL_JoystickGetDeviceVendor(int) { return 0; }
+inline int SDL_JoystickGetDeviceProduct(int) { return 0; }
+inline int SDL_JoystickGetDeviceProductVersion(int) { return 0; }
+inline SDL_JoystickType SDL_JoystickGetDeviceType(int) { return static_cast<SDL_JoystickType>(0); }
+inline SDL_JoystickID SDL_JoystickGetDeviceInstanceID(int) { return static_cast<SDL_JoystickID>(-1); }
+inline Uint16 SDL_JoystickGetVendor(SDL_Joystick *) { return 0; }
+inline Uint16 SDL_JoystickGetProduct(SDL_Joystick *) { return 0; }
+inline Uint16 SDL_JoystickGetProductVersion(SDL_Joystick *) { return 0; }
+inline SDL_JoystickType SDL_JoystickGetType(SDL_Joystick *) { return static_cast<SDL_JoystickType>(0); }
+inline SDL_bool SDL_JoystickGetAxisInitialState(SDL_Joystick *, int, Sint16 *) { return static_cast<SDL_bool>(0); }
+
 }  // namespace sdl2
+
 }  // namespace gfx
 
-#endif
+#endif /* GfxSdlHeader_hpp */

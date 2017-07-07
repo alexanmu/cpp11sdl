@@ -134,6 +134,8 @@
 #include "GfxJoystickID.hpp"  // 2017.07.05
 #include "GfxJoystickType.hpp"  // 2017.07.06
 #include "GfxJoystickPowerLevel.hpp"  // 2017.07.06
+#include "GfxHatPosition.hpp"  // 2017.07.07
+#include "GfxJoystick.hpp"  // 2017.07.07
 
 namespace gfx
 {
@@ -403,7 +405,9 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::joystick::GfxJoystickGUID>()    },  // 2017.07.04
     {   prv::makeClassInfo<gfx::joystick::GfxJoystickID>()      },  // 2017.07.05
     {   prv::makeClassInfo<gfx::joystick::GfxJoystickType>()    },  // 2017.07.06
-    {   prv::makeClassInfo<gfx::joystick::GfxJoystickPowerLevel>()  }  // 2017.07.06
+    {   prv::makeClassInfo<gfx::joystick::GfxJoystickPowerLevel>()  },  // 2017.07.06
+    {   prv::makeClassInfo<gfx::joystick::GfxHatPosition>()     },  // 2017.07.07
+    {   prv::makeClassInfo<gfx::joystick::GfxJoystick>()        }  // 2017.07.07
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

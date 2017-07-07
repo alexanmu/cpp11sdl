@@ -260,6 +260,10 @@
 		798C0C7E1EF97BBD006F1EEB /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */; };
 		798C0C7F1EF97BFA006F1EEB /* GfxCommonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */; };
 		798C0C801EF97BFD006F1EEB /* GfxWindowEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */; };
+		7994CC761F0FDEEC00DF5B94 /* GfxHatPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7994CC721F0FDEEC00DF5B94 /* GfxHatPosition.cpp */; };
+		7994CC771F0FDEEC00DF5B94 /* GfxJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7994CC741F0FDEEC00DF5B94 /* GfxJoystick.cpp */; };
+		7994CC781F0FE1B000DF5B94 /* GfxJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7994CC741F0FDEEC00DF5B94 /* GfxJoystick.cpp */; };
+		7994CC791F0FE1B500DF5B94 /* GfxHatPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7994CC721F0FDEEC00DF5B94 /* GfxHatPosition.cpp */; };
 		799DE96A1F08FD0F00125244 /* ToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 799DE9681F08FD0F00125244 /* ToString.cpp */; };
 		79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */; };
 		79B2C6C71EE2D9270060EFD8 /* GfxInitFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C31EE2D9270060EFD8 /* GfxInitFlags.cpp */; };
@@ -607,6 +611,10 @@
 		798C0C721EF979A5006F1EEB /* GFontManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GFontManager.hpp; sourceTree = "<group>"; };
 		798C0C741EF97A3F006F1EEB /* FontMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FontMgr.cpp; path = ../play/FontMgr.cpp; sourceTree = SOURCE_ROOT; };
 		798C0C751EF97A3F006F1EEB /* FontMgr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FontMgr.hpp; path = ../play/FontMgr.hpp; sourceTree = SOURCE_ROOT; };
+		7994CC721F0FDEEC00DF5B94 /* GfxHatPosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxHatPosition.cpp; path = joystick/GfxHatPosition.cpp; sourceTree = "<group>"; };
+		7994CC731F0FDEEC00DF5B94 /* GfxHatPosition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxHatPosition.hpp; path = joystick/GfxHatPosition.hpp; sourceTree = "<group>"; };
+		7994CC741F0FDEEC00DF5B94 /* GfxJoystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystick.cpp; path = joystick/GfxJoystick.cpp; sourceTree = "<group>"; };
+		7994CC751F0FDEEC00DF5B94 /* GfxJoystick.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystick.hpp; path = joystick/GfxJoystick.hpp; sourceTree = "<group>"; };
 		799DE9681F08FD0F00125244 /* ToString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToString.cpp; path = ../play/ToString.cpp; sourceTree = SOURCE_ROOT; };
 		799DE9691F08FD0F00125244 /* ToString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ToString.hpp; path = ../play/ToString.hpp; sourceTree = SOURCE_ROOT; };
 		79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPixelType.cpp; path = pixels/GfxPixelType.cpp; sourceTree = "<group>"; };
@@ -1232,6 +1240,10 @@
 		796309251F0C0D11006CE84C /* joystick */ = {
 			isa = PBXGroup;
 			children = (
+				7994CC721F0FDEEC00DF5B94 /* GfxHatPosition.cpp */,
+				7994CC731F0FDEEC00DF5B94 /* GfxHatPosition.hpp */,
+				7994CC741F0FDEEC00DF5B94 /* GfxJoystick.cpp */,
+				7994CC751F0FDEEC00DF5B94 /* GfxJoystick.hpp */,
 				796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */,
 				796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */,
 				79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */,
@@ -1458,6 +1470,7 @@
 				1946489E1EEC2CFA00299B55 /* GfxBgiConstants.cpp in Sources */,
 				19314B611EEC396100A46376 /* Playground.cpp in Sources */,
 				194648C21EEC2DC100299B55 /* GfxPixelFormat.cpp in Sources */,
+				7994CC791F0FE1B500DF5B94 /* GfxHatPosition.cpp in Sources */,
 				194648CF1EEC2E0C00299B55 /* GfxTextureFormats.cpp in Sources */,
 				194648EC1EEC2EA000299B55 /* GRetryCancelMsgBox.cpp in Sources */,
 				194648C41EEC2DC700299B55 /* GfxPixelType.cpp in Sources */,
@@ -1483,6 +1496,7 @@
 				796543A01EFB78140086FBD1 /* GfxKeysym.cpp in Sources */,
 				194648CA1EEC2DFB00299B55 /* GfxGetRendererInfo.cpp in Sources */,
 				194648F31EEC2EBD00299B55 /* GGraphicControl.cpp in Sources */,
+				7994CC781F0FE1B000DF5B94 /* GfxJoystick.cpp in Sources */,
 				194648CE1EEC2E0800299B55 /* GfxTextureAccess.cpp in Sources */,
 				19B8D2E01EF6B65700102304 /* PaletteSDL.cpp in Sources */,
 				194648D21EEC2E1F00299B55 /* GfxSurfaceFlags.cpp in Sources */,
@@ -1629,6 +1643,7 @@
 				796543961EFB77B40086FBD1 /* GfxKeyboard.cpp in Sources */,
 				19A871391EEBC69D00A8C84C /* GfxTextureAccess.cpp in Sources */,
 				791E526A1EE2DCAA00DD9788 /* GfxError.cpp in Sources */,
+				7994CC761F0FDEEC00DF5B94 /* GfxHatPosition.cpp in Sources */,
 				79F2C7351EFD775B00FAE660 /* GfxDirection.cpp in Sources */,
 				791EAD4E1EDCB9BE0032ED1D /* GfxRadius.cpp in Sources */,
 				790BB03C1EF440EF00B4F46B /* GfxTexture.cpp in Sources */,
@@ -1715,6 +1730,7 @@
 				1980161A1EDF283C00AEDB49 /* GfxVideo.cpp in Sources */,
 				79F759651EFC245B00F48942 /* GfxTextEditingEvent.cpp in Sources */,
 				798C0C6B1EF9799A006F1EEB /* GFileCollectionElement.cpp in Sources */,
+				7994CC771F0FDEEC00DF5B94 /* GfxJoystick.cpp in Sources */,
 				790BB0461EF4410700B4F46B /* GfxHints.cpp in Sources */,
 				198016031EDF281700AEDB49 /* GfxMessageBoxColorType.cpp in Sources */,
 				798C0C6D1EF9799A006F1EEB /* GFileSystemObject.cpp in Sources */,
