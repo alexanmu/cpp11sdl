@@ -136,6 +136,7 @@
 #include "GfxJoystickPowerLevel.hpp"  // 2017.07.06
 #include "GfxHatPosition.hpp"  // 2017.07.07
 #include "GfxJoystick.hpp"  // 2017.07.07
+#include "GfxEventAction.hpp"  // 2017.07.08
 
 struct ToStringStruct
 {
@@ -361,6 +362,7 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::events::GfxKeyboardEvent>()      },  // 2017.06.21
     {   prv::makeStringStruct<gfx::events::GfxTextEditingEvent>()   },  // 2017.06.22
     {   prv::makeStringStruct<gfx::events::GfxTextInputEvent>()     },  // 2017.06.22
+    {   prv::makeStringStruct<gfx::events::GfxEventAction>()        },  // 2017.07.08
     //  gfx::scancode
     {   prv::makeStringStruct<gfx::scancode::GfxScancode>()         },  // 2017.06.21
     //  gfx::keycode

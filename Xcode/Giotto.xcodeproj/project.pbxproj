@@ -242,6 +242,8 @@
 		7979CDDE1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7979CDDC1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp */; };
 		798203731EE2E56E005D610C /* GfxSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7982036F1EE2E56E005D610C /* GfxSurface.cpp */; };
 		798203741EE2E56E005D610C /* GfxSurfaceFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798203711EE2E56E005D610C /* GfxSurfaceFlags.cpp */; };
+		7989726A1F109E6E008F5128 /* GfxEventAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798972681F109E6E008F5128 /* GfxEventAction.cpp */; };
+		7989726B1F109E6E008F5128 /* GfxEventAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798972681F109E6E008F5128 /* GfxEventAction.cpp */; };
 		798A0CE31F016E9400DFEFFB /* BgiDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798A0CE11F016E9400DFEFFB /* BgiDemo.cpp */; };
 		798C0C6B1EF9799A006F1EEB /* GFileCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */; };
 		798C0C6C1EF9799A006F1EEB /* GFileObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 798C0C611EF9799A006F1EEB /* GFileObject.cpp */; };
@@ -593,6 +595,8 @@
 		798203701EE2E56E005D610C /* GfxSurface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxSurface.hpp; path = surface/GfxSurface.hpp; sourceTree = "<group>"; };
 		798203711EE2E56E005D610C /* GfxSurfaceFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxSurfaceFlags.cpp; path = surface/GfxSurfaceFlags.cpp; sourceTree = "<group>"; };
 		798203721EE2E56E005D610C /* GfxSurfaceFlags.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxSurfaceFlags.hpp; path = surface/GfxSurfaceFlags.hpp; sourceTree = "<group>"; };
+		798972681F109E6E008F5128 /* GfxEventAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxEventAction.cpp; path = gfx/events/GfxEventAction.cpp; sourceTree = "<group>"; };
+		798972691F109E6E008F5128 /* GfxEventAction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxEventAction.hpp; path = gfx/events/GfxEventAction.hpp; sourceTree = "<group>"; };
 		798A0CE11F016E9400DFEFFB /* BgiDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BgiDemo.cpp; path = ../play/BgiDemo.cpp; sourceTree = SOURCE_ROOT; };
 		798A0CE21F016E9400DFEFFB /* BgiDemo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BgiDemo.hpp; path = ../play/BgiDemo.hpp; sourceTree = SOURCE_ROOT; };
 		798C0C5F1EF9799A006F1EEB /* GFileCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFileCollectionElement.cpp; path = fso/GFileCollectionElement.cpp; sourceTree = "<group>"; };
@@ -707,6 +711,8 @@
 			children = (
 				7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */,
 				7902A01C1EF82D3700513746 /* GfxCommonEvent.hpp */,
+				798972681F109E6E008F5128 /* GfxEventAction.cpp */,
+				798972691F109E6E008F5128 /* GfxEventAction.hpp */,
 				7902A01D1EF82D3700513746 /* GfxEventConstants.hpp */,
 				190FD24C1EF6CF6D00F88E04 /* GfxEventType.cpp */,
 				190FD24D1EF6CF6D00F88E04 /* GfxEventType.hpp */,
@@ -1578,6 +1584,7 @@
 				194648A51EEC2D2000299B55 /* GfxClipboard.cpp in Sources */,
 				79F2C7431EFD777800FAE660 /* GfxColors2.cpp in Sources */,
 				194648EB1EEC2E9D00299B55 /* GQuitCancelMsgBox.cpp in Sources */,
+				7989726B1F109E6E008F5128 /* GfxEventAction.cpp in Sources */,
 				194648971EEC2BFB00299B55 /* GfxLogOutputFunction.cpp in Sources */,
 				79F7596E1EFC249700F48942 /* GfxCanvasBgi.cpp in Sources */,
 				1946489D1EEC2CF600299B55 /* GfxAngle.cpp in Sources */,
@@ -1635,6 +1642,7 @@
 				791EAD411EDCB9BE0032ED1D /* GfxBool.cpp in Sources */,
 				791EAD431EDCB9BE0032ED1D /* main.cpp in Sources */,
 				791EAD451EDCB9BE0032ED1D /* GTypes.cpp in Sources */,
+				7989726A1F109E6E008F5128 /* GfxEventAction.cpp in Sources */,
 				791EAD491EDCB9BE0032ED1D /* GfxTtfFontRenderer.cpp in Sources */,
 				793FD16E1EE2BC4900274C24 /* GfxFileSystem.cpp in Sources */,
 				793A42A61F055FB40083E63B /* GfxBasicLogger.cpp in Sources */,
