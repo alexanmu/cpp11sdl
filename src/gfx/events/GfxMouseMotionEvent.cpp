@@ -178,6 +178,13 @@ void GfxMouseMotionEvent::clear(void) noexcept
     mmEvent_.yrel = 0;
 }
 
+GfxMouseMotionEvent::SdlType GfxMouseMotionEvent::getAsSdlType(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (SdlType)mmEvent_;
+}
+
 }  // namespace events
 
 }  // namespace gfx

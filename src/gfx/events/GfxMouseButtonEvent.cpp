@@ -35,7 +35,7 @@ namespace gfx
 namespace events
 {
 
-const char GfxMouseButtonEvent::ClassName[] = "GfxMouseMotionEvent";
+const char GfxMouseButtonEvent::ClassName[] = "GfxMouseButtonEvent";
 
 GfxMouseButtonEvent::GfxMouseButtonEvent() noexcept : GfxObject(ClassName)
 {
@@ -176,6 +176,13 @@ void GfxMouseButtonEvent::clear(void) noexcept
     mbEvent_.clicks = 0;
     mbEvent_.x = 0;
     mbEvent_.y = 0;
+}
+
+GfxMouseButtonEvent::SdlType GfxMouseButtonEvent::getAsSdlType(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (SdlType)mbEvent_;
 }
 
 }  // namespace events
