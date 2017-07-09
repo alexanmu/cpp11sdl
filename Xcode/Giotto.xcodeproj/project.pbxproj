@@ -208,6 +208,8 @@
 		791EAD9B1EDCB9BE0032ED1D /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191B2E591EDC89590022BB5B /* SDL2.framework */; };
 		791EADA21EDCB9DA0032ED1D /* tool in Copy Files */ = {isa = PBXBuildFile; fileRef = 791EADA11EDCB9BE0032ED1D /* tool */; };
 		7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */; };
+		792577F81F12601D0090B6A7 /* GfxMouseButtonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 792577F61F12601D0090B6A7 /* GfxMouseButtonEvent.cpp */; };
+		792577F91F12601D0090B6A7 /* GfxMouseButtonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 792577F61F12601D0090B6A7 /* GfxMouseButtonEvent.cpp */; };
 		79260A7E1F0D441A00011442 /* GfxJoystickID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */; };
 		79260A7F1F0D441A00011442 /* GfxJoystickID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */; };
 		793A42A61F055FB40083E63B /* GfxBasicLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */; };
@@ -547,6 +549,8 @@
 		7922FC4B1EE3C736001D91A6 /* fntWacky.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fntWacky.hpp; path = fnt/fntWacky.hpp; sourceTree = "<group>"; };
 		7922FC4C1EE3C736001D91A6 /* GfxBitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBitmapFont.cpp; path = fnt/GfxBitmapFont.cpp; sourceTree = "<group>"; };
 		7922FC4D1EE3C736001D91A6 /* GfxBitmapFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBitmapFont.hpp; path = fnt/GfxBitmapFont.hpp; sourceTree = "<group>"; };
+		792577F61F12601D0090B6A7 /* GfxMouseButtonEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMouseButtonEvent.cpp; path = gfx/events/GfxMouseButtonEvent.cpp; sourceTree = "<group>"; };
+		792577F71F12601D0090B6A7 /* GfxMouseButtonEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMouseButtonEvent.hpp; path = gfx/events/GfxMouseButtonEvent.hpp; sourceTree = "<group>"; };
 		79260A7C1F0D441A00011442 /* GfxJoystickID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickID.cpp; path = joystick/GfxJoystickID.cpp; sourceTree = "<group>"; };
 		79260A7D1F0D441A00011442 /* GfxJoystickID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickID.hpp; path = joystick/GfxJoystickID.hpp; sourceTree = "<group>"; };
 		793A42A41F055FB40083E63B /* GfxBasicLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBasicLogger.cpp; path = _gfx/GfxBasicLogger.cpp; sourceTree = "<group>"; };
@@ -723,6 +727,8 @@
 				190FD24D1EF6CF6D00F88E04 /* GfxEventType.hpp */,
 				796543981EFB77CF0086FBD1 /* GfxKeyboardEvent.cpp */,
 				796543991EFB77CF0086FBD1 /* GfxKeyboardEvent.hpp */,
+				792577F61F12601D0090B6A7 /* GfxMouseButtonEvent.cpp */,
+				792577F71F12601D0090B6A7 /* GfxMouseButtonEvent.hpp */,
 				79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */,
 				79A30A861F112AD700F7A4EF /* GfxMouseMotionEvent.hpp */,
 				79F759611EFC245B00F48942 /* GfxTextEditingEvent.cpp */,
@@ -1566,6 +1572,7 @@
 				19B8D2DE1EF6B65100102304 /* Meta.cpp in Sources */,
 				79F2C7471EFD778A00FAE660 /* GfxLineSettingsType.cpp in Sources */,
 				79F759671EFC246600F48942 /* GfxTextEditingEvent.cpp in Sources */,
+				792577F91F12601D0090B6A7 /* GfxMouseButtonEvent.cpp in Sources */,
 				798C0C7F1EF97BFA006F1EEB /* GfxCommonEvent.cpp in Sources */,
 				194648E91EEC2E9700299B55 /* GOKCancelMsgBox.cpp in Sources */,
 				19B8D2D81EF6B63E00102304 /* Benchmark.cpp in Sources */,
@@ -1673,6 +1680,7 @@
 				79F2C7341EFD775B00FAE660 /* GfxColors2.cpp in Sources */,
 				79F67FD11EE716940007F97D /* GfxRuntimeMeta.cpp in Sources */,
 				791EAD531EDCB9BE0032ED1D /* GLabel.cpp in Sources */,
+				792577F81F12601D0090B6A7 /* GfxMouseButtonEvent.cpp in Sources */,
 				79C9C7EF1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp in Sources */,
 				7979CDDE1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp in Sources */,
 				791EAD541EDCB9BE0032ED1D /* GAbortRetryIgnoreMsgBox.cpp in Sources */,

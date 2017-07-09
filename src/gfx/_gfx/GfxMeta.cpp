@@ -138,6 +138,7 @@
 #include "GfxJoystick.hpp"  // 2017.07.07
 #include "GfxEventAction.hpp"  // 2017.07.08
 #include "GfxMouseMotionEvent.hpp"  // 2017.07.08
+#include "GfxMouseButtonEvent.hpp"  // 2017.07.09
 
 namespace gfx
 {
@@ -397,6 +398,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::events::GfxTextInputEvent>()    },  // 2017.06.22
     {   prv::makeClassInfo<gfx::events::GfxEventAction>()       },  // 2017.07.08
     {   prv::makeClassInfo<gfx::events::GfxMouseMotionEvent>()  },  // 2017.07.08
+    {   prv::makeClassInfo<gfx::events::GfxMouseButtonEvent>()  },  // 2017.07.09
     //  gfx::scancode
     {   prv::makeClassInfo<gfx::scancode::GfxScancode>()        },  // 2017.06.21
     //  gfx::keycode
