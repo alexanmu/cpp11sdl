@@ -34,14 +34,22 @@ namespace gfx
 namespace events
 {
 
-const uint8_t kGfxReleased = SDL_RELEASED;
-const uint8_t kGfxPressed = SDL_PRESSED;
+enum class GfxButtonState : uint8_t
+{
+    kGfxReleased = SDL_RELEASED,
+    kGfxPressed = SDL_PRESSED
+};
+
 const uint8_t kGfxTextEditingEventTextSize = SDL_TEXTEDITINGEVENT_TEXT_SIZE;
 const uint8_t kGfxTextInputEventTextSize = SDL_TEXTINPUTEVENT_TEXT_SIZE;
-const int32_t kGfxQuery = SDL_QUERY;
-const int32_t kGfxIgnore = SDL_IGNORE;
-const int32_t kGfxDisable = SDL_DISABLE;
-const int32_t kGfxEnable = SDL_ENABLE;
+
+enum class GfxEventActionCommand : int32_t
+{
+    kGfxQuery = SDL_QUERY,
+    kGfxIgnore = SDL_IGNORE,
+    kGfxDisable = SDL_DISABLE,
+    kGfxEnable = SDL_ENABLE
+};
 
 }  // namespace events
 

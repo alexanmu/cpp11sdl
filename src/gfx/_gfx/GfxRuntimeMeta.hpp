@@ -52,12 +52,16 @@ public:
     static GfxRuntimeMeta& getInstance(void) noexcept;
 
     ClassInfo const& getClassInfo(const int32_t index) noexcept;
+    std::string getClassName(const int32_t index) noexcept;
     int32_t getClassCount(void) const noexcept;
 
     void constructObject(const char * className, const int32_t instanceId) noexcept;
     void destructObject(const char * className, const int32_t instanceId) noexcept;
 
     std::ostream& printToStream(std::ostream& ostream) const noexcept;
+
+    // Should only be called during debugging
+    void clear_map(void) noexcept;
 private:
     GfxRuntimeMeta() noexcept;
 

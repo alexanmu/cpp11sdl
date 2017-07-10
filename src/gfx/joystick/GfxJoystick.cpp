@@ -348,6 +348,7 @@ GfxJoystickID GfxJoystick::joystickInstanceID(void) const noexcept
     if (joy_ != nullptr)
     {
         id = sdl2::SDL_JoystickInstanceID(joy_);
+        return GfxJoystickID(id);
     }
     return GfxJoystickID();
 }
@@ -403,13 +404,15 @@ void GfxJoystick::joystickUpdate(void) const noexcept
     sdl2::SDL_JoystickUpdate();
 }
 
-int32_t GfxJoystick::joystickEventState(const int32_t state) const noexcept
+events::GfxEventActionCommand GfxJoystick::joystickEventState(const events::GfxEventActionCommand state) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    assert((state == events::kGfxQuery) || (state == events::kGfxEnable) || (state == events::kGfxIgnore));
+    assert((static_cast<events::GfxEventActionCommand>(state) == events::GfxEventActionCommand::kGfxQuery) ||
+           (static_cast<events::GfxEventActionCommand>(state) == events::GfxEventActionCommand::kGfxEnable) ||
+           (static_cast<events::GfxEventActionCommand>(state) == events::GfxEventActionCommand::kGfxIgnore));
 
-    return sdl2::SDL_JoystickEventState(state);
+    return static_cast<events::GfxEventActionCommand>(sdl2::SDL_JoystickEventState(static_cast<int32_t>(state)));
 }
 
 int16_t GfxJoystick::joystickGetAxis(const int32_t axis) const noexcept

@@ -36,6 +36,7 @@
 #include "GfxBool.hpp"
 #include "GfxHatPosition.hpp"
 #include "GfxJoystickPowerLevel.hpp"
+#include "GfxEventConstants.hpp"
 
 namespace gfx
 {
@@ -94,7 +95,7 @@ public:
     int32_t joystickNumHats(void) const noexcept;
     int32_t joystickNumButtons(void) const noexcept;
     void joystickUpdate(void) const noexcept;
-    int32_t joystickEventState(const int32_t state) const noexcept;
+    events::GfxEventActionCommand joystickEventState(const events::GfxEventActionCommand state) const noexcept;
     int16_t joystickGetAxis(const int32_t axis) const noexcept;
     GfxBool joystickGetAxisInitialState(const int32_t axis, int16_t * state) const noexcept;
     GfxHatPosition joystickGetHat(const int32_t hat) const noexcept;

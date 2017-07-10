@@ -140,6 +140,11 @@
 #include "GfxMouseMotionEvent.hpp"  // 2017.07.08
 #include "GfxMouseButtonEvent.hpp"  // 2017.07.09
 #include "GfxMouseWheelEvent.hpp"  // 2017.07.09
+#include "GfxJoyAxisEvent.hpp"  // 2017.07.10
+#include "GfxJoyBallEvent.hpp"  // 2017.07.10
+#include "GfxJoyHatEvent.hpp"  // 2017.07.10
+#include "GfxJoyButtonEvent.hpp"  // 2017.07.10
+#include "GfxJoyDeviceEvent.hpp"  // 2017.07.10
 
 struct ToStringStruct
 {
@@ -369,6 +374,11 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::events::GfxMouseMotionEvent>()   },  // 2017.07.08
     {   prv::makeStringStruct<gfx::events::GfxMouseButtonEvent>()   },  // 2017.07.09
     {   prv::makeStringStruct<gfx::events::GfxMouseWheelEvent>()    },  // 2017.07.09
+    {   prv::makeStringStruct<gfx::events::GfxJoyAxisEvent>()       },  // 2017.07.10
+    {   prv::makeStringStruct<gfx::events::GfxJoyBallEvent>()       },  // 2017.07.10
+    {   prv::makeStringStruct<gfx::events::GfxJoyHatEvent>()        },  // 2017.07.10
+    {   prv::makeStringStruct<gfx::events::GfxJoyButtonEvent>()     },  // 2017.07.10
+    {   prv::makeStringStruct<gfx::events::GfxJoyDeviceEvent>()     },  // 2017.07.10
     //  gfx::scancode
     {   prv::makeStringStruct<gfx::scancode::GfxScancode>()         },  // 2017.06.21
     //  gfx::keycode

@@ -78,6 +78,25 @@ GfxRuntimeMeta::ClassInfo const& GfxRuntimeMeta::getClassInfo(const int32_t inde
     return classInfo_;
 }
 
+std::string GfxRuntimeMeta::getClassName(const int32_t index) noexcept
+{
+    assert(classUMap.size() > 0);
+
+    int32_t ctr = 0;
+    std::string ret;
+
+    for (auto it : classUMap)
+    {
+        if (ctr == index)
+        {
+            ret = it.first;
+            break;
+        }
+        ctr += 1;
+    }
+    return ret;
+}
+
 int32_t GfxRuntimeMeta::getClassCount(void) const noexcept
 {
     return static_cast<int32_t>(classUMap.size());
@@ -136,6 +155,11 @@ std::ostream& GfxRuntimeMeta::printToStream(std::ostream& outstream) const noexc
 {
     outstream << classUMap;
     return outstream;
+}
+
+void GfxRuntimeMeta::clear_map(void) noexcept
+{
+    classUMap.clear();
 }
 
 // Private methods

@@ -140,6 +140,11 @@
 #include "GfxMouseMotionEvent.hpp"  // 2017.07.08
 #include "GfxMouseButtonEvent.hpp"  // 2017.07.09
 #include "GfxMouseWheelEvent.hpp"  // 2017.07.09
+#include "GfxJoyAxisEvent.hpp"  // 2017.07.10
+#include "GfxJoyBallEvent.hpp"  // 2017.07.10
+#include "GfxJoyHatEvent.hpp"  // 2017.07.10
+#include "GfxJoyButtonEvent.hpp"  // 2017.07.10
+#include "GfxJoyDeviceEvent.hpp"  // 2017.07.10
 
 namespace gfx
 {
@@ -401,6 +406,11 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::events::GfxMouseMotionEvent>()  },  // 2017.07.08
     {   prv::makeClassInfo<gfx::events::GfxMouseButtonEvent>()  },  // 2017.07.09
     {   prv::makeClassInfo<gfx::events::GfxMouseWheelEvent>()   },  // 2017.07.09
+    {   prv::makeClassInfo<gfx::events::GfxJoyAxisEvent>()      },  // 2017.07.10
+    {   prv::makeClassInfo<gfx::events::GfxJoyBallEvent>()      },  // 2017.07.10
+    {   prv::makeClassInfo<gfx::events::GfxJoyHatEvent>()       },  // 2017.07.10
+    {   prv::makeClassInfo<gfx::events::GfxJoyButtonEvent>()    },  // 2017.07.10
+    {   prv::makeClassInfo<gfx::events::GfxJoyDeviceEvent>()    },  // 2017.07.10
     //  gfx::scancode
     {   prv::makeClassInfo<gfx::scancode::GfxScancode>()        },  // 2017.06.21
     //  gfx::keycode

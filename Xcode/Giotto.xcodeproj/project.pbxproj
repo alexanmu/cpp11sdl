@@ -159,6 +159,16 @@
 		19F425151EF5641500F7E2C5 /* GfxTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0391EF440EF00B4F46B /* GfxTexture.cpp */; };
 		7902A0201EF82D3700513746 /* GfxCommonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */; };
 		7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */; };
+		790638E11F13E662000F603B /* GfxJoyAxisEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638D71F13E662000F603B /* GfxJoyAxisEvent.cpp */; };
+		790638E21F13E662000F603B /* GfxJoyBallEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638D91F13E662000F603B /* GfxJoyBallEvent.cpp */; };
+		790638E31F13E662000F603B /* GfxJoyButtonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DB1F13E662000F603B /* GfxJoyButtonEvent.cpp */; };
+		790638E41F13E662000F603B /* GfxJoyDeviceEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DD1F13E662000F603B /* GfxJoyDeviceEvent.cpp */; };
+		790638E51F13E662000F603B /* GfxJoyHatEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DF1F13E662000F603B /* GfxJoyHatEvent.cpp */; };
+		790638E61F13E66F000F603B /* GfxJoyAxisEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638D71F13E662000F603B /* GfxJoyAxisEvent.cpp */; };
+		790638E71F13E672000F603B /* GfxJoyBallEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638D91F13E662000F603B /* GfxJoyBallEvent.cpp */; };
+		790638E81F13E674000F603B /* GfxJoyButtonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DB1F13E662000F603B /* GfxJoyButtonEvent.cpp */; };
+		790638E91F13E677000F603B /* GfxJoyDeviceEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DD1F13E662000F603B /* GfxJoyDeviceEvent.cpp */; };
+		790638EA1F13E679000F603B /* GfxJoyHatEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DF1F13E662000F603B /* GfxJoyHatEvent.cpp */; };
 		790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */; };
 		790BB03C1EF440EF00B4F46B /* GfxTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0391EF440EF00B4F46B /* GfxTexture.cpp */; };
 		790BB0441EF4410700B4F46B /* GfxHintCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB03E1EF4410700B4F46B /* GfxHintCallback.cpp */; };
@@ -510,6 +520,17 @@
 		7902A01F1EF82D3700513746 /* GfxWindowEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxWindowEvent.hpp; path = gfx/events/GfxWindowEvent.hpp; sourceTree = "<group>"; };
 		7902A0231EF82D4C00513746 /* IGetCommonEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetCommonEvent.hpp; path = gfx/events/prv/IGetCommonEvent.hpp; sourceTree = "<group>"; };
 		7902A0241EF82D4C00513746 /* IGetWindowID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetWindowID.hpp; path = gfx/events/prv/IGetWindowID.hpp; sourceTree = "<group>"; };
+		790638D71F13E662000F603B /* GfxJoyAxisEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoyAxisEvent.cpp; path = gfx/events/GfxJoyAxisEvent.cpp; sourceTree = "<group>"; };
+		790638D81F13E662000F603B /* GfxJoyAxisEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoyAxisEvent.hpp; path = gfx/events/GfxJoyAxisEvent.hpp; sourceTree = "<group>"; };
+		790638D91F13E662000F603B /* GfxJoyBallEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoyBallEvent.cpp; path = gfx/events/GfxJoyBallEvent.cpp; sourceTree = "<group>"; };
+		790638DA1F13E662000F603B /* GfxJoyBallEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoyBallEvent.hpp; path = gfx/events/GfxJoyBallEvent.hpp; sourceTree = "<group>"; };
+		790638DB1F13E662000F603B /* GfxJoyButtonEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoyButtonEvent.cpp; path = gfx/events/GfxJoyButtonEvent.cpp; sourceTree = "<group>"; };
+		790638DC1F13E662000F603B /* GfxJoyButtonEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoyButtonEvent.hpp; path = gfx/events/GfxJoyButtonEvent.hpp; sourceTree = "<group>"; };
+		790638DD1F13E662000F603B /* GfxJoyDeviceEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoyDeviceEvent.cpp; path = gfx/events/GfxJoyDeviceEvent.cpp; sourceTree = "<group>"; };
+		790638DE1F13E662000F603B /* GfxJoyDeviceEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoyDeviceEvent.hpp; path = gfx/events/GfxJoyDeviceEvent.hpp; sourceTree = "<group>"; };
+		790638DF1F13E662000F603B /* GfxJoyHatEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoyHatEvent.cpp; path = gfx/events/GfxJoyHatEvent.cpp; sourceTree = "<group>"; };
+		790638E01F13E662000F603B /* GfxJoyHatEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoyHatEvent.hpp; path = gfx/events/GfxJoyHatEvent.hpp; sourceTree = "<group>"; };
+		790638EB1F13E8FA000F603B /* IGetJoystickID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetJoystickID.hpp; path = gfx/events/prv/IGetJoystickID.hpp; sourceTree = "<group>"; };
 		790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRenderer.cpp; path = render/GfxRenderer.cpp; sourceTree = "<group>"; };
 		790BB0381EF440EF00B4F46B /* GfxRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRenderer.hpp; path = render/GfxRenderer.hpp; sourceTree = "<group>"; };
 		790BB0391EF440EF00B4F46B /* GfxTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTexture.cpp; path = render/GfxTexture.cpp; sourceTree = "<group>"; };
@@ -729,6 +750,16 @@
 				7902A01D1EF82D3700513746 /* GfxEventConstants.hpp */,
 				190FD24C1EF6CF6D00F88E04 /* GfxEventType.cpp */,
 				190FD24D1EF6CF6D00F88E04 /* GfxEventType.hpp */,
+				790638D71F13E662000F603B /* GfxJoyAxisEvent.cpp */,
+				790638D81F13E662000F603B /* GfxJoyAxisEvent.hpp */,
+				790638D91F13E662000F603B /* GfxJoyBallEvent.cpp */,
+				790638DA1F13E662000F603B /* GfxJoyBallEvent.hpp */,
+				790638DB1F13E662000F603B /* GfxJoyButtonEvent.cpp */,
+				790638DC1F13E662000F603B /* GfxJoyButtonEvent.hpp */,
+				790638DD1F13E662000F603B /* GfxJoyDeviceEvent.cpp */,
+				790638DE1F13E662000F603B /* GfxJoyDeviceEvent.hpp */,
+				790638DF1F13E662000F603B /* GfxJoyHatEvent.cpp */,
+				790638E01F13E662000F603B /* GfxJoyHatEvent.hpp */,
 				796543981EFB77CF0086FBD1 /* GfxKeyboardEvent.cpp */,
 				796543991EFB77CF0086FBD1 /* GfxKeyboardEvent.hpp */,
 				792577F61F12601D0090B6A7 /* GfxMouseButtonEvent.cpp */,
@@ -1164,6 +1195,7 @@
 		7902A0221EF82D3D00513746 /* prv */ = {
 			isa = PBXGroup;
 			children = (
+				790638EB1F13E8FA000F603B /* IGetJoystickID.hpp */,
 				7902A0231EF82D4C00513746 /* IGetCommonEvent.hpp */,
 				7902A0241EF82D4C00513746 /* IGetWindowID.hpp */,
 				79A30A891F113BCE00F7A4EF /* IGetMouseID.hpp */,
@@ -1504,6 +1536,7 @@
 				79F2C74C1EFD779C00FAE660 /* GfxTextJustification.cpp in Sources */,
 				194648991EEC2CDE00299B55 /* GfxMeta.cpp in Sources */,
 				194648F91EEC2ED400299B55 /* GTypes.cpp in Sources */,
+				790638EA1F13E679000F603B /* GfxJoyHatEvent.cpp in Sources */,
 				79F2C7481EFD778C00FAE660 /* GfxLineStyle.cpp in Sources */,
 				194648E61EEC2E8400299B55 /* GfxGammaRamp.cpp in Sources */,
 				798A0CE31F016E9400DFEFFB /* BgiDemo.cpp in Sources */,
@@ -1557,6 +1590,7 @@
 				19F425131EF563CA00F7E2C5 /* GfxHintCallback.cpp in Sources */,
 				194648AB1EEC2D5100299B55 /* GfxBool.cpp in Sources */,
 				19B8D2DB1EF6B64800102304 /* Fonts.cpp in Sources */,
+				790638E81F13E674000F603B /* GfxJoyButtonEvent.cpp in Sources */,
 				79F2C74E1EFD77A100FAE660 /* GfxViewPortType.cpp in Sources */,
 				79F2C74A1EFD779200FAE660 /* GfxPaletteType.cpp in Sources */,
 				194648D91EEC2E4500299B55 /* GfxGetVersion.cpp in Sources */,
@@ -1570,6 +1604,7 @@
 				194648A61EEC2D2700299B55 /* GfxCpuInfo.cpp in Sources */,
 				194648A31EEC2D1600299B55 /* GfxBits.cpp in Sources */,
 				194648D01EEC2E0F00299B55 /* GfxTextureModulate.cpp in Sources */,
+				790638E61F13E66F000F603B /* GfxJoyAxisEvent.cpp in Sources */,
 				194648B01EEC2D6800299B55 /* GfxLoadSo.cpp in Sources */,
 				1946489F1EEC2CFF00299B55 /* GfxCanvas.cpp in Sources */,
 				194648EE1EEC2EAB00299B55 /* GBitmap.cpp in Sources */,
@@ -1591,6 +1626,7 @@
 				194648EA1EEC2E9A00299B55 /* GOKMsgBox.cpp in Sources */,
 				194648C91EEC2DF500299B55 /* GfxRect.cpp in Sources */,
 				194648F61EEC2EC800299B55 /* GObject.cpp in Sources */,
+				790638E91F13E677000F603B /* GfxJoyDeviceEvent.cpp in Sources */,
 				79F2C7411EFD776B00FAE660 /* GfxArcCoordsType.cpp in Sources */,
 				7965439E1EFB78040086FBD1 /* Keyboard.cpp in Sources */,
 				194648BF1EEC2DB700299B55 /* GfxPackedLayout.cpp in Sources */,
@@ -1603,6 +1639,7 @@
 				194648EF1EEC2EAF00299B55 /* GComponent.cpp in Sources */,
 				194648D11EEC2E1C00299B55 /* GfxSurface.cpp in Sources */,
 				194648D51EEC2E2E00299B55 /* GfxTtfFontRenderer.cpp in Sources */,
+				790638E71F13E672000F603B /* GfxJoyBallEvent.cpp in Sources */,
 				194648E71EEC2E9100299B55 /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				194648A51EEC2D2000299B55 /* GfxClipboard.cpp in Sources */,
 				79F2C7431EFD777800FAE660 /* GfxColors2.cpp in Sources */,
@@ -1720,14 +1757,17 @@
 				791EAD5F1EDCB9BE0032ED1D /* GDemoForm.cpp in Sources */,
 				19A871351EEBC69D00A8C84C /* GfxGetRendererInfo.cpp in Sources */,
 				198015EC1EDF27F700AEDB49 /* GfxEndian.cpp in Sources */,
+				790638E31F13E662000F603B /* GfxJoyButtonEvent.cpp in Sources */,
 				791435521EDDD98200315A5C /* GfxArrayOrder.cpp in Sources */,
 				791EAD631EDCB9BE0032ED1D /* GfxTtfFont.cpp in Sources */,
 				791EAD661EDCB9BE0032ED1D /* GfxTtfInitQuit.cpp in Sources */,
+				790638E11F13E662000F603B /* GfxJoyAxisEvent.cpp in Sources */,
 				791EAD671EDCB9BE0032ED1D /* GfxTtfGetVersion.cpp in Sources */,
 				798C0C731EF979A5006F1EEB /* GFontManager.cpp in Sources */,
 				79F2C73C1EFD775B00FAE660 /* GfxPaletteType.cpp in Sources */,
 				794D05F71EE29ECB001BD5D9 /* GfxGetVersion.cpp in Sources */,
 				791435551EDDD98200315A5C /* GfxPackedLayout.cpp in Sources */,
+				790638E51F13E662000F603B /* GfxJoyHatEvent.cpp in Sources */,
 				791EAD681EDCB9BE0032ED1D /* GControl.cpp in Sources */,
 				796D33F91EE06AB40013C496 /* GfxControlledSurface.cpp in Sources */,
 				790BB0441EF4410700B4F46B /* GfxHintCallback.cpp in Sources */,
@@ -1764,6 +1804,7 @@
 				79F759651EFC245B00F48942 /* GfxTextEditingEvent.cpp in Sources */,
 				798C0C6B1EF9799A006F1EEB /* GFileCollectionElement.cpp in Sources */,
 				7994CC771F0FDEEC00DF5B94 /* GfxJoystick.cpp in Sources */,
+				790638E21F13E662000F603B /* GfxJoyBallEvent.cpp in Sources */,
 				790BB0461EF4410700B4F46B /* GfxHints.cpp in Sources */,
 				198016031EDF281700AEDB49 /* GfxMessageBoxColorType.cpp in Sources */,
 				798C0C6D1EF9799A006F1EEB /* GFileSystemObject.cpp in Sources */,
@@ -1791,6 +1832,7 @@
 				794D05FC1EE29EE7001BD5D9 /* GfxPlatform.cpp in Sources */,
 				796543971EFB77B40086FBD1 /* GfxKeysym.cpp in Sources */,
 				791EAD901EDCB9BE0032ED1D /* GRetryCancelMsgBox.cpp in Sources */,
+				790638E41F13E662000F603B /* GfxJoyDeviceEvent.cpp in Sources */,
 				79F2C73A1EFD775B00FAE660 /* GfxLineStyle.cpp in Sources */,
 				1980161E1EDF283C00AEDB49 /* GfxWindowPosition.cpp in Sources */,
 				7965439A1EFB77CF0086FBD1 /* GfxKeyboardEvent.cpp in Sources */,
