@@ -55,8 +55,9 @@ public:
     };
 
     GfxTtfFontStyle() noexcept;
-    explicit GfxTtfFontStyle(bool bold, bool italic, bool underline, bool strikethrough) noexcept;
-    explicit GfxTtfFontStyle(SdlType style) noexcept;
+    explicit GfxTtfFontStyle(const bool bold, const bool italic, const bool underline,
+                             const bool strikethrough) noexcept;
+    explicit GfxTtfFontStyle(const SdlType style) noexcept;
 
     GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept;
     GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept;

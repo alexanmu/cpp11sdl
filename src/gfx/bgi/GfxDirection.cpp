@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxDirection.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxDirection::GfxDirection(const BgiType dir) noexcept : GfxObject(ClassName)
     dir_ = dir;
 }
 
-GfxDirection::GfxDirection(GfxDirection const& other) noexcept : GfxObject(ClassName)
+GfxDirection::GfxDirection(GfxDirection const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     dir_ = other.dir_;
 }
 
-GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(ClassName)
+GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxDirection& GfxDirection::operator=(GfxDirection const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         dir_ = other.dir_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxDirection& GfxDirection::operator=(GfxDirection&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         dir_ = other.dir_;
         // Delete other's value
         other.clear();

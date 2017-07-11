@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxPixelFormatEnum.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) noexcept : GfxObject
     value_ = value;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxObject(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : GfxObject(ClassName)
+GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& othe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum&& other) no
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

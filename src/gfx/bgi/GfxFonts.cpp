@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxFonts.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxFonts::GfxFonts(const BgiType font) noexcept : GfxObject(ClassName)
     font_ = font;
 }
 
-GfxFonts::GfxFonts(GfxFonts const& other) noexcept : GfxObject(ClassName)
+GfxFonts::GfxFonts(GfxFonts const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     font_ = other.font_;
 }
 
-GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(ClassName)
+GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxFonts& GfxFonts::operator=(GfxFonts const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         font_ = other.font_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxFonts& GfxFonts::operator=(GfxFonts&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         font_ = other.font_;
         // Delete other's value
         other.clear();

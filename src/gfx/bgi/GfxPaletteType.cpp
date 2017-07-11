@@ -24,6 +24,7 @@
 #include <cstring>
 #include <vector>
 #include <string>
+#include <utility>
 
 #include "GfxPaletteType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -52,14 +53,14 @@ GfxPaletteType::GfxPaletteType(const BgiType pal) noexcept : GfxObject(ClassName
     pal_ = pal;
 }
 
-GfxPaletteType::GfxPaletteType(GfxPaletteType const& other) noexcept : GfxObject(ClassName)
+GfxPaletteType::GfxPaletteType(GfxPaletteType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     pal_ = other.pal_;
 }
 
-GfxPaletteType::GfxPaletteType(GfxPaletteType&& other) noexcept : GfxObject(ClassName)
+GfxPaletteType::GfxPaletteType(GfxPaletteType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,6 +75,9 @@ GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         pal_ = other.pal_;
     }
     return *this;
@@ -85,6 +89,9 @@ GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         pal_ = other.pal_;
         // Delete other's value
         other.clear();

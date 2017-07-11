@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTextEditingEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxTextEditingEvent::GfxTextEditingEvent(const SdlType event) noexcept : GfxObje
     textEditingEvent_ = event;
 }
 
-GfxTextEditingEvent::GfxTextEditingEvent(GfxTextEditingEvent const& other) noexcept : GfxObject(ClassName)
+GfxTextEditingEvent::GfxTextEditingEvent(GfxTextEditingEvent const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     textEditingEvent_ = other.textEditingEvent_;
 }
 
-GfxTextEditingEvent::GfxTextEditingEvent(GfxTextEditingEvent&& other) noexcept : GfxObject(ClassName)
+GfxTextEditingEvent::GfxTextEditingEvent(GfxTextEditingEvent&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxTextEditingEvent& GfxTextEditingEvent::operator=(GfxTextEditingEvent const& o
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         textEditingEvent_ = other.textEditingEvent_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxTextEditingEvent& GfxTextEditingEvent::operator=(GfxTextEditingEvent&& other)
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         textEditingEvent_ = other.textEditingEvent_;
         // Delete other's data
         other.clear();

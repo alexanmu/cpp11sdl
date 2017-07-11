@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxGetRendererInfo.hpp"
 #include "GfxRendererInfo.hpp"
@@ -46,14 +47,14 @@ GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxObject(ClassName)
     numRenderDrivers_ = -1;
 }
 
-GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept : GfxObject(ClassName)
+GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     numRenderDrivers_ = other.numRenderDrivers_;
 }
 
-GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept : GfxObject(ClassName)
+GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,6 +69,9 @@ GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo const& othe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         numRenderDrivers_ = other.numRenderDrivers_;
     }
     return *this;
@@ -79,6 +83,9 @@ GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo&& other) no
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         numRenderDrivers_ = other.numRenderDrivers_;
         // Delete other's data
         other.numRenderDrivers_ = -1;

@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTextSettingsType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxTextSettingsType::GfxTextSettingsType(const BgiType textsettings) noexcept : 
     textSettings_ = textsettings;
 }
 
-GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType const& other) noexcept : GfxObject(ClassName)
+GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     textSettings_ = other.textSettings_;
 }
 
-GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept : GfxObject(ClassName)
+GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType const& o
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         textSettings_ = other.textSettings_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType&& other)
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         textSettings_ = other.textSettings_;
         // Delete other's value
         other.clear();

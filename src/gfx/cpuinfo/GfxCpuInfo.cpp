@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxCpuInfo.hpp"
 #include "GfxSdlHeader.hpp"
@@ -44,42 +45,18 @@ GfxCpuInfo::GfxCpuInfo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxCpuInfo::GfxCpuInfo(GfxCpuInfo const& other) noexcept : GfxObject(ClassName)
+GfxCpuInfo::GfxCpuInfo(GfxCpuInfo const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
-    cpuCount_ = other.cpuCount_;
-    cpuCacheLineSize_ = other.cpuCacheLineSize_;
-    hasRdtsc_ = other.hasRdtsc_;
-    hasAltiVec_ = other.hasAltiVec_;
-    hasMmx_ = other.hasMmx_;
-    hasSse_ = other.hasSse_;
-    hasSse2_ = other.hasSse2_;
-    hasSse3_ = other.hasSse3_;
-    hasSse41_ = other.hasSse41_;
-    hasSse42_ = other.hasSse42_;
-    hasAvx_ = other.hasAvx_;
-    hasAvx2_ = other.hasAvx2_;
-    systemRam_ = other.systemRam_;
+    assign(other);
 }
 
-GfxCpuInfo::GfxCpuInfo(GfxCpuInfo&& other) noexcept : GfxObject(ClassName)
+GfxCpuInfo::GfxCpuInfo(GfxCpuInfo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
-    cpuCount_ = other.cpuCount_;
-    cpuCacheLineSize_ = other.cpuCacheLineSize_;
-    hasRdtsc_ = other.hasRdtsc_;
-    hasAltiVec_ = other.hasAltiVec_;
-    hasMmx_ = other.hasMmx_;
-    hasSse_ = other.hasSse_;
-    hasSse2_ = other.hasSse2_;
-    hasSse3_ = other.hasSse3_;
-    hasSse41_ = other.hasSse41_;
-    hasSse42_ = other.hasSse42_;
-    hasAvx_ = other.hasAvx_;
-    hasAvx2_ = other.hasAvx2_;
-    systemRam_ = other.systemRam_;
+    assign(other);
     // Delete other's data
     other.clear();
 }
@@ -90,19 +67,10 @@ GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo const& other) noexcept
 
     if (this != &other)
     {
-        cpuCount_ = other.cpuCount_;
-        cpuCacheLineSize_ = other.cpuCacheLineSize_;
-        hasRdtsc_ = other.hasRdtsc_;
-        hasAltiVec_ = other.hasAltiVec_;
-        hasMmx_ = other.hasMmx_;
-        hasSse_ = other.hasSse_;
-        hasSse2_ = other.hasSse2_;
-        hasSse3_ = other.hasSse3_;
-        hasSse41_ = other.hasSse41_;
-        hasSse42_ = other.hasSse42_;
-        hasAvx_ = other.hasAvx_;
-        hasAvx2_ = other.hasAvx2_;
-        systemRam_ = other.systemRam_;
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
+        assign(other);
     }
     return *this;
 }
@@ -113,19 +81,10 @@ GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo&& other) noexcept
 
     if (this != &other)
     {
-        cpuCount_ = other.cpuCount_;
-        cpuCacheLineSize_ = other.cpuCacheLineSize_;
-        hasRdtsc_ = other.hasRdtsc_;
-        hasAltiVec_ = other.hasAltiVec_;
-        hasMmx_ = other.hasMmx_;
-        hasSse_ = other.hasSse_;
-        hasSse2_ = other.hasSse2_;
-        hasSse3_ = other.hasSse3_;
-        hasSse41_ = other.hasSse41_;
-        hasSse42_ = other.hasSse42_;
-        hasAvx_ = other.hasAvx_;
-        hasAvx2_ = other.hasAvx2_;
-        systemRam_ = other.systemRam_;
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        assign(other);
         // Delete other's data
         other.clear();
     }
@@ -295,6 +254,24 @@ void GfxCpuInfo::clear(void) noexcept
     hasAvx_ = false;
     hasAvx2_ = false;
     systemRam_ = 0;
+}
+
+// Private methods
+void GfxCpuInfo::assign(GfxCpuInfo const& other) noexcept
+{
+    cpuCount_ = other.cpuCount_;
+    cpuCacheLineSize_ = other.cpuCacheLineSize_;
+    hasRdtsc_ = other.hasRdtsc_;
+    hasAltiVec_ = other.hasAltiVec_;
+    hasMmx_ = other.hasMmx_;
+    hasSse_ = other.hasSse_;
+    hasSse2_ = other.hasSse2_;
+    hasSse3_ = other.hasSse3_;
+    hasSse41_ = other.hasSse41_;
+    hasSse42_ = other.hasSse42_;
+    hasAvx_ = other.hasAvx_;
+    hasAvx2_ = other.hasAvx2_;
+    systemRam_ = other.systemRam_;
 }
 
 }  // namespace cpuinfo

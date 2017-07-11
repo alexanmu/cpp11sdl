@@ -73,6 +73,8 @@ public:
 
     void clear(void) noexcept;
 private:
+    void assign(GfxCpuInfo const& other) noexcept;
+
     int32_t cpuCount_;
     int32_t cpuCacheLineSize_;
     bool hasRdtsc_;

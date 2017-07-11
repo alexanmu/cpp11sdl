@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxCommonEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -59,14 +60,14 @@ GfxCommonEvent::GfxCommonEvent(const SdlType ev) noexcept : GfxObject(ClassName)
     commonEvent_ = ev;
 }
 
-GfxCommonEvent::GfxCommonEvent(const GfxCommonEvent& other) noexcept : GfxObject(ClassName)
+GfxCommonEvent::GfxCommonEvent(const GfxCommonEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     commonEvent_ = other.commonEvent_;
 }
 
-GfxCommonEvent::GfxCommonEvent(GfxCommonEvent&& other) noexcept : GfxObject(ClassName)
+GfxCommonEvent::GfxCommonEvent(GfxCommonEvent&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -81,6 +82,9 @@ GfxCommonEvent& GfxCommonEvent::operator=(const GfxCommonEvent& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         commonEvent_ = other.commonEvent_;
     }
     return *this;
@@ -92,6 +96,9 @@ GfxCommonEvent& GfxCommonEvent::operator=(GfxCommonEvent&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         commonEvent_ = other.commonEvent_;
         // Delete other's data
         other.clear();

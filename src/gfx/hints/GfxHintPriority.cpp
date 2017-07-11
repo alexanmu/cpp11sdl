@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxHintPriority.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxHintPriority::GfxHintPriority(const ValueType hint) noexcept : GfxObject(Clas
     hint_ = static_cast<SdlType>(hint);
 }
 
-GfxHintPriority::GfxHintPriority(GfxHintPriority const& other) noexcept : GfxObject(ClassName)
+GfxHintPriority::GfxHintPriority(GfxHintPriority const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     hint_ = other.hint_;
 }
 
-GfxHintPriority::GfxHintPriority(GfxHintPriority&& other) noexcept : GfxObject(ClassName)
+GfxHintPriority::GfxHintPriority(GfxHintPriority&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         hint_ = other.hint_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         hint_ = other.hint_;
         // Delete other's data
         other.clear();

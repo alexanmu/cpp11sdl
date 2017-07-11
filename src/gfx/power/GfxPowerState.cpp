@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxPowerState.hpp"
 #include "GfxBasicLogger.hpp"
@@ -60,14 +61,14 @@ GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxObject(ClassName
     value_ = value;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxObject(ClassName)
+GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
     value_ = other.value_;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxObject(ClassName)
+GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -80,6 +81,9 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other) noexcept
 {
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -91,6 +95,9 @@ GfxPowerState& GfxPowerState::operator=(GfxPowerState&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's value
         other.clear();

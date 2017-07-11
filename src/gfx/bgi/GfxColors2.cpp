@@ -23,6 +23,7 @@
 
 #include <stdexcept>
 #include <string>
+#include <utility>
 
 #include "GfxColors2.hpp"
 #include "GfxBasicLogger.hpp"
@@ -78,14 +79,14 @@ GfxColors2::GfxColors2(const BgiType clr) noexcept : GfxObject(ClassName)
     clr_ = clr;
 }
 
-GfxColors2::GfxColors2(GfxColors2 const& other) noexcept : GfxObject(ClassName)
+GfxColors2::GfxColors2(GfxColors2 const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     clr_ = other.clr_;
 }
 
-GfxColors2::GfxColors2(GfxColors2&& other) noexcept : GfxObject(ClassName)
+GfxColors2::GfxColors2(GfxColors2&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -100,6 +101,9 @@ GfxColors2& GfxColors2::operator=(GfxColors2 const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         clr_ = other.clr_;
     }
     return *this;
@@ -111,6 +115,9 @@ GfxColors2& GfxColors2::operator=(GfxColors2&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         clr_ = other.clr_;
         // Delete other's value
         other.clear();

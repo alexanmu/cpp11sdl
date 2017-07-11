@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxWindowEventID.hpp"
 #include "GfxBasicLogger.hpp"
@@ -64,14 +65,14 @@ GfxWindowEventID::GfxWindowEventID(const uint8_t eventid) noexcept : GfxObject(C
     eventid_ = static_cast<SdlType>(eventid);
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxObject(ClassName)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     eventid_ = other.eventid_;
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxObject(ClassName)
+GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -86,6 +87,9 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other) noe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         eventid_ = other.eventid_;
     }
     return *this;
@@ -97,6 +101,9 @@ GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         eventid_ = other.eventid_;
         // Delete other's data
         other.clear();

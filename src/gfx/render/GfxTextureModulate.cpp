@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxTextureModulate.hpp"
 #include "GfxBasicLogger.hpp"
@@ -60,14 +61,14 @@ GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxObject
     modulate_ = flags;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxObject(ClassName)
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     modulate_ = other.modulate_;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : GfxObject(ClassName)
+GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -82,6 +83,9 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& othe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         modulate_ = other.modulate_;
     }
     return *this;
@@ -93,6 +97,9 @@ GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate&& other) no
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         modulate_ = other.modulate_;
         // Delete other's data
         other.clear();

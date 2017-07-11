@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxScancode.hpp"
 #include "GfxBasicLogger.hpp"
@@ -58,14 +59,14 @@ GfxScancode::GfxScancode(const ValueType code) noexcept : GfxObject(ClassName)
     code_ = static_cast<SdlType>(code);
 }
 
-GfxScancode::GfxScancode(GfxScancode const& other) noexcept : GfxObject(ClassName)
+GfxScancode::GfxScancode(GfxScancode const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     code_ = other.code_;
 }
 
-GfxScancode::GfxScancode(GfxScancode&& other) noexcept : GfxObject(ClassName)
+GfxScancode::GfxScancode(GfxScancode&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,6 +81,9 @@ GfxScancode& GfxScancode::operator=(GfxScancode const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         code_ = other.code_;
     }
     return *this;
@@ -91,6 +95,9 @@ GfxScancode& GfxScancode::operator=(GfxScancode&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         code_ = other.code_;
         // Delete other's data
         other.clear();

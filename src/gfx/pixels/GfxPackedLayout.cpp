@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxPackedLayout.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept : GfxObject(Class
     value_ = value;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxObject(ClassName)
+GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxObject(ClassName)
+GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

@@ -25,6 +25,7 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "GfxRect.hpp"
 #include "GfxBasicLogger.hpp"
@@ -71,14 +72,14 @@ GfxRect::GfxRect(const SdlType rect) noexcept : GfxObject(ClassName)
     rect_ = rect;
 }
 
-GfxRect::GfxRect(GfxRect const& other) noexcept : GfxObject(ClassName)
+GfxRect::GfxRect(GfxRect const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     rect_ = other.rect_;
 }
 
-GfxRect::GfxRect(GfxRect&& other) noexcept : GfxObject(ClassName)
+GfxRect::GfxRect(GfxRect&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -93,6 +94,9 @@ GfxRect& GfxRect::operator=(GfxRect const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         rect_ = other.rect_;
     }
     return *this;
@@ -104,6 +108,9 @@ GfxRect& GfxRect::operator=(GfxRect&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         rect_ = other.rect_;
         // Delete other's data
         other.clear();

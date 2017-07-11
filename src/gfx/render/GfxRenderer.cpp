@@ -25,6 +25,7 @@
 #include <cassert>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "GfxRenderer.hpp"
 #include "GfxBasicLogger.hpp"
@@ -75,7 +76,7 @@ GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_err
     renderer_ = renderertmp;
 }
 
-GfxRenderer::GfxRenderer(GfxRenderer&& other) noexcept : GfxObject(ClassName)
+GfxRenderer::GfxRenderer(GfxRenderer&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -90,6 +91,9 @@ GfxRenderer& GfxRenderer::operator=(GfxRenderer&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         renderer_ = other.renderer_;
         // Delete other's data
         other.renderer_ = nullptr;

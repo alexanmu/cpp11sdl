@@ -46,10 +46,10 @@ public:
     GfxTtfInitQuit() noexcept;
 
     GfxTtfInitQuit(GfxTtfInitQuit const&) = delete;
-    GfxTtfInitQuit(GfxTtfInitQuit&&) = delete;
+    GfxTtfInitQuit(GfxTtfInitQuit&& other) noexcept;
 
     GfxTtfInitQuit& operator=(GfxTtfInitQuit const&) = delete;
-    GfxTtfInitQuit& operator=(GfxTtfInitQuit&&) = delete;
+    GfxTtfInitQuit& operator=(GfxTtfInitQuit&& other) noexcept;
 
     virtual ~GfxTtfInitQuit() noexcept;
 

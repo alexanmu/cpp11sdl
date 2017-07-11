@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxVersion.hpp"
 #include "GfxBasicLogger.hpp"
@@ -61,14 +62,14 @@ GfxVersion::GfxVersion(const SdlType ver) noexcept : GfxObject(ClassName)
     ver_ = ver;
 }
 
-GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxObject(ClassName)
+GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     ver_ = other.ver_;
 }
 
-GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxObject(ClassName)
+GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxObject(std::move(other))
 {
     ver_ = other.ver_;
     // Delete other's data
@@ -81,6 +82,9 @@ GfxVersion& GfxVersion::operator=(GfxVersion const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         ver_ = other.ver_;
     }
     return *this;
@@ -92,6 +96,9 @@ GfxVersion& GfxVersion::operator=(GfxVersion&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         ver_ = other.ver_;
         // Delete other's data
         other.clear();

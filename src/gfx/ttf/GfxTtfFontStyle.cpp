@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxTtfFontStyle.hpp"
 #include "GfxBasicLogger.hpp"
@@ -44,8 +45,8 @@ GfxTtfFontStyle::GfxTtfFontStyle() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool strikethrough) noexcept :
-            GfxObject(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(const bool bold, const bool italic, const bool underline,
+    const bool strikethrough) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +69,7 @@ GfxTtfFontStyle::GfxTtfFontStyle(bool bold, bool italic, bool underline, bool st
     }
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) noexcept : GfxObject(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(const SdlType style) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -77,14 +78,14 @@ GfxTtfFontStyle::GfxTtfFontStyle(SdlType style) noexcept : GfxObject(ClassName)
     style_ = style;
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept : GfxObject(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     style_ = other.style_;
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxObject(ClassName)
+GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -99,6 +100,9 @@ GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         style_ = other.style_;
     }
     return *this;
@@ -110,6 +114,9 @@ GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         style_ = other.style_;
         // Delete other's data
         other.clear();

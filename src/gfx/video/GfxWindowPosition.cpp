@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxWindowPosition.hpp"
 #include "GfxBasicLogger.hpp"
@@ -45,7 +46,7 @@ GfxWindowPosition::GfxWindowPosition() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : GfxObject(ClassName)
+GfxWindowPosition::GfxWindowPosition(const ValueType pos, const int32_t coord) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -65,7 +66,7 @@ GfxWindowPosition::GfxWindowPosition(ValueType pos, int32_t coord) noexcept : Gf
     }
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxObject(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -73,7 +74,7 @@ GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : 
     coord_ = other.coord_;
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxObject(ClassName)
+GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -89,6 +90,9 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other) 
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         pos_ = other.pos_;
         coord_ = other.coord_;
     }
@@ -101,6 +105,9 @@ GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition&& other) noexc
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         pos_ = other.pos_;
         coord_ = other.coord_;
         // Delete other's data

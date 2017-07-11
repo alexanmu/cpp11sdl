@@ -26,6 +26,7 @@
 #include <cstring>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "GfxWindow.hpp"
 #include "GfxBasicLogger.hpp"
@@ -156,7 +157,7 @@ GfxWindow::GfxWindow(void * data) throw(std::runtime_error) : GfxObject(ClassNam
     winSurface_ = nullptr;
 }
 
-GfxWindow::GfxWindow(GfxWindow&& other) noexcept : GfxObject(ClassName)
+GfxWindow::GfxWindow(GfxWindow&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -173,6 +174,9 @@ GfxWindow& GfxWindow::operator=(GfxWindow&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         window_ = other.window_;
         winSurface_ = other.winSurface_;
         // Delete other's data

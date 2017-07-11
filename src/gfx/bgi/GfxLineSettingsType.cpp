@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxLineSettingsType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxLineSettingsType::GfxLineSettingsType(const BgiType linesettings) noexcept : 
     lineSettings_ = linesettings;
 }
 
-GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType const& other) noexcept : GfxObject(ClassName)
+GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     lineSettings_ = other.lineSettings_;
 }
 
-GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType&& other) noexcept : GfxObject(ClassName)
+GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType const& o
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         lineSettings_ = other.lineSettings_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType&& other)
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         lineSettings_ = other.lineSettings_;
         // Delete other's value
         other.clear();

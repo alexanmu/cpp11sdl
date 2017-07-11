@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTextJustification.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxTextJustification::GfxTextJustification(const BgiType just) noexcept : GfxObj
     just_ = just;
 }
 
-GfxTextJustification::GfxTextJustification(GfxTextJustification const& other) noexcept : GfxObject(ClassName)
+GfxTextJustification::GfxTextJustification(GfxTextJustification const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     just_ = other.just_;
 }
 
-GfxTextJustification::GfxTextJustification(GfxTextJustification&& other) noexcept : GfxObject(ClassName)
+GfxTextJustification::GfxTextJustification(GfxTextJustification&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification const
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         just_ = other.just_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification&& oth
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         just_ = other.just_;
         // Delete other's value
         other.clear();

@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxDisplayMode.hpp"
 #include "GfxBasicLogger.hpp"
@@ -68,7 +69,7 @@ GfxDisplayMode::GfxDisplayMode(const SdlType mode) noexcept : GfxObject(ClassNam
     dmode_ = mode;
 }
 
-GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(ClassName)
+GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -87,6 +88,9 @@ GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         dmode_.format = other.dmode_.format;
         dmode_.w = other.dmode_.w;
         dmode_.h = other.dmode_.h;

@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxButtonData.hpp"
 #include "GfxBasicLogger.hpp"
@@ -60,7 +61,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const&
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept :
-         GfxObject(ClassName)
+         GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +69,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& 
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept :
-        GfxObject(ClassName)
+        GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -83,6 +84,9 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         data_ = other.data_;
     }
     return *this;
@@ -94,6 +98,9 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         data_ = other.data_;
         // Delete other's data
         other.clear();

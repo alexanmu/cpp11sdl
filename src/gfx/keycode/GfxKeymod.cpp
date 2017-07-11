@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxKeymod.hpp"
 #include "GfxBasicLogger.hpp"
@@ -66,14 +67,14 @@ GfxKeymod::GfxKeymod(const SdlType mod) noexcept : GfxObject(ClassName)
     mod_ = mod;
 }
 
-GfxKeymod::GfxKeymod(GfxKeymod const& other) noexcept : GfxObject(ClassName)
+GfxKeymod::GfxKeymod(GfxKeymod const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     mod_ = other.mod_;
 }
 
-GfxKeymod::GfxKeymod(GfxKeymod&& other) noexcept : GfxObject(ClassName)
+GfxKeymod::GfxKeymod(GfxKeymod&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -88,6 +89,9 @@ GfxKeymod& GfxKeymod::operator=(GfxKeymod const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         mod_ = other.mod_;
     }
     return *this;
@@ -99,6 +103,9 @@ GfxKeymod& GfxKeymod::operator=(GfxKeymod&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         mod_ = other.mod_;
         // Delete other's data
         other.clear();

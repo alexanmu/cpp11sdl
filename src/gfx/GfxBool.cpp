@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxBool.hpp"
 #include "GfxBasicLogger.hpp"
@@ -61,20 +62,50 @@ GfxBool::GfxBool(const bool value) noexcept : GfxObject(ClassName)
     value_ = static_cast<SdlType>(value);
 }
 
-GfxBool::GfxBool(const GfxBool& other) noexcept : GfxObject(ClassName)
+GfxBool::GfxBool(const GfxBool& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(ClassName)
+GfxBool::GfxBool(GfxBool&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
     // Delete other's data
     other.clear();
+}
+
+GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    if (this != &other)
+    {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
+        value_ = other.value_;
+    }
+    return *this;
+}
+
+GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    if (this != &other)
+    {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        value_ = other.value_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
 }
 
 GfxBool::operator bool() const noexcept
@@ -89,30 +120,6 @@ std::string GfxBool::to_string(void) const noexcept
     LOG_TRACE_PRIO_LOW();
 
     return std::string(ClassName);
-}
-
-GfxBool& GfxBool::operator=(const GfxBool& other) noexcept
-{
-    LOG_TRACE_PRIO_LOW();
-
-    if (this != &other)
-    {
-        value_ = other.value_;
-    }
-    return *this;
-}
-
-GfxBool& GfxBool::operator=(GfxBool&& other) noexcept
-{
-    LOG_TRACE_PRIO_LOW();
-
-    if (this != &other)
-    {
-        value_ = other.value_;
-        // Delete other's data
-        other.clear();
-    }
-    return *this;
 }
 
 bool GfxBool::getBool(void) const noexcept

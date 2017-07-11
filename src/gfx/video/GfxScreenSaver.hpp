@@ -44,10 +44,12 @@ public:
     GfxScreenSaver() noexcept;
 
     GfxScreenSaver(GfxScreenSaver const&) = delete;
-    GfxScreenSaver(GfxScreenSaver&&) = delete;
+    GfxScreenSaver(GfxScreenSaver&& other) noexcept;
 
     GfxScreenSaver& operator=(GfxScreenSaver const&) = delete;
-    GfxScreenSaver& operator=(GfxScreenSaver&&) = delete;
+    GfxScreenSaver& operator=(GfxScreenSaver&& other) noexcept;
+
+    virtual ~GfxScreenSaver() noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
@@ -55,6 +57,8 @@ public:
     bool isScreenSaverEnabled(void) const noexcept;
     void enableScreenSaver(void) noexcept;
     void disableScreenSaver(void) noexcept;
+
+    void clear(void) noexcept;
 private:
     enum class ScreenSaverStatus : bool
     {
@@ -63,6 +67,7 @@ private:
     };
 
     ScreenSaverStatus ssstatus_;
+    ScreenSaverStatus ssinitstatus_;
 };
 
 }  // namespace video

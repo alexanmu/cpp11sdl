@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxPixelType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxPixelType::GfxPixelType(const SdlType value) noexcept : GfxObject(ClassName)
     value_ = value;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxObject(ClassName)
+GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
     value_ = other.value_;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxObject(ClassName)
+GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxPixelType& GfxPixelType::operator=(GfxPixelType&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

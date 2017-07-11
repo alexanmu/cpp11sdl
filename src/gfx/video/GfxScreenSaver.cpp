@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxScreenSaver.hpp"
 #include "GfxSdlHeader.hpp"
@@ -45,6 +46,48 @@ GfxScreenSaver::GfxScreenSaver() noexcept : GfxObject(ClassName)
     GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
 
     ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
+    ssinitstatus_ = ssstatus_;
+}
+
+GfxScreenSaver::GfxScreenSaver(GfxScreenSaver&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+
+    ssstatus_ = other.ssstatus_;
+    ssinitstatus_ = other.ssinitstatus_;
+    // Delete other's data
+    other.clear();
+}
+
+GfxScreenSaver& GfxScreenSaver::operator=(GfxScreenSaver&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        ssstatus_ = other.ssstatus_;
+        ssinitstatus_ = other.ssinitstatus_;
+        // Delete other's data
+        other.clear();
+    }
+    return *this;
+}
+
+GfxScreenSaver::~GfxScreenSaver() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (ssinitstatus_ == ScreenSaverStatus::statusEnabled)
+    {
+        sdl2::SDL_EnableScreenSaver();
+    }
+    else
+    {
+        sdl2::SDL_DisableScreenSaver();
+    }
 }
 
 GfxScreenSaver::operator bool() const noexcept
@@ -82,6 +125,12 @@ void GfxScreenSaver::disableScreenSaver(void) noexcept
 
     sdl2::SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
+}
+
+void GfxScreenSaver::clear(void) noexcept
+{
+    ssstatus_ = ScreenSaverStatus::statusDisabled;
+    ssinitstatus_ = ScreenSaverStatus::statusDisabled;
 }
 
 }  // namespace video

@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxDrawingMode.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxDrawingMode::GfxDrawingMode(const BgiType dmode) noexcept : GfxObject(ClassNa
     dmode_ = dmode;
 }
 
-GfxDrawingMode::GfxDrawingMode(GfxDrawingMode const& other) noexcept : GfxObject(ClassName)
+GfxDrawingMode::GfxDrawingMode(GfxDrawingMode const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     dmode_ = other.dmode_;
 }
 
-GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(ClassName)
+GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         dmode_ = other.dmode_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         dmode_ = other.dmode_;
         // Delete other's value
         other.clear();

@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxAngle.hpp"
 #include "GfxBasicLogger.hpp"
@@ -48,14 +49,14 @@ GfxAngle::GfxAngle(const ValueType value) noexcept : GfxObject(ClassName), value
     value_ = value_ % 360;
 }
 
-GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxObject(ClassName)
+GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxObject(ClassName)
+GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -70,6 +71,9 @@ GfxAngle& GfxAngle::operator=(GfxAngle const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -81,6 +85,9 @@ GfxAngle& GfxAngle::operator=(GfxAngle&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's value
         other.value_ = 0;

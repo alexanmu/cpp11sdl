@@ -26,6 +26,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "GfxSurface.hpp"
 #include "GfxBasicLogger.hpp"
@@ -181,7 +182,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
     surfName_ = surfname;
 }
 
-GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(ClassName)
+GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -198,6 +199,9 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         if (surf_ != nullptr)
         {
             sdl2::SDL_FreeSurface(surf_);

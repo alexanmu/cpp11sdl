@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxTtfFontHinting.hpp"
 #include "GfxBasicLogger.hpp"
@@ -60,14 +61,14 @@ GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) noexcept : GfxObject(Class
     hinting_ = hinting;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept : GfxObject(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     hinting_ = other.hinting_;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept : GfxObject(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -82,6 +83,9 @@ GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting const& other) 
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         hinting_ = other.hinting_;
     }
     return *this;
@@ -93,6 +97,9 @@ GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting&& other) noexc
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         hinting_ = other.hinting_;
         // Delete other's data
         other.clear();

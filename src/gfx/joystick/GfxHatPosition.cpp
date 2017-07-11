@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxHatPosition.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxHatPosition::GfxHatPosition(const SdlType position) noexcept : GfxObject(Clas
     hatPosition_ = position;
 }
 
-GfxHatPosition::GfxHatPosition(const GfxHatPosition& other) noexcept : GfxObject(ClassName)
+GfxHatPosition::GfxHatPosition(const GfxHatPosition& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     hatPosition_ = other.hatPosition_;
 }
 
-GfxHatPosition::GfxHatPosition(GfxHatPosition&& other) noexcept : GfxObject(ClassName)
+GfxHatPosition::GfxHatPosition(GfxHatPosition&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxHatPosition& GfxHatPosition::operator=(const GfxHatPosition& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         hatPosition_ = other.hatPosition_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxHatPosition& GfxHatPosition::operator=(GfxHatPosition&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         hatPosition_ = other.hatPosition_;
         // Delete other's value
         other.clear();

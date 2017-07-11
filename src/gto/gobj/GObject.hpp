@@ -36,20 +36,23 @@ namespace gobj
 class GObject
 {
 public:
-    GObject();
+    GObject() noexcept;
 
-    GObject(GObject const& other);
-    GObject(GObject&& other);
+    GObject(GObject const& other) noexcept;
+    GObject(GObject&& other) noexcept;
 
-    GObject& operator=(GObject const& other);
-    GObject& operator=(GObject&& other);
+    GObject& operator=(GObject const& other) noexcept;
+    GObject& operator=(GObject&& other) noexcept;
 
-    virtual ~GObject();
+    virtual ~GObject() noexcept;
 
-    bool operator==(GObject const& other);
+    virtual explicit operator bool() const noexcept;
+
+    bool operator==(GObject const& other) const noexcept;
 private:
     enum class GInitType : int32_t
     {
+        notSet,
         defaultCtor,
         copyCtor,
         moveCtor

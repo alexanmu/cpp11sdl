@@ -26,6 +26,7 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "GfxPalette.hpp"
 #include "GfxBasicLogger.hpp"
@@ -126,7 +127,7 @@ GfxPalette::GfxPalette(const SdlTypePtr pal) throw(std::runtime_error) : GfxObje
     pal_ = palptr;
 }
 
-GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxObject(ClassName)
+GfxPalette::GfxPalette(GfxPalette&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -141,6 +142,9 @@ GfxPalette& GfxPalette::operator=(GfxPalette&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         if (pal_ != nullptr)
         {
             sdl2::SDL_FreePalette(pal_);

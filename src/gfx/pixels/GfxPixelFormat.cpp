@@ -25,6 +25,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxPixelFormat.hpp"
 #include "GfxBasicLogger.hpp"
@@ -72,7 +73,7 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) throw(std::runtime_error) 
     }
 }
 
-GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) noexcept : GfxObject(ClassName)
+GfxPixelFormat::GfxPixelFormat(GfxPixelFormat&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -91,6 +92,9 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         if (pix_ != nullptr)
         {
             sdl2::SDL_FreeFormat(pix_);

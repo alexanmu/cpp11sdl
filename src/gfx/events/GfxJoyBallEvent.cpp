@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxJoyBallEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -51,14 +52,14 @@ GfxJoyBallEvent::GfxJoyBallEvent(const SdlType event) noexcept : GfxObject(Class
     jbEvent_ = event;
 }
 
-GfxJoyBallEvent::GfxJoyBallEvent(GfxJoyBallEvent const& other) noexcept : GfxObject(ClassName)
+GfxJoyBallEvent::GfxJoyBallEvent(GfxJoyBallEvent const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     jbEvent_ = other.jbEvent_;
 }
 
-GfxJoyBallEvent::GfxJoyBallEvent(GfxJoyBallEvent&& other) noexcept : GfxObject(ClassName)
+GfxJoyBallEvent::GfxJoyBallEvent(GfxJoyBallEvent&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -73,6 +74,9 @@ GfxJoyBallEvent& GfxJoyBallEvent::operator=(GfxJoyBallEvent const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         jbEvent_ = other.jbEvent_;
     }
     return *this;
@@ -84,6 +88,9 @@ GfxJoyBallEvent& GfxJoyBallEvent::operator=(GfxJoyBallEvent&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         jbEvent_ = other.jbEvent_;
         // Delete other's data
         other.clear();

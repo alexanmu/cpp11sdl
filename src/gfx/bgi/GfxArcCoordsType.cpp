@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxArcCoordsType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxArcCoordsType::GfxArcCoordsType(const BgiType arccoords) noexcept : GfxObject
     arccoords_ = arccoords;
 }
 
-GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType const& other) noexcept : GfxObject(ClassName)
+GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     arccoords_ = other.arccoords_;
 }
 
-GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObject(ClassName)
+GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType const& other) noe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         arccoords_ = other.arccoords_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         arccoords_ = other.arccoords_;
         // Delete other's value
         other.clear();

@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxColor.hpp"
 #include "GfxBasicLogger.hpp"
@@ -62,7 +63,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxObject(C
 }
 
 /* Copy constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -70,7 +71,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept
 }
 
 /* Move constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -86,6 +87,9 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor const& othe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         clr_ = other.clr_;
     }
     return *this;
@@ -97,6 +101,9 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other) no
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         clr_ = other.clr_;
         // Delete other's data
         other.clear();

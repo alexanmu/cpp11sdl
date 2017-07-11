@@ -25,6 +25,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxTexture.hpp"
 #include "GfxRenderer.hpp"
@@ -66,8 +67,8 @@ GfxTexture::GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, Gf
     tex_ = texptr;
 }
 
-GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error)
-            : GfxObject(ClassName)
+GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error) :
+            GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -86,6 +87,35 @@ GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::
     tex_ = texptr;
 }
 
+GfxTexture::GfxTexture(GfxTexture&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+
+    tex_ = other.tex_;
+    // Destroy other's data
+    other.tex_ = nullptr;
+}
+
+GfxTexture& GfxTexture::operator=(GfxTexture&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        if (tex_ != nullptr)
+        {
+            sdl2::SDL_DestroyTexture(tex_);
+        }
+        tex_ = other.tex_;
+        // Destroy other's data
+        other.tex_ = nullptr;
+    }
+    return *this;
+}
+
 GfxTexture::~GfxTexture() noexcept
 {
     LOG_TRACE_PRIO_MED();
@@ -95,32 +125,6 @@ GfxTexture::~GfxTexture() noexcept
         sdl2::SDL_DestroyTexture(tex_);
     }
     tex_ = nullptr;
-}
-
-GfxTexture::GfxTexture(GfxTexture&& tex) noexcept
-{
-    LOG_TRACE_PRIO_MED();
-
-    tex_ = tex.tex_;
-    // Destroy other's data
-    tex.tex_ = nullptr;
-}
-
-GfxTexture& GfxTexture::operator=(GfxTexture&& tex) noexcept
-{
-    LOG_TRACE_PRIO_MED();
-
-    if (this != &tex)
-    {
-        if (tex_ != nullptr)
-        {
-            sdl2::SDL_DestroyTexture(tex_);
-        }
-        tex_ = tex.tex_;
-        // Destroy other's data
-        tex.tex_ = nullptr;
-    }
-    return *this;
 }
 
 GfxTexture::operator bool() const noexcept

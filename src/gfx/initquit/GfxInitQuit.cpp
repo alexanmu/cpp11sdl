@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxInitQuit.hpp"
 #include "GfxBasicLogger.hpp"
@@ -56,7 +57,7 @@ GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
     errorCode_ = sdl2::SDL_Init(flags.getAsSdlType());
 }
 
-GfxInitQuit::GfxInitQuit(GfxInitQuit&& other) noexcept : GfxObject(ClassName)
+GfxInitQuit::GfxInitQuit(GfxInitQuit&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -73,6 +74,9 @@ GfxInitQuit& GfxInitQuit::operator=(GfxInitQuit&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         flags_ = other.flags_;
         errorCode_ = other.errorCode_;
         // Delete other's data

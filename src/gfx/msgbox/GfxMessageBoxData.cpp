@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxData.hpp"
 #include "GfxBasicLogger.hpp"
@@ -49,8 +50,7 @@ GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject * win,
                                      std::string const& title, std::string const& message, const int32_t numbuttons,
                                      const GfxMessageBoxButtonData buttons[],
-                                     GfxMessageBoxColorScheme const& colorScheme) noexcept :
-        GfxObject(ClassName)
+                                     GfxMessageBoxColorScheme const& colorScheme) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -85,8 +85,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject 
 
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win,
                                      std::string const& title, std::string const& message, const int32_t numbuttons,
-                                     const GfxMessageBoxButtonData buttons[]) noexcept :
-        GfxObject(ClassName)
+                                     const GfxMessageBoxButtonData buttons[]) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -111,7 +110,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
     data_.colorScheme = nullptr;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -120,7 +119,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : 
     message_ = other.message_;
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -137,6 +136,9 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) 
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         data_ = other.data_;
         title_ = other.title_;
         message_ = other.message_;
@@ -150,6 +152,9 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other) noexc
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         data_ = other.data_;
         title_ = other.title_;
         message_ = other.message_;

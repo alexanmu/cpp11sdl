@@ -25,6 +25,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxWindowFlags.hpp"
 #include "GfxBasicLogger.hpp"
@@ -70,14 +71,14 @@ GfxWindowFlags::GfxWindowFlags(const uint32_t flags) noexcept : GfxObject(ClassN
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxObject(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     flags_ = other.flags_;
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) noexcept : GfxObject(ClassName)
+GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -92,6 +93,9 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         flags_ = other.flags_;
     }
     return *this;
@@ -103,6 +107,9 @@ GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         flags_ = other.flags_;
         // Delete other's data
         other.clear();

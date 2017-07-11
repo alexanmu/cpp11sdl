@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxColor.hpp"
 #include "GfxBasicLogger.hpp"
@@ -83,7 +84,7 @@ GfxColor::GfxColor(const uint32_t clr) noexcept : GfxObject(ClassName)
 }
 
 /* Copy constructor */
-GfxColor::GfxColor(GfxColor const& other) noexcept : GfxObject(ClassName)
+GfxColor::GfxColor(GfxColor const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -91,7 +92,7 @@ GfxColor::GfxColor(GfxColor const& other) noexcept : GfxObject(ClassName)
 }
 
 /* Move constructor */
-GfxColor::GfxColor(GfxColor&& other) noexcept : GfxObject(ClassName)
+GfxColor::GfxColor(GfxColor&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -107,6 +108,9 @@ GfxColor& GfxColor::operator=(GfxColor const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         clr_ = other.clr_;
     }
     return *this;
@@ -118,6 +122,9 @@ GfxColor& GfxColor::operator=(GfxColor&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         clr_ = other.clr_;
         // Delete other's data
         other.clear();

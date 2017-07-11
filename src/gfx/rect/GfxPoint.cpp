@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdlib>
 #include <string>
+#include <utility>
 
 #include "GfxPoint.hpp"
 #include "GfxBasicLogger.hpp"
@@ -63,14 +64,14 @@ GfxPoint::GfxPoint(const SdlType pt) noexcept : GfxObject(ClassName)
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxObject(ClassName)
+GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     pt_ = other.pt_;
 }
 
-GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxObject(ClassName)
+GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -85,6 +86,9 @@ GfxPoint& GfxPoint::operator=(GfxPoint const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         pt_ = other.pt_;
     }
     return *this;
@@ -96,6 +100,9 @@ GfxPoint& GfxPoint::operator=(GfxPoint&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         pt_ = other.pt_;
         // Delete other's data
         other.clear();

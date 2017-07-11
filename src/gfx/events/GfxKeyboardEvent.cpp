@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxKeyboardEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxKeyboardEvent::GfxKeyboardEvent(const SdlType event) noexcept : GfxObject(Cla
     keyboardEvent_ = event;
 }
 
-GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent const& other) noexcept : GfxObject(ClassName)
+GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     keyboardEvent_ = other.keyboardEvent_;
 }
 
-GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent&& other) noexcept : GfxObject(ClassName)
+GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent const& other) noe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         keyboardEvent_ = other.keyboardEvent_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         keyboardEvent_ = other.keyboardEvent_;
         // Delete other's data
         other.clear();

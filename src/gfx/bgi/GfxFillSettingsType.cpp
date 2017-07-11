@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxFillSettingsType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxFillSettingsType::GfxFillSettingsType(const BgiType fillsettings) noexcept : 
     fillSettings_ = fillsettings;
 }
 
-GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType const& other) noexcept : GfxObject(ClassName)
+GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     fillSettings_ = other.fillSettings_;
 }
 
-GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType&& other) noexcept : GfxObject(ClassName)
+GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType const& o
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         fillSettings_ = other.fillSettings_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType&& other)
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         fillSettings_ = other.fillSettings_;
         // Delete other's value
         other.clear();

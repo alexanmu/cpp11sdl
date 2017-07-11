@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxMouseMotionEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -51,14 +52,14 @@ GfxMouseMotionEvent::GfxMouseMotionEvent(const SdlType event) noexcept : GfxObje
     mmEvent_ = event;
 }
 
-GfxMouseMotionEvent::GfxMouseMotionEvent(GfxMouseMotionEvent const& other) noexcept : GfxObject(ClassName)
+GfxMouseMotionEvent::GfxMouseMotionEvent(GfxMouseMotionEvent const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     mmEvent_ = other.mmEvent_;
 }
 
-GfxMouseMotionEvent::GfxMouseMotionEvent(GfxMouseMotionEvent&& other) noexcept : GfxObject(ClassName)
+GfxMouseMotionEvent::GfxMouseMotionEvent(GfxMouseMotionEvent&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -73,6 +74,9 @@ GfxMouseMotionEvent& GfxMouseMotionEvent::operator=(GfxMouseMotionEvent const& o
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         mmEvent_ = other.mmEvent_;
     }
     return *this;
@@ -84,6 +88,9 @@ GfxMouseMotionEvent& GfxMouseMotionEvent::operator=(GfxMouseMotionEvent&& other)
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         mmEvent_ = other.mmEvent_;
         // Delete other's data
         other.clear();

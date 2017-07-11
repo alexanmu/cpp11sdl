@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxFlags.hpp"
 #include "GfxBasicLogger.hpp"
@@ -60,14 +61,14 @@ GfxMessageBoxFlags::GfxMessageBoxFlags(const SdlType flag) noexcept : GfxObject(
     flag_ = flag;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags const& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     flag_ = other.flag_;
 }
 
-GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : GfxObject(ClassName)
+GfxMessageBoxFlags::GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -82,6 +83,9 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags const& othe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         flag_ = other.flag_;
     }
     return *this;
@@ -93,6 +97,9 @@ GfxMessageBoxFlags& GfxMessageBoxFlags::operator=(GfxMessageBoxFlags&& other) no
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         flag_ = other.flag_;
         // Delete other's data
         other.clear();

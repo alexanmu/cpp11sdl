@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxJoystickPowerLevel.hpp"
 #include "GfxBasicLogger.hpp"
@@ -58,14 +59,14 @@ GfxJoystickPowerLevel::GfxJoystickPowerLevel(const ValueType plevel) noexcept : 
 }
 
 
-GfxJoystickPowerLevel::GfxJoystickPowerLevel(const GfxJoystickPowerLevel& other) noexcept : GfxObject(ClassName)
+GfxJoystickPowerLevel::GfxJoystickPowerLevel(const GfxJoystickPowerLevel& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     plevel_ = other.plevel_;
 }
 
-GfxJoystickPowerLevel::GfxJoystickPowerLevel(GfxJoystickPowerLevel&& other) noexcept : GfxObject(ClassName)
+GfxJoystickPowerLevel::GfxJoystickPowerLevel(GfxJoystickPowerLevel&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,6 +81,9 @@ GfxJoystickPowerLevel& GfxJoystickPowerLevel::operator=(const GfxJoystickPowerLe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         plevel_ = other.plevel_;
     }
     return *this;
@@ -91,6 +95,9 @@ GfxJoystickPowerLevel& GfxJoystickPowerLevel::operator=(GfxJoystickPowerLevel&& 
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         plevel_ = other.plevel_;
         // Delete other's value
         other.clear();

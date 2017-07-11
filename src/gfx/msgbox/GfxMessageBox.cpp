@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBox.hpp"
 #include "GfxSdlHeader.hpp"
@@ -82,7 +83,7 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& 
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBox&& other) noexcept : GfxObject(ClassName)
+GfxMessageBox::GfxMessageBox(GfxMessageBox&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -102,6 +103,9 @@ GfxMessageBox& GfxMessageBox::operator=(GfxMessageBox&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         type_ = other.type_;
         data_ = other.data_;
         flag_ = other.flag_;

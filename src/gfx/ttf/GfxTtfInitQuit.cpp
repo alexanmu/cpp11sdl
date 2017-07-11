@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTtfInitQuit.hpp"
 #include "GfxBasicLogger.hpp"
@@ -41,6 +42,31 @@ GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_TOP();
 
     errorCode_ = sdl2::TTF_Init();
+}
+
+GfxTtfInitQuit::GfxTtfInitQuit(GfxTtfInitQuit&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_TOP();
+
+    errorCode_ = other.errorCode_;
+    // Delete other's data
+    other.errorCode_ = 0;
+}
+
+GfxTtfInitQuit& GfxTtfInitQuit::operator=(GfxTtfInitQuit&& other) noexcept
+{
+    LOG_TRACE_PRIO_TOP();
+
+    if (this != &other)
+    {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        errorCode_ = other.errorCode_;
+        // Delete other's data
+        other.errorCode_ = 0;
+    }
+    return *this;
 }
 
 GfxTtfInitQuit::~GfxTtfInitQuit(void) noexcept

@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxPackedOrder.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxPackedOrder::GfxPackedOrder(const SdlType value) noexcept : GfxObject(ClassNa
     value_ = value;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxObject(ClassName)
+GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxObject(ClassName)
+GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

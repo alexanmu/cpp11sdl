@@ -21,9 +21,10 @@
  See copyright notice at http://lidsdl.org/license.php
 */
 
-#include "GObject.hpp"
-
+#include <cassert>
 #include <string>
+
+#include "GObject.hpp"
 
 namespace gto
 {
@@ -31,57 +32,70 @@ namespace gto
 namespace gobj
 {
 
-GObject::GObject()
+GObject::GObject() noexcept
 {
     initType_ = GInitType::defaultCtor;
 }
 
-GObject::GObject(GObject const& other)
+GObject::GObject(GObject const& other) noexcept
 {
+    assert(other);
+
     initType_ = GInitType::copyCtor;
-    // Avoid compiler warning
-    static_cast<GObject>(other) = static_cast<GObject>(other);
 }
 
-GObject::GObject(GObject&& other)
+GObject::GObject(GObject&& other) noexcept
 {
+    assert(other);
+
     initType_ = GInitType::moveCtor;
-    // Avoid compiler warning
-    other = other;
+    // Delete other's data
+    other.initType_ = GInitType::notSet;
 }
 
-GObject& GObject::operator=(GObject const& other)
+GObject& GObject::operator=(GObject const& other) noexcept
 {
-    // Nothing to do yet
-    // Avoid compiler warning
-    static_cast<GObject>(other) = static_cast<GObject>(other);
-    return *this;
-}
+    assert(other);
 
-GObject& GObject::operator=(GObject&& other)
-{
-    // Nothing to do yet
-    // Avoid compiler warning
-    other = other;
-    return *this;
-}
-
-GObject::~GObject()
-{
-    // Nothing to do yet
-}
-
-bool GObject::operator==(GObject const& other)
-{
     if (this != &other)
     {
-        if (initType_ == other.initType_)
-        {
-            return true;
-        }
-        return false;
+        initType_ = other.initType_;
     }
+    return *this;
+}
+
+GObject& GObject::operator=(GObject&& other) noexcept
+{
+    assert(other);
+
+    if (this != &other)
+    {
+        initType_ = other.initType_;
+        // Delete other's data
+        other.initType_ = GInitType::notSet;
+    }
+    return *this;
+}
+
+GObject::~GObject() noexcept
+{
+    initType_ = GInitType::notSet;
+}
+
+GObject::operator bool() const noexcept
+{
     return true;
+}
+
+bool GObject::operator==(GObject const& other) const noexcept
+{
+    assert(other);
+
+    if (initType_ == other.initType_)
+    {
+        return true;
+    }
+    return false;
 }
 
 }  // namespace gobj

@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxLogPriority.hpp"
 #include "GfxBasicLogger.hpp"
@@ -67,14 +68,14 @@ GfxLogPriority::GfxLogPriority(const int32_t value) noexcept : GfxObject(ClassNa
     value_ = static_cast<SdlType>(value);
 }
 
-GfxLogPriority::GfxLogPriority(GfxLogPriority const& other) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(GfxLogPriority const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxLogPriority::GfxLogPriority(GfxLogPriority&& other) noexcept : GfxObject(ClassName)
+GfxLogPriority::GfxLogPriority(GfxLogPriority&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -89,6 +90,9 @@ GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -100,6 +104,9 @@ GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

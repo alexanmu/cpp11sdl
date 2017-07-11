@@ -24,6 +24,7 @@
 #include <cstdint>
 #include <cstring>
 #include <string>
+#include <utility>
 
 #include "GfxRendererInfo.hpp"
 #include "GfxBasicLogger.hpp"
@@ -45,21 +46,21 @@ GfxRendererInfo::GfxRendererInfo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxRendererInfo::GfxRendererInfo(SdlType info) noexcept : GfxObject(ClassName)
+GfxRendererInfo::GfxRendererInfo(const SdlType info) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
     info_ = info;
 }
 
-GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) noexcept : GfxObject(ClassName)
+GfxRendererInfo::GfxRendererInfo(const GfxRendererInfo& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     info_ = other.info_;
 }
 
-GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxObject(ClassName)
+GfxRendererInfo::GfxRendererInfo(GfxRendererInfo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,6 +75,9 @@ GfxRendererInfo& GfxRendererInfo::operator=(const GfxRendererInfo& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         info_ = other.info_;
     }
     return *this;
@@ -85,6 +89,9 @@ GfxRendererInfo& GfxRendererInfo::operator=(GfxRendererInfo&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         info_ = other.info_;
         // Delete other's data
         other.clear();

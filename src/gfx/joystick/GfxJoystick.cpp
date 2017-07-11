@@ -24,6 +24,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxJoystick.hpp"
 #include "GfxBasicLogger.hpp"
@@ -82,7 +83,7 @@ GfxJoystick::GfxJoystick(GfxJoystickID const& joyid) throw(std::runtime_error) :
     joy_ = tmpjoyptr;
 }
 
-GfxJoystick::GfxJoystick(GfxJoystick&& other) noexcept : GfxObject(ClassName)
+GfxJoystick::GfxJoystick(GfxJoystick&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -97,6 +98,9 @@ GfxJoystick& GfxJoystick::operator=(GfxJoystick&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         joy_ = other.joy_;
         // Delete other's data
         other.clear();

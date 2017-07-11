@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxColorType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -54,7 +55,7 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(const SdlType type) noexcept : Gf
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) noexcept :
-            GfxObject(ClassName)
+    GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -62,7 +63,7 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) noexcept :
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept :
-            GfxObject(ClassName)
+    GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -70,7 +71,7 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& oth
 }
 
 GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) noexcept :
-            GfxObject(ClassName)
+    GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -85,6 +86,9 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         type_ = other.type_;
     }
     return *this;
@@ -96,6 +100,9 @@ GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         type_ = other.type_;
         // Delete other's data
         other.clear();

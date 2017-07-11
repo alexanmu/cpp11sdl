@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxViewPortType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxViewPortType::GfxViewPortType(const BgiType viewport) noexcept : GfxObject(Cl
     viewPort_ = viewport;
 }
 
-GfxViewPortType::GfxViewPortType(GfxViewPortType const& other) noexcept : GfxObject(ClassName)
+GfxViewPortType::GfxViewPortType(GfxViewPortType const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     viewPort_ = other.viewPort_;
 }
 
-GfxViewPortType::GfxViewPortType(GfxViewPortType&& other) noexcept : GfxObject(ClassName)
+GfxViewPortType::GfxViewPortType(GfxViewPortType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         viewPort_ = other.viewPort_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         viewPort_ = other.viewPort_;
         // Delete other's value
         other.clear();

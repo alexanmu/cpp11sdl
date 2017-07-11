@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTextureAccess.hpp"
 #include "GfxBasicLogger.hpp"
@@ -64,14 +65,14 @@ GfxTextureAccess::GfxTextureAccess(const int32_t access) noexcept : GfxObject(Cl
     access_ = static_cast<SdlType>(access);
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxObject(ClassName)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     access_ = other.access_;
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxObject(ClassName)
+GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -86,6 +87,9 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other) noe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         access_ = other.access_;
     }
     return *this;
@@ -97,6 +101,9 @@ GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         access_ = other.access_;
         // Delete other's data
         other.clear();

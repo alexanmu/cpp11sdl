@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxFontInfo.hpp"
 #include "GfxSdlHeader.hpp"
@@ -79,7 +80,7 @@ GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) no
     fontSize_ = fontSize;
 }
 
-GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxObject(ClassName)
+GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -94,7 +95,7 @@ GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxObject(ClassNam
     fontKerning_ = other.fontKerning_;
 }
 
-GfxFontInfo::GfxFontInfo(GfxFontInfo&& other) noexcept : GfxObject(ClassName)
+GfxFontInfo::GfxFontInfo(GfxFontInfo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -117,6 +118,9 @@ GfxFontInfo& GfxFontInfo::operator=(GfxFontInfo const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         fontName_ = other.fontName_;
         fontSize_ = other.fontSize_;
         fontOutline_ = other.fontOutline_;
@@ -136,6 +140,9 @@ GfxFontInfo& GfxFontInfo::operator=(GfxFontInfo&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         fontName_ = other.fontName_;
         fontSize_ = other.fontSize_;
         fontOutline_ = other.fontOutline_;

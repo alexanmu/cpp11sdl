@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTextInputEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -50,14 +51,14 @@ GfxTextInputEvent::GfxTextInputEvent(const SdlType event) noexcept : GfxObject(C
     textInputEvent_ = event;
 }
 
-GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent const& other) noexcept : GfxObject(ClassName)
+GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     textInputEvent_ = other.textInputEvent_;
 }
 
-GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent&& other) noexcept : GfxObject(ClassName)
+GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,6 +73,9 @@ GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent const& other) 
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         textInputEvent_ = other.textInputEvent_;
     }
     return *this;
@@ -83,6 +87,9 @@ GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent&& other) noexc
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         textInputEvent_ = other.textInputEvent_;
         // Delete other's data
         other.clear();

@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxText.hpp"
 #include "GfxBasicLogger.hpp"
@@ -49,14 +50,14 @@ GfxText::GfxText(ValueType const& value) noexcept : GfxObject(ClassName), value_
     assert(value.length() > 0);
 }
 
-GfxText::GfxText(GfxText const& other) noexcept : GfxObject(ClassName)
+GfxText::GfxText(GfxText const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxText::GfxText(GfxText&& other) noexcept : GfxObject(ClassName)
+GfxText::GfxText(GfxText&& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -71,6 +72,9 @@ GfxText& GfxText::operator=(GfxText const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -82,6 +86,9 @@ GfxText& GfxText::operator=(GfxText&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's value
         other.value_ = "";

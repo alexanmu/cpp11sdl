@@ -24,6 +24,7 @@
 #include <cassert>
 #include <string>
 #include <cstring>
+#include <utility>
 
 #include "GfxBitmapFont.hpp"
 #include "GfxBasicLogger.hpp"
@@ -71,7 +72,7 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, 
     }
 }
 
-GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(ClassName)
+GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -82,7 +83,7 @@ GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(Cl
     std::memcpy(fontData_, other.fontData_, fontDataSize_);
 }
 
-GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) noexcept : GfxObject(ClassName)
+GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -103,6 +104,9 @@ GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         fontWidth_ = other.fontWidth_;
         fontHeight_ = other.fontHeight_;
         if (fontData_ != nullptr)
@@ -122,6 +126,9 @@ GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         fontWidth_ = other.fontWidth_;
         fontHeight_ = other.fontHeight_;
         fontDataSize_ = other.fontDataSize_;

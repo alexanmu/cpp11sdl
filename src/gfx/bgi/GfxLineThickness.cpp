@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxLineThickness.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxLineThickness::GfxLineThickness(const BgiType thick) noexcept : GfxObject(Cla
     thick_ = thick;
 }
 
-GfxLineThickness::GfxLineThickness(GfxLineThickness const& other) noexcept : GfxObject(ClassName)
+GfxLineThickness::GfxLineThickness(GfxLineThickness const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     thick_ = other.thick_;
 }
 
-GfxLineThickness::GfxLineThickness(GfxLineThickness&& other) noexcept : GfxObject(ClassName)
+GfxLineThickness::GfxLineThickness(GfxLineThickness&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness const& other) noe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         thick_ = other.thick_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         thick_ = other.thick_;
         // Delete other's value
         other.clear();

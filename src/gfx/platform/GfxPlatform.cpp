@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxPlatform.hpp"
 #include "GfxSdlHeader.hpp"
@@ -44,14 +45,14 @@ GfxPlatform::GfxPlatform() noexcept : GfxObject(ClassName)
     platform_ = "";
 }
 
-GfxPlatform::GfxPlatform(GfxPlatform const& other) noexcept : GfxObject(ClassName)
+GfxPlatform::GfxPlatform(GfxPlatform const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     platform_ = other.platform_;
 }
 
-GfxPlatform::GfxPlatform(GfxPlatform&& other) noexcept : GfxObject(ClassName)
+GfxPlatform::GfxPlatform(GfxPlatform&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -66,6 +67,9 @@ GfxPlatform& GfxPlatform::operator=(GfxPlatform const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         platform_ = other.platform_;
     }
     return *this;
@@ -77,6 +81,9 @@ GfxPlatform& GfxPlatform::operator=(GfxPlatform&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         platform_ = other.platform_;
         // Delete other's data
         other.platform_.clear();

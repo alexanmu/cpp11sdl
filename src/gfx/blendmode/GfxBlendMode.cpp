@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxBlendMode.hpp"
 #include "GfxBasicLogger.hpp"
@@ -60,14 +61,14 @@ GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxObject(ClassNa
     blendmode_ = blendmode;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxObject(ClassName)
+GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     blendmode_ = other.blendmode_;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxObject(ClassName)
+GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -82,6 +83,9 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         blendmode_ = other.blendmode_;
     }
     return *this;
@@ -93,6 +97,9 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         blendmode_ = other.blendmode_;
         // Destroy other's data
         other.clear();

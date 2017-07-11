@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxRadius.hpp"
 #include "GfxBasicLogger.hpp"
@@ -49,14 +50,14 @@ GfxRadius::GfxRadius(const ValueType value) noexcept : GfxObject(ClassName), val
     assert(value > 0);
 }
 
-GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxObject(ClassName)
+GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(ClassName)
+GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -71,6 +72,9 @@ GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -82,6 +86,9 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's value
         other.value_ = 0;

@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxEventAction.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxEventAction::GfxEventAction(const SdlType act) noexcept : GfxObject(ClassName
     action_ = act;
 }
 
-GfxEventAction::GfxEventAction(GfxEventAction const& other) noexcept : GfxObject(ClassName)
+GfxEventAction::GfxEventAction(GfxEventAction const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     action_ = other.action_;
 }
 
-GfxEventAction::GfxEventAction(GfxEventAction&& other) noexcept : GfxObject(ClassName)
+GfxEventAction::GfxEventAction(GfxEventAction&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxEventAction& GfxEventAction::operator=(GfxEventAction const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         action_ = other.action_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxEventAction& GfxEventAction::operator=(GfxEventAction&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         action_ = other.action_;
         // Delete other's data
         other.clear();

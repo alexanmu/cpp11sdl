@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxColorScheme.hpp"
 #include "GfxBasicLogger.hpp"
@@ -59,7 +60,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept :
-    GfxObject(ClassName)
+    GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +68,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme cons
 }
 
 GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) noexcept :
-    GfxObject(ClassName)
+    GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -82,6 +83,9 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         clrscheme_ = other.clrscheme_;
     }
     return *this;
@@ -93,6 +97,9 @@ GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColor
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         clrscheme_ = other.clrscheme_;
         // Delete other's data
         other.clear();

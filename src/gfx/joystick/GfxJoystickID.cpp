@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxJoystickID.hpp"
 #include "GfxBasicLogger.hpp"
@@ -51,14 +52,14 @@ GfxJoystickID::GfxJoystickID(const SdlType value) noexcept : GfxObject(ClassName
     id_ = value;
 }
 
-GfxJoystickID::GfxJoystickID(const GfxJoystickID& other) noexcept : GfxObject(ClassName)
+GfxJoystickID::GfxJoystickID(const GfxJoystickID& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     id_ = other.id_;
 }
 
-GfxJoystickID::GfxJoystickID(GfxJoystickID&& other) noexcept : GfxObject(ClassName)
+GfxJoystickID::GfxJoystickID(GfxJoystickID&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -73,6 +74,9 @@ GfxJoystickID& GfxJoystickID::operator=(const GfxJoystickID& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         id_ = other.id_;
     }
     return *this;
@@ -84,6 +88,9 @@ GfxJoystickID& GfxJoystickID::operator=(GfxJoystickID&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         id_ = other.id_;
         // Delete other's value
         other.clear();

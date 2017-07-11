@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxFillStyles.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxFillStyles::GfxFillStyles(const BgiType fill) noexcept : GfxObject(ClassName)
     fill_ = fill;
 }
 
-GfxFillStyles::GfxFillStyles(GfxFillStyles const& other) noexcept : GfxObject(ClassName)
+GfxFillStyles::GfxFillStyles(GfxFillStyles const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     fill_ = other.fill_;
 }
 
-GfxFillStyles::GfxFillStyles(GfxFillStyles&& other) noexcept : GfxObject(ClassName)
+GfxFillStyles::GfxFillStyles(GfxFillStyles&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         fill_ = other.fill_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         fill_ = other.fill_;
         // Delete other's value
         other.clear();

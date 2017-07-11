@@ -47,7 +47,7 @@ GfxVideo::GfxVideo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxVideo::GfxVideo(GfxVideo&& other) noexcept : GfxObject(ClassName)
+GfxVideo::GfxVideo(GfxVideo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -64,6 +64,9 @@ GfxVideo& GfxVideo::operator=(GfxVideo&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         numvideodrivers_ = other.numvideodrivers_;
         numvideodisplays_ = other.numvideodisplays_;
         numdisplaymodes_ = std::move(other.numdisplaymodes_);

@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxMessageBoxButtonFlags.hpp"
 #include "GfxBasicLogger.hpp"
@@ -63,7 +64,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags const& other) noexcept :
-        GfxObject(ClassName)
+        GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -71,7 +72,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags cons
 }
 
 GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) noexcept :
-        GfxObject(ClassName)
+        GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -86,6 +87,9 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         flags_ = other.flags_;
     }
     return *this;
@@ -97,6 +101,9 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         flags_ = other.flags_;
         // Delete other's data
         other.clear();

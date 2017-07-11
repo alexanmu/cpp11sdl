@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxLogCategory.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,14 +58,14 @@ GfxLogCategory::GfxLogCategory(const SdlType value) noexcept : GfxObject(ClassNa
     value_ = value;
 }
 
-GfxLogCategory::GfxLogCategory(GfxLogCategory const& other) noexcept : GfxObject(ClassName)
+GfxLogCategory::GfxLogCategory(GfxLogCategory const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxLogCategory::GfxLogCategory(GfxLogCategory&& other) noexcept : GfxObject(ClassName)
+GfxLogCategory::GfxLogCategory(GfxLogCategory&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,6 +80,9 @@ GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -90,6 +94,9 @@ GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

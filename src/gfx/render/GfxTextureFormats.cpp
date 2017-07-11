@@ -23,6 +23,7 @@
 
 #include <cstring>
 #include <string>
+#include <utility>
 
 #include "GfxTextureFormats.hpp"
 #include "GfxBasicLogger.hpp"
@@ -65,7 +66,7 @@ GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount, const uint32_t 
     }
 }
 
-GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : GfxObject(ClassName)
+GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -76,7 +77,7 @@ GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : 
     }
 }
 
-GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) noexcept : GfxObject(ClassName)
+GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -95,6 +96,9 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other) 
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         formatsCount_ = other.formatsCount_;
         for (int32_t index = 0; index < other.formatsCount_; index++)
         {
@@ -110,6 +114,9 @@ GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats&& other) noexc
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         formatsCount_ = other.formatsCount_;
         for (int32_t index = 0; index < other.formatsCount_; index++)
         {

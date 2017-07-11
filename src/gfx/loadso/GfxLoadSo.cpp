@@ -24,6 +24,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxLoadSo.hpp"
 #include "GfxSdlHeader.hpp"
@@ -57,7 +58,7 @@ GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassNa
     handle_ = sdl2::SDL_LoadObject(objectName_.c_str());
 }
 
-GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(ClassName)
+GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -85,6 +86,8 @@ GfxLoadSo& GfxLoadSo::operator=(GfxLoadSo&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
         // Free own resource
         if (handle_ != nullptr)
         {

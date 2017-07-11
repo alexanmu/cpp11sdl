@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxKeysym.hpp"
 #include "GfxBasicLogger.hpp"
@@ -51,14 +52,14 @@ GfxKeysym::GfxKeysym(const SdlType sym) noexcept : GfxObject(ClassName)
     sym_ = sym;
 }
 
-GfxKeysym::GfxKeysym(GfxKeysym const& other) noexcept : GfxObject(ClassName)
+GfxKeysym::GfxKeysym(GfxKeysym const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     sym_ = other.sym_;
 }
 
-GfxKeysym::GfxKeysym(GfxKeysym&& other) noexcept : GfxObject(ClassName)
+GfxKeysym::GfxKeysym(GfxKeysym&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -73,6 +74,9 @@ GfxKeysym& GfxKeysym::operator=(GfxKeysym const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         sym_ = other.sym_;
     }
     return *this;
@@ -84,6 +88,9 @@ GfxKeysym& GfxKeysym::operator=(GfxKeysym&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         sym_ = other.sym_;
         // Delete other's data
         other.clear();

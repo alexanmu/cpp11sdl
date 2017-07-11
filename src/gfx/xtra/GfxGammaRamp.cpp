@@ -24,6 +24,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxGammaRamp.hpp"
 #include "GfxSdlHeader.hpp"
@@ -60,7 +61,7 @@ GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxObject(Clas
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(ClassName)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -72,7 +73,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(Class
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(ClassName)
+GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -93,6 +94,9 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         for (index = 0; index < kGammaRampNumberOfElements; index++)
         {
             gammaRamp_[index] = other.gammaRamp_[index];
@@ -109,6 +113,9 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         for (index = 0; index < kGammaRampNumberOfElements; index++)
         {
             gammaRamp_[index] = other.gammaRamp_[index];

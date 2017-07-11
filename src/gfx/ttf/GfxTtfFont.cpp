@@ -25,6 +25,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxTtfFont.hpp"
 #include "GfxBasicLogger.hpp"
@@ -95,7 +96,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, con
     ttf_ = ttfptr;
 }
 
-GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxObject(ClassName)
+GfxTtfFont::GfxTtfFont(GfxTtfFont&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -117,6 +118,9 @@ GfxTtfFont& GfxTtfFont::operator=(GfxTtfFont&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         ttf_ = other.ttf_;
         fileName_ = other.fileName_;
         pointSize_ = other.pointSize_;

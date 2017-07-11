@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxJoystickGUID.hpp"
 #include "GfxBasicLogger.hpp"
@@ -57,15 +58,14 @@ GfxJoystickGUID::GfxJoystickGUID(const SdlType value) noexcept : GfxObject(Class
     guid_ = value;
 }
 
-
-GfxJoystickGUID::GfxJoystickGUID(const GfxJoystickGUID& other) noexcept : GfxObject(ClassName)
+GfxJoystickGUID::GfxJoystickGUID(const GfxJoystickGUID& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     guid_ = other.guid_;
 }
 
-GfxJoystickGUID::GfxJoystickGUID(GfxJoystickGUID&& other) noexcept : GfxObject(ClassName)
+GfxJoystickGUID::GfxJoystickGUID(GfxJoystickGUID&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,6 +80,9 @@ GfxJoystickGUID& GfxJoystickGUID::operator=(const GfxJoystickGUID& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         guid_ = other.guid_;
     }
     return *this;
@@ -91,6 +94,9 @@ GfxJoystickGUID& GfxJoystickGUID::operator=(GfxJoystickGUID&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         guid_ = other.guid_;
         // Delete other's value
         other.clear();

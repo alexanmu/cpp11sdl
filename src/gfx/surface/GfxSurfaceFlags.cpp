@@ -25,6 +25,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxSurfaceFlags.hpp"
 #include "GfxBasicLogger.hpp"
@@ -62,14 +63,14 @@ GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxObject(Class
     flags_ = flags;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxObject(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     flags_ = other.flags_;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxObject(ClassName)
+GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -84,6 +85,9 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         flags_ = other.flags_;
     }
     return *this;
@@ -95,6 +99,9 @@ GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         flags_ = other.flags_;
         // Delete other's data
         other.clear();

@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxTtfFontRenderer.hpp"
 #include "GfxBasicLogger.hpp"
@@ -56,14 +57,14 @@ GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_erro
     ttf_ = ttf;
 }
 
-GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer const& other) noexcept : GfxObject(ClassName)
+GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     ttf_ = other.ttf_;
 }
 
-GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer&& other) noexcept : GfxObject(ClassName)
+GfxTtfFontRenderer::GfxTtfFontRenderer(GfxTtfFontRenderer&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -78,6 +79,9 @@ GfxTtfFontRenderer& GfxTtfFontRenderer::operator=(GfxTtfFontRenderer const& othe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         ttf_ = other.ttf_;
     }
     return *this;
@@ -89,6 +93,9 @@ GfxTtfFontRenderer& GfxTtfFontRenderer::operator=(GfxTtfFontRenderer&& other) no
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         ttf_ = other.ttf_;
         // Delete other's data
         other.ttf_ = nullptr;

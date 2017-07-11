@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxKeycode.hpp"
 #include "GfxBasicLogger.hpp"
@@ -58,14 +59,14 @@ GfxKeycode::GfxKeycode(const ValueType code) noexcept : GfxObject(ClassName)
     code_ = static_cast<SdlType>(code);
 }
 
-GfxKeycode::GfxKeycode(GfxKeycode const& other) noexcept : GfxObject(ClassName)
+GfxKeycode::GfxKeycode(GfxKeycode const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     code_ = other.code_;
 }
 
-GfxKeycode::GfxKeycode(GfxKeycode&& other) noexcept : GfxObject(ClassName)
+GfxKeycode::GfxKeycode(GfxKeycode&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,6 +81,9 @@ GfxKeycode& GfxKeycode::operator=(GfxKeycode const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         code_ = other.code_;
     }
     return *this;
@@ -91,6 +95,9 @@ GfxKeycode& GfxKeycode::operator=(GfxKeycode&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         code_ = other.code_;
         // Delete other's data
         other.clear();

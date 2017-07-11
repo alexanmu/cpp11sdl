@@ -23,6 +23,7 @@
 
 #include <string>
 #include <cstdlib>
+#include <utility>
 
 #include "GfxHitTestResult.hpp"
 #include "GfxSdlHeader.hpp"
@@ -58,14 +59,14 @@ GfxHitTestResult::GfxHitTestResult(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxObject(ClassName)
+GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = other.value_;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxObject(ClassName)
+GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,6 +81,9 @@ GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other) noe
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         value_ = other.value_;
     }
     return *this;
@@ -91,6 +95,9 @@ GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         value_ = other.value_;
         // Delete other's data
         other.clear();

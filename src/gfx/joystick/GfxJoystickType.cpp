@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxJoystickType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -58,14 +59,14 @@ GfxJoystickType::GfxJoystickType(const ValueType type) noexcept : GfxObject(Clas
 }
 
 
-GfxJoystickType::GfxJoystickType(const GfxJoystickType& other) noexcept : GfxObject(ClassName)
+GfxJoystickType::GfxJoystickType(const GfxJoystickType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     type_ = other.type_;
 }
 
-GfxJoystickType::GfxJoystickType(GfxJoystickType&& other) noexcept : GfxObject(ClassName)
+GfxJoystickType::GfxJoystickType(GfxJoystickType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,6 +81,9 @@ GfxJoystickType& GfxJoystickType::operator=(const GfxJoystickType& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         type_ = other.type_;
     }
     return *this;
@@ -91,6 +95,9 @@ GfxJoystickType& GfxJoystickType::operator=(GfxJoystickType&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         type_ = other.type_;
         // Delete other's value
         other.clear();

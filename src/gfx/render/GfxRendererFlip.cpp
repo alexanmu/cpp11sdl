@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxRendererFlip.hpp"
 #include "GfxBasicLogger.hpp"
@@ -58,18 +59,19 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : 
     }
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxObject(ClassName)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     flip_ = other.flip_;
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxObject(ClassName)
+GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
     flip_ = other.flip_;
+    // Delete other's data
     other.clear();
 }
 
@@ -79,6 +81,9 @@ GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip const& other) noexce
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         flip_ = other.flip_;
     }
     return *this;
@@ -90,7 +95,11 @@ GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         flip_ = other.flip_;
+        // Delete other's data
         other.clear();
     }
     return *this;

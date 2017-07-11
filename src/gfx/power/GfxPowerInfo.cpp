@@ -23,6 +23,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxPowerInfo.hpp"
 #include "GfxBasicLogger.hpp"
@@ -44,7 +45,7 @@ GfxPowerInfo::GfxPowerInfo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(ClassName)
+GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -53,7 +54,7 @@ GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(Class
     percentage_ = other.percentage_;
 }
 
-GfxPowerInfo::GfxPowerInfo(GfxPowerInfo&& other) noexcept : GfxObject(ClassName)
+GfxPowerInfo::GfxPowerInfo(GfxPowerInfo&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -70,6 +71,9 @@ GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         pstate_ = other.pstate_;
         seconds_ = other.seconds_;
         percentage_ = other.percentage_;
@@ -83,6 +87,9 @@ GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         pstate_ = other.pstate_;
         seconds_ = other.seconds_;
         percentage_ = other.percentage_;

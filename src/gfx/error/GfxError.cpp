@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxError.hpp"
 #include "GfxBasicLogger.hpp"
@@ -53,14 +54,14 @@ GfxError::GfxError(std::string const& error) noexcept : GfxObject(ClassName)
     error_ = error;
 }
 
-GfxError::GfxError(GfxError const& other) noexcept : GfxObject(ClassName)
+GfxError::GfxError(GfxError const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     error_ = other.error_;
 }
 
-GfxError::GfxError(GfxError&& other) noexcept : GfxObject(ClassName)
+GfxError::GfxError(GfxError&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -75,6 +76,9 @@ GfxError& GfxError::operator=(GfxError const& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         error_ = other.error_;
     }
     return *this;
@@ -86,6 +90,9 @@ GfxError& GfxError::operator=(GfxError&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         error_ = other.error_;
         // Delete other's data
         other.clear();

@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxEventType.hpp"
 #include "GfxBasicLogger.hpp"
@@ -64,14 +65,14 @@ GfxEventType::GfxEventType(const uint32_t evtype) noexcept : GfxObject(ClassName
     evType_ = static_cast<SdlType>(evtype);
 }
 
-GfxEventType::GfxEventType(const GfxEventType& other) noexcept : GfxObject(ClassName)
+GfxEventType::GfxEventType(const GfxEventType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     evType_ = other.evType_;
 }
 
-GfxEventType::GfxEventType(GfxEventType&& other) noexcept : GfxObject(ClassName)
+GfxEventType::GfxEventType(GfxEventType&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -86,6 +87,9 @@ GfxEventType& GfxEventType::operator=(const GfxEventType& other) noexcept
 
     if (this != &other)
     {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
         evType_ = other.evType_;
     }
     return *this;
@@ -97,6 +101,9 @@ GfxEventType& GfxEventType::operator=(GfxEventType&& other) noexcept
 
     if (this != &other)
     {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
         evType_ = other.evType_;
         // Delete other's data
         other.clear();
