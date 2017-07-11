@@ -111,6 +111,7 @@ public:
     void restoreWindow(void) const noexcept;
     void setWindowFullscreen(const fullscreenflags_t flags) const noexcept;
     surface::GfxSurface const& getWindowSurface(void) throw(std::runtime_error);
+    surface::GfxSurface::SdlTypePtr getWindowSurfaceRaw(void) const noexcept;
     void updateWindowSurface(void) const noexcept;
     void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const noexcept;
     void setWindowGrab(GfxBool const& grabbed) const noexcept;

@@ -287,6 +287,7 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
                 GfxKeyboardEvent evKbd(e.key);
 
                 std::cout << "Key pressed: " << kdb.getKeyName(evKbd.getKeysym().getKeyCode()) << std::endl;
+                LOG_MESSAGE(std::string("Key pressed: " + kdb.getKeyName(evKbd.getKeysym().getKeyCode())).c_str());
                 if (evKbd.getKeysym().getScanCode().getValue() == GfxScancode::ValueType::kScanCodeQ)
                 {
                     quit = true;
@@ -315,6 +316,7 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
 
 void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev)
 {
+    LOG_MESSAGE(__PRETTY_FUNCTION__);
     if (ev.isResized())
     {
         std::cout << "Size changed" << std::endl;
@@ -331,7 +333,12 @@ void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev
 
 void BorlandGraphicsInterfaceDemo::projectCanvasToWindow(void)
 {
-    winptr_->getWindowSurface().blitScaled(*surf_);
+    LOG_MESSAGE(__PRETTY_FUNCTION__);
+
+    gfx::surface::GfxSurface::SdlTypePtr surfraw;
+
+    surfraw = winptr_->getWindowSurfaceRaw();
+    GfxSurface("TempSurface", surfraw).blitScaled(*surf_);
     winptr_->updateWindowSurface();
 }
 
@@ -589,9 +596,10 @@ void _doBgiDemo(void)
     LOG_TRACE_SET_TRACE_LVL_MED_OFF();
     LOG_TRACE_SET_TRACE_LVL_HIGH_ON();
     LOG_TRACE_SET_TRACE_LVL_TOP_ON();
-    LOG_TRACE_TRACE_MODULE("*");
-    // LOG_TRACE_ADD_MODULE("gfxtext::bgi::gfx");
-    // LOG_TRACE_ADD_MODULE("gfxangle::bgi::gfx");
+    // LOG_TRACE_TRACE_MODULE("*");
+    // LOG_TRACE_TRACE_MODULE("gfxtext::bgi::gfx");
+    // LOG_TRACE_TRACE_MODULE("gfxangle::bgi::gfx");
+    LOG_TRACE_TRACE_MODULE("gfxsurface::surface::gfx");
 
     BorlandGraphicsInterfaceDemo b;
 

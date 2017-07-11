@@ -54,7 +54,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     assert(height > 0);
     assert(depth > 0);
 
-    sdl2::SDL_Surface * tmpsurfptr;
+    SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = sdl2::SDL_CreateRGBSurface(flags.getAsSdlType(), width, height, depth, Rmask,
                                             Gmask, Bmask, Amask);
@@ -81,7 +81,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     assert(format);
     assert(format.getValue() != pixels::GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
 
-    sdl2::SDL_Surface * tmpsurfptr;
+    SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = sdl2::SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), width, height, depth,
                                                       format.getAsSdlType());
@@ -106,7 +106,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     assert(depth >= 0);
     assert(pitch >= 0);
 
-    sdl2::SDL_Surface * tmpsurfptr;
+    SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = sdl2::SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
     if (tmpsurfptr == nullptr)
@@ -132,7 +132,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
     assert(format);
     assert(format.getValue() != pixels::GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
 
-    sdl2::SDL_Surface * tmpsurfptr;
+    SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = sdl2::SDL_CreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format.getAsSdlType());
     if (tmpsurfptr == nullptr)
@@ -151,7 +151,7 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
     assert(surfname.length() > 0);
     assert(filename.length() > 0);
 
-    sdl2::SDL_Surface * tmpsurfptr;
+    SdlTypePtr tmpsurfptr;
 
     auto rw = sdl2::SDL_RWFromFile(filename.c_str(), "rb");
     if (rw == nullptr)
@@ -288,20 +288,23 @@ void GfxSurface::unlockSurface(void) const noexcept
     }
 }
 
-    void GfxSurface::saveBMP(std::string const& filename) const throw(std::runtime_error)
+void GfxSurface::saveBMP(std::string const& filename) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t ret;
+    int32_t ret = 1;
 
-    auto rw = sdl2::SDL_RWFromFile(filename.c_str(), "wb");
-    if (rw == nullptr)
+    if (surf_ != nullptr)
     {
-        throw std::runtime_error(sdl2::SDL_GetError());
+        auto rw = sdl2::SDL_RWFromFile(filename.c_str(), "wb");
+        if (rw == nullptr)
+        {
+            throw std::runtime_error(sdl2::SDL_GetError());
+        }
+        ret = sdl2::SDL_SaveBMP_RW(surf_, rw, 0);  // 1 = auto-close file
+        SDL_RWclose(rw);
+        assert((ret == -1) || (ret == 0));
     }
-    ret = sdl2::SDL_SaveBMP_RW(surf_, rw, 0);  // 1 = auto-close file
-    SDL_RWclose(rw);
-    assert((ret == -1) || (ret == 0));
 }
 
 void GfxSurface::setSurfaceRLE(GfxBool const& flag) const noexcept
@@ -466,8 +469,12 @@ rect::GfxRect GfxSurface::getClipRect(void) const noexcept
 
     rect::GfxRect::SdlType r;
 
-    sdl2::SDL_GetClipRect(surf_, &r);
-    return rect::GfxRect(r);
+    if (surf_ != nullptr)
+    {
+        sdl2::SDL_GetClipRect(surf_, &r);
+        return rect::GfxRect(r);
+    }
+    return rect::GfxRect();
 }
 
 GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& fmt,
@@ -535,12 +542,11 @@ void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& col
 
     uint32_t clr;
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+        sdl2::SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
     }
-    clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    sdl2::SDL_FillRect(surf_, rect.getAsSdlTypePtr(), clr);
 }
 
 void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
@@ -551,12 +557,11 @@ void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
 
     uint32_t clr;
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+        sdl2::SDL_FillRect(surf_, NULL, clr);
     }
-    clr = sdl2::SDL_MapRGBA(surf_->format, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    sdl2::SDL_FillRect(surf_, NULL, clr);
 }
 
 void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels::GfxColor& color) const noexcept
@@ -570,6 +575,7 @@ void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels
         for (const rect::GfxRect& r : rects)
         {
             assert(r);
+
             fillRect(r, color);
         }
     }
@@ -584,11 +590,10 @@ void GfxSurface::upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
     assert(srcrect);
     assert(dstrect);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_UpperBlit(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
     }
-    sdl2::SDL_UpperBlit(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
 }
 
 void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
@@ -600,11 +605,10 @@ void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
     assert(srcrect);
     assert(dstrect);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_LowerBlit(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
     }
-    sdl2::SDL_LowerBlit(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
 }
 
 void GfxSurface::softStrech(GfxSurface const& src, rect::GfxRect const& srcrect,
@@ -616,11 +620,10 @@ void GfxSurface::softStrech(GfxSurface const& src, rect::GfxRect const& srcrect,
     assert(srcrect);
     assert(dstrect);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_SoftStretch(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
     }
-    sdl2::SDL_SoftStretch(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
 }
 
 void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
@@ -632,11 +635,10 @@ void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     assert(srcrect);
     assert(dstrect);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_UpperBlitScaled(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
     }
-    sdl2::SDL_UpperBlitScaled(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
 }
 
 void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
@@ -648,11 +650,10 @@ void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     assert(srcrect);
     assert(dstrect);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_LowerBlitScaled(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
     }
-    sdl2::SDL_LowerBlitScaled(src.getAsSdlTypePtr(), srcrect.getAsSdlTypePtr(), surf_, dstrect.getAsSdlTypePtr());
 }
 
 void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
@@ -663,11 +664,10 @@ void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, c
     assert(srcr);
     assert(dstr);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
     }
-    sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
 void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
@@ -676,11 +676,10 @@ void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
 
     assert(src);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
     }
-    sdl2::SDL_BlitSurface(src.getAsSdlTypePtr(), NULL, surf_, NULL);
 }
 
 void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
@@ -691,11 +690,10 @@ void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, co
     assert(srcr);
     assert(dstr);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
     }
-    sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), srcr.getAsSdlTypePtr(), surf_, dstr.getAsSdlTypePtr());
 }
 
 void GfxSurface::blitScaled(const GfxSurface& src) const noexcept
@@ -704,11 +702,10 @@ void GfxSurface::blitScaled(const GfxSurface& src) const noexcept
 
     assert(src);
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return;
+        sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), NULL, surf_, NULL);
     }
-    sdl2::SDL_BlitScaled(src.getAsSdlTypePtr(), NULL, surf_, NULL);
 }
 
 GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
@@ -726,44 +723,44 @@ pixels::GfxPixelFormatEnum GfxSurface::getPixelFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return pixels::GfxPixelFormatEnum();
+        return pixels::GfxPixelFormatEnum(surf_->format->format);
     }
-    return pixels::GfxPixelFormatEnum(surf_->format->format);
+    return pixels::GfxPixelFormatEnum();
 }
 
 int32_t GfxSurface::getWidth(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return -1;
+        return surf_->w;
     }
-    return surf_->w;
+    return -1;
 }
 
 int32_t GfxSurface::getHeight(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return -1;
+        return surf_->h;
     }
-    return surf_->h;
+    return -1;
 }
 
 int32_t GfxSurface::getPitch(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    if (surf_ == nullptr)
+    if (surf_ != nullptr)
     {
-        return -1;
+        return surf_->pitch;
     }
-    return surf_->pitch;
+    return -1;
 }
 
 void * GfxSurface::getPixels(void) const noexcept
