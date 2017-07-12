@@ -316,9 +316,9 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
 
 void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev)
 {
-    LOG_MESSAGE(__PRETTY_FUNCTION__);
     if (ev.isResized())
     {
+        LOG_MESSAGE(__PRETTY_FUNCTION__);
         std::cout << "Size changed" << std::endl;
         int32_t w = winptr_->getWidth();
         int32_t h = winptr_->getHeight();
@@ -326,6 +326,7 @@ void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev
     }
     if (ev.isMinimized())
     {
+        LOG_MESSAGE(__PRETTY_FUNCTION__);
         winptr_->restoreWindow();
         winptr_->raiseWindow();
     }
@@ -333,12 +334,7 @@ void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev
 
 void BorlandGraphicsInterfaceDemo::projectCanvasToWindow(void)
 {
-    LOG_MESSAGE(__PRETTY_FUNCTION__);
-
-    gfx::surface::GfxSurface::SdlTypePtr surfraw;
-
-    surfraw = winptr_->getWindowSurfaceRaw();
-    GfxSurface("TempSurface", surfraw).blitScaled(*surf_);
+    winptr_->getWindowSurface().blitScaled(*surf_);
     winptr_->updateWindowSurface();
 }
 

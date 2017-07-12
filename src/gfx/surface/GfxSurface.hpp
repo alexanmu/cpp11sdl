@@ -86,6 +86,7 @@ public:
     void setSurfacePalette(pixels::GfxPalette const& palette) const noexcept;
     void lockSurface(void) const noexcept;
     void unlockSurface(void) const noexcept;
+    GfxBool mustLock(void) const noexcept;
     void saveBMP(std::string const& filename) const throw(std::runtime_error);
     void setSurfaceRLE(GfxBool const& flag) const noexcept;
     void setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const noexcept;
@@ -146,6 +147,7 @@ private:
 
     SdlTypePtr surf_;
     std::string surfName_;
+    bool doNotFree_;
 };
 
 }  // namespace surface

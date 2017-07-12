@@ -168,6 +168,8 @@ bool GfxWindowFlags::isShown(void) const noexcept
 
 bool GfxWindowFlags::isHidden(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     uint32_t r = flags_ & sdl2::SDL_WINDOW_HIDDEN;
 
     return (r != 0);

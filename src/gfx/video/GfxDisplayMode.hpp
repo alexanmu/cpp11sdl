@@ -29,6 +29,7 @@
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 namespace gfx
 {
@@ -62,10 +63,10 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    uint32_t getFormat(void) const noexcept;
+    pixels::GfxPixelFormatEnum getFormat(void) const noexcept;
     int32_t getWidth(void) const noexcept;
     int32_t getHeight(void) const noexcept;
-    int getRefreshRate(void) const noexcept;
+    int32_t getRefreshRate(void) const noexcept;
 
     void clear(void) noexcept;
 

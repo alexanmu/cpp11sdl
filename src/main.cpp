@@ -166,9 +166,10 @@ void AfterInit(void)
         std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
         std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
         gfx::video::GfxDisplayMode dm = v.getCurrentDisplayMode(i);
+        gfx::pixels::GfxPixelFormatEnum fmt = dm.getFormat();
         std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
-                    std::setw(8) << std::hex << dm.getFormat() << std::dec << '\n';
-        std::cout << "dm.get()->getFormat()=" << dm.getFormat() << '\n';
+                    std::setw(8) << std::hex << static_cast<uint32_t>(fmt.getValue()) << std::dec << '\n';
+        std::cout << "dm.get()->getFormat()=" << static_cast<uint32_t>(fmt.getValue()) << '\n';
         std::cout << "dm.get()->getWidth()=" << dm.getWidth() << '\n';
         std::cout << "dm.get()->getHeight()=" << dm.getHeight() << '\n';
         std::cout << "dm.get()->getRefreshRate()=" << dm.getRefreshRate() << "Hz" << '\n';

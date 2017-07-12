@@ -64,6 +64,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
+    doNotFree_ = false;
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
@@ -91,6 +92,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
+    doNotFree_ = false;
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
@@ -115,6 +117,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
+    doNotFree_ = false;
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
@@ -141,6 +144,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
+    doNotFree_ = false;
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) :
@@ -166,6 +170,7 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
+    doNotFree_ = false;
 }
 
 GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error) :
@@ -180,17 +185,21 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
     }
     surf_ = surf;
     surfName_ = surfname;
+    doNotFree_ = true;
 }
 
 GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
+    freeSurface();
     surf_ = other.surf_;
     surfName_ = other.surfName_;
+    doNotFree_ = other.doNotFree_;
     // Delete other's data
     other.surf_ = nullptr;
     other.surfName_.clear();
+    other.doNotFree_ = false;
 }
 
 GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
@@ -202,14 +211,14 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
         // Move base
         GfxObject::operator=(std::move(other));
         // Move this
-        if (surf_ != nullptr)
-        {
-            sdl2::SDL_FreeSurface(surf_);
-        }
+        freeSurface();
         surf_ = other.surf_;
+        surfName_ = other.surfName_;
+        doNotFree_ = other.doNotFree_;
         // Delete other's data
         other.surf_ = nullptr;
         other.surfName_.clear();
+        other.doNotFree_ = false;
     }
     return *this;
 }
@@ -218,11 +227,7 @@ GfxSurface::~GfxSurface() noexcept
 {
     LOG_TRACE_PRIO_TOP();
 
-    if (surf_ != nullptr)
-    {
-        sdl2::SDL_FreeSurface(surf_);
-    }
-    surf_ = nullptr;
+    freeSurface();
 }
 
 GfxSurface::operator bool() const noexcept
@@ -243,7 +248,7 @@ void GfxSurface::freeSurface(void) noexcept
 {
     LOG_TRACE_PRIO_TOP();
 
-    if (surf_ != nullptr)
+    if ((surf_ != nullptr) && (doNotFree_ == false))
     {
         sdl2::SDL_FreeSurface(surf_);
         surf_ = nullptr;
@@ -274,7 +279,7 @@ void GfxSurface::lockSurface(void) const noexcept
     if (surf_ != nullptr)
     {
         ret = sdl2::SDL_LockSurface(surf_);
-        assert((ret == 1) || (ret == 0));
+        assert((ret == -1) || (ret == 0));
     }
 }
 
@@ -286,6 +291,20 @@ void GfxSurface::unlockSurface(void) const noexcept
     {
         sdl2::SDL_UnlockSurface(surf_);
     }
+}
+
+GfxBool GfxSurface::mustLock(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    bool ret;
+
+    if (surf_ != nullptr)
+    {
+        ret = SDL_MUSTLOCK(surf_);
+        return GfxBool(ret);
+    }
+    return GfxBool(false);
 }
 
 void GfxSurface::saveBMP(std::string const& filename) const throw(std::runtime_error)

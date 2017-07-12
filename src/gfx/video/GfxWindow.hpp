@@ -40,6 +40,7 @@
 #include "GfxPoint.hpp"
 #include "GfxGammaRamp.hpp"
 #include "GfxHitTest.hpp"
+#include "GfxPixelFormatEnum.hpp"
 
 namespace gfx
 {
@@ -52,20 +53,17 @@ class GfxWindow final : public GfxObject
 public:
     typedef sdl2::SDL_Window * SdlTypePtr;
 
-    typedef uint32_t fullscreenflags_t;
-
     static const char ClassName[];
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxWindow() = delete;
-
+    GfxWindow() noexcept;
     GfxWindow(std::string const& title, const int32_t width, const int32_t height) throw(std::runtime_error);
     GfxWindow(std::string const& title, const int32_t width, const int32_t height,
-            GfxWindowFlags const& flags) throw(std::runtime_error);
+              GfxWindowFlags const& flags) throw(std::runtime_error);
     GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
-                const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
-    explicit GfxWindow(void * data) throw(std::runtime_error);
+              const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
+    explicit GfxWindow(const void * data) throw(std::runtime_error);
 
     GfxWindow(GfxWindow const&) = delete;
     GfxWindow(GfxWindow&& other) noexcept;
@@ -78,15 +76,21 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    void createWindow(std::string const& title, const int32_t width, const int32_t height) throw(std::runtime_error);
+    void createWindow(std::string const& title, const int32_t width, const int32_t height,
+                      GfxWindowFlags const& flags) throw(std::runtime_error);
+    void createWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
+                      const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
+    void createWindow(const void * data) throw(std::runtime_error);
     void destroyWindow(void) noexcept;
 
     int32_t getWindowDisplayIndex(void) const noexcept;
     GfxDisplayMode getWindowDisplayMode(void) const noexcept;
-    uint32_t getWindowPixelFormat(void) const noexcept;
+    pixels::GfxPixelFormatEnum getWindowPixelFormat(void) const noexcept;
 
     uint32_t getWindowID(void) const noexcept;
     GfxWindow const * getWindowFromID(const uint32_t id) const noexcept;
-    GfxWindowFlags * getWindowFlags(void) const noexcept;
+    GfxWindowFlags getWindowFlags(void) const noexcept;
     void setWindowTitle(std::string const& title) noexcept;
     std::string getWindowTitle(void) const noexcept;
     void setWindowIcon(surface::GfxSurface const& icon) noexcept;
@@ -98,9 +102,9 @@ public:
     void getWindowSize(int32_t * pw, int32_t * ph) const noexcept;
     void getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bottom, int32_t * right) const noexcept;
     void setWindowMinimumSize(const int32_t min_w, const int32_t min_h) const noexcept;
-    void getWindowMinimumSize(int32_t * w, int32_t * h) const noexcept;
+    void getWindowMinimumSize(int32_t * min_w, int32_t * min_h) const noexcept;
     void setWindowMaximumSize(const int32_t max_w, const int32_t max_h) const noexcept;
-    void getWindowMaximumSize(int32_t * w, int32_t * h) const noexcept;
+    void getWindowMaximumSize(int32_t * max_w, int32_t * max_h) const noexcept;
     void setWindowBordered(GfxBool const& bordered) const noexcept;
     void setWindowResizable(GfxBool const& resizable) const noexcept;
     void showWindow(void) const noexcept;
@@ -109,11 +113,10 @@ public:
     void maximizeWindow(void) const noexcept;
     void minimizeWindow(void) const noexcept;
     void restoreWindow(void) const noexcept;
-    void setWindowFullscreen(const fullscreenflags_t flags) const noexcept;
+    void setWindowFullscreen(GfxWindowFlags const& flags) const noexcept;
     surface::GfxSurface const& getWindowSurface(void) throw(std::runtime_error);
-    surface::GfxSurface::SdlTypePtr getWindowSurfaceRaw(void) const noexcept;
     void updateWindowSurface(void) const noexcept;
-    void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const noexcept;
+    void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const throw(std::runtime_error);
     void setWindowGrab(GfxBool const& grabbed) const noexcept;
     GfxBool getWindowGrab(void) const noexcept;
     GfxWindow const * getGrabbedWindow(void) const noexcept;
@@ -134,6 +137,8 @@ public:
 
     SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
+    void freeResources(void) noexcept;
+
     static const int32_t kDefaultWindowPositionX = 100;
     static const int32_t kDefaultWindowPositionY = 100;
     static const int32_t kDefaultFlagsValue = 0;

@@ -50,7 +50,7 @@ GfxWindowPosition::GfxWindowPosition(const ValueType pos, const int32_t coord) n
 {
     LOG_TRACE_PRIO_MED();
 
-    assert(coord >= 0);
+    assert(coord >= -1);
 
     pos_ = pos;
     if (pos_ == GfxWindowPosition::ValueType::positionSpecified)

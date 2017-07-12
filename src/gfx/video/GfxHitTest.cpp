@@ -30,6 +30,7 @@ LOG_TRACE_MODULE_NAME("gfxhittest::video::gfx");
 
 namespace gfx
 {
+
 namespace video
 {
 

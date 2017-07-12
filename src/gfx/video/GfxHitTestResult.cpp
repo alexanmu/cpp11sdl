@@ -56,6 +56,7 @@ GfxHitTestResult::GfxHitTestResult(const ValueType value) noexcept
 GfxHitTestResult::GfxHitTestResult(const SdlType value) noexcept
 {
     LOG_TRACE_PRIO_MED();
+
     value_ = value;
 }
 

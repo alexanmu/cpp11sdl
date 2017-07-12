@@ -51,7 +51,7 @@ public:
 
     GfxWindowPosition() noexcept;
 
-    explicit GfxWindowPosition(const ValueType pos, const int32_t coord = 0) noexcept;
+    explicit GfxWindowPosition(const ValueType pos, const int32_t coord = -1) noexcept;
 
     GfxWindowPosition(GfxWindowPosition const& other) noexcept;
     GfxWindowPosition(GfxWindowPosition&& other) noexcept;

@@ -172,10 +172,12 @@ rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexc
     assert(displayindex >= 0);
 
     rect::GfxRect::SdlType rt;
+    int32_t ret = 1;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        (void)SDL_GetDisplayBounds(displayindex, &rt);
+        ret = SDL_GetDisplayBounds(displayindex, &rt);
+        assert(ret == 0);
         return rect::GfxRect(rt);
     }
     return rect::GfxRect();
@@ -188,10 +190,12 @@ rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const
     assert(displayindex >= 0);
 
     rect::GfxRect::SdlType rt;
+    int32_t ret = 1;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        (void)SDL_GetDisplayUsableBounds(displayindex, &rt);
+        ret = SDL_GetDisplayUsableBounds(displayindex, &rt);
+        assert(ret == 0);
         return rect::GfxRect(rt);
     }
     return rect::GfxRect();
@@ -206,9 +210,16 @@ void GfxVideo::getDisplayDPI(const int32_t displayindex, float * ddpi, float * h
     assert(hdpi != nullptr);
     assert(vdpi != nullptr);
 
+    int32_t ret = 1;
+
+    *ddpi = 0.0f;
+    *hdpi = 0.0f;
+    *vdpi = 0.0f;
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        sdl2::SDL_GetDisplayDPI(displayindex, ddpi, hdpi, vdpi);
+        ret = sdl2::SDL_GetDisplayDPI(displayindex, ddpi, hdpi, vdpi);
+        // assert(ret == 0); Fails if DPI information is not available!
+        assert(ret == ret);
     }
 }
 
@@ -223,7 +234,14 @@ int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex) noexcept
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
         numdisplaymodes = sdl2::SDL_GetNumDisplayModes(displayindex);
-        numdisplaymodes_[displayindex] = numdisplaymodes;
+        if (numdisplaymodes >= 1)
+        {
+            numdisplaymodes_[displayindex] = numdisplaymodes;
+        }
+        else
+        {
+            // Error occured
+        }
     }
     return numdisplaymodes;
 }
@@ -237,6 +255,7 @@ GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_
 
     int32_t mcount;
     GfxDisplayMode::SdlType dms;
+    int32_t ret = 1;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
@@ -250,7 +269,8 @@ GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_
         }
         if ((mcount >= 0) && (modeindex < mcount))
         {
-            SDL_GetDisplayMode(displayindex, modeindex, &dms);
+            ret = sdl2::SDL_GetDisplayMode(displayindex, modeindex, &dms);
+            assert(ret == 0);
             return GfxDisplayMode(dms);
         }
     }
@@ -264,10 +284,12 @@ GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const
     assert(displayindex >= 0);
 
     GfxDisplayMode::SdlType dms;
+    int32_t ret = 1;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        SDL_GetDesktopDisplayMode(displayindex, &dms);
+        ret = sdl2::SDL_GetDesktopDisplayMode(displayindex, &dms);
+        assert(ret == 0);
         return GfxDisplayMode(dms);
     }
     return GfxDisplayMode();
@@ -280,10 +302,12 @@ GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const
     assert(displayindex >= 0);
 
     GfxDisplayMode::SdlType dms;
+    int32_t ret = 1;
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        SDL_GetCurrentDisplayMode(displayindex, &dms);
+        ret = sdl2::SDL_GetCurrentDisplayMode(displayindex, &dms);
+        assert(ret == 0);
         return GfxDisplayMode(dms);
     }
     return GfxDisplayMode();
@@ -302,7 +326,7 @@ GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        dmsptr = SDL_GetClosestDisplayMode(displayindex, mode.getAsSdlTypePtr(), &dms);
+        dmsptr = sdl2::SDL_GetClosestDisplayMode(displayindex, mode.getAsSdlTypePtr(), &dms);
         if (dmsptr == &dms)
         {
             return GfxDisplayMode(dms);

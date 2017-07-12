@@ -116,28 +116,28 @@ std::string GfxDisplayMode::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-uint32_t GfxDisplayMode::getFormat(void) const noexcept
+pixels::GfxPixelFormatEnum GfxDisplayMode::getFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return dmode_.format;
+    return pixels::GfxPixelFormatEnum(dmode_.format);
 }
 
-int GfxDisplayMode::getWidth(void) const noexcept
+int32_t GfxDisplayMode::getWidth(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return dmode_.w;
 }
 
-int GfxDisplayMode::getHeight(void) const noexcept
+int32_t GfxDisplayMode::getHeight(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return dmode_.h;
 }
 
-int GfxDisplayMode::getRefreshRate(void) const noexcept
+int32_t GfxDisplayMode::getRefreshRate(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

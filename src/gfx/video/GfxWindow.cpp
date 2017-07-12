@@ -73,6 +73,14 @@ static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window 
 
 }  // namespace prv
 
+GfxWindow::GfxWindow() noexcept
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    window_ = nullptr;
+    winSurface_ = nullptr;
+}
+
 GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_t height)
     throw(std::runtime_error) : GfxObject(ClassName)
 {
@@ -140,7 +148,7 @@ GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWi
     winSurface_ = nullptr;
 }
 
-GfxWindow::GfxWindow(void * data) throw(std::runtime_error) : GfxObject(ClassName)
+GfxWindow::GfxWindow(const void * data) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -161,6 +169,7 @@ GfxWindow::GfxWindow(GfxWindow&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_HIGH();
 
+    freeResources();
     window_ = other.window_;
     winSurface_ = other.winSurface_;
     // Delete other's data
@@ -174,6 +183,7 @@ GfxWindow& GfxWindow::operator=(GfxWindow&& other) noexcept
 
     if (this != &other)
     {
+        freeResources();
         // Move base
         GfxObject::operator=(std::move(other));
         // Move this
@@ -190,17 +200,7 @@ GfxWindow::~GfxWindow() noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
-    if (winSurface_ != nullptr)
-    {
-        /* Window surface should not be destroyed. Managed by SDL; just destroy GfxSurface object */
-        delete winSurface_;
-        winSurface_ = nullptr;
-    }
-    if (window_ != nullptr)
-    {
-        sdl2::SDL_DestroyWindow(window_);
-    }
-    window_ = nullptr;
+    freeResources();
 }
 
 GfxWindow::operator bool() const noexcept
@@ -215,6 +215,106 @@ std::string GfxWindow::to_string(void) const noexcept
     LOG_TRACE_PRIO_LOW();
 
     return std::string(ClassName);
+}
+
+void GfxWindow::createWindow(std::string const& title, const int32_t width,
+                             const int32_t height) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(title.length() > 0);
+    assert(width >= 0);
+    assert(height >= 0);
+
+    SdlTypePtr tmpwinptr;
+
+    if (window_ != nullptr)
+    {
+        throw std::runtime_error("Window already created");
+    }
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+                                       width, height, kDefaultFlagsValue);
+    if (tmpwinptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create window");
+    }
+    window_ = tmpwinptr;
+    winSurface_ = nullptr;
+}
+
+void GfxWindow::createWindow(std::string const& title, const int32_t width, const int32_t height,
+                             GfxWindowFlags const& flags) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(title.length() > 0);
+    assert(width >= 0);
+    assert(height >= 0);
+
+    SdlTypePtr tmpwinptr;
+
+    if (window_ != nullptr)
+    {
+        throw std::runtime_error("Window already created");
+    }
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+                                       width, height, flags.getAsSdlType());
+    if (tmpwinptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create window");
+    }
+    window_ = tmpwinptr;
+    winSurface_ = nullptr;
+}
+
+void GfxWindow::createWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
+                             const int32_t width, const int32_t height,
+                             GfxWindowFlags const& flags) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(title.length() > 0);
+    assert(x);
+    assert(y);
+    assert(width >= 0);
+    assert(height >= 0);
+    assert(flags);
+
+    SdlTypePtr tmpwinptr;
+
+    if (window_ != nullptr)
+    {
+        throw std::runtime_error("Window already created");
+    }
+    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
+                                       width, height, flags.getAsSdlType());
+    if (tmpwinptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create window");
+    }
+    window_ = tmpwinptr;
+    winSurface_ = nullptr;
+}
+
+void GfxWindow::createWindow(const void * data) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(data != nullptr);
+
+    SdlTypePtr tmpwinptr;
+
+    if (window_ != nullptr)
+    {
+        throw std::runtime_error("Window already created");
+    }
+    tmpwinptr = sdl2::SDL_CreateWindowFrom(data);
+    if (tmpwinptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create window");
+    }
+    window_ = tmpwinptr;
+    winSurface_ = nullptr;
 }
 
 void GfxWindow::destroyWindow() noexcept
@@ -261,17 +361,18 @@ GfxDisplayMode GfxWindow::getWindowDisplayMode(void) const noexcept
     return gfx::video::GfxDisplayMode();
 }
 
-uint32_t GfxWindow::getWindowPixelFormat(void) const noexcept
+pixels::GfxPixelFormatEnum GfxWindow::getWindowPixelFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    uint32_t ret = 0;
+    uint32_t ret = sdl2::SDL_PIXELFORMAT_UNKNOWN;
 
     if (window_ != nullptr)
     {
         ret = sdl2::SDL_GetWindowPixelFormat(window_);
+        return pixels::GfxPixelFormatEnum(ret);
     }
-    return ret;
+    return pixels::GfxPixelFormatEnum();
 }
 
 uint32_t GfxWindow::getWindowID(void) const noexcept
@@ -306,7 +407,7 @@ GfxWindow const * GfxWindow::getWindowFromID(const uint32_t id) const noexcept
     return nullptr;
 }
 
-GfxWindowFlags * GfxWindow::getWindowFlags(void) const noexcept
+GfxWindowFlags GfxWindow::getWindowFlags(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -315,9 +416,9 @@ GfxWindowFlags * GfxWindow::getWindowFlags(void) const noexcept
     if (window_ != nullptr)
     {
         wf = sdl2::SDL_GetWindowFlags(window_);
-        return new GfxWindowFlags(wf);
+        return GfxWindowFlags(wf);
     }
-    return nullptr;
+    return GfxWindowFlags();
 }
 
 void GfxWindow::setWindowTitle(std::string const& title) noexcept
@@ -424,8 +525,8 @@ void GfxWindow::setWindowSize(const int32_t w, const int32_t h) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    assert(w >= 0);
-    assert(h >= 0);
+    assert(w > 0);
+    assert(h > 0);
 
     if (window_ != nullptr)
     {
@@ -442,11 +543,10 @@ void GfxWindow::getWindowSize(int32_t * pw, int32_t * ph) const noexcept
 
     *pw = -1;
     *ph = -1;
-    if (window_ == nullptr)
+    if (window_ != nullptr)
     {
         sdl2::SDL_GetWindowSize(window_, pw, ph);
     }
-   
 }
 
 void GfxWindow::getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bottom, int32_t * right) const noexcept
@@ -460,10 +560,10 @@ void GfxWindow::getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bo
 
     int32_t ret;
 
-    *top = -1;
-    *left = -1;
-    *bottom = -1;
-    *right = -1;
+    *top = 0;
+    *left = 0;
+    *bottom = 0;
+    *right = 0;
     if (window_ != nullptr)
     {
         ret = sdl2::SDL_GetWindowBordersSize(window_, top, left, bottom, right);
@@ -484,16 +584,16 @@ void GfxWindow::setWindowMinimumSize(const int32_t min_w, const int32_t min_h) c
     }
 }
 
-void GfxWindow::getWindowMinimumSize(int32_t * w, int32_t * h) const noexcept
+void GfxWindow::getWindowMinimumSize(int32_t * min_w, int32_t * min_h) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    assert(w != nullptr);
-    assert(h != nullptr);
+    assert(min_w != nullptr);
+    assert(min_h != nullptr);
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowMinimumSize(window_, w, h);
+        sdl2::SDL_GetWindowMinimumSize(window_, min_w, min_h);
     }
 }
 
@@ -510,16 +610,16 @@ void GfxWindow::setWindowMaximumSize(const int32_t max_w, const int32_t max_h) c
     }
 }
 
-void GfxWindow::getWindowMaximumSize(int32_t * w, int32_t * h) const noexcept
+void GfxWindow::getWindowMaximumSize(int32_t * max_w, int32_t * max_h) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    assert(w != nullptr);
-    assert(h != nullptr);
+    assert(max_w != nullptr);
+    assert(max_h != nullptr);
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowMaximumSize(window_, w, h);
+        sdl2::SDL_GetWindowMaximumSize(window_, max_w, max_h);
     }
 }
 
@@ -607,7 +707,7 @@ void GfxWindow::restoreWindow(void) const noexcept
     }
 }
 
-void GfxWindow::setWindowFullscreen(const fullscreenflags_t flags) const noexcept
+void GfxWindow::setWindowFullscreen(GfxWindowFlags const& flags) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -615,7 +715,7 @@ void GfxWindow::setWindowFullscreen(const fullscreenflags_t flags) const noexcep
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowFullscreen(window_, flags);
+        ret = sdl2::SDL_SetWindowFullscreen(window_, flags.getAsSdlType());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -663,16 +763,6 @@ surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_
     return *winSurface_;
 }
 
-surface::GfxSurface::SdlTypePtr GfxWindow::getWindowSurfaceRaw(void) const noexcept
-{
-    LOG_TRACE_PRIO_MED();
-
-    surface::GfxSurface::SdlTypePtr tmpsurf;
-
-    tmpsurf = sdl2::SDL_GetWindowSurface(window_);
-    return tmpsurf;
-}
-
 void GfxWindow::updateWindowSurface(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
@@ -686,7 +776,7 @@ void GfxWindow::updateWindowSurface(void) const noexcept
     }
 }
 
-void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const noexcept
+void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -699,6 +789,10 @@ void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& 
 
     rects_count = static_cast<int32_t>(vec.size());
     rects_ptr = reinterpret_cast<rect::GfxRect::SdlTypePtr>(malloc(sizeof(rect::GfxRect::SdlType) * rects_count));
+    if (!rects_ptr)
+    {
+        throw std::runtime_error("malloc error");
+    }
     index = 0;
     for (auto& it : vec)
     {
@@ -710,6 +804,7 @@ void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& 
         ret = sdl2::SDL_UpdateWindowSurfaceRects(window_, rects_ptr, rects_count);
         assert((ret == -1) || (ret == 0));
     }
+    // Leaks if assert above fails
     free(rects_ptr);
 }
 
@@ -909,30 +1004,26 @@ int32_t GfxWindow::getWidth() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t w;
-    int32_t h;
+    int32_t w = -1;
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowSize(window_, &w, &h);
-        return w;
+        sdl2::SDL_GetWindowSize(window_, &w, NULL);
     }
-    return -1;
+    return w;
 }
 
 int32_t GfxWindow::getHeight() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t w;
-    int32_t h;
+    int32_t h = -1;
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowSize(window_, &w, &h);
-        return h;
+        sdl2::SDL_GetWindowSize(window_, NULL, &h);
     }
-    return -1;
+    return h;
 }
 
 GfxWindow::SdlTypePtr GfxWindow::getAsSdlTypePtr() const noexcept
@@ -940,6 +1031,21 @@ GfxWindow::SdlTypePtr GfxWindow::getAsSdlTypePtr() const noexcept
     LOG_TRACE_PRIO_LOW();
 
     return window_;
+}
+
+// Private methods
+void GfxWindow::freeResources(void) noexcept
+{
+    if (winSurface_ != nullptr)
+    {
+        delete winSurface_;
+        winSurface_ = nullptr;
+    }
+    if (window_ != nullptr)
+    {
+        sdl2::SDL_DestroyWindow(window_);
+        window_ = nullptr;
+    }
 }
 
 }  // namespace video

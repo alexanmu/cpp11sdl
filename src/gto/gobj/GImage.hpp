@@ -31,7 +31,6 @@
 #include "GComponent.hpp"
 #include "GGraphicControl.hpp"
 #include "GTypes.hpp"
-#include "GfxControlledSurface.hpp"
 
 namespace gto
 {
