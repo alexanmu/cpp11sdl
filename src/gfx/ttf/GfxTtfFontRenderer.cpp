@@ -177,7 +177,7 @@ bool GfxTtfFontRenderer::sizeUnicode(std::string const& text, int32_t * w, int32
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& text,
-                                                          gfx::pixels::GfxColor const& fg) const noexcept
+            gfx::pixels::GfxColor const& fg) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -190,7 +190,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& tex
         surf = sdl2::TTF_RenderText_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextSolid", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextSolid", surf, false);
         }
     }
     return nullptr;
@@ -210,14 +210,14 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const&
         surf = sdl2::TTF_RenderUTF8_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Solid", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Solid", surf, false);
         }
     }
     return nullptr;
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string const& text,
-                                    gfx::pixels::GfxColor const& fg) const throw(std::runtime_error)
+            gfx::pixels::GfxColor const& fg) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -228,7 +228,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeSolid(std::string con
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(const uint16_t ch,
-                                    gfx::pixels::GfxColor const& fg) const noexcept
+            gfx::pixels::GfxColor const& fg) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -239,7 +239,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(const uint16_t ch,
         surf = sdl2::TTF_RenderGlyph_Solid(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphSolid", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphSolid", surf, false);
         }
     }
     return nullptr;
@@ -257,7 +257,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& te
         surf = sdl2::TTF_RenderText_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextShaded", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextShaded", surf, false);
         }
     }
     return nullptr;
@@ -275,7 +275,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const
         surf = sdl2::TTF_RenderUTF8_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Shaded", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Shaded", surf, false);
         }
     }
     return nullptr;
@@ -305,14 +305,14 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(const uint16_t ch, g
         surf = sdl2::TTF_RenderGlyph_Shaded(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType(), bg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphShaded", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphShaded", surf, false);
         }
     }
     return nullptr;
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& text,
-                                                            gfx::pixels::GfxColor const& fg) const noexcept
+            gfx::pixels::GfxColor const& fg) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -323,7 +323,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& t
         surf = sdl2::TTF_RenderText_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextBlended", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextBlended", surf, false);
         }
     }
     return nullptr;
@@ -341,7 +341,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string cons
         surf = sdl2::TTF_RenderUTF8_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Blended", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Blended", surf, false);
         }
     }
     return nullptr;
@@ -359,7 +359,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUnicodeBlended(std::string c
 }
 
 surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(const uint16_t ch,
-                                                             gfx::pixels::GfxColor const& fg) const noexcept
+            gfx::pixels::GfxColor const& fg) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -370,7 +370,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(const uint16_t ch,
         surf = sdl2::TTF_RenderGlyph_Blended(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
         if (surf != nullptr)
         {
-            return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphBlended", surf);
+            return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphBlended", surf, false);
         }
     }
     return nullptr;

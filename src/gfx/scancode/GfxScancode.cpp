@@ -45,7 +45,7 @@ GfxScancode::GfxScancode() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxScancode::GfxScancode(const int32_t code) noexcept : GfxObject(ClassName)
+GfxScancode::GfxScancode(const std::underlying_type<ValueType>::type code) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 

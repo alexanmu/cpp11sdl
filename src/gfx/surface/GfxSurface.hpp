@@ -68,7 +68,8 @@ public:
     explicit GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
                         int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
     explicit GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error);
-    explicit GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, const SdlTypePtr surf,
+                        const bool doNotFree) throw(std::runtime_error);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& other) noexcept;
@@ -117,10 +118,10 @@ public:
     void lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
                          rect::GfxRect const& dstrect) const noexcept;
 
-    void blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept;
-    void blitSurface(const GfxSurface& src) const noexcept;
-    void blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept;
-    void blitScaled(const GfxSurface& src) const noexcept;
+    void blitSurface(GfxSurface const& src, rect::GfxRect const& srcr, rect::GfxRect const& dstr) const noexcept;
+    void blitSurface(GfxSurface const& src) const noexcept;
+    void blitScaled(GfxSurface const& src, rect::GfxRect const& srcr, rect::GfxRect const& dstr) const noexcept;
+    void blitScaled(GfxSurface const& src) const noexcept;
 
     GfxSurfaceFlags getSurfaceFlags(void) const noexcept;
     pixels::GfxPixelFormatEnum getPixelFormat(void) const noexcept;
@@ -137,12 +138,12 @@ public:
     std::string const& getSurfaceName(void) const noexcept;
     void setSurfaceName(std::string const& name) noexcept;
 
-    void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
+    void putPixel(const int32_t x, const int32_t y, pixels::GfxColor const& clr) const noexcept;
     pixels::GfxColor getPixel(const int32_t x, const int32_t y) const noexcept;
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
-    void putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
+    void putPixelPrv(const int32_t x, const int32_t y, pixels::GfxColor const& clr) const noexcept;
     pixels::GfxColor getPixelPrv(const int32_t x, const int32_t y) const noexcept;
 
     SdlTypePtr surf_;

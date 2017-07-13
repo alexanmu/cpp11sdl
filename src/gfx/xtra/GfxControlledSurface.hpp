@@ -45,8 +45,8 @@ class GfxControlledSurface final : public GfxObject
 {
 public:
     static const char ClassName[];
-    static const bool SdlResource = true;
-    static const bool CallsSdl = true;
+    static const bool SdlResource = false;
+    static const bool CallsSdl = false;
 
     GfxControlledSurface() noexcept;
     explicit GfxControlledSurface(const uint16_t w, const uint16_t h) noexcept;

@@ -321,17 +321,7 @@ void GfxWindow::destroyWindow() noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
-    if (winSurface_ != nullptr)
-    {
-        /* Window surface should not be destroyed. Managed by SDL; just destroy GfxSurface object*/
-        delete winSurface_;
-        winSurface_ = nullptr;
-    }
-    if (window_ != nullptr)
-    {
-        sdl2::SDL_DestroyWindow(window_);
-        window_ = nullptr;
-    }
+    freeResources();
 }
 
 int32_t GfxWindow::getWindowDisplayIndex(void) const noexcept
@@ -742,7 +732,7 @@ surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_
                 // Delete existing GfxSurface object
                 delete winSurface_;
                 // Create new GfxSurface object with new window surface
-                winSurface_ = new surface::GfxSurface("GfxWindow::getWindowSurface", tmpsurf);
+                winSurface_ = new surface::GfxSurface("GfxWindow::getWindowSurface", tmpsurf, true);
             }
             else
             {
@@ -752,7 +742,7 @@ surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_
         else
         {
             // Create new GfxSurface object with new window surface
-            winSurface_ = new surface::GfxSurface("GfxWindow::getWindowSurface", tmpsurf);
+            winSurface_ = new surface::GfxSurface("GfxWindow::getWindowSurface", tmpsurf, true);
         }
     }
     else

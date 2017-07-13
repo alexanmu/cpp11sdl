@@ -83,6 +83,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(std::move(
     {
         gammaRamp_[index] = other.gammaRamp_[index];
     }
+    // Delete other's data
     other.clear();
 }
 
@@ -120,6 +121,7 @@ GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp&& other) noexcept
         {
             gammaRamp_[index] = other.gammaRamp_[index];
         }
+        // Delete other's data
         other.clear();
     }
     return *this;

@@ -176,7 +176,7 @@ rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexc
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        ret = SDL_GetDisplayBounds(displayindex, &rt);
+        ret = sdl2::SDL_GetDisplayBounds(displayindex, &rt);
         assert(ret == 0);
         return rect::GfxRect(rt);
     }
@@ -194,7 +194,7 @@ rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const
 
     if ((numvideodisplays_ >= 0) && (displayindex < numvideodisplays_))
     {
-        ret = SDL_GetDisplayUsableBounds(displayindex, &rt);
+        ret = sdl2::SDL_GetDisplayUsableBounds(displayindex, &rt);
         assert(ret == 0);
         return rect::GfxRect(rt);
     }

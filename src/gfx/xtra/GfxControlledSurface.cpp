@@ -54,15 +54,15 @@ GfxControlledSurface::GfxControlledSurface(const uint16_t w, const uint16_t h) n
 {
     LOG_TRACE_PRIO_TOP();
 
-    assert((w > 1) && (w < 8192));
-    assert((h > 1) && (h < 8192));
+    assert((w > 0) && (w < 8192));
+    assert((h > 0) && (h < 8192));
 
     surface::GfxSurface * tmpsurf;
 
     pixels::GfxPixelFormatEnum pixFmtEn(kDefaultSurfaceColorFormatValue);
 
     tmpsurf = new surface::GfxSurface("GfxControlledSurface::createSurface 1", surface::GfxSurfaceFlags(), w, h,
-                                    kDefaultSurfaceColorDepth, pixFmtEn);
+                                      kDefaultSurfaceColorDepth, pixFmtEn);
     if (tmpsurf != nullptr)
     {
         surf_ = tmpsurf;
@@ -126,8 +126,8 @@ void GfxControlledSurface::createSurface(const uint16_t w, const uint16_t h) thr
 {
     LOG_TRACE_PRIO_TOP();
 
-    assert((w > 1) && (w < 8192));
-    assert((h > 1) && (h < 8192));
+    assert((w > 0) && (w < 8192));
+    assert((h > 0) && (h < 8192));
 
     surface::GfxSurface * tmpsurf;
 

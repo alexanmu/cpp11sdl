@@ -173,8 +173,8 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw(std::runtime_error) :
-            GfxObject(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf, const bool doNotFree)
+            throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_TOP();
 
@@ -185,7 +185,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf) throw
     }
     surf_ = surf;
     surfName_ = surfname;
-    doNotFree_ = true;
+    doNotFree_ = doNotFree;
 }
 
 GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(std::move(other))
@@ -552,7 +552,7 @@ void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels
     assert((ret == -1) || (ret == 0));
 }
 
-void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& color) const noexcept
+void GfxSurface::fillRect(rect::GfxRect const& rect, pixels::GfxColor const& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -568,7 +568,7 @@ void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& col
     }
 }
 
-void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
+void GfxSurface::fillRect(pixels::GfxColor const& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -583,7 +583,7 @@ void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
     }
 }
 
-void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels::GfxColor& color) const noexcept
+void GfxSurface::fillRects(std::vector<rect::GfxRect> const& rects, pixels::GfxColor const& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -675,7 +675,7 @@ void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     }
 }
 
-void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
+void GfxSurface::blitSurface(GfxSurface const& src, rect::GfxRect const& srcr, rect::GfxRect const& dstr) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -689,7 +689,7 @@ void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, c
     }
 }
 
-void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
+void GfxSurface::blitSurface(GfxSurface const& src) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -701,7 +701,7 @@ void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
     }
 }
 
-void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
+void GfxSurface::blitScaled(GfxSurface const& src, rect::GfxRect const& srcr, rect::GfxRect const& dstr) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -834,7 +834,10 @@ uint32_t GfxSurface::getBitsPerPixel(void) const noexcept
 
     if (surf_ != nullptr)
     {
-        ret = surf_->format->BitsPerPixel;
+        if (surf_->format != nullptr)
+        {
+            ret = surf_->format->BitsPerPixel;
+        }
     }
     return ret;
 }
@@ -847,7 +850,10 @@ uint32_t GfxSurface::getBytesPerPixel(void) const noexcept
 
     if (surf_ != nullptr)
     {
-        ret = surf_->format->BytesPerPixel;
+        if (surf_->format != nullptr)
+        {
+            ret = surf_->format->BytesPerPixel;
+        }
     }
     return ret;
 }
@@ -868,7 +874,7 @@ void GfxSurface::setSurfaceName(std::string const& name) noexcept
     surfName_ = name;
 }
 
-void GfxSurface::putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
+void GfxSurface::putPixel(const int32_t x, const int32_t y, pixels::GfxColor const& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -923,7 +929,7 @@ GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const noexcept
     return surf_;
 }
 
-void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
+void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, pixels::GfxColor const& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
