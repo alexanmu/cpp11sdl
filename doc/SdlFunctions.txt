@@ -185,3 +185,98 @@ sdl2::SDL_UpperBlitScaled
 sdl2::SDL_LowerBlitScaled
 sdl2::SDL_BlitSurface
 sdl2::SDL_BlitScaled
+
+
+// GfxGetRendererInfo.cpp
+sdl2::SDL_GetNumRenderDrivers
+sdl2::SDL_GetRenderDriverInfo
+
+// GfxRenderer.cpp
+sdl2::SDL_CreateRenderer
+sdl2::SDL_CreateSoftwareRenderer
+sdl2::SDL_DestroyRenderer
+sdl2::SDL_GetRenderer
+sdl2::SDL_GetRendererInfo
+sdl2::SDL_GetRendererOutputSize
+sdl2::SDL_SetRenderTarget
+sdl2::SDL_GetRenderTarget
+sdl2::SDL_RenderSetLogicalSize
+sdl2::SDL_RenderGetLogicalSize
+sdl2::SDL_RenderSetIntegerScale
+sdl2::SDL_RenderGetIntegerScale
+sdl2::SDL_RenderSetViewport
+sdl2::SDL_RenderGetViewport
+sdl2::SDL_RenderSetClipRect
+sdl2::SDL_RenderGetClipRect
+sdl2::SDL_RenderIsClipEnabled
+sdl2::SDL_RenderSetScale
+sdl2::SDL_RenderGetScale
+sdl2::SDL_SetRenderDrawColor
+sdl2::SDL_GetRenderDrawColor
+sdl2::SDL_SetRenderDrawBlendMode
+sdl2::SDL_GetRenderDrawBlendMode
+sdl2::SDL_RenderClear
+sdl2::SDL_RenderDrawPoint
+sdl2::SDL_RenderDrawLine
+sdl2::SDL_RenderDrawRect
+sdl2::SDL_RenderFillRect
+sdl2::SDL_RenderCopy
+sdl2::SDL_RenderCopyEx
+sdl2::SDL_RenderReadPixels
+sdl2::SDL_RenderPresent
+sdl2::SDL_DestroyRenderer
+
+// GfxTexture.cpp
+sdl2::SDL_CreateTexture
+sdl2::SDL_CreateTextureFromSurface
+sdl2::SDL_DestroyTexture
+sdl2::SDL_QueryTexture
+sdl2::SDL_SetTextureColorMod
+sdl2::SDL_GetTextureColorMod
+sdl2::SDL_SetTextureAlphaMod
+sdl2::SDL_GetTextureAlphaMod
+sdl2::SDL_SetTextureBlendMode
+sdl2::SDL_GetTextureBlendMode
+sdl2::SDL_UpdateTexture
+sdl2::SDL_UpdateYUVTexture
+sdl2::SDL_LockTexture
+sdl2::SDL_UnlockTexture
+
+// GfxRect.cpp
+sdl2::SDL_PointInRect
+sdl2::SDL_RectEmpty
+sdl2::SDL_RectEquals
+sdl2::SDL_HasIntersection
+sdl2::SDL_IntersectRect
+sdl2::SDL_UnionRect
+sdl2::SDL_EnclosePoints
+sdl2::SDL_IntersectRectAndLine
+
+// GfxPowerInfo.cpp
+sdl2::SDL_GetPowerInfo
+
+// GfxPlatform.cpp
+sdl2::SDL_GetPlatform
+
+// GfxPalette.cpp
+sdl2::SDL_AllocPalette
+sdl2::SDL_SetPaletteColors
+sdl2::SDL_FreePalette
+
+
+// GfxPixelFormat.cpp
+sdl2::SDL_AllocFormat
+sdl2::SDL_FreeFormat
+sdl2::SDL_GetPixelFormatName
+sdl2::SDL_PixelFormatEnumToMasks
+sdl2::SDL_MasksToPixelFormatEnum
+sdl2::SDL_SetPixelFormatPalette
+sdl2::SDL_MapRGB
+sdl2::SDL_MapRGBA
+sdl2::SDL_GetRGB
+sdl2::SDL_GetRGBA
+sdl2::SDL_CalculateGammaRamp
+
+// GfxMessageBox.cpp
+sdl2::SDL_ShowSimpleMessageBox
+sdl2::SDL_ShowMessageBox
