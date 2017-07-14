@@ -48,12 +48,12 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    static constexpr int32_t colorsArraySize = static_cast<int32_t>(
-                                            GfxMessageBoxColorType::ValueType::colorMax);
+    static const int32_t kColorsArraySize = static_cast<int32_t>(
+                                        GfxMessageBoxColorType::ValueType::colorMax);
 
     GfxMessageBoxColorScheme() noexcept;
 
-    explicit GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[colorsArraySize]) noexcept;
+    explicit GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[kColorsArraySize]) noexcept;
 
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept;
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) noexcept;

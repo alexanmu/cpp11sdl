@@ -55,21 +55,23 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxSurface() = delete;
-
-    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width,
-                        int32_t height, int32_t depth, uint32_t Rmask, uint32_t Gmask, uint32_t Bmask,
-                        uint32_t Amask) throw(std::runtime_error);
-    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
-                        int32_t depth, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    GfxSurface();
+    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                        const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
+                        const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                        const int32_t height, const int32_t depth,
+                        pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
     explicit GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
                         const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
                         const uint32_t bmask, const uint32_t amask) throw(std::runtime_error);
-    explicit GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
-                        int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                        const int32_t depth, const int32_t pitch,
+                        pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
     explicit GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error);
     explicit GfxSurface(std::string const& surfname, const SdlTypePtr surf,
                         const bool doNotFree) throw(std::runtime_error);
+    explicit GfxSurface(std::string const& surfname, const int32_t w, const int32_t h) throw(std::runtime_error);
 
     GfxSurface(const GfxSurface&) = delete;
     GfxSurface(GfxSurface&& other) noexcept;
@@ -81,6 +83,23 @@ public:
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
+
+    void createSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                       const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
+                       const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error);
+    void createSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                       const int32_t height, const int32_t depth,
+                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    void createSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                       const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
+                       const uint32_t bmask, const uint32_t amask) throw(std::runtime_error);
+    void createSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                       const int32_t depth, const int32_t pitch,
+                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    void createSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error);
+    void createSurface(std::string const& surfname, const SdlTypePtr surf,
+                       const bool doNotFree) throw(std::runtime_error);
+    void createSurface(std::string const& surfname, const int32_t w, const int32_t h) throw(std::runtime_error);
 
     void freeSurface(void) noexcept;
 
@@ -149,6 +168,9 @@ private:
     SdlTypePtr surf_;
     std::string surfName_;
     bool doNotFree_;
+
+    static const int32_t kDefaultSurfaceColorDepth = 32;
+    static const pixels::GfxPixelFormatEnum::ValueType kDefaultSurfaceColorFormatValue;
 };
 
 }  // namespace surface

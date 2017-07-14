@@ -33,7 +33,6 @@
 #define _ENABLE_LOG_PRIO_PRIO_LOW 1
 #define _ENABLE_LOG_PRIO_PRIO_MED 1
 #define _ENABLE_LOG_PRIO_PRIO_HIGH 1
-#define _ENABLE_LOG_PRIO_PRIO_TOP 1
 
 #define LOG_TRACE_MODULE_NAME(x) static const char * __log_module_name__ = (x)
 
@@ -65,13 +64,6 @@
                                            gfx::_gfx::GfxBasicLogger::logTracePriority::logTracePrioHigh, \
                                            gfx::_gfx::GfxBasicLogger::logTraceEnaDisState::logTraceDisabled)
 
-#define LOG_TRACE_SET_TRACE_LVL_TOP_ON() gfx::_gfx::GfxBasicLogger::getInstance().setTracePriority(\
-                                         gfx::_gfx::GfxBasicLogger::logTracePriority::logTracePrioTop, \
-                                         gfx::_gfx::GfxBasicLogger::logTraceEnaDisState::logTraceEnabled)
-#define LOG_TRACE_SET_TRACE_LVL_TOP_OFF() gfx::_gfx::GfxBasicLogger::getInstance().setTracePriority(\
-                                          gfx::_gfx::GfxBasicLogger::logTracePriority::logTracePrioTop, \
-                                          gfx::_gfx::GfxBasicLogger::logTraceEnaDisState::logTraceDisabled)
-
 #if _ENABLE_LOG_PRIO_PRIO_LOW == 1
 #define LOG_TRACE_PRIO_LOW() (GfxBasicLogger::getInstance().logTrace(::__log_module_name__, \
                               GfxBasicLogger::logTracePriority::logTracePrioLow, \
@@ -94,14 +86,6 @@
                                __FILE__, __LINE__, __PRETTY_FUNCTION__, (getInstanceId())))
 #else
 #define LOG_TRACE_PRIO_HIGH()
-#endif
-
-#if _ENABLE_LOG_PRIO_PRIO_TOP == 1
-#define LOG_TRACE_PRIO_TOP() (GfxBasicLogger::getInstance().logTrace(::__log_module_name__, \
-                              GfxBasicLogger::logTracePriority::logTracePrioTop, \
-                              __FILE__, __LINE__, __PRETTY_FUNCTION__, (getInstanceId())))
-#else
-#define LOG_TRACE_PRIO_TOP()
 #endif
 
 #define LOG_MESSAGE(x) (gfx::_gfx::GfxBasicLogger::getInstance().logMessage(x))
@@ -130,8 +114,7 @@ public:
     {
         logTracePrioLow = 0,
         logTracePrioMedium = 1,
-        logTracePrioHigh = 2,
-        logTracePrioTop = 3
+        logTracePrioHigh = 2
     };
 
     enum class logTraceEnaDisState : uint8_t

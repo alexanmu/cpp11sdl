@@ -41,7 +41,7 @@ const char GfxInitQuit::ClassName[] = "GfxInitQuit";
 
 GfxInitQuit::GfxInitQuit() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     flags_.clear();
     errorCode_ = sdl2::SDL_Init(flags_.getAsSdlType());
@@ -50,7 +50,7 @@ GfxInitQuit::GfxInitQuit() noexcept : GfxObject(ClassName)
 GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
                 GfxObject(ClassName), flags_(flags), errorCode_(0)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(flags);
 
@@ -88,7 +88,7 @@ GfxInitQuit& GfxInitQuit::operator=(GfxInitQuit&& other) noexcept
 
 GfxInitQuit::~GfxInitQuit() noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     sdl2::SDL_Quit();
 }
@@ -109,7 +109,7 @@ std::string GfxInitQuit::to_string(void) const noexcept
 
 void GfxInitQuit::initSubSystem(GfxInitFlags const& flags) noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(flags);
 
@@ -118,7 +118,7 @@ void GfxInitQuit::initSubSystem(GfxInitFlags const& flags) noexcept
 
 void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags) const noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(flags);
 

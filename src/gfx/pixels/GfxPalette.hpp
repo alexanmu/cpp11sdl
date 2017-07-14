@@ -48,9 +48,9 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxPalette() throw(std::runtime_error);
+    GfxPalette() noexcept;
     explicit GfxPalette(const uint16_t nColors) throw(std::runtime_error);
-    explicit GfxPalette(const SdlTypePtr pal) throw(std::runtime_error);
+    explicit GfxPalette(const SdlTypePtr pal) noexcept;
     explicit GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error);
 
     // No copy-ctor
@@ -66,11 +66,17 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    void createPalette(const uint16_t nColors) throw(std::runtime_error);
+    void createPalette(const SdlTypePtr pal) throw(std::runtime_error);
+    void createPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error);
+
     void freePalette(void) noexcept;
 
     /* Methods */
     void setPaletteColors(std::vector<GfxColor> const& vec, const uint16_t firstColor) noexcept;
     std::vector<GfxColor> getPaletteColors(void) const noexcept;
+    void setPaletteColor(GfxColor const& clr, const uint16_t index) noexcept;
+    GfxColor getPaletteColor(const uint16_t index) noexcept;
 
     /* Getters */
     uint16_t getNumColors(void) const noexcept;
@@ -81,12 +87,12 @@ public:
 private:
     void clear(void) noexcept;
 
-    static constexpr uint16_t kDefaultPaletteSize = 256;
-    static constexpr uint8_t kDefaultPaletteColorRed = 0xFF;
-    static constexpr uint8_t kDefaultPaletteColorGreen = 0xFF;
-    static constexpr uint8_t kDefaultPaletteColorBlue = 0xFF;
-
     SdlTypePtr pal_;
+
+    static const uint16_t kDefaultPaletteSize = 256;
+    static const uint8_t kDefaultPaletteColorRed = 0xFF;
+    static const uint8_t kDefaultPaletteColorGreen = 0xFF;
+    static const uint8_t kDefaultPaletteColorBlue = 0xFF;
 };
 
 }  // namespace pixels

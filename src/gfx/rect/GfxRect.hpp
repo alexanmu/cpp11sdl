@@ -47,10 +47,9 @@ public:
 
     static const char ClassName[];
     static const bool SdlResource = false;
-    static const bool CallsSdl = false;
+    static const bool CallsSdl = true;
 
     GfxRect() noexcept;
-
     GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) noexcept;
     explicit GfxRect(const SdlType rect) noexcept;
 
@@ -74,7 +73,6 @@ public:
     void setY(const int32_t y) noexcept;
     void setWidth(const int32_t w) noexcept;
     void setHeight(const int32_t h) noexcept;
-    void set(const SdlType r) noexcept;
 
     GfxBool pointInRect(GfxPoint const& p) const noexcept;
     GfxBool rectEmpty(void) const noexcept;

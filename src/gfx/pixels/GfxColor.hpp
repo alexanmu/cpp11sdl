@@ -85,6 +85,11 @@ public:
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType clr_;
+
+    static const uint8_t kDefaultRedValue = 0;
+    static const uint8_t kDefaultGreenValue = 0;
+    static const uint8_t kDefaultBlueValue = 0;
+    static const uint8_t kDefaultAlphaValue = 0xFF;
 };
 
 }  // namespace pixels

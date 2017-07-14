@@ -164,9 +164,6 @@ char GfxBasicLogger::getTraceTextForPrio(const logTracePriority prio) const noex
         case logTracePriority::logTracePrioHigh:
             ret = 'H';
             break;
-        case logTracePriority::logTracePrioTop:
-            ret = 'T';
-            break;
     }
     return ret;
 }
@@ -222,7 +219,6 @@ void GfxBasicLogger::createLogFile(void) noexcept
     logFile_ << " _ENABLE_LOG_PRIO_PRIO_LOW  = " << _ENABLE_LOG_PRIO_PRIO_LOW << std::endl;
     logFile_ << " _ENABLE_LOG_PRIO_PRIO_MED  = " << _ENABLE_LOG_PRIO_PRIO_MED << std::endl;
     logFile_ << " _ENABLE_LOG_PRIO_PRIO_HIGH = " << _ENABLE_LOG_PRIO_PRIO_HIGH << std::endl;
-    logFile_ << " _ENABLE_LOG_PRIO_PRIO_TOP  = " << _ENABLE_LOG_PRIO_PRIO_TOP << std::endl;
     logFile_ << std::endl;
 }
 

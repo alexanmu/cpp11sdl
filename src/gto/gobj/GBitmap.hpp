@@ -31,6 +31,7 @@
 #include "GComponent.hpp"
 #include "GImage.hpp"
 #include "GTypes.hpp"
+#include "GfxSurface.hpp"
 
 namespace gto
 {
@@ -56,7 +57,7 @@ public:
     virtual void load(void) throw(std::runtime_error);
     virtual void draw(void) throw(std::runtime_error);
 private:
-    gfx::xtra::GfxControlledSurface imgSurf_;
+    gfx::surface::GfxSurface imgSurf_;
 };
 
 }  // namespace gobj

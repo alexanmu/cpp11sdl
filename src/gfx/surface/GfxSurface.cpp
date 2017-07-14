@@ -41,11 +41,21 @@ namespace surface
 
 const char GfxSurface::ClassName[] = "GfxSurface";
 
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
-                       int32_t depth, uint32_t Rmask, uint32_t Gmask, uint32_t Bmask, uint32_t Amask)
-            throw(std::runtime_error) : GfxObject(ClassName)
+const pixels::GfxPixelFormatEnum::ValueType GfxSurface::kDefaultSurfaceColorFormatValue =
+    pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888;
+
+GfxSurface::GfxSurface() : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    surf_ = nullptr;
+    surfName_ = "$init$";
+    doNotFree_ = false;
+}
+
+GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                       const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
+                       const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error) : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_HIGH();
 
     assert(surfname.length() > 0);
     assert(flags);
@@ -67,11 +77,11 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, int32_t width, int32_t height,
-                       int32_t depth, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
-            GfxObject(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                       const int32_t height, const int32_t depth,
+                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(surfname.length() > 0);
     assert(flags);
@@ -99,7 +109,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
                        const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
                        const uint32_t bmask, const uint32_t amask) throw(std::runtime_error) : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(surfname.length() > 0);
     assert(pixels != nullptr);
@@ -120,11 +130,11 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width, int32_t height, int32_t depth,
-                       int32_t pitch, pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) :
-            GfxObject(ClassName)
+GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                       const int32_t depth, const int32_t pitch,
+                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(surfname.length() > 0);
     assert(pixels != nullptr);
@@ -150,7 +160,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, int32_t width
 GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(surfname.length() > 0);
     assert(filename.length() > 0);
@@ -176,16 +186,36 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
 GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf, const bool doNotFree)
             throw(std::runtime_error) : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
-    if (surf == nullptr)
-    {
-        // error handling here
-        throw std::runtime_error("surf is NULL");
-    }
+    assert(surfname.length() > 0);
+    assert(surf != nullptr);
+
     surf_ = surf;
     surfName_ = surfname;
     doNotFree_ = doNotFree;
+}
+
+GfxSurface::GfxSurface(std::string const& surfname, const int32_t w, const int32_t h) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(w > 0);
+    assert(h > 0);
+
+    SdlTypePtr tmpsurfptr;
+    pixels::GfxPixelFormatEnum pixFmtEn(kDefaultSurfaceColorFormatValue);
+
+    tmpsurfptr = sdl2::SDL_CreateRGBSurfaceWithFormat(GfxSurfaceFlags().getAsSdlType(), w, h,
+                                                      kDefaultSurfaceColorDepth, pixFmtEn.getAsSdlType());
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
 }
 
 GfxSurface::GfxSurface(GfxSurface&& other) noexcept : GfxObject(std::move(other))
@@ -225,7 +255,7 @@ GfxSurface& GfxSurface::operator=(GfxSurface&& other) noexcept
 
 GfxSurface::~GfxSurface() noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     freeSurface();
 }
@@ -244,9 +274,205 @@ std::string GfxSurface::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
+void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                               const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
+                               const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(flags);
+    assert(flags.getAsSdlType() == 0);
+    assert(width > 0);
+    assert(height > 0);
+    assert(depth > 0);
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    SdlTypePtr tmpsurfptr;
+
+    tmpsurfptr = sdl2::SDL_CreateRGBSurface(flags.getAsSdlType(), width, height, depth, Rmask,
+                                            Gmask, Bmask, Amask);
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
+}
+
+void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+                               const int32_t height, const int32_t depth,
+                               pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(flags);
+    assert(flags.getAsSdlType() == 0);
+    assert(width > 0);
+    assert(height > 0);
+    assert(depth > 0);
+    assert(format);
+    assert(format.getValue() != pixels::GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
+
+    SdlTypePtr tmpsurfptr;
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    tmpsurfptr = sdl2::SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), width, height, depth,
+                                                      format.getAsSdlType());
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
+}
+
+
+void GfxSurface::createSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                               const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
+                               const uint32_t bmask, const uint32_t amask) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(pixels != nullptr);
+    assert(width >= 0);
+    assert(height >= 0);
+    assert(depth >= 0);
+    assert(pitch >= 0);
+
+    SdlTypePtr tmpsurfptr;
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    tmpsurfptr = sdl2::SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
+}
+
+void GfxSurface::createSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+                               const int32_t depth, const int32_t pitch,
+                               pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(pixels != nullptr);
+    assert(width > 0);
+    assert(height > 0);
+    assert(depth > 0);
+    assert(pitch > 0);
+    assert(format);
+    assert(format.getValue() != pixels::GfxPixelFormatEnum::ValueType::pixelFormatUnknown);
+
+    SdlTypePtr tmpsurfptr;
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    tmpsurfptr = sdl2::SDL_CreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format.getAsSdlType());
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
+}
+
+void GfxSurface::createSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(filename.length() > 0);
+
+    SdlTypePtr tmpsurfptr;
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    auto rw = sdl2::SDL_RWFromFile(filename.c_str(), "rb");
+    if (rw == nullptr)
+    {
+        throw std::runtime_error(sdl2::SDL_GetError());
+    }
+    tmpsurfptr = sdl2::SDL_LoadBMP_RW(rw, 0);  // 1 = auto-close file
+    SDL_RWclose(rw);
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to load surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
+}
+
+void GfxSurface::createSurface(std::string const& surfname, const SdlTypePtr surf,
+                               const bool doNotFree) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(surf != nullptr);
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    surf_ = surf;
+    surfName_ = surfname;
+    doNotFree_ = doNotFree;
+}
+
+void GfxSurface::createSurface(std::string const& surfname, const int32_t w,
+                               const int32_t h) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(surfname.length() > 0);
+    assert(w > 0);
+    assert(h > 0);
+
+    if (surf_ != nullptr)
+    {
+        throw std::runtime_error("Surface already created");
+    }
+    SdlTypePtr tmpsurfptr;
+    pixels::GfxPixelFormatEnum pixFmtEn(kDefaultSurfaceColorFormatValue);
+
+    tmpsurfptr = sdl2::SDL_CreateRGBSurfaceWithFormat(GfxSurfaceFlags().getAsSdlType(), w, h,
+                                                      kDefaultSurfaceColorDepth, pixFmtEn.getAsSdlType());
+    if (tmpsurfptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create surface");
+    }
+    surf_ = tmpsurfptr;
+    surfName_ = surfname;
+    doNotFree_ = false;
+}
+
 void GfxSurface::freeSurface(void) noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     if ((surf_ != nullptr) && (doNotFree_ == false))
     {

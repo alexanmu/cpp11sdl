@@ -51,25 +51,30 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxTexture() = delete;
-
-    explicit GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
-                        const int32_t w, const int32_t h) throw(std::runtime_error);
-    explicit GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error);
+    GfxTexture();
+    explicit GfxTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
+                        GfxTextureAccess const& acc, const int32_t w, const int32_t h) throw(std::runtime_error);
+    explicit GfxTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+                        throw(std::runtime_error);
 
     virtual ~GfxTexture() noexcept;
 
     GfxTexture(const GfxTexture&) = delete;
-    GfxTexture(GfxTexture&& tex) noexcept;
+    GfxTexture(GfxTexture&& other) noexcept;
 
     GfxTexture& operator=(const GfxTexture&) = delete;
-    GfxTexture& operator=(GfxTexture&& tex) noexcept;
+    GfxTexture& operator=(GfxTexture&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    void createTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
+                       GfxTextureAccess const& acc, const int32_t w, const int32_t h) throw(std::runtime_error);
+    void createTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+                       throw(std::runtime_error);
+
     void queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int32_t * w,
-                    int32_t * h) const noexcept;
+                      int32_t * h) const noexcept;
     void setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
     void setTextureColorMod(pixels::GfxColor const& color) const noexcept;
     void getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
@@ -81,8 +86,8 @@ public:
     blendmode::GfxBlendMode getBlendMode(void) const noexcept;
     void updateTexture(rect::GfxRect const& rect, const void * pixels, const int32_t pitch) const noexcept;
     void updateYUVTexture(rect::GfxRect const& rect, const uint8_t * Yplane, const int32_t Ypitch,
-                            const uint8_t * Uplane, const int32_t Upitch,
-                            const uint8_t * Vplane, const int32_t Vpitch) const noexcept;
+                          const uint8_t * Uplane, const int32_t Upitch,
+                          const uint8_t * Vplane, const int32_t Vpitch) const noexcept;
     void lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t * pitch) const noexcept;
     void lockTexture(void ** pixels, int32_t * pitch) const noexcept;
     void unlockTexture(void) const noexcept;
@@ -91,6 +96,7 @@ public:
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlTypePtr tex_;
+    std::string texName_;
 };
 
 }  // namespace render

@@ -43,11 +43,11 @@ GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    btndataptr = nullptr;
     clear();
+    buildData();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject * win,
+GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow * win,
                                      std::string const& title, std::string const& message, const int32_t numbuttons,
                                      const GfxMessageBoxButtonData buttons[],
                                      GfxMessageBoxColorScheme const& colorScheme) noexcept : GfxObject(ClassName)
@@ -60,27 +60,26 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject 
     assert(numbuttons > 0);
     assert(colorScheme);
 
-    data_.flags = flags.getAsSdlType();
+    flags_ = flags;
     if (win != nullptr)
     {
-        data_.window = reinterpret_cast<video::GfxWindow *>(win)->getAsSdlTypePtr();
+        winPtr_ = win->getAsSdlTypePtr();
     }
     else
     {
-        data_.window = nullptr;
+        winPtr_ = nullptr;
     }
     title_ = title;
-    data_.title = title_.c_str();
     message_ = message;
-    data_.message = message_.c_str();
-    data_.numbuttons = numbuttons;
-    btndataptr = new GfxMessageBoxButtonData::SdlType[numbuttons];
+    numButtons_ = numbuttons;
+    btnDataPtr_ = new GfxMessageBoxButtonData[numbuttons];
     for (int32_t i = 0; i < numbuttons; i++)
     {
-        btndataptr[i] = buttons[i].getAsSdlType();
+        btnDataPtr_[i] = buttons[i];
     }
-    data_.buttons = btndataptr;
-    data_.colorScheme = colorScheme.getAsSdlTypePtr();
+    colorScheme_ = colorScheme;
+    btnDataSdl_ = nullptr;
+    buildData();
 }
 
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win,
@@ -94,40 +93,55 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
     assert(message.length() > 0);
     assert(numbuttons > 0);
 
-    data_.flags = flags.getAsSdlType();
-    data_.window = win.getAsSdlTypePtr();
+    flags_ = flags;
+    winPtr_ = win.getAsSdlTypePtr();
     title_ = title;
-    data_.title = title_.c_str();
     message_ = message;
-    data_.message = message_.c_str();
-    data_.numbuttons = numbuttons;
-    btndataptr = new GfxMessageBoxButtonData::SdlType[numbuttons];
+    numButtons_ = numbuttons;
+    btnDataPtr_ = new GfxMessageBoxButtonData[numbuttons];
     for (int32_t i = 0; i < numbuttons; i++)
     {
-        btndataptr[i] = buttons[i].getAsSdlType();
+        btnDataPtr_[i] = buttons[i];
     }
-    data_.buttons = btndataptr;
-    data_.colorScheme = nullptr;
+    colorScheme_.clear();
+    btnDataSdl_ = nullptr;
+    buildData();
 }
 
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
-    data_ = other.data_;
+    flags_ = other.flags_;
+    winPtr_ = other.winPtr_;
     title_ = other.title_;
     message_ = other.message_;
+    numButtons_ = other.numButtons_;
+    btnDataPtr_ = new GfxMessageBoxButtonData[numButtons_];
+    for (int32_t i = 0; i < numButtons_; i++)
+    {
+        btnDataPtr_[i] = other.btnDataPtr_[i];
+    }
+    colorScheme_ = other.colorScheme_;
+    btnDataSdl_ = nullptr;
+    buildData();
 }
 
 GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
-    data_ = other.data_;
+    flags_ = other.flags_;
+    winPtr_ = other.winPtr_;
     title_ = other.title_;
     message_ = other.message_;
+    numButtons_ = other.numButtons_;
+    btnDataPtr_ = other.btnDataPtr_;
+    colorScheme_ = other.colorScheme_;
+    btnDataSdl_ = other.btnDataSdl_;
     // Delete other's data
     other.clear();
+    buildData();
 }
 
 GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) noexcept
@@ -139,9 +153,19 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) 
         // Copy base
         GfxObject::operator=(other);
         // Copy this
-        data_ = other.data_;
+        flags_ = other.flags_;
+        winPtr_ = other.winPtr_;
         title_ = other.title_;
         message_ = other.message_;
+        numButtons_ = other.numButtons_;
+        btnDataPtr_ = new GfxMessageBoxButtonData[numButtons_];
+        for (int32_t i = 0; i < numButtons_; i++)
+        {
+            btnDataPtr_[i] = other.btnDataPtr_[i];
+        }
+        colorScheme_ = other.colorScheme_;
+        btnDataSdl_ = nullptr;
+        buildData();
     }
     return *this;
 }
@@ -155,11 +179,17 @@ GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData&& other) noexc
         // Move base
         GfxObject::operator=(std::move(other));
         // Move this
-        data_ = other.data_;
+        flags_ = other.flags_;
+        winPtr_ = other.winPtr_;
         title_ = other.title_;
         message_ = other.message_;
+        numButtons_ = other.numButtons_;
+        btnDataPtr_ = other.btnDataPtr_;
+        colorScheme_ = other.colorScheme_;
+        btnDataSdl_ = other.btnDataSdl_;
         // Delete other's data
         other.clear();
+        buildData();
     }
     return *this;
 }
@@ -168,9 +198,13 @@ GfxMessageBoxData::~GfxMessageBoxData() noexcept
 {
     LOG_TRACE_PRIO_MED();
 
-    if (btndataptr != nullptr)
+    if (btnDataSdl_ != nullptr)
     {
-        delete btndataptr;
+        delete[] btnDataSdl_;
+    }
+    if (btnDataPtr_ != nullptr)
+    {
+        delete[] btnDataPtr_;
     }
 }
 
@@ -192,15 +226,14 @@ void GfxMessageBoxData::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    data_.flags = 0;
-    data_.window = nullptr;
-    title_ = "";
-    data_.title = "";
-    message_ = "";
-    data_.message = "'";
-    data_.numbuttons = 0;
-    btndataptr = nullptr;
-    data_.colorScheme = nullptr;
+    flags_.clear();
+    winPtr_ = nullptr;
+    title_.clear();
+    message_.clear();
+    numButtons_ = 0;
+    btnDataPtr_ = nullptr;
+    colorScheme_.clear();
+    btnDataSdl_ = nullptr;
 }
 
 GfxMessageBoxData::SdlType GfxMessageBoxData::getAsSdlType(void) const noexcept
@@ -215,6 +248,25 @@ GfxMessageBoxData::SdlTypePtr GfxMessageBoxData::getAsSdlTypePtr(void) const noe
     LOG_TRACE_PRIO_LOW();
 
     return (SdlTypePtr)&data_;
+}
+
+// Private methods
+void GfxMessageBoxData::buildData(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    data_.flags = flags_.getAsSdlType();
+    data_.window = winPtr_;
+    data_.title = title_.c_str();
+    data_.message = message_.c_str();
+    data_.numbuttons = numButtons_;
+    btnDataSdl_ = new GfxMessageBoxButtonData::SdlType[numButtons_];
+    for (int32_t index = 0; index < numButtons_; index++)
+    {
+        btnDataSdl_[index] = btnDataPtr_[index].getAsSdlType();
+    }
+    data_.buttons = btnDataSdl_;
+    data_.colorScheme = colorScheme_.getAsSdlTypePtr();
 }
 
 }  // namespace msgbox

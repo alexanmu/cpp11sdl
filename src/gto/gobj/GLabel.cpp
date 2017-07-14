@@ -100,7 +100,7 @@ void GLabel::draw(void)
     gfx::ttf::GfxTtfFontRenderer rend(font);
     gfx::surface::GfxSurface * rendsurf;
 
-    surf_().fillRect(clientBounds_, getBackgroundColor());
+    surf_.fillRect(clientBounds_, getBackgroundColor());
 
     if (font->sizeText(text_, &w, &h) == true)
     {
@@ -138,7 +138,7 @@ void GLabel::draw(void)
     {
         gfx::rect::GfxRect textbounds(0, 0, rendsurf->getWidth(), rendsurf->getHeight());
 
-        surf_().blitSurface(*rendsurf, textbounds, clientBounds_);
+        surf_.blitSurface(*rendsurf, textbounds, clientBounds_);
         delete rendsurf;
     }
 

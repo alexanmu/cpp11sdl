@@ -94,6 +94,7 @@ GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo&& other) noexcept
         seconds_ = other.seconds_;
         percentage_ = other.percentage_;
         // Delete other's data
+        other.clear();
     }
     return *this;
 }

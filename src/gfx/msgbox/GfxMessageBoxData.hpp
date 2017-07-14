@@ -52,7 +52,7 @@ public:
 
     GfxMessageBoxData() noexcept;
 
-    GfxMessageBoxData(GfxMessageBoxFlags const& flags, GfxObject * win, std::string const& title,
+    GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow * win, std::string const& title,
                       std::string const& message, const int32_t numbuttons, const GfxMessageBoxButtonData buttons[],
                       GfxMessageBoxColorScheme const& colorScheme) noexcept;
     GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win, std::string const& title,
@@ -75,10 +75,18 @@ public:
     SdlType getAsSdlType(void) const noexcept;
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
-    SdlType data_;
-    GfxMessageBoxButtonData::SdlType * btndataptr;
+    void buildData(void) noexcept;
+
+    GfxMessageBoxFlags flags_;
+    video::GfxWindow::SdlTypePtr winPtr_;
+    int32_t numButtons_;
+    GfxMessageBoxButtonData * btnDataPtr_;
     std::string title_;
     std::string message_;
+    GfxMessageBoxColorScheme colorScheme_;
+    SdlType data_;
+
+    GfxMessageBoxButtonData::SdlType * btnDataSdl_;
 };
 
 }  // namespace msgbox

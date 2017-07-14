@@ -50,7 +50,7 @@ GfxLoadSo::GfxLoadSo() noexcept : GfxObject(ClassName)
 
 GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(objectName.length() > 0);
 
@@ -71,7 +71,7 @@ GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(std::move(other))
 
 GfxLoadSo::~GfxLoadSo() noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     if (handle_ != nullptr)
     {
@@ -148,7 +148,7 @@ void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
 
 void GfxLoadSo::loadObject(std::string const& objectName) noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     assert(objectName.length() > 0);
 
@@ -162,7 +162,7 @@ void GfxLoadSo::loadObject(std::string const& objectName) noexcept
 
 void GfxLoadSo::unloadObject() noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     sdl2::SDL_UnloadObject(handle_);
     handle_ = nullptr;

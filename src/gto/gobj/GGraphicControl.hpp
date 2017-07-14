@@ -32,7 +32,7 @@
 #include "GComponent.hpp"
 #include "GControl.hpp"
 #include "GfxRect.hpp"
-#include "GfxControlledSurface.hpp"
+#include "GfxSurface.hpp"
 #include "GfxColor.hpp"
 #include "GColorScheme.hpp"
 
@@ -57,7 +57,7 @@ public:
                                 const uint16_t height);
     virtual ~GGraphicControl();
 
-    gfx::xtra::GfxControlledSurface const& getSurface(void) const noexcept;
+    gfx::surface::GfxSurface const& getSurface(void) const noexcept;
 
     gfx::pixels::GfxColor const& getForegroundColor(void) const noexcept;
     void setForegroundColor(gfx::pixels::GfxColor const& color) noexcept;
@@ -76,7 +76,7 @@ public:
 
     virtual void draw(void);
 protected:
-    gfx::xtra::GfxControlledSurface surf_;
+    gfx::surface::GfxSurface surf_;
     GColorScheme colorScheme_;
 
 private:
