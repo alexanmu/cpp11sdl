@@ -36,7 +36,6 @@
 #include "GfxInitFlags.hpp"
 #include "GfxWindow.hpp"
 #include "GfxWindowFlags.hpp"
-#include "GfxControlledSurface.hpp"
 #include "GfxSurfaceFlags.hpp"
 #include "GfxCanvas.hpp"
 #include "GfxPixelFormatEnum.hpp"
@@ -63,7 +62,6 @@ using gfx::initquit::GfxInitFlags;
 using gfx::video::GfxWindow;
 using gfx::video::GfxWindowFlags;
 using gfx::video::GfxWindowEventID;
-using gfx::xtra::GfxControlledSurface;
 using gfx::surface::GfxSurface;
 using gfx::surface::GfxSurfaceFlags;
 using gfx::pixels::GfxPixelFormatEnum;
@@ -591,7 +589,6 @@ void _doBgiDemo(void)
     LOG_TRACE_SET_TRACE_LVL_LOW_OFF();
     LOG_TRACE_SET_TRACE_LVL_MED_OFF();
     LOG_TRACE_SET_TRACE_LVL_HIGH_ON();
-    LOG_TRACE_SET_TRACE_LVL_TOP_ON();
     // LOG_TRACE_TRACE_MODULE("*");
     // LOG_TRACE_TRACE_MODULE("gfxtext::bgi::gfx");
     // LOG_TRACE_TRACE_MODULE("gfxangle::bgi::gfx");

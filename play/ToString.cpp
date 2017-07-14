@@ -86,7 +86,6 @@
 #include "GfxTtfFontHinting.hpp"  // 2017.05.18
 #include "GfxTtfFontRenderer.hpp"  // 2017.05.19
 #include "GfxFontInfo.hpp"  // 2017.05.19
-#include "GfxControlledSurface.hpp"
 #include "GfxPixelType.hpp"  // 2017.05.30
 #include "GfxBitmapOrder.hpp"  // 2017.05.30
 #include "GfxPackedOrder.hpp"  // 2017.05.30
@@ -342,7 +341,6 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::ttf::GfxTtfFontRenderer>()       },  // 2017.05.19
     // gfx::xtra
     {   prv::makeStringStruct<gfx::xtra::GfxFontInfo>()             },  // 2017.05.19
-    {   prv::makeStringStruct<gfx::xtra::GfxControlledSurface>()    },
     {   prv::makeStringStruct<gfx::xtra::GfxGammaRamp>()            },  // 2017.06.01
     // gfx::log
     {   prv::makeStringStruct<gfx::log::GfxLogPriority>()           },  // 2017.06.07
