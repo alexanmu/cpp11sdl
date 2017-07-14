@@ -123,7 +123,7 @@ void GDemoForm::draw(void)
     g.setBackgroundColor(gfx::bgi::kColorLightGray());
     g.setBackgroundStyle(gto::gobj::GBackgroundStyle::solidColor);
     g.draw();
-    window_->getWindowSurface().blitSurface(g.getSurface()(), gfx::rect::GfxRect(0, 0, 50, 50),
+    window_->getWindowSurface().blitSurface(g.getSurface(), gfx::rect::GfxRect(0, 0, 50, 50),
                                 gfx::rect::GfxRect(10, 10, 60, 60));
 
     gto::gobj::GBitmap bmp(GVarName(bmp), this, 384, 384,
@@ -135,7 +135,7 @@ void GDemoForm::draw(void)
     bmp.setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
     bmp.setScaleMode(gto::gobj::GImageScaleMode::strechScaled);
     bmp.draw();
-    window_->getWindowSurface().blitSurface(bmp.getSurface()(), bmp.getBounds(),
+    window_->getWindowSurface().blitSurface(bmp.getSurface(), bmp.getBounds(),
                                             gfx::rect::GfxRect(90, 90, 384, 384));
 
     gfx::version::GfxVersion v;
@@ -155,7 +155,7 @@ void GDemoForm::draw(void)
     g2.getFontInfo().setFontName("Raleway-ExtraBold");
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g2.draw();
-    window_->getWindowSurface().blitSurface(g2.getSurface()(), gfx::rect::GfxRect(0, 0, 280, 60),
+    window_->getWindowSurface().blitSurface(g2.getSurface(), gfx::rect::GfxRect(0, 0, 280, 60),
                                             gfx::rect::GfxRect(640, 10, 120, 60));
 
     // labelText = "john.doe@example.com";
@@ -173,14 +173,14 @@ void GDemoForm::draw(void)
     g3.getFontInfo().setFontUnderline(true);
     g3.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g3.draw();
-    window_->getWindowSurface().blitSurface(g3.getSurface()(), gfx::rect::GfxRect(0, 0, 300, 60),
+    window_->getWindowSurface().blitSurface(g3.getSurface(), gfx::rect::GfxRect(0, 0, 300, 60),
                                             gfx::rect::GfxRect(310, 10, 120, 60));
 
     gto::gobj::GLabel g4(GVarName(g4), this, 280, 60, "Hello from Ale", 24);
     g4.setBorderThikness(gto::gobj::GBorderThikness::thinBorder);
     g4.setForegroundColor(gfx::bgi::kColorLightRed());
     g4.draw();
-    window_->getWindowSurface().blitSurface(g4.getSurface()(), gfx::rect::GfxRect(0, 0, 320, 60),
+    window_->getWindowSurface().blitSurface(g4.getSurface(), gfx::rect::GfxRect(0, 0, 320, 60),
                                             gfx::rect::GfxRect(940, 10, 200, 60));
 
     GForm::draw();

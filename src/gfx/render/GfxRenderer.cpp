@@ -42,11 +42,20 @@ const pixels::GfxColor GfxRenderer::kDefaultRenderDrawColor = { 0x00, 0x00, 0x00
 
 const char GfxRenderer::ClassName[] = "GfxRenderer";
 
-GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags)
+GfxRenderer::GfxRenderer() : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    renderer_ = nullptr;
+    rendName_ = "$init$";
+}
+
+GfxRenderer::GfxRenderer(std::string const& rendname, video::GfxWindow const& win, GfxRendererFlags const& flags)
     throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
+    assert(rendname.length() > 0);
     assert(win);
     assert(flags);
 
@@ -58,12 +67,15 @@ GfxRenderer::GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& fl
         throw std::runtime_error("Unable to create renderer");
     }
     renderer_ = renderertmp;
+    rendName_ = rendname;
 }
 
-GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error) : GfxObject(ClassName)
+GfxRenderer::GfxRenderer(std::string const& rendname, surface::GfxSurface const& surf)
+                         throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
+    assert(rendname.length() > 0);
     assert(surf);
 
     SdlTypePtr renderertmp;
@@ -74,6 +86,7 @@ GfxRenderer::GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_err
         throw std::runtime_error("Unable to create renderer");
     }
     renderer_ = renderertmp;
+    rendName_ = rendname;
 }
 
 GfxRenderer::GfxRenderer(GfxRenderer&& other) noexcept : GfxObject(std::move(other))
@@ -124,6 +137,53 @@ std::string GfxRenderer::to_string(void) const noexcept
     LOG_TRACE_PRIO_LOW();
 
     return std::string(ClassName);
+}
+
+void GfxRenderer::createRenderer(std::string const& rendname, video::GfxWindow const& win,
+                                 GfxRendererFlags const& flags) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(rendname.length() > 0);
+    assert(win);
+    assert(flags);
+
+    SdlTypePtr renderertmp;
+
+    if (renderer_ != nullptr)
+    {
+        throw std::runtime_error("Renderer already created");
+    }
+    renderertmp = sdl2::SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
+    if (renderertmp == nullptr)
+    {
+        throw std::runtime_error("Unable to create renderer");
+    }
+    renderer_ = renderertmp;
+    rendName_ = rendname;
+}
+
+void GfxRenderer::createRenderer(std::string const& rendname, surface::GfxSurface const& surf)
+                                 throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_HIGH();
+
+    assert(rendname.length() > 0);
+    assert(surf);
+
+    SdlTypePtr renderertmp;
+
+    if (renderer_ != nullptr)
+    {
+        throw std::runtime_error("Renderer already created");
+    }
+    renderertmp = sdl2::SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
+    if (renderertmp == nullptr)
+    {
+        throw std::runtime_error("Unable to create renderer");
+    }
+    renderer_ = renderertmp;
+    rendName_ = rendname;
 }
 
 GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) const noexcept
@@ -658,12 +718,15 @@ void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, re
     assert(src);
     assert(dest);
 
+    int32_t ret = 1;
+
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderCopy(renderer_,
-                             tex.getAsSdlTypePtr(),
-                             src.getAsSdlTypePtr(),
-                             dest.getAsSdlTypePtr());
+        ret = sdl2::SDL_RenderCopy(renderer_,
+                                   tex.getAsSdlTypePtr(),
+                                   src.getAsSdlTypePtr(),
+                                   dest.getAsSdlTypePtr());
+        assert(ret == 0);
     }
 }
 
@@ -673,9 +736,12 @@ void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
 
     assert(tex);
 
+    int32_t ret = 1;
+
     if (renderer_ != nullptr)
     {
-        SDL_RenderCopy(renderer_, tex.getAsSdlTypePtr(), NULL, NULL);
+        ret = sdl2::SDL_RenderCopy(renderer_, tex.getAsSdlTypePtr(), NULL, NULL);
+        assert(ret == 0);
     }
 }
 
@@ -691,15 +757,18 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, 
     assert(pt);
     assert(flip);
 
+    int32_t ret = 1;
+
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderCopyEx(renderer_,
-                         tex.getAsSdlTypePtr(),
-                         src.getAsSdlTypePtr(),
-                         dest.getAsSdlTypePtr(),
-                         angle,
-                         pt.getAsSdlTypePtr(),
-                         flip.getAsSdlType());
+        ret = sdl2::SDL_RenderCopyEx(renderer_,
+                                     tex.getAsSdlTypePtr(),
+                                     src.getAsSdlTypePtr(),
+                                     dest.getAsSdlTypePtr(),
+                                     angle,
+                                     pt.getAsSdlTypePtr(),
+                                     flip.getAsSdlType());
+        assert(ret == 0);
     }
 }
 
@@ -712,15 +781,18 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::
     assert(pt);
     assert(flip);
 
+    int32_t ret = 1;
+
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderCopyEx(renderer_,
-                         tex.getAsSdlTypePtr(),
-                         NULL,
-                         NULL,
-                         angle,
-                         pt.getAsSdlTypePtr(),
-                         flip.getAsSdlType() );
+        ret = sdl2::SDL_RenderCopyEx(renderer_,
+                                     tex.getAsSdlTypePtr(),
+                                     NULL,
+                                     NULL,
+                                     angle,
+                                     pt.getAsSdlTypePtr(),
+                                     flip.getAsSdlType());
+        assert(ret == 0);
     }
 }
 

@@ -222,10 +222,10 @@ void GfxColor::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    clr_.r = 0;
-    clr_.g = 0;
-    clr_.b = 0;
-    clr_.a = 0xFFu;
+    clr_.r = kDefaultRedValue;
+    clr_.g = kDefaultGreenValue;
+    clr_.b = kDefaultBlueValue;
+    clr_.a = kDefaultAlphaValue;
 }
 
 GfxColor::SdlType GfxColor::getAsSdlType() const noexcept

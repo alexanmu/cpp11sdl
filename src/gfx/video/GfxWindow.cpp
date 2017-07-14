@@ -712,7 +712,7 @@ void GfxWindow::setWindowFullscreen(GfxWindowFlags const& flags) const noexcept
 
 surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_error)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     surface::GfxSurface::SdlTypePtr tmpsurf;
 

@@ -46,8 +46,8 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData() noexcept : GfxObject(ClassNam
     clear();
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags,
-                            const int32_t buttonid, std::string const& text) noexcept : GfxObject(ClassName)
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid,
+                                                 std::string const& text) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -57,7 +57,9 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const&
 
     data_.flags = flags.getAsSdlType();
     data_.buttonid = buttonid;
-    data_.text = text.c_str();
+    text_ = text;
+    // Make sure our data_ hold a pointer to own text_.c_str()
+    data_.text = text_.c_str();
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept :
@@ -66,6 +68,9 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& 
     LOG_TRACE_PRIO_MED();
 
     data_ = other.data_;
+    text_ = other.text_;
+    // Make sure our data_ hold a pointer to own text_.c_str()
+    data_.text = text_.c_str();
 }
 
 GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept :
@@ -74,6 +79,9 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other
     LOG_TRACE_PRIO_MED();
 
     data_ = other.data_;
+    text_ = other.text_;
+    // Make sure our data_ hold a pointer to own text_.c_str()
+    data_.text = text_.c_str();
     // Delete other's data
     other.clear();
 }
@@ -88,6 +96,9 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
         GfxObject::operator=(other);
         // Copy this
         data_ = other.data_;
+        text_ = other.text_;
+        // Make sure our data_ hold a pointer to own text_.c_str()
+        data_.text = text_.c_str();
     }
     return *this;
 }
@@ -102,10 +113,20 @@ GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonD
         GfxObject::operator=(std::move(other));
         // Move this
         data_ = other.data_;
+        text_ = other.text_;
+        // Make sure our data_ hold a pointer to own text_.c_str()
+        data_.text = text_.c_str();
         // Delete other's data
         other.clear();
     }
     return *this;
+}
+
+GfxMessageBoxButtonData::~GfxMessageBoxButtonData() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    data_.text = nullptr;
 }
 
 GfxMessageBoxButtonData::operator bool() const noexcept
@@ -133,9 +154,7 @@ const std::string GfxMessageBoxButtonData::getText(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    std::string text { data_.text };
-
-    return text;
+    return text_;
 }
 
 void GfxMessageBoxButtonData::clear(void) noexcept
@@ -145,6 +164,7 @@ void GfxMessageBoxButtonData::clear(void) noexcept
     data_.flags = 0;
     data_.buttonid = -1;
     data_.text = nullptr;
+    text_.clear();
 }
 
 GfxMessageBoxButtonData::SdlType GfxMessageBoxButtonData::getAsSdlType(void) const noexcept

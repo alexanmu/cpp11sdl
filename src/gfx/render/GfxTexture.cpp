@@ -41,11 +41,21 @@ namespace render
 
 const char GfxTexture::ClassName[] = "GfxTexture";
 
-GfxTexture::GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, GfxTextureAccess const& acc,
-            const int32_t w, const int32_t h) throw(std::runtime_error) : GfxObject(ClassName)
+GfxTexture::GfxTexture() : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
+    tex_ = nullptr;
+    texName_ = "";
+}
+
+GfxTexture::GfxTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
+                       GfxTextureAccess const& acc, const int32_t w, const int32_t h) throw(std::runtime_error) :
+                       GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(texname.length() > 0);
     assert(rend != nullptr);
     assert(format);
     assert(acc);
@@ -65,13 +75,15 @@ GfxTexture::GfxTexture(void * rend, pixels::GfxPixelFormatEnum const& format, Gf
         throw std::runtime_error("Unable to create texture");
     }
     tex_ = texptr;
+    texName_ = texname;
 }
 
-GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::runtime_error) :
-            GfxObject(ClassName)
+GfxTexture::GfxTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+                       throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
+    assert(texname.length() > 0);
     assert(rend != nullptr);
     assert(surf);
 
@@ -85,6 +97,7 @@ GfxTexture::GfxTexture(void * rend, surface::GfxSurface const& surf) throw(std::
         throw std::runtime_error("Unable to create texture");
     }
     tex_ = texptr;
+    texName_ = texname;
 }
 
 GfxTexture::GfxTexture(GfxTexture&& other) noexcept : GfxObject(std::move(other))
@@ -141,8 +154,67 @@ std::string GfxTexture::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
+void GfxTexture::createTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
+                               GfxTextureAccess const& acc, const int32_t w, const int32_t h)
+                               throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(texname.length() > 0);
+    assert(rend != nullptr);
+    assert(format);
+    assert(acc);
+    assert(w >= 0);
+    assert(h >= 0);
+
+    GfxRenderer * rendptr;
+    SdlTypePtr texptr;
+
+    if (tex_ != nullptr)
+    {
+        throw std::runtime_error("Texture already created");
+    }
+    rendptr = reinterpret_cast<GfxRenderer *>(rend);
+    texptr = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
+                                     format.getAsSdlType(),
+                                     acc.getAsSdlType(),
+                                     w, h);
+    if (texptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create texture");
+    }
+    tex_ = texptr;
+    texName_ = texname;
+}
+
+void GfxTexture::createTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+                               throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(texname.length() > 0);
+    assert(rend != nullptr);
+    assert(surf);
+
+    GfxRenderer * rendptr;
+    SdlTypePtr texptr;
+
+    if (tex_ != nullptr)
+    {
+        throw std::runtime_error("Texture already created");
+    }
+    rendptr = reinterpret_cast<GfxRenderer *>(rend);
+    texptr = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    if (texptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create texture");
+    }
+    tex_ = texptr;
+    texName_ = texname;
+}
+
 void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int32_t * w,
-                            int32_t * h) const noexcept
+                              int32_t * h) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -343,7 +415,7 @@ void GfxTexture::updateYUVTexture(rect::GfxRect const& rect,
     if (tex_ != nullptr)
     {
         ret = sdl2::SDL_UpdateYUVTexture(tex_, rect.getAsSdlTypePtr(), Yplane, Ypitch,
-                                        Uplane, Upitch, Vplane, Vpitch);
+                                         Uplane, Upitch, Vplane, Vpitch);
         assert((ret == -1) || (ret == 0));
     }
 }

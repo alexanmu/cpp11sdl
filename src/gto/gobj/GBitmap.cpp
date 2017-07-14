@@ -58,45 +58,45 @@ GBitmap::~GBitmap()
 
 void GBitmap::load(void) throw(std::runtime_error)
 {
-    imgSurf_.createSurface(fileName_);
+    imgSurf_.createSurface("GBitmap::load", fileName_);
 }
 
 void GBitmap::draw(void) throw(std::runtime_error)
 {
-    gfx::rect::GfxRect imgBounds(0, 0, imgSurf_().getWidth(), imgSurf_().getHeight());
+    gfx::rect::GfxRect imgBounds(0, 0, imgSurf_.getWidth(), imgSurf_.getHeight());
     gfx::rect::GfxRect dstBounds;
 
     switch (scaleMode_)
     {
         case GImageScaleMode::centerScaled:
-            if ( imgSurf_().getWidth() < getClientBounds().getWidth() )
+            if ( imgSurf_.getWidth() < getClientBounds().getWidth() )
             {
-                dstBounds.setX((getClientBounds().getWidth() - imgSurf_().getWidth()) / 2);
-                dstBounds.setWidth(imgSurf_().getWidth());
+                dstBounds.setX((getClientBounds().getWidth() - imgSurf_.getWidth()) / 2);
+                dstBounds.setWidth(imgSurf_.getWidth());
             }
             else
             {
                 dstBounds.setX(0);
                 dstBounds.setWidth(getClientBounds().getWidth());
-                imgBounds.setX((imgSurf_().getWidth() - getClientBounds().getWidth()) / 2);
+                imgBounds.setX((imgSurf_.getWidth() - getClientBounds().getWidth()) / 2);
                 imgBounds.setWidth(getClientBounds().getWidth());
             }
-            if ( imgSurf_().getHeight() < getClientBounds().getHeight() )
+            if ( imgSurf_.getHeight() < getClientBounds().getHeight() )
             {
-                dstBounds.setY((getClientBounds().getHeight() - imgSurf_().getHeight()) / 2);
-                dstBounds.setHeight(imgSurf_().getHeight());
+                dstBounds.setY((getClientBounds().getHeight() - imgSurf_.getHeight()) / 2);
+                dstBounds.setHeight(imgSurf_.getHeight());
             }
             else
             {
                 dstBounds.setY(0);
                 dstBounds.setHeight(getClientBounds().getHeight());
-                imgBounds.setY((imgSurf_().getHeight() - getClientBounds().getHeight()) / 2);
+                imgBounds.setY((imgSurf_.getHeight() - getClientBounds().getHeight()) / 2);
                 imgBounds.setHeight(getClientBounds().getHeight());
             }
-            surf_().blitSurface(imgSurf_(), imgBounds, dstBounds);
+            surf_.blitSurface(imgSurf_, imgBounds, dstBounds);
             break;
         case GImageScaleMode::strechScaled:
-            surf_().blitScaled(imgSurf_(), imgBounds, getClientBounds());
+            surf_.blitScaled(imgSurf_, imgBounds, getClientBounds());
             break;
         case GImageScaleMode::tileScaled:
             throw std::runtime_error("Not implemented");

@@ -58,10 +58,10 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxRenderer() = delete;
-
-    explicit GfxRenderer(video::GfxWindow const& win, GfxRendererFlags const& flags) throw(std::runtime_error);
-    explicit GfxRenderer(surface::GfxSurface const& surf) throw(std::runtime_error);
+    GfxRenderer();
+    explicit GfxRenderer(std::string const& rendname, video::GfxWindow const& win, GfxRendererFlags const& flags)
+                         throw(std::runtime_error);
+    explicit GfxRenderer(std::string const& rendname, surface::GfxSurface const& surf) throw(std::runtime_error);
 
     GfxRenderer(GfxRenderer const&) = delete;
     GfxRenderer(GfxRenderer&& other) noexcept;
@@ -72,6 +72,10 @@ public:
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
+
+    void createRenderer(std::string const& rendname, video::GfxWindow const& win, GfxRendererFlags const& flags)
+                        throw(std::runtime_error);
+    void createRenderer(std::string const& rendname, surface::GfxSurface const& surf) throw(std::runtime_error);
 
     SdlTypePtr getRenderer(video::GfxWindow const &win) const noexcept;
     GfxRendererInfo * getRendererInfo(void) const noexcept;
@@ -121,6 +125,7 @@ public:
     SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
     SdlTypePtr renderer_;
+    std::string rendName_;
 
     static const pixels::GfxColor kDefaultRenderDrawColor;
 };

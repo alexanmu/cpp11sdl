@@ -75,10 +75,11 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void allocFormat(GfxPixelFormatEnum const& format) noexcept;
+    void createFormat(GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    void createFormat(const uint32_t format) throw(std::runtime_error);
     void freeFormat(void) noexcept;
-    GfxPixelFormatEnum getFormat(void) noexcept;
 
+    GfxPixelFormatEnum getFormat(void) noexcept;
     uint32_t pixelFlag(void) const noexcept;
     GfxPixelType pixelType(void) const noexcept;
     GfxPackedOrder pixelOrderPacked(void) const noexcept;

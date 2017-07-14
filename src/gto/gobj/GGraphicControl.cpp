@@ -45,7 +45,7 @@ GGraphicControl::GGraphicControl(std::string const& vname, GComponent * owner, c
 
     setBounds(gfx::rect::GfxRect(0, 0, width, height));
     colorScheme_.setDefault();
-    surf_.createSurface(width, height);
+    surf_.createSurface("GGraphicControl::" + vname, width, height);
 }
 
 GGraphicControl::~GGraphicControl()
@@ -53,7 +53,7 @@ GGraphicControl::~GGraphicControl()
     // nothing to do yet
 }
 
-gfx::xtra::GfxControlledSurface const& GGraphicControl::getSurface(void) const noexcept
+gfx::surface::GfxSurface const& GGraphicControl::getSurface(void) const noexcept
 {
     return surf_;
 }
@@ -172,10 +172,10 @@ void GGraphicControl::drawBorder(void) noexcept
     west.setWidth(1);
     west.setHeight(bounds_.getHeight() - 1);
 
-    surf_().fillRect(east, color1);
-    surf_().fillRect(north, color1);
-    surf_().fillRect(west, color2);
-    surf_().fillRect(south, color2);
+    surf_.fillRect(east, color1);
+    surf_.fillRect(north, color1);
+    surf_.fillRect(west, color2);
+    surf_.fillRect(south, color2);
 
     if (borderThikness_ == GBorderThikness::thikBorder)
     {
@@ -199,10 +199,10 @@ void GGraphicControl::drawBorder(void) noexcept
         west.setWidth(1);
         west.setHeight(bounds_.getHeight() - 2);
 
-        surf_().fillRect(east, color1);
-        surf_().fillRect(north, color1);
-        surf_().fillRect(west, color2);
-        surf_().fillRect(south, color2);
+        surf_.fillRect(east, color1);
+        surf_.fillRect(north, color1);
+        surf_.fillRect(west, color2);
+        surf_.fillRect(south, color2);
     }
 }
 
@@ -211,7 +211,7 @@ void GGraphicControl::drawBackground(void) noexcept
     switch (backgroundStyle_)
     {
         case GBackgroundStyle::solidColor :
-            surf_().fillRect(clientBounds_, colorScheme_.getBackgroundColor());
+            surf_.fillRect(clientBounds_, colorScheme_.getBackgroundColor());
             break;
         case GBackgroundStyle::transparentColor :
             /* Nothing to do */

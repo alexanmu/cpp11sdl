@@ -57,6 +57,8 @@ public:
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData const& other) noexcept;
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other) noexcept;
 
+    virtual ~GfxMessageBoxButtonData() noexcept;
+
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
@@ -68,6 +70,7 @@ public:
     SdlType getAsSdlType(void) const noexcept;
 private:
     SdlType data_;
+    std::string text_;
 };
 
 }  // namespace msgbox

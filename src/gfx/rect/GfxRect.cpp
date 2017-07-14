@@ -204,13 +204,6 @@ void GfxRect::setHeight(const int32_t h) noexcept
     rect_.h = h;
 }
 
-void GfxRect::set(const SdlType r) noexcept
-{
-    LOG_TRACE_PRIO_LOW();
-
-    rect_ = r;
-};
-
 GfxBool GfxRect::pointInRect(GfxPoint const& p) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -280,6 +273,7 @@ void GfxRect::unionRect(GfxRect const &r, GfxRect ** result) const noexcept
     assert(result == nullptr);
 
     GfxRect::SdlType rt;
+
     sdl2::SDL_UnionRect(r.getAsSdlTypePtr(), &rect_, &rt);
     *result = new GfxRect(rt);
 }
@@ -299,7 +293,7 @@ GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** re
 
     ptcount = static_cast<int32_t>(points.size());
     index = 0;
-    for (auto& it : points)
+    for (auto const& it : points)
     {
         ptarr[index] = it.getAsSdlType();
         index += 1;

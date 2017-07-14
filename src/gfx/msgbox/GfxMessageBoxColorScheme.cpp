@@ -51,7 +51,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
 {
     LOG_TRACE_PRIO_MED();
 
-    for (int32_t index = 0; index < colorsArraySize; index++)
+    for (int32_t index = 0; index < kColorsArraySize; index++)
     {
         assert(colors[index]);
 
@@ -137,7 +137,7 @@ void GfxMessageBoxColorScheme::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    for (int32_t index = 0; index < colorsArraySize; index++)
+    for (int32_t index = 0; index < kColorsArraySize; index++)
     {
         clrscheme_.colors[index].r = 0x00;
         clrscheme_.colors[index].g = 0x00;

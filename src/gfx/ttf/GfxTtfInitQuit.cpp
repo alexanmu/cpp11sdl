@@ -39,14 +39,14 @@ const char GfxTtfInitQuit::ClassName[] = "GfxTtfInitQuit";
 
 GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxObject(ClassName)
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     errorCode_ = sdl2::TTF_Init();
 }
 
 GfxTtfInitQuit::GfxTtfInitQuit(GfxTtfInitQuit&& other) noexcept : GfxObject(std::move(other))
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     errorCode_ = other.errorCode_;
     // Delete other's data
@@ -55,7 +55,7 @@ GfxTtfInitQuit::GfxTtfInitQuit(GfxTtfInitQuit&& other) noexcept : GfxObject(std:
 
 GfxTtfInitQuit& GfxTtfInitQuit::operator=(GfxTtfInitQuit&& other) noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     if (this != &other)
     {
@@ -71,7 +71,7 @@ GfxTtfInitQuit& GfxTtfInitQuit::operator=(GfxTtfInitQuit&& other) noexcept
 
 GfxTtfInitQuit::~GfxTtfInitQuit(void) noexcept
 {
-    LOG_TRACE_PRIO_TOP();
+    LOG_TRACE_PRIO_HIGH();
 
     sdl2::TTF_Quit();
 }
