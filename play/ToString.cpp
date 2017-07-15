@@ -144,6 +144,7 @@
 #include "GfxJoyHatEvent.hpp"  // 2017.07.10
 #include "GfxJoyButtonEvent.hpp"  // 2017.07.10
 #include "GfxJoyDeviceEvent.hpp"  // 2017.07.10
+#include "GfxSystemCursor.hpp"  // 2017.07.14
 
 struct ToStringStruct
 {
@@ -391,7 +392,9 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::joystick::GfxJoystickType>()     },  // 2017.07.06
     {   prv::makeStringStruct<gfx::joystick::GfxJoystickPowerLevel>()   },  // 2017.07.06
     {   prv::makeStringStruct<gfx::joystick::GfxHatPosition>()      },  // 2017.07.07
-    {   prv::makeStringStruct<gfx::joystick::GfxJoystick>()         }  // 2017.07.07
+    {   prv::makeStringStruct<gfx::joystick::GfxJoystick>()         },  // 2017.07.07
+    //  gfx::mouse
+    {   prv::makeStringStruct<gfx::mouse::GfxSystemCursor>()        }  // 2017.07.14
 };
 
 void _doToString(void)
