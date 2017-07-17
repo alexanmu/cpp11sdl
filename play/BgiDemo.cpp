@@ -48,6 +48,9 @@
 #include "GfxWindowEventID.hpp"
 #include "GfxError.hpp"
 #include "GfxGetError.hpp"
+#include "GfxCursor.hpp"
+#include "GfxSystemCursor.hpp"
+#include "GfxMouseButtonEvent.hpp"
 
 #include "GfxColors2.hpp"
 #include "GfxPoint.hpp"
@@ -69,6 +72,7 @@ using gfx::pixels::GfxPixelFormat;
 using gfx::events::GfxEventType;
 using gfx::events::GfxKeyboardEvent;
 using gfx::events::GfxWindowEvent;
+using gfx::events::GfxMouseButtonEvent;
 using gfx::keyboard::GfxKeyboard;
 using gfx::scancode::GfxScancode;
 using gfx::bgi::GfxCanvas;
@@ -86,6 +90,8 @@ using gfx::rect::GfxRect;
 using gfx::rect::GfxPoint;
 using gfx::error::GfxError;
 using gfx::error::GfxGetError;
+using gfx::mouse::GfxCursor;
+using gfx::mouse::GfxSystemCursor;
 
 class BorlandGraphicsInterfaceDemo
 {
@@ -118,6 +124,7 @@ private:
     GfxWindow * winptr_;
     GfxSurface * surf_;
     GfxCanvas * canvas_;
+    GfxCursor * cursor_;
 
     int32_t demoStep_;
     int32_t waitForQuitStep_;
@@ -137,12 +144,17 @@ BorlandGraphicsInterfaceDemo::BorlandGraphicsInterfaceDemo()
     winptr_ = nullptr;
     surf_ = nullptr;
     canvas_ = nullptr;
+    cursor_ = nullptr;
     demoStep_ = 0;
     waitForQuitStep_ = 0;
 }
 
 BorlandGraphicsInterfaceDemo::~BorlandGraphicsInterfaceDemo()
 {
+    if (cursor_ != nullptr)
+    {
+        delete cursor_;
+    }
     if (canvas_ != nullptr)
     {
         delete canvas_;
@@ -202,12 +214,17 @@ bool BorlandGraphicsInterfaceDemo::initSdl(void)
 void BorlandGraphicsInterfaceDemo::setUpWindow(void)
 {
     GfxWindowFlags winflags;
+    GfxSystemCursor syscursor;
 
     std::cout << "Create window [" << winTitle_ << "], width " << winWidth_ << " pixels, height ";
     std::cout << winHeight_ << " pixels" << std::endl;
     winflags.setResizable();
     winflags.setMouseFocus();
     winptr_ = new GfxWindow(winTitle_, winWidth_, winHeight_, winflags);
+    syscursor.setCursorCrosshair();
+    cursor_ = new GfxCursor(syscursor);
+    cursor_->setCursor();
+    cursor_->showCursor();
 }
 
 bool BorlandGraphicsInterfaceDemo::checkWindowSurfaceAttrs(void)
@@ -299,6 +316,20 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
                 {
                     processWindowEvent(evWin.getWindowEventID());
                 }
+            }
+            if (evType.isMouseButtonUp())
+            {
+                GfxMouseButtonEvent evBtn(e.button);
+
+                if (evBtn.getButton().isLeftButton() == true)
+                {
+                    std::cout << "Left-click" << std::endl;
+                }
+                if (evBtn.getButton().isRightButton() == true)
+                {
+                    std::cout << "Right-click" << std::endl;
+                }
+                std::cout << "x=" << evBtn.getX() << " y=" << evBtn.getY() << std::endl;
             }
         }
         gfx::sdl2::SDL_Delay(25);
