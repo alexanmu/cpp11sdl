@@ -280,3 +280,22 @@ sdl2::SDL_CalculateGammaRamp
 // GfxMessageBox.cpp
 sdl2::SDL_ShowSimpleMessageBox
 sdl2::SDL_ShowMessageBox
+
+// GfxMouse.cpp
+sdl2::SDL_GetMouseFocus
+sdl2::SDL_GetMouseState
+sdl2::SDL_GetGlobalMouseState
+sdl2::SDL_WarpMouseInWindow
+sdl2::SDL_WarpMouseGlobal
+sdl2::SDL_SetRelativeMouseMode
+sdl2::SDL_CaptureMouse
+sdl2::SDL_GetRelativeMouseMode
+
+// GfxCursor.cpp
+sdl2::SDL_CreateCursor
+sdl2::SDL_CreateColorCursor
+sdl2::SDL_CreateSystemCursor
+sdl2::SDL_FreeCursor
+sdl2::SDL_SetCursor
+sdl2::SDL_GetCursor
+sdl2::SDL_GetDefaultCursor
