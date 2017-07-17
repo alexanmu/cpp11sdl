@@ -145,6 +145,10 @@
 #include "GfxJoyButtonEvent.hpp"  // 2017.07.10
 #include "GfxJoyDeviceEvent.hpp"  // 2017.07.10
 #include "GfxSystemCursor.hpp"  // 2017.07.15
+#include "GfxMouseWheelDirection.hpp"  // 2017.07.17
+#include "GfxButton.hpp"  // 2017.07.17
+#include "GfxMouse.hpp"  // 2017.07.17
+#include "GfxCursor.hpp"  // 2017.07.17
 
 namespace gfx
 {
@@ -426,7 +430,11 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::joystick::GfxHatPosition>()     },  // 2017.07.07
     {   prv::makeClassInfo<gfx::joystick::GfxJoystick>()        },  // 2017.07.07
     // gfx::mouse
-    {   prv::makeClassInfo<gfx::mouse::GfxSystemCursor>()       }  // 2017.07.14
+    {   prv::makeClassInfo<gfx::mouse::GfxSystemCursor>()       },  // 2017.07.14
+    {   prv::makeClassInfo<gfx::mouse::GfxMouseWheelDirection>()},  // 2017.07.17
+    {   prv::makeClassInfo<gfx::mouse::GfxButton>()             },  // 2017.07.17
+    {   prv::makeClassInfo<gfx::mouse::GfxMouse>()              },  // 2017.07.17
+    {   prv::makeClassInfo<gfx::mouse::GfxCursor>()             }  // 2017.07.17
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

@@ -53,7 +53,7 @@ public:
         sysCursorCrosshair = sdl2::SDL_SYSTEM_CURSOR_CROSSHAIR,
         sysCursorWaitArrow = sdl2::SDL_SYSTEM_CURSOR_WAITARROW,
         sysCursorSizeNorthWestSouthEast = sdl2::SDL_SYSTEM_CURSOR_SIZENWSE,
-        sysCursorSizeNortheEastSouthWest = sdl2::SDL_SYSTEM_CURSOR_SIZENESW,
+        sysCursorSizeNorthEastSouthWest = sdl2::SDL_SYSTEM_CURSOR_SIZENESW,
         sysCursorSizeWestEast = sdl2::SDL_SYSTEM_CURSOR_SIZEWE,
         sysCursorSizeNorthSouth = sdl2::SDL_SYSTEM_CURSOR_SIZENS,
         sysCursorSizeAll = sdl2::SDL_SYSTEM_CURSOR_SIZEALL,
@@ -73,6 +73,32 @@ public:
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
+
+    void setCursorArrow(void) noexcept;
+    void setCursorIBeam(void) noexcept;
+    void setCursorWait(void) noexcept;
+    void setCursorCrosshair(void) noexcept;
+    void setCursorWaitArrow(void) noexcept;
+    void setCursorSizeNorthWestSouthEast(void) noexcept;
+    void setCursorSizeNortheEastSouthWest(void) noexcept;
+    void setCursorSizeWestEast(void) noexcept;
+    void setCursorSizeNorthSouth(void) noexcept;
+    void setCursorSizeAll(void) noexcept;
+    void setCursorNo(void) noexcept;
+    void setCursorHand(void) noexcept;
+
+    bool isCursorArrow(void) const noexcept;
+    bool isCursorIBeam(void) const noexcept;
+    bool isCursorWait(void) const noexcept;
+    bool isCursorCrosshair(void) const noexcept;
+    bool isCursorWaitArrow(void) const noexcept;
+    bool isCursorSizeNorthWestSouthEast(void) const noexcept;
+    bool isCursorSizeNortheEastSouthWest(void) const noexcept;
+    bool isCursorSizeWestEast(void) const noexcept;
+    bool isCursorSizeNorthSouth(void) const noexcept;
+    bool isCursorSizeAll(void) const noexcept;
+    bool isCursorNo(void) const noexcept;
+    bool isCursorHand(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
 

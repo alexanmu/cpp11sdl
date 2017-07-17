@@ -36,8 +36,8 @@ namespace events
 
 enum class GfxButtonState : uint8_t
 {
-    kGfxReleased = SDL_RELEASED,
-    kGfxPressed = SDL_PRESSED
+    kGfxReleased = SDL_RELEASED,  // == 0
+    kGfxPressed = SDL_PRESSED  // == 1
 };
 
 const uint8_t kGfxTextEditingEventTextSize = SDL_TEXTEDITINGEVENT_TEXT_SIZE;

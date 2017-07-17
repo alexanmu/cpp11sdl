@@ -118,6 +118,176 @@ std::string GfxSystemCursor::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
+void GfxSystemCursor::setCursorArrow(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorArrow);
+}
+
+void GfxSystemCursor::setCursorIBeam(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorIBeam);
+}
+
+void GfxSystemCursor::setCursorWait(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorWait);
+}
+
+void GfxSystemCursor::setCursorCrosshair(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorCrosshair);
+}
+
+void GfxSystemCursor::setCursorWaitArrow(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorWaitArrow);
+}
+
+void GfxSystemCursor::setCursorSizeNorthWestSouthEast(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorSizeNorthWestSouthEast);
+}
+
+void GfxSystemCursor::setCursorSizeNortheEastSouthWest(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorSizeNorthEastSouthWest);
+}
+
+void GfxSystemCursor::setCursorSizeWestEast(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorSizeWestEast);
+}
+
+void GfxSystemCursor::setCursorSizeNorthSouth(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorSizeNorthSouth);
+}
+
+void GfxSystemCursor::setCursorSizeAll(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorSizeAll);
+}
+
+void GfxSystemCursor::setCursorNo(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorNo);
+}
+
+
+void GfxSystemCursor::setCursorHand(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    cursor_ = static_cast<SdlType>(ValueType::sysCursorHand);
+}
+
+bool GfxSystemCursor::isCursorArrow(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorArrow));
+}
+
+bool GfxSystemCursor::isCursorIBeam(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorIBeam));
+}
+
+bool GfxSystemCursor::isCursorWait(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorWait));
+}
+
+bool GfxSystemCursor::isCursorCrosshair(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorCrosshair));
+}
+
+bool GfxSystemCursor::isCursorWaitArrow(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorWaitArrow));
+}
+
+bool GfxSystemCursor::isCursorSizeNorthWestSouthEast(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorSizeNorthWestSouthEast));
+}
+
+bool GfxSystemCursor::isCursorSizeNortheEastSouthWest(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorSizeNorthEastSouthWest));
+}
+
+bool GfxSystemCursor::isCursorSizeWestEast(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorSizeWestEast));
+}
+
+bool GfxSystemCursor::isCursorSizeNorthSouth(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorSizeNorthSouth));
+}
+
+bool GfxSystemCursor::isCursorSizeAll(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorSizeAll));
+}
+
+bool GfxSystemCursor::isCursorNo(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorNo));
+}
+
+
+bool GfxSystemCursor::isCursorHand(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (cursor_ == static_cast<SdlType>(ValueType::sysCursorHand));
+}
+
 GfxSystemCursor::ValueType GfxSystemCursor::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -32,6 +32,7 @@
 #include "IGetCommonEvent.hpp"
 #include "IGetWindowID.hpp"
 #include "IGetMouseID.hpp"
+#include "GfxButton.hpp"
 
 namespace gfx
 {
@@ -65,8 +66,8 @@ public:
     virtual uint32_t getWindowID(void) const noexcept;
     virtual uint32_t getMouseID(void) const noexcept;
 
-    uint8_t getButton(void) const noexcept;
-    uint8_t getState(void) const noexcept;
+    mouse::GfxButton getButton(void) const noexcept;
+    GfxButtonState getState(void) const noexcept;
     uint8_t getClicks(void) const noexcept;
     int32_t getX(void) const noexcept;
     int32_t getY(void) const noexcept;

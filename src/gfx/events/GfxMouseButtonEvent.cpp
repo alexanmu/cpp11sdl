@@ -135,18 +135,22 @@ uint32_t GfxMouseButtonEvent::getMouseID(void) const noexcept
     return mbEvent_.which;
 }
 
-uint8_t GfxMouseButtonEvent::getButton(void) const noexcept
+mouse::GfxButton GfxMouseButtonEvent::getButton(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return mbEvent_.button;
+    return mouse::GfxButton(mbEvent_.button);
 }
 
-uint8_t GfxMouseButtonEvent::getState(void) const noexcept
+GfxButtonState GfxMouseButtonEvent::getState(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return mbEvent_.state;
+    if (mbEvent_.state == SDL_RELEASED)
+    {
+        return GfxButtonState::kGfxReleased;
+    }
+    return GfxButtonState::kGfxPressed;
 }
 
 uint8_t GfxMouseButtonEvent::getClicks(void) const noexcept
