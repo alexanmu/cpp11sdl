@@ -134,6 +134,13 @@ std::string GfxTextInputEvent::getText(void) const noexcept
     return std::string(textInputEvent_.text);
 }
 
+void GfxTextInputEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    textInputEvent_ = event;
+}
+
 void GfxTextInputEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -129,7 +129,7 @@ GfxEventType::ValueType GfxEventType::getEventType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return static_cast<ValueType>(false);
+    return static_cast<ValueType>(evType_);
 }
 
 uint32_t GfxEventType::getEventTypeValue(void) const noexcept

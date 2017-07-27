@@ -64,6 +64,8 @@ public:
 
     virtual joystick::GfxJoystickID getJoystickID(void) const noexcept;
 
+    void setValue(const SdlType event) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

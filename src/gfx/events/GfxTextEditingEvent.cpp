@@ -148,6 +148,13 @@ int32_t GfxTextEditingEvent::getLength(void) const noexcept
     return textEditingEvent_.length;
 }
 
+void GfxTextEditingEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    textEditingEvent_ = event;
+}
+
 void GfxTextEditingEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -148,6 +148,13 @@ keyboard::GfxKeysym GfxKeyboardEvent::getKeysym(void) const noexcept
     return keyboard::GfxKeysym(keyboardEvent_.keysym);
 }
 
+void GfxKeyboardEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    keyboardEvent_ = event;
+}
+
 void GfxKeyboardEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

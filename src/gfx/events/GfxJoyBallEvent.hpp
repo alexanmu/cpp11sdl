@@ -68,6 +68,8 @@ public:
     int16_t getXRel(void) const noexcept;
     int16_t getYRel(void) const noexcept;
 
+    void setValue(const SdlType event) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

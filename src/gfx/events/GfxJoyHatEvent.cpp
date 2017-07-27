@@ -142,6 +142,13 @@ joystick::GfxHatPosition GfxJoyHatEvent::getPosition(void) const noexcept
     return joystick::GfxHatPosition(jhEvent_.value);
 }
 
+void GfxJoyHatEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    jhEvent_ = event;
+}
+
 void GfxJoyHatEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

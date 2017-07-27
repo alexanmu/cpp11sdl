@@ -142,6 +142,13 @@ int16_t GfxJoyAxisEvent::getValue(void) const noexcept
     return jaxEvent_.value;
 }
 
+void GfxJoyAxisEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    jaxEvent_ = event;
+}
+
 void GfxJoyAxisEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

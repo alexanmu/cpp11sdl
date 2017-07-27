@@ -68,6 +68,8 @@ public:
     uint8_t getHat(void) const noexcept;
     joystick::GfxHatPosition getPosition(void) const noexcept;
 
+    void setValue(const SdlType event) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

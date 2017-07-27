@@ -174,6 +174,13 @@ int32_t GfxMouseButtonEvent::getY(void) const noexcept
     return mbEvent_.y;
 }
 
+void GfxMouseButtonEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    mbEvent_ = event;
+}
+
 void GfxMouseButtonEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

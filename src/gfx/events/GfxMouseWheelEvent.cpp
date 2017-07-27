@@ -149,11 +149,18 @@ int32_t GfxMouseWheelEvent::getY(void) const noexcept
     return mwEvent_.y;
 }
 
-uint32_t GfxMouseWheelEvent::getDirection(void) const noexcept
+mouse::GfxMouseWheelDirection GfxMouseWheelEvent::getDirection(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return mwEvent_.direction;
+    return mouse::GfxMouseWheelDirection(mwEvent_.direction);
+}
+
+void GfxMouseWheelEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    mwEvent_ = event;
 }
 
 void GfxMouseWheelEvent::clear(void) noexcept

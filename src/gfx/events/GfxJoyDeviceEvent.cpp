@@ -128,6 +128,13 @@ joystick::GfxJoystickID GfxJoyDeviceEvent::getJoystickID(void) const noexcept
     return joystick::GfxJoystickID(jdEvent_.which);
 }
 
+void GfxJoyDeviceEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    jdEvent_ = event;
+}
+
 void GfxJoyDeviceEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

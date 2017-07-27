@@ -54,7 +54,7 @@ public:
         evLowMemory = sdl2::SDL_APP_LOWMEMORY,
         evAppWillEnterBackground = sdl2::SDL_APP_WILLENTERBACKGROUND,
         evAppDidEnterBackground = sdl2::SDL_APP_DIDENTERBACKGROUND,
-        evAppWillEnterForeground = sdl2::SDL_APP_WILLENTERBACKGROUND,
+        evAppWillEnterForeground = sdl2::SDL_APP_WILLENTERFOREGROUND,
         evAppDidEnterForeground = sdl2::SDL_APP_DIDENTERFOREGROUND,
         evWindowEvent = sdl2::SDL_WINDOWEVENT,
         evSysWMEvent = sdl2::SDL_SYSWMEVENT,

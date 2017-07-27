@@ -142,6 +142,13 @@ GfxButtonState GfxJoyButtonEvent::getState(void) const noexcept
     return static_cast<GfxButtonState>(jbEvent_.state);
 }
 
+void GfxJoyButtonEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    jbEvent_ = event;
+}
+
 void GfxJoyButtonEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -70,6 +70,8 @@ public:
     int32_t getData1(void) const noexcept;
     int32_t getData2(void) const noexcept;
 
+    void setValue(const SdlType event) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

@@ -149,6 +149,13 @@ int16_t GfxJoyBallEvent::getYRel(void) const noexcept
     return jbEvent_.yrel;
 }
 
+void GfxJoyBallEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    jbEvent_ = event;
+}
+
 void GfxJoyBallEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

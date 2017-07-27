@@ -150,6 +150,13 @@ int32_t GfxWindowEvent::getData2(void) const noexcept
     return windowEvent_.data1;
 }
 
+void GfxWindowEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    windowEvent_ = event;
+}
+
 void GfxWindowEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

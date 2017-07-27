@@ -67,6 +67,8 @@ public:
     uint8_t getAxis(void) const noexcept;
     int16_t getValue(void) const noexcept;
 
+    void setValue(const SdlType event) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

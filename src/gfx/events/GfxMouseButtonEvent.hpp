@@ -72,6 +72,8 @@ public:
     int32_t getX(void) const noexcept;
     int32_t getY(void) const noexcept;
 
+    void setValue(const SdlType event) noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

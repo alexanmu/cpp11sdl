@@ -32,6 +32,7 @@
 #include "IGetCommonEvent.hpp"
 #include "IGetWindowID.hpp"
 #include "IGetMouseID.hpp"
+#include "GfxMouseWheelDirection.hpp"
 
 namespace gfx
 {
@@ -67,7 +68,9 @@ public:
 
     int32_t getX(void) const noexcept;
     int32_t getY(void) const noexcept;
-    uint32_t getDirection(void) const noexcept;
+    mouse::GfxMouseWheelDirection getDirection(void) const noexcept;
+
+    void setValue(const SdlType event) noexcept;
 
     void clear(void) noexcept;
 

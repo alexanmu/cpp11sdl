@@ -170,6 +170,13 @@ int32_t GfxMouseMotionEvent::getYRel(void) const noexcept
     return mmEvent_.yrel;
 }
 
+void GfxMouseMotionEvent::setValue(const SdlType event) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    mmEvent_ = event;
+}
+
 void GfxMouseMotionEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
