@@ -30,12 +30,18 @@ LOG_TRACE_MODULE_NAME("gfxlogoutputfunction::log::gfx");
 
 namespace gfx
 {
+
 namespace log
 {
 
 const char GfxLogOutputFunction::ClassName[] = "GfxLogOutputFunction";
 
 GfxLogOutputFunction::GfxLogOutputFunction() noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxLogOutputFunction::~GfxLogOutputFunction() noexcept
 {
     LOG_TRACE_PRIO_MED();
 }

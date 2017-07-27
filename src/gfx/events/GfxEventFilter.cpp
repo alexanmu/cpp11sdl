@@ -41,6 +41,11 @@ GfxEventFilter::GfxEventFilter() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
+GfxEventFilter::~GfxEventFilter() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+}
+
 GfxEventFilter::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();

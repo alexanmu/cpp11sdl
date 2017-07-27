@@ -41,6 +41,11 @@ GfxHitTest::GfxHitTest() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
+GfxHitTest::~GfxHitTest() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+}
+
 GfxHitTest::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();

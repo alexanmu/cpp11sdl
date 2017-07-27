@@ -29,6 +29,7 @@
 
 #include "GObject.hpp"
 #include "GForm.hpp"
+#include "GLabel.hpp"
 
 class GDemoForm : public gto::gobj::GForm
 {
@@ -37,6 +38,9 @@ public:
 
     virtual void draw(void);
     virtual void run(void);
+private:
+   gto::gobj::GLabel * dynLabel_;
+   std::string dynLabelText_;
 };
 
 #endif /* GDemoForm_hpp */

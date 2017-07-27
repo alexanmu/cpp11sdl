@@ -47,6 +47,8 @@
 #include "GfxTtfGetVersion.hpp"
 #include "GStructuredTextLabel.hpp"
 #include "GApplication.hpp"
+#include "GfxEvent.hpp"
+#include "GfxKeycode.hpp"
 
 uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -85,6 +87,8 @@ uint16_t pixels[16*16] = {  // ...or with raw pixel data:
 
 GDemoForm::GDemoForm(std::string const& appName) : gto::gobj::GForm(appName)
 {
+    dynLabel_ = nullptr;
+    dynLabelText_ = "$init$";
 }
 
 void GDemoForm::draw(void)
@@ -150,7 +154,6 @@ void GDemoForm::draw(void)
     g2.setBorderStyle(gto::gobj::GBorderStyle::raised3DBorder);
     g2.setBackgroundColor(gfx::bgi::kColorLightGray());
     g2.setForegroundColor(gfx::bgi::kColorLightCyan());
-    g2.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
     g2.getFontInfo().setFontUnderline(true);
     g2.getFontInfo().setFontName("Raleway-ExtraBold");
     g2.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
@@ -169,7 +172,6 @@ void GDemoForm::draw(void)
     g3.setBorderStyle(gto::gobj::GBorderStyle::raised3DBorder);
     g3.setBackgroundColor(gfx::bgi::kColorLightGray());
     g3.setForegroundColor(gfx::bgi::kColorLightCyan());
-    g3.setTextRenderMode(gto::gobj::GTextRenderMode::solidText);
     g3.getFontInfo().setFontUnderline(true);
     g3.setTextRenderMode(gto::gobj::GTextRenderMode::blendedText);
     g3.draw();
@@ -183,21 +185,104 @@ void GDemoForm::draw(void)
     window_->getWindowSurface().blitSurface(g4.getSurface(), gfx::rect::GfxRect(0, 0, 320, 60),
                                             gfx::rect::GfxRect(940, 10, 200, 60));
 
+    dynLabel_ = new gto::gobj::GLabel(GVarName(dynLabel_), this, 600, 60, dynLabelText_, 32);
+    dynLabel_->setBorderThikness(gto::gobj::GBorderThikness::thinBorder);
+    dynLabel_->setBorderColor(gfx::bgi::kColorWhite());
+    dynLabel_->setBorderShadowColor(gfx::bgi::kColorDarkGray());
+    dynLabel_->setBorderStyle(gto::gobj::GBorderStyle::sunken3DBorder);
+    dynLabel_->setBackgroundColor(gfx::bgi::kColorLightGray());
+    dynLabel_->setForegroundColor(gfx::bgi::kColorLightBlue());
+    dynLabel_->getFontInfo().setFontItalic(true);
+    dynLabel_->getFontInfo().setFontName("Raleway-Light");
+    dynLabel_->setTextRenderMode(gto::gobj::GTextRenderMode::shadedText);
+    dynLabel_->draw();
+    window_->getWindowSurface().blitSurface(dynLabel_->getSurface(), gfx::rect::GfxRect(0, 0, 600, 60),
+                                            gfx::rect::GfxRect(500, 100, 600, 60));
+    delete dynLabel_;
+
     GForm::draw();
 }
 
 void GDemoForm::run(void)
 {
-    gto::dlgs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "A thing occured. What should I do?");
-    g.showModal();
+    gfx::events::GfxEvent e;
+    bool quit = false;
 
-    gto::dlgs::GDialogsConstants sel;
-
-    sel = g.getSelection();
-    while (sel != gto::dlgs::GDialogsConstants::kButtonQuit)
+    while (quit == false)
     {
-        g.showModal();
-        sel = g.getSelection();
+        if (e.pollEvent())
+        {
+            if (e.eventType().isQuit())
+            {
+                quit = true;
+            }
+            if (e.eventType().isMouseMotion())
+            {
+                dynLabelText_ = "Mouse motion " + std::to_string(e.mouseMotionEvent().getX()) + " "
+                         + std::to_string(e.mouseMotionEvent().getY());
+                draw();
+            }
+            if (e.eventType().isMouseButtonUp())
+            {
+                if (e.mouseButtonEvent().getButton().isLeftButton() == true)
+                {
+                    dynLabelText_ = "Left click";
+                }
+                if (e.mouseButtonEvent().getButton().isRightButton() == true)
+                {
+                    dynLabelText_ = "Right click";
+                }
+                if (e.mouseButtonEvent().getButton().isMiddleButton() == true)
+                {
+                    dynLabelText_ = "Middle click";
+                }
+                draw();
+            }
+            if (e.eventType().isKeyUp())
+            {
+                if (e.keyboardEvent().getKeysym().getKeyCode().getValue() ==
+                        gfx::keycode::GfxKeycode::ValueType::kKeyQ)
+                {
+                    quit = true;
+                }
+            }
+            if (e.eventType().isMouseWheel())
+            {
+                if (e.mouseWheelEvent().getDirection().getValue() ==
+                        gfx::mouse::GfxMouseWheelDirection::ValueType::mouseWheelNormal)
+                {
+                    dynLabelText_ = "Mouse wheel - normal";
+                }
+                if (e.mouseWheelEvent().getDirection().getValue() ==
+                        gfx::mouse::GfxMouseWheelDirection::ValueType::mouseWheelFlipped)
+                {
+                    dynLabelText_ = "Mouse wheel - flipped";
+                }
+                draw();
+            }
+            if (e.eventType().isWindowEvent())
+            {
+                if (e.windowEvent().getWindowEventID().isMinimized())
+                {
+                    //
+                }
+                draw();
+            }
+        }
+        if (quit == true)
+        {
+            gto::dlgs::GQuitCancelMsgBox g(GVarName(g), this, "Error", "A thing occured. What should I do?");
+            g.showModal();
+
+            gto::dlgs::GDialogsConstants sel;
+
+            sel = g.getSelection();
+            if (sel != gto::dlgs::GDialogsConstants::kButtonQuit)
+            {
+                quit = false;
+                draw();
+            }
+        }
     }
 }
 

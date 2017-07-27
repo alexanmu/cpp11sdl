@@ -45,6 +45,8 @@ public:
 
     GfxHitTest() noexcept;
 
+    virtual ~GfxHitTest() noexcept;
+
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 

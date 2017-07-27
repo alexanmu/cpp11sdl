@@ -58,6 +58,13 @@ GfxMouseWheelDirection::GfxMouseWheelDirection(const SdlType wheel) noexcept : G
     wheel_ = wheel;
 }
 
+GfxMouseWheelDirection::GfxMouseWheelDirection(const uint32_t wheel) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    wheel_ = static_cast<SdlType>(wheel);
+}
+
 GfxMouseWheelDirection::GfxMouseWheelDirection(GfxMouseWheelDirection const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();

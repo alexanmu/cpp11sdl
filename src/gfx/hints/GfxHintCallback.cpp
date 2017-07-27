@@ -41,6 +41,11 @@ GfxHintCallback::GfxHintCallback() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
+GfxHintCallback::~GfxHintCallback() noexcept
+{
+    LOG_TRACE_PRIO_MED();
+}
+
 GfxHintCallback::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();

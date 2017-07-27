@@ -45,7 +45,7 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    enum class ValueType : int32_t
+    enum class ValueType : uint32_t
     {
         mouseWheelNormal = sdl2::SDL_MOUSEWHEEL_NORMAL,
         mouseWheelFlipped = sdl2::SDL_MOUSEWHEEL_FLIPPED
@@ -54,6 +54,7 @@ public:
     GfxMouseWheelDirection() noexcept;
     explicit GfxMouseWheelDirection(const ValueType wheel) noexcept;
     explicit GfxMouseWheelDirection(const SdlType wheel) noexcept;
+    explicit GfxMouseWheelDirection(const uint32_t wheel) noexcept;
 
     GfxMouseWheelDirection(GfxMouseWheelDirection const& other) noexcept;
     GfxMouseWheelDirection(GfxMouseWheelDirection&& other) noexcept;

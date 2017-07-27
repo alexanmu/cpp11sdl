@@ -123,15 +123,12 @@ GfxLogOutputFunction * GfxLog::logGetOutputFunction(void ** userdata) const noex
     sdl2::SDL_LogOutputFunction sdlLogOutFunc = nullptr;
 
     sdl2::SDL_LogGetOutputFunction(&sdlLogOutFunc, userdata);
-    if (sdlLogOutFunc != nullptr &&
-        *sdlLogOutFunc == &prv::logOutputFunction)
+    if ((sdlLogOutFunc != nullptr) &&
+        (*sdlLogOutFunc == &prv::logOutputFunction))
     {
         return prv::logOutputFunctionObject;
     }
-    else
-    {
-        return nullptr;
-    }
+    return nullptr;
 }
 
 void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback, void * userdata) const throw(std::runtime_error)

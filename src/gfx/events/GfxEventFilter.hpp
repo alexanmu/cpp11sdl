@@ -46,6 +46,8 @@ public:
 
     GfxEventFilter() noexcept;
 
+    virtual ~GfxEventFilter() noexcept;
+
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 

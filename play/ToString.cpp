@@ -149,6 +149,8 @@
 #include "GfxButton.hpp"  // 2017.07.17
 #include "GfxMouse.hpp"  // 2017.07.17
 #include "GfxCursor.hpp"  // 2017.07.17
+#include "GfxEvent.hpp"  // 2017.07.25
+#include "GfxEventFilter.hpp"  // 2017.07.27
 
 struct ToStringStruct
 {
@@ -382,6 +384,8 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::events::GfxJoyHatEvent>()        },  // 2017.07.10
     {   prv::makeStringStruct<gfx::events::GfxJoyButtonEvent>()     },  // 2017.07.10
     {   prv::makeStringStruct<gfx::events::GfxJoyDeviceEvent>()     },  // 2017.07.10
+    {   prv::makeStringStruct<gfx::events::GfxEvent>()              },  // 2017.07.25
+    {   prv::makeStringStruct<gfx::events::GfxEventFilter>()        },  // 2017.07.27
     //  gfx::scancode
     {   prv::makeStringStruct<gfx::scancode::GfxScancode>()         },  // 2017.06.21
     //  gfx::keycode
