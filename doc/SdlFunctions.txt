@@ -299,3 +299,18 @@ sdl2::SDL_FreeCursor
 sdl2::SDL_SetCursor
 sdl2::SDL_GetCursor
 sdl2::SDL_GetDefaultCursor
+
+// GfxEvent.cpp
+sdl2::SDL_PeepEvents
+sdl2::SDL_HasEvent
+sdl2::SDL_HasEvents
+sdl2::SDL_FlushEvent
+sdl2::SDL_FlushEvents
+sdl2::SDL_PollEvent
+sdl2::SDL_WaitEvent
+sdl2::SDL_WaitEventTimeout
+sdl2::SDL_SetEventFilter
+sdl2::SDL_GetEventFilter
+...
+sdl2::SDL_EventState
+sdl2::SDL_RegisterEvents
