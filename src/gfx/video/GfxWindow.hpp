@@ -130,7 +130,7 @@ public:
                             xtra::GfxGammaRamp const& blue) const noexcept;
     void getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp * green,
                             xtra::GfxGammaRamp * blue) const noexcept;
-    void setWindowHitTest(GfxHitTest const& callback, void * callback_data) const noexcept;
+    void setWindowHitTest(GfxHitTest const& callback) const noexcept;
 
     int32_t getWidth() const noexcept;
     int32_t getHeight() const noexcept;
@@ -138,6 +138,9 @@ public:
     SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:
     void freeResources(void) noexcept;
+    // Will be called from C by SDL
+    static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window * win,
+                                                              const gfx::sdl2::SDL_Point * area, void * data);
 
     static const int32_t kDefaultWindowPositionX = 100;
     static const int32_t kDefaultWindowPositionY = 100;
@@ -145,6 +148,7 @@ private:
 
     SdlTypePtr window_;
     surface::GfxSurface * winSurface_;
+    mutable GfxHitTest * hitTest_;
 };
 
 }  // namespace video
