@@ -54,11 +54,11 @@ public:
 
     GfxLog() noexcept;
 
-    GfxLog(GfxLog const& other) = delete;
-    GfxLog(GfxLog&& other) = delete;
+    GfxLog(GfxLog const&) = delete;
+    GfxLog(GfxLog&& other) noexcept;
 
-    GfxLog& operator=(GfxLog const& other) = delete;
-    GfxLog& operator=(GfxLog&& other) = delete;
+    GfxLog& operator=(GfxLog const&) = delete;
+    GfxLog& operator=(GfxLog&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
@@ -155,8 +155,15 @@ public:
         throw std::runtime_error("Use method logMessage(...)");
     }
 
-    GfxLogOutputFunction * logGetOutputFunction(void ** userdata) const noexcept;
-    void logSetOutputFunction(GfxLogOutputFunction * callback, void * userdata) const throw(std::runtime_error);
+    GfxLogOutputFunction * logGetOutputFunction(void) const throw(std::runtime_error);
+    void logSetOutputFunction(GfxLogOutputFunction * callback) const throw(std::runtime_error);
+private:
+    void callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType priority,
+                                           std::string const& message) const noexcept;
+    // Will be called from C by SDL
+    static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char * message);
+
+    mutable GfxLogOutputFunction * logOutputFunctionObject_ = nullptr;
 };
 
 }  // namespace log

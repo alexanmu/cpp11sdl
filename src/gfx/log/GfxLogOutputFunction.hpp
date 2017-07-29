@@ -50,7 +50,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual void operator()(void * userdata, gfx::log::GfxLogCategory const& cat, gfx::log::GfxLogPriority const& prio,
+    virtual void operator()(gfx::log::GfxLogCategory const& cat, gfx::log::GfxLogPriority const& prio,
                             std::string const& message) const noexcept = 0;
 };
 

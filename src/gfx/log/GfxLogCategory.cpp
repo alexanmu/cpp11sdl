@@ -118,6 +118,11 @@ std::string GfxLogCategory::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
+GfxLogCategory::ValueType GfxLogCategory::getCategory(void) const noexcept
+{
+    return static_cast<ValueType>(value_);
+}
+
 void GfxLogCategory::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

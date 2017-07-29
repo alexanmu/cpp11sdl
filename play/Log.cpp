@@ -42,14 +42,15 @@ public:
     {
         // nothing to do
     }
-    virtual void operator()(void* userdata, gfx::log::GfxLogCategory const& cat,
-                    gfx::log::GfxLogPriority const& prio, std::string const& message) const noexcept
+    virtual void operator()(gfx::log::GfxLogCategory const& cat, gfx::log::GfxLogPriority const& prio,
+                            std::string const& message) const noexcept
     {
-        assert(userdata != nullptr);
         assert(cat);
         assert(prio);
 
-        std::cout << "<" << message << ">" << std::endl;
+        int32_t icat = static_cast<int32_t>(cat.getCategory());
+        int32_t iprio = static_cast<int32_t>(prio.getPriority());
+        std::cout << "<" << icat << "," << iprio << " " << message << ">" << std::endl;
     }
 };
 }  // namespace prv
@@ -58,19 +59,23 @@ void _doLog(void)
 {
     gfx::log::GfxLog log;
     prv::LogOutFunc lofunc;
-    char ch = 'c';
-    char * usrdata = &ch;
 
     using gfx::log::GfxLogCategory;
     using gfx::log::GfxLogPriority;
 
     // test Get
     prv::LogOutFunc * tst_lofuncptr = nullptr;
-    void * tst_userdata = nullptr;
-    tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(log.logGetOutputFunction(&tst_userdata));
-    if (tst_lofuncptr == nullptr)
+    try
     {
-        std::cout << "nullptr; as expected" << std::endl;
+        tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(log.logGetOutputFunction());
+        if (tst_lofuncptr == nullptr)
+        {
+            std::cout << "nullptr; as expected" << std::endl;
+        }
+    }
+    catch (...)
+    {
+        std::cout << "expected throw; function not set" << std::endl;
     }
 
     log.setPriority(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),
@@ -80,9 +85,9 @@ void _doLog(void)
     log.log("float1=%f float2=%f", 1.5, 2.6);
     log.log("str=%s char=%c int=%d", "string", ';', 5);
     // Set new output function
-    log.logSetOutputFunction(&lofunc, static_cast<void *>(usrdata));
+    log.logSetOutputFunction(&lofunc);
     // test new output function
-    tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(log.logGetOutputFunction(&tst_userdata));
+    tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(log.logGetOutputFunction());
     if (tst_lofuncptr == nullptr)
     {
         std::cout << "nullptr; NOT expected!" << std::endl;
@@ -108,7 +113,7 @@ void _doLog(void)
     // Try to stop own logging function
     try
     {
-        log.logSetOutputFunction(nullptr, static_cast<void *>(usrdata));
+        log.logSetOutputFunction(nullptr);
     }
     catch (std::runtime_error& ex)
     {

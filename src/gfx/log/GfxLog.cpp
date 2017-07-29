@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxLog.hpp"
 #include "GfxSdlHeader.hpp"
@@ -38,30 +39,42 @@ namespace log
 
 const char GfxLog::ClassName[] = "GfxLog";
 
-namespace prv
-{
-
-GfxLogOutputFunction * logOutputFunctionObject = nullptr;
-
-extern "C" {
-static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char * message)
-{
-    if (logOutputFunctionObject != nullptr)
-    {
-        GfxLogCategory cat(category);
-        GfxLogPriority prio(priority);
-        std::string msg(message);
-
-        (*logOutputFunctionObject)(userdata, cat, prio, msg);
-    }
-}
-}  // extern "C"
-
-}  // namespace prv
-
 GfxLog::GfxLog() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+
+    logOutputFunctionObject_ = nullptr;
+}
+
+GfxLog::GfxLog(GfxLog&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+
+    void * userdata = static_cast<void *>(this);
+
+    logOutputFunctionObject_ = other.logOutputFunctionObject_;
+    sdl2::SDL_LogSetOutputFunction(logOutputFunction, userdata);
+    // Delete other's data
+    other.logOutputFunctionObject_ = nullptr;
+}
+
+GfxLog& GfxLog::operator=(GfxLog&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    void * userdata = static_cast<void *>(this);
+
+    if (this != & other)
+    {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        logOutputFunctionObject_ = other.logOutputFunctionObject_;
+        sdl2::SDL_LogSetOutputFunction(logOutputFunction, userdata);
+        // Delete other's data
+        other.logOutputFunctionObject_ = nullptr;
+    }
+    return *this;
 }
 
 GfxLog::operator bool() const noexcept
@@ -116,31 +129,38 @@ void GfxLog::resetPriorities(void) const noexcept
     sdl2::SDL_LogResetPriorities();
 }
 
-GfxLogOutputFunction * GfxLog::logGetOutputFunction(void ** userdata) const noexcept
+GfxLogOutputFunction * GfxLog::logGetOutputFunction(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
     sdl2::SDL_LogOutputFunction sdlLogOutFunc = nullptr;
+    void * userdata = nullptr;
 
-    sdl2::SDL_LogGetOutputFunction(&sdlLogOutFunc, userdata);
-    if ((sdlLogOutFunc != nullptr) &&
-        (*sdlLogOutFunc == &prv::logOutputFunction))
+    sdl2::SDL_LogGetOutputFunction(&sdlLogOutFunc, &userdata);
+    if (userdata != static_cast<void *>(const_cast<GfxLog *>(this)))
     {
-        return prv::logOutputFunctionObject;
+        throw std::runtime_error("this pointer error");
+    }
+    if ((sdlLogOutFunc != nullptr) &&
+        (*sdlLogOutFunc == &logOutputFunction))
+    {
+        return logOutputFunctionObject_;
     }
     return nullptr;
 }
 
-void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback, void * userdata) const throw(std::runtime_error)
+void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
+    void * userdata = static_cast<void *>(const_cast<GfxLog *>(this));
+
     if (callback != nullptr)
     {
-        if (prv::logOutputFunctionObject == nullptr)
+        if (logOutputFunctionObject_ == nullptr)
         {
-            prv::logOutputFunctionObject = callback;
-            sdl2::SDL_LogSetOutputFunction(prv::logOutputFunction, userdata);
+            logOutputFunctionObject_ = callback;
+            sdl2::SDL_LogSetOutputFunction(logOutputFunction, userdata);
         }
     }
     else
@@ -149,7 +169,37 @@ void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback, void * userda
         throw std::runtime_error("SDL Bugzilla, issue 3666");
         // These lines will not be executed before issue 3666 is fixed
         sdl2::SDL_LogSetOutputFunction(NULL, NULL);
-        prv::logOutputFunctionObject = nullptr;
+        logOutputFunctionObject_ = nullptr;
+    }
+}
+
+// Private methods
+void GfxLog::callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType priority,
+                                               std::string const& message) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(category >= 0);
+    assert(message.length() > 0);
+
+    GfxLogCategory cat(category);
+    GfxLogPriority prio(priority);
+
+    if (logOutputFunctionObject_ != nullptr)
+    {
+        (*logOutputFunctionObject_)(cat, prio, message);
+    }
+}
+
+// Will be called from C by SDL
+void GfxLog::logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char * message)
+{
+    GfxLog * thisptr;
+
+    thisptr = static_cast<GfxLog *>(userdata);
+    if (thisptr != nullptr)
+    {
+        thisptr->callCustomLogOutputFunctionObject(category, priority, message);
     }
 }
 
