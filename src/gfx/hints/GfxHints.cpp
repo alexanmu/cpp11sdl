@@ -34,36 +34,9 @@ LOG_TRACE_MODULE_NAME("gfxhints::hints::gfx");
 
 namespace gfx
 {
+
 namespace hints
 {
-
-namespace prv
-{
-
-std::map<std::string, std::pair<GfxHintCallback *, void *>> * callbackMapPtr = nullptr;
-
-extern "C" {
-void hintCallbackFunction(void * userdata, const char * name, const char * oldv, const char * newv)
-{
-    std::pair<GfxHintCallback *, void *> inmap;
-    GfxHintCallback * gfxhcb;
-
-    if (callbackMapPtr != nullptr)
-    {
-        if (callbackMapPtr->size() > 0)
-        {
-            auto pos = callbackMapPtr->find(std::string(name));
-            if (pos != callbackMapPtr->end())
-            {
-                inmap = callbackMapPtr->operator[](std::string(name));
-                gfxhcb = inmap.first;
-                (*gfxhcb)(userdata, std::string(name), std::string(oldv), std::string(newv));
-            }
-        }
-    }
-}
-}  // extern "C"
-}  // namespace prv
 
 const char GfxHints::ClassName[] = "GfxHints";
 
@@ -149,7 +122,7 @@ std::string GfxHints::to_string(void) const noexcept
 }
 
 GfxBool GfxHints::setHintWithPriority(std::string const& name, std::string const& value,
-                                     GfxHintPriority const& prio) const noexcept
+                                      GfxHintPriority const& prio) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -205,33 +178,31 @@ GfxBool GfxHints::getHintBoolean(std::string const& name, GfxBool const& defvalu
     return GfxBool(sdlbool);
 }
 
-void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& callback, void * userdata) noexcept
+void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& callback) noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
     assert(name.length() > 0);
     assert(callback);
-    assert(userdata != nullptr);
 
-    prv::callbackMapPtr = &callbackMap_;
-    callbackMap_[name] = std::make_pair(const_cast<GfxHintCallback *>(&callback), userdata);
-    sdl2::SDL_AddHintCallback(name.c_str(), prv::hintCallbackFunction, userdata);
+    void * userdata = static_cast<void *>(this);
+
+    callbackMap_[name] = const_cast<GfxHintCallback *>(&callback);
+    sdl2::SDL_AddHintCallback(name.c_str(), hintCallbackFunction, userdata);
 }
 
-void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& callback,
-                                void * userdata) throw(std::runtime_error)
+void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& callback) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
     assert(name.length() > 0);
     assert(callback);
-    assert(userdata != nullptr);
 
-    std::pair<GfxHintCallback *, void *> params;
-    std::pair<GfxHintCallback *, void *> inmap;
+    void * userdata;
+    GfxHintCallback * params;
+    GfxHintCallback * inmap;
 
-    prv::callbackMapPtr = &callbackMap_;
-    params = std::make_pair(const_cast<GfxHintCallback *>(&callback), userdata);
+    params = const_cast<GfxHintCallback *>(&callback);
     if (callbackMap_.size() > 0)
     {
         auto pos = callbackMap_.find(name);
@@ -241,7 +212,7 @@ void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& c
             if (params == inmap)
             {
                 callbackMap_.erase(pos);
-                sdl2::SDL_DelHintCallback(name.c_str(), prv::hintCallbackFunction, userdata);
+                sdl2::SDL_DelHintCallback(name.c_str(), hintCallbackFunction, userdata);
             }
             else
             {
@@ -288,19 +259,18 @@ GfxBool GfxHints::getHintBoolean(const ValueType hint, GfxBool const& defvalue) 
     return getHintBoolean(getHintNameByValue(hint), defvalue);
 }
 
-void GfxHints::addHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata) noexcept
+void GfxHints::addHintCallback(const ValueType hint, GfxHintCallback const& callback) noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
-    addHintCallback(getHintNameByValue(hint), callback, userdata);
+    addHintCallback(getHintNameByValue(hint), callback);
 }
 
-void GfxHints::delHintCallback(const ValueType hint, GfxHintCallback const& callback,
-                               void * userdata) throw(std::runtime_error)
+void GfxHints::delHintCallback(const ValueType hint, GfxHintCallback const& callback) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
-    delHintCallback(getHintNameByValue(hint), callback, userdata);
+    delHintCallback(getHintNameByValue(hint), callback);
 }
 
 void GfxHints::clearHints(void) const noexcept
@@ -318,7 +288,7 @@ std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
     const char * chptr = nullptr;
 
     // std::pair<GfxHints::ValueType, const char *>
-    for (auto const& it : GfxHints::hintsMap_)
+    for (auto const& it : hintsMap_)
     {
         if (it.first == value)
         {
@@ -330,6 +300,25 @@ std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
         return std::string(chptr);
     }
     return "";
+}
+
+void GfxHints::hintCallbackFunction(void * userdata, const char * name, const char * oldv, const char * newv)
+{
+    GfxHintCallback * inmap;
+    GfxHints * thisptr = static_cast<GfxHints *>(userdata);
+
+    if (thisptr != nullptr)
+    {
+        if (thisptr->callbackMap_.size() > 0)
+        {
+            auto pos = thisptr->callbackMap_.find(std::string(name));
+            if (pos != thisptr->callbackMap_.end())
+            {
+                inmap = thisptr->callbackMap_.operator[](std::string(name));
+                (*inmap)(std::string(name), std::string(oldv), std::string(newv));
+            }
+        }
+    }
 }
 
 }  // namespace hints

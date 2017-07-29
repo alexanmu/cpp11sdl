@@ -48,7 +48,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual void operator()(void * userdata, std::string const& name, std::string const& oldvalue,
+    virtual void operator()(std::string const& name, std::string const& oldvalue,
                             std::string const& newvalue) const noexcept = 0;
 };
 

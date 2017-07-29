@@ -126,8 +126,8 @@ public:
     GfxBool setHint(std::string const& name, std::string const& value) const noexcept;
     std::string getHint(std::string const& name) const noexcept;
     GfxBool getHintBoolean(std::string const& name, GfxBool const& defvalue) const noexcept;
-    void addHintCallback(std::string const& name, GfxHintCallback const& callback, void * userdata) noexcept;
-    void delHintCallback(std::string const& name, GfxHintCallback const& callback, void * userdata)
+    void addHintCallback(std::string const& name, GfxHintCallback const& callback) noexcept;
+    void delHintCallback(std::string const& name, GfxHintCallback const& callback)
                         throw(std::runtime_error);
 
     GfxBool setHintWithPriority(const ValueType hint, std::string const& value,
@@ -135,15 +135,17 @@ public:
     GfxBool setHint(const ValueType hint, std::string const& value) const noexcept;
     std::string getHint(const ValueType hint) const noexcept;
     GfxBool getHintBoolean(const ValueType hint, GfxBool const& defvalue) const noexcept;
-    void addHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata) noexcept;
-    void delHintCallback(const ValueType hint, GfxHintCallback const& callback, void * userdata)
+    void addHintCallback(const ValueType hint, GfxHintCallback const& callback) noexcept;
+    void delHintCallback(const ValueType hint, GfxHintCallback const& callback)
                         throw(std::runtime_error);
 
     void clearHints(void) const noexcept;
 private:
     std::string getHintNameByValue(const ValueType value) const noexcept;
+    // Will be called from C by SDL
+    static void hintCallbackFunction(void * userdata, const char * name, const char * oldv, const char * newv);
 
-    std::map<std::string, std::pair<GfxHintCallback *, void *>> callbackMap_;
+    std::map<std::string, GfxHintCallback *> callbackMap_;
 
     static const std::vector<std::pair<ValueType, const char *>> hintsMap_;
 };
