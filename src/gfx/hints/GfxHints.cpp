@@ -198,7 +198,7 @@ void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& c
     assert(name.length() > 0);
     assert(callback);
 
-    void * userdata;
+    void * userdata = static_cast<void *>(this);
     GfxHintCallback * params;
     GfxHintCallback * inmap;
 
