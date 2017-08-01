@@ -51,9 +51,12 @@ public:
     GStructuredTextLabel& operator=(GStructuredTextLabel const& other) = delete;
     GStructuredTextLabel& operator=(GStructuredTextLabel&& other) = delete;
 
-    explicit GStructuredTextLabel(std::string const& vname, GComponent* owner, uint16_t width,
-                                  uint16_t height, std::string const& text, uint8_t const& textsize,
-                                  GStructuredTextType const& sttexttype, std::string regexp = "");
+    explicit GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
+                                  const uint16_t height, std::string const& text, const uint8_t textsize,
+                                  const GStructuredTextType sttexttype);
+    explicit GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
+                                  const uint16_t height, std::string const& text, const uint8_t textsize,
+                                  const GStructuredTextType sttexttype, std::string const& regexp);
 
     virtual void draw(void) throw(std::runtime_error);
 private:

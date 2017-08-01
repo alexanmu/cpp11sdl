@@ -54,9 +54,9 @@ const std::map<GStructuredTextType, std::string> GStructuredTextLabel::exprMapOb
         R"(^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$)" }
 };
 
-GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, uint16_t width,
-                                           uint16_t height, std::string const& text, uint8_t const& textsize,
-                                           GStructuredTextType const& sttexttype, std::string regexp) :
+GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
+                                           const uint16_t height, std::string const& text, const uint8_t textsize,
+                                           const GStructuredTextType sttexttype) :
         GLabel(vname, owner, width, height, text, textsize)
 {
     assert(vname.length() > 0);
@@ -64,8 +64,27 @@ GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent*
 
     if (stTextType_ == GStructuredTextType::customRegex)
     {
-        assert(regexp.length() > 0);
+        throw std::runtime_error("Use custom regex constructor");
     }
+    stTextType_ = sttexttype;
+    regExp_ = "";
+}
+
+GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
+                                           const uint16_t height, std::string const& text, const uint8_t textsize,
+                                           const GStructuredTextType sttexttype, std::string const& regexp) :
+        GLabel(vname, owner, width, height, text, textsize)
+{
+    assert(vname.length() > 0);
+    assert(owner != nullptr);
+
+    if (stTextType_ != GStructuredTextType::customRegex)
+    {
+        throw std::runtime_error("Use standard constructor");
+    }
+
+    assert(regexp.length() > 0);
+
     stTextType_ = sttexttype;
     regExp_ = regexp;
 }
