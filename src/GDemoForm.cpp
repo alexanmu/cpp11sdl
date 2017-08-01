@@ -25,6 +25,7 @@
 
 #include <memory>
 #include <string>
+#include <iostream>
 
 #include "GfxInitQuit.hpp"
 #include "GfxWindow.hpp"
@@ -49,6 +50,23 @@
 #include "GApplication.hpp"
 #include "GfxEvent.hpp"
 #include "GfxKeycode.hpp"
+#include "GfxEventFilter.hpp"
+
+struct MMEvFilter : public gfx::events::GfxEventFilter
+{
+    virtual int32_t operator()(gfx::events::GfxEvent const& event) const noexcept
+    {
+        std::cout << "MMEvFilter called " << event.commonEvent().getTimeStamp() << std::endl;
+        if (event.eventType().isMouseMotion())
+        {
+            std::cout << "Mouse motion " + std::to_string(event.mouseMotionEvent().getX()) + " "
+                         + std::to_string(event.mouseMotionEvent().getY()) << std::endl;
+            return 0;
+        }
+        std::cout << "Nothing at 0 0" << std::endl;
+        return 1;
+    }
+};
 
 uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -207,9 +225,11 @@ void GDemoForm::run(void)
 {
     gfx::events::GfxEvent e;
     bool quit = false;
+    MMEvFilter MMEvFilterObj;
 
     while (quit == false)
     {
+        e.filterEvents(MMEvFilterObj);
         if (e.pollEvent())
         {
             if (e.eventType().isQuit())

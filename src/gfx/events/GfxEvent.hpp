@@ -24,6 +24,7 @@
 #ifndef GfxEvent_hpp
 #define GfxEvent_hpp
 
+#include <stdexcept>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -103,18 +104,17 @@ public:
     int32_t waitEventTimeout(const int32_t timeout) noexcept;
     int32_t pushEvent(void) const noexcept;
     int32_t pushEvent(GfxEvent const& event) const noexcept;
-    /* ... */
-    void setEventFilter(GfxEventFilter const& filter, void * userdata) noexcept;
-    GfxBool getEventFilter(GfxEventFilter * filter, void ** userdata) noexcept;
-    void addEventWatch(GfxEventFilter const& filter, void * userdata) noexcept;
-    void delEventWatch(GfxEventFilter const& filter, void * userdata) noexcept;
-    void filterEvents(GfxEventFilter const& filter, void * userdata) noexcept;
-    /* ... */
+    void setEventFilter(GfxEventFilter const& filter) noexcept;
+    GfxBool getEventFilter(GfxEventFilter * filter) throw(std::runtime_error);
+    void addEventWatch(GfxEventFilter const& filter) noexcept;
+    void delEventWatch(GfxEventFilter const& filter) noexcept;
+    void filterEvents(GfxEventFilter const& filter) noexcept;
     uint8_t eventState(GfxEventType const& type, const GfxEventActionCommand state) const noexcept;
     uint8_t getEventState(GfxEventType const& type) const noexcept;
     uint32_t registerEvents(const int32_t numevents) const noexcept;
 
     GfxEventType const& eventType(void) const noexcept;
+    GfxCommonEvent commonEvent(void) const noexcept;
 
     GfxQuitEvent const& quitEvent(void) const noexcept;
     GfxWindowEvent const& windowEvent(void) const noexcept;
@@ -147,8 +147,15 @@ private:
     void processEvent(void) noexcept;
     void assign(GfxEvent const& other) noexcept;
 
-    SdlType event_;
+    static int32_t eventFilterFunction(void * userdata, sdl2::SDL_Event * event);
+    static int32_t eventWatchFunction(void * userdata, sdl2::SDL_Event * event);
+    static int32_t filterEventsFunction(void * userdata, sdl2::SDL_Event * event);
 
+    GfxEventFilter * eventFilterFunctionObject_;
+    GfxEventFilter * eventWatchFunctionObject_;
+    GfxEventFilter * filterEventsFunctionObject_;
+
+    SdlType event_;
     GfxEventType eventType_;
 
     GfxQuitEvent quitEvent_;
