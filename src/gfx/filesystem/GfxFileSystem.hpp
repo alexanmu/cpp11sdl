@@ -43,11 +43,11 @@ public:
 
     GfxFileSystem() noexcept;
 
-    GfxFileSystem(GfxFileSystem const&) = delete;
-    GfxFileSystem(GfxFileSystem&&) = delete;
+    GfxFileSystem(GfxFileSystem const& other) noexcept;
+    GfxFileSystem(GfxFileSystem&& other) noexcept;
 
-    GfxFileSystem& operator=(GfxFileSystem const&) = delete;
-    GfxFileSystem& operator=(GfxFileSystem&&) = delete;
+    GfxFileSystem& operator=(GfxFileSystem const& other) noexcept;
+    GfxFileSystem& operator=(GfxFileSystem&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

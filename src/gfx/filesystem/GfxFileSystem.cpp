@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxFileSystem.hpp"
 #include "GfxSdlHeader.hpp"
@@ -41,6 +42,38 @@ const char GfxFileSystem::ClassName[] = "GfxFileSystem";
 GfxFileSystem::GfxFileSystem() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxFileSystem::GfxFileSystem(GfxFileSystem const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxFileSystem::GfxFileSystem(GfxFileSystem&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxFileSystem& GfxFileSystem::operator=(GfxFileSystem const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxFileSystem& GfxFileSystem::operator=(GfxFileSystem&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxFileSystem::operator bool() const noexcept
