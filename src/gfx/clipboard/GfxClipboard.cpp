@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <cassert>
 #include <string>
+#include <utility>
 
 #include "GfxClipboard.hpp"
 #include "GfxSdlHeader.hpp"
@@ -42,6 +43,38 @@ const char GfxClipboard::ClassName[] = "GfxClipboard";
 GfxClipboard::GfxClipboard() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxClipboard::GfxClipboard(GfxClipboard const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxClipboard::GfxClipboard(GfxClipboard&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxClipboard& GfxClipboard::operator=(GfxClipboard const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxClipboard& GfxClipboard::operator=(GfxClipboard&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxClipboard::operator bool() const noexcept

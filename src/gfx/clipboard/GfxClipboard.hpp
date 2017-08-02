@@ -44,11 +44,11 @@ public:
 
     GfxClipboard() noexcept;
 
-    GfxClipboard(GfxClipboard const&) = delete;
-    GfxClipboard(GfxClipboard&&) = delete;
+    GfxClipboard(GfxClipboard const& other) noexcept;
+    GfxClipboard(GfxClipboard&& other) noexcept;
 
-    GfxClipboard& operator=(GfxClipboard const&) = delete;
-    GfxClipboard& operator=(GfxClipboard&&) = delete;
+    GfxClipboard& operator=(GfxClipboard const& other) noexcept;
+    GfxClipboard& operator=(GfxClipboard&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
