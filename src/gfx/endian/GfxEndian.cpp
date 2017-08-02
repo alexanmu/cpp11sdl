@@ -22,7 +22,7 @@
 */
 
 #include <string>
-#include <cstdlib>
+#include <utility>
 
 #include "GfxEndian.hpp"
 #include "GfxSdlHeader.hpp"
@@ -41,6 +41,34 @@ const char GfxEndian::ClassName[] = "GfxEndian";
 GfxEndian::GfxEndian() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxEndian::GfxEndian(GfxEndian const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxEndian::GfxEndian(GfxEndian&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxEndian& GfxEndian::operator=(GfxEndian const& other) noexcept
+{
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxEndian& GfxEndian::operator=(GfxEndian&& other) noexcept
+{
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxEndian::operator bool() const noexcept

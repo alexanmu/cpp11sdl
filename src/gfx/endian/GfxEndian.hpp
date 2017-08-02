@@ -44,11 +44,11 @@ public:
 
     GfxEndian() noexcept;
 
-    GfxEndian(GfxEndian const&) = delete;
-    GfxEndian(GfxEndian&&) = delete;
+    GfxEndian(GfxEndian const& other) noexcept;
+    GfxEndian(GfxEndian&& other) noexcept;
 
-    GfxEndian& operator=(GfxEndian const&) = delete;
-    GfxEndian& operator=(GfxEndian&&) = delete;
+    GfxEndian& operator=(GfxEndian const& other) noexcept;
+    GfxEndian& operator=(GfxEndian&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
