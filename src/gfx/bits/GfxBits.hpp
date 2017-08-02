@@ -44,11 +44,11 @@ public:
 
     GfxBits() noexcept;
 
-    GfxBits(GfxBits const&) = delete;
-    GfxBits(GfxBits&&) = delete;
+    GfxBits(GfxBits const& other) noexcept;
+    GfxBits(GfxBits&& other) noexcept;
 
-    GfxBits& operator=(GfxBits const&) = delete;
-    GfxBits& operator=(GfxBits&&) = delete;
+    GfxBits& operator=(GfxBits const& other) noexcept;
+    GfxBits& operator=(GfxBits&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

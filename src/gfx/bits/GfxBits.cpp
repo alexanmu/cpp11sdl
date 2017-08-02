@@ -22,7 +22,7 @@
 */
 
 #include <string>
-#include <cstdlib>
+#include <utility>
 
 #include "GfxBits.hpp"
 #include "GfxSdlHeader.hpp"
@@ -41,6 +41,38 @@ const char GfxBits::ClassName[] = "GfxBits";
 GfxBits::GfxBits() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxBits::GfxBits(GfxBits const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxBits::GfxBits(GfxBits&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxBits& GfxBits::operator=(GfxBits const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxBits& GfxBits::operator=(GfxBits&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxBits::operator bool() const noexcept
