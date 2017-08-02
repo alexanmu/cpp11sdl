@@ -55,6 +55,8 @@ GfxEndian::GfxEndian(GfxEndian&& other) noexcept : GfxObject(std::move(other))
 
 GfxEndian& GfxEndian::operator=(GfxEndian const& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         GfxObject::operator=(other);
@@ -64,6 +66,8 @@ GfxEndian& GfxEndian::operator=(GfxEndian const& other) noexcept
 
 GfxEndian& GfxEndian::operator=(GfxEndian&& other) noexcept
 {
+    LOG_TRACE_PRIO_MED();
+
     if (this != &other)
     {
         GfxObject::operator=(std::move(other));

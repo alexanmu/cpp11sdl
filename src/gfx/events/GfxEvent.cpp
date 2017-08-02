@@ -135,7 +135,7 @@ int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numeve
     SdlTypePtr eventsPtr;
     int32_t index;
 
-    eventsPtr = new SdlType[numevents];
+    eventsPtr = new SdlType[numevents];  // NOLINT
     if (action.getAction() == GfxEventAction::ValueType::addEvent)
     {
         assert(events->size() > 0);
@@ -151,6 +151,7 @@ int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numeve
         (action.getAction() == GfxEventAction::ValueType::getEvent))
     {
         events->clear();
+        events->reserve(numevents);
         for (index = 0; index < numevents; index++)
         {
             events->push_back(eventsPtr[index]);
@@ -209,7 +210,7 @@ int32_t GfxEvent::pollEvent(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t ret = -1;
+    int32_t ret = 0;
 
     ret = sdl2::SDL_PollEvent(&event_);
     if (ret == 1)
@@ -223,7 +224,7 @@ int32_t GfxEvent::waitEvent(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t ret = -1;
+    int32_t ret = 0;
 
     ret = sdl2::SDL_WaitEvent(&event_);
     if (ret == 1)
@@ -239,7 +240,7 @@ int32_t GfxEvent::waitEventTimeout(const int32_t timeout) noexcept
 
     assert(timeout > 0);
 
-    int32_t ret = -1;
+    int32_t ret = 0;
 
     ret = sdl2::SDL_WaitEventTimeout(&event_, timeout);
     if (ret == 1)
@@ -290,10 +291,10 @@ GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) throw(std::runtime_err
 {
     LOG_TRACE_PRIO_LOW();
 
-    assert(filter);
+    assert(filter == nullptr);
 
     sdl2::SDL_EventFilter sdlEventFilterFunc = nullptr;
-    void * userdata;
+    void * userdata = nullptr;
 
     sdl2::SDL_GetEventFilter(&sdlEventFilterFunc, &userdata);
     if (userdata != static_cast<void *>(this))
@@ -384,6 +385,7 @@ uint32_t GfxEvent::registerEvents(const int32_t numevents) const noexcept
     assert(numevents > 0);
 
     uint32_t ret = std::numeric_limits<uint32_t>::max() - 1;
+
     ret = sdl2::SDL_RegisterEvents(numevents);
     return ret;
 }
@@ -782,17 +784,17 @@ void GfxEvent::assign(GfxEvent const& other) noexcept
 
 int32_t GfxEvent::eventFilterFunction(void * userdata, sdl2::SDL_Event * event)
 {
-    int32_t ret = -1;
+    assert(userdata != nullptr);
+    assert(event != nullptr);
+
+    int32_t ret = 0;
     GfxEvent * evptr = static_cast<GfxEvent *>(userdata);
 
     if (evptr != nullptr)
     {
         if (evptr->eventFilterFunctionObject_ != nullptr)
         {
-            if (event != nullptr)
-            {
-                ret = (*(evptr->eventFilterFunctionObject_))(GfxEvent(*event));
-            }
+            ret = (*(evptr->eventFilterFunctionObject_))(GfxEvent(*event));
         }
     }
     return ret;
@@ -800,17 +802,17 @@ int32_t GfxEvent::eventFilterFunction(void * userdata, sdl2::SDL_Event * event)
 
 int32_t GfxEvent::eventWatchFunction(void * userdata, sdl2::SDL_Event * event)
 {
-    int32_t ret = -1;
+    assert(userdata != nullptr);
+    assert(event != nullptr);
+
+    int32_t ret = 0;
     GfxEvent * evptr = static_cast<GfxEvent *>(userdata);
 
     if (evptr != nullptr)
     {
         if (evptr->eventFilterFunctionObject_ != nullptr)
         {
-            if (event != nullptr)
-            {
-                ret = (*(evptr->eventWatchFunctionObject_))(GfxEvent(*event));
-            }
+            ret = (*(evptr->eventWatchFunctionObject_))(GfxEvent(*event));
         }
     }
     return ret;
@@ -818,17 +820,17 @@ int32_t GfxEvent::eventWatchFunction(void * userdata, sdl2::SDL_Event * event)
 
 int32_t GfxEvent::filterEventsFunction(void * userdata, sdl2::SDL_Event * event)
 {
-    int32_t ret = -1;
+    assert(userdata != nullptr);
+    assert(event != nullptr);
+
+    int32_t ret = 0;
     GfxEvent * evptr = static_cast<GfxEvent *>(userdata);
 
     if (evptr != nullptr)
     {
         if (evptr->filterEventsFunctionObject_ != nullptr)
         {
-            if (event != nullptr)
-            {
-                ret = (*(evptr->filterEventsFunctionObject_))(GfxEvent(*event));
-            }
+            ret = (*(evptr->filterEventsFunctionObject_))(GfxEvent(*event));
         }
     }
     return ret;
