@@ -151,6 +151,7 @@
 #include "GfxCursor.hpp"  // 2017.07.17
 #include "GfxEvent.hpp"  // 2017.07.25
 #include "GfxEventFilter.hpp"  // 2017.07.27
+#include "GfxControllerAxisEvent.hpp"  // 2018.08.03
 
 namespace gfx
 {
@@ -418,6 +419,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::events::GfxJoyDeviceEvent>()    },  // 2017.07.10
     {   prv::makeClassInfo<gfx::events::GfxEvent>()             },  // 2017.07.25
     {   prv::makeClassInfo<gfx::events::GfxEventFilter>()       },  // 2017.07.27
+    {   prv::makeClassInfo<gfx::events::GfxControllerAxisEvent>()   },  // 2017.08.03
     //  gfx::scancode
     {   prv::makeClassInfo<gfx::scancode::GfxScancode>()        },  // 2017.06.21
     //  gfx::keycode

@@ -502,11 +502,11 @@ GfxJoyDeviceEvent const& GfxEvent::joyDeviceEvent(void) const noexcept
     return joyDeviceEvent_;
 }
 
-GfxControllerAxisMotionEvent const& GfxEvent::ctrlAxisMotionEvent(void) const noexcept
+GfxControllerAxisEvent const& GfxEvent::ctrlAxisMotionEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return ctrlAxisMotionEvent_;
+    return ctrlAxisEvent_;
 }
 
 GfxControllerButtonEvent const& GfxEvent::ctrlButtonEvent(void) const noexcept
@@ -588,7 +588,7 @@ void GfxEvent::clear(void) noexcept
     joyButtonEvent_.clear();
     joyDeviceEvent_.clear();
     joyHatEvent_.clear();
-    ctrlAxisMotionEvent_.clear();
+    ctrlAxisEvent_.clear();
     ctrlButtonEvent_.clear();
     ctrlDeviceEvent_.clear();
     fingerEvent_.clear();
@@ -682,7 +682,7 @@ void GfxEvent::processEvent(void) noexcept
             joyDeviceEvent_.setValue(event_.jdevice);
             break;
         case GfxEventType::ValueType::evControllerAxisMotion:
-            ctrlAxisMotionEvent_.setValue(event_.caxis);
+            ctrlAxisEvent_.setValue(event_.caxis);
             break;
         case GfxEventType::ValueType::evControllerButtonDown:
             /* fallthrough */
@@ -771,7 +771,7 @@ void GfxEvent::assign(GfxEvent const& other) noexcept
     joyButtonEvent_ = other.joyButtonEvent_;
     joyDeviceEvent_ = other.joyDeviceEvent_;
     joyHatEvent_ = other.joyHatEvent_;
-    ctrlAxisMotionEvent_ = other.ctrlAxisMotionEvent_;
+    ctrlAxisEvent_ = other.ctrlAxisEvent_;
     ctrlButtonEvent_ = other.ctrlButtonEvent_;
     ctrlDeviceEvent_ = other.ctrlDeviceEvent_;
     fingerEvent_ = other.fingerEvent_;

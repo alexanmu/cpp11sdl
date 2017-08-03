@@ -54,6 +54,8 @@
 
 #include "GfxWindowEvent.hpp"
 
+#include "GfxControllerAxisEvent.hpp"
+
 namespace gfx
 {
 
@@ -62,7 +64,6 @@ namespace events
 
 struct GfxQuitEvent {typedef sdl2::SDL_QuitEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 struct GfxSysWmEvent {typedef sdl2::SDL_SysWMEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
-struct GfxControllerAxisMotionEvent {typedef sdl2::SDL_ControllerAxisEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 struct GfxControllerButtonEvent {typedef sdl2::SDL_ControllerButtonEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 struct GfxControllerDeviceEvent {typedef sdl2::SDL_ControllerDeviceEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 struct GfxTouchFingerEvent {typedef sdl2::SDL_TouchFingerEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
@@ -130,7 +131,7 @@ public:
     GfxJoyButtonEvent const& joyButtonEvent(void) const noexcept;
     GfxJoyHatEvent const& joyHatEvent(void) const noexcept;
     GfxJoyDeviceEvent const& joyDeviceEvent(void) const noexcept;
-    GfxControllerAxisMotionEvent const& ctrlAxisMotionEvent(void) const noexcept;
+    GfxControllerAxisEvent const& ctrlAxisMotionEvent(void) const noexcept;
     GfxControllerButtonEvent const& ctrlButtonEvent(void) const noexcept;
     GfxControllerDeviceEvent const& ctrlDeviceEvent(void) const noexcept;
     GfxTouchFingerEvent const& fingerEvent(void) const noexcept;
@@ -172,7 +173,7 @@ private:
     GfxJoyButtonEvent joyButtonEvent_;
     GfxJoyDeviceEvent joyDeviceEvent_;
     GfxJoyHatEvent joyHatEvent_;
-    GfxControllerAxisMotionEvent ctrlAxisMotionEvent_;
+    GfxControllerAxisEvent ctrlAxisEvent_;
     GfxControllerButtonEvent ctrlButtonEvent_;
     GfxControllerDeviceEvent ctrlDeviceEvent_;
     GfxTouchFingerEvent fingerEvent_;

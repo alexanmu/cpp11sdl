@@ -45,7 +45,7 @@ TEST_F(GfxMetaTest, emptyConstructor)
     gfx::_gfx::GfxMeta object;
 
     // Value will change each time a new class is added to gfx!
-    EXPECT_EQ(123, object.getClassCount());
+    EXPECT_EQ(124, object.getClassCount());
 }
 
 TEST_F(GfxMetaTest, wrongClassIndexNegativeValue)
@@ -126,10 +126,10 @@ TEST_F(GfxMetaTest, validClassIndex)
     EXPECT_EQ(false, object.getClassInfo(0).isAbstract_);
     EXPECT_EQ(true, object.getClassInfo(0).isPolymorphic_);
     EXPECT_EQ(true, object.getClassInfo(0).isDefaultConstructible_);
-    EXPECT_EQ(false, object.getClassInfo(0).isCopyConstructible_);
-    EXPECT_EQ(false, object.getClassInfo(0).isCopyAssignable_);
-    EXPECT_EQ(false, object.getClassInfo(0).isMoveConstructible_);
-    EXPECT_EQ(false, object.getClassInfo(0).isMoveAssignable_);
+    EXPECT_EQ(true, object.getClassInfo(0).isCopyConstructible_);
+    EXPECT_EQ(true, object.getClassInfo(0).isCopyAssignable_);
+    EXPECT_EQ(true, object.getClassInfo(0).isMoveConstructible_);
+    EXPECT_EQ(true, object.getClassInfo(0).isMoveAssignable_);
     EXPECT_EQ(true, object.getClassInfo(0).isDerivedFromGfxObject_);
 }
 

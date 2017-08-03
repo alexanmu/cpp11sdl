@@ -236,6 +236,8 @@
 		7953F7C81EDD27F600A27C41 /* GfxPixelFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7953F7C51EDD27F600A27C41 /* GfxPixelFormat.cpp */; };
 		7959FCDB1F12682400324A3A /* GfxMouseWheelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7959FCD91F12682400324A3A /* GfxMouseWheelEvent.cpp */; };
 		7959FCDC1F12682400324A3A /* GfxMouseWheelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7959FCD91F12682400324A3A /* GfxMouseWheelEvent.cpp */; };
+		795BE44D1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */; };
+		795BE44E1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */; };
 		796309281F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */; };
 		796309291F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */; };
 		796543891EFB778B0086FBD1 /* GfxScancode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796543871EFB778B0086FBD1 /* GfxScancode.cpp */; };
@@ -612,6 +614,8 @@
 		7953F7C61EDD27F600A27C41 /* GfxPixelFormat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPixelFormat.hpp; path = pixels/GfxPixelFormat.hpp; sourceTree = "<group>"; };
 		7959FCD91F12682400324A3A /* GfxMouseWheelEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMouseWheelEvent.cpp; path = gfx/events/GfxMouseWheelEvent.cpp; sourceTree = "<group>"; };
 		7959FCDA1F12682400324A3A /* GfxMouseWheelEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMouseWheelEvent.hpp; path = gfx/events/GfxMouseWheelEvent.hpp; sourceTree = "<group>"; };
+		795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxControllerAxisEvent.cpp; path = gfx/events/GfxControllerAxisEvent.cpp; sourceTree = "<group>"; };
+		795BE44C1F32CFCB00A95D82 /* GfxControllerAxisEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxControllerAxisEvent.hpp; path = gfx/events/GfxControllerAxisEvent.hpp; sourceTree = "<group>"; };
 		796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickGUID.cpp; path = joystick/GfxJoystickGUID.cpp; sourceTree = "<group>"; };
 		796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickGUID.hpp; path = joystick/GfxJoystickGUID.hpp; sourceTree = "<group>"; };
 		796543871EFB778B0086FBD1 /* GfxScancode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxScancode.cpp; path = scancode/GfxScancode.cpp; sourceTree = "<group>"; };
@@ -769,6 +773,8 @@
 			children = (
 				7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */,
 				7902A01C1EF82D3700513746 /* GfxCommonEvent.hpp */,
+				795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */,
+				795BE44C1F32CFCB00A95D82 /* GfxControllerAxisEvent.hpp */,
 				79714B8C1F2A384B008DD41C /* GfxEvent.cpp */,
 				79714B8D1F2A384B008DD41C /* GfxEvent.hpp */,
 				798972681F109E6E008F5128 /* GfxEventAction.cpp */,
@@ -1585,6 +1591,7 @@
 				194648E61EEC2E8400299B55 /* GfxGammaRamp.cpp in Sources */,
 				798A0CE31F016E9400DFEFFB /* BgiDemo.cpp in Sources */,
 				194648E51EEC2E8100299B55 /* GfxFontInfo.cpp in Sources */,
+				795BE44E1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp in Sources */,
 				194648E01EEC2E6800299B55 /* GfxWindow.cpp in Sources */,
 				194648C01EEC2DBA00299B55 /* GfxPackedOrder.cpp in Sources */,
 				798C0C7E1EF97BBD006F1EEB /* GFileCollectionElement.cpp in Sources */,
@@ -1820,6 +1827,7 @@
 				794D05F71EE29ECB001BD5D9 /* GfxGetVersion.cpp in Sources */,
 				791435551EDDD98200315A5C /* GfxPackedLayout.cpp in Sources */,
 				790638E51F13E662000F603B /* GfxJoyHatEvent.cpp in Sources */,
+				795BE44D1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp in Sources */,
 				791EAD681EDCB9BE0032ED1D /* GControl.cpp in Sources */,
 				790BB0441EF4410700B4F46B /* GfxHintCallback.cpp in Sources */,
 				19A871361EEBC69D00A8C84C /* GfxRendererFlags.cpp in Sources */,
