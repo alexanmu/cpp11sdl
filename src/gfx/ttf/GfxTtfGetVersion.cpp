@@ -22,6 +22,7 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxTtfGetVersion.hpp"
 #include "GfxBasicLogger.hpp"
@@ -39,6 +40,38 @@ const char GfxTtfGetVersion::ClassName[] = "GfxTtfGetVersion";
 GfxTtfGetVersion::GfxTtfGetVersion() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxTtfGetVersion::GfxTtfGetVersion(GfxTtfGetVersion const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxTtfGetVersion::GfxTtfGetVersion(GfxTtfGetVersion&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxTtfGetVersion& GfxTtfGetVersion::operator=(GfxTtfGetVersion const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxTtfGetVersion& GfxTtfGetVersion::operator=(GfxTtfGetVersion&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxTtfGetVersion::operator bool() const noexcept

@@ -44,11 +44,11 @@ public:
 
     GfxTtfGetVersion() noexcept;
 
-    GfxTtfGetVersion(GfxTtfGetVersion const&) = delete;
-    GfxTtfGetVersion(GfxTtfGetVersion&&) = delete;
+    GfxTtfGetVersion(GfxTtfGetVersion const& other) noexcept;
+    GfxTtfGetVersion(GfxTtfGetVersion&& other) noexcept;
 
-    GfxTtfGetVersion& operator=(GfxTtfGetVersion const&) = delete;
-    GfxTtfGetVersion& operator=(GfxTtfGetVersion&&) = delete;
+    GfxTtfGetVersion& operator=(GfxTtfGetVersion const& other) noexcept;
+    GfxTtfGetVersion& operator=(GfxTtfGetVersion&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
