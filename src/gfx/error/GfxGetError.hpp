@@ -42,13 +42,13 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = true;
 
-    GfxGetError() = delete;
+    GfxGetError() noexcept;
 
-    GfxGetError(GfxGetError const&) = delete;
-    GfxGetError(GfxGetError&&) = delete;
+    GfxGetError(GfxGetError const& other) noexcept;
+    GfxGetError(GfxGetError&& other) noexcept;
 
-    GfxGetError& operator=(GfxGetError const &) = delete;
-    GfxGetError& operator=(GfxGetError&&) = delete;
+    GfxGetError& operator=(GfxGetError const & other) noexcept;
+    GfxGetError& operator=(GfxGetError&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

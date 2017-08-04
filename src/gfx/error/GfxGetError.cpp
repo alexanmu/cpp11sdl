@@ -22,9 +22,13 @@
 */
 
 #include <string>
+#include <utility>
 
 #include "GfxGetError.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBasicLogger.hpp"
+
+LOG_TRACE_MODULE_NAME("gfxgeterror::error::gfx");
 
 namespace gfx
 {
@@ -33,6 +37,57 @@ namespace error
 {
 
 const char GfxGetError::ClassName[] = "GfxGetError";
+
+GfxGetError::GfxGetError() noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxGetError::GfxGetError(GfxGetError const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxGetError::GfxGetError(GfxGetError&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxGetError& GfxGetError::operator=(GfxGetError const & other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxGetError& GfxGetError::operator=(GfxGetError&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
+}
+
+GfxGetError::operator bool() const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return true;
+}
+
+std::string GfxGetError::to_string(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return std::string(ClassName);
+}
 
 GfxError GfxGetError::getErrorObject(void) noexcept
 {
