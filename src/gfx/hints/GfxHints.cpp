@@ -107,6 +107,31 @@ GfxHints::GfxHints() noexcept : GfxObject(ClassName)
     callbackMap_.clear();
 }
 
+GfxHints::GfxHints(GfxHints&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+
+    callbackMap_ = other.callbackMap_;
+    // Delete other's data
+    other.callbackMap_.clear();
+}
+
+GfxHints& GfxHints::operator=(GfxHints&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        // Move base
+        GfxObject::operator=(std::move(other));
+        // Move this
+        callbackMap_ = other.callbackMap_;
+        // Delete other's data
+        other.callbackMap_.clear();
+    }
+    return *this;
+}
+
 GfxHints::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();

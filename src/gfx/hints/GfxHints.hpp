@@ -113,10 +113,10 @@ public:
     GfxHints() noexcept;
 
     GfxHints(GfxHints const&) = delete;
-    GfxHints(GfxHints&&) = delete;
+    GfxHints(GfxHints&& other) noexcept;
 
     GfxHints& operator=(GfxHints const&) = delete;
-    GfxHints& operator=(GfxHints&&) = delete;
+    GfxHints& operator=(GfxHints&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
