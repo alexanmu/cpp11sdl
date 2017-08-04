@@ -43,6 +43,38 @@ GfxMouse::GfxMouse() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
+GfxMouse::GfxMouse(GfxMouse const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxMouse::GfxMouse(GfxMouse&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxMouse& GfxMouse::operator=(GfxMouse const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxMouse& GfxMouse::operator=(GfxMouse&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
+}
+
 GfxMouse::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();

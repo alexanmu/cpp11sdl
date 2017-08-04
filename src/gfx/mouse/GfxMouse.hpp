@@ -50,11 +50,11 @@ public:
 
     GfxMouse() noexcept;
 
-    GfxMouse(GfxMouse const&) = delete;
-    GfxMouse(GfxMouse&&) = delete;
+    GfxMouse(GfxMouse const& other) noexcept;
+    GfxMouse(GfxMouse&& other) noexcept;
 
-    GfxMouse& operator=(GfxMouse const&) = delete;
-    GfxMouse& operator=(GfxMouse&&) = delete;
+    GfxMouse& operator=(GfxMouse const& other) noexcept;
+    GfxMouse& operator=(GfxMouse&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
