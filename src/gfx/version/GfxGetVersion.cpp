@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxGetVersion.hpp"
 #include "GfxBasicLogger.hpp"
@@ -41,6 +42,38 @@ const char GfxGetVersion::ClassName[] = "GfxGetVersion";
 GfxGetVersion::GfxGetVersion() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxGetVersion::GfxGetVersion(GfxGetVersion const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxGetVersion::GfxGetVersion(GfxGetVersion&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxGetVersion& GfxGetVersion::operator=(GfxGetVersion const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxGetVersion& GfxGetVersion::operator=(GfxGetVersion&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxGetVersion::operator bool() const noexcept
