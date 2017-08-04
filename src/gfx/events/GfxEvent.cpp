@@ -27,7 +27,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include <limits>
 
 #include "GfxEvent.hpp"
 #include "GfxBasicLogger.hpp"
@@ -41,6 +40,7 @@ namespace events
 {
 
 const char GfxEvent::ClassName[] = "GfxEvent";
+const char GfxEvent::kInvalidEventTypeMessage[] = "Invalid event type";
 
 GfxEvent::GfxEvent() noexcept : GfxObject(ClassName)
 {
@@ -254,7 +254,7 @@ int32_t GfxEvent::pushEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t ret;
+    int32_t ret = 0;
 
     ret = sdl2::SDL_PushEvent(const_cast<SdlType *>(&event_));
     return ret;
@@ -266,7 +266,7 @@ int32_t GfxEvent::pushEvent(GfxEvent const& event) const noexcept
 
     assert(event);
 
-    int32_t ret;
+    int32_t ret = 0;
 
     ret = sdl2::SDL_PushEvent(event.getAsSdlTypePtr());
     return ret;
@@ -287,7 +287,7 @@ void GfxEvent::setEventFilter(GfxEventFilter const& filter) noexcept
     }
 }
 
-GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) throw(std::runtime_error)
+GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -297,7 +297,7 @@ GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) throw(std::runtime_err
     void * userdata = nullptr;
 
     sdl2::SDL_GetEventFilter(&sdlEventFilterFunc, &userdata);
-    if (userdata != static_cast<void *>(this))
+    if (userdata != static_cast<void *>(const_cast<GfxEvent *>(this)))
     {
         throw std::runtime_error("this pointer error");
     }
@@ -341,7 +341,7 @@ void GfxEvent::delEventWatch(GfxEventFilter const& filter) noexcept
     }
 }
 
-void GfxEvent::filterEvents(GfxEventFilter const& filter) noexcept
+void GfxEvent::filterEvents(GfxEventFilter const& filter) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -355,6 +355,10 @@ void GfxEvent::filterEvents(GfxEventFilter const& filter) noexcept
         sdl2::SDL_FilterEvents(filterEventsFunction, userdata);
         filterEventsFunctionObject_ = nullptr;
     }
+    else
+    {
+        throw std::runtime_error("Invalid object state");
+    }
 }
 
 uint8_t GfxEvent::eventState(GfxEventType const& type, const GfxEventActionCommand state) const noexcept
@@ -363,7 +367,7 @@ uint8_t GfxEvent::eventState(GfxEventType const& type, const GfxEventActionComma
 
     assert(type);
 
-    uint8_t ret;
+    uint8_t ret = 0;
 
     ret = sdl2::SDL_EventState(type.getAsSdlType(), static_cast<int32_t>(state));
     return ret;
@@ -384,7 +388,7 @@ uint32_t GfxEvent::registerEvents(const int32_t numevents) const noexcept
 
     assert(numevents > 0);
 
-    uint32_t ret = std::numeric_limits<uint32_t>::max() - 1;
+    uint32_t ret = 0;
 
     ret = sdl2::SDL_RegisterEvents(numevents);
     return ret;
@@ -404,163 +408,281 @@ GfxCommonEvent GfxEvent::commonEvent(void) const noexcept
     return GfxCommonEvent(event_.common);
 }
 
-GfxQuitEvent const& GfxEvent::quitEvent(void) const noexcept
+GfxQuitEvent const& GfxEvent::quitEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isQuit() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return quitEvent_;
 }
 
-GfxWindowEvent const& GfxEvent::windowEvent(void) const noexcept
+GfxWindowEvent const& GfxEvent::windowEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isWindowEvent() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return windowEvent_;
 }
 
-GfxSysWmEvent const& GfxEvent::sysWmEvent(void) const noexcept
+GfxSysWmEvent const& GfxEvent::sysWmEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isSysWmEvent() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return sysWmEvent_;
 }
 
-GfxKeyboardEvent const& GfxEvent::keyboardEvent(void) const noexcept
+GfxKeyboardEvent const& GfxEvent::keyboardEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isKeyDown() == false) && (eventType().isKeyUp() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return keyboardEvent_;
 }
 
-GfxTextEditingEvent const& GfxEvent::textEditingEvent(void) const noexcept
+GfxTextEditingEvent const& GfxEvent::textEditingEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isTextEditing() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return textEditingEvent_;
 }
 
-GfxTextInputEvent const& GfxEvent::textInputEvent(void) const noexcept
+GfxTextInputEvent const& GfxEvent::textInputEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isTextInput() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return textInputEvent_;
 }
 
-GfxMouseMotionEvent const& GfxEvent::mouseMotionEvent(void) const noexcept
+GfxMouseMotionEvent const& GfxEvent::mouseMotionEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isMouseMotion() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return mouseMotionEvent_;
 }
 
-GfxMouseButtonEvent const& GfxEvent::mouseButtonEvent(void) const noexcept
+GfxMouseButtonEvent const& GfxEvent::mouseButtonEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isMouseButtonDown() == false) && (eventType().isMouseButtonUp() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return mouseButtonEvent_;
 }
 
-GfxMouseWheelEvent const& GfxEvent::mouseWheelEvent(void) const noexcept
+GfxMouseWheelEvent const& GfxEvent::mouseWheelEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isMouseWheel() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return mouseWheelEvent_;
 }
 
-GfxJoyAxisEvent const& GfxEvent::joyAxisEvent(void) const noexcept
+GfxJoyAxisEvent const& GfxEvent::joyAxisEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isJoyAxisMotion() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return joyAxisEvent_;
 }
 
-GfxJoyBallEvent const& GfxEvent::joyBallEvent(void) const noexcept
+GfxJoyBallEvent const& GfxEvent::joyBallEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isJoyBallMotion() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return joyBallEvent_;
 }
 
-GfxJoyButtonEvent const& GfxEvent::joyButtonEvent(void) const noexcept
+GfxJoyButtonEvent const& GfxEvent::joyButtonEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isJoyButtonDown() == false) && (eventType().isJoyButtonUp() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return joyButtonEvent_;
 }
 
-GfxJoyHatEvent const& GfxEvent::joyHatEvent(void) const noexcept
+GfxJoyHatEvent const& GfxEvent::joyHatEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isJoyHatMotion() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return joyHatEvent_;
 }
 
-GfxJoyDeviceEvent const& GfxEvent::joyDeviceEvent(void) const noexcept
+GfxJoyDeviceEvent const& GfxEvent::joyDeviceEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isJoyDeviceAdded() == false) && (eventType().isJoyDeviceRemoved() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return joyDeviceEvent_;
 }
 
-GfxControllerAxisEvent const& GfxEvent::ctrlAxisMotionEvent(void) const noexcept
+GfxControllerAxisEvent const& GfxEvent::ctrlAxisMotionEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isControllerAxisMotion() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return ctrlAxisEvent_;
 }
 
-GfxControllerButtonEvent const& GfxEvent::ctrlButtonEvent(void) const noexcept
+GfxControllerButtonEvent const& GfxEvent::ctrlButtonEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isControllerButtonDown() == false) && (eventType().isControllerButtonUp() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return ctrlButtonEvent_;
 }
 
-GfxControllerDeviceEvent const& GfxEvent::ctrlDeviceEvent(void) const noexcept
+GfxControllerDeviceEvent const& GfxEvent::ctrlDeviceEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isControllerDeviceAdded() == false) && (eventType().isControllerDeviceRemoved() == false) &&
+        (eventType().isControllerDeviceRemapped() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return ctrlDeviceEvent_;
 }
 
-GfxTouchFingerEvent const& GfxEvent::fingerEvent(void) const noexcept
+GfxTouchFingerEvent const& GfxEvent::fingerEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isFingerDown() == false) && (eventType().isFingerUp() == false) &&
+        (eventType().isFingerMotion() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return fingerEvent_;
 }
 
-GfxDollarGestureEvent const& GfxEvent::dollarEvent(void) const noexcept
+GfxDollarGestureEvent const& GfxEvent::dollarEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isDollarGesture() == false) || (eventType().isDollarRecord() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return dollarEvent_;
 }
 
-GfxMultiGestureEvent const& GfxEvent::multiGestureEvent(void) const noexcept
+GfxMultiGestureEvent const& GfxEvent::multiGestureEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isMultiGesture() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return multiGestureEvent_;
 }
 
-GfxDropEvent const& GfxEvent::dropEvent(void) const noexcept
+GfxDropEvent const& GfxEvent::dropEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isDropFile() == false) && (eventType().isDropText() == false) &&
+        (eventType().isDropBegin() == false) && (eventType().isDropComplete() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return dropEvent_;
 }
 
-GfxAudioDeviceEvent const& GfxEvent::audioDeviceEvent(void) const noexcept
+GfxAudioDeviceEvent const& GfxEvent::audioDeviceEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if ((eventType().isAudioDeviceAdded() == false) || (eventType().isAudioDeviceRemoved() == false))
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return audioDeviceEvent_;
 }
 
-GfxUserEvent const& GfxEvent::userEvent(void) const noexcept
+GfxUserEvent const& GfxEvent::userEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
+
+    if (eventType().isUserEvent() == false)
+    {
+        throw std::runtime_error(kInvalidEventTypeMessage);
+    };
 
     return userEvent_;
 }
@@ -570,10 +692,10 @@ void GfxEvent::clear(void) noexcept
     LOG_TRACE_PRIO_LOW();
 
     event_.type = sdl2::SDL_FIRSTEVENT;
+    eventType_.clear();
     eventFilterFunctionObject_ = nullptr;
     eventWatchFunctionObject_ = nullptr;
     filterEventsFunctionObject_ = nullptr;
-    eventType_.clear();
     quitEvent_.clear();
     windowEvent_.clear();
     sysWmEvent_.clear();
@@ -753,10 +875,10 @@ void GfxEvent::assign(GfxEvent const& other) noexcept
     LOG_TRACE_PRIO_LOW();
 
     event_ = other.event_;
+    eventType_ = other.eventType_;
     eventFilterFunctionObject_ = other.eventFilterFunctionObject_;
     eventWatchFunctionObject_ = other.eventWatchFunctionObject_;
     filterEventsFunctionObject_ = other.filterEventsFunctionObject_;
-    eventType_ = other.eventType_;
     quitEvent_ = other.quitEvent_;
     windowEvent_ = other.windowEvent_;
     sysWmEvent_ = other.sysWmEvent_;
@@ -782,7 +904,7 @@ void GfxEvent::assign(GfxEvent const& other) noexcept
     userEvent_ = other.userEvent_;
 }
 
-int32_t GfxEvent::eventFilterFunction(void * userdata, sdl2::SDL_Event * event)
+int32_t GfxEvent::eventFilterFunction(void * userdata, SdlTypePtr event)
 {
     assert(userdata != nullptr);
     assert(event != nullptr);
@@ -790,17 +912,14 @@ int32_t GfxEvent::eventFilterFunction(void * userdata, sdl2::SDL_Event * event)
     int32_t ret = 0;
     GfxEvent * evptr = static_cast<GfxEvent *>(userdata);
 
-    if (evptr != nullptr)
+    if (evptr->eventFilterFunctionObject_ != nullptr)
     {
-        if (evptr->eventFilterFunctionObject_ != nullptr)
-        {
-            ret = (*(evptr->eventFilterFunctionObject_))(GfxEvent(*event));
-        }
+        ret = (*(evptr->eventFilterFunctionObject_))(GfxEvent(*event));
     }
     return ret;
 }
 
-int32_t GfxEvent::eventWatchFunction(void * userdata, sdl2::SDL_Event * event)
+int32_t GfxEvent::eventWatchFunction(void * userdata, SdlTypePtr event)
 {
     assert(userdata != nullptr);
     assert(event != nullptr);
@@ -808,17 +927,14 @@ int32_t GfxEvent::eventWatchFunction(void * userdata, sdl2::SDL_Event * event)
     int32_t ret = 0;
     GfxEvent * evptr = static_cast<GfxEvent *>(userdata);
 
-    if (evptr != nullptr)
+    if (evptr->eventWatchFunctionObject_ != nullptr)
     {
-        if (evptr->eventFilterFunctionObject_ != nullptr)
-        {
-            ret = (*(evptr->eventWatchFunctionObject_))(GfxEvent(*event));
-        }
+        ret = (*(evptr->eventWatchFunctionObject_))(GfxEvent(*event));
     }
     return ret;
 }
 
-int32_t GfxEvent::filterEventsFunction(void * userdata, sdl2::SDL_Event * event)
+int32_t GfxEvent::filterEventsFunction(void * userdata, SdlTypePtr event)
 {
     assert(userdata != nullptr);
     assert(event != nullptr);
@@ -826,12 +942,9 @@ int32_t GfxEvent::filterEventsFunction(void * userdata, sdl2::SDL_Event * event)
     int32_t ret = 0;
     GfxEvent * evptr = static_cast<GfxEvent *>(userdata);
 
-    if (evptr != nullptr)
+    if (evptr->filterEventsFunctionObject_ != nullptr)
     {
-        if (evptr->filterEventsFunctionObject_ != nullptr)
-        {
-            ret = (*(evptr->filterEventsFunctionObject_))(GfxEvent(*event));
-        }
+        ret = (*(evptr->filterEventsFunctionObject_))(GfxEvent(*event));
     }
     return ret;
 }

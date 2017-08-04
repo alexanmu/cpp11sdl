@@ -128,7 +128,7 @@ public:
     inline bool isAppWillEnterForeground(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evAppWillEnterForeground); }  // NOLINT
     inline bool isAppDidEnterForeground(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evAppDidEnterForeground); }  // NOLINT
     inline bool isWindowEvent(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evWindowEvent); }  // NOLINT
-    inline bool isSysWMEvent(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evSysWMEvent); }  // NOLINT
+    inline bool isSysWmEvent(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evSysWMEvent); }  // NOLINT
     inline bool isKeyDown(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evKeyDown); }  // NOLINT
     inline bool isKeyUp(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evKeyUp); }  // NOLINT
     inline bool isTextEditing(void) const noexcept { return (static_cast<ValueType>(evType_) == ValueType::evTextEditing); }  // NOLINT
