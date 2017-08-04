@@ -51,11 +51,11 @@ public:
 
     GfxKeyboard() noexcept;
 
-    GfxKeyboard(GfxKeyboard const&) = delete;
-    GfxKeyboard(GfxKeyboard&&) = delete;
+    GfxKeyboard(GfxKeyboard const& other) noexcept;
+    GfxKeyboard(GfxKeyboard&& other) noexcept;
 
-    GfxKeyboard& operator=(GfxKeyboard const&) = delete;
-    GfxKeyboard& operator=(GfxKeyboard&&) = delete;
+    GfxKeyboard& operator=(GfxKeyboard const& other) noexcept;
+    GfxKeyboard& operator=(GfxKeyboard&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

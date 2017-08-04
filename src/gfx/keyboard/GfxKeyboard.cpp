@@ -24,6 +24,7 @@
 #include <cassert>
 #include <cstdint>
 #include <string>
+#include <utility>
 
 #include "GfxKeyboard.hpp"
 #include "GfxBasicLogger.hpp"
@@ -41,6 +42,38 @@ const char GfxKeyboard::ClassName[] = "GfxKeyboard";
 GfxKeyboard::GfxKeyboard() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
+}
+
+GfxKeyboard::GfxKeyboard(GfxKeyboard const& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxKeyboard::GfxKeyboard(GfxKeyboard&& other) noexcept : GfxObject(std::move(other))
+{
+    LOG_TRACE_PRIO_MED();
+}
+
+GfxKeyboard& GfxKeyboard::operator=(GfxKeyboard const& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(other);
+    }
+    return *this;
+}
+
+GfxKeyboard& GfxKeyboard::operator=(GfxKeyboard&& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        GfxObject::operator=(std::move(other));
+    }
+    return *this;
 }
 
 GfxKeyboard::operator bool() const noexcept
