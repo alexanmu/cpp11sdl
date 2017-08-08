@@ -156,6 +156,7 @@
 #include "GfxControllerDeviceEvent.hpp"  // 2018.08.03
 #include "GfxQuitEvent.hpp"  // 2018.08.04
 #include "GfxUserEvent.hpp"  // 2018.08.04
+#include "GfxAudioDeviceEvent.hpp"  // 2018.08.08
 
 struct ToStringStruct
 {
@@ -396,6 +397,7 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::events::GfxControllerDeviceEvent>()  },  // 2018.08.03
     {   prv::makeStringStruct<gfx::events::GfxQuitEvent>()          },  // 2018.08.04
     {   prv::makeStringStruct<gfx::events::GfxUserEvent>()          },  // 2018.08.04
+    {   prv::makeStringStruct<gfx::events::GfxAudioDeviceEvent>()   },  // 2018.08.08
     //  gfx::scancode
     {   prv::makeStringStruct<gfx::scancode::GfxScancode>()         },  // 2017.06.21
     //  gfx::keycode

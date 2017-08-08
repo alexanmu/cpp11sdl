@@ -156,6 +156,7 @@
 #include "GfxControllerDeviceEvent.hpp"  // 2018.08.03
 #include "GfxQuitEvent.hpp"  // 2018.08.04
 #include "GfxUserEvent.hpp"  // 2018.08.04
+#include "GfxAudioDeviceEvent.hpp"  // 2018.08.08
 
 namespace gfx
 {
@@ -428,6 +429,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::events::GfxControllerDeviceEvent>() },  // 2017.08.03
     {   prv::makeClassInfo<gfx::events::GfxQuitEvent>()         },  // 2017.08.04
     {   prv::makeClassInfo<gfx::events::GfxUserEvent>()         },  // 2017.08.04
+    {   prv::makeClassInfo<gfx::events::GfxAudioDeviceEvent>()  },  // 2017.08.08
     //  gfx::scancode
     {   prv::makeClassInfo<gfx::scancode::GfxScancode>()        },  // 2017.06.21
     //  gfx::keycode

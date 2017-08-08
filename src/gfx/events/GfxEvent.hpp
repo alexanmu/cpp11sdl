@@ -60,6 +60,8 @@
 #include "GfxControllerDeviceEvent.hpp"
 // Quit event
 #include "GfxQuitEvent.hpp"
+// Audio device event
+#include "GfxAudioDeviceEvent.hpp"
 // User event
 #include "GfxUserEvent.hpp"
 
@@ -74,7 +76,6 @@ struct GfxTouchFingerEvent {typedef sdl2::SDL_TouchFingerEvent SdlType; void set
 struct GfxDollarGestureEvent {typedef sdl2::SDL_DollarGestureEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 struct GfxMultiGestureEvent {typedef sdl2::SDL_MultiGestureEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 struct GfxDropEvent {typedef sdl2::SDL_DropEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
-struct GfxAudioDeviceEvent {typedef sdl2::SDL_AudioDeviceEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 
 class GfxEvent final : public GfxObject
 {
