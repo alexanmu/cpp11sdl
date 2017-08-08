@@ -255,6 +255,8 @@
 		796543A41EFB782B0086FBD1 /* GfxKeyboardEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796543981EFB77CF0086FBD1 /* GfxKeyboardEvent.cpp */; };
 		796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D33F51EE06AB40013C496 /* GfxFontInfo.cpp */; };
 		796D33FB1EE06AB40013C496 /* GfxGammaRamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D33F71EE06AB40013C496 /* GfxGammaRamp.cpp */; };
+		796D50FA1F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D50F81F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp */; };
+		796D50FB1F3A2050003FD8E8 /* GfxAudioDeviceEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D50F81F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp */; };
 		79714B901F2A384B008DD41C /* GfxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79714B8C1F2A384B008DD41C /* GfxEvent.cpp */; };
 		79714B911F2A384B008DD41C /* GfxEventFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79714B8E1F2A384B008DD41C /* GfxEventFilter.cpp */; };
 		79714B921F2A38FA008DD41C /* GfxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79714B8C1F2A384B008DD41C /* GfxEvent.cpp */; };
@@ -644,6 +646,8 @@
 		796D33F61EE06AB40013C496 /* GfxFontInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFontInfo.hpp; path = ../xtra/GfxFontInfo.hpp; sourceTree = "<group>"; };
 		796D33F71EE06AB40013C496 /* GfxGammaRamp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGammaRamp.cpp; path = ../xtra/GfxGammaRamp.cpp; sourceTree = "<group>"; };
 		796D33F81EE06AB40013C496 /* GfxGammaRamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGammaRamp.hpp; path = ../xtra/GfxGammaRamp.hpp; sourceTree = "<group>"; };
+		796D50F81F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxAudioDeviceEvent.cpp; path = gfx/events/GfxAudioDeviceEvent.cpp; sourceTree = "<group>"; };
+		796D50F91F3A2047003FD8E8 /* GfxAudioDeviceEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxAudioDeviceEvent.hpp; path = gfx/events/GfxAudioDeviceEvent.hpp; sourceTree = "<group>"; };
 		79714B8C1F2A384B008DD41C /* GfxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxEvent.cpp; path = gfx/events/GfxEvent.cpp; sourceTree = "<group>"; };
 		79714B8D1F2A384B008DD41C /* GfxEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxEvent.hpp; path = gfx/events/GfxEvent.hpp; sourceTree = "<group>"; };
 		79714B8E1F2A384B008DD41C /* GfxEventFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxEventFilter.cpp; path = gfx/events/GfxEventFilter.cpp; sourceTree = "<group>"; };
@@ -787,6 +791,8 @@
 		190FD24B1EF6CF3900F88E04 /* events */ = {
 			isa = PBXGroup;
 			children = (
+				796D50F81F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp */,
+				796D50F91F3A2047003FD8E8 /* GfxAudioDeviceEvent.hpp */,
 				7902A01B1EF82D3700513746 /* GfxCommonEvent.cpp */,
 				7902A01C1EF82D3700513746 /* GfxCommonEvent.hpp */,
 				795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */,
@@ -1685,6 +1691,7 @@
 				790638E61F13E66F000F603B /* GfxJoyAxisEvent.cpp in Sources */,
 				194648B01EEC2D6800299B55 /* GfxLoadSo.cpp in Sources */,
 				1946489F1EEC2CFF00299B55 /* GfxCanvas.cpp in Sources */,
+				796D50FB1F3A2050003FD8E8 /* GfxAudioDeviceEvent.cpp in Sources */,
 				194648EE1EEC2EAB00299B55 /* GBitmap.cpp in Sources */,
 				194648AE1EEC2D5F00299B55 /* GfxInitFlags.cpp in Sources */,
 				1946489B1EEC2CE600299B55 /* GfxRuntimeMeta.cpp in Sources */,
@@ -1892,6 +1899,7 @@
 				79C887581EE2D43800378B54 /* GfxRect.cpp in Sources */,
 				19A8713B1EEBC69D00A8C84C /* GfxTextureModulate.cpp in Sources */,
 				79F2C7371EFD775B00FAE660 /* GfxFillStyles.cpp in Sources */,
+				796D50FA1F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp in Sources */,
 				798C0C701EF9799A006F1EEB /* GFSBaseClass.cpp in Sources */,
 				1980161A1EDF283C00AEDB49 /* GfxVideo.cpp in Sources */,
 				79F759651EFC245B00F48942 /* GfxTextEditingEvent.cpp in Sources */,
