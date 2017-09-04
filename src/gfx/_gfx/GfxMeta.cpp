@@ -151,12 +151,17 @@
 #include "GfxCursor.hpp"  // 2017.07.17
 #include "GfxEvent.hpp"  // 2017.07.25
 #include "GfxEventFilter.hpp"  // 2017.07.27
-#include "GfxControllerAxisEvent.hpp"  // 2018.08.03
-#include "GfxControllerButtonEvent.hpp"  // 2018.08.03
-#include "GfxControllerDeviceEvent.hpp"  // 2018.08.03
-#include "GfxQuitEvent.hpp"  // 2018.08.04
-#include "GfxUserEvent.hpp"  // 2018.08.04
-#include "GfxAudioDeviceEvent.hpp"  // 2018.08.08
+#include "GfxControllerAxisEvent.hpp"  // 2017.08.03
+#include "GfxControllerButtonEvent.hpp"  // 2017.08.03
+#include "GfxControllerDeviceEvent.hpp"  // 2017.08.03
+#include "GfxQuitEvent.hpp"  // 2017.08.04
+#include "GfxUserEvent.hpp"  // 2017.08.04
+#include "GfxAudioDeviceEvent.hpp"  // 2017.08.08
+#include "GfxDropEvent.hpp"  // 2017.08.22
+#include "GfxSysWmEvent.hpp"  // 2017.08.22
+#include "GfxTouchFingerEvent.hpp"  // 2017.08.22
+#include "GfxDollarGestureEvent.hpp"  // 2017.08.22
+#include "GfxMultiGestureEvent.hpp"  // 2017.08.22
 
 namespace gfx
 {
@@ -430,6 +435,11 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::events::GfxQuitEvent>()         },  // 2017.08.04
     {   prv::makeClassInfo<gfx::events::GfxUserEvent>()         },  // 2017.08.04
     {   prv::makeClassInfo<gfx::events::GfxAudioDeviceEvent>()  },  // 2017.08.08
+    {   prv::makeClassInfo<gfx::events::GfxDropEvent>()         },  // 2017.08.22
+    {   prv::makeClassInfo<gfx::events::GfxSysWmEvent>()        },  // 2017.08.22
+    {   prv::makeClassInfo<gfx::events::GfxMultiGestureEvent>() },  // 2017.08.22
+    {   prv::makeClassInfo<gfx::events::GfxDollarGestureEvent>()},  // 2017.08.22
+    {   prv::makeClassInfo<gfx::events::GfxTouchFingerEvent>()  },  // 2017.08.22
     //  gfx::scancode
     {   prv::makeClassInfo<gfx::scancode::GfxScancode>()        },  // 2017.06.21
     //  gfx::keycode

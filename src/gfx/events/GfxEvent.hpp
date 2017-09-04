@@ -64,18 +64,20 @@
 #include "GfxAudioDeviceEvent.hpp"
 // User event
 #include "GfxUserEvent.hpp"
+// Drag-drop event
+#include "GfxDropEvent.hpp"
+// Sys-WM event
+#include "GfxSysWmEvent.hpp"
+// Multi-touch events
+#include "GfxTouchFingerEvent.hpp"
+#include "GfxDollarGestureEvent.hpp"
+#include "GfxMultiGestureEvent.hpp"
 
 namespace gfx
 {
 
 namespace events
 {
-
-struct GfxSysWmEvent {typedef sdl2::SDL_SysWMEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
-struct GfxTouchFingerEvent {typedef sdl2::SDL_TouchFingerEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
-struct GfxDollarGestureEvent {typedef sdl2::SDL_DollarGestureEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
-struct GfxMultiGestureEvent {typedef sdl2::SDL_MultiGestureEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
-struct GfxDropEvent {typedef sdl2::SDL_DropEvent SdlType; void setValue(SdlType event) noexcept {event=event;};void clear(void) noexcept {};}; // NOLINT
 
 class GfxEvent final : public GfxObject
 {

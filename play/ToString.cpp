@@ -151,12 +151,17 @@
 #include "GfxCursor.hpp"  // 2017.07.17
 #include "GfxEvent.hpp"  // 2017.07.25
 #include "GfxEventFilter.hpp"  // 2017.07.27
-#include "GfxControllerAxisEvent.hpp"  // 2018.08.03
-#include "GfxControllerButtonEvent.hpp"  // 2018.08.03
-#include "GfxControllerDeviceEvent.hpp"  // 2018.08.03
-#include "GfxQuitEvent.hpp"  // 2018.08.04
-#include "GfxUserEvent.hpp"  // 2018.08.04
-#include "GfxAudioDeviceEvent.hpp"  // 2018.08.08
+#include "GfxControllerAxisEvent.hpp"  // 2017.08.03
+#include "GfxControllerButtonEvent.hpp"  // 2017.08.03
+#include "GfxControllerDeviceEvent.hpp"  // 2017.08.03
+#include "GfxQuitEvent.hpp"  // 2017.08.04
+#include "GfxUserEvent.hpp"  // 2017.08.04
+#include "GfxAudioDeviceEvent.hpp"  // 2017.08.08
+#include "GfxDropEvent.hpp"  // 2017.08.22
+#include "GfxSysWmEvent.hpp"  // 2017.08.22
+#include "GfxTouchFingerEvent.hpp"  // 2017.08.22
+#include "GfxDollarGestureEvent.hpp"  // 2017.08.22
+#include "GfxMultiGestureEvent.hpp"  // 2017.08.22
 
 struct ToStringStruct
 {
@@ -392,12 +397,17 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::events::GfxJoyDeviceEvent>()     },  // 2017.07.10
     {   prv::makeStringStruct<gfx::events::GfxEvent>()              },  // 2017.07.25
     {   prv::makeStringStruct<gfx::events::GfxEventFilter>()        },  // 2017.07.27
-    {   prv::makeStringStruct<gfx::events::GfxControllerAxisEvent>()    },  // 2018.08.03
-    {   prv::makeStringStruct<gfx::events::GfxControllerButtonEvent>()  },  // 2018.08.03
-    {   prv::makeStringStruct<gfx::events::GfxControllerDeviceEvent>()  },  // 2018.08.03
-    {   prv::makeStringStruct<gfx::events::GfxQuitEvent>()          },  // 2018.08.04
-    {   prv::makeStringStruct<gfx::events::GfxUserEvent>()          },  // 2018.08.04
-    {   prv::makeStringStruct<gfx::events::GfxAudioDeviceEvent>()   },  // 2018.08.08
+    {   prv::makeStringStruct<gfx::events::GfxControllerAxisEvent>()    },  // 2017.08.03
+    {   prv::makeStringStruct<gfx::events::GfxControllerButtonEvent>()  },  // 2017.08.03
+    {   prv::makeStringStruct<gfx::events::GfxControllerDeviceEvent>()  },  // 2017.08.03
+    {   prv::makeStringStruct<gfx::events::GfxQuitEvent>()          },  // 2017.08.04
+    {   prv::makeStringStruct<gfx::events::GfxUserEvent>()          },  // 2017.08.04
+    {   prv::makeStringStruct<gfx::events::GfxAudioDeviceEvent>()   },  // 2017.08.08
+    {   prv::makeStringStruct<gfx::events::GfxDropEvent>()          },  // 2017.08.22
+    {   prv::makeStringStruct<gfx::events::GfxSysWmEvent>()         },  // 2017.08.22
+    {   prv::makeStringStruct<gfx::events::GfxMultiGestureEvent>()  },  // 2017.08.22
+    {   prv::makeStringStruct<gfx::events::GfxDollarGestureEvent>() },  // 2017.08.22
+    {   prv::makeStringStruct<gfx::events::GfxTouchFingerEvent>()   },  // 2017.08.22
     //  gfx::scancode
     {   prv::makeStringStruct<gfx::scancode::GfxScancode>()         },  // 2017.06.21
     //  gfx::keycode

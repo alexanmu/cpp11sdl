@@ -307,6 +307,16 @@
 		799DE96A1F08FD0F00125244 /* ToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 799DE9681F08FD0F00125244 /* ToString.cpp */; };
 		79A30A871F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */; };
 		79A30A881F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */; };
+		79AA78C71F5D68F400FEA20C /* GfxDollarGestureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78BD1F5D68F400FEA20C /* GfxDollarGestureEvent.cpp */; };
+		79AA78C81F5D68F400FEA20C /* GfxDropEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78BF1F5D68F400FEA20C /* GfxDropEvent.cpp */; };
+		79AA78C91F5D68F400FEA20C /* GfxMultiGestureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78C11F5D68F400FEA20C /* GfxMultiGestureEvent.cpp */; };
+		79AA78CA1F5D68F400FEA20C /* GfxSysWmEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78C31F5D68F400FEA20C /* GfxSysWmEvent.cpp */; };
+		79AA78CB1F5D68F400FEA20C /* GfxTouchFingerEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78C51F5D68F400FEA20C /* GfxTouchFingerEvent.cpp */; };
+		79AA78CC1F5D691900FEA20C /* GfxDollarGestureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78BD1F5D68F400FEA20C /* GfxDollarGestureEvent.cpp */; };
+		79AA78CD1F5D691C00FEA20C /* GfxDropEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78BF1F5D68F400FEA20C /* GfxDropEvent.cpp */; };
+		79AA78CE1F5D691F00FEA20C /* GfxMultiGestureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78C11F5D68F400FEA20C /* GfxMultiGestureEvent.cpp */; };
+		79AA78CF1F5D692100FEA20C /* GfxSysWmEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78C31F5D68F400FEA20C /* GfxSysWmEvent.cpp */; };
+		79AA78D01F5D692400FEA20C /* GfxTouchFingerEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78C51F5D68F400FEA20C /* GfxTouchFingerEvent.cpp */; };
 		79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */; };
 		79B2C6C71EE2D9270060EFD8 /* GfxInitFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C31EE2D9270060EFD8 /* GfxInitFlags.cpp */; };
 		79B2C6C81EE2D9270060EFD8 /* GfxInitQuit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79B2C6C51EE2D9270060EFD8 /* GfxInitQuit.cpp */; };
@@ -703,6 +713,17 @@
 		79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMouseMotionEvent.cpp; path = gfx/events/GfxMouseMotionEvent.cpp; sourceTree = "<group>"; };
 		79A30A861F112AD700F7A4EF /* GfxMouseMotionEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMouseMotionEvent.hpp; path = gfx/events/GfxMouseMotionEvent.hpp; sourceTree = "<group>"; };
 		79A30A891F113BCE00F7A4EF /* IGetMouseID.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = IGetMouseID.hpp; path = gfx/events/prv/IGetMouseID.hpp; sourceTree = "<group>"; };
+		79AA78BD1F5D68F400FEA20C /* GfxDollarGestureEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxDollarGestureEvent.cpp; path = gfx/events/GfxDollarGestureEvent.cpp; sourceTree = "<group>"; };
+		79AA78BE1F5D68F400FEA20C /* GfxDollarGestureEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxDollarGestureEvent.hpp; path = gfx/events/GfxDollarGestureEvent.hpp; sourceTree = "<group>"; };
+		79AA78BF1F5D68F400FEA20C /* GfxDropEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxDropEvent.cpp; path = gfx/events/GfxDropEvent.cpp; sourceTree = "<group>"; };
+		79AA78C01F5D68F400FEA20C /* GfxDropEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxDropEvent.hpp; path = gfx/events/GfxDropEvent.hpp; sourceTree = "<group>"; };
+		79AA78C11F5D68F400FEA20C /* GfxMultiGestureEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMultiGestureEvent.cpp; path = gfx/events/GfxMultiGestureEvent.cpp; sourceTree = "<group>"; };
+		79AA78C21F5D68F400FEA20C /* GfxMultiGestureEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMultiGestureEvent.hpp; path = gfx/events/GfxMultiGestureEvent.hpp; sourceTree = "<group>"; };
+		79AA78C31F5D68F400FEA20C /* GfxSysWmEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxSysWmEvent.cpp; path = gfx/events/GfxSysWmEvent.cpp; sourceTree = "<group>"; };
+		79AA78C41F5D68F400FEA20C /* GfxSysWmEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxSysWmEvent.hpp; path = gfx/events/GfxSysWmEvent.hpp; sourceTree = "<group>"; };
+		79AA78C51F5D68F400FEA20C /* GfxTouchFingerEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTouchFingerEvent.cpp; path = gfx/events/GfxTouchFingerEvent.cpp; sourceTree = "<group>"; };
+		79AA78C61F5D68F400FEA20C /* GfxTouchFingerEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxTouchFingerEvent.hpp; path = gfx/events/GfxTouchFingerEvent.hpp; sourceTree = "<group>"; };
+		79AA78D11F5D694A00FEA20C /* IGetTouchID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetTouchID.hpp; path = gfx/events/prv/IGetTouchID.hpp; sourceTree = "<group>"; };
 		79AB8EC41EDD1DE200B242C6 /* GfxPixelType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPixelType.cpp; path = pixels/GfxPixelType.cpp; sourceTree = "<group>"; };
 		79AB8EC51EDD1DE200B242C6 /* GfxPixelType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPixelType.hpp; path = pixels/GfxPixelType.hpp; sourceTree = "<group>"; };
 		79B2C6C31EE2D9270060EFD8 /* GfxInitFlags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxInitFlags.cpp; path = initquit/GfxInitFlags.cpp; sourceTree = "<group>"; };
@@ -801,6 +822,10 @@
 				79886E371F34DAE500787C94 /* GfxControllerButtonEvent.hpp */,
 				79886E381F34DAE500787C94 /* GfxControllerDeviceEvent.cpp */,
 				79886E391F34DAE500787C94 /* GfxControllerDeviceEvent.hpp */,
+				79AA78BD1F5D68F400FEA20C /* GfxDollarGestureEvent.cpp */,
+				79AA78BE1F5D68F400FEA20C /* GfxDollarGestureEvent.hpp */,
+				79AA78BF1F5D68F400FEA20C /* GfxDropEvent.cpp */,
+				79AA78C01F5D68F400FEA20C /* GfxDropEvent.hpp */,
 				79714B8C1F2A384B008DD41C /* GfxEvent.cpp */,
 				79714B8D1F2A384B008DD41C /* GfxEvent.hpp */,
 				798972681F109E6E008F5128 /* GfxEventAction.cpp */,
@@ -828,12 +853,18 @@
 				79A30A861F112AD700F7A4EF /* GfxMouseMotionEvent.hpp */,
 				7959FCD91F12682400324A3A /* GfxMouseWheelEvent.cpp */,
 				7959FCDA1F12682400324A3A /* GfxMouseWheelEvent.hpp */,
+				79AA78C11F5D68F400FEA20C /* GfxMultiGestureEvent.cpp */,
+				79AA78C21F5D68F400FEA20C /* GfxMultiGestureEvent.hpp */,
 				79886E3A1F34DAE500787C94 /* GfxQuitEvent.cpp */,
 				79886E3B1F34DAE500787C94 /* GfxQuitEvent.hpp */,
+				79AA78C31F5D68F400FEA20C /* GfxSysWmEvent.cpp */,
+				79AA78C41F5D68F400FEA20C /* GfxSysWmEvent.hpp */,
 				79F759611EFC245B00F48942 /* GfxTextEditingEvent.cpp */,
 				79F759621EFC245B00F48942 /* GfxTextEditingEvent.hpp */,
 				79F759631EFC245B00F48942 /* GfxTextInputEvent.cpp */,
 				79F759641EFC245B00F48942 /* GfxTextInputEvent.hpp */,
+				79AA78C51F5D68F400FEA20C /* GfxTouchFingerEvent.cpp */,
+				79AA78C61F5D68F400FEA20C /* GfxTouchFingerEvent.hpp */,
 				79886E3C1F34DAE500787C94 /* GfxUserEvent.cpp */,
 				79886E3D1F34DAE500787C94 /* GfxUserEvent.hpp */,
 				7902A01E1EF82D3700513746 /* GfxWindowEvent.cpp */,
@@ -1258,10 +1289,11 @@
 		7902A0221EF82D3D00513746 /* prv */ = {
 			isa = PBXGroup;
 			children = (
-				790638EB1F13E8FA000F603B /* IGetJoystickID.hpp */,
 				7902A0231EF82D4C00513746 /* IGetCommonEvent.hpp */,
-				7902A0241EF82D4C00513746 /* IGetWindowID.hpp */,
+				790638EB1F13E8FA000F603B /* IGetJoystickID.hpp */,
 				79A30A891F113BCE00F7A4EF /* IGetMouseID.hpp */,
+				79AA78D11F5D694A00FEA20C /* IGetTouchID.hpp */,
+				7902A0241EF82D4C00513746 /* IGetWindowID.hpp */,
 			);
 			name = prv;
 			sourceTree = "<group>";
@@ -1603,11 +1635,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				194648AA1EEC2D4C00299B55 /* GfxFileSystem.cpp in Sources */,
+				79AA78D01F5D692400FEA20C /* GfxTouchFingerEvent.cpp in Sources */,
 				194648E81EEC2E9400299B55 /* GDialogsConstants.cpp in Sources */,
 				79F2C7491EFD778F00FAE660 /* GfxLineThickness.cpp in Sources */,
 				1946489E1EEC2CFA00299B55 /* GfxBgiConstants.cpp in Sources */,
 				19314B611EEC396100A46376 /* Playground.cpp in Sources */,
 				194648C21EEC2DC100299B55 /* GfxPixelFormat.cpp in Sources */,
+				79AA78CC1F5D691900FEA20C /* GfxDollarGestureEvent.cpp in Sources */,
 				7994CC791F0FE1B500DF5B94 /* GfxHatPosition.cpp in Sources */,
 				194648CF1EEC2E0C00299B55 /* GfxTextureFormats.cpp in Sources */,
 				194648EC1EEC2EA000299B55 /* GRetryCancelMsgBox.cpp in Sources */,
@@ -1627,6 +1661,7 @@
 				798C0C7E1EF97BBD006F1EEB /* GFileCollectionElement.cpp in Sources */,
 				194648CC1EEC2E0200299B55 /* GfxRendererFlip.cpp in Sources */,
 				190FD24F1EF6CF6D00F88E04 /* GfxEventType.cpp in Sources */,
+				79AA78CE1F5D691F00FEA20C /* GfxMultiGestureEvent.cpp in Sources */,
 				194648D41EEC2E2A00299B55 /* GfxTtfFontHinting.cpp in Sources */,
 				19B8D2DF1EF6B65400102304 /* PaletteGFX.cpp in Sources */,
 				79F2C74B1EFD779900FAE660 /* GfxText.cpp in Sources */,
@@ -1706,6 +1741,7 @@
 				194648E91EEC2E9700299B55 /* GOKCancelMsgBox.cpp in Sources */,
 				19B8D2D81EF6B63E00102304 /* Benchmark.cpp in Sources */,
 				194648B91EEC2D9500299B55 /* GfxMessageBoxColorType.cpp in Sources */,
+				79AA78CD1F5D691C00FEA20C /* GfxDropEvent.cpp in Sources */,
 				19B8D2D71EF6B63800102304 /* GColorScheme.cpp in Sources */,
 				194648BD1EEC2DA800299B55 /* GfxBitmapOrder.cpp in Sources */,
 				798B68561F1D34B2001A5902 /* GfxButton.cpp in Sources */,
@@ -1774,6 +1810,7 @@
 				79F2C7461EFD778700FAE660 /* GfxFonts.cpp in Sources */,
 				194648DC1EEC2E5700299B55 /* GfxHitTest.cpp in Sources */,
 				79F759681EFC246900F48942 /* GfxTextInputEvent.cpp in Sources */,
+				79AA78CF1F5D692100FEA20C /* GfxSysWmEvent.cpp in Sources */,
 				194648F71EEC2ECC00299B55 /* GPanel.cpp in Sources */,
 				194648C31EEC2DC400299B55 /* GfxPixelFormatEnum.cpp in Sources */,
 				194648B41EEC2D8000299B55 /* GfxMessageBox.cpp in Sources */,
@@ -1809,6 +1846,7 @@
 				791EAD4E1EDCB9BE0032ED1D /* GfxRadius.cpp in Sources */,
 				790BB03C1EF440EF00B4F46B /* GfxTexture.cpp in Sources */,
 				198015E81EDF27E000AEDB49 /* GfxCpuInfo.cpp in Sources */,
+				79AA78C91F5D68F400FEA20C /* GfxMultiGestureEvent.cpp in Sources */,
 				791EAD501EDCB9BE0032ED1D /* GfxBgiConstants.cpp in Sources */,
 				798B68541F1D33A1001A5902 /* GfxMouse.cpp in Sources */,
 				796543901EFB77A10086FBD1 /* GfxKeymod.cpp in Sources */,
@@ -1825,12 +1863,15 @@
 				790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */,
 				794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */,
 				7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */,
+				79AA78CB1F5D68F400FEA20C /* GfxTouchFingerEvent.cpp in Sources */,
 				19D5E7021EE56F38000E187B /* GfxMeta.cpp in Sources */,
 				7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */,
 				796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */,
 				79C9C7F01F0E926B009F8C0B /* GfxJoystickType.cpp in Sources */,
 				198015E01EDF27AC00AEDB49 /* GfxBlendMode.cpp in Sources */,
 				79F2C7401EFD775B00FAE660 /* GfxViewPortType.cpp in Sources */,
+				79AA78C81F5D68F400FEA20C /* GfxDropEvent.cpp in Sources */,
+				79AA78C71F5D68F400FEA20C /* GfxDollarGestureEvent.cpp in Sources */,
 				79886E3F1F34DAE500787C94 /* GfxControllerDeviceEvent.cpp in Sources */,
 				198015FE1EDF281700AEDB49 /* GfxMessageBox.cpp in Sources */,
 				791EAD581EDCB9BE0032ED1D /* GApplication.cpp in Sources */,
@@ -1923,6 +1964,7 @@
 				791EAD831EDCB9BE0032ED1D /* GForm.cpp in Sources */,
 				198015E41EDF27C500AEDB49 /* GfxClipboard.cpp in Sources */,
 				79F2C7391EFD775B00FAE660 /* GfxLineSettingsType.cpp in Sources */,
+				79AA78CA1F5D68F400FEA20C /* GfxSysWmEvent.cpp in Sources */,
 				79C387681EE85F69003EDE07 /* GfxLogCategory.cpp in Sources */,
 				79F2C73E1EFD775B00FAE660 /* GfxTextJustification.cpp in Sources */,
 				791EAD851EDCB9BE0032ED1D /* GfxTtfFontStyle.cpp in Sources */,
