@@ -59,6 +59,7 @@
 #include "GfxPalette.hpp"
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormatEnum.hpp"
+#include "GfxTimer.hpp"
 
 #define WIN_W 1280
 #define WIN_H 800
@@ -583,7 +584,7 @@ void _doStuff(void)
             rend.renderCopy(colors_tex);
             rend.renderPresent();
         }
-        gfx::sdl2::SDL_Delay(25);
+        gfx::timer::GfxTimer::delay(25);
     }
     sbitmap.~GfxSurface();  // This call should not be made explicitly. Results in a second call
                             // to ~GfxSurface() when variable sbitmap goes out of scope.

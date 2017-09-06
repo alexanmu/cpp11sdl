@@ -51,6 +51,7 @@
 #include "GfxCursor.hpp"
 #include "GfxSystemCursor.hpp"
 #include "GfxMouseButtonEvent.hpp"
+#include "GfxTimer.hpp"
 
 #include "GfxColors2.hpp"
 #include "GfxPoint.hpp"
@@ -332,7 +333,7 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
                 std::cout << "x=" << evBtn.getX() << " y=" << evBtn.getY() << std::endl;
             }
         }
-        gfx::sdl2::SDL_Delay(25);
+        gfx::timer::GfxTimer::delay(25);
         demoStateMachine();
         projectCanvasToWindow();
         if (readyToQuit == true)
