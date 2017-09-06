@@ -162,6 +162,9 @@
 #include "GfxTouchFingerEvent.hpp"  // 2017.08.22
 #include "GfxDollarGestureEvent.hpp"  // 2017.08.22
 #include "GfxMultiGestureEvent.hpp"  // 2017.08.22
+#include "GfxTimerID.hpp"  // 2017.09.06
+#include "GfxTimerCallback.hpp"  // 2017.09.06
+#include "GfxTimer.hpp"  // 2017.09.06
 
 namespace gfx
 {
@@ -460,7 +463,11 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::mouse::GfxMouseWheelDirection>()},  // 2017.07.17
     {   prv::makeClassInfo<gfx::mouse::GfxButton>()             },  // 2017.07.17
     {   prv::makeClassInfo<gfx::mouse::GfxMouse>()              },  // 2017.07.17
-    {   prv::makeClassInfo<gfx::mouse::GfxCursor>()             }  // 2017.07.17
+    {   prv::makeClassInfo<gfx::mouse::GfxCursor>()             },  // 2017.07.17
+    // gfx::timer
+    {   prv::makeClassInfo<gfx::timer::GfxTimerID>()            },  // 2017.09.06
+    {   prv::makeClassInfo<gfx::timer::GfxTimerCallback>()      },  // 2017.09.06
+    {   prv::makeClassInfo<gfx::timer::GfxTimer>()              }  // 2017.09.06
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

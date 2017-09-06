@@ -162,6 +162,8 @@
 #include "GfxTouchFingerEvent.hpp"  // 2017.08.22
 #include "GfxDollarGestureEvent.hpp"  // 2017.08.22
 #include "GfxMultiGestureEvent.hpp"  // 2017.08.22
+#include "GfxTimerID.hpp"  // 2017.09.06
+#include "GfxTimerCallback.hpp"  // 2017.09.06
 
 struct ToStringStruct
 {
@@ -428,7 +430,10 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::mouse::GfxMouseWheelDirection>() },  // 2017.07.17
     {   prv::makeStringStruct<gfx::mouse::GfxButton>()              },  // 2017.07.17
     {   prv::makeStringStruct<gfx::mouse::GfxMouse>()               },  // 2017.07.17
-    {   prv::makeStringStruct<gfx::mouse::GfxCursor>()              }  // 2017.07.17
+    {   prv::makeStringStruct<gfx::mouse::GfxCursor>()              },  // 2017.07.17
+    // gfx::timer
+    {   prv::makeStringStruct<gfx::timer::GfxTimerID>()             },  // 2017.09.06
+    {   prv::makeStringStruct<gfx::timer::GfxTimerCallback>()       }  // 2017.09.06
 };
 
 void _doToString(void)
