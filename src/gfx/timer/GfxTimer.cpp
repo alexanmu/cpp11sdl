@@ -116,12 +116,12 @@ void GfxTimer::delay_(const uint32_t ms) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    assert(ms >= 0);
+    assert(ms > 0);
 
     sdl2::SDL_Delay(ms);
 }
 
-GfxTimerID GfxTimer::addTimer(uint32_t interval, GfxTimerCallback const& callback) noexcept
+GfxTimerID GfxTimer::addTimer(const uint32_t interval, GfxTimerCallback const& callback) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -166,7 +166,7 @@ void GfxTimer::clear(void) noexcept
 
 void GfxTimer::delay(const uint32_t ms) noexcept
 {
-    assert(ms >= 0);
+    assert(ms > 0);
 
     sdl2::SDL_Delay(ms);
 }
