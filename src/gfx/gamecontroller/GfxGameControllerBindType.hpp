@@ -21,8 +21,8 @@
   See copyright notice at http://lidsdl.org/license.php
 */
 
-#ifndef GfxHintPriority_hpp
-#define GfxHintPriority_hpp
+#ifndef GfxGameControllerBindType_hpp
+#define GfxGameControllerBindType_hpp
 
 #include <cstdint>
 #include <string>
@@ -33,13 +33,13 @@
 namespace gfx
 {
 
-namespace hints
+namespace gamecontroller
 {
 
-class GfxHintPriority final : public GfxObject
+class GfxGameControllerBindType final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HintPriority SdlType;
+    typedef sdl2::SDL_GameControllerBindType SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,34 +47,37 @@ public:
 
     enum class ValueType : int32_t
     {
-        hintDefault = sdl2::SDL_HINT_DEFAULT,
-        hintNormal = sdl2::SDL_HINT_NORMAL,
-        hintOverride = sdl2::SDL_HINT_OVERRIDE
+        bindTypeNone = sdl2::SDL_CONTROLLER_BINDTYPE_NONE,
+        bindTypeNormal = sdl2::SDL_CONTROLLER_BINDTYPE_BUTTON,
+        bindTypeAxis = sdl2::SDL_CONTROLLER_BINDTYPE_AXIS,
+        bindTypeHat = sdl2::SDL_CONTROLLER_BINDTYPE_HAT
     };
 
-    GfxHintPriority() noexcept;
+    GfxGameControllerBindType() noexcept;
 
-    explicit GfxHintPriority(const SdlType hint) noexcept;
-    explicit GfxHintPriority(const ValueType hint) noexcept;
+    explicit GfxGameControllerBindType(const SdlType btype) noexcept;
+    explicit GfxGameControllerBindType(const ValueType btype) noexcept;
 
-    GfxHintPriority(GfxHintPriority const& other) noexcept;
-    GfxHintPriority(GfxHintPriority&& other) noexcept;
+    GfxGameControllerBindType(GfxGameControllerBindType const& other) noexcept;
+    GfxGameControllerBindType(GfxGameControllerBindType&& other) noexcept;
 
-    GfxHintPriority& operator=(GfxHintPriority const& other) noexcept;
-    GfxHintPriority& operator=(GfxHintPriority&& other) noexcept;
+    GfxGameControllerBindType& operator=(GfxGameControllerBindType const& other) noexcept;
+    GfxGameControllerBindType& operator=(GfxGameControllerBindType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
+
+    ValueType getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
 private:
-    SdlType hint_;
+    SdlType bType_;
 };
 
-}  // namespace hints
+}  // namespace gamecontroller
 
 }  // namespace gfx
 
-#endif /* GfxHintPriority_hpp */
+#endif /* GfxGameControllerBindType_hpp */

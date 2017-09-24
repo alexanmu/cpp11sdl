@@ -164,6 +164,8 @@
 #include "GfxMultiGestureEvent.hpp"  // 2017.08.22
 #include "GfxTimerID.hpp"  // 2017.09.06
 #include "GfxTimerCallback.hpp"  // 2017.09.06
+#include "GfxBlitFunction.hpp"  // 2017.09.22
+#include "GfxGameControllerBindType.hpp"  // 2017.09.22
 
 struct ToStringStruct
 {
@@ -329,6 +331,7 @@ const struct ToStringStruct infoArray_[] =
     // gfx::surface
     {   prv::makeStringStruct<gfx::surface::GfxSurface>()           },
     {   prv::makeStringStruct<gfx::surface::GfxSurfaceFlags>()      },
+    {   prv::makeStringStruct<gfx::surface::GfxBlitFunction>()      },  // 2017.09.22
     // gfx::bgi
     {   prv::makeStringStruct<gfx::bgi::GfxAngle>()                 },
     {   prv::makeStringStruct<gfx::bgi::GfxCanvas>()                },
@@ -433,7 +436,9 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::mouse::GfxCursor>()              },  // 2017.07.17
     // gfx::timer
     {   prv::makeStringStruct<gfx::timer::GfxTimerID>()             },  // 2017.09.06
-    {   prv::makeStringStruct<gfx::timer::GfxTimerCallback>()       }  // 2017.09.06
+    {   prv::makeStringStruct<gfx::timer::GfxTimerCallback>()       },  // 2017.09.06
+    // gfx::gamecontroller
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerBindType>() }  // 2017.09.22
 };
 
 void _doToString(void)

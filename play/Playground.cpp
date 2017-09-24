@@ -40,6 +40,7 @@
 #include "Keyboard.hpp"
 #include "BgiDemo.hpp"
 #include "ToString.hpp"
+#include "Ver.hpp"
 
 /******************************************************* main *******************************************************/
 typedef struct _Command_t
@@ -66,6 +67,7 @@ static _Command_t commands[] = {
     { _doKeyboard, "keyboard" },
     { _doBgiDemo, "bgidemo" },
     { _doToString, "tostring" },
+    { _doVer, "ver" },
     { _doPlayground, "all" }
 };
 
@@ -85,6 +87,7 @@ void _doPlayground(void)
     _doKeyboard();
     _doBgiDemo();
     _doToString();
+    _doVer();
 }
 
 int main(int argc, char *argv[])

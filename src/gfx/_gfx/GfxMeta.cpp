@@ -165,6 +165,8 @@
 #include "GfxTimerID.hpp"  // 2017.09.06
 #include "GfxTimerCallback.hpp"  // 2017.09.06
 #include "GfxTimer.hpp"  // 2017.09.06
+#include "GfxBlitFunction.hpp"  // 2017.09.22
+#include "GfxGameControllerBindType.hpp"  // 2017.09.22
 
 namespace gfx
 {
@@ -362,6 +364,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     // gfx::surface
     {   prv::makeClassInfo<gfx::surface::GfxSurface>()          },
     {   prv::makeClassInfo<gfx::surface::GfxSurfaceFlags>()     },
+    {   prv::makeClassInfo<gfx::surface::GfxBlitFunction>()     },  // 2017.09.22
     // gfx::bgi
     {   prv::makeClassInfo<gfx::bgi::GfxAngle>()                },
     {   prv::makeClassInfo<gfx::bgi::GfxCanvas>()               },
@@ -467,7 +470,9 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     // gfx::timer
     {   prv::makeClassInfo<gfx::timer::GfxTimerID>()            },  // 2017.09.06
     {   prv::makeClassInfo<gfx::timer::GfxTimerCallback>()      },  // 2017.09.06
-    {   prv::makeClassInfo<gfx::timer::GfxTimer>()              }  // 2017.09.06
+    {   prv::makeClassInfo<gfx::timer::GfxTimer>()              },  // 2017.09.06
+    // gfx::gamecontroller
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerBindType>()    }  // 2017.09.22
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /
