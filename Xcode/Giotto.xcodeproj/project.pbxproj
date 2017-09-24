@@ -259,6 +259,11 @@
 		796543A21EFB781C0086FBD1 /* GfxKeymod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7965438D1EFB77A10086FBD1 /* GfxKeymod.cpp */; };
 		796543A31EFB78230086FBD1 /* GfxScancode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796543871EFB778B0086FBD1 /* GfxScancode.cpp */; };
 		796543A41EFB782B0086FBD1 /* GfxKeyboardEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796543981EFB77CF0086FBD1 /* GfxKeyboardEvent.cpp */; };
+		7966D7261F7796FA00FFDF9D /* GfxBlitFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7966D7241F7796FA00FFDF9D /* GfxBlitFunction.cpp */; };
+		7966D7271F7796FC00FFDF9D /* GfxBlitFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7966D7241F7796FA00FFDF9D /* GfxBlitFunction.cpp */; };
+		7966D72B1F77971300FFDF9D /* GfxGameControllerBindType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */; };
+		7966D72C1F77971900FFDF9D /* GfxGameControllerBindType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */; };
+		7966D7301F77974800FFDF9D /* Ver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7966D72D1F77972C00FFDF9D /* Ver.cpp */; };
 		796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D33F51EE06AB40013C496 /* GfxFontInfo.cpp */; };
 		796D33FB1EE06AB40013C496 /* GfxGammaRamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D33F71EE06AB40013C496 /* GfxGammaRamp.cpp */; };
 		796D50FA1F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796D50F81F3A2047003FD8E8 /* GfxAudioDeviceEvent.cpp */; };
@@ -664,6 +669,12 @@
 		796543991EFB77CF0086FBD1 /* GfxKeyboardEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxKeyboardEvent.hpp; path = gfx/events/GfxKeyboardEvent.hpp; sourceTree = "<group>"; };
 		7965439B1EFB77E70086FBD1 /* Keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Keyboard.cpp; path = ../play/Keyboard.cpp; sourceTree = SOURCE_ROOT; };
 		7965439C1EFB77E70086FBD1 /* Keyboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Keyboard.hpp; path = ../play/Keyboard.hpp; sourceTree = SOURCE_ROOT; };
+		7966D7241F7796FA00FFDF9D /* GfxBlitFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlitFunction.cpp; path = surface/GfxBlitFunction.cpp; sourceTree = "<group>"; };
+		7966D7251F7796FA00FFDF9D /* GfxBlitFunction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlitFunction.hpp; path = surface/GfxBlitFunction.hpp; sourceTree = "<group>"; };
+		7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGameControllerBindType.cpp; path = gamecontroller/GfxGameControllerBindType.cpp; sourceTree = "<group>"; };
+		7966D72A1F77971300FFDF9D /* GfxGameControllerBindType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameControllerBindType.hpp; path = gamecontroller/GfxGameControllerBindType.hpp; sourceTree = "<group>"; };
+		7966D72D1F77972C00FFDF9D /* Ver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ver.cpp; path = ../play/Ver.cpp; sourceTree = SOURCE_ROOT; };
+		7966D72E1F77972C00FFDF9D /* Ver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Ver.hpp; path = ../play/Ver.hpp; sourceTree = SOURCE_ROOT; };
 		796D33F51EE06AB40013C496 /* GfxFontInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxFontInfo.cpp; path = ../xtra/GfxFontInfo.cpp; sourceTree = "<group>"; };
 		796D33F61EE06AB40013C496 /* GfxFontInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxFontInfo.hpp; path = ../xtra/GfxFontInfo.hpp; sourceTree = "<group>"; };
 		796D33F71EE06AB40013C496 /* GfxGammaRamp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGammaRamp.cpp; path = ../xtra/GfxGammaRamp.cpp; sourceTree = "<group>"; };
@@ -900,6 +911,8 @@
 		1946488C1EEC2B7400299B55 /* play */ = {
 			isa = PBXGroup;
 			children = (
+				7966D72D1F77972C00FFDF9D /* Ver.cpp */,
+				7966D72E1F77972C00FFDF9D /* Ver.hpp */,
 				19B8D2B61EF6B61B00102304 /* Benchmark.cpp */,
 				19B8D2B71EF6B61B00102304 /* Benchmark.hpp */,
 				798A0CE11F016E9400DFEFFB /* BgiDemo.cpp */,
@@ -974,6 +987,7 @@
 				791E52641EE2DB1A00DD9788 /* error */,
 				190FD24B1EF6CF3900F88E04 /* events */,
 				793FD16B1EE2BC3900274C24 /* filesystem */,
+				7966D7281F77970200FFDF9D /* gamecontroller */,
 				19784EC71EDC8DB30025DF95 /* GfxBool.cpp */,
 				19784EC81EDC8DB30025DF95 /* GfxBool.hpp */,
 				790BB03D1EF440F600B4F46B /* hints */,
@@ -1484,9 +1498,20 @@
 			name = keyboard;
 			sourceTree = "<group>";
 		};
+		7966D7281F77970200FFDF9D /* gamecontroller */ = {
+			isa = PBXGroup;
+			children = (
+				7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */,
+				7966D72A1F77971300FFDF9D /* GfxGameControllerBindType.hpp */,
+			);
+			name = gamecontroller;
+			sourceTree = "<group>";
+		};
 		7982036E1EE2E55E005D610C /* surface */ = {
 			isa = PBXGroup;
 			children = (
+				7966D7241F7796FA00FFDF9D /* GfxBlitFunction.cpp */,
+				7966D7251F7796FA00FFDF9D /* GfxBlitFunction.hpp */,
 				7982036F1EE2E56E005D610C /* GfxSurface.cpp */,
 				798203701EE2E56E005D610C /* GfxSurface.hpp */,
 				798203711EE2E56E005D610C /* GfxSurfaceFlags.cpp */,
@@ -1677,6 +1702,7 @@
 				798C0C801EF97BFD006F1EEB /* GfxWindowEvent.cpp in Sources */,
 				79F2C74C1EFD779C00FAE660 /* GfxTextJustification.cpp in Sources */,
 				194648991EEC2CDE00299B55 /* GfxMeta.cpp in Sources */,
+				7966D72C1F77971900FFDF9D /* GfxGameControllerBindType.cpp in Sources */,
 				194648F91EEC2ED400299B55 /* GTypes.cpp in Sources */,
 				790638EA1F13E679000F603B /* GfxJoyHatEvent.cpp in Sources */,
 				79F2C7481EFD778C00FAE660 /* GfxLineStyle.cpp in Sources */,
@@ -1755,6 +1781,7 @@
 				194648D01EEC2E0F00299B55 /* GfxTextureModulate.cpp in Sources */,
 				790638E61F13E66F000F603B /* GfxJoyAxisEvent.cpp in Sources */,
 				194648B01EEC2D6800299B55 /* GfxLoadSo.cpp in Sources */,
+				7966D7271F7796FC00FFDF9D /* GfxBlitFunction.cpp in Sources */,
 				1946489F1EEC2CFF00299B55 /* GfxCanvas.cpp in Sources */,
 				796D50FB1F3A2050003FD8E8 /* GfxAudioDeviceEvent.cpp in Sources */,
 				194648EE1EEC2EAB00299B55 /* GBitmap.cpp in Sources */,
@@ -1816,6 +1843,7 @@
 				796543A11EFB78190086FBD1 /* GfxKeycode.cpp in Sources */,
 				793237EC1F1A096E00B94E7A /* GfxSystemCursor.cpp in Sources */,
 				194648BE1EEC2DB400299B55 /* GfxColor.cpp in Sources */,
+				7966D7301F77974800FFDF9D /* Ver.cpp in Sources */,
 				194648DF1EEC2E6500299B55 /* GfxVideo.cpp in Sources */,
 				194648C71EEC2DEB00299B55 /* GfxPowerState.cpp in Sources */,
 				79714B931F2A38FD008DD41C /* GfxEventFilter.cpp in Sources */,
@@ -1908,6 +1936,7 @@
 				791EAD581EDCB9BE0032ED1D /* GApplication.cpp in Sources */,
 				19A871371EEBC69D00A8C84C /* GfxRendererFlip.cpp in Sources */,
 				796309281F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */,
+				7966D7261F7796FA00FFDF9D /* GfxBlitFunction.cpp in Sources */,
 				79F759661EFC245B00F48942 /* GfxTextInputEvent.cpp in Sources */,
 				79AB8EC61EDD1DE200B242C6 /* GfxPixelType.cpp in Sources */,
 				791EAD5A1EDCB9BE0032ED1D /* GOKMsgBox.cpp in Sources */,
@@ -1952,6 +1981,7 @@
 				79F7596D1EFC248D00F48942 /* GfxCanvasBgi.cpp in Sources */,
 				791435571EDDD98200315A5C /* GfxPixelFormatEnum.cpp in Sources */,
 				796543891EFB778B0086FBD1 /* GfxScancode.cpp in Sources */,
+				7966D72B1F77971300FFDF9D /* GfxGameControllerBindType.cpp in Sources */,
 				79F759711EFC24A400F48942 /* GfxDrawingMode.cpp in Sources */,
 				791E52671EE2DB2800DD9788 /* GfxGetError.cpp in Sources */,
 				198015DC1EDF279500AEDB49 /* GfxBits.cpp in Sources */,
