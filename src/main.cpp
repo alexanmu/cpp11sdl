@@ -164,8 +164,8 @@ void AfterInit(void)
         std::cout << "v.getDisplayName(i)=" << v.getDisplayName(i) << '\n';
         float d, h, v1;
         v.getDisplayDPI(i, &d, &h, &v1);
-        std::cout << "v.getDisplayDPI(i).ddpi=" << d << '\n';
-        std::cout << "v.getNumDisplayModes(i)=" << v.getNumDisplayModes(i) << '\n';
+        std::cout << "v.getDisplayDPI(" << i << ").ddpi=" << d << '\n';
+        std::cout << "v.getNumDisplayModes(" << i << ")=" << v.getNumDisplayModes(i) << '\n';
         gfx::video::GfxDisplayMode dm = v.getCurrentDisplayMode(i);
         gfx::pixels::GfxPixelFormatEnum fmt = dm.getFormat();
         std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
@@ -186,21 +186,21 @@ void AfterInit(void)
     for (int i = 0; i < gri.getNumRenderDrivers(); i++)
     {
         ri = gri.getRenderDriverInfo(i);
-        std::cout << "ri.getName()=" << ri->getName() << '\n';
-        std::cout << "ri.getFlags()=" << ri->getFlags().getAsSdlType() << '\n';
-        std::cout << "ri.getMaxTextureWidth()=" << ri->getMaxTextureWidth() << '\n';
-        std::cout << "ri.getMaxTextureHeight()=" << ri->getMaxTextureHeight() << '\n';
-        std::cout << "ri.getNumTextureFormats()=" << ri->getNumTextureFormats() << '\n';
+        std::cout << "ri.getName(" << i << ")=" << ri->getName() << '\n';
+        std::cout << "ri.getFlags(" << i << ")=" << ri->getFlags().getAsSdlType() << '\n';
+        std::cout << "ri.getMaxTextureWidth(" << i << ")=" << ri->getMaxTextureWidth() << '\n';
+        std::cout << "ri.getMaxTextureHeight(" << i << ")=" << ri->getMaxTextureHeight() << '\n';
+        std::cout << "ri.getNumTextureFormats(" << i << ")=" << ri->getNumTextureFormats() << '\n';
         for (uint32_t j = 0; j < ri->getNumTextureFormats(); j++)
         {
-            std::cout << "ri.getTextureFormats()[j]=" << ri->getTextureFormats()[j] << '\n';
+            std::cout << "ri.getTextureFormats(" << i << ")[" << j << "]=" << ri->getTextureFormats()[j] << '\n';
         }
         gfx::render::GfxRendererFlags rf = ri->getFlags();
-        std::cout << "rf.isUnknown()=" << rf.isUnknown() << '\n';
-        std::cout << "rf.isSoftware()=" << rf.isSoftware() << '\n';
-        std::cout << "rf.isAccelerated()=" << rf.isAccelerated() << '\n';
-        std::cout << "rf.getPresentVSync()=" << rf.getPresentVSync() << '\n';
-        std::cout << "rf.getTargetTexture()=" << rf.getTargetTexture() << '\n';
+        std::cout << "rf.isUnknown(" << i << ")=" << rf.isUnknown() << '\n';
+        std::cout << "rf.isSoftware(" << i << ")=" << rf.isSoftware() << '\n';
+        std::cout << "rf.isAccelerated(" << i << ")=" << rf.isAccelerated() << '\n';
+        std::cout << "rf.getPresentVSync(" << i << ")=" << rf.getPresentVSync() << '\n';
+        std::cout << "rf.getTargetTexture(" << i << ")=" << rf.getTargetTexture() << '\n';
         delete ri;
     }
     std::cout << std::endl;
@@ -297,6 +297,9 @@ void _doStuff(void)
 
     gfx::render::GfxRendererFlags rflags;
     rflags.setSoftware();
+    rflags.resetAccelerated();
+    rflags.resetPresentVSync();
+    rflags.setTargetTexture();
     gfx::render::GfxRenderer rend("Main renderer", win, rflags);
 
     gfx::render::GfxRendererInfo * ri;
@@ -584,7 +587,7 @@ void _doStuff(void)
             rend.renderCopy(colors_tex);
             rend.renderPresent();
         }
-        gfx::timer::GfxTimer::delay(25);
+        gfx::timer::GfxTimer::delay(5);
     }
     sbitmap.~GfxSurface();  // This call should not be made explicitly. Results in a second call
                             // to ~GfxSurface() when variable sbitmap goes out of scope.

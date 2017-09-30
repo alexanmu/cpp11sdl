@@ -61,6 +61,8 @@
 
 #include "GfxBasicLogger.hpp"
 
+#include "GfxHints.hpp"
+
 using gfx::initquit::GfxInitQuit;
 using gfx::initquit::GfxInitFlags;
 using gfx::video::GfxWindow;
@@ -93,6 +95,7 @@ using gfx::error::GfxError;
 using gfx::error::GfxGetError;
 using gfx::mouse::GfxCursor;
 using gfx::mouse::GfxSystemCursor;
+using gfx::hints::GfxHints;
 
 class BorlandGraphicsInterfaceDemo
 {
@@ -199,6 +202,7 @@ void BorlandGraphicsInterfaceDemo::doDemo(void)
 bool BorlandGraphicsInterfaceDemo::initSdl(void)
 {
     GfxInitFlags initFlags;
+    GfxHints hints;
 
     initFlags.setVideo();
     initFlags.setEvents();
@@ -209,6 +213,8 @@ bool BorlandGraphicsInterfaceDemo::initSdl(void)
         std::cout << "SDL error: " << err.get() << std::endl;
         return false;
     }
+    hints.setHint(GfxHints::ValueType::hintFramebufferAcceleration, "false");
+    hints.setHint(GfxHints::ValueType::hintRenderDriver, "software");
     return true;
 }
 
@@ -237,15 +243,18 @@ bool BorlandGraphicsInterfaceDemo::checkWindowSurfaceAttrs(void)
     uint32_t bypp;
 
     std::cout << "Get window surface. Attributes:" << std::endl;
+    // Get surface
+    GfxSurface const& surf = winptr_->getWindowSurface();
     // Surface flags
-    sflags = winptr_->getWindowSurface().getSurfaceFlags();
+    sflags = surf.getSurfaceFlags();
     std::cout << "Software surface: " << std::boolalpha << sflags.isSwSurface() << std::noboolalpha << std::endl;
     std::cout << "Pre-allocated:    " << std::boolalpha << sflags.isPreAlloc() << std::noboolalpha << std::endl;
     std::cout << "RLE accelerated:  " << std::boolalpha << sflags.isRLEAccel() << std::noboolalpha << std::endl;
     std::cout << "Don't free:       " << std::boolalpha << sflags.isDontFree() << std::noboolalpha << std::endl;
     // Check pixel format of surface
     std::cout << "Window surface pixel format. Attributes:" << std::endl;
-    pixfmt = winptr_->getWindowSurface().getPixelFormat();
+    // Surface pixel format
+    pixfmt = surf.getPixelFormat();
     std::cout << "Pixel format code: " << pixfmt.getAsSdlType() << std::endl;
     pix = new GfxPixelFormat(pixfmt);
     std::cout << "Format name:    " << pix->getPixelFormatName() << std::endl;

@@ -55,7 +55,7 @@ public:
         typeDancePad = sdl2::SDL_JOYSTICK_TYPE_DANCE_PAD,
         typeGuitar = sdl2::SDL_JOYSTICK_TYPE_GUITAR,
         typeDrumKit = sdl2::SDL_JOYSTICK_TYPE_DRUM_KIT,
-        typeArcadePad = sdl2::SDL_JOYSTICK_TYPE_ARCADE_PAR,
+        typeArcadePad = sdl2::SDL_JOYSTICK_TYPE_ARCADE_PAD,
         typeThrottle = sdl2::SDL_JOYSTICK_TYPE_THROTTLE
     };
 
