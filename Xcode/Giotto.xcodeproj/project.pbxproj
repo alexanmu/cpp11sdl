@@ -320,6 +320,10 @@
 		79A1B4AB1F87787A00FA27C0 /* GfxGameControllerAxis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4A81F87787A00FA27C0 /* GfxGameControllerAxis.cpp */; };
 		79A1B4AE1F877C3900FA27C0 /* GfxGameControllerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */; };
 		79A1B4AF1F877C3900FA27C0 /* GfxGameControllerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */; };
+		79A1B4B21F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4B01F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp */; };
+		79A1B4B31F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4B01F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp */; };
+		79A1B4B61F87845300FA27C0 /* GfxGameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4B41F87845300FA27C0 /* GfxGameController.cpp */; };
+		79A1B4B71F87845300FA27C0 /* GfxGameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4B41F87845300FA27C0 /* GfxGameController.cpp */; };
 		79A30A871F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */; };
 		79A30A881F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */; };
 		79AA78C71F5D68F400FEA20C /* GfxDollarGestureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78BD1F5D68F400FEA20C /* GfxDollarGestureEvent.cpp */; };
@@ -741,6 +745,10 @@
 		79A1B4A91F87787A00FA27C0 /* GfxGameControllerAxis.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameControllerAxis.hpp; path = gamecontroller/GfxGameControllerAxis.hpp; sourceTree = "<group>"; };
 		79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGameControllerButton.cpp; path = gamecontroller/GfxGameControllerButton.cpp; sourceTree = "<group>"; };
 		79A1B4AD1F877C3900FA27C0 /* GfxGameControllerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameControllerButton.hpp; path = gamecontroller/GfxGameControllerButton.hpp; sourceTree = "<group>"; };
+		79A1B4B01F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGameControllerButtonBind.cpp; path = gamecontroller/GfxGameControllerButtonBind.cpp; sourceTree = "<group>"; };
+		79A1B4B11F8780F700FA27C0 /* GfxGameControllerButtonBind.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameControllerButtonBind.hpp; path = gamecontroller/GfxGameControllerButtonBind.hpp; sourceTree = "<group>"; };
+		79A1B4B41F87845300FA27C0 /* GfxGameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGameController.cpp; path = gamecontroller/GfxGameController.cpp; sourceTree = "<group>"; };
+		79A1B4B51F87845300FA27C0 /* GfxGameController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameController.hpp; path = gamecontroller/GfxGameController.hpp; sourceTree = "<group>"; };
 		79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMouseMotionEvent.cpp; path = gfx/events/GfxMouseMotionEvent.cpp; sourceTree = "<group>"; };
 		79A30A861F112AD700F7A4EF /* GfxMouseMotionEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMouseMotionEvent.hpp; path = gfx/events/GfxMouseMotionEvent.hpp; sourceTree = "<group>"; };
 		79A30A891F113BCE00F7A4EF /* IGetMouseID.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = IGetMouseID.hpp; path = gfx/events/prv/IGetMouseID.hpp; sourceTree = "<group>"; };
@@ -1509,12 +1517,16 @@
 		7966D7281F77970200FFDF9D /* gamecontroller */ = {
 			isa = PBXGroup;
 			children = (
-				79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */,
-				79A1B4AD1F877C3900FA27C0 /* GfxGameControllerButton.hpp */,
-				7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */,
-				7966D72A1F77971300FFDF9D /* GfxGameControllerBindType.hpp */,
+				79A1B4B41F87845300FA27C0 /* GfxGameController.cpp */,
+				79A1B4B51F87845300FA27C0 /* GfxGameController.hpp */,
 				79A1B4A81F87787A00FA27C0 /* GfxGameControllerAxis.cpp */,
 				79A1B4A91F87787A00FA27C0 /* GfxGameControllerAxis.hpp */,
+				7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */,
+				7966D72A1F77971300FFDF9D /* GfxGameControllerBindType.hpp */,
+				79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */,
+				79A1B4AD1F877C3900FA27C0 /* GfxGameControllerButton.hpp */,
+				79A1B4B01F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp */,
+				79A1B4B11F8780F700FA27C0 /* GfxGameControllerButtonBind.hpp */,
 			);
 			name = gamecontroller;
 			sourceTree = "<group>";
@@ -1707,7 +1719,9 @@
 				194648C21EEC2DC100299B55 /* GfxPixelFormat.cpp in Sources */,
 				79AA78CC1F5D691900FEA20C /* GfxDollarGestureEvent.cpp in Sources */,
 				19669CE11F5FEE0C005D3F47 /* GfxTimerCallback.cpp in Sources */,
+				79A1B4B71F87845300FA27C0 /* GfxGameController.cpp in Sources */,
 				7994CC791F0FE1B500DF5B94 /* GfxHatPosition.cpp in Sources */,
+				79A1B4B31F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp in Sources */,
 				194648CF1EEC2E0C00299B55 /* GfxTextureFormats.cpp in Sources */,
 				194648EC1EEC2EA000299B55 /* GRetryCancelMsgBox.cpp in Sources */,
 				194648C41EEC2DC700299B55 /* GfxPixelType.cpp in Sources */,
@@ -1918,6 +1932,7 @@
 				79F2C7351EFD775B00FAE660 /* GfxDirection.cpp in Sources */,
 				791EAD4E1EDCB9BE0032ED1D /* GfxRadius.cpp in Sources */,
 				790BB03C1EF440EF00B4F46B /* GfxTexture.cpp in Sources */,
+				79A1B4B21F8780F700FA27C0 /* GfxGameControllerButtonBind.cpp in Sources */,
 				198015E81EDF27E000AEDB49 /* GfxCpuInfo.cpp in Sources */,
 				79AA78C91F5D68F400FEA20C /* GfxMultiGestureEvent.cpp in Sources */,
 				791EAD501EDCB9BE0032ED1D /* GfxBgiConstants.cpp in Sources */,
@@ -2049,6 +2064,7 @@
 				791EAD891EDCB9BE0032ED1D /* GPanel.cpp in Sources */,
 				19D5E7031EE56F38000E187B /* GfxObject.cpp in Sources */,
 				791EAD8A1EDCB9BE0032ED1D /* GGraphicControl.cpp in Sources */,
+				79A1B4B61F87845300FA27C0 /* GfxGameController.cpp in Sources */,
 				791EAD8D1EDCB9BE0032ED1D /* GComponent.cpp in Sources */,
 				198016041EDF281700AEDB49 /* GfxMessageBoxData.cpp in Sources */,
 				794D05FC1EE29EE7001BD5D9 /* GfxPlatform.cpp in Sources */,

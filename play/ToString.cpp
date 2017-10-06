@@ -168,6 +168,8 @@
 #include "GfxGameControllerBindType.hpp"  // 2017.09.22
 #include "GfxGameControllerAxis.hpp"  // 2017.10.06
 #include "GfxGameControllerButton.hpp"  // 2017.10.06
+#include "GfxGameControllerButtonBind.hpp"  // 2017.10.06
+#include "GfxGameController.hpp"  // 2017.10.06
 
 struct ToStringStruct
 {
@@ -442,7 +444,9 @@ const struct ToStringStruct infoArray_[] =
     // gfx::gamecontroller
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerBindType>() },  // 2017.09.22
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerAxis>() },  // 2017.10.06
-    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerButton>()   }  // 2017.10.06
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerButton>()   },  // 2017.10.06
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerButtonBind>()   },  // 2017.10.06
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameController>() }  // 2017.10.06
 };
 
 void _doToString(void)

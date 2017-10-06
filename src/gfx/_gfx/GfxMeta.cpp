@@ -169,6 +169,8 @@
 #include "GfxGameControllerBindType.hpp"  // 2017.09.22
 #include "GfxGameControllerAxis.hpp"  // 2017.10.06
 #include "GfxGameControllerButton.hpp"  // 2017.10.06
+#include "GfxGameControllerButtonBind.hpp"  // 2017.10.06
+#include "GfxGameController.hpp"  // 2017.10.06
 
 namespace gfx
 {
@@ -476,7 +478,9 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     // gfx::gamecontroller
     {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerBindType>()    },  // 2017.09.22
     {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerAxis>()    },  // 2017.10.06
-    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerButton>()  }  // 2017.10.06
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerButton>()  },  // 2017.10.06
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerButtonBind>()  },  // 2017.10.06
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameController>()    }  // 2017.10.06
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /
