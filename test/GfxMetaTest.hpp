@@ -45,7 +45,8 @@ TEST_F(GfxMetaTest, emptyConstructor)
     gfx::_gfx::GfxMeta object;
 
     // Value will change each time a new class is added to gfx!
-    EXPECT_EQ(139, object.getClassCount());
+
+    EXPECT_EQ(141, object.getClassCount());
 }
 
 TEST_F(GfxMetaTest, wrongClassIndexNegativeValue)

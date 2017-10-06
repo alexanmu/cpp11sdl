@@ -166,6 +166,8 @@
 #include "GfxTimerCallback.hpp"  // 2017.09.06
 #include "GfxBlitFunction.hpp"  // 2017.09.22
 #include "GfxGameControllerBindType.hpp"  // 2017.09.22
+#include "GfxGameControllerAxis.hpp"  // 2017.10.06
+#include "GfxGameControllerButton.hpp"  // 2017.10.06
 
 struct ToStringStruct
 {
@@ -438,7 +440,9 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::timer::GfxTimerID>()             },  // 2017.09.06
     {   prv::makeStringStruct<gfx::timer::GfxTimerCallback>()       },  // 2017.09.06
     // gfx::gamecontroller
-    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerBindType>() }  // 2017.09.22
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerBindType>() },  // 2017.09.22
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerAxis>() },  // 2017.10.06
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerButton>()   }  // 2017.10.06
 };
 
 void _doToString(void)

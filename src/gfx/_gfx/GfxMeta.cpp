@@ -167,6 +167,8 @@
 #include "GfxTimer.hpp"  // 2017.09.06
 #include "GfxBlitFunction.hpp"  // 2017.09.22
 #include "GfxGameControllerBindType.hpp"  // 2017.09.22
+#include "GfxGameControllerAxis.hpp"  // 2017.10.06
+#include "GfxGameControllerButton.hpp"  // 2017.10.06
 
 namespace gfx
 {
@@ -472,7 +474,9 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::timer::GfxTimerCallback>()      },  // 2017.09.06
     {   prv::makeClassInfo<gfx::timer::GfxTimer>()              },  // 2017.09.06
     // gfx::gamecontroller
-    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerBindType>()    }  // 2017.09.22
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerBindType>()    },  // 2017.09.22
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerAxis>()    },  // 2017.10.06
+    {   prv::makeClassInfo<gfx::gamecontroller::GfxGameControllerButton>()  }  // 2017.10.06
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

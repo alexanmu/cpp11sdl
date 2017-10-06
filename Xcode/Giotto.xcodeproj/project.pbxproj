@@ -316,6 +316,10 @@
 		7994CC781F0FE1B000DF5B94 /* GfxJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7994CC741F0FDEEC00DF5B94 /* GfxJoystick.cpp */; };
 		7994CC791F0FE1B500DF5B94 /* GfxHatPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7994CC721F0FDEEC00DF5B94 /* GfxHatPosition.cpp */; };
 		799DE96A1F08FD0F00125244 /* ToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 799DE9681F08FD0F00125244 /* ToString.cpp */; };
+		79A1B4AA1F87787A00FA27C0 /* GfxGameControllerAxis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4A81F87787A00FA27C0 /* GfxGameControllerAxis.cpp */; };
+		79A1B4AB1F87787A00FA27C0 /* GfxGameControllerAxis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4A81F87787A00FA27C0 /* GfxGameControllerAxis.cpp */; };
+		79A1B4AE1F877C3900FA27C0 /* GfxGameControllerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */; };
+		79A1B4AF1F877C3900FA27C0 /* GfxGameControllerButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */; };
 		79A30A871F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */; };
 		79A30A881F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */; };
 		79AA78C71F5D68F400FEA20C /* GfxDollarGestureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79AA78BD1F5D68F400FEA20C /* GfxDollarGestureEvent.cpp */; };
@@ -733,6 +737,10 @@
 		7994CC751F0FDEEC00DF5B94 /* GfxJoystick.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystick.hpp; path = joystick/GfxJoystick.hpp; sourceTree = "<group>"; };
 		799DE9681F08FD0F00125244 /* ToString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToString.cpp; path = ../play/ToString.cpp; sourceTree = SOURCE_ROOT; };
 		799DE9691F08FD0F00125244 /* ToString.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ToString.hpp; path = ../play/ToString.hpp; sourceTree = SOURCE_ROOT; };
+		79A1B4A81F87787A00FA27C0 /* GfxGameControllerAxis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGameControllerAxis.cpp; path = gamecontroller/GfxGameControllerAxis.cpp; sourceTree = "<group>"; };
+		79A1B4A91F87787A00FA27C0 /* GfxGameControllerAxis.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameControllerAxis.hpp; path = gamecontroller/GfxGameControllerAxis.hpp; sourceTree = "<group>"; };
+		79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxGameControllerButton.cpp; path = gamecontroller/GfxGameControllerButton.cpp; sourceTree = "<group>"; };
+		79A1B4AD1F877C3900FA27C0 /* GfxGameControllerButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxGameControllerButton.hpp; path = gamecontroller/GfxGameControllerButton.hpp; sourceTree = "<group>"; };
 		79A30A851F112AD700F7A4EF /* GfxMouseMotionEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxMouseMotionEvent.cpp; path = gfx/events/GfxMouseMotionEvent.cpp; sourceTree = "<group>"; };
 		79A30A861F112AD700F7A4EF /* GfxMouseMotionEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMouseMotionEvent.hpp; path = gfx/events/GfxMouseMotionEvent.hpp; sourceTree = "<group>"; };
 		79A30A891F113BCE00F7A4EF /* IGetMouseID.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = IGetMouseID.hpp; path = gfx/events/prv/IGetMouseID.hpp; sourceTree = "<group>"; };
@@ -1501,8 +1509,12 @@
 		7966D7281F77970200FFDF9D /* gamecontroller */ = {
 			isa = PBXGroup;
 			children = (
+				79A1B4AC1F877C3800FA27C0 /* GfxGameControllerButton.cpp */,
+				79A1B4AD1F877C3900FA27C0 /* GfxGameControllerButton.hpp */,
 				7966D7291F77971300FFDF9D /* GfxGameControllerBindType.cpp */,
 				7966D72A1F77971300FFDF9D /* GfxGameControllerBindType.hpp */,
+				79A1B4A81F87787A00FA27C0 /* GfxGameControllerAxis.cpp */,
+				79A1B4A91F87787A00FA27C0 /* GfxGameControllerAxis.hpp */,
 			);
 			name = gamecontroller;
 			sourceTree = "<group>";
@@ -1823,6 +1835,7 @@
 				790638E71F13E672000F603B /* GfxJoyBallEvent.cpp in Sources */,
 				194648E71EEC2E9100299B55 /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
 				194648A51EEC2D2000299B55 /* GfxClipboard.cpp in Sources */,
+				79A1B4AF1F877C3900FA27C0 /* GfxGameControllerButton.cpp in Sources */,
 				79F2C7431EFD777800FAE660 /* GfxColors2.cpp in Sources */,
 				194648EB1EEC2E9D00299B55 /* GQuitCancelMsgBox.cpp in Sources */,
 				7989726B1F109E6E008F5128 /* GfxEventAction.cpp in Sources */,
@@ -1871,6 +1884,7 @@
 				79AA78CF1F5D692100FEA20C /* GfxSysWmEvent.cpp in Sources */,
 				194648F71EEC2ECC00299B55 /* GPanel.cpp in Sources */,
 				194648C31EEC2DC400299B55 /* GfxPixelFormatEnum.cpp in Sources */,
+				79A1B4AB1F87787A00FA27C0 /* GfxGameControllerAxis.cpp in Sources */,
 				194648B41EEC2D8000299B55 /* GfxMessageBox.cpp in Sources */,
 				194648BB1EEC2D9D00299B55 /* GfxMessageBoxFlags.cpp in Sources */,
 				194648D61EEC2E3100299B55 /* GfxTtfFontStyle.cpp in Sources */,
@@ -1919,6 +1933,7 @@
 				79C9C7EF1F0E926B009F8C0B /* GfxJoystickPowerLevel.cpp in Sources */,
 				7979CDDE1EE1B4A9005D4BC4 /* GStructuredTextLabel.cpp in Sources */,
 				791EAD541EDCB9BE0032ED1D /* GAbortRetryIgnoreMsgBox.cpp in Sources */,
+				79A1B4AA1F87787A00FA27C0 /* GfxGameControllerAxis.cpp in Sources */,
 				790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */,
 				794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */,
 				7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */,
@@ -2019,6 +2034,7 @@
 				7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */,
 				798C0C6C1EF9799A006F1EEB /* GFileObject.cpp in Sources */,
 				7902A0201EF82D3700513746 /* GfxCommonEvent.cpp in Sources */,
+				79A1B4AE1F877C3900FA27C0 /* GfxGameControllerButton.cpp in Sources */,
 				79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */,
 				19B8D2D61EF6B62B00102304 /* GColorScheme.cpp in Sources */,
 				1980161D1EDF283C00AEDB49 /* GfxWindowFlags.cpp in Sources */,

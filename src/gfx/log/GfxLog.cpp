@@ -165,9 +165,9 @@ void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback) const throw(s
     }
     else
     {
-        // SDL bugzilla issue 3666; revert does not work; just throw
-        throw std::runtime_error("SDL Bugzilla, issue 3666");
-        // These lines will not be executed before issue 3666 is fixed
+        // SDL bugzilla issue 3666; revert does not work; issue warning
+#warning SDL2 bugzilla Bug #3666
+        // These lines will be executed but nothing will happen before issue 3666 is fixed
         sdl2::SDL_LogSetOutputFunction(NULL, NULL);
         logOutputFunctionObject_ = nullptr;
     }
