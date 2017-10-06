@@ -44,7 +44,7 @@ GfxJoystick::GfxJoystick() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    joy_ = nullptr;
+    clear();
 }
 
 GfxJoystick::GfxJoystick(const int32_t index) throw(std::runtime_error) : GfxObject(ClassName)
@@ -131,6 +131,28 @@ std::string GfxJoystick::to_string(void) const noexcept
     LOG_TRACE_PRIO_LOW();
 
     return std::string(ClassName);
+}
+
+void GfxJoystick::joystickOpen(const int32_t index) throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(index >= 0);
+
+    joy_ = nullptr;
+
+    SdlTypePtr tmpjoyptr;
+
+    if (joy_ != nullptr)
+    {
+        throw std::runtime_error("Joystick already open");
+    }
+    tmpjoyptr = sdl2::SDL_JoystickOpen(index);
+    if (tmpjoyptr == nullptr)
+    {
+        throw std::runtime_error("Unable to create GfxJoystick object");
+    }
+    joy_ = tmpjoyptr;
 }
 
 int32_t GfxJoystick::numJoysticks(void) const noexcept

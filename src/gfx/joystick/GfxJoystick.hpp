@@ -72,6 +72,8 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    void joystickOpen(const int32_t index) throw(std::runtime_error);
+
     int32_t numJoysticks(void) const noexcept;
     std::string joystickNameForIndex(const int32_t index) const noexcept;
     GfxJoystickGUID joystickGetDeviceGUID(const int32_t index) const noexcept;
