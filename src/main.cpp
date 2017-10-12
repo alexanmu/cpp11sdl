@@ -570,7 +570,7 @@ void _doStuff(void)
             surfcanvas.blitSurface(sbitmap, gfx::rect::GfxRect(0, 0, sbitmap.getWidth(), sbitmap.getHeight()),
                                    gfx::rect::GfxRect(160, 640, WIN_W, WIN_H));
             gfx::render::GfxTexture canvas_tex("Canvas texture", &rend, surfcanvas);
-            canvas_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendNone);
+            canvas_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendModeNone);
 
             rt.setX(0);
             rt.setY(0);
@@ -581,7 +581,7 @@ void _doStuff(void)
             colors_surf.fillRect(rt, gfx::pixels::GfxColor(255-r1, 255-g1, 255-b1, a1));
 
             gfx::render::GfxTexture colors_tex("Colors texture", &rend, colors_surf);
-            colors_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendBlend);
+            colors_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendModeBlend);
 
             rend.renderCopy(canvas_tex);
             rend.renderCopy(colors_tex);
