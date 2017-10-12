@@ -74,6 +74,15 @@ public:
 
     ValueType getValue(void) const noexcept;
 
+    bool isAxisInvalid(void) const noexcept;
+    bool isAxisLeftX(void) const noexcept;
+    bool isAxisLeftY(void) const noexcept;
+    bool isAxisRightX(void) const noexcept;
+    bool isAxisRightY(void) const noexcept;
+    bool isAxisTriggerLeft(void) const noexcept;
+    bool isAxisTriggerRight(void) const noexcept;
+    bool isAxisMax(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

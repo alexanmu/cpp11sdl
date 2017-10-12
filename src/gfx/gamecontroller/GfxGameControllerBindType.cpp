@@ -126,6 +126,34 @@ GfxGameControllerBindType::ValueType GfxGameControllerBindType::getValue(void) c
     return static_cast<ValueType>(bType_);
 }
 
+bool GfxGameControllerBindType::isBindTypeNone(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_NONE);
+}
+
+bool GfxGameControllerBindType::isBindTypeNormal(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_BUTTON);
+}
+
+bool GfxGameControllerBindType::isBindTypeAxis(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_AXIS);
+}
+
+bool GfxGameControllerBindType::isBindTypeHat(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_HAT);
+}
+
 void GfxGameControllerBindType::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

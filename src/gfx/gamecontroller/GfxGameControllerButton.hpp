@@ -83,6 +83,24 @@ public:
 
     ValueType getValue(void) const noexcept;
 
+    bool isButtonInvalid(void) const noexcept;
+    bool isButtonA(void) const noexcept;
+    bool isButtonB(void) const noexcept;
+    bool isButtonX(void) const noexcept;
+    bool isButtonY(void) const noexcept;
+    bool isButtonBack(void) const noexcept;
+    bool isButtonGuide(void) const noexcept;
+    bool isButtonStart(void) const noexcept;
+    bool isButtonLeftStick(void) const noexcept;
+    bool isButtonRightStick(void) const noexcept;
+    bool isButtonLeftShoulder(void) const noexcept;
+    bool isButtonRightShoulder(void) const noexcept;
+    bool isButtonDPadUp(void) const noexcept;
+    bool isButtonDPadDown(void) const noexcept;
+    bool isButtonDPadLeft(void) const noexcept;
+    bool isButtonDPadRight(void) const noexcept;
+    bool isButtonMax(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

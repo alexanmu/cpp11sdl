@@ -69,6 +69,11 @@ public:
 
     ValueType getValue(void) const noexcept;
 
+    bool isBindTypeNone(void) const noexcept;
+    bool isBindTypeNormal(void) const noexcept;
+    bool isBindTypeAxis(void) const noexcept;
+    bool isBindTypeHat(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
