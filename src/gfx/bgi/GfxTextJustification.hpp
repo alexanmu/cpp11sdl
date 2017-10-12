@@ -71,6 +71,12 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType just) noexcept;
 
+    bool isLeftText(void) const noexcept;
+    bool isCenterText(void) const noexcept;
+    bool isRightText(void) const noexcept;
+    bool isBottomText(void) const noexcept;
+    bool isTopText(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

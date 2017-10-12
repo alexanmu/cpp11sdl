@@ -71,6 +71,12 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType dmode) noexcept;
 
+    bool isCopyPut(void) const noexcept;
+    bool isXorPut(void) const noexcept;
+    bool isOrPut(void) const noexcept;
+    bool isAndPut(void) const noexcept;
+    bool isNotPut(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

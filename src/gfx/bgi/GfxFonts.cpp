@@ -132,6 +132,90 @@ void GfxFonts::setValue(const ValueType font) noexcept
     font_ = static_cast<BgiType>(font);
 }
 
+bool GfxFonts::isDefaultFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::DEFAULT_FONT);
+}
+
+bool GfxFonts::isTriplexFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::TRIPLEX_FONT);
+}
+
+bool GfxFonts::isSmallFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::SMALL_FONT);
+}
+
+bool GfxFonts::isSanserifFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::SANSSERIF_FONT);
+}
+
+bool GfxFonts::isGothicFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::GOTHIC_FONT);
+}
+
+bool GfxFonts::isBigFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::BIG_FONT);
+}
+
+bool GfxFonts::isScriptFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::SCRIPT_FONT);
+}
+
+bool GfxFonts::isSimplexFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::SIMPLEX_FONT);
+}
+
+bool GfxFonts::isTriplexScriptFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::TRIPLEX_SCR_FONT);
+}
+
+bool GfxFonts::isComplexFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::COMPLEX_FONT);
+}
+
+bool GfxFonts::isEuropeanFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::EUROPEAN_FONT);
+}
+
+bool GfxFonts::isBoldFont(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (font_ == prv::GfxCanvasBgi::bgiFonts::BOLD_FONT);
+}
+
 void GfxFonts::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -68,6 +68,9 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType dir) noexcept;
 
+    bool isHorizontalDirection(void) const noexcept;
+    bool isVerticalDirection(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

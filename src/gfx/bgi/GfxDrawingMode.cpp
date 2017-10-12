@@ -132,6 +132,41 @@ void GfxDrawingMode::setValue(const ValueType dmode) noexcept
     dmode_ = static_cast<BgiType>(dmode);
 }
 
+bool GfxDrawingMode::isCopyPut(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dmode_ == prv::GfxCanvasBgi::bgiDrawingMode::COPY_PUT);
+}
+
+bool GfxDrawingMode::isXorPut(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dmode_ == prv::GfxCanvasBgi::bgiDrawingMode::XOR_PUT);
+}
+
+bool GfxDrawingMode::isOrPut(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dmode_ == prv::GfxCanvasBgi::bgiDrawingMode::OR_PUT);
+}
+
+bool GfxDrawingMode::isAndPut(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dmode_ == prv::GfxCanvasBgi::bgiDrawingMode::AND_PUT);
+}
+
+bool GfxDrawingMode::isNotPut(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dmode_ == prv::GfxCanvasBgi::bgiDrawingMode::NOT_PUT);
+}
+
 void GfxDrawingMode::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

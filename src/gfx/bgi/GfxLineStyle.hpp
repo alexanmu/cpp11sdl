@@ -71,6 +71,12 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType line) noexcept;
 
+    bool isSolidLine(void) const noexcept;
+    bool isDottedLine(void) const noexcept;
+    bool isCenterLine(void) const noexcept;
+    bool isDashedLine(void) const noexcept;
+    bool isUserbitLine(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

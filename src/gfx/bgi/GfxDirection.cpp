@@ -132,6 +132,20 @@ void GfxDirection::setValue(const ValueType dir) noexcept
     dir_ = static_cast<BgiType>(dir);
 }
 
+bool GfxDirection::isHorizontalDirection(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dir_ == prv::GfxCanvasBgi::bgiDirection::HORIZ_DIR);
+}
+
+bool GfxDirection::isVerticalDirection(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (dir_ == prv::GfxCanvasBgi::bgiDirection::VERT_DIR);
+}
+
 void GfxDirection::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -132,6 +132,20 @@ void GfxLineThickness::setValue(const ValueType thick) noexcept
     thick_ = static_cast<BgiType>(thick);
 }
 
+bool GfxLineThickness::isNormalWidth(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (thick_ == prv::GfxCanvasBgi::bgiLineThickness::NORM_WIDTH);
+}
+
+bool GfxLineThickness::isThickWidth(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (thick_ == prv::GfxCanvasBgi::bgiLineThickness::THICK_WIDTH);
+}
+
 void GfxLineThickness::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

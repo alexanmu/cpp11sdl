@@ -68,6 +68,9 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType thick) noexcept;
 
+    bool isNormalWidth(void) const noexcept;
+    bool isThickWidth(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

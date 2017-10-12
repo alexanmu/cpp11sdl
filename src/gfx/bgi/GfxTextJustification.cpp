@@ -132,6 +132,41 @@ void GfxTextJustification::setValue(const ValueType just) noexcept
     just_ = static_cast<BgiType>(just);
 }
 
+bool GfxTextJustification::isLeftText(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (just_ == prv::GfxCanvasBgi::bgiTextJustification::LEFT_TEXT);
+}
+
+bool GfxTextJustification::isCenterText(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (just_ == prv::GfxCanvasBgi::bgiTextJustification::CENTER_TEXT);
+}
+
+bool GfxTextJustification::isRightText(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (just_ == prv::GfxCanvasBgi::bgiTextJustification::RIGHT_TEXT);
+}
+
+bool GfxTextJustification::isBottomText(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (just_ == prv::GfxCanvasBgi::bgiTextJustification::BOTTOM_TEXT);
+}
+
+bool GfxTextJustification::isTopText(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (just_ == prv::GfxCanvasBgi::bgiTextJustification::TOP_TEXT);
+}
+
 void GfxTextJustification::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

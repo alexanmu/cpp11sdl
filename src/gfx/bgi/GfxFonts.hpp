@@ -78,6 +78,19 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType font) noexcept;
 
+    bool isDefaultFont(void) const noexcept;
+    bool isTriplexFont(void) const noexcept;
+    bool isSmallFont(void) const noexcept;
+    bool isSanserifFont(void) const noexcept;
+    bool isGothicFont(void) const noexcept;
+    bool isBigFont(void) const noexcept;
+    bool isScriptFont(void) const noexcept;
+    bool isSimplexFont(void) const noexcept;
+    bool isTriplexScriptFont(void) const noexcept;
+    bool isComplexFont(void) const noexcept;
+    bool isEuropeanFont(void) const noexcept;
+    bool isBoldFont(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

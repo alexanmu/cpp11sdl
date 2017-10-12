@@ -132,6 +132,97 @@ void GfxFillStyles::setValue(const ValueType fill) noexcept
     fill_ = static_cast<BgiType>(fill);
 }
 
+bool GfxFillStyles::isEmptyFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::EMPTY_FILL);
+}
+
+bool GfxFillStyles::isSolidFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::SOLID_FILL);
+}
+
+bool GfxFillStyles::isLineFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::LINE_FILL);
+}
+
+bool GfxFillStyles::isLightSlashFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::LTSLASH_FILL);
+}
+
+bool GfxFillStyles::isSlashFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::SLASH_FILL);
+}
+
+bool GfxFillStyles::isBackSlashFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::BKSLASH_FILL);
+}
+
+bool GfxFillStyles::isLightBackSlashFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::LTBKSLASH_FILL);
+}
+
+bool GfxFillStyles::isHatchFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::HATCH_FILL);
+}
+
+bool GfxFillStyles::isXHatchFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::XHATCH_FILL);
+}
+
+bool GfxFillStyles::isInterleaveFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::INTERLEAVE_FILL);
+}
+
+bool GfxFillStyles::isWideDotFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::WIDE_DOT_FILL);
+}
+
+bool GfxFillStyles::isCloseDotFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::CLOSE_DOT_FILL);
+}
+
+bool GfxFillStyles::isUserFill(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (fill_ == prv::GfxCanvasBgi::bgiFillStyles::USER_FILL);
+}
+
 void GfxFillStyles::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

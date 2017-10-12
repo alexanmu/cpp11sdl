@@ -79,6 +79,20 @@ public:
     ValueType getValue(void) const noexcept;
     void setValue(const ValueType fill) noexcept;
 
+    bool isEmptyFill(void) const noexcept;
+    bool isSolidFill(void) const noexcept;
+    bool isLineFill(void) const noexcept;
+    bool isLightSlashFill(void) const noexcept;
+    bool isSlashFill(void) const noexcept;
+    bool isBackSlashFill(void) const noexcept;
+    bool isLightBackSlashFill(void) const noexcept;
+    bool isHatchFill(void) const noexcept;
+    bool isXHatchFill(void) const noexcept;
+    bool isInterleaveFill(void) const noexcept;
+    bool isWideDotFill(void) const noexcept;
+    bool isCloseDotFill(void) const noexcept;
+    bool isUserFill(void) const noexcept;
+
     void clear(void) noexcept;
 
     BgiType getAsBgiType(void) const noexcept;

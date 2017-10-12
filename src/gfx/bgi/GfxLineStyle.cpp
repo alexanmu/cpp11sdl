@@ -132,6 +132,41 @@ void GfxLineStyle::setValue(const ValueType line) noexcept
     line_ = static_cast<BgiType>(line);
 }
 
+bool GfxLineStyle::isSolidLine(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (line_ == prv::GfxCanvasBgi::bgiLineStyle::SOLID_LINE);
+}
+
+bool GfxLineStyle::isDottedLine(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (line_ == prv::GfxCanvasBgi::bgiLineStyle::DOTTED_LINE);
+}
+
+bool GfxLineStyle::isCenterLine(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (line_ == prv::GfxCanvasBgi::bgiLineStyle::CENTER_LINE);
+}
+
+bool GfxLineStyle::isDashedLine(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (line_ == prv::GfxCanvasBgi::bgiLineStyle::DASHED_LINE);
+}
+
+bool GfxLineStyle::isUserbitLine(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (line_ == prv::GfxCanvasBgi::bgiLineStyle::USERBIT_LINE);
+}
+
 void GfxLineStyle::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
