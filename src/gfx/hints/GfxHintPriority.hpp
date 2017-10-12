@@ -54,8 +54,8 @@ public:
 
     GfxHintPriority() noexcept;
 
-    explicit GfxHintPriority(const SdlType hint) noexcept;
-    explicit GfxHintPriority(const ValueType hint) noexcept;
+    explicit GfxHintPriority(const SdlType hintPrio) noexcept;
+    explicit GfxHintPriority(const ValueType hintPrio) noexcept;
 
     GfxHintPriority(GfxHintPriority const& other) noexcept;
     GfxHintPriority(GfxHintPriority&& other) noexcept;
@@ -66,11 +66,15 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    bool isHintDefault(void) const noexcept;
+    bool isHintNormal(void) const noexcept;
+    bool isHintOverride(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
 private:
-    SdlType hint_;
+    SdlType hintPrio_;
 };
 
 }  // namespace hints

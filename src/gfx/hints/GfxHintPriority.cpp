@@ -44,32 +44,32 @@ GfxHintPriority::GfxHintPriority() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxHintPriority::GfxHintPriority(const SdlType hint) noexcept : GfxObject(ClassName)
+GfxHintPriority::GfxHintPriority(const SdlType hintPrio) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    hint_ = hint;
+    hintPrio_ = hintPrio;
 }
 
-GfxHintPriority::GfxHintPriority(const ValueType hint) noexcept : GfxObject(ClassName)
+GfxHintPriority::GfxHintPriority(const ValueType hintPrio) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    hint_ = static_cast<SdlType>(hint);
+    hintPrio_ = static_cast<SdlType>(hintPrio);
 }
 
 GfxHintPriority::GfxHintPriority(GfxHintPriority const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
-    hint_ = other.hint_;
+    hintPrio_ = other.hintPrio_;
 }
 
 GfxHintPriority::GfxHintPriority(GfxHintPriority&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
-    hint_ = other.hint_;
+    hintPrio_ = other.hintPrio_;
     // Delete other's data
     other.clear();
 }
@@ -83,7 +83,7 @@ GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority const& other) noexce
         // Copy base
         GfxObject::operator=(other);
         // Copy this
-        hint_ = other.hint_;
+        hintPrio_ = other.hintPrio_;
     }
     return *this;
 }
@@ -97,7 +97,7 @@ GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority&& other) noexcept
         // Move base
         GfxObject::operator=(std::move(other));
         // Move this
-        hint_ = other.hint_;
+        hintPrio_ = other.hintPrio_;
         // Delete other's data
         other.clear();
     }
@@ -118,18 +118,39 @@ std::string GfxHintPriority::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
+bool GfxHintPriority::isHintDefault(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hintPrio_ == sdl2::SDL_HINT_DEFAULT);
+}
+
+bool GfxHintPriority::isHintNormal(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hintPrio_ == sdl2::SDL_HINT_NORMAL);
+}
+
+bool GfxHintPriority::isHintOverride(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hintPrio_ == sdl2::SDL_HINT_OVERRIDE);
+}
+
 void GfxHintPriority::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    hint_ = sdl2::SDL_HINT_DEFAULT;
+    hintPrio_ = sdl2::SDL_HINT_DEFAULT;
 }
 
 GfxHintPriority::SdlType GfxHintPriority::getAsSdlType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return hint_;
+    return hintPrio_;
 }
 
 }  // namespace hints
