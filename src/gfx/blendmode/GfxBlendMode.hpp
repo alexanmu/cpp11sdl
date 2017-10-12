@@ -29,6 +29,8 @@
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
+#include "GfxBlendFactor.hpp"
+#include "GfxBlendOperation.hpp"
 
 namespace gfx
 {
@@ -47,10 +49,11 @@ public:
 
     enum class ValueType : int32_t
     {
-        blendNone = sdl2::SDL_BLENDMODE_NONE,
-        blendBlend = sdl2::SDL_BLENDMODE_BLEND,
-        blendAdd = sdl2::SDL_BLENDMODE_ADD,
-        blendMod = sdl2::SDL_BLENDMODE_MOD
+        blendModeNone = sdl2::SDL_BLENDMODE_NONE,
+        blendModeBlend = sdl2::SDL_BLENDMODE_BLEND,
+        blendModeAdd = sdl2::SDL_BLENDMODE_ADD,
+        blendModeMod = sdl2::SDL_BLENDMODE_MOD,
+        blendModeInvalid = sdl2::SDL_BLENDMODE_INVALID
     };
 
     GfxBlendMode() noexcept;
@@ -69,12 +72,20 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getBlendMode(void) const noexcept;
+    ValueType getValue(void) const noexcept;
 
     bool isNone(void) const noexcept;
     bool isBlend(void) const noexcept;
     bool isAdd(void) const noexcept;
     bool isMod(void) const noexcept;
+    bool isInvalid(void) const noexcept;
+
+    bool isCustom(void) const noexcept;
+
+    void composeCustomBlendMode(GfxBlendFactor const& srcColorFactor, GfxBlendFactor const& dstColorFactor,
+                                GfxBlendOperation const& colorOperation, GfxBlendFactor const& srcAlphaFactor,
+                                GfxBlendFactor const& dstAlphaFactor, GfxBlendOperation const& alphaOperation)
+                noexcept;
 
     void clear(void) noexcept;
 

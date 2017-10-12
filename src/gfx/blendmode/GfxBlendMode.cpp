@@ -128,7 +128,7 @@ std::string GfxBlendMode::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxBlendMode::ValueType GfxBlendMode::getBlendMode(void) const noexcept
+GfxBlendMode::ValueType GfxBlendMode::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -163,11 +163,53 @@ bool GfxBlendMode::isMod(void) const noexcept
     return (blendmode_ == sdl2::SDL_BLENDMODE_MOD);
 }
 
+bool GfxBlendMode::isInvalid(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (blendmode_ == sdl2::SDL_BLENDMODE_INVALID);
+}
+
+bool GfxBlendMode::isCustom(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (blendmode_ != sdl2::SDL_BLENDMODE_NONE) &&
+        (blendmode_ != sdl2::SDL_BLENDMODE_BLEND) &&
+        (blendmode_ != sdl2::SDL_BLENDMODE_ADD) &&
+        (blendmode_ != sdl2::SDL_BLENDMODE_MOD) &&
+        (blendmode_ != sdl2::SDL_BLENDMODE_INVALID);
+}
+
+void GfxBlendMode::composeCustomBlendMode(GfxBlendFactor const& srcColorFactor,
+                                          GfxBlendFactor const& dstColorFactor,
+                                          GfxBlendOperation const& colorOperation,
+                                          GfxBlendFactor const& srcAlphaFactor,
+                                          GfxBlendFactor const& dstAlphaFactor,
+                                          GfxBlendOperation const& alphaOperation) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(srcColorFactor);
+    assert(dstColorFactor);
+    assert(colorOperation);
+    assert(srcAlphaFactor);
+    assert(dstAlphaFactor);
+    assert(alphaOperation);
+
+    blendmode_ = sdl2::SDL_ComposeCustomBlendMode(srcColorFactor.getAsSdlType(),
+                                                  dstColorFactor.getAsSdlType(),
+                                                  colorOperation.getAsSdlType(),
+                                                  srcAlphaFactor.getAsSdlType(),
+                                                  dstAlphaFactor.getAsSdlType(),
+                                                  alphaOperation.getAsSdlType());
+}
+
 void GfxBlendMode::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    blendmode_ = static_cast<SdlType>(ValueType::blendNone);
+    blendmode_ = static_cast<SdlType>(ValueType::blendModeNone);
 }
 
 GfxBlendMode::SdlType GfxBlendMode::getAsSdlType(void) const noexcept
