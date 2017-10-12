@@ -121,6 +121,7 @@ void GfxCpuInfo::queryCpuInfo(void) noexcept
     hasSse42_ = sdl2::SDL_HasSSE42();
     hasAvx_ = sdl2::SDL_HasAVX();
     hasAvx2_ = sdl2::SDL_HasAVX2();
+    hasNeon_ = sdl2::SDL_HasNEON();
     systemRam_ = sdl2::SDL_GetSystemRAM();
 }
 
@@ -208,6 +209,13 @@ bool GfxCpuInfo::hasAvx2(void) const noexcept
     return hasAvx2_;
 }
 
+bool GfxCpuInfo::hasNeon(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return hasNeon_;
+}
+
 int32_t GfxCpuInfo::getSystemRam(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -233,6 +241,7 @@ const std::string GfxCpuInfo::getAsString(void) const noexcept
     str1 += "SSE4.2:" + std::to_string(hasSse42_) + "\n";
     str1 += "AVX:" + std::to_string(hasAvx_) + "\n";
     str1 += "AVX2:" + std::to_string(hasAvx2_) + "\n";
+    str1 += "NEON:" + std::to_string(hasNeon_) + "\n";
     str1 += "RAM=" + std::to_string(systemRam_) + "MB";
     return str1;
 }
@@ -253,6 +262,7 @@ void GfxCpuInfo::clear(void) noexcept
     hasSse42_ = false;
     hasAvx_ = false;
     hasAvx2_ = false;
+    hasNeon_ = false;
     systemRam_ = 0;
 }
 
@@ -271,6 +281,7 @@ void GfxCpuInfo::assign(GfxCpuInfo const& other) noexcept
     hasSse42_ = other.hasSse42_;
     hasAvx_ = other.hasAvx_;
     hasAvx2_ = other.hasAvx2_;
+    hasNeon_ = other.hasNeon_;
     systemRam_ = other.systemRam_;
 }
 

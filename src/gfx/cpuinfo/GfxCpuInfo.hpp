@@ -67,6 +67,7 @@ public:
     bool hasSse42(void) const noexcept;
     bool hasAvx(void) const noexcept;
     bool hasAvx2(void) const noexcept;
+    bool hasNeon(void) const noexcept;
     int32_t getSystemRam(void) const noexcept;
 
     const std::string getAsString(void) const noexcept;
@@ -87,6 +88,7 @@ private:
     bool hasSse42_;
     bool hasAvx_;
     bool hasAvx2_;
+    bool hasNeon_;
     int32_t systemRam_;
 };
 
