@@ -54,7 +54,7 @@ public:
     static const bool CallsSdl = true;
 
     static const int32_t kJoystickAxisMin = -32768;
-    static const int32_t kJoystickAxiMax = 32768;
+    static const int32_t kJoystickAxisMax = 32768;
 
     GfxJoystick() noexcept;
 
