@@ -171,6 +171,8 @@
 #include "GfxGameControllerButton.hpp"  // 2017.10.06
 #include "GfxGameControllerButtonBind.hpp"  // 2017.10.06
 #include "GfxGameController.hpp"  // 2017.10.06
+#include "GfxBlendOperation.hpp"  // 2017.10.11
+#include "GfxBlendFactor.hpp"  // 2017.10.11
 
 namespace gfx
 {
@@ -308,6 +310,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::bits::GfxBits>()                },
     // gfx::blendmode
     {   prv::makeClassInfo<gfx::blendmode::GfxBlendMode>()      },
+    {   prv::makeClassInfo<gfx::blendmode::GfxBlendOperation>() },  // 2017.10.11
+    {   prv::makeClassInfo<gfx::blendmode::GfxBlendFactor>()    },  // 2017.10.11
     // gfx
     {   prv::makeClassInfo<gfx::GfxBool>()                      },
     // gfx::clipboard
