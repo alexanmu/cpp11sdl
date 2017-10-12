@@ -88,9 +88,11 @@ public:
                 GfxEventActionCommand state) const noexcept;
     void gameControllerUpdate(void) const noexcept;
     const GfxGameControllerAxis gameControllerGetAxisFromString(std::string const& pchString) const noexcept;
-    const std::string gameControllerGetStringFromAxis(GfxGameControllerAxis const& axis) const noexcept;
+    const std::string gameControllerGetStringForAxis(GfxGameControllerAxis const& axis) const noexcept;
     const GfxGameControllerButtonBind gameControllerGetBindForAxis(GfxGameControllerAxis const& axis) const noexcept;
     int32_t gameControllerGetAxis(GfxGameControllerAxis const& axis) const noexcept;
+    GfxGameControllerButton gameControllerGetButtonFromString(std::string const& pchString) const noexcept;
+    const std::string gameControllerGetStringForButton(GfxGameControllerButton const& button) const noexcept;
     const GfxGameControllerButtonBind gameControllerGetBindForButton(GfxGameControllerButton const& button)
             const noexcept;
     uint8_t gameControllerGetButton(GfxGameControllerButton const& button) const noexcept;

@@ -312,6 +312,8 @@ uint16_t GfxGameController::gameControllerGetProductVersion(void) const noexcept
 
 const GfxBool GfxGameController::gameControllerGetAttached(void) const noexcept
 {
+    LOG_TRACE_PRIO_LOW();
+
     GfxBool::SdlType sdlbool;
 
     if (gCtrl_ != nullptr)
@@ -322,15 +324,143 @@ const GfxBool GfxGameController::gameControllerGetAttached(void) const noexcept
     return GfxBool(false);
 }
 
-/*joystick::GfxJoystick::SdlTypePtr GfxGameController::gameControllerGetJoystick(void) const noexcept;
-events::GfxEventActionCommand GfxGameController::gameControllerEventState(const events::GfxEventActionCommand state) const noexcept;
-void GfxGameController::gameControllerUpdate(void) const noexcept;
-const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(std::string const& pchString) const noexcept;
-const std::string GfxGameController::gameControllerGetStringFromAxis(GfxGameControllerAxis const& axis) const noexcept;
-const GfxGameControllerButtonBind gameControllerGetBindForAxis(GfxGameControllerAxis const& axis) const noexcept;
-int32_t GfxGameController::gameControllerGetAxis(GfxGameControllerAxis const& axis) const noexcept;
-const GfxGameControllerButtonBind gameControllerGetBindForButton(GfxGameControllerButton const& button) const noexcept;
-uint8_t GfxGameController::gameControllerGetButton(GfxGameControllerButton const& button) const noexcept;*/
+joystick::GfxJoystick::SdlTypePtr GfxGameController::gameControllerGetJoystick(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    joystick::GfxJoystick::SdlTypePtr ret = nullptr;
+
+    if (gCtrl_ != nullptr)
+    {
+        ret = sdl2::SDL_GameControllerGetJoystick(gCtrl_);
+    }
+    return ret;
+}
+
+events::GfxEventActionCommand GfxGameController::gameControllerEventState(const events::GfxEventActionCommand state)
+            const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    int32_t ret = sdl2::SDL_GameControllerEventState(static_cast<int>(state));
+    return static_cast<events::GfxEventActionCommand>(ret);
+}
+
+void GfxGameController::gameControllerUpdate(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    sdl2::SDL_GameControllerUpdate();
+}
+
+const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(std::string const& pchString)
+            const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(pchString.length() > 0);
+
+    GfxGameControllerAxis::SdlType sdlAxis;
+
+    sdlAxis = sdl2::SDL_GameControllerGetAxisFromString(pchString.c_str());
+    return GfxGameControllerAxis(sdlAxis);
+}
+
+const std::string GfxGameController::gameControllerGetStringForAxis(GfxGameControllerAxis const& axis) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(axis);
+
+    std::string ret = sdl2::SDL_GameControllerGetStringForAxis(axis.getAsSdlType());
+    return ret;
+}
+
+const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForAxis(GfxGameControllerAxis const& axis)
+            const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(axis);
+
+    GfxGameControllerButtonBind::SdlType btnBind;
+
+    if (gCtrl_ != nullptr)
+    {
+        btnBind = sdl2::SDL_GameControllerGetBindForAxis(gCtrl_, axis.getAsSdlType());
+    }
+    return GfxGameControllerButtonBind(btnBind);
+}
+
+int32_t GfxGameController::gameControllerGetAxis(GfxGameControllerAxis const& axis) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(axis);
+
+    int32_t ret = 0;
+
+    if (gCtrl_ != nullptr)
+    {
+        ret = sdl2::SDL_GameControllerGetAxis(gCtrl_, axis.getAsSdlType());
+    }
+    return ret;
+}
+
+GfxGameControllerButton GfxGameController::gameControllerGetButtonFromString(std::string const& pchString)
+            const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(pchString.length() > 0);
+
+    GfxGameControllerButton::SdlType btn;
+
+    btn = sdl2::SDL_GameControllerGetButtonFromString(pchString.c_str());
+    return GfxGameControllerButton(btn);
+}
+
+const std::string GfxGameController::gameControllerGetStringForButton(GfxGameControllerButton const& button)
+            const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(button);
+
+    std::string ret = sdl2::SDL_GameControllerGetStringForButton(button.getAsSdlType());
+    return ret;
+}
+
+const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForButton(GfxGameControllerButton const&
+            button) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(button);
+
+    GfxGameControllerButtonBind::SdlType btnBind;
+
+    if (gCtrl_ != nullptr)
+    {
+        btnBind = sdl2::SDL_GameControllerGetBindForButton(gCtrl_, button.getAsSdlType());
+    }
+    return GfxGameControllerButtonBind(btnBind);
+}
+
+uint8_t GfxGameController::gameControllerGetButton(GfxGameControllerButton const& button) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(button);
+
+    uint8_t btn = 255;
+
+    if (gCtrl_ != nullptr)
+    {
+        btn = sdl2::SDL_GameControllerGetButton(gCtrl_, button.getAsSdlType());
+    }
+    return btn;
+}
 
 void GfxGameController::clear(void) noexcept
 {
