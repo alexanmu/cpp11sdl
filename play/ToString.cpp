@@ -170,6 +170,8 @@
 #include "GfxGameControllerButton.hpp"  // 2017.10.06
 #include "GfxGameControllerButtonBind.hpp"  // 2017.10.06
 #include "GfxGameController.hpp"  // 2017.10.06
+#include "GfxBlendOperation.hpp"  // 2017.10.11
+#include "GfxBlendFactor.hpp"  // 2017.10.11
 
 struct ToStringStruct
 {
@@ -275,6 +277,8 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::bits::GfxBits>()                 },
     // gfx::blendmode
     {   prv::makeStringStruct<gfx::blendmode::GfxBlendMode>()       },
+    {   prv::makeStringStruct<gfx::blendmode::GfxBlendOperation>()  },  // 2017.10.11
+    {   prv::makeStringStruct<gfx::blendmode::GfxBlendFactor>()     },  // 2017.10.11
     // gfx
     {   prv::makeStringStruct<gfx::GfxBool>()                       },
     // gfx::clipboard
