@@ -289,6 +289,8 @@ public:
         kScanCodeSleep = static_cast<std::underlying_type<ValueType>::type>(sdl2::SDL_SCANCODE_SLEEP),
         kScanCodeApp1 = static_cast<std::underlying_type<ValueType>::type>(sdl2::SDL_SCANCODE_APP1),
         kScanCodeApp2 = static_cast<std::underlying_type<ValueType>::type>(sdl2::SDL_SCANCODE_APP2),
+        kScanCodeAudioRewind = static_cast<std::underlying_type<ValueType>::type>(sdl2::SDL_SCANCODE_AUDIOREWIND),
+        kScanCodeAudioFastForward = static_cast<std::underlying_type<ValueType>::type>(sdl2::SDL_SCANCODE_AUDIOFASTFORWARD),  // NOLINT
         kScanCodeNumScanCodes = static_cast<std::underlying_type<ValueType>::type>(sdl2::SDL_NUM_SCANCODES)
     };
 
