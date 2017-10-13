@@ -72,7 +72,17 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getPosition(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isCentered(void) const noexcept;
+    bool isUp(void) const noexcept;
+    bool isRight(void) const noexcept;
+    bool isDown(void) const noexcept;
+    bool isLeft(void) const noexcept;
+    bool isRightUp(void) const noexcept;
+    bool isRightDown(void) const noexcept;
+    bool isLeftUp(void) const noexcept;
+    bool isLeftDown(void) const noexcept;
 
     void clear(void) noexcept;
 

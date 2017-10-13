@@ -71,7 +71,15 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getPriority(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isVerbose(void) const noexcept;
+    bool isDebug(void) const noexcept;
+    bool isInfo(void) const noexcept;
+    bool isWarn(void) const noexcept;
+    bool isError(void) const noexcept;
+    bool isCritical(void) const noexcept;
+    bool isNumLogPriorities(void) const noexcept;
 
     void clear(void) noexcept;
 

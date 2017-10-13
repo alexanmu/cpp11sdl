@@ -127,6 +127,76 @@ void GfxHitTestResult::setValue(const ValueType value) noexcept
     value_ = static_cast<SdlType>(value);
 }
 
+bool GfxHitTestResult::isNormal(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_NORMAL);
+}
+
+bool GfxHitTestResult::isDraggable(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_DRAGGABLE);
+}
+
+bool GfxHitTestResult::isResizeTopLeft(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_TOPLEFT);
+}
+
+bool GfxHitTestResult::isResizeTop(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_TOP);
+}
+
+bool GfxHitTestResult::isResizeTopRight(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_TOPRIGHT);
+}
+
+bool GfxHitTestResult::isResizeRight(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_RIGHT);
+}
+
+bool GfxHitTestResult::isResizeBottomRight(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_BOTTOMRIGHT);
+}
+
+bool GfxHitTestResult::isResizeBottom(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_BOTTOM);
+}
+
+bool GfxHitTestResult::isResizeBottomLeft(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_BOTTOMLEFT);
+}
+
+bool GfxHitTestResult::isResizeLeft(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_HITTEST_RESIZE_LEFT);
+}
+
 GfxHitTestResult::ValueType GfxHitTestResult::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();

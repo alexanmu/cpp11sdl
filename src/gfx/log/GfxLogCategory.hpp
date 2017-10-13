@@ -85,7 +85,28 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getCategory(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isApplication(void) const noexcept;
+    bool isError(void) const noexcept;
+    bool isAssert(void) const noexcept;
+    bool isSystem(void) const noexcept;
+    bool isAudio(void) const noexcept;
+    bool isVideo(void) const noexcept;
+    bool isRender(void) const noexcept;
+    bool isInput(void) const noexcept;
+    bool isTest(void) const noexcept;
+    bool isReserved1(void) const noexcept;
+    bool isReserved2(void) const noexcept;
+    bool isReserved3(void) const noexcept;
+    bool isReserved4(void) const noexcept;
+    bool isReserved5(void) const noexcept;
+    bool isReserved6(void) const noexcept;
+    bool isReserved7(void) const noexcept;
+    bool isReserved8(void) const noexcept;
+    bool isReserved9(void) const noexcept;
+    bool isReserved10(void) const noexcept;
+    bool isCustom(void) const noexcept;
 
     void clear(void) noexcept;
 

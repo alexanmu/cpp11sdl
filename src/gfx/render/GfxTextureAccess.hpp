@@ -67,6 +67,12 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    ValueType getValue(void) const noexcept;
+
+    bool isStatic(void) const noexcept;
+    bool isStreaming(void) const noexcept;
+    bool isTarget(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

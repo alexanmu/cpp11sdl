@@ -70,7 +70,14 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getType(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isBackground(void) const noexcept;
+    bool isText(void) const noexcept;
+    bool isButtonBorder(void) const noexcept;
+    bool isButtonBackground(void) const noexcept;
+    bool isButtonSelected(void) const noexcept;
+    bool isMax(void) const noexcept;
 
     void clear(void) noexcept;
 

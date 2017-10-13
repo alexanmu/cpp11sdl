@@ -125,6 +125,34 @@ std::string GfxTextureAccess::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
+GfxTextureAccess::ValueType GfxTextureAccess::getValue(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return static_cast<ValueType>(access_);
+}
+
+bool GfxTextureAccess::isStatic(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (access_ == sdl2::SDL_TEXTUREACCESS_STATIC);
+}
+
+bool GfxTextureAccess::isStreaming(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (access_ == sdl2::SDL_TEXTUREACCESS_STREAMING);
+}
+
+bool GfxTextureAccess::isTarget(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (access_ == sdl2::SDL_TEXTUREACCESS_TARGET);
+}
+
 void GfxTextureAccess::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

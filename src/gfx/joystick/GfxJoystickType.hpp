@@ -73,7 +73,18 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getType(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isUnknown(void) const noexcept;
+    bool isGameController(void) const noexcept;
+    bool isWheel(void) const noexcept;
+    bool isArcadeStick(void) const noexcept;
+    bool isFlightStick(void) const noexcept;
+    bool isDancePad(void) const noexcept;
+    bool isGuitar(void) const noexcept;
+    bool isDrumKit(void) const noexcept;
+    bool isArcadePad(void) const noexcept;
+    bool isThrottle(void) const noexcept;
 
     void clear(void) noexcept;
 

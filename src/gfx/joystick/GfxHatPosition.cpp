@@ -118,11 +118,74 @@ std::string GfxHatPosition::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxHatPosition::ValueType  GfxHatPosition::getPosition(void) const noexcept
+GfxHatPosition::ValueType GfxHatPosition::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return static_cast<ValueType>(hatPosition_);
+}
+
+bool GfxHatPosition::isCentered(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_CENTERED);
+}
+
+bool GfxHatPosition::isUp(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_UP);
+}
+
+bool GfxHatPosition::isRight(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_RIGHT);
+}
+
+bool GfxHatPosition::isDown(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_DOWN);
+}
+
+bool GfxHatPosition::isLeft(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_LEFT);
+}
+
+bool GfxHatPosition::isRightUp(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_RIGHTUP);
+}
+
+bool GfxHatPosition::isRightDown(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_RIGHTDOWN);
+}
+
+bool GfxHatPosition::isLeftUp(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_LEFTUP);
+}
+
+bool GfxHatPosition::isLeftDown(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (hatPosition_ == SDL_HAT_LEFTDOWN);
 }
 
 void GfxHatPosition::clear(void) noexcept

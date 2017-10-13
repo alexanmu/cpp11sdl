@@ -128,11 +128,60 @@ std::string GfxLogPriority::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxLogPriority::ValueType GfxLogPriority::getPriority(void) const noexcept
+GfxLogPriority::ValueType GfxLogPriority::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return static_cast<ValueType>(value_);
+}
+
+bool GfxLogPriority::isVerbose(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_LOG_PRIORITY_VERBOSE);
+}
+
+bool GfxLogPriority::isDebug(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_LOG_PRIORITY_DEBUG);
+}
+
+bool GfxLogPriority::isInfo(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_LOG_PRIORITY_INFO);
+}
+
+bool GfxLogPriority::isWarn(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_LOG_PRIORITY_WARN);
+}
+
+bool GfxLogPriority::isError(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_LOG_PRIORITY_ERROR);
+}
+
+bool GfxLogPriority::isCritical(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_LOG_PRIORITY_CRITICAL);
+}
+
+bool GfxLogPriority::isNumLogPriorities(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_NUM_LOG_PRIORITIES);
 }
 
 void GfxLogPriority::clear(void) noexcept

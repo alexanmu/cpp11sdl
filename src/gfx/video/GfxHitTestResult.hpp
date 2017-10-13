@@ -75,6 +75,17 @@ public:
     void setValue(const ValueType value) noexcept;
     ValueType getValue(void) const noexcept;
 
+    bool isNormal(void) const noexcept;
+    bool isDraggable(void) const noexcept;
+    bool isResizeTopLeft(void) const noexcept;
+    bool isResizeTop(void) const noexcept;
+    bool isResizeTopRight(void) const noexcept;
+    bool isResizeRight(void) const noexcept;
+    bool isResizeBottomRight(void) const noexcept;
+    bool isResizeBottom(void) const noexcept;
+    bool isResizeBottomLeft(void) const noexcept;
+    bool isResizeLeft(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

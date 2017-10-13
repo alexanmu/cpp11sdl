@@ -70,7 +70,15 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getPowerLevel(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isUnknown(void) const noexcept;
+    bool isEmpty(void) const noexcept;
+    bool isLow(void) const noexcept;
+    bool isMedium(void) const noexcept;
+    bool isFull(void) const noexcept;
+    bool isWired(void) const noexcept;
+    bool isMax(void) const noexcept;
 
     void clear(void) noexcept;
 

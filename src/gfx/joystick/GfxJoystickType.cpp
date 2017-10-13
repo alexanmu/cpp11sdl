@@ -119,11 +119,81 @@ std::string GfxJoystickType::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxJoystickType::ValueType  GfxJoystickType::getType(void) const noexcept
+GfxJoystickType::ValueType GfxJoystickType::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return static_cast<ValueType>(type_);
+}
+
+bool GfxJoystickType::isUnknown(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_UNKNOWN);
+}
+
+bool GfxJoystickType::isGameController(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_GAMECONTROLLER);
+}
+
+bool GfxJoystickType::isWheel(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_WHEEL);
+}
+
+bool GfxJoystickType::isArcadeStick(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_ARCADE_STICK);
+}
+
+bool GfxJoystickType::isFlightStick(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_FLIGHT_STICK);
+}
+
+bool GfxJoystickType::isDancePad(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_DANCE_PAD);
+}
+
+bool GfxJoystickType::isGuitar(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_GUITAR);
+}
+
+bool GfxJoystickType::isDrumKit(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_DRUM_KIT);
+}
+
+bool GfxJoystickType::isArcadePad(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_ARCADE_PAD);
+}
+
+bool GfxJoystickType::isThrottle(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (type_ == sdl2::SDL_JOYSTICK_TYPE_THROTTLE);
 }
 
 void GfxJoystickType::clear(void) noexcept
