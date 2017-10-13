@@ -560,7 +560,7 @@ void GfxSurface::setSurfaceRLE(GfxBool const& flag) const noexcept
 
     if (surf_ != nullptr)
     {
-        ret = sdl2::SDL_SetSurfaceRLE(surf_, static_cast<int32_t>(flag.getBool()));
+        ret = sdl2::SDL_SetSurfaceRLE(surf_, static_cast<int32_t>(flag.getValue()));
         assert((ret == 1) || (ret == 0));
     }
 }
@@ -573,7 +573,7 @@ void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color)
 
     if (surf_ != nullptr)
     {
-        ret = sdl2::SDL_SetColorKey(surf_, static_cast<int32_t>(flag.getBool()), color.getColor());
+        ret = sdl2::SDL_SetColorKey(surf_, static_cast<int32_t>(flag.getValue()), color.getColor());
         assert((ret == 1) || (ret == 0));
     }
 }
@@ -720,6 +720,19 @@ rect::GfxRect GfxSurface::getClipRect(void) const noexcept
         return rect::GfxRect(r);
     }
     return rect::GfxRect();
+}
+
+GfxSurface::SdlTypePtr GfxSurface::duplicateSurface(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    SdlTypePtr ptr = nullptr;
+
+    if (surf_ != nullptr)
+    {
+        ptr = sdl2::SDL_DuplicateSurface(surf_);
+    }
+    return ptr;
 }
 
 GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& fmt,

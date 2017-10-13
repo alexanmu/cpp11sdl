@@ -283,7 +283,11 @@ public:
         kKbdIllumDown = sdl2::SDLK_KBDILLUMDOWN,
         kKbdIllumUp = sdl2::SDLK_KBDILLUMUP,
         kEject = sdl2::SDLK_EJECT,
-        kSleep = sdl2::SDLK_SLEEP
+        kSleep = sdl2::SDLK_SLEEP,
+        kApp1 = sdl2::SDLK_APP1,
+        kApp2 = sdl2::SDLK_APP2,
+        kAudioRewind = sdl2::SDLK_AUDIOREWIND,
+        kAudioFastForward = sdl2::SDLK_AUDIOFASTFORWARD
     };
 
     const int32_t kScandCodeMask = SDLK_SCANCODE_MASK;

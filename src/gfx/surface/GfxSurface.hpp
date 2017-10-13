@@ -120,6 +120,7 @@ public:
     GfxBool setClipRectOff(void) const noexcept;
     GfxBool setClipRect(rect::GfxRect const& rect) const noexcept;
     rect::GfxRect getClipRect(void) const noexcept;
+    SdlTypePtr duplicateSurface(void) const noexcept;
     SdlTypePtr convertSurface(pixels::GfxPixelFormat const& fmt, GfxSurfaceFlags const& sflags) const noexcept;
     SdlTypePtr convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten,
                                     GfxSurfaceFlags const& sflags) const noexcept;

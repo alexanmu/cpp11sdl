@@ -320,6 +320,15 @@ bool GfxWindowFlags::isPopupMenu(void) const noexcept
     return (r != 0);
 }
 
+bool GfxWindowFlags::isVulkan(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint32_t r = flags_ & sdl2::SDL_WINDOW_VULKAN;
+
+    return (r != 0);
+}
+
 /* Setters .. */
 void GfxWindowFlags::setFullscreen(void) noexcept
 {
@@ -600,6 +609,20 @@ void GfxWindowFlags::resetPopupMenu(void) noexcept
     LOG_TRACE_PRIO_LOW();
 
     flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_POPUP_MENU);
+}
+
+void GfxWindowFlags::setVulkan(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_WINDOW_VULKAN);
+}
+
+void GfxWindowFlags::resetVulkan(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_WINDOW_VULKAN);
 }
 
 void GfxWindowFlags::clear(void) noexcept

@@ -69,7 +69,9 @@ public:
         windowSkipTaskbar = sdl2::SDL_WINDOW_SKIP_TASKBAR,
         windowUtility = sdl2::SDL_WINDOW_UTILITY,
         windowTooltip = sdl2::SDL_WINDOW_TOOLTIP,
-        windowPopupMenu = sdl2::SDL_WINDOW_POPUP_MENU
+        windowPopupMenu = sdl2::SDL_WINDOW_POPUP_MENU,
+        // SDL2-2.0.6
+        windowVulkan = sdl2::SDL_WINDOW_VULKAN
     };
 
     GfxWindowFlags() noexcept;
@@ -109,6 +111,8 @@ public:
     bool isUtility(void) const noexcept;
     bool isTooltip(void) const noexcept;
     bool isPopupMenu(void) const noexcept;
+    // SDL2-2.0.6
+    bool isVulkan(void) const noexcept;
 
     void setFullscreen(void) noexcept;
     void resetFullscreen(void) noexcept;
@@ -151,6 +155,9 @@ public:
     void resetTooltip(void) noexcept;
     void setPopupMenu(void) noexcept;
     void resetPopupMenu(void) noexcept;
+    // SDL2-2.0.6
+    void setVulkan(void) noexcept;
+    void resetVulkan(void) noexcept;
 
     void clear(void) noexcept;
 
