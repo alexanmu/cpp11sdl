@@ -122,11 +122,25 @@ std::string GfxBool::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-bool GfxBool::getBool(void) const noexcept
+bool GfxBool::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return static_cast<bool>(value_);
+}
+
+bool GfxBool::isFalse(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (static_cast<bool>(value_) == false);
+}
+
+bool GfxBool::isTrue(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (static_cast<bool>(value_) == true);
 }
 
 void GfxBool::clear(void) noexcept
