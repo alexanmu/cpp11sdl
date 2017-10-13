@@ -94,23 +94,23 @@ public:
     void FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept;
     void FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) noexcept;
     void FreeImage(void * bitmap) noexcept;
-    GfxArcCoordsType GetArcCoords(void) noexcept;
+    const GfxArcCoordsType GetArcCoords(void) noexcept;
     GfxColors2 const& GetBkColor(void) noexcept;
     GfxColors2 const& GetColor(void) noexcept;
-    GfxPaletteType GetDefaultPalette(void) noexcept;
+    const GfxPaletteType GetDefaultPalette(void) noexcept;
     void GetFillPattern(char * pattern) noexcept;
-    GfxFillSettingsType GetFillSettings(void) noexcept;
+    const GfxFillSettingsType GetFillSettings(void) noexcept;
     void GetImage(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, void * bitmap) noexcept;
     void GetImage(rect::GfxRect const& r, void * bitmap) noexcept;
-    GfxLineSettingsType GetLineSettings(void) noexcept;
+    const GfxLineSettingsType GetLineSettings(void) noexcept;
     int32_t GetMaxColor(void) noexcept;
     int32_t GetMaxX(void) noexcept;
     int32_t GetMaxY(void) noexcept;
-    GfxPaletteType GetPalette(void) noexcept;
+    const GfxPaletteType GetPalette(void) noexcept;
     int32_t GetPaletteSize(void) noexcept;
     GfxColors2 const& GetPixel(rect::GfxPoint const& pt) noexcept;
-    GfxTextSettingsType GetTextSettings(void) noexcept;
-    GfxViewPortType GetViewSettings(void) noexcept;
+    const GfxTextSettingsType GetTextSettings(void) noexcept;
+    const GfxViewPortType GetViewSettings(void) noexcept;
     int32_t GetX(void) noexcept;
     int32_t GetY(void) noexcept;
     void GraphDefaults(void) noexcept;
@@ -126,7 +126,7 @@ public:
     void OutTextXY(rect::GfxPoint const& pt, GfxText const& text) noexcept;
     void OutTextXY(rect::GfxPoint const& pt, GfxText const& text, fnt::GfxBitmapFont const& font) noexcept;
     void PieSlice(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                GfxRadius const& radius) noexcept;
+                  GfxRadius const& radius) noexcept;
     void PutImage(rect::GfxPoint const& pt, void * bitmap, GfxDrawingMode const& dmode) noexcept;
     void PutPixel(rect::GfxPoint const& pt, GfxColors2 const& clr) noexcept;
     void Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept;
@@ -139,7 +139,7 @@ public:
     void SetFillPattern(uint8_t * upattern, GfxColors2 const& clr) noexcept;
     void SetFillStyle(GfxFillStyles const& pattern, GfxColors2 const& clr) noexcept;
     void SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,
-                    GfxLineThickness const& thickness) noexcept;
+                      GfxLineThickness const& thickness) noexcept;
     void SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept;
     void SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept;
     void SetTextStyle(GfxFonts const& font, GfxDirection const& direction, int32_t charsize) noexcept;

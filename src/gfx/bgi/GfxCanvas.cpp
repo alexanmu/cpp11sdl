@@ -241,7 +241,7 @@ void GfxCanvas::FreeImage(void * bitmap) noexcept
     bgi_.freeimage(bitmap);
 }
 
-GfxArcCoordsType GfxCanvas::GetArcCoords(void) noexcept
+const GfxArcCoordsType GfxCanvas::GetArcCoords(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -289,7 +289,7 @@ GfxColors2 const& GfxCanvas::GetColor(void) noexcept
     return prvColor_;
 }
 
-GfxPaletteType GfxCanvas::GetDefaultPalette(void) noexcept
+const GfxPaletteType GfxCanvas::GetDefaultPalette(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -311,7 +311,7 @@ void GfxCanvas::GetFillPattern(char * pattern) noexcept
     bgi_.getfillpattern(pattern);
 }
 
-GfxFillSettingsType GfxCanvas::GetFillSettings(void) noexcept
+const GfxFillSettingsType GfxCanvas::GetFillSettings(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -345,7 +345,7 @@ void GfxCanvas::GetImage(rect::GfxRect const& r, void * bitmap) noexcept
     bgi_.getimage(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1, bitmap);
 }
 
-GfxLineSettingsType GfxCanvas::GetLineSettings(void) noexcept
+const GfxLineSettingsType GfxCanvas::GetLineSettings(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -376,7 +376,7 @@ int32_t GfxCanvas::GetMaxY(void) noexcept
     return bgi_.getmaxy();
 }
 
-GfxPaletteType GfxCanvas::GetPalette(void) noexcept
+const GfxPaletteType GfxCanvas::GetPalette(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -403,7 +403,7 @@ GfxColors2 const& GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
     return prvColor_;
 }
 
-GfxTextSettingsType GfxCanvas::GetTextSettings(void) noexcept
+const GfxTextSettingsType GfxCanvas::GetTextSettings(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -413,7 +413,7 @@ GfxTextSettingsType GfxCanvas::GetTextSettings(void) noexcept
     return GfxTextSettingsType(textsettings);
 }
 
-GfxViewPortType GfxCanvas::GetViewSettings(void) noexcept
+const GfxViewPortType GfxCanvas::GetViewSettings(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
