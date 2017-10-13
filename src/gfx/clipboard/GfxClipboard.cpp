@@ -100,7 +100,7 @@ void GfxClipboard::setClipboardText(std::string const& str) const noexcept
     sdl2::SDL_SetClipboardText(str.c_str());
 }
 
-std::string GfxClipboard::getClipboardText(void) const noexcept
+const std::string GfxClipboard::getClipboardText(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
