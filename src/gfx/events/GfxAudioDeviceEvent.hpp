@@ -59,7 +59,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
 
     uint32_t getWhich(void) const noexcept;
     int8_t isCapture(void) const noexcept;

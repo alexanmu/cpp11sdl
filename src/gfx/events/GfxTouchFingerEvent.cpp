@@ -112,7 +112,7 @@ std::string GfxTouchFingerEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxTouchFingerEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxTouchFingerEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

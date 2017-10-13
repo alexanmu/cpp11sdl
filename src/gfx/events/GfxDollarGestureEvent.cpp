@@ -112,7 +112,7 @@ std::string GfxDollarGestureEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxDollarGestureEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxDollarGestureEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

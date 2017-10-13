@@ -111,7 +111,7 @@ std::string GfxTextInputEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxTextInputEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxTextInputEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -127,7 +127,7 @@ uint32_t GfxTextInputEvent::getWindowID(void) const noexcept
     return textInputEvent_.windowID;
 }
 
-std::string GfxTextInputEvent::getText(void) const noexcept
+const std::string GfxTextInputEvent::getText(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 

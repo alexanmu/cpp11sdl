@@ -112,7 +112,7 @@ std::string GfxAudioDeviceEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxAudioDeviceEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxAudioDeviceEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

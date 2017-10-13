@@ -43,7 +43,7 @@ class IGetCommonEvent
 public:
     virtual ~IGetCommonEvent() {}
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept = 0;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept = 0;
 };
 
 }  // namespace prv

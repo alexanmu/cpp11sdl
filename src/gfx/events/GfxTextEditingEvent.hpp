@@ -61,11 +61,11 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
 
     virtual uint32_t getWindowID(void) const noexcept;
 
-    std::string getText(void) const noexcept;
+    const std::string getText(void) const noexcept;
     int32_t getStart(void) const noexcept;
     int32_t getLength(void) const noexcept;
 

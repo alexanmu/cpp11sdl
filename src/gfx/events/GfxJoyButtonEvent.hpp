@@ -61,9 +61,9 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
 
-    virtual joystick::GfxJoystickID getJoystickID(void) const noexcept;
+    virtual const joystick::GfxJoystickID getJoystickID(void) const noexcept;
 
     uint8_t getButton(void) const noexcept;
     GfxButtonState getState(void) const noexcept;

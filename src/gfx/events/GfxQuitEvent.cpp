@@ -112,7 +112,7 @@ std::string GfxQuitEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxQuitEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxQuitEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

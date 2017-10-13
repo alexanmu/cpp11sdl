@@ -111,7 +111,7 @@ std::string GfxKeyboardEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxKeyboardEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxKeyboardEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -141,7 +141,7 @@ bool GfxKeyboardEvent::getRepeat(void) const noexcept
     return (keyboardEvent_.repeat != 0);
 }
 
-keyboard::GfxKeysym GfxKeyboardEvent::getKeysym(void) const noexcept
+const keyboard::GfxKeysym GfxKeyboardEvent::getKeysym(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -118,11 +118,32 @@ std::string GfxEventAction::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxEventAction::ValueType GfxEventAction::getAction(void) const noexcept
+GfxEventAction::ValueType GfxEventAction::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return static_cast<ValueType>(action_);
+}
+
+bool GfxEventAction::isAddEvent(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (action_ == sdl2::SDL_ADDEVENT);
+}
+
+bool GfxEventAction::isPeekEvent(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (action_ == sdl2::SDL_PEEKEVENT);
+}
+
+bool GfxEventAction::isGetEvent(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (action_ == sdl2::SDL_GETEVENT);
 }
 
 void GfxEventAction::clear(void) noexcept

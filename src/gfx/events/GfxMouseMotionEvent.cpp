@@ -112,7 +112,7 @@ std::string GfxMouseMotionEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxMouseMotionEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxMouseMotionEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -112,7 +112,7 @@ std::string GfxJoyBallEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxJoyBallEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxJoyBallEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -121,7 +121,7 @@ GfxCommonEvent GfxJoyBallEvent::getCommonEvent(void) const noexcept
     return cEv;
 }
 
-joystick::GfxJoystickID GfxJoyBallEvent::getJoystickID(void) const noexcept
+const joystick::GfxJoystickID GfxJoyBallEvent::getJoystickID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

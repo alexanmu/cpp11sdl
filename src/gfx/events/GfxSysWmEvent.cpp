@@ -112,7 +112,7 @@ std::string GfxSysWmEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxSysWmEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxSysWmEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

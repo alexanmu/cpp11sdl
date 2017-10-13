@@ -62,13 +62,13 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
 
     virtual uint32_t getWindowID(void) const noexcept;
 
     uint8_t getState(void) const noexcept;
     bool getRepeat(void) const noexcept;
-    keyboard::GfxKeysym getKeysym(void) const noexcept;
+    const keyboard::GfxKeysym getKeysym(void) const noexcept;
 
     void setValue(const SdlType event) noexcept;
 

@@ -121,7 +121,7 @@ public:
     uint32_t registerEvents(const int32_t numevents) const noexcept;
 
     GfxEventType const& eventType(void) const noexcept;
-    GfxCommonEvent commonEvent(void) const noexcept;
+    const GfxCommonEvent commonEvent(void) const noexcept;
 
     GfxQuitEvent const& quitEvent(void) const throw(std::runtime_error);
     GfxWindowEvent const& windowEvent(void) const throw(std::runtime_error);

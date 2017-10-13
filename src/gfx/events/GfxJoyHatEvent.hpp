@@ -61,12 +61,12 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
 
-    virtual joystick::GfxJoystickID getJoystickID(void) const noexcept;
+    virtual const joystick::GfxJoystickID getJoystickID(void) const noexcept;
 
     uint8_t getHat(void) const noexcept;
-    joystick::GfxHatPosition getPosition(void) const noexcept;
+    const joystick::GfxHatPosition getPosition(void) const noexcept;
 
     void setValue(const SdlType event) noexcept;
 

@@ -136,7 +136,7 @@ int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numeve
     int32_t index;
 
     eventsPtr = new SdlType[numevents];  // NOLINT
-    if (action.getAction() == GfxEventAction::ValueType::addEvent)
+    if (action.getValue() == GfxEventAction::ValueType::addEvent)
     {
         assert(events->size() > 0);
 
@@ -147,8 +147,8 @@ int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numeve
     }
     ret = sdl2::SDL_PeepEvents(eventsPtr, numevents, action.getAsSdlType(), minType.getAsSdlType(),
                                maxType.getAsSdlType());
-    if ((action.getAction() == GfxEventAction::ValueType::peekEvent) ||
-        (action.getAction() == GfxEventAction::ValueType::getEvent))
+    if ((action.getValue() == GfxEventAction::ValueType::peekEvent) ||
+        (action.getValue() == GfxEventAction::ValueType::getEvent))
     {
         events->clear();
         events->reserve(numevents);
@@ -401,7 +401,7 @@ GfxEventType const& GfxEvent::eventType(void) const noexcept
     return eventType_;
 }
 
-GfxCommonEvent GfxEvent::commonEvent(void) const noexcept
+const GfxCommonEvent GfxEvent::commonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

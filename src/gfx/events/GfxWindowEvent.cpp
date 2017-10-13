@@ -111,7 +111,7 @@ std::string GfxWindowEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxWindowEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxWindowEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -127,7 +127,7 @@ uint32_t GfxWindowEvent::getWindowID(void) const noexcept
     return windowEvent_.windowID;
 }
 
-video::GfxWindowEventID GfxWindowEvent::getWindowEventID(void) const noexcept
+const video::GfxWindowEventID GfxWindowEvent::getWindowEventID(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 

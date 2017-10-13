@@ -59,7 +59,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    GfxEventType getType(void) const noexcept;
+    const GfxEventType getType(void) const noexcept;
     uint32_t getTimeStamp(void) const noexcept;
 
     void setType(GfxEventType const& evtype) noexcept;

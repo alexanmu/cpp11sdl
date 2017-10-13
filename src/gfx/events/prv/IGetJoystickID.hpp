@@ -42,7 +42,7 @@ class IGetJoystickID
 public:
     virtual ~IGetJoystickID() {}
 
-    virtual joystick::GfxJoystickID getJoystickID(void) const noexcept = 0;
+    virtual const joystick::GfxJoystickID getJoystickID(void) const noexcept = 0;
 };
 
 }  // namespace prv

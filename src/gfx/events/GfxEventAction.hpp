@@ -65,7 +65,11 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getAction(void) const noexcept;
+    ValueType getValue(void) const noexcept;
+
+    bool isAddEvent(void) const noexcept;
+    bool isPeekEvent(void) const noexcept;
+    bool isGetEvent(void) const noexcept;
 
     void clear(void) noexcept;
 

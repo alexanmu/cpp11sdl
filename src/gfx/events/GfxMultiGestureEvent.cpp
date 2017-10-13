@@ -113,7 +113,7 @@ std::string GfxMultiGestureEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxMultiGestureEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxMultiGestureEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

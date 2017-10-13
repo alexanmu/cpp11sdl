@@ -120,7 +120,7 @@ std::string GfxCommonEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxEventType GfxCommonEvent::getType(void) const noexcept
+const GfxEventType GfxCommonEvent::getType(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 

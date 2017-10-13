@@ -60,7 +60,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
     virtual uint32_t getTouchID(void) const noexcept;
 
     float getdTetha(void) const noexcept;

@@ -112,7 +112,7 @@ std::string GfxDropEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxDropEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxDropEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -128,7 +128,7 @@ uint32_t GfxDropEvent::getWindowID(void) const noexcept
     return dEvent_.windowID;
 }
 
-std::string GfxDropEvent::getFile(void) const noexcept
+const std::string GfxDropEvent::getFile(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

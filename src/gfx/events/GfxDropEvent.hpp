@@ -60,10 +60,10 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
     virtual uint32_t getWindowID(void) const noexcept;
 
-    std::string getFile(void) const noexcept;
+    const std::string getFile(void) const noexcept;
 
     void setValue(const SdlType event) noexcept;
 

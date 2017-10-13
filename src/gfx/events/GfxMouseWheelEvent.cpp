@@ -112,7 +112,7 @@ std::string GfxMouseWheelEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxMouseWheelEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxMouseWheelEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -149,7 +149,7 @@ int32_t GfxMouseWheelEvent::getY(void) const noexcept
     return mwEvent_.y;
 }
 
-mouse::GfxMouseWheelDirection GfxMouseWheelEvent::getDirection(void) const noexcept
+const mouse::GfxMouseWheelDirection GfxMouseWheelEvent::getDirection(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

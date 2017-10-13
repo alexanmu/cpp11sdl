@@ -62,13 +62,13 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxCommonEvent getCommonEvent(void) const noexcept;
+    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
     virtual uint32_t getWindowID(void) const noexcept;
     virtual uint32_t getMouseID(void) const noexcept;
 
     int32_t getX(void) const noexcept;
     int32_t getY(void) const noexcept;
-    mouse::GfxMouseWheelDirection getDirection(void) const noexcept;
+    const mouse::GfxMouseWheelDirection getDirection(void) const noexcept;
 
     void setValue(const SdlType event) noexcept;
 

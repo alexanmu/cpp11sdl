@@ -112,7 +112,7 @@ std::string GfxMouseButtonEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxCommonEvent GfxMouseButtonEvent::getCommonEvent(void) const noexcept
+const GfxCommonEvent GfxMouseButtonEvent::getCommonEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -135,7 +135,7 @@ uint32_t GfxMouseButtonEvent::getMouseID(void) const noexcept
     return mbEvent_.which;
 }
 
-mouse::GfxButton GfxMouseButtonEvent::getButton(void) const noexcept
+const mouse::GfxButton GfxMouseButtonEvent::getButton(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
