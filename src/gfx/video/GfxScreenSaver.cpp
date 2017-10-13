@@ -45,7 +45,7 @@ GfxScreenSaver::GfxScreenSaver() noexcept : GfxObject(ClassName)
 
     GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
 
-    ssstatus_ = static_cast<ScreenSaverStatus>(status.getBool());
+    ssstatus_ = static_cast<ScreenSaverStatus>(status.getValue());
     ssinitstatus_ = ssstatus_;
 }
 

@@ -48,8 +48,8 @@ public:
         assert(cat);
         assert(prio);
 
-        int32_t icat = static_cast<int32_t>(cat.getCategory());
-        int32_t iprio = static_cast<int32_t>(prio.getPriority());
+        int32_t icat = static_cast<int32_t>(cat.getValue());
+        int32_t iprio = static_cast<int32_t>(prio.getValue());
         std::cout << "<" << icat << "," << iprio << " " << message << ">" << std::endl;
     }
 };

@@ -174,6 +174,10 @@
 		790638E81F13E674000F603B /* GfxJoyButtonEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DB1F13E662000F603B /* GfxJoyButtonEvent.cpp */; };
 		790638E91F13E677000F603B /* GfxJoyDeviceEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DD1F13E662000F603B /* GfxJoyDeviceEvent.cpp */; };
 		790638EA1F13E679000F603B /* GfxJoyHatEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790638DF1F13E662000F603B /* GfxJoyHatEvent.cpp */; };
+		790702081F906C5C00CD8E64 /* GfxBlendFactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790702041F906C5C00CD8E64 /* GfxBlendFactor.cpp */; };
+		790702091F906C5C00CD8E64 /* GfxBlendOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790702061F906C5C00CD8E64 /* GfxBlendOperation.cpp */; };
+		7907020A1F906C6500CD8E64 /* GfxBlendFactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790702041F906C5C00CD8E64 /* GfxBlendFactor.cpp */; };
+		7907020B1F906C6800CD8E64 /* GfxBlendOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790702061F906C5C00CD8E64 /* GfxBlendOperation.cpp */; };
 		790BB03B1EF440EF00B4F46B /* GfxRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */; };
 		790BB03C1EF440EF00B4F46B /* GfxTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB0391EF440EF00B4F46B /* GfxTexture.cpp */; };
 		790BB0441EF4410700B4F46B /* GfxHintCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790BB03E1EF4410700B4F46B /* GfxHintCallback.cpp */; };
@@ -590,6 +594,10 @@
 		790638DF1F13E662000F603B /* GfxJoyHatEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoyHatEvent.cpp; path = gfx/events/GfxJoyHatEvent.cpp; sourceTree = "<group>"; };
 		790638E01F13E662000F603B /* GfxJoyHatEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoyHatEvent.hpp; path = gfx/events/GfxJoyHatEvent.hpp; sourceTree = "<group>"; };
 		790638EB1F13E8FA000F603B /* IGetJoystickID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IGetJoystickID.hpp; path = gfx/events/prv/IGetJoystickID.hpp; sourceTree = "<group>"; };
+		790702041F906C5C00CD8E64 /* GfxBlendFactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlendFactor.cpp; path = blendmode/GfxBlendFactor.cpp; sourceTree = "<group>"; };
+		790702051F906C5C00CD8E64 /* GfxBlendFactor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendFactor.hpp; path = blendmode/GfxBlendFactor.hpp; sourceTree = "<group>"; };
+		790702061F906C5C00CD8E64 /* GfxBlendOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxBlendOperation.cpp; path = blendmode/GfxBlendOperation.cpp; sourceTree = "<group>"; };
+		790702071F906C5C00CD8E64 /* GfxBlendOperation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxBlendOperation.hpp; path = blendmode/GfxBlendOperation.hpp; sourceTree = "<group>"; };
 		790BB0371EF440EF00B4F46B /* GfxRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxRenderer.cpp; path = render/GfxRenderer.cpp; sourceTree = "<group>"; };
 		790BB0381EF440EF00B4F46B /* GfxRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxRenderer.hpp; path = render/GfxRenderer.hpp; sourceTree = "<group>"; };
 		790BB0391EF440EF00B4F46B /* GfxTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxTexture.cpp; path = render/GfxTexture.cpp; sourceTree = "<group>"; };
@@ -1203,8 +1211,12 @@
 		198015DD1EDF279D00AEDB49 /* blendmode */ = {
 			isa = PBXGroup;
 			children = (
+				790702041F906C5C00CD8E64 /* GfxBlendFactor.cpp */,
+				790702051F906C5C00CD8E64 /* GfxBlendFactor.hpp */,
 				198015DE1EDF27AC00AEDB49 /* GfxBlendMode.cpp */,
 				198015DF1EDF27AC00AEDB49 /* GfxBlendMode.hpp */,
+				790702061F906C5C00CD8E64 /* GfxBlendOperation.cpp */,
+				790702071F906C5C00CD8E64 /* GfxBlendOperation.hpp */,
 			);
 			name = blendmode;
 			sourceTree = "<group>";
@@ -1750,6 +1762,7 @@
 				194648C81EEC2DF100299B55 /* GfxPoint.cpp in Sources */,
 				796543A01EFB78140086FBD1 /* GfxKeysym.cpp in Sources */,
 				194648CA1EEC2DFB00299B55 /* GfxGetRendererInfo.cpp in Sources */,
+				7907020A1F906C6500CD8E64 /* GfxBlendFactor.cpp in Sources */,
 				194648F31EEC2EBD00299B55 /* GGraphicControl.cpp in Sources */,
 				79A30A881F112AD700F7A4EF /* GfxMouseMotionEvent.cpp in Sources */,
 				7994CC781F0FE1B000DF5B94 /* GfxJoystick.cpp in Sources */,
@@ -1838,6 +1851,7 @@
 				7965439E1EFB78040086FBD1 /* Keyboard.cpp in Sources */,
 				194648BF1EEC2DB700299B55 /* GfxPackedLayout.cpp in Sources */,
 				194648C61EEC2DE800299B55 /* GfxPowerInfo.cpp in Sources */,
+				7907020B1F906C6800CD8E64 /* GfxBlendOperation.cpp in Sources */,
 				194648D31EEC2E2700299B55 /* GfxTtfFont.cpp in Sources */,
 				194648B21EEC2D7000299B55 /* GfxLogCategory.cpp in Sources */,
 				796309291F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */,
@@ -1953,6 +1967,7 @@
 				794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */,
 				7902A0211EF82D3700513746 /* GfxWindowEvent.cpp in Sources */,
 				79AA78CB1F5D68F400FEA20C /* GfxTouchFingerEvent.cpp in Sources */,
+				790702081F906C5C00CD8E64 /* GfxBlendFactor.cpp in Sources */,
 				19D5E7021EE56F38000E187B /* GfxMeta.cpp in Sources */,
 				7922FC4E1EE3C736001D91A6 /* GfxBitmapFont.cpp in Sources */,
 				796D33FA1EE06AB40013C496 /* GfxFontInfo.cpp in Sources */,
@@ -2053,6 +2068,7 @@
 				79C387691EE85F69003EDE07 /* GfxLogPriority.cpp in Sources */,
 				19B8D2D61EF6B62B00102304 /* GColorScheme.cpp in Sources */,
 				1980161D1EDF283C00AEDB49 /* GfxWindowFlags.cpp in Sources */,
+				790702091F906C5C00CD8E64 /* GfxBlendOperation.cpp in Sources */,
 				798C0C6F1EF9799A006F1EEB /* GFolderObject.cpp in Sources */,
 				791EAD831EDCB9BE0032ED1D /* GForm.cpp in Sources */,
 				198015E41EDF27C500AEDB49 /* GfxClipboard.cpp in Sources */,

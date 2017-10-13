@@ -128,7 +128,7 @@ void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxM
     assert(type);
     assert(color);
 
-    int32_t index = static_cast<int32_t>(type.getType());
+    int32_t index = static_cast<int32_t>(type.getValue());
 
     clrscheme_.colors[index] = color.getAsSdlType();
 }
