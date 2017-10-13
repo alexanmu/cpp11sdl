@@ -125,6 +125,302 @@ GfxPixelFormatEnum::ValueType GfxPixelFormatEnum::getValue(void) const noexcept
     return static_cast<ValueType>(value_);
 }
 
+bool GfxPixelFormatEnum::isUnknown(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_UNKNOWN);
+}
+
+bool GfxPixelFormatEnum::isIndex1LSB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_INDEX1LSB);
+}
+
+bool GfxPixelFormatEnum::isIndex1MSB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_INDEX1MSB);
+}
+
+bool GfxPixelFormatEnum::isIndex4LSB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_INDEX4LSB);
+}
+
+bool GfxPixelFormatEnum::isIndex4MSB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_INDEX4MSB);
+}
+
+bool GfxPixelFormatEnum::isIndex8(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_INDEX8);
+}
+
+bool GfxPixelFormatEnum::isRGB332(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGB332);
+}
+
+bool GfxPixelFormatEnum::isRGB444(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGB444);
+}
+
+bool GfxPixelFormatEnum::isRGB555(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGB555);
+}
+
+bool GfxPixelFormatEnum::isBGR555(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGR555);
+}
+
+bool GfxPixelFormatEnum::isARGB4444(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ARGB4444);
+}
+
+bool GfxPixelFormatEnum::isRGBA4444(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGBA4444);
+}
+
+bool GfxPixelFormatEnum::isABGR4444(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ABGR4444);
+}
+
+bool GfxPixelFormatEnum::isBGRA4444(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGRA4444);
+}
+
+bool GfxPixelFormatEnum::isARGB1555(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ARGB1555);
+}
+
+bool GfxPixelFormatEnum::isRGBA5551(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGBA5551);
+}
+
+bool GfxPixelFormatEnum::isABGR1555(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ABGR1555);
+}
+
+bool GfxPixelFormatEnum::isBGRA5551(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGRA5551);
+}
+
+bool GfxPixelFormatEnum::isRGB565(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGB565);
+}
+
+bool GfxPixelFormatEnum::isBGR565(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGR565);
+}
+
+bool GfxPixelFormatEnum::isRGB24(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGB24);
+}
+
+bool GfxPixelFormatEnum::isBGR24(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGR24);
+}
+
+bool GfxPixelFormatEnum::isRGB888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGB888);
+}
+
+bool GfxPixelFormatEnum::isRGBX8888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGBX8888);
+}
+
+bool GfxPixelFormatEnum::isBGR888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGR888);
+}
+
+bool GfxPixelFormatEnum::isBGRX8888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGRX8888);
+}
+
+bool GfxPixelFormatEnum::isARGB8888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ARGB8888);
+}
+
+bool GfxPixelFormatEnum::isRGBA8888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGBA8888);
+}
+
+bool GfxPixelFormatEnum::isABGR8888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ABGR8888);
+}
+
+bool GfxPixelFormatEnum::isBGRA8888(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGRA8888);
+}
+
+bool GfxPixelFormatEnum::isARGB2101010(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ARGB2101010);
+}
+
+bool GfxPixelFormatEnum::isRGBA32(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_RGBA32);
+}
+
+bool GfxPixelFormatEnum::isARGB32(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ARGB32);
+}
+
+bool GfxPixelFormatEnum::isBGRA32(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_BGRA32);
+}
+
+bool GfxPixelFormatEnum::isABGR32(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_ABGR32);
+}
+
+bool GfxPixelFormatEnum::isYV12(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_YV12);
+}
+
+bool GfxPixelFormatEnum::isIYUV(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_IYUV);
+}
+
+bool GfxPixelFormatEnum::isYUY2(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_YUY2);
+}
+
+bool GfxPixelFormatEnum::isUYVY(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_UYVY);
+}
+
+bool GfxPixelFormatEnum::isYVYU(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_YVYU);
+}
+
+bool GfxPixelFormatEnum::isNV12(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_NV12);
+}
+
+
+bool GfxPixelFormatEnum::isNV21(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_NV21);
+}
+
+
 void GfxPixelFormatEnum::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

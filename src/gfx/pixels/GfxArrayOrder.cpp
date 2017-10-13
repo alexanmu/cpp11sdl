@@ -125,6 +125,55 @@ GfxArrayOrder::ValueType GfxArrayOrder::getValue(void) const noexcept
     return static_cast<ValueType>(value_);
 }
 
+bool GfxArrayOrder::isNone(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_NONE);
+}
+
+bool GfxArrayOrder::isRGB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_RGB);
+}
+
+bool GfxArrayOrder::isRGBA(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_RGBA);
+}
+
+bool GfxArrayOrder::isARGB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_ARGB);
+}
+
+bool GfxArrayOrder::isBGR(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_BGR);
+}
+
+bool GfxArrayOrder::isBGRA(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_BGRA);
+}
+
+bool GfxArrayOrder::isABGR(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_ARRAYORDER_ABGR);
+}
+
 void GfxArrayOrder::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

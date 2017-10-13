@@ -45,7 +45,7 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    enum class ValueType : uint32_t
+    enum class ValueType : int32_t
     {
         pixelTypeUnknown = sdl2::SDL_PIXELTYPE_UNKNOWN,
         pixelTypeIndex1 = sdl2::SDL_PIXELTYPE_INDEX1,
@@ -75,6 +75,19 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
+
+    bool isUnknwon(void) const noexcept;
+    bool isIndex1(void) const noexcept;
+    bool isIndex4(void) const noexcept;
+    bool isIndex8(void) const noexcept;
+    bool isPacked8(void) const noexcept;
+    bool isPacked16(void) const noexcept;
+    bool isPacked32(void) const noexcept;
+    bool isArrayU8(void) const noexcept;
+    bool isArrayU16(void) const noexcept;
+    bool isArrayU32(void) const noexcept;
+    bool isArrayF16(void) const noexcept;
+    bool isArrayF32(void) const noexcept;
 
     void clear(void) noexcept;
 

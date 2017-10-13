@@ -125,6 +125,27 @@ GfxBitmapOrder::ValueType GfxBitmapOrder::getValue(void) const noexcept
     return static_cast<ValueType>(value_);
 }
 
+bool GfxBitmapOrder::isNone(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_BITMAPORDER_NONE);
+}
+
+bool GfxBitmapOrder::is4321(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_BITMAPORDER_4321);
+}
+
+bool GfxBitmapOrder::is1234(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_BITMAPORDER_1234);
+}
+
 void GfxBitmapOrder::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

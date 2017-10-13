@@ -67,6 +67,10 @@ public:
 
     ValueType getValue(void) const noexcept;
 
+    bool isNone(void) const noexcept;
+    bool is4321(void) const noexcept;
+    bool is1234(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

@@ -125,6 +125,69 @@ GfxPackedOrder::ValueType GfxPackedOrder::getValue(void) const noexcept
     return static_cast<ValueType>(value_);
 }
 
+bool GfxPackedOrder::isNone(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_NONE);
+}
+
+bool GfxPackedOrder::isXRGB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_XRGB);
+}
+
+bool GfxPackedOrder::isRGBX(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_RGBX);
+}
+
+bool GfxPackedOrder::isARGB(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_ARGB);
+}
+
+bool GfxPackedOrder::isRGBA(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_RGBA);
+}
+
+bool GfxPackedOrder::isXBGR(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_XBGR);
+}
+
+bool GfxPackedOrder::isBGRX(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_BGRX);
+}
+
+bool GfxPackedOrder::isABGR(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_ABGR);
+}
+
+bool GfxPackedOrder::isBGRA(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PACKEDORDER_BGRA);
+}
+
 void GfxPackedOrder::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

@@ -45,7 +45,7 @@ public:
     static const bool SdlResource = false;
     static const bool CallsSdl = false;
 
-    enum class ValueType : uint32_t
+    enum class ValueType : int32_t
     {
         packedOrderNone = sdl2::SDL_PACKEDORDER_NONE,
         packedOrderXRGB = sdl2::SDL_PACKEDORDER_XRGB,
@@ -72,6 +72,16 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
+
+    bool isNone(void) const noexcept;
+    bool isXRGB(void) const noexcept;
+    bool isRGBX(void) const noexcept;
+    bool isARGB(void) const noexcept;
+    bool isRGBA(void) const noexcept;
+    bool isXBGR(void) const noexcept;
+    bool isBGRX(void) const noexcept;
+    bool isABGR(void) const noexcept;
+    bool isBGRA(void) const noexcept;
 
     void clear(void) noexcept;
 

@@ -106,6 +106,49 @@ public:
 
     ValueType getValue(void) const noexcept;
 
+    bool isUnknown(void) const noexcept;
+    bool isIndex1LSB(void) const noexcept;
+    bool isIndex1MSB(void) const noexcept;
+    bool isIndex4LSB(void) const noexcept;
+    bool isIndex4MSB(void) const noexcept;
+    bool isIndex8(void) const noexcept;
+    bool isRGB332(void) const noexcept;
+    bool isRGB444(void) const noexcept;
+    bool isRGB555(void) const noexcept;
+    bool isBGR555(void) const noexcept;
+    bool isARGB4444(void) const noexcept;
+    bool isRGBA4444(void) const noexcept;
+    bool isABGR4444(void) const noexcept;
+    bool isBGRA4444(void) const noexcept;
+    bool isARGB1555(void) const noexcept;
+    bool isRGBA5551(void) const noexcept;
+    bool isABGR1555(void) const noexcept;
+    bool isBGRA5551(void) const noexcept;
+    bool isRGB565(void) const noexcept;
+    bool isBGR565(void) const noexcept;
+    bool isRGB24(void) const noexcept;
+    bool isBGR24(void) const noexcept;
+    bool isRGB888(void) const noexcept;
+    bool isRGBX8888(void) const noexcept;
+    bool isBGR888(void) const noexcept;
+    bool isBGRX8888(void) const noexcept;
+    bool isARGB8888(void) const noexcept;
+    bool isRGBA8888(void) const noexcept;
+    bool isABGR8888(void) const noexcept;
+    bool isBGRA8888(void) const noexcept;
+    bool isARGB2101010(void) const noexcept;
+    bool isRGBA32(void) const noexcept;
+    bool isARGB32(void) const noexcept;
+    bool isBGRA32(void) const noexcept;
+    bool isABGR32(void) const noexcept;
+    bool isYV12(void) const noexcept;
+    bool isIYUV(void) const noexcept;
+    bool isYUY2(void) const noexcept;
+    bool isUYVY(void) const noexcept;
+    bool isYVYU(void) const noexcept;
+    bool isNV12(void) const noexcept;
+    bool isNV21(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;

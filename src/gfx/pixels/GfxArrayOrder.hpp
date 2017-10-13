@@ -71,6 +71,14 @@ public:
 
     ValueType getValue(void) const noexcept;
 
+    bool isNone(void) const noexcept;
+    bool isRGB(void) const noexcept;
+    bool isRGBA(void) const noexcept;
+    bool isARGB(void) const noexcept;
+    bool isBGR(void) const noexcept;
+    bool isBGRA(void) const noexcept;
+    bool isABGR(void) const noexcept;
+
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
