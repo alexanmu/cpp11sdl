@@ -107,7 +107,12 @@ public:
         hintWindowsDisableThreadNaming = 53,
         hintRPIVideoLayer = 54,
         hintOpenGLESVideoDriver = 55,
-        hintAudioResamplingMode = 56
+        hintAudioResamplingMode = 56,
+        hintWindowIntResourceIcon = 57,
+        hintWindowIntResourceIconSmall = 58,
+        hintTouchMouseEvents = 59,
+        hintGameControllerIgnoreDevices = 60,
+        hintGameControllerIgnoreDevicesExcept = 61
     };
 
     GfxHints() noexcept;

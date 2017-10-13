@@ -96,8 +96,13 @@ const std::vector<std::pair<GfxHints::ValueType, const char *>> GfxHints::hintsM
     { /* 52 */ GfxHints::ValueType::hintBmpSaveLegacyFormat, SDL_HINT_BMP_SAVE_LEGACY_FORMAT },
     { /* 53 */ GfxHints::ValueType::hintWindowsDisableThreadNaming, SDL_HINT_WINDOWS_DISABLE_THREAD_NAMING },
     { /* 54 */ GfxHints::ValueType::hintRPIVideoLayer, SDL_HINT_RPI_VIDEO_LAYER },
-    { /* 55 */ GfxHints::ValueType::hintOpenGLESVideoDriver, SDL_HINT_OPENGLES_VIDEO_DRIVER },
-    { /* 56 */ GfxHints::ValueType::hintAudioResamplingMode, SDL_HINT_AUDIO_RESAMPLING_MODE }
+    { /* 55 */ GfxHints::ValueType::hintOpenGLESVideoDriver, SDL_HINT_OPENGL_ES_DRIVER },
+    { /* 56 */ GfxHints::ValueType::hintAudioResamplingMode, SDL_HINT_AUDIO_RESAMPLING_MODE },
+    { /* 57 */ GfxHints::ValueType::hintWindowIntResourceIcon, SDL_HINT_WINDOWS_INTRESOURCE_ICON },
+    { /* 58 */ GfxHints::ValueType::hintWindowIntResourceIconSmall, SDL_HINT_WINDOWS_INTRESOURCE_ICON_SMALL },
+    { /* 59 */ GfxHints::ValueType::hintTouchMouseEvents, SDL_HINT_TOUCH_MOUSE_EVENTS },
+    { /* 60 */ GfxHints::ValueType::hintGameControllerIgnoreDevices, SDL_HINT_GAMECONTROLLER_IGNORE_DEVICES },
+    { /* 61 */ GfxHints::ValueType::hintGameControllerIgnoreDevicesExcept, SDL_HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT }  // NOLINT
 };
 
 GfxHints::GfxHints() noexcept : GfxObject(ClassName)
