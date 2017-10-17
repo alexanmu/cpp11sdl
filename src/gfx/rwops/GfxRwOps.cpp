@@ -30,7 +30,7 @@
 #include "GfxRwOps.hpp"
 #include "GfxBasicLogger.hpp"
 
-LOG_TRACE_MODULE_NAME("gfxrwops::scancode::gfx");
+LOG_TRACE_MODULE_NAME("gfxrwops::rwops::gfx");
 
 namespace gfx
 {
@@ -135,7 +135,7 @@ const GfxRwOps GfxRwOps::rwFromFP(void * fp, GfxBool const& autoclose)
 
     GfxRwOps::SdlTypePtr rwops = nullptr;
 
-#warning "Find a smart way to avoid conditional compilation here."
+#warning Find a smart way to avoid conditional compilation here.
 
 #ifdef HAVE_STDIO_H
     rwops = sdl2::SDL_RWFromFP(static_cast<FILE *>(fp), autoclose.getAsSdlType());
