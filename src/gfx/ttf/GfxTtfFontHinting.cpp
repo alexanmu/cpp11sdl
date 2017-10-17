@@ -52,7 +52,7 @@ GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noe
     hinting_ = static_cast<SdlType>(hinting);
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(SdlType hinting) noexcept : GfxObject(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(const SdlType hinting) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 

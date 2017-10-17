@@ -55,7 +55,7 @@ public:
 
     GfxTtfFontHinting() noexcept;
     explicit GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept;
-    explicit GfxTtfFontHinting(SdlType hinting) noexcept;
+    explicit GfxTtfFontHinting(const SdlType hinting) noexcept;
 
     GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept;
     GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept;
