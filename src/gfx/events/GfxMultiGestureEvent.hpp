@@ -61,7 +61,7 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
-    virtual uint32_t getTouchID(void) const noexcept;
+    virtual const touch::GfxTouchID getTouchID(void) const noexcept;
 
     float getdTetha(void) const noexcept;
     float getdDist(void) const noexcept;

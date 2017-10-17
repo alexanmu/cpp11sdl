@@ -121,11 +121,11 @@ const GfxCommonEvent GfxDollarGestureEvent::getCommonEvent(void) const noexcept
     return cEv;
 }
 
-uint32_t GfxDollarGestureEvent::getTouchID(void) const noexcept
+const touch::GfxTouchID GfxDollarGestureEvent::getTouchID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return dgEvent_.touchId;
+    return touch::GfxTouchID(dgEvent_.touchId);
 }
 
 uint32_t GfxDollarGestureEvent::getGestureID(void) const noexcept

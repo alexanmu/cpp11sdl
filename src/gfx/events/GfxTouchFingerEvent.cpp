@@ -121,18 +121,18 @@ const GfxCommonEvent GfxTouchFingerEvent::getCommonEvent(void) const noexcept
     return cEv;
 }
 
-uint32_t GfxTouchFingerEvent::getTouchID(void) const noexcept
+const touch::GfxTouchID GfxTouchFingerEvent::getTouchID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return tfEvent_.touchId;
+    return touch::GfxTouchID(tfEvent_.touchId);
 }
 
-uint32_t GfxTouchFingerEvent::getFingerID(void) const noexcept
+const touch::GfxFingerID GfxTouchFingerEvent::getFingerID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return tfEvent_.fingerId;
+    return touch::GfxFingerID(tfEvent_.fingerId);
 }
 
 float GfxTouchFingerEvent::getX(void) const noexcept

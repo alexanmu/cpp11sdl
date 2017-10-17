@@ -31,6 +31,8 @@
 #include "IGetCommonEvent.hpp"
 #include "GfxEventType.hpp"
 #include "GfxCommonEvent.hpp"
+#include "GfxTouchID.hpp"
+#include "GfxFingerID.hpp"
 
 namespace gfx
 {
@@ -60,9 +62,9 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
-    virtual uint32_t getTouchID(void) const noexcept;
+    virtual const touch::GfxTouchID getTouchID(void) const noexcept;
 
-    uint32_t getFingerID(void) const noexcept;
+    const touch::GfxFingerID getFingerID(void) const noexcept;
     float getX(void) const noexcept;
     float getY(void) const noexcept;
     float getdX(void) const noexcept;

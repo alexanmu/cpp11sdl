@@ -122,11 +122,11 @@ const GfxCommonEvent GfxMultiGestureEvent::getCommonEvent(void) const noexcept
     return cEv;
 }
 
-uint32_t GfxMultiGestureEvent::getTouchID(void) const noexcept
+const touch::GfxTouchID GfxMultiGestureEvent::getTouchID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return mgEvent_.touchId;
+    return touch::GfxTouchID(mgEvent_.touchId);
 }
 
 float GfxMultiGestureEvent::getdTetha(void) const noexcept

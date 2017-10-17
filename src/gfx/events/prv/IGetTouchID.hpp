@@ -26,6 +26,8 @@
 
 #include <cstdint>
 
+#include "GfxTouchID.hpp"
+
 namespace gfx
 {
 
@@ -40,7 +42,7 @@ class IGetTouchID
 public:
     virtual ~IGetTouchID() {}
 
-    virtual uint32_t getTouchID(void) const noexcept = 0;
+    virtual const touch::GfxTouchID getTouchID(void) const noexcept = 0;
 };
 
 }  // namespace prv
