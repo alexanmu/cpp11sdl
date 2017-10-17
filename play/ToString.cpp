@@ -172,6 +172,11 @@
 #include "GfxGameController.hpp"  // 2017.10.06
 #include "GfxBlendOperation.hpp"  // 2017.10.11
 #include "GfxBlendFactor.hpp"  // 2017.10.11
+#include "GfxTouchID.hpp"  // 2017.10.17
+#include "GfxFingerID.hpp"  // 2017.10.17
+#include "GfxFinger.hpp"  // 2017.10.17
+#include "GfxTouch.hpp"  // 2017.10.17
+#include "GfxRwOps.hpp"  // 2017.10.17"
 
 struct ToStringStruct
 {
@@ -450,7 +455,14 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerAxis>() },  // 2017.10.06
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerButton>()   },  // 2017.10.06
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerButtonBind>()   },  // 2017.10.06
-    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameController>() }  // 2017.10.06
+    {   prv::makeStringStruct<gfx::gamecontroller::GfxGameController>() },  // 2017.10.06
+    // gfx::touch
+    {   prv::makeStringStruct<gfx::touch::GfxTouchID>()             },  // 2017.10.17
+    {   prv::makeStringStruct<gfx::touch::GfxFingerID>()            },  // 2017.10.17
+    {   prv::makeStringStruct<gfx::touch::GfxFinger>()              },  // 2017.10.17
+    {   prv::makeStringStruct<gfx::touch::GfxTouch>()               },  // 2017.10.17
+    // gfx::rwops
+    {   prv::makeStringStruct<gfx::rwops::GfxRwOps>()               }  // 2017.10.17
 };
 
 void _doToString(void)
