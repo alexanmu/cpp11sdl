@@ -1,0 +1,359 @@
+{
+   global-stuff-1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_GLOBAL__sub_I_eh_alloc.cc
+   obj:/var/fpwork/goros/cpp11work/tool_v4/tool
+   obj:/var/fpwork/goros/cpp11work/tool_v4/tool
+}
+
+
+
+{
+   supp-realloc-1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:realloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+   fun:_Z7_doGAppv
+}
+
+{
+   supp-calloc-1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+   fun:_Z7_doGAppv
+}
+
+{
+   supp-malloc-1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+}
+
+{
+   supp-malloc-2
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+}
+
+{
+   supp-malloc-3
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:*
+   obj:*                                                                        
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+}
+
+{
+   supp-malloc-4
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+}
+
+{
+   supp-malloc-5
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+}
+
+{
+   supp-malloc-6
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+}
+
+{
+   supp-malloc-7
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+
+{
+   supp-malloc-8
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+}
+
+{
+   supp-calloc-2
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+}
+
+{
+   supp-calloc-3
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+}
+
+{
+   supp-malloc-9
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+}
+
+{
+   supp-realloc-2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:realloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+}
+
+{
+   supp-realloc-3
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+
+{
+   supp-calloc-4
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+}
+
+{
+   supp-calloc-5
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:X11_VideoInit
+   fun:SDL_VideoInit_REAL
+   fun:SDL_InitSubSystem_REAL
+   fun:SDL_Init_REAL
+   fun:_ZN3gfx11GfxInitQuitC1ERKNS_12GfxInitFlagsE
+   fun:_ZN6giotto7objects12GApplication3runEv
+}
+
+{
+   supp-calloc-all
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:calloc
+   ...
+   fun:SDL_Init_REAL
+   ...
+}
+
+{
+   supp-malloc-all
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:malloc
+   ...
+   fun:SDL_Init_REAL
+   ...
+}
+
+{
+   supp-realloc-all
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:realloc
+   ...
+   fun:SDL_Init_REAL
+   ...
+}
