@@ -32,6 +32,7 @@
 #include "IGetTouchID.hpp"
 #include "GfxEventType.hpp"
 #include "GfxCommonEvent.hpp"
+#include "GfxGestureID.hpp"
 
 namespace gfx
 {
@@ -63,7 +64,7 @@ public:
     virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
     virtual const touch::GfxTouchID getTouchID(void) const noexcept;
 
-    uint32_t getGestureID(void) const noexcept;
+    const gesture::GfxGestureID getGestureID(void) const noexcept;
     uint32_t getNumFingers(void) const noexcept;
     float getError(void) const noexcept;
     float getX(void) const noexcept;

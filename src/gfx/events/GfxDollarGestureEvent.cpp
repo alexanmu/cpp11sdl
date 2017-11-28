@@ -128,11 +128,11 @@ const touch::GfxTouchID GfxDollarGestureEvent::getTouchID(void) const noexcept
     return touch::GfxTouchID(dgEvent_.touchId);
 }
 
-uint32_t GfxDollarGestureEvent::getGestureID(void) const noexcept
+const gesture::GfxGestureID GfxDollarGestureEvent::getGestureID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return dgEvent_.gestureId;
+    return gesture::GfxGestureID(dgEvent_.gestureId);
 }
 
 uint32_t GfxDollarGestureEvent::getNumFingers(void) const noexcept
