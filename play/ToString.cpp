@@ -176,7 +176,14 @@
 #include "GfxFingerID.hpp"  // 2017.10.17
 #include "GfxFinger.hpp"  // 2017.10.17
 #include "GfxTouch.hpp"  // 2017.10.17
-#include "GfxRwOps.hpp"  // 2017.10.17"
+#include "GfxRwOps.hpp"  // 2017.10.17
+#include "GfxGestureID.hpp"  // 2017.11.13
+#include "GfxGesture.hpp"  // 2017.11.13
+#include "GfxHapticDirection.hpp"  // 2017.11.13
+#include "GfxHapticCoordinates.hpp"  // 2017.11.13
+#include "GfxHapticEffectType.hpp"  // 2017.11.13
+#include "GfxHapticConstant.hpp"  // 2017.11.13
+#include "GfxHapticPeriodic.hpp"  // 2017.11.13
 
 struct ToStringStruct
 {
@@ -462,7 +469,16 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::touch::GfxFinger>()              },  // 2017.10.17
     {   prv::makeStringStruct<gfx::touch::GfxTouch>()               },  // 2017.10.17
     // gfx::rwops
-    {   prv::makeStringStruct<gfx::rwops::GfxRwOps>()               }  // 2017.10.17
+    {   prv::makeStringStruct<gfx::rwops::GfxRwOps>()               },  // 2017.10.17
+    // gfx::gesture
+    {   prv::makeStringStruct<gfx::gesture::GfxGestureID>()         },  // 2017.11.13
+    {   prv::makeStringStruct<gfx::gesture::GfxGesture>()           },  // 2017.11.13
+    // gfx::haptic
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticDirection>()    },  // 2017.11.13
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticCoordinates>()  },  // 2017.11.13
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticEffectType>()   },  // 2017.11.13
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticConstant>()     },  // 2017.11.13
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticPeriodic>()     }  // 2017.11.13
 };
 
 void _doToString(void)

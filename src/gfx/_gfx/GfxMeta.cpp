@@ -177,7 +177,14 @@
 #include "GfxFingerID.hpp"  // 2017.10.17
 #include "GfxFinger.hpp"  // 2017.10.17
 #include "GfxTouch.hpp"  // 2017.10.17
-#include "GfxRwOps.hpp"  // 2017.10.17"
+#include "GfxRwOps.hpp"  // 2017.10.17
+#include "GfxGestureID.hpp"  // 2017.11.13
+#include "GfxGesture.hpp"  // 2017.11.13
+#include "GfxHapticDirection.hpp"  // 2017.11.13
+#include "GfxHapticCoordinates.hpp"  // 2017.11.13
+#include "GfxHapticEffectType.hpp"  // 2017.11.13
+#include "GfxHapticConstant.hpp"  // 2017.11.13
+#include "GfxHapticPeriodic.hpp"  // 2017.11.13
 
 namespace gfx
 {
@@ -496,7 +503,16 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::touch::GfxFinger>()             },  // 2017.10.17
     {   prv::makeClassInfo<gfx::touch::GfxTouch>()              },  // 2017.10.17
     // gfx::rwops
-    {   prv::makeClassInfo<gfx::rwops::GfxRwOps>()              }  // 2017.10.17
+    {   prv::makeClassInfo<gfx::rwops::GfxRwOps>()              },  // 2017.10.17
+    // gfx::gesture
+    {   prv::makeClassInfo<gfx::gesture::GfxGestureID>()        },  // 2017.11.13
+    {   prv::makeClassInfo<gfx::gesture::GfxGesture>()          },  // 2017.11.13
+    // gfx::haptic
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticDirection>()   },  // 2017.11.13
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticCoordinates>() },  // 2017.11.13
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticEffectType>()  },  // 2017.11.13
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticConstant>()    },  // 2017.11.13
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticPeriodic>()    }  // 2017.11.13
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /
