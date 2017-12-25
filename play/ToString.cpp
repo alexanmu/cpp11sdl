@@ -184,6 +184,7 @@
 #include "GfxHapticEffectType.hpp"  // 2017.11.13
 #include "GfxHapticConstant.hpp"  // 2017.11.13
 #include "GfxHapticPeriodic.hpp"  // 2017.11.13
+#include "GfxHapticRamp.hpp"  // 2017.12.25
 
 struct ToStringStruct
 {
@@ -478,7 +479,8 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::haptic::GfxHapticCoordinates>()  },  // 2017.11.13
     {   prv::makeStringStruct<gfx::haptic::GfxHapticEffectType>()   },  // 2017.11.13
     {   prv::makeStringStruct<gfx::haptic::GfxHapticConstant>()     },  // 2017.11.13
-    {   prv::makeStringStruct<gfx::haptic::GfxHapticPeriodic>()     }  // 2017.11.13
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticPeriodic>()     },  // 2017.11.13
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticRamp>()         }  // 2017.12.25
 };
 
 void _doToString(void)

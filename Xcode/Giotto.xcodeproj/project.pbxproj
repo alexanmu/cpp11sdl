@@ -248,6 +248,8 @@
 		7959FCDC1F12682400324A3A /* GfxMouseWheelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7959FCD91F12682400324A3A /* GfxMouseWheelEvent.cpp */; };
 		795BE44D1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */; };
 		795BE44E1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */; };
+		795D9D621FF1696D0089E7D0 /* GfxHapticRamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 795D9D601FF1696D0089E7D0 /* GfxHapticRamp.cpp */; };
+		795D9D631FF1696D0089E7D0 /* GfxHapticRamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 795D9D601FF1696D0089E7D0 /* GfxHapticRamp.cpp */; };
 		796309281F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */; };
 		796309291F0C0D35006CE84C /* GfxJoystickGUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */; };
 		796543891EFB778B0086FBD1 /* GfxScancode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 796543871EFB778B0086FBD1 /* GfxScancode.cpp */; };
@@ -695,6 +697,8 @@
 		7959FCDA1F12682400324A3A /* GfxMouseWheelEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxMouseWheelEvent.hpp; path = gfx/events/GfxMouseWheelEvent.hpp; sourceTree = "<group>"; };
 		795BE44B1F32CFCB00A95D82 /* GfxControllerAxisEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxControllerAxisEvent.cpp; path = gfx/events/GfxControllerAxisEvent.cpp; sourceTree = "<group>"; };
 		795BE44C1F32CFCB00A95D82 /* GfxControllerAxisEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxControllerAxisEvent.hpp; path = gfx/events/GfxControllerAxisEvent.hpp; sourceTree = "<group>"; };
+		795D9D601FF1696D0089E7D0 /* GfxHapticRamp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxHapticRamp.cpp; path = haptic/GfxHapticRamp.cpp; sourceTree = "<group>"; };
+		795D9D611FF1696D0089E7D0 /* GfxHapticRamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxHapticRamp.hpp; path = haptic/GfxHapticRamp.hpp; sourceTree = "<group>"; };
 		796309261F0C0D35006CE84C /* GfxJoystickGUID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxJoystickGUID.cpp; path = joystick/GfxJoystickGUID.cpp; sourceTree = "<group>"; };
 		796309271F0C0D35006CE84C /* GfxJoystickGUID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxJoystickGUID.hpp; path = joystick/GfxJoystickGUID.hpp; sourceTree = "<group>"; };
 		796543871EFB778B0086FBD1 /* GfxScancode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxScancode.cpp; path = scancode/GfxScancode.cpp; sourceTree = "<group>"; };
@@ -1608,6 +1612,8 @@
 				7965FBBD1FCDDF3000E66269 /* GfxHapticEffectType.hpp */,
 				7965FBBE1FCDDF3000E66269 /* GfxHapticPeriodic.cpp */,
 				7965FBBF1FCDDF3000E66269 /* GfxHapticPeriodic.hpp */,
+				795D9D601FF1696D0089E7D0 /* GfxHapticRamp.cpp */,
+				795D9D611FF1696D0089E7D0 /* GfxHapticRamp.hpp */,
 			);
 			name = haptic;
 			sourceTree = "<group>";
@@ -2024,6 +2030,7 @@
 				194648F01EEC2EB200299B55 /* GControl.cpp in Sources */,
 				798C0C7B1EF97BB4006F1EEB /* GFolderCollectionElement.cpp in Sources */,
 				194648A81EEC2D3300299B55 /* GfxGetError.cpp in Sources */,
+				795D9D631FF1696D0089E7D0 /* GfxHapticRamp.cpp in Sources */,
 				79C9C7F21F0E9277009F8C0B /* GfxJoystickType.cpp in Sources */,
 				79F2C7441EFD778200FAE660 /* GfxFillSettingsType.cpp in Sources */,
 				79886E421F34DAF000787C94 /* GfxControllerButtonEvent.cpp in Sources */,
@@ -2056,6 +2063,7 @@
 				798B68551F1D33A1001A5902 /* GfxMouseWheelDirection.cpp in Sources */,
 				791EAD451EDCB9BE0032ED1D /* GTypes.cpp in Sources */,
 				7989726A1F109E6E008F5128 /* GfxEventAction.cpp in Sources */,
+				795D9D621FF1696D0089E7D0 /* GfxHapticRamp.cpp in Sources */,
 				791EAD491EDCB9BE0032ED1D /* GfxTtfFontRenderer.cpp in Sources */,
 				79FCEEFE1F968B9B00119A0A /* GfxTouchID.cpp in Sources */,
 				7965FBC01FCDDF3000E66269 /* GfxHapticCondition.cpp in Sources */,

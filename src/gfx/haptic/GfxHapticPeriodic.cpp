@@ -214,7 +214,7 @@ void GfxHapticPeriodic::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    hPer_.type = SDL_HAPTIC_CONSTANT;
+    hPer_.type = SDL_HAPTIC_SINE;
     hPer_.direction.type = 0;
     hPer_.direction.dir[0] = 0;
     hPer_.direction.dir[1] = 0;

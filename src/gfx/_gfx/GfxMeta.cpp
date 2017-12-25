@@ -185,6 +185,7 @@
 #include "GfxHapticEffectType.hpp"  // 2017.11.13
 #include "GfxHapticConstant.hpp"  // 2017.11.13
 #include "GfxHapticPeriodic.hpp"  // 2017.11.13
+#include "GfxHapticRamp.hpp"  // 2017.12.25
 
 namespace gfx
 {
@@ -512,7 +513,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::haptic::GfxHapticCoordinates>() },  // 2017.11.13
     {   prv::makeClassInfo<gfx::haptic::GfxHapticEffectType>()  },  // 2017.11.13
     {   prv::makeClassInfo<gfx::haptic::GfxHapticConstant>()    },  // 2017.11.13
-    {   prv::makeClassInfo<gfx::haptic::GfxHapticPeriodic>()    }  // 2017.11.13
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticPeriodic>()    },  // 2017.11.13
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticRamp>()        }  // 2017.12.25
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /
