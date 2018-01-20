@@ -125,7 +125,6 @@ GfxHapticEffectType::ValueType GfxHapticEffectType::getValue(void) const noexcep
     return static_cast<ValueType>(eType_);
 }
 
-
 bool GfxHapticEffectType::isConstant(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();

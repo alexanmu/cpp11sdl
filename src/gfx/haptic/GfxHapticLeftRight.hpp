@@ -28,7 +28,7 @@
 #include <cstdint>
 
 #include "GfxObject.hpp"
-#include "GFxSdlHeader.hpp"
+#include "GfxSdlHeader.hpp"
 #include "GfxHapticEffectType.hpp"
 
 namespace gfx

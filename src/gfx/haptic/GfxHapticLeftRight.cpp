@@ -23,6 +23,7 @@
 
 #include <string>
 #include <cstdint>
+#include <utility>
 
 #include "GfxHapticLeftRight.hpp"
 #include "GfxBasicLogger.hpp"
@@ -37,28 +38,28 @@ namespace haptic
 
 const char GfxHapticLeftRight::ClassName[] = "GfxHapticLeftRight";
 
-GfxHapticLeftRight::GfxHapticLeftRight() noexcept
+GfxHapticLeftRight::GfxHapticLeftRight() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
     clear();
 }
 
-GfxHapticLeftRight::GfxHapticLeftRight(const SdlType hLR) noexcept
+GfxHapticLeftRight::GfxHapticLeftRight(const SdlType hLR) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
     hLR_ = hLR;
 }
 
-GfxHapticLeftRight::GfxHapticLeftRight(GfxHapticLeftRight const& other) noexcept
+GfxHapticLeftRight::GfxHapticLeftRight(GfxHapticLeftRight const& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
     hLR_ = other.hLR_;
 }
 
-GfxHapticLeftRight::GfxHapticLeftRight(GfxHapticLeftRight&& other) noexcept
+GfxHapticLeftRight::GfxHapticLeftRight(GfxHapticLeftRight&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
 
@@ -88,7 +89,7 @@ GfxHapticLeftRight& GfxHapticLeftRight::operator=(GfxHapticLeftRight&& other) no
     if (this != &other)
     {
         // Move base
-        GfxObject::operator=(other);
+        GfxObject::operator=(std::move(other));
         // Move this
         hLR_ = other.hLR_;
         // Delete other's data
