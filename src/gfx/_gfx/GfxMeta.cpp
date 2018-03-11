@@ -189,6 +189,7 @@
 #include "GfxHapticLeftRight.hpp"  // 2017.12.25
 #include "GfxHapticCustom.hpp"  // 2018.01.15
 #include "GfxHapticEffect.hpp"  // 2018.01.15
+#include "GfxHaptic.hpp"  // 2018.03.11
 
 namespace gfx
 {
@@ -520,7 +521,8 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::haptic::GfxHapticRamp>()        },  // 2017.12.25
     {   prv::makeClassInfo<gfx::haptic::GfxHapticLeftRight>()   },  // 2017.12.25
     {   prv::makeClassInfo<gfx::haptic::GfxHapticCustom>()      },  // 2018.01.15
-    {   prv::makeClassInfo<gfx::haptic::GfxHapticEffect>()      }  // 2018.01.15
+    {   prv::makeClassInfo<gfx::haptic::GfxHapticEffect>()      },  // 2018.01.15
+    {   prv::makeClassInfo<gfx::haptic::GfxHaptic>()            }  // 2018.03.11
 };
 
 const int32_t GfxMeta::classNamesCount_ = sizeof(GfxMeta::classInfoArray_) /

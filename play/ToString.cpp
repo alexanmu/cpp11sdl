@@ -188,6 +188,7 @@
 #include "GfxHapticLeftRight.hpp"  // 2017.12.25
 #include "GfxHapticCustom.hpp"  // 2018.01.15
 #include "GfxHapticEffect.hpp"  // 2018.01.15
+#include "GfxHaptic.hpp"  // 2018.03.11
 
 struct ToStringStruct
 {
@@ -486,7 +487,8 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::haptic::GfxHapticRamp>()         },  // 2017.12.25
     {   prv::makeStringStruct<gfx::haptic::GfxHapticLeftRight>()    },  // 2017.12.25
     {   prv::makeStringStruct<gfx::haptic::GfxHapticCustom>()       },  // 2018.01.15
-    {   prv::makeStringStruct<gfx::haptic::GfxHapticEffect>()       }  // 2018.01.15
+    {   prv::makeStringStruct<gfx::haptic::GfxHapticEffect>()       },  // 2018.01.15
+    {   prv::makeStringStruct<gfx::haptic::GfxHaptic>()             }  // 2018.03.11
 };
 
 void _doToString(void)
