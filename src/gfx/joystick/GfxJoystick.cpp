@@ -155,6 +155,20 @@ void GfxJoystick::joystickOpen(const int32_t index) throw(std::runtime_error)
     joy_ = tmpjoyptr;
 }
 
+void GfxJoystick::lockJoysticks(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    sdl2::SDL_LockJoysticks();
+}
+
+void GfxJoystick::unlockJoysticks(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    sdl2::SDL_UnlockJoysticks();
+}
+
 int32_t GfxJoystick::numJoysticks(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();

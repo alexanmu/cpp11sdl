@@ -189,6 +189,7 @@
 #include "GfxHapticCustom.hpp"  // 2018.01.15
 #include "GfxHapticEffect.hpp"  // 2018.01.15
 #include "GfxHaptic.hpp"  // 2018.03.11
+#include "GfxYuvConversionMode.hpp"  // 2018.03.25
 
 struct ToStringStruct
 {
@@ -357,6 +358,7 @@ const struct ToStringStruct infoArray_[] =
     {   prv::makeStringStruct<gfx::surface::GfxSurface>()           },
     {   prv::makeStringStruct<gfx::surface::GfxSurfaceFlags>()      },
     {   prv::makeStringStruct<gfx::surface::GfxBlitFunction>()      },  // 2017.09.22
+    {   prv::makeStringStruct<gfx::surface::GfxYuvConversionMode>() },  // 2018.03.25
     // gfx::bgi
     {   prv::makeStringStruct<gfx::bgi::GfxAngle>()                 },
     {   prv::makeStringStruct<gfx::bgi::GfxCanvas>()                },

@@ -244,6 +244,8 @@
 		794D05FC1EE29EE7001BD5D9 /* GfxPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D05FA1EE29EE7001BD5D9 /* GfxPlatform.cpp */; };
 		794D06021EE29EFD001BD5D9 /* GfxPowerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D05FE1EE29EFD001BD5D9 /* GfxPowerInfo.cpp */; };
 		794D06031EE29EFD001BD5D9 /* GfxPowerState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D06001EE29EFD001BD5D9 /* GfxPowerState.cpp */; };
+		79505DDB2067A8D1004639F2 /* GfxYuvConversionMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79505DD92067A8D1004639F2 /* GfxYuvConversionMode.cpp */; };
+		79505DDC2067A8D1004639F2 /* GfxYuvConversionMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79505DD92067A8D1004639F2 /* GfxYuvConversionMode.cpp */; };
 		7953F7C71EDD27F600A27C41 /* GfxPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7953F7C31EDD27F600A27C41 /* GfxPalette.cpp */; };
 		7953F7C81EDD27F600A27C41 /* GfxPixelFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7953F7C51EDD27F600A27C41 /* GfxPixelFormat.cpp */; };
 		7959FCDB1F12682400324A3A /* GfxMouseWheelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7959FCD91F12682400324A3A /* GfxMouseWheelEvent.cpp */; };
@@ -699,6 +701,8 @@
 		794D05FF1EE29EFD001BD5D9 /* GfxPowerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPowerInfo.hpp; path = power/GfxPowerInfo.hpp; sourceTree = "<group>"; };
 		794D06001EE29EFD001BD5D9 /* GfxPowerState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPowerState.cpp; path = power/GfxPowerState.cpp; sourceTree = "<group>"; };
 		794D06011EE29EFD001BD5D9 /* GfxPowerState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPowerState.hpp; path = power/GfxPowerState.hpp; sourceTree = "<group>"; };
+		79505DD92067A8D1004639F2 /* GfxYuvConversionMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxYuvConversionMode.cpp; path = surface/GfxYuvConversionMode.cpp; sourceTree = "<group>"; };
+		79505DDA2067A8D1004639F2 /* GfxYuvConversionMode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxYuvConversionMode.hpp; path = surface/GfxYuvConversionMode.hpp; sourceTree = "<group>"; };
 		7953F7C31EDD27F600A27C41 /* GfxPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPalette.cpp; path = pixels/GfxPalette.cpp; sourceTree = "<group>"; };
 		7953F7C41EDD27F600A27C41 /* GfxPalette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GfxPalette.hpp; path = pixels/GfxPalette.hpp; sourceTree = "<group>"; };
 		7953F7C51EDD27F600A27C41 /* GfxPixelFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GfxPixelFormat.cpp; path = pixels/GfxPixelFormat.cpp; sourceTree = "<group>"; };
@@ -1668,6 +1672,8 @@
 				798203701EE2E56E005D610C /* GfxSurface.hpp */,
 				798203711EE2E56E005D610C /* GfxSurfaceFlags.cpp */,
 				798203721EE2E56E005D610C /* GfxSurfaceFlags.hpp */,
+				79505DD92067A8D1004639F2 /* GfxYuvConversionMode.cpp */,
+				79505DDA2067A8D1004639F2 /* GfxYuvConversionMode.hpp */,
 			);
 			name = surface;
 			sourceTree = "<group>";
@@ -2062,6 +2068,7 @@
 				79C9C7F21F0E9277009F8C0B /* GfxJoystickType.cpp in Sources */,
 				79F2C7441EFD778200FAE660 /* GfxFillSettingsType.cpp in Sources */,
 				79886E421F34DAF000787C94 /* GfxControllerButtonEvent.cpp in Sources */,
+				79505DDC2067A8D1004639F2 /* GfxYuvConversionMode.cpp in Sources */,
 				194648B81EEC2D9100299B55 /* GfxMessageBoxColorScheme.cpp in Sources */,
 				79F2C7461EFD778700FAE660 /* GfxFonts.cpp in Sources */,
 				194648DC1EEC2E5700299B55 /* GfxHitTest.cpp in Sources */,
@@ -2255,6 +2262,7 @@
 				19D5E7031EE56F38000E187B /* GfxObject.cpp in Sources */,
 				791EAD8A1EDCB9BE0032ED1D /* GGraphicControl.cpp in Sources */,
 				79A1B4B61F87845300FA27C0 /* GfxGameController.cpp in Sources */,
+				79505DDB2067A8D1004639F2 /* GfxYuvConversionMode.cpp in Sources */,
 				791EAD8D1EDCB9BE0032ED1D /* GComponent.cpp in Sources */,
 				198016041EDF281700AEDB49 /* GfxMessageBoxData.cpp in Sources */,
 				794D05FC1EE29EE7001BD5D9 /* GfxPlatform.cpp in Sources */,

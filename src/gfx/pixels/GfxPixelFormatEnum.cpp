@@ -420,6 +420,12 @@ bool GfxPixelFormatEnum::isNV21(void) const noexcept
     return (value_ == sdl2::SDL_PIXELFORMAT_NV21);
 }
 
+bool GfxPixelFormatEnum::isExternalOES(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (value_ == sdl2::SDL_PIXELFORMAT_EXTERNAL_OES);
+}
 
 void GfxPixelFormatEnum::clear(void) noexcept
 {

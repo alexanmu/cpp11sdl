@@ -837,6 +837,32 @@ void GfxRenderer::destroyRenderer() noexcept
     }
 }
 
+void * GfxRenderer::getMetalLayer(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    void * ret = nullptr;
+
+    if (renderer_ != nullptr)
+    {
+        ret = sdl2::SDL_RenderGetMetalLayer(renderer_);
+    }
+    return ret;
+}
+
+void * GfxRenderer::getMetalCommandEncoder(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    void * ret = nullptr;
+
+    if (renderer_ != nullptr)
+    {
+        ret = sdl2::SDL_RenderGetMetalCommandEncoder(renderer_);
+    }
+    return ret;
+}
+
 GfxRenderer::SdlTypePtr GfxRenderer::getAsSdlTypePtr() const noexcept
 {
     LOG_TRACE_PRIO_LOW();

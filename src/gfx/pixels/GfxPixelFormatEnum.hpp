@@ -88,7 +88,8 @@ public:
         pixelFormatUYVY = sdl2::SDL_PIXELFORMAT_UYVY,
         pixelFormatYVYU = sdl2::SDL_PIXELFORMAT_YVYU,
         pixelFormatNV12 = sdl2::SDL_PIXELFORMAT_NV12,
-        pixelFormatNV21 = sdl2::SDL_PIXELFORMAT_NV21
+        pixelFormatNV21 = sdl2::SDL_PIXELFORMAT_NV21,
+        pixelFormatExternalOes = sdl2::SDL_PIXELFORMAT_EXTERNAL_OES
     };
 
     GfxPixelFormatEnum() noexcept;
@@ -148,6 +149,7 @@ public:
     bool isYVYU(void) const noexcept;
     bool isNV12(void) const noexcept;
     bool isNV21(void) const noexcept;
+    bool isExternalOES(void) const noexcept;
 
     void clear(void) noexcept;
 

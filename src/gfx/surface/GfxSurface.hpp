@@ -39,6 +39,7 @@
 #include "GfxPalette.hpp"
 #include "GfxBlendMode.hpp"
 #include "GfxPixelFormat.hpp"
+#include "GfxYuvConversionMode.hpp"
 
 namespace gfx
 {
@@ -160,6 +161,10 @@ public:
 
     void putPixel(const int32_t x, const int32_t y, pixels::GfxColor const& clr) const noexcept;
     pixels::GfxColor getPixel(const int32_t x, const int32_t y) const noexcept;
+    void setYUVConversionMode(const GfxYuvConversionMode& convMode) const noexcept;
+    const GfxYuvConversionMode getYUVConversionMode(void) const noexcept;
+    const GfxYuvConversionMode getYUVConversionModeForResolution(const int32_t width,
+                                                                 const int32_t height) const noexcept;
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:

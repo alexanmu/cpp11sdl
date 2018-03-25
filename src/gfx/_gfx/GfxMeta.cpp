@@ -190,6 +190,7 @@
 #include "GfxHapticCustom.hpp"  // 2018.01.15
 #include "GfxHapticEffect.hpp"  // 2018.01.15
 #include "GfxHaptic.hpp"  // 2018.03.11
+#include "GfxYuvConversionMode.hpp"  // 2018.03.25
 
 namespace gfx
 {
@@ -390,6 +391,7 @@ const struct GfxMeta::ClassInfo GfxMeta::classInfoArray_[] =
     {   prv::makeClassInfo<gfx::surface::GfxSurface>()          },
     {   prv::makeClassInfo<gfx::surface::GfxSurfaceFlags>()     },
     {   prv::makeClassInfo<gfx::surface::GfxBlitFunction>()     },  // 2017.09.22
+    {   prv::makeClassInfo<gfx::surface::GfxYuvConversionMode>()},  // 2018.03.25
     // gfx::bgi
     {   prv::makeClassInfo<gfx::bgi::GfxAngle>()                },
     {   prv::makeClassInfo<gfx::bgi::GfxCanvas>()               },

@@ -121,6 +121,8 @@ public:
                         void * pixels, const int32_t pitch) const noexcept;
     void renderPresent(void) const noexcept;
     void destroyRenderer(void) noexcept;
+    void * getMetalLayer(void) const noexcept;
+    void * getMetalCommandEncoder(void) const noexcept;
 
     SdlTypePtr getAsSdlTypePtr() const noexcept;
 private:

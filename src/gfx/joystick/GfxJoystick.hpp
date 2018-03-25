@@ -74,6 +74,8 @@ public:
 
     void joystickOpen(const int32_t index) throw(std::runtime_error);
 
+    void lockJoysticks(void) const noexcept;
+    void unlockJoysticks(void) const noexcept;
     int32_t numJoysticks(void) const noexcept;
     std::string joystickNameForIndex(const int32_t index) const noexcept;
     GfxJoystickGUID joystickGetDeviceGUID(const int32_t index) const noexcept;

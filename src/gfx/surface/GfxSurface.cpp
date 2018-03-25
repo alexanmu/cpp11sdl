@@ -1161,6 +1161,39 @@ pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y) const no
     return pix;
 }
 
+void GfxSurface::setYUVConversionMode(const GfxYuvConversionMode& convMode) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(convMode);
+
+    sdl2::SDL_SetYUVConversionMode(convMode.getAsSdlType());
+}
+
+const GfxYuvConversionMode GfxSurface::getYUVConversionMode(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    GfxYuvConversionMode::SdlType convMode;
+
+    convMode = sdl2::SDL_GetYUVConversionMode();
+    return GfxYuvConversionMode(convMode);
+}
+
+const GfxYuvConversionMode GfxSurface::getYUVConversionModeForResolution(const int32_t width,
+        const int32_t height) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(width > 0);
+    assert(height > 0);
+
+    GfxYuvConversionMode::SdlType convMode;
+    
+    convMode = sdl2::SDL_GetYUVConversionModeForResolution(width, height);
+    return GfxYuvConversionMode(convMode);
+}
+
 GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
