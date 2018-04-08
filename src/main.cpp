@@ -328,7 +328,7 @@ void _doStuff(void)
 
     gfx::surface::GfxSurface surfcanvas("surfcanvas", gfx::surface::GfxSurfaceFlags(), WIN_W, WIN_H, 32,
                                         gfx::pixels::GfxPixelFormatEnum(
-                                                gfx::pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888));
+                                        gfx::pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888));
 
     int32_t c = 0;
     for (int32_t i = 0; i < WIN_W; i++)
@@ -618,6 +618,104 @@ void _doGApp(void)
     std::atexit(at_exit_callback);
 }
 
+#include "GfxEvent.hpp"
+
+void _doKids(void)
+{
+    gfx::initquit::GfxInitFlags iflags;
+
+    iflags.setVideo();
+    iflags.setEvents();
+    gfx::initquit::GfxInitQuit iq(iflags);
+    gfx::video::GfxWindowFlags wf(gfx::video::GfxWindowFlags::ValueType::windowFlagResizable);
+    gfx::video::GfxWindow win("Kids",
+                        gfx::video::GfxWindowPosition(gfx::video::GfxWindowPosition::ValueType::positionCentered),
+                        gfx::video::GfxWindowPosition(gfx::video::GfxWindowPosition::ValueType::positionCentered),
+                        WIN_W,
+                        WIN_H,
+                        wf);
+
+    const gfx::surface::GfxSurface& colors_surf = win.getWindowSurface();
+
+    std::srand(static_cast<unsigned int>(time(0)));
+
+    gfx::events::GfxEvent e;
+    bool quit = false;
+    bool paused = false;
+    bool present = false;
+
+    while (quit == false)
+    {
+        if (e.pollEvent())
+        {
+            uint8_t r = std::rand() % 255;
+            uint8_t g = std::rand() % 255;
+            uint8_t b = std::rand() % 255;
+            if (e.eventType().isQuit())
+            {
+                quit = true;
+            }
+            if (e.eventType().isMouseMotion())
+            {
+                if (!paused)
+                {
+                    int32_t x = e.mouseMotionEvent().getX();
+                    int32_t y = e.mouseMotionEvent().getY();
+                    bool on;
+                    gfx::pixels::GfxColor clr(r, g, b, 255);
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int j = 0; j < 8; j++)
+                        {
+                            on = std::rand() % 2;
+                            if (on)
+                            {
+                                colors_surf.fillRect(gfx::rect::GfxRect(x + i, y + j, 2, 2), clr);
+                            }
+                        }
+                    }
+                    present = true;
+                }
+            }
+
+            if (e.eventType().isKeyUp())
+            {
+                if (e.keyboardEvent().getKeysym().getKeyCode().getValue() ==
+                    gfx::keycode::GfxKeycode::ValueType::kKeyQ)
+                {
+                    quit = true;
+                }
+                if (e.keyboardEvent().getKeysym().getKeyCode().getValue() ==
+                    gfx::keycode::GfxKeycode::ValueType::kKeyN)
+                {
+                    colors_surf.fillRect(gfx::rect::GfxRect(0, 0, WIN_W, WIN_H), gfx::pixels::GfxColor(0, 0, 0, 255));
+                    present = true;
+                }
+                if (e.keyboardEvent().getKeysym().getKeyCode().getValue() ==
+                    gfx::keycode::GfxKeycode::ValueType::kKeyF)
+                {
+                    colors_surf.fillRect(gfx::rect::GfxRect(0, 0, WIN_W, WIN_H), gfx::pixels::GfxColor(r, g, b, 255));
+                    present = true;
+                }
+                if (e.keyboardEvent().getKeysym().getKeyCode().getValue() ==
+                    gfx::keycode::GfxKeycode::ValueType::kSpace)
+                {
+                    paused = !paused;
+                }
+            }
+        }
+        
+        //win.getWindowSurface().blitSurface(colors_surf);
+        if (present)
+        {
+            win.updateWindowSurface();
+            present = false;
+        }
+        gfx::timer::GfxTimer::delay(10);
+    }
+}
+
 void at_exit_callback(void)
 {
     // print runtime meta-info
@@ -642,6 +740,10 @@ int main(int argc, const char * argv[])
         {
             action = 2;
         }
+        if (std::strcmp(argv[1], "kids") == 0)
+        {
+            action = 3;
+        }
     }
 
     switch (action)
@@ -654,6 +756,9 @@ int main(int argc, const char * argv[])
             break;
         case 2:
             _doGApp();
+            break;
+        case 3:
+            _doKids();
             break;
         default:
             break;
