@@ -1,5 +1,5 @@
 # Giotto
-C++11 Graphics Library based on SDL2 (https://www.libsdl.org/) version 2.0.6!
+C++11 Graphics Library based on SDL2 (https://www.libsdl.org/) version 2.0.8!
 
 Basic design approach is "everything is an object".
 
