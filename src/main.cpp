@@ -705,8 +705,7 @@ void _doKids(void)
                 }
             }
         }
-        
-        //win.getWindowSurface().blitSurface(colors_surf);
+
         if (present)
         {
             win.updateWindowSurface();
