@@ -137,7 +137,7 @@ const std::string GfxDropEvent::getFile(void) const noexcept
     if (dEvent_.file != NULL)
     {
         str = dEvent_.file;
-        sdl2::SDL_free(dEvent_.file);
+        SDL_free(dEvent_.file);
     }
     return str;
 }

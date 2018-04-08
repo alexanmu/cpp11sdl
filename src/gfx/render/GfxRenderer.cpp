@@ -61,7 +61,7 @@ GfxRenderer::GfxRenderer(std::string const& rendname, video::GfxWindow const& wi
 
     SdlTypePtr renderertmp;
 
-    renderertmp = sdl2::SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
+    renderertmp = SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
     if (renderertmp == nullptr)
     {
         throw std::runtime_error("Unable to create renderer");
@@ -80,7 +80,7 @@ GfxRenderer::GfxRenderer(std::string const& rendname, surface::GfxSurface const&
 
     SdlTypePtr renderertmp;
 
-    renderertmp = sdl2::SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
+    renderertmp = SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
     if (renderertmp == nullptr)
     {
         throw std::runtime_error("Unable to create renderer");
@@ -120,7 +120,7 @@ GfxRenderer::~GfxRenderer() noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_DestroyRenderer(renderer_);
+        SDL_DestroyRenderer(renderer_);
     }
     renderer_ = nullptr;
 }
@@ -154,7 +154,7 @@ void GfxRenderer::createRenderer(std::string const& rendname, video::GfxWindow c
     {
         throw std::runtime_error("Renderer already created");
     }
-    renderertmp = sdl2::SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
+    renderertmp = SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
     if (renderertmp == nullptr)
     {
         throw std::runtime_error("Unable to create renderer");
@@ -177,7 +177,7 @@ void GfxRenderer::createRenderer(std::string const& rendname, surface::GfxSurfac
     {
         throw std::runtime_error("Renderer already created");
     }
-    renderertmp = sdl2::SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
+    renderertmp = SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
     if (renderertmp == nullptr)
     {
         throw std::runtime_error("Unable to create renderer");
@@ -194,7 +194,7 @@ GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) co
 
     SdlTypePtr rd;
 
-    rd = sdl2::SDL_GetRenderer(win.getAsSdlTypePtr());
+    rd = SDL_GetRenderer(win.getAsSdlTypePtr());
     if (rd == renderer_)
     {
         return renderer_;
@@ -213,7 +213,7 @@ GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_GetRendererInfo(renderer_, &ri);
+        SDL_GetRendererInfo(renderer_, &ri);
         return new GfxRendererInfo(ri);
     }
     else
@@ -233,7 +233,7 @@ void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_GetRendererOutputSize(renderer_, w, h);
+        ret = SDL_GetRendererOutputSize(renderer_, w, h);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -248,7 +248,7 @@ void GfxRenderer::setRenderTarget(GfxTexture const& tex) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_SetRenderTarget(renderer_, tex.getAsSdlTypePtr());
+        ret = SDL_SetRenderTarget(renderer_, tex.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -259,7 +259,7 @@ GfxTexture::SdlTypePtr GfxRenderer::getRenderTarget(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        return sdl2::SDL_GetRenderTarget(renderer_);
+        return SDL_GetRenderTarget(renderer_);
     }
     return nullptr;
 }
@@ -275,7 +275,7 @@ void GfxRenderer::renderSetLogicalsSize(const int32_t w, const int32_t h) const 
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderSetLogicalSize(renderer_, w, h);
+        ret = SDL_RenderSetLogicalSize(renderer_, w, h);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -291,7 +291,7 @@ void GfxRenderer::renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept
     *h = -1;
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderGetLogicalSize(renderer_, w, h);
+        SDL_RenderGetLogicalSize(renderer_, w, h);
     }
 }
 
@@ -305,7 +305,7 @@ void GfxRenderer::renderSetIntegerScale(GfxBool const& enable) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderSetIntegerScale(renderer_, enable.getAsSdlType());
+        ret = SDL_RenderSetIntegerScale(renderer_, enable.getAsSdlType());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -318,7 +318,7 @@ GfxBool GfxRenderer::renderGetIntegerScale(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        sdlbo = sdl2::SDL_RenderGetIntegerScale(renderer_);
+        sdlbo = SDL_RenderGetIntegerScale(renderer_);
         return GfxBool(sdlbo);
     }
     return GfxBool(false);
@@ -334,7 +334,7 @@ void GfxRenderer::renderSetViewport(rect::GfxRect const& rect) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderSetViewport(renderer_, rect.getAsSdlTypePtr());
+        ret = SDL_RenderSetViewport(renderer_, rect.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -347,7 +347,7 @@ rect::GfxRect GfxRenderer::renderGetViewport(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderGetViewport(renderer_, &rect);
+        SDL_RenderGetViewport(renderer_, &rect);
         return rect::GfxRect(rect);
     }
     return rect::GfxRect();
@@ -363,7 +363,7 @@ void GfxRenderer::renderSetClipRect(rect::GfxRect const& rect) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderSetClipRect(renderer_, rect.getAsSdlTypePtr());
+        ret = SDL_RenderSetClipRect(renderer_, rect.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -376,7 +376,7 @@ rect::GfxRect GfxRenderer::renderGetClipRect(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderGetClipRect(renderer_, &rect);
+        SDL_RenderGetClipRect(renderer_, &rect);
         return rect::GfxRect(rect);
     }
     return rect::GfxRect();
@@ -390,7 +390,7 @@ GfxBool GfxRenderer::renderIsClipEnabled(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ena = sdl2::SDL_RenderIsClipEnabled(renderer_);
+        ena = SDL_RenderIsClipEnabled(renderer_);
         return GfxBool(ena);
     }
     return GfxBool(false);
@@ -407,7 +407,7 @@ void GfxRenderer::renderSetScale(const float scaleX, const float scaleY) const n
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderSetScale(renderer_, scaleX, scaleY);
+        ret = SDL_RenderSetScale(renderer_, scaleX, scaleY);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -423,7 +423,7 @@ void GfxRenderer::renderGetScale(float * scaleX, float * scaleY) const noexcept
     *scaleY = 0.0f;
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderGetScale(renderer_, scaleX, scaleY);
+        SDL_RenderGetScale(renderer_, scaleX, scaleY);
     }
 }
 
@@ -436,7 +436,7 @@ void GfxRenderer::setRenderDrawColor(const uint8_t r, const uint8_t g, const uin
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_SetRenderDrawColor(renderer_, r, g, b, a);
+        ret = SDL_SetRenderDrawColor(renderer_, r, g, b, a);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -451,7 +451,7 @@ void GfxRenderer::setRenderDrawColor(pixels::GfxColor const& color) const noexce
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_SetRenderDrawColor(renderer_, color.getRed(), color.getGreen(),
+        ret = SDL_SetRenderDrawColor(renderer_, color.getRed(), color.getGreen(),
                                             color.getBlue(), color.getAlpha());
         assert((ret == -1) || (ret == 0));
     }
@@ -474,7 +474,7 @@ void GfxRenderer::getRenderDrawColor(uint8_t * r, uint8_t * g, uint8_t * b, uint
     *a = 0;
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_GetRenderDrawColor(renderer_, r, g, b, a);
+        ret = SDL_GetRenderDrawColor(renderer_, r, g, b, a);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -491,7 +491,7 @@ pixels::GfxColor GfxRenderer::getRenderDrawColor(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_GetRenderDrawColor(renderer_, &r, &g, &b, &a);
+        ret = SDL_GetRenderDrawColor(renderer_, &r, &g, &b, &a);
         assert((ret == -1) || (ret == 0));
         if (ret == 0)
         {
@@ -511,7 +511,7 @@ void GfxRenderer::setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmod
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_SetRenderDrawBlendMode(renderer_, blendmode.getAsSdlType());
+        ret = SDL_SetRenderDrawBlendMode(renderer_, blendmode.getAsSdlType());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -525,7 +525,7 @@ blendmode::GfxBlendMode GfxRenderer::getRenderDrawBlendMode(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_GetRenderDrawBlendMode(renderer_, &bmode);
+        ret = SDL_GetRenderDrawBlendMode(renderer_, &bmode);
         assert((ret == -1) || (ret == 0));
         if (ret == 0)
         {
@@ -546,11 +546,11 @@ void GfxRenderer::renderClear() const noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_GetRenderDrawColor(renderer_, &r, &g, &b, &a);
-        sdl2::SDL_SetRenderDrawColor(renderer_, kDefaultRenderDrawColor.getRed(), kDefaultRenderDrawColor.getGreen(),
+        SDL_GetRenderDrawColor(renderer_, &r, &g, &b, &a);
+        SDL_SetRenderDrawColor(renderer_, kDefaultRenderDrawColor.getRed(), kDefaultRenderDrawColor.getGreen(),
                                     kDefaultRenderDrawColor.getBlue(), kDefaultRenderDrawColor.getAlpha());
-        sdl2::SDL_RenderClear(renderer_);
-        sdl2::SDL_SetRenderDrawColor(renderer_, r, g, b, a);
+        SDL_RenderClear(renderer_);
+        SDL_SetRenderDrawColor(renderer_, r, g, b, a);
     }
 }
 
@@ -565,7 +565,7 @@ void GfxRenderer::renderDrawPoint(const int32_t x, const int32_t y) const noexce
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderDrawPoint(renderer_, x, y);
+        ret = SDL_RenderDrawPoint(renderer_, x, y);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -580,7 +580,7 @@ void GfxRenderer::renderDrawPoint(rect::GfxPoint const& point) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderDrawPoint(renderer_, point.getX(), point.getY());
+        ret = SDL_RenderDrawPoint(renderer_, point.getX(), point.getY());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -614,7 +614,7 @@ void GfxRenderer::renderDrawLine(const int32_t x1, const int32_t y1, const int32
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderDrawLine(renderer_, x1, y1, x2, y2);
+        ret = SDL_RenderDrawLine(renderer_, x1, y1, x2, y2);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -631,7 +631,7 @@ void GfxRenderer::renderDrawLine(rect::GfxPoint const& pt1,
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderDrawLine(renderer_, pt1.getX(), pt1.getY(),
+        ret = SDL_RenderDrawLine(renderer_, pt1.getX(), pt1.getY(),
                                         pt2.getX(), pt2.getY());
         assert((ret == -1) || (ret == 0));
     }
@@ -663,7 +663,7 @@ void GfxRenderer::renderDrawRect(rect::GfxRect const& rect) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderDrawRect(renderer_, rect.getAsSdlTypePtr());
+        ret = SDL_RenderDrawRect(renderer_, rect.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -693,7 +693,7 @@ void GfxRenderer::renderFillRect(rect::GfxRect const& rect) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderFillRect(renderer_, rect.getAsSdlTypePtr());
+        ret = SDL_RenderFillRect(renderer_, rect.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -722,7 +722,7 @@ void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, re
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderCopy(renderer_,
+        ret = SDL_RenderCopy(renderer_,
                                    tex.getAsSdlTypePtr(),
                                    src.getAsSdlTypePtr(),
                                    dest.getAsSdlTypePtr());
@@ -740,7 +740,7 @@ void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderCopy(renderer_, tex.getAsSdlTypePtr(), NULL, NULL);
+        ret = SDL_RenderCopy(renderer_, tex.getAsSdlTypePtr(), NULL, NULL);
         assert(ret == 0);
     }
 }
@@ -761,7 +761,7 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, 
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderCopyEx(renderer_,
+        ret = SDL_RenderCopyEx(renderer_,
                                      tex.getAsSdlTypePtr(),
                                      src.getAsSdlTypePtr(),
                                      dest.getAsSdlTypePtr(),
@@ -785,7 +785,7 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderCopyEx(renderer_,
+        ret = SDL_RenderCopyEx(renderer_,
                                      tex.getAsSdlTypePtr(),
                                      NULL,
                                      NULL,
@@ -810,7 +810,7 @@ void GfxRenderer::renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFo
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderReadPixels(renderer_, rect.getAsSdlTypePtr(), format.getAsSdlType(),
+        ret = SDL_RenderReadPixels(renderer_, rect.getAsSdlTypePtr(), format.getAsSdlType(),
                                         pixels, pitch);
         assert((ret == -1) || (ret == 0));
     }
@@ -822,7 +822,7 @@ void GfxRenderer::renderPresent(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_RenderPresent(renderer_);
+        SDL_RenderPresent(renderer_);
     }
 }
 
@@ -832,7 +832,7 @@ void GfxRenderer::destroyRenderer() noexcept
 
     if (renderer_ != nullptr)
     {
-        sdl2::SDL_DestroyRenderer(renderer_);
+        SDL_DestroyRenderer(renderer_);
         renderer_ = nullptr;
     }
 }
@@ -845,7 +845,7 @@ void * GfxRenderer::getMetalLayer(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderGetMetalLayer(renderer_);
+        ret = SDL_RenderGetMetalLayer(renderer_);
     }
     return ret;
 }
@@ -858,7 +858,7 @@ void * GfxRenderer::getMetalCommandEncoder(void) const noexcept
 
     if (renderer_ != nullptr)
     {
-        ret = sdl2::SDL_RenderGetMetalCommandEncoder(renderer_);
+        ret = SDL_RenderGetMetalCommandEncoder(renderer_);
     }
     return ret;
 }

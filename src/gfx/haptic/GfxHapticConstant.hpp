@@ -37,10 +37,10 @@ namespace gfx
 namespace haptic
 {
 
-class GfxHapticConstant : public GfxObject
+class GfxHapticConstant final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HapticConstant SdlType;
+    typedef SDL_HapticConstant SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

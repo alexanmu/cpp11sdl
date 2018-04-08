@@ -39,8 +39,8 @@ namespace version
 class GfxVersion final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_version SdlType;
-    typedef sdl2::SDL_version * SdlTypePtr;
+    typedef SDL_version SdlType;
+    typedef SDL_version * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;

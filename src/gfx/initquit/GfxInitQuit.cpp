@@ -44,7 +44,7 @@ GfxInitQuit::GfxInitQuit() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_HIGH();
 
     flags_.clear();
-    errorCode_ = sdl2::SDL_Init(flags_.getAsSdlType());
+    errorCode_ = SDL_Init(flags_.getAsSdlType());
 }
 
 GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
@@ -54,7 +54,7 @@ GfxInitQuit::GfxInitQuit(GfxInitFlags const& flags) noexcept :
 
     assert(flags);
 
-    errorCode_ = sdl2::SDL_Init(flags.getAsSdlType());
+    errorCode_ = SDL_Init(flags.getAsSdlType());
 }
 
 GfxInitQuit::GfxInitQuit(GfxInitQuit&& other) noexcept : GfxObject(std::move(other))
@@ -90,7 +90,7 @@ GfxInitQuit::~GfxInitQuit() noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
-    sdl2::SDL_Quit();
+    SDL_Quit();
 }
 
 GfxInitQuit::operator bool() const noexcept
@@ -113,7 +113,7 @@ void GfxInitQuit::initSubSystem(GfxInitFlags const& flags) noexcept
 
     assert(flags);
 
-    errorCode_ = sdl2::SDL_InitSubSystem(flags.getAsSdlType());
+    errorCode_ = SDL_InitSubSystem(flags.getAsSdlType());
 }
 
 void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags) const noexcept
@@ -122,7 +122,7 @@ void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags) const noexcept
 
     assert(flags);
 
-    sdl2::SDL_QuitSubSystem(flags.getAsSdlType());
+    SDL_QuitSubSystem(flags.getAsSdlType());
 }
 
 GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags) const noexcept
@@ -133,7 +133,7 @@ GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags) const noexcept
 
     int32_t ret;
 
-    ret = sdl2::SDL_WasInit(flags.getAsSdlType());
+    ret = SDL_WasInit(flags.getAsSdlType());
     return new GfxInitFlags(ret);
 }
 
@@ -141,9 +141,9 @@ void GfxInitQuit::quitRequested(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    // sdl2::SDL_QuitRequested();
-    sdl2::SDL_PumpEvents();
-    sdl2::SDL_PeepEvents(NULL, 0, sdl2::SDL_PEEKEVENT, sdl2::SDL_QUIT, sdl2::SDL_QUIT);
+    // SDL_QuitRequested();
+    SDL_PumpEvents();
+    SDL_PeepEvents(NULL, 0, SDL_PEEKEVENT, SDL_QUIT, SDL_QUIT);
 }
 
 // Return error code after init call

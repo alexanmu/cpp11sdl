@@ -119,15 +119,15 @@ void GfxPowerInfo::queryPowerInfo(void) noexcept
 
     GfxPowerState::SdlType pstate;
 
-    pstate = sdl2::SDL_GetPowerInfo(&seconds_, &percentage_);
+    pstate = SDL_GetPowerInfo(&seconds_, &percentage_);
     pstate_ = GfxPowerState(pstate);
 }
 
-GfxPowerState const& GfxPowerInfo::getPowerState(void) const noexcept
+const GfxPowerState GfxPowerInfo::getPowerState(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (GfxPowerState&)pstate_;
+    return GfxPowerState(pstate_);
 }
 
 int32_t GfxPowerInfo::getRemainingSeconds(void) const noexcept

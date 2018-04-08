@@ -113,7 +113,7 @@ int32_t GfxGetRendererInfo::getNumRenderDrivers(void) noexcept
 
     int32_t nrd;
 
-    nrd = sdl2::SDL_GetNumRenderDrivers();
+    nrd = SDL_GetNumRenderDrivers();
     if (nrd >= 0)
     {
         numRenderDrivers_ = nrd + 1;
@@ -131,7 +131,7 @@ GfxRendererInfo * GfxGetRendererInfo::getRenderDriverInfo(const int32_t index) n
 
     if (index < numRenderDrivers_)
     {
-        sdl2::SDL_GetRenderDriverInfo(index, &rdi);
+        SDL_GetRenderDriverInfo(index, &rdi);
         return new GfxRendererInfo(rdi);
     }
     else

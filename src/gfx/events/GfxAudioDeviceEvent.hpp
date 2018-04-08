@@ -38,10 +38,10 @@ namespace gfx
 namespace events
 {
 
-class GfxAudioDeviceEvent : public GfxObject, public prv::IGetCommonEvent
+class GfxAudioDeviceEvent final : public GfxObject, public prv::IGetCommonEvent
 {
 public:
-    typedef sdl2::SDL_AudioDeviceEvent SdlType;
+    typedef SDL_AudioDeviceEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

@@ -95,7 +95,7 @@ int32_t GfxTouch::getNumTouchDevices(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_GetNumTouchDevices();
+    return SDL_GetNumTouchDevices();
 }
 
 const GfxTouchID GfxTouch::getTouchDevice(const int32_t index) const noexcept
@@ -106,7 +106,7 @@ const GfxTouchID GfxTouch::getTouchDevice(const int32_t index) const noexcept
 
     GfxTouchID::SdlType id;
 
-    id = sdl2::SDL_GetTouchDevice(index);
+    id = SDL_GetTouchDevice(index);
     return GfxTouchID(id);
 }
 
@@ -116,7 +116,7 @@ int32_t GfxTouch::getNumTouchFingers(GfxTouchID const& touchid) const noexcept
 
     assert(touchid);
 
-    return sdl2::SDL_GetNumTouchFingers(touchid.getAsSdlType());
+    return SDL_GetNumTouchFingers(touchid.getAsSdlType());
 }
 
 const GfxFinger GfxTouch::getTouchFinger(GfxTouchID const& touchid, const int32_t index) const noexcept
@@ -128,7 +128,7 @@ const GfxFinger GfxTouch::getTouchFinger(GfxTouchID const& touchid, const int32_
 
     GfxFinger::SdlType * fingerPtr;
 
-    fingerPtr = sdl2::SDL_GetTouchFinger(touchid.getAsSdlType(), index);
+    fingerPtr = SDL_GetTouchFinger(touchid.getAsSdlType(), index);
     if (fingerPtr != nullptr)
     {
         return GfxFinger(*fingerPtr);

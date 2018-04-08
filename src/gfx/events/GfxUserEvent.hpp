@@ -38,10 +38,10 @@ namespace gfx
 namespace events
 {
 
-class GfxUserEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
+class GfxUserEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
 {
 public:
-    typedef sdl2::SDL_UserEvent SdlType;
+    typedef SDL_UserEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

@@ -76,7 +76,7 @@ GfxRwOps& GfxRwOps::operator=(GfxRwOps&& other) noexcept
         // Free owned resources
         if (rwOps_ != nullptr)
         {
-            sdl2::SDL_FreeRW(rwOps_);
+            SDL_FreeRW(rwOps_);
         }
         // Move base
         GfxObject::operator=(std::move(other));
@@ -94,7 +94,7 @@ GfxRwOps::~GfxRwOps() noexcept
 
     if (rwOps_ != nullptr)
     {
-        sdl2::SDL_FreeRW(rwOps_);
+        SDL_FreeRW(rwOps_);
         rwOps_ = nullptr;
     }
 }
@@ -120,7 +120,7 @@ const GfxRwOps GfxRwOps::rwFromFile(std::string const& file, std::string const& 
 
     GfxRwOps::SdlTypePtr rwops = nullptr;
 
-    rwops = sdl2::SDL_RWFromFile(file.c_str(), mode.c_str());
+    rwops = SDL_RWFromFile(file.c_str(), mode.c_str());
     if (rwops != nullptr)
     {
         return GfxRwOps(rwops);
@@ -138,9 +138,9 @@ const GfxRwOps GfxRwOps::rwFromFP(void * fp, GfxBool const& autoclose)
 #warning Find a smart way to avoid conditional compilation here.
 
 #ifdef HAVE_STDIO_H
-    rwops = sdl2::SDL_RWFromFP(static_cast<FILE *>(fp), autoclose.getAsSdlType());
+    rwops = SDL_RWFromFP(static_cast<FILE *>(fp), autoclose.getAsSdlType());
 #else
-    rwops = sdl2::SDL_RWFromFP(static_cast<void *>(fp), autoclose.getAsSdlType());
+    rwops = SDL_RWFromFP(static_cast<void *>(fp), autoclose.getAsSdlType());
 #endif
     if (rwops != nullptr)
     {
@@ -156,7 +156,7 @@ const GfxRwOps GfxRwOps::rwFromMem(void * mem, const int32_t size)
 
     GfxRwOps::SdlTypePtr rwops = nullptr;
 
-    rwops = sdl2::SDL_RWFromMem(mem, size);
+    rwops = SDL_RWFromMem(mem, size);
     if (rwops != nullptr)
     {
         return GfxRwOps(rwops);
@@ -171,7 +171,7 @@ const GfxRwOps GfxRwOps::rwFromConstMem(const void * mem, const int32_t size)
 
     GfxRwOps::SdlTypePtr rwops = nullptr;
 
-    rwops = sdl2::SDL_RWFromConstMem(mem, size);
+    rwops = SDL_RWFromConstMem(mem, size);
     if (rwops != nullptr)
     {
         return GfxRwOps(rwops);
@@ -187,7 +187,7 @@ void GfxRwOps::allocRw(void) throw(std::runtime_error)
     {
         throw std::runtime_error("RWops already in use");
     }
-    rwOps_ = sdl2::SDL_AllocRW();
+    rwOps_ = SDL_AllocRW();
 }
 
 void GfxRwOps::freeRw(void) throw(std::runtime_error)
@@ -198,7 +198,7 @@ void GfxRwOps::freeRw(void) throw(std::runtime_error)
     {
         throw std::runtime_error("RWops not in use");
     }
-    sdl2::SDL_FreeRW(rwOps_);
+    SDL_FreeRW(rwOps_);
     rwOps_ = nullptr;
 }
 

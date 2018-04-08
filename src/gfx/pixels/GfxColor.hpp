@@ -39,8 +39,8 @@ namespace pixels
 class GfxColor final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Color SdlType;
-    typedef sdl2::SDL_Color* SdlTypePtr;
+    typedef SDL_Color SdlType;
+    typedef SDL_Color* SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;

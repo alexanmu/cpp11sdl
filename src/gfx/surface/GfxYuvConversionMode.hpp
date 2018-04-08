@@ -40,7 +40,7 @@ namespace surface
 class GfxYuvConversionMode final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_YUV_CONVERSION_MODE SdlType;
+    typedef SDL_YUV_CONVERSION_MODE SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -48,10 +48,10 @@ public:
 
     enum class ValueType : uint32_t
     {
-        convModeJpeg = sdl2::SDL_YUV_CONVERSION_JPEG,
-        convModeBT601 = sdl2::SDL_YUV_CONVERSION_BT601,
-        convModeBT709 = sdl2::SDL_YUV_CONVERSION_BT709,
-        convModeAuto = sdl2::SDL_YUV_CONVERSION_AUTOMATIC
+        convModeJpeg = SDL_YUV_CONVERSION_JPEG,
+        convModeBT601 = SDL_YUV_CONVERSION_BT601,
+        convModeBT709 = SDL_YUV_CONVERSION_BT709,
+        convModeAuto = SDL_YUV_CONVERSION_AUTOMATIC
     };
 
     GfxYuvConversionMode() noexcept;

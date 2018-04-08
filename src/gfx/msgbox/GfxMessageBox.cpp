@@ -157,13 +157,13 @@ int32_t GfxMessageBox::showModalSimple(void) const noexcept
 
     if (winptr_ == nullptr)
     {
-        ret = sdl2::SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
-                                             message_.c_str(), NULL);
+        ret = SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
+                                       message_.c_str(), NULL);
     }
     else
     {
-        ret = sdl2::SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
-                                             message_.c_str(), winptr_->getAsSdlTypePtr());
+        ret = SDL_ShowSimpleMessageBox(flag_.getAsSdlType(), title_.c_str(),
+                                       message_.c_str(), winptr_->getAsSdlTypePtr());
     }
     return ret;
 }
@@ -177,7 +177,7 @@ int32_t GfxMessageBox::showModalComplex(void) const noexcept
     int32_t ret;
 
     p = data_.getAsSdlTypePtr();
-    ret = sdl2::SDL_ShowMessageBox(p, &buttonid);
+    ret = SDL_ShowMessageBox(p, &buttonid);
     assert(ret == 0);
     return buttonid;
 }

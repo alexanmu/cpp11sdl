@@ -152,7 +152,7 @@ void GfxGameControllerButtonBind::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    buttonBind_.bindType = sdl2::SDL_CONTROLLER_BINDTYPE_NONE;
+    buttonBind_.bindType = SDL_CONTROLLER_BINDTYPE_NONE;
     buttonBind_.value.axis = 0;
     buttonBind_.value.button = 0;
 }

@@ -39,7 +39,7 @@ namespace blendmode
 class GfxBlendFactor final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_BlendFactor SdlType;
+    typedef SDL_BlendFactor SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,16 +47,16 @@ public:
 
     enum class ValueType : int32_t
     {
-        blendFactorZero = sdl2::SDL_BLENDFACTOR_ZERO,
-        blendFactorOne = sdl2::SDL_BLENDFACTOR_ONE,
-        blendFactorSrcColor = sdl2::SDL_BLENDFACTOR_SRC_COLOR,
-        blendFactorOneMinusSrcColor = sdl2::SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR,
-        blendFactorSrcAlpha = sdl2::SDL_BLENDFACTOR_SRC_ALPHA,
-        blendFactorOneMinusSrcAlpha = sdl2::SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
-        blendFactorDstColor = sdl2::SDL_BLENDFACTOR_DST_COLOR,
-        blendFactorOneMinusDstColor = sdl2::SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR,
-        blendFactorDstAlpha = sdl2::SDL_BLENDFACTOR_DST_ALPHA,
-        blendFactorOneMinusDstAlpha = sdl2::SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA
+        blendFactorZero = SDL_BLENDFACTOR_ZERO,
+        blendFactorOne = SDL_BLENDFACTOR_ONE,
+        blendFactorSrcColor = SDL_BLENDFACTOR_SRC_COLOR,
+        blendFactorOneMinusSrcColor = SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR,
+        blendFactorSrcAlpha = SDL_BLENDFACTOR_SRC_ALPHA,
+        blendFactorOneMinusSrcAlpha = SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
+        blendFactorDstColor = SDL_BLENDFACTOR_DST_COLOR,
+        blendFactorOneMinusDstColor = SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR,
+        blendFactorDstAlpha = SDL_BLENDFACTOR_DST_ALPHA,
+        blendFactorOneMinusDstAlpha = SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA
     };
 
     GfxBlendFactor() noexcept;

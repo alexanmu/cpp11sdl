@@ -139,46 +139,46 @@ bool GfxBlendMode::isNone(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendmode_ == sdl2::SDL_BLENDMODE_NONE);
+    return (blendmode_ == SDL_BLENDMODE_NONE);
 }
 
 bool GfxBlendMode::isBlend(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendmode_ == sdl2::SDL_BLENDMODE_BLEND);
+    return (blendmode_ == SDL_BLENDMODE_BLEND);
 }
 
 bool GfxBlendMode::isAdd(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendmode_ == sdl2::SDL_BLENDMODE_ADD);
+    return (blendmode_ == SDL_BLENDMODE_ADD);
 }
 
 bool GfxBlendMode::isMod(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendmode_ == sdl2::SDL_BLENDMODE_MOD);
+    return (blendmode_ == SDL_BLENDMODE_MOD);
 }
 
 bool GfxBlendMode::isInvalid(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendmode_ == sdl2::SDL_BLENDMODE_INVALID);
+    return (blendmode_ == SDL_BLENDMODE_INVALID);
 }
 
 bool GfxBlendMode::isCustom(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendmode_ != sdl2::SDL_BLENDMODE_NONE) &&
-        (blendmode_ != sdl2::SDL_BLENDMODE_BLEND) &&
-        (blendmode_ != sdl2::SDL_BLENDMODE_ADD) &&
-        (blendmode_ != sdl2::SDL_BLENDMODE_MOD) &&
-        (blendmode_ != sdl2::SDL_BLENDMODE_INVALID);
+    return (blendmode_ != SDL_BLENDMODE_NONE) &&
+        (blendmode_ != SDL_BLENDMODE_BLEND) &&
+        (blendmode_ != SDL_BLENDMODE_ADD) &&
+        (blendmode_ != SDL_BLENDMODE_MOD) &&
+        (blendmode_ != SDL_BLENDMODE_INVALID);
 }
 
 void GfxBlendMode::composeCustomBlendMode(GfxBlendFactor const& srcColorFactor,
@@ -197,7 +197,7 @@ void GfxBlendMode::composeCustomBlendMode(GfxBlendFactor const& srcColorFactor,
     assert(dstAlphaFactor);
     assert(alphaOperation);
 
-    blendmode_ = sdl2::SDL_ComposeCustomBlendMode(srcColorFactor.getAsSdlType(),
+    blendmode_ = SDL_ComposeCustomBlendMode(srcColorFactor.getAsSdlType(),
                                                   dstColorFactor.getAsSdlType(),
                                                   colorOperation.getAsSdlType(),
                                                   srcAlphaFactor.getAsSdlType(),

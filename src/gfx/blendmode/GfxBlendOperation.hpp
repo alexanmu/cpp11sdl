@@ -39,7 +39,7 @@ namespace blendmode
 class GfxBlendOperation final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_BlendOperation SdlType;
+    typedef SDL_BlendOperation SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,11 +47,11 @@ public:
 
     enum class ValueType : int32_t
     {
-        blendOperationAdd = sdl2::SDL_BLENDOPERATION_ADD,
-        blendOperationSubstract = sdl2::SDL_BLENDOPERATION_SUBTRACT,
-        blendOperationRevSubstract = sdl2::SDL_BLENDOPERATION_REV_SUBTRACT,
-        blendOperationMinimum = sdl2::SDL_BLENDOPERATION_MINIMUM,
-        blendOperationMaximum = sdl2::SDL_BLENDOPERATION_MAXIMUM
+        blendOperationAdd = SDL_BLENDOPERATION_ADD,
+        blendOperationSubstract = SDL_BLENDOPERATION_SUBTRACT,
+        blendOperationRevSubstract = SDL_BLENDOPERATION_REV_SUBTRACT,
+        blendOperationMinimum = SDL_BLENDOPERATION_MINIMUM,
+        blendOperationMaximum = SDL_BLENDOPERATION_MAXIMUM
     };
 
     GfxBlendOperation() noexcept;

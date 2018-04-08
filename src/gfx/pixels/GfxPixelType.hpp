@@ -36,7 +36,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxPixelType : public GfxObject
+class GfxPixelType final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
@@ -47,18 +47,18 @@ public:
 
     enum class ValueType : int32_t
     {
-        pixelTypeUnknown = sdl2::SDL_PIXELTYPE_UNKNOWN,
-        pixelTypeIndex1 = sdl2::SDL_PIXELTYPE_INDEX1,
-        pixelTypeIndex4 = sdl2::SDL_PIXELTYPE_INDEX4,
-        pixelTypeIndex8 = sdl2::SDL_PIXELTYPE_INDEX8,
-        pixelTypePacked8 = sdl2::SDL_PIXELTYPE_PACKED8,
-        pixelTypePacked16 = sdl2::SDL_PIXELTYPE_PACKED16,
-        pixelTypePacked32 = sdl2::SDL_PIXELTYPE_PACKED32,
-        pixelTypeArrayU8 = sdl2::SDL_PIXELTYPE_ARRAYU8,
-        pixelTypeArrayU16 = sdl2::SDL_PIXELTYPE_ARRAYU16,
-        pixelTypeArrayU32 = sdl2::SDL_PIXELTYPE_ARRAYU32,
-        pixelTypeArrayF16 = sdl2::SDL_PIXELTYPE_ARRAYF16,
-        pixelTypeArrayF32 = sdl2::SDL_PIXELTYPE_ARRAYF32
+        pixelTypeUnknown = SDL_PIXELTYPE_UNKNOWN,
+        pixelTypeIndex1 = SDL_PIXELTYPE_INDEX1,
+        pixelTypeIndex4 = SDL_PIXELTYPE_INDEX4,
+        pixelTypeIndex8 = SDL_PIXELTYPE_INDEX8,
+        pixelTypePacked8 = SDL_PIXELTYPE_PACKED8,
+        pixelTypePacked16 = SDL_PIXELTYPE_PACKED16,
+        pixelTypePacked32 = SDL_PIXELTYPE_PACKED32,
+        pixelTypeArrayU8 = SDL_PIXELTYPE_ARRAYU8,
+        pixelTypeArrayU16 = SDL_PIXELTYPE_ARRAYU16,
+        pixelTypeArrayU32 = SDL_PIXELTYPE_ARRAYU32,
+        pixelTypeArrayF16 = SDL_PIXELTYPE_ARRAYF16,
+        pixelTypeArrayF32 = SDL_PIXELTYPE_ARRAYF32
     };
 
     GfxPixelType() noexcept;

@@ -137,8 +137,8 @@ void GfxKeysym::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    sym_.scancode = sdl2::SDL_SCANCODE_UNKNOWN;
-    sym_.sym = sdl2::SDLK_UNKNOWN;
+    sym_.scancode = SDL_SCANCODE_UNKNOWN;
+    sym_.sym = SDLK_UNKNOWN;
     sym_.mod = 0;
     sym_.unused = 0;
 }

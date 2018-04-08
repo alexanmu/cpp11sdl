@@ -40,7 +40,7 @@ namespace msgbox
 class GfxMessageBoxButtonData final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_MessageBoxButtonData SdlType;
+    typedef SDL_MessageBoxButtonData SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

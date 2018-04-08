@@ -166,7 +166,7 @@ void GfxKeyboardEvent::clear(void) noexcept
     keyboardEvent_.repeat = 0;
     keyboardEvent_.padding2 = 0;
     keyboardEvent_.padding3 = 0;
-    keyboardEvent_.keysym.scancode = sdl2::SDL_SCANCODE_UNKNOWN;
+    keyboardEvent_.keysym.scancode = SDL_SCANCODE_UNKNOWN;
     keyboardEvent_.keysym.sym = 0;
     keyboardEvent_.keysym.mod = 0;
     keyboardEvent_.keysym.unused = 0;

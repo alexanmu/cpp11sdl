@@ -39,7 +39,7 @@ namespace gamecontroller
 class GfxGameControllerBindType final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_GameControllerBindType SdlType;
+    typedef SDL_GameControllerBindType SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,10 +47,10 @@ public:
 
     enum class ValueType : int32_t
     {
-        bindTypeNone = sdl2::SDL_CONTROLLER_BINDTYPE_NONE,
-        bindTypeNormal = sdl2::SDL_CONTROLLER_BINDTYPE_BUTTON,
-        bindTypeAxis = sdl2::SDL_CONTROLLER_BINDTYPE_AXIS,
-        bindTypeHat = sdl2::SDL_CONTROLLER_BINDTYPE_HAT
+        bindTypeNone = SDL_CONTROLLER_BINDTYPE_NONE,
+        bindTypeNormal = SDL_CONTROLLER_BINDTYPE_BUTTON,
+        bindTypeAxis = SDL_CONTROLLER_BINDTYPE_AXIS,
+        bindTypeHat = SDL_CONTROLLER_BINDTYPE_HAT
     };
 
     GfxGameControllerBindType() noexcept;

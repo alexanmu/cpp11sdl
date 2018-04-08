@@ -94,7 +94,7 @@ gfx::version::GfxVersion GfxTtfGetVersion::getVersion(void) const noexcept
 
     gfx::version::GfxVersion::SdlTypePtr v;
 
-    v = const_cast<gfx::version::GfxVersion::SdlTypePtr>(sdl2::TTF_Linked_Version());
+    v = const_cast<gfx::version::GfxVersion::SdlTypePtr>(TTF_Linked_Version());
     if (v != nullptr)
     {
         return gfx::version::GfxVersion(*v);

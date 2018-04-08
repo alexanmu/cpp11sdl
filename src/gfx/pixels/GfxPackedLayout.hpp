@@ -36,7 +36,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxPackedLayout : public GfxObject
+class GfxPackedLayout final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
@@ -47,15 +47,15 @@ public:
 
     enum class ValueType : uint32_t
     {
-        packedLayoutNone = sdl2::SDL_PACKEDLAYOUT_NONE,
-        packedLayout332 = sdl2::SDL_PACKEDLAYOUT_332,
-        packedLayout4444 = sdl2::SDL_PACKEDLAYOUT_4444,
-        packedLayout1555 = sdl2::SDL_PACKEDLAYOUT_1555,
-        packedLayout5551 = sdl2::SDL_PACKEDLAYOUT_5551,
-        packedLayout565 = sdl2::SDL_PACKEDLAYOUT_565,
-        packedLayout8888 = sdl2::SDL_PACKEDLAYOUT_8888,
-        packedLayout2101010 = sdl2::SDL_PACKEDLAYOUT_2101010,
-        packedLayout1010102 = sdl2::SDL_PACKEDLAYOUT_1010102
+        packedLayoutNone = SDL_PACKEDLAYOUT_NONE,
+        packedLayout332 = SDL_PACKEDLAYOUT_332,
+        packedLayout4444 = SDL_PACKEDLAYOUT_4444,
+        packedLayout1555 = SDL_PACKEDLAYOUT_1555,
+        packedLayout5551 = SDL_PACKEDLAYOUT_5551,
+        packedLayout565 = SDL_PACKEDLAYOUT_565,
+        packedLayout8888 = SDL_PACKEDLAYOUT_8888,
+        packedLayout2101010 = SDL_PACKEDLAYOUT_2101010,
+        packedLayout1010102 = SDL_PACKEDLAYOUT_1010102
     };
 
     GfxPackedLayout() noexcept;

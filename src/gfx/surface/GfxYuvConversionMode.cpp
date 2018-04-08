@@ -127,35 +127,35 @@ bool GfxYuvConversionMode::isConversionJPEG(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (convMode_ == sdl2::SDL_YUV_CONVERSION_JPEG);
+    return (convMode_ == SDL_YUV_CONVERSION_JPEG);
 }
 
 bool GfxYuvConversionMode::isConversionBT601(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (convMode_ == sdl2::SDL_YUV_CONVERSION_BT601);
+    return (convMode_ == SDL_YUV_CONVERSION_BT601);
 }
 
 bool GfxYuvConversionMode::isConversionBT709(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (convMode_ == sdl2::SDL_YUV_CONVERSION_BT709);
+    return (convMode_ == SDL_YUV_CONVERSION_BT709);
 }
 
 bool GfxYuvConversionMode::isConversionAutomatic(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (convMode_ == sdl2::SDL_YUV_CONVERSION_AUTOMATIC);
+    return (convMode_ == SDL_YUV_CONVERSION_AUTOMATIC);
 }
 
 void GfxYuvConversionMode::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    convMode_ = sdl2::SDL_YUV_CONVERSION_AUTOMATIC;
+    convMode_ = SDL_YUV_CONVERSION_AUTOMATIC;
 }
 
 GfxYuvConversionMode::SdlType GfxYuvConversionMode::getAsSdlType(void) const noexcept

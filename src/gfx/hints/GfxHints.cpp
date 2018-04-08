@@ -167,7 +167,7 @@ GfxBool GfxHints::setHintWithPriority(std::string const& name, std::string const
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_SetHintWithPriority(name.c_str(), value.c_str(), prio.getAsSdlType());
+    sdlbool = SDL_SetHintWithPriority(name.c_str(), value.c_str(), prio.getAsSdlType());
     return GfxBool(sdlbool);
 }
 
@@ -180,7 +180,7 @@ GfxBool GfxHints::setHint(std::string const& name, std::string const& value) con
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_SetHint(name.c_str(), value.c_str());
+    sdlbool = SDL_SetHint(name.c_str(), value.c_str());
     return GfxBool(sdlbool);
 }
 
@@ -192,7 +192,7 @@ std::string GfxHints::getHint(std::string const& name) const noexcept
 
     const char * ret;
 
-    ret = sdl2::SDL_GetHint(name.c_str());
+    ret = SDL_GetHint(name.c_str());
     if (ret != NULL)
     {
         return std::string(ret);
@@ -209,7 +209,7 @@ GfxBool GfxHints::getHintBoolean(std::string const& name, GfxBool const& defvalu
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_GetHintBoolean(name.c_str(), defvalue.getAsSdlType());
+    sdlbool = SDL_GetHintBoolean(name.c_str(), defvalue.getAsSdlType());
     return GfxBool(sdlbool);
 }
 
@@ -223,7 +223,7 @@ void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& c
     void * userdata = static_cast<void *>(this);
 
     callbackMap_[name] = const_cast<GfxHintCallback *>(&callback);
-    sdl2::SDL_AddHintCallback(name.c_str(), hintCallbackFunction, userdata);
+    SDL_AddHintCallback(name.c_str(), hintCallbackFunction, userdata);
 }
 
 void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& callback) throw(std::runtime_error)
@@ -247,7 +247,7 @@ void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& c
             if (params == inmap)
             {
                 callbackMap_.erase(pos);
-                sdl2::SDL_DelHintCallback(name.c_str(), hintCallbackFunction, userdata);
+                SDL_DelHintCallback(name.c_str(), hintCallbackFunction, userdata);
             }
             else
             {
@@ -312,7 +312,7 @@ void GfxHints::clearHints(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
-    sdl2::SDL_ClearHints();
+    SDL_ClearHints();
 }
 
 // Private methods

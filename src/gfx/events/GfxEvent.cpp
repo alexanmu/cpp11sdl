@@ -145,8 +145,8 @@ int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numeve
             eventsPtr[index] = events->at(index);
         }
     }
-    ret = sdl2::SDL_PeepEvents(eventsPtr, numevents, action.getAsSdlType(), minType.getAsSdlType(),
-                               maxType.getAsSdlType());
+    ret = SDL_PeepEvents(eventsPtr, numevents, action.getAsSdlType(), minType.getAsSdlType(),
+                         maxType.getAsSdlType());
     if ((action.getValue() == GfxEventAction::ValueType::peekEvent) ||
         (action.getValue() == GfxEventAction::ValueType::getEvent))
     {
@@ -170,7 +170,7 @@ GfxBool GfxEvent::hasEvent(GfxEventType const& type) const noexcept
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_HasEvent(type.getAsSdlType());
+    sdlbool = SDL_HasEvent(type.getAsSdlType());
     return GfxBool(sdlbool);
 }
 
@@ -183,7 +183,7 @@ GfxBool GfxEvent::hasEvents(GfxEventType const& minType, GfxEventType const& max
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_HasEvents(minType.getAsSdlType(), maxType.getAsSdlType());
+    sdlbool = SDL_HasEvents(minType.getAsSdlType(), maxType.getAsSdlType());
     return GfxBool(sdlbool);
 }
 
@@ -193,7 +193,7 @@ void GfxEvent::flushEvent(GfxEventType const& type) const noexcept
 
     assert(type);
 
-    sdl2::SDL_FlushEvent(type.getAsSdlType());
+    SDL_FlushEvent(type.getAsSdlType());
 }
 
 void GfxEvent::flushEvents(GfxEventType const& minType, GfxEventType const& maxType) const noexcept
@@ -203,7 +203,7 @@ void GfxEvent::flushEvents(GfxEventType const& minType, GfxEventType const& maxT
     assert(minType);
     assert(maxType);
 
-    sdl2::SDL_FlushEvents(minType.getAsSdlType(), maxType.getAsSdlType());
+    SDL_FlushEvents(minType.getAsSdlType(), maxType.getAsSdlType());
 }
 
 int32_t GfxEvent::pollEvent(void) noexcept
@@ -212,7 +212,7 @@ int32_t GfxEvent::pollEvent(void) noexcept
 
     int32_t ret = 0;
 
-    ret = sdl2::SDL_PollEvent(&event_);
+    ret = SDL_PollEvent(&event_);
     if (ret == 1)
     {
         processEvent();
@@ -226,7 +226,7 @@ int32_t GfxEvent::waitEvent(void) noexcept
 
     int32_t ret = 0;
 
-    ret = sdl2::SDL_WaitEvent(&event_);
+    ret = SDL_WaitEvent(&event_);
     if (ret == 1)
     {
         processEvent();
@@ -242,7 +242,7 @@ int32_t GfxEvent::waitEventTimeout(const int32_t timeout) noexcept
 
     int32_t ret = 0;
 
-    ret = sdl2::SDL_WaitEventTimeout(&event_, timeout);
+    ret = SDL_WaitEventTimeout(&event_, timeout);
     if (ret == 1)
     {
         processEvent();
@@ -256,7 +256,7 @@ int32_t GfxEvent::pushEvent(void) const noexcept
 
     int32_t ret = 0;
 
-    ret = sdl2::SDL_PushEvent(const_cast<SdlType *>(&event_));
+    ret = SDL_PushEvent(const_cast<SdlType *>(&event_));
     return ret;
 }
 
@@ -268,7 +268,7 @@ int32_t GfxEvent::pushEvent(GfxEvent const& event) const noexcept
 
     int32_t ret = 0;
 
-    ret = sdl2::SDL_PushEvent(event.getAsSdlTypePtr());
+    ret = SDL_PushEvent(event.getAsSdlTypePtr());
     return ret;
 }
 
@@ -283,7 +283,7 @@ void GfxEvent::setEventFilter(GfxEventFilter const& filter) noexcept
     if (eventFilterFunctionObject_ == nullptr)
     {
         eventFilterFunctionObject_ = const_cast<GfxEventFilter *>(&filter);
-        sdl2::SDL_SetEventFilter(eventFilterFunction, userdata);
+        SDL_SetEventFilter(eventFilterFunction, userdata);
     }
 }
 
@@ -293,10 +293,10 @@ GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) const throw(std::runti
 
     assert(filter == nullptr);
 
-    sdl2::SDL_EventFilter sdlEventFilterFunc = nullptr;
+    SDL_EventFilter sdlEventFilterFunc = nullptr;
     void * userdata = nullptr;
 
-    sdl2::SDL_GetEventFilter(&sdlEventFilterFunc, &userdata);
+    SDL_GetEventFilter(&sdlEventFilterFunc, &userdata);
     if (userdata != static_cast<void *>(const_cast<GfxEvent *>(this)))
     {
         throw std::runtime_error("this pointer error");
@@ -321,7 +321,7 @@ void GfxEvent::addEventWatch(GfxEventFilter const& filter) noexcept
     if (eventWatchFunctionObject_ == nullptr)
     {
         eventWatchFunctionObject_ = const_cast<GfxEventFilter *>(&filter);
-        sdl2::SDL_AddEventWatch(eventWatchFunction, userdata);
+        SDL_AddEventWatch(eventWatchFunction, userdata);
     }
 }
 
@@ -336,7 +336,7 @@ void GfxEvent::delEventWatch(GfxEventFilter const& filter) noexcept
     if ((eventWatchFunctionObject_ != nullptr) &&
         (eventWatchFunctionObject_ == const_cast<GfxEventFilter *>(&filter)))
     {
-        sdl2::SDL_DelEventWatch(eventWatchFunction, userdata);
+        SDL_DelEventWatch(eventWatchFunction, userdata);
         eventWatchFunctionObject_ = nullptr;
     }
 }
@@ -352,7 +352,7 @@ void GfxEvent::filterEvents(GfxEventFilter const& filter) throw(std::runtime_err
     if (filterEventsFunctionObject_ == nullptr)
     {
         filterEventsFunctionObject_ = const_cast<GfxEventFilter *>(&filter);
-        sdl2::SDL_FilterEvents(filterEventsFunction, userdata);
+        SDL_FilterEvents(filterEventsFunction, userdata);
         filterEventsFunctionObject_ = nullptr;
     }
     else
@@ -369,7 +369,7 @@ uint8_t GfxEvent::eventState(GfxEventType const& type, const GfxEventActionComma
 
     uint8_t ret = 0;
 
-    ret = sdl2::SDL_EventState(type.getAsSdlType(), static_cast<int32_t>(state));
+    ret = SDL_EventState(type.getAsSdlType(), static_cast<int32_t>(state));
     return ret;
 }
 
@@ -390,7 +390,7 @@ uint32_t GfxEvent::registerEvents(const int32_t numevents) const noexcept
 
     uint32_t ret = 0;
 
-    ret = sdl2::SDL_RegisterEvents(numevents);
+    ret = SDL_RegisterEvents(numevents);
     return ret;
 }
 
@@ -691,7 +691,7 @@ void GfxEvent::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    event_.type = sdl2::SDL_FIRSTEVENT;
+    event_.type = SDL_FIRSTEVENT;
     eventType_.clear();
     eventFilterFunctionObject_ = nullptr;
     eventWatchFunctionObject_ = nullptr;

@@ -40,7 +40,7 @@ namespace touch
 class GfxFinger final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Finger SdlType;
+    typedef SDL_Finger SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

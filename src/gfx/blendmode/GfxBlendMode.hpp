@@ -41,7 +41,7 @@ namespace blendmode
 class GfxBlendMode final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_BlendMode SdlType;
+    typedef SDL_BlendMode SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -49,11 +49,11 @@ public:
 
     enum class ValueType : int32_t
     {
-        blendModeNone = sdl2::SDL_BLENDMODE_NONE,
-        blendModeBlend = sdl2::SDL_BLENDMODE_BLEND,
-        blendModeAdd = sdl2::SDL_BLENDMODE_ADD,
-        blendModeMod = sdl2::SDL_BLENDMODE_MOD,
-        blendModeInvalid = sdl2::SDL_BLENDMODE_INVALID
+        blendModeNone = SDL_BLENDMODE_NONE,
+        blendModeBlend = SDL_BLENDMODE_BLEND,
+        blendModeAdd = SDL_BLENDMODE_ADD,
+        blendModeMod = SDL_BLENDMODE_MOD,
+        blendModeInvalid = SDL_BLENDMODE_INVALID
     };
 
     GfxBlendMode() noexcept;

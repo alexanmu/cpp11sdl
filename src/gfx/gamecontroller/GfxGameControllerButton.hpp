@@ -40,7 +40,7 @@ namespace gamecontroller
 class GfxGameControllerButton final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_GameControllerButton SdlType;
+    typedef SDL_GameControllerButton SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -48,23 +48,23 @@ public:
 
     enum class ValueType : int32_t
     {
-        buttonInvalid = sdl2::SDL_CONTROLLER_BUTTON_INVALID,
-        buttonA = sdl2::SDL_CONTROLLER_BUTTON_A,
-        buttonB = sdl2::SDL_CONTROLLER_BUTTON_B,
-        buttonX = sdl2::SDL_CONTROLLER_BUTTON_X,
-        buttonY = sdl2::SDL_CONTROLLER_BUTTON_Y,
-        buttonBack = sdl2::SDL_CONTROLLER_BUTTON_BACK,
-        buttonGuide = sdl2::SDL_CONTROLLER_BUTTON_GUIDE,
-        buttonStart = sdl2::SDL_CONTROLLER_BUTTON_START,
-        buttonLeftStick = sdl2::SDL_CONTROLLER_BUTTON_LEFTSTICK,
-        buttonRightStick = sdl2::SDL_CONTROLLER_BUTTON_RIGHTSTICK,
-        buttonLeftShoulder = sdl2::SDL_CONTROLLER_BUTTON_LEFTSHOULDER,
-        buttonRightShoulder = sdl2::SDL_CONTROLLER_BUTTON_RIGHTSHOULDER,
-        buttonDPadUp = sdl2::SDL_CONTROLLER_BUTTON_DPAD_UP,
-        buttonDPadDown = sdl2::SDL_CONTROLLER_BUTTON_DPAD_DOWN,
-        buttonDPadLeft = sdl2::SDL_CONTROLLER_BUTTON_DPAD_LEFT,
-        buttonDPadRight = sdl2::SDL_CONTROLLER_BUTTON_DPAD_RIGHT,
-        buttonMax = sdl2::SDL_CONTROLLER_BUTTON_MAX
+        buttonInvalid = SDL_CONTROLLER_BUTTON_INVALID,
+        buttonA = SDL_CONTROLLER_BUTTON_A,
+        buttonB = SDL_CONTROLLER_BUTTON_B,
+        buttonX = SDL_CONTROLLER_BUTTON_X,
+        buttonY = SDL_CONTROLLER_BUTTON_Y,
+        buttonBack = SDL_CONTROLLER_BUTTON_BACK,
+        buttonGuide = SDL_CONTROLLER_BUTTON_GUIDE,
+        buttonStart = SDL_CONTROLLER_BUTTON_START,
+        buttonLeftStick = SDL_CONTROLLER_BUTTON_LEFTSTICK,
+        buttonRightStick = SDL_CONTROLLER_BUTTON_RIGHTSTICK,
+        buttonLeftShoulder = SDL_CONTROLLER_BUTTON_LEFTSHOULDER,
+        buttonRightShoulder = SDL_CONTROLLER_BUTTON_RIGHTSHOULDER,
+        buttonDPadUp = SDL_CONTROLLER_BUTTON_DPAD_UP,
+        buttonDPadDown = SDL_CONTROLLER_BUTTON_DPAD_DOWN,
+        buttonDPadLeft = SDL_CONTROLLER_BUTTON_DPAD_LEFT,
+        buttonDPadRight = SDL_CONTROLLER_BUTTON_DPAD_RIGHT,
+        buttonMax = SDL_CONTROLLER_BUTTON_MAX
     };
 
     GfxGameControllerButton() noexcept;

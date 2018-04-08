@@ -47,28 +47,28 @@ public:
 
     enum class ValueType : int32_t
     {
-        logCategoryApplication = sdl2::SDL_LOG_CATEGORY_APPLICATION,
-        logCategoryError = sdl2::SDL_LOG_CATEGORY_ERROR,
-        logCategoryAssert = sdl2::SDL_LOG_CATEGORY_ASSERT,
-        logCategorySystem = sdl2::SDL_LOG_CATEGORY_SYSTEM,
-        logCategoryAudio = sdl2::SDL_LOG_CATEGORY_AUDIO,
-        logCategoryVideo = sdl2::SDL_LOG_CATEGORY_VIDEO,
-        logCategoryRender = sdl2::SDL_LOG_CATEGORY_RENDER,
-        logCategoryInput = sdl2::SDL_LOG_CATEGORY_INPUT,
-        logCategoryTest = sdl2::SDL_LOG_CATEGORY_TEST,
+        logCategoryApplication = SDL_LOG_CATEGORY_APPLICATION,
+        logCategoryError = SDL_LOG_CATEGORY_ERROR,
+        logCategoryAssert = SDL_LOG_CATEGORY_ASSERT,
+        logCategorySystem = SDL_LOG_CATEGORY_SYSTEM,
+        logCategoryAudio = SDL_LOG_CATEGORY_AUDIO,
+        logCategoryVideo = SDL_LOG_CATEGORY_VIDEO,
+        logCategoryRender = SDL_LOG_CATEGORY_RENDER,
+        logCategoryInput = SDL_LOG_CATEGORY_INPUT,
+        logCategoryTest = SDL_LOG_CATEGORY_TEST,
         /* Reserved by SDL for future use */
-        logCategoryReserved1 = sdl2::SDL_LOG_CATEGORY_RESERVED1,
-        logCategoryReserved2 = sdl2::SDL_LOG_CATEGORY_RESERVED2,
-        logCategoryReserved3 = sdl2::SDL_LOG_CATEGORY_RESERVED3,
-        logCategoryReserved4 = sdl2::SDL_LOG_CATEGORY_RESERVED4,
-        logCategoryReserved5 = sdl2::SDL_LOG_CATEGORY_RESERVED5,
-        logCategoryReserved6 = sdl2::SDL_LOG_CATEGORY_RESERVED6,
-        logCategoryReserved7 = sdl2::SDL_LOG_CATEGORY_RESERVED7,
-        logCategoryReserved8 = sdl2::SDL_LOG_CATEGORY_RESERVED8,
-        logCategoryReserved9 = sdl2::SDL_LOG_CATEGORY_RESERVED9,
-        logCategoryReserved10 = sdl2::SDL_LOG_CATEGORY_RESERVED10,
+        logCategoryReserved1 = SDL_LOG_CATEGORY_RESERVED1,
+        logCategoryReserved2 = SDL_LOG_CATEGORY_RESERVED2,
+        logCategoryReserved3 = SDL_LOG_CATEGORY_RESERVED3,
+        logCategoryReserved4 = SDL_LOG_CATEGORY_RESERVED4,
+        logCategoryReserved5 = SDL_LOG_CATEGORY_RESERVED5,
+        logCategoryReserved6 = SDL_LOG_CATEGORY_RESERVED6,
+        logCategoryReserved7 = SDL_LOG_CATEGORY_RESERVED7,
+        logCategoryReserved8 = SDL_LOG_CATEGORY_RESERVED8,
+        logCategoryReserved9 = SDL_LOG_CATEGORY_RESERVED9,
+        logCategoryReserved10 = SDL_LOG_CATEGORY_RESERVED10,
         /* For application use ... not supported by Gfx (yet ?!) */
-        logCategoryCustom = sdl2::SDL_LOG_CATEGORY_CUSTOM
+        logCategoryCustom = SDL_LOG_CATEGORY_CUSTOM
     };
 
     GfxLogCategory() noexcept;

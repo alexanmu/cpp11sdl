@@ -44,10 +44,10 @@ static std::string IntToHexStr(T value)
 
 static void printSdlPalette(void * palptr, const bool printclrs)
 {
-    gfx::sdl2::SDL_Palette *pal;
-    gfx::sdl2::SDL_Color* clr;
+    SDL_Palette *pal;
+    SDL_Color* clr;
 
-    pal = reinterpret_cast<gfx::sdl2::SDL_Palette *>(palptr);
+    pal = reinterpret_cast<SDL_Palette *>(palptr);
     std::cout << "pal->ncolors=" << pal->ncolors << '\n';
     clr = pal->colors;
     if (clr == nullptr)
@@ -79,14 +79,14 @@ static void printSdlPalette(void * palptr, const bool printclrs)
 
 static void printSdlPixFormat(void * pixfmtptr)
 {
-    gfx::sdl2::SDL_PixelFormat* pix;
+    SDL_PixelFormat* pix;
 
     if (pixfmtptr == nullptr)
     {
         std::cout << "pixfmtptr=nullptr" << '\n';
         return;
     }
-    pix = reinterpret_cast<gfx::sdl2::SDL_PixelFormat *>(pixfmtptr);
+    pix = reinterpret_cast<SDL_PixelFormat *>(pixfmtptr);
     std::cout << "pix->format=" << IntToHexStr<uint32_t>(pix->format) << '\n';
     if (pix->palette == nullptr)
     {
@@ -118,14 +118,14 @@ static void printSdlPixFormat(void * pixfmtptr)
 void _doPaletteSdl(void)
 {
     std::cout << "TestPalette" << '\n';
-    gfx::sdl2::SDL_Palette* pal;
+    SDL_Palette* pal;
 
     /* Part 1 */
-    pal = gfx::sdl2::SDL_AllocPalette(2);
+    pal = SDL_AllocPalette(2);
     printSdlPalette(pal, false);
     for (int i = 0; i < pal->ncolors; i++)
     {
-        gfx::sdl2::SDL_Color c;
+        SDL_Color c;
         c.r = i + 1;
         c.g = i + 1;
         c.b = i + 1;
@@ -134,16 +134,16 @@ void _doPaletteSdl(void)
     }
     printSdlPalette(pal, false);
     /* Part 2 */
-    gfx::sdl2::SDL_PixelFormat* pix;
+    SDL_PixelFormat* pix;
 
-    pix = SDL_AllocFormat(gfx::sdl2::SDL_PIXELFORMAT_RGB332);
+    pix = SDL_AllocFormat(SDL_PIXELFORMAT_RGB332);
     if (SDL_SetPixelFormatPalette(pix, pal) != 0)
     {
-        std::cout << gfx::sdl2::SDL_GetError() << '\n';
+        std::cout << SDL_GetError() << '\n';
     }
     printSdlPixFormat(pix);
 
-    std::cout << "SDL_GetPixelFormatName(...)=" << gfx::sdl2::SDL_GetPixelFormatName(pix->format) << '\n';
+    std::cout << "SDL_GetPixelFormatName(...)=" << SDL_GetPixelFormatName(pix->format) << '\n';
     /* Free stuff */
     SDL_FreePalette(pal);
     SDL_FreeFormat(pix);

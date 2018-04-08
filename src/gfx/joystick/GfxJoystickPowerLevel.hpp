@@ -39,7 +39,7 @@ namespace joystick
 class GfxJoystickPowerLevel final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_JoystickPowerLevel SdlType;
+    typedef SDL_JoystickPowerLevel SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,13 +47,13 @@ public:
 
     enum class ValueType : int32_t
     {
-        powerUnknown = sdl2::SDL_JOYSTICK_POWER_UNKNOWN,
-        powerEmpty = sdl2::SDL_JOYSTICK_POWER_EMPTY,
-        powerLow = sdl2::SDL_JOYSTICK_POWER_LOW,
-        powerMedium = sdl2::SDL_JOYSTICK_POWER_MEDIUM,
-        powerFull = sdl2::SDL_JOYSTICK_POWER_FULL,
-        powerWired = sdl2::SDL_JOYSTICK_POWER_WIRED,
-        powerMax = sdl2::SDL_JOYSTICK_POWER_MAX
+        powerUnknown = SDL_JOYSTICK_POWER_UNKNOWN,
+        powerEmpty = SDL_JOYSTICK_POWER_EMPTY,
+        powerLow = SDL_JOYSTICK_POWER_LOW,
+        powerMedium = SDL_JOYSTICK_POWER_MEDIUM,
+        powerFull = SDL_JOYSTICK_POWER_FULL,
+        powerWired = SDL_JOYSTICK_POWER_WIRED,
+        powerMax = SDL_JOYSTICK_POWER_MAX
     };
 
     GfxJoystickPowerLevel() noexcept;

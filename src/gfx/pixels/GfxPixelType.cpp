@@ -129,84 +129,84 @@ bool GfxPixelType::isUnknwon(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_UNKNOWN);
+    return (value_ == SDL_PIXELTYPE_UNKNOWN);
 }
 
 bool GfxPixelType::isIndex1(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_INDEX1);
+    return (value_ == SDL_PIXELTYPE_INDEX1);
 }
 
 bool GfxPixelType::isIndex4(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_INDEX4);
+    return (value_ == SDL_PIXELTYPE_INDEX4);
 }
 
 bool GfxPixelType::isIndex8(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_INDEX8);
+    return (value_ == SDL_PIXELTYPE_INDEX8);
 }
 
 bool GfxPixelType::isPacked8(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_PACKED8);
+    return (value_ == SDL_PIXELTYPE_PACKED8);
 }
 
 bool GfxPixelType::isPacked16(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_PACKED16);
+    return (value_ == SDL_PIXELTYPE_PACKED16);
 }
 
 bool GfxPixelType::isPacked32(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_PACKED32);
+    return (value_ == SDL_PIXELTYPE_PACKED32);
 }
 
 bool GfxPixelType::isArrayU8(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_ARRAYU8);
+    return (value_ == SDL_PIXELTYPE_ARRAYU8);
 }
 
 bool GfxPixelType::isArrayU16(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_ARRAYU16);
+    return (value_ == SDL_PIXELTYPE_ARRAYU16);
 }
 
 bool GfxPixelType::isArrayU32(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_ARRAYU32);
+    return (value_ == SDL_PIXELTYPE_ARRAYU32);
 }
 
 bool GfxPixelType::isArrayF16(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_ARRAYF16);
+    return (value_ == SDL_PIXELTYPE_ARRAYF16);
 }
 
 bool GfxPixelType::isArrayF32(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PIXELTYPE_ARRAYF32);
+    return (value_ == SDL_PIXELTYPE_ARRAYF32);
 }
 
 void GfxPixelType::clear(void) noexcept

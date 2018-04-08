@@ -39,7 +39,7 @@ namespace mouse
 class GfxMouseWheelDirection final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_MouseWheelDirection SdlType;
+    typedef SDL_MouseWheelDirection SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,8 +47,8 @@ public:
 
     enum class ValueType : uint32_t
     {
-        mouseWheelNormal = sdl2::SDL_MOUSEWHEEL_NORMAL,
-        mouseWheelFlipped = sdl2::SDL_MOUSEWHEEL_FLIPPED
+        mouseWheelNormal = SDL_MOUSEWHEEL_NORMAL,
+        mouseWheelFlipped = SDL_MOUSEWHEEL_FLIPPED
     };
 
     GfxMouseWheelDirection() noexcept;

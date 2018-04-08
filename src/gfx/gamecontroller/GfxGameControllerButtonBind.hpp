@@ -41,7 +41,7 @@ namespace gamecontroller
 class GfxGameControllerButtonBind final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_GameControllerButtonBind SdlType;
+    typedef SDL_GameControllerButtonBind SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

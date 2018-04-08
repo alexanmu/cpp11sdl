@@ -47,7 +47,7 @@ namespace joystick
 class GfxJoystick final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Joystick * SdlTypePtr;
+    typedef SDL_Joystick * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

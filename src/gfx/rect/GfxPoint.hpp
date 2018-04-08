@@ -39,8 +39,8 @@ namespace rect
 class GfxPoint final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Point SdlType;
-    typedef sdl2::SDL_Point * SdlTypePtr;
+    typedef SDL_Point SdlType;
+    typedef SDL_Point * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;

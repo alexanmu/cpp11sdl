@@ -36,7 +36,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxBitmapOrder : public GfxObject
+class GfxBitmapOrder final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : uint32_t
     {
-        bitmapOrderNone = sdl2::SDL_BITMAPORDER_NONE,
-        bitmapOrder4321 = sdl2::SDL_BITMAPORDER_4321,
-        bitmapOrder1234 = sdl2::SDL_BITMAPORDER_1234,
+        bitmapOrderNone = SDL_BITMAPORDER_NONE,
+        bitmapOrder4321 = SDL_BITMAPORDER_4321,
+        bitmapOrder1234 = SDL_BITMAPORDER_1234,
     };
 
     GfxBitmapOrder() noexcept;

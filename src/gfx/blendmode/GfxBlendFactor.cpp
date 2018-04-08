@@ -139,70 +139,70 @@ bool GfxBlendFactor::isZero(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_ZERO);
+    return (blendFactor_ == SDL_BLENDFACTOR_ZERO);
 }
 
 bool GfxBlendFactor::isOne(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_ONE);
+    return (blendFactor_ == SDL_BLENDFACTOR_ONE);
 }
 
 bool GfxBlendFactor::isSrcColor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_SRC_COLOR);
+    return (blendFactor_ == SDL_BLENDFACTOR_SRC_COLOR);
 }
 
 bool GfxBlendFactor::isOneMinusSrcColor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR);
+    return (blendFactor_ == SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR);
 }
 
 bool GfxBlendFactor::isSrcAlpha(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_SRC_ALPHA);
+    return (blendFactor_ == SDL_BLENDFACTOR_SRC_ALPHA);
 }
 
 bool GfxBlendFactor::isOneMinusSrcAlpha(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA);
+    return (blendFactor_ == SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA);
 }
 
 bool GfxBlendFactor::isDstColor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_DST_COLOR);
+    return (blendFactor_ == SDL_BLENDFACTOR_DST_COLOR);
 }
 
 bool GfxBlendFactor::isOneMinusDstColor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR);
+    return (blendFactor_ == SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR);
 }
 
 bool GfxBlendFactor::isDstAlpha(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_DST_ALPHA);
+    return (blendFactor_ == SDL_BLENDFACTOR_DST_ALPHA);
 }
 
 bool GfxBlendFactor::isOneMinusDstAlpha(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendFactor_ == sdl2::SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA);
+    return (blendFactor_ == SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA);
 }
 
 void GfxBlendFactor::clear(void) noexcept

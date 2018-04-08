@@ -129,21 +129,21 @@ bool GfxEventAction::isAddEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (action_ == sdl2::SDL_ADDEVENT);
+    return (action_ == SDL_ADDEVENT);
 }
 
 bool GfxEventAction::isPeekEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (action_ == sdl2::SDL_PEEKEVENT);
+    return (action_ == SDL_PEEKEVENT);
 }
 
 bool GfxEventAction::isGetEvent(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (action_ == sdl2::SDL_GETEVENT);
+    return (action_ == SDL_GETEVENT);
 }
 
 void GfxEventAction::clear(void) noexcept

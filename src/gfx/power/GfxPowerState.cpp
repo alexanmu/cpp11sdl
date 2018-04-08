@@ -123,35 +123,35 @@ bool GfxPowerState::isUnknown(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_UNKNOWN));
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_UNKNOWN));
 }
 
 bool GfxPowerState::isOnBattery(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_ON_BATTERY));
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_ON_BATTERY));
 }
 
 bool GfxPowerState::isNoBattery(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_NO_BATTERY));
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_NO_BATTERY));
 }
 
 bool GfxPowerState::isCharging(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGING));
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_CHARGING));
 }
 
 bool GfxPowerState::isCharged(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == static_cast<SdlType>(sdl2::SDL_POWERSTATE_CHARGED));
+    return (value_ == static_cast<SdlType>(SDL_POWERSTATE_CHARGED));
 }
 
 void GfxPowerState::clear(void) noexcept

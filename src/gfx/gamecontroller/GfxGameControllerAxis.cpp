@@ -129,63 +129,63 @@ bool GfxGameControllerAxis::isAxisInvalid(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_INVALID);
+    return (axis_ == SDL_CONTROLLER_AXIS_INVALID);
 }
 
 bool GfxGameControllerAxis::isAxisLeftX(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_LEFTX);
+    return (axis_ == SDL_CONTROLLER_AXIS_LEFTX);
 }
 
 bool GfxGameControllerAxis::isAxisLeftY(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_LEFTY);
+    return (axis_ == SDL_CONTROLLER_AXIS_LEFTY);
 }
 
 bool GfxGameControllerAxis::isAxisRightX(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_RIGHTX);
+    return (axis_ == SDL_CONTROLLER_AXIS_RIGHTX);
 }
 
 bool GfxGameControllerAxis::isAxisRightY(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_RIGHTY);
+    return (axis_ == SDL_CONTROLLER_AXIS_RIGHTY);
 }
 
 bool GfxGameControllerAxis::isAxisTriggerLeft(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_TRIGGERLEFT);
+    return (axis_ == SDL_CONTROLLER_AXIS_TRIGGERLEFT);
 }
 
 bool GfxGameControllerAxis::isAxisTriggerRight(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
+    return (axis_ == SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
 }
 
 bool GfxGameControllerAxis::isAxisMax(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (axis_ == sdl2::SDL_CONTROLLER_AXIS_MAX);
+    return (axis_ == SDL_CONTROLLER_AXIS_MAX);
 }
 
 void GfxGameControllerAxis::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    axis_ = sdl2::SDL_CONTROLLER_AXIS_INVALID;
+    axis_ = SDL_CONTROLLER_AXIS_INVALID;
 }
 
 GfxGameControllerAxis::SdlType GfxGameControllerAxis::getAsSdlType(void) const noexcept

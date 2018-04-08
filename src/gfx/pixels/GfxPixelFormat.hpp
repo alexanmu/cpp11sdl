@@ -49,7 +49,7 @@ namespace pixels
 class GfxPixelFormat final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_PixelFormat * SdlTypePtr;
+    typedef SDL_PixelFormat * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

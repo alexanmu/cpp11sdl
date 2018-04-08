@@ -40,7 +40,7 @@ namespace video
 class GfxWindowFlags final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_WindowFlags SdlType;
+    typedef SDL_WindowFlags SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -49,29 +49,29 @@ public:
     enum class ValueType : uint32_t
     {
         windowFlagUnknown = 0,
-        windowFlagFullscreen = sdl2::SDL_WINDOW_FULLSCREEN,
-        windowFlagOpenGL = sdl2::SDL_WINDOW_OPENGL,
-        windowFlagShown = sdl2::SDL_WINDOW_SHOWN,
-        windowFlagHidden = sdl2::SDL_WINDOW_HIDDEN,
-        windowFlagBorderless = sdl2::SDL_WINDOW_BORDERLESS,
-        windowFlagResizable = sdl2::SDL_WINDOW_RESIZABLE,
-        windowFlagMinimized = sdl2::SDL_WINDOW_MINIMIZED,
-        windowFlagMaximized = sdl2::SDL_WINDOW_MAXIMIZED,
-        windowFlagInputGrabbed = sdl2::SDL_WINDOW_INPUT_GRABBED,
-        windowFlagInputFocus = sdl2::SDL_WINDOW_INPUT_FOCUS,
-        windowFlagMouseFocus = sdl2::SDL_WINDOW_MOUSE_FOCUS,
-        windowFlagFullscreenDesktop = sdl2::SDL_WINDOW_FULLSCREEN_DESKTOP,
-        windowFlagForeign = sdl2::SDL_WINDOW_FOREIGN,
-        windowFlagAllowHighDPI = sdl2::SDL_WINDOW_ALLOW_HIGHDPI,
-        windowFlagMouseCapture = sdl2::SDL_WINDOW_MOUSE_CAPTURE,
+        windowFlagFullscreen = SDL_WINDOW_FULLSCREEN,
+        windowFlagOpenGL = SDL_WINDOW_OPENGL,
+        windowFlagShown = SDL_WINDOW_SHOWN,
+        windowFlagHidden = SDL_WINDOW_HIDDEN,
+        windowFlagBorderless = SDL_WINDOW_BORDERLESS,
+        windowFlagResizable = SDL_WINDOW_RESIZABLE,
+        windowFlagMinimized = SDL_WINDOW_MINIMIZED,
+        windowFlagMaximized = SDL_WINDOW_MAXIMIZED,
+        windowFlagInputGrabbed = SDL_WINDOW_INPUT_GRABBED,
+        windowFlagInputFocus = SDL_WINDOW_INPUT_FOCUS,
+        windowFlagMouseFocus = SDL_WINDOW_MOUSE_FOCUS,
+        windowFlagFullscreenDesktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
+        windowFlagForeign = SDL_WINDOW_FOREIGN,
+        windowFlagAllowHighDPI = SDL_WINDOW_ALLOW_HIGHDPI,
+        windowFlagMouseCapture = SDL_WINDOW_MOUSE_CAPTURE,
         // X11 only
-        windowAlwaysOnTop = sdl2::SDL_WINDOW_ALWAYS_ON_TOP,
-        windowSkipTaskbar = sdl2::SDL_WINDOW_SKIP_TASKBAR,
-        windowUtility = sdl2::SDL_WINDOW_UTILITY,
-        windowTooltip = sdl2::SDL_WINDOW_TOOLTIP,
-        windowPopupMenu = sdl2::SDL_WINDOW_POPUP_MENU,
+        windowAlwaysOnTop = SDL_WINDOW_ALWAYS_ON_TOP,
+        windowSkipTaskbar = SDL_WINDOW_SKIP_TASKBAR,
+        windowUtility = SDL_WINDOW_UTILITY,
+        windowTooltip = SDL_WINDOW_TOOLTIP,
+        windowPopupMenu = SDL_WINDOW_POPUP_MENU,
         // SDL2-2.0.6
-        windowVulkan = sdl2::SDL_WINDOW_VULKAN
+        windowVulkan = SDL_WINDOW_VULKAN
     };
 
     GfxWindowFlags() noexcept;

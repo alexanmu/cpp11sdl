@@ -39,7 +39,7 @@ namespace joystick
 class GfxJoystickType final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_JoystickType SdlType;
+    typedef SDL_JoystickType SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,16 +47,16 @@ public:
 
     enum class ValueType : int32_t
     {
-        typeUnknown = sdl2::SDL_JOYSTICK_TYPE_UNKNOWN,
-        typeGameController = sdl2::SDL_JOYSTICK_TYPE_GAMECONTROLLER,
-        typeWheel = sdl2::SDL_JOYSTICK_TYPE_WHEEL,
-        typeArcadeStick = sdl2::SDL_JOYSTICK_TYPE_ARCADE_STICK,
-        typeFlightStick = sdl2::SDL_JOYSTICK_TYPE_FLIGHT_STICK,
-        typeDancePad = sdl2::SDL_JOYSTICK_TYPE_DANCE_PAD,
-        typeGuitar = sdl2::SDL_JOYSTICK_TYPE_GUITAR,
-        typeDrumKit = sdl2::SDL_JOYSTICK_TYPE_DRUM_KIT,
-        typeArcadePad = sdl2::SDL_JOYSTICK_TYPE_ARCADE_PAD,
-        typeThrottle = sdl2::SDL_JOYSTICK_TYPE_THROTTLE
+        typeUnknown = SDL_JOYSTICK_TYPE_UNKNOWN,
+        typeGameController = SDL_JOYSTICK_TYPE_GAMECONTROLLER,
+        typeWheel = SDL_JOYSTICK_TYPE_WHEEL,
+        typeArcadeStick = SDL_JOYSTICK_TYPE_ARCADE_STICK,
+        typeFlightStick = SDL_JOYSTICK_TYPE_FLIGHT_STICK,
+        typeDancePad = SDL_JOYSTICK_TYPE_DANCE_PAD,
+        typeGuitar = SDL_JOYSTICK_TYPE_GUITAR,
+        typeDrumKit = SDL_JOYSTICK_TYPE_DRUM_KIT,
+        typeArcadePad = SDL_JOYSTICK_TYPE_ARCADE_PAD,
+        typeThrottle = SDL_JOYSTICK_TYPE_THROTTLE
     };
 
     GfxJoystickType() noexcept;

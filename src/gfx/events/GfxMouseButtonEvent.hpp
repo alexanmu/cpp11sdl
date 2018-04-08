@@ -40,11 +40,11 @@ namespace gfx
 namespace events
 {
 
-class GfxMouseButtonEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID,
+class GfxMouseButtonEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID,
     public prv::IGetMouseID
 {
 public:
-    typedef sdl2::SDL_MouseButtonEvent SdlType;
+    typedef SDL_MouseButtonEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

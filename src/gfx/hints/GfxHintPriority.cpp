@@ -122,28 +122,28 @@ bool GfxHintPriority::isHintDefault(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (hintPrio_ == sdl2::SDL_HINT_DEFAULT);
+    return (hintPrio_ == SDL_HINT_DEFAULT);
 }
 
 bool GfxHintPriority::isHintNormal(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (hintPrio_ == sdl2::SDL_HINT_NORMAL);
+    return (hintPrio_ == SDL_HINT_NORMAL);
 }
 
 bool GfxHintPriority::isHintOverride(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (hintPrio_ == sdl2::SDL_HINT_OVERRIDE);
+    return (hintPrio_ == SDL_HINT_OVERRIDE);
 }
 
 void GfxHintPriority::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    hintPrio_ = sdl2::SDL_HINT_DEFAULT;
+    hintPrio_ = SDL_HINT_DEFAULT;
 }
 
 GfxHintPriority::SdlType GfxHintPriority::getAsSdlType(void) const noexcept

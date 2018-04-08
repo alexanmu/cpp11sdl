@@ -46,7 +46,7 @@ namespace haptic
 class GfxHapticEffect final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HapticEffect SdlType;
+    typedef SDL_HapticEffect SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

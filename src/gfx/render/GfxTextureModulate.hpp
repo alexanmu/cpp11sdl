@@ -39,7 +39,7 @@ namespace render
 class GfxTextureModulate final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_TextureModulate SdlType;
+    typedef SDL_TextureModulate SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : int32_t
     {
-        modulateNone = sdl2::SDL_TEXTUREMODULATE_NONE,
-        modulateColor = sdl2::SDL_TEXTUREMODULATE_COLOR,
-        modulateAlpha = sdl2::SDL_TEXTUREMODULATE_ALPHA
+        modulateNone = SDL_TEXTUREMODULATE_NONE,
+        modulateColor = SDL_TEXTUREMODULATE_COLOR,
+        modulateAlpha = SDL_TEXTUREMODULATE_ALPHA
     };
 
     GfxTextureModulate() noexcept;

@@ -145,7 +145,7 @@ bool GfxTtfFontRenderer::sizeText(std::string const& text, int32_t * w, int32_t 
 
     if (ttf_ != nullptr)
     {
-        return (sdl2::TTF_SizeText(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
+        return (TTF_SizeText(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
     }
     return false;
 }
@@ -160,7 +160,7 @@ bool GfxTtfFontRenderer::sizeUtf8(std::string const& text, int32_t * w, int32_t 
 
     if (ttf_ != nullptr)
     {
-        return (sdl2::TTF_SizeUTF8(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
+        return (TTF_SizeUTF8(ttf_->getAsSdlTypePtr(), text.c_str(), w, h) == 0);
     }
     return false;
 }
@@ -187,7 +187,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextSolid(std::string const& tex
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderText_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
+        surf = TTF_RenderText_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderTextSolid", surf, false);
@@ -207,7 +207,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Solid(std::string const&
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderUTF8_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
+        surf = TTF_RenderUTF8_Solid(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Solid", surf, false);
@@ -236,7 +236,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphSolid(const uint16_t ch,
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderGlyph_Solid(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
+        surf = TTF_RenderGlyph_Solid(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphSolid", surf, false);
@@ -254,7 +254,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextShaded(std::string const& te
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderText_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
+        surf = TTF_RenderText_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderTextShaded", surf, false);
@@ -272,7 +272,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Shaded(std::string const
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderUTF8_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
+        surf = TTF_RenderUTF8_Shaded(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType(), bg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Shaded", surf, false);
@@ -302,7 +302,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphShaded(const uint16_t ch, g
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderGlyph_Shaded(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType(), bg.getAsSdlType());
+        surf = TTF_RenderGlyph_Shaded(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType(), bg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphShaded", surf, false);
@@ -320,7 +320,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextBlended(std::string const& t
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderText_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
+        surf = TTF_RenderText_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderTextBlended", surf, false);
@@ -338,7 +338,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderTextUtf8Blended(std::string cons
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderUTF8_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
+        surf = TTF_RenderUTF8_Blended(ttf_->getAsSdlTypePtr(), text.c_str(), fg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderTextUtf8Blended", surf, false);
@@ -367,7 +367,7 @@ surface::GfxSurface * GfxTtfFontRenderer::renderGlyphBlended(const uint16_t ch,
 
     if (ttf_ != nullptr)
     {
-        surf = sdl2::TTF_RenderGlyph_Blended(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
+        surf = TTF_RenderGlyph_Blended(ttf_->getAsSdlTypePtr(), ch, fg.getAsSdlType());
         if (surf != nullptr)
         {
             return new surface::GfxSurface("GfxTtfFontRenderer::renderGlyphBlended", surf, false);

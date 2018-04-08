@@ -39,7 +39,7 @@ namespace keycode
 class GfxKeymod final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Keymod SdlType;
+    typedef SDL_Keymod SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,19 +47,19 @@ public:
 
     enum class ValueType : uint16_t
     {
-        kmodNone = sdl2::KMOD_NONE,
-        kmodLShift = sdl2::KMOD_LSHIFT,
-        kmodRShift = sdl2::KMOD_RSHIFT,
-        kmodLCtrl = sdl2::KMOD_LCTRL,
-        kmodRCtrl = sdl2::KMOD_RCTRL,
-        kmodLAlt = sdl2::KMOD_LALT,
-        kmodRAlt = sdl2::KMOD_RALT,
-        kmodLGui = sdl2::KMOD_LGUI,
-        kmodRGui = sdl2::KMOD_RGUI,
-        kmodNum = sdl2::KMOD_NUM,
-        kmodCaps = sdl2::KMOD_CAPS,
-        kmodMode = sdl2::KMOD_MODE,
-        kmodReserved = sdl2::KMOD_RESERVED,
+        kmodNone = KMOD_NONE,
+        kmodLShift = KMOD_LSHIFT,
+        kmodRShift = KMOD_RSHIFT,
+        kmodLCtrl = KMOD_LCTRL,
+        kmodRCtrl = KMOD_RCTRL,
+        kmodLAlt = KMOD_LALT,
+        kmodRAlt = KMOD_RALT,
+        kmodLGui = KMOD_LGUI,
+        kmodRGui = KMOD_RGUI,
+        kmodNum = KMOD_NUM,
+        kmodCaps = KMOD_CAPS,
+        kmodMode = KMOD_MODE,
+        kmodReserved = KMOD_RESERVED,
     };
 
     GfxKeymod() noexcept;
@@ -101,10 +101,10 @@ public:
 private:
     SdlType mod_;
 
-    static const uint16_t kmodCtrl = sdl2::KMOD_LCTRL | sdl2::KMOD_RCTRL;
-    static const uint16_t kmodShift = sdl2::KMOD_LSHIFT | sdl2::KMOD_RSHIFT;
-    static const uint16_t kmodAlt = sdl2::KMOD_LALT | sdl2::KMOD_RALT;
-    static const uint16_t kmodGui = sdl2::KMOD_LGUI | sdl2::KMOD_RGUI;
+    static const uint16_t kmodCtrl = KMOD_LCTRL | KMOD_RCTRL;
+    static const uint16_t kmodShift = KMOD_LSHIFT | KMOD_RSHIFT;
+    static const uint16_t kmodAlt = KMOD_LALT | KMOD_RALT;
+    static const uint16_t kmodGui = KMOD_LGUI | KMOD_RGUI;
 };
 
 }  // namespace keycode

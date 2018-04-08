@@ -40,8 +40,8 @@ namespace video
 class GfxDisplayMode final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_DisplayMode SdlType;
-    typedef sdl2::SDL_DisplayMode * SdlTypePtr;
+    typedef SDL_DisplayMode SdlType;
+    typedef SDL_DisplayMode * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;

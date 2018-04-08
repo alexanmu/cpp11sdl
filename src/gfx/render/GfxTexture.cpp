@@ -66,7 +66,7 @@ GfxTexture::GfxTexture(std::string const& texname, void * rend, pixels::GfxPixel
     SdlTypePtr texptr;
 
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
+    texptr = SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
                                      format.getAsSdlType(),
                                      acc.getAsSdlType(),
                                      w, h);
@@ -91,7 +91,7 @@ GfxTexture::GfxTexture(std::string const& texname, void * rend, surface::GfxSurf
     SdlTypePtr texptr;
 
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    texptr = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)
     {
         throw std::runtime_error("Unable to create texture");
@@ -120,7 +120,7 @@ GfxTexture& GfxTexture::operator=(GfxTexture&& other) noexcept
         // Move this
         if (tex_ != nullptr)
         {
-            sdl2::SDL_DestroyTexture(tex_);
+            SDL_DestroyTexture(tex_);
         }
         tex_ = other.tex_;
         // Destroy other's data
@@ -135,7 +135,7 @@ GfxTexture::~GfxTexture() noexcept
 
     if (tex_ != nullptr)
     {
-        sdl2::SDL_DestroyTexture(tex_);
+        SDL_DestroyTexture(tex_);
     }
     tex_ = nullptr;
 }
@@ -175,7 +175,7 @@ void GfxTexture::createTexture(std::string const& texname, void * rend, pixels::
         throw std::runtime_error("Texture already created");
     }
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = sdl2::SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
+    texptr = SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
                                      format.getAsSdlType(),
                                      acc.getAsSdlType(),
                                      w, h);
@@ -204,7 +204,7 @@ void GfxTexture::createTexture(std::string const& texname, void * rend, surface:
         throw std::runtime_error("Texture already created");
     }
     rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = sdl2::SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    texptr = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)
     {
         throw std::runtime_error("Unable to create texture");
@@ -228,7 +228,7 @@ void GfxTexture::queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAc
 
     if (tex_ != nullptr)
     {
-        sdl2::SDL_QueryTexture(tex_, &sdlfmt, &u32sdlacc, w, h);
+        SDL_QueryTexture(tex_, &sdlfmt, &u32sdlacc, w, h);
         *format = new pixels::GfxPixelFormatEnum(sdlfmt);
         *acc = new GfxTextureAccess(u32sdlacc);
     }
@@ -242,7 +242,7 @@ void GfxTexture::setTextureColorMod(const uint8_t r, const uint8_t g, const uint
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_SetTextureColorMod(tex_, r, g, b);
+        ret = SDL_SetTextureColorMod(tex_, r, g, b);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -255,7 +255,7 @@ void GfxTexture::setTextureColorMod(pixels::GfxColor const& color) const noexcep
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_SetTextureColorMod(tex_, color.getRed(), color.getGreen(), color.getBlue());
+        ret = SDL_SetTextureColorMod(tex_, color.getRed(), color.getGreen(), color.getBlue());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -275,7 +275,7 @@ void GfxTexture::getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const
     *b = 0;
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_GetTextureColorMod(tex_, r, g, b);
+        ret = SDL_GetTextureColorMod(tex_, r, g, b);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -292,7 +292,7 @@ pixels::GfxColor GfxTexture::getTextureColorMod(void) const noexcept
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_GetTextureColorMod(tex_ , &r, &g, &b);
+        ret = SDL_GetTextureColorMod(tex_ , &r, &g, &b);
         assert((ret == -1) || (ret == 0));
         if (ret == 0)
         {
@@ -310,7 +310,7 @@ void GfxTexture::setTextureAlphaMod(const uint8_t a) const noexcept
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_SetTextureAlphaMod(tex_, a);
+        ret = SDL_SetTextureAlphaMod(tex_, a);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -325,7 +325,7 @@ void GfxTexture::getTextureAlphaMod(uint8_t * a) const noexcept
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_GetTextureAlphaMod(tex_, a);
+        ret = SDL_GetTextureAlphaMod(tex_, a);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -340,7 +340,7 @@ void GfxTexture::setBlendMode(blendmode::GfxBlendMode const& blendmode) const no
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
+        ret = SDL_SetTextureBlendMode(tex_, blendmode.getAsSdlType());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -353,7 +353,7 @@ void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_SetTextureBlendMode(tex_, static_cast<blendmode::GfxBlendMode::SdlType>(blendmode));
+        ret = SDL_SetTextureBlendMode(tex_, static_cast<blendmode::GfxBlendMode::SdlType>(blendmode));
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -368,7 +368,7 @@ blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_GetTextureBlendMode(tex_, &bm);
+        ret = SDL_GetTextureBlendMode(tex_, &bm);
         assert((ret == -1) || (ret == 0));
         if (ret == 0)
         {
@@ -390,7 +390,7 @@ void GfxTexture::updateTexture(rect::GfxRect const& rect, const void * pixels, c
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_UpdateTexture(tex_, rect.getAsSdlTypePtr(), pixels, pitch);
+        ret = SDL_UpdateTexture(tex_, rect.getAsSdlTypePtr(), pixels, pitch);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -414,7 +414,7 @@ void GfxTexture::updateYUVTexture(rect::GfxRect const& rect,
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_UpdateYUVTexture(tex_, rect.getAsSdlTypePtr(), Yplane, Ypitch,
+        ret = SDL_UpdateYUVTexture(tex_, rect.getAsSdlTypePtr(), Yplane, Ypitch,
                                          Uplane, Upitch, Vplane, Vpitch);
         assert((ret == -1) || (ret == 0));
     }
@@ -432,7 +432,7 @@ void GfxTexture::lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t 
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_LockTexture(tex_, rect.getAsSdlTypePtr(), pixels, pitch);
+        ret = SDL_LockTexture(tex_, rect.getAsSdlTypePtr(), pixels, pitch);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -448,7 +448,7 @@ void GfxTexture::lockTexture(void ** pixels, int * pitch) const noexcept
 
     if (tex_ != nullptr)
     {
-        ret = sdl2::SDL_LockTexture(tex_, NULL, pixels, pitch);
+        ret = SDL_LockTexture(tex_, NULL, pixels, pitch);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -459,7 +459,7 @@ void GfxTexture::unlockTexture(void) const noexcept
 
     if (tex_ != nullptr)
     {
-        sdl2::SDL_UnlockTexture(tex_);
+        SDL_UnlockTexture(tex_);
     }
 }
 
@@ -469,7 +469,7 @@ void GfxTexture::destroyTexture(void) noexcept
 
     if (tex_ != nullptr)
     {
-        sdl2::SDL_DestroyTexture(tex_);
+        SDL_DestroyTexture(tex_);
         tex_ = nullptr;
     }
 }

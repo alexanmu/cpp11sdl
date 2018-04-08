@@ -57,7 +57,7 @@ GfxGameController::GfxGameController(const int32_t index) throw(std::runtime_err
 
     SdlTypePtr tmpgctrlptr;
 
-    tmpgctrlptr = sdl2::SDL_GameControllerOpen(index);
+    tmpgctrlptr = SDL_GameControllerOpen(index);
     if (tmpgctrlptr == nullptr)
     {
         throw std::runtime_error("Unable to create GfxJoystick object");
@@ -96,7 +96,7 @@ GfxGameController::~GfxGameController()
 
     if (gCtrl_ != nullptr)
     {
-        sdl2::SDL_GameControllerClose(gCtrl_);
+        SDL_GameControllerClose(gCtrl_);
         gCtrl_ = nullptr;
     }
 }
@@ -115,7 +115,7 @@ void GfxGameController::gameControllerOpen(const int32_t index) throw(std::runti
     {
         throw std::runtime_error("Game controller already open");
     }
-    tmpgctrlptr = sdl2::SDL_GameControllerOpen(index);
+    tmpgctrlptr = SDL_GameControllerOpen(index);
     if (tmpgctrlptr == nullptr)
     {
         throw std::runtime_error("Unable to create GfxGameController object");
@@ -129,7 +129,7 @@ void GfxGameController::gameControllerClose(void) noexcept
 
     if (gCtrl_ != nullptr)
     {
-        sdl2::SDL_GameControllerClose(gCtrl_);
+        SDL_GameControllerClose(gCtrl_);
         gCtrl_ = nullptr;
     }
 }
@@ -142,7 +142,7 @@ int32_t GfxGameController::gameControllerAddMapping(std::string const& mappingSt
 
     int32_t ret = -1;
 
-    ret = sdl2::SDL_GameControllerAddMapping(mappingString.c_str());
+    ret = SDL_GameControllerAddMapping(mappingString.c_str());
     assert((ret == -1) || (ret == 0) || (ret == 1));
 
     return ret;
@@ -154,7 +154,7 @@ int32_t GfxGameController::gameControllerNumMappings(void) const noexcept
 
     int32_t ret;
 
-    ret = sdl2::SDL_GameControllerNumMappings();
+    ret = SDL_GameControllerNumMappings();
 
     return ret;
 }
@@ -168,11 +168,11 @@ const std::string GfxGameController::gameControllerMappingForIndex(const int32_t
     std::string ret = "";
     const char * pch = NULL;
 
-    pch = sdl2::SDL_GameControllerMappingForIndex(mappingIndex);
+    pch = SDL_GameControllerMappingForIndex(mappingIndex);
     if (pch != NULL)
     {
         ret = pch;
-        sdl2::SDL_free(static_cast<void *>(const_cast<char *>(pch)));
+        SDL_free(static_cast<void *>(const_cast<char *>(pch)));
     }
     return ret;
 }
@@ -186,11 +186,11 @@ const std::string GfxGameController::gameControllerMappingForGUID(joystick::GfxJ
     std::string ret = "";
     const char * pch = NULL;
 
-    pch = sdl2::SDL_GameControllerMappingForGUID(joyId.getAsSdlType());
+    pch = SDL_GameControllerMappingForGUID(joyId.getAsSdlType());
     if (pch != NULL)
     {
         ret = pch;
-        sdl2::SDL_free(static_cast<void *>(const_cast<char *>(pch)));
+        SDL_free(static_cast<void *>(const_cast<char *>(pch)));
     }
     return ret;
 }
@@ -204,11 +204,11 @@ const std::string GfxGameController::gameControllerMapping(void) const noexcept
 
     if (gCtrl_ != nullptr)
     {
-        pch = sdl2::SDL_GameControllerMapping(gCtrl_);
+        pch = SDL_GameControllerMapping(gCtrl_);
         if (pch != NULL)
         {
             ret = pch;
-            sdl2::SDL_free(static_cast<void *>(const_cast<char *>(pch)));
+            SDL_free(static_cast<void *>(const_cast<char *>(pch)));
         }
     }
     return ret;
@@ -222,7 +222,7 @@ const GfxBool GfxGameController::isGameController(const int32_t joystickIndex) c
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_IsGameController(joystickIndex);
+    sdlbool = SDL_IsGameController(joystickIndex);
     return GfxBool(sdlbool);
 }
 
@@ -235,7 +235,7 @@ const std::string GfxGameController::gameControllerNameForIndex(const int32_t jo
     std::string ret = "";
     const char * pch = NULL;
 
-    pch = sdl2::SDL_GameControllerNameForIndex(joystickIndex);
+    pch = SDL_GameControllerNameForIndex(joystickIndex);
     if (pch != NULL)
     {
         ret = pch;
@@ -252,7 +252,7 @@ GfxGameController::SdlTypePtr GfxGameController::gameControllerFromInstanceID(jo
 
     GfxGameController::SdlTypePtr ret = nullptr;
 
-    ret = sdl2::SDL_GameControllerFromInstanceID(joyId.getAsSdlType());
+    ret = SDL_GameControllerFromInstanceID(joyId.getAsSdlType());
     return ret;
 }
 
@@ -265,7 +265,7 @@ const std::string GfxGameController::gameControllerName(void) const noexcept
 
     if (gCtrl_ != nullptr)
     {
-        pch = sdl2::SDL_GameControllerName(gCtrl_);
+        pch = SDL_GameControllerName(gCtrl_);
         ret = pch;
     }
     return ret;
@@ -318,7 +318,7 @@ const GfxBool GfxGameController::gameControllerGetAttached(void) const noexcept
 
     if (gCtrl_ != nullptr)
     {
-        sdlbool = sdl2::SDL_GameControllerGetAttached(gCtrl_);
+        sdlbool = SDL_GameControllerGetAttached(gCtrl_);
         return GfxBool(sdlbool);
     }
     return GfxBool(false);
@@ -332,7 +332,7 @@ joystick::GfxJoystick::SdlTypePtr GfxGameController::gameControllerGetJoystick(v
 
     if (gCtrl_ != nullptr)
     {
-        ret = sdl2::SDL_GameControllerGetJoystick(gCtrl_);
+        ret = SDL_GameControllerGetJoystick(gCtrl_);
     }
     return ret;
 }
@@ -342,7 +342,7 @@ events::GfxEventActionCommand GfxGameController::gameControllerEventState(const 
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t ret = sdl2::SDL_GameControllerEventState(static_cast<int>(state));
+    int32_t ret = SDL_GameControllerEventState(static_cast<int>(state));
     return static_cast<events::GfxEventActionCommand>(ret);
 }
 
@@ -350,7 +350,7 @@ void GfxGameController::gameControllerUpdate(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    sdl2::SDL_GameControllerUpdate();
+    SDL_GameControllerUpdate();
 }
 
 const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(std::string const& pchString)
@@ -362,7 +362,7 @@ const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(s
 
     GfxGameControllerAxis::SdlType sdlAxis;
 
-    sdlAxis = sdl2::SDL_GameControllerGetAxisFromString(pchString.c_str());
+    sdlAxis = SDL_GameControllerGetAxisFromString(pchString.c_str());
     return GfxGameControllerAxis(sdlAxis);
 }
 
@@ -372,7 +372,7 @@ const std::string GfxGameController::gameControllerGetStringForAxis(GfxGameContr
 
     assert(axis);
 
-    std::string ret = sdl2::SDL_GameControllerGetStringForAxis(axis.getAsSdlType());
+    std::string ret = SDL_GameControllerGetStringForAxis(axis.getAsSdlType());
     return ret;
 }
 
@@ -387,7 +387,7 @@ const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForAxi
 
     if (gCtrl_ != nullptr)
     {
-        btnBind = sdl2::SDL_GameControllerGetBindForAxis(gCtrl_, axis.getAsSdlType());
+        btnBind = SDL_GameControllerGetBindForAxis(gCtrl_, axis.getAsSdlType());
     }
     return GfxGameControllerButtonBind(btnBind);
 }
@@ -402,7 +402,7 @@ int32_t GfxGameController::gameControllerGetAxis(GfxGameControllerAxis const& ax
 
     if (gCtrl_ != nullptr)
     {
-        ret = sdl2::SDL_GameControllerGetAxis(gCtrl_, axis.getAsSdlType());
+        ret = SDL_GameControllerGetAxis(gCtrl_, axis.getAsSdlType());
     }
     return ret;
 }
@@ -416,7 +416,7 @@ GfxGameControllerButton GfxGameController::gameControllerGetButtonFromString(std
 
     GfxGameControllerButton::SdlType btn;
 
-    btn = sdl2::SDL_GameControllerGetButtonFromString(pchString.c_str());
+    btn = SDL_GameControllerGetButtonFromString(pchString.c_str());
     return GfxGameControllerButton(btn);
 }
 
@@ -427,7 +427,7 @@ const std::string GfxGameController::gameControllerGetStringForButton(GfxGameCon
 
     assert(button);
 
-    std::string ret = sdl2::SDL_GameControllerGetStringForButton(button.getAsSdlType());
+    std::string ret = SDL_GameControllerGetStringForButton(button.getAsSdlType());
     return ret;
 }
 
@@ -442,7 +442,7 @@ const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForBut
 
     if (gCtrl_ != nullptr)
     {
-        btnBind = sdl2::SDL_GameControllerGetBindForButton(gCtrl_, button.getAsSdlType());
+        btnBind = SDL_GameControllerGetBindForButton(gCtrl_, button.getAsSdlType());
     }
     return GfxGameControllerButtonBind(btnBind);
 }
@@ -457,7 +457,7 @@ uint8_t GfxGameController::gameControllerGetButton(GfxGameControllerButton const
 
     if (gCtrl_ != nullptr)
     {
-        btn = sdl2::SDL_GameControllerGetButton(gCtrl_, button.getAsSdlType());
+        btn = SDL_GameControllerGetButton(gCtrl_, button.getAsSdlType());
     }
     return btn;
 }

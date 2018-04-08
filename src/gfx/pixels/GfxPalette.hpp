@@ -42,7 +42,7 @@ namespace pixels
 class GfxPalette final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Palette * SdlTypePtr;
+    typedef SDL_Palette * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

@@ -48,7 +48,7 @@ namespace gamecontroller
 class GfxGameController final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_GameController * SdlTypePtr;
+    typedef SDL_GameController * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

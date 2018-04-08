@@ -139,35 +139,35 @@ bool GfxBlendOperation::isAdd(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendOperation_ == sdl2::SDL_BLENDOPERATION_ADD);
+    return (blendOperation_ == SDL_BLENDOPERATION_ADD);
 }
 
 bool GfxBlendOperation::isSubstract(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendOperation_ == sdl2::SDL_BLENDOPERATION_SUBTRACT);
+    return (blendOperation_ == SDL_BLENDOPERATION_SUBTRACT);
 }
 
 bool GfxBlendOperation::isRevSubstract(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendOperation_ == sdl2::SDL_BLENDOPERATION_REV_SUBTRACT);
+    return (blendOperation_ == SDL_BLENDOPERATION_REV_SUBTRACT);
 }
 
 bool GfxBlendOperation::isMinimum(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendOperation_ == sdl2::SDL_BLENDOPERATION_MINIMUM);
+    return (blendOperation_ == SDL_BLENDOPERATION_MINIMUM);
 }
 
 bool GfxBlendOperation::isMaximum(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (blendOperation_ == sdl2::SDL_BLENDOPERATION_MAXIMUM);
+    return (blendOperation_ == SDL_BLENDOPERATION_MAXIMUM);
 }
 
 void GfxBlendOperation::clear(void) noexcept

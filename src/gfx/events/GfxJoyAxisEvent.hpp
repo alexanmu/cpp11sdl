@@ -39,10 +39,10 @@ namespace gfx
 namespace events
 {
 
-class GfxJoyAxisEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetJoystickID
+class GfxJoyAxisEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetJoystickID
 {
 public:
-    typedef sdl2::SDL_JoyAxisEvent SdlType;
+    typedef SDL_JoyAxisEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

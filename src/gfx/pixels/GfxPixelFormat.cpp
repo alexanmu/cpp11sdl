@@ -55,7 +55,7 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runt
 
     SdlTypePtr pixptr;
 
-    pixptr = sdl2::SDL_AllocFormat(format.getAsSdlType());
+    pixptr = SDL_AllocFormat(format.getAsSdlType());
     if (pixptr == nullptr)
     {
         throw std::runtime_error("Unable to create pixel format");
@@ -69,7 +69,7 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) throw(std::runtime_error) 
 
     SdlTypePtr pixptr;
 
-    pixptr = sdl2::SDL_AllocFormat(format);
+    pixptr = SDL_AllocFormat(format);
     if (pixptr == nullptr)
     {
         throw std::runtime_error("Unable to create pixel format");
@@ -97,7 +97,7 @@ GfxPixelFormat& GfxPixelFormat::operator=(GfxPixelFormat&& other) noexcept
         // Move this
         if (pix_ != nullptr)
         {
-            sdl2::SDL_FreeFormat(pix_);
+            SDL_FreeFormat(pix_);
         }
         pix_ = other.pix_;
         // Delete other's data
@@ -112,7 +112,7 @@ GfxPixelFormat::~GfxPixelFormat() noexcept
 
     if (pix_ != nullptr)
     {
-        sdl2::SDL_FreeFormat(pix_);
+        SDL_FreeFormat(pix_);
     }
     pix_ = nullptr;
 }
@@ -143,7 +143,7 @@ void GfxPixelFormat::createFormat(GfxPixelFormatEnum const& format) throw(std::r
     {
         throw std::runtime_error("Format already created");
     }
-    pixptr = sdl2::SDL_AllocFormat(format.getAsSdlType());
+    pixptr = SDL_AllocFormat(format.getAsSdlType());
     if (pixptr == nullptr)
     {
         throw std::runtime_error("Unable to create pixel format");
@@ -161,7 +161,7 @@ void GfxPixelFormat::createFormat(const uint32_t format) throw(std::runtime_erro
     {
         throw std::runtime_error("Format already created");
     }
-    pixptr = sdl2::SDL_AllocFormat(format);
+    pixptr = SDL_AllocFormat(format);
     if (pixptr == nullptr)
     {
         throw std::runtime_error("Unable to create pixel format");
@@ -175,7 +175,7 @@ void GfxPixelFormat::freeFormat(void) noexcept
 
     if (pix_ != nullptr)
     {
-       sdl2::SDL_FreeFormat(pix_);
+       SDL_FreeFormat(pix_);
        pix_ = nullptr;
     }
 }
@@ -408,7 +408,7 @@ std::string GfxPixelFormat::getPixelFormatName(void) const noexcept
 
     if (pix_ != nullptr)
     {
-        str = sdl2::SDL_GetPixelFormatName(pix_->format);
+        str = SDL_GetPixelFormatName(pix_->format);
     }
     return str;
 }
@@ -428,11 +428,11 @@ GfxBool GfxPixelFormat::pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, 
 
     if (pix_ != nullptr)
     {
-        sdlbool = sdl2::SDL_PixelFormatEnumToMasks(pix_->format, bpp, Rmask, Gmask, Bmask, Amask);
+        sdlbool = SDL_PixelFormatEnumToMasks(pix_->format, bpp, Rmask, Gmask, Bmask, Amask);
     }
     else
     {
-        sdlbool = sdl2::SDL_FALSE;
+        sdlbool = SDL_FALSE;
     }
     return GfxBool(sdlbool);
 }
@@ -446,7 +446,7 @@ GfxPixelFormatEnum GfxPixelFormat::masksToPixelFormatEnum(const int32_t bpp, con
 
     GfxPixelFormatEnum::SdlType sdlpixfmten;
 
-    sdlpixfmten = sdl2::SDL_MasksToPixelFormatEnum(bpp, Rmask, Gmask, Bmask, Amask);
+    sdlpixfmten = SDL_MasksToPixelFormatEnum(bpp, Rmask, Gmask, Bmask, Amask);
     return GfxPixelFormatEnum(sdlpixfmten);
 }
 
@@ -460,7 +460,7 @@ void GfxPixelFormat::setPixelFormatPalette(GfxPalette const& palette) const noex
 
     if (pix_ != nullptr)
     {
-        ret = sdl2::SDL_SetPixelFormatPalette(pix_, palette.getAsSdlTypePtr());
+        ret = SDL_SetPixelFormatPalette(pix_, palette.getAsSdlTypePtr());
         assert(ret == 0);
     }
 }
@@ -475,7 +475,7 @@ pixels::GfxColor GfxPixelFormat::mapRGB(pixels::GfxColor const& color) const noe
 
     if (pix_ != nullptr)
     {
-        clru32 = sdl2::SDL_MapRGB(pix_, color.getRed(), color.getGreen(), color.getBlue());
+        clru32 = SDL_MapRGB(pix_, color.getRed(), color.getGreen(), color.getBlue());
         return pixels::GfxColor(clru32);
     }
     return pixels::GfxColor();
@@ -491,7 +491,7 @@ pixels::GfxColor GfxPixelFormat::mapRGBA(pixels::GfxColor const& color) const no
 
     if (pix_ != nullptr)
     {
-        clru32 = sdl2::SDL_MapRGBA(pix_, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+        clru32 = SDL_MapRGBA(pix_, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
         return pixels::GfxColor(clru32);
     }
     return pixels::GfxColor();
@@ -507,7 +507,7 @@ pixels::GfxColor GfxPixelFormat::getRGB(const uint32_t pixel) const noexcept
 
     if (pix_ != nullptr)
     {
-        sdl2::SDL_GetRGB(pixel, pix_, &r, &g, &b);
+        SDL_GetRGB(pixel, pix_, &r, &g, &b);
         return pixels::GfxColor(r, g, b);
     }
     return pixels::GfxColor();
@@ -524,7 +524,7 @@ pixels::GfxColor GfxPixelFormat::getRGBA(const uint32_t pixel) const noexcept
 
     if (pix_ != nullptr)
     {
-        sdl2::SDL_GetRGBA(pixel, pix_, &r, &g, &b, &a);
+        SDL_GetRGBA(pixel, pix_, &r, &g, &b, &a);
         return pixels::GfxColor(r, g, b, a);
     }
     return pixels::GfxColor();
@@ -537,7 +537,7 @@ void GfxPixelFormat::calculateGammaRamp(const float gamma, xtra::GfxGammaRamp co
     assert((gamma >= 0.0f) && (gamma <= 1.0f));
     assert(ramp);
 
-    sdl2::SDL_CalculateGammaRamp(gamma, ramp.getAsSdlTypePtr());
+    SDL_CalculateGammaRamp(gamma, ramp.getAsSdlTypePtr());
 }
 
 GfxPixelFormat::SdlTypePtr GfxPixelFormat::getAsSdlTypePtr(void) const noexcept

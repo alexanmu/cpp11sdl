@@ -55,7 +55,7 @@ GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassNa
     assert(objectName.length() > 0);
 
     objectName_ = objectName;
-    handle_ = sdl2::SDL_LoadObject(objectName_.c_str());
+    handle_ = SDL_LoadObject(objectName_.c_str());
 }
 
 GfxLoadSo::GfxLoadSo(GfxLoadSo&& other) noexcept : GfxObject(std::move(other))
@@ -75,7 +75,7 @@ GfxLoadSo::~GfxLoadSo() noexcept
 
     if (handle_ != nullptr)
     {
-        sdl2::SDL_UnloadObject(handle_);
+        SDL_UnloadObject(handle_);
     }
     handle_ = nullptr;
 }
@@ -141,7 +141,7 @@ void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
 
     if (handle_ != nullptr)
     {
-        func = sdl2::SDL_LoadFunction(handle_, function.c_str());
+        func = SDL_LoadFunction(handle_, function.c_str());
     }
     return func;
 }
@@ -157,14 +157,14 @@ void GfxLoadSo::loadObject(std::string const& objectName) noexcept
         unloadObject();
     }
     objectName_ = objectName;
-    handle_ = sdl2::SDL_LoadObject(objectName_.c_str());
+    handle_ = SDL_LoadObject(objectName_.c_str());
 }
 
 void GfxLoadSo::unloadObject() noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
-    sdl2::SDL_UnloadObject(handle_);
+    SDL_UnloadObject(handle_);
     handle_ = nullptr;
 }
 

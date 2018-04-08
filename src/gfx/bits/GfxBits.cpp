@@ -93,7 +93,7 @@ int GfxBits::mostSignificantBitIndex32(const uint32_t x) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_MostSignificantBitIndex32(x);
+    return SDL_MostSignificantBitIndex32(x);
 }
 
 }  // namespace bits

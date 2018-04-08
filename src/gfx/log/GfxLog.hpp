@@ -73,7 +73,7 @@ public:
     {
         assert(fmt.length() > 0);
 
-        sdl2::SDL_Log(fmt.c_str(), std::forward<Args>(args)...);
+        SDL_Log(fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -82,7 +82,7 @@ public:
         assert(cat);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogVerbose(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogVerbose(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -91,7 +91,7 @@ public:
         assert(cat);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogDebug(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogDebug(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -100,7 +100,7 @@ public:
         assert(cat);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogInfo(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogInfo(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -109,7 +109,7 @@ public:
         assert(cat);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogWarn(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogWarn(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -118,7 +118,7 @@ public:
         assert(cat);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogError(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogError(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -127,7 +127,7 @@ public:
         assert(cat);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogCritical(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogCritical(cat.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -138,7 +138,7 @@ public:
         assert(prio);
         assert(fmt.length() > 0);
 
-        sdl2::SDL_LogMessage(cat.getAsSdlType(), prio.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
+        SDL_LogMessage(cat.getAsSdlType(), prio.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
     template <typename... Args>
@@ -161,7 +161,7 @@ private:
     void callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType priority,
                                            std::string const& message) const noexcept;
     // Will be called from C by SDL
-    static void logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char * message);
+    static void logOutputFunction(void * userdata, int category, SDL_LogPriority priority, const char * message);
 
     mutable GfxLogOutputFunction * logOutputFunctionObject_ = nullptr;
 };

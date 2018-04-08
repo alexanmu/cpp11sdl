@@ -39,7 +39,7 @@ namespace gesture
 class GfxGestureID final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_GestureID SdlType;
+    typedef SDL_GestureID SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

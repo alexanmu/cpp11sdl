@@ -52,7 +52,7 @@ namespace render
 class GfxRenderer final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Renderer * SdlTypePtr;
+    typedef SDL_Renderer * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

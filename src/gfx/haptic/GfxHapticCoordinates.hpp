@@ -35,7 +35,7 @@ namespace gfx
 namespace haptic
 {
 
-class GfxHapticCoordinates : public GfxObject
+class GfxHapticCoordinates final : public GfxObject
 {
 public:
     typedef uint8_t SdlType;

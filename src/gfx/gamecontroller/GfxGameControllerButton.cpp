@@ -129,126 +129,126 @@ bool GfxGameControllerButton::isButtonInvalid(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_INVALID);
+    return (button_ == SDL_CONTROLLER_BUTTON_INVALID);
 }
 
 bool GfxGameControllerButton::isButtonA(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_A);
+    return (button_ == SDL_CONTROLLER_BUTTON_A);
 }
 
 bool GfxGameControllerButton::isButtonB(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_B);
+    return (button_ == SDL_CONTROLLER_BUTTON_B);
 }
 
 bool GfxGameControllerButton::isButtonX(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_X);
+    return (button_ == SDL_CONTROLLER_BUTTON_X);
 }
 
 bool GfxGameControllerButton::isButtonY(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_Y);
+    return (button_ == SDL_CONTROLLER_BUTTON_Y);
 }
 
 bool GfxGameControllerButton::isButtonBack(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_BACK);
+    return (button_ == SDL_CONTROLLER_BUTTON_BACK);
 }
 
 bool GfxGameControllerButton::isButtonGuide(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_GUIDE);
+    return (button_ == SDL_CONTROLLER_BUTTON_GUIDE);
 }
 
 bool GfxGameControllerButton::isButtonStart(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_START);
+    return (button_ == SDL_CONTROLLER_BUTTON_START);
 }
 
 bool GfxGameControllerButton::isButtonLeftStick(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_LEFTSTICK);
+    return (button_ == SDL_CONTROLLER_BUTTON_LEFTSTICK);
 }
 
 bool GfxGameControllerButton::isButtonRightStick(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_RIGHTSTICK);
+    return (button_ == SDL_CONTROLLER_BUTTON_RIGHTSTICK);
 }
 
 bool GfxGameControllerButton::isButtonLeftShoulder(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
+    return (button_ == SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
 }
 
 bool GfxGameControllerButton::isButtonRightShoulder(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+    return (button_ == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
 }
 
 bool GfxGameControllerButton::isButtonDPadUp(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_DPAD_UP);
+    return (button_ == SDL_CONTROLLER_BUTTON_DPAD_UP);
 }
 
 bool GfxGameControllerButton::isButtonDPadDown(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+    return (button_ == SDL_CONTROLLER_BUTTON_DPAD_DOWN);
 }
 
 bool GfxGameControllerButton::isButtonDPadLeft(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+    return (button_ == SDL_CONTROLLER_BUTTON_DPAD_LEFT);
 }
 
 bool GfxGameControllerButton::isButtonDPadRight(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    return (button_ == SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
 }
 
 bool GfxGameControllerButton::isButtonMax(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (button_ == sdl2::SDL_CONTROLLER_BUTTON_MAX);
+    return (button_ == SDL_CONTROLLER_BUTTON_MAX);
 }
 
 void GfxGameControllerButton::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    button_ = sdl2::SDL_CONTROLLER_BUTTON_INVALID;
+    button_ = SDL_CONTROLLER_BUTTON_INVALID;
 }
 
 GfxGameControllerButton::SdlType GfxGameControllerButton::getAsSdlType(void) const noexcept

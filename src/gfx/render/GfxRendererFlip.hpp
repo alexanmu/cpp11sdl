@@ -39,7 +39,7 @@ namespace render
 class GfxRendererFlip final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_RendererFlip SdlType;
+    typedef SDL_RendererFlip SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : int32_t
     {
-        flipNone = sdl2::SDL_FLIP_NONE,
-        flipHorizontal = sdl2::SDL_FLIP_HORIZONTAL,
-        flipVertical = sdl2::SDL_FLIP_VERTICAL
+        flipNone = SDL_FLIP_NONE,
+        flipHorizontal = SDL_FLIP_HORIZONTAL,
+        flipVertical = SDL_FLIP_VERTICAL
     };
 
     GfxRendererFlip() noexcept;

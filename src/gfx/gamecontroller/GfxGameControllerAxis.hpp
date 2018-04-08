@@ -40,7 +40,7 @@ namespace gamecontroller
 class GfxGameControllerAxis final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_GameControllerAxis SdlType;
+    typedef SDL_GameControllerAxis SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -48,14 +48,14 @@ public:
 
     enum class ValueType : int32_t
     {
-        axisInvalid = sdl2::SDL_CONTROLLER_AXIS_INVALID,
-        axisLeftX = sdl2::SDL_CONTROLLER_AXIS_LEFTX,
-        axisLeftY = sdl2::SDL_CONTROLLER_AXIS_LEFTY,
-        axisRightX = sdl2::SDL_CONTROLLER_AXIS_RIGHTX,
-        axisRightY = sdl2::SDL_CONTROLLER_AXIS_RIGHTY,
-        axisTriggerLeft = sdl2::SDL_CONTROLLER_AXIS_TRIGGERLEFT,
-        axisTriggerRight = sdl2::SDL_CONTROLLER_AXIS_TRIGGERRIGHT,
-        axisMax = sdl2::SDL_CONTROLLER_AXIS_MAX
+        axisInvalid = SDL_CONTROLLER_AXIS_INVALID,
+        axisLeftX = SDL_CONTROLLER_AXIS_LEFTX,
+        axisLeftY = SDL_CONTROLLER_AXIS_LEFTY,
+        axisRightX = SDL_CONTROLLER_AXIS_RIGHTX,
+        axisRightY = SDL_CONTROLLER_AXIS_RIGHTY,
+        axisTriggerLeft = SDL_CONTROLLER_AXIS_TRIGGERLEFT,
+        axisTriggerRight = SDL_CONTROLLER_AXIS_TRIGGERRIGHT,
+        axisMax = SDL_CONTROLLER_AXIS_MAX
     };
 
     GfxGameControllerAxis() noexcept;

@@ -38,10 +38,10 @@ namespace gfx
 namespace events
 {
 
-class GfxSysWmEvent : public GfxObject, public prv::IGetCommonEvent
+class GfxSysWmEvent final : public GfxObject, public prv::IGetCommonEvent
 {
 public:
-    typedef sdl2::SDL_SysWMEvent SdlType;
+    typedef SDL_SysWMEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

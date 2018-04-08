@@ -40,7 +40,7 @@ namespace haptic
 class GfxHapticLeftRight final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HapticLeftRight SdlType;
+    typedef SDL_HapticLeftRight SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

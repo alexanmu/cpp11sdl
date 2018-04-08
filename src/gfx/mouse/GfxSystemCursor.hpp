@@ -39,7 +39,7 @@ namespace mouse
 class GfxSystemCursor final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_SystemCursor SdlType;
+    typedef SDL_SystemCursor SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,18 +47,18 @@ public:
 
     enum class ValueType : int32_t
     {
-        sysCursorArrow = sdl2::SDL_SYSTEM_CURSOR_ARROW,
-        sysCursorIBeam = sdl2::SDL_SYSTEM_CURSOR_IBEAM,
-        sysCursorWait = sdl2::SDL_SYSTEM_CURSOR_WAIT,
-        sysCursorCrosshair = sdl2::SDL_SYSTEM_CURSOR_CROSSHAIR,
-        sysCursorWaitArrow = sdl2::SDL_SYSTEM_CURSOR_WAITARROW,
-        sysCursorSizeNorthWestSouthEast = sdl2::SDL_SYSTEM_CURSOR_SIZENWSE,
-        sysCursorSizeNorthEastSouthWest = sdl2::SDL_SYSTEM_CURSOR_SIZENESW,
-        sysCursorSizeWestEast = sdl2::SDL_SYSTEM_CURSOR_SIZEWE,
-        sysCursorSizeNorthSouth = sdl2::SDL_SYSTEM_CURSOR_SIZENS,
-        sysCursorSizeAll = sdl2::SDL_SYSTEM_CURSOR_SIZEALL,
-        sysCursorNo = sdl2::SDL_SYSTEM_CURSOR_NO,
-        sysCursorHand = sdl2::SDL_SYSTEM_CURSOR_HAND
+        sysCursorArrow = SDL_SYSTEM_CURSOR_ARROW,
+        sysCursorIBeam = SDL_SYSTEM_CURSOR_IBEAM,
+        sysCursorWait = SDL_SYSTEM_CURSOR_WAIT,
+        sysCursorCrosshair = SDL_SYSTEM_CURSOR_CROSSHAIR,
+        sysCursorWaitArrow = SDL_SYSTEM_CURSOR_WAITARROW,
+        sysCursorSizeNorthWestSouthEast = SDL_SYSTEM_CURSOR_SIZENWSE,
+        sysCursorSizeNorthEastSouthWest = SDL_SYSTEM_CURSOR_SIZENESW,
+        sysCursorSizeWestEast = SDL_SYSTEM_CURSOR_SIZEWE,
+        sysCursorSizeNorthSouth = SDL_SYSTEM_CURSOR_SIZENS,
+        sysCursorSizeAll = SDL_SYSTEM_CURSOR_SIZEALL,
+        sysCursorNo = SDL_SYSTEM_CURSOR_NO,
+        sysCursorHand = SDL_SYSTEM_CURSOR_HAND
     };
 
     GfxSystemCursor() noexcept;

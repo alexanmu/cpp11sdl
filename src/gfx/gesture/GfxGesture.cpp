@@ -98,7 +98,7 @@ int32_t GfxGesture::recordGesture(touch::GfxTouchID const& touchId) const noexce
 
     assert(touchId);
 
-    int32_t ret = sdl2::SDL_RecordGesture(touchId.getAsSdlType());
+    int32_t ret = SDL_RecordGesture(touchId.getAsSdlType());
     return ret;
 }
 
@@ -108,7 +108,7 @@ int32_t GfxGesture::saveAllDollarTemplates(rwops::GfxRwOps const& rwops) const n
 
     assert(rwops);
 
-    int32_t ret = sdl2::SDL_SaveAllDollarTemplates(rwops.getAsSdlTypePtr());
+    int32_t ret = SDL_SaveAllDollarTemplates(rwops.getAsSdlTypePtr());
     return ret;
 }
 
@@ -119,7 +119,7 @@ int32_t GfxGesture::saveDollarTemplate(GfxGestureID const& gestureId, rwops::Gfx
     assert(gestureId);
     assert(rwops);
 
-    int32_t ret = sdl2::SDL_SaveDollarTemplate(gestureId.getAsSdlType(), rwops.getAsSdlTypePtr());
+    int32_t ret = SDL_SaveDollarTemplate(gestureId.getAsSdlType(), rwops.getAsSdlTypePtr());
     return ret;
 }
 
@@ -130,7 +130,7 @@ int32_t GfxGesture::loadDollarTemplates(touch::GfxTouchID const& touchId, rwops:
     assert(touchId);
     assert(rwops);
 
-    int32_t ret = sdl2::SDL_LoadDollarTemplates(touchId.getAsSdlType(), rwops.getAsSdlTypePtr());
+    int32_t ret = SDL_LoadDollarTemplates(touchId.getAsSdlType(), rwops.getAsSdlTypePtr());
     return ret;
 }
 

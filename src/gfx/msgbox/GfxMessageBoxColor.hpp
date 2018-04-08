@@ -39,7 +39,7 @@ namespace msgbox
 class GfxMessageBoxColor final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_MessageBoxColor SdlType;
+    typedef SDL_MessageBoxColor SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

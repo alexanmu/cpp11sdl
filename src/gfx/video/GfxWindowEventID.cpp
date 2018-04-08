@@ -129,112 +129,112 @@ bool GfxWindowEventID::isShown(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_SHOWN);
+    return (eventid_ == SDL_WINDOWEVENT_SHOWN);
 }
 
 bool GfxWindowEventID::isHidden(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_HIDDEN);
+    return (eventid_ == SDL_WINDOWEVENT_HIDDEN);
 }
 
 bool GfxWindowEventID::isExposed(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_EXPOSED);
+    return (eventid_ == SDL_WINDOWEVENT_EXPOSED);
 }
 
 bool GfxWindowEventID::isMoved(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_MOVED);
+    return (eventid_ == SDL_WINDOWEVENT_MOVED);
 }
 
 bool GfxWindowEventID::isResized(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_RESIZED);
+    return (eventid_ == SDL_WINDOWEVENT_RESIZED);
 }
 
 bool GfxWindowEventID::isSizeChanged(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_SIZE_CHANGED);
+    return (eventid_ == SDL_WINDOWEVENT_SIZE_CHANGED);
 }
 
 bool GfxWindowEventID::isMinimized(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_MINIMIZED);
+    return (eventid_ == SDL_WINDOWEVENT_MINIMIZED);
 }
 
 bool GfxWindowEventID::isMaximized(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_MAXIMIZED);
+    return (eventid_ == SDL_WINDOWEVENT_MAXIMIZED);
 }
 
 bool GfxWindowEventID::isRestored(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_RESTORED);
+    return (eventid_ == SDL_WINDOWEVENT_RESTORED);
 }
 
 bool GfxWindowEventID::enter(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_ENTER);
+    return (eventid_ == SDL_WINDOWEVENT_ENTER);
 }
 
 bool GfxWindowEventID::leave(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_LEAVE);
+    return (eventid_ == SDL_WINDOWEVENT_LEAVE);
 }
 
 bool GfxWindowEventID::isFocusGained(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_GAINED);
+    return (eventid_ == SDL_WINDOWEVENT_FOCUS_GAINED);
 }
 
 bool GfxWindowEventID::isFocusLost(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_FOCUS_LOST);
+    return (eventid_ == SDL_WINDOWEVENT_FOCUS_LOST);
 }
 
 bool GfxWindowEventID::close(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_CLOSE);
+    return (eventid_ == SDL_WINDOWEVENT_CLOSE);
 }
 
 bool GfxWindowEventID::takeFocus(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_TAKE_FOCUS);
+    return (eventid_ == SDL_WINDOWEVENT_TAKE_FOCUS);
 }
 
 bool GfxWindowEventID::hitTest(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (eventid_ == sdl2::SDL_WINDOWEVENT_HIT_TEST);
+    return (eventid_ == SDL_WINDOWEVENT_HIT_TEST);
 }
 
 void GfxWindowEventID::clear(void) noexcept

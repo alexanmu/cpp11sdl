@@ -133,7 +133,7 @@ bool GfxRendererFlags::isSoftware(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t r = flags_ & sdl2::SDL_RENDERER_SOFTWARE;
+    int32_t r = flags_ & SDL_RENDERER_SOFTWARE;
 
     return (r != 0);
 }
@@ -142,7 +142,7 @@ bool GfxRendererFlags::isAccelerated(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t r = flags_ & sdl2::SDL_RENDERER_ACCELERATED;
+    int32_t r = flags_ & SDL_RENDERER_ACCELERATED;
 
     return (r != 0);
 }
@@ -151,7 +151,7 @@ bool GfxRendererFlags::getPresentVSync(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t r = flags_ & sdl2::SDL_RENDERER_PRESENTVSYNC;
+    int32_t r = flags_ & SDL_RENDERER_PRESENTVSYNC;
 
     return (r != 0);
 }
@@ -160,7 +160,7 @@ bool GfxRendererFlags::getTargetTexture(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t r = flags_ & sdl2::SDL_RENDERER_TARGETTEXTURE;
+    int32_t r = flags_ & SDL_RENDERER_TARGETTEXTURE;
 
     return (r != 0);
 }
@@ -169,56 +169,56 @@ void GfxRendererFlags::setSoftware(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_SOFTWARE);
+    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_SOFTWARE);
 }
 
 void GfxRendererFlags::resetSoftware(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_SOFTWARE);
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_SOFTWARE);
 }
 
 void GfxRendererFlags::setAccelerated(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_ACCELERATED);
+    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_ACCELERATED);
 }
 
 void GfxRendererFlags::resetAccelerated(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_ACCELERATED);
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_ACCELERATED);
 }
 
 void GfxRendererFlags::setPresentVSync(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_PRESENTVSYNC);
+    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_PRESENTVSYNC);
 }
 
 void GfxRendererFlags::resetPresentVSync(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_PRESENTVSYNC);
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_PRESENTVSYNC);
 }
 
 void GfxRendererFlags::setTargetTexture(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ | sdl2::SDL_RENDERER_TARGETTEXTURE);
+    flags_ = static_cast<SdlType>(flags_ | SDL_RENDERER_TARGETTEXTURE);
 }
 
 void GfxRendererFlags::resetTargetTexture(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flags_ = static_cast<SdlType>(flags_ & ~sdl2::SDL_RENDERER_TARGETTEXTURE);
+    flags_ = static_cast<SdlType>(flags_ & ~SDL_RENDERER_TARGETTEXTURE);
 }
 
 void GfxRendererFlags::clear(void) noexcept

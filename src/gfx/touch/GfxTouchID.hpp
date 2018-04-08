@@ -39,7 +39,7 @@ namespace touch
 class GfxTouchID final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_TouchID SdlType;
+    typedef SDL_TouchID SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

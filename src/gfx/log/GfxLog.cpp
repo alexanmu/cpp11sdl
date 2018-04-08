@@ -53,7 +53,7 @@ GfxLog::GfxLog(GfxLog&& other) noexcept : GfxObject(std::move(other))
     void * userdata = static_cast<void *>(this);
 
     logOutputFunctionObject_ = other.logOutputFunctionObject_;
-    sdl2::SDL_LogSetOutputFunction(logOutputFunction, userdata);
+    SDL_LogSetOutputFunction(logOutputFunction, userdata);
     // Delete other's data
     other.logOutputFunctionObject_ = nullptr;
 }
@@ -70,7 +70,7 @@ GfxLog& GfxLog::operator=(GfxLog&& other) noexcept
         GfxObject::operator=(std::move(other));
         // Move this
         logOutputFunctionObject_ = other.logOutputFunctionObject_;
-        sdl2::SDL_LogSetOutputFunction(logOutputFunction, userdata);
+        SDL_LogSetOutputFunction(logOutputFunction, userdata);
         // Delete other's data
         other.logOutputFunctionObject_ = nullptr;
     }
@@ -97,7 +97,7 @@ void GfxLog::setAllPriority(GfxLogPriority const& prio) const noexcept
 
     assert(prio);
 
-    sdl2::SDL_LogSetAllPriority(prio.getAsSdlType());
+    SDL_LogSetAllPriority(prio.getAsSdlType());
 }
 
 void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept
@@ -107,7 +107,7 @@ void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) 
     assert(cat);
     assert(prio);
 
-    sdl2::SDL_LogSetPriority(cat.getAsSdlType(), prio.getAsSdlType());
+    SDL_LogSetPriority(cat.getAsSdlType(), prio.getAsSdlType());
 }
 
 GfxLogPriority GfxLog::getPriority(GfxLogCategory const& cat) const noexcept
@@ -118,7 +118,7 @@ GfxLogPriority GfxLog::getPriority(GfxLogCategory const& cat) const noexcept
 
     GfxLogPriority::SdlType sdlprio;
 
-    sdlprio = sdl2::SDL_LogGetPriority(cat.getAsSdlType());
+    sdlprio = SDL_LogGetPriority(cat.getAsSdlType());
     return GfxLogPriority(sdlprio);
 }
 
@@ -126,17 +126,17 @@ void GfxLog::resetPriorities(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    sdl2::SDL_LogResetPriorities();
+    SDL_LogResetPriorities();
 }
 
 GfxLogOutputFunction * GfxLog::logGetOutputFunction(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
-    sdl2::SDL_LogOutputFunction sdlLogOutFunc = nullptr;
+    SDL_LogOutputFunction sdlLogOutFunc = nullptr;
     void * userdata = nullptr;
 
-    sdl2::SDL_LogGetOutputFunction(&sdlLogOutFunc, &userdata);
+    SDL_LogGetOutputFunction(&sdlLogOutFunc, &userdata);
     if (userdata != static_cast<void *>(const_cast<GfxLog *>(this)))
     {
         throw std::runtime_error("this pointer error");
@@ -160,7 +160,7 @@ void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback) const throw(s
         if (logOutputFunctionObject_ == nullptr)
         {
             logOutputFunctionObject_ = callback;
-            sdl2::SDL_LogSetOutputFunction(logOutputFunction, userdata);
+            SDL_LogSetOutputFunction(logOutputFunction, userdata);
         }
     }
     else
@@ -168,7 +168,7 @@ void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback) const throw(s
         // SDL bugzilla issue 3666; revert does not work; issue warning
 #warning SDL2 bugzilla Bug #3666
         // These lines will be executed but nothing will happen before issue 3666 is fixed
-        sdl2::SDL_LogSetOutputFunction(NULL, NULL);
+        SDL_LogSetOutputFunction(NULL, NULL);
         logOutputFunctionObject_ = nullptr;
     }
 }
@@ -192,7 +192,7 @@ void GfxLog::callCustomLogOutputFunctionObject(const int32_t category, const Gfx
 }
 
 // Will be called from C by SDL
-void GfxLog::logOutputFunction(void * userdata, int category, sdl2::SDL_LogPriority priority, const char * message)
+void GfxLog::logOutputFunction(void * userdata, int category, SDL_LogPriority priority, const char * message)
 {
     GfxLog * thisptr;
 

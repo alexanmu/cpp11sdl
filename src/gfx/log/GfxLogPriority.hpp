@@ -39,7 +39,7 @@ namespace log
 class GfxLogPriority final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_LogPriority SdlType;
+    typedef SDL_LogPriority SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,13 +47,13 @@ public:
 
     enum class ValueType : int32_t
     {
-        logPriorityVerbose = sdl2::SDL_LOG_PRIORITY_VERBOSE,
-        logPriorityDebug = sdl2::SDL_LOG_PRIORITY_DEBUG,
-        logPriorityInfo = sdl2::SDL_LOG_PRIORITY_INFO,
-        logPriorityWarn = sdl2::SDL_LOG_PRIORITY_WARN,
-        logPriorityError = sdl2::SDL_LOG_PRIORITY_ERROR,
-        logPriorityCritical = sdl2::SDL_LOG_PRIORITY_CRITICAL,
-        logPriorityNumLogPriorities = sdl2::SDL_NUM_LOG_PRIORITIES
+        logPriorityVerbose = SDL_LOG_PRIORITY_VERBOSE,
+        logPriorityDebug = SDL_LOG_PRIORITY_DEBUG,
+        logPriorityInfo = SDL_LOG_PRIORITY_INFO,
+        logPriorityWarn = SDL_LOG_PRIORITY_WARN,
+        logPriorityError = SDL_LOG_PRIORITY_ERROR,
+        logPriorityCritical = SDL_LOG_PRIORITY_CRITICAL,
+        logPriorityNumLogPriorities = SDL_NUM_LOG_PRIORITIES
     };
 
     GfxLogPriority() noexcept;

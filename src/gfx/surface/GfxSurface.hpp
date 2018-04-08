@@ -50,7 +50,7 @@ namespace surface
 class GfxSurface final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Surface * SdlTypePtr;
+    typedef SDL_Surface * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

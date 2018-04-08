@@ -129,140 +129,140 @@ bool GfxLogCategory::isApplication(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_APPLICATION);
+    return (value_ == SDL_LOG_CATEGORY_APPLICATION);
 }
 
 bool GfxLogCategory::isError(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_ERROR);
+    return (value_ == SDL_LOG_CATEGORY_ERROR);
 }
 
 bool GfxLogCategory::isAssert(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_ASSERT);
+    return (value_ == SDL_LOG_CATEGORY_ASSERT);
 }
 
 bool GfxLogCategory::isSystem(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_SYSTEM);
+    return (value_ == SDL_LOG_CATEGORY_SYSTEM);
 }
 
 bool GfxLogCategory::isAudio(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_AUDIO);
+    return (value_ == SDL_LOG_CATEGORY_AUDIO);
 }
 
 bool GfxLogCategory::isVideo(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_VIDEO);
+    return (value_ == SDL_LOG_CATEGORY_VIDEO);
 }
 
 bool GfxLogCategory::isRender(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RENDER);
+    return (value_ == SDL_LOG_CATEGORY_RENDER);
 }
 
 bool GfxLogCategory::isInput(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_INPUT);
+    return (value_ == SDL_LOG_CATEGORY_INPUT);
 }
 
 bool GfxLogCategory::isTest(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_TEST);
+    return (value_ == SDL_LOG_CATEGORY_TEST);
 }
 
 bool GfxLogCategory::isReserved1(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED1);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED1);
 }
 
 bool GfxLogCategory::isReserved2(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED2);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED2);
 }
 
 bool GfxLogCategory::isReserved3(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED3);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED3);
 }
 
 bool GfxLogCategory::isReserved4(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED4);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED4);
 }
 
 bool GfxLogCategory::isReserved5(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED5);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED5);
 }
 
 bool GfxLogCategory::isReserved6(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED6);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED6);
 }
 
 bool GfxLogCategory::isReserved7(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED7);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED7);
 }
 
 bool GfxLogCategory::isReserved8(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED8);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED8);
 }
 
 bool GfxLogCategory::isReserved9(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED9);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED9);
 }
 
 bool GfxLogCategory::isReserved10(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_RESERVED10);
+    return (value_ == SDL_LOG_CATEGORY_RESERVED10);
 }
 
 bool GfxLogCategory::isCustom(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_LOG_CATEGORY_CUSTOM);
+    return (value_ == SDL_LOG_CATEGORY_CUSTOM);
 }
 
 void GfxLogCategory::clear(void) noexcept

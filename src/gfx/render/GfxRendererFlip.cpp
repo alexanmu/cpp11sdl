@@ -51,11 +51,11 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : 
     flip_ = static_cast<SdlType>(ValueType::flipNone);
     if (fliph == true)
     {
-        flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_HORIZONTAL);
+        flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_HORIZONTAL);
     }
     if (flipv == true)
     {
-        flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_VERTICAL);
+        flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_VERTICAL);
     }
 }
 
@@ -130,42 +130,42 @@ bool GfxRendererFlip::isFlipHorizontal(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return ((flip_ & sdl2::SDL_FLIP_HORIZONTAL) != 0);
+    return ((flip_ & SDL_FLIP_HORIZONTAL) != 0);
 }
 
 bool GfxRendererFlip::isFlipVertical(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return ((flip_ & sdl2::SDL_FLIP_VERTICAL) != 0);
+    return ((flip_ & SDL_FLIP_VERTICAL) != 0);
 }
 
 void GfxRendererFlip::setFlipHorizontal(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_HORIZONTAL);
+    flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_HORIZONTAL);
 }
 
 void GfxRendererFlip::setFlipVertical(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flip_ = static_cast<SdlType>(flip_ | sdl2::SDL_FLIP_VERTICAL);
+    flip_ = static_cast<SdlType>(flip_ | SDL_FLIP_VERTICAL);
 }
 
 void GfxRendererFlip::resetFlipHorizontal(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flip_ = static_cast<SdlType>(flip_ & ~sdl2::SDL_FLIP_HORIZONTAL);
+    flip_ = static_cast<SdlType>(flip_ & ~SDL_FLIP_HORIZONTAL);
 }
 
 void GfxRendererFlip::resetFlipVertical(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    flip_ = static_cast<SdlType>(flip_ & ~sdl2::SDL_FLIP_VERTICAL);
+    flip_ = static_cast<SdlType>(flip_ & ~SDL_FLIP_VERTICAL);
 }
 
 void GfxRendererFlip::clear(void) noexcept

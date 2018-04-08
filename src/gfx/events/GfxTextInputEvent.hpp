@@ -40,10 +40,10 @@ namespace gfx
 namespace events
 {
 
-class GfxTextInputEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
+class GfxTextInputEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
 {
 public:
-    typedef sdl2::SDL_TextInputEvent SdlType;
+    typedef SDL_TextInputEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

@@ -290,7 +290,7 @@ void BorlandGraphicsInterfaceDemo::setUpCanvas(void)
 
 void BorlandGraphicsInterfaceDemo::eventLoop(void)
 {
-    gfx::sdl2::SDL_Event e;
+    SDL_Event e;
     bool quit = false;
 
     GfxKeyboard kdb;

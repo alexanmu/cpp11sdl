@@ -212,7 +212,7 @@ GfxBool GfxRect::pointInRect(GfxPoint const& p) const noexcept
 
     bool res;
 
-    res = sdl2::SDL_PointInRect(p.getAsSdlTypePtr(), &rect_);
+    res = SDL_PointInRect(p.getAsSdlTypePtr(), &rect_);
     return GfxBool(res);
 }
 
@@ -222,7 +222,7 @@ GfxBool GfxRect::rectEmpty(void) const noexcept
 
     bool res;
 
-    res = sdl2::SDL_RectEmpty(&rect_);
+    res = SDL_RectEmpty(&rect_);
     return GfxBool(res);
 }
 
@@ -234,7 +234,7 @@ GfxBool GfxRect::rectEquals(GfxRect const& r) const noexcept
 
     bool res;
 
-    res = sdl2::SDL_RectEquals(r.getAsSdlTypePtr(), &rect_);
+    res = SDL_RectEquals(r.getAsSdlTypePtr(), &rect_);
     return GfxBool(res);
 }
 
@@ -246,7 +246,7 @@ GfxBool GfxRect::hasIntersection(GfxRect const& r) const noexcept
 
     bool res;
 
-    res = sdl2::SDL_HasIntersection(r.getAsSdlTypePtr(), &rect_);
+    res = SDL_HasIntersection(r.getAsSdlTypePtr(), &rect_);
     return GfxBool(res);
 }
 
@@ -260,7 +260,7 @@ GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect ** result) const noexce
     bool res;
     GfxRect::SdlType rt;
 
-    res = sdl2::SDL_IntersectRect(r.getAsSdlTypePtr(), &rect_, &rt);
+    res = SDL_IntersectRect(r.getAsSdlTypePtr(), &rect_, &rt);
     *result = new GfxRect(rt);
     return GfxBool(res);
 }
@@ -274,7 +274,7 @@ void GfxRect::unionRect(GfxRect const &r, GfxRect ** result) const noexcept
 
     GfxRect::SdlType rt;
 
-    sdl2::SDL_UnionRect(r.getAsSdlTypePtr(), &rect_, &rt);
+    SDL_UnionRect(r.getAsSdlTypePtr(), &rect_, &rt);
     *result = new GfxRect(rt);
 }
 
@@ -298,7 +298,7 @@ GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** re
         ptarr[index] = it.getAsSdlType();
         index += 1;
     }
-    res = sdl2::SDL_EnclosePoints(&ptarr[0], ptcount, &rect_, &rt);
+    res = SDL_EnclosePoints(&ptarr[0], ptcount, &rect_, &rt);
     *result = new GfxRect(rt);
     return GfxBool(res);
 }
@@ -314,7 +314,7 @@ GfxBool GfxRect::intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, 
 
     bool res;
 
-    res = sdl2::SDL_IntersectRectAndLine(&rect_, x1, y1, x2, y2);
+    res = SDL_IntersectRectAndLine(&rect_, x1, y1, x2, y2);
     return GfxBool(res);
 }
 

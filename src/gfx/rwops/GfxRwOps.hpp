@@ -41,7 +41,7 @@ namespace rwops
 class GfxRwOps final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_RWops * SdlTypePtr;
+    typedef SDL_RWops * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

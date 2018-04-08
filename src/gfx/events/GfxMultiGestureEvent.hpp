@@ -39,10 +39,10 @@ namespace gfx
 namespace events
 {
 
-class GfxMultiGestureEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetTouchID
+class GfxMultiGestureEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetTouchID
 {
 public:
-    typedef sdl2::SDL_MultiGestureEvent SdlType;
+    typedef SDL_MultiGestureEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

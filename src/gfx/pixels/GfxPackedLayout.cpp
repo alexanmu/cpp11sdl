@@ -129,63 +129,63 @@ bool GfxPackedLayout::isNone(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_NONE);
+    return (value_ == SDL_PACKEDLAYOUT_NONE);
 }
 
 bool GfxPackedLayout::is332(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_332);
+    return (value_ == SDL_PACKEDLAYOUT_332);
 }
 
 bool GfxPackedLayout::is4444(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_4444);
+    return (value_ == SDL_PACKEDLAYOUT_4444);
 }
 
 bool GfxPackedLayout::is1555(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_1555);
+    return (value_ == SDL_PACKEDLAYOUT_1555);
 }
 
 bool GfxPackedLayout::is5551(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_5551);
+    return (value_ == SDL_PACKEDLAYOUT_5551);
 }
 
 bool GfxPackedLayout::is565(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_565);
+    return (value_ == SDL_PACKEDLAYOUT_565);
 }
 
 bool GfxPackedLayout::is8888(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_8888);
+    return (value_ == SDL_PACKEDLAYOUT_8888);
 }
 
 bool GfxPackedLayout::is2101010(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_2101010);
+    return (value_ == SDL_PACKEDLAYOUT_2101010);
 }
 
 bool GfxPackedLayout::is1010102(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (value_ == sdl2::SDL_PACKEDLAYOUT_1010102);
+    return (value_ == SDL_PACKEDLAYOUT_1010102);
 }
 
 void GfxPackedLayout::clear(void) noexcept

@@ -39,7 +39,7 @@ namespace video
 class GfxHitTestResult final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HitTestResult SdlType;
+    typedef SDL_HitTestResult SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,16 +47,16 @@ public:
 
     enum class ValueType : int32_t
     {
-        hittestNormal = sdl2::SDL_HITTEST_NORMAL,
-        hittestDraggable = sdl2::SDL_HITTEST_DRAGGABLE,
-        hittestResizeTopLeft = sdl2::SDL_HITTEST_RESIZE_TOPLEFT,
-        hittestResizeTop = sdl2::SDL_HITTEST_RESIZE_TOP,
-        hittestResizeTopRight = sdl2::SDL_HITTEST_RESIZE_TOPRIGHT,
-        hittestResizeRight = sdl2::SDL_HITTEST_RESIZE_RIGHT,
-        hittestResizeBottomRight = sdl2::SDL_HITTEST_RESIZE_BOTTOMRIGHT,
-        hittestResizeBottom = sdl2::SDL_HITTEST_RESIZE_BOTTOM,
-        hittestResizeBottomLeft = sdl2::SDL_HITTEST_RESIZE_BOTTOMLEFT,
-        hittestResizeLeft = sdl2::SDL_HITTEST_RESIZE_LEFT
+        hittestNormal = SDL_HITTEST_NORMAL,
+        hittestDraggable = SDL_HITTEST_DRAGGABLE,
+        hittestResizeTopLeft = SDL_HITTEST_RESIZE_TOPLEFT,
+        hittestResizeTop = SDL_HITTEST_RESIZE_TOP,
+        hittestResizeTopRight = SDL_HITTEST_RESIZE_TOPRIGHT,
+        hittestResizeRight = SDL_HITTEST_RESIZE_RIGHT,
+        hittestResizeBottomRight = SDL_HITTEST_RESIZE_BOTTOMRIGHT,
+        hittestResizeBottom = SDL_HITTEST_RESIZE_BOTTOM,
+        hittestResizeBottomLeft = SDL_HITTEST_RESIZE_BOTTOMLEFT,
+        hittestResizeLeft = SDL_HITTEST_RESIZE_LEFT
     };
 
     GfxHitTestResult() noexcept;

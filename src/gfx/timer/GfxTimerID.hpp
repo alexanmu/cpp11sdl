@@ -38,7 +38,7 @@ namespace timer
 class GfxTimerID final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_TimerID SdlType;
+    typedef SDL_TimerID SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

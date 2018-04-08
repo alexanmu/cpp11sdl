@@ -39,8 +39,8 @@ namespace msgbox
 class GfxMessageBoxColorType final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_MessageBoxColorType SdlType;
-    typedef sdl2::SDL_MessageBoxColorType * SdlTypePtr;
+    typedef SDL_MessageBoxColorType SdlType;
+    typedef SDL_MessageBoxColorType * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -48,12 +48,12 @@ public:
 
     enum class ValueType : int32_t
     {
-        colorBackground = sdl2::SDL_MESSAGEBOX_COLOR_BACKGROUND,
-        colorText = sdl2::SDL_MESSAGEBOX_COLOR_TEXT,
-        colorButtonBorder = sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
-        colorButtonBackground = sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
-        colorButtonSelected = sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
-        colorMax = sdl2::SDL_MESSAGEBOX_COLOR_MAX
+        colorBackground = SDL_MESSAGEBOX_COLOR_BACKGROUND,
+        colorText = SDL_MESSAGEBOX_COLOR_TEXT,
+        colorButtonBorder = SDL_MESSAGEBOX_COLOR_BUTTON_BORDER,
+        colorButtonBackground = SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND,
+        colorButtonSelected = SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED,
+        colorMax = SDL_MESSAGEBOX_COLOR_MAX
     };
 
     GfxMessageBoxColorType() noexcept;

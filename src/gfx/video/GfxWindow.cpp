@@ -61,7 +61,7 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
 
     SdlTypePtr tmpwinptr;
 
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+    tmpwinptr = SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
                                        width, height, kDefaultFlagsValue);
     if (tmpwinptr == nullptr)
     {
@@ -83,7 +83,7 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
 
     SdlTypePtr tmpwinptr;
 
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+    tmpwinptr = SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
@@ -109,7 +109,7 @@ GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWi
 
     SdlTypePtr tmpwinptr;
 
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
+    tmpwinptr = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
@@ -128,7 +128,7 @@ GfxWindow::GfxWindow(const void * data) throw(std::runtime_error) : GfxObject(Cl
 
     SdlTypePtr tmpwinptr;
 
-    tmpwinptr = sdl2::SDL_CreateWindowFrom(data);
+    tmpwinptr = SDL_CreateWindowFrom(data);
     if (tmpwinptr == nullptr)
     {
         throw std::runtime_error("Unable to create window");
@@ -151,7 +151,7 @@ GfxWindow::GfxWindow(GfxWindow&& other) noexcept : GfxObject(std::move(other))
     hitTest_ = other.hitTest_;
     if (hitTest_ != nullptr)
     {
-        sdl2::SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
+        SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
     }
     // Delete other's data
     other.window_ = nullptr;
@@ -176,7 +176,7 @@ GfxWindow& GfxWindow::operator=(GfxWindow&& other) noexcept
         hitTest_ = other.hitTest_;
         if (hitTest_ != nullptr)
         {
-            sdl2::SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
+            SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
         }
         // Delete other's data
         other.window_ = nullptr;
@@ -222,7 +222,7 @@ void GfxWindow::createWindow(std::string const& title, const int32_t width,
     {
         throw std::runtime_error("Window already created");
     }
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+    tmpwinptr = SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
                                        width, height, kDefaultFlagsValue);
     if (tmpwinptr == nullptr)
     {
@@ -248,7 +248,7 @@ void GfxWindow::createWindow(std::string const& title, const int32_t width, cons
     {
         throw std::runtime_error("Window already created");
     }
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
+    tmpwinptr = SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
@@ -278,7 +278,7 @@ void GfxWindow::createWindow(std::string const& title, GfxWindowPosition const& 
     {
         throw std::runtime_error("Window already created");
     }
-    tmpwinptr = sdl2::SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
+    tmpwinptr = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
@@ -301,7 +301,7 @@ void GfxWindow::createWindow(const void * data) throw(std::runtime_error)
     {
         throw std::runtime_error("Window already created");
     }
-    tmpwinptr = sdl2::SDL_CreateWindowFrom(data);
+    tmpwinptr = SDL_CreateWindowFrom(data);
     if (tmpwinptr == nullptr)
     {
         throw std::runtime_error("Unable to create window");
@@ -326,7 +326,7 @@ int32_t GfxWindow::getWindowDisplayIndex(void) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_GetWindowDisplayIndex(window_);
+        ret = SDL_GetWindowDisplayIndex(window_);
     }
     return ret;
 }
@@ -339,7 +339,7 @@ GfxDisplayMode GfxWindow::getWindowDisplayMode(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowDisplayMode(window_, &dm);
+        SDL_GetWindowDisplayMode(window_, &dm);
         return gfx::video::GfxDisplayMode(dm);
     }
     return gfx::video::GfxDisplayMode();
@@ -349,11 +349,11 @@ pixels::GfxPixelFormatEnum GfxWindow::getWindowPixelFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    uint32_t ret = sdl2::SDL_PIXELFORMAT_UNKNOWN;
+    uint32_t ret = SDL_PIXELFORMAT_UNKNOWN;
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_GetWindowPixelFormat(window_);
+        ret = SDL_GetWindowPixelFormat(window_);
         return pixels::GfxPixelFormatEnum(ret);
     }
     return pixels::GfxPixelFormatEnum();
@@ -367,7 +367,7 @@ uint32_t GfxWindow::getWindowID(void) const noexcept
 
     if (window_ != nullptr)
     {
-        id = sdl2::SDL_GetWindowID(window_);
+        id = SDL_GetWindowID(window_);
     }
     return id;
 }
@@ -378,7 +378,7 @@ GfxWindow const * GfxWindow::getWindowFromID(const uint32_t id) const noexcept
 
     GfxWindow::SdlTypePtr wptr = nullptr;
 
-    wptr = sdl2::SDL_GetWindowFromID(id);
+    wptr = SDL_GetWindowFromID(id);
     if (wptr == window_)
     {
         return this;
@@ -399,7 +399,7 @@ GfxWindowFlags GfxWindow::getWindowFlags(void) const noexcept
 
     if (window_ != nullptr)
     {
-        wf = sdl2::SDL_GetWindowFlags(window_);
+        wf = SDL_GetWindowFlags(window_);
         return GfxWindowFlags(wf);
     }
     return GfxWindowFlags();
@@ -413,7 +413,7 @@ void GfxWindow::setWindowTitle(std::string const& title) noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowTitle(window_, title.c_str());
+        SDL_SetWindowTitle(window_, title.c_str());
     }
 }
 
@@ -425,7 +425,7 @@ std::string GfxWindow::getWindowTitle(void) const noexcept
 
     if (window_ != nullptr)
     {
-        pch = sdl2::SDL_GetWindowTitle(window_);
+        pch = SDL_GetWindowTitle(window_);
         return std::string(pch);
     }
     return "";
@@ -439,7 +439,7 @@ void GfxWindow::setWindowIcon(surface::GfxSurface const& icon) noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowIcon(window_, icon.getAsSdlTypePtr());
+        SDL_SetWindowIcon(window_, icon.getAsSdlTypePtr());
     }
 }
 
@@ -452,7 +452,7 @@ void * GfxWindow::setWindowData(std::string const& name, void * userdata) const 
 
     if (window_ != nullptr)
     {
-        return sdl2::SDL_SetWindowData(window_, name.c_str(), userdata);
+        return SDL_SetWindowData(window_, name.c_str(), userdata);
     }
     return nullptr;
 }
@@ -465,7 +465,7 @@ void * GfxWindow::getWindowData(std::string const& name) const noexcept
 
     if (window_ != nullptr)
     {
-        return sdl2::SDL_GetWindowData(window_, name.c_str());
+        return SDL_GetWindowData(window_, name.c_str());
     }
     return nullptr;
 }
@@ -479,7 +479,7 @@ void GfxWindow::setWindowPosition(GfxWindowPosition const& x, GfxWindowPosition 
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowPosition(window_, x.getCoordinate(), y.getCoordinate());
+        SDL_SetWindowPosition(window_, x.getCoordinate(), y.getCoordinate());
     }
 }
 
@@ -497,7 +497,7 @@ void GfxWindow::getWindowPosition(GfxWindowPosition * x, GfxWindowPosition * y) 
     y->setCoordinate(-1);
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowPosition(window_, &xcoord, &ycoord);
+        SDL_GetWindowPosition(window_, &xcoord, &ycoord);
         x->setPosition(GfxWindowPosition::ValueType::positionSpecified);
         x->setCoordinate(xcoord);
         y->setPosition(GfxWindowPosition::ValueType::positionSpecified);
@@ -514,7 +514,7 @@ void GfxWindow::setWindowSize(const int32_t w, const int32_t h) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowSize(window_, w, h);
+        SDL_SetWindowSize(window_, w, h);
     }
 }
 
@@ -529,7 +529,7 @@ void GfxWindow::getWindowSize(int32_t * pw, int32_t * ph) const noexcept
     *ph = -1;
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowSize(window_, pw, ph);
+        SDL_GetWindowSize(window_, pw, ph);
     }
 }
 
@@ -550,7 +550,7 @@ void GfxWindow::getWindowBordersSize(int32_t * top, int32_t * left, int32_t * bo
     *right = 0;
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_GetWindowBordersSize(window_, top, left, bottom, right);
+        ret = SDL_GetWindowBordersSize(window_, top, left, bottom, right);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -564,7 +564,7 @@ void GfxWindow::setWindowMinimumSize(const int32_t min_w, const int32_t min_h) c
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowMinimumSize(window_, min_w, min_h);
+        SDL_SetWindowMinimumSize(window_, min_w, min_h);
     }
 }
 
@@ -577,7 +577,7 @@ void GfxWindow::getWindowMinimumSize(int32_t * min_w, int32_t * min_h) const noe
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowMinimumSize(window_, min_w, min_h);
+        SDL_GetWindowMinimumSize(window_, min_w, min_h);
     }
 }
 
@@ -590,7 +590,7 @@ void GfxWindow::setWindowMaximumSize(const int32_t max_w, const int32_t max_h) c
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowMaximumSize(window_, max_w, max_h);
+        SDL_SetWindowMaximumSize(window_, max_w, max_h);
     }
 }
 
@@ -603,7 +603,7 @@ void GfxWindow::getWindowMaximumSize(int32_t * max_w, int32_t * max_h) const noe
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowMaximumSize(window_, max_w, max_h);
+        SDL_GetWindowMaximumSize(window_, max_w, max_h);
     }
 }
 
@@ -615,7 +615,7 @@ void GfxWindow::setWindowBordered(GfxBool const& bordered) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowBordered(window_, bordered.getAsSdlType());
+        SDL_SetWindowBordered(window_, bordered.getAsSdlType());
     }
 }
 
@@ -627,7 +627,7 @@ void GfxWindow::setWindowResizable(GfxBool const& resizable) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowResizable(window_, resizable.getAsSdlType());
+        SDL_SetWindowResizable(window_, resizable.getAsSdlType());
     }
 }
 
@@ -637,7 +637,7 @@ void GfxWindow::showWindow(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_ShowWindow(window_);
+        SDL_ShowWindow(window_);
     }
 }
 
@@ -647,7 +647,7 @@ void GfxWindow::hideWindow(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_HideWindow(window_);
+        SDL_HideWindow(window_);
     }
 }
 
@@ -657,7 +657,7 @@ void GfxWindow::raiseWindow(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_RaiseWindow(window_);
+        SDL_RaiseWindow(window_);
     }
 }
 
@@ -667,7 +667,7 @@ void GfxWindow::maximizeWindow(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_MaximizeWindow(window_);
+        SDL_MaximizeWindow(window_);
     }
 }
 
@@ -677,7 +677,7 @@ void GfxWindow::minimizeWindow(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_MinimizeWindow(window_);
+        SDL_MinimizeWindow(window_);
     }
 }
 
@@ -687,7 +687,7 @@ void GfxWindow::restoreWindow(void) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_RestoreWindow(window_);
+        SDL_RestoreWindow(window_);
     }
 }
 
@@ -699,7 +699,7 @@ void GfxWindow::setWindowFullscreen(GfxWindowFlags const& flags) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowFullscreen(window_, flags.getAsSdlType());
+        ret = SDL_SetWindowFullscreen(window_, flags.getAsSdlType());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -713,7 +713,7 @@ surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_
     if (window_ != nullptr)
     {
         // Window has been created; try-get assoc. surface
-        tmpsurf = sdl2::SDL_GetWindowSurface(window_);
+        tmpsurf = SDL_GetWindowSurface(window_);
         if (tmpsurf == nullptr)
         {
             throw std::runtime_error("Window surface not accessible");
@@ -755,7 +755,7 @@ void GfxWindow::updateWindowSurface(void) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_UpdateWindowSurface(window_);
+        ret = SDL_UpdateWindowSurface(window_);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -785,7 +785,7 @@ void GfxWindow::updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& 
     }
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_UpdateWindowSurfaceRects(window_, rects_ptr, rects_count);
+        ret = SDL_UpdateWindowSurfaceRects(window_, rects_ptr, rects_count);
         assert((ret == -1) || (ret == 0));
     }
     // Leaks if assert above fails
@@ -800,7 +800,7 @@ void GfxWindow::setWindowGrab(GfxBool const& grabbed) const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_SetWindowGrab(window_, grabbed.getAsSdlType());
+        SDL_SetWindowGrab(window_, grabbed.getAsSdlType());
     }
 }
 
@@ -812,7 +812,7 @@ GfxBool GfxWindow::getWindowGrab(void) const noexcept
 
     if (window_ != nullptr)
     {
-        grabbed = sdl2::SDL_GetWindowGrab(window_);
+        grabbed = SDL_GetWindowGrab(window_);
         return GfxBool(grabbed);
     }
     return GfxBool(GfxBool::ValueType::boolFalse);
@@ -824,7 +824,7 @@ GfxWindow const * GfxWindow::getGrabbedWindow(void) const noexcept
 
     GfxWindow::SdlTypePtr win;
 
-    win = sdl2::SDL_GetGrabbedWindow();
+    win = SDL_GetGrabbedWindow();
     if (win != nullptr)
     {
         if (win == window_)
@@ -843,7 +843,7 @@ void GfxWindow::setWindowBrightness(const float brightness) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowBrightness(window_, brightness);
+        ret = SDL_SetWindowBrightness(window_, brightness);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -856,7 +856,7 @@ float GfxWindow::getWindowBrightness(void) const noexcept
 
     if (window_ != nullptr)
     {
-        ret_value = sdl2::SDL_GetWindowBrightness(window_);
+        ret_value = SDL_GetWindowBrightness(window_);
     }
     return ret_value;
 }
@@ -869,7 +869,7 @@ void GfxWindow::setWindowOpacity(const float opacity) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowOpacity(window_, opacity);
+        ret = SDL_SetWindowOpacity(window_, opacity);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -883,7 +883,7 @@ float GfxWindow::getWindowOpacity(void) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_GetWindowOpacity(window_, &ret_value);
+        ret = SDL_GetWindowOpacity(window_, &ret_value);
         assert((ret == -1) || (ret == 0));
     }
     return ret_value;
@@ -899,7 +899,7 @@ void GfxWindow::setWindowModalFor(GfxWindow const& modal_window) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowModalFor(modal_window.getAsSdlTypePtr(), window_);
+        ret = SDL_SetWindowModalFor(modal_window.getAsSdlTypePtr(), window_);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -912,7 +912,7 @@ void GfxWindow::setWindowInputFocus(void) const noexcept
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowInputFocus(window_);
+        ret = SDL_SetWindowInputFocus(window_);
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -930,7 +930,7 @@ void GfxWindow::setWindowGammaRamp(xtra::GfxGammaRamp const& red, xtra::GfxGamma
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_SetWindowGammaRamp(window_, red.getAsSdlTypePtr(), green.getAsSdlTypePtr(),
+        ret = SDL_SetWindowGammaRamp(window_, red.getAsSdlTypePtr(), green.getAsSdlTypePtr(),
                                            blue.getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
@@ -953,7 +953,7 @@ void GfxWindow::getWindowGammaRamp(xtra::GfxGammaRamp * red, xtra::GfxGammaRamp 
 
     if (window_ != nullptr)
     {
-        ret = sdl2::SDL_GetWindowGammaRamp(window_, red->getAsSdlTypePtr(), green->getAsSdlTypePtr(),
+        ret = SDL_GetWindowGammaRamp(window_, red->getAsSdlTypePtr(), green->getAsSdlTypePtr(),
                                            blue->getAsSdlTypePtr());
         assert((ret == -1) || (ret == 0));
     }
@@ -973,14 +973,14 @@ void GfxWindow::setWindowHitTest(GfxHitTest const& callback) const noexcept
         if (callback)
         {
             hitTest_ = const_cast<GfxHitTest *>(&callback);
-            ret = sdl2::SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
+            ret = SDL_SetWindowHitTest(window_, windowHitTestFunction, callback_data);
             assert((ret == -1) || (ret == 0));
         }
         else
         {
             hitTest_ = nullptr;
             // if HitTest was enabled, disable it; don't care about the result
-            (void)sdl2::SDL_SetWindowHitTest(window_, NULL, NULL);
+            (void)SDL_SetWindowHitTest(window_, NULL, NULL);
         }
     }
 }
@@ -993,7 +993,7 @@ int32_t GfxWindow::getWidth() const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowSize(window_, &w, NULL);
+        SDL_GetWindowSize(window_, &w, NULL);
     }
     return w;
 }
@@ -1006,7 +1006,7 @@ int32_t GfxWindow::getHeight() const noexcept
 
     if (window_ != nullptr)
     {
-        sdl2::SDL_GetWindowSize(window_, NULL, &h);
+        SDL_GetWindowSize(window_, NULL, &h);
     }
     return h;
 }
@@ -1028,13 +1028,13 @@ void GfxWindow::freeResources(void) noexcept
     }
     if (window_ != nullptr)
     {
-        sdl2::SDL_DestroyWindow(window_);
+        SDL_DestroyWindow(window_);
         window_ = nullptr;
     }
 }
 
-gfx::sdl2::SDL_HitTestResult GfxWindow::windowHitTestFunction(gfx::sdl2::SDL_Window * win,
-                                                              const gfx::sdl2::SDL_Point * area, void * data)
+SDL_HitTestResult GfxWindow::windowHitTestFunction(SDL_Window * win,
+                                                   const SDL_Point * area, void * data)
 {
     assert(win != nullptr);
     assert(area != nullptr);
@@ -1046,7 +1046,7 @@ gfx::sdl2::SDL_HitTestResult GfxWindow::windowHitTestFunction(gfx::sdl2::SDL_Win
 
     GfxWindow * thisptr = static_cast<GfxWindow *>(data);
 
-    htrsdl = sdl2::SDL_HITTEST_NORMAL;
+    htrsdl = SDL_HITTEST_NORMAL;
     if (thisptr != nullptr)
     {
         if (thisptr->hitTest_ != nullptr)

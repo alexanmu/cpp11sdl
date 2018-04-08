@@ -130,49 +130,49 @@ bool GfxJoystickPowerLevel::isUnknown(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_UNKNOWN);
+    return (plevel_ == SDL_JOYSTICK_POWER_UNKNOWN);
 }
 
 bool GfxJoystickPowerLevel::isEmpty(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_EMPTY);
+    return (plevel_ == SDL_JOYSTICK_POWER_EMPTY);
 }
 
 bool GfxJoystickPowerLevel::isLow(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_LOW);
+    return (plevel_ == SDL_JOYSTICK_POWER_LOW);
 }
 
 bool GfxJoystickPowerLevel::isMedium(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_MEDIUM);
+    return (plevel_ == SDL_JOYSTICK_POWER_MEDIUM);
 }
 
 bool GfxJoystickPowerLevel::isFull(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_FULL);
+    return (plevel_ == SDL_JOYSTICK_POWER_FULL);
 }
 
 bool GfxJoystickPowerLevel::isWired(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_WIRED);
+    return (plevel_ == SDL_JOYSTICK_POWER_WIRED);
 }
 
 bool GfxJoystickPowerLevel::isMax(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (plevel_ == sdl2::SDL_JOYSTICK_POWER_MAX);
+    return (plevel_ == SDL_JOYSTICK_POWER_MAX);
 }
 
 void GfxJoystickPowerLevel::clear(void) noexcept

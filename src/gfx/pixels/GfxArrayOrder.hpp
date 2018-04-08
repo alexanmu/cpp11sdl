@@ -36,7 +36,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxArrayOrder : public GfxObject
+class GfxArrayOrder final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
@@ -47,13 +47,13 @@ public:
 
     enum class ValueType : uint32_t
     {
-        arrayOrderNone = sdl2::SDL_ARRAYORDER_NONE,
-        arrayOrderRGB = sdl2::SDL_ARRAYORDER_RGB,
-        arrayOrderRGBA = sdl2::SDL_ARRAYORDER_RGBA,
-        arrayOrderARGB = sdl2::SDL_ARRAYORDER_ARGB,
-        arrayOrderBGR = sdl2::SDL_ARRAYORDER_BGR,
-        arrayOrderBGRA = sdl2::SDL_ARRAYORDER_BGRA,
-        arrayOrderABGR = sdl2::SDL_ARRAYORDER_ABGR
+        arrayOrderNone = SDL_ARRAYORDER_NONE,
+        arrayOrderRGB = SDL_ARRAYORDER_RGB,
+        arrayOrderRGBA = SDL_ARRAYORDER_RGBA,
+        arrayOrderARGB = SDL_ARRAYORDER_ARGB,
+        arrayOrderBGR = SDL_ARRAYORDER_BGR,
+        arrayOrderBGRA = SDL_ARRAYORDER_BGRA,
+        arrayOrderABGR = SDL_ARRAYORDER_ABGR
     };
 
     GfxArrayOrder() noexcept;

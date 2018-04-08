@@ -39,7 +39,7 @@ namespace hints
 class GfxHintPriority final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HintPriority SdlType;
+    typedef SDL_HintPriority SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : int32_t
     {
-        hintDefault = sdl2::SDL_HINT_DEFAULT,
-        hintNormal = sdl2::SDL_HINT_NORMAL,
-        hintOverride = sdl2::SDL_HINT_OVERRIDE
+        hintDefault = SDL_HINT_DEFAULT,
+        hintNormal = SDL_HINT_NORMAL,
+        hintOverride = SDL_HINT_OVERRIDE
     };
 
     GfxHintPriority() noexcept;

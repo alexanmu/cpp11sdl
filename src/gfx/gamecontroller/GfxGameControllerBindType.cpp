@@ -130,35 +130,35 @@ bool GfxGameControllerBindType::isBindTypeNone(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_NONE);
+    return (bType_ == SDL_CONTROLLER_BINDTYPE_NONE);
 }
 
 bool GfxGameControllerBindType::isBindTypeNormal(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_BUTTON);
+    return (bType_ == SDL_CONTROLLER_BINDTYPE_BUTTON);
 }
 
 bool GfxGameControllerBindType::isBindTypeAxis(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_AXIS);
+    return (bType_ == SDL_CONTROLLER_BINDTYPE_AXIS);
 }
 
 bool GfxGameControllerBindType::isBindTypeHat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (bType_ == sdl2::SDL_CONTROLLER_BINDTYPE_HAT);
+    return (bType_ == SDL_CONTROLLER_BINDTYPE_HAT);
 }
 
 void GfxGameControllerBindType::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    bType_ = sdl2::SDL_CONTROLLER_BINDTYPE_NONE;
+    bType_ = SDL_CONTROLLER_BINDTYPE_NONE;
 }
 
 GfxGameControllerBindType::SdlType GfxGameControllerBindType::getAsSdlType(void) const noexcept

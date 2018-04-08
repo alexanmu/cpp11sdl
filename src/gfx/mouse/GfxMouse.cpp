@@ -93,7 +93,7 @@ video::GfxWindow::SdlTypePtr GfxMouse::getMouseFocus(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_GetMouseFocus();
+    return SDL_GetMouseFocus();
 }
 
 GfxButton GfxMouse::getMouseState(int32_t * x, int32_t * y) const noexcept
@@ -105,7 +105,7 @@ GfxButton GfxMouse::getMouseState(int32_t * x, int32_t * y) const noexcept
 
     uint32_t ret;
 
-    ret = sdl2::SDL_GetMouseState(x, y);
+    ret = SDL_GetMouseState(x, y);
     return GfxButton(ret);
 }
 
@@ -118,7 +118,7 @@ GfxButton GfxMouse::getGlobalMouseState(int32_t * x, int32_t * y) const noexcept
 
     uint32_t ret;
 
-    ret = sdl2::SDL_GetGlobalMouseState(x, y);
+    ret = SDL_GetGlobalMouseState(x, y);
     return GfxButton(ret);
 }
 
@@ -131,7 +131,7 @@ GfxButton GfxMouse::getRelativeMouseState(int32_t * x, int32_t * y) const noexce
 
     uint32_t ret;
 
-    ret = sdl2::SDL_GetGlobalMouseState(x, y);
+    ret = SDL_GetGlobalMouseState(x, y);
     return GfxButton(ret);
 }
 
@@ -143,7 +143,7 @@ void GfxMouse::warpMouseInWindow(video::GfxWindow const& window, const int32_t x
     assert(x >= 0);
     assert(y >= 0);
 
-    sdl2::SDL_WarpMouseInWindow(window.getAsSdlTypePtr(), x, y);
+    SDL_WarpMouseInWindow(window.getAsSdlTypePtr(), x, y);
 }
 
 void GfxMouse::warpMouseGlobal(const int32_t x, const int32_t y) const noexcept
@@ -155,7 +155,7 @@ void GfxMouse::warpMouseGlobal(const int32_t x, const int32_t y) const noexcept
 
     int32_t ret;
 
-    ret = sdl2::SDL_WarpMouseGlobal(x, y);
+    ret = SDL_WarpMouseGlobal(x, y);
     assert(ret == 0);
 }
 
@@ -167,7 +167,7 @@ void GfxMouse::setRelativeMouseMode(GfxBool const& enabled) const noexcept
 
     int32_t ret;
 
-    ret = sdl2::SDL_SetRelativeMouseMode(enabled.getAsSdlType());
+    ret = SDL_SetRelativeMouseMode(enabled.getAsSdlType());
     assert(ret == 0);
 }
 
@@ -179,7 +179,7 @@ void GfxMouse::captureMouse(GfxBool const& enabled) const noexcept
 
     int32_t ret;
 
-    ret = sdl2::SDL_CaptureMouse(enabled.getAsSdlType());
+    ret = SDL_CaptureMouse(enabled.getAsSdlType());
     assert(ret == 0);
 }
 
@@ -189,7 +189,7 @@ GfxBool GfxMouse::getRelativeMouseMode(void) const noexcept
 
     GfxBool::SdlType sdlbool;
 
-    sdlbool = sdl2::SDL_GetRelativeMouseMode();
+    sdlbool = SDL_GetRelativeMouseMode();
     return GfxBool(sdlbool);
 }
 

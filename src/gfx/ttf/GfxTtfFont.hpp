@@ -42,7 +42,7 @@ namespace ttf
 class GfxTtfFont final : public GfxObject
 {
 public:
-    typedef sdl2::TTF_Font * SdlTypePtr;
+    typedef TTF_Font * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

@@ -24,34 +24,8 @@
 #ifndef GfxSdlHeader_hpp
 #define GfxSdlHeader_hpp
 
-namespace gfx
-{
-
-namespace sdl2
-{
-
 #include "SDL.h"
 #include "SDL_bits.h"
 #include "SDL_ttf.h"
-
-}  // namespace sdl2
-
-}  // namespace gfx
-
-/*
-    New features, not yet present in SDL release-2.0.6; must be removed when 2.0.7 (or SDL 2.1) will be relased!
-    Compiler error expected here in case on conflicts.
-*/
-namespace gfx
-{
-
-namespace sdl2
-{
-
-/* Empty for now */
-
-}  // namespace sdl2
-
-}  // namespace gfx
 
 #endif /* GfxSdlHeader_hpp */

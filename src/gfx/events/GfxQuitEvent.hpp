@@ -38,10 +38,10 @@ namespace gfx
 namespace events
 {
 
-class GfxQuitEvent : public GfxObject, public prv::IGetCommonEvent
+class GfxQuitEvent final : public GfxObject, public prv::IGetCommonEvent
 {
 public:
-    typedef sdl2::SDL_QuitEvent SdlType;
+    typedef SDL_QuitEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

@@ -97,7 +97,7 @@ void GfxClipboard::setClipboardText(std::string const& str) const noexcept
 
     assert(str.length() > 0);
 
-    sdl2::SDL_SetClipboardText(str.c_str());
+    SDL_SetClipboardText(str.c_str());
 }
 
 const std::string GfxClipboard::getClipboardText(void) const noexcept
@@ -107,11 +107,11 @@ const std::string GfxClipboard::getClipboardText(void) const noexcept
     char * c;
     std::string str { "" };
 
-    c = sdl2::SDL_GetClipboardText();
+    c = SDL_GetClipboardText();
     if (c != nullptr)
     {
         str = c;
-        sdl2::SDL_free(c);
+        SDL_free(c);
     }
     return str;
 }
@@ -122,7 +122,7 @@ GfxBool GfxClipboard::hasClipboardText(void) const noexcept
 
     bool ret;
 
-    ret = sdl2::SDL_HasClipboardText();
+    ret = SDL_HasClipboardText();
     return GfxBool(ret);
 }
 

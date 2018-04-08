@@ -51,7 +51,7 @@ namespace video
 class GfxWindow final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Window * SdlTypePtr;
+    typedef SDL_Window * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;
@@ -139,8 +139,8 @@ public:
 private:
     void freeResources(void) noexcept;
     // Will be called from C by SDL
-    static gfx::sdl2::SDL_HitTestResult windowHitTestFunction(gfx::sdl2::SDL_Window * win,
-                                                              const gfx::sdl2::SDL_Point * area, void * data);
+    static SDL_HitTestResult windowHitTestFunction(SDL_Window * win,
+                                                   const SDL_Point * area, void * data);
 
     static const int32_t kDefaultWindowPositionX = 100;
     static const int32_t kDefaultWindowPositionY = 100;

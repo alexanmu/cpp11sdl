@@ -36,10 +36,10 @@ namespace gfx
 namespace events
 {
 
-class GfxEventAction : public GfxObject
+class GfxEventAction final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_eventaction SdlType;
+    typedef SDL_eventaction SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : int32_t
     {
-        addEvent = sdl2::SDL_ADDEVENT,
-        peekEvent = sdl2::SDL_PEEKEVENT,
-        getEvent = sdl2::SDL_GETEVENT
+        addEvent = SDL_ADDEVENT,
+        peekEvent = SDL_PEEKEVENT,
+        getEvent = SDL_GETEVENT
     };
 
     GfxEventAction() noexcept;

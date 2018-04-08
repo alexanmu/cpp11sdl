@@ -93,13 +93,13 @@ GfxError GfxGetError::getErrorObject(void) noexcept
 {
     std::string str;
 
-    str = sdl2::SDL_GetError();
+    str = SDL_GetError();
     return GfxError(str);
 }
 
 void GfxGetError::clearSDL2Error(void) noexcept
 {
-    sdl2::SDL_ClearError();
+    SDL_ClearError();
 }
 
 }  // namespace error

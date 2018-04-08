@@ -97,7 +97,7 @@ const std::string GfxFileSystem::getBasePath(void) const noexcept
     char * base_path = NULL;
     std::string str;
 
-    base_path = sdl2::SDL_GetBasePath();
+    base_path = SDL_GetBasePath();
     if (base_path != NULL)
     {
         str = base_path;
@@ -106,7 +106,7 @@ const std::string GfxFileSystem::getBasePath(void) const noexcept
     {
         str = getThisFolder();
     }
-    sdl2::SDL_free(base_path);
+    SDL_free(base_path);
     return str;
 }
 
@@ -121,7 +121,7 @@ const std::string GfxFileSystem::getPrefPath(const std::string& organization,
     char * base_path = NULL;
     std::string str;
 
-    base_path = sdl2::SDL_GetPrefPath(organization.c_str(), appname.c_str());
+    base_path = SDL_GetPrefPath(organization.c_str(), appname.c_str());
     if (base_path != NULL)
     {
         str = base_path;
@@ -130,7 +130,7 @@ const std::string GfxFileSystem::getPrefPath(const std::string& organization,
     {
         str = getThisFolder();
     }
-    sdl2::SDL_free(base_path);
+    SDL_free(base_path);
     return str;
 }
 

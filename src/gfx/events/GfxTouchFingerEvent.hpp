@@ -40,10 +40,10 @@ namespace gfx
 namespace events
 {
 
-class GfxTouchFingerEvent : public GfxObject, public prv::IGetCommonEvent
+class GfxTouchFingerEvent final : public GfxObject, public prv::IGetCommonEvent
 {
 public:
-    typedef sdl2::SDL_TouchFingerEvent SdlType;
+    typedef SDL_TouchFingerEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

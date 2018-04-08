@@ -139,21 +139,21 @@ bool GfxMessageBoxFlags::isError(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (flag_ == sdl2::SDL_MESSAGEBOX_ERROR);
+    return (flag_ == SDL_MESSAGEBOX_ERROR);
 }
 
 bool GfxMessageBoxFlags::isWarning(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (flag_ == sdl2::SDL_MESSAGEBOX_WARNING);
+    return (flag_ == SDL_MESSAGEBOX_WARNING);
 }
 
 bool GfxMessageBoxFlags::isInformation(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (flag_ == sdl2::SDL_MESSAGEBOX_INFORMATION);
+    return (flag_ == SDL_MESSAGEBOX_INFORMATION);
 }
 
 void GfxMessageBoxFlags::clear(void) noexcept

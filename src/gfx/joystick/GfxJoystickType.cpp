@@ -130,70 +130,70 @@ bool GfxJoystickType::isUnknown(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_UNKNOWN);
+    return (type_ == SDL_JOYSTICK_TYPE_UNKNOWN);
 }
 
 bool GfxJoystickType::isGameController(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_GAMECONTROLLER);
+    return (type_ == SDL_JOYSTICK_TYPE_GAMECONTROLLER);
 }
 
 bool GfxJoystickType::isWheel(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_WHEEL);
+    return (type_ == SDL_JOYSTICK_TYPE_WHEEL);
 }
 
 bool GfxJoystickType::isArcadeStick(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_ARCADE_STICK);
+    return (type_ == SDL_JOYSTICK_TYPE_ARCADE_STICK);
 }
 
 bool GfxJoystickType::isFlightStick(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_FLIGHT_STICK);
+    return (type_ == SDL_JOYSTICK_TYPE_FLIGHT_STICK);
 }
 
 bool GfxJoystickType::isDancePad(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_DANCE_PAD);
+    return (type_ == SDL_JOYSTICK_TYPE_DANCE_PAD);
 }
 
 bool GfxJoystickType::isGuitar(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_GUITAR);
+    return (type_ == SDL_JOYSTICK_TYPE_GUITAR);
 }
 
 bool GfxJoystickType::isDrumKit(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_DRUM_KIT);
+    return (type_ == SDL_JOYSTICK_TYPE_DRUM_KIT);
 }
 
 bool GfxJoystickType::isArcadePad(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_ARCADE_PAD);
+    return (type_ == SDL_JOYSTICK_TYPE_ARCADE_PAD);
 }
 
 bool GfxJoystickType::isThrottle(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_JOYSTICK_TYPE_THROTTLE);
+    return (type_ == SDL_JOYSTICK_TYPE_THROTTLE);
 }
 
 void GfxJoystickType::clear(void) noexcept

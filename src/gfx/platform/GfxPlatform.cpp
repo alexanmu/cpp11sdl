@@ -109,7 +109,7 @@ void GfxPlatform::queryPlatform(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    platform_ = sdl2::SDL_GetPlatform();
+    platform_ = SDL_GetPlatform();
 }
 
 std::string const& GfxPlatform::getPlatform(void) const noexcept

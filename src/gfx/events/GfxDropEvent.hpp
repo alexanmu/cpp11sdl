@@ -39,10 +39,10 @@ namespace gfx
 namespace events
 {
 
-class GfxDropEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
+class GfxDropEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
 {
 public:
-    typedef sdl2::SDL_DropEvent SdlType;
+    typedef SDL_DropEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

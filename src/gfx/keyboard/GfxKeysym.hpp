@@ -42,7 +42,7 @@ namespace keyboard
 class GfxKeysym final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Keysym SdlType;
+    typedef SDL_Keysym SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

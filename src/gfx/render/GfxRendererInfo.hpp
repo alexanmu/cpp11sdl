@@ -41,7 +41,7 @@ namespace render
 class GfxRendererInfo final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_RendererInfo SdlType;
+    typedef SDL_RendererInfo SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

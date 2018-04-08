@@ -55,7 +55,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize) thr
     assert(filename.length() > 0);
     assert(pointsize > 0);
 
-    ttf_ = sdl2::TTF_OpenFont(filename.c_str(), pointsize);
+    ttf_ = TTF_OpenFont(filename.c_str(), pointsize);
     if (ttf_ == nullptr)
     {
         throw std::runtime_error("Unable to load font");
@@ -81,7 +81,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, con
     SdlTypePtr ttfptr;
 
     ttf_ = nullptr;
-    ttfptr = sdl2::TTF_OpenFontIndex(filename.c_str(), pointsize, index);
+    ttfptr = TTF_OpenFontIndex(filename.c_str(), pointsize, index);
     if (ttfptr == nullptr)
     {
         throw std::runtime_error("Unable to load font");
@@ -141,7 +141,7 @@ GfxTtfFont::~GfxTtfFont(void) noexcept
 
     if (ttf_ != nullptr)
     {
-        sdl2::TTF_CloseFont(ttf_);
+        TTF_CloseFont(ttf_);
     }
     ttf_ = nullptr;
 }
@@ -169,7 +169,7 @@ void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize) 
 
     SdlTypePtr tmpttf;
 
-    tmpttf = sdl2::TTF_OpenFont(filename.c_str(), pointsize);
+    tmpttf = TTF_OpenFont(filename.c_str(), pointsize);
     if (tmpttf == nullptr)
     {
         throw std::runtime_error("Unable to load font");
@@ -199,7 +199,7 @@ void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize,
 
     SdlTypePtr tmpttf;
 
-    tmpttf = sdl2::TTF_OpenFontIndex(filename.c_str(), pointsize, index);
+    tmpttf = TTF_OpenFontIndex(filename.c_str(), pointsize, index);
     if (tmpttf == nullptr)
     {
         throw std::runtime_error("Unable to load font");
@@ -224,7 +224,7 @@ void GfxTtfFont::closeFont(void) noexcept
 
     if (ttf_ != nullptr)
     {
-        sdl2::TTF_CloseFont(ttf_);
+        TTF_CloseFont(ttf_);
         clear();
     }
 }
@@ -233,7 +233,7 @@ void GfxTtfFont::setByteSwappedUnicode(const bool swapped) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    sdl2::TTF_ByteSwappedUNICODE(static_cast<int>(swapped));
+    TTF_ByteSwappedUNICODE(static_cast<int>(swapped));
 }
 
 GfxTtfFontStyle const& GfxTtfFont::getFontStyle(void) const noexcept
@@ -250,7 +250,7 @@ void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept
     fontStyle_ = fontstyle;
     if (ttf_ != nullptr)
     {
-        sdl2::TTF_SetFontStyle(ttf_, fontstyle.getAsSdlType());
+        TTF_SetFontStyle(ttf_, fontstyle.getAsSdlType());
     }
 }
 
@@ -268,7 +268,7 @@ void GfxTtfFont::setFontHinting(GfxTtfFontHinting const& fonthinting) noexcept
     fontHinting_ = fonthinting;
     if (ttf_ != nullptr)
     {
-        sdl2::TTF_SetFontHinting(ttf_, fonthinting.getAsSdlType());
+        TTF_SetFontHinting(ttf_, fonthinting.getAsSdlType());
     }
 }
 
@@ -288,7 +288,7 @@ void GfxTtfFont::setFontOutline(const int32_t outline) noexcept
     outline_ = outline;
     if (ttf_ != nullptr)
     {
-        sdl2::TTF_SetFontOutline(ttf_, outline);
+        TTF_SetFontOutline(ttf_, outline);
     }
 }
 
@@ -306,7 +306,7 @@ void GfxTtfFont::setFontKerning(const bool kerning) noexcept
     kerning_ = kerning;
     if (ttf_ != nullptr)
     {
-        sdl2::TTF_SetFontKerning(ttf_, kerning);
+        TTF_SetFontKerning(ttf_, kerning);
     }
 }
 
@@ -318,7 +318,7 @@ int32_t GfxTtfFont::getFontHeight(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        h = sdl2::TTF_FontHeight(ttf_);
+        h = TTF_FontHeight(ttf_);
     }
     return h;
 }
@@ -331,7 +331,7 @@ int32_t GfxTtfFont::getFontAscent(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        a = sdl2::TTF_FontAscent(ttf_);
+        a = TTF_FontAscent(ttf_);
     }
     return a;
 }
@@ -344,7 +344,7 @@ int32_t GfxTtfFont::getFontDescent(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        d = sdl2::TTF_FontDescent(ttf_);
+        d = TTF_FontDescent(ttf_);
     }
     return d;
 }
@@ -357,7 +357,7 @@ int32_t GfxTtfFont::getFontLineSkip(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        s = sdl2::TTF_FontLineSkip(ttf_);
+        s = TTF_FontLineSkip(ttf_);
     }
     return s;
 }
@@ -370,7 +370,7 @@ int64_t GfxTtfFont::getFontFaces(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        ff = sdl2::TTF_FontFaces(ttf_);
+        ff = TTF_FontFaces(ttf_);
     }
     return ff;
 }
@@ -383,7 +383,7 @@ bool GfxTtfFont::isFontFaceFixedWidth(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        ret = (sdl2::TTF_FontFaceIsFixedWidth(ttf_) != 0);
+        ret = (TTF_FontFaceIsFixedWidth(ttf_) != 0);
     }
     return ret;
 }
@@ -396,7 +396,7 @@ std::string GfxTtfFont::getFontFaceFamilyName(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        pChar = sdl2::TTF_FontFaceFamilyName(ttf_);
+        pChar = TTF_FontFaceFamilyName(ttf_);
         if (pChar != nullptr)
         {
             return std::string(pChar);
@@ -413,7 +413,7 @@ std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
 
     if (ttf_ != nullptr)
     {
-        pChar = sdl2::TTF_FontFaceStyleName(ttf_);
+        pChar = TTF_FontFaceStyleName(ttf_);
         if (pChar != nullptr)
         {
             return std::string(pChar);
@@ -430,7 +430,7 @@ int32_t GfxTtfFont::glyphIsProvided(const uint16_t ch) const noexcept
 
     if (ttf_ != nullptr)
     {
-        is = sdl2::TTF_GlyphIsProvided(ttf_, ch);
+        is = TTF_GlyphIsProvided(ttf_, ch);
     }
     return is;
 }
@@ -450,7 +450,7 @@ bool GfxTtfFont::glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx,
 
     if (ttf_ != nullptr)
     {
-        ret = (sdl2::TTF_GlyphMetrics(ttf_, ch, minx, maxx, miny, maxy, advance) == 0);
+        ret = (TTF_GlyphMetrics(ttf_, ch, minx, maxx, miny, maxy, advance) == 0);
     }
     return ret;
 }
@@ -467,7 +467,7 @@ bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) con
 
     if (ttf_ != nullptr)
     {
-        ret = (sdl2::TTF_SizeText(ttf_, text.c_str(), w, h) == 0);
+        ret = (TTF_SizeText(ttf_, text.c_str(), w, h) == 0);
     }
     return ret;
 }
@@ -484,7 +484,7 @@ bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) con
 
     if (ttf_ != nullptr)
     {
-        ret = (sdl2::TTF_SizeUTF8(ttf_, text.c_str(), w, h) == 0);
+        ret = (TTF_SizeUTF8(ttf_, text.c_str(), w, h) == 0);
     }
     return ret;
 }

@@ -38,10 +38,10 @@ namespace gfx
 namespace haptic
 {
 
-class GfxHapticCustom : public GfxObject
+class GfxHapticCustom final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_HapticCustom SdlType;
+    typedef SDL_HapticCustom SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

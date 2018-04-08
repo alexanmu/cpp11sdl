@@ -43,7 +43,7 @@ namespace mouse
 class GfxCursor final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Cursor * SdlTypePtr;
+    typedef SDL_Cursor * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = true;

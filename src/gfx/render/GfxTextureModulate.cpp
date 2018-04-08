@@ -132,7 +132,7 @@ bool GfxTextureModulate::isColor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_COLOR;
+    int32_t r = modulate_ & SDL_TEXTUREMODULATE_COLOR;
 
     return (r != 0);
 }
@@ -141,7 +141,7 @@ bool GfxTextureModulate::isAlpha(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    int32_t r = modulate_ & sdl2::SDL_TEXTUREMODULATE_ALPHA;
+    int32_t r = modulate_ & SDL_TEXTUREMODULATE_ALPHA;
 
     return (r != 0);
 }
@@ -150,28 +150,28 @@ void GfxTextureModulate::setColor(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_COLOR);
+    modulate_ = static_cast<SdlType>(modulate_ | SDL_TEXTUREMODULATE_COLOR);
 }
 
 void GfxTextureModulate::resetColor(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_COLOR);
+    modulate_ = static_cast<SdlType>(modulate_ & ~SDL_TEXTUREMODULATE_COLOR);
 }
 
 void GfxTextureModulate::setAlpha(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    modulate_ = static_cast<SdlType>(modulate_ | sdl2::SDL_TEXTUREMODULATE_ALPHA);
+    modulate_ = static_cast<SdlType>(modulate_ | SDL_TEXTUREMODULATE_ALPHA);
 }
 
 void GfxTextureModulate::resetAlpha(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    modulate_ = static_cast<SdlType>(modulate_ & ~sdl2::SDL_TEXTUREMODULATE_ALPHA);
+    modulate_ = static_cast<SdlType>(modulate_ & ~SDL_TEXTUREMODULATE_ALPHA);
 }
 
 void GfxTextureModulate::clear(void) noexcept

@@ -41,10 +41,10 @@ namespace gfx
 namespace events
 {
 
-class GfxWindowEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
+class GfxWindowEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
 {
 public:
-    typedef sdl2::SDL_WindowEvent SdlType;
+    typedef SDL_WindowEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

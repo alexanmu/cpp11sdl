@@ -69,7 +69,7 @@ GfxCursor::GfxCursor(const uint8_t * data, const uint8_t * mask, const int32_t w
 
     SdlTypePtr tmpcursor;
 
-    tmpcursor = sdl2::SDL_CreateCursor(data, mask, w, h, hot_x, hot_y);
+    tmpcursor = SDL_CreateCursor(data, mask, w, h, hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
         throw std::runtime_error("Unable to create cursor");
@@ -88,7 +88,7 @@ GfxCursor::GfxCursor(surface::GfxSurface const& surface, const int32_t hot_x,
 
     SdlTypePtr tmpcursor;
 
-    tmpcursor = sdl2::SDL_CreateColorCursor(surface.getAsSdlTypePtr(), hot_x, hot_y);
+    tmpcursor = SDL_CreateColorCursor(surface.getAsSdlTypePtr(), hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
         throw std::runtime_error("Unable to create cursor");
@@ -104,7 +104,7 @@ GfxCursor::GfxCursor(GfxSystemCursor const& id) throw(std::runtime_error) : GfxO
 
     SdlTypePtr tmpcursor;
 
-    tmpcursor = sdl2::SDL_CreateSystemCursor(id.getAsSdlType());
+    tmpcursor = SDL_CreateSystemCursor(id.getAsSdlType());
     if (tmpcursor == nullptr)
     {
         throw std::runtime_error("Unable to create cursor");
@@ -143,7 +143,7 @@ GfxCursor::~GfxCursor() noexcept
 
     if (cursor_ != nullptr)
     {
-        sdl2::SDL_FreeCursor(cursor_);
+        SDL_FreeCursor(cursor_);
     }
     cursor_ = nullptr;
 }
@@ -193,7 +193,7 @@ void GfxCursor::createCursor(const uint8_t * data, const uint8_t * mask, const i
     {
         throw std::runtime_error("Cursor already created");
     }
-    tmpcursor = sdl2::SDL_CreateCursor(data, mask, w, h, hot_x, hot_y);
+    tmpcursor = SDL_CreateCursor(data, mask, w, h, hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
         throw std::runtime_error("Unable to create cursor");
@@ -216,7 +216,7 @@ void GfxCursor::createCursor(surface::GfxSurface const& surface, const int32_t h
     {
         throw std::runtime_error("Cursor already created");
     }
-    tmpcursor = sdl2::SDL_CreateColorCursor(surface.getAsSdlTypePtr(), hot_x, hot_y);
+    tmpcursor = SDL_CreateColorCursor(surface.getAsSdlTypePtr(), hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
         throw std::runtime_error("Unable to create cursor");
@@ -236,7 +236,7 @@ void GfxCursor::createCursor(GfxSystemCursor const& id) throw(std::runtime_error
     {
         throw std::runtime_error("Cursor already created");
     }
-    tmpcursor = sdl2::SDL_CreateSystemCursor(id.getAsSdlType());
+    tmpcursor = SDL_CreateSystemCursor(id.getAsSdlType());
     if (tmpcursor == nullptr)
     {
         throw std::runtime_error("Unable to create cursor");
@@ -250,7 +250,7 @@ void GfxCursor::setCursor(void) const noexcept
 
     if (cursor_ != nullptr)
     {
-        sdl2::SDL_SetCursor(cursor_);
+        SDL_SetCursor(cursor_);
     }
 }
 
@@ -262,7 +262,7 @@ GfxCursor::SdlTypePtr GfxCursor::getCursor(void) const noexcept
 
     if (cursor_ != nullptr)
     {
-        tmpcursor = sdl2::SDL_GetCursor();
+        tmpcursor = SDL_GetCursor();
     }
     return tmpcursor;
 }
@@ -275,7 +275,7 @@ GfxCursor::SdlTypePtr GfxCursor::getDefaultCursor(void) const noexcept
 
     if (cursor_ != nullptr)
     {
-        tmpcursor = sdl2::SDL_GetDefaultCursor();
+        tmpcursor = SDL_GetDefaultCursor();
     }
     return tmpcursor;
 }
@@ -286,7 +286,7 @@ void GfxCursor::freeCursor(void) noexcept
 
     if (cursor_ != nullptr)
     {
-        sdl2::SDL_FreeCursor(cursor_);
+        SDL_FreeCursor(cursor_);
         cursor_ = nullptr;
     }
 }
@@ -301,7 +301,7 @@ int32_t GfxCursor::showCursor(const int32_t toggle) const noexcept
 
     if (cursor_ != nullptr)
     {
-        ret = sdl2::SDL_ShowCursor(toggle);
+        ret = SDL_ShowCursor(toggle);
         assert((ret == 1) || (ret == 0));
     }
     return ret;
@@ -311,14 +311,14 @@ void GfxCursor::showCursor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    (void)sdl2::SDL_ShowCursor(1);
+    (void)SDL_ShowCursor(1);
 }
 
 void GfxCursor::hideCursor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    (void)sdl2::SDL_ShowCursor(0);
+    (void)SDL_ShowCursor(0);
 }
 
 GfxBool GfxCursor::isVisible(void) const noexcept
@@ -327,7 +327,7 @@ GfxBool GfxCursor::isVisible(void) const noexcept
 
     int32_t ret;
 
-    ret = sdl2::SDL_ShowCursor(-1);
+    ret = SDL_ShowCursor(-1);
     if (ret == 1)
     {
         return GfxBool(true);

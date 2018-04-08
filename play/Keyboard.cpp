@@ -58,7 +58,7 @@ static void _quit(void)
 
 static void _do(void)
 {
-    gfx::sdl2::SDL_Event e;
+    SDL_Event e;
     bool quit = false;
 
     gfx::keyboard::GfxKeyboard kdb;

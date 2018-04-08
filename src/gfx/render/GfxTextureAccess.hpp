@@ -39,7 +39,7 @@ namespace render
 class GfxTextureAccess final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_TextureAccess SdlType;
+    typedef SDL_TextureAccess SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : int32_t
     {
-        accessStatic = sdl2::SDL_TEXTUREACCESS_STATIC,
-        accessStreaming = sdl2::SDL_TEXTUREACCESS_STREAMING,
-        accessTarget = sdl2::SDL_TEXTUREACCESS_TARGET
+        accessStatic = SDL_TEXTUREACCESS_STATIC,
+        accessStreaming = SDL_TEXTUREACCESS_STREAMING,
+        accessTarget = SDL_TEXTUREACCESS_TARGET
     };
 
     GfxTextureAccess() noexcept;

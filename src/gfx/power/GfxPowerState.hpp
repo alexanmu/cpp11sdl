@@ -39,7 +39,7 @@ namespace power
 class GfxPowerState final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_PowerState SdlType;
+    typedef SDL_PowerState SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,11 +47,11 @@ public:
 
     enum class ValueType : int32_t
     {
-        stateUnknown = sdl2::SDL_POWERSTATE_UNKNOWN,
-        stateOnBattery = sdl2::SDL_POWERSTATE_ON_BATTERY,
-        stateNoBattery = sdl2::SDL_POWERSTATE_NO_BATTERY,
-        stateCharging = sdl2::SDL_POWERSTATE_CHARGING,
-        stateCharged = sdl2::SDL_POWERSTATE_CHARGED
+        stateUnknown = SDL_POWERSTATE_UNKNOWN,
+        stateOnBattery = SDL_POWERSTATE_ON_BATTERY,
+        stateNoBattery = SDL_POWERSTATE_NO_BATTERY,
+        stateCharging = SDL_POWERSTATE_CHARGING,
+        stateCharged = SDL_POWERSTATE_CHARGED
     };
 
     GfxPowerState() noexcept;

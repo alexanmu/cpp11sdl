@@ -39,7 +39,7 @@ namespace render
 class GfxRendererFlags final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_RendererFlags SdlType;
+    typedef SDL_RendererFlags SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -48,10 +48,10 @@ public:
     enum class ValueType : int32_t
     {
         flagUnknown,
-        flagSoftware = sdl2::SDL_RENDERER_SOFTWARE,
-        flagAccelerated = sdl2::SDL_RENDERER_ACCELERATED,
-        flagPresentVSync = sdl2::SDL_RENDERER_PRESENTVSYNC,
-        flagTargetTexture = sdl2::SDL_RENDERER_TARGETTEXTURE
+        flagSoftware = SDL_RENDERER_SOFTWARE,
+        flagAccelerated = SDL_RENDERER_ACCELERATED,
+        flagPresentVSync = SDL_RENDERER_PRESENTVSYNC,
+        flagTargetTexture = SDL_RENDERER_TARGETTEXTURE
     };
 
     GfxRendererFlags() noexcept;

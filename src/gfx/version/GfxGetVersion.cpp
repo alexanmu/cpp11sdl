@@ -96,7 +96,7 @@ GfxVersion GfxGetVersion::getVersion(void) const noexcept
 
     GfxVersion::SdlType v;
 
-    sdl2::SDL_GetVersion(&v);
+    SDL_GetVersion(&v);
     return GfxVersion(v);
 }
 
@@ -107,7 +107,7 @@ std::string GfxGetVersion::getRevision(void) const noexcept
     const char * chptr;
     std::string str = "";
 
-    chptr = sdl2::SDL_GetRevision();
+    chptr = SDL_GetRevision();
     if (chptr != nullptr)
     {
         str = chptr;
@@ -119,7 +119,7 @@ int32_t GfxGetVersion::getRevisionNumber(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_GetRevisionNumber();
+    return SDL_GetRevisionNumber();
 }
 
 }  // namespace version

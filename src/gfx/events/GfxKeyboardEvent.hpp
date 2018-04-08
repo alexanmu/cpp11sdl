@@ -41,10 +41,10 @@ namespace gfx
 namespace events
 {
 
-class GfxKeyboardEvent : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
+class GfxKeyboardEvent final : public GfxObject, public prv::IGetCommonEvent, public prv::IGetWindowID
 {
 public:
-    typedef sdl2::SDL_KeyboardEvent SdlType;
+    typedef SDL_KeyboardEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

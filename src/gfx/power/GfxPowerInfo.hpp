@@ -56,7 +56,7 @@ public:
 
     void queryPowerInfo(void) noexcept;
 
-    GfxPowerState const& getPowerState(void) const noexcept;
+    const GfxPowerState getPowerState(void) const noexcept;
     int32_t getRemainingSeconds(void) const noexcept;
     int32_t getRemainingPercentage(void) const noexcept;
 

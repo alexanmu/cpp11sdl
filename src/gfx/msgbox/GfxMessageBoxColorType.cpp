@@ -135,42 +135,42 @@ bool GfxMessageBoxColorType::isBackground(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_MESSAGEBOX_COLOR_BACKGROUND);
+    return (type_ == SDL_MESSAGEBOX_COLOR_BACKGROUND);
 }
 
 bool GfxMessageBoxColorType::isText(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_MESSAGEBOX_COLOR_TEXT);
+    return (type_ == SDL_MESSAGEBOX_COLOR_TEXT);
 }
 
 bool GfxMessageBoxColorType::isButtonBorder(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_BORDER);
+    return (type_ == SDL_MESSAGEBOX_COLOR_BUTTON_BORDER);
 }
 
 bool GfxMessageBoxColorType::isButtonBackground(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND);
+    return (type_ == SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND);
 }
 
 bool GfxMessageBoxColorType::isButtonSelected(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED);
+    return (type_ == SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED);
 }
 
 bool GfxMessageBoxColorType::isMax(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (type_ == sdl2::SDL_MESSAGEBOX_COLOR_MAX);
+    return (type_ == SDL_MESSAGEBOX_COLOR_MAX);
 }
 
 void GfxMessageBoxColorType::clear(void) noexcept

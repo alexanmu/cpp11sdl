@@ -88,7 +88,7 @@ uint32_t GfxTimer::getTicks(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_GetTicks();
+    return SDL_GetTicks();
 }
 
 int32_t GfxTimer::ticksPassed(const uint32_t a, const uint32_t b) const noexcept
@@ -102,14 +102,14 @@ uint64_t GfxTimer::getPerformanceCounter(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_GetPerformanceCounter();
+    return SDL_GetPerformanceCounter();
 }
 
 uint64_t GfxTimer::getPerformanceFrequency(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::SDL_GetPerformanceFrequency();
+    return SDL_GetPerformanceFrequency();
 }
 
 void GfxTimer::delay_(const uint32_t ms) const noexcept
@@ -118,7 +118,7 @@ void GfxTimer::delay_(const uint32_t ms) const noexcept
 
     assert(ms > 0);
 
-    sdl2::SDL_Delay(ms);
+    SDL_Delay(ms);
 }
 
 GfxTimerID GfxTimer::addTimer(const uint32_t interval, GfxTimerCallback const& callback) noexcept
@@ -131,7 +131,7 @@ GfxTimerID GfxTimer::addTimer(const uint32_t interval, GfxTimerCallback const& c
     GfxTimerID::SdlType tid = -1;
     void * param = static_cast<void *>(this);
 
-    tid = sdl2::SDL_AddTimer(interval, timerCallbackFunction, param);
+    tid = SDL_AddTimer(interval, timerCallbackFunction, param);
     callbackMap_[tid] = const_cast<GfxTimerCallback *>(&callback);
     return GfxTimerID(tid);
 }
@@ -148,7 +148,7 @@ GfxBool GfxTimer::removeTimer(GfxTimerID const& id) throw(std::runtime_error)
     if (pos != callbackMap_.end())
     {
         callbackMap_.erase(pos);
-        sdlbool = sdl2::SDL_RemoveTimer(id.getAsSdlType());
+        sdlbool = SDL_RemoveTimer(id.getAsSdlType());
     }
     else
     {
@@ -168,7 +168,7 @@ void GfxTimer::delay(const uint32_t ms) noexcept
 {
     assert(ms > 0);
 
-    sdl2::SDL_Delay(ms);
+    SDL_Delay(ms);
 }
 
 // Private methods

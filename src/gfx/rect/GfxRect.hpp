@@ -42,8 +42,8 @@ namespace rect
 class GfxRect final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Rect SdlType;
-    typedef sdl2::SDL_Rect * SdlTypePtr;
+    typedef SDL_Rect SdlType;
+    typedef SDL_Rect * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;

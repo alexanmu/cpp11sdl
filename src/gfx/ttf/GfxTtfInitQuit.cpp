@@ -41,7 +41,7 @@ GfxTtfInitQuit::GfxTtfInitQuit() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
-    errorCode_ = sdl2::TTF_Init();
+    errorCode_ = TTF_Init();
 }
 
 GfxTtfInitQuit::GfxTtfInitQuit(GfxTtfInitQuit&& other) noexcept : GfxObject(std::move(other))
@@ -73,7 +73,7 @@ GfxTtfInitQuit::~GfxTtfInitQuit(void) noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
-    sdl2::TTF_Quit();
+    TTF_Quit();
 }
 
 GfxTtfInitQuit::operator bool() const noexcept
@@ -94,7 +94,7 @@ int32_t GfxTtfInitQuit::wasInit(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return sdl2::TTF_WasInit();
+    return TTF_WasInit();
 }
 
 int32_t GfxTtfInitQuit::getErrorCode(void) const noexcept

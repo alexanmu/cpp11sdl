@@ -37,10 +37,10 @@ namespace gfx
 namespace events
 {
 
-class GfxCommonEvent : public GfxObject
+class GfxCommonEvent final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_CommonEvent SdlType;
+    typedef SDL_CommonEvent SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;

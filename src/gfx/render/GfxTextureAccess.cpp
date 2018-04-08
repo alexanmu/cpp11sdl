@@ -136,21 +136,21 @@ bool GfxTextureAccess::isStatic(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (access_ == sdl2::SDL_TEXTUREACCESS_STATIC);
+    return (access_ == SDL_TEXTUREACCESS_STATIC);
 }
 
 bool GfxTextureAccess::isStreaming(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (access_ == sdl2::SDL_TEXTUREACCESS_STREAMING);
+    return (access_ == SDL_TEXTUREACCESS_STREAMING);
 }
 
 bool GfxTextureAccess::isTarget(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return (access_ == sdl2::SDL_TEXTUREACCESS_TARGET);
+    return (access_ == SDL_TEXTUREACCESS_TARGET);
 }
 
 void GfxTextureAccess::clear(void) noexcept

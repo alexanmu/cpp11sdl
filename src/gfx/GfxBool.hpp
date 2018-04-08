@@ -35,7 +35,7 @@ namespace gfx
 class GfxBool final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_bool SdlType;
+    typedef SDL_bool SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -43,8 +43,8 @@ public:
 
     enum class ValueType : bool
     {
-        boolFalse = sdl2::SDL_FALSE,
-        boolTrue = sdl2::SDL_TRUE
+        boolFalse = SDL_FALSE,
+        boolTrue = SDL_TRUE
     };
 
     GfxBool() noexcept;

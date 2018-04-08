@@ -82,8 +82,8 @@ namespace events
 class GfxEvent final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_Event SdlType;
-    typedef sdl2::SDL_Event * SdlTypePtr;
+    typedef SDL_Event SdlType;
+    typedef SDL_Event * SdlTypePtr;
 
     static const char ClassName[];
     static const bool CallsSdl = true;

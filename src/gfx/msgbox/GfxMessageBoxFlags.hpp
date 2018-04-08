@@ -39,7 +39,7 @@ namespace msgbox
 class GfxMessageBoxFlags final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_MessageBoxFlags SdlType;
+    typedef SDL_MessageBoxFlags SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -47,9 +47,9 @@ public:
 
     enum class ValueType : int32_t
     {
-        flagError = sdl2::SDL_MESSAGEBOX_ERROR,
-        flagWarning = sdl2::SDL_MESSAGEBOX_WARNING,
-        flagInformation = sdl2::SDL_MESSAGEBOX_INFORMATION
+        flagError = SDL_MESSAGEBOX_ERROR,
+        flagWarning = SDL_MESSAGEBOX_WARNING,
+        flagInformation = SDL_MESSAGEBOX_INFORMATION
     };
 
     GfxMessageBoxFlags() noexcept;

@@ -43,7 +43,7 @@ GfxScreenSaver::GfxScreenSaver() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    GfxBool status { sdl2::SDL_IsScreenSaverEnabled() };
+    GfxBool status { SDL_IsScreenSaverEnabled() };
 
     ssstatus_ = static_cast<ScreenSaverStatus>(status.getValue());
     ssinitstatus_ = ssstatus_;
@@ -82,11 +82,11 @@ GfxScreenSaver::~GfxScreenSaver() noexcept
 
     if (ssinitstatus_ == ScreenSaverStatus::statusEnabled)
     {
-        sdl2::SDL_EnableScreenSaver();
+        SDL_EnableScreenSaver();
     }
     else
     {
-        sdl2::SDL_DisableScreenSaver();
+        SDL_DisableScreenSaver();
     }
 }
 
@@ -115,7 +115,7 @@ void GfxScreenSaver::enableScreenSaver(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    sdl2::SDL_EnableScreenSaver();
+    SDL_EnableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusEnabled;
 }
 
@@ -123,7 +123,7 @@ void GfxScreenSaver::disableScreenSaver(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    sdl2::SDL_DisableScreenSaver();
+    SDL_DisableScreenSaver();
     ssstatus_ = ScreenSaverStatus::statusDisabled;
 }
 

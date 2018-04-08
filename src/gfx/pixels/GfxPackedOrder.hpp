@@ -36,7 +36,7 @@ namespace gfx
 namespace pixels
 {
 
-class GfxPackedOrder : public GfxObject
+class GfxPackedOrder final : public GfxObject
 {
 public:
     typedef uint32_t SdlType;
@@ -47,15 +47,15 @@ public:
 
     enum class ValueType : int32_t
     {
-        packedOrderNone = sdl2::SDL_PACKEDORDER_NONE,
-        packedOrderXRGB = sdl2::SDL_PACKEDORDER_XRGB,
-        packedOrderRGBX = sdl2::SDL_PACKEDORDER_RGBX,
-        packedOrderARGB = sdl2::SDL_PACKEDORDER_ARGB,
-        packedOrderRGBA = sdl2::SDL_PACKEDORDER_RGBA,
-        packedOrderXBGR = sdl2::SDL_PACKEDORDER_XBGR,
-        packedOrderBGRX = sdl2::SDL_PACKEDORDER_BGRX,
-        packedOrderABGR = sdl2::SDL_PACKEDORDER_ABGR,
-        packedOrderBGRA = sdl2::SDL_PACKEDORDER_BGRA
+        packedOrderNone = SDL_PACKEDORDER_NONE,
+        packedOrderXRGB = SDL_PACKEDORDER_XRGB,
+        packedOrderRGBX = SDL_PACKEDORDER_RGBX,
+        packedOrderARGB = SDL_PACKEDORDER_ARGB,
+        packedOrderRGBA = SDL_PACKEDORDER_RGBA,
+        packedOrderXBGR = SDL_PACKEDORDER_XBGR,
+        packedOrderBGRX = SDL_PACKEDORDER_BGRX,
+        packedOrderABGR = SDL_PACKEDORDER_ABGR,
+        packedOrderBGRA = SDL_PACKEDORDER_BGRA
     };
 
     GfxPackedOrder() noexcept;

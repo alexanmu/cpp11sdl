@@ -39,7 +39,7 @@ namespace msgbox
 class GfxMessageBoxButtonFlags final : public GfxObject
 {
 public:
-    typedef sdl2::SDL_MessageBoxButtonFlags SdlType;
+    typedef SDL_MessageBoxButtonFlags SdlType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -48,8 +48,8 @@ public:
     enum class ValueType : uint32_t
     {
         noneDefault = 0,
-        returnKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
-        escKeyDefault = sdl2::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT
+        returnKeyDefault = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
+        escKeyDefault = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT
     };
 
     GfxMessageBoxButtonFlags() noexcept;
