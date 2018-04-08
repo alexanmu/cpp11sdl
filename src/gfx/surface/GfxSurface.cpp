@@ -1189,7 +1189,7 @@ const GfxYuvConversionMode GfxSurface::getYUVConversionModeForResolution(const i
     assert(height > 0);
 
     GfxYuvConversionMode::SdlType convMode;
-    
+
     convMode = sdl2::SDL_GetYUVConversionModeForResolution(width, height);
     return GfxYuvConversionMode(convMode);
 }
