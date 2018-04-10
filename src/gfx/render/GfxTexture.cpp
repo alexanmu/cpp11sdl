@@ -72,7 +72,8 @@ GfxTexture::GfxTexture(std::string const& texname, void * rend, pixels::GfxPixel
                                      w, h);
     if (texptr == nullptr)
     {
-        throw std::runtime_error("Unable to create texture");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create texture (" + sdlErr + ")");
     }
     tex_ = texptr;
     texName_ = texname;
@@ -94,7 +95,8 @@ GfxTexture::GfxTexture(std::string const& texname, void * rend, surface::GfxSurf
     texptr = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)
     {
-        throw std::runtime_error("Unable to create texture");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create texture (" + sdlErr + ")");
     }
     tex_ = texptr;
     texName_ = texname;
@@ -181,7 +183,8 @@ void GfxTexture::createTexture(std::string const& texname, void * rend, pixels::
                                      w, h);
     if (texptr == nullptr)
     {
-        throw std::runtime_error("Unable to create texture");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create texture (" + sdlErr + ")");
     }
     tex_ = texptr;
     texName_ = texname;
@@ -207,7 +210,8 @@ void GfxTexture::createTexture(std::string const& texname, void * rend, surface:
     texptr = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)
     {
-        throw std::runtime_error("Unable to create texture");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create texture (" + sdlErr + ")");
     }
     tex_ = texptr;
     texName_ = texname;

@@ -39,6 +39,7 @@ namespace ttf
 {
 
 const char GfxTtfFont::ClassName[] = "GfxTtfFont";
+const char GfxTtfFont::kUnknown[] = "Unknown";
 
 GfxTtfFont::GfxTtfFont() noexcept : GfxObject(ClassName)
 {
@@ -388,7 +389,7 @@ bool GfxTtfFont::isFontFaceFixedWidth(void) const noexcept
     return ret;
 }
 
-std::string GfxTtfFont::getFontFaceFamilyName(void) const noexcept
+const std::string GfxTtfFont::getFontFaceFamilyName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -402,10 +403,10 @@ std::string GfxTtfFont::getFontFaceFamilyName(void) const noexcept
             return std::string(pChar);
         }
     }
-    return "";
+    return std::string(kUnknown);
 }
 
-std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
+const std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -419,7 +420,7 @@ std::string GfxTtfFont::getFontFaceStyleName(void) const noexcept
             return std::string(pChar);
         }
     }
-    return "";
+    return std::string(kUnknown);
 }
 
 int32_t GfxTtfFont::glyphIsProvided(const uint16_t ch) const noexcept

@@ -58,7 +58,8 @@ GfxPixelFormat::GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runt
     pixptr = SDL_AllocFormat(format.getAsSdlType());
     if (pixptr == nullptr)
     {
-        throw std::runtime_error("Unable to create pixel format");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create pixel format (" + sdlErr + ")");
     }
     pix_ = pixptr;
 }
@@ -72,7 +73,8 @@ GfxPixelFormat::GfxPixelFormat(const uint32_t format) throw(std::runtime_error) 
     pixptr = SDL_AllocFormat(format);
     if (pixptr == nullptr)
     {
-        throw std::runtime_error("Unable to create pixel format");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create pixel format (" + sdlErr + ")");
     }
     pix_ = pixptr;
 }
@@ -146,7 +148,8 @@ void GfxPixelFormat::createFormat(GfxPixelFormatEnum const& format) throw(std::r
     pixptr = SDL_AllocFormat(format.getAsSdlType());
     if (pixptr == nullptr)
     {
-        throw std::runtime_error("Unable to create pixel format");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create pixel format (" + sdlErr + ")");
     }
     pix_ = pixptr;
 }
@@ -164,7 +167,8 @@ void GfxPixelFormat::createFormat(const uint32_t format) throw(std::runtime_erro
     pixptr = SDL_AllocFormat(format);
     if (pixptr == nullptr)
     {
-        throw std::runtime_error("Unable to create pixel format");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create pixel format (" + sdlErr + ")");
     }
     pix_ = pixptr;
 }

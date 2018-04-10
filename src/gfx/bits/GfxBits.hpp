@@ -53,7 +53,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    int mostSignificantBitIndex32(const uint32_t x) const noexcept;
+    int32_t mostSignificantBitIndex32(const uint32_t x) const noexcept;
 };
 
 }  // namespace bits

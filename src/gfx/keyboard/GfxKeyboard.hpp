@@ -62,20 +62,20 @@ public:
 
     video::GfxWindow::SdlTypePtr getKeyboardFocus(void) const noexcept;
     const uint8_t * getKeyboardState(int32_t * numkeys) const noexcept;
-    keycode::GfxKeymod getModState(void) const noexcept;
+    const keycode::GfxKeymod getModState(void) const noexcept;
     void setModState(keycode::GfxKeymod const& mod) const noexcept;
-    keycode::GfxKeycode getKeyFromScancode(scancode::GfxScancode const& scancode) const noexcept;
-    scancode::GfxScancode getScancodeFromKey(keycode::GfxKeycode const& keycode) const noexcept;
+    const keycode::GfxKeycode getKeyFromScancode(scancode::GfxScancode const& scancode) const noexcept;
+    const scancode::GfxScancode getScancodeFromKey(keycode::GfxKeycode const& keycode) const noexcept;
     const std::string getScancodeName(scancode::GfxScancode const& scancode) const noexcept;
-    scancode::GfxScancode getScancodeFromName(std::string const& name) const noexcept;
+    const scancode::GfxScancode getScancodeFromName(std::string const& name) const noexcept;
     const std::string getKeyName(keycode::GfxKeycode const& keycode) const noexcept;
-    keycode::GfxKeycode getKeyFromName(std::string const& name) const noexcept;
+    const keycode::GfxKeycode getKeyFromName(std::string const& name) const noexcept;
     void startTextInput(void) const noexcept;
-    GfxBool isTextInputActive(void) const noexcept;
+    const GfxBool isTextInputActive(void) const noexcept;
     void stopTextInput(void) const noexcept;
     void setTextInputRect(rect::GfxRect const& rect) const noexcept;
-    GfxBool hasScreenKeyboardSupport(void) const noexcept;
-    GfxBool isScreenKeyboardShown(video::GfxWindow const& window) const noexcept;
+    const GfxBool hasScreenKeyboardSupport(void) const noexcept;
+    const GfxBool isScreenKeyboardShown(video::GfxWindow const& window) const noexcept;
 };
 
 }  // namespace keyboard

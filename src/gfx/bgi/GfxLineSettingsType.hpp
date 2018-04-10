@@ -61,9 +61,9 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    GfxLineStyle getLineStyle(void) const noexcept;
-    GfxFillStyles getFillStyles(void) const noexcept;
-    GfxLineThickness getLineThickness(void) const noexcept;
+    const GfxLineStyle getLineStyle(void) const noexcept;
+    const GfxFillStyles getFillStyles(void) const noexcept;
+    const GfxLineThickness getLineThickness(void) const noexcept;
     void setValue(const BgiType value) noexcept;
 
     void clear(void) noexcept;

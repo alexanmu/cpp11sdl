@@ -393,7 +393,7 @@ int32_t GfxCanvas::GetPaletteSize(void) noexcept
     return bgi_.getpalettesize();
 }
 
-GfxColors2 const& GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
+const GfxColors2& GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

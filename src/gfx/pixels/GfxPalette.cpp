@@ -59,7 +59,8 @@ GfxPalette::GfxPalette(const uint16_t nColors) throw(std::runtime_error) : GfxOb
     palptr = SDL_AllocPalette(nColors);
     if (palptr == nullptr)
     {
-        throw std::runtime_error("Unable to create palette");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create palette (" + sdlErr + ")");
     }
     for (uint32_t i = 0; i < nColors; i++)
     {
@@ -92,7 +93,8 @@ GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_e
     palptr = SDL_AllocPalette(nColors);
     if (palptr == nullptr)
     {
-        throw std::runtime_error("Unable to create palette");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create palette (" + sdlErr + ")");
     }
     colorIndex = 0;
     for (GfxColor clr : colors)
@@ -174,7 +176,8 @@ void GfxPalette::createPalette(const uint16_t nColors) throw(std::runtime_error)
     palptr = SDL_AllocPalette(nColors);
     if (palptr == nullptr)
     {
-        throw std::runtime_error("Unable to create palette");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create palette (" + sdlErr + ")");
     }
     for (uint32_t i = 0; i < nColors; i++)
     {
@@ -215,7 +218,8 @@ void GfxPalette::createPalette(std::vector<GfxColor> const& colors) throw(std::r
     palptr = SDL_AllocPalette(nColors);
     if (palptr == nullptr)
     {
-        throw std::runtime_error("Unable to create palette");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create palette (" + sdlErr + ")");
     }
     colorIndex = 0;
     for (GfxColor clr : colors)

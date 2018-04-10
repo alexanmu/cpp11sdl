@@ -61,9 +61,9 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    scancode::GfxScancode getScanCode(void) const noexcept;
-    keycode::GfxKeycode getKeyCode(void) const noexcept;
-    keycode::GfxKeymod getKeyMod(void) const noexcept;
+    const scancode::GfxScancode getScanCode(void) const noexcept;
+    const keycode::GfxKeycode getKeyCode(void) const noexcept;
+    const keycode::GfxKeymod getKeyMod(void) const noexcept;
 
     void clear(void) noexcept;
 

@@ -94,8 +94,8 @@ public:
 
     bool isFontFaceFixedWidth(void) const noexcept;
 
-    std::string getFontFaceFamilyName(void) const noexcept;
-    std::string getFontFaceStyleName(void) const noexcept;
+    const std::string getFontFaceFamilyName(void) const noexcept;
+    const std::string getFontFaceStyleName(void) const noexcept;
 
     int32_t glyphIsProvided(const uint16_t ch) const noexcept;
     bool glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
@@ -117,6 +117,8 @@ private:
     GfxTtfFontHinting fontHinting_;
     int32_t outline_;
     bool kerning_;
+
+    static const char kUnknown[];
 };
 
 }  // namespace ttf

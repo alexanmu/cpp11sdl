@@ -53,7 +53,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    gfx::version::GfxVersion getVersion(void) const noexcept;
+    const gfx::version::GfxVersion getVersion(void) const noexcept;
 };
 
 }  // namespace ttf

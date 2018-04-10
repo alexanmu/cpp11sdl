@@ -89,7 +89,7 @@ std::string GfxBits::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-int GfxBits::mostSignificantBitIndex32(const uint32_t x) const noexcept
+int32_t GfxBits::mostSignificantBitIndex32(const uint32_t x) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

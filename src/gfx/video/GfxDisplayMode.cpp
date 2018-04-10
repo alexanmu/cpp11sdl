@@ -116,7 +116,7 @@ std::string GfxDisplayMode::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-pixels::GfxPixelFormatEnum GfxDisplayMode::getFormat(void) const noexcept
+const pixels::GfxPixelFormatEnum GfxDisplayMode::getFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

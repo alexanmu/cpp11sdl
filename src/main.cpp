@@ -106,7 +106,6 @@ void MsgBox(gfx::video::GfxWindow const& win)
 
     gfx::msgbox::GfxMessageBoxData m(flags, const_cast<gfx::video::GfxWindow *>(&win), title, message, numbuttons,
                                         buttons, colorScheme);
-    // GfxMessageBoxData m(flags,win,title,message,numbuttons,buttons);
 
     gfx::msgbox::GfxMessageBox g(m);
     int r = g.showModal();

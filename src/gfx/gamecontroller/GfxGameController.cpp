@@ -60,7 +60,8 @@ GfxGameController::GfxGameController(const int32_t index) throw(std::runtime_err
     tmpgctrlptr = SDL_GameControllerOpen(index);
     if (tmpgctrlptr == nullptr)
     {
-        throw std::runtime_error("Unable to create GfxJoystick object");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create GfxJoystick object (" + sdlErr + ")");
     }
     gCtrl_ = tmpgctrlptr;
 }
@@ -118,7 +119,8 @@ void GfxGameController::gameControllerOpen(const int32_t index) throw(std::runti
     tmpgctrlptr = SDL_GameControllerOpen(index);
     if (tmpgctrlptr == nullptr)
     {
-        throw std::runtime_error("Unable to create GfxGameController object");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create GfxGameController object (" + sdlErr + ")");
     }
     gCtrl_ = tmpgctrlptr;
 }

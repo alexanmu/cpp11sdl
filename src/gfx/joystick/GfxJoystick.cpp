@@ -60,7 +60,8 @@ GfxJoystick::GfxJoystick(const int32_t index) throw(std::runtime_error) : GfxObj
     tmpjoyptr = SDL_JoystickOpen(index);
     if (tmpjoyptr == nullptr)
     {
-        throw std::runtime_error("Unable to create GfxJoystick object");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create GfxJoystick object (" + sdlErr + ")");
     }
     joy_ = tmpjoyptr;
 }
@@ -78,7 +79,8 @@ GfxJoystick::GfxJoystick(GfxJoystickID const& joyid) throw(std::runtime_error) :
     tmpjoyptr = SDL_JoystickFromInstanceID(joyid.getAsSdlType());
     if (tmpjoyptr == nullptr)
     {
-        throw std::runtime_error("Unable to create GfxJoystick object");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create GfxJoystick object (" + sdlErr + ")");
     }
     joy_ = tmpjoyptr;
 }
@@ -150,7 +152,8 @@ void GfxJoystick::joystickOpen(const int32_t index) throw(std::runtime_error)
     tmpjoyptr = SDL_JoystickOpen(index);
     if (tmpjoyptr == nullptr)
     {
-        throw std::runtime_error("Unable to create GfxJoystick object");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create GfxJoystick object (" + sdlErr + ")");
     }
     joy_ = tmpjoyptr;
 }

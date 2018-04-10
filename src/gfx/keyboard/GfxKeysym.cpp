@@ -112,21 +112,21 @@ std::string GfxKeysym::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-scancode::GfxScancode GfxKeysym::getScanCode(void) const noexcept
+const scancode::GfxScancode GfxKeysym::getScanCode(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
     return scancode::GfxScancode(sym_.scancode);
 }
 
-keycode::GfxKeycode GfxKeysym::getKeyCode(void) const noexcept
+const keycode::GfxKeycode GfxKeysym::getKeyCode(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
     return keycode::GfxKeycode(sym_.sym);
 }
 
-keycode::GfxKeymod GfxKeysym::getKeyMod(void) const noexcept
+const keycode::GfxKeymod GfxKeysym::getKeyMod(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 

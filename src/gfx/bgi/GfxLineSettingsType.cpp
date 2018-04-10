@@ -111,21 +111,21 @@ std::string GfxLineSettingsType::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxLineStyle GfxLineSettingsType::getLineStyle(void) const noexcept
+const GfxLineStyle GfxLineSettingsType::getLineStyle(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return GfxLineStyle(lineSettings_.linestyle);
 }
 
-GfxFillStyles GfxLineSettingsType::getFillStyles(void) const noexcept
+const GfxFillStyles GfxLineSettingsType::getFillStyles(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return GfxFillStyles(lineSettings_.upattern);
 }
 
-GfxLineThickness GfxLineSettingsType::getLineThickness(void) const noexcept
+const GfxLineThickness GfxLineSettingsType::getLineThickness(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

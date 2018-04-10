@@ -63,7 +63,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    pixels::GfxPixelFormatEnum getFormat(void) const noexcept;
+    const pixels::GfxPixelFormatEnum getFormat(void) const noexcept;
     int32_t getWidth(void) const noexcept;
     int32_t getHeight(void) const noexcept;
     int32_t getRefreshRate(void) const noexcept;

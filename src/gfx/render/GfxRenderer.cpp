@@ -64,7 +64,8 @@ GfxRenderer::GfxRenderer(std::string const& rendname, video::GfxWindow const& wi
     renderertmp = SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
     if (renderertmp == nullptr)
     {
-        throw std::runtime_error("Unable to create renderer");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create renderer (" + sdlErr + ")");
     }
     renderer_ = renderertmp;
     rendName_ = rendname;
@@ -83,7 +84,8 @@ GfxRenderer::GfxRenderer(std::string const& rendname, surface::GfxSurface const&
     renderertmp = SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
     if (renderertmp == nullptr)
     {
-        throw std::runtime_error("Unable to create renderer");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create renderer (" + sdlErr + ")");
     }
     renderer_ = renderertmp;
     rendName_ = rendname;
@@ -157,7 +159,8 @@ void GfxRenderer::createRenderer(std::string const& rendname, video::GfxWindow c
     renderertmp = SDL_CreateRenderer(win.getAsSdlTypePtr(), -1, flags.getAsSdlType());
     if (renderertmp == nullptr)
     {
-        throw std::runtime_error("Unable to create renderer");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create renderer (" + sdlErr + ")");
     }
     renderer_ = renderertmp;
     rendName_ = rendname;
@@ -180,7 +183,8 @@ void GfxRenderer::createRenderer(std::string const& rendname, surface::GfxSurfac
     renderertmp = SDL_CreateSoftwareRenderer(surf.getAsSdlTypePtr());
     if (renderertmp == nullptr)
     {
-        throw std::runtime_error("Unable to create renderer");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create renderer (" + sdlErr + ")");
     }
     renderer_ = renderertmp;
     rendName_ = rendname;

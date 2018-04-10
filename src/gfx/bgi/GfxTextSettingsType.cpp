@@ -111,14 +111,14 @@ std::string GfxTextSettingsType::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxFonts GfxTextSettingsType::getFont(void) const noexcept
+const GfxFonts GfxTextSettingsType::getFont(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return GfxFonts(textSettings_.font);
 }
 
-GfxDirection GfxTextSettingsType::getDirection(void) const noexcept
+const GfxDirection GfxTextSettingsType::getDirection(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -132,14 +132,14 @@ int32_t GfxTextSettingsType::getCharSize(void) const noexcept
     return textSettings_.charsize;
 }
 
-GfxTextJustification GfxTextSettingsType::getHorizontalJustification(void) const noexcept
+const GfxTextJustification GfxTextSettingsType::getHorizontalJustification(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return GfxTextJustification(textSettings_.horiz);
 }
 
-GfxTextJustification GfxTextSettingsType::getVerticalJustification(void) const noexcept
+const GfxTextJustification GfxTextSettingsType::getVerticalJustification(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

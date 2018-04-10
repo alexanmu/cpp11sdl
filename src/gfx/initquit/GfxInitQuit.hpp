@@ -63,7 +63,7 @@ public:
     void initSubSystem(GfxInitFlags const& flags) noexcept;
     void quitSubSystem(GfxInitFlags const& flags) const noexcept;
 
-    GfxInitFlags * wasInit(GfxInitFlags const& flags) const noexcept;
+    const GfxInitFlags wasInit(GfxInitFlags const& flags) const noexcept;
 
     void quitRequested(void) const noexcept;
 

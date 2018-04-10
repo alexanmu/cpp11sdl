@@ -65,7 +65,8 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
                                        width, height, kDefaultFlagsValue);
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -87,7 +88,8 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -113,7 +115,8 @@ GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWi
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -131,7 +134,8 @@ GfxWindow::GfxWindow(const void * data) throw(std::runtime_error) : GfxObject(Cl
     tmpwinptr = SDL_CreateWindowFrom(data);
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -226,7 +230,8 @@ void GfxWindow::createWindow(std::string const& title, const int32_t width,
                                        width, height, kDefaultFlagsValue);
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -252,7 +257,8 @@ void GfxWindow::createWindow(std::string const& title, const int32_t width, cons
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -282,7 +288,8 @@ void GfxWindow::createWindow(std::string const& title, GfxWindowPosition const& 
                                        width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -304,7 +311,8 @@ void GfxWindow::createWindow(const void * data) throw(std::runtime_error)
     tmpwinptr = SDL_CreateWindowFrom(data);
     if (tmpwinptr == nullptr)
     {
-        throw std::runtime_error("Unable to create window");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create window (" + sdlErr + ")");
     }
     window_ = tmpwinptr;
     winSurface_ = nullptr;
@@ -331,7 +339,7 @@ int32_t GfxWindow::getWindowDisplayIndex(void) const noexcept
     return ret;
 }
 
-GfxDisplayMode GfxWindow::getWindowDisplayMode(void) const noexcept
+const GfxDisplayMode GfxWindow::getWindowDisplayMode(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -345,7 +353,7 @@ GfxDisplayMode GfxWindow::getWindowDisplayMode(void) const noexcept
     return gfx::video::GfxDisplayMode();
 }
 
-pixels::GfxPixelFormatEnum GfxWindow::getWindowPixelFormat(void) const noexcept
+const pixels::GfxPixelFormatEnum GfxWindow::getWindowPixelFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -372,7 +380,7 @@ uint32_t GfxWindow::getWindowID(void) const noexcept
     return id;
 }
 
-GfxWindow const * GfxWindow::getWindowFromID(const uint32_t id) const noexcept
+const GfxWindow * GfxWindow::getWindowFromID(const uint32_t id) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -391,7 +399,7 @@ GfxWindow const * GfxWindow::getWindowFromID(const uint32_t id) const noexcept
     return nullptr;
 }
 
-GfxWindowFlags GfxWindow::getWindowFlags(void) const noexcept
+const GfxWindowFlags GfxWindow::getWindowFlags(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -417,7 +425,7 @@ void GfxWindow::setWindowTitle(std::string const& title) noexcept
     }
 }
 
-std::string GfxWindow::getWindowTitle(void) const noexcept
+const std::string GfxWindow::getWindowTitle(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -704,7 +712,7 @@ void GfxWindow::setWindowFullscreen(GfxWindowFlags const& flags) const noexcept
     }
 }
 
-surface::GfxSurface const& GfxWindow::getWindowSurface(void) throw(std::runtime_error)
+const surface::GfxSurface& GfxWindow::getWindowSurface(void) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -804,7 +812,7 @@ void GfxWindow::setWindowGrab(GfxBool const& grabbed) const noexcept
     }
 }
 
-GfxBool GfxWindow::getWindowGrab(void) const noexcept
+const GfxBool GfxWindow::getWindowGrab(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -818,7 +826,7 @@ GfxBool GfxWindow::getWindowGrab(void) const noexcept
     return GfxBool(GfxBool::ValueType::boolFalse);
 }
 
-GfxWindow const * GfxWindow::getGrabbedWindow(void) const noexcept
+const GfxWindow * GfxWindow::getGrabbedWindow(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

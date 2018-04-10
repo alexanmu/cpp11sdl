@@ -125,7 +125,7 @@ void GfxInitQuit::quitSubSystem(GfxInitFlags const& flags) const noexcept
     SDL_QuitSubSystem(flags.getAsSdlType());
 }
 
-GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags) const noexcept
+const GfxInitFlags GfxInitQuit::wasInit(GfxInitFlags const& flags) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -134,7 +134,7 @@ GfxInitFlags * GfxInitQuit::wasInit(GfxInitFlags const& flags) const noexcept
     int32_t ret;
 
     ret = SDL_WasInit(flags.getAsSdlType());
-    return new GfxInitFlags(ret);
+    return GfxInitFlags(ret);
 }
 
 void GfxInitQuit::quitRequested(void) const noexcept

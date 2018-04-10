@@ -70,7 +70,8 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
                                             Gmask, Bmask, Amask);
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -98,7 +99,8 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
                                                       format.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -123,7 +125,8 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     tmpsurfptr = SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -150,7 +153,8 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     tmpsurfptr = SDL_CreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -211,7 +215,8 @@ GfxSurface::GfxSurface(std::string const& surfname, const int32_t w, const int32
                                                       kDefaultSurfaceColorDepth, pixFmtEn.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -297,7 +302,8 @@ void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlag
                                             Gmask, Bmask, Amask);
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -329,7 +335,8 @@ void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlag
                                                       format.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -359,7 +366,8 @@ void GfxSurface::createSurface(std::string const& surfname, void * pixels, const
     tmpsurfptr = SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -390,7 +398,8 @@ void GfxSurface::createSurface(std::string const& surfname, void * pixels, const
     tmpsurfptr = SDL_CreateRGBSurfaceWithFormatFrom(pixels, width, height, depth, pitch, format.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;
@@ -463,7 +472,8 @@ void GfxSurface::createSurface(std::string const& surfname, const int32_t w,
                                                       kDefaultSurfaceColorDepth, pixFmtEn.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
-        throw std::runtime_error("Unable to create surface");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create surface (" + sdlErr + ")");
     }
     surf_ = tmpsurfptr;
     surfName_ = surfname;

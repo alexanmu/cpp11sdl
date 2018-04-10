@@ -55,7 +55,7 @@ public:
 
     void setClipboardText(std::string const& str) const noexcept;
     const std::string getClipboardText(void) const noexcept;
-    GfxBool hasClipboardText(void) const noexcept;
+    const GfxBool hasClipboardText(void) const noexcept;
 };
 
 }  // namespace clipboard

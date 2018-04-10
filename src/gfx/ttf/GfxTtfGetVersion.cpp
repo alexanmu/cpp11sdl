@@ -88,16 +88,16 @@ std::string GfxTtfGetVersion::to_string() const noexcept
     return std::string(ClassName);
 }
 
-gfx::version::GfxVersion GfxTtfGetVersion::getVersion(void) const noexcept
+const gfx::version::GfxVersion GfxTtfGetVersion::getVersion(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    gfx::version::GfxVersion::SdlTypePtr v;
+    gfx::version::GfxVersion::SdlTypePtr ver;
 
-    v = const_cast<gfx::version::GfxVersion::SdlTypePtr>(TTF_Linked_Version());
-    if (v != nullptr)
+    ver = const_cast<gfx::version::GfxVersion::SdlTypePtr>(TTF_Linked_Version());
+    if (ver != nullptr)
     {
-        return gfx::version::GfxVersion(*v);
+        return gfx::version::GfxVersion(*ver);
     }
     return gfx::version::GfxVersion();
 }

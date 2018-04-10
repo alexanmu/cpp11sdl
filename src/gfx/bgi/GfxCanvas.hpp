@@ -108,7 +108,7 @@ public:
     int32_t GetMaxY(void) noexcept;
     const GfxPaletteType GetPalette(void) noexcept;
     int32_t GetPaletteSize(void) noexcept;
-    GfxColors2 const& GetPixel(rect::GfxPoint const& pt) noexcept;
+    const GfxColors2& GetPixel(rect::GfxPoint const& pt) noexcept;
     const GfxTextSettingsType GetTextSettings(void) noexcept;
     const GfxViewPortType GetViewSettings(void) noexcept;
     int32_t GetX(void) noexcept;

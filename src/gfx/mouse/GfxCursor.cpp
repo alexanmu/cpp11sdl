@@ -72,7 +72,8 @@ GfxCursor::GfxCursor(const uint8_t * data, const uint8_t * mask, const int32_t w
     tmpcursor = SDL_CreateCursor(data, mask, w, h, hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
-        throw std::runtime_error("Unable to create cursor");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create cursor (" + sdlErr +")");
     }
     cursor_ = tmpcursor;
 }
@@ -91,7 +92,8 @@ GfxCursor::GfxCursor(surface::GfxSurface const& surface, const int32_t hot_x,
     tmpcursor = SDL_CreateColorCursor(surface.getAsSdlTypePtr(), hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
-        throw std::runtime_error("Unable to create cursor");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create cursor (" + sdlErr +")");
     }
     cursor_ = tmpcursor;
 }
@@ -107,7 +109,8 @@ GfxCursor::GfxCursor(GfxSystemCursor const& id) throw(std::runtime_error) : GfxO
     tmpcursor = SDL_CreateSystemCursor(id.getAsSdlType());
     if (tmpcursor == nullptr)
     {
-        throw std::runtime_error("Unable to create cursor");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create cursor (" + sdlErr +")");
     }
     cursor_ = tmpcursor;
 }
@@ -196,7 +199,8 @@ void GfxCursor::createCursor(const uint8_t * data, const uint8_t * mask, const i
     tmpcursor = SDL_CreateCursor(data, mask, w, h, hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
-        throw std::runtime_error("Unable to create cursor");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create cursor (" + sdlErr +")");
     }
     cursor_ = tmpcursor;
 }
@@ -219,7 +223,8 @@ void GfxCursor::createCursor(surface::GfxSurface const& surface, const int32_t h
     tmpcursor = SDL_CreateColorCursor(surface.getAsSdlTypePtr(), hot_x, hot_y);
     if (tmpcursor == nullptr)
     {
-        throw std::runtime_error("Unable to create cursor");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create cursor (" + sdlErr +")");
     }
     cursor_ = tmpcursor;
 }
@@ -239,7 +244,8 @@ void GfxCursor::createCursor(GfxSystemCursor const& id) throw(std::runtime_error
     tmpcursor = SDL_CreateSystemCursor(id.getAsSdlType());
     if (tmpcursor == nullptr)
     {
-        throw std::runtime_error("Unable to create cursor");
+        const std::string sdlErr = SDL_GetError();
+        throw std::runtime_error("Unable to create cursor (" + sdlErr +")");
     }
     cursor_ = tmpcursor;
 }

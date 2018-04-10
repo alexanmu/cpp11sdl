@@ -116,7 +116,7 @@ const std::string GfxClipboard::getClipboardText(void) const noexcept
     return str;
 }
 
-GfxBool GfxClipboard::hasClipboardText(void) const noexcept
+const GfxBool GfxClipboard::hasClipboardText(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

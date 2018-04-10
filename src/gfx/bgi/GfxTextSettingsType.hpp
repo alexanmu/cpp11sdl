@@ -61,11 +61,11 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    GfxFonts getFont(void) const noexcept;
-    GfxDirection getDirection(void) const noexcept;
+    const GfxFonts getFont(void) const noexcept;
+    const GfxDirection getDirection(void) const noexcept;
     int32_t getCharSize(void) const noexcept;
-    GfxTextJustification getHorizontalJustification(void) const noexcept;
-    GfxTextJustification getVerticalJustification(void) const noexcept;
+    const GfxTextJustification getHorizontalJustification(void) const noexcept;
+    const GfxTextJustification getVerticalJustification(void) const noexcept;
     void setValue(const BgiType textsettings) noexcept;
 
     void clear(void) noexcept;

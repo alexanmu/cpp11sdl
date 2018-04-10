@@ -85,14 +85,14 @@ public:
     void destroyWindow(void) noexcept;
 
     int32_t getWindowDisplayIndex(void) const noexcept;
-    GfxDisplayMode getWindowDisplayMode(void) const noexcept;
-    pixels::GfxPixelFormatEnum getWindowPixelFormat(void) const noexcept;
+    const GfxDisplayMode getWindowDisplayMode(void) const noexcept;
+    const pixels::GfxPixelFormatEnum getWindowPixelFormat(void) const noexcept;
 
     uint32_t getWindowID(void) const noexcept;
-    GfxWindow const * getWindowFromID(const uint32_t id) const noexcept;
-    GfxWindowFlags getWindowFlags(void) const noexcept;
+    const GfxWindow * getWindowFromID(const uint32_t id) const noexcept;
+    const GfxWindowFlags getWindowFlags(void) const noexcept;
     void setWindowTitle(std::string const& title) noexcept;
-    std::string getWindowTitle(void) const noexcept;
+    const std::string getWindowTitle(void) const noexcept;
     void setWindowIcon(surface::GfxSurface const& icon) noexcept;
     void * setWindowData(std::string const& name, void * userdata) const noexcept;
     void * getWindowData(std::string const& name) const noexcept;
@@ -114,12 +114,12 @@ public:
     void minimizeWindow(void) const noexcept;
     void restoreWindow(void) const noexcept;
     void setWindowFullscreen(GfxWindowFlags const& flags) const noexcept;
-    surface::GfxSurface const& getWindowSurface(void) throw(std::runtime_error);
+    const surface::GfxSurface& getWindowSurface(void) throw(std::runtime_error);
     void updateWindowSurface(void) const noexcept;
     void updateWindowSurfaceRects(std::vector<gfx::rect::GfxRect> const& vec) const throw(std::runtime_error);
     void setWindowGrab(GfxBool const& grabbed) const noexcept;
-    GfxBool getWindowGrab(void) const noexcept;
-    GfxWindow const * getGrabbedWindow(void) const noexcept;
+    const GfxBool getWindowGrab(void) const noexcept;
+    const GfxWindow * getGrabbedWindow(void) const noexcept;
     void setWindowBrightness(const float brightness) const noexcept;
     float getWindowBrightness(void) const noexcept;
     void setWindowOpacity(const float opacity) const noexcept;
