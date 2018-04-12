@@ -164,6 +164,7 @@
 #include "GfxMultiGestureEvent.hpp"  // 2017.08.22
 #include "GfxTimerID.hpp"  // 2017.09.06
 #include "GfxTimerCallback.hpp"  // 2017.09.06
+#include "GfxTimer.hpp"  // 2018.04.11
 #include "GfxBlitFunction.hpp"  // 2017.09.22
 #include "GfxGameControllerBindType.hpp"  // 2017.09.22
 #include "GfxGameControllerAxis.hpp"  // 2017.10.06
@@ -194,6 +195,7 @@
 struct ToStringStruct
 {
     const char * className_;
+    const std::string toString;
 };
 
 namespace prv
@@ -243,54 +245,69 @@ struct has_void_to_string_no_args_const
     /*  `eval(T const &,std::true_type)`
      delegates to `T::foo()` when `type` == `std::true_type`
      */
-    static void eval(T const & t, std::true_type)
+    static const std::string eval(T const & t, std::true_type)
     {
-        std::cout << t.to_string() << std::endl;
+        return t.to_string();
     }
 
     /* `eval(...)` is a no-op for otherwise unmatched arguments */
-    static void eval(...)
+    static const std::string eval(...)
     {
         // This output for demo purposes. Delete
-        std::cout << "T::foo() not called" << std::endl;
+        return "eval(...)";
     }
 
     /* `eval(T const & t)` delegates to :-
      - `eval(t,type()` when `type` == `std::true_type`
      - `eval(...)` otherwise
      */
-    static void eval(T const & t)
+    static const std::string eval(T const & t)
     {
-        eval(t, type());
+        return eval(t, type());
     }
 };
 
-// This is the desired implementation of `void f(T const& val)`
-template<class T>
-void f(T const& val)
+class GfxTestClass
 {
-    has_void_to_string_no_args_const<T>::eval(val);
+public:
+    static const char ClassName[];
+
+    GfxTestClass() = default;
+};
+
+const char GfxTestClass::ClassName[] = "GfxTestClass";
+
+template<class T>
+static const
+    typename std::enable_if<
+        !std::is_abstract<T>::value && std::is_default_constructible<T>::value,
+        const std::string>::type tryCallToStringMethod(void)
+{
+    return has_void_to_string_no_args_const<T>::eval(T());
+}
+
+template<class T>
+static const
+    typename std::enable_if<
+        std::is_abstract<T>::value || !std::is_default_constructible<T>::value,
+        const std::string>::type tryCallToStringMethod(void)
+{
+    return "std::is_abstract<T>::value || !std::is_default_constructible<T>::value";
 }
 
 template <typename T>
-constexpr ToStringStruct makeStringStruct(void)
+const ToStringStruct makeStringStruct(void)
 {
     return {
-        T::ClassName
+        T::ClassName,
+        tryCallToStringMethod<T>()
     };
 }
 }  // namespace prv
 
-static void Other(void)
-{
-    std::cout << "--> ::to_string()" << std::endl;
-
-    gfx::GfxBool b;
-    prv::f(b);
-}
-
 const struct ToStringStruct infoArray_[] =
 {
+    {   prv::makeStringStruct<prv::GfxTestClass>()                  },
     // gfx::bits
     {   prv::makeStringStruct<gfx::bits::GfxBits>()                 },
     // gfx::blendmode
@@ -464,6 +481,7 @@ const struct ToStringStruct infoArray_[] =
     // gfx::timer
     {   prv::makeStringStruct<gfx::timer::GfxTimerID>()             },  // 2017.09.06
     {   prv::makeStringStruct<gfx::timer::GfxTimerCallback>()       },  // 2017.09.06
+    {   prv::makeStringStruct<gfx::timer::GfxTimer>()               },  // 2018.04.11
     // gfx::gamecontroller
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerBindType>() },  // 2017.09.22
     {   prv::makeStringStruct<gfx::gamecontroller::GfxGameControllerAxis>() },  // 2017.10.06
@@ -498,11 +516,11 @@ void _doToString(void)
     std::cout << "ToString" << std::endl;
 
     std::size_t size = sizeof(infoArray_) / sizeof(infoArray_[0]);
-    std::cout << "size=" << size << std::endl;
+    std::cout << "size=" << size - 1 << std::endl;  // -1 due to TestClass
 
     for (std::size_t index = 0; index < size; index++)
     {
-        std::cout << infoArray_[index].className_ << std::endl;
+        std::cout << "Classname is <" << infoArray_[index].className_ <<
+                "> T()::to_string() is <" << infoArray_[index].toString << ">" << std::endl;
     }
-    Other();
 }
