@@ -52,7 +52,7 @@ public:
 
     explicit GfxTextSettingsType(const BgiType textsettings) noexcept;
 
-    GfxTextSettingsType(GfxTextSettingsType const& other) noexcept;
+    GfxTextSettingsType(const GfxTextSettingsType& other) noexcept;
     GfxTextSettingsType(GfxTextSettingsType&& other) noexcept;
 
     GfxTextSettingsType& operator=(const GfxTextSettingsType& other) noexcept;

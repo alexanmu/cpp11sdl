@@ -58,7 +58,7 @@ GfxFonts::GfxFonts(const BgiType font) noexcept : GfxObject(ClassName)
     font_ = font;
 }
 
-GfxFonts::GfxFonts(GfxFonts const& other) noexcept : GfxObject(other)
+GfxFonts::GfxFonts(const GfxFonts& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxFonts::GfxFonts(GfxFonts&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxFonts& GfxFonts::operator=(GfxFonts const& other) noexcept
+GfxFonts& GfxFonts::operator=(const GfxFonts& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

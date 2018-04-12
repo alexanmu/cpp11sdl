@@ -40,6 +40,8 @@ public:
     static const bool CallsSdl = true;
 
     GfxHaptic() noexcept;
+
+#warning Work in progress!
 };
 
 }  // namespace haptic

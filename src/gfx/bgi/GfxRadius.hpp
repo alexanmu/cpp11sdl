@@ -38,7 +38,7 @@ namespace bgi
 class GfxRadius final : public GfxObject
 {
 public:
-    typedef int32_t ValueType;
+    typedef int32_t BgiType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -46,25 +46,29 @@ public:
 
     GfxRadius() noexcept;
 
-    explicit GfxRadius(const ValueType value) noexcept;
+    explicit GfxRadius(const BgiType value) noexcept;
 
-    GfxRadius(GfxRadius const& other) noexcept;
+    GfxRadius(const GfxRadius& other) noexcept;
     GfxRadius(GfxRadius&& other) noexcept;
 
     GfxRadius& operator=(const GfxRadius& other) noexcept;
     GfxRadius& operator=(GfxRadius&& other) noexcept;
 
-    bool operator==(GfxRadius const& other) const noexcept;
-    bool operator>(GfxRadius const& other) const noexcept;
-    bool operator<(GfxRadius const& other) const noexcept;
+    bool operator==(const GfxRadius& other) const noexcept;
+    bool operator>(const GfxRadius& other) const noexcept;
+    bool operator<(const GfxRadius& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getValue(void) const noexcept;
-    void setValue(const ValueType value) noexcept;
+    BgiType getValue(void) const noexcept;
+    void setValue(const BgiType value) noexcept;
+
+    void clear(void) noexcept;
+
+    BgiType getAsBgiType(void) const noexcept;
 private:
-    ValueType value_;
+    BgiType value_;
 };
 
 }  // namespace bgi

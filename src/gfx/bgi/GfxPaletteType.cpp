@@ -53,7 +53,7 @@ GfxPaletteType::GfxPaletteType(const BgiType pal) noexcept : GfxObject(ClassName
     pal_ = pal;
 }
 
-GfxPaletteType::GfxPaletteType(GfxPaletteType const& other) noexcept : GfxObject(other)
+GfxPaletteType::GfxPaletteType(const GfxPaletteType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -69,7 +69,7 @@ GfxPaletteType::GfxPaletteType(GfxPaletteType&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxPaletteType& GfxPaletteType::operator=(GfxPaletteType const& other) noexcept
+GfxPaletteType& GfxPaletteType::operator=(const GfxPaletteType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -120,7 +120,7 @@ uint8_t GfxPaletteType::getSize(void) const noexcept
     return pal_.size;
 }
 
-std::vector<int8_t> GfxPaletteType::getColors(void) const noexcept
+const std::vector<int8_t> GfxPaletteType::getColors(void) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 

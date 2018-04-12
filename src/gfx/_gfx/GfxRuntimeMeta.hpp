@@ -51,8 +51,8 @@ public:
 
     static GfxRuntimeMeta& getInstance(void) noexcept;
 
-    ClassInfo const& getClassInfo(const int32_t index) noexcept;
-    std::string getClassName(const int32_t index) noexcept;
+    const ClassInfo& getClassInfo(const int32_t index) noexcept;
+    const std::string getClassName(const int32_t index) noexcept;
     int32_t getClassCount(void) const noexcept;
 
     void constructObject(const char * className, const int32_t instanceId) noexcept;
@@ -65,10 +65,10 @@ public:
 private:
     GfxRuntimeMeta() noexcept;
 
-    GfxRuntimeMeta(GfxRuntimeMeta const&) = delete;
+    GfxRuntimeMeta(const GfxRuntimeMeta&) = delete;
     GfxRuntimeMeta(GfxRuntimeMeta&&) = delete;
 
-    GfxRuntimeMeta& operator=(GfxRuntimeMeta const&) = delete;
+    GfxRuntimeMeta& operator=(const GfxRuntimeMeta&) = delete;
     GfxRuntimeMeta& operator=(GfxRuntimeMeta&&) = delete;
 
     ~GfxRuntimeMeta() noexcept;

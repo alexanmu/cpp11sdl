@@ -56,7 +56,7 @@ GfxObject::GfxObject(const char * className) noexcept : rMeta_(&GfxRuntimeMeta::
     rMeta_->constructObject(className_, instanceId_);
 }
 
-GfxObject::GfxObject(GfxObject const& other) noexcept : rMeta_(&GfxRuntimeMeta::getInstance())
+GfxObject::GfxObject(const GfxObject& other) noexcept : rMeta_(&GfxRuntimeMeta::getInstance())
 {
     GfxObject::instanceCounter_ += 1;
     instanceId_ = GfxObject::instanceCounter_;
@@ -84,7 +84,7 @@ GfxObject::~GfxObject() noexcept
     padding1 = -1;
 }
 
-GfxObject& GfxObject::operator=(GfxObject const& other) noexcept
+GfxObject& GfxObject::operator=(const GfxObject& other) noexcept
 {
     if (this != &other)
     {
@@ -109,7 +109,7 @@ GfxObject& GfxObject::operator=(GfxObject&& other) noexcept
     return *this;
 }
 
-bool GfxObject::operator==(GfxObject const& other) const noexcept
+bool GfxObject::operator==(const GfxObject& other) const noexcept
 {
     return ((instanceId_ == other.instanceId_) && (className_ == other.className_));
 }

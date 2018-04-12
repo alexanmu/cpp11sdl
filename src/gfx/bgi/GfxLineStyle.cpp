@@ -58,7 +58,7 @@ GfxLineStyle::GfxLineStyle(const BgiType line) noexcept : GfxObject(ClassName)
     line_ = line;
 }
 
-GfxLineStyle::GfxLineStyle(GfxLineStyle const& other) noexcept : GfxObject(other)
+GfxLineStyle::GfxLineStyle(const GfxLineStyle& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxLineStyle::GfxLineStyle(GfxLineStyle&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxLineStyle& GfxLineStyle::operator=(GfxLineStyle const& other) noexcept
+GfxLineStyle& GfxLineStyle::operator=(const GfxLineStyle& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

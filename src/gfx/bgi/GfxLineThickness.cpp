@@ -58,7 +58,7 @@ GfxLineThickness::GfxLineThickness(const BgiType thick) noexcept : GfxObject(Cla
     thick_ = thick;
 }
 
-GfxLineThickness::GfxLineThickness(GfxLineThickness const& other) noexcept : GfxObject(other)
+GfxLineThickness::GfxLineThickness(const GfxLineThickness& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxLineThickness::GfxLineThickness(GfxLineThickness&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxLineThickness& GfxLineThickness::operator=(GfxLineThickness const& other) noexcept
+GfxLineThickness& GfxLineThickness::operator=(const GfxLineThickness& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

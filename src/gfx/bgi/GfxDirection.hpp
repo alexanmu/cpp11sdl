@@ -56,7 +56,7 @@ public:
     explicit GfxDirection(const ValueType dir) noexcept;
     explicit GfxDirection(const BgiType dir) noexcept;
 
-    GfxDirection(GfxDirection const& other) noexcept;
+    GfxDirection(const GfxDirection& other) noexcept;
     GfxDirection(GfxDirection&& other) noexcept;
 
     GfxDirection& operator=(const GfxDirection& other) noexcept;

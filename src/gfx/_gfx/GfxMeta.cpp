@@ -540,7 +540,7 @@ GfxMeta::~GfxMeta() noexcept
     // Nothing to do
 }
 
-GfxMeta::ClassInfo const& GfxMeta::getClassInfo(std::string const& className) noexcept
+const GfxMeta::ClassInfo& GfxMeta::getClassInfo(const std::string& className) noexcept
 {
     assert(className.length() > 0);
 
@@ -555,7 +555,7 @@ GfxMeta::ClassInfo const& GfxMeta::getClassInfo(std::string const& className) no
     return classInfo_;
 }
 
-GfxMeta::ClassInfo const& GfxMeta::getClassInfo(const int32_t index) noexcept
+const GfxMeta::ClassInfo& GfxMeta::getClassInfo(const int32_t index) noexcept
 {
     assert(index >= 0);
 

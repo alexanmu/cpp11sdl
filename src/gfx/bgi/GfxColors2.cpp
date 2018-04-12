@@ -79,7 +79,7 @@ GfxColors2::GfxColors2(const BgiType clr) noexcept : GfxObject(ClassName)
     clr_ = clr;
 }
 
-GfxColors2::GfxColors2(GfxColors2 const& other) noexcept : GfxObject(other)
+GfxColors2::GfxColors2(const GfxColors2& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -95,7 +95,7 @@ GfxColors2::GfxColors2(GfxColors2&& other) noexcept : GfxObject(std::move(other)
     other.clear();
 }
 
-GfxColors2& GfxColors2::operator=(GfxColors2 const& other) noexcept
+GfxColors2& GfxColors2::operator=(const GfxColors2& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -170,6 +170,7 @@ void GfxColors2::clear(void) noexcept
 GfxColors2::BgiType GfxColors2::getAsBgiType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
     return getBgiColor();
 }
 

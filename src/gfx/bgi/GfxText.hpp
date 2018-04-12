@@ -37,7 +37,7 @@ namespace bgi
 class GfxText final : public GfxObject
 {
 public:
-    typedef std::string ValueType;
+    typedef std::string BgiType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -45,25 +45,29 @@ public:
 
     GfxText() noexcept;
 
-    explicit GfxText(ValueType const& value) noexcept;
+    explicit GfxText(const BgiType& value) noexcept;
 
-    GfxText(GfxText const& other) noexcept;
+    GfxText(const GfxText& other) noexcept;
     GfxText(GfxText&& other) noexcept;
 
-    GfxText& operator=(GfxText const& other) noexcept;
+    GfxText& operator=(const GfxText& other) noexcept;
     GfxText& operator=(GfxText&& other) noexcept;
 
-    bool operator==(GfxText const& other) const noexcept;
-    bool operator>(GfxText const& other) const noexcept;
-    bool operator<(GfxText const& other) const noexcept;
+    bool operator==(const GfxText& other) const noexcept;
+    bool operator>(const GfxText& other) const noexcept;
+    bool operator<(const GfxText& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getValue(void) const noexcept;
-    void setValue(ValueType const& value) noexcept;
+    const BgiType getValue(void) const noexcept;
+    void setValue(BgiType const& value) noexcept;
+
+    void clear(void) noexcept;
+
+    BgiType getAsBgiType(void) const noexcept;
 private:
-    ValueType value_;
+    BgiType value_;
 };
 
 }  // namespace bgi

@@ -49,7 +49,7 @@ public:
 
     explicit GfxViewPortType(const BgiType viewport) noexcept;
 
-    GfxViewPortType(GfxViewPortType const& other) noexcept;
+    GfxViewPortType(const GfxViewPortType& other) noexcept;
     GfxViewPortType(GfxViewPortType&& other) noexcept;
 
     GfxViewPortType& operator=(const GfxViewPortType& other) noexcept;
@@ -63,6 +63,7 @@ public:
     int32_t getRight() const noexcept;
     int32_t getBottom() const noexcept;
     bool getClip(void) const noexcept;
+
     void setValue(const BgiType viewport) noexcept;
 
     void clear(void) noexcept;

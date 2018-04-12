@@ -41,7 +41,7 @@ namespace bgi
 namespace prv
 {
 
-class GfxCanvasBgi : public GfxObject
+class GfxCanvasBgi final : public GfxObject
 {
 public:
     static const char ClassName[];

@@ -66,7 +66,7 @@ public:
     explicit GfxFonts(const ValueType font) noexcept;
     explicit GfxFonts(const BgiType font) noexcept;
 
-    GfxFonts(GfxFonts const& other) noexcept;
+    GfxFonts(const GfxFonts& other) noexcept;
     GfxFonts(GfxFonts&& other) noexcept;
 
     GfxFonts& operator=(const GfxFonts& other) noexcept;

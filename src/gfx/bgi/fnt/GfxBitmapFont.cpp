@@ -72,7 +72,7 @@ GfxBitmapFont::GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, 
     }
 }
 
-GfxBitmapFont::GfxBitmapFont(GfxBitmapFont const& other) noexcept : GfxObject(other)
+GfxBitmapFont::GfxBitmapFont(const GfxBitmapFont& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -98,7 +98,7 @@ GfxBitmapFont::GfxBitmapFont(GfxBitmapFont&& other) noexcept : GfxObject(std::mo
     other.fontData_ = nullptr;
 }
 
-GfxBitmapFont& GfxBitmapFont::operator=(GfxBitmapFont const& other) noexcept
+GfxBitmapFont& GfxBitmapFont::operator=(const GfxBitmapFont& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -166,7 +166,7 @@ std::string GfxBitmapFont::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-uint8_t * GfxBitmapFont::getFontData(void) const noexcept
+const uint8_t * GfxBitmapFont::getFontData(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

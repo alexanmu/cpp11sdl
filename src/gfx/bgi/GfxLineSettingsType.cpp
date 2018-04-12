@@ -51,7 +51,7 @@ GfxLineSettingsType::GfxLineSettingsType(const BgiType linesettings) noexcept : 
     lineSettings_ = linesettings;
 }
 
-GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType const& other) noexcept : GfxObject(other)
+GfxLineSettingsType::GfxLineSettingsType(const GfxLineSettingsType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxLineSettingsType::GfxLineSettingsType(GfxLineSettingsType&& other) noexcept :
     other.clear();
 }
 
-GfxLineSettingsType& GfxLineSettingsType::operator=(GfxLineSettingsType const& other) noexcept
+GfxLineSettingsType& GfxLineSettingsType::operator=(const GfxLineSettingsType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

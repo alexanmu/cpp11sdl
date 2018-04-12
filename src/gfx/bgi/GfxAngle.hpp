@@ -38,7 +38,7 @@ namespace bgi
 class GfxAngle final : public GfxObject
 {
 public:
-    typedef int32_t ValueType;
+    typedef int32_t BgiType;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -46,25 +46,27 @@ public:
 
     GfxAngle() noexcept;
 
-    explicit GfxAngle(const ValueType value) noexcept;
+    explicit GfxAngle(const BgiType value) noexcept;
 
-    GfxAngle(GfxAngle const& other) noexcept;
+    GfxAngle(const GfxAngle& other) noexcept;
     GfxAngle(GfxAngle&& other) noexcept;
 
-    GfxAngle& operator=(GfxAngle const& other) noexcept;
+    GfxAngle& operator=(const GfxAngle& other) noexcept;
     GfxAngle& operator=(GfxAngle&& other) noexcept;
 
-    bool operator==(GfxAngle const& other) const noexcept;
-    bool operator>(GfxAngle const& other) const noexcept;
-    bool operator<(GfxAngle const& other) const noexcept;
+    bool operator==(const GfxAngle& other) const noexcept;
+    bool operator>(const GfxAngle& other) const noexcept;
+    bool operator<(const GfxAngle& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    ValueType getValue(void) const noexcept;
-    void setValue(const ValueType angle) noexcept;
+    BgiType getValue(void) const noexcept;
+    void setValue(const BgiType angle) noexcept;
+
+    BgiType getAsBgiType(void) const noexcept;
 private:
-    ValueType value_;
+    BgiType value_;
 };
 
 }  // namespace bgi

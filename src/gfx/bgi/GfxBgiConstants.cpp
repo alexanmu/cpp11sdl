@@ -153,16 +153,16 @@ namespace fnt
 {
 
 static const GfxBitmapFont fonts_[kNumFonts] {
-    { &fntStandard8x16Data_[0], 8, 16 },
-    { &fntAntiqueData_[0], 8, 16 },
-    { &fntBroadwayData_[0], 8, 16 },
-    { &fntCourrierData_[0], 8, 16 },
-    { &fntDragonData_[0], 8, 16 },
-    { &fntMedievalData_[0], 8, 16 },
-    { &fntRomanData_[0], 8, 16 },
-    { &fntSansserifData_[0], 8, 16 },
-    { &fntScriptData_[0], 8, 16 },
-    { &fntWackyData_[0], 8, 16 }
+    { &prv::fntStandard8x16Data_[0], 8, 16 },
+    { &prv::fntAntiqueData_[0], 8, 16 },
+    { &prv::fntBroadwayData_[0], 8, 16 },
+    { &prv::fntCourrierData_[0], 8, 16 },
+    { &prv::fntDragonData_[0], 8, 16 },
+    { &prv::fntMedievalData_[0], 8, 16 },
+    { &prv::fntRomanData_[0], 8, 16 },
+    { &prv::fntSansserifData_[0], 8, 16 },
+    { &prv::fntScriptData_[0], 8, 16 },
+    { &prv::fntWackyData_[0], 8, 16 }
 };
 
 const GfxBitmapFont& kFontStandard8x16(void)

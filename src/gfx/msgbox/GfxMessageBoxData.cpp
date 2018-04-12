@@ -43,6 +43,8 @@ GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
+#warning Default construction will probably fail during runtime. Must check!
+
     clear();
     buildData();
 }

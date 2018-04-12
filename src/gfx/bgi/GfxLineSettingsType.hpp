@@ -52,7 +52,7 @@ public:
 
     explicit GfxLineSettingsType(const BgiType value) noexcept;
 
-    GfxLineSettingsType(GfxLineSettingsType const& other) noexcept;
+    GfxLineSettingsType(const GfxLineSettingsType& other) noexcept;
     GfxLineSettingsType(GfxLineSettingsType&& other) noexcept;
 
     GfxLineSettingsType& operator=(const GfxLineSettingsType& other) noexcept;

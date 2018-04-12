@@ -51,7 +51,7 @@ GfxTextSettingsType::GfxTextSettingsType(const BgiType textsettings) noexcept : 
     textSettings_ = textsettings;
 }
 
-GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType const& other) noexcept : GfxObject(other)
+GfxTextSettingsType::GfxTextSettingsType(const GfxTextSettingsType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxTextSettingsType::GfxTextSettingsType(GfxTextSettingsType&& other) noexcept :
     other.clear();
 }
 
-GfxTextSettingsType& GfxTextSettingsType::operator=(GfxTextSettingsType const& other) noexcept
+GfxTextSettingsType& GfxTextSettingsType::operator=(const GfxTextSettingsType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -51,7 +51,7 @@ public:
 
     explicit GfxFillSettingsType(const BgiType value) noexcept;
 
-    GfxFillSettingsType(GfxFillSettingsType const& other) noexcept;
+    GfxFillSettingsType(const GfxFillSettingsType& other) noexcept;
     GfxFillSettingsType(GfxFillSettingsType&& other) noexcept;
 
     GfxFillSettingsType& operator=(const GfxFillSettingsType& other) noexcept;
@@ -60,8 +60,9 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    GfxFillStyles getFillStyles(void) const noexcept;
-    GfxColors2 getColors2(void) const noexcept;
+    const GfxFillStyles getFillStyles(void) const noexcept;
+    const GfxColors2 getColors2(void) const noexcept;
+
     void setValue(const BgiType value) noexcept;
 
     void clear(void) noexcept;

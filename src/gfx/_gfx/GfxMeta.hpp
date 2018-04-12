@@ -74,8 +74,8 @@ public:
 
     ~GfxMeta() noexcept;
 
-    ClassInfo const& getClassInfo(std::string const& className) noexcept;
-    ClassInfo const& getClassInfo(const int32_t index) noexcept;
+    const ClassInfo& getClassInfo(const std::string& className) noexcept;
+    const ClassInfo& getClassInfo(const int32_t index) noexcept;
     int32_t getClassCount(void) const noexcept;
 
     int32_t getClassInfoTableSizeInBytes(void) const noexcept;

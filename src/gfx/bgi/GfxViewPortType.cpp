@@ -51,7 +51,7 @@ GfxViewPortType::GfxViewPortType(const BgiType viewport) noexcept : GfxObject(Cl
     viewPort_ = viewport;
 }
 
-GfxViewPortType::GfxViewPortType(GfxViewPortType const& other) noexcept : GfxObject(other)
+GfxViewPortType::GfxViewPortType(const GfxViewPortType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxViewPortType::GfxViewPortType(GfxViewPortType&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxViewPortType& GfxViewPortType::operator=(GfxViewPortType const& other) noexcept
+GfxViewPortType& GfxViewPortType::operator=(const GfxViewPortType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

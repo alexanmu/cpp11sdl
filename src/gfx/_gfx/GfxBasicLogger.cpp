@@ -94,12 +94,12 @@ void GfxBasicLogger::setTraceToFileState(const logTraceEnaDisState state) noexce
     logTraceToFileState_ = state;
 }
 
-std::vector<std::string> const& GfxBasicLogger::getTraceModules(void) const noexcept
+const std::vector<std::string>& GfxBasicLogger::getTraceModules(void) const noexcept
 {
     return logTraceFilterModules_;
 }
 
-void GfxBasicLogger::addTraceModule(std::string const& module) noexcept
+void GfxBasicLogger::addTraceModule(const std::string& module) noexcept
 {
     assert(module.length() > 0);
 
@@ -168,7 +168,7 @@ char GfxBasicLogger::getTraceTextForPrio(const logTracePriority prio) const noex
     return ret;
 }
 
-std::string GfxBasicLogger::getCurrentDateAsString(void) const noexcept
+const std::string GfxBasicLogger::getCurrentDateAsString(void) const noexcept
 {
     std::time_t t = std::time(nullptr);
     std::tm tm = *std::localtime(&t);
@@ -179,7 +179,7 @@ std::string GfxBasicLogger::getCurrentDateAsString(void) const noexcept
     return y + '.' + _lz(m, 2) + '.' + _lz(d, 2);
 }
 
-std::string GfxBasicLogger::getCurrentTimeAsString(void) const noexcept
+const std::string GfxBasicLogger::getCurrentTimeAsString(void) const noexcept
 {
     std::time_t t = std::time(nullptr);
     std::tm tm = *std::localtime(&t);
@@ -190,7 +190,7 @@ std::string GfxBasicLogger::getCurrentTimeAsString(void) const noexcept
     return _lz(h, 2) + ':' + _lz(m, 2) + ':' + _lz(s, 2);
 }
 
-std::string GfxBasicLogger::_lz(std::string const& str, const uint32_t elen) const noexcept
+const std::string GfxBasicLogger::_lz(const std::string& str, const uint32_t elen) const noexcept
 {
     std::string s;
 
@@ -231,7 +231,7 @@ void GfxBasicLogger::closeLogFile(void) noexcept
     logFile_.close();
 }
 
-bool GfxBasicLogger::doTrace(std::string const& module) const noexcept
+bool GfxBasicLogger::doTrace(const std::string& module) const noexcept
 {
     if (logTraceAllowAll_ == true)
     {

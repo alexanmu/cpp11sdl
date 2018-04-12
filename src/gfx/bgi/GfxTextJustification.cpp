@@ -58,7 +58,7 @@ GfxTextJustification::GfxTextJustification(const BgiType just) noexcept : GfxObj
     just_ = just;
 }
 
-GfxTextJustification::GfxTextJustification(GfxTextJustification const& other) noexcept : GfxObject(other)
+GfxTextJustification::GfxTextJustification(const GfxTextJustification& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxTextJustification::GfxTextJustification(GfxTextJustification&& other) noexcep
     other.clear();
 }
 
-GfxTextJustification& GfxTextJustification::operator=(GfxTextJustification const& other) noexcept
+GfxTextJustification& GfxTextJustification::operator=(const GfxTextJustification& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

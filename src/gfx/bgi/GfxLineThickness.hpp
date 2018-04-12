@@ -56,7 +56,7 @@ public:
     explicit GfxLineThickness(const ValueType thick) noexcept;
     explicit GfxLineThickness(const BgiType thick) noexcept;
 
-    GfxLineThickness(GfxLineThickness const& other) noexcept;
+    GfxLineThickness(const GfxLineThickness& other) noexcept;
     GfxLineThickness(GfxLineThickness&& other) noexcept;
 
     GfxLineThickness& operator=(const GfxLineThickness& other) noexcept;

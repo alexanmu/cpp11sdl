@@ -67,7 +67,7 @@ public:
     explicit GfxFillStyles(const ValueType fill) noexcept;
     explicit GfxFillStyles(const BgiType fill) noexcept;
 
-    GfxFillStyles(GfxFillStyles const& other) noexcept;
+    GfxFillStyles(const GfxFillStyles& other) noexcept;
     GfxFillStyles(GfxFillStyles&& other) noexcept;
 
     GfxFillStyles& operator=(const GfxFillStyles& other) noexcept;

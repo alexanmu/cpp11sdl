@@ -50,7 +50,7 @@ public:
 
     explicit GfxPaletteType(const BgiType pal) noexcept;
 
-    GfxPaletteType(GfxPaletteType const& other) noexcept;
+    GfxPaletteType(const GfxPaletteType& other) noexcept;
     GfxPaletteType(GfxPaletteType&& other) noexcept;
 
     GfxPaletteType& operator=(const GfxPaletteType& other) noexcept;
@@ -60,7 +60,7 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     uint8_t getSize(void) const noexcept;
-    std::vector<int8_t> getColors(void) const noexcept;
+    const std::vector<int8_t> getColors(void) const noexcept;
     void setValue(const BgiType pal) noexcept;
 
     void clear(void) noexcept;

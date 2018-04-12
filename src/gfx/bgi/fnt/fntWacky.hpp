@@ -19,6 +19,9 @@
   3. This notice may not be removed or altered from any source distribution.
 
   See copyright notice at http://lidsdl.org/license.php
+
+  Font file XXX.FNT (original filename lost) I found many years ago on the internet. Please message
+  me asap if you think there is a copyright issue at play here.
 */
 
 #ifndef __fntWacky_hpp__
@@ -31,6 +34,9 @@ namespace bgi
 {
 
 namespace fnt
+{
+
+namespace prv
 {
 
 const uint8_t fntWackyData_[16 * 256] = {
@@ -291,6 +297,8 @@ const uint8_t fntWackyData_[16 * 256] = {
     0x00, 0x00, 0x00, 0x00, 0x78, 0x7C, 0x7C, 0x7C, 0x7C, 0x7C, 0x3C, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
+
+}  // namespace prv
 
 }  // namespace fnt
 

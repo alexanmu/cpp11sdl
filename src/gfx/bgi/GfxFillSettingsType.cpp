@@ -51,7 +51,7 @@ GfxFillSettingsType::GfxFillSettingsType(const BgiType fillsettings) noexcept : 
     fillSettings_ = fillsettings;
 }
 
-GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType const& other) noexcept : GfxObject(other)
+GfxFillSettingsType::GfxFillSettingsType(const GfxFillSettingsType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxFillSettingsType::GfxFillSettingsType(GfxFillSettingsType&& other) noexcept :
     other.clear();
 }
 
-GfxFillSettingsType& GfxFillSettingsType::operator=(GfxFillSettingsType const& other) noexcept
+GfxFillSettingsType& GfxFillSettingsType::operator=(const GfxFillSettingsType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -111,14 +111,14 @@ std::string GfxFillSettingsType::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxFillStyles GfxFillSettingsType::getFillStyles(void) const noexcept
+const GfxFillStyles GfxFillSettingsType::getFillStyles(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return GfxFillStyles(fillSettings_.pattern);
 }
 
-GfxColors2 GfxFillSettingsType::getColors2(void) const noexcept
+const GfxColors2 GfxFillSettingsType::getColors2(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

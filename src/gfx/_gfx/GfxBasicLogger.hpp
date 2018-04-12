@@ -130,8 +130,8 @@ public:
     void setTracePriority(const logTracePriority prio, const logTraceEnaDisState state) noexcept;
     logTraceEnaDisState getTraceToFileState(void) const noexcept;
     void setTraceToFileState(const logTraceEnaDisState state) noexcept;
-    std::vector<std::string> const& getTraceModules(void) const noexcept;
-    void addTraceModule(std::string const& module) noexcept;
+    const std::vector<std::string>& getTraceModules(void) const noexcept;
+    void addTraceModule(const std::string& module) noexcept;
     void clearTraceModules() noexcept;
 
     /* Log */
@@ -143,18 +143,18 @@ public:
 private:
     GfxBasicLogger() noexcept;
 
-    GfxBasicLogger(GfxBasicLogger const&) = delete;
+    GfxBasicLogger(const GfxBasicLogger&) = delete;
     GfxBasicLogger(GfxBasicLogger&&) = delete;
 
-    GfxBasicLogger& operator=(GfxBasicLogger const&) = delete;
+    GfxBasicLogger& operator=(const GfxBasicLogger&) = delete;
     GfxBasicLogger& operator=(GfxBasicLogger&&) = delete;
 
     ~GfxBasicLogger() noexcept;
 
     char getTraceTextForPrio(const logTracePriority prio) const noexcept;
-    std::string getCurrentDateAsString(void) const noexcept;
-    std::string getCurrentTimeAsString(void) const noexcept;
-    std::string _lz(std::string const& str, const uint32_t elen) const noexcept;
+    const std::string getCurrentDateAsString(void) const noexcept;
+    const std::string getCurrentTimeAsString(void) const noexcept;
+    const std::string _lz(const std::string& str, const uint32_t elen) const noexcept;
     void createLogFile(void) noexcept;
     void closeLogFile(void) noexcept;
     bool doTrace(std::string const& module) const noexcept;

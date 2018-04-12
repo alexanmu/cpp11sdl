@@ -43,14 +43,14 @@ GfxRadius::GfxRadius() noexcept : GfxObject(ClassName), value_(0)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxRadius::GfxRadius(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
+GfxRadius::GfxRadius(const BgiType value) noexcept : GfxObject(ClassName), value_(value)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(value > 0);
 }
 
-GfxRadius::GfxRadius(GfxRadius const& other) noexcept : GfxObject(other)
+GfxRadius::GfxRadius(const GfxRadius& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -63,10 +63,10 @@ GfxRadius::GfxRadius(GfxRadius&& other) noexcept : GfxObject(std::move(other))
 
     value_ = other.value_;
     // Delete other's value
-    other.value_ = 0;
+    other.clear();
 }
 
-GfxRadius& GfxRadius::operator=(GfxRadius const& other) noexcept
+GfxRadius& GfxRadius::operator=(const GfxRadius& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -91,7 +91,7 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
         // Move this
         value_ = other.value_;
         // Delete other's value
-        other.value_ = 0;
+        other.clear();
     }
     return *this;
 }
@@ -131,20 +131,34 @@ std::string GfxRadius::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxRadius::ValueType GfxRadius::getValue(void) const noexcept
+GfxRadius::BgiType GfxRadius::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return value_;
 }
 
-void GfxRadius::setValue(const ValueType value) noexcept
+void GfxRadius::setValue(const BgiType value) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     assert(value > 0);
 
     value_ = value;
+}
+
+void GfxRadius::clear(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    value_ = 0;
+}
+
+GfxRadius::BgiType GfxRadius::getAsBgiType(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return value_;
 }
 
 }  // namespace bgi

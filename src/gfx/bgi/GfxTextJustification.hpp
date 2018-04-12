@@ -59,7 +59,7 @@ public:
     explicit GfxTextJustification(const ValueType just) noexcept;
     explicit GfxTextJustification(const BgiType just) noexcept;
 
-    GfxTextJustification(GfxTextJustification const& other) noexcept;
+    GfxTextJustification(const GfxTextJustification& other) noexcept;
     GfxTextJustification(GfxTextJustification&& other) noexcept;
 
     GfxTextJustification& operator=(const GfxTextJustification& other) noexcept;

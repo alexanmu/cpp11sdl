@@ -42,14 +42,14 @@ GfxAngle::GfxAngle() noexcept : GfxObject(ClassName), value_(0)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxAngle::GfxAngle(const ValueType value) noexcept : GfxObject(ClassName), value_(value)
+GfxAngle::GfxAngle(const BgiType value) noexcept : GfxObject(ClassName), value_(value)
 {
     LOG_TRACE_PRIO_MED();
 
     value_ = value_ % 360;
 }
 
-GfxAngle::GfxAngle(GfxAngle const& other) noexcept : GfxObject(other)
+GfxAngle::GfxAngle(const GfxAngle& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -65,7 +65,7 @@ GfxAngle::GfxAngle(GfxAngle&& other) noexcept : GfxObject(std::move(other))
     other.value_ = 0;
 }
 
-GfxAngle& GfxAngle::operator=(GfxAngle const& other) noexcept
+GfxAngle& GfxAngle::operator=(const GfxAngle& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -95,21 +95,21 @@ GfxAngle& GfxAngle::operator=(GfxAngle&& other) noexcept
     return *this;
 }
 
-bool GfxAngle::operator==(GfxAngle const& other) const noexcept
+bool GfxAngle::operator==(const GfxAngle& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return (value_ == other.value_);
 }
 
-bool GfxAngle::operator>(GfxAngle const& other) const noexcept
+bool GfxAngle::operator>(const GfxAngle& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return (value_ > other.value_);
 }
 
-bool GfxAngle::operator<(GfxAngle const& other) const noexcept
+bool GfxAngle::operator<(const GfxAngle& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -130,18 +130,25 @@ std::string GfxAngle::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxAngle::ValueType GfxAngle::getValue(void) const noexcept
+GfxAngle::BgiType GfxAngle::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return value_;
 }
 
-void GfxAngle::setValue(const ValueType value) noexcept
+void GfxAngle::setValue(const BgiType value) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     value_ = value;
+}
+
+GfxAngle::BgiType GfxAngle::getAsBgiType(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return value_;
 }
 
 }  // namespace bgi

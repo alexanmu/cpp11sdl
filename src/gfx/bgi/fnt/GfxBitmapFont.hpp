@@ -49,10 +49,10 @@ public:
 
     GfxBitmapFont(const uint8_t * fontData, const uint8_t fontWidth, const uint8_t fontHeight) noexcept;
 
-    GfxBitmapFont(GfxBitmapFont const& other) noexcept;
+    GfxBitmapFont(const GfxBitmapFont& other) noexcept;
     GfxBitmapFont(GfxBitmapFont&& other) noexcept;
 
-    GfxBitmapFont& operator=(GfxBitmapFont const& other) noexcept;
+    GfxBitmapFont& operator=(const GfxBitmapFont& other) noexcept;
     GfxBitmapFont& operator=(GfxBitmapFont&& other) noexcept;
 
     virtual ~GfxBitmapFont() noexcept;
@@ -60,7 +60,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    uint8_t * getFontData(void) const noexcept;
+    const uint8_t * getFontData(void) const noexcept;
     uint16_t getFontDataSize(void) const noexcept;
     uint8_t getFontWidth(void) const noexcept;
     uint8_t getFontHeight(void) const noexcept;

@@ -41,7 +41,7 @@ namespace bgi
 
 const char GfxCanvas::ClassName[] = "GfxCanvas";
 
-GfxCanvas::GfxCanvas(surface::GfxSurface const& surf) noexcept : GfxObject(ClassName)
+GfxCanvas::GfxCanvas(const surface::GfxSurface& surf) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -65,8 +65,8 @@ std::string GfxCanvas::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxCanvas::Arc(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                    GfxRadius const& radius) noexcept
+void GfxCanvas::Arc(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+                    const GfxRadius& radius) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -78,7 +78,7 @@ void GfxCanvas::Arc(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle 
     bgi_.arc(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
-void GfxCanvas::Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
+void GfxCanvas::Bar(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -88,7 +88,7 @@ void GfxCanvas::Bar(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexce
     bgi_.bar(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Bar(rect::GfxRect const& r) noexcept
+void GfxCanvas::Bar(const rect::GfxRect& r) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -97,8 +97,8 @@ void GfxCanvas::Bar(rect::GfxRect const& r) noexcept
     bgi_.bar(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::Bar3D(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, const int32_t depth,
-                        const bool topflag) noexcept
+void GfxCanvas::Bar3D(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const int32_t depth,
+                      const bool topflag) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -111,7 +111,7 @@ void GfxCanvas::Bar3D(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, cons
     bgi_.bar3d(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY(), depth, int_topflag);
 }
 
-void GfxCanvas::Bar3D(rect::GfxRect const& r, const int32_t depth, const bool topflag) noexcept
+void GfxCanvas::Bar3D(const rect::GfxRect& r, const int32_t depth, const bool topflag) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -123,7 +123,7 @@ void GfxCanvas::Bar3D(rect::GfxRect const& r, const int32_t depth, const bool to
     bgi_.bar3d(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1, depth, int_topflag);
 }
 
-void GfxCanvas::Circle(rect::GfxPoint const& pt, GfxRadius const& r) noexcept
+void GfxCanvas::Circle(const rect::GfxPoint& pt, const GfxRadius& r) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -147,7 +147,7 @@ void GfxCanvas::ClearViewPort(void) noexcept
     bgi_.clearviewport();
 }
 
-void GfxCanvas::DrawPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
+void GfxCanvas::DrawPoly(const std::vector<rect::GfxPoint>& polypoints) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -156,7 +156,7 @@ void GfxCanvas::DrawPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
     int * points = new int[polypoints.size() * 2];  // NOLINT
     int index = 0;
 
-    for (auto& it : polypoints)
+    for (const auto& it : polypoints)
     {
         points[index + 0] = it.getX();
         points[index + 1] = it.getY();
@@ -166,8 +166,8 @@ void GfxCanvas::DrawPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
     delete[] points;
 }
 
-void GfxCanvas::Ellipse(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                    GfxRadius const& xradius, GfxRadius const& yradius) noexcept
+void GfxCanvas::Ellipse(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+                        const GfxRadius& xradius, const GfxRadius& yradius) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -178,10 +178,10 @@ void GfxCanvas::Ellipse(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAn
     assert(yradius);
 
     bgi_.ellipse(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), xradius.getValue(),
-                yradius.getValue());
+                 yradius.getValue());
 }
 
-void GfxCanvas::FillEllipse(rect::GfxPoint const& pt, GfxRadius const& xradius, GfxRadius const& yradius) noexcept
+void GfxCanvas::FillEllipse(const rect::GfxPoint& pt, const GfxRadius& xradius, const GfxRadius& yradius) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -192,7 +192,7 @@ void GfxCanvas::FillEllipse(rect::GfxPoint const& pt, GfxRadius const& xradius, 
     bgi_.fillellipse(pt.getX(), pt.getY(), xradius.getValue(), yradius.getValue());
 }
 
-void GfxCanvas::FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
+void GfxCanvas::FillPoly(const std::vector<rect::GfxPoint>& polypoints) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -201,7 +201,7 @@ void GfxCanvas::FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
     int * points = new int[polypoints.size() * 2];  // NOLINT
     int index = 0;
 
-    for (auto& it : polypoints)
+    for (const auto& it : polypoints)
     {
         points[index + 0] = it.getX();
         points[index + 1] = it.getY();
@@ -211,7 +211,7 @@ void GfxCanvas::FillPoly(std::vector<rect::GfxPoint> const& polypoints) noexcept
     delete[] points;
 }
 
-void GfxCanvas::FloodFill(rect::GfxPoint const& pt, GfxColors2 const& border) noexcept
+void GfxCanvas::FloodFill(const rect::GfxPoint& pt, const GfxColors2& border) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -251,7 +251,7 @@ const GfxArcCoordsType GfxCanvas::GetArcCoords(void) noexcept
     return GfxArcCoordsType(arccoords);
 }
 
-GfxColors2 const& GfxCanvas::GetBkColor(void) noexcept
+const GfxColors2& GfxCanvas::GetBkColor(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -270,7 +270,7 @@ GfxColors2 const& GfxCanvas::GetBkColor(void) noexcept
     return prvColor_;
 }
 
-GfxColors2 const& GfxCanvas::GetColor(void) noexcept
+const GfxColors2& GfxCanvas::GetColor(void) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -324,7 +324,7 @@ const GfxFillSettingsType GfxCanvas::GetFillSettings(void) noexcept
     return GfxFillSettingsType(fill);
 }
 
-void GfxCanvas::GetImage(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, void * bitmap) noexcept
+void GfxCanvas::GetImage(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, void * bitmap) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -335,7 +335,7 @@ void GfxCanvas::GetImage(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, v
     bgi_.getimage(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY(), bitmap);
 }
 
-void GfxCanvas::GetImage(rect::GfxRect const& r, void * bitmap) noexcept
+void GfxCanvas::GetImage(const rect::GfxRect& r, void * bitmap) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -393,7 +393,7 @@ int32_t GfxCanvas::GetPaletteSize(void) noexcept
     return bgi_.getpalettesize();
 }
 
-const GfxColors2& GfxCanvas::GetPixel(rect::GfxPoint const& pt) noexcept
+const GfxColors2& GfxCanvas::GetPixel(const rect::GfxPoint& pt) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -444,7 +444,7 @@ void GfxCanvas::GraphDefaults(void) noexcept
     bgi_.graphdefaults();
 }
 
-uint32_t GfxCanvas::ImageSize(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
+uint32_t GfxCanvas::ImageSize(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -454,7 +454,7 @@ uint32_t GfxCanvas::ImageSize(rect::GfxPoint const& pt1, rect::GfxPoint const& p
     return bgi_.imagesize(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-uint32_t GfxCanvas::ImageSize(rect::GfxRect const& r) noexcept
+uint32_t GfxCanvas::ImageSize(const rect::GfxRect& r) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -463,7 +463,7 @@ uint32_t GfxCanvas::ImageSize(rect::GfxRect const& r) noexcept
     return bgi_.imagesize(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::Line(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
+void GfxCanvas::Line(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -473,7 +473,7 @@ void GfxCanvas::Line(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexc
     bgi_.line(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::LineRel(rect::GfxPoint const& pt) noexcept
+void GfxCanvas::LineRel(const rect::GfxPoint& pt) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -482,7 +482,7 @@ void GfxCanvas::LineRel(rect::GfxPoint const& pt) noexcept
     bgi_.linerel(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::LineTo(rect::GfxPoint const& pt) noexcept
+void GfxCanvas::LineTo(const rect::GfxPoint& pt) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -491,7 +491,7 @@ void GfxCanvas::LineTo(rect::GfxPoint const& pt) noexcept
     bgi_.lineto(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::MoveRel(rect::GfxPoint const& pt) noexcept
+void GfxCanvas::MoveRel(const rect::GfxPoint& pt) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -500,7 +500,7 @@ void GfxCanvas::MoveRel(rect::GfxPoint const& pt) noexcept
     bgi_.moverel(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::MoveTo(rect::GfxPoint const& pt) noexcept
+void GfxCanvas::MoveTo(const rect::GfxPoint& pt) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -509,7 +509,7 @@ void GfxCanvas::MoveTo(rect::GfxPoint const& pt) noexcept
     bgi_.moveto(pt.getX(), pt.getY());
 }
 
-void GfxCanvas::OutText(GfxText const& text) noexcept
+void GfxCanvas::OutText(const GfxText& text) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -518,7 +518,7 @@ void GfxCanvas::OutText(GfxText const& text) noexcept
     bgi_.outtext(const_cast<char *>(text.getValue().c_str()));
 }
 
-void GfxCanvas::OutText(GfxText const& text, fnt::GfxBitmapFont const& font) noexcept
+void GfxCanvas::OutText(const GfxText& text, const fnt::GfxBitmapFont& font) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -530,7 +530,7 @@ void GfxCanvas::OutText(GfxText const& text, fnt::GfxBitmapFont const& font) noe
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text, fnt::GfxBitmapFont const& font) noexcept
+void GfxCanvas::OutTextXY(const rect::GfxPoint& pt, const GfxText& text, const fnt::GfxBitmapFont& font) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -543,7 +543,7 @@ void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text, fnt::Gf
     bgi_.setDefaultFont();
 }
 
-void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text) noexcept
+void GfxCanvas::OutTextXY(const rect::GfxPoint& pt, const GfxText& text) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -553,8 +553,8 @@ void GfxCanvas::OutTextXY(rect::GfxPoint const& pt, GfxText const& text) noexcep
     bgi_.outtextxy(pt.getX(), pt.getY(), const_cast<char *>(text.getValue().c_str()));
 }
 
-void GfxCanvas::PieSlice(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                        GfxRadius const& radius) noexcept
+void GfxCanvas::PieSlice(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+                         const GfxRadius& radius) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -566,7 +566,7 @@ void GfxCanvas::PieSlice(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxA
     bgi_.pieslice(pt.getX(), pt.getY(), stangle.getValue(), endangle.getValue(), radius.getValue());
 }
 
-void GfxCanvas::PutImage(rect::GfxPoint const& pt, void * bitmap, GfxDrawingMode const& dmode) noexcept
+void GfxCanvas::PutImage(const rect::GfxPoint& pt, void * bitmap, const GfxDrawingMode& dmode) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -577,7 +577,7 @@ void GfxCanvas::PutImage(rect::GfxPoint const& pt, void * bitmap, GfxDrawingMode
     bgi_.putimage(pt.getX(), pt.getY(), bitmap, dmode.getAsBgiType());
 }
 
-void GfxCanvas::PutPixel(rect::GfxPoint const& pt, GfxColors2 const& clr) noexcept
+void GfxCanvas::PutPixel(const rect::GfxPoint& pt, const GfxColors2& clr) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -597,7 +597,7 @@ void GfxCanvas::PutPixel(rect::GfxPoint const& pt, GfxColors2 const& clr) noexce
     bgi_.putpixel(pt.getX(), pt.getY(), c);
 }
 
-void GfxCanvas::Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) noexcept
+void GfxCanvas::Rectangle(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -607,7 +607,7 @@ void GfxCanvas::Rectangle(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2) 
     bgi_.rectangle(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY());
 }
 
-void GfxCanvas::Rectangle(rect::GfxRect const& r) noexcept
+void GfxCanvas::Rectangle(const rect::GfxRect& r) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -616,8 +616,8 @@ void GfxCanvas::Rectangle(rect::GfxRect const& r) noexcept
     bgi_.rectangle(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1);
 }
 
-void GfxCanvas::Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAngle const& endangle,
-                    GfxRadius const& xradius, GfxRadius const& yradius) noexcept
+void GfxCanvas::Sector(const rect::GfxPoint& pt, const GfxAngle& stangle, const GfxAngle& endangle,
+                       const GfxRadius& xradius, const GfxRadius& yradius) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -631,7 +631,7 @@ void GfxCanvas::Sector(rect::GfxPoint const& pt, GfxAngle const& stangle, GfxAng
                 xradius.getValue(), yradius.getValue());
 }
 
-void GfxCanvas::SetAllPalette(GfxPaletteType const& palette) noexcept
+void GfxCanvas::SetAllPalette(const GfxPaletteType& palette) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -643,7 +643,7 @@ void GfxCanvas::SetAllPalette(GfxPaletteType const& palette) noexcept
     bgi_.setallpalette(&pal);
 }
 
-void GfxCanvas::SetBkColor(GfxColors2 const& clr) noexcept
+void GfxCanvas::SetBkColor(const GfxColors2& clr) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -663,7 +663,7 @@ void GfxCanvas::SetBkColor(GfxColors2 const& clr) noexcept
     bgi_.setbkcolor(c);
 }
 
-void GfxCanvas::SetColor(GfxColors2 const& clr) noexcept
+void GfxCanvas::SetColor(const GfxColors2& clr) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -683,7 +683,7 @@ void GfxCanvas::SetColor(GfxColors2 const& clr) noexcept
     bgi_.setcolor(c);
 }
 
-void GfxCanvas::SetFillPattern(uint8_t * upattern, GfxColors2 const& clr) noexcept
+void GfxCanvas::SetFillPattern(uint8_t * upattern, const GfxColors2& clr) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -703,7 +703,7 @@ void GfxCanvas::SetFillPattern(uint8_t * upattern, GfxColors2 const& clr) noexce
     bgi_.setfillpattern(upattern, c);
 }
 
-void GfxCanvas::SetFillStyle(GfxFillStyles const& pattern, GfxColors2 const& clr) noexcept
+void GfxCanvas::SetFillStyle(const GfxFillStyles& pattern, const GfxColors2& clr) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -724,8 +724,8 @@ void GfxCanvas::SetFillStyle(GfxFillStyles const& pattern, GfxColors2 const& clr
     bgi_.setfillstyle(pattern.getAsBgiType(), c);
 }
 
-void GfxCanvas::SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const& upattern,
-                           GfxLineThickness const& thickness) noexcept
+void GfxCanvas::SetLineStyle(const GfxLineStyle& linestyle, const GfxFillStyles& upattern,
+                             const GfxLineThickness& thickness) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -736,7 +736,7 @@ void GfxCanvas::SetLineStyle(GfxLineStyle const& linestyle, GfxFillStyles const&
     bgi_.setlinestyle(linestyle.getAsBgiType(), upattern.getAsBgiType(), thickness.getAsBgiType());
 }
 
-void GfxCanvas::SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept
+void GfxCanvas::SetPalette(int32_t colornum, const GfxColors2& clr) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -746,7 +746,7 @@ void GfxCanvas::SetPalette(int32_t colornum, GfxColors2 const& clr) noexcept
     bgi_.setpalette(colornum, clr.getValue());
 }
 
-void GfxCanvas::SetTextJustify(GfxTextJustification const& horiz, GfxTextJustification const& vert) noexcept
+void GfxCanvas::SetTextJustify(const GfxTextJustification& horiz, const GfxTextJustification& vert) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -756,7 +756,7 @@ void GfxCanvas::SetTextJustify(GfxTextJustification const& horiz, GfxTextJustifi
     bgi_.settextjustify(horiz.getAsBgiType(), vert.getAsBgiType());
 }
 
-void GfxCanvas::SetTextStyle(GfxFonts const& font, GfxDirection const& direction, int32_t charsize) noexcept
+void GfxCanvas::SetTextStyle(const GfxFonts& font, const GfxDirection& direction, int32_t charsize) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -780,7 +780,7 @@ void GfxCanvas::SetUserCharSize(const int32_t multx, const int32_t divx, const i
     bgi_.setusercharsize(multx, divx, multy, divy);
 }
 
-void GfxCanvas::SetViewPort(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2, bool clip) noexcept
+void GfxCanvas::SetViewPort(const rect::GfxPoint& pt1, const rect::GfxPoint& pt2, const bool clip) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -792,7 +792,7 @@ void GfxCanvas::SetViewPort(rect::GfxPoint const& pt1, rect::GfxPoint const& pt2
     bgi_.setviewport(pt1.getX(), pt1.getY(), pt2.getX(), pt2.getY(), int_clip);
 }
 
-void GfxCanvas::SetViewPort(rect::GfxRect const& r, bool clip) noexcept
+void GfxCanvas::SetViewPort(const rect::GfxRect& r, const bool clip) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -803,7 +803,7 @@ void GfxCanvas::SetViewPort(rect::GfxRect const& r, bool clip) noexcept
     bgi_.setviewport(r.getX(), r.getY(), r.getWidth() + 1, r.getHeight() + 1, int_clip);
 }
 
-void GfxCanvas::SetWriteMode(GfxDrawingMode const& dmode) noexcept
+void GfxCanvas::SetWriteMode(const GfxDrawingMode& dmode) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -812,7 +812,7 @@ void GfxCanvas::SetWriteMode(GfxDrawingMode const& dmode) noexcept
     bgi_.setwritemode(dmode.getAsBgiType());
 }
 
-int32_t GfxCanvas::TextHeight(GfxText const& textstring) noexcept
+int32_t GfxCanvas::TextHeight(const GfxText& textstring) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -821,7 +821,7 @@ int32_t GfxCanvas::TextHeight(GfxText const& textstring) noexcept
     return bgi_.textheight(const_cast<char *>(textstring.getValue().c_str()));
 }
 
-int32_t GfxCanvas::TextWidth(GfxText const& textstring) noexcept
+int32_t GfxCanvas::TextWidth(const GfxText& textstring) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

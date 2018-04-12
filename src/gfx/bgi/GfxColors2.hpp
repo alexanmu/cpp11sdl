@@ -75,7 +75,7 @@ public:
     explicit GfxColors2(const ValueType clr) noexcept;
     explicit GfxColors2(const BgiType clr) noexcept;
 
-    GfxColors2(GfxColors2 const& other) noexcept;
+    GfxColors2(const GfxColors2& other) noexcept;
     GfxColors2(GfxColors2&& other) noexcept;
 
     GfxColors2& operator=(const GfxColors2& other) noexcept;

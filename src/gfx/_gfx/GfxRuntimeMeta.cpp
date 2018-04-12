@@ -59,7 +59,7 @@ GfxRuntimeMeta& GfxRuntimeMeta::getInstance(void) noexcept
     return instance_;
 }
 
-GfxRuntimeMeta::ClassInfo const& GfxRuntimeMeta::getClassInfo(const int32_t index) noexcept
+const GfxRuntimeMeta::ClassInfo& GfxRuntimeMeta::getClassInfo(const int32_t index) noexcept
 {
     assert(classUMap.size() > 0);
 
@@ -78,7 +78,7 @@ GfxRuntimeMeta::ClassInfo const& GfxRuntimeMeta::getClassInfo(const int32_t inde
     return classInfo_;
 }
 
-std::string GfxRuntimeMeta::getClassName(const int32_t index) noexcept
+const std::string GfxRuntimeMeta::getClassName(const int32_t index) noexcept
 {
     assert(classUMap.size() > 0);
 

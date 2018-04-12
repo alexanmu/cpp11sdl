@@ -58,7 +58,7 @@ GfxDirection::GfxDirection(const BgiType dir) noexcept : GfxObject(ClassName)
     dir_ = dir;
 }
 
-GfxDirection::GfxDirection(GfxDirection const& other) noexcept : GfxObject(other)
+GfxDirection::GfxDirection(const GfxDirection& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxDirection::GfxDirection(GfxDirection&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxDirection& GfxDirection::operator=(GfxDirection const& other) noexcept
+GfxDirection& GfxDirection::operator=(const GfxDirection& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

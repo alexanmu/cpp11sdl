@@ -43,14 +43,14 @@ GfxText::GfxText() noexcept : GfxObject(ClassName), value_("")
     LOG_TRACE_PRIO_MED();
 }
 
-GfxText::GfxText(ValueType const& value) noexcept : GfxObject(ClassName), value_(value)
+GfxText::GfxText(const BgiType& value) noexcept : GfxObject(ClassName), value_(value)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(value.length() > 0);
 }
 
-GfxText::GfxText(GfxText const& other) noexcept : GfxObject(other)
+GfxText::GfxText(const GfxText& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -63,10 +63,10 @@ GfxText::GfxText(GfxText&& other) noexcept : GfxObject(other)
 
     value_ = other.value_;
     // Delete other's value
-    other.value_ = "";
+    other.clear();
 }
 
-GfxText& GfxText::operator=(GfxText const& other) noexcept
+GfxText& GfxText::operator=(const GfxText& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -91,26 +91,26 @@ GfxText& GfxText::operator=(GfxText&& other) noexcept
         // Move this
         value_ = other.value_;
         // Delete other's value
-        other.value_ = "";
+        other.clear();
     }
     return *this;
 }
 
-bool GfxText::operator==(GfxText const& other) const noexcept
+bool GfxText::operator==(const GfxText& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return (value_ == other.value_);
 }
 
-bool GfxText::operator>(GfxText const& other) const noexcept
+bool GfxText::operator>(const GfxText& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return (value_ > other.value_);
 }
 
-bool GfxText::operator<(GfxText const& other) const noexcept
+bool GfxText::operator<(const GfxText& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -131,18 +131,32 @@ std::string GfxText::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxText::ValueType GfxText::getValue(void) const noexcept
+const GfxText::BgiType GfxText::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return value_;
 }
 
-void GfxText::setValue(ValueType const& value) noexcept
+void GfxText::setValue(const BgiType& value) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     value_ = value;
+}
+
+void GfxText::clear(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    value_ = "";
+}
+
+GfxText::BgiType GfxText::getAsBgiType(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return value_;
 }
 
 }  // namespace bgi

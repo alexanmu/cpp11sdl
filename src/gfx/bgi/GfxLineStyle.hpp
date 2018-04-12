@@ -59,7 +59,7 @@ public:
     explicit GfxLineStyle(const ValueType line) noexcept;
     explicit GfxLineStyle(const BgiType line) noexcept;
 
-    GfxLineStyle(GfxLineStyle const& other) noexcept;
+    GfxLineStyle(const GfxLineStyle& other) noexcept;
     GfxLineStyle(GfxLineStyle&& other) noexcept;
 
     GfxLineStyle& operator=(const GfxLineStyle& other) noexcept;

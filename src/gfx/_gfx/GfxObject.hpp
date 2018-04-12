@@ -42,15 +42,15 @@ public:
 
     explicit GfxObject(const char * className) noexcept;
 
-    GfxObject(GfxObject const& other) noexcept;
+    GfxObject(const GfxObject& other) noexcept;
     GfxObject(GfxObject&& other) noexcept;
 
     virtual ~GfxObject() noexcept;
 
-    GfxObject& operator=(GfxObject const& other) noexcept;
+    GfxObject& operator=(const GfxObject& other) noexcept;
     GfxObject& operator=(GfxObject&& other) noexcept;
 
-    bool operator==(GfxObject const& other) const noexcept;
+    bool operator==(const GfxObject& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
