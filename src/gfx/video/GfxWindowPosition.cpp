@@ -46,6 +46,17 @@ GfxWindowPosition::GfxWindowPosition() noexcept : GfxObject(ClassName)
     clear();
 }
 
+GfxWindowPosition::GfxWindowPosition(const ValueType pos) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    pos_ = pos;
+    if (pos_ == GfxWindowPosition::ValueType::positionSpecified)
+    {
+        coord_ = 100;
+    }
+}
+
 GfxWindowPosition::GfxWindowPosition(const ValueType pos, const int32_t coord) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();

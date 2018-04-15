@@ -69,6 +69,17 @@ GfxDisplayMode::GfxDisplayMode(const SdlType mode) noexcept : GfxObject(ClassNam
     dmode_ = mode;
 }
 
+GfxDisplayMode::GfxDisplayMode(const GfxDisplayMode& other) noexcept : GfxObject(other)
+{
+    LOG_TRACE_PRIO_MED();
+
+    dmode_.format = other.dmode_.format;
+    dmode_.w = other.dmode_.w;
+    dmode_.h = other.dmode_.h;
+    dmode_.refresh_rate = other.dmode_.refresh_rate;
+    dmode_.driverdata = other.dmode_.driverdata;
+}
+
 GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(std::move(other))
 {
     LOG_TRACE_PRIO_MED();
@@ -80,6 +91,24 @@ GfxDisplayMode::GfxDisplayMode(GfxDisplayMode&& other) noexcept : GfxObject(std:
     dmode_.driverdata = other.dmode_.driverdata;
     // Delete other's data
     other.clear();
+}
+
+GfxDisplayMode& GfxDisplayMode::operator=(const GfxDisplayMode& other) noexcept
+{
+    LOG_TRACE_PRIO_MED();
+
+    if (this != &other)
+    {
+        // Copy base
+        GfxObject::operator=(other);
+        // Copy this
+        dmode_.format = other.dmode_.format;
+        dmode_.w = other.dmode_.w;
+        dmode_.h = other.dmode_.h;
+        dmode_.refresh_rate = other.dmode_.refresh_rate;
+        dmode_.driverdata = other.dmode_.driverdata;
+    }
+    return *this;
 }
 
 GfxDisplayMode& GfxDisplayMode::operator=(GfxDisplayMode&& other) noexcept

@@ -65,7 +65,7 @@ GfxWindowEventID::GfxWindowEventID(const uint8_t eventid) noexcept : GfxObject(C
     eventid_ = static_cast<SdlType>(eventid);
 }
 
-GfxWindowEventID::GfxWindowEventID(GfxWindowEventID const& other) noexcept : GfxObject(other)
+GfxWindowEventID::GfxWindowEventID(const GfxWindowEventID& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -81,7 +81,7 @@ GfxWindowEventID::GfxWindowEventID(GfxWindowEventID&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxWindowEventID& GfxWindowEventID::operator=(GfxWindowEventID const& other) noexcept
+GfxWindowEventID& GfxWindowEventID::operator=(const GfxWindowEventID& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

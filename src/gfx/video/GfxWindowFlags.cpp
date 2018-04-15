@@ -71,7 +71,7 @@ GfxWindowFlags::GfxWindowFlags(const uint32_t flags) noexcept : GfxObject(ClassN
     flags_ = static_cast<SdlType>(flags);
 }
 
-GfxWindowFlags::GfxWindowFlags(GfxWindowFlags const& other) noexcept : GfxObject(other)
+GfxWindowFlags::GfxWindowFlags(const GfxWindowFlags& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -87,7 +87,7 @@ GfxWindowFlags::GfxWindowFlags(GfxWindowFlags&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxWindowFlags& GfxWindowFlags::operator=(GfxWindowFlags const& other) noexcept
+GfxWindowFlags& GfxWindowFlags::operator=(const GfxWindowFlags& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

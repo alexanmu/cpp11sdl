@@ -50,7 +50,7 @@ GfxWindow::GfxWindow() noexcept
     hitTest_ = nullptr;
 }
 
-GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_t height)
+GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height)
     throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -62,7 +62,7 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
     SdlTypePtr tmpwinptr;
 
     tmpwinptr = SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
-                                       width, height, kDefaultFlagsValue);
+                                 width, height, kDefaultFlagsValue);
     if (tmpwinptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -73,8 +73,8 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
     hitTest_ = nullptr;
 }
 
-GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_t height,
-        GfxWindowFlags const& flags) throw(std::runtime_error) : GfxObject(ClassName)
+GfxWindow::GfxWindow(const std::string& title, const int32_t width, const int32_t height,
+                     const GfxWindowFlags& flags) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -85,7 +85,7 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
     SdlTypePtr tmpwinptr;
 
     tmpwinptr = SDL_CreateWindow(title.c_str(), kDefaultWindowPositionX, kDefaultWindowPositionY,
-                                       width, height, flags.getAsSdlType());
+                                 width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -96,8 +96,8 @@ GfxWindow::GfxWindow(std::string const& title, const int32_t width, const int32_
     hitTest_ = nullptr;
 }
 
-GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
-                     const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error) :
+GfxWindow::GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
+                     const int32_t width, const int32_t height, const GfxWindowFlags& flags) throw(std::runtime_error) :
         GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -112,7 +112,7 @@ GfxWindow::GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWi
     SdlTypePtr tmpwinptr;
 
     tmpwinptr = SDL_CreateWindow(title.c_str(), x.getCoordinate(), y.getCoordinate(),
-                                       width, height, flags.getAsSdlType());
+                                 width, height, flags.getAsSdlType());
     if (tmpwinptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -393,8 +393,7 @@ const GfxWindow * GfxWindow::getWindowFromID(const uint32_t id) const noexcept
     }
     else
     {
-        /* I should find the associated GfxWindow object for wptr.
-           For now just return NULL */
+#warning I should find the associated GfxWindow object for wptr. For now just return NULL
     }
     return nullptr;
 }

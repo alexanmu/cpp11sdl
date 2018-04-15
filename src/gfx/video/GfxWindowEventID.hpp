@@ -72,10 +72,10 @@ public:
     explicit GfxWindowEventID(const SdlType eventid) noexcept;
     explicit GfxWindowEventID(const uint8_t eventid) noexcept;
 
-    GfxWindowEventID(GfxWindowEventID const& other) noexcept;
+    GfxWindowEventID(const GfxWindowEventID& other) noexcept;
     GfxWindowEventID(GfxWindowEventID&& other) noexcept;
 
-    GfxWindowEventID& operator=(GfxWindowEventID const& other) noexcept;
+    GfxWindowEventID& operator=(const GfxWindowEventID& other) noexcept;
     GfxWindowEventID& operator=(GfxWindowEventID&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

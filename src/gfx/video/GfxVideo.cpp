@@ -112,7 +112,7 @@ int32_t GfxVideo::getNumVideoDrivers(void) noexcept
     return numvideodrivers_;
 }
 
-std::string GfxVideo::getVideoDriver(const int32_t driverindex) const noexcept
+const std::string GfxVideo::getVideoDriver(const int32_t driverindex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -127,7 +127,7 @@ std::string GfxVideo::getVideoDriver(const int32_t driverindex) const noexcept
     return str;
 }
 
-std::string GfxVideo::getCurrentVideoDriver(void) const noexcept
+const std::string GfxVideo::getCurrentVideoDriver(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -150,7 +150,7 @@ int32_t GfxVideo::getNumVideoDisplays(void) noexcept
     return numvideodisplays_;
 }
 
-std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
+const std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -165,7 +165,7 @@ std::string GfxVideo::getDisplayName(const int32_t displayindex) const noexcept
     return str;
 }
 
-rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexcept
+const rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -183,7 +183,7 @@ rect::GfxRect GfxVideo::getDisplayBounds(const int32_t displayindex) const noexc
     return rect::GfxRect();
 }
 
-rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const noexcept
+const rect::GfxRect GfxVideo::getDisplayUsableBounds(const int32_t displayindex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -246,7 +246,7 @@ int32_t GfxVideo::getNumDisplayModes(const int32_t displayindex) noexcept
     return numdisplaymodes;
 }
 
-GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept
+const GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_t modeindex) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -277,7 +277,7 @@ GfxDisplayMode GfxVideo::getDisplayMode(const int32_t displayindex, const int32_
     return GfxDisplayMode();
 }
 
-GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const noexcept
+const GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -295,7 +295,7 @@ GfxDisplayMode GfxVideo::getDesktopDisplayMode(const int32_t displayindex) const
     return GfxDisplayMode();
 }
 
-GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const noexcept
+const GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -313,8 +313,8 @@ GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex) const
     return GfxDisplayMode();
 }
 
-GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
-                                               GfxDisplayMode const& mode) const noexcept
+const GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
+                                                     GfxDisplayMode const& mode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -50,7 +50,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual GfxHitTestResult const& operator()(void * win, rect::GfxPoint * area) noexcept = 0;
+    virtual const GfxHitTestResult& operator()(void * win, rect::GfxPoint * area) noexcept = 0;
 };
 
 }  // namespace video

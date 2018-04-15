@@ -58,6 +58,7 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     uint16_t& operator [](const int32_t index) throw(std::runtime_error);
+    const uint16_t& operator [](const int32_t index) const throw(std::runtime_error);
 
     void clear(void) noexcept;
 

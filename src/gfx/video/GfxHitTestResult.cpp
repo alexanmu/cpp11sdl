@@ -60,7 +60,7 @@ GfxHitTestResult::GfxHitTestResult(const SdlType value) noexcept
     value_ = value;
 }
 
-GfxHitTestResult::GfxHitTestResult(GfxHitTestResult const& other) noexcept : GfxObject(other)
+GfxHitTestResult::GfxHitTestResult(const GfxHitTestResult& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -76,7 +76,7 @@ GfxHitTestResult::GfxHitTestResult(GfxHitTestResult&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxHitTestResult& GfxHitTestResult::operator=(GfxHitTestResult const& other) noexcept
+GfxHitTestResult& GfxHitTestResult::operator=(const GfxHitTestResult& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

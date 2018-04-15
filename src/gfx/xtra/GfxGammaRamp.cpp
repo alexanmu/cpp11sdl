@@ -152,6 +152,17 @@ uint16_t& GfxGammaRamp::operator [](const int32_t index) throw(std::runtime_erro
     throw std::runtime_error("Index out of bounds");
 }
 
+const uint16_t& GfxGammaRamp::operator [](const int32_t index) const throw(std::runtime_error)
+{
+    LOG_TRACE_PRIO_LOW();
+
+    if ((index >= 0) && (index < kGammaRampNumberOfElements))
+    {
+        return gammaRamp_[index];
+    }
+    throw std::runtime_error("Index out of bounds");
+}
+
 void GfxGammaRamp::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();

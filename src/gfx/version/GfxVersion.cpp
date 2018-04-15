@@ -150,7 +150,7 @@ void GfxVersion::clear(void) noexcept
     ver_.patch = 0;
 }
 
-std::string GfxVersion::getAsString(void) const noexcept
+const std::string GfxVersion::getAsString(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

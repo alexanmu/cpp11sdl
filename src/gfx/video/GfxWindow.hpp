@@ -58,17 +58,17 @@ public:
     static const bool CallsSdl = true;
 
     GfxWindow() noexcept;
-    GfxWindow(std::string const& title, const int32_t width, const int32_t height) throw(std::runtime_error);
-    GfxWindow(std::string const& title, const int32_t width, const int32_t height,
-              GfxWindowFlags const& flags) throw(std::runtime_error);
-    GfxWindow(std::string const& title, GfxWindowPosition const& x, GfxWindowPosition const& y,
-              const int32_t width, const int32_t height, GfxWindowFlags const& flags) throw(std::runtime_error);
+    GfxWindow(const std::string& title, const int32_t width, const int32_t height) throw(std::runtime_error);
+    GfxWindow(const std::string& title, const int32_t width, const int32_t height,
+              const GfxWindowFlags& flags) throw(std::runtime_error);
+    GfxWindow(const std::string& title, const GfxWindowPosition& x, const GfxWindowPosition& y,
+              const int32_t width, const int32_t height, const GfxWindowFlags& flags) throw(std::runtime_error);
     explicit GfxWindow(const void * data) throw(std::runtime_error);
 
-    GfxWindow(GfxWindow const&) = delete;
+    GfxWindow(const GfxWindow&) = delete;
     GfxWindow(GfxWindow&& other) noexcept;
 
-    GfxWindow& operator=(GfxWindow const&) = delete;
+    GfxWindow& operator=(const GfxWindow&) = delete;
     GfxWindow& operator=(GfxWindow&& other) noexcept;
 
     virtual ~GfxWindow() noexcept;

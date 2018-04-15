@@ -90,7 +90,17 @@ std::string GfxGetVersion::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxVersion GfxGetVersion::getVersion(void) const noexcept
+const GfxVersion GfxGetVersion::getCompiledVersion(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    GfxVersion::SdlType v;
+
+    SDL_VERSION(&v);
+    return GfxVersion(v);
+}
+
+const GfxVersion GfxGetVersion::getVersion(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -100,7 +110,7 @@ GfxVersion GfxGetVersion::getVersion(void) const noexcept
     return GfxVersion(v);
 }
 
-std::string GfxGetVersion::getRevision(void) const noexcept
+const std::string GfxGetVersion::getRevision(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

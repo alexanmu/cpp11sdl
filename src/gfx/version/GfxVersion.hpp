@@ -66,7 +66,7 @@ public:
 
     void clear(void) noexcept;
 
-    std::string getAsString(void) const noexcept;
+    const std::string getAsString(void) const noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;

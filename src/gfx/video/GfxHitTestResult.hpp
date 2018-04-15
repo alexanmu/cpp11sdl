@@ -63,10 +63,10 @@ public:
     explicit GfxHitTestResult(const ValueType value) noexcept;
     explicit GfxHitTestResult(const SdlType value) noexcept;
 
-    GfxHitTestResult(GfxHitTestResult const& other) noexcept;
+    GfxHitTestResult(const GfxHitTestResult& other) noexcept;
     GfxHitTestResult(GfxHitTestResult&& other) noexcept;
 
-    GfxHitTestResult& operator=(GfxHitTestResult const& other) noexcept;
+    GfxHitTestResult& operator=(const GfxHitTestResult& other) noexcept;
     GfxHitTestResult& operator=(GfxHitTestResult&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

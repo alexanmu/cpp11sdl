@@ -49,15 +49,13 @@ public:
 
     GfxDisplayMode() noexcept;
 
-    explicit GfxDisplayMode(const uint32_t format, const int32_t w, const int32_t h, const int32_t refresh) noexcept;
+    GfxDisplayMode(const uint32_t format, const int32_t w, const int32_t h, const int32_t refresh) noexcept;
     explicit GfxDisplayMode(const SdlType mode) noexcept;
 
-    // Copy Ctor not supported due to driver_data ptr
-    GfxDisplayMode(GfxDisplayMode const&) = delete;
+    GfxDisplayMode(const GfxDisplayMode& other) noexcept;
     GfxDisplayMode(GfxDisplayMode&& other) noexcept;
 
-    // Copy operator not supported due to driver_data ptr
-    GfxDisplayMode& operator=(GfxDisplayMode const&) = delete;
+    GfxDisplayMode& operator=(const GfxDisplayMode& other) noexcept;
     GfxDisplayMode& operator=(GfxDisplayMode&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

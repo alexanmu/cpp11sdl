@@ -80,10 +80,10 @@ public:
     explicit GfxWindowFlags(const SdlType flags) noexcept;
     explicit GfxWindowFlags(const uint32_t flags) noexcept;
 
-    GfxWindowFlags(GfxWindowFlags const& other) noexcept;
+    GfxWindowFlags(const GfxWindowFlags& other) noexcept;
     GfxWindowFlags(GfxWindowFlags&& other) noexcept;
 
-    GfxWindowFlags& operator=(GfxWindowFlags const& other) noexcept;
+    GfxWindowFlags& operator=(const GfxWindowFlags& other) noexcept;
     GfxWindowFlags& operator=(GfxWindowFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

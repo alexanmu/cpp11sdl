@@ -54,8 +54,9 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    GfxVersion getVersion(void) const noexcept;
-    std::string getRevision(void) const noexcept;
+    const GfxVersion getCompiledVersion(void) const noexcept;
+    const GfxVersion getVersion(void) const noexcept;
+    const std::string getRevision(void) const noexcept;
     int32_t getRevisionNumber(void) const noexcept;
 };
 

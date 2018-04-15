@@ -43,10 +43,10 @@ public:
 
     GfxScreenSaver() noexcept;
 
-    GfxScreenSaver(GfxScreenSaver const&) = delete;
+    GfxScreenSaver(const GfxScreenSaver&) = delete;
     GfxScreenSaver(GfxScreenSaver&& other) noexcept;
 
-    GfxScreenSaver& operator=(GfxScreenSaver const&) = delete;
+    GfxScreenSaver& operator=(const GfxScreenSaver&) = delete;
     GfxScreenSaver& operator=(GfxScreenSaver&& other) noexcept;
 
     virtual ~GfxScreenSaver() noexcept;
