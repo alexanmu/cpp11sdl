@@ -47,6 +47,7 @@ class GfxHapticEffect final : public GfxObject
 {
 public:
     typedef SDL_HapticEffect SdlType;
+    typedef SDL_HapticEffect * SdlTypePtr;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -77,6 +78,7 @@ public:
     void clear(void) noexcept;
 
     SdlType getAsSdlType(void) const noexcept;
+    SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     SdlType effect_;
 };

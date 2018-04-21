@@ -56,7 +56,7 @@ public:
     static const bool SdlResource = true;
     static const bool CallsSdl = true;
 
-    GfxSurface();
+    GfxSurface() noexcept;
     explicit GfxSurface(const std::string& surfname, const GfxSurfaceFlags& flags, const int32_t width,
                         const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
                         const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error);

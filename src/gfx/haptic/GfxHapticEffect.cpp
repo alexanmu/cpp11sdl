@@ -181,6 +181,13 @@ GfxHapticEffect::SdlType GfxHapticEffect::getAsSdlType(void) const noexcept
     return effect_;
 }
 
+GfxHapticEffect::SdlTypePtr GfxHapticEffect::getAsSdlTypePtr(void) const noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    return (SdlTypePtr)&effect_;
+}
+
 }  // namespace haptic
 
 }  // namespace gfx

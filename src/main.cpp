@@ -60,6 +60,7 @@
 #include "GfxSurfaceFlags.hpp"
 #include "GfxPixelFormatEnum.hpp"
 #include "GfxTimer.hpp"
+#include "GfxHaptic.hpp"
 
 #define WIN_W 1280
 #define WIN_H 800
@@ -219,6 +220,10 @@ void AfterDeInit(void)
         std::cout << "lso.loadFunction(\"whatever_function\")=" << "nullptr" << '\n';
         std::cout << "err.getError()=" << gfx::error::GfxGetError::getErrorObject().get() << '\n';
     }
+
+    gfx::haptic::GfxHaptic hap;
+    std::cout << "hap.mouseIsHaptic()=" << std::boolalpha << hap.mouseIsHaptic() << std::noboolalpha << std::endl;
+
     std::cout << std::endl;
 }
 

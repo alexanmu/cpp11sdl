@@ -44,7 +44,7 @@ const char GfxSurface::ClassName[] = "GfxSurface";
 const pixels::GfxPixelFormatEnum::ValueType GfxSurface::kDefaultSurfaceColorFormatValue =
     pixels::GfxPixelFormatEnum::ValueType::pixelFormatARGB8888;
 
-GfxSurface::GfxSurface() : GfxObject(ClassName)
+GfxSurface::GfxSurface() noexcept : GfxObject(ClassName)
 {
     surf_ = nullptr;
     surfName_ = "$init$";
