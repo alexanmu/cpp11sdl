@@ -51,7 +51,7 @@ GfxTimerID::GfxTimerID(const SdlType value) noexcept : GfxObject(ClassName)
     id_ = value;
 }
 
-GfxTimerID::GfxTimerID(GfxTimerID const& other) noexcept : GfxObject(other)
+GfxTimerID::GfxTimerID(const GfxTimerID& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxTimerID::GfxTimerID(GfxTimerID&& other) noexcept : GfxObject(std::move(other)
     other.clear();
 }
 
-GfxTimerID& GfxTimerID::operator=(GfxTimerID const& other) noexcept
+GfxTimerID& GfxTimerID::operator=(const GfxTimerID& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

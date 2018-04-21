@@ -43,7 +43,7 @@ GfxTouch::GfxTouch() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxTouch::GfxTouch(GfxTouch const& other) noexcept : GfxObject(other)
+GfxTouch::GfxTouch(const GfxTouch& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -53,7 +53,7 @@ GfxTouch::GfxTouch(GfxTouch&& other) noexcept : GfxObject(std::move(other))
     LOG_TRACE_PRIO_MED();
 }
 
-GfxTouch& GfxTouch::operator=(GfxTouch const& other) noexcept
+GfxTouch& GfxTouch::operator=(const GfxTouch& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -110,7 +110,7 @@ const GfxTouchID GfxTouch::getTouchDevice(const int32_t index) const noexcept
     return GfxTouchID(id);
 }
 
-int32_t GfxTouch::getNumTouchFingers(GfxTouchID const& touchid) const noexcept
+int32_t GfxTouch::getNumTouchFingers(const GfxTouchID& touchid) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -119,7 +119,7 @@ int32_t GfxTouch::getNumTouchFingers(GfxTouchID const& touchid) const noexcept
     return SDL_GetNumTouchFingers(touchid.getAsSdlType());
 }
 
-const GfxFinger GfxTouch::getTouchFinger(GfxTouchID const& touchid, const int32_t index) const noexcept
+const GfxFinger GfxTouch::getTouchFinger(const GfxTouchID& touchid, const int32_t index) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

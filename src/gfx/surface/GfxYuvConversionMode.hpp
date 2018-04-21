@@ -59,10 +59,10 @@ public:
     explicit GfxYuvConversionMode(const ValueType convMode) noexcept;
     explicit GfxYuvConversionMode(const SdlType convMode) noexcept;
 
-    GfxYuvConversionMode(GfxYuvConversionMode const& other) noexcept;
+    GfxYuvConversionMode(const GfxYuvConversionMode& other) noexcept;
     GfxYuvConversionMode(GfxYuvConversionMode&& other) noexcept;
 
-    GfxYuvConversionMode& operator=(GfxYuvConversionMode const& other) noexcept;
+    GfxYuvConversionMode& operator=(const GfxYuvConversionMode& other) noexcept;
     GfxYuvConversionMode& operator=(GfxYuvConversionMode&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -72,6 +72,11 @@ public:
     bool isConversionBT601(void) const noexcept;
     bool isConversionBT709(void) const noexcept;
     bool isConversionAutomatic(void) const noexcept;
+
+    void setModeJPEG(void) noexcept;
+    void setModeBT601(void) noexcept;
+    void setModeBT709(void) noexcept;
+    void setModeAutomatic(void) noexcept;
 
     void clear(void) noexcept;
 

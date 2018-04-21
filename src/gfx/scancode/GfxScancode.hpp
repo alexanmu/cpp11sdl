@@ -299,10 +299,10 @@ public:
     explicit GfxScancode(const std::underlying_type<ValueType>::type code) noexcept;
     explicit GfxScancode(const ValueType code) noexcept;
 
-    GfxScancode(GfxScancode const& other) noexcept;
+    GfxScancode(const GfxScancode& other) noexcept;
     GfxScancode(GfxScancode&& other) noexcept;
 
-    GfxScancode& operator=(GfxScancode const& other) noexcept;
+    GfxScancode& operator=(const GfxScancode& other) noexcept;
     GfxScancode& operator=(GfxScancode&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

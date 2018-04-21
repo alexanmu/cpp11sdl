@@ -49,10 +49,10 @@ public:
     GfxFinger() noexcept;
     explicit GfxFinger(const SdlType finger) noexcept;
 
-    GfxFinger(GfxFinger const& other) noexcept;
+    GfxFinger(const GfxFinger& other) noexcept;
     GfxFinger(GfxFinger&& other) noexcept;
 
-    GfxFinger& operator=(GfxFinger const& other) noexcept;
+    GfxFinger& operator=(const GfxFinger& other) noexcept;
     GfxFinger& operator=(GfxFinger&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -54,7 +54,7 @@ GfxFinger::GfxFinger(const SdlType finger) noexcept : GfxObject(ClassName)
     finger_ = finger;
 }
 
-GfxFinger::GfxFinger(GfxFinger const& other) noexcept : GfxObject(other)
+GfxFinger::GfxFinger(const GfxFinger& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -70,7 +70,7 @@ GfxFinger::GfxFinger(GfxFinger&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxFinger& GfxFinger::operator=(GfxFinger const& other) noexcept
+GfxFinger& GfxFinger::operator=(const GfxFinger& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

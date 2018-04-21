@@ -59,7 +59,7 @@ GfxScancode::GfxScancode(const ValueType code) noexcept : GfxObject(ClassName)
     code_ = static_cast<SdlType>(code);
 }
 
-GfxScancode::GfxScancode(GfxScancode const& other) noexcept : GfxObject(other)
+GfxScancode::GfxScancode(const GfxScancode& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -75,7 +75,7 @@ GfxScancode::GfxScancode(GfxScancode&& other) noexcept : GfxObject(std::move(oth
     other.clear();
 }
 
-GfxScancode& GfxScancode::operator=(GfxScancode const& other) noexcept
+GfxScancode& GfxScancode::operator=(const GfxScancode& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -48,10 +48,10 @@ public:
     GfxTouchID() noexcept;
     explicit GfxTouchID(const SdlType id) noexcept;
 
-    GfxTouchID(GfxTouchID const& other) noexcept;
+    GfxTouchID(const GfxTouchID& other) noexcept;
     GfxTouchID(GfxTouchID&& other) noexcept;
 
-    GfxTouchID& operator=(GfxTouchID const& other) noexcept;
+    GfxTouchID& operator=(const GfxTouchID& other) noexcept;
     GfxTouchID& operator=(GfxTouchID&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

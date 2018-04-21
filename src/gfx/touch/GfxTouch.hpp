@@ -49,10 +49,10 @@ public:
 
     GfxTouch() noexcept;
 
-    GfxTouch(GfxTouch const& other) noexcept;
+    GfxTouch(const GfxTouch& other) noexcept;
     GfxTouch(GfxTouch&& other) noexcept;
 
-    GfxTouch& operator=(GfxTouch const& other) noexcept;
+    GfxTouch& operator=(const GfxTouch& other) noexcept;
     GfxTouch& operator=(GfxTouch&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -60,8 +60,8 @@ public:
 
     int32_t getNumTouchDevices(void) const noexcept;
     const GfxTouchID getTouchDevice(const int32_t index) const noexcept;
-    int32_t getNumTouchFingers(GfxTouchID const& touchid) const noexcept;
-    const GfxFinger getTouchFinger(GfxTouchID const& touchid, const int32_t index) const noexcept;
+    int32_t getNumTouchFingers(const GfxTouchID& touchid) const noexcept;
+    const GfxFinger getTouchFinger(const GfxTouchID& touchid, const int32_t index) const noexcept;
 };
 
 }  // namespace touch

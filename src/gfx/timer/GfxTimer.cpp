@@ -121,7 +121,7 @@ void GfxTimer::delay_(const uint32_t ms) const noexcept
     SDL_Delay(ms);
 }
 
-GfxTimerID GfxTimer::addTimer(const uint32_t interval, GfxTimerCallback const& callback) noexcept
+GfxTimerID GfxTimer::addTimer(const uint32_t interval, const GfxTimerCallback& callback) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -136,7 +136,7 @@ GfxTimerID GfxTimer::addTimer(const uint32_t interval, GfxTimerCallback const& c
     return GfxTimerID(tid);
 }
 
-GfxBool GfxTimer::removeTimer(GfxTimerID const& id) throw(std::runtime_error)
+GfxBool GfxTimer::removeTimer(const GfxTimerID& id) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
 

@@ -113,7 +113,7 @@ std::string GfxRwOps::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-const GfxRwOps GfxRwOps::rwFromFile(std::string const& file, std::string const& mode)
+const GfxRwOps GfxRwOps::rwFromFile(const std::string& file, const std::string& mode)
 {
     assert(file.length() > 0);
     assert(mode.length() > 0);

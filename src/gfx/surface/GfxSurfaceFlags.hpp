@@ -59,10 +59,10 @@ public:
     explicit GfxSurfaceFlags(const ValueType flags) noexcept;
     explicit GfxSurfaceFlags(const SdlType flags) noexcept;
 
-    GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept;
+    GfxSurfaceFlags(const GfxSurfaceFlags& other) noexcept;
     GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept;
 
-    GfxSurfaceFlags& operator=(GfxSurfaceFlags const& other) noexcept;
+    GfxSurfaceFlags& operator=(const GfxSurfaceFlags& other) noexcept;
     GfxSurfaceFlags& operator=(GfxSurfaceFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

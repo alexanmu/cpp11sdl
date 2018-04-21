@@ -292,7 +292,22 @@ static const
         std::is_abstract<T>::value || !std::is_default_constructible<T>::value,
         const std::string>::type tryCallToStringMethod(void)
 {
-    return "std::is_abstract<T>::value || !std::is_default_constructible<T>::value";
+    bool isAbs = std::is_abstract<T>::value;
+    bool isDefCtor = !std::is_default_constructible<T>::value;
+    std::string ret = "";
+    if (isAbs == true)
+    {
+        ret += "std::is_abstract<T>::value";
+    }
+    if ((isAbs == true) && (isDefCtor == true))
+    {
+        ret += " || ";
+    }
+    if (isDefCtor == true)
+    {
+        ret += "!std::is_default_constructible<T>::value";
+    }
+    return ret;
 }
 
 template <typename T>

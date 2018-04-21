@@ -49,10 +49,10 @@ public:
 
     GfxTimer() noexcept;
 
-    GfxTimer(GfxTimer const&) = delete;
+    GfxTimer(const GfxTimer&) = delete;
     GfxTimer(GfxTimer&& other) noexcept;
 
-    GfxTimer& operator=(GfxTimer const&) = delete;
+    GfxTimer& operator=(const GfxTimer&) = delete;
     GfxTimer& operator=(GfxTimer&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -65,8 +65,8 @@ public:
     uint64_t getPerformanceFrequency(void) const noexcept;
     void delay_(const uint32_t ms) const noexcept;
 
-    GfxTimerID addTimer(uint32_t interval, GfxTimerCallback const& callback) noexcept;
-    GfxBool removeTimer(GfxTimerID const& id) throw(std::runtime_error);
+    GfxTimerID addTimer(const uint32_t interval, const GfxTimerCallback& callback) noexcept;
+    GfxBool removeTimer(const GfxTimerID& id) throw(std::runtime_error);
 
     void clear(void) noexcept;
 

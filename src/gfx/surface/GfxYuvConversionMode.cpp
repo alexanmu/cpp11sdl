@@ -63,7 +63,7 @@ GfxYuvConversionMode::GfxYuvConversionMode(const SdlType convMode) noexcept : Gf
     convMode_ = convMode;
 }
 
-GfxYuvConversionMode::GfxYuvConversionMode(GfxYuvConversionMode const& other) noexcept : GfxObject(other)
+GfxYuvConversionMode::GfxYuvConversionMode(const GfxYuvConversionMode& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,7 +79,7 @@ GfxYuvConversionMode::GfxYuvConversionMode(GfxYuvConversionMode&& other) noexcep
     other.clear();
 }
 
-GfxYuvConversionMode& GfxYuvConversionMode::operator=(GfxYuvConversionMode const& other) noexcept
+GfxYuvConversionMode& GfxYuvConversionMode::operator=(const GfxYuvConversionMode& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -149,6 +149,34 @@ bool GfxYuvConversionMode::isConversionAutomatic(void) const noexcept
     LOG_TRACE_PRIO_LOW();
 
     return (convMode_ == SDL_YUV_CONVERSION_AUTOMATIC);
+}
+
+void GfxYuvConversionMode::setModeJPEG(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    convMode_ = SDL_YUV_CONVERSION_JPEG;
+}
+
+void GfxYuvConversionMode::setModeBT601(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    convMode_ = SDL_YUV_CONVERSION_BT601;
+}
+
+void GfxYuvConversionMode::setModeBT709(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    convMode_ = SDL_YUV_CONVERSION_BT709;
+}
+
+void GfxYuvConversionMode::setModeAutomatic(void) noexcept
+{
+    LOG_TRACE_PRIO_LOW();
+
+    convMode_ = SDL_YUV_CONVERSION_AUTOMATIC;
 }
 
 void GfxYuvConversionMode::clear(void) noexcept

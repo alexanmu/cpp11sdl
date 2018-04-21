@@ -63,7 +63,7 @@ GfxSurfaceFlags::GfxSurfaceFlags(const SdlType flags) noexcept : GfxObject(Class
     flags_ = flags;
 }
 
-GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags const& other) noexcept : GfxObject(other)
+GfxSurfaceFlags::GfxSurfaceFlags(const GfxSurfaceFlags& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -79,7 +79,7 @@ GfxSurfaceFlags::GfxSurfaceFlags(GfxSurfaceFlags&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxSurfaceFlags& GfxSurfaceFlags::operator=(GfxSurfaceFlags const& other) noexcept
+GfxSurfaceFlags& GfxSurfaceFlags::operator=(const GfxSurfaceFlags& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

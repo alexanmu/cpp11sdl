@@ -51,7 +51,7 @@ GfxSurface::GfxSurface() : GfxObject(ClassName)
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+GfxSurface::GfxSurface(const std::string& surfname, const GfxSurfaceFlags& flags, const int32_t width,
                        const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
                        const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error) : GfxObject(ClassName)
 {
@@ -67,7 +67,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = SDL_CreateRGBSurface(flags.getAsSdlType(), width, height, depth, Rmask,
-                                            Gmask, Bmask, Amask);
+                                      Gmask, Bmask, Amask);
     if (tmpsurfptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -78,9 +78,9 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+GfxSurface::GfxSurface(const std::string& surfname, const GfxSurfaceFlags& flags, const int32_t width,
                        const int32_t height, const int32_t depth,
-                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxObject(ClassName)
+                       const pixels::GfxPixelFormatEnum& format) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -96,7 +96,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), width, height, depth,
-                                                      format.getAsSdlType());
+                                                format.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -107,7 +107,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const GfxSurfaceFlags& flags
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+GfxSurface::GfxSurface(const std::string& surfname, void * pixels, const int32_t width, const int32_t height,
                        const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
                        const uint32_t bmask, const uint32_t amask) throw(std::runtime_error) : GfxObject(ClassName)
 {
@@ -133,9 +133,9 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+GfxSurface::GfxSurface(const std::string& surfname, void * pixels, const int32_t width, const int32_t height,
                        const int32_t depth, const int32_t pitch,
-                       pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error) : GfxObject(ClassName)
+                       const pixels::GfxPixelFormatEnum& format) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -161,7 +161,7 @@ GfxSurface::GfxSurface(std::string const& surfname, void * pixels, const int32_t
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error) :
+GfxSurface::GfxSurface(const std::string& surfname, const std::string& filename) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -187,7 +187,7 @@ GfxSurface::GfxSurface(std::string const& surfname, std::string const& filename)
     doNotFree_ = false;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf, const bool doNotFree)
+GfxSurface::GfxSurface(const std::string& surfname, const SdlTypePtr surf, const bool doNotFree)
             throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -200,7 +200,7 @@ GfxSurface::GfxSurface(std::string const& surfname, const SdlTypePtr surf, const
     doNotFree_ = doNotFree;
 }
 
-GfxSurface::GfxSurface(std::string const& surfname, const int32_t w, const int32_t h) throw(std::runtime_error)
+GfxSurface::GfxSurface(const std::string& surfname, const int32_t w, const int32_t h) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -279,7 +279,7 @@ std::string GfxSurface::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+void GfxSurface::createSurface(const std::string& surfname, const GfxSurfaceFlags& flags, const int32_t width,
                                const int32_t height, const int32_t depth, const uint32_t Rmask, const uint32_t Gmask,
                                const uint32_t Bmask, const uint32_t Amask) throw(std::runtime_error)
 {
@@ -299,7 +299,7 @@ void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlag
     SdlTypePtr tmpsurfptr;
 
     tmpsurfptr = SDL_CreateRGBSurface(flags.getAsSdlType(), width, height, depth, Rmask,
-                                            Gmask, Bmask, Amask);
+                                      Gmask, Bmask, Amask);
     if (tmpsurfptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -310,9 +310,9 @@ void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlag
     doNotFree_ = false;
 }
 
-void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlags& flags, const int32_t width,
+void GfxSurface::createSurface(const std::string& surfname, const GfxSurfaceFlags& flags, const int32_t width,
                                const int32_t height, const int32_t depth,
-                               pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error)
+                               const pixels::GfxPixelFormatEnum& format) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -332,7 +332,7 @@ void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlag
         throw std::runtime_error("Surface already created");
     }
     tmpsurfptr = SDL_CreateRGBSurfaceWithFormat(flags.getAsSdlType(), width, height, depth,
-                                                      format.getAsSdlType());
+                                                format.getAsSdlType());
     if (tmpsurfptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -344,7 +344,7 @@ void GfxSurface::createSurface(std::string const& surfname, const GfxSurfaceFlag
 }
 
 
-void GfxSurface::createSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+void GfxSurface::createSurface(const std::string& surfname, void * pixels, const int32_t width, const int32_t height,
                                const int32_t depth, const int32_t pitch, const uint32_t rmask, const uint32_t gmask,
                                const uint32_t bmask, const uint32_t amask) throw(std::runtime_error)
 {
@@ -374,9 +374,9 @@ void GfxSurface::createSurface(std::string const& surfname, void * pixels, const
     doNotFree_ = false;
 }
 
-void GfxSurface::createSurface(std::string const& surfname, void * pixels, const int32_t width, const int32_t height,
+void GfxSurface::createSurface(const std::string& surfname, void * pixels, const int32_t width, const int32_t height,
                                const int32_t depth, const int32_t pitch,
-                               pixels::GfxPixelFormatEnum const& format) throw(std::runtime_error)
+                               const pixels::GfxPixelFormatEnum& format) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -406,7 +406,7 @@ void GfxSurface::createSurface(std::string const& surfname, void * pixels, const
     doNotFree_ = false;
 }
 
-void GfxSurface::createSurface(std::string const& surfname, std::string const& filename) throw(std::runtime_error)
+void GfxSurface::createSurface(const std::string& surfname, const std::string& filename) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -435,7 +435,7 @@ void GfxSurface::createSurface(std::string const& surfname, std::string const& f
     doNotFree_ = false;
 }
 
-void GfxSurface::createSurface(std::string const& surfname, const SdlTypePtr surf,
+void GfxSurface::createSurface(const std::string& surfname, const SdlTypePtr surf,
                                const bool doNotFree) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -452,7 +452,7 @@ void GfxSurface::createSurface(std::string const& surfname, const SdlTypePtr sur
     doNotFree_ = doNotFree;
 }
 
-void GfxSurface::createSurface(std::string const& surfname, const int32_t w,
+void GfxSurface::createSurface(const std::string& surfname, const int32_t w,
                                const int32_t h) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -491,7 +491,7 @@ void GfxSurface::freeSurface(void) noexcept
     }
 }
 
-void GfxSurface::setSurfacePalette(pixels::GfxPalette const& palette) const noexcept
+void GfxSurface::setSurfacePalette(const pixels::GfxPalette& palette) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -529,7 +529,7 @@ void GfxSurface::unlockSurface(void) const noexcept
     }
 }
 
-GfxBool GfxSurface::mustLock(void) const noexcept
+const GfxBool GfxSurface::mustLock(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -543,7 +543,7 @@ GfxBool GfxSurface::mustLock(void) const noexcept
     return GfxBool(false);
 }
 
-void GfxSurface::saveBMP(std::string const& filename) const throw(std::runtime_error)
+void GfxSurface::saveBMP(const std::string& filename) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -562,7 +562,7 @@ void GfxSurface::saveBMP(std::string const& filename) const throw(std::runtime_e
     }
 }
 
-void GfxSurface::setSurfaceRLE(GfxBool const& flag) const noexcept
+void GfxSurface::setSurfaceRLE(const GfxBool& flag) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -575,7 +575,7 @@ void GfxSurface::setSurfaceRLE(GfxBool const& flag) const noexcept
     }
 }
 
-void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color) const noexcept
+void GfxSurface::setColorKey(const GfxBool& flag, const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -588,7 +588,7 @@ void GfxSurface::setColorKey(GfxBool const& flag, pixels::GfxColor const& color)
     }
 }
 
-pixels::GfxColor GfxSurface::getColorKey(void) const noexcept
+const pixels::GfxColor GfxSurface::getColorKey(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -603,7 +603,7 @@ pixels::GfxColor GfxSurface::getColorKey(void) const noexcept
     return pixels::GfxColor(key);
 }
 
-void GfxSurface::setSurfaceColorMod(pixels::GfxColor const& color) const noexcept
+void GfxSurface::setSurfaceColorMod(const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -616,7 +616,7 @@ void GfxSurface::setSurfaceColorMod(pixels::GfxColor const& color) const noexcep
     }
 }
 
-pixels::GfxColor GfxSurface::getSurfaceColorMod(void) const noexcept
+const pixels::GfxColor GfxSurface::getSurfaceColorMod(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -661,7 +661,7 @@ uint8_t GfxSurface::getSurfaceAlphaMod(void) const noexcept
     return alpha;
 }
 
-void GfxSurface::setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
+void GfxSurface::setSurfaceBlendMode(const blendmode::GfxBlendMode& blendmode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -674,7 +674,7 @@ void GfxSurface::setSurfaceBlendMode(blendmode::GfxBlendMode const& blendmode) c
     }
 }
 
-blendmode::GfxBlendMode GfxSurface::getSurfaceBlendMode(void) const noexcept
+const blendmode::GfxBlendMode GfxSurface::getSurfaceBlendMode(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -690,7 +690,7 @@ blendmode::GfxBlendMode GfxSurface::getSurfaceBlendMode(void) const noexcept
     return blendmode::GfxBlendMode();
 }
 
-GfxBool GfxSurface::setClipRectOff(void) const noexcept
+const GfxBool GfxSurface::setClipRectOff(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -703,7 +703,7 @@ GfxBool GfxSurface::setClipRectOff(void) const noexcept
     return GfxBool(ret);
 }
 
-GfxBool GfxSurface::setClipRect(rect::GfxRect const& rect) const noexcept
+const GfxBool GfxSurface::setClipRect(const rect::GfxRect& rect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -718,7 +718,7 @@ GfxBool GfxSurface::setClipRect(rect::GfxRect const& rect) const noexcept
     return GfxBool(ret);
 }
 
-rect::GfxRect GfxSurface::getClipRect(void) const noexcept
+const rect::GfxRect GfxSurface::getClipRect(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -734,6 +734,7 @@ rect::GfxRect GfxSurface::getClipRect(void) const noexcept
 
 GfxSurface::SdlTypePtr GfxSurface::duplicateSurface(void) const noexcept
 {
+#warning Should create new GfxSurface object here!
     LOG_TRACE_PRIO_LOW();
 
     SdlTypePtr ptr = nullptr;
@@ -745,9 +746,10 @@ GfxSurface::SdlTypePtr GfxSurface::duplicateSurface(void) const noexcept
     return ptr;
 }
 
-GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& fmt,
-                                                  GfxSurfaceFlags const& sflags) const noexcept
+GfxSurface::SdlTypePtr GfxSurface::convertSurface(const pixels::GfxPixelFormat& fmt,
+                                                  const GfxSurfaceFlags& sflags) const noexcept
 {
+#warning Either inplace conversion or return new GfxSurface object
     LOG_TRACE_PRIO_LOW();
 
     assert(fmt);
@@ -762,9 +764,10 @@ GfxSurface::SdlTypePtr GfxSurface::convertSurface(pixels::GfxPixelFormat const& 
     return ptr;
 }
 
-GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(pixels::GfxPixelFormatEnum const& fmten,
-                                                        GfxSurfaceFlags const& sflags) const noexcept
+GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(const pixels::GfxPixelFormatEnum& fmten,
+                                                        const GfxSurfaceFlags& sflags) const noexcept
 {
+#warning Either inplace conversion or return new GfxSurface object
     LOG_TRACE_PRIO_LOW();
 
     assert(fmten);
@@ -779,8 +782,8 @@ GfxSurface::SdlTypePtr GfxSurface::convertSurfaceFormat(pixels::GfxPixelFormatEn
     return ptr;
 }
 
-void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels::GfxPixelFormatEnum const& srcfmten,
-                               void * src, const int32_t pitch, pixels::GfxPixelFormatEnum const& dstfmten, void * dst,
+void GfxSurface::convertPixels(const int32_t width, const int32_t height, const pixels::GfxPixelFormatEnum& srcfmten,
+                               void * src, const int32_t pitch, const pixels::GfxPixelFormatEnum& dstfmten, void * dst,
                                const int32_t dst_pitch) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -797,11 +800,11 @@ void GfxSurface::convertPixels(const int32_t width, const int32_t height, pixels
     int32_t ret;
 
     ret = SDL_ConvertPixels(width, height, srcfmten.getAsSdlType(), src, pitch, dstfmten.getAsSdlType(),
-                                  dst, dst_pitch);
+                            dst, dst_pitch);
     assert((ret == -1) || (ret == 0));
 }
 
-void GfxSurface::fillRect(rect::GfxRect const& rect, pixels::GfxColor const& color) const noexcept
+void GfxSurface::fillRect(const rect::GfxRect& rect, const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -817,7 +820,7 @@ void GfxSurface::fillRect(rect::GfxRect const& rect, pixels::GfxColor const& col
     }
 }
 
-void GfxSurface::fillRect(pixels::GfxColor const& color) const noexcept
+void GfxSurface::fillRect(const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -832,7 +835,7 @@ void GfxSurface::fillRect(pixels::GfxColor const& color) const noexcept
     }
 }
 
-void GfxSurface::fillRects(std::vector<rect::GfxRect> const& rects, pixels::GfxColor const& color) const noexcept
+void GfxSurface::fillRects(const std::vector<rect::GfxRect>& rects, const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -849,8 +852,8 @@ void GfxSurface::fillRects(std::vector<rect::GfxRect> const& rects, pixels::GfxC
     }
 }
 
-void GfxSurface::upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
-                           rect::GfxRect const& dstrect) const noexcept
+void GfxSurface::upperBlit(const GfxSurface& src, const rect::GfxRect& srcrect,
+                           const rect::GfxRect& dstrect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -864,8 +867,8 @@ void GfxSurface::upperBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
     }
 }
 
-void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
-                           rect::GfxRect const& dstrect) const noexcept
+void GfxSurface::lowerBlit(const GfxSurface& src, const rect::GfxRect& srcrect,
+                           const rect::GfxRect& dstrect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -879,8 +882,8 @@ void GfxSurface::lowerBlit(GfxSurface const& src, rect::GfxRect const& srcrect,
     }
 }
 
-void GfxSurface::softStrech(GfxSurface const& src, rect::GfxRect const& srcrect,
-                            rect::GfxRect const& dstrect) const noexcept
+void GfxSurface::softStrech(const GfxSurface& src, const rect::GfxRect& srcrect,
+                            const rect::GfxRect& dstrect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -894,8 +897,8 @@ void GfxSurface::softStrech(GfxSurface const& src, rect::GfxRect const& srcrect,
     }
 }
 
-void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
-                                 rect::GfxRect const& dstrect) const noexcept
+void GfxSurface::upperBlitScaled(const GfxSurface& src, const rect::GfxRect& srcrect,
+                                 const rect::GfxRect& dstrect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -909,8 +912,8 @@ void GfxSurface::upperBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     }
 }
 
-void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& srcrect,
-                                 rect::GfxRect const& dstrect) const noexcept
+void GfxSurface::lowerBlitScaled(const GfxSurface& src, const rect::GfxRect& srcrect,
+                                 const rect::GfxRect& dstrect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -924,7 +927,7 @@ void GfxSurface::lowerBlitScaled(GfxSurface const& src, rect::GfxRect const& src
     }
 }
 
-void GfxSurface::blitSurface(GfxSurface const& src, rect::GfxRect const& srcr, rect::GfxRect const& dstr) const noexcept
+void GfxSurface::blitSurface(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -938,7 +941,7 @@ void GfxSurface::blitSurface(GfxSurface const& src, rect::GfxRect const& srcr, r
     }
 }
 
-void GfxSurface::blitSurface(GfxSurface const& src) const noexcept
+void GfxSurface::blitSurface(const GfxSurface& src) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -950,7 +953,7 @@ void GfxSurface::blitSurface(GfxSurface const& src) const noexcept
     }
 }
 
-void GfxSurface::blitScaled(GfxSurface const& src, rect::GfxRect const& srcr, rect::GfxRect const& dstr) const noexcept
+void GfxSurface::blitScaled(const GfxSurface& src, const rect::GfxRect& srcr, const rect::GfxRect& dstr) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -976,7 +979,7 @@ void GfxSurface::blitScaled(const GfxSurface& src) const noexcept
     }
 }
 
-GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
+const GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -987,7 +990,7 @@ GfxSurfaceFlags GfxSurface::getSurfaceFlags(void) const noexcept
     return GfxSurfaceFlags();
 }
 
-pixels::GfxPixelFormatEnum GfxSurface::getPixelFormat(void) const noexcept
+const pixels::GfxPixelFormatEnum GfxSurface::getPixelFormat(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1031,7 +1034,7 @@ int32_t GfxSurface::getPitch(void) const noexcept
     return -1;
 }
 
-void * GfxSurface::getPixels(void) const noexcept
+const void * GfxSurface::getPixels(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1042,7 +1045,7 @@ void * GfxSurface::getPixels(void) const noexcept
     return nullptr;
 }
 
-void * GfxSurface::getUserData(void) const noexcept
+const void * GfxSurface::getUserData(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1064,7 +1067,7 @@ bool GfxSurface::locked(void) const noexcept
     return false;
 }
 
-void * GfxSurface::lockData(void) const noexcept
+const void * GfxSurface::lockData(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1107,14 +1110,14 @@ uint32_t GfxSurface::getBytesPerPixel(void) const noexcept
     return ret;
 }
 
-std::string const& GfxSurface::getSurfaceName(void) const noexcept
+const std::string& GfxSurface::getSurfaceName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return surfName_;
 }
 
-void GfxSurface::setSurfaceName(std::string const& name) noexcept
+void GfxSurface::setSurfaceName(const std::string& name) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1123,7 +1126,7 @@ void GfxSurface::setSurfaceName(std::string const& name) noexcept
     surfName_ = name;
 }
 
-void GfxSurface::putPixel(const int32_t x, const int32_t y, pixels::GfxColor const& color) const noexcept
+void GfxSurface::putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1146,7 +1149,7 @@ void GfxSurface::putPixel(const int32_t x, const int32_t y, pixels::GfxColor con
     SDL_UnlockSurface(surf_);
 }
 
-pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y) const noexcept
+const pixels::GfxColor GfxSurface::getPixel(const int32_t x, const int32_t y) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -1211,7 +1214,7 @@ GfxSurface::SdlTypePtr GfxSurface::getAsSdlTypePtr(void) const noexcept
     return surf_;
 }
 
-void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, pixels::GfxColor const& color) const noexcept
+void GfxSurface::putPixelPrv(const int32_t x, const int32_t y, const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

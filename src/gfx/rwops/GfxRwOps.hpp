@@ -50,10 +50,10 @@ public:
     GfxRwOps() noexcept;
     explicit GfxRwOps(const SdlTypePtr rwops) throw(std::runtime_error);
 
-    GfxRwOps(GfxRwOps const& other) = delete;
+    GfxRwOps(const GfxRwOps& other) = delete;
     GfxRwOps(GfxRwOps&& other) noexcept;
 
-    GfxRwOps& operator=(GfxRwOps const& other) = delete;
+    GfxRwOps& operator=(const GfxRwOps& other) = delete;
     GfxRwOps& operator=(GfxRwOps&& other) noexcept;
 
     virtual ~GfxRwOps() noexcept;
@@ -61,8 +61,8 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    static const GfxRwOps rwFromFile(std::string const& file, std::string const& mode);
-    static const GfxRwOps rwFromFP(void * fp, GfxBool const& autoclose);
+    static const GfxRwOps rwFromFile(const std::string& file, const std::string& mode);
+    static const GfxRwOps rwFromFP(void * fp, const GfxBool& autoclose);
     static const GfxRwOps rwFromMem(void * mem, const int32_t size);
     static const GfxRwOps rwFromConstMem(const void * mem, const int32_t size);
 

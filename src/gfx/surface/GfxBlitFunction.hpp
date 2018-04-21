@@ -51,8 +51,8 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual int32_t operator()(GfxSurface const& src, rect::GfxRect const& srcrect, GfxSurface const& dst,
-                               rect::GfxRect const& dstrect) noexcept = 0;
+    virtual int32_t operator()(const GfxSurface& src, const rect::GfxRect& srcrect, const GfxSurface& dst,
+                               const rect::GfxRect& dstrect) noexcept = 0;
 };
 
 }  // namespace surface

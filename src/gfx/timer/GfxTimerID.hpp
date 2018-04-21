@@ -47,10 +47,10 @@ public:
     GfxTimerID() noexcept;
     explicit GfxTimerID(const SdlType value) noexcept;
 
-    GfxTimerID(GfxTimerID const& other) noexcept;
+    GfxTimerID(const GfxTimerID& other) noexcept;
     GfxTimerID(GfxTimerID&& other) noexcept;
 
-    GfxTimerID& operator=(GfxTimerID const& other) noexcept;
+    GfxTimerID& operator=(const GfxTimerID& other) noexcept;
     GfxTimerID& operator=(GfxTimerID&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
