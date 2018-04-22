@@ -65,7 +65,7 @@ GfxTextureAccess::GfxTextureAccess(const int32_t access) noexcept : GfxObject(Cl
     access_ = static_cast<SdlType>(access);
 }
 
-GfxTextureAccess::GfxTextureAccess(GfxTextureAccess const& other) noexcept : GfxObject(other)
+GfxTextureAccess::GfxTextureAccess(const GfxTextureAccess& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -81,7 +81,7 @@ GfxTextureAccess::GfxTextureAccess(GfxTextureAccess&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxTextureAccess& GfxTextureAccess::operator=(GfxTextureAccess const& other) noexcept
+GfxTextureAccess& GfxTextureAccess::operator=(const GfxTextureAccess& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

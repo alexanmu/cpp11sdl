@@ -57,12 +57,21 @@ GfxRendererFlags::GfxRendererFlags(const SdlType flags) noexcept : GfxObject(Cla
 {
     LOG_TRACE_PRIO_MED();
 
-    assert(flags > 0);
+    assert(flags >= 0);
 
     flags_ = flags;
 }
 
-GfxRendererFlags::GfxRendererFlags(GfxRendererFlags const& other) noexcept : GfxObject(other)
+GfxRendererFlags::GfxRendererFlags(const int32_t flags) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(flags >= 0);
+
+    flags_ = static_cast<SdlType>(flags);
+}
+
+GfxRendererFlags::GfxRendererFlags(const GfxRendererFlags& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -78,7 +87,7 @@ GfxRendererFlags::GfxRendererFlags(GfxRendererFlags&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxRendererFlags& GfxRendererFlags::operator=(GfxRendererFlags const& other) noexcept
+GfxRendererFlags& GfxRendererFlags::operator=(const GfxRendererFlags& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

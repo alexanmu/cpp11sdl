@@ -45,17 +45,17 @@ public:
 
     GfxGetRendererInfo() noexcept;
 
-    GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept;
+    GfxGetRendererInfo(const GfxGetRendererInfo& other) noexcept;
     GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept;
 
-    GfxGetRendererInfo& operator=(GfxGetRendererInfo const& other) noexcept;
+    GfxGetRendererInfo& operator=(const GfxGetRendererInfo& other) noexcept;
     GfxGetRendererInfo& operator=(GfxGetRendererInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
     int32_t getNumRenderDrivers(void) noexcept;
-    GfxRendererInfo * getRenderDriverInfo(const int32_t index) noexcept;
+    const GfxRendererInfo getRenderDriverInfo(const int32_t index) noexcept;
 private:
     int32_t numRenderDrivers_;
 };

@@ -47,10 +47,10 @@ public:
     explicit GfxTextureFormats(const int32_t formatsCount) throw(std::runtime_error);
     explicit GfxTextureFormats(const int32_t formatsCount, const uint32_t formats[]) throw(std::runtime_error);
 
-    GfxTextureFormats(GfxTextureFormats const& other) noexcept;
+    GfxTextureFormats(const GfxTextureFormats& other) noexcept;
     GfxTextureFormats(GfxTextureFormats&& other) noexcept;
 
-    GfxTextureFormats& operator=(GfxTextureFormats const& other) noexcept;
+    GfxTextureFormats& operator=(const GfxTextureFormats& other) noexcept;
     GfxTextureFormats& operator=(GfxTextureFormats&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

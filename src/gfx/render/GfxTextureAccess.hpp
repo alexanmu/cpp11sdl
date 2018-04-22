@@ -58,10 +58,10 @@ public:
     explicit GfxTextureAccess(const SdlType access) noexcept;
     explicit GfxTextureAccess(const int32_t access) noexcept;
 
-    GfxTextureAccess(GfxTextureAccess const& other) noexcept;
+    GfxTextureAccess(const GfxTextureAccess& other) noexcept;
     GfxTextureAccess(GfxTextureAccess&& other) noexcept;
 
-    GfxTextureAccess& operator=(GfxTextureAccess const& other) noexcept;
+    GfxTextureAccess& operator=(const GfxTextureAccess& other) noexcept;
     GfxTextureAccess& operator=(GfxTextureAccess&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

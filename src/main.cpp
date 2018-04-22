@@ -168,40 +168,39 @@ void AfterInit(void)
         std::cout << "v.getNumDisplayModes(" << i << ")=" << v.getNumDisplayModes(i) << '\n';
         gfx::video::GfxDisplayMode dm = v.getCurrentDisplayMode(i);
         gfx::pixels::GfxPixelFormatEnum fmt = dm.getFormat();
-        std::cout << "dm.get()->getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
+        std::cout << "dm.get().getFormat()=" << "0x" << std::uppercase << std::setfill('0') <<
                     std::setw(8) << std::hex << static_cast<uint32_t>(fmt.getValue()) << std::dec << '\n';
-        std::cout << "dm.get()->getFormat()=" << static_cast<uint32_t>(fmt.getValue()) << '\n';
-        std::cout << "dm.get()->getWidth()=" << dm.getWidth() << '\n';
-        std::cout << "dm.get()->getHeight()=" << dm.getHeight() << '\n';
-        std::cout << "dm.get()->getRefreshRate()=" << dm.getRefreshRate() << "Hz" << '\n';
+        std::cout << "dm.get(.getFormat()=" << static_cast<uint32_t>(fmt.getValue()) << '\n';
+        std::cout << "dm.get().getWidth()=" << dm.getWidth() << '\n';
+        std::cout << "dm.get().getHeight()=" << dm.getHeight() << '\n';
+        std::cout << "dm.get().getRefreshRate()=" << dm.getRefreshRate() << "Hz" << '\n';
 
         gfx::endian::GfxEndian e;
 
         std::cout << "e.swapFloatBE(d)=" << e.swapFloatBE(d) << '\n';
     }
     gfx::render::GfxGetRendererInfo gri;
-    gfx::render::GfxRendererInfo * ri = nullptr;
+    gfx::render::GfxRendererInfo ri;
 
     std::cout << "gri.getNumRenderDrivers()=" << gri.getNumRenderDrivers() << '\n';
     for (int i = 0; i < gri.getNumRenderDrivers(); i++)
     {
         ri = gri.getRenderDriverInfo(i);
-        std::cout << "ri.getName(" << i << ")=" << ri->getName() << '\n';
-        std::cout << "ri.getFlags(" << i << ")=" << ri->getFlags().getAsSdlType() << '\n';
-        std::cout << "ri.getMaxTextureWidth(" << i << ")=" << ri->getMaxTextureWidth() << '\n';
-        std::cout << "ri.getMaxTextureHeight(" << i << ")=" << ri->getMaxTextureHeight() << '\n';
-        std::cout << "ri.getNumTextureFormats(" << i << ")=" << ri->getNumTextureFormats() << '\n';
-        for (uint32_t j = 0; j < ri->getNumTextureFormats(); j++)
+        std::cout << "ri.getName(" << i << ")=" << ri.getName() << '\n';
+        std::cout << "ri.getFlags(" << i << ")=" << ri.getFlags().getAsSdlType() << '\n';
+        std::cout << "ri.getMaxTextureWidth(" << i << ")=" << ri.getMaxTextureWidth() << '\n';
+        std::cout << "ri.getMaxTextureHeight(" << i << ")=" << ri.getMaxTextureHeight() << '\n';
+        std::cout << "ri.getNumTextureFormats(" << i << ")=" << ri.getNumTextureFormats() << '\n';
+        for (uint32_t j = 0; j < ri.getNumTextureFormats(); j++)
         {
-            std::cout << "ri.getTextureFormats(" << i << ")[" << j << "]=" << ri->getTextureFormats()[j] << '\n';
+            std::cout << "ri.getTextureFormats(" << i << ")[" << j << "]=" << ri.getTextureFormats()[j] << '\n';
         }
-        gfx::render::GfxRendererFlags rf = ri->getFlags();
+        gfx::render::GfxRendererFlags rf = ri.getFlags();
         std::cout << "rf.isUnknown(" << i << ")=" << rf.isUnknown() << '\n';
         std::cout << "rf.isSoftware(" << i << ")=" << rf.isSoftware() << '\n';
         std::cout << "rf.isAccelerated(" << i << ")=" << rf.isAccelerated() << '\n';
         std::cout << "rf.getPresentVSync(" << i << ")=" << rf.getPresentVSync() << '\n';
         std::cout << "rf.getTargetTexture(" << i << ")=" << rf.getTargetTexture() << '\n';
-        delete ri;
     }
     std::cout << std::endl;
 }
@@ -306,26 +305,25 @@ void _doStuff(void)
     rflags.setTargetTexture();
     gfx::render::GfxRenderer rend("Main renderer", win, rflags);
 
-    gfx::render::GfxRendererInfo * ri;
+    gfx::render::GfxRendererInfo ri;
     ri = rend.getRendererInfo();
-    std::cout << "ri.getName()=" << ri->getName() << '\n';
-    std::cout << "ri.getFlags()=" << ri->getFlags().getAsSdlType() << '\n';
-    std::cout << "ri.getMaxTextureWidth()=" << ri->getMaxTextureWidth() << '\n';
-    std::cout << "ri.getMaxTextureHeight()=" << ri->getMaxTextureHeight() << '\n';
-    std::cout << "ri.getNumTextureFormats()=" << ri->getNumTextureFormats() << '\n';
+    std::cout << "ri.getName()=" << ri.getName() << '\n';
+    std::cout << "ri.getFlags()=" << ri.getFlags().getAsSdlType() << '\n';
+    std::cout << "ri.getMaxTextureWidth()=" << ri.getMaxTextureWidth() << '\n';
+    std::cout << "ri.getMaxTextureHeight()=" << ri.getMaxTextureHeight() << '\n';
+    std::cout << "ri.getNumTextureFormats()=" << ri.getNumTextureFormats() << '\n';
 
-    if (ri->getNumTextureFormats() > 0)
+    if (ri.getNumTextureFormats() > 0)
     {
         gfx::render::GfxTextureFormats gtf;
 
-        gtf = ri->getTextureFormats();
-        for (uint32_t i = 0; i < ri->getNumTextureFormats(); i++)
+        gtf = ri.getTextureFormats();
+        for (uint32_t i = 0; i < ri.getNumTextureFormats(); i++)
         {
             gfx::pixels::GfxPixelFormat gpf { gfx::pixels::GfxPixelFormatEnum(gtf[i]) };
             std::cout << "gpf.getPixelFormatName()=" << gpf.getPixelFormatName() << '\n';
         }
     }
-    delete ri;
 
     gfx::surface::GfxSurface sbitmap("sbitmap", std::string(__base_path) + std::string("/Image2.bmp"));
     bmpSurfaceInfo(&sbitmap);
@@ -573,7 +571,7 @@ void _doStuff(void)
             win.setWindowTitle(str_title);
             surfcanvas.blitSurface(sbitmap, gfx::rect::GfxRect(0, 0, sbitmap.getWidth(), sbitmap.getHeight()),
                                    gfx::rect::GfxRect(160, 640, WIN_W, WIN_H));
-            gfx::render::GfxTexture canvas_tex("Canvas texture", &rend, surfcanvas);
+            gfx::render::GfxTexture canvas_tex("Canvas texture", rend, surfcanvas);
             canvas_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendModeNone);
 
             rt.setX(0);
@@ -584,7 +582,7 @@ void _doStuff(void)
             rt.setX(WIN_W / 2);
             colors_surf.fillRect(rt, gfx::pixels::GfxColor(255-r1, 255-g1, 255-b1, a1));
 
-            gfx::render::GfxTexture colors_tex("Colors texture", &rend, colors_surf);
+            gfx::render::GfxTexture colors_tex("Colors texture", rend, colors_surf);
             colors_tex.setBlendMode(gfx::blendmode::GfxBlendMode::ValueType::blendModeBlend);
 
             rend.renderCopy(canvas_tex);

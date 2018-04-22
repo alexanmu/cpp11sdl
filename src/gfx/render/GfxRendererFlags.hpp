@@ -58,11 +58,12 @@ public:
 
     explicit GfxRendererFlags(const ValueType flags) noexcept;
     explicit GfxRendererFlags(const SdlType flags) noexcept;
+    explicit GfxRendererFlags(const int32_t flags) noexcept;
 
-    GfxRendererFlags(GfxRendererFlags const& other) noexcept;
+    GfxRendererFlags(const GfxRendererFlags& other) noexcept;
     GfxRendererFlags(GfxRendererFlags&& other) noexcept;
 
-    GfxRendererFlags& operator=(GfxRendererFlags const& other) noexcept;
+    GfxRendererFlags& operator=(const GfxRendererFlags& other) noexcept;
     GfxRendererFlags& operator=(GfxRendererFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

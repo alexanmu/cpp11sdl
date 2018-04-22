@@ -113,7 +113,7 @@ std::string GfxRendererInfo::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-std::string GfxRendererInfo::getName(void) const noexcept
+const std::string GfxRendererInfo::getName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -123,7 +123,7 @@ std::string GfxRendererInfo::getName(void) const noexcept
     return str;
 }
 
-GfxRendererFlags GfxRendererInfo::getFlags(void) const noexcept
+const GfxRendererFlags GfxRendererInfo::getFlags(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -137,7 +137,7 @@ uint32_t GfxRendererInfo::getNumTextureFormats(void) const noexcept
     return info_.num_texture_formats;
 }
 
-GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const noexcept
+const GfxTextureFormats GfxRendererInfo::getTextureFormats(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -50,7 +50,7 @@ GfxRenderer::GfxRenderer() : GfxObject(ClassName)
     rendName_ = "$init$";
 }
 
-GfxRenderer::GfxRenderer(std::string const& rendname, video::GfxWindow const& win, GfxRendererFlags const& flags)
+GfxRenderer::GfxRenderer(const std::string& rendname, const video::GfxWindow& win, const GfxRendererFlags& flags)
     throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -71,7 +71,7 @@ GfxRenderer::GfxRenderer(std::string const& rendname, video::GfxWindow const& wi
     rendName_ = rendname;
 }
 
-GfxRenderer::GfxRenderer(std::string const& rendname, surface::GfxSurface const& surf)
+GfxRenderer::GfxRenderer(const std::string& rendname, const surface::GfxSurface& surf)
                          throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -141,8 +141,8 @@ std::string GfxRenderer::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxRenderer::createRenderer(std::string const& rendname, video::GfxWindow const& win,
-                                 GfxRendererFlags const& flags) throw(std::runtime_error)
+void GfxRenderer::createRenderer(const std::string& rendname, const video::GfxWindow& win,
+                                 const GfxRendererFlags& flags) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -166,7 +166,7 @@ void GfxRenderer::createRenderer(std::string const& rendname, video::GfxWindow c
     rendName_ = rendname;
 }
 
-void GfxRenderer::createRenderer(std::string const& rendname, surface::GfxSurface const& surf)
+void GfxRenderer::createRenderer(const std::string& rendname, const surface::GfxSurface& surf)
                                  throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
@@ -190,7 +190,7 @@ void GfxRenderer::createRenderer(std::string const& rendname, surface::GfxSurfac
     rendName_ = rendname;
 }
 
-GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) const noexcept
+GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(const video::GfxWindow& win) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -209,7 +209,7 @@ GfxRenderer::SdlTypePtr GfxRenderer::getRenderer(video::GfxWindow const& win) co
     }
 }
 
-GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
+const GfxRendererInfo GfxRenderer::getRendererInfo(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -218,12 +218,9 @@ GfxRendererInfo * GfxRenderer::getRendererInfo(void) const noexcept
     if (renderer_ != nullptr)
     {
         SDL_GetRendererInfo(renderer_, &ri);
-        return new GfxRendererInfo(ri);
+        return GfxRendererInfo(ri);
     }
-    else
-    {
-        return nullptr;
-    }
+    return GfxRendererInfo();
 }
 
 void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
@@ -242,7 +239,7 @@ void GfxRenderer::getRendererOutputSize(int32_t * w, int32_t * h) const noexcept
     }
 }
 
-void GfxRenderer::setRenderTarget(GfxTexture const& tex) const noexcept
+void GfxRenderer::setRenderTarget(const GfxTexture& tex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -299,7 +296,7 @@ void GfxRenderer::renderGetLogicalSize(int32_t * w, int32_t * h) const noexcept
     }
 }
 
-void GfxRenderer::renderSetIntegerScale(GfxBool const& enable) const noexcept
+void GfxRenderer::renderSetIntegerScale(const GfxBool& enable) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -314,7 +311,7 @@ void GfxRenderer::renderSetIntegerScale(GfxBool const& enable) const noexcept
     }
 }
 
-GfxBool GfxRenderer::renderGetIntegerScale(void) const noexcept
+const GfxBool GfxRenderer::renderGetIntegerScale(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -328,7 +325,7 @@ GfxBool GfxRenderer::renderGetIntegerScale(void) const noexcept
     return GfxBool(false);
 }
 
-void GfxRenderer::renderSetViewport(rect::GfxRect const& rect) const noexcept
+void GfxRenderer::renderSetViewport(const rect::GfxRect& rect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -343,7 +340,7 @@ void GfxRenderer::renderSetViewport(rect::GfxRect const& rect) const noexcept
     }
 }
 
-rect::GfxRect GfxRenderer::renderGetViewport(void) const noexcept
+const rect::GfxRect GfxRenderer::renderGetViewport(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -357,7 +354,7 @@ rect::GfxRect GfxRenderer::renderGetViewport(void) const noexcept
     return rect::GfxRect();
 }
 
-void GfxRenderer::renderSetClipRect(rect::GfxRect const& rect) const noexcept
+void GfxRenderer::renderSetClipRect(const rect::GfxRect& rect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -372,7 +369,7 @@ void GfxRenderer::renderSetClipRect(rect::GfxRect const& rect) const noexcept
     }
 }
 
-rect::GfxRect GfxRenderer::renderGetClipRect(void) const noexcept
+const rect::GfxRect GfxRenderer::renderGetClipRect(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -386,7 +383,7 @@ rect::GfxRect GfxRenderer::renderGetClipRect(void) const noexcept
     return rect::GfxRect();
 }
 
-GfxBool GfxRenderer::renderIsClipEnabled(void) const noexcept
+const GfxBool GfxRenderer::renderIsClipEnabled(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -432,7 +429,7 @@ void GfxRenderer::renderGetScale(float * scaleX, float * scaleY) const noexcept
 }
 
 void GfxRenderer::setRenderDrawColor(const uint8_t r, const uint8_t g, const uint8_t b,
-                                    const uint8_t a) const noexcept
+                                     const uint8_t a) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -445,7 +442,7 @@ void GfxRenderer::setRenderDrawColor(const uint8_t r, const uint8_t g, const uin
     }
 }
 
-void GfxRenderer::setRenderDrawColor(pixels::GfxColor const& color) const noexcept
+void GfxRenderer::setRenderDrawColor(const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -456,7 +453,7 @@ void GfxRenderer::setRenderDrawColor(pixels::GfxColor const& color) const noexce
     if (renderer_ != nullptr)
     {
         ret = SDL_SetRenderDrawColor(renderer_, color.getRed(), color.getGreen(),
-                                            color.getBlue(), color.getAlpha());
+                                     color.getBlue(), color.getAlpha());
         assert((ret == -1) || (ret == 0));
     }
 }
@@ -483,7 +480,7 @@ void GfxRenderer::getRenderDrawColor(uint8_t * r, uint8_t * g, uint8_t * b, uint
     }
 }
 
-pixels::GfxColor GfxRenderer::getRenderDrawColor(void) const noexcept
+const pixels::GfxColor GfxRenderer::getRenderDrawColor(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -505,7 +502,7 @@ pixels::GfxColor GfxRenderer::getRenderDrawColor(void) const noexcept
     return pixels::GfxColor();
 }
 
-void GfxRenderer::setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
+void GfxRenderer::setRenderDrawBlendMode(const blendmode::GfxBlendMode& blendmode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -520,7 +517,7 @@ void GfxRenderer::setRenderDrawBlendMode(blendmode::GfxBlendMode const& blendmod
     }
 }
 
-blendmode::GfxBlendMode GfxRenderer::getRenderDrawBlendMode(void) const noexcept
+const blendmode::GfxBlendMode GfxRenderer::getRenderDrawBlendMode(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -574,7 +571,7 @@ void GfxRenderer::renderDrawPoint(const int32_t x, const int32_t y) const noexce
     }
 }
 
-void GfxRenderer::renderDrawPoint(rect::GfxPoint const& point) const noexcept
+void GfxRenderer::renderDrawPoint(const rect::GfxPoint& point) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -589,7 +586,7 @@ void GfxRenderer::renderDrawPoint(rect::GfxPoint const& point) const noexcept
     }
 }
 
-void GfxRenderer::renderDrawPoints(std::vector<rect::GfxPoint> const& points) const noexcept
+void GfxRenderer::renderDrawPoints(const std::vector<rect::GfxPoint>& points) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -605,7 +602,7 @@ void GfxRenderer::renderDrawPoints(std::vector<rect::GfxPoint> const& points) co
 }
 
 void GfxRenderer::renderDrawLine(const int32_t x1, const int32_t y1, const int32_t x2,
-                                const int32_t y2) const noexcept
+                                 const int32_t y2) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -623,8 +620,8 @@ void GfxRenderer::renderDrawLine(const int32_t x1, const int32_t y1, const int32
     }
 }
 
-void GfxRenderer::renderDrawLine(rect::GfxPoint const& pt1,
-                                 rect::GfxPoint const& pt2) const noexcept
+void GfxRenderer::renderDrawLine(const rect::GfxPoint& pt1,
+                                 const rect::GfxPoint& pt2) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -641,7 +638,7 @@ void GfxRenderer::renderDrawLine(rect::GfxPoint const& pt1,
     }
 }
 
-void GfxRenderer::renderDrawLines(std::vector<rect::GfxPoint> const& points) const noexcept
+void GfxRenderer::renderDrawLines(const std::vector<rect::GfxPoint>& points) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -657,7 +654,7 @@ void GfxRenderer::renderDrawLines(std::vector<rect::GfxPoint> const& points) con
     }
 }
 
-void GfxRenderer::renderDrawRect(rect::GfxRect const& rect) const noexcept
+void GfxRenderer::renderDrawRect(const rect::GfxRect& rect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -672,7 +669,7 @@ void GfxRenderer::renderDrawRect(rect::GfxRect const& rect) const noexcept
     }
 }
 
-void GfxRenderer::renderDrawRects(std::vector<rect::GfxRect> const& rects) const noexcept
+void GfxRenderer::renderDrawRects(const std::vector<rect::GfxRect>& rects) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -680,14 +677,14 @@ void GfxRenderer::renderDrawRects(std::vector<rect::GfxRect> const& rects) const
 
     if (renderer_ != nullptr)
     {
-        for (auto const& it : rects)
+        for (auto& it : rects)
         {
             renderDrawRect(it);
         }
     }
 }
 
-void GfxRenderer::renderFillRect(rect::GfxRect const& rect) const noexcept
+void GfxRenderer::renderFillRect(const rect::GfxRect& rect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -702,19 +699,19 @@ void GfxRenderer::renderFillRect(rect::GfxRect const& rect) const noexcept
     }
 }
 
-void GfxRenderer::renderFillRects(std::vector<rect::GfxRect> const& rects) const noexcept
+void GfxRenderer::renderFillRects(const std::vector<rect::GfxRect>& rects) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     assert(rects.size() > 0);
 
-    for (auto const& it : rects)
+    for (auto& it : rects)
     {
         renderDrawRect(it);
     }
 }
 
-void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest) const noexcept
+void GfxRenderer::renderCopy(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -727,14 +724,14 @@ void GfxRenderer::renderCopy(GfxTexture const& tex, rect::GfxRect const& src, re
     if (renderer_ != nullptr)
     {
         ret = SDL_RenderCopy(renderer_,
-                                   tex.getAsSdlTypePtr(),
-                                   src.getAsSdlTypePtr(),
-                                   dest.getAsSdlTypePtr());
+                             tex.getAsSdlTypePtr(),
+                             src.getAsSdlTypePtr(),
+                             dest.getAsSdlTypePtr());
         assert(ret == 0);
     }
 }
 
-void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
+void GfxRenderer::renderCopy(const GfxTexture& tex) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -749,8 +746,8 @@ void GfxRenderer::renderCopy(GfxTexture const& tex) const noexcept
     }
 }
 
-void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, rect::GfxRect const& dest,
-                               const double angle, rect::GfxPoint const& pt, GfxRendererFlip const& flip)
+void GfxRenderer::renderCopyEx(const GfxTexture& tex, const rect::GfxRect& src, const rect::GfxRect& dest,
+                               const double angle, const rect::GfxPoint& pt, const GfxRendererFlip& flip)
                                const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -766,18 +763,18 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, rect::GfxRect const& src, 
     if (renderer_ != nullptr)
     {
         ret = SDL_RenderCopyEx(renderer_,
-                                     tex.getAsSdlTypePtr(),
-                                     src.getAsSdlTypePtr(),
-                                     dest.getAsSdlTypePtr(),
-                                     angle,
-                                     pt.getAsSdlTypePtr(),
-                                     flip.getAsSdlType());
+                               tex.getAsSdlTypePtr(),
+                               src.getAsSdlTypePtr(),
+                               dest.getAsSdlTypePtr(),
+                               angle,
+                               pt.getAsSdlTypePtr(),
+                               flip.getAsSdlType());
         assert(ret == 0);
     }
 }
 
-void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::GfxPoint const& pt,
-                                GfxRendererFlip const& flip) const noexcept
+void GfxRenderer::renderCopyEx(const GfxTexture& tex, const double angle, const rect::GfxPoint& pt,
+                               const GfxRendererFlip& flip) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -790,18 +787,18 @@ void GfxRenderer::renderCopyEx(GfxTexture const& tex, const double angle, rect::
     if (renderer_ != nullptr)
     {
         ret = SDL_RenderCopyEx(renderer_,
-                                     tex.getAsSdlTypePtr(),
-                                     NULL,
-                                     NULL,
-                                     angle,
-                                     pt.getAsSdlTypePtr(),
-                                     flip.getAsSdlType());
+                               tex.getAsSdlTypePtr(),
+                               NULL,
+                               NULL,
+                               angle,
+                               pt.getAsSdlTypePtr(),
+                               flip.getAsSdlType());
         assert(ret == 0);
     }
 }
 
-void GfxRenderer::renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFormatEnum const& format,
-                                void * pixels, const int32_t pitch) const noexcept
+void GfxRenderer::renderReadPixels(const rect::GfxRect& rect, const pixels::GfxPixelFormatEnum& format,
+                                   void * pixels, const int32_t pitch) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -815,7 +812,7 @@ void GfxRenderer::renderReadPixels(rect::GfxRect const& rect, pixels::GfxPixelFo
     if (renderer_ != nullptr)
     {
         ret = SDL_RenderReadPixels(renderer_, rect.getAsSdlTypePtr(), format.getAsSdlType(),
-                                        pixels, pitch);
+                                   pixels, pitch);
         assert((ret == -1) || (ret == 0));
     }
 }

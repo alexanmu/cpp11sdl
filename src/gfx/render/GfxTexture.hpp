@@ -42,6 +42,8 @@ namespace gfx
 namespace render
 {
 
+class GfxRenderer;
+
 class GfxTexture final : public GfxObject
 {
 public:
@@ -52,9 +54,9 @@ public:
     static const bool CallsSdl = true;
 
     GfxTexture();
-    explicit GfxTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
-                        GfxTextureAccess const& acc, const int32_t w, const int32_t h) throw(std::runtime_error);
-    explicit GfxTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+    explicit GfxTexture(const std::string& texname, const GfxRenderer& rend, const pixels::GfxPixelFormatEnum& format,
+                        const GfxTextureAccess& acc, const int32_t w, const int32_t h) throw(std::runtime_error);
+    explicit GfxTexture(const std::string& texname, const GfxRenderer& rend, const surface::GfxSurface& surf)
                         throw(std::runtime_error);
 
     virtual ~GfxTexture() noexcept;
@@ -68,27 +70,27 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void createTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
-                       GfxTextureAccess const& acc, const int32_t w, const int32_t h) throw(std::runtime_error);
-    void createTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+    void createTexture(const std::string& texname, const GfxRenderer& rend, const pixels::GfxPixelFormatEnum& format,
+                       const GfxTextureAccess& acc, const int32_t w, const int32_t h) throw(std::runtime_error);
+    void createTexture(const std::string& texname, const GfxRenderer& rend, const surface::GfxSurface& surf)
                        throw(std::runtime_error);
 
     void queryTexture(pixels::GfxPixelFormatEnum ** format, GfxTextureAccess ** acc, int32_t * w,
                       int32_t * h) const noexcept;
     void setTextureColorMod(const uint8_t r, const uint8_t g, const uint8_t b) const noexcept;
-    void setTextureColorMod(pixels::GfxColor const& color) const noexcept;
+    void setTextureColorMod(const pixels::GfxColor& color) const noexcept;
     void getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const noexcept;
-    pixels::GfxColor getTextureColorMod(void) const noexcept;
+    const pixels::GfxColor getTextureColorMod(void) const noexcept;
     void setTextureAlphaMod(const uint8_t a) const noexcept;
     void getTextureAlphaMod(uint8_t * a) const noexcept;
-    void setBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept;
+    void setBlendMode(const blendmode::GfxBlendMode& blendmode) const noexcept;
     void setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode) const noexcept;
-    blendmode::GfxBlendMode getBlendMode(void) const noexcept;
-    void updateTexture(rect::GfxRect const& rect, const void * pixels, const int32_t pitch) const noexcept;
-    void updateYUVTexture(rect::GfxRect const& rect, const uint8_t * Yplane, const int32_t Ypitch,
+    const blendmode::GfxBlendMode getBlendMode(void) const noexcept;
+    void updateTexture(const rect::GfxRect& rect, const void * pixels, const int32_t pitch) const noexcept;
+    void updateYUVTexture(const rect::GfxRect& rect, const uint8_t * Yplane, const int32_t Ypitch,
                           const uint8_t * Uplane, const int32_t Upitch,
                           const uint8_t * Vplane, const int32_t Vpitch) const noexcept;
-    void lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t * pitch) const noexcept;
+    void lockTexture(const rect::GfxRect& rect, void ** pixels, int32_t * pitch) const noexcept;
     void lockTexture(void ** pixels, int32_t * pitch) const noexcept;
     void unlockTexture(void) const noexcept;
     void destroyTexture(void) noexcept;

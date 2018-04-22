@@ -47,7 +47,7 @@ GfxGetRendererInfo::GfxGetRendererInfo() noexcept : GfxObject(ClassName)
     numRenderDrivers_ = -1;
 }
 
-GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo const& other) noexcept : GfxObject(other)
+GfxGetRendererInfo::GfxGetRendererInfo(const GfxGetRendererInfo& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -63,7 +63,7 @@ GfxGetRendererInfo::GfxGetRendererInfo(GfxGetRendererInfo&& other) noexcept : Gf
     other.numRenderDrivers_ = -1;
 }
 
-GfxGetRendererInfo& GfxGetRendererInfo::operator=(GfxGetRendererInfo const& other) noexcept
+GfxGetRendererInfo& GfxGetRendererInfo::operator=(const GfxGetRendererInfo& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -121,7 +121,7 @@ int32_t GfxGetRendererInfo::getNumRenderDrivers(void) noexcept
     return nrd;
 }
 
-GfxRendererInfo * GfxGetRendererInfo::getRenderDriverInfo(const int32_t index) noexcept
+const GfxRendererInfo GfxGetRendererInfo::getRenderDriverInfo(const int32_t index) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -132,12 +132,9 @@ GfxRendererInfo * GfxGetRendererInfo::getRenderDriverInfo(const int32_t index) n
     if (index < numRenderDrivers_)
     {
         SDL_GetRenderDriverInfo(index, &rdi);
-        return new GfxRendererInfo(rdi);
+        return GfxRendererInfo(rdi);
     }
-    else
-    {
-        return nullptr;
-    }
+    return GfxRendererInfo();
 }
 
 }  // namespace render

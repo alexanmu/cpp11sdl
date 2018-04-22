@@ -56,17 +56,18 @@ public:
 
     GfxRendererFlip(const bool fliph, const bool flipv) noexcept;
     explicit GfxRendererFlip(const ValueType value) noexcept;
+    explicit GfxRendererFlip(const SdlType value) noexcept;
 
-    GfxRendererFlip(GfxRendererFlip const& other) noexcept;
+    GfxRendererFlip(const GfxRendererFlip& other) noexcept;
     GfxRendererFlip(GfxRendererFlip&& other) noexcept;
 
-    GfxRendererFlip& operator=(GfxRendererFlip const& other) noexcept;
+    GfxRendererFlip& operator=(const GfxRendererFlip& other) noexcept;
     GfxRendererFlip& operator=(GfxRendererFlip&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    bool operator==(GfxRendererFlip const& other) noexcept;
+    bool operator==(const GfxRendererFlip& other) noexcept;
 
     bool isFlipHorizontal(void) const noexcept;
     bool isFlipVertical(void) const noexcept;

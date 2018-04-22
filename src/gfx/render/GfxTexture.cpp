@@ -49,27 +49,25 @@ GfxTexture::GfxTexture() : GfxObject(ClassName)
     texName_ = "";
 }
 
-GfxTexture::GfxTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
-                       GfxTextureAccess const& acc, const int32_t w, const int32_t h) throw(std::runtime_error) :
+GfxTexture::GfxTexture(const std::string& texname, const GfxRenderer& rend, const pixels::GfxPixelFormatEnum& format,
+                       const GfxTextureAccess& acc, const int32_t w, const int32_t h) throw(std::runtime_error) :
                        GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(texname.length() > 0);
-    assert(rend != nullptr);
+    assert(rend);
     assert(format);
     assert(acc);
     assert(w >= 0);
     assert(h >= 0);
 
-    GfxRenderer * rendptr;
     SdlTypePtr texptr;
 
-    rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
-                                     format.getAsSdlType(),
-                                     acc.getAsSdlType(),
-                                     w, h);
+    texptr = SDL_CreateTexture(rend.getAsSdlTypePtr(),
+                               format.getAsSdlType(),
+                               acc.getAsSdlType(),
+                               w, h);
     if (texptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -79,20 +77,18 @@ GfxTexture::GfxTexture(std::string const& texname, void * rend, pixels::GfxPixel
     texName_ = texname;
 }
 
-GfxTexture::GfxTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+GfxTexture::GfxTexture(const std::string& texname, const GfxRenderer& rend, const surface::GfxSurface& surf)
                        throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(texname.length() > 0);
-    assert(rend != nullptr);
+    assert(rend);
     assert(surf);
 
-    GfxRenderer * rendptr;
     SdlTypePtr texptr;
 
-    rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    texptr = SDL_CreateTextureFromSurface(rend.getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -156,31 +152,29 @@ std::string GfxTexture::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxTexture::createTexture(std::string const& texname, void * rend, pixels::GfxPixelFormatEnum const& format,
-                               GfxTextureAccess const& acc, const int32_t w, const int32_t h)
-                               throw(std::runtime_error)
+void GfxTexture::createTexture(const std::string& texname, const GfxRenderer& rend,
+                               const pixels::GfxPixelFormatEnum& format, const GfxTextureAccess& acc,
+                               const int32_t w, const int32_t h) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(texname.length() > 0);
-    assert(rend != nullptr);
+    assert(rend);
     assert(format);
     assert(acc);
     assert(w >= 0);
     assert(h >= 0);
 
-    GfxRenderer * rendptr;
     SdlTypePtr texptr;
 
     if (tex_ != nullptr)
     {
         throw std::runtime_error("Texture already created");
     }
-    rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = SDL_CreateTexture(rendptr->getAsSdlTypePtr(),
-                                     format.getAsSdlType(),
-                                     acc.getAsSdlType(),
-                                     w, h);
+    texptr = SDL_CreateTexture(rend.getAsSdlTypePtr(),
+                               format.getAsSdlType(),
+                               acc.getAsSdlType(),
+                               w, h);
     if (texptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -190,24 +184,22 @@ void GfxTexture::createTexture(std::string const& texname, void * rend, pixels::
     texName_ = texname;
 }
 
-void GfxTexture::createTexture(std::string const& texname, void * rend, surface::GfxSurface const& surf)
+void GfxTexture::createTexture(const std::string& texname, const GfxRenderer& rend, const surface::GfxSurface& surf)
                                throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(texname.length() > 0);
-    assert(rend != nullptr);
+    assert(rend);
     assert(surf);
 
-    GfxRenderer * rendptr;
     SdlTypePtr texptr;
 
     if (tex_ != nullptr)
     {
         throw std::runtime_error("Texture already created");
     }
-    rendptr = reinterpret_cast<GfxRenderer *>(rend);
-    texptr = SDL_CreateTextureFromSurface(rendptr->getAsSdlTypePtr(), surf.getAsSdlTypePtr());
+    texptr = SDL_CreateTextureFromSurface(rend.getAsSdlTypePtr(), surf.getAsSdlTypePtr());
     if (texptr == nullptr)
     {
         const std::string sdlErr = SDL_GetError();
@@ -251,7 +243,7 @@ void GfxTexture::setTextureColorMod(const uint8_t r, const uint8_t g, const uint
     }
 }
 
-void GfxTexture::setTextureColorMod(pixels::GfxColor const& color) const noexcept
+void GfxTexture::setTextureColorMod(const pixels::GfxColor& color) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -284,7 +276,7 @@ void GfxTexture::getTextureColorMod(uint8_t * r, uint8_t * g, uint8_t * b) const
     }
 }
 
-pixels::GfxColor GfxTexture::getTextureColorMod(void) const noexcept
+const pixels::GfxColor GfxTexture::getTextureColorMod(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -334,7 +326,7 @@ void GfxTexture::getTextureAlphaMod(uint8_t * a) const noexcept
     }
 }
 
-void GfxTexture::setBlendMode(blendmode::GfxBlendMode const& blendmode) const noexcept
+void GfxTexture::setBlendMode(const blendmode::GfxBlendMode& blendmode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -362,7 +354,7 @@ void GfxTexture::setBlendMode(const blendmode::GfxBlendMode::ValueType blendmode
     }
 }
 
-blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
+const blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -382,7 +374,7 @@ blendmode::GfxBlendMode GfxTexture::getBlendMode(void) const noexcept
     return blendmode::GfxBlendMode();
 }
 
-void GfxTexture::updateTexture(rect::GfxRect const& rect, const void * pixels, const int32_t pitch) const noexcept
+void GfxTexture::updateTexture(const rect::GfxRect& rect, const void * pixels, const int32_t pitch) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -399,7 +391,7 @@ void GfxTexture::updateTexture(rect::GfxRect const& rect, const void * pixels, c
     }
 }
 
-void GfxTexture::updateYUVTexture(rect::GfxRect const& rect,
+void GfxTexture::updateYUVTexture(const rect::GfxRect& rect,
                                   const uint8_t * Yplane, const int32_t Ypitch,
                                   const uint8_t * Uplane, const int32_t Upitch,
                                   const uint8_t * Vplane, const int32_t Vpitch) const noexcept
@@ -419,12 +411,12 @@ void GfxTexture::updateYUVTexture(rect::GfxRect const& rect,
     if (tex_ != nullptr)
     {
         ret = SDL_UpdateYUVTexture(tex_, rect.getAsSdlTypePtr(), Yplane, Ypitch,
-                                         Uplane, Upitch, Vplane, Vpitch);
+                                   Uplane, Upitch, Vplane, Vpitch);
         assert((ret == -1) || (ret == 0));
     }
 }
 
-void GfxTexture::lockTexture(rect::GfxRect const& rect, void ** pixels, int32_t * pitch) const noexcept
+void GfxTexture::lockTexture(const rect::GfxRect& rect, void ** pixels, int32_t * pitch) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

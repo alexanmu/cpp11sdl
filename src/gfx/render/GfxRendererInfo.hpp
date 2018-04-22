@@ -51,19 +51,19 @@ public:
 
     explicit GfxRendererInfo(const SdlType info) noexcept;
 
-    GfxRendererInfo(GfxRendererInfo const& other) noexcept;
+    GfxRendererInfo(const GfxRendererInfo& other) noexcept;
     GfxRendererInfo(GfxRendererInfo&& other) noexcept;
 
-    GfxRendererInfo& operator=(GfxRendererInfo const& other) noexcept;
+    GfxRendererInfo& operator=(const GfxRendererInfo& other) noexcept;
     GfxRendererInfo& operator=(GfxRendererInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    std::string getName(void) const noexcept;
-    GfxRendererFlags getFlags(void) const noexcept;
+    const std::string getName(void) const noexcept;
+    const GfxRendererFlags getFlags(void) const noexcept;
     uint32_t getNumTextureFormats(void) const noexcept;
-    GfxTextureFormats getTextureFormats(void) const noexcept;
+    const GfxTextureFormats getTextureFormats(void) const noexcept;
     int32_t getMaxTextureWidth(void) const noexcept;
     int32_t getMaxTextureHeight(void) const noexcept;
 

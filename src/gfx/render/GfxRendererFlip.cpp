@@ -59,7 +59,21 @@ GfxRendererFlip::GfxRendererFlip(const bool fliph, const bool flipv) noexcept : 
     }
 }
 
-GfxRendererFlip::GfxRendererFlip(GfxRendererFlip const& other) noexcept : GfxObject(other)
+GfxRendererFlip::GfxRendererFlip(const ValueType flip) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    flip_ = static_cast<SdlType>(flip);
+}
+
+GfxRendererFlip::GfxRendererFlip(const SdlType flip) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    flip_ = flip;
+}
+
+GfxRendererFlip::GfxRendererFlip(const GfxRendererFlip& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -75,7 +89,7 @@ GfxRendererFlip::GfxRendererFlip(GfxRendererFlip&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxRendererFlip& GfxRendererFlip::operator=(GfxRendererFlip const& other) noexcept
+GfxRendererFlip& GfxRendererFlip::operator=(const GfxRendererFlip& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -119,7 +133,7 @@ std::string GfxRendererFlip::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-bool GfxRendererFlip::operator==(GfxRendererFlip const& other) noexcept
+bool GfxRendererFlip::operator==(const GfxRendererFlip& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

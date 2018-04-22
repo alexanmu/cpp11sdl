@@ -45,23 +45,32 @@ GfxTextureModulate::GfxTextureModulate() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxTextureModulate::GfxTextureModulate(const ValueType flags) noexcept : GfxObject(ClassName)
+GfxTextureModulate::GfxTextureModulate(const ValueType modulate) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    modulate_ = static_cast<SdlType>(flags);
+    modulate_ = static_cast<SdlType>(modulate);
 }
 
-GfxTextureModulate::GfxTextureModulate(const SdlType flags) noexcept : GfxObject(ClassName)
+GfxTextureModulate::GfxTextureModulate(const SdlType modulate) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
-    assert(flags >= 0);
+    assert(modulate >= 0);
 
-    modulate_ = flags;
+    modulate_ = modulate;
 }
 
-GfxTextureModulate::GfxTextureModulate(GfxTextureModulate const& other) noexcept : GfxObject(other)
+GfxTextureModulate::GfxTextureModulate(const int32_t modulate) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(modulate >= 0);
+
+    modulate_ = static_cast<SdlType>(modulate);
+}
+
+GfxTextureModulate::GfxTextureModulate(const GfxTextureModulate& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -77,7 +86,7 @@ GfxTextureModulate::GfxTextureModulate(GfxTextureModulate&& other) noexcept : Gf
     other.clear();
 }
 
-GfxTextureModulate& GfxTextureModulate::operator=(GfxTextureModulate const& other) noexcept
+GfxTextureModulate& GfxTextureModulate::operator=(const GfxTextureModulate& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

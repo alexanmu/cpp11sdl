@@ -66,7 +66,7 @@ GfxTextureFormats::GfxTextureFormats(const int32_t formatsCount, const uint32_t 
     }
 }
 
-GfxTextureFormats::GfxTextureFormats(GfxTextureFormats const& other) noexcept : GfxObject(other)
+GfxTextureFormats::GfxTextureFormats(const GfxTextureFormats& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -90,7 +90,7 @@ GfxTextureFormats::GfxTextureFormats(GfxTextureFormats&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxTextureFormats& GfxTextureFormats::operator=(GfxTextureFormats const& other) noexcept
+GfxTextureFormats& GfxTextureFormats::operator=(const GfxTextureFormats& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

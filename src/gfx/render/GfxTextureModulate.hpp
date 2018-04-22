@@ -56,11 +56,12 @@ public:
 
     explicit GfxTextureModulate(const ValueType modulate) noexcept;
     explicit GfxTextureModulate(const SdlType modulate) noexcept;
+    explicit GfxTextureModulate(const int32_t modulate) noexcept;
 
-    GfxTextureModulate(GfxTextureModulate const& other) noexcept;
+    GfxTextureModulate(const GfxTextureModulate& other) noexcept;
     GfxTextureModulate(GfxTextureModulate&& other) noexcept;
 
-    GfxTextureModulate& operator=(GfxTextureModulate const& other) noexcept;
+    GfxTextureModulate& operator=(const GfxTextureModulate& other) noexcept;
     GfxTextureModulate& operator=(GfxTextureModulate&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
