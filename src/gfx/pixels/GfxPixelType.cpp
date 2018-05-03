@@ -58,7 +58,7 @@ GfxPixelType::GfxPixelType(const SdlType value) noexcept : GfxObject(ClassName)
     value_ = value;
 }
 
-GfxPixelType::GfxPixelType(GfxPixelType const& other) noexcept : GfxObject(other)
+GfxPixelType::GfxPixelType(const GfxPixelType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -74,7 +74,7 @@ GfxPixelType::GfxPixelType(GfxPixelType&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxPixelType& GfxPixelType::operator=(GfxPixelType const& other) noexcept
+GfxPixelType& GfxPixelType::operator=(const GfxPixelType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

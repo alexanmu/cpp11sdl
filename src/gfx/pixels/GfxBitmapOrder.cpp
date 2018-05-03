@@ -58,7 +58,7 @@ GfxBitmapOrder::GfxBitmapOrder(const SdlType value) noexcept : GfxObject(ClassNa
     value_ = value;
 }
 
-GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder const& other) noexcept : GfxObject(other)
+GfxBitmapOrder::GfxBitmapOrder(const GfxBitmapOrder& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxBitmapOrder::GfxBitmapOrder(GfxBitmapOrder&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxBitmapOrder& GfxBitmapOrder::operator=(GfxBitmapOrder const& other) noexcept
+GfxBitmapOrder& GfxBitmapOrder::operator=(const GfxBitmapOrder& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

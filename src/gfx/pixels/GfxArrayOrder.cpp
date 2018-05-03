@@ -58,7 +58,7 @@ GfxArrayOrder::GfxArrayOrder(const SdlType value) noexcept : GfxObject(ClassName
     value_ = value;
 }
 
-GfxArrayOrder::GfxArrayOrder(GfxArrayOrder const& other) noexcept : GfxObject(other)
+GfxArrayOrder::GfxArrayOrder(const GfxArrayOrder& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxArrayOrder::GfxArrayOrder(GfxArrayOrder&& other) noexcept : GfxObject(std::mo
     other.clear();
 }
 
-GfxArrayOrder& GfxArrayOrder::operator=(GfxArrayOrder const& other) noexcept
+GfxArrayOrder& GfxArrayOrder::operator=(const GfxArrayOrder& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

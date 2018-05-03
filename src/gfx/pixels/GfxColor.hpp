@@ -48,19 +48,19 @@ public:
 
     GfxColor() noexcept;
 
-    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b) noexcept /*__attribute__((warning("Endianess")))*/;
+    GfxColor(const uint8_t r, const uint8_t g, const uint8_t b) noexcept;
     GfxColor(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a)
-             noexcept /*__attribute__((warning("Endianess")))*/;
+             noexcept;
     explicit GfxColor(const SdlType clr) noexcept;
     explicit GfxColor(const uint32_t clr) noexcept;
 
-    GfxColor(GfxColor const& other) noexcept;
+    GfxColor(const GfxColor& other) noexcept;
     GfxColor(GfxColor&& other) noexcept;
 
-    GfxColor& operator=(GfxColor const& other) noexcept;
+    GfxColor& operator=(const GfxColor& other) noexcept;
     GfxColor& operator=(GfxColor&& other) noexcept;
 
-    bool operator==(GfxColor const& other) const noexcept;
+    bool operator==(const GfxColor& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

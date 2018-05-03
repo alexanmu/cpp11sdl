@@ -51,14 +51,14 @@ public:
     GfxPalette() noexcept;
     explicit GfxPalette(const uint16_t nColors) throw(std::runtime_error);
     explicit GfxPalette(const SdlTypePtr pal) noexcept;
-    explicit GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error);
+    explicit GfxPalette(const std::vector<GfxColor>& colors) throw(std::runtime_error);
 
     // No copy-ctor
-    GfxPalette(GfxPalette const& other) = delete;
+    GfxPalette(const GfxPalette&) = delete;
     GfxPalette(GfxPalette&& other) noexcept;
 
     // No copy-oprtr
-    GfxPalette& operator=(GfxPalette const& other) = delete;
+    GfxPalette& operator=(const GfxPalette&) = delete;
     GfxPalette& operator=(GfxPalette&& other) noexcept;
 
     virtual ~GfxPalette() noexcept;
@@ -68,15 +68,15 @@ public:
 
     void createPalette(const uint16_t nColors) throw(std::runtime_error);
     void createPalette(const SdlTypePtr pal) throw(std::runtime_error);
-    void createPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error);
+    void createPalette(const std::vector<GfxColor>& colors) throw(std::runtime_error);
 
     void freePalette(void) noexcept;
 
     /* Methods */
-    void setPaletteColors(std::vector<GfxColor> const& vec, const uint16_t firstColor) noexcept;
-    std::vector<GfxColor> getPaletteColors(void) const noexcept;
-    void setPaletteColor(GfxColor const& clr, const uint16_t index) noexcept;
-    GfxColor getPaletteColor(const uint16_t index) noexcept;
+    void setPaletteColors(const std::vector<GfxColor>& vec, const uint16_t firstColor) noexcept;
+    const std::vector<GfxColor> getPaletteColors(void) const noexcept;
+    void setPaletteColor(const GfxColor& clr, const uint16_t index) noexcept;
+    const GfxColor getPaletteColor(const uint16_t index) noexcept;
 
     /* Getters */
     uint16_t getNumColors(void) const noexcept;

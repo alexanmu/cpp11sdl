@@ -58,7 +58,7 @@ GfxPixelFormatEnum::GfxPixelFormatEnum(const SdlType value) noexcept : GfxObject
     value_ = value;
 }
 
-GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept : GfxObject(other)
+GfxPixelFormatEnum::GfxPixelFormatEnum(const GfxPixelFormatEnum& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxPixelFormatEnum::GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept : Gf
     other.clear();
 }
 
-GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(GfxPixelFormatEnum const& other) noexcept
+GfxPixelFormatEnum& GfxPixelFormatEnum::operator=(const GfxPixelFormatEnum& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

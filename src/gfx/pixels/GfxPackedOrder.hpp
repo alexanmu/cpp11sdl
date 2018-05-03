@@ -62,10 +62,10 @@ public:
     explicit GfxPackedOrder(const ValueType value) noexcept;
     explicit GfxPackedOrder(const SdlType value) noexcept;
 
-    GfxPackedOrder(GfxPackedOrder const& other) noexcept;
+    GfxPackedOrder(const GfxPackedOrder& other) noexcept;
     GfxPackedOrder(GfxPackedOrder&& other) noexcept;
 
-    GfxPackedOrder& operator=(GfxPackedOrder const& other) noexcept;
+    GfxPackedOrder& operator=(const GfxPackedOrder& other) noexcept;
     GfxPackedOrder& operator=(GfxPackedOrder&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

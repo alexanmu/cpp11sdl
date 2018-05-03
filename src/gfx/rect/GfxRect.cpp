@@ -72,7 +72,7 @@ GfxRect::GfxRect(const SdlType rect) noexcept : GfxObject(ClassName)
     rect_ = rect;
 }
 
-GfxRect::GfxRect(GfxRect const& other) noexcept : GfxObject(other)
+GfxRect::GfxRect(const GfxRect& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -88,7 +88,7 @@ GfxRect::GfxRect(GfxRect&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxRect& GfxRect::operator=(GfxRect const& other) noexcept
+GfxRect& GfxRect::operator=(const GfxRect& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -118,7 +118,7 @@ GfxRect& GfxRect::operator=(GfxRect&& other) noexcept
     return *this;
 }
 
-bool GfxRect::operator==(GfxRect const& other) const noexcept
+bool GfxRect::operator==(const GfxRect& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -204,7 +204,7 @@ void GfxRect::setHeight(const int32_t h) noexcept
     rect_.h = h;
 }
 
-GfxBool GfxRect::pointInRect(GfxPoint const& p) const noexcept
+const GfxBool GfxRect::pointInRect(const GfxPoint& p) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -216,7 +216,7 @@ GfxBool GfxRect::pointInRect(GfxPoint const& p) const noexcept
     return GfxBool(res);
 }
 
-GfxBool GfxRect::rectEmpty(void) const noexcept
+const GfxBool GfxRect::rectEmpty(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -226,7 +226,7 @@ GfxBool GfxRect::rectEmpty(void) const noexcept
     return GfxBool(res);
 }
 
-GfxBool GfxRect::rectEquals(GfxRect const& r) const noexcept
+const GfxBool GfxRect::rectEquals(const GfxRect& r) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -238,7 +238,7 @@ GfxBool GfxRect::rectEquals(GfxRect const& r) const noexcept
     return GfxBool(res);
 }
 
-GfxBool GfxRect::hasIntersection(GfxRect const& r) const noexcept
+const GfxBool GfxRect::hasIntersection(const GfxRect& r) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -250,7 +250,7 @@ GfxBool GfxRect::hasIntersection(GfxRect const& r) const noexcept
     return GfxBool(res);
 }
 
-GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect ** result) const noexcept
+const GfxBool GfxRect::intersectRect(const GfxRect& r, GfxRect ** result) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -265,7 +265,7 @@ GfxBool GfxRect::intersectRect(GfxRect const &r, GfxRect ** result) const noexce
     return GfxBool(res);
 }
 
-void GfxRect::unionRect(GfxRect const &r, GfxRect ** result) const noexcept
+void GfxRect::unionRect(const GfxRect& r, GfxRect ** result) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -278,7 +278,7 @@ void GfxRect::unionRect(GfxRect const &r, GfxRect ** result) const noexcept
     *result = new GfxRect(rt);
 }
 
-GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** result) const noexcept
+const GfxBool GfxRect::enclosePoint(const std::vector<GfxPoint>& points, GfxRect ** result) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -303,7 +303,7 @@ GfxBool GfxRect::enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** re
     return GfxBool(res);
 }
 
-GfxBool GfxRect::intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept
+const GfxBool GfxRect::intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

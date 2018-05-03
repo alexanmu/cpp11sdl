@@ -45,10 +45,10 @@ public:
 
     GfxPowerInfo() noexcept;
 
-    GfxPowerInfo(GfxPowerInfo const& other) noexcept;
+    GfxPowerInfo(const GfxPowerInfo& other) noexcept;
     GfxPowerInfo(GfxPowerInfo&& other) noexcept;
 
-    GfxPowerInfo& operator=(GfxPowerInfo const& other) noexcept;
+    GfxPowerInfo& operator=(const GfxPowerInfo& other) noexcept;
     GfxPowerInfo& operator=(GfxPowerInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -56,7 +56,7 @@ public:
 
     void queryPowerInfo(void) noexcept;
 
-    const GfxPowerState getPowerState(void) const noexcept;
+    const GfxPowerState& getPowerState(void) const noexcept;
     int32_t getRemainingSeconds(void) const noexcept;
     int32_t getRemainingPercentage(void) const noexcept;
 

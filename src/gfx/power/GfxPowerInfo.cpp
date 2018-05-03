@@ -45,7 +45,7 @@ GfxPowerInfo::GfxPowerInfo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxPowerInfo::GfxPowerInfo(GfxPowerInfo const& other) noexcept : GfxObject(other)
+GfxPowerInfo::GfxPowerInfo(const GfxPowerInfo& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -65,7 +65,7 @@ GfxPowerInfo::GfxPowerInfo(GfxPowerInfo&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxPowerInfo& GfxPowerInfo::operator=(GfxPowerInfo const& other) noexcept
+GfxPowerInfo& GfxPowerInfo::operator=(const GfxPowerInfo& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -123,11 +123,11 @@ void GfxPowerInfo::queryPowerInfo(void) noexcept
     pstate_ = GfxPowerState(pstate);
 }
 
-const GfxPowerState GfxPowerInfo::getPowerState(void) const noexcept
+const GfxPowerState& GfxPowerInfo::getPowerState(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    return GfxPowerState(pstate_);
+    return pstate_;
 }
 
 int32_t GfxPowerInfo::getRemainingSeconds(void) const noexcept

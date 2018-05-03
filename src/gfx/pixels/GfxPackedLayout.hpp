@@ -62,10 +62,10 @@ public:
     explicit GfxPackedLayout(const ValueType value) noexcept;
     explicit GfxPackedLayout(const SdlType value) noexcept;
 
-    GfxPackedLayout(GfxPackedLayout const& other) noexcept;
+    GfxPackedLayout(const GfxPackedLayout& other) noexcept;
     GfxPackedLayout(GfxPackedLayout&& other) noexcept;
 
-    GfxPackedLayout& operator=(GfxPackedLayout const& other) noexcept;
+    GfxPackedLayout& operator=(const GfxPackedLayout& other) noexcept;
     GfxPackedLayout& operator=(GfxPackedLayout&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -56,10 +56,10 @@ public:
     explicit GfxBitmapOrder(const ValueType value) noexcept;
     explicit GfxBitmapOrder(const SdlType value) noexcept;
 
-    GfxBitmapOrder(GfxBitmapOrder const& other) noexcept;
+    GfxBitmapOrder(const GfxBitmapOrder& other) noexcept;
     GfxBitmapOrder(GfxBitmapOrder&& other) noexcept;
 
-    GfxBitmapOrder& operator=(GfxBitmapOrder const& other) noexcept;
+    GfxBitmapOrder& operator=(const GfxBitmapOrder& other) noexcept;
     GfxBitmapOrder& operator=(GfxBitmapOrder&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

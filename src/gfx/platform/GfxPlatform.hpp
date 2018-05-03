@@ -43,10 +43,10 @@ public:
 
     GfxPlatform() noexcept;
 
-    GfxPlatform(GfxPlatform const& other) noexcept;
+    GfxPlatform(const GfxPlatform& other) noexcept;
     GfxPlatform(GfxPlatform&& other) noexcept;
 
-    GfxPlatform& operator=(GfxPlatform const& other) noexcept;
+    GfxPlatform& operator=(const GfxPlatform& other) noexcept;
     GfxPlatform& operator=(GfxPlatform&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -54,7 +54,7 @@ public:
 
     void queryPlatform(void) noexcept;
 
-    std::string const& getPlatform(void) const noexcept;
+    const std::string& getPlatform(void) const noexcept;
 private:
     std::string platform_;
 };

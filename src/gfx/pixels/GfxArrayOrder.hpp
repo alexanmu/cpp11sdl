@@ -60,10 +60,10 @@ public:
     explicit GfxArrayOrder(const ValueType value) noexcept;
     explicit GfxArrayOrder(const SdlType value) noexcept;
 
-    GfxArrayOrder(GfxArrayOrder const& other) noexcept;
+    GfxArrayOrder(const GfxArrayOrder& other) noexcept;
     GfxArrayOrder(GfxArrayOrder&& other) noexcept;
 
-    GfxArrayOrder& operator=(GfxArrayOrder const& other) noexcept;
+    GfxArrayOrder& operator=(const GfxArrayOrder& other) noexcept;
     GfxArrayOrder& operator=(GfxArrayOrder&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

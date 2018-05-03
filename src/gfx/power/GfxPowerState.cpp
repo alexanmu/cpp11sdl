@@ -61,7 +61,7 @@ GfxPowerState::GfxPowerState(const SdlType value) noexcept : GfxObject(ClassName
     value_ = value;
 }
 
-GfxPowerState::GfxPowerState(GfxPowerState const& other) noexcept : GfxObject(other)
+GfxPowerState::GfxPowerState(const GfxPowerState& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -77,7 +77,7 @@ GfxPowerState::GfxPowerState(GfxPowerState&& other) noexcept : GfxObject(std::mo
     other.clear();
 }
 
-GfxPowerState& GfxPowerState::operator=(GfxPowerState const& other) noexcept
+GfxPowerState& GfxPowerState::operator=(const GfxPowerState& other) noexcept
 {
     if (this != &other)
     {

@@ -45,7 +45,7 @@ GfxPlatform::GfxPlatform() noexcept : GfxObject(ClassName)
     platform_ = "";
 }
 
-GfxPlatform::GfxPlatform(GfxPlatform const& other) noexcept : GfxObject(other)
+GfxPlatform::GfxPlatform(const GfxPlatform& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -61,7 +61,7 @@ GfxPlatform::GfxPlatform(GfxPlatform&& other) noexcept : GfxObject(std::move(oth
     other.platform_.clear();
 }
 
-GfxPlatform& GfxPlatform::operator=(GfxPlatform const& other) noexcept
+GfxPlatform& GfxPlatform::operator=(const GfxPlatform& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -112,7 +112,7 @@ void GfxPlatform::queryPlatform(void) noexcept
     platform_ = SDL_GetPlatform();
 }
 
-std::string const& GfxPlatform::getPlatform(void) const noexcept
+const std::string& GfxPlatform::getPlatform(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

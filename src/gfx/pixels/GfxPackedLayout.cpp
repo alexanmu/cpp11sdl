@@ -58,7 +58,7 @@ GfxPackedLayout::GfxPackedLayout(const SdlType value) noexcept : GfxObject(Class
     value_ = value;
 }
 
-GfxPackedLayout::GfxPackedLayout(GfxPackedLayout const& other) noexcept : GfxObject(other)
+GfxPackedLayout::GfxPackedLayout(const GfxPackedLayout& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxPackedLayout::GfxPackedLayout(GfxPackedLayout&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxPackedLayout& GfxPackedLayout::operator=(GfxPackedLayout const& other) noexcept
+GfxPackedLayout& GfxPackedLayout::operator=(const GfxPackedLayout& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -96,10 +96,10 @@ public:
     explicit GfxPixelFormatEnum(const ValueType value) noexcept;
     explicit GfxPixelFormatEnum(const SdlType value) noexcept;
 
-    GfxPixelFormatEnum(GfxPixelFormatEnum const& other) noexcept;
+    GfxPixelFormatEnum(const GfxPixelFormatEnum& other) noexcept;
     GfxPixelFormatEnum(GfxPixelFormatEnum&& other) noexcept;
 
-    GfxPixelFormatEnum& operator=(GfxPixelFormatEnum const& other) noexcept;
+    GfxPixelFormatEnum& operator=(const GfxPixelFormatEnum& other) noexcept;
     GfxPixelFormatEnum& operator=(GfxPixelFormatEnum&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

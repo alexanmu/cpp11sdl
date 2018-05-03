@@ -65,10 +65,10 @@ public:
     explicit GfxPixelType(const ValueType value) noexcept;
     explicit GfxPixelType(const SdlType value) noexcept;
 
-    GfxPixelType(GfxPixelType const& other) noexcept;
+    GfxPixelType(const GfxPixelType& other) noexcept;
     GfxPixelType(GfxPixelType&& other) noexcept;
 
-    GfxPixelType& operator=(GfxPixelType const& other) noexcept;
+    GfxPixelType& operator=(const GfxPixelType& other) noexcept;
     GfxPixelType& operator=(GfxPixelType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -53,13 +53,13 @@ public:
     GfxRect(const int32_t x, const int32_t y, const int32_t w, const int32_t h) noexcept;
     explicit GfxRect(const SdlType rect) noexcept;
 
-    GfxRect(GfxRect const& other) noexcept;
+    GfxRect(const GfxRect& other) noexcept;
     GfxRect(GfxRect&& other) noexcept;
 
-    GfxRect& operator=(GfxRect const& other) noexcept;
+    GfxRect& operator=(const GfxRect& other) noexcept;
     GfxRect& operator=(GfxRect&& other) noexcept;
 
-    bool operator==(GfxRect const& other) const noexcept;
+    bool operator==(const GfxRect& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
@@ -74,14 +74,14 @@ public:
     void setWidth(const int32_t w) noexcept;
     void setHeight(const int32_t h) noexcept;
 
-    GfxBool pointInRect(GfxPoint const& p) const noexcept;
-    GfxBool rectEmpty(void) const noexcept;
-    GfxBool rectEquals(GfxRect const& r) const noexcept;
-    GfxBool hasIntersection(GfxRect const& r) const noexcept;
-    GfxBool intersectRect(GfxRect const &r, GfxRect ** result) const noexcept;
-    void unionRect(GfxRect const &r, GfxRect ** result) const noexcept;
-    GfxBool enclosePoint(std::vector<GfxPoint> const& points, GfxRect ** result) const noexcept;
-    GfxBool intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept;
+    const GfxBool pointInRect(const GfxPoint& p) const noexcept;
+    const GfxBool rectEmpty(void) const noexcept;
+    const GfxBool rectEquals(const GfxRect& r) const noexcept;
+    const GfxBool hasIntersection(const GfxRect& r) const noexcept;
+    const GfxBool intersectRect(const GfxRect &r, GfxRect ** result) const noexcept;
+    void unionRect(const GfxRect &r, GfxRect ** result) const noexcept;
+    const GfxBool enclosePoint(const std::vector<GfxPoint>& points, GfxRect ** result) const noexcept;
+    const GfxBool intersectRectAndLine(int32_t * x1, int32_t * y1, int32_t * x2, int32_t * y2) const noexcept;
 
     void clear(void) noexcept;
 

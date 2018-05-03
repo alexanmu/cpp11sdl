@@ -79,7 +79,7 @@ GfxPalette::GfxPalette(const SdlTypePtr pal) noexcept : GfxObject(ClassName)
     pal_ = pal;
 }
 
-GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error) : GfxObject(ClassName)
+GfxPalette::GfxPalette(const std::vector<GfxColor>& colors) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -97,7 +97,7 @@ GfxPalette::GfxPalette(std::vector<GfxColor> const& colors) throw(std::runtime_e
         throw std::runtime_error("Unable to create palette (" + sdlErr + ")");
     }
     colorIndex = 0;
-    for (GfxColor clr : colors)
+    for (const GfxColor& clr : colors)
     {
         assert(clr);
 
@@ -200,7 +200,7 @@ void GfxPalette::createPalette(const SdlTypePtr pal) throw(std::runtime_error)
     pal_ = pal;
 }
 
-void GfxPalette::createPalette(std::vector<GfxColor> const& colors) throw(std::runtime_error)
+void GfxPalette::createPalette(const std::vector<GfxColor>& colors) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -222,7 +222,7 @@ void GfxPalette::createPalette(std::vector<GfxColor> const& colors) throw(std::r
         throw std::runtime_error("Unable to create palette (" + sdlErr + ")");
     }
     colorIndex = 0;
-    for (GfxColor clr : colors)
+    for (const GfxColor& clr : colors)
     {
         assert(clr);
 
@@ -242,7 +242,7 @@ void GfxPalette::freePalette(void) noexcept
     }
 }
 
-void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uint16_t firstColor) noexcept
+void GfxPalette::setPaletteColors(const std::vector<GfxColor>& colors, const uint16_t firstColor) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -253,7 +253,7 @@ void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uin
     {
         return;
     }
-    for (GfxColor clr : colors)
+    for (const GfxColor& clr : colors)
     {
         assert(clr);
 
@@ -266,7 +266,7 @@ void GfxPalette::setPaletteColors(std::vector<GfxColor> const& colors, const uin
     }
 }
 
-std::vector<GfxColor> GfxPalette::getPaletteColors(void) const noexcept
+const std::vector<GfxColor> GfxPalette::getPaletteColors(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -276,15 +276,14 @@ std::vector<GfxColor> GfxPalette::getPaletteColors(void) const noexcept
 
         for (int32_t i = 0; i < pal_->ncolors; i++)
         {
-            GfxColor c(pal_->colors[i]);
-            clrs.push_back(c);
+            clrs.emplace_back(pal_->colors[i]);
         }
         return clrs;
     }
     return std::vector<GfxColor>();
 }
 
-void GfxPalette::setPaletteColor(GfxColor const& clr, const uint16_t index) noexcept
+void GfxPalette::setPaletteColor(const GfxColor& clr, const uint16_t index) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -302,7 +301,7 @@ void GfxPalette::setPaletteColor(GfxColor const& clr, const uint16_t index) noex
     }
 }
 
-GfxColor GfxPalette::getPaletteColor(const uint16_t index) noexcept
+const GfxColor GfxPalette::getPaletteColor(const uint16_t index) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -59,7 +59,7 @@ public:
     static const int32_t kGfxAlphaTransparent = 0;
 
     GfxPixelFormat() noexcept;
-    explicit GfxPixelFormat(GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    explicit GfxPixelFormat(const GfxPixelFormatEnum& format) throw(std::runtime_error);
     explicit GfxPixelFormat(const uint32_t format) throw(std::runtime_error);
 
     /* No copy-ctor */
@@ -75,17 +75,17 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void createFormat(GfxPixelFormatEnum const& format) throw(std::runtime_error);
+    void createFormat(const GfxPixelFormatEnum& format) throw(std::runtime_error);
     void createFormat(const uint32_t format) throw(std::runtime_error);
     void freeFormat(void) noexcept;
 
-    GfxPixelFormatEnum getFormat(void) noexcept;
+    const GfxPixelFormatEnum getFormat(void) noexcept;
     uint32_t pixelFlag(void) const noexcept;
-    GfxPixelType pixelType(void) const noexcept;
-    GfxPackedOrder pixelOrderPacked(void) const noexcept;
-    GfxArrayOrder pixelOrderArray(void) const noexcept;
-    GfxBitmapOrder pixelOrderBitmap(void) const noexcept;
-    GfxPackedLayout pixelLayout(void) const noexcept;
+    const GfxPixelType pixelType(void) const noexcept;
+    const GfxPackedOrder pixelOrderPacked(void) const noexcept;
+    const GfxArrayOrder pixelOrderArray(void) const noexcept;
+    const GfxBitmapOrder pixelOrderBitmap(void) const noexcept;
+    const GfxPackedLayout pixelLayout(void) const noexcept;
     uint32_t bitsPerPixel(void) const noexcept;
     uint32_t bytesPerPixel(void) const noexcept;
     bool isPixelFormatIndexed(void) const noexcept;
@@ -93,17 +93,17 @@ public:
     bool isPixelFormatArray(void) const noexcept;
     bool isPixelFormatAlpha(void) const noexcept;
     bool isPixelFormatFourCC(void) const noexcept;
-    std::string getPixelFormatName(void) const noexcept;
-    GfxBool pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, uint32_t * Gmask,
-                                   uint32_t * Bmask, uint32_t * Amask) const noexcept;
-    GfxPixelFormatEnum masksToPixelFormatEnum(const int32_t bpp, const uint32_t Rmask, const uint32_t Gmask,
-                                              const uint32_t Bmask, const uint32_t Amask) const noexcept;
-    void setPixelFormatPalette(GfxPalette const& palette) const noexcept;
-    pixels::GfxColor mapRGB(pixels::GfxColor const& color) const noexcept;
-    pixels::GfxColor mapRGBA(pixels::GfxColor const& color) const noexcept;
-    pixels::GfxColor getRGB(const uint32_t pixel) const noexcept;
-    pixels::GfxColor getRGBA(const uint32_t pixel) const noexcept;
-    void calculateGammaRamp(const float gamma, xtra::GfxGammaRamp const& ramp) const noexcept;
+    const std::string getPixelFormatName(void) const noexcept;
+    const GfxBool pixelFormatEnumToMasks(int32_t * bpp, uint32_t * Rmask, uint32_t * Gmask,
+                                         uint32_t * Bmask, uint32_t * Amask) const noexcept;
+    const GfxPixelFormatEnum masksToPixelFormatEnum(const int32_t bpp, const uint32_t Rmask, const uint32_t Gmask,
+                                                    const uint32_t Bmask, const uint32_t Amask) const noexcept;
+    void setPixelFormatPalette(const GfxPalette& palette) const noexcept;
+    const pixels::GfxColor mapRGB(const pixels::GfxColor& color) const noexcept;
+    const pixels::GfxColor mapRGBA(const pixels::GfxColor& color) const noexcept;
+    const pixels::GfxColor getRGB(const uint32_t pixel) const noexcept;
+    const pixels::GfxColor getRGBA(const uint32_t pixel) const noexcept;
+    void calculateGammaRamp(const float gamma, const xtra::GfxGammaRamp& ramp) const noexcept;
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:

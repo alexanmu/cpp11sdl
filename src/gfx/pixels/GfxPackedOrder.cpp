@@ -58,7 +58,7 @@ GfxPackedOrder::GfxPackedOrder(const SdlType value) noexcept : GfxObject(ClassNa
     value_ = value;
 }
 
-GfxPackedOrder::GfxPackedOrder(GfxPackedOrder const& other) noexcept : GfxObject(other)
+GfxPackedOrder::GfxPackedOrder(const GfxPackedOrder& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxPackedOrder::GfxPackedOrder(GfxPackedOrder&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxPackedOrder& GfxPackedOrder::operator=(GfxPackedOrder const& other) noexcept
+GfxPackedOrder& GfxPackedOrder::operator=(const GfxPackedOrder& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

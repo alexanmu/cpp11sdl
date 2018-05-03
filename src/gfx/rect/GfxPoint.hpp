@@ -51,10 +51,10 @@ public:
     GfxPoint(const int32_t x, const int32_t y) noexcept;
     explicit GfxPoint(const SdlType pt) noexcept;
 
-    GfxPoint(GfxPoint const& other) noexcept;
+    GfxPoint(const GfxPoint& other) noexcept;
     GfxPoint(GfxPoint&& other) noexcept;
 
-    GfxPoint& operator=(GfxPoint const& other) noexcept;
+    GfxPoint& operator=(const GfxPoint& other) noexcept;
     GfxPoint& operator=(GfxPoint&& other) noexcept;
 
     bool operator==(GfxPoint const& other) const noexcept;

@@ -52,7 +52,7 @@ GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b) noexcept
     clr_.r = r;
     clr_.g = g;
     clr_.b = b;
-    clr_.a = 0xFFu;
+    clr_.a = kDefaultAlphaValue;
 }
 
 GfxColor::GfxColor(const uint8_t r, const  uint8_t g, const  uint8_t b, const  uint8_t a) noexcept :
@@ -77,6 +77,8 @@ GfxColor::GfxColor(const uint32_t clr) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
+#warning Possible endianess problem here
+
     clr_.r = (clr & 0x000000FF);
     clr_.g = (clr & 0x0000FF00) >> 8;
     clr_.b = (clr & 0x00FF0000) >> 16;
@@ -84,7 +86,7 @@ GfxColor::GfxColor(const uint32_t clr) noexcept : GfxObject(ClassName)
 }
 
 /* Copy constructor */
-GfxColor::GfxColor(GfxColor const& other) noexcept : GfxObject(other)
+GfxColor::GfxColor(const GfxColor& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -102,7 +104,7 @@ GfxColor::GfxColor(GfxColor&& other) noexcept : GfxObject(std::move(other))
 }
 
 /* Delete copy and move assign operators */
-GfxColor& GfxColor::operator=(GfxColor const& other) noexcept
+GfxColor& GfxColor::operator=(const GfxColor& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -132,7 +134,7 @@ GfxColor& GfxColor::operator=(GfxColor&& other) noexcept
     return *this;
 }
 
-bool GfxColor::operator==(GfxColor const& other) const noexcept
+bool GfxColor::operator==(const GfxColor& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -185,6 +187,8 @@ uint8_t GfxColor::getAlpha(void) const noexcept
 uint32_t GfxColor::getColor() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
+
+#warning Possible endianess problem here
 
     uint32_t c = clr_.a << 24 | clr_.r << 16 | clr_.g << 8 | clr_.b;
     return c;

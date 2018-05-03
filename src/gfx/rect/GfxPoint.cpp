@@ -64,7 +64,7 @@ GfxPoint::GfxPoint(const SdlType pt) noexcept : GfxObject(ClassName)
     pt_ = pt;
 }
 
-GfxPoint::GfxPoint(GfxPoint const& other) noexcept : GfxObject(other)
+GfxPoint::GfxPoint(const GfxPoint& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 

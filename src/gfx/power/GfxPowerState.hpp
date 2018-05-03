@@ -59,10 +59,10 @@ public:
     explicit GfxPowerState(const ValueType value) noexcept;
     explicit GfxPowerState(const SdlType value) noexcept;
 
-    GfxPowerState(GfxPowerState const& other) noexcept;
+    GfxPowerState(const GfxPowerState& other) noexcept;
     GfxPowerState(GfxPowerState&& other) noexcept;
 
-    GfxPowerState& operator=(GfxPowerState const& other) noexcept;
+    GfxPowerState& operator=(const GfxPowerState& other) noexcept;
     GfxPowerState& operator=(GfxPowerState&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
