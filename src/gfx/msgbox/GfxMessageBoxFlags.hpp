@@ -57,10 +57,10 @@ public:
     explicit GfxMessageBoxFlags(const ValueType flag) noexcept;
     explicit GfxMessageBoxFlags(const SdlType flag) noexcept;
 
-    GfxMessageBoxFlags(GfxMessageBoxFlags const& other) noexcept;
+    GfxMessageBoxFlags(const GfxMessageBoxFlags& other) noexcept;
     GfxMessageBoxFlags(GfxMessageBoxFlags&& other) noexcept;
 
-    GfxMessageBoxFlags& operator=(GfxMessageBoxFlags const& other) noexcept;
+    GfxMessageBoxFlags& operator=(const GfxMessageBoxFlags& other) noexcept;
     GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other) noexcept;
 
     bool operator==(GfxMessageBoxFlags const& other) const noexcept;

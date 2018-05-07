@@ -49,10 +49,10 @@ GfxMessageBoxData::GfxMessageBoxData() noexcept : GfxObject(ClassName)
     buildData();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow * win,
-                                     std::string const& title, std::string const& message, const int32_t numbuttons,
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const std::string& title,
+                                     const std::string& message, const int32_t numbuttons,
                                      const GfxMessageBoxButtonData buttons[],
-                                     GfxMessageBoxColorScheme const& colorScheme) noexcept : GfxObject(ClassName)
+                                     const GfxMessageBoxColorScheme& colorScheme) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -63,14 +63,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
     assert(colorScheme);
 
     flags_ = flags;
-    if (win != nullptr)
-    {
-        winPtr_ = win->getAsSdlTypePtr();
-    }
-    else
-    {
-        winPtr_ = nullptr;
-    }
+    winPtr_ = NULL;
     title_ = title;
     message_ = message;
     numButtons_ = numbuttons;
@@ -84,13 +77,43 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
     buildData();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win,
-                                     std::string const& title, std::string const& message, const int32_t numbuttons,
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win,
+                                     const std::string& title, const std::string& message, const int32_t numbuttons,
+                                     const GfxMessageBoxButtonData buttons[],
+                                     const GfxMessageBoxColorScheme& colorScheme) noexcept : GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(flags);
+    assert(win);
+    assert(title.length() > 0);
+    assert(message.length() > 0);
+    assert(numbuttons > 0);
+    assert(colorScheme);
+
+    flags_ = flags;
+    winPtr_ = win.getAsSdlTypePtr();
+    title_ = title;
+    message_ = message;
+    numButtons_ = numbuttons;
+    btnDataPtr_ = new GfxMessageBoxButtonData[numbuttons];
+    for (int32_t i = 0; i < numbuttons; i++)
+    {
+        btnDataPtr_[i] = buttons[i];
+    }
+    colorScheme_ = colorScheme;
+    btnDataSdl_ = nullptr;
+    buildData();
+}
+
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win,
+                                     const std::string& title, const std::string& message, const int32_t numbuttons,
                                      const GfxMessageBoxButtonData buttons[]) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
     assert(flags);
+    assert(win);
     assert(title.length() > 0);
     assert(message.length() > 0);
     assert(numbuttons > 0);
@@ -110,7 +133,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::Gfx
     buildData();
 }
 
-GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData const& other) noexcept : GfxObject(other)
+GfxMessageBoxData::GfxMessageBoxData(const GfxMessageBoxData& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -146,7 +169,7 @@ GfxMessageBoxData::GfxMessageBoxData(GfxMessageBoxData&& other) noexcept : GfxOb
     buildData();
 }
 
-GfxMessageBoxData& GfxMessageBoxData::operator=(GfxMessageBoxData const& other) noexcept
+GfxMessageBoxData& GfxMessageBoxData::operator=(const GfxMessageBoxData& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

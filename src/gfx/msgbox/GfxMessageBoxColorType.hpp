@@ -61,10 +61,10 @@ public:
     explicit GfxMessageBoxColorType(const SdlType type) noexcept;
     explicit GfxMessageBoxColorType(const ValueType type) noexcept;
 
-    GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept;
+    GfxMessageBoxColorType(const GfxMessageBoxColorType& other) noexcept;
     GfxMessageBoxColorType(GfxMessageBoxColorType&& other) noexcept;
 
-    GfxMessageBoxColorType& operator=(GfxMessageBoxColorType const& other) noexcept;
+    GfxMessageBoxColorType& operator=(const GfxMessageBoxColorType& other) noexcept;
     GfxMessageBoxColorType& operator=(GfxMessageBoxColorType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -48,13 +48,13 @@ public:
 
     GfxMessageBoxButtonData() noexcept;
 
-    GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid,
-                            std::string const& text) noexcept;
+    GfxMessageBoxButtonData(const GfxMessageBoxButtonFlags& flags, const int32_t buttonid,
+                            const std::string& text) noexcept;
 
-    GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept;
+    GfxMessageBoxButtonData(const GfxMessageBoxButtonData& other) noexcept;
     GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other) noexcept;
 
-    GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData const& other) noexcept;
+    GfxMessageBoxButtonData& operator=(const GfxMessageBoxButtonData& other) noexcept;
     GfxMessageBoxButtonData& operator=(GfxMessageBoxButtonData&& other) noexcept;
 
     virtual ~GfxMessageBoxButtonData() noexcept;

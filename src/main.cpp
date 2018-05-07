@@ -105,7 +105,7 @@ void MsgBox(gfx::video::GfxWindow const& win)
                                             gfx::bgi::kColorDarkGray().getGreen(),
                                             gfx::bgi::kColorDarkGray().getBlue()));
 
-    gfx::msgbox::GfxMessageBoxData m(flags, const_cast<gfx::video::GfxWindow *>(&win), title, message, numbuttons,
+    gfx::msgbox::GfxMessageBoxData m(flags, win, title, message, numbuttons,
                                         buttons, colorScheme);
 
     gfx::msgbox::GfxMessageBox g(m);

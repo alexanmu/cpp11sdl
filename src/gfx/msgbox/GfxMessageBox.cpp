@@ -40,7 +40,7 @@ namespace msgbox
 
 const char GfxMessageBox::ClassName[] = "GfxMessageBox";
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject(ClassName)
+GfxMessageBox::GfxMessageBox(const GfxMessageBoxData& data) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -50,8 +50,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxData const& data) noexcept : GfxObject
     type_ = GfxMessageBoxType::typeComplex;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
-                             std::string const& message) noexcept : GfxObject(ClassName)
+GfxMessageBox::GfxMessageBox(const GfxMessageBoxFlags& flag, const std::string& title,
+                             const std::string& message) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -66,8 +66,8 @@ GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& 
     type_ = GfxMessageBoxType::typeSimple;
 }
 
-GfxMessageBox::GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title, std::string const& message,
-                             video::GfxWindow const& win) noexcept : GfxObject(ClassName)
+GfxMessageBox::GfxMessageBox(const GfxMessageBoxFlags& flag, const std::string& title, const std::string& message,
+                             const video::GfxWindow& win) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 

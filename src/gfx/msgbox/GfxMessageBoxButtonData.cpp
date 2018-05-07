@@ -46,8 +46,8 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData() noexcept : GfxObject(ClassNam
     clear();
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const& flags, const int32_t buttonid,
-                                                 std::string const& text) noexcept : GfxObject(ClassName)
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(const GfxMessageBoxButtonFlags& flags, const int32_t buttonid,
+                                                 const std::string& text) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -62,7 +62,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonFlags const&
     data_.text = text_.c_str();
 }
 
-GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData const& other) noexcept :
+GfxMessageBoxButtonData::GfxMessageBoxButtonData(const GfxMessageBoxButtonData& other) noexcept :
          GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
@@ -86,7 +86,7 @@ GfxMessageBoxButtonData::GfxMessageBoxButtonData(GfxMessageBoxButtonData&& other
     other.clear();
 }
 
-GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(GfxMessageBoxButtonData const& other) noexcept
+GfxMessageBoxButtonData& GfxMessageBoxButtonData::operator=(const GfxMessageBoxButtonData& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

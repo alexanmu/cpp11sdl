@@ -95,7 +95,7 @@ void GOKMsgBox::showModal(void)
 
     gfx::msgbox::GfxMessageBoxColorScheme colorScheme(colors);
 
-    gfx::msgbox::GfxMessageBoxData msgBoxData(flags, nullptr, title_, message_, 1, buttons, colorScheme);
+    gfx::msgbox::GfxMessageBoxData msgBoxData(flags, title_, message_, 1, buttons, colorScheme);
 
     gfx::msgbox::GfxMessageBox messageBox(msgBoxData);
 

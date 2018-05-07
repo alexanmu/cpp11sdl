@@ -63,7 +63,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const SdlType flags) noexcept
     flags_ = flags;
 }
 
-GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags const& other) noexcept :
+GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) noexcept :
         GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
@@ -81,7 +81,7 @@ GfxMessageBoxButtonFlags::GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& ot
     other.clear();
 }
 
-GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButtonFlags const& other) noexcept
+GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(const GfxMessageBoxButtonFlags& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -111,7 +111,7 @@ GfxMessageBoxButtonFlags& GfxMessageBoxButtonFlags::operator=(GfxMessageBoxButto
     return *this;
 }
 
-bool GfxMessageBoxButtonFlags::operator==(GfxMessageBoxButtonFlags const& other) noexcept
+bool GfxMessageBoxButtonFlags::operator==(const GfxMessageBoxButtonFlags& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

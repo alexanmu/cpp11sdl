@@ -25,6 +25,7 @@
 #include <cstdint>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "GfxMessageBoxColorScheme.hpp"
 #include "GfxBasicLogger.hpp"
@@ -59,7 +60,22 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColor colo
     }
 }
 
-GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept :
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const std::vector<GfxMessageBoxColor>& colors) noexcept :
+    GfxObject(ClassName)
+{
+    LOG_TRACE_PRIO_MED();
+
+    assert(colors.size() == kColorsArraySize);
+
+    for (int32_t index = 0; index < kColorsArraySize; index++)
+    {
+        assert(colors[index]);
+
+        clrscheme_.colors[index] = colors[index].getAsSdlType();
+    }
+}
+
+GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(const GfxMessageBoxColorScheme& other) noexcept :
     GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
@@ -77,7 +93,7 @@ GfxMessageBoxColorScheme::GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& ot
     other.clear();
 }
 
-GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(GfxMessageBoxColorScheme const& other) noexcept
+GfxMessageBoxColorScheme& GfxMessageBoxColorScheme::operator=(const GfxMessageBoxColorScheme& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -121,7 +137,7 @@ std::string GfxMessageBoxColorScheme::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxMessageBoxColorScheme::setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color) noexcept
+void GfxMessageBoxColorScheme::setColor(const GfxMessageBoxColorType& type, const GfxMessageBoxColor& color) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

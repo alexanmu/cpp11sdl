@@ -26,6 +26,7 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -54,17 +55,18 @@ public:
     GfxMessageBoxColorScheme() noexcept;
 
     explicit GfxMessageBoxColorScheme(const GfxMessageBoxColor colors[kColorsArraySize]) noexcept;
+    explicit GfxMessageBoxColorScheme(const std::vector<GfxMessageBoxColor>& colors) noexcept;
 
-    GfxMessageBoxColorScheme(GfxMessageBoxColorScheme const& other) noexcept;
+    GfxMessageBoxColorScheme(const GfxMessageBoxColorScheme& other) noexcept;
     GfxMessageBoxColorScheme(GfxMessageBoxColorScheme&& other) noexcept;
 
-    GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme const& other) noexcept;
+    GfxMessageBoxColorScheme& operator=(const GfxMessageBoxColorScheme& other) noexcept;
     GfxMessageBoxColorScheme& operator=(GfxMessageBoxColorScheme&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void setColor(GfxMessageBoxColorType const& type, GfxMessageBoxColor const& color) noexcept;
+    void setColor(const GfxMessageBoxColorType& type, const GfxMessageBoxColor& color) noexcept;
 
     void clear(void) noexcept;
 

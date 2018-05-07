@@ -63,7 +63,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(const SdlType clr) noexcept : GfxObject(C
 }
 
 /* Copy constructor */
-GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor const& other) noexcept : GfxObject(other)
+GfxMessageBoxColor::GfxMessageBoxColor(const GfxMessageBoxColor& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -81,7 +81,7 @@ GfxMessageBoxColor::GfxMessageBoxColor(GfxMessageBoxColor&& other) noexcept : Gf
 }
 
 /* Delete copy and move assign operators */
-GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor const& other) noexcept
+GfxMessageBoxColor& GfxMessageBoxColor::operator=(const GfxMessageBoxColor& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -111,7 +111,7 @@ GfxMessageBoxColor& GfxMessageBoxColor::operator=(GfxMessageBoxColor&& other) no
     return *this;
 }
 
-bool GfxMessageBoxColor::operator==(GfxMessageBoxColor const& other) noexcept
+bool GfxMessageBoxColor::operator==(const GfxMessageBoxColor& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

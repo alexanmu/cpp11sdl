@@ -57,13 +57,13 @@ public:
     explicit GfxMessageBoxButtonFlags(const ValueType flags) noexcept;
     explicit GfxMessageBoxButtonFlags(const SdlType flags) noexcept;
 
-    GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags const& other) noexcept;
+    GfxMessageBoxButtonFlags(const GfxMessageBoxButtonFlags& other) noexcept;
     GfxMessageBoxButtonFlags(GfxMessageBoxButtonFlags&& other) noexcept;
 
-    GfxMessageBoxButtonFlags& operator=(GfxMessageBoxButtonFlags const& other) noexcept;
+    GfxMessageBoxButtonFlags& operator=(const GfxMessageBoxButtonFlags& other) noexcept;
     GfxMessageBoxButtonFlags& operator=(GfxMessageBoxButtonFlags&& other) noexcept;
 
-    bool operator==(GfxMessageBoxButtonFlags const& other) noexcept;
+    bool operator==(const GfxMessageBoxButtonFlags& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

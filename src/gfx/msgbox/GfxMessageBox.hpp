@@ -47,16 +47,16 @@ public:
 
     GfxMessageBox() = delete;
 
-    explicit GfxMessageBox(GfxMessageBoxData const& data) noexcept;
-    GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
-                  std::string const& message) noexcept;
-    GfxMessageBox(GfxMessageBoxFlags const& flag, std::string const& title,
-                  std::string const& message, video::GfxWindow const& win) noexcept;
+    explicit GfxMessageBox(const GfxMessageBoxData& data) noexcept;
+    GfxMessageBox(const GfxMessageBoxFlags& flag, const std::string& title,
+                  const std::string& message) noexcept;
+    GfxMessageBox(const GfxMessageBoxFlags& flag, const std::string& title,
+                  const std::string& message, const video::GfxWindow& win) noexcept;
 
-    GfxMessageBox(GfxMessageBox const&) = delete;
+    GfxMessageBox(const GfxMessageBox&) = delete;
     GfxMessageBox(GfxMessageBox&& other) noexcept;
 
-    GfxMessageBox& operator=(GfxMessageBox const&) = delete;
+    GfxMessageBox& operator=(const GfxMessageBox&) = delete;
     GfxMessageBox& operator=(GfxMessageBox&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

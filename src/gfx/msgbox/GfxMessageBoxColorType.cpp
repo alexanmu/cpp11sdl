@@ -62,7 +62,7 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(const ValueType type) noexcept :
     type_ = static_cast<SdlType>(type);
 }
 
-GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType const& other) noexcept :
+GfxMessageBoxColorType::GfxMessageBoxColorType(const GfxMessageBoxColorType& other) noexcept :
     GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
@@ -80,7 +80,7 @@ GfxMessageBoxColorType::GfxMessageBoxColorType(GfxMessageBoxColorType&& other) n
     other.clear();
 }
 
-GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(GfxMessageBoxColorType const& other) noexcept
+GfxMessageBoxColorType& GfxMessageBoxColorType::operator=(const GfxMessageBoxColorType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

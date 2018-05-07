@@ -52,19 +52,22 @@ public:
 
     GfxMessageBoxData() noexcept;
 
-    GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow * win, std::string const& title,
-                      std::string const& message, const int32_t numbuttons, const GfxMessageBoxButtonData buttons[],
-                      GfxMessageBoxColorScheme const& colorScheme) noexcept;
-    GfxMessageBoxData(GfxMessageBoxFlags const& flags, video::GfxWindow const& win, std::string const& title,
-                      std::string const& message, const int32_t numbuttons,
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const std::string& title, const std::string& message,
+                      const int32_t numbuttons, const GfxMessageBoxButtonData buttons[],
+                      const GfxMessageBoxColorScheme& colorScheme) noexcept;
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win, const std::string& title,
+                      const std::string& message, const int32_t numbuttons, const GfxMessageBoxButtonData buttons[],
+                      const GfxMessageBoxColorScheme& colorScheme) noexcept;
+    GfxMessageBoxData(const GfxMessageBoxFlags& flags, const video::GfxWindow& win, const std::string& title,
+                      const std::string& message, const int32_t numbuttons,
                       const GfxMessageBoxButtonData buttons[]) noexcept;
 
-    GfxMessageBoxData(GfxMessageBoxData const& other) noexcept;
+    GfxMessageBoxData(const GfxMessageBoxData& other) noexcept;
     GfxMessageBoxData(GfxMessageBoxData&& other) noexcept;
 
     virtual ~GfxMessageBoxData() noexcept;
 
-    GfxMessageBoxData& operator=(GfxMessageBoxData const& other) noexcept;
+    GfxMessageBoxData& operator=(const GfxMessageBoxData& other) noexcept;
     GfxMessageBoxData& operator=(GfxMessageBoxData&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
