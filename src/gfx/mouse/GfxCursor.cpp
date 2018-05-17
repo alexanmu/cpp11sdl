@@ -78,7 +78,7 @@ GfxCursor::GfxCursor(const uint8_t * data, const uint8_t * mask, const int32_t w
     cursor_ = tmpcursor;
 }
 
-GfxCursor::GfxCursor(surface::GfxSurface const& surface, const int32_t hot_x,
+GfxCursor::GfxCursor(const surface::GfxSurface& surface, const int32_t hot_x,
                      const int32_t hot_y) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
@@ -98,7 +98,7 @@ GfxCursor::GfxCursor(surface::GfxSurface const& surface, const int32_t hot_x,
     cursor_ = tmpcursor;
 }
 
-GfxCursor::GfxCursor(GfxSystemCursor const& id) throw(std::runtime_error) : GfxObject(ClassName)
+GfxCursor::GfxCursor(const GfxSystemCursor& id) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -205,7 +205,7 @@ void GfxCursor::createCursor(const uint8_t * data, const uint8_t * mask, const i
     cursor_ = tmpcursor;
 }
 
-void GfxCursor::createCursor(surface::GfxSurface const& surface, const int32_t hot_x,
+void GfxCursor::createCursor(const surface::GfxSurface& surface, const int32_t hot_x,
                              const int32_t hot_y) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
@@ -229,7 +229,7 @@ void GfxCursor::createCursor(surface::GfxSurface const& surface, const int32_t h
     cursor_ = tmpcursor;
 }
 
-void GfxCursor::createCursor(GfxSystemCursor const& id) throw(std::runtime_error)
+void GfxCursor::createCursor(const GfxSystemCursor& id) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
 

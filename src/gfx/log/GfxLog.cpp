@@ -91,7 +91,7 @@ std::string GfxLog::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxLog::setAllPriority(GfxLogPriority const& prio) const noexcept
+void GfxLog::setAllPriority(const GfxLogPriority& prio) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -100,7 +100,7 @@ void GfxLog::setAllPriority(GfxLogPriority const& prio) const noexcept
     SDL_LogSetAllPriority(prio.getAsSdlType());
 }
 
-void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept
+void GfxLog::setPriority(const GfxLogCategory& cat, const GfxLogPriority& prio) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -110,7 +110,7 @@ void GfxLog::setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) 
     SDL_LogSetPriority(cat.getAsSdlType(), prio.getAsSdlType());
 }
 
-GfxLogPriority GfxLog::getPriority(GfxLogCategory const& cat) const noexcept
+GfxLogPriority GfxLog::getPriority(const GfxLogCategory& cat) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -129,7 +129,7 @@ void GfxLog::resetPriorities(void) const noexcept
     SDL_LogResetPriorities();
 }
 
-GfxLogOutputFunction * GfxLog::logGetOutputFunction(void) const throw(std::runtime_error)
+const GfxLogOutputFunction * GfxLog::logGetOutputFunction(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -149,17 +149,17 @@ GfxLogOutputFunction * GfxLog::logGetOutputFunction(void) const throw(std::runti
     return nullptr;
 }
 
-void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback) const throw(std::runtime_error)
+void GfxLog::logSetOutputFunction(const GfxLogOutputFunction& callback) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
     void * userdata = static_cast<void *>(const_cast<GfxLog *>(this));
 
-    if (callback != nullptr)
+    if (callback)
     {
         if (logOutputFunctionObject_ == nullptr)
         {
-            logOutputFunctionObject_ = callback;
+            logOutputFunctionObject_ = const_cast<GfxLogOutputFunction *>(std::addressof(callback));
             SDL_LogSetOutputFunction(logOutputFunction, userdata);
         }
     }
@@ -174,8 +174,8 @@ void GfxLog::logSetOutputFunction(GfxLogOutputFunction * callback) const throw(s
 }
 
 // Private methods
-void GfxLog::callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType priority,
-                                               std::string const& message) const noexcept
+void GfxLog::callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType& priority,
+                                               const std::string& message) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

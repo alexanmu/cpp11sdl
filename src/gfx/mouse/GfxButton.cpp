@@ -58,7 +58,7 @@ GfxButton::GfxButton(const SdlType button) noexcept : GfxObject(ClassName)
     button_ = button;
 }
 
-GfxButton::GfxButton(GfxButton const& other) noexcept : GfxObject(other)
+GfxButton::GfxButton(const GfxButton& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxButton::GfxButton(GfxButton&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxButton& GfxButton::operator=(GfxButton const& other) noexcept
+GfxButton& GfxButton::operator=(const GfxButton& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -154,7 +154,7 @@ void GfxButton::clear(void) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    button_ = static_cast<SdlType>(0);
+    button_ = static_cast<SdlType>(-1);
 }
 
 GfxButton::SdlType GfxButton::getAsSdlType(void) const noexcept

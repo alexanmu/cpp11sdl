@@ -65,10 +65,10 @@ public:
     explicit GfxSystemCursor(const ValueType cursor) noexcept;
     explicit GfxSystemCursor(const SdlType cursor) noexcept;
 
-    GfxSystemCursor(GfxSystemCursor const& other) noexcept;
+    GfxSystemCursor(const GfxSystemCursor& other) noexcept;
     GfxSystemCursor(GfxSystemCursor&& other) noexcept;
 
-    GfxSystemCursor& operator=(GfxSystemCursor const& other) noexcept;
+    GfxSystemCursor& operator=(const GfxSystemCursor& other) noexcept;
     GfxSystemCursor& operator=(GfxSystemCursor&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

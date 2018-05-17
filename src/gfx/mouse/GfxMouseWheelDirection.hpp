@@ -56,10 +56,10 @@ public:
     explicit GfxMouseWheelDirection(const SdlType wheel) noexcept;
     explicit GfxMouseWheelDirection(const uint32_t wheel) noexcept;
 
-    GfxMouseWheelDirection(GfxMouseWheelDirection const& other) noexcept;
+    GfxMouseWheelDirection(const GfxMouseWheelDirection& other) noexcept;
     GfxMouseWheelDirection(GfxMouseWheelDirection&& other) noexcept;
 
-    GfxMouseWheelDirection& operator=(GfxMouseWheelDirection const& other) noexcept;
+    GfxMouseWheelDirection& operator=(const GfxMouseWheelDirection& other) noexcept;
     GfxMouseWheelDirection& operator=(GfxMouseWheelDirection&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -50,23 +50,24 @@ public:
 
     GfxMouse() noexcept;
 
-    GfxMouse(GfxMouse const& other) noexcept;
-    GfxMouse(GfxMouse&& other) noexcept;
+    GfxMouse(const GfxMouse& other) = delete;
+    GfxMouse(GfxMouse&& other) = delete;
 
-    GfxMouse& operator=(GfxMouse const& other) noexcept;
-    GfxMouse& operator=(GfxMouse&& other) noexcept;
+    GfxMouse& operator=(const GfxMouse& other) = delete;
+    GfxMouse& operator=(GfxMouse&& other) = delete;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+#warning Find a smart way to return GfxWindow object instead of video::GfxWindow::SdlTypePtr
     video::GfxWindow::SdlTypePtr getMouseFocus(void) const noexcept;
     GfxButton getMouseState(int32_t * x, int32_t * y) const noexcept;
     GfxButton getGlobalMouseState(int32_t * x, int32_t * y) const noexcept;
     GfxButton getRelativeMouseState(int32_t * x, int32_t * y) const noexcept;
-    void warpMouseInWindow(video::GfxWindow const& window, const int32_t x, const int32_t y) const noexcept;
+    void warpMouseInWindow(const video::GfxWindow& window, const int32_t x, const int32_t y) const noexcept;
     void warpMouseGlobal(const int32_t x, const int32_t y) const noexcept;
-    void setRelativeMouseMode(GfxBool const& enabled) const noexcept;
-    void captureMouse(GfxBool const& enabled) const noexcept;
+    void setRelativeMouseMode(const GfxBool& enabled) const noexcept;
+    void captureMouse(const GfxBool& enabled) const noexcept;
     GfxBool getRelativeMouseMode(void) const noexcept;
 };
 

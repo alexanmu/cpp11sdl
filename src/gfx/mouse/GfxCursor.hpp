@@ -55,12 +55,12 @@ public:
               const int32_t hot_x, const int32_t hot_y) throw(std::runtime_error);
     GfxCursor(surface::GfxSurface const& surface, const int32_t hot_x,
               const int32_t hot_y) throw(std::runtime_error);
-    explicit GfxCursor(GfxSystemCursor const& id) throw(std::runtime_error);
+    explicit GfxCursor(const GfxSystemCursor& id) throw(std::runtime_error);
 
-    GfxCursor(GfxCursor const&) = delete;
+    GfxCursor(const GfxCursor&) = delete;
     GfxCursor(GfxCursor&& other) noexcept;
 
-    GfxCursor& operator=(GfxCursor const&) = delete;
+    GfxCursor& operator=(const GfxCursor&) = delete;
     GfxCursor& operator=(GfxCursor&& other) noexcept;
 
     virtual ~GfxCursor() noexcept;
@@ -71,9 +71,9 @@ public:
     void createCursor(const SdlTypePtr cursor) throw(std::runtime_error);
     void createCursor(const uint8_t * data, const uint8_t * mask, const int32_t w, const int32_t h,
                       const int32_t hot_x, const int32_t hot_y) throw(std::runtime_error);
-    void createCursor(surface::GfxSurface const& surface, const int32_t hot_x,
+    void createCursor(const surface::GfxSurface& surface, const int32_t hot_x,
                       const int32_t hot_y) throw(std::runtime_error);
-    void createCursor(GfxSystemCursor const& id) throw(std::runtime_error);
+    void createCursor(const GfxSystemCursor& id) throw(std::runtime_error);
     void setCursor(void) const noexcept;
     GfxCursor::SdlTypePtr getCursor(void) const noexcept;
     GfxCursor::SdlTypePtr getDefaultCursor(void) const noexcept;

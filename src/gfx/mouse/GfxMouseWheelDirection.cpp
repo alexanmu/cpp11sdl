@@ -65,7 +65,7 @@ GfxMouseWheelDirection::GfxMouseWheelDirection(const uint32_t wheel) noexcept : 
     wheel_ = static_cast<SdlType>(wheel);
 }
 
-GfxMouseWheelDirection::GfxMouseWheelDirection(GfxMouseWheelDirection const& other) noexcept : GfxObject(other)
+GfxMouseWheelDirection::GfxMouseWheelDirection(const GfxMouseWheelDirection& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -81,7 +81,7 @@ GfxMouseWheelDirection::GfxMouseWheelDirection(GfxMouseWheelDirection&& other) n
     other.clear();
 }
 
-GfxMouseWheelDirection& GfxMouseWheelDirection::operator=(GfxMouseWheelDirection const& other) noexcept
+GfxMouseWheelDirection& GfxMouseWheelDirection::operator=(const GfxMouseWheelDirection& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

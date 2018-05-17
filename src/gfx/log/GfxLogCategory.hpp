@@ -76,10 +76,10 @@ public:
     explicit GfxLogCategory(const ValueType value) noexcept;
     explicit GfxLogCategory(const SdlType value) noexcept;
 
-    GfxLogCategory(GfxLogCategory const& other) noexcept;
+    GfxLogCategory(const GfxLogCategory& other) noexcept;
     GfxLogCategory(GfxLogCategory&& other) noexcept;
 
-    GfxLogCategory& operator=(GfxLogCategory const& other) noexcept;
+    GfxLogCategory& operator=(const GfxLogCategory& other) noexcept;
     GfxLogCategory& operator=(GfxLogCategory&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

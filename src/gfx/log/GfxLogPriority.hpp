@@ -62,10 +62,10 @@ public:
     explicit GfxLogPriority(const SdlType value) noexcept;
     explicit GfxLogPriority(const int32_t value) noexcept;
 
-    GfxLogPriority(GfxLogPriority const& other) noexcept;
+    GfxLogPriority(const GfxLogPriority& other) noexcept;
     GfxLogPriority(GfxLogPriority&& other) noexcept;
 
-    GfxLogPriority& operator=(GfxLogPriority const& other) noexcept;
+    GfxLogPriority& operator=(const GfxLogPriority& other) noexcept;
     GfxLogPriority& operator=(GfxLogPriority&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

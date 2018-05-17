@@ -68,7 +68,7 @@ GfxLogPriority::GfxLogPriority(const int32_t value) noexcept : GfxObject(ClassNa
     value_ = static_cast<SdlType>(value);
 }
 
-GfxLogPriority::GfxLogPriority(GfxLogPriority const& other) noexcept : GfxObject(other)
+GfxLogPriority::GfxLogPriority(const GfxLogPriority& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -84,7 +84,7 @@ GfxLogPriority::GfxLogPriority(GfxLogPriority&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxLogPriority& GfxLogPriority::operator=(GfxLogPriority const& other) noexcept
+GfxLogPriority& GfxLogPriority::operator=(const GfxLogPriority& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -63,10 +63,10 @@ public:
     explicit GfxButton(const ValueType button) noexcept;
     explicit GfxButton(const SdlType button) noexcept;
 
-    GfxButton(GfxButton const& other) noexcept;
+    GfxButton(const GfxButton& other) noexcept;
     GfxButton(GfxButton&& other) noexcept;
 
-    GfxButton& operator=(GfxButton const& other) noexcept;
+    GfxButton& operator=(const GfxButton& other) noexcept;
     GfxButton& operator=(GfxButton&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

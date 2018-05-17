@@ -58,7 +58,7 @@ GfxLogCategory::GfxLogCategory(const SdlType value) noexcept : GfxObject(ClassNa
     value_ = value;
 }
 
-GfxLogCategory::GfxLogCategory(GfxLogCategory const& other) noexcept : GfxObject(other)
+GfxLogCategory::GfxLogCategory(const GfxLogCategory& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxLogCategory::GfxLogCategory(GfxLogCategory&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxLogCategory& GfxLogCategory::operator=(GfxLogCategory const& other) noexcept
+GfxLogCategory& GfxLogCategory::operator=(const GfxLogCategory& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

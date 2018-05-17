@@ -67,7 +67,7 @@ void _doLog(void)
     prv::LogOutFunc * tst_lofuncptr = nullptr;
     try
     {
-        tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(log.logGetOutputFunction());
+        tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(const_cast<gfx::log::GfxLogOutputFunction *>(log.logGetOutputFunction()));  // NOLINT
         if (tst_lofuncptr == nullptr)
         {
             std::cout << "nullptr; as expected" << std::endl;
@@ -85,9 +85,9 @@ void _doLog(void)
     log.log("float1=%f float2=%f", 1.5, 2.6);
     log.log("str=%s char=%c int=%d", "string", ';', 5);
     // Set new output function
-    log.logSetOutputFunction(&lofunc);
+    log.logSetOutputFunction(lofunc);
     // test new output function
-    tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(log.logGetOutputFunction());
+    tst_lofuncptr = reinterpret_cast<prv::LogOutFunc *>(const_cast<gfx::log::GfxLogOutputFunction *>(log.logGetOutputFunction()));  // NOLINT
     if (tst_lofuncptr == nullptr)
     {
         std::cout << "nullptr; NOT expected!" << std::endl;
@@ -113,7 +113,7 @@ void _doLog(void)
     // Try to stop own logging function
     try
     {
-        log.logSetOutputFunction(nullptr);
+        log.logSetOutputFunction(gfx::log::GfxLogOutputFunctionEmpty());
     }
     catch (std::runtime_error& ex)
     {

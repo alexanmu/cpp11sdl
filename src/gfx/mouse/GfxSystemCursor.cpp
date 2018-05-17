@@ -58,7 +58,7 @@ GfxSystemCursor::GfxSystemCursor(const SdlType cursor) noexcept : GfxObject(Clas
     cursor_ = cursor;
 }
 
-GfxSystemCursor::GfxSystemCursor(GfxSystemCursor const& other) noexcept : GfxObject(other)
+GfxSystemCursor::GfxSystemCursor(const GfxSystemCursor& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxSystemCursor::GfxSystemCursor(GfxSystemCursor&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxSystemCursor& GfxSystemCursor::operator=(GfxSystemCursor const& other) noexcept
+GfxSystemCursor& GfxSystemCursor::operator=(const GfxSystemCursor& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

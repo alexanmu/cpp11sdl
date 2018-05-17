@@ -25,6 +25,7 @@
 #define GfxLogOutputFunction_hpp
 
 #include <string>
+#include <cassert>
 
 #include "GfxObject.hpp"
 #include "GfxLogCategory.hpp"
@@ -50,8 +51,28 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual void operator()(gfx::log::GfxLogCategory const& cat, gfx::log::GfxLogPriority const& prio,
-                            std::string const& message) const noexcept = 0;
+    virtual void operator()(const gfx::log::GfxLogCategory& cat, const gfx::log::GfxLogPriority& prio,
+                            const std::string& message) const noexcept = 0;
+};
+
+class GfxLogOutputFunctionEmpty : public GfxLogOutputFunction
+{
+public:
+    static const char ClassName[];
+    static const bool SdlResource = false;
+    static const bool CallsSdl = false;
+
+    GfxLogOutputFunctionEmpty() noexcept = default;
+
+    virtual ~GfxLogOutputFunctionEmpty() noexcept = default;
+
+    virtual void operator()(const gfx::log::GfxLogCategory& cat, const gfx::log::GfxLogPriority& prio,
+                            const std::string& message) const noexcept
+    {
+        assert(cat);
+        assert(prio);
+        assert(message.size() >= 0);
+    };
 };
 
 }  // namespace log

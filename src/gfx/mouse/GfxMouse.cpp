@@ -43,38 +43,6 @@ GfxMouse::GfxMouse() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxMouse::GfxMouse(GfxMouse const& other) noexcept : GfxObject(other)
-{
-    LOG_TRACE_PRIO_MED();
-}
-
-GfxMouse::GfxMouse(GfxMouse&& other) noexcept : GfxObject(std::move(other))
-{
-    LOG_TRACE_PRIO_MED();
-}
-
-GfxMouse& GfxMouse::operator=(GfxMouse const& other) noexcept
-{
-    LOG_TRACE_PRIO_MED();
-
-    if (this != &other)
-    {
-        GfxObject::operator=(other);
-    }
-    return *this;
-}
-
-GfxMouse& GfxMouse::operator=(GfxMouse&& other) noexcept
-{
-    LOG_TRACE_PRIO_MED();
-
-    if (this != &other)
-    {
-        GfxObject::operator=(std::move(other));
-    }
-    return *this;
-}
-
 GfxMouse::operator bool() const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -135,7 +103,7 @@ GfxButton GfxMouse::getRelativeMouseState(int32_t * x, int32_t * y) const noexce
     return GfxButton(ret);
 }
 
-void GfxMouse::warpMouseInWindow(video::GfxWindow const& window, const int32_t x, const int32_t y) const noexcept
+void GfxMouse::warpMouseInWindow(const video::GfxWindow& window, const int32_t x, const int32_t y) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -159,7 +127,7 @@ void GfxMouse::warpMouseGlobal(const int32_t x, const int32_t y) const noexcept
     assert(ret == 0);
 }
 
-void GfxMouse::setRelativeMouseMode(GfxBool const& enabled) const noexcept
+void GfxMouse::setRelativeMouseMode(const GfxBool& enabled) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -171,7 +139,7 @@ void GfxMouse::setRelativeMouseMode(GfxBool const& enabled) const noexcept
     assert(ret == 0);
 }
 
-void GfxMouse::captureMouse(GfxBool const& enabled) const noexcept
+void GfxMouse::captureMouse(const GfxBool& enabled) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

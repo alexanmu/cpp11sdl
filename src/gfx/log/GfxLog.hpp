@@ -54,22 +54,22 @@ public:
 
     GfxLog() noexcept;
 
-    GfxLog(GfxLog const&) = delete;
+    GfxLog(const GfxLog&) = delete;
     GfxLog(GfxLog&& other) noexcept;
 
-    GfxLog& operator=(GfxLog const&) = delete;
+    GfxLog& operator=(const GfxLog&) = delete;
     GfxLog& operator=(GfxLog&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void setAllPriority(GfxLogPriority const& prio) const noexcept;
-    void setPriority(GfxLogCategory const& cat, GfxLogPriority const& prio) const noexcept;
-    GfxLogPriority getPriority(GfxLogCategory const& cat) const noexcept;
+    void setAllPriority(const GfxLogPriority& prio) const noexcept;
+    void setPriority(const GfxLogCategory& cat, const GfxLogPriority& prio) const noexcept;
+    GfxLogPriority getPriority(const GfxLogCategory& cat) const noexcept;
     void resetPriorities(void) const noexcept;
 
     template <typename... Args>
-    void log(std::string const& fmt, Args&&... args) const noexcept
+    void log(const std::string& fmt, Args&&... args) const noexcept
     {
         assert(fmt.length() > 0);
 
@@ -77,7 +77,7 @@ public:
     }
 
     template <typename... Args>
-    void logVerbose(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    void logVerbose(const GfxLogCategory& cat, const std::string& fmt, Args&&... args) const noexcept
     {
         assert(cat);
         assert(fmt.length() > 0);
@@ -86,7 +86,7 @@ public:
     }
 
     template <typename... Args>
-    void logDebug(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    void logDebug(const GfxLogCategory& cat, const std::string& fmt, Args&&... args) const noexcept
     {
         assert(cat);
         assert(fmt.length() > 0);
@@ -95,7 +95,7 @@ public:
     }
 
     template <typename... Args>
-    void logInfo(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    void logInfo(const GfxLogCategory& cat, const std::string& fmt, Args&&... args) const noexcept
     {
         assert(cat);
         assert(fmt.length() > 0);
@@ -104,7 +104,7 @@ public:
     }
 
     template <typename... Args>
-    void logWarn(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    void logWarn(const GfxLogCategory& cat, const std::string& fmt, Args&&... args) const noexcept
     {
         assert(cat);
         assert(fmt.length() > 0);
@@ -113,7 +113,7 @@ public:
     }
 
     template <typename... Args>
-    void logError(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    void logError(const GfxLogCategory& cat, const std::string& fmt, Args&&... args) const noexcept
     {
         assert(cat);
         assert(fmt.length() > 0);
@@ -122,7 +122,7 @@ public:
     }
 
     template <typename... Args>
-    void logCritical(GfxLogCategory const& cat, std::string const& fmt, Args&&... args) const noexcept
+    void logCritical(const GfxLogCategory& cat, const std::string& fmt, Args&&... args) const noexcept
     {
         assert(cat);
         assert(fmt.length() > 0);
@@ -131,7 +131,7 @@ public:
     }
 
     template <typename... Args>
-    void logMessage(GfxLogCategory const& cat, GfxLogPriority const& prio, std::string const& fmt,
+    void logMessage(const GfxLogCategory& cat, const GfxLogPriority& prio, const std::string& fmt,
                     Args&&... args) const noexcept
     {
         assert(cat);
@@ -142,8 +142,8 @@ public:
     }
 
     template <typename... Args>
-    void logMessageV(GfxLogCategory const& cat, GfxLogPriority const& prio, std::string const& fmt,
-                        Args&&... args) throw(std::runtime_error)
+    void logMessageV(const GfxLogCategory& cat, const GfxLogPriority& prio, const std::string& fmt,
+                     Args&&... args) const noexcept
     {
         assert(cat);
         assert(prio);
@@ -152,14 +152,14 @@ public:
         std::tuple<Args...> tup(std::forward<Args>(args)...);
         assert(tup.tupple_size() > 0);
 
-        throw std::runtime_error("Use method logMessage(...)");
+        SDL_LogMessageV(cat.getAsSdlType(), prio.getAsSdlType(), fmt.c_str(), std::forward<Args>(args)...);
     }
 
-    GfxLogOutputFunction * logGetOutputFunction(void) const throw(std::runtime_error);
-    void logSetOutputFunction(GfxLogOutputFunction * callback) const throw(std::runtime_error);
+    const GfxLogOutputFunction * logGetOutputFunction(void) const throw(std::runtime_error);
+    void logSetOutputFunction(const GfxLogOutputFunction& callback) const throw(std::runtime_error);
 private:
-    void callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType priority,
-                                           std::string const& message) const noexcept;
+    void callCustomLogOutputFunctionObject(const int32_t category, const GfxLogPriority::SdlType& priority,
+                                           const std::string& message) const noexcept;
     // Will be called from C by SDL
     static void logOutputFunction(void * userdata, int category, SDL_LogPriority priority, const char * message);
 
