@@ -67,7 +67,7 @@ GfxKeymod::GfxKeymod(const SdlType mod) noexcept : GfxObject(ClassName)
     mod_ = mod;
 }
 
-GfxKeymod::GfxKeymod(GfxKeymod const& other) noexcept : GfxObject(other)
+GfxKeymod::GfxKeymod(const GfxKeymod& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -83,7 +83,7 @@ GfxKeymod::GfxKeymod(GfxKeymod&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxKeymod& GfxKeymod::operator=(GfxKeymod const& other) noexcept
+GfxKeymod& GfxKeymod::operator=(const GfxKeymod& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

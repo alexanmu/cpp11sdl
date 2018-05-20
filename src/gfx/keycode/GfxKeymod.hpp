@@ -68,10 +68,10 @@ public:
     explicit GfxKeymod(const ValueType mod) noexcept;
     explicit GfxKeymod(const SdlType mod) noexcept;
 
-    GfxKeymod(GfxKeymod const& other) noexcept;
+    GfxKeymod(const GfxKeymod& other) noexcept;
     GfxKeymod(GfxKeymod&& other) noexcept;
 
-    GfxKeymod& operator=(GfxKeymod const& other) noexcept;
+    GfxKeymod& operator=(const GfxKeymod& other) noexcept;
     GfxKeymod& operator=(GfxKeymod&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

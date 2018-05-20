@@ -66,7 +66,7 @@ GfxJoystick::GfxJoystick(const int32_t index) throw(std::runtime_error) : GfxObj
     joy_ = tmpjoyptr;
 }
 
-GfxJoystick::GfxJoystick(GfxJoystickID const& joyid) throw(std::runtime_error) : GfxObject(ClassName)
+GfxJoystick::GfxJoystick(const GfxJoystickID& joyid) throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -179,7 +179,7 @@ int32_t GfxJoystick::numJoysticks(void) const noexcept
     return SDL_NumJoysticks();
 }
 
-std::string GfxJoystick::joystickNameForIndex(const int32_t index) const noexcept
+const std::string GfxJoystick::joystickNameForIndex(const int32_t index) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -195,7 +195,7 @@ std::string GfxJoystick::joystickNameForIndex(const int32_t index) const noexcep
     return std::string();
 }
 
-GfxJoystickGUID GfxJoystick::joystickGetDeviceGUID(const int32_t index) const noexcept
+const GfxJoystickGUID GfxJoystick::joystickGetDeviceGUID(const int32_t index) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -234,7 +234,7 @@ uint16_t GfxJoystick::joystickGetDeviceProductVersion(const int32_t index) const
     return SDL_JoystickGetDeviceProductVersion(index);
 }
 
-GfxJoystickType GfxJoystick::joystickGetDeviceType(const int32_t index) const noexcept
+const GfxJoystickType GfxJoystick::joystickGetDeviceType(const int32_t index) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -246,7 +246,7 @@ GfxJoystickType GfxJoystick::joystickGetDeviceType(const int32_t index) const no
     return GfxJoystickType(jtype);
 }
 
-GfxJoystickID GfxJoystick::joystickGetDeviceInstanceID(const int32_t index) const noexcept
+const GfxJoystickID GfxJoystick::joystickGetDeviceInstanceID(const int32_t index) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -262,7 +262,7 @@ GfxJoystickID GfxJoystick::joystickGetDeviceInstanceID(const int32_t index) cons
     return GfxJoystickID();
 }
 
-std::string GfxJoystick::joystickName(void) const noexcept
+const std::string GfxJoystick::joystickName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -279,7 +279,7 @@ std::string GfxJoystick::joystickName(void) const noexcept
     return std::string();
 }
 
-GfxJoystickGUID GfxJoystick::joystickGetGUID(void) const noexcept
+const GfxJoystickGUID GfxJoystick::joystickGetGUID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -326,7 +326,7 @@ uint16_t GfxJoystick::joystickGetProductVersion(void) const noexcept
     return 0;
 }
 
-GfxJoystickType GfxJoystick::joystickGetType(void) const noexcept
+const GfxJoystickType GfxJoystick::joystickGetType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -340,7 +340,7 @@ GfxJoystickType GfxJoystick::joystickGetType(void) const noexcept
     return GfxJoystickType();
 }
 
-std::string GfxJoystick::joystickGetGUIDString(GfxJoystickGUID const& guid) const noexcept
+const std::string GfxJoystick::joystickGetGUIDString(GfxJoystickGUID const& guid) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -356,7 +356,7 @@ std::string GfxJoystick::joystickGetGUIDString(GfxJoystickGUID const& guid) cons
     return str;
 }
 
-GfxJoystickGUID GfxJoystick::joystickGetGUIDFromString(std::string const guid) const noexcept
+const GfxJoystickGUID GfxJoystick::joystickGetGUIDFromString(const std::string& guid) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -368,7 +368,7 @@ GfxJoystickGUID GfxJoystick::joystickGetGUIDFromString(std::string const guid) c
     return GfxJoystickGUID(sdlguid);
 }
 
-GfxBool GfxJoystick::joystickGetAttached(void) const noexcept
+const GfxBool GfxJoystick::joystickGetAttached(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -382,7 +382,7 @@ GfxBool GfxJoystick::joystickGetAttached(void) const noexcept
     return GfxBool(false);
 }
 
-GfxJoystickID GfxJoystick::joystickInstanceID(void) const noexcept
+const GfxJoystickID GfxJoystick::joystickInstanceID(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -471,7 +471,7 @@ int16_t GfxJoystick::joystickGetAxis(const int32_t axis) const noexcept
     return 0;
 }
 
-GfxBool GfxJoystick::joystickGetAxisInitialState(const int32_t axis, int16_t * state) const noexcept
+const GfxBool GfxJoystick::joystickGetAxisInitialState(const int32_t axis, int16_t * state) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -489,7 +489,7 @@ GfxBool GfxJoystick::joystickGetAxisInitialState(const int32_t axis, int16_t * s
     return GfxBool(false);
 }
 
-GfxHatPosition GfxJoystick::joystickGetHat(const int32_t hat) const noexcept
+const GfxHatPosition GfxJoystick::joystickGetHat(const int32_t hat) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -545,7 +545,7 @@ void GfxJoystick::joystickClose(void) noexcept
     }
 }
 
-GfxJoystickPowerLevel GfxJoystick::joystickCurrentPowerLevel(void) const noexcept
+const GfxJoystickPowerLevel GfxJoystick::joystickCurrentPowerLevel(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -23,6 +23,7 @@
 
 #include <string>
 #include <utility>
+#include <memory>
 
 #include "GfxJoystickGUID.hpp"
 #include "GfxBasicLogger.hpp"
@@ -118,16 +119,16 @@ std::string GfxJoystickGUID::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-uint8_t *  GfxJoystickGUID::getValue(void) const noexcept
+std::unique_ptr<GfxJoystickGUID::GUID> GfxJoystickGUID::getValue(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
-    uint8_t * ptr;
+    std::unique_ptr<GfxJoystickGUID::GUID> ptr;
 
-    ptr = static_cast<uint8_t *>(std::malloc(kGuidNumberOfBytes));
+    ptr = std::unique_ptr<GfxJoystickGUID::GUID>();
     for (int32_t index = 0; index < kGuidNumberOfBytes; index++)
     {
-        *(ptr + index) = guid_.data[index];
+        (*ptr).data[index] = guid_.data[index];
     }
     return ptr;
 }

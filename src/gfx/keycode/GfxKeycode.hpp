@@ -297,17 +297,17 @@ public:
     explicit GfxKeycode(const int32_t code) noexcept;
     explicit GfxKeycode(const ValueType code) noexcept;
 
-    GfxKeycode(GfxKeycode const& other) noexcept;
+    GfxKeycode(const GfxKeycode& other) noexcept;
     GfxKeycode(GfxKeycode&& other) noexcept;
 
-    GfxKeycode& operator=(GfxKeycode const& other) noexcept;
+    GfxKeycode& operator=(const GfxKeycode& other) noexcept;
     GfxKeycode& operator=(GfxKeycode&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
     ValueType getValue(void) const noexcept;
-    ValueType scancodeToKeycode(scancode::GfxScancode const& scancode) const noexcept;
+    ValueType scancodeToKeycode(const scancode::GfxScancode& scancode) const noexcept;
 
     void clear(void) noexcept;
 

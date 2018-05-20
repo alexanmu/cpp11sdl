@@ -59,7 +59,7 @@ GfxKeycode::GfxKeycode(const ValueType code) noexcept : GfxObject(ClassName)
     code_ = static_cast<SdlType>(code);
 }
 
-GfxKeycode::GfxKeycode(GfxKeycode const& other) noexcept : GfxObject(other)
+GfxKeycode::GfxKeycode(const GfxKeycode& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -75,7 +75,7 @@ GfxKeycode::GfxKeycode(GfxKeycode&& other) noexcept : GfxObject(std::move(other)
     other.clear();
 }
 
-GfxKeycode& GfxKeycode::operator=(GfxKeycode const& other) noexcept
+GfxKeycode& GfxKeycode::operator=(const GfxKeycode& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -126,7 +126,7 @@ GfxKeycode::ValueType GfxKeycode::getValue(void) const noexcept
     return static_cast<ValueType>(code_);
 }
 
-GfxKeycode::ValueType GfxKeycode::scancodeToKeycode(scancode::GfxScancode const& scancode) const noexcept
+GfxKeycode::ValueType GfxKeycode::scancodeToKeycode(const scancode::GfxScancode& scancode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

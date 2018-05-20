@@ -44,7 +44,7 @@ GfxKeyboard::GfxKeyboard() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxKeyboard::GfxKeyboard(GfxKeyboard const& other) noexcept : GfxObject(other)
+GfxKeyboard::GfxKeyboard(const GfxKeyboard& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -54,7 +54,7 @@ GfxKeyboard::GfxKeyboard(GfxKeyboard&& other) noexcept : GfxObject(std::move(oth
     LOG_TRACE_PRIO_MED();
 }
 
-GfxKeyboard& GfxKeyboard::operator=(GfxKeyboard const& other) noexcept
+GfxKeyboard& GfxKeyboard::operator=(const GfxKeyboard& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -116,7 +116,7 @@ const keycode::GfxKeymod GfxKeyboard::getModState(void) const noexcept
     return keycode::GfxKeymod(km);
 }
 
-void GfxKeyboard::setModState(keycode::GfxKeymod const& mod) const noexcept
+void GfxKeyboard::setModState(const keycode::GfxKeymod& mod) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -125,7 +125,7 @@ void GfxKeyboard::setModState(keycode::GfxKeymod const& mod) const noexcept
     SDL_SetModState(mod.getAsSdlType());
 }
 
-const keycode::GfxKeycode GfxKeyboard::getKeyFromScancode(scancode::GfxScancode const& scancode) const noexcept
+const keycode::GfxKeycode GfxKeyboard::getKeyFromScancode(const scancode::GfxScancode& scancode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -137,7 +137,7 @@ const keycode::GfxKeycode GfxKeyboard::getKeyFromScancode(scancode::GfxScancode 
     return keycode::GfxKeycode(kc);
 }
 
-const scancode::GfxScancode GfxKeyboard::getScancodeFromKey(keycode::GfxKeycode const& keycode) const noexcept
+const scancode::GfxScancode GfxKeyboard::getScancodeFromKey(const keycode::GfxKeycode& keycode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -149,7 +149,7 @@ const scancode::GfxScancode GfxKeyboard::getScancodeFromKey(keycode::GfxKeycode 
     return scancode::GfxScancode(sc);
 }
 
-const std::string GfxKeyboard::getScancodeName(scancode::GfxScancode const& scancode) const noexcept
+const std::string GfxKeyboard::getScancodeName(const scancode::GfxScancode& scancode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -165,7 +165,7 @@ const std::string GfxKeyboard::getScancodeName(scancode::GfxScancode const& scan
     return "";
 }
 
-const scancode::GfxScancode GfxKeyboard::getScancodeFromName(std::string const& name) const noexcept
+const scancode::GfxScancode GfxKeyboard::getScancodeFromName(const std::string& name) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -177,7 +177,7 @@ const scancode::GfxScancode GfxKeyboard::getScancodeFromName(std::string const& 
     return scancode::GfxScancode(sc);
 }
 
-const std::string GfxKeyboard::getKeyName(keycode::GfxKeycode const& keycode) const noexcept
+const std::string GfxKeyboard::getKeyName(const keycode::GfxKeycode& keycode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -193,7 +193,7 @@ const std::string GfxKeyboard::getKeyName(keycode::GfxKeycode const& keycode) co
     return "";
 }
 
-const keycode::GfxKeycode GfxKeyboard::getKeyFromName(std::string const& name) const noexcept
+const keycode::GfxKeycode GfxKeyboard::getKeyFromName(const std::string& name) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -229,7 +229,7 @@ void GfxKeyboard::stopTextInput(void) const noexcept
     SDL_StopTextInput();
 }
 
-void GfxKeyboard::setTextInputRect(rect::GfxRect const& rect) const noexcept
+void GfxKeyboard::setTextInputRect(const rect::GfxRect& rect) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -248,7 +248,7 @@ const GfxBool GfxKeyboard::hasScreenKeyboardSupport(void) const noexcept
     return GfxBool(sdlbool);
 }
 
-const GfxBool GfxKeyboard::isScreenKeyboardShown(video::GfxWindow const& window) const noexcept
+const GfxBool GfxKeyboard::isScreenKeyboardShown(const video::GfxWindow& window) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

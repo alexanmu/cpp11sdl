@@ -26,6 +26,7 @@
 
 #include <cstdint>
 #include <string>
+#include <memory>
 
 #include "GfxObject.hpp"
 #include "GfxSdlHeader.hpp"
@@ -60,7 +61,14 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    uint8_t * getValue(void) const noexcept;
+    static const int32_t kGuidNumberOfBytes = 16;
+
+    struct GUID
+    {
+        uint8_t data[kGuidNumberOfBytes];
+    };
+
+    std::unique_ptr<GUID> getValue(void) const noexcept;
 
     void clear(void) noexcept;
 
@@ -70,8 +78,6 @@ private:
     void copyValues(uint8_t * values) noexcept;
 
     SdlType guid_;
-
-    static const int32_t kGuidNumberOfBytes = 16;
 };
 
 }  // namespace joystick

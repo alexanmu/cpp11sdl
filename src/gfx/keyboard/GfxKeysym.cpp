@@ -52,7 +52,7 @@ GfxKeysym::GfxKeysym(const SdlType sym) noexcept : GfxObject(ClassName)
     sym_ = sym;
 }
 
-GfxKeysym::GfxKeysym(GfxKeysym const& other) noexcept : GfxObject(other)
+GfxKeysym::GfxKeysym(const GfxKeysym& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxKeysym::GfxKeysym(GfxKeysym&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxKeysym& GfxKeysym::operator=(GfxKeysym const& other) noexcept
+GfxKeysym& GfxKeysym::operator=(const GfxKeysym& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

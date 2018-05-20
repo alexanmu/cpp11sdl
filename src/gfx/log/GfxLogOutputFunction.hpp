@@ -24,6 +24,7 @@
 #ifndef GfxLogOutputFunction_hpp
 #define GfxLogOutputFunction_hpp
 
+#include <stdexcept>
 #include <string>
 #include <cassert>
 
@@ -72,6 +73,8 @@ public:
         assert(cat);
         assert(prio);
         assert(message.size() >= 0);
+
+        throw std::runtime_error("This method should never be called! Therefore throw!");
     };
 };
 

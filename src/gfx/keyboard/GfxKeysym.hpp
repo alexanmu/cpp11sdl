@@ -52,10 +52,10 @@ public:
 
     explicit GfxKeysym(const SdlType sym) noexcept;
 
-    GfxKeysym(GfxKeysym const& other) noexcept;
+    GfxKeysym(const GfxKeysym& other) noexcept;
     GfxKeysym(GfxKeysym&& other) noexcept;
 
-    GfxKeysym& operator=(GfxKeysym const& other) noexcept;
+    GfxKeysym& operator=(const GfxKeysym& other) noexcept;
     GfxKeysym& operator=(GfxKeysym&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
