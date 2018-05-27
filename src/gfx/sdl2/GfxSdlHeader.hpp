@@ -24,8 +24,8 @@
 #ifndef GfxSdlHeader_hpp
 #define GfxSdlHeader_hpp
 
-#include "SDL.h"
-#include "SDL_bits.h"
-#include "SDL_ttf.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_bits.h"
+#include "SDL2_ttf/SDL_ttf.h"
 
 #endif /* GfxSdlHeader_hpp */
