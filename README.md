@@ -3,7 +3,7 @@ C++11 Graphics Library based on SDL2 (https://www.libsdl.org/) version 2.0.8!
 
 Basic design approach is "everything is an object".
 
-Namespace gfx (located in src/gfx) contains wrappers for many SDL types/functions. There is a 1-to-1 mapping between SDL headers and a corresponding sub-namespace of gfx (e.g. SDL_video.h wrappers are available in namespace gfx::video - src/gfx/video).
+Namespace gfx (located in src/gfx) contains wrappers for many SDL types/functions. There is a 1-to-1 mapping between SDL headers and a corresponding namespace within gfx (e.g. SDL_video.h wrappers are available in namespace gfx::video - src/gfx/video).
 
 Components:
   - 'gfx' namespace: wrapper objects for SDL
@@ -13,15 +13,18 @@ Supported platforms:
   - RedHat Enterprise Linux Server Release 6.7
   - macOS X 10.11 El Capitan
   - macOS 10.12 Sierra
+  - macOS 10.13 High Sierra
 
 Supported compilers:
   - GNU gcc 6.1.0a-2
   - clang-802.0.41
   - clang-802.0.42
+  - clang-902.0.39.2
 
 Supported IDEs:
   - Apple Xcode 8.3.2
   - Apple Xcode 8.3.3
+  - Apple Xcode 9.4.1
 
 Licensed under the zlib licence (http://zlib.net/zlib_license.html).
 
