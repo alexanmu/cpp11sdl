@@ -52,7 +52,7 @@ GfxJoyDeviceEvent::GfxJoyDeviceEvent(const SdlType event) noexcept : GfxObject(C
     jdEvent_ = event;
 }
 
-GfxJoyDeviceEvent::GfxJoyDeviceEvent(GfxJoyDeviceEvent const& other) noexcept : GfxObject(other)
+GfxJoyDeviceEvent::GfxJoyDeviceEvent(const GfxJoyDeviceEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxJoyDeviceEvent::GfxJoyDeviceEvent(GfxJoyDeviceEvent&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxJoyDeviceEvent& GfxJoyDeviceEvent::operator=(GfxJoyDeviceEvent const& other) noexcept
+GfxJoyDeviceEvent& GfxJoyDeviceEvent::operator=(const GfxJoyDeviceEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

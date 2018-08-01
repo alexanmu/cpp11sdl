@@ -59,7 +59,7 @@ public:
     explicit GfxDrawingMode(const ValueType dmode) noexcept;
     explicit GfxDrawingMode(const BgiType dmode) noexcept;
 
-    GfxDrawingMode(GfxDrawingMode const& other) noexcept;
+    GfxDrawingMode(const GfxDrawingMode& other) noexcept;
     GfxDrawingMode(GfxDrawingMode&& other) noexcept;
 
     GfxDrawingMode& operator=(const GfxDrawingMode& other) noexcept;

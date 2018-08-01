@@ -31,12 +31,12 @@ namespace gto
 namespace fso
 {
 
-GFileCollectionElement::GFileCollectionElement(std::string const& fileSpec) : GFSBaseClass()
+GFileCollectionElement::GFileCollectionElement(const std::string& fileSpec) : GFSBaseClass()
 {
     fileSpec_ = fileSpec;
 }
 
-GFileCollectionElement::GFileCollectionElement(GFileCollectionElement const& other) : GFSBaseClass()
+GFileCollectionElement::GFileCollectionElement(const GFileCollectionElement& other) : GFSBaseClass()
 {
     fileSpec_ = other.fileSpec_;
 }
@@ -48,7 +48,7 @@ GFileCollectionElement::GFileCollectionElement(GFileCollectionElement&& other) :
     other.clear();
 }
 
-GFileCollectionElement& GFileCollectionElement::operator=(GFileCollectionElement const& other)
+GFileCollectionElement& GFileCollectionElement::operator=(const GFileCollectionElement& other)
 {
     if (this != &other)
     {
@@ -73,7 +73,7 @@ GFileCollectionElement::~GFileCollectionElement()
     clear();
 }
 
-std::string const& GFileCollectionElement::getFileSpec(void) const noexcept
+const std::string& GFileCollectionElement::getFileSpec(void) const noexcept
 {
     return fileSpec_;
 }

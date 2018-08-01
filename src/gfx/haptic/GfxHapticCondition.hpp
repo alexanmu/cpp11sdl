@@ -50,10 +50,10 @@ public:
     GfxHapticCondition() noexcept;
     explicit GfxHapticCondition(const SdlType hCond) noexcept;
 
-    GfxHapticCondition(GfxHapticCondition const& other) noexcept;
+    GfxHapticCondition(const GfxHapticCondition& other) noexcept;
     GfxHapticCondition(GfxHapticCondition&& other) noexcept;
 
-    GfxHapticCondition& operator=(GfxHapticCondition const& other) noexcept;
+    GfxHapticCondition& operator=(const GfxHapticCondition& other) noexcept;
     GfxHapticCondition& operator=(GfxHapticCondition&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

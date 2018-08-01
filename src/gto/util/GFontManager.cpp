@@ -42,7 +42,7 @@ namespace util
 const char GFontManager::kDefaultFontName[] = "Raleway-Regular";
 const char GFontManager::kDefaultFontFileExtension[] = ".ttf";
 
-GFontManager::GFontManager(std::string const& fontsFolder) noexcept : GObject()
+GFontManager::GFontManager(const std::string& fontsFolder) noexcept : GObject()
 {
     assert(fontsFolder.length() > 0);
 
@@ -82,7 +82,7 @@ void GFontManager::loadFonts(void) noexcept
     delete fo;
 }
 
-gfx::ttf::GfxTtfFont * GFontManager::getFont(std::string const& fontName, const int pointSize) const noexcept
+gfx::ttf::GfxTtfFont * GFontManager::getFont(const std::string& fontName, const int pointSize) const noexcept
 {
     std::string fontFileName = "";
 
@@ -104,7 +104,7 @@ void GFontManager::freeFont(gfx::ttf::GfxTtfFont * font) const noexcept
 }
 
 // Private methods
-std::string GFontManager::getFileNameByFontName(std::string const& fontName) const noexcept
+std::string GFontManager::getFileNameByFontName(const std::string& fontName) const noexcept
 {
     std::string fileName = "";
 

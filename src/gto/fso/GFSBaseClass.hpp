@@ -43,25 +43,25 @@ public:
     virtual ~GFSBaseClass();
 
     std::string _getWorkingDirectory(void) const;
-    void _setWorkingDirectory(std::string const& dir) const throw(std::runtime_error);
-    std::string _getFilePath(std::string const& filespec) const;
-    std::string _getFileName(std::string const& filespec) const;
-    std::string _getParentFolder(std::string const& filespec) const;
+    void _setWorkingDirectory(const std::string& dir) const throw(std::runtime_error);
+    std::string _getFilePath(const std::string& filespec) const;
+    std::string _getFileName(const std::string& filespec) const;
+    std::string _getParentFolder(const std::string& filespec) const;
 
-    std::string _getCurrentDateAsString(std::string const& sep1, std::string const& sep2) const;
+    std::string _getCurrentDateAsString(const std::string& sep1, const std::string& sep2) const;
     std::string _getCurrentDateAsString(void) const;
-    std::string _getCurrentTimeAsString(std::string const& sep1, std::string const& sep2) const;
+    std::string _getCurrentTimeAsString(const std::string& sep1, const std::string& sep2) const;
     std::string _getCurrentTimeAsString(void) const;
 
-    std::string _getDateAsString(std::tm const& date, std::string const& sep1, std::string const& sep2) const;
-    std::string _getDateAsString(std::tm const& date) const;
-    std::string _getTimeAsString(std::tm const& time, std::string const& sep1, std::string const& sep2) const;
-    std::string _getTimeAsString(std::tm const& time) const;
+    std::string _getDateAsString(const std::tm& date, const std::string& sep1, const std::string& sep2) const;
+    std::string _getDateAsString(const std::tm& date) const;
+    std::string _getTimeAsString(const std::tm& time, const std::string& sep1, const std::string& sep2) const;
+    std::string _getTimeAsString(const std::tm& time) const;
 
     const char kFolderSeparator = '/';
     const char kExtensionSeparator = '.';
 private:
-    std::string _lz(std::string const& str, const uint32_t elen) const;
+    std::string _lz(const std::string& str, const uint32_t elen) const;
 };
 
 }  // namespace fso

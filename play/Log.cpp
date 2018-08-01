@@ -42,8 +42,8 @@ public:
     {
         // nothing to do
     }
-    virtual void operator()(gfx::log::GfxLogCategory const& cat, gfx::log::GfxLogPriority const& prio,
-                            std::string const& message) const noexcept
+    virtual void operator()(const gfx::log::GfxLogCategory& cat, const gfx::log::GfxLogPriority& prio,
+                            const std::string& message) const noexcept
     {
         assert(cat);
         assert(prio);
@@ -52,6 +52,33 @@ public:
         int32_t iprio = static_cast<int32_t>(prio.getValue());
         std::cout << "<" << icat << "," << iprio << " " << message << ">" << std::endl;
     }
+};
+
+class LogOutFuncEmpty : public gfx::log::GfxLogOutputFunction
+{
+public:
+    static const char ClassName[];
+    static const bool SdlResource = false;
+    static const bool CallsSdl = false;
+
+    LogOutFuncEmpty() noexcept = default;
+
+    virtual ~LogOutFuncEmpty() noexcept = default;
+
+    explicit operator bool() const noexcept override
+    {
+        return false;
+    }
+
+    void operator()(const gfx::log::GfxLogCategory& cat, const gfx::log::GfxLogPriority& prio,
+                    const std::string& message) const noexcept override
+    {
+        assert(cat);
+        assert(prio);
+        assert(message.size() > 0);
+
+        throw std::runtime_error("This method should never be called! Therefore throw!");
+    };
 };
 }  // namespace prv
 
@@ -113,10 +140,11 @@ void _doLog(void)
     // Try to stop own logging function
     try
     {
-        log.logSetOutputFunction(gfx::log::GfxLogOutputFunctionEmpty());
+        log.logSetOutputFunction(prv::LogOutFuncEmpty());
     }
     catch (std::runtime_error& ex)
     {
+        // GfxLog::logSetOutputFunction does not throw any more; print will not happen
         std::cout << "Exception: " << ex.what() << "; as expected; libSDL bugzilla issue #3666" << std::endl;
     }
     log.logMessage(GfxLogCategory(GfxLogCategory::ValueType::logCategoryApplication),

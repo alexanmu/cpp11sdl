@@ -64,10 +64,10 @@ public:
     explicit GfxInitFlags(const int32_t flags) noexcept;
     explicit GfxInitFlags(const ValueType flags) noexcept;
 
-    GfxInitFlags(GfxInitFlags const& other) noexcept;
+    GfxInitFlags(const GfxInitFlags& other) noexcept;
     GfxInitFlags(GfxInitFlags&& other) noexcept;
 
-    GfxInitFlags& operator=(GfxInitFlags const& other) noexcept;
+    GfxInitFlags& operator=(const GfxInitFlags& other) noexcept;
     GfxInitFlags& operator=(GfxInitFlags&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

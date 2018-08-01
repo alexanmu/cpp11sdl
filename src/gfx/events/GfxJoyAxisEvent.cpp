@@ -52,7 +52,7 @@ GfxJoyAxisEvent::GfxJoyAxisEvent(const SdlType event) noexcept : GfxObject(Class
     jaxEvent_ = event;
 }
 
-GfxJoyAxisEvent::GfxJoyAxisEvent(GfxJoyAxisEvent const& other) noexcept : GfxObject(other)
+GfxJoyAxisEvent::GfxJoyAxisEvent(const GfxJoyAxisEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxJoyAxisEvent::GfxJoyAxisEvent(GfxJoyAxisEvent&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxJoyAxisEvent& GfxJoyAxisEvent::operator=(GfxJoyAxisEvent const& other) noexcept
+GfxJoyAxisEvent& GfxJoyAxisEvent::operator=(const GfxJoyAxisEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

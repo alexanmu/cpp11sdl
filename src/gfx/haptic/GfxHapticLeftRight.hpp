@@ -49,10 +49,10 @@ public:
     GfxHapticLeftRight() noexcept;
     explicit GfxHapticLeftRight(const SdlType hLR) noexcept;
 
-    GfxHapticLeftRight(GfxHapticLeftRight const& other) noexcept;
+    GfxHapticLeftRight(const GfxHapticLeftRight& other) noexcept;
     GfxHapticLeftRight(GfxHapticLeftRight&& other) noexcept;
 
-    GfxHapticLeftRight& operator=(GfxHapticLeftRight const& other) noexcept;
+    GfxHapticLeftRight& operator=(const GfxHapticLeftRight& other) noexcept;
     GfxHapticLeftRight& operator=(GfxHapticLeftRight&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

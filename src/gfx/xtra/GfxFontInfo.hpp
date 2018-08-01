@@ -43,21 +43,21 @@ public:
     static const bool CallsSdl = false;
 
     GfxFontInfo() noexcept;
-    explicit GfxFontInfo(std::string const& fontName) noexcept;
-    explicit GfxFontInfo(std::string const& fontName, const uint8_t fontSize) noexcept;
+    explicit GfxFontInfo(const std::string& fontName) noexcept;
+    explicit GfxFontInfo(const std::string& fontName, const uint8_t fontSize) noexcept;
 
-    GfxFontInfo(GfxFontInfo const& other) noexcept;
+    GfxFontInfo(const GfxFontInfo& other) noexcept;
     GfxFontInfo(GfxFontInfo&& other) noexcept;
 
-    GfxFontInfo& operator=(GfxFontInfo const& other) noexcept;
+    GfxFontInfo& operator=(const GfxFontInfo& other) noexcept;
     GfxFontInfo& operator=(GfxFontInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void setFontName(std::string const& fontName) noexcept;
+    void setFontName(const std::string& fontName) noexcept;
     void setFontNameDefault(void) noexcept;
-    std::string const& getFontName(void) const noexcept;
+    const std::string& getFontName(void) const noexcept;
 
     void setFontSize(const uint8_t fontSize) noexcept;
     void setFontSizeDefault(void) noexcept;

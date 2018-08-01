@@ -53,10 +53,10 @@ public:
     GfxWindowEvent() noexcept;
     explicit GfxWindowEvent(const SdlType event) noexcept;
 
-    GfxWindowEvent(GfxWindowEvent const& other) noexcept;
+    GfxWindowEvent(const GfxWindowEvent& other) noexcept;
     GfxWindowEvent(GfxWindowEvent&& other) noexcept;
 
-    GfxWindowEvent& operator=(GfxWindowEvent const& other) noexcept;
+    GfxWindowEvent& operator=(const GfxWindowEvent& other) noexcept;
     GfxWindowEvent& operator=(GfxWindowEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

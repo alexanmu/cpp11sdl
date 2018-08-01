@@ -44,10 +44,10 @@ public:
 
     GfxBits() noexcept;
 
-    GfxBits(GfxBits const& other) noexcept;
+    GfxBits(const GfxBits& other) noexcept;
     GfxBits(GfxBits&& other) noexcept;
 
-    GfxBits& operator=(GfxBits const& other) noexcept;
+    GfxBits& operator=(const GfxBits& other) noexcept;
     GfxBits& operator=(GfxBits&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

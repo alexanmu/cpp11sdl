@@ -61,7 +61,7 @@ GfxGammaRamp::GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept : GfxObject(Clas
     }
 }
 
-GfxGammaRamp::GfxGammaRamp(GfxGammaRamp const& other) noexcept : GfxObject(other)
+GfxGammaRamp::GfxGammaRamp(const GfxGammaRamp& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -87,7 +87,7 @@ GfxGammaRamp::GfxGammaRamp(GfxGammaRamp&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxGammaRamp& GfxGammaRamp::operator=(GfxGammaRamp const& other) noexcept
+GfxGammaRamp& GfxGammaRamp::operator=(const GfxGammaRamp& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

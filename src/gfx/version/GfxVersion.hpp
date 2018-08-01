@@ -51,10 +51,10 @@ public:
     GfxVersion(const uint8_t major, const uint8_t minor, const uint8_t patch) noexcept;
     explicit GfxVersion(const SdlType ver) noexcept;
 
-    GfxVersion(GfxVersion const& other) noexcept;
+    GfxVersion(const GfxVersion& other) noexcept;
     GfxVersion(GfxVersion&& other) noexcept;
 
-    GfxVersion& operator=(GfxVersion const& other) noexcept;
+    GfxVersion& operator=(const GfxVersion& other) noexcept;
     GfxVersion& operator=(GfxVersion&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

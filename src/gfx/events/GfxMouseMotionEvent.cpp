@@ -52,7 +52,7 @@ GfxMouseMotionEvent::GfxMouseMotionEvent(const SdlType event) noexcept : GfxObje
     mmEvent_ = event;
 }
 
-GfxMouseMotionEvent::GfxMouseMotionEvent(GfxMouseMotionEvent const& other) noexcept : GfxObject(other)
+GfxMouseMotionEvent::GfxMouseMotionEvent(const GfxMouseMotionEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxMouseMotionEvent::GfxMouseMotionEvent(GfxMouseMotionEvent&& other) noexcept :
     other.clear();
 }
 
-GfxMouseMotionEvent& GfxMouseMotionEvent::operator=(GfxMouseMotionEvent const& other) noexcept
+GfxMouseMotionEvent& GfxMouseMotionEvent::operator=(const GfxMouseMotionEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

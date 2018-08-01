@@ -45,10 +45,10 @@ public:
 
     GfxGetVersion() noexcept;
 
-    GfxGetVersion(GfxGetVersion const& other) noexcept;
+    GfxGetVersion(const GfxGetVersion& other) noexcept;
     GfxGetVersion(GfxGetVersion&& other) noexcept;
 
-    GfxGetVersion& operator=(GfxGetVersion const& other) noexcept;
+    GfxGetVersion& operator=(const GfxGetVersion& other) noexcept;
     GfxGetVersion& operator=(GfxGetVersion&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

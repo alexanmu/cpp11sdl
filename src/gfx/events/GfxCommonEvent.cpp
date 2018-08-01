@@ -134,7 +134,7 @@ uint32_t GfxCommonEvent::getTimeStamp(void) const noexcept
     return commonEvent_.timestamp;
 }
 
-void GfxCommonEvent::setType(GfxEventType const& evtype) noexcept
+void GfxCommonEvent::setType(const GfxEventType& evtype) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

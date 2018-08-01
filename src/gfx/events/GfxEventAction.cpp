@@ -58,7 +58,7 @@ GfxEventAction::GfxEventAction(const SdlType act) noexcept : GfxObject(ClassName
     action_ = act;
 }
 
-GfxEventAction::GfxEventAction(GfxEventAction const& other) noexcept : GfxObject(other)
+GfxEventAction::GfxEventAction(const GfxEventAction& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxEventAction::GfxEventAction(GfxEventAction&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxEventAction& GfxEventAction::operator=(GfxEventAction const& other) noexcept
+GfxEventAction& GfxEventAction::operator=(const GfxEventAction& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

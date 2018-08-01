@@ -49,10 +49,10 @@ public:
     GfxTtfFontRenderer() noexcept;
     explicit GfxTtfFontRenderer(GfxTtfFont * ttf) throw(std::runtime_error);
 
-    GfxTtfFontRenderer(GfxTtfFontRenderer const& other) noexcept;
+    GfxTtfFontRenderer(const GfxTtfFontRenderer& other) noexcept;
     GfxTtfFontRenderer(GfxTtfFontRenderer&& other) noexcept;
 
-    GfxTtfFontRenderer& operator=(GfxTtfFontRenderer const& other) noexcept;
+    GfxTtfFontRenderer& operator=(const GfxTtfFontRenderer& other) noexcept;
     GfxTtfFontRenderer& operator=(GfxTtfFontRenderer&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -61,31 +61,31 @@ public:
     GfxTtfFont * getFont(void) const noexcept;
     void setFont(GfxTtfFont * ttf) throw(std::runtime_error);
 
-    bool sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept;
-    bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept;
-    bool sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error);
+    bool sizeText(const std::string& text, int32_t * w, int32_t * h) const noexcept;
+    bool sizeUtf8(const std::string& text, int32_t * w, int32_t * h) const noexcept;
+    bool sizeUnicode(const std::string& text, int32_t * w, int32_t * h) const throw(std::runtime_error);
 
-    surface::GfxSurface * renderTextSolid(std::string const& text, gfx::pixels::GfxColor const& fg) const noexcept;
-    surface::GfxSurface * renderTextUtf8Solid(std::string const& text, gfx::pixels::GfxColor const& fg) const noexcept;
-    surface::GfxSurface * renderTextUnicodeSolid(std::string const& text, gfx::pixels::GfxColor const& fg)
+    surface::GfxSurface * renderTextSolid(const std::string& text, const gfx::pixels::GfxColor& fg) const noexcept;
+    surface::GfxSurface * renderTextUtf8Solid(const std::string& text, const gfx::pixels::GfxColor& fg) const noexcept;
+    surface::GfxSurface * renderTextUnicodeSolid(const std::string& text, const gfx::pixels::GfxColor& fg)
                                                 const throw(std::runtime_error);
-    surface::GfxSurface * renderGlyphSolid(const uint16_t ch, gfx::pixels::GfxColor const& fg) const noexcept;
+    surface::GfxSurface * renderGlyphSolid(const uint16_t ch, const gfx::pixels::GfxColor& fg) const noexcept;
 
-    surface::GfxSurface * renderTextShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
-                                        gfx::pixels::GfxColor const& bg) const noexcept;
-    surface::GfxSurface * renderTextUtf8Shaded(std::string const& text, gfx::pixels::GfxColor const& fg,
-                                        gfx::pixels::GfxColor const& bg) const noexcept;
-    surface::GfxSurface * renderTextUnicodeShaded(std::string const& text, gfx::pixels::GfxColor const& fg,
-                                        gfx::pixels::GfxColor const& bg) const throw(std::runtime_error);
-    surface::GfxSurface * renderGlyphShaded(uint16_t ch, gfx::pixels::GfxColor const& fg,
-                                        gfx::pixels::GfxColor const& bg) const noexcept;
+    surface::GfxSurface * renderTextShaded(const std::string& text, const gfx::pixels::GfxColor& fg,
+                                        const gfx::pixels::GfxColor& bg) const noexcept;
+    surface::GfxSurface * renderTextUtf8Shaded(const std::string& text, const gfx::pixels::GfxColor& fg,
+                                        const gfx::pixels::GfxColor& bg) const noexcept;
+    surface::GfxSurface * renderTextUnicodeShaded(const std::string& text, const gfx::pixels::GfxColor& fg,
+                                        const gfx::pixels::GfxColor& bg) const throw(std::runtime_error);
+    surface::GfxSurface * renderGlyphShaded(uint16_t ch, const gfx::pixels::GfxColor& fg,
+                                        const gfx::pixels::GfxColor& bg) const noexcept;
 
-    surface::GfxSurface * renderTextBlended(std::string const& text, gfx::pixels::GfxColor const& fg) const noexcept;
-    surface::GfxSurface * renderTextUtf8Blended(std::string const& text,
-                                                gfx::pixels::GfxColor const& fg) const noexcept;
-    surface::GfxSurface * renderTextUnicodeBlended(std::string const& text, gfx::pixels::GfxColor const& fg)
+    surface::GfxSurface * renderTextBlended(const std::string& text, const gfx::pixels::GfxColor& fg) const noexcept;
+    surface::GfxSurface * renderTextUtf8Blended(const std::string& text,
+                                                const gfx::pixels::GfxColor& fg) const noexcept;
+    surface::GfxSurface * renderTextUnicodeBlended(const std::string& text, const gfx::pixels::GfxColor& fg)
                                                 const throw(std::runtime_error);
-    surface::GfxSurface * renderGlyphBlended(const uint16_t ch, gfx::pixels::GfxColor const& fg) const noexcept;
+    surface::GfxSurface * renderGlyphBlended(const uint16_t ch, const gfx::pixels::GfxColor& fg) const noexcept;
 private:
     GfxTtfFont * ttf_;
 };

@@ -54,8 +54,8 @@ const std::map<GStructuredTextType, std::string> GStructuredTextLabel::exprMapOb
         R"(^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$)" }
 };
 
-GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
-                                           const uint16_t height, std::string const& text, const uint8_t textsize,
+GStructuredTextLabel::GStructuredTextLabel(const std::string& vname, GComponent* owner, const uint16_t width,
+                                           const uint16_t height, const std::string& text, const uint8_t textsize,
                                            const GStructuredTextType sttexttype) :
         GLabel(vname, owner, width, height, text, textsize)
 {
@@ -70,9 +70,9 @@ GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent*
     regExp_ = "";
 }
 
-GStructuredTextLabel::GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
-                                           const uint16_t height, std::string const& text, const uint8_t textsize,
-                                           const GStructuredTextType sttexttype, std::string const& regexp) :
+GStructuredTextLabel::GStructuredTextLabel(const std::string& vname, GComponent* owner, const uint16_t width,
+                                           const uint16_t height, const std::string& text, const uint8_t textsize,
+                                           const GStructuredTextType sttexttype, const std::string& regexp) :
         GLabel(vname, owner, width, height, text, textsize)
 {
     assert(vname.length() > 0);
@@ -116,7 +116,7 @@ void GStructuredTextLabel::draw(void) throw(std::runtime_error)
     GLabel::draw();
 }
 
-bool GStructuredTextLabel::evalRegExp(std::string const& actregexp, std::string const& text)
+bool GStructuredTextLabel::evalRegExp(const std::string& actregexp, const std::string& text)
 {
     assert(actregexp.length() > 0);
     assert(text.length() > 0);

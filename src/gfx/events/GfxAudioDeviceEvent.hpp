@@ -50,10 +50,10 @@ public:
     GfxAudioDeviceEvent() noexcept;
     explicit GfxAudioDeviceEvent(const SdlType event) noexcept;
 
-    GfxAudioDeviceEvent(GfxAudioDeviceEvent const& other) noexcept;
+    GfxAudioDeviceEvent(const GfxAudioDeviceEvent& other) noexcept;
     GfxAudioDeviceEvent(GfxAudioDeviceEvent&& other) noexcept;
 
-    GfxAudioDeviceEvent& operator=(GfxAudioDeviceEvent const& other) noexcept;
+    GfxAudioDeviceEvent& operator=(const GfxAudioDeviceEvent& other) noexcept;
     GfxAudioDeviceEvent& operator=(GfxAudioDeviceEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

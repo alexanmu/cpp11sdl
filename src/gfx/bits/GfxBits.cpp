@@ -43,7 +43,7 @@ GfxBits::GfxBits() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxBits::GfxBits(GfxBits const& other) noexcept : GfxObject(other)
+GfxBits::GfxBits(const GfxBits& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -53,7 +53,7 @@ GfxBits::GfxBits(GfxBits&& other) noexcept : GfxObject(std::move(other))
     LOG_TRACE_PRIO_MED();
 }
 
-GfxBits& GfxBits::operator=(GfxBits const& other) noexcept
+GfxBits& GfxBits::operator=(const GfxBits& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -56,10 +56,10 @@ public:
     explicit GfxEventAction(const ValueType act) noexcept;
     explicit GfxEventAction(const SdlType act) noexcept;
 
-    GfxEventAction(GfxEventAction const& other) noexcept;
+    GfxEventAction(const GfxEventAction& other) noexcept;
     GfxEventAction(GfxEventAction&& other) noexcept;
 
-    GfxEventAction& operator=(GfxEventAction const& other) noexcept;
+    GfxEventAction& operator=(const GfxEventAction& other) noexcept;
     GfxEventAction& operator=(GfxEventAction&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

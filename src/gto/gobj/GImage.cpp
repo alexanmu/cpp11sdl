@@ -34,7 +34,7 @@ namespace gto
 namespace gobj
 {
 
-GImage::GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height) :
+GImage::GImage(const std::string& vname, GComponent* owner, const uint16_t width, const uint16_t height) :
         GGraphicControl(vname, owner, width, height)
 {
     assert(vname.length() > 0);
@@ -56,17 +56,17 @@ GImageScaleMode GImage::getScaleMode(void) const noexcept
     return scaleMode_;
 }
 
-void GImage::setScaleMode(GImageScaleMode const& scalemode) noexcept
+void GImage::setScaleMode(const GImageScaleMode& scalemode) noexcept
 {
     scaleMode_ = scalemode;
 }
 
-std::string const& GImage::getFileName(void) const noexcept
+const std::string GImage::getFileName(void) const noexcept
 {
     return fileName_;
 }
 
-void GImage::setFileName(std::string const& filename) noexcept
+void GImage::setFileName(const std::string& filename) noexcept
 {
     assert(filename.length() > 0);
 

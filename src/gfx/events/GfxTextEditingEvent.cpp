@@ -51,7 +51,7 @@ GfxTextEditingEvent::GfxTextEditingEvent(const SdlType event) noexcept : GfxObje
     textEditingEvent_ = event;
 }
 
-GfxTextEditingEvent::GfxTextEditingEvent(GfxTextEditingEvent const& other) noexcept : GfxObject(other)
+GfxTextEditingEvent::GfxTextEditingEvent(const GfxTextEditingEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxTextEditingEvent::GfxTextEditingEvent(GfxTextEditingEvent&& other) noexcept :
     other.clear();
 }
 
-GfxTextEditingEvent& GfxTextEditingEvent::operator=(GfxTextEditingEvent const& other) noexcept
+GfxTextEditingEvent& GfxTextEditingEvent::operator=(const GfxTextEditingEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

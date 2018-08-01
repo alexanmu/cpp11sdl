@@ -52,7 +52,7 @@ GfxTouchFingerEvent::GfxTouchFingerEvent(const SdlType event) noexcept : GfxObje
     tfEvent_ = event;
 }
 
-GfxTouchFingerEvent::GfxTouchFingerEvent(GfxTouchFingerEvent const& other) noexcept : GfxObject(other)
+GfxTouchFingerEvent::GfxTouchFingerEvent(const GfxTouchFingerEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxTouchFingerEvent::GfxTouchFingerEvent(GfxTouchFingerEvent&& other) noexcept :
     other.clear();
 }
 
-GfxTouchFingerEvent& GfxTouchFingerEvent::operator=(GfxTouchFingerEvent const& other) noexcept
+GfxTouchFingerEvent& GfxTouchFingerEvent::operator=(const GfxTouchFingerEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

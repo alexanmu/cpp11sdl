@@ -49,10 +49,10 @@ public:
     GfxHapticRamp() noexcept;
     explicit GfxHapticRamp(const SdlType hRamp) noexcept;
 
-    GfxHapticRamp(GfxHapticRamp const& other) noexcept;
+    GfxHapticRamp(const GfxHapticRamp& other) noexcept;
     GfxHapticRamp(GfxHapticRamp&& other) noexcept;
 
-    GfxHapticRamp& operator=(GfxHapticRamp const& other) noexcept;
+    GfxHapticRamp& operator=(const GfxHapticRamp& other) noexcept;
     GfxHapticRamp& operator=(GfxHapticRamp&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

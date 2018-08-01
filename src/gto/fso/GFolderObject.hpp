@@ -45,22 +45,22 @@ class GFolderObject : public GFSBaseClass
 public:
     GFolderObject() = delete;
 
-    explicit GFolderObject(std::string const& pathSpec);
-    explicit GFolderObject(GFolderCollectionElement const& folder);
+    explicit GFolderObject(const std::string& pathSpec);
+    explicit GFolderObject(const GFolderCollectionElement& folder);
 
-    GFolderObject(GFolderObject const&) = delete;
+    GFolderObject(const GFolderObject&) = delete;
     GFolderObject(GFolderObject&&) = delete;
 
-    GFolderObject& operator=(GFolderObject const&) = delete;
+    GFolderObject& operator=(const GFolderObject&) = delete;
     GFolderObject& operator=(GFolderObject&&) = delete;
 
     virtual ~GFolderObject();
 
-    std::string const& getFolderSpec(void) const noexcept;
+    const std::string& getFolderSpec(void) const noexcept;
 
     void rescan(void);
 
-    GFilesCollection getFilesCollection(void);
+    const GFilesCollection getFilesCollection(void);
 private:
     void scanFolder(void);
 

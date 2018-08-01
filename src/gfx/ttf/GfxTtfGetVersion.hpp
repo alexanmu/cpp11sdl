@@ -44,10 +44,10 @@ public:
 
     GfxTtfGetVersion() noexcept;
 
-    GfxTtfGetVersion(GfxTtfGetVersion const& other) noexcept;
+    GfxTtfGetVersion(const GfxTtfGetVersion& other) noexcept;
     GfxTtfGetVersion(GfxTtfGetVersion&& other) noexcept;
 
-    GfxTtfGetVersion& operator=(GfxTtfGetVersion const& other) noexcept;
+    GfxTtfGetVersion& operator=(const GfxTtfGetVersion& other) noexcept;
     GfxTtfGetVersion& operator=(GfxTtfGetVersion&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

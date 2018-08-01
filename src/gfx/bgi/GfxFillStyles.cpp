@@ -58,7 +58,7 @@ GfxFillStyles::GfxFillStyles(const BgiType fill) noexcept : GfxObject(ClassName)
     fill_ = fill;
 }
 
-GfxFillStyles::GfxFillStyles(GfxFillStyles const& other) noexcept : GfxObject(other)
+GfxFillStyles::GfxFillStyles(const GfxFillStyles& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxFillStyles::GfxFillStyles(GfxFillStyles&& other) noexcept : GfxObject(std::mo
     other.clear();
 }
 
-GfxFillStyles& GfxFillStyles::operator=(GfxFillStyles const& other) noexcept
+GfxFillStyles& GfxFillStyles::operator=(const GfxFillStyles& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

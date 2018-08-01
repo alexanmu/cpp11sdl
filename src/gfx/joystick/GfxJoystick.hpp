@@ -59,7 +59,7 @@ public:
     GfxJoystick() noexcept;
 
     explicit GfxJoystick(const int32_t index) throw(std::runtime_error);
-    explicit GfxJoystick(GfxJoystickID const& joyid) throw(std::runtime_error);
+    explicit GfxJoystick(const GfxJoystickID& joyid) throw(std::runtime_error);
 
     GfxJoystick(const GfxJoystick& other) = delete;
     GfxJoystick(GfxJoystick&& other) noexcept;

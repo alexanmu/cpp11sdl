@@ -52,10 +52,10 @@ public:
     GfxTouchFingerEvent() noexcept;
     explicit GfxTouchFingerEvent(const SdlType event) noexcept;
 
-    GfxTouchFingerEvent(GfxTouchFingerEvent const& other) noexcept;
+    GfxTouchFingerEvent(const GfxTouchFingerEvent& other) noexcept;
     GfxTouchFingerEvent(GfxTouchFingerEvent&& other) noexcept;
 
-    GfxTouchFingerEvent& operator=(GfxTouchFingerEvent const& other) noexcept;
+    GfxTouchFingerEvent& operator=(const GfxTouchFingerEvent& other) noexcept;
     GfxTouchFingerEvent& operator=(GfxTouchFingerEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

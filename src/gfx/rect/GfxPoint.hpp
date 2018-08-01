@@ -57,7 +57,7 @@ public:
     GfxPoint& operator=(const GfxPoint& other) noexcept;
     GfxPoint& operator=(GfxPoint&& other) noexcept;
 
-    bool operator==(GfxPoint const& other) const noexcept;
+    bool operator==(const GfxPoint& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

@@ -51,10 +51,10 @@ public:
     GfxControllerAxisEvent() noexcept;
     explicit GfxControllerAxisEvent(const SdlType event) noexcept;
 
-    GfxControllerAxisEvent(GfxControllerAxisEvent const& other) noexcept;
+    GfxControllerAxisEvent(const GfxControllerAxisEvent& other) noexcept;
     GfxControllerAxisEvent(GfxControllerAxisEvent&& other) noexcept;
 
-    GfxControllerAxisEvent& operator=(GfxControllerAxisEvent const& other) noexcept;
+    GfxControllerAxisEvent& operator=(const GfxControllerAxisEvent& other) noexcept;
     GfxControllerAxisEvent& operator=(GfxControllerAxisEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

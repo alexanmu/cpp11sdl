@@ -52,7 +52,7 @@ GfxControllerButtonEvent::GfxControllerButtonEvent(const SdlType event) noexcept
     cbEvent_ = event;
 }
 
-GfxControllerButtonEvent::GfxControllerButtonEvent(GfxControllerButtonEvent const& other) noexcept : GfxObject(other)
+GfxControllerButtonEvent::GfxControllerButtonEvent(const GfxControllerButtonEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -69,7 +69,7 @@ GfxControllerButtonEvent::GfxControllerButtonEvent(GfxControllerButtonEvent&& ot
     other.clear();
 }
 
-GfxControllerButtonEvent& GfxControllerButtonEvent::operator=(GfxControllerButtonEvent const& other) noexcept
+GfxControllerButtonEvent& GfxControllerButtonEvent::operator=(const GfxControllerButtonEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

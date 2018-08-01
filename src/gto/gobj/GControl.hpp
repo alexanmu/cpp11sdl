@@ -44,33 +44,33 @@ class GControl : public GComponent
 public:
     GControl() = delete;
 
-    GControl(GControl const& other) = delete;
+    GControl(const GControl& other) = delete;
     GControl(GControl&& other) = delete;
 
-    GControl& operator=(GControl const& other) = delete;
+    GControl& operator=(const GControl& other) = delete;
     GControl& operator=(GControl&& other) = delete;
 
-    explicit GControl(std::string const& vname, GComponent* owner);
+    explicit GControl(const std::string& vname, GComponent* owner);
     virtual ~GControl();
 
-    void setBounds(gfx::rect::GfxRect const& bounds) noexcept;
-    gfx::rect::GfxRect const& getBounds(void) const noexcept;
-    gfx::rect::GfxRect const& getClientBounds(void) const noexcept;
+    void setBounds(const gfx::rect::GfxRect& bounds) noexcept;
+    const gfx::rect::GfxRect& getBounds(void) const noexcept;
+    const gfx::rect::GfxRect& getClientBounds(void) const noexcept;
 
     void setEnabled(void) noexcept;
     bool getEnabled(void) const noexcept;
 
-    void setBorderThikness(GBorderThikness const& borderthikness) noexcept;
+    void setBorderThikness(const GBorderThikness& borderthikness) noexcept;
     GBorderThikness getBorderThikness(void) const noexcept;
 
-    void setBorderStyle(GBorderStyle const& borderstyle) noexcept;
+    void setBorderStyle(const GBorderStyle& borderstyle) noexcept;
     GBorderStyle getBorderStyle(void) const noexcept;
 
-    void setBackgroundStyle(GBackgroundStyle const& backgroundstyle) noexcept;
+    void setBackgroundStyle(const GBackgroundStyle& backgroundstyle) noexcept;
     GBackgroundStyle getBackgroundStyle(void) const noexcept;
 
-    void setHint(std::string const& hint) noexcept;
-    std::string const& getHint(void) const noexcept;
+    void setHint(const std::string& hint) noexcept;
+    const std::string& getHint(void) const noexcept;
     bool hasHint(void) const noexcept;
 
     void showHint(void) noexcept;

@@ -51,10 +51,10 @@ public:
     GfxDropEvent() noexcept;
     explicit GfxDropEvent(const SdlType event) noexcept;
 
-    GfxDropEvent(GfxDropEvent const& other) noexcept;
+    GfxDropEvent(const GfxDropEvent& other) noexcept;
     GfxDropEvent(GfxDropEvent&& other) noexcept;
 
-    GfxDropEvent& operator=(GfxDropEvent const& other) noexcept;
+    GfxDropEvent& operator=(const GfxDropEvent& other) noexcept;
     GfxDropEvent& operator=(GfxDropEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

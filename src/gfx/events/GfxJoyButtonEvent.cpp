@@ -52,7 +52,7 @@ GfxJoyButtonEvent::GfxJoyButtonEvent(const SdlType event) noexcept : GfxObject(C
     jbEvent_ = event;
 }
 
-GfxJoyButtonEvent::GfxJoyButtonEvent(GfxJoyButtonEvent const& other) noexcept : GfxObject(other)
+GfxJoyButtonEvent::GfxJoyButtonEvent(const GfxJoyButtonEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxJoyButtonEvent::GfxJoyButtonEvent(GfxJoyButtonEvent&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxJoyButtonEvent& GfxJoyButtonEvent::operator=(GfxJoyButtonEvent const& other) noexcept
+GfxJoyButtonEvent& GfxJoyButtonEvent::operator=(const GfxJoyButtonEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

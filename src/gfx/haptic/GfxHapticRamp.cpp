@@ -52,7 +52,7 @@ GfxHapticRamp::GfxHapticRamp(const SdlType hRamp) noexcept : GfxObject(ClassName
     hRamp_ = hRamp;
 }
 
-GfxHapticRamp::GfxHapticRamp(GfxHapticRamp const& other) noexcept : GfxObject(other)
+GfxHapticRamp::GfxHapticRamp(const GfxHapticRamp& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxHapticRamp::GfxHapticRamp(GfxHapticRamp&& other) noexcept : GfxObject(std::mo
     other.clear();
 }
 
-GfxHapticRamp& GfxHapticRamp::operator=(GfxHapticRamp const& other) noexcept
+GfxHapticRamp& GfxHapticRamp::operator=(const GfxHapticRamp& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

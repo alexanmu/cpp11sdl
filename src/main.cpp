@@ -68,7 +68,7 @@
 
 void at_exit_callback(void);
 
-void MsgBox(gfx::video::GfxWindow const& win)
+void MsgBox(const gfx::video::GfxWindow& win)
 {
     gfx::platform::GfxPlatform plat;
     plat.queryPlatform();

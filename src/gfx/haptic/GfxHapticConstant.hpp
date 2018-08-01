@@ -49,10 +49,10 @@ public:
     GfxHapticConstant() noexcept;
     explicit GfxHapticConstant(const SdlType hConst) noexcept;
 
-    GfxHapticConstant(GfxHapticConstant const& other) noexcept;
+    GfxHapticConstant(const GfxHapticConstant& other) noexcept;
     GfxHapticConstant(GfxHapticConstant&& other) noexcept;
 
-    GfxHapticConstant& operator=(GfxHapticConstant const& other) noexcept;
+    GfxHapticConstant& operator=(const GfxHapticConstant& other) noexcept;
     GfxHapticConstant& operator=(GfxHapticConstant&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

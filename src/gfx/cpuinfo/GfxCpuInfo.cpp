@@ -45,7 +45,7 @@ GfxCpuInfo::GfxCpuInfo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxCpuInfo::GfxCpuInfo(GfxCpuInfo const& other) noexcept : GfxObject(other)
+GfxCpuInfo::GfxCpuInfo(const GfxCpuInfo& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -61,7 +61,7 @@ GfxCpuInfo::GfxCpuInfo(GfxCpuInfo&& other) noexcept : GfxObject(std::move(other)
     other.clear();
 }
 
-GfxCpuInfo& GfxCpuInfo::operator=(GfxCpuInfo const& other) noexcept
+GfxCpuInfo& GfxCpuInfo::operator=(const GfxCpuInfo& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -267,7 +267,7 @@ void GfxCpuInfo::clear(void) noexcept
 }
 
 // Private methods
-void GfxCpuInfo::assign(GfxCpuInfo const& other) noexcept
+void GfxCpuInfo::assign(const GfxCpuInfo& other) noexcept
 {
     cpuCount_ = other.cpuCount_;
     cpuCacheLineSize_ = other.cpuCacheLineSize_;

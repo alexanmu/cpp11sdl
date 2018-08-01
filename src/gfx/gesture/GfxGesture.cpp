@@ -44,7 +44,7 @@ GfxGesture::GfxGesture() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxGesture::GfxGesture(GfxGesture const& other) noexcept : GfxObject(other)
+GfxGesture::GfxGesture(const GfxGesture& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -54,7 +54,7 @@ GfxGesture::GfxGesture(GfxGesture&& other) noexcept : GfxObject(std::move(other)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxGesture& GfxGesture::operator=(GfxGesture const& other) noexcept
+GfxGesture& GfxGesture::operator=(const GfxGesture& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -92,7 +92,7 @@ std::string GfxGesture::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-int32_t GfxGesture::recordGesture(touch::GfxTouchID const& touchId) const noexcept
+int32_t GfxGesture::recordGesture(const touch::GfxTouchID& touchId) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -102,7 +102,7 @@ int32_t GfxGesture::recordGesture(touch::GfxTouchID const& touchId) const noexce
     return ret;
 }
 
-int32_t GfxGesture::saveAllDollarTemplates(rwops::GfxRwOps const& rwops) const noexcept
+int32_t GfxGesture::saveAllDollarTemplates(const rwops::GfxRwOps& rwops) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -112,7 +112,7 @@ int32_t GfxGesture::saveAllDollarTemplates(rwops::GfxRwOps const& rwops) const n
     return ret;
 }
 
-int32_t GfxGesture::saveDollarTemplate(GfxGestureID const& gestureId, rwops::GfxRwOps const& rwops) const noexcept
+int32_t GfxGesture::saveDollarTemplate(const GfxGestureID& gestureId, const rwops::GfxRwOps& rwops) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -123,7 +123,7 @@ int32_t GfxGesture::saveDollarTemplate(GfxGestureID const& gestureId, rwops::Gfx
     return ret;
 }
 
-int32_t GfxGesture::loadDollarTemplates(touch::GfxTouchID const& touchId, rwops::GfxRwOps const& rwops) const noexcept
+int32_t GfxGesture::loadDollarTemplates(const touch::GfxTouchID& touchId, const rwops::GfxRwOps& rwops) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -43,18 +43,18 @@ class GFileObject : public GFSBaseClass
 public:
     GFileObject() = delete;
 
-    explicit GFileObject(std::string const& fileSpec) throw(std::runtime_error);
-    explicit GFileObject(GFileCollectionElement const& file) throw(std::runtime_error);
+    explicit GFileObject(const std::string& fileSpec) throw(std::runtime_error);
+    explicit GFileObject(const GFileCollectionElement& file) throw(std::runtime_error);
 
-    GFileObject(GFileObject const&) = delete;
+    GFileObject(const GFileObject&) = delete;
     GFileObject(GFileObject&&) = delete;
 
-    GFileObject& operator=(GFileObject const&) = delete;
+    GFileObject& operator=(const GFileObject&) = delete;
     GFileObject& operator=(GFileObject&&) = delete;
 
     virtual ~GFileObject();
 
-    std::string const& getFileSpec(void) const noexcept;
+    const std::string& getFileSpec(void) const noexcept;
     std::string getFileName(void) const noexcept;
     std::string getFilePath(void) const noexcept;
 
@@ -79,7 +79,7 @@ public:
 private:
     void clear(void) noexcept;
     void scanFile(void) throw(std::runtime_error);
-    bool isTmValid(std::tm const& tm) const noexcept;
+    bool isTmValid(const std::tm& tm) const noexcept;
 
     std::string fileSpec_;
     bool readUser_;

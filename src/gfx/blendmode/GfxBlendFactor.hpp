@@ -64,10 +64,10 @@ public:
     explicit GfxBlendFactor(const ValueType blendFactor) noexcept;
     explicit GfxBlendFactor(const SdlType blendFactor) noexcept;
 
-    GfxBlendFactor(GfxBlendFactor const& other) noexcept;
+    GfxBlendFactor(const GfxBlendFactor& other) noexcept;
     GfxBlendFactor(GfxBlendFactor&& other) noexcept;
 
-    GfxBlendFactor& operator=(GfxBlendFactor const& other) noexcept;
+    GfxBlendFactor& operator=(const GfxBlendFactor& other) noexcept;
     GfxBlendFactor& operator=(GfxBlendFactor&& other) noexcept;
 
     bool operator==(const GfxBlendFactor& other) noexcept;

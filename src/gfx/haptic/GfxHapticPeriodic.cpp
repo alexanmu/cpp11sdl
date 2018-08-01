@@ -52,7 +52,7 @@ GfxHapticPeriodic::GfxHapticPeriodic(const SdlType hPer) noexcept : GfxObject(Cl
     hPer_ = hPer;
 }
 
-GfxHapticPeriodic::GfxHapticPeriodic(GfxHapticPeriodic const& other) noexcept : GfxObject(other)
+GfxHapticPeriodic::GfxHapticPeriodic(const GfxHapticPeriodic& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxHapticPeriodic::GfxHapticPeriodic(GfxHapticPeriodic&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxHapticPeriodic& GfxHapticPeriodic::operator=(GfxHapticPeriodic const& other) noexcept
+GfxHapticPeriodic& GfxHapticPeriodic::operator=(const GfxHapticPeriodic& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

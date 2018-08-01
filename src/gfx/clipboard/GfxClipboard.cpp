@@ -45,7 +45,7 @@ GfxClipboard::GfxClipboard() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxClipboard::GfxClipboard(GfxClipboard const& other) noexcept : GfxObject(other)
+GfxClipboard::GfxClipboard(const GfxClipboard& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -55,7 +55,7 @@ GfxClipboard::GfxClipboard(GfxClipboard&& other) noexcept : GfxObject(std::move(
     LOG_TRACE_PRIO_MED();
 }
 
-GfxClipboard& GfxClipboard::operator=(GfxClipboard const& other) noexcept
+GfxClipboard& GfxClipboard::operator=(const GfxClipboard& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -91,7 +91,7 @@ std::string GfxClipboard::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxClipboard::setClipboardText(std::string const& str) const noexcept
+void GfxClipboard::setClipboardText(const std::string& str) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

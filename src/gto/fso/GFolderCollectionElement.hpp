@@ -39,17 +39,17 @@ class GFolderCollectionElement : public GFSBaseClass
 {
 public:
     GFolderCollectionElement();
-    explicit GFolderCollectionElement(std::string const& folderSpec);
+    explicit GFolderCollectionElement(const std::string& folderSpec);
 
-    GFolderCollectionElement(GFolderCollectionElement const& other);
+    GFolderCollectionElement(const GFolderCollectionElement& other);
     GFolderCollectionElement(GFolderCollectionElement&& other);
 
-    GFolderCollectionElement& operator=(GFolderCollectionElement const& other);
+    GFolderCollectionElement& operator=(const GFolderCollectionElement& other);
     GFolderCollectionElement& operator=(GFolderCollectionElement&& other);
 
     virtual ~GFolderCollectionElement();
 
-    std::string const& getFolderSpec(void) const noexcept;
+    const std::string& getFolderSpec(void) const noexcept;
 
     void clear(void);
 private:

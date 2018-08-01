@@ -44,16 +44,16 @@ public:
 
     GfxGetError() noexcept;
 
-    GfxGetError(GfxGetError const& other) noexcept;
+    GfxGetError(const GfxGetError& other) noexcept;
     GfxGetError(GfxGetError&& other) noexcept;
 
-    GfxGetError& operator=(GfxGetError const & other) noexcept;
+    GfxGetError& operator=(const GfxGetError& other) noexcept;
     GfxGetError& operator=(GfxGetError&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    static GfxError getErrorObject(void) noexcept;
+    static const GfxError getErrorObject(void) noexcept;
     static void clearSDL2Error(void) noexcept;
 };
 

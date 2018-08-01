@@ -32,7 +32,7 @@ namespace gto
 namespace gobj
 {
 
-GPanel::GPanel(std::string const& vname, GComponent* owner, gfx::rect::GfxRect bounds) :
+GPanel::GPanel(const std::string& vname, GComponent* owner, gfx::rect::GfxRect bounds) :
         GGraphicControl(vname, owner, bounds.getWidth(), bounds.getHeight())
 {
     assert(vname.length() > 0);

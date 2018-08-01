@@ -49,17 +49,17 @@ public:
     static const bool CallsSdl = true;
 
     GfxTtfFont() noexcept;
-    GfxTtfFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error);
-    GfxTtfFont(std::string const& filename, const int32_t pointsize, const int32_t index) throw(std::runtime_error);
+    GfxTtfFont(const std::string& filename, const int32_t pointsize) throw(std::runtime_error);
+    GfxTtfFont(const std::string& filename, const int32_t pointsize, const int32_t index) throw(std::runtime_error);
 
     // RWops not supported yet!
     /* GfxTtfFont(SDL_RWops * src ...)
     GfxTtfFont(SDL_RWops * src ..., long index) */
 
-    GfxTtfFont(GfxTtfFont const& other) = delete;
+    GfxTtfFont(const GfxTtfFont& other) = delete;
     GfxTtfFont(GfxTtfFont&& other) noexcept;
 
-    GfxTtfFont& operator=(GfxTtfFont const& other) = delete;
+    GfxTtfFont& operator=(const GfxTtfFont& other) = delete;
     GfxTtfFont& operator=(GfxTtfFont&& other) noexcept;
 
     virtual ~GfxTtfFont() noexcept;
@@ -67,17 +67,17 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void openFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error);
-    void openFont(std::string const& filename, const int32_t pointsize, const int32_t index) throw(std::runtime_error);
+    void openFont(const std::string& filename, const int32_t pointsize) throw(std::runtime_error);
+    void openFont(const std::string& filename, const int32_t pointsize, const int32_t index) throw(std::runtime_error);
     void closeFont(void) noexcept;
 
     void setByteSwappedUnicode(const bool swapped) const noexcept;
 
-    GfxTtfFontStyle const& getFontStyle(void) const noexcept;
-    void setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept;
+    const GfxTtfFontStyle& getFontStyle(void) const noexcept;
+    void setFontStyle(const GfxTtfFontStyle& fontstyle) noexcept;
 
-    GfxTtfFontHinting const& getFontHinting(void) const noexcept;
-    void setFontHinting(GfxTtfFontHinting const& fonthinting) noexcept;
+    const GfxTtfFontHinting& getFontHinting(void) const noexcept;
+    void setFontHinting(const GfxTtfFontHinting& fonthinting) noexcept;
 
     int32_t getFontOutline(void) const noexcept;
     void setFontOutline(const int32_t outline) noexcept;
@@ -101,9 +101,9 @@ public:
     bool glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx, int32_t * miny,
                       int32_t * maxy, int32_t * advance) const noexcept;
 
-    bool sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept;
-    bool sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept;
-    bool sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error);
+    bool sizeText(const std::string& text, int32_t * w, int32_t * h) const noexcept;
+    bool sizeUtf8(const std::string& text, int32_t * w, int32_t * h) const noexcept;
+    bool sizeUnicode(const std::string& text, int32_t * w, int32_t * h) const throw(std::runtime_error);
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:

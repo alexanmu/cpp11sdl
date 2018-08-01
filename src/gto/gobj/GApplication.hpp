@@ -44,13 +44,13 @@ class GApplication final : public GObject
 public:
     GApplication() = delete;
 
-    GApplication(GApplication const&) = delete;
+    GApplication(const GApplication&) = delete;
     GApplication(GApplication&&) = delete;
 
-    GApplication& operator=(GApplication const&) = delete;
+    GApplication& operator=(const GApplication&) = delete;
     GApplication& operator=(GApplication&&) = delete;
 
-    explicit GApplication(std::string const& appname);
+    explicit GApplication(const std::string& appname);
     ~GApplication();
 
     void setMainForm(GForm * mainForm);
@@ -59,7 +59,7 @@ public:
     void run(void);
 
     util::GFontManager * getActiveFontManager(void) const noexcept;
-    std::string getBasePath(void) const noexcept;
+    const std::string getBasePath(void) const noexcept;
 
     static GApplication * activeApp; /* read-only */
 private:

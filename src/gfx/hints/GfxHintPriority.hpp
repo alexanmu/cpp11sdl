@@ -57,10 +57,10 @@ public:
     explicit GfxHintPriority(const SdlType hintPrio) noexcept;
     explicit GfxHintPriority(const ValueType hintPrio) noexcept;
 
-    GfxHintPriority(GfxHintPriority const& other) noexcept;
+    GfxHintPriority(const GfxHintPriority& other) noexcept;
     GfxHintPriority(GfxHintPriority&& other) noexcept;
 
-    GfxHintPriority& operator=(GfxHintPriority const& other) noexcept;
+    GfxHintPriority& operator=(const GfxHintPriority& other) noexcept;
     GfxHintPriority& operator=(GfxHintPriority&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

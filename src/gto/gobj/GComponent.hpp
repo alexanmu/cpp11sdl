@@ -44,28 +44,28 @@ class GComponent : public GObject
 public:
     GComponent() = delete;
 
-    GComponent(GComponent const& other) = delete;
+    GComponent(const GComponent& other) = delete;
     GComponent(GComponent&& other) = delete;
 
-    GComponent& operator=(GComponent const& other) = delete;
+    GComponent& operator=(const GComponent& other) = delete;
     GComponent& operator=(GComponent&& other) = delete;
 
-    explicit GComponent(std::string const& vname, GComponent * owner);
+    explicit GComponent(const std::string& vname, GComponent * owner);
     virtual ~GComponent();
 
-    GComponent* getParentComponent(void) const noexcept;
+    GComponent * getParentComponent(void) const noexcept;
     bool hasParent(void) const noexcept;
 
     bool equals(GComponent * object);
 
     void insertComponent(GComponent * const component) throw(std::runtime_error);
     void removeComponent(GComponent * const component) throw(std::runtime_error);
-    GComponent* findComponent(const std::string& name);
+    GComponent * findComponent(const std::string& name);
 
     uint64_t getTag(void) const noexcept;
-    void setTag(uint64_t tag) noexcept;
+    void setTag(const uint64_t tag) noexcept;
 
-    std::string const& getVName(void) const;
+    const std::string& getVName(void) const;
 protected:
     std::string vname_;
     uint64_t tag_;

@@ -61,7 +61,7 @@ GfxBlendMode::GfxBlendMode(const SdlType blendmode) noexcept : GfxObject(ClassNa
     blendmode_ = blendmode;
 }
 
-GfxBlendMode::GfxBlendMode(GfxBlendMode const& other) noexcept : GfxObject(other)
+GfxBlendMode::GfxBlendMode(const GfxBlendMode& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -77,7 +77,7 @@ GfxBlendMode::GfxBlendMode(GfxBlendMode&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode const& other) noexcept
+GfxBlendMode& GfxBlendMode::operator=(const GfxBlendMode& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -107,7 +107,7 @@ GfxBlendMode& GfxBlendMode::operator=(GfxBlendMode&& other) noexcept
     return *this;
 }
 
-bool GfxBlendMode::operator==(GfxBlendMode const& other) noexcept
+bool GfxBlendMode::operator==(const GfxBlendMode& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -181,12 +181,12 @@ bool GfxBlendMode::isCustom(void) const noexcept
         (blendmode_ != SDL_BLENDMODE_INVALID);
 }
 
-void GfxBlendMode::composeCustomBlendMode(GfxBlendFactor const& srcColorFactor,
-                                          GfxBlendFactor const& dstColorFactor,
-                                          GfxBlendOperation const& colorOperation,
-                                          GfxBlendFactor const& srcAlphaFactor,
-                                          GfxBlendFactor const& dstAlphaFactor,
-                                          GfxBlendOperation const& alphaOperation) noexcept
+void GfxBlendMode::composeCustomBlendMode(const GfxBlendFactor& srcColorFactor,
+                                          const GfxBlendFactor& dstColorFactor,
+                                          const GfxBlendOperation& colorOperation,
+                                          const GfxBlendFactor& srcAlphaFactor,
+                                          const GfxBlendFactor& dstAlphaFactor,
+                                          const GfxBlendOperation& alphaOperation) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

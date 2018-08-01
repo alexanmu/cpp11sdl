@@ -61,7 +61,7 @@ public:
     virtual std::string to_string(void) const noexcept;
 
     const BgiType getValue(void) const noexcept;
-    void setValue(BgiType const& value) noexcept;
+    void setValue(const BgiType& value) noexcept;
 
     void clear(void) noexcept;
 

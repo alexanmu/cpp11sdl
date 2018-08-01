@@ -33,7 +33,7 @@ namespace gto
 namespace gobj
 {
 
-GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
+GForm::GForm(const std::string& vname) : GComponent(vname, nullptr)
 {
     assert(vname.length() > 0);
 
@@ -43,7 +43,7 @@ GForm::GForm(std::string const& vname) : GComponent(vname, nullptr)
     canvasInUse_ = false;
 }
 
-GForm::GForm(std::string const& vname, std::string const& title) : GComponent(vname, nullptr)
+GForm::GForm(const std::string& vname, const std::string& title) : GComponent(vname, nullptr)
 {
     assert(vname.length() > 0);
     assert(title.length() > 0);

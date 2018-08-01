@@ -43,20 +43,20 @@ class GImage : public GGraphicControl
 public:
     GImage() = delete;
 
-    GImage(GImage const& other) = delete;
+    GImage(const GImage& other) = delete;
     GImage(GImage&& other) = delete;
 
-    GImage& operator=(GImage const& other) = delete;
+    GImage& operator=(const GImage& other) = delete;
     GImage& operator=(GImage&& other) = delete;
 
-    explicit GImage(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height);
+    explicit GImage(const std::string& vname, GComponent* owner, const uint16_t width, const uint16_t height);
     virtual ~GImage();
 
     GImageScaleMode getScaleMode(void) const noexcept;
-    void setScaleMode(GImageScaleMode const& scalemode) noexcept;
+    void setScaleMode(const GImageScaleMode& scalemode) noexcept;
 
-    std::string const& getFileName(void) const noexcept;
-    void setFileName(std::string const& filename) noexcept;
+    const std::string getFileName(void) const noexcept;
+    void setFileName(const std::string& filename) noexcept;
 
     virtual void load(void) throw(std::runtime_error) = 0;
     virtual void draw(void);

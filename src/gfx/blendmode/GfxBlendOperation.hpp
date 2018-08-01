@@ -59,10 +59,10 @@ public:
     explicit GfxBlendOperation(const ValueType blendOp) noexcept;
     explicit GfxBlendOperation(const SdlType blendOp) noexcept;
 
-    GfxBlendOperation(GfxBlendOperation const& other) noexcept;
+    GfxBlendOperation(const GfxBlendOperation& other) noexcept;
     GfxBlendOperation(GfxBlendOperation&& other) noexcept;
 
-    GfxBlendOperation& operator=(GfxBlendOperation const& other) noexcept;
+    GfxBlendOperation& operator=(const GfxBlendOperation& other) noexcept;
     GfxBlendOperation& operator=(GfxBlendOperation&& other) noexcept;
 
     bool operator==(const GfxBlendOperation& other) noexcept;

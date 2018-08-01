@@ -52,10 +52,10 @@ public:
 
     explicit GfxGameControllerButtonBind(const SdlType bbind) noexcept;
 
-    GfxGameControllerButtonBind(GfxGameControllerButtonBind const& other) noexcept;
+    GfxGameControllerButtonBind(const GfxGameControllerButtonBind& other) noexcept;
     GfxGameControllerButtonBind(GfxGameControllerButtonBind&& other) noexcept;
 
-    GfxGameControllerButtonBind& operator=(GfxGameControllerButtonBind const& other) noexcept;
+    GfxGameControllerButtonBind& operator=(const GfxGameControllerButtonBind& other) noexcept;
     GfxGameControllerButtonBind& operator=(GfxGameControllerButtonBind&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

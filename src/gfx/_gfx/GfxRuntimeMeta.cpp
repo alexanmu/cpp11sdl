@@ -37,7 +37,7 @@ namespace gfx
 namespace _gfx
 {
 
-inline std::ostream& operator<<(std::ostream& outstream, GfxRuntimeMeta::ClassInfo const& cinfo)
+inline std::ostream& operator<<(std::ostream& outstream, const GfxRuntimeMeta::ClassInfo& cinfo)
 {
     assert(cinfo.objectInstanceCount_ >= 0);
 

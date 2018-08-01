@@ -455,7 +455,7 @@ const GfxPixelFormatEnum GfxPixelFormat::masksToPixelFormatEnum(const int32_t bp
     return GfxPixelFormatEnum(sdlpixfmten);
 }
 
-void GfxPixelFormat::setPixelFormatPalette(GfxPalette const& palette) const noexcept
+void GfxPixelFormat::setPixelFormatPalette(const GfxPalette& palette) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

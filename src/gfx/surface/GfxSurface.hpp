@@ -159,7 +159,7 @@ public:
     const std::string& getSurfaceName(void) const noexcept;
     void setSurfaceName(const std::string& name) noexcept;
 
-    void putPixel(const int32_t x, const int32_t y, pixels::GfxColor const& clr) const noexcept;
+    void putPixel(const int32_t x, const int32_t y, const pixels::GfxColor& clr) const noexcept;
     const pixels::GfxColor getPixel(const int32_t x, const int32_t y) const noexcept;
     void setYUVConversionMode(const GfxYuvConversionMode& convMode) const noexcept;
     const GfxYuvConversionMode getYUVConversionMode(void) const noexcept;

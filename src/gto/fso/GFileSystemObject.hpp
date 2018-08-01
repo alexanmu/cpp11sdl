@@ -49,33 +49,33 @@ public:
 
     GFileSystemObject();
 
-    GFileSystemObject(GFileSystemObject const&) = delete;
+    GFileSystemObject(const GFileSystemObject&) = delete;
     GFileSystemObject(GFileSystemObject&&) = delete;
 
-    GFileSystemObject& operator=(GFileSystemObject const&) = delete;
+    GFileSystemObject& operator=(const GFileSystemObject&) = delete;
     GFileSystemObject& operator=(GFileSystemObject&&) = delete;
 
     virtual ~GFileSystemObject();
 
     GFSOErrorCode getError(void) const noexcept;
 
-    std::string buildPath(std::string const& path, std::string const& filename);
-    void copyFile(std::string const& source, std::string const& destination, bool overwrite)
+    const std::string buildPath(const std::string& path, const std::string& filename);
+    void copyFile(const std::string& source, const std::string& destination, const bool overwrite)
                throw(std::runtime_error);
-    void copyFolder(std::string const& source, std::string const& destination, bool overwrite)
+    void copyFolder(const std::string& source, const std::string& destination, const bool overwrite)
                throw(std::runtime_error);
-    void createFolder(std::string const& foldername) throw(std::runtime_error);
-    void deleteFile(std::string const& filespec, bool force) throw(std::runtime_error);
-    void deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error);
-    bool fileExists(std::string const& filespec);
-    bool folderExists(std::string const& folderspec);
-    GFileObject * getFile(std::string const& filespec);
-    std::string getFileName(std::string const& filespec);
-    GFolderObject * getFolder(std::string const& folderspec);
-    std::string getParentFolderName(std::string const& folderspec) throw(std::runtime_error);
-    std::string getTempName(void) throw(std::runtime_error);
-    void moveFile(std::string const& source, std::string const& destination) throw(std::runtime_error);
-    void moveFolder(std::string const& source, std::string const& destination) throw(std::runtime_error);
+    void createFolder(const std::string& foldername) throw(std::runtime_error);
+    void deleteFile(const std::string& filespec, const bool force) throw(std::runtime_error);
+    void deleteFolder(const std::string& folderspec, const bool force) throw(std::runtime_error);
+    bool fileExists(const std::string& filespec);
+    bool folderExists(const std::string& folderspec);
+    GFileObject * getFile(const std::string& filespec);
+    const std::string getFileName(const std::string& filespec);
+    GFolderObject * getFolder(const std::string& folderspec);
+    const std::string getParentFolderName(const std::string& folderspec) throw(std::runtime_error);
+    const std::string getTempName(void) throw(std::runtime_error);
+    void moveFile(const std::string& source, const std::string& destination) throw(std::runtime_error);
+    void moveFolder(const std::string& source, const std::string& destination) throw(std::runtime_error);
 private:
     GFSOErrorCode errorCode_;
 };

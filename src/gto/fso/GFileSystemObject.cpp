@@ -51,7 +51,7 @@ GFileSystemObject::GFSOErrorCode GFileSystemObject::getError(void) const noexcep
     return errorCode_;
 }
 
-std::string GFileSystemObject::buildPath(std::string const& path, std::string const& filename)
+const std::string GFileSystemObject::buildPath(const std::string& path, const std::string& filename)
 {
     assert(path.length() > 0);
     assert(filename.length() > 0);
@@ -70,7 +70,7 @@ std::string GFileSystemObject::buildPath(std::string const& path, std::string co
     return spec;
 }
 
-void GFileSystemObject::copyFile(std::string const& source, std::string const& destination, bool overwrite)
+void GFileSystemObject::copyFile(const std::string& source, const std::string& destination, const bool overwrite)
                 throw(std::runtime_error)
 {
     assert(source.length() > 0);
@@ -79,7 +79,7 @@ void GFileSystemObject::copyFile(std::string const& source, std::string const& d
     throw std::runtime_error("Not implemented");
 }
 
-void GFileSystemObject::copyFolder(std::string const& source, std::string const& destination, bool overwrite)
+void GFileSystemObject::copyFolder(const std::string& source, const std::string& destination, const bool overwrite)
                 throw(std::runtime_error)
 {
     assert(source.length() > 0);
@@ -88,7 +88,7 @@ void GFileSystemObject::copyFolder(std::string const& source, std::string const&
     throw std::runtime_error("Not implemented");
 }
 
-void GFileSystemObject::createFolder(std::string const& foldername) throw(std::runtime_error)
+void GFileSystemObject::createFolder(const std::string& foldername) throw(std::runtime_error)
 {
     assert(foldername.length() > 0);
 
@@ -98,7 +98,7 @@ void GFileSystemObject::createFolder(std::string const& foldername) throw(std::r
     throw std::runtime_error("Not implemented");
 }
 
-void GFileSystemObject::deleteFile(std::string const& filespec, bool force) throw(std::runtime_error)
+void GFileSystemObject::deleteFile(const std::string& filespec, const bool force) throw(std::runtime_error)
 {
     assert(filespec.length() > 0);
     assert((force == true || force == false));
@@ -109,7 +109,7 @@ void GFileSystemObject::deleteFile(std::string const& filespec, bool force) thro
     throw std::runtime_error("Not implemented");
 }
 
-void GFileSystemObject::deleteFolder(std::string const& folderspec, bool force) throw(std::runtime_error)
+void GFileSystemObject::deleteFolder(const std::string& folderspec, const bool force) throw(std::runtime_error)
 {
     assert(folderspec.length() > 0);
     assert((force == true || force == false));
@@ -119,7 +119,7 @@ void GFileSystemObject::deleteFolder(std::string const& folderspec, bool force) 
     throw std::runtime_error("Not implemented");
 }
 
-bool GFileSystemObject::fileExists(std::string const& filespec)
+bool GFileSystemObject::fileExists(const std::string& filespec)
 {
     //  https://stackoverflow.com/questions/9314586/c-faster-way-to-check-if-a-directory-exists
     assert(filespec.length() > 0);
@@ -132,7 +132,7 @@ bool GFileSystemObject::fileExists(std::string const& filespec)
     return true;
 }
 
-bool GFileSystemObject::folderExists(std::string const& folderspec)
+bool GFileSystemObject::folderExists(const std::string& folderspec)
 {
     //  https://stackoverflow.com/questions/9314586/c-faster-way-to-check-if-a-directory-exists
     assert(folderspec.length() > 0);
@@ -163,7 +163,7 @@ bool GFileSystemObject::folderExists(std::string const& folderspec)
     return true;
 }
 
-GFileObject * GFileSystemObject::getFile(std::string const& filespec)
+GFileObject * GFileSystemObject::getFile(const std::string& filespec)
 {
     assert(filespec.length() > 0);
 
@@ -171,7 +171,7 @@ GFileObject * GFileSystemObject::getFile(std::string const& filespec)
     return new GFileObject(filespec);
 }
 
-std::string GFileSystemObject::getFileName(std::string const& filespec)
+const std::string GFileSystemObject::getFileName(const std::string& filespec)
 {
     assert(filespec.length() > 0);
 
@@ -179,7 +179,7 @@ std::string GFileSystemObject::getFileName(std::string const& filespec)
     return _getFileName(filespec);
 }
 
-GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec)
+GFolderObject * GFileSystemObject::getFolder(const std::string& folderspec)
 {
     assert(folderspec.length() > 0);
 
@@ -197,13 +197,13 @@ GFolderObject * GFileSystemObject::getFolder(std::string const& folderspec)
     return new GFolderObject(fullpath);
 }
 
-std::string GFileSystemObject::getParentFolderName(std::string const& folderspec) throw(std::runtime_error)
+const std::string GFileSystemObject::getParentFolderName(const std::string& folderspec) throw(std::runtime_error)
 {
     assert(folderspec.length() > 0);
     throw std::runtime_error("Not implemented");
 }
 
-std::string GFileSystemObject::getTempName(void) throw(std::runtime_error)
+const std::string GFileSystemObject::getTempName(void) throw(std::runtime_error)
 {
     /* unistd.h?
         char * tmpname(const char* dir, const char * prefix);
@@ -212,7 +212,7 @@ std::string GFileSystemObject::getTempName(void) throw(std::runtime_error)
     throw std::runtime_error("Not implemented");
 }
 
-void GFileSystemObject::moveFile(std::string const& source, std::string const& destination) throw(std::runtime_error)
+void GFileSystemObject::moveFile(const std::string& source, const std::string& destination) throw(std::runtime_error)
 {
     assert(source.length() > 0);
     assert(destination.length() > 0);
@@ -223,7 +223,7 @@ void GFileSystemObject::moveFile(std::string const& source, std::string const& d
     throw std::runtime_error("Not implemented");
 }
 
-void GFileSystemObject::moveFolder(std::string const& source, std::string const& destination) throw(std::runtime_error)
+void GFileSystemObject::moveFolder(const std::string& source, const std::string& destination) throw(std::runtime_error)
 {
     assert(source.length() > 0);
     assert(destination.length() > 0);

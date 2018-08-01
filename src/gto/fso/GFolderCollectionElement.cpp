@@ -36,12 +36,12 @@ GFolderCollectionElement::GFolderCollectionElement() : GFSBaseClass()
     folderSpec_ = "";
 }
 
-GFolderCollectionElement::GFolderCollectionElement(std::string const& folderSpec) : GFSBaseClass()
+GFolderCollectionElement::GFolderCollectionElement(const std::string& folderSpec) : GFSBaseClass()
 {
     folderSpec_ = folderSpec;
 }
 
-GFolderCollectionElement::GFolderCollectionElement(GFolderCollectionElement const& other) : GFSBaseClass()
+GFolderCollectionElement::GFolderCollectionElement(const GFolderCollectionElement& other) : GFSBaseClass()
 {
     folderSpec_ = other.folderSpec_;
 }
@@ -53,7 +53,7 @@ GFolderCollectionElement::GFolderCollectionElement(GFolderCollectionElement&& ot
     other .clear();
 }
 
-GFolderCollectionElement& GFolderCollectionElement::operator=(GFolderCollectionElement const& other)
+GFolderCollectionElement& GFolderCollectionElement::operator=(const GFolderCollectionElement& other)
 {
     if (this != &other)
     {
@@ -78,7 +78,7 @@ GFolderCollectionElement::~GFolderCollectionElement()
     clear();
 }
 
-std::string const& GFolderCollectionElement::getFolderSpec(void) const noexcept
+const std::string& GFolderCollectionElement::getFolderSpec(void) const noexcept
 {
     return folderSpec_;
 }

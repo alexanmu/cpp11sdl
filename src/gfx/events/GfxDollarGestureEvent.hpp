@@ -52,10 +52,10 @@ public:
     GfxDollarGestureEvent() noexcept;
     explicit GfxDollarGestureEvent(const SdlType event) noexcept;
 
-    GfxDollarGestureEvent(GfxDollarGestureEvent const& other) noexcept;
+    GfxDollarGestureEvent(const GfxDollarGestureEvent& other) noexcept;
     GfxDollarGestureEvent(GfxDollarGestureEvent&& other) noexcept;
 
-    GfxDollarGestureEvent& operator=(GfxDollarGestureEvent const& other) noexcept;
+    GfxDollarGestureEvent& operator=(const GfxDollarGestureEvent& other) noexcept;
     GfxDollarGestureEvent& operator=(GfxDollarGestureEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -314,7 +314,7 @@ const GfxDisplayMode GfxVideo::getCurrentDisplayMode(const int32_t displayindex)
 }
 
 const GfxDisplayMode GfxVideo::getClosestDisplayMode(const int32_t displayindex,
-                                                     GfxDisplayMode const& mode) const noexcept
+                                                     const GfxDisplayMode& mode) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -62,7 +62,7 @@ GfxVersion::GfxVersion(const SdlType ver) noexcept : GfxObject(ClassName)
     ver_ = ver;
 }
 
-GfxVersion::GfxVersion(GfxVersion const& other) noexcept : GfxObject(other)
+GfxVersion::GfxVersion(const GfxVersion& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -76,7 +76,7 @@ GfxVersion::GfxVersion(GfxVersion&& other) noexcept : GfxObject(std::move(other)
     other.clear();
 }
 
-GfxVersion& GfxVersion::operator=(GfxVersion const& other) noexcept
+GfxVersion& GfxVersion::operator=(const GfxVersion& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

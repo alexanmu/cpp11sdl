@@ -52,7 +52,7 @@ GfxControllerDeviceEvent::GfxControllerDeviceEvent(const SdlType event) noexcept
     cdEvent_ = event;
 }
 
-GfxControllerDeviceEvent::GfxControllerDeviceEvent(GfxControllerDeviceEvent const& other) noexcept : GfxObject(other)
+GfxControllerDeviceEvent::GfxControllerDeviceEvent(const GfxControllerDeviceEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -69,7 +69,7 @@ GfxControllerDeviceEvent::GfxControllerDeviceEvent(GfxControllerDeviceEvent&& ot
     other.clear();
 }
 
-GfxControllerDeviceEvent& GfxControllerDeviceEvent::operator=(GfxControllerDeviceEvent const& other) noexcept
+GfxControllerDeviceEvent& GfxControllerDeviceEvent::operator=(const GfxControllerDeviceEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

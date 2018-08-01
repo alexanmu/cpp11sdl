@@ -31,7 +31,7 @@ namespace gto
 namespace gobj
 {
 
-GDialog::GDialog(std::string const& vname, GComponent * owner) : GComponent(vname, owner)
+GDialog::GDialog(const std::string& vname, GComponent * owner) : GComponent(vname, owner)
 {
     // Nothing to do yet
 }

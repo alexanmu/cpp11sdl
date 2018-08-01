@@ -45,7 +45,7 @@ GfxTtfFontHinting::GfxTtfFontHinting() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept : GfxObject(ClassName)
+GfxTtfFontHinting::GfxTtfFontHinting(const GfxTtfFontHintingValues& hinting) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -61,7 +61,7 @@ GfxTtfFontHinting::GfxTtfFontHinting(const SdlType hinting) noexcept : GfxObject
     hinting_ = hinting;
 }
 
-GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept : GfxObject(other)
+GfxTtfFontHinting::GfxTtfFontHinting(const GfxTtfFontHinting& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -77,7 +77,7 @@ GfxTtfFontHinting::GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxTtfFontHinting& GfxTtfFontHinting::operator=(GfxTtfFontHinting const& other) noexcept
+GfxTtfFontHinting& GfxTtfFontHinting::operator=(const GfxTtfFontHinting& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

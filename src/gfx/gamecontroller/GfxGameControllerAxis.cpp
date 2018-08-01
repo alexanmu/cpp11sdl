@@ -58,7 +58,7 @@ GfxGameControllerAxis::GfxGameControllerAxis(const ValueType axis) noexcept : Gf
     axis_ = static_cast<SdlType>(axis);
 }
 
-GfxGameControllerAxis::GfxGameControllerAxis(GfxGameControllerAxis const& other) noexcept : GfxObject(other)
+GfxGameControllerAxis::GfxGameControllerAxis(const GfxGameControllerAxis& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxGameControllerAxis::GfxGameControllerAxis(GfxGameControllerAxis&& other) noex
     other.clear();
 }
 
-GfxGameControllerAxis& GfxGameControllerAxis::operator=(GfxGameControllerAxis const& other) noexcept
+GfxGameControllerAxis& GfxGameControllerAxis::operator=(const GfxGameControllerAxis& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -49,10 +49,10 @@ public:
     GfxHapticPeriodic() noexcept;
     explicit GfxHapticPeriodic(const SdlType hPer) noexcept;
 
-    GfxHapticPeriodic(GfxHapticPeriodic const& other) noexcept;
+    GfxHapticPeriodic(const GfxHapticPeriodic& other) noexcept;
     GfxHapticPeriodic(GfxHapticPeriodic&& other) noexcept;
 
-    GfxHapticPeriodic& operator=(GfxHapticPeriodic const& other) noexcept;
+    GfxHapticPeriodic& operator=(const GfxHapticPeriodic& other) noexcept;
     GfxHapticPeriodic& operator=(GfxHapticPeriodic&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

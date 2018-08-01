@@ -62,7 +62,7 @@ GfxInitFlags::GfxInitFlags(const ValueType flags) noexcept : GfxObject(ClassName
     flags_ = static_cast<int32_t>(flags);
 }
 
-GfxInitFlags::GfxInitFlags(GfxInitFlags const& other) noexcept : GfxObject(other)
+GfxInitFlags::GfxInitFlags(const GfxInitFlags& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -78,7 +78,7 @@ GfxInitFlags::GfxInitFlags(GfxInitFlags&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxInitFlags& GfxInitFlags::operator=(GfxInitFlags const& other) noexcept
+GfxInitFlags& GfxInitFlags::operator=(const GfxInitFlags& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

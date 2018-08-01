@@ -44,7 +44,7 @@ GfxGetVersion::GfxGetVersion() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxGetVersion::GfxGetVersion(GfxGetVersion const& other) noexcept : GfxObject(other)
+GfxGetVersion::GfxGetVersion(const GfxGetVersion& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -54,7 +54,7 @@ GfxGetVersion::GfxGetVersion(GfxGetVersion&& other) noexcept : GfxObject(std::mo
     LOG_TRACE_PRIO_MED();
 }
 
-GfxGetVersion& GfxGetVersion::operator=(GfxGetVersion const& other) noexcept
+GfxGetVersion& GfxGetVersion::operator=(const GfxGetVersion& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

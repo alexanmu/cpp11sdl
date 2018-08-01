@@ -48,10 +48,10 @@ public:
     GfxGammaRamp() noexcept;
     explicit GfxGammaRamp(const SdlTypePtr gammaRamp) noexcept;
 
-    GfxGammaRamp(GfxGammaRamp const& other) noexcept;
+    GfxGammaRamp(const GfxGammaRamp& other) noexcept;
     GfxGammaRamp(GfxGammaRamp&& other) noexcept;
 
-    GfxGammaRamp& operator=(GfxGammaRamp const& other) noexcept;
+    GfxGammaRamp& operator=(const GfxGammaRamp& other) noexcept;
     GfxGammaRamp& operator=(GfxGammaRamp&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

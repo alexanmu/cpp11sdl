@@ -77,7 +77,7 @@ GfxWindowPosition::GfxWindowPosition(const ValueType pos, const int32_t coord) n
     }
 }
 
-GfxWindowPosition::GfxWindowPosition(GfxWindowPosition const& other) noexcept : GfxObject(other)
+GfxWindowPosition::GfxWindowPosition(const GfxWindowPosition& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -95,7 +95,7 @@ GfxWindowPosition::GfxWindowPosition(GfxWindowPosition&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxWindowPosition& GfxWindowPosition::operator=(GfxWindowPosition const& other) noexcept
+GfxWindowPosition& GfxWindowPosition::operator=(const GfxWindowPosition& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

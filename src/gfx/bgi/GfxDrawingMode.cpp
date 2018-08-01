@@ -58,7 +58,7 @@ GfxDrawingMode::GfxDrawingMode(const BgiType dmode) noexcept : GfxObject(ClassNa
     dmode_ = dmode;
 }
 
-GfxDrawingMode::GfxDrawingMode(GfxDrawingMode const& other) noexcept : GfxObject(other)
+GfxDrawingMode::GfxDrawingMode(const GfxDrawingMode& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxDrawingMode::GfxDrawingMode(GfxDrawingMode&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxDrawingMode& GfxDrawingMode::operator=(GfxDrawingMode const& other) noexcept
+GfxDrawingMode& GfxDrawingMode::operator=(const GfxDrawingMode& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

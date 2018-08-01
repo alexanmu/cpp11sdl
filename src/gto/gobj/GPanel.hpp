@@ -41,13 +41,13 @@ class GPanel : public GGraphicControl
 public:
     GPanel() = delete;
 
-    GPanel(GPanel const& other) = delete;
+    GPanel(const GPanel& other) = delete;
     GPanel(GPanel&& other) = delete;
 
-    GPanel& operator=(GPanel const& other) = delete;
+    GPanel& operator=(const GPanel& other) = delete;
     GPanel& operator=(GPanel&& other) = delete;
 
-    explicit GPanel(std::string const& vname, GComponent* owner, gfx::rect::GfxRect bounds);
+    explicit GPanel(const std::string& vname, GComponent* owner, gfx::rect::GfxRect bounds);
 
     void draw(void);
 

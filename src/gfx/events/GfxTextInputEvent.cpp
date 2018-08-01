@@ -51,7 +51,7 @@ GfxTextInputEvent::GfxTextInputEvent(const SdlType event) noexcept : GfxObject(C
     textInputEvent_ = event;
 }
 
-GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent const& other) noexcept : GfxObject(other)
+GfxTextInputEvent::GfxTextInputEvent(const GfxTextInputEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxTextInputEvent::GfxTextInputEvent(GfxTextInputEvent&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxTextInputEvent& GfxTextInputEvent::operator=(GfxTextInputEvent const& other) noexcept
+GfxTextInputEvent& GfxTextInputEvent::operator=(const GfxTextInputEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

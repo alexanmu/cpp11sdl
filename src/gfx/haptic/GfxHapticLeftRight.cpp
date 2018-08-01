@@ -52,7 +52,7 @@ GfxHapticLeftRight::GfxHapticLeftRight(const SdlType hLR) noexcept : GfxObject(C
     hLR_ = hLR;
 }
 
-GfxHapticLeftRight::GfxHapticLeftRight(GfxHapticLeftRight const& other) noexcept : GfxObject(other)
+GfxHapticLeftRight::GfxHapticLeftRight(const GfxHapticLeftRight& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxHapticLeftRight::GfxHapticLeftRight(GfxHapticLeftRight&& other) noexcept : Gf
     other.clear();
 }
 
-GfxHapticLeftRight& GfxHapticLeftRight::operator=(GfxHapticLeftRight const& other) noexcept
+GfxHapticLeftRight& GfxHapticLeftRight::operator=(const GfxHapticLeftRight& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

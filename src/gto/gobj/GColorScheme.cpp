@@ -42,7 +42,7 @@ GColorScheme::GColorScheme() : GObject()
     clear();
 }
 
-GColorScheme::GColorScheme(GColorScheme const& other) : GObject()
+GColorScheme::GColorScheme(const GColorScheme& other) : GObject()
 {
     backgroundColor_ = other.backgroundColor_;
     foregroundColor_ = other.foregroundColor_;
@@ -60,7 +60,7 @@ GColorScheme::GColorScheme(GColorScheme&& other) : GObject()
     other.clear();
 }
 
-GColorScheme& GColorScheme::operator=(GColorScheme const& other)
+GColorScheme& GColorScheme::operator=(const GColorScheme& other)
 {
     if (this != &other)
     {
@@ -86,48 +86,48 @@ GColorScheme& GColorScheme::operator=(GColorScheme&& other)
     return *this;
 }
 
-gfx::pixels::GfxColor const& GColorScheme::getForegroundColor(void) const noexcept
+const gfx::pixels::GfxColor& GColorScheme::getForegroundColor(void) const noexcept
 {
     return foregroundColor_;
 }
 
-void GColorScheme::setForegroundColor(gfx::pixels::GfxColor const& color) noexcept
+void GColorScheme::setForegroundColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     foregroundColor_ = color;
 }
 
-gfx::pixels::GfxColor const& GColorScheme::getBackgroundColor(void) const noexcept
+const gfx::pixels::GfxColor& GColorScheme::getBackgroundColor(void) const noexcept
 {
     return backgroundColor_;
 }
 
-void GColorScheme::setBackgroundColor(gfx::pixels::GfxColor const& color) noexcept
+void GColorScheme::setBackgroundColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     backgroundColor_ = color;
 }
 
-gfx::pixels::GfxColor const& GColorScheme::getBorderColor(void) const noexcept
+const gfx::pixels::GfxColor& GColorScheme::getBorderColor(void) const noexcept
 {
     return borderColor_;
 }
 
-void GColorScheme::setBorderColor(gfx::pixels::GfxColor const& color) noexcept
+void GColorScheme::setBorderColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     borderColor_ = color;
 }
 
-gfx::pixels::GfxColor const& GColorScheme::getBorderShadowColor(void) const noexcept
+const gfx::pixels::GfxColor& GColorScheme::getBorderShadowColor(void) const noexcept
 {
     return borderShadowColor_;
 }
 
-void GColorScheme::setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept
+void GColorScheme::setBorderShadowColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 

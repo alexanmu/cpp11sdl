@@ -66,10 +66,10 @@ public:
 
     GfxMeta() noexcept;
 
-    GfxMeta(GfxMeta const&) = delete;
+    GfxMeta(const GfxMeta&) = delete;
     GfxMeta(GfxMeta&&) = delete;
 
-    GfxMeta& operator=(GfxMeta const&) = delete;
+    GfxMeta& operator=(const GfxMeta&) = delete;
     GfxMeta& operator=(GfxMeta&&) = delete;
 
     ~GfxMeta() noexcept;

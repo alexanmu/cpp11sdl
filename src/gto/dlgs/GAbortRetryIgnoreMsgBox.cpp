@@ -41,7 +41,7 @@ namespace gto
 namespace dlgs
 {
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner) :
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(const std::string& vname, gobj::GComponent* owner) :
         GDialog(vname, owner)
 {
     title_ = "";
@@ -49,7 +49,7 @@ GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, gobj:
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner,
+GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(const std::string& vname, gobj::GComponent* owner,
         const std::string& title, const std::string& message) : GDialog(vname, owner)
 {
     assert(title.length() > 0);
@@ -60,14 +60,14 @@ GAbortRetryIgnoreMsgBox::GAbortRetryIgnoreMsgBox(std::string const& vname, gobj:
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-void GAbortRetryIgnoreMsgBox::setTitle(std::string const& title) noexcept
+void GAbortRetryIgnoreMsgBox::setTitle(const std::string& title) noexcept
 {
     assert(title.length() > 0);
 
     title_ = title;
 }
 
-void GAbortRetryIgnoreMsgBox::setMessage(std::string const& message) noexcept
+void GAbortRetryIgnoreMsgBox::setMessage(const std::string& message) noexcept
 {
     assert(message.length() > 0);
 

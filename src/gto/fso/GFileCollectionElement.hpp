@@ -39,17 +39,17 @@ class GFileCollectionElement : public GFSBaseClass
 {
 public:
     GFileCollectionElement();
-    explicit GFileCollectionElement(std::string const& fileSpec);
+    explicit GFileCollectionElement(const std::string& fileSpec);
 
-    GFileCollectionElement(GFileCollectionElement const& other);
+    GFileCollectionElement(const GFileCollectionElement& other);
     GFileCollectionElement(GFileCollectionElement&& other);
 
-    GFileCollectionElement& operator=(GFileCollectionElement const& other);
+    GFileCollectionElement& operator=(const GFileCollectionElement& other);
     GFileCollectionElement& operator=(GFileCollectionElement&& other);
 
     virtual ~GFileCollectionElement();
 
-    std::string const& getFileSpec(void) const noexcept;
+    const std::string& getFileSpec(void) const noexcept;
     void clear(void);
 private:
     std::string fileSpec_;

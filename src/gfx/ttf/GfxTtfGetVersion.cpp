@@ -42,7 +42,7 @@ GfxTtfGetVersion::GfxTtfGetVersion() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxTtfGetVersion::GfxTtfGetVersion(GfxTtfGetVersion const& other) noexcept : GfxObject(other)
+GfxTtfGetVersion::GfxTtfGetVersion(const GfxTtfGetVersion& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -52,7 +52,7 @@ GfxTtfGetVersion::GfxTtfGetVersion(GfxTtfGetVersion&& other) noexcept : GfxObjec
     LOG_TRACE_PRIO_MED();
 }
 
-GfxTtfGetVersion& GfxTtfGetVersion::operator=(GfxTtfGetVersion const& other) noexcept
+GfxTtfGetVersion& GfxTtfGetVersion::operator=(const GfxTtfGetVersion& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

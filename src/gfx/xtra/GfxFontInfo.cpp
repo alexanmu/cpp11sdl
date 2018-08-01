@@ -58,7 +58,7 @@ GfxFontInfo::GfxFontInfo() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxFontInfo::GfxFontInfo(std::string const& fontName) noexcept : GfxObject(ClassName)
+GfxFontInfo::GfxFontInfo(const std::string& fontName) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxFontInfo::GfxFontInfo(std::string const& fontName) noexcept : GfxObject(Class
     fontName_ = fontName;
 }
 
-GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) noexcept : GfxObject(ClassName)
+GfxFontInfo::GfxFontInfo(const std::string& fontName, const uint8_t fontSize) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -80,7 +80,7 @@ GfxFontInfo::GfxFontInfo(std::string const& fontName, const uint8_t fontSize) no
     fontSize_ = fontSize;
 }
 
-GfxFontInfo::GfxFontInfo(GfxFontInfo const& other) noexcept : GfxObject(other)
+GfxFontInfo::GfxFontInfo(const GfxFontInfo& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -112,7 +112,7 @@ GfxFontInfo::GfxFontInfo(GfxFontInfo&& other) noexcept : GfxObject(std::move(oth
     other.clear();
 }
 
-GfxFontInfo& GfxFontInfo::operator=(GfxFontInfo const& other) noexcept
+GfxFontInfo& GfxFontInfo::operator=(const GfxFontInfo& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -172,7 +172,7 @@ std::string GfxFontInfo::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxFontInfo::setFontName(std::string const& fontName) noexcept
+void GfxFontInfo::setFontName(const std::string& fontName) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -188,7 +188,7 @@ void GfxFontInfo::setFontNameDefault(void) noexcept
     fontName_ = kDefaultFontName;
 }
 
-std::string const& GfxFontInfo::getFontName(void) const noexcept
+const std::string& GfxFontInfo::getFontName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

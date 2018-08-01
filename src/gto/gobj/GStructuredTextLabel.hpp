@@ -45,22 +45,22 @@ class GStructuredTextLabel : public GLabel
 public:
     GStructuredTextLabel() = delete;
 
-    GStructuredTextLabel(GStructuredTextLabel const& other) = delete;
+    GStructuredTextLabel(const GStructuredTextLabel& other) = delete;
     GStructuredTextLabel(GStructuredTextLabel&& other) = delete;
 
-    GStructuredTextLabel& operator=(GStructuredTextLabel const& other) = delete;
+    GStructuredTextLabel& operator=(const GStructuredTextLabel& other) = delete;
     GStructuredTextLabel& operator=(GStructuredTextLabel&& other) = delete;
 
-    explicit GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
-                                  const uint16_t height, std::string const& text, const uint8_t textsize,
+    explicit GStructuredTextLabel(const std::string& vname, GComponent* owner, const uint16_t width,
+                                  const uint16_t height, const std::string& text, const uint8_t textsize,
                                   const GStructuredTextType sttexttype);
-    explicit GStructuredTextLabel(std::string const& vname, GComponent* owner, const uint16_t width,
-                                  const uint16_t height, std::string const& text, const uint8_t textsize,
-                                  const GStructuredTextType sttexttype, std::string const& regexp);
+    explicit GStructuredTextLabel(const std::string& vname, GComponent* owner, const uint16_t width,
+                                  const uint16_t height, const std::string& text, const uint8_t textsize,
+                                  const GStructuredTextType sttexttype, const std::string& regexp);
 
     virtual void draw(void) throw(std::runtime_error);
 private:
-    bool evalRegExp(std::string const& actregexp, std::string const& text);
+    bool evalRegExp(const std::string& actregexp, const std::string& text);
     void setColorScheme(void);
 
     GStructuredTextType stTextType_;

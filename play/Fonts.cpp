@@ -36,7 +36,7 @@
 #include <iterator>
 #include <cstring>
 
-static std::vector<std::string> FindAllFiles(std::string const& bpath)
+static std::vector<std::string> FindAllFiles(const std::string& bpath)
 {
     std::vector<std::string> files;
 
@@ -72,7 +72,7 @@ static std::string ToHexStr(uint8_t c)
     return std::string(s);
 }
 
-static void ProcessBuffer(std::string const& buffname, uint8_t * buff)
+static void ProcessBuffer(const std::string& buffname, uint8_t * buff)
 {
     std::ofstream hpp(buffname + ".hpp", std::ofstream::out | std::ofstream::trunc);
 
@@ -123,7 +123,7 @@ static void ProcessBuffer(std::string const& buffname, uint8_t * buff)
     hpp.close();
 }
 
-static std::string GetFntName(std::string const& fullname)
+static const std::string GetFntName(const std::string& fullname)
 {
     std::size_t n;
     std::string fname;
@@ -141,7 +141,7 @@ static std::string GetFntName(std::string const& fullname)
     return ext + name;
 }
 
-static void ProcessFNTfile(std::string const& fullname)
+static void ProcessFNTfile(const std::string& fullname)
 {
     std::ifstream inf(fullname, std::ifstream::ate | std::ifstream::binary);
     std::ifstream::pos_type fsize = inf.tellg();

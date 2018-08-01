@@ -42,20 +42,20 @@ class GFontManager : public gobj::GObject
 public:
     GFontManager() = delete;
 
-    GFontManager(GFontManager const&) = delete;
+    GFontManager(const GFontManager&) = delete;
     GFontManager(GFontManager&&) = delete;
 
-    GFontManager& operator=(GFontManager const&) = delete;
+    GFontManager& operator=(const GFontManager&) = delete;
     GFontManager& operator=(GFontManager&&) = delete;
 
-    explicit GFontManager(std::string const& fontsFolder) noexcept;
+    explicit GFontManager(const std::string& fontsFolder) noexcept;
     virtual ~GFontManager() noexcept;
 
     void loadFonts(void) noexcept;
-    gfx::ttf::GfxTtfFont * getFont(std::string const& fontName, const int pointSize) const noexcept;
+    gfx::ttf::GfxTtfFont * getFont(const std::string& fontName, const int pointSize) const noexcept;
     void freeFont(gfx::ttf::GfxTtfFont * font) const noexcept;
 private:
-    std::string getFileNameByFontName(std::string const& fontName) const noexcept;
+    std::string getFileNameByFontName(const std::string& fontName) const noexcept;
 
     std::string fontsFolder_;
     std::vector<std::string> fontFiles_;

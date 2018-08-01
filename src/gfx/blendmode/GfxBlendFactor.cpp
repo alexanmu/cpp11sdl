@@ -61,7 +61,7 @@ GfxBlendFactor::GfxBlendFactor(const SdlType blendfactor) noexcept : GfxObject(C
     blendFactor_ = blendfactor;
 }
 
-GfxBlendFactor::GfxBlendFactor(GfxBlendFactor const& other) noexcept : GfxObject(other)
+GfxBlendFactor::GfxBlendFactor(const GfxBlendFactor& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -77,7 +77,7 @@ GfxBlendFactor::GfxBlendFactor(GfxBlendFactor&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxBlendFactor& GfxBlendFactor::operator=(GfxBlendFactor const& other) noexcept
+GfxBlendFactor& GfxBlendFactor::operator=(const GfxBlendFactor& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -107,7 +107,7 @@ GfxBlendFactor& GfxBlendFactor::operator=(GfxBlendFactor&& other) noexcept
     return *this;
 }
 
-bool GfxBlendFactor::operator==(GfxBlendFactor const& other) noexcept
+bool GfxBlendFactor::operator==(const GfxBlendFactor& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

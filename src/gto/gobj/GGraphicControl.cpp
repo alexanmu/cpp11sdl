@@ -35,7 +35,7 @@ namespace gto
 namespace gobj
 {
 
-GGraphicControl::GGraphicControl(std::string const& vname, GComponent * owner, const uint16_t width,
+GGraphicControl::GGraphicControl(const std::string& vname, GComponent * owner, const uint16_t width,
         const uint16_t height) : GControl(vname, owner)
 {
     assert(vname.length() > 0);
@@ -53,65 +53,65 @@ GGraphicControl::~GGraphicControl()
     // nothing to do yet
 }
 
-gfx::surface::GfxSurface const& GGraphicControl::getSurface(void) const noexcept
+const gfx::surface::GfxSurface& GGraphicControl::getSurface(void) const noexcept
 {
     return surf_;
 }
 
-gfx::pixels::GfxColor const& GGraphicControl::getForegroundColor(void) const noexcept
+const gfx::pixels::GfxColor GGraphicControl::getForegroundColor(void) const noexcept
 {
     return colorScheme_.getForegroundColor();
 }
 
-void GGraphicControl::setForegroundColor(gfx::pixels::GfxColor const& color) noexcept
+void GGraphicControl::setForegroundColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     colorScheme_.setForegroundColor(color);
 }
 
-gfx::pixels::GfxColor const& GGraphicControl::getBackgroundColor(void) const noexcept
+const gfx::pixels::GfxColor GGraphicControl::getBackgroundColor(void) const noexcept
 {
     return colorScheme_.getBackgroundColor();
 }
 
-void GGraphicControl::setBackgroundColor(gfx::pixels::GfxColor const& color) noexcept
+void GGraphicControl::setBackgroundColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     colorScheme_.setBackgroundColor(color);
 }
 
-gfx::pixels::GfxColor const& GGraphicControl::getBorderColor(void) const noexcept
+const gfx::pixels::GfxColor GGraphicControl::getBorderColor(void) const noexcept
 {
     return colorScheme_.getBorderColor();
 }
 
-void GGraphicControl::setBorderColor(gfx::pixels::GfxColor const& color) noexcept
+void GGraphicControl::setBorderColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     colorScheme_.setBorderColor(color);
 }
 
-gfx::pixels::GfxColor const& GGraphicControl::getBorderShadowColor(void) const noexcept
+const gfx::pixels::GfxColor GGraphicControl::getBorderShadowColor(void) const noexcept
 {
     return colorScheme_.getBorderShadowColor();
 }
 
-void GGraphicControl::setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept
+void GGraphicControl::setBorderShadowColor(const gfx::pixels::GfxColor& color) noexcept
 {
     assert(color);
 
     colorScheme_.setBorderShadowColor(color);
 }
 
-GColorScheme const& GGraphicControl::getColorScheme(void) const noexcept
+const GColorScheme GGraphicControl::getColorScheme(void) const noexcept
 {
     return colorScheme_;
 }
 
-void GGraphicControl::setColorScheme(GColorScheme const& colorScheme) noexcept
+void GGraphicControl::setColorScheme(const GColorScheme& colorScheme) noexcept
 {
     colorScheme_ = colorScheme;
 }

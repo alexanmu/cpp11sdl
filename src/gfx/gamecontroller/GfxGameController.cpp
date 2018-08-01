@@ -136,7 +136,7 @@ void GfxGameController::gameControllerClose(void) noexcept
     }
 }
 
-int32_t GfxGameController::gameControllerAddMapping(std::string const& mappingString) const noexcept
+int32_t GfxGameController::gameControllerAddMapping(const std::string& mappingString) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -179,7 +179,7 @@ const std::string GfxGameController::gameControllerMappingForIndex(const int32_t
     return ret;
 }
 
-const std::string GfxGameController::gameControllerMappingForGUID(joystick::GfxJoystickGUID const& joyId) const noexcept
+const std::string GfxGameController::gameControllerMappingForGUID(const joystick::GfxJoystickGUID& joyId) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -245,8 +245,8 @@ const std::string GfxGameController::gameControllerNameForIndex(const int32_t jo
     return ret;
 }
 
-GfxGameController::SdlTypePtr GfxGameController::gameControllerFromInstanceID(joystick::
-        GfxJoystickID const& joyId) const noexcept
+GfxGameController::SdlTypePtr GfxGameController::gameControllerFromInstanceID(const joystick::
+        GfxJoystickID& joyId) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -355,7 +355,7 @@ void GfxGameController::gameControllerUpdate(void) const noexcept
     SDL_GameControllerUpdate();
 }
 
-const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(std::string const& pchString)
+const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(const std::string& pchString)
             const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -368,7 +368,7 @@ const GfxGameControllerAxis GfxGameController::gameControllerGetAxisFromString(s
     return GfxGameControllerAxis(sdlAxis);
 }
 
-const std::string GfxGameController::gameControllerGetStringForAxis(GfxGameControllerAxis const& axis) const noexcept
+const std::string GfxGameController::gameControllerGetStringForAxis(const GfxGameControllerAxis& axis) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -378,7 +378,7 @@ const std::string GfxGameController::gameControllerGetStringForAxis(GfxGameContr
     return ret;
 }
 
-const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForAxis(GfxGameControllerAxis const& axis)
+const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForAxis(const GfxGameControllerAxis& axis)
             const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -394,7 +394,7 @@ const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForAxi
     return GfxGameControllerButtonBind(btnBind);
 }
 
-int32_t GfxGameController::gameControllerGetAxis(GfxGameControllerAxis const& axis) const noexcept
+int32_t GfxGameController::gameControllerGetAxis(const GfxGameControllerAxis& axis) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -409,7 +409,7 @@ int32_t GfxGameController::gameControllerGetAxis(GfxGameControllerAxis const& ax
     return ret;
 }
 
-GfxGameControllerButton GfxGameController::gameControllerGetButtonFromString(std::string const& pchString)
+const GfxGameControllerButton GfxGameController::gameControllerGetButtonFromString(const std::string& pchString)
             const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -422,7 +422,7 @@ GfxGameControllerButton GfxGameController::gameControllerGetButtonFromString(std
     return GfxGameControllerButton(btn);
 }
 
-const std::string GfxGameController::gameControllerGetStringForButton(GfxGameControllerButton const& button)
+const std::string GfxGameController::gameControllerGetStringForButton(const GfxGameControllerButton& button)
             const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -433,7 +433,7 @@ const std::string GfxGameController::gameControllerGetStringForButton(GfxGameCon
     return ret;
 }
 
-const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForButton(GfxGameControllerButton const&
+const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForButton(const GfxGameControllerButton&
             button) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
@@ -449,7 +449,7 @@ const GfxGameControllerButtonBind GfxGameController::gameControllerGetBindForBut
     return GfxGameControllerButtonBind(btnBind);
 }
 
-uint8_t GfxGameController::gameControllerGetButton(GfxGameControllerButton const& button) const noexcept
+uint8_t GfxGameController::gameControllerGetButton(const GfxGameControllerButton& button) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

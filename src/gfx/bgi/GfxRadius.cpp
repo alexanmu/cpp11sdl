@@ -96,21 +96,21 @@ GfxRadius& GfxRadius::operator=(GfxRadius&& other) noexcept
     return *this;
 }
 
-bool GfxRadius::operator==(GfxRadius const& other) const noexcept
+bool GfxRadius::operator==(const GfxRadius& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return (value_ == other.value_);
 }
 
-bool GfxRadius::operator>(GfxRadius const& other) const noexcept
+bool GfxRadius::operator>(const GfxRadius& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return (value_ > other.value_);
 }
 
-bool GfxRadius::operator<(GfxRadius const& other) const noexcept
+bool GfxRadius::operator<(const GfxRadius& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

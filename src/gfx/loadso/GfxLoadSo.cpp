@@ -48,7 +48,7 @@ GfxLoadSo::GfxLoadSo() noexcept : GfxObject(ClassName)
     handle_ = nullptr;
 }
 
-GfxLoadSo::GfxLoadSo(std::string const& objectName) noexcept : GfxObject(ClassName)
+GfxLoadSo::GfxLoadSo(const std::string& objectName) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -124,14 +124,14 @@ bool GfxLoadSo::isObjectLoaded(void) const noexcept
     return (handle_ != nullptr);
 }
 
-std::string const& GfxLoadSo::getObjectName(void) const noexcept
+const std::string& GfxLoadSo::getObjectName(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return objectName_;
 }
 
-void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
+void * GfxLoadSo::loadFunction(const std::string& function) const noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -146,7 +146,7 @@ void * GfxLoadSo::loadFunction(std::string const& function) const noexcept
     return func;
 }
 
-void GfxLoadSo::loadObject(std::string const& objectName) noexcept
+void GfxLoadSo::loadObject(const std::string& objectName) noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 

@@ -38,17 +38,17 @@ class GObject
 public:
     GObject() noexcept;
 
-    GObject(GObject const& other) noexcept;
+    GObject(const GObject& other) noexcept;
     GObject(GObject&& other) noexcept;
 
-    GObject& operator=(GObject const& other) noexcept;
+    GObject& operator=(const GObject& other) noexcept;
     GObject& operator=(GObject&& other) noexcept;
 
     virtual ~GObject() noexcept;
 
     virtual explicit operator bool() const noexcept;
 
-    bool operator==(GObject const& other) const noexcept;
+    bool operator==(const GObject& other) const noexcept;
 private:
     enum class GInitType : int32_t
     {

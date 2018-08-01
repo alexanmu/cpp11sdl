@@ -63,7 +63,7 @@ public:
     GfxMessageBoxFlags& operator=(const GfxMessageBoxFlags& other) noexcept;
     GfxMessageBoxFlags& operator=(GfxMessageBoxFlags&& other) noexcept;
 
-    bool operator==(GfxMessageBoxFlags const& other) const noexcept;
+    bool operator==(const GfxMessageBoxFlags& other) const noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;

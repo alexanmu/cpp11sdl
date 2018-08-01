@@ -194,10 +194,10 @@ public:
 
     GfxCanvasBgi();
 
-    GfxCanvasBgi(GfxCanvasBgi const&) = delete;
+    GfxCanvasBgi(const GfxCanvasBgi&) = delete;
     GfxCanvasBgi(GfxCanvasBgi&&) = delete;
 
-    GfxCanvasBgi& operator=(GfxCanvasBgi const&) = delete;
+    GfxCanvasBgi& operator=(const GfxCanvasBgi&) = delete;
     GfxCanvasBgi& operator=(GfxCanvasBgi&&) = delete;
 
     virtual explicit operator bool() const noexcept;

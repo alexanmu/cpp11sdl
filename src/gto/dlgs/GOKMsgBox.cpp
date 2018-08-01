@@ -41,7 +41,7 @@ namespace gto
 namespace dlgs
 {
 
-GOKMsgBox::GOKMsgBox(std::string const& vname, GComponent* owner) :
+GOKMsgBox::GOKMsgBox(const std::string& vname, GComponent* owner) :
         GDialog(vname, owner)
 {
     title_ = "";
@@ -49,7 +49,7 @@ GOKMsgBox::GOKMsgBox(std::string const& vname, GComponent* owner) :
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GOKMsgBox::GOKMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
+GOKMsgBox::GOKMsgBox(const std::string& vname, GComponent* owner, const std::string& title,
         const std::string& message) : GDialog(vname, owner)
 {
     assert(title.length() > 0);
@@ -60,14 +60,14 @@ GOKMsgBox::GOKMsgBox(std::string const& vname, GComponent* owner, const std::str
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-void GOKMsgBox::setTitle(std::string const& title) noexcept
+void GOKMsgBox::setTitle(const std::string& title) noexcept
 {
     assert(title.length() > 0);
 
     title_ = title;
 }
 
-void GOKMsgBox::setMessage(std::string const& message) noexcept
+void GOKMsgBox::setMessage(const std::string& message) noexcept
 {
     assert(message.length() > 0);
 

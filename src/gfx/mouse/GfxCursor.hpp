@@ -53,7 +53,7 @@ public:
     explicit GfxCursor(const SdlTypePtr cursor) noexcept;
     GfxCursor(const uint8_t * data, const uint8_t * mask, const int32_t w, const int32_t h,
               const int32_t hot_x, const int32_t hot_y) throw(std::runtime_error);
-    GfxCursor(surface::GfxSurface const& surface, const int32_t hot_x,
+    GfxCursor(const surface::GfxSurface& surface, const int32_t hot_x,
               const int32_t hot_y) throw(std::runtime_error);
     explicit GfxCursor(const GfxSystemCursor& id) throw(std::runtime_error);
 

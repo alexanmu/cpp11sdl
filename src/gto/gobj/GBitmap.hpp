@@ -44,14 +44,14 @@ class GBitmap : public GImage
 public:
     GBitmap() = delete;
 
-    GBitmap(GBitmap const& other) = delete;
+    GBitmap(const GBitmap& other) = delete;
     GBitmap(GBitmap&& other) = delete;
 
-    GBitmap& operator=(GBitmap const& other) = delete;
+    GBitmap& operator=(const GBitmap& other) = delete;
     GBitmap& operator=(GBitmap&& other) = delete;
 
-    explicit GBitmap(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
-                    GImageScaleMode const& scalemode, std::string const& filename);
+    explicit GBitmap(const std::string& vname, GComponent * owner, const uint16_t width, const uint16_t height,
+        const GImageScaleMode& scalemode, const std::string& filename);
     virtual ~GBitmap();
 
     virtual void load(void) throw(std::runtime_error);

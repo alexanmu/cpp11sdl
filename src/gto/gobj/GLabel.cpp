@@ -44,8 +44,8 @@ namespace gto
 namespace gobj
 {
 
-GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
-                std::string const& text, uint8_t const& textsize) :
+GLabel::GLabel(const std::string& vname, GComponent* owner, const uint16_t width, const uint16_t height,
+                const std::string& text, const uint8_t textsize) :
         GGraphicControl(vname, owner, width, height)
 {
     assert(vname.length() > 0);
@@ -59,12 +59,12 @@ GLabel::GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint
     textRenderMode_ = kDefaultTextRenderMode;
 }
 
-std::string const& GLabel::getText(void) const noexcept
+const std::string GLabel::getText(void) const noexcept
 {
     return text_;
 }
 
-void GLabel::setText(std::string const& text) noexcept
+void GLabel::setText(const std::string& text) noexcept
 {
     text_ = text;
 }
@@ -74,7 +74,7 @@ gfx::xtra::GfxFontInfo& GLabel::getFontInfo(void) noexcept
     return fontInfo_;
 }
 
-void GLabel::setFontInfo(gfx::xtra::GfxFontInfo const& fontinfo) noexcept
+void GLabel::setFontInfo(const gfx::xtra::GfxFontInfo& fontinfo) noexcept
 {
     assert(fontinfo);
 
@@ -86,7 +86,7 @@ GTextRenderMode GLabel::getTextRenderMode(void) const noexcept
     return textRenderMode_;
 }
 
-void GLabel::setTextRenderMode(GTextRenderMode const textrendermode) noexcept
+void GLabel::setTextRenderMode(const GTextRenderMode& textrendermode) noexcept
 {
     textRenderMode_ = textrendermode;
 }

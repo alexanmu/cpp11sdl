@@ -48,10 +48,10 @@ public:
     GfxGestureID() noexcept;
     explicit GfxGestureID(const SdlType id) noexcept;
 
-    GfxGestureID(GfxGestureID const& other) noexcept;
+    GfxGestureID(const GfxGestureID& other) noexcept;
     GfxGestureID(GfxGestureID&& other) noexcept;
 
-    GfxGestureID& operator=(GfxGestureID const& other) noexcept;
+    GfxGestureID& operator=(const GfxGestureID& other) noexcept;
     GfxGestureID& operator=(GfxGestureID&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

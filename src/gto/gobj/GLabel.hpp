@@ -44,23 +44,23 @@ class GLabel : public GGraphicControl
 public:
     GLabel() = delete;
 
-    GLabel(GLabel const& other) = delete;
+    GLabel(const GLabel& other) = delete;
     GLabel(GLabel&& other) = delete;
 
-    GLabel& operator=(GLabel const& other) = delete;
+    GLabel& operator=(const GLabel& other) = delete;
     GLabel& operator=(GLabel&& other) = delete;
 
-    explicit GLabel(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
-                    std::string const& text, uint8_t const& textsize);
+    explicit GLabel(const std::string& vname, GComponent* owner, const uint16_t width, const uint16_t height,
+                    const std::string& text, const uint8_t textsize);
 
-    std::string const& getText(void) const noexcept;
-    void setText(std::string const& text) noexcept;
+    const std::string getText(void) const noexcept;
+    void setText(const std::string& text) noexcept;
 
     gfx::xtra::GfxFontInfo& getFontInfo(void) noexcept;
-    void setFontInfo(gfx::xtra::GfxFontInfo const& fontinfo) noexcept;
+    void setFontInfo(const gfx::xtra::GfxFontInfo& fontinfo) noexcept;
 
     GTextRenderMode getTextRenderMode(void) const noexcept;
-    void setTextRenderMode(GTextRenderMode const textrendermode) noexcept;
+    void setTextRenderMode(const GTextRenderMode& textrendermode) noexcept;
 
     virtual void draw(void);
 protected:

@@ -50,10 +50,10 @@ public:
     GfxSysWmEvent() noexcept;
     explicit GfxSysWmEvent(const SdlType event) noexcept;
 
-    GfxSysWmEvent(GfxSysWmEvent const& other) noexcept;
+    GfxSysWmEvent(const GfxSysWmEvent& other) noexcept;
     GfxSysWmEvent(GfxSysWmEvent&& other) noexcept;
 
-    GfxSysWmEvent& operator=(GfxSysWmEvent const& other) noexcept;
+    GfxSysWmEvent& operator=(const GfxSysWmEvent& other) noexcept;
     GfxSysWmEvent& operator=(GfxSysWmEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

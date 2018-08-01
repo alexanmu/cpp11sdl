@@ -39,19 +39,19 @@ class GAbortRetryIgnoreMsgBox : public GDialog
 public:
     GAbortRetryIgnoreMsgBox() = delete;
 
-    explicit GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner);
+    explicit GAbortRetryIgnoreMsgBox(const std::string& vname, gobj::GComponent* owner);
 
-    GAbortRetryIgnoreMsgBox(std::string const& vname, gobj::GComponent* owner, const std::string& title,
+    GAbortRetryIgnoreMsgBox(const std::string& vname, gobj::GComponent* owner, const std::string& title,
                             const std::string& message);
 
-    GAbortRetryIgnoreMsgBox(GAbortRetryIgnoreMsgBox const&) = delete;
+    GAbortRetryIgnoreMsgBox(const GAbortRetryIgnoreMsgBox&) = delete;
     GAbortRetryIgnoreMsgBox(GAbortRetryIgnoreMsgBox&&) = delete;
 
-    GAbortRetryIgnoreMsgBox& operator=(GAbortRetryIgnoreMsgBox const&) = delete;
+    GAbortRetryIgnoreMsgBox& operator=(const GAbortRetryIgnoreMsgBox&) = delete;
     GAbortRetryIgnoreMsgBox& operator=(GAbortRetryIgnoreMsgBox&&) = delete;
 
-    void setTitle(std::string const& title) noexcept;
-    void setMessage(std::string const& message) noexcept;
+    void setTitle(const std::string& title) noexcept;
+    void setMessage(const std::string& message) noexcept;
 
     virtual void showModal(void);
     GDialogsConstants getSelection(void) const;

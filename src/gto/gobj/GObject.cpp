@@ -37,7 +37,7 @@ GObject::GObject() noexcept
     initType_ = GInitType::defaultCtor;
 }
 
-GObject::GObject(GObject const& other) noexcept
+GObject::GObject(const GObject& other) noexcept
 {
     assert(other);
 
@@ -53,7 +53,7 @@ GObject::GObject(GObject&& other) noexcept
     other.initType_ = GInitType::notSet;
 }
 
-GObject& GObject::operator=(GObject const& other) noexcept
+GObject& GObject::operator=(const GObject& other) noexcept
 {
     assert(other);
 
@@ -87,7 +87,7 @@ GObject::operator bool() const noexcept
     return true;
 }
 
-bool GObject::operator==(GObject const& other) const noexcept
+bool GObject::operator==(const GObject& other) const noexcept
 {
     assert(other);
 

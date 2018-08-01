@@ -48,8 +48,8 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual void operator()(std::string const& name, std::string const& oldvalue,
-                            std::string const& newvalue) const noexcept = 0;
+    virtual void operator()(const std::string& name, const std::string& oldvalue,
+                            const std::string& newvalue) const noexcept = 0;
 };
 
 }  // namespace hints

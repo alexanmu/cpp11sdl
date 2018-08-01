@@ -69,7 +69,7 @@ std::string GFSBaseClass::_getWorkingDirectory(void) const
     return ret;
 }
 
-void GFSBaseClass::_setWorkingDirectory(std::string const& dir) const throw(std::runtime_error)
+void GFSBaseClass::_setWorkingDirectory(const std::string& dir) const throw(std::runtime_error)
 {
     int ret;
 
@@ -80,7 +80,7 @@ void GFSBaseClass::_setWorkingDirectory(std::string const& dir) const throw(std:
     }
 }
 
-std::string GFSBaseClass::_getFilePath(std::string const& filespec) const
+std::string GFSBaseClass::_getFilePath(const std::string& filespec) const
 {
     assert(filespec.length() > 0);
 
@@ -99,7 +99,7 @@ std::string GFSBaseClass::_getFilePath(std::string const& filespec) const
     return ret;
 }
 
-std::string GFSBaseClass::_getFileName(std::string const& filespec) const
+std::string GFSBaseClass::_getFileName(const std::string& filespec) const
 {
     assert(filespec.length() > 0);
 
@@ -148,7 +148,7 @@ std::string GFSBaseClass::_getFileName(std::string const& filespec) const
     return ret;
 }
 
-std::string GFSBaseClass::_getParentFolder(std::string const& filespec) const
+std::string GFSBaseClass::_getParentFolder(const std::string& filespec) const
 {
     assert(filespec.length() > 0);
 
@@ -175,7 +175,7 @@ std::string GFSBaseClass::_getParentFolder(std::string const& filespec) const
     return ret;
 }
 
-std::string GFSBaseClass::_getCurrentDateAsString(std::string const& sep1, std::string const& sep2) const
+std::string GFSBaseClass::_getCurrentDateAsString(const std::string& sep1, const std::string& sep2) const
 {
     assert(sep1.length() > 0);
     assert(sep2.length() > 0);
@@ -200,7 +200,7 @@ std::string GFSBaseClass::_getCurrentDateAsString(void) const
     return y + '.' + _lz(m, 2) + '.' + _lz(d, 2);
 }
 
-std::string GFSBaseClass::_getCurrentTimeAsString(std::string const& sep1, std::string const& sep2) const
+std::string GFSBaseClass::_getCurrentTimeAsString(const std::string& sep1, const std::string& sep2) const
 {
     assert(sep1.length() > 0);
     assert(sep2.length() > 0);
@@ -225,8 +225,8 @@ std::string GFSBaseClass::_getCurrentTimeAsString(void) const
     return _lz(h, 2) + ':' + _lz(m, 2) + ':' + _lz(s, 2);
 }
 
-std::string GFSBaseClass::_getDateAsString(std::tm const& date, std::string const& sep1,
-                                            std::string const& sep2) const
+std::string GFSBaseClass::_getDateAsString(const std::tm& date, const std::string& sep1,
+                                            const std::string& sep2) const
 {
     assert(sep1.length() > 0);
     assert(sep2.length() > 0);
@@ -238,7 +238,7 @@ std::string GFSBaseClass::_getDateAsString(std::tm const& date, std::string cons
     return y + sep1 + _lz(m, 2) + sep2 + _lz(d, 2);
 }
 
-std::string GFSBaseClass::_getDateAsString(std::tm const& date) const
+std::string GFSBaseClass::_getDateAsString(const std::tm& date) const
 {
     std::string y = std::to_string(date.tm_year + 1900);
     std::string m = std::to_string(date.tm_mon + 1);
@@ -247,8 +247,8 @@ std::string GFSBaseClass::_getDateAsString(std::tm const& date) const
     return y + '.' + _lz(m, 2) + '.' + _lz(d, 2);
 }
 
-std::string GFSBaseClass::_getTimeAsString(std::tm const& time, std::string const& sep1,
-                                            std::string const& sep2) const
+std::string GFSBaseClass::_getTimeAsString(const std::tm& time, const std::string& sep1,
+                                            const std::string& sep2) const
 {
     assert(sep1.length() > 0);
     assert(sep2.length() > 0);
@@ -260,7 +260,7 @@ std::string GFSBaseClass::_getTimeAsString(std::tm const& time, std::string cons
     return _lz(h, 2) + sep1 + _lz(m, 2) + sep2 + _lz(s, 2);
 }
 
-std::string GFSBaseClass::_getTimeAsString(std::tm const& time) const
+std::string GFSBaseClass::_getTimeAsString(const std::tm& time) const
 {
     std::string h = std::to_string(time.tm_hour);
     std::string m = std::to_string(time.tm_min);
@@ -270,7 +270,7 @@ std::string GFSBaseClass::_getTimeAsString(std::tm const& time) const
 }
 
 // Private methods
-std::string GFSBaseClass::_lz(std::string const& str, const uint32_t elen) const
+std::string GFSBaseClass::_lz(const std::string& str, const uint32_t elen) const
 {
     assert(str.length() > 0);
     assert(elen > 0);

@@ -78,7 +78,7 @@ GfxTtfFontStyle::GfxTtfFontStyle(const SdlType style) noexcept : GfxObject(Class
     style_ = style;
 }
 
-GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept : GfxObject(other)
+GfxTtfFontStyle::GfxTtfFontStyle(const GfxTtfFontStyle& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -94,7 +94,7 @@ GfxTtfFontStyle::GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxTtfFontStyle& GfxTtfFontStyle::operator=(GfxTtfFontStyle const& other) noexcept
+GfxTtfFontStyle& GfxTtfFontStyle::operator=(const GfxTtfFontStyle& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

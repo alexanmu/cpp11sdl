@@ -52,7 +52,7 @@ GfxJoyHatEvent::GfxJoyHatEvent(const SdlType event) noexcept : GfxObject(ClassNa
     jhEvent_ = event;
 }
 
-GfxJoyHatEvent::GfxJoyHatEvent(GfxJoyHatEvent const& other) noexcept : GfxObject(other)
+GfxJoyHatEvent::GfxJoyHatEvent(const GfxJoyHatEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxJoyHatEvent::GfxJoyHatEvent(GfxJoyHatEvent&& other) noexcept : GfxObject(std:
     other.clear();
 }
 
-GfxJoyHatEvent& GfxJoyHatEvent::operator=(GfxJoyHatEvent const& other) noexcept
+GfxJoyHatEvent& GfxJoyHatEvent::operator=(const GfxJoyHatEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

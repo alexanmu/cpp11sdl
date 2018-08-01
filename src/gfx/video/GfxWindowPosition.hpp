@@ -54,10 +54,10 @@ public:
     explicit GfxWindowPosition(const ValueType pos) noexcept;
     GfxWindowPosition(const ValueType pos, const int32_t coord) noexcept;
 
-    GfxWindowPosition(GfxWindowPosition const& other) noexcept;
+    GfxWindowPosition(const GfxWindowPosition& other) noexcept;
     GfxWindowPosition(GfxWindowPosition&& other) noexcept;
 
-    GfxWindowPosition& operator=(GfxWindowPosition const& other) noexcept;
+    GfxWindowPosition& operator=(const GfxWindowPosition& other) noexcept;
     GfxWindowPosition& operator=(GfxWindowPosition&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

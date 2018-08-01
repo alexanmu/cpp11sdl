@@ -34,13 +34,13 @@ namespace gto
 namespace fso
 {
 
-GFolderObject::GFolderObject(std::string const& folderSpec) : GFSBaseClass()
+GFolderObject::GFolderObject(const std::string& folderSpec) : GFSBaseClass()
 {
     folderSpec_ = folderSpec;
     scanFolder();
 }
 
-GFolderObject::GFolderObject(GFolderCollectionElement const& folder) : GFSBaseClass()
+GFolderObject::GFolderObject(const GFolderCollectionElement& folder) : GFSBaseClass()
 {
     folderSpec_ = folder.getFolderSpec();
     scanFolder();
@@ -64,7 +64,7 @@ GFolderObject::~GFolderObject()
     }
 }
 
-std::string const& GFolderObject::getFolderSpec(void) const noexcept
+const std::string& GFolderObject::getFolderSpec(void) const noexcept
 {
     return folderSpec_;
 }
@@ -74,7 +74,7 @@ void GFolderObject::rescan(void)
     scanFolder();
 }
 
-GFilesCollection GFolderObject::getFilesCollection(void)
+const GFilesCollection GFolderObject::getFilesCollection(void)
 {
     return files_;
 }

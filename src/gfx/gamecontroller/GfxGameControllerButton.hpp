@@ -72,10 +72,10 @@ public:
     explicit GfxGameControllerButton(const SdlType button) noexcept;
     explicit GfxGameControllerButton(const ValueType button) noexcept;
 
-    GfxGameControllerButton(GfxGameControllerButton const& other) noexcept;
+    GfxGameControllerButton(const GfxGameControllerButton& other) noexcept;
     GfxGameControllerButton(GfxGameControllerButton&& other) noexcept;
 
-    GfxGameControllerButton& operator=(GfxGameControllerButton const& other) noexcept;
+    GfxGameControllerButton& operator=(const GfxGameControllerButton& other) noexcept;
     GfxGameControllerButton& operator=(GfxGameControllerButton&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

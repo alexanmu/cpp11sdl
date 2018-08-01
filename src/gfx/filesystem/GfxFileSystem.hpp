@@ -43,20 +43,20 @@ public:
 
     GfxFileSystem() noexcept;
 
-    GfxFileSystem(GfxFileSystem const& other) noexcept;
+    GfxFileSystem(const GfxFileSystem& other) noexcept;
     GfxFileSystem(GfxFileSystem&& other) noexcept;
 
-    GfxFileSystem& operator=(GfxFileSystem const& other) noexcept;
+    GfxFileSystem& operator=(const GfxFileSystem& other) noexcept;
     GfxFileSystem& operator=(GfxFileSystem&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
     const std::string getBasePath(void) const noexcept;
-    const std::string getPrefPath(std::string const& organization,
-                                  std::string const& appname) const noexcept;
+    const std::string getPrefPath(const std::string& organization,
+                                  const std::string& appname) const noexcept;
 private:
-    std::string getThisFolder(void) const noexcept;
+    const std::string getThisFolder(void) const noexcept;
 };
 
 }  // namespace filesystem

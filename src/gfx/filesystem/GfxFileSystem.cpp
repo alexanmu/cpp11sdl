@@ -44,7 +44,7 @@ GfxFileSystem::GfxFileSystem() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxFileSystem::GfxFileSystem(GfxFileSystem const& other) noexcept : GfxObject(other)
+GfxFileSystem::GfxFileSystem(const GfxFileSystem& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -54,7 +54,7 @@ GfxFileSystem::GfxFileSystem(GfxFileSystem&& other) noexcept : GfxObject(std::mo
     LOG_TRACE_PRIO_MED();
 }
 
-GfxFileSystem& GfxFileSystem::operator=(GfxFileSystem const& other) noexcept
+GfxFileSystem& GfxFileSystem::operator=(const GfxFileSystem& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -134,7 +134,7 @@ const std::string GfxFileSystem::getPrefPath(const std::string& organization,
     return str;
 }
 
-std::string GfxFileSystem::getThisFolder(void) const noexcept
+const std::string GfxFileSystem::getThisFolder(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

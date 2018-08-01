@@ -52,7 +52,7 @@ GfxMouseButtonEvent::GfxMouseButtonEvent(const SdlType event) noexcept : GfxObje
     mbEvent_ = event;
 }
 
-GfxMouseButtonEvent::GfxMouseButtonEvent(GfxMouseButtonEvent const& other) noexcept : GfxObject(other)
+GfxMouseButtonEvent::GfxMouseButtonEvent(const GfxMouseButtonEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxMouseButtonEvent::GfxMouseButtonEvent(GfxMouseButtonEvent&& other) noexcept :
     other.clear();
 }
 
-GfxMouseButtonEvent& GfxMouseButtonEvent::operator=(GfxMouseButtonEvent const& other) noexcept
+GfxMouseButtonEvent& GfxMouseButtonEvent::operator=(const GfxMouseButtonEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

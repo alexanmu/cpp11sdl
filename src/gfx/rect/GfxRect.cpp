@@ -293,7 +293,7 @@ const GfxBool GfxRect::enclosePoint(const std::vector<GfxPoint>& points, GfxRect
 
     ptcount = static_cast<int32_t>(points.size());
     index = 0;
-    for (auto const& it : points)
+    for (const auto& it : points)
     {
         ptarr[index] = it.getAsSdlType();
         index += 1;

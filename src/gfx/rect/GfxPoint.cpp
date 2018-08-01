@@ -80,7 +80,7 @@ GfxPoint::GfxPoint(GfxPoint&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxPoint& GfxPoint::operator=(GfxPoint const& other) noexcept
+GfxPoint& GfxPoint::operator=(const GfxPoint& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -110,7 +110,7 @@ GfxPoint& GfxPoint::operator=(GfxPoint&& other) noexcept
     return *this;
 }
 
-bool GfxPoint::operator==(GfxPoint const& other) const noexcept
+bool GfxPoint::operator==(const GfxPoint& other) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

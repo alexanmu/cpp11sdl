@@ -52,7 +52,7 @@ GfxHapticDirection::GfxHapticDirection(const SdlType dir) noexcept : GfxObject(C
     direction_ = dir;
 }
 
-GfxHapticDirection::GfxHapticDirection(GfxHapticCoordinates const& type, const int32_t dir1, const int32_t dir2,
+GfxHapticDirection::GfxHapticDirection(const GfxHapticCoordinates& type, const int32_t dir1, const int32_t dir2,
         const int32_t dir3) noexcept : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
@@ -65,7 +65,7 @@ GfxHapticDirection::GfxHapticDirection(GfxHapticCoordinates const& type, const i
     direction_.dir[2] = dir3;
 }
 
-GfxHapticDirection::GfxHapticDirection(GfxHapticDirection const& other) noexcept : GfxObject(other)
+GfxHapticDirection::GfxHapticDirection(const GfxHapticDirection& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -81,7 +81,7 @@ GfxHapticDirection::GfxHapticDirection(GfxHapticDirection&& other) noexcept : Gf
     other.clear();
 }
 
-GfxHapticDirection& GfxHapticDirection::operator=(GfxHapticDirection const& other) noexcept
+GfxHapticDirection& GfxHapticDirection::operator=(const GfxHapticDirection& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

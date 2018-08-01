@@ -52,10 +52,10 @@ public:
     GfxTextEditingEvent() noexcept;
     explicit GfxTextEditingEvent(const SdlType event) noexcept;
 
-    GfxTextEditingEvent(GfxTextEditingEvent const& other) noexcept;
+    GfxTextEditingEvent(const GfxTextEditingEvent& other) noexcept;
     GfxTextEditingEvent(GfxTextEditingEvent&& other) noexcept;
 
-    GfxTextEditingEvent& operator=(GfxTextEditingEvent const& other) noexcept;
+    GfxTextEditingEvent& operator=(const GfxTextEditingEvent& other) noexcept;
     GfxTextEditingEvent& operator=(GfxTextEditingEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -200,7 +200,7 @@ uint32_t& GfxTextureFormats::operator[](const int32_t formatIndex) throw(std::ru
     return formats_[formatIndex];
 }
 
-uint32_t const& GfxTextureFormats::operator[](const int32_t formatIndex) const throw(std::runtime_error)
+const uint32_t& GfxTextureFormats::operator[](const int32_t formatIndex) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 

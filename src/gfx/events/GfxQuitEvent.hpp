@@ -50,10 +50,10 @@ public:
     GfxQuitEvent() noexcept;
     explicit GfxQuitEvent(const SdlType event) noexcept;
 
-    GfxQuitEvent(GfxQuitEvent const& other) noexcept;
+    GfxQuitEvent(const GfxQuitEvent& other) noexcept;
     GfxQuitEvent(GfxQuitEvent&& other) noexcept;
 
-    GfxQuitEvent& operator=(GfxQuitEvent const& other) noexcept;
+    GfxQuitEvent& operator=(const GfxQuitEvent& other) noexcept;
     GfxQuitEvent& operator=(GfxQuitEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

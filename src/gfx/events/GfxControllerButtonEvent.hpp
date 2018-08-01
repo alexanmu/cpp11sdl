@@ -51,10 +51,10 @@ public:
     GfxControllerButtonEvent() noexcept;
     explicit GfxControllerButtonEvent(const SdlType event) noexcept;
 
-    GfxControllerButtonEvent(GfxControllerButtonEvent const& other) noexcept;
+    GfxControllerButtonEvent(const GfxControllerButtonEvent& other) noexcept;
     GfxControllerButtonEvent(GfxControllerButtonEvent&& other) noexcept;
 
-    GfxControllerButtonEvent& operator=(GfxControllerButtonEvent const& other) noexcept;
+    GfxControllerButtonEvent& operator=(const GfxControllerButtonEvent& other) noexcept;
     GfxControllerButtonEvent& operator=(GfxControllerButtonEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

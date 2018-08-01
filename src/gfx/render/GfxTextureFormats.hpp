@@ -63,7 +63,7 @@ public:
     int32_t getFormatsCount(void) const noexcept;
 
     uint32_t& operator[](const int32_t formatIndex) throw(std::runtime_error);
-    uint32_t const& operator[](const int32_t formatIndex) const throw(std::runtime_error);
+    const uint32_t& operator[](const int32_t formatIndex) const throw(std::runtime_error);
 
     void clear(void) noexcept;
 private:

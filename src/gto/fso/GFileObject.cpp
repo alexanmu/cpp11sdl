@@ -38,14 +38,14 @@ namespace gto
 namespace fso
 {
 
-GFileObject::GFileObject(std::string const& fileSpec) throw(std::runtime_error) : GFSBaseClass()
+GFileObject::GFileObject(const std::string& fileSpec) throw(std::runtime_error) : GFSBaseClass()
 {
     clear();
     fileSpec_ = fileSpec;
     scanFile();
 }
 
-GFileObject::GFileObject(GFileCollectionElement const& file) throw(std::runtime_error) : GFSBaseClass()
+GFileObject::GFileObject(const GFileCollectionElement& file) throw(std::runtime_error) : GFSBaseClass()
 {
     clear();
     fileSpec_ = file.getFileSpec();
@@ -57,7 +57,7 @@ GFileObject::~GFileObject()
     clear();
 }
 
-std::string const& GFileObject::getFileSpec(void) const noexcept
+const std::string& GFileObject::getFileSpec(void) const noexcept
 {
     return fileSpec_;
 }
@@ -399,7 +399,7 @@ void GFileObject::scanFile(void) throw(std::runtime_error)
     }
 }
 
-bool GFileObject::isTmValid(std::tm const& tm) const noexcept
+bool GFileObject::isTmValid(const std::tm& tm) const noexcept
 {
     if ((tm.tm_sec < kTimeDateMinSec) || (tm.tm_sec > kTimeDateMaxSec))
     {

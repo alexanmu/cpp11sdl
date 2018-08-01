@@ -55,10 +55,10 @@ public:
     explicit GfxHapticCoordinates(const SdlType coord) noexcept;
     explicit GfxHapticCoordinates(const ValueType coord) noexcept;
 
-    GfxHapticCoordinates(GfxHapticCoordinates const& other) noexcept;
+    GfxHapticCoordinates(const GfxHapticCoordinates& other) noexcept;
     GfxHapticCoordinates(GfxHapticCoordinates&& other) noexcept;
 
-    GfxHapticCoordinates& operator=(GfxHapticCoordinates const& other) noexcept;
+    GfxHapticCoordinates& operator=(const GfxHapticCoordinates& other) noexcept;
     GfxHapticCoordinates& operator=(GfxHapticCoordinates&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

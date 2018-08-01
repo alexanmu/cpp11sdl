@@ -40,19 +40,19 @@ class GOKCancelMsgBox : public GDialog
 public:
     GOKCancelMsgBox() = delete;
 
-    explicit GOKCancelMsgBox(std::string const& vname, GComponent* parent);
+    explicit GOKCancelMsgBox(const std::string& vname, GComponent* parent);
 
-    GOKCancelMsgBox(std::string const& vname, GComponent* parent, const std::string& title,
+    GOKCancelMsgBox(const std::string& vname, GComponent* parent, const std::string& title,
                     const std::string& message);
 
-    GOKCancelMsgBox(GOKCancelMsgBox const&) = delete;
+    GOKCancelMsgBox(const GOKCancelMsgBox&) = delete;
     GOKCancelMsgBox(GOKCancelMsgBox&&) = delete;
 
-    GOKCancelMsgBox& operator=(GOKCancelMsgBox const&) = delete;
+    GOKCancelMsgBox& operator=(const GOKCancelMsgBox&) = delete;
     GOKCancelMsgBox& operator=(GOKCancelMsgBox&&) = delete;
 
-    void setTitle(std::string const& title) noexcept;
-    void setMessage(std::string const& message) noexcept;
+    void setTitle(const std::string& title) noexcept;
+    void setMessage(const std::string& message) noexcept;
 
     virtual void showModal(void);
     GDialogsConstants getSelection(void) const;

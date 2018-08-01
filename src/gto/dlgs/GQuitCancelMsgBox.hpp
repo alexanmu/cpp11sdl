@@ -40,19 +40,19 @@ class GQuitCancelMsgBox : public GDialog
 public:
     GQuitCancelMsgBox() = delete;
 
-    explicit GQuitCancelMsgBox(std::string const& vname, GComponent* owner);
+    explicit GQuitCancelMsgBox(const std::string& vname, GComponent* owner);
 
-    GQuitCancelMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
+    GQuitCancelMsgBox(const std::string& vname, GComponent* owner, const std::string& title,
                         const std::string& message);
 
-    GQuitCancelMsgBox(GQuitCancelMsgBox const&) = delete;
+    GQuitCancelMsgBox(const GQuitCancelMsgBox&) = delete;
     GQuitCancelMsgBox(GQuitCancelMsgBox&&) = delete;
 
-    GQuitCancelMsgBox& operator=(GQuitCancelMsgBox const&) = delete;
+    GQuitCancelMsgBox& operator=(const GQuitCancelMsgBox&) = delete;
     GQuitCancelMsgBox& operator=(GQuitCancelMsgBox&&) = delete;
 
-    void setTitle(std::string const& title) noexcept;
-    void setMessage(std::string const& message) noexcept;
+    void setTitle(const std::string& title) noexcept;
+    void setMessage(const std::string& message) noexcept;
 
     virtual void showModal(void);
     GDialogsConstants getSelection(void) const;

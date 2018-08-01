@@ -41,7 +41,7 @@ namespace gto
 namespace dlgs
 {
 
-GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GComponent* owner) :
+GOKCancelMsgBox::GOKCancelMsgBox(const std::string& vname, GComponent* owner) :
         GDialog(vname, owner)
 {
     title_ = "";
@@ -49,7 +49,7 @@ GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GComponent* owner) :
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
+GOKCancelMsgBox::GOKCancelMsgBox(const std::string& vname, GComponent* owner, const std::string& title,
         const std::string& message) : GDialog(vname, owner)
 {
     assert(title.length() > 0);
@@ -60,14 +60,14 @@ GOKCancelMsgBox::GOKCancelMsgBox(std::string const& vname, GComponent* owner, co
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-void GOKCancelMsgBox::setTitle(std::string const& title) noexcept
+void GOKCancelMsgBox::setTitle(const std::string& title) noexcept
 {
     assert(title.length() > 0);
 
     title_ = title;
 }
 
-void GOKCancelMsgBox::setMessage(std::string const& message) noexcept
+void GOKCancelMsgBox::setMessage(const std::string& message) noexcept
 {
     assert(message.length() > 0);
 

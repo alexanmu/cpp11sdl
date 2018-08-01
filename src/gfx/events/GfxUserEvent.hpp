@@ -50,10 +50,10 @@ public:
     GfxUserEvent() noexcept;
     explicit GfxUserEvent(const SdlType event) noexcept;
 
-    GfxUserEvent(GfxUserEvent const& other) noexcept;
+    GfxUserEvent(const GfxUserEvent& other) noexcept;
     GfxUserEvent(GfxUserEvent&& other) noexcept;
 
-    GfxUserEvent& operator=(GfxUserEvent const& other) noexcept;
+    GfxUserEvent& operator=(const GfxUserEvent& other) noexcept;
     GfxUserEvent& operator=(GfxUserEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

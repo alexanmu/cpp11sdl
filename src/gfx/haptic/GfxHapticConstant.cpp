@@ -52,7 +52,7 @@ GfxHapticConstant::GfxHapticConstant(const SdlType hConst) noexcept : GfxObject(
     hConst_ = hConst;
 }
 
-GfxHapticConstant::GfxHapticConstant(GfxHapticConstant const& other) noexcept : GfxObject(other)
+GfxHapticConstant::GfxHapticConstant(const GfxHapticConstant& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxHapticConstant::GfxHapticConstant(GfxHapticConstant&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxHapticConstant& GfxHapticConstant::operator=(GfxHapticConstant const& other) noexcept
+GfxHapticConstant& GfxHapticConstant::operator=(const GfxHapticConstant& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

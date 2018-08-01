@@ -51,7 +51,7 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    virtual int32_t operator()(GfxEvent const& event) const noexcept = 0;
+    virtual int32_t operator()(const GfxEvent& event) const noexcept = 0;
 };
 
 }  // namespace events

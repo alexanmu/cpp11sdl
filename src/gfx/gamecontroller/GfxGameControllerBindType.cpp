@@ -58,7 +58,7 @@ GfxGameControllerBindType::GfxGameControllerBindType(const ValueType btype) noex
     bType_ = static_cast<SdlType>(btype);
 }
 
-GfxGameControllerBindType::GfxGameControllerBindType(GfxGameControllerBindType const& other) noexcept : GfxObject(other)
+GfxGameControllerBindType::GfxGameControllerBindType(const GfxGameControllerBindType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -75,7 +75,7 @@ GfxGameControllerBindType::GfxGameControllerBindType(GfxGameControllerBindType&&
     other.clear();
 }
 
-GfxGameControllerBindType& GfxGameControllerBindType::operator=(GfxGameControllerBindType const& other) noexcept
+GfxGameControllerBindType& GfxGameControllerBindType::operator=(const GfxGameControllerBindType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

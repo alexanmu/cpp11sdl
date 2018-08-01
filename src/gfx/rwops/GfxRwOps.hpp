@@ -61,6 +61,10 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
+    static constexpr const int32_t rwSeekSet = 0;
+    static constexpr const int32_t reSeekCur = 1;
+    static constexpr const int32_t rwSeekEnd = 2;
+
     static const GfxRwOps rwFromFile(const std::string& file, const std::string& mode);
     static const GfxRwOps rwFromFP(void * fp, const GfxBool& autoclose);
     static const GfxRwOps rwFromMem(void * mem, const int32_t size);
@@ -68,6 +72,24 @@ public:
 
     void allocRw(void) throw(std::runtime_error);
     void freeRw(void) throw(std::runtime_error);
+
+    void * loadFileRw(std::size_t * datasize, const int32_t freesrc) const;
+
+    uint8_t readU8(void) const;
+    uint16_t readLE16(void) const;
+    uint16_t readBE16(void) const;
+    uint32_t readLE32(void) const;
+    uint32_t readBE32(void) const;
+    uint64_t readLE64(void) const;
+    uint64_t readBE64(void) const;
+
+    std::size_t writeU8(const uint8_t value) const;
+    std::size_t writeLE16(const uint16_t value) const;
+    std::size_t writeBE16(const uint16_t value) const;
+    std::size_t writeLE32(const uint32_t value) const;
+    std::size_t writeBE32(const uint32_t value) const;
+    std::size_t writeLE64(const uint64_t value) const;
+    std::size_t writeBE64(const uint64_t value) const;
 
     void clear(void) noexcept;
 

@@ -53,7 +53,7 @@ GfxMultiGestureEvent::GfxMultiGestureEvent(const SdlType event) noexcept : GfxOb
     mgEvent_ = event;
 }
 
-GfxMultiGestureEvent::GfxMultiGestureEvent(GfxMultiGestureEvent const& other) noexcept : GfxObject(other)
+GfxMultiGestureEvent::GfxMultiGestureEvent(const GfxMultiGestureEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -69,7 +69,7 @@ GfxMultiGestureEvent::GfxMultiGestureEvent(GfxMultiGestureEvent&& other) noexcep
     other.clear();
 }
 
-GfxMultiGestureEvent& GfxMultiGestureEvent::operator=(GfxMultiGestureEvent const& other) noexcept
+GfxMultiGestureEvent& GfxMultiGestureEvent::operator=(const GfxMultiGestureEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

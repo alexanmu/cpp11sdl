@@ -45,13 +45,13 @@ public:
     static const bool CallsSdl = true;
 
     GfxInitQuit() noexcept;
-    explicit GfxInitQuit(GfxInitFlags const& flags) noexcept;
+    explicit GfxInitQuit(const GfxInitFlags& flags) noexcept;
 
-    GfxInitQuit(GfxInitQuit const&) = delete;
+    GfxInitQuit(const GfxInitQuit&) = delete;
     GfxInitQuit(GfxInitQuit&& other) noexcept;
 
     // Forbid copy/move assignements
-    GfxInitQuit& operator=(GfxInitQuit const&) = delete;
+    GfxInitQuit& operator=(const GfxInitQuit&) = delete;
     GfxInitQuit& operator=(GfxInitQuit&& other) noexcept;
 
     // Explicit destructor to de-init SDL lib
@@ -60,10 +60,10 @@ public:
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    void initSubSystem(GfxInitFlags const& flags) noexcept;
-    void quitSubSystem(GfxInitFlags const& flags) const noexcept;
+    void initSubSystem(const GfxInitFlags& flags) noexcept;
+    void quitSubSystem(const GfxInitFlags& flags) const noexcept;
 
-    const GfxInitFlags wasInit(GfxInitFlags const& flags) const noexcept;
+    const GfxInitFlags wasInit(const GfxInitFlags& flags) const noexcept;
 
     void quitRequested(void) const noexcept;
 

@@ -54,7 +54,7 @@
 
 struct MMEvFilter : public gfx::events::GfxEventFilter
 {
-    virtual int32_t operator()(gfx::events::GfxEvent const& event) const noexcept
+    virtual int32_t operator()(const gfx::events::GfxEvent& event) const noexcept
     {
         std::cout << "MMEvFilter called " << event.commonEvent().getTimeStamp() << std::endl;
         if (event.eventType().isMouseMotion())
@@ -103,7 +103,7 @@ uint16_t pixels[16*16] = {  // ...or with raw pixel data:
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff
  };
 
-GDemoForm::GDemoForm(std::string const& appName) : gto::gobj::GForm(appName)
+GDemoForm::GDemoForm(const std::string& appName) : gto::gobj::GForm(appName)
 {
     dynLabel_ = nullptr;
     dynLabelText_ = "$init$";

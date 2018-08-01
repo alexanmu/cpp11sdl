@@ -42,13 +42,13 @@ class GDialog : public GComponent
 public:
     GDialog() = delete;
 
-    GDialog(GDialog const& other) = delete;
+    GDialog(const GDialog& other) = delete;
     GDialog(GDialog&& other) = delete;
 
-    GDialog& operator=(GDialog const& other) = delete;
+    GDialog& operator=(const GDialog& other) = delete;
     GDialog& operator=(GDialog&& other) = delete;
 
-    explicit GDialog(std::string const& vname, GComponent * owner);
+    explicit GDialog(const std::string& vname, GComponent * owner);
     virtual ~GDialog();
 
     virtual void showModal(void) = 0;

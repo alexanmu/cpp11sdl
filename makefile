@@ -67,7 +67,7 @@ g_DEPSEXT=d
 DEBUG:=-DDEBUG -O0 -g -ggdb -gdwarf-3
 RELEASE:=-O3
 
-CXXFLAGS_LINUX:=-std=c++11 -Wall -Wextra -Werror -Wno-error=cpp -fPIC $(DEBUG)
+CXXFLAGS_LINUX:=-std=c++11 -Wall -Wextra -Werror -Wno-error=cpp -Wno-error=terminate -fPIC $(DEBUG)
 CXXFLAGS_MACOS:=-std=c++11 -Wall -Wextra -Werror -Wno-error=\#warnings -fPIC $(DEBUG)
 
 CXXLINK_LINUX:=-static-libstdc++ -lpthread -lrt -lm -ldl -lz $(DEBUG)

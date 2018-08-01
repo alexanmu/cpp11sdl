@@ -52,7 +52,7 @@ GfxMouseWheelEvent::GfxMouseWheelEvent(const SdlType event) noexcept : GfxObject
     mwEvent_ = event;
 }
 
-GfxMouseWheelEvent::GfxMouseWheelEvent(GfxMouseWheelEvent const& other) noexcept : GfxObject(other)
+GfxMouseWheelEvent::GfxMouseWheelEvent(const GfxMouseWheelEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxMouseWheelEvent::GfxMouseWheelEvent(GfxMouseWheelEvent&& other) noexcept : Gf
     other.clear();
 }
 
-GfxMouseWheelEvent& GfxMouseWheelEvent::operator=(GfxMouseWheelEvent const& other) noexcept
+GfxMouseWheelEvent& GfxMouseWheelEvent::operator=(const GfxMouseWheelEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -40,19 +40,19 @@ class GRetryCancelMsgBox : public GDialog
 public:
     GRetryCancelMsgBox() = delete;
 
-    explicit GRetryCancelMsgBox(std::string const& vname, GComponent* owner);
+    explicit GRetryCancelMsgBox(const std::string& vname, GComponent* owner);
 
-    GRetryCancelMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
+    GRetryCancelMsgBox(const std::string& vname, GComponent* owner, const std::string& title,
                         const std::string& message);
 
-    GRetryCancelMsgBox(GRetryCancelMsgBox const&) = delete;
+    GRetryCancelMsgBox(const GRetryCancelMsgBox&) = delete;
     GRetryCancelMsgBox(GRetryCancelMsgBox&&) = delete;
 
-    GRetryCancelMsgBox& operator=(GRetryCancelMsgBox const&) = delete;
+    GRetryCancelMsgBox& operator=(const GRetryCancelMsgBox&) = delete;
     GRetryCancelMsgBox& operator=(GRetryCancelMsgBox&&) = delete;
 
-    void setTitle(std::string const& title) noexcept;
-    void setMessage(std::string const& message) noexcept;
+    void setTitle(const std::string& title) noexcept;
+    void setMessage(const std::string& message) noexcept;
 
     virtual void showModal(void);
     GDialogsConstants getSelection(void) const;

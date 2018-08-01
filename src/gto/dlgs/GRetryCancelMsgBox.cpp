@@ -41,7 +41,7 @@ namespace gto
 namespace dlgs
 {
 
-GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& vname, GComponent* owner) :
+GRetryCancelMsgBox::GRetryCancelMsgBox(const std::string& vname, GComponent* owner) :
         GDialog(vname, owner)
 {
     title_ = "";
@@ -49,7 +49,7 @@ GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& vname, GComponent* own
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& vname, GComponent* owner, const std::string& title,
+GRetryCancelMsgBox::GRetryCancelMsgBox(const std::string& vname, GComponent* owner, const std::string& title,
             const std::string& message) : GDialog(vname, owner)
 {
     assert(title.length() > 0);
@@ -60,14 +60,14 @@ GRetryCancelMsgBox::GRetryCancelMsgBox(std::string const& vname, GComponent* own
     selection_ = GDialogsConstants::kNoSelection;
 }
 
-void GRetryCancelMsgBox::setTitle(std::string const& title) noexcept
+void GRetryCancelMsgBox::setTitle(const std::string& title) noexcept
 {
     assert(title.length() > 0);
 
     title_ = title;
 }
 
-void GRetryCancelMsgBox::setMessage(std::string const& message) noexcept
+void GRetryCancelMsgBox::setMessage(const std::string& message) noexcept
 {
     assert(message.length() > 0);
 

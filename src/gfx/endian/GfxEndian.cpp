@@ -43,7 +43,7 @@ GfxEndian::GfxEndian() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxEndian::GfxEndian(GfxEndian const& other) noexcept : GfxObject(other)
+GfxEndian::GfxEndian(const GfxEndian& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -53,7 +53,7 @@ GfxEndian::GfxEndian(GfxEndian&& other) noexcept : GfxObject(std::move(other))
     LOG_TRACE_PRIO_MED();
 }
 
-GfxEndian& GfxEndian::operator=(GfxEndian const& other) noexcept
+GfxEndian& GfxEndian::operator=(const GfxEndian& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

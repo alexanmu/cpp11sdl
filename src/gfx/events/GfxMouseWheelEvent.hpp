@@ -53,10 +53,10 @@ public:
     GfxMouseWheelEvent() noexcept;
     explicit GfxMouseWheelEvent(const SdlType event) noexcept;
 
-    GfxMouseWheelEvent(GfxMouseWheelEvent const& other) noexcept;
+    GfxMouseWheelEvent(const GfxMouseWheelEvent& other) noexcept;
     GfxMouseWheelEvent(GfxMouseWheelEvent&& other) noexcept;
 
-    GfxMouseWheelEvent& operator=(GfxMouseWheelEvent const& other) noexcept;
+    GfxMouseWheelEvent& operator=(const GfxMouseWheelEvent& other) noexcept;
     GfxMouseWheelEvent& operator=(GfxMouseWheelEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

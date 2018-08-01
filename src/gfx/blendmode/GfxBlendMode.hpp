@@ -61,10 +61,10 @@ public:
     explicit GfxBlendMode(const ValueType blendmode) noexcept;
     explicit GfxBlendMode(const SdlType blendmode) noexcept;
 
-    GfxBlendMode(GfxBlendMode const& other) noexcept;
+    GfxBlendMode(const GfxBlendMode& other) noexcept;
     GfxBlendMode(GfxBlendMode&& other) noexcept;
 
-    GfxBlendMode& operator=(GfxBlendMode const& other) noexcept;
+    GfxBlendMode& operator=(const GfxBlendMode& other) noexcept;
     GfxBlendMode& operator=(GfxBlendMode&& other) noexcept;
 
     bool operator==(const GfxBlendMode& other) noexcept;
@@ -82,9 +82,9 @@ public:
 
     bool isCustom(void) const noexcept;
 
-    void composeCustomBlendMode(GfxBlendFactor const& srcColorFactor, GfxBlendFactor const& dstColorFactor,
-                                GfxBlendOperation const& colorOperation, GfxBlendFactor const& srcAlphaFactor,
-                                GfxBlendFactor const& dstAlphaFactor, GfxBlendOperation const& alphaOperation)
+    void composeCustomBlendMode(const GfxBlendFactor& srcColorFactor, const GfxBlendFactor& dstColorFactor,
+                                const GfxBlendOperation& colorOperation, const GfxBlendFactor& srcAlphaFactor,
+                                const GfxBlendFactor& dstAlphaFactor, const GfxBlendOperation& alphaOperation)
                 noexcept;
 
     void clear(void) noexcept;

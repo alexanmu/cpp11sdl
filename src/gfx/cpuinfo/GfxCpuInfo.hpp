@@ -44,10 +44,10 @@ public:
 
     GfxCpuInfo() noexcept;
 
-    GfxCpuInfo(GfxCpuInfo const& other) noexcept;
+    GfxCpuInfo(const GfxCpuInfo& other) noexcept;
     GfxCpuInfo(GfxCpuInfo&& other) noexcept;
 
-    GfxCpuInfo& operator=(GfxCpuInfo const& other) noexcept;
+    GfxCpuInfo& operator=(const GfxCpuInfo& other) noexcept;
     GfxCpuInfo& operator=(GfxCpuInfo&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -74,7 +74,7 @@ public:
 
     void clear(void) noexcept;
 private:
-    void assign(GfxCpuInfo const& other) noexcept;
+    void assign(const GfxCpuInfo& other) noexcept;
 
     int32_t cpuCount_;
     int32_t cpuCacheLineSize_;

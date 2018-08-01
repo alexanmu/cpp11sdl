@@ -56,28 +56,6 @@ public:
                             const std::string& message) const noexcept = 0;
 };
 
-class GfxLogOutputFunctionEmpty : public GfxLogOutputFunction
-{
-public:
-    static const char ClassName[];
-    static const bool SdlResource = false;
-    static const bool CallsSdl = false;
-
-    GfxLogOutputFunctionEmpty() noexcept = default;
-
-    virtual ~GfxLogOutputFunctionEmpty() noexcept = default;
-
-    virtual void operator()(const gfx::log::GfxLogCategory& cat, const gfx::log::GfxLogPriority& prio,
-                            const std::string& message) const noexcept
-    {
-        assert(cat);
-        assert(prio);
-        assert(message.size() >= 0);
-
-        throw std::runtime_error("This method should never be called! Therefore throw!");
-    };
-};
-
 }  // namespace log
 
 }  // namespace gfx

@@ -40,14 +40,14 @@ namespace gobj
 class GForm : public GComponent
 {
 public:
-    explicit GForm(std::string const& vname);
-    explicit GForm(std::string const& vname, std::string const& title);
+    explicit GForm(const std::string& vname);
+    explicit GForm(const std::string& vname, const std::string& title);
 
     GForm() = delete;
-    GForm(GForm const&) = delete;
+    GForm(const GForm&) = delete;
     GForm(GForm&&) = delete;
 
-    GForm& operator=(GForm const&) = delete;
+    GForm& operator=(const GForm&) = delete;
     GForm& operator=(GForm&&) = delete;
 
     virtual ~GForm();

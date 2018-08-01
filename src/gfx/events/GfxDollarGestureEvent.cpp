@@ -52,7 +52,7 @@ GfxDollarGestureEvent::GfxDollarGestureEvent(const SdlType event) noexcept : Gfx
     dgEvent_ = event;
 }
 
-GfxDollarGestureEvent::GfxDollarGestureEvent(GfxDollarGestureEvent const& other) noexcept : GfxObject(other)
+GfxDollarGestureEvent::GfxDollarGestureEvent(const GfxDollarGestureEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxDollarGestureEvent::GfxDollarGestureEvent(GfxDollarGestureEvent&& other) noex
     other.clear();
 }
 
-GfxDollarGestureEvent& GfxDollarGestureEvent::operator=(GfxDollarGestureEvent const& other) noexcept
+GfxDollarGestureEvent& GfxDollarGestureEvent::operator=(const GfxDollarGestureEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

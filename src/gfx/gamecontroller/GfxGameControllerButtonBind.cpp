@@ -51,7 +51,7 @@ GfxGameControllerButtonBind::GfxGameControllerButtonBind(const SdlType bbind) no
     buttonBind_ = bbind;
 }
 
-GfxGameControllerButtonBind::GfxGameControllerButtonBind(GfxGameControllerButtonBind const& other) noexcept :
+GfxGameControllerButtonBind::GfxGameControllerButtonBind(const GfxGameControllerButtonBind& other) noexcept :
     GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
@@ -69,7 +69,7 @@ GfxGameControllerButtonBind::GfxGameControllerButtonBind(GfxGameControllerButton
     other.clear();
 }
 
-GfxGameControllerButtonBind& GfxGameControllerButtonBind::operator=(GfxGameControllerButtonBind const& other) noexcept
+GfxGameControllerButtonBind& GfxGameControllerButtonBind::operator=(const GfxGameControllerButtonBind& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -51,10 +51,10 @@ public:
     GfxControllerDeviceEvent() noexcept;
     explicit GfxControllerDeviceEvent(const SdlType event) noexcept;
 
-    GfxControllerDeviceEvent(GfxControllerDeviceEvent const& other) noexcept;
+    GfxControllerDeviceEvent(const GfxControllerDeviceEvent& other) noexcept;
     GfxControllerDeviceEvent(GfxControllerDeviceEvent&& other) noexcept;
 
-    GfxControllerDeviceEvent& operator=(GfxControllerDeviceEvent const& other) noexcept;
+    GfxControllerDeviceEvent& operator=(const GfxControllerDeviceEvent& other) noexcept;
     GfxControllerDeviceEvent& operator=(GfxControllerDeviceEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

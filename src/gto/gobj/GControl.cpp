@@ -33,7 +33,7 @@ namespace gto
 namespace gobj
 {
 
-GControl::GControl(std::string const& vname, GComponent* owner) : GComponent(vname, owner)
+GControl::GControl(const std::string& vname, GComponent* owner) : GComponent(vname, owner)
 {
     assert(vname.length() > 0);
     assert(owner != nullptr);
@@ -54,7 +54,7 @@ GControl::~GControl()
     // nothing to do yet
 }
 
-void GControl::setBounds(gfx::rect::GfxRect const& bounds) noexcept
+void GControl::setBounds(const gfx::rect::GfxRect& bounds) noexcept
 {
     assert(bounds);
 
@@ -62,12 +62,12 @@ void GControl::setBounds(gfx::rect::GfxRect const& bounds) noexcept
     adjustClientBounds();
 }
 
-gfx::rect::GfxRect const& GControl::getBounds(void) const noexcept
+const gfx::rect::GfxRect& GControl::getBounds(void) const noexcept
 {
     return bounds_;
 }
 
-gfx::rect::GfxRect const& GControl::getClientBounds(void) const noexcept
+const gfx::rect::GfxRect& GControl::getClientBounds(void) const noexcept
 {
     return clientBounds_;
 }
@@ -82,7 +82,7 @@ bool GControl::getEnabled(void) const noexcept
     return enabled_;
 }
 
-void GControl::setBorderThikness(GBorderThikness const& borderthikness) noexcept
+void GControl::setBorderThikness(const GBorderThikness& borderthikness) noexcept
 {
     borderThikness_ = borderthikness;
     adjustClientBounds();
@@ -93,7 +93,7 @@ GBorderThikness GControl::getBorderThikness(void) const noexcept
     return borderThikness_;
 }
 
-void GControl::setBorderStyle(GBorderStyle const& borderstyle) noexcept
+void GControl::setBorderStyle(const GBorderStyle& borderstyle) noexcept
 {
     borderStyle_ = borderstyle;
 }
@@ -103,7 +103,7 @@ GBorderStyle GControl::getBorderStyle(void) const noexcept
     return borderStyle_;
 }
 
-void GControl::setBackgroundStyle(GBackgroundStyle const& backgroundstyle) noexcept
+void GControl::setBackgroundStyle(const GBackgroundStyle& backgroundstyle) noexcept
 {
     backgroundStyle_ = backgroundstyle;
 }
@@ -113,12 +113,12 @@ GBackgroundStyle GControl::getBackgroundStyle(void) const noexcept
     return backgroundStyle_;
 }
 
-void GControl::setHint(std::string const& hint) noexcept
+void GControl::setHint(const std::string& hint) noexcept
 {
     hint_ = hint;
 }
 
-std::string const& GControl::getHint(void) const noexcept
+const std::string& GControl::getHint(void) const noexcept
 {
     return hint_;
 }

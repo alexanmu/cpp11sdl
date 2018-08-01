@@ -63,10 +63,10 @@ public:
     explicit GfxGameControllerAxis(const SdlType axis) noexcept;
     explicit GfxGameControllerAxis(const ValueType axis) noexcept;
 
-    GfxGameControllerAxis(GfxGameControllerAxis const& other) noexcept;
+    GfxGameControllerAxis(const GfxGameControllerAxis& other) noexcept;
     GfxGameControllerAxis(GfxGameControllerAxis&& other) noexcept;
 
-    GfxGameControllerAxis& operator=(GfxGameControllerAxis const& other) noexcept;
+    GfxGameControllerAxis& operator=(const  GfxGameControllerAxis& other) noexcept;
     GfxGameControllerAxis& operator=(GfxGameControllerAxis&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

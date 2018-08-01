@@ -48,7 +48,7 @@ GfxTtfFont::GfxTtfFont() noexcept : GfxObject(ClassName)
     clear();
 }
 
-GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error) :
+GfxTtfFont::GfxTtfFont(const std::string& filename, const int32_t pointsize) throw(std::runtime_error) :
             GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
@@ -70,7 +70,7 @@ GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize) thr
     kerning_ = true;
 }
 
-GfxTtfFont::GfxTtfFont(std::string const& filename, const int32_t pointsize, const int32_t index)
+GfxTtfFont::GfxTtfFont(const std::string& filename, const int32_t pointsize, const int32_t index)
             throw(std::runtime_error) : GfxObject(ClassName)
 {
     LOG_TRACE_PRIO_MED();
@@ -161,7 +161,7 @@ std::string GfxTtfFont::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize) throw(std::runtime_error)
+void GfxTtfFont::openFont(const std::string& filename, const int32_t pointsize) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -189,7 +189,7 @@ void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize) 
     kerning_ = true;
 }
 
-void GfxTtfFont::openFont(std::string const& filename, const int32_t pointsize,
+void GfxTtfFont::openFont(const std::string& filename, const int32_t pointsize,
                           const int32_t index) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_MED();
@@ -237,14 +237,14 @@ void GfxTtfFont::setByteSwappedUnicode(const bool swapped) const noexcept
     TTF_ByteSwappedUNICODE(static_cast<int>(swapped));
 }
 
-GfxTtfFontStyle const& GfxTtfFont::getFontStyle(void) const noexcept
+const GfxTtfFontStyle& GfxTtfFont::getFontStyle(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return fontStyle_;
 }
 
-void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept
+void GfxTtfFont::setFontStyle(const GfxTtfFontStyle& fontstyle) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -255,14 +255,14 @@ void GfxTtfFont::setFontStyle(GfxTtfFontStyle const& fontstyle) noexcept
     }
 }
 
-GfxTtfFontHinting const& GfxTtfFont::getFontHinting(void) const noexcept
+const GfxTtfFontHinting& GfxTtfFont::getFontHinting(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return fontHinting_;
 }
 
-void GfxTtfFont::setFontHinting(GfxTtfFontHinting const& fonthinting) noexcept
+void GfxTtfFont::setFontHinting(const GfxTtfFontHinting& fonthinting) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -456,7 +456,7 @@ bool GfxTtfFont::glyphMetrics(const uint16_t ch, int32_t * minx, int32_t * maxx,
     return ret;
 }
 
-bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) const noexcept
+bool GfxTtfFont::sizeText(const std::string& text, int32_t * w, int32_t * h) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -473,7 +473,7 @@ bool GfxTtfFont::sizeText(std::string const& text, int32_t * w, int32_t * h) con
     return ret;
 }
 
-bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) const noexcept
+bool GfxTtfFont::sizeUtf8(const std::string& text, int32_t * w, int32_t * h) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -490,7 +490,7 @@ bool GfxTtfFont::sizeUtf8(std::string const& text, int32_t * w, int32_t * h) con
     return ret;
 }
 
-bool GfxTtfFont::sizeUnicode(std::string const& text, int32_t * w, int32_t * h) const throw(std::runtime_error)
+bool GfxTtfFont::sizeUnicode(const std::string& text, int32_t * w, int32_t * h) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 

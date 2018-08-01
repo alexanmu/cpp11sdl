@@ -52,10 +52,10 @@ public:
     GfxTextInputEvent() noexcept;
     explicit GfxTextInputEvent(const SdlType event) noexcept;
 
-    GfxTextInputEvent(GfxTextInputEvent const& other) noexcept;
+    GfxTextInputEvent(const GfxTextInputEvent& other) noexcept;
     GfxTextInputEvent(GfxTextInputEvent&& other) noexcept;
 
-    GfxTextInputEvent& operator=(GfxTextInputEvent const& other) noexcept;
+    GfxTextInputEvent& operator=(const GfxTextInputEvent& other) noexcept;
     GfxTextInputEvent& operator=(GfxTextInputEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

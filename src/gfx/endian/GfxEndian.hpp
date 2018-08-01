@@ -44,10 +44,10 @@ public:
 
     GfxEndian() noexcept;
 
-    GfxEndian(GfxEndian const& other) noexcept;
+    GfxEndian(const GfxEndian& other) noexcept;
     GfxEndian(GfxEndian&& other) noexcept;
 
-    GfxEndian& operator=(GfxEndian const& other) noexcept;
+    GfxEndian& operator=(const GfxEndian& other) noexcept;
     GfxEndian& operator=(GfxEndian&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

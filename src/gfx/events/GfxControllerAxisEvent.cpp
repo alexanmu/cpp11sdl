@@ -52,7 +52,7 @@ GfxControllerAxisEvent::GfxControllerAxisEvent(const SdlType event) noexcept : G
     caEvent_ = event;
 }
 
-GfxControllerAxisEvent::GfxControllerAxisEvent(GfxControllerAxisEvent const& other) noexcept : GfxObject(other)
+GfxControllerAxisEvent::GfxControllerAxisEvent(const GfxControllerAxisEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxControllerAxisEvent::GfxControllerAxisEvent(GfxControllerAxisEvent&& other) n
     other.clear();
 }
 
-GfxControllerAxisEvent& GfxControllerAxisEvent::operator=(GfxControllerAxisEvent const& other) noexcept
+GfxControllerAxisEvent& GfxControllerAxisEvent::operator=(const GfxControllerAxisEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

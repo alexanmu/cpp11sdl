@@ -157,7 +157,7 @@ private:
     const std::string _lz(const std::string& str, const uint32_t elen) const noexcept;
     void createLogFile(void) noexcept;
     void closeLogFile(void) noexcept;
-    bool doTrace(std::string const& module) const noexcept;
+    bool doTrace(const std::string& module) const noexcept;
 
     std::ofstream logFile_;
     std::chrono::high_resolution_clock::time_point startTime_;

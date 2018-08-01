@@ -54,13 +54,13 @@ public:
     };
 
     GfxTtfFontHinting() noexcept;
-    explicit GfxTtfFontHinting(GfxTtfFontHintingValues const& hinting) noexcept;
+    explicit GfxTtfFontHinting(const GfxTtfFontHintingValues& hinting) noexcept;
     explicit GfxTtfFontHinting(const SdlType hinting) noexcept;
 
-    GfxTtfFontHinting(GfxTtfFontHinting const& other) noexcept;
+    GfxTtfFontHinting(const GfxTtfFontHinting& other) noexcept;
     GfxTtfFontHinting(GfxTtfFontHinting&& other) noexcept;
 
-    GfxTtfFontHinting& operator=(GfxTtfFontHinting const& other) noexcept;
+    GfxTtfFontHinting& operator=(const GfxTtfFontHinting& other) noexcept;
     GfxTtfFontHinting& operator=(GfxTtfFontHinting&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -43,7 +43,7 @@ GfxGetError::GfxGetError() noexcept : GfxObject(ClassName)
     LOG_TRACE_PRIO_MED();
 }
 
-GfxGetError::GfxGetError(GfxGetError const& other) noexcept : GfxObject(other)
+GfxGetError::GfxGetError(const GfxGetError& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 }
@@ -53,7 +53,7 @@ GfxGetError::GfxGetError(GfxGetError&& other) noexcept : GfxObject(std::move(oth
     LOG_TRACE_PRIO_MED();
 }
 
-GfxGetError& GfxGetError::operator=(GfxGetError const & other) noexcept
+GfxGetError& GfxGetError::operator=(const GfxGetError& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -89,7 +89,7 @@ std::string GfxGetError::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxError GfxGetError::getErrorObject(void) noexcept
+const GfxError GfxGetError::getErrorObject(void) noexcept
 {
     std::string str;
 

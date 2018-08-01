@@ -58,7 +58,7 @@ GfxHintPriority::GfxHintPriority(const ValueType hintPrio) noexcept : GfxObject(
     hintPrio_ = static_cast<SdlType>(hintPrio);
 }
 
-GfxHintPriority::GfxHintPriority(GfxHintPriority const& other) noexcept : GfxObject(other)
+GfxHintPriority::GfxHintPriority(const GfxHintPriority& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxHintPriority::GfxHintPriority(GfxHintPriority&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxHintPriority& GfxHintPriority::operator=(GfxHintPriority const& other) noexcept
+GfxHintPriority& GfxHintPriority::operator=(const GfxHintPriority& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -58,7 +58,7 @@ GfxEvent::GfxEvent(const SdlType event) noexcept : GfxObject(ClassName)
     processEvent();
 }
 
-GfxEvent::GfxEvent(GfxEvent const& other) noexcept : GfxObject(other)
+GfxEvent::GfxEvent(const GfxEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -78,7 +78,7 @@ GfxEvent::GfxEvent(GfxEvent&& other) noexcept : GfxObject(std::move(other))
     other.clear();
 }
 
-GfxEvent& GfxEvent::operator=(GfxEvent const& other) noexcept
+GfxEvent& GfxEvent::operator=(const GfxEvent& other) noexcept
 {
     if (this != &other)
     {
@@ -120,8 +120,8 @@ std::string GfxEvent::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numevents, GfxEventAction const& action,
-                             GfxEventType const& minType, GfxEventType const& maxType) const noexcept
+int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numevents, const GfxEventAction& action,
+                             const GfxEventType& minType, const GfxEventType& maxType) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -162,7 +162,7 @@ int32_t GfxEvent::peepEvents(std::vector<SdlType> * events, const int32_t numeve
     return ret;
 }
 
-GfxBool GfxEvent::hasEvent(GfxEventType const& type) const noexcept
+const GfxBool GfxEvent::hasEvent(const GfxEventType& type) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -174,7 +174,7 @@ GfxBool GfxEvent::hasEvent(GfxEventType const& type) const noexcept
     return GfxBool(sdlbool);
 }
 
-GfxBool GfxEvent::hasEvents(GfxEventType const& minType, GfxEventType const& maxType) const noexcept
+const GfxBool GfxEvent::hasEvents(const GfxEventType& minType, const GfxEventType& maxType) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -187,7 +187,7 @@ GfxBool GfxEvent::hasEvents(GfxEventType const& minType, GfxEventType const& max
     return GfxBool(sdlbool);
 }
 
-void GfxEvent::flushEvent(GfxEventType const& type) const noexcept
+void GfxEvent::flushEvent(const GfxEventType& type) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -196,7 +196,7 @@ void GfxEvent::flushEvent(GfxEventType const& type) const noexcept
     SDL_FlushEvent(type.getAsSdlType());
 }
 
-void GfxEvent::flushEvents(GfxEventType const& minType, GfxEventType const& maxType) const noexcept
+void GfxEvent::flushEvents(const GfxEventType& minType, const GfxEventType& maxType) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -260,7 +260,7 @@ int32_t GfxEvent::pushEvent(void) const noexcept
     return ret;
 }
 
-int32_t GfxEvent::pushEvent(GfxEvent const& event) const noexcept
+int32_t GfxEvent::pushEvent(const GfxEvent& event) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -272,7 +272,7 @@ int32_t GfxEvent::pushEvent(GfxEvent const& event) const noexcept
     return ret;
 }
 
-void GfxEvent::setEventFilter(GfxEventFilter const& filter) noexcept
+void GfxEvent::setEventFilter(const GfxEventFilter& filter) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -287,7 +287,7 @@ void GfxEvent::setEventFilter(GfxEventFilter const& filter) noexcept
     }
 }
 
-GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) const throw(std::runtime_error)
+const GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -310,7 +310,7 @@ GfxBool GfxEvent::getEventFilter(GfxEventFilter * filter) const throw(std::runti
     return GfxBool(false);
 }
 
-void GfxEvent::addEventWatch(GfxEventFilter const& filter) noexcept
+void GfxEvent::addEventWatch(const GfxEventFilter& filter) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -325,7 +325,7 @@ void GfxEvent::addEventWatch(GfxEventFilter const& filter) noexcept
     }
 }
 
-void GfxEvent::delEventWatch(GfxEventFilter const& filter) noexcept
+void GfxEvent::delEventWatch(const GfxEventFilter& filter) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -341,7 +341,7 @@ void GfxEvent::delEventWatch(GfxEventFilter const& filter) noexcept
     }
 }
 
-void GfxEvent::filterEvents(GfxEventFilter const& filter) throw(std::runtime_error)
+void GfxEvent::filterEvents(const GfxEventFilter& filter) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -361,7 +361,7 @@ void GfxEvent::filterEvents(GfxEventFilter const& filter) throw(std::runtime_err
     }
 }
 
-uint8_t GfxEvent::eventState(GfxEventType const& type, const GfxEventActionCommand state) const noexcept
+uint8_t GfxEvent::eventState(const GfxEventType& type, const GfxEventActionCommand state) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -373,7 +373,7 @@ uint8_t GfxEvent::eventState(GfxEventType const& type, const GfxEventActionComma
     return ret;
 }
 
-uint8_t GfxEvent::getEventState(GfxEventType const& type) const noexcept
+uint8_t GfxEvent::getEventState(const GfxEventType& type) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -394,7 +394,7 @@ uint32_t GfxEvent::registerEvents(const int32_t numevents) const noexcept
     return ret;
 }
 
-GfxEventType const& GfxEvent::eventType(void) const noexcept
+const GfxEventType& GfxEvent::eventType(void) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -408,7 +408,7 @@ const GfxCommonEvent GfxEvent::commonEvent(void) const noexcept
     return GfxCommonEvent(event_.common);
 }
 
-GfxQuitEvent const& GfxEvent::quitEvent(void) const throw(std::runtime_error)
+const GfxQuitEvent& GfxEvent::quitEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -420,7 +420,7 @@ GfxQuitEvent const& GfxEvent::quitEvent(void) const throw(std::runtime_error)
     return quitEvent_;
 }
 
-GfxWindowEvent const& GfxEvent::windowEvent(void) const throw(std::runtime_error)
+const GfxWindowEvent& GfxEvent::windowEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -432,7 +432,7 @@ GfxWindowEvent const& GfxEvent::windowEvent(void) const throw(std::runtime_error
     return windowEvent_;
 }
 
-GfxSysWmEvent const& GfxEvent::sysWmEvent(void) const throw(std::runtime_error)
+const GfxSysWmEvent& GfxEvent::sysWmEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -444,7 +444,7 @@ GfxSysWmEvent const& GfxEvent::sysWmEvent(void) const throw(std::runtime_error)
     return sysWmEvent_;
 }
 
-GfxKeyboardEvent const& GfxEvent::keyboardEvent(void) const throw(std::runtime_error)
+const GfxKeyboardEvent& GfxEvent::keyboardEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -456,7 +456,7 @@ GfxKeyboardEvent const& GfxEvent::keyboardEvent(void) const throw(std::runtime_e
     return keyboardEvent_;
 }
 
-GfxTextEditingEvent const& GfxEvent::textEditingEvent(void) const throw(std::runtime_error)
+const GfxTextEditingEvent& GfxEvent::textEditingEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -468,7 +468,7 @@ GfxTextEditingEvent const& GfxEvent::textEditingEvent(void) const throw(std::run
     return textEditingEvent_;
 }
 
-GfxTextInputEvent const& GfxEvent::textInputEvent(void) const throw(std::runtime_error)
+const GfxTextInputEvent& GfxEvent::textInputEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -480,7 +480,7 @@ GfxTextInputEvent const& GfxEvent::textInputEvent(void) const throw(std::runtime
     return textInputEvent_;
 }
 
-GfxMouseMotionEvent const& GfxEvent::mouseMotionEvent(void) const throw(std::runtime_error)
+const GfxMouseMotionEvent& GfxEvent::mouseMotionEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -492,7 +492,7 @@ GfxMouseMotionEvent const& GfxEvent::mouseMotionEvent(void) const throw(std::run
     return mouseMotionEvent_;
 }
 
-GfxMouseButtonEvent const& GfxEvent::mouseButtonEvent(void) const throw(std::runtime_error)
+const GfxMouseButtonEvent& GfxEvent::mouseButtonEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -504,7 +504,7 @@ GfxMouseButtonEvent const& GfxEvent::mouseButtonEvent(void) const throw(std::run
     return mouseButtonEvent_;
 }
 
-GfxMouseWheelEvent const& GfxEvent::mouseWheelEvent(void) const throw(std::runtime_error)
+const GfxMouseWheelEvent& GfxEvent::mouseWheelEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -516,7 +516,7 @@ GfxMouseWheelEvent const& GfxEvent::mouseWheelEvent(void) const throw(std::runti
     return mouseWheelEvent_;
 }
 
-GfxJoyAxisEvent const& GfxEvent::joyAxisEvent(void) const throw(std::runtime_error)
+const GfxJoyAxisEvent& GfxEvent::joyAxisEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -528,7 +528,7 @@ GfxJoyAxisEvent const& GfxEvent::joyAxisEvent(void) const throw(std::runtime_err
     return joyAxisEvent_;
 }
 
-GfxJoyBallEvent const& GfxEvent::joyBallEvent(void) const throw(std::runtime_error)
+const GfxJoyBallEvent& GfxEvent::joyBallEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -540,7 +540,7 @@ GfxJoyBallEvent const& GfxEvent::joyBallEvent(void) const throw(std::runtime_err
     return joyBallEvent_;
 }
 
-GfxJoyButtonEvent const& GfxEvent::joyButtonEvent(void) const throw(std::runtime_error)
+const GfxJoyButtonEvent& GfxEvent::joyButtonEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -552,7 +552,7 @@ GfxJoyButtonEvent const& GfxEvent::joyButtonEvent(void) const throw(std::runtime
     return joyButtonEvent_;
 }
 
-GfxJoyHatEvent const& GfxEvent::joyHatEvent(void) const throw(std::runtime_error)
+const GfxJoyHatEvent& GfxEvent::joyHatEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -564,7 +564,7 @@ GfxJoyHatEvent const& GfxEvent::joyHatEvent(void) const throw(std::runtime_error
     return joyHatEvent_;
 }
 
-GfxJoyDeviceEvent const& GfxEvent::joyDeviceEvent(void) const throw(std::runtime_error)
+const GfxJoyDeviceEvent& GfxEvent::joyDeviceEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -576,7 +576,7 @@ GfxJoyDeviceEvent const& GfxEvent::joyDeviceEvent(void) const throw(std::runtime
     return joyDeviceEvent_;
 }
 
-GfxControllerAxisEvent const& GfxEvent::ctrlAxisMotionEvent(void) const throw(std::runtime_error)
+const GfxControllerAxisEvent& GfxEvent::ctrlAxisMotionEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -588,7 +588,7 @@ GfxControllerAxisEvent const& GfxEvent::ctrlAxisMotionEvent(void) const throw(st
     return ctrlAxisEvent_;
 }
 
-GfxControllerButtonEvent const& GfxEvent::ctrlButtonEvent(void) const throw(std::runtime_error)
+const GfxControllerButtonEvent& GfxEvent::ctrlButtonEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -600,7 +600,7 @@ GfxControllerButtonEvent const& GfxEvent::ctrlButtonEvent(void) const throw(std:
     return ctrlButtonEvent_;
 }
 
-GfxControllerDeviceEvent const& GfxEvent::ctrlDeviceEvent(void) const throw(std::runtime_error)
+const GfxControllerDeviceEvent& GfxEvent::ctrlDeviceEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -613,7 +613,7 @@ GfxControllerDeviceEvent const& GfxEvent::ctrlDeviceEvent(void) const throw(std:
     return ctrlDeviceEvent_;
 }
 
-GfxTouchFingerEvent const& GfxEvent::fingerEvent(void) const throw(std::runtime_error)
+const GfxTouchFingerEvent& GfxEvent::fingerEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -626,7 +626,7 @@ GfxTouchFingerEvent const& GfxEvent::fingerEvent(void) const throw(std::runtime_
     return fingerEvent_;
 }
 
-GfxDollarGestureEvent const& GfxEvent::dollarEvent(void) const throw(std::runtime_error)
+const GfxDollarGestureEvent& GfxEvent::dollarEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -638,7 +638,7 @@ GfxDollarGestureEvent const& GfxEvent::dollarEvent(void) const throw(std::runtim
     return dollarEvent_;
 }
 
-GfxMultiGestureEvent const& GfxEvent::multiGestureEvent(void) const throw(std::runtime_error)
+const GfxMultiGestureEvent& GfxEvent::multiGestureEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -650,7 +650,7 @@ GfxMultiGestureEvent const& GfxEvent::multiGestureEvent(void) const throw(std::r
     return multiGestureEvent_;
 }
 
-GfxDropEvent const& GfxEvent::dropEvent(void) const throw(std::runtime_error)
+const GfxDropEvent& GfxEvent::dropEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -663,7 +663,7 @@ GfxDropEvent const& GfxEvent::dropEvent(void) const throw(std::runtime_error)
     return dropEvent_;
 }
 
-GfxAudioDeviceEvent const& GfxEvent::audioDeviceEvent(void) const throw(std::runtime_error)
+const GfxAudioDeviceEvent& GfxEvent::audioDeviceEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -675,7 +675,7 @@ GfxAudioDeviceEvent const& GfxEvent::audioDeviceEvent(void) const throw(std::run
     return audioDeviceEvent_;
 }
 
-GfxUserEvent const& GfxEvent::userEvent(void) const throw(std::runtime_error)
+const GfxUserEvent& GfxEvent::userEvent(void) const throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -870,7 +870,7 @@ void GfxEvent::processEvent(void) noexcept
     }
 }
 
-void GfxEvent::assign(GfxEvent const& other) noexcept
+void GfxEvent::assign(const GfxEvent& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

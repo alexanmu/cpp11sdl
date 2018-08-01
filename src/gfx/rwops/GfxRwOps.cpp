@@ -128,7 +128,7 @@ const GfxRwOps GfxRwOps::rwFromFile(const std::string& file, const std::string& 
     return GfxRwOps();
 }
 
-const GfxRwOps GfxRwOps::rwFromFP(void * fp, GfxBool const& autoclose)
+const GfxRwOps GfxRwOps::rwFromFP(void * fp, const GfxBool& autoclose)
 {
     assert(fp != nullptr);
     assert(autoclose);
@@ -200,6 +200,205 @@ void GfxRwOps::freeRw(void) throw(std::runtime_error)
     }
     SDL_FreeRW(rwOps_);
     rwOps_ = nullptr;
+}
+
+void * GfxRwOps::loadFileRw(std::size_t * datasize, const int32_t freesrc) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    assert(datasize != nullptr);
+    assert((freesrc == 0) || (freesrc == 1));
+
+    void * ret = nullptr;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_LoadFile_RW(rwOps_, datasize, freesrc);
+        assert(ret != nullptr);
+    }
+    return ret;
+}
+
+uint8_t GfxRwOps::readU8(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint8_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadU8(rwOps_);
+    }
+    return ret;
+}
+
+uint16_t GfxRwOps::readLE16(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint16_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadLE16(rwOps_);
+    }
+    return ret;
+}
+
+uint16_t GfxRwOps::readBE16(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint16_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadBE16(rwOps_);
+    }
+    return ret;
+}
+
+uint32_t GfxRwOps::readLE32(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint32_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadLE32(rwOps_);
+    }
+    return ret;
+}
+
+uint32_t GfxRwOps::readBE32(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint32_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadBE32(rwOps_);
+    }
+    return ret;
+}
+
+uint64_t GfxRwOps::readLE64(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint64_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadLE64(rwOps_);
+    }
+    return ret;
+}
+
+uint64_t GfxRwOps::readBE64(void) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    uint64_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_ReadBE64(rwOps_);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeU8(const uint8_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteU8(rwOps_, value);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeLE16(const uint16_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteLE16(rwOps_, value);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeBE16(const uint16_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteBE16(rwOps_, value);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeLE32(const uint32_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteLE32(rwOps_, value);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeBE32(const uint32_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteBE32(rwOps_, value);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeLE64(const uint64_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteLE64(rwOps_, value);
+    }
+    return ret;
+}
+
+std::size_t GfxRwOps::writeBE64(const uint64_t value) const
+{
+    LOG_TRACE_PRIO_LOW();
+
+    std::size_t ret = 0;
+
+    if (rwOps_ != nullptr)
+    {
+        ret = SDL_WriteBE64(rwOps_, value);
+    }
+    return ret;
 }
 
 void GfxRwOps::clear(void) noexcept

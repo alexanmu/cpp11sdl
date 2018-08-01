@@ -38,23 +38,23 @@ class GColorScheme : public GObject
 public:
     GColorScheme();
 
-    GColorScheme(GColorScheme const& other);
+    GColorScheme(const GColorScheme& other);
     GColorScheme(GColorScheme&& other);
 
-    GColorScheme& operator=(GColorScheme const& other);
+    GColorScheme& operator=(const GColorScheme& other);
     GColorScheme& operator=(GColorScheme&& other);
 
-    gfx::pixels::GfxColor const& getForegroundColor(void) const noexcept;
-    void setForegroundColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor& getForegroundColor(void) const noexcept;
+    void setForegroundColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    gfx::pixels::GfxColor const& getBackgroundColor(void) const noexcept;
-    void setBackgroundColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor& getBackgroundColor(void) const noexcept;
+    void setBackgroundColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    gfx::pixels::GfxColor const& getBorderColor(void) const noexcept;
-    void setBorderColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor& getBorderColor(void) const noexcept;
+    void setBorderColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    gfx::pixels::GfxColor const& getBorderShadowColor(void) const noexcept;
-    void setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor& getBorderShadowColor(void) const noexcept;
+    void setBorderShadowColor(const gfx::pixels::GfxColor& color) noexcept;
 
     void setDefault(void) noexcept;
 

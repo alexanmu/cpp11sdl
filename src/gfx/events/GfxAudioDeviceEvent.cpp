@@ -52,7 +52,7 @@ GfxAudioDeviceEvent::GfxAudioDeviceEvent(const SdlType event) noexcept : GfxObje
     adEvent_ = event;
 }
 
-GfxAudioDeviceEvent::GfxAudioDeviceEvent(GfxAudioDeviceEvent const& other) noexcept : GfxObject(other)
+GfxAudioDeviceEvent::GfxAudioDeviceEvent(const GfxAudioDeviceEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxAudioDeviceEvent::GfxAudioDeviceEvent(GfxAudioDeviceEvent&& other) noexcept :
     other.clear();
 }
 
-GfxAudioDeviceEvent& GfxAudioDeviceEvent::operator=(GfxAudioDeviceEvent const& other) noexcept
+GfxAudioDeviceEvent& GfxAudioDeviceEvent::operator=(const GfxAudioDeviceEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -43,18 +43,18 @@ public:
 
     GfxError() noexcept;
 
-    explicit GfxError(std::string const& error) noexcept;
+    explicit GfxError(const std::string& error) noexcept;
 
-    GfxError(GfxError const& other) noexcept;
+    GfxError(const GfxError& other) noexcept;
     GfxError(GfxError&& other) noexcept;
 
-    GfxError& operator=(GfxError const& other) noexcept;
+    GfxError& operator=(const GfxError& other) noexcept;
     GfxError& operator=(GfxError&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    std::string const& get() const noexcept;
+    const std::string& get() const noexcept;
 
     void clear(void) noexcept;
 private:

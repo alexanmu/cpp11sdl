@@ -54,7 +54,7 @@ GfxGestureID::GfxGestureID(const SdlType id) noexcept : GfxObject(ClassName)
     id_ = id;
 }
 
-GfxGestureID::GfxGestureID(GfxGestureID const& other) noexcept : GfxObject(other)
+GfxGestureID::GfxGestureID(const GfxGestureID& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -70,7 +70,7 @@ GfxGestureID::GfxGestureID(GfxGestureID&& other) noexcept : GfxObject(std::move(
     other.clear();
 }
 
-GfxGestureID& GfxGestureID::operator=(GfxGestureID const& other) noexcept
+GfxGestureID& GfxGestureID::operator=(const GfxGestureID& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

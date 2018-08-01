@@ -47,32 +47,32 @@ class GGraphicControl : public GControl
 public:
     GGraphicControl() = delete;
 
-    GGraphicControl(GGraphicControl const& other) = delete;
+    GGraphicControl(const GGraphicControl& other) = delete;
     GGraphicControl(GGraphicControl&& other) = delete;
 
-    GGraphicControl& operator=(GGraphicControl const& other) = delete;
+    GGraphicControl& operator=(const GGraphicControl& other) = delete;
     GGraphicControl& operator=(GGraphicControl&& other) = delete;
 
-    explicit GGraphicControl(std::string const& vname, GComponent * owner, const uint16_t width,
-                                const uint16_t height);
+    explicit GGraphicControl(const std::string& vname, GComponent * owner, const uint16_t width,
+        const uint16_t height);
     virtual ~GGraphicControl();
 
-    gfx::surface::GfxSurface const& getSurface(void) const noexcept;
+    const gfx::surface::GfxSurface& getSurface(void) const noexcept;
 
-    gfx::pixels::GfxColor const& getForegroundColor(void) const noexcept;
-    void setForegroundColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor getForegroundColor(void) const noexcept;
+    void setForegroundColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    gfx::pixels::GfxColor const& getBackgroundColor(void) const noexcept;
-    void setBackgroundColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor getBackgroundColor(void) const noexcept;
+    void setBackgroundColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    gfx::pixels::GfxColor const& getBorderColor(void) const noexcept;
-    void setBorderColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor getBorderColor(void) const noexcept;
+    void setBorderColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    gfx::pixels::GfxColor const& getBorderShadowColor(void) const noexcept;
-    void setBorderShadowColor(gfx::pixels::GfxColor const& color) noexcept;
+    const gfx::pixels::GfxColor getBorderShadowColor(void) const noexcept;
+    void setBorderShadowColor(const gfx::pixels::GfxColor& color) noexcept;
 
-    GColorScheme const& getColorScheme(void) const noexcept;
-    void setColorScheme(GColorScheme const& colorScheme) noexcept;
+    const GColorScheme getColorScheme(void) const noexcept;
+    void setColorScheme(const GColorScheme& colorScheme) noexcept;
 
     virtual void draw(void);
 protected:

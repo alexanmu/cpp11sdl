@@ -48,7 +48,7 @@ public:
     }
 private:
     CCallback() = delete;
-    CCallback(CCallback const&) = delete;
+    CCallback(const CCallback&) = delete;
 
     T& m_rTarget;
     fn m_Operation;

@@ -59,7 +59,7 @@ GfxHapticCoordinates::GfxHapticCoordinates(const ValueType coord) noexcept : Gfx
     coord_ = static_cast<SdlType>(coord);
 }
 
-GfxHapticCoordinates::GfxHapticCoordinates(GfxHapticCoordinates const& other) noexcept : GfxObject(other)
+GfxHapticCoordinates::GfxHapticCoordinates(const GfxHapticCoordinates& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -75,7 +75,7 @@ GfxHapticCoordinates::GfxHapticCoordinates(GfxHapticCoordinates&& other) noexcep
     other.clear();
 }
 
-GfxHapticCoordinates& GfxHapticCoordinates::operator=(GfxHapticCoordinates const& other) noexcept
+GfxHapticCoordinates& GfxHapticCoordinates::operator=(const GfxHapticCoordinates& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

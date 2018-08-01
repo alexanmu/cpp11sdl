@@ -156,8 +156,8 @@ std::string GfxHints::to_string(void) const noexcept
     return std::string(ClassName);
 }
 
-GfxBool GfxHints::setHintWithPriority(std::string const& name, std::string const& value,
-                                      GfxHintPriority const& prio) const noexcept
+const GfxBool GfxHints::setHintWithPriority(const std::string& name, const std::string& value,
+                                      const GfxHintPriority& prio) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -171,7 +171,7 @@ GfxBool GfxHints::setHintWithPriority(std::string const& name, std::string const
     return GfxBool(sdlbool);
 }
 
-GfxBool GfxHints::setHint(std::string const& name, std::string const& value) const noexcept
+const GfxBool GfxHints::setHint(const std::string& name, const std::string& value) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -184,7 +184,7 @@ GfxBool GfxHints::setHint(std::string const& name, std::string const& value) con
     return GfxBool(sdlbool);
 }
 
-std::string GfxHints::getHint(std::string const& name) const noexcept
+const std::string GfxHints::getHint(const std::string& name) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -200,7 +200,7 @@ std::string GfxHints::getHint(std::string const& name) const noexcept
     return "";
 }
 
-GfxBool GfxHints::getHintBoolean(std::string const& name, GfxBool const& defvalue) const noexcept
+const GfxBool GfxHints::getHintBoolean(const std::string& name, const GfxBool& defvalue) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
@@ -213,7 +213,7 @@ GfxBool GfxHints::getHintBoolean(std::string const& name, GfxBool const& defvalu
     return GfxBool(sdlbool);
 }
 
-void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& callback) noexcept
+void GfxHints::addHintCallback(const std::string& name, const GfxHintCallback& callback) noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -226,7 +226,7 @@ void GfxHints::addHintCallback(std::string const& name, GfxHintCallback const& c
     SDL_AddHintCallback(name.c_str(), hintCallbackFunction, userdata);
 }
 
-void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& callback) throw(std::runtime_error)
+void GfxHints::delHintCallback(const std::string& name, const GfxHintCallback& callback) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -265,43 +265,43 @@ void GfxHints::delHintCallback(std::string const& name, GfxHintCallback const& c
     }
 }
 
-GfxBool GfxHints::setHintWithPriority(const ValueType hint, std::string const& value,
-                                      GfxHintPriority const& prio) const noexcept
+const GfxBool GfxHints::setHintWithPriority(const ValueType hint, const std::string& value,
+                                      const GfxHintPriority& prio) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
     return setHintWithPriority(getHintNameByValue(hint), value, prio);
 }
 
-GfxBool GfxHints::setHint(const ValueType hint, std::string const& value) const noexcept
+const GfxBool GfxHints::setHint(const ValueType hint, const std::string& value) const noexcept
 {
     LOG_TRACE_PRIO_MED();
 
     return setHint(getHintNameByValue(hint), value);
 }
 
-std::string GfxHints::getHint(const ValueType hint) const noexcept
+const std::string GfxHints::getHint(const ValueType hint) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return getHint(getHintNameByValue(hint));
 }
 
-GfxBool GfxHints::getHintBoolean(const ValueType hint, GfxBool const& defvalue) const noexcept
+const GfxBool GfxHints::getHintBoolean(const ValueType hint, const GfxBool& defvalue) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     return getHintBoolean(getHintNameByValue(hint), defvalue);
 }
 
-void GfxHints::addHintCallback(const ValueType hint, GfxHintCallback const& callback) noexcept
+void GfxHints::addHintCallback(const ValueType hint, const GfxHintCallback& callback) noexcept
 {
     LOG_TRACE_PRIO_HIGH();
 
     addHintCallback(getHintNameByValue(hint), callback);
 }
 
-void GfxHints::delHintCallback(const ValueType hint, GfxHintCallback const& callback) throw(std::runtime_error)
+void GfxHints::delHintCallback(const ValueType hint, const GfxHintCallback& callback) throw(std::runtime_error)
 {
     LOG_TRACE_PRIO_HIGH();
 
@@ -316,14 +316,14 @@ void GfxHints::clearHints(void) const noexcept
 }
 
 // Private methods
-std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
+const std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 
     const char * chptr = nullptr;
 
     // std::pair<GfxHints::ValueType, const char *>
-    for (auto const& it : hintsMap_)
+    for (const auto& it : hintsMap_)
     {
         if (it.first == value)
         {
@@ -334,7 +334,7 @@ std::string GfxHints::getHintNameByValue(const ValueType value) const noexcept
     {
         return std::string(chptr);
     }
-    return "";
+    return std::string("");
 }
 
 void GfxHints::hintCallbackFunction(void * userdata, const char * name, const char * oldv, const char * newv)

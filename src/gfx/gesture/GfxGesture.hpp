@@ -48,19 +48,19 @@ public:
 
     GfxGesture() noexcept;
 
-    GfxGesture(GfxGesture const& other) noexcept;
+    GfxGesture(const GfxGesture& other) noexcept;
     GfxGesture(GfxGesture&& other) noexcept;
 
-    GfxGesture& operator=(GfxGesture const& other) noexcept;
+    GfxGesture& operator=(const GfxGesture& other) noexcept;
     GfxGesture& operator=(GfxGesture&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    int32_t recordGesture(touch::GfxTouchID const& touchId) const noexcept;
-    int32_t saveAllDollarTemplates(rwops::GfxRwOps const& rwops) const noexcept;
-    int32_t saveDollarTemplate(GfxGestureID const& gestureId, rwops::GfxRwOps const& rwops) const noexcept;
-    int32_t loadDollarTemplates(touch::GfxTouchID const& touchId, rwops::GfxRwOps const& rwops) const noexcept;
+    int32_t recordGesture(const touch::GfxTouchID& touchId) const noexcept;
+    int32_t saveAllDollarTemplates(const rwops::GfxRwOps& rwops) const noexcept;
+    int32_t saveDollarTemplate(const GfxGestureID& gestureId, const rwops::GfxRwOps& rwops) const noexcept;
+    int32_t loadDollarTemplates(const touch::GfxTouchID& touchId, const rwops::GfxRwOps& rwops) const noexcept;
 };
 
 }  // namespace gesture

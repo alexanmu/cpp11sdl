@@ -70,14 +70,14 @@ public:
 
     /* void gameControllerAddMappingsFromRW(); ~GeOr~ ToDo */
     /* void gameControllerAddMappingsFromFile(); ~GeOr~ ToDo */
-    int32_t gameControllerAddMapping(std::string const& mappingString) const noexcept;
+    int32_t gameControllerAddMapping(const std::string& mappingString) const noexcept;
     int32_t gameControllerNumMappings(void) const noexcept;
     const std::string gameControllerMappingForIndex(const int32_t mappingIndex) const noexcept;
-    const std::string gameControllerMappingForGUID(joystick::GfxJoystickGUID const& joyId) const noexcept;
+    const std::string gameControllerMappingForGUID(const joystick::GfxJoystickGUID& joyId) const noexcept;
     const std::string gameControllerMapping(void) const noexcept;
     const GfxBool isGameController(const int32_t joystickIndex) const noexcept;
     const std::string gameControllerNameForIndex(const int32_t joystickIndex) const noexcept;
-    SdlTypePtr gameControllerFromInstanceID(joystick::GfxJoystickID const& joyId) const noexcept;
+    SdlTypePtr gameControllerFromInstanceID(const joystick::GfxJoystickID& joyId) const noexcept;
     const std::string gameControllerName(void) const noexcept;
     uint16_t gameControllerVendor(void) const noexcept;
     uint16_t gameControllerGetProduct(void) const noexcept;
@@ -87,15 +87,15 @@ public:
     events::GfxEventActionCommand gameControllerEventState(const events::
                 GfxEventActionCommand state) const noexcept;
     void gameControllerUpdate(void) const noexcept;
-    const GfxGameControllerAxis gameControllerGetAxisFromString(std::string const& pchString) const noexcept;
-    const std::string gameControllerGetStringForAxis(GfxGameControllerAxis const& axis) const noexcept;
-    const GfxGameControllerButtonBind gameControllerGetBindForAxis(GfxGameControllerAxis const& axis) const noexcept;
-    int32_t gameControllerGetAxis(GfxGameControllerAxis const& axis) const noexcept;
-    GfxGameControllerButton gameControllerGetButtonFromString(std::string const& pchString) const noexcept;
-    const std::string gameControllerGetStringForButton(GfxGameControllerButton const& button) const noexcept;
-    const GfxGameControllerButtonBind gameControllerGetBindForButton(GfxGameControllerButton const& button)
+    const GfxGameControllerAxis gameControllerGetAxisFromString(const std::string& pchString) const noexcept;
+    const std::string gameControllerGetStringForAxis(const GfxGameControllerAxis& axis) const noexcept;
+    const GfxGameControllerButtonBind gameControllerGetBindForAxis(const GfxGameControllerAxis& axis) const noexcept;
+    int32_t gameControllerGetAxis(const GfxGameControllerAxis& axis) const noexcept;
+    const GfxGameControllerButton gameControllerGetButtonFromString(const std::string& pchString) const noexcept;
+    const std::string gameControllerGetStringForButton(const GfxGameControllerButton& button) const noexcept;
+    const GfxGameControllerButtonBind gameControllerGetBindForButton(const GfxGameControllerButton& button)
             const noexcept;
-    uint8_t gameControllerGetButton(GfxGameControllerButton const& button) const noexcept;
+    uint8_t gameControllerGetButton(const GfxGameControllerButton& button) const noexcept;
 
     void clear(void) noexcept;
 

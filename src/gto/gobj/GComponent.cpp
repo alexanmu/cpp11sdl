@@ -34,7 +34,7 @@ namespace gto
 namespace gobj
 {
 
-GComponent::GComponent(std::string const& vname, GComponent * owner) : GObject()
+GComponent::GComponent(const std::string& vname, GComponent * owner) : GObject()
 {
     assert(vname.length() > 0);
 
@@ -49,14 +49,14 @@ GComponent::~GComponent()
 {
     if (componentCount_ > 0)
     {
-        for (auto& c : components_)
+        for (const auto& c : components_)
         {
             delete c;
         }
     }
 }
 
-GComponent* GComponent::getParentComponent(void) const noexcept
+GComponent * GComponent::getParentComponent(void) const noexcept
 {
     return owner_;
 }
@@ -106,7 +106,7 @@ void GComponent::removeComponent(GComponent * const component) throw(std::runtim
     }
 }
 
-GComponent* GComponent::findComponent(const std::string& name)
+GComponent * GComponent::findComponent(const std::string& name)
 {
     assert(name.length() > 0);
 
@@ -132,7 +132,7 @@ void GComponent::setTag(uint64_t tag) noexcept
     tag_ = tag;
 }
 
-std::string const& GComponent::getVName(void) const
+const std::string& GComponent::getVName(void) const
 {
     return vname_;
 }

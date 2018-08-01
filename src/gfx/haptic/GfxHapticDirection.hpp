@@ -47,13 +47,13 @@ public:
 
     GfxHapticDirection() noexcept;
     explicit GfxHapticDirection(const SdlType dir) noexcept;
-    GfxHapticDirection(GfxHapticCoordinates const& type, const int32_t dir1, const int32_t dir2,
+    GfxHapticDirection(const GfxHapticCoordinates& type, const int32_t dir1, const int32_t dir2,
             const int32_t dir3) noexcept;
 
-    GfxHapticDirection(GfxHapticDirection const& other) noexcept;
+    GfxHapticDirection(const GfxHapticDirection& other) noexcept;
     GfxHapticDirection(GfxHapticDirection&& other) noexcept;
 
-    GfxHapticDirection& operator=(GfxHapticDirection const& other) noexcept;
+    GfxHapticDirection& operator=(const GfxHapticDirection& other) noexcept;
     GfxHapticDirection& operator=(GfxHapticDirection&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

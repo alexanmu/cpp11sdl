@@ -340,7 +340,7 @@ const GfxJoystickType GfxJoystick::joystickGetType(void) const noexcept
     return GfxJoystickType();
 }
 
-const std::string GfxJoystick::joystickGetGUIDString(GfxJoystickGUID const& guid) const noexcept
+const std::string GfxJoystick::joystickGetGUIDString(const GfxJoystickGUID& guid) const noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

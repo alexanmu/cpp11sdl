@@ -37,8 +37,8 @@ namespace gto
 namespace gobj
 {
 
-GBitmap::GBitmap(std::string const& vname, GComponent* owner, uint16_t width, uint16_t height,
-                GImageScaleMode const& scalemode, std::string const& filename) :
+GBitmap::GBitmap(const std::string& vname, GComponent* owner, const uint16_t width, const uint16_t height,
+    const GImageScaleMode& scalemode, const std::string& filename) :
         GImage(vname, owner, width, height)
 {
     assert(vname.length() > 0);

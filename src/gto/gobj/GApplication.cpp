@@ -35,7 +35,7 @@ namespace gobj
 
 GApplication * GApplication::activeApp = nullptr;
 
-GApplication::GApplication(std::string const& appname) : GObject()
+GApplication::GApplication(const std::string& appname) : GObject()
 {
     assert(appname.length() > 0);
 
@@ -120,7 +120,7 @@ util::GFontManager * GApplication::getActiveFontManager(void) const noexcept
     return fontManager_;
 }
 
-std::string GApplication::getBasePath(void) const noexcept
+const std::string GApplication::getBasePath(void) const noexcept
 {
     return "data";
 }

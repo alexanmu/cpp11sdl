@@ -91,68 +91,68 @@ public:
 
     GfxEvent() noexcept;
     explicit GfxEvent(const SdlType event) noexcept;
-    GfxEvent(GfxEvent const& other) noexcept;
+    GfxEvent(const GfxEvent& other) noexcept;
     GfxEvent(GfxEvent&& other) noexcept;
 
-    GfxEvent& operator=(GfxEvent const& other) noexcept;
+    GfxEvent& operator=(const GfxEvent& other) noexcept;
     GfxEvent& operator=(GfxEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
     virtual std::string to_string(void) const noexcept;
 
-    int32_t peepEvents(std::vector<SdlType> * events, const int32_t numevents, GfxEventAction const& action,
-                       GfxEventType const& minType, GfxEventType const& maxType) const noexcept;
-    GfxBool hasEvent(GfxEventType const& type) const noexcept;
-    GfxBool hasEvents(GfxEventType const& minType, GfxEventType const& maxType) const noexcept;
-    void flushEvent(GfxEventType const& type) const noexcept;
-    void flushEvents(GfxEventType const& minType, GfxEventType const& maxType) const noexcept;
+    int32_t peepEvents(std::vector<SdlType> * events, const int32_t numevents, const GfxEventAction& action,
+                       const GfxEventType& minType, const GfxEventType& maxType) const noexcept;
+    const GfxBool hasEvent(const GfxEventType& type) const noexcept;
+    const GfxBool hasEvents(const GfxEventType& minType, const GfxEventType& maxType) const noexcept;
+    void flushEvent(const GfxEventType& type) const noexcept;
+    void flushEvents(const GfxEventType& minType, const GfxEventType& maxType) const noexcept;
     int32_t pollEvent(void) noexcept;
     int32_t waitEvent(void) noexcept;
     int32_t waitEventTimeout(const int32_t timeout) noexcept;
     int32_t pushEvent(void) const noexcept;
-    int32_t pushEvent(GfxEvent const& event) const noexcept;
-    void setEventFilter(GfxEventFilter const& filter) noexcept;
-    GfxBool getEventFilter(GfxEventFilter * filter) const throw(std::runtime_error);
-    void addEventWatch(GfxEventFilter const& filter) noexcept;
-    void delEventWatch(GfxEventFilter const& filter) noexcept;
-    void filterEvents(GfxEventFilter const& filter) throw(std::runtime_error);
-    uint8_t eventState(GfxEventType const& type, const GfxEventActionCommand state) const noexcept;
-    uint8_t getEventState(GfxEventType const& type) const noexcept;
+    int32_t pushEvent(const GfxEvent& event) const noexcept;
+    void setEventFilter(const GfxEventFilter& filter) noexcept;
+    const GfxBool getEventFilter(GfxEventFilter * filter) const throw(std::runtime_error);
+    void addEventWatch(const GfxEventFilter& filter) noexcept;
+    void delEventWatch(const GfxEventFilter& filter) noexcept;
+    void filterEvents(const GfxEventFilter& filter) throw(std::runtime_error);
+    uint8_t eventState(const GfxEventType& type, const GfxEventActionCommand state) const noexcept;
+    uint8_t getEventState(const GfxEventType& type) const noexcept;
     uint32_t registerEvents(const int32_t numevents) const noexcept;
 
-    GfxEventType const& eventType(void) const noexcept;
+    const GfxEventType& eventType(void) const noexcept;
     const GfxCommonEvent commonEvent(void) const noexcept;
 
-    GfxQuitEvent const& quitEvent(void) const throw(std::runtime_error);
-    GfxWindowEvent const& windowEvent(void) const throw(std::runtime_error);
-    GfxSysWmEvent const& sysWmEvent(void) const throw(std::runtime_error);
-    GfxKeyboardEvent const& keyboardEvent(void) const throw(std::runtime_error);
-    GfxTextEditingEvent const& textEditingEvent(void) const throw(std::runtime_error);
-    GfxTextInputEvent const& textInputEvent(void) const throw(std::runtime_error);
-    GfxMouseMotionEvent const& mouseMotionEvent(void) const throw(std::runtime_error);
-    GfxMouseButtonEvent const& mouseButtonEvent(void) const throw(std::runtime_error);
-    GfxMouseWheelEvent const& mouseWheelEvent(void) const throw(std::runtime_error);
-    GfxJoyAxisEvent const& joyAxisEvent(void) const throw(std::runtime_error);
-    GfxJoyBallEvent const& joyBallEvent(void) const throw(std::runtime_error);
-    GfxJoyButtonEvent const& joyButtonEvent(void) const throw(std::runtime_error);
-    GfxJoyHatEvent const& joyHatEvent(void) const throw(std::runtime_error);
-    GfxJoyDeviceEvent const& joyDeviceEvent(void) const throw(std::runtime_error);
-    GfxControllerAxisEvent const& ctrlAxisMotionEvent(void) const throw(std::runtime_error);
-    GfxControllerButtonEvent const& ctrlButtonEvent(void) const throw(std::runtime_error);
-    GfxControllerDeviceEvent const& ctrlDeviceEvent(void) const throw(std::runtime_error);
-    GfxTouchFingerEvent const& fingerEvent(void) const throw(std::runtime_error);
-    GfxDollarGestureEvent const& dollarEvent(void) const throw(std::runtime_error);
-    GfxMultiGestureEvent const& multiGestureEvent(void) const throw(std::runtime_error);
-    GfxDropEvent const& dropEvent(void) const throw(std::runtime_error);
-    GfxAudioDeviceEvent const& audioDeviceEvent(void) const throw(std::runtime_error);
-    GfxUserEvent const& userEvent(void) const throw(std::runtime_error);
+    const GfxQuitEvent& quitEvent(void) const throw(std::runtime_error);
+    const GfxWindowEvent& windowEvent(void) const throw(std::runtime_error);
+    const GfxSysWmEvent& sysWmEvent(void) const throw(std::runtime_error);
+    const GfxKeyboardEvent& keyboardEvent(void) const throw(std::runtime_error);
+    const GfxTextEditingEvent& textEditingEvent(void) const throw(std::runtime_error);
+    const GfxTextInputEvent& textInputEvent(void) const throw(std::runtime_error);
+    const GfxMouseMotionEvent& mouseMotionEvent(void) const throw(std::runtime_error);
+    const GfxMouseButtonEvent& mouseButtonEvent(void) const throw(std::runtime_error);
+    const GfxMouseWheelEvent& mouseWheelEvent(void) const throw(std::runtime_error);
+    const GfxJoyAxisEvent& joyAxisEvent(void) const throw(std::runtime_error);
+    const GfxJoyBallEvent& joyBallEvent(void) const throw(std::runtime_error);
+    const GfxJoyButtonEvent& joyButtonEvent(void) const throw(std::runtime_error);
+    const GfxJoyHatEvent& joyHatEvent(void) const throw(std::runtime_error);
+    const GfxJoyDeviceEvent& joyDeviceEvent(void) const throw(std::runtime_error);
+    const GfxControllerAxisEvent& ctrlAxisMotionEvent(void) const throw(std::runtime_error);
+    const GfxControllerButtonEvent& ctrlButtonEvent(void) const throw(std::runtime_error);
+    const GfxControllerDeviceEvent& ctrlDeviceEvent(void) const throw(std::runtime_error);
+    const GfxTouchFingerEvent& fingerEvent(void) const throw(std::runtime_error);
+    const GfxDollarGestureEvent& dollarEvent(void) const throw(std::runtime_error);
+    const GfxMultiGestureEvent& multiGestureEvent(void) const throw(std::runtime_error);
+    const GfxDropEvent& dropEvent(void) const throw(std::runtime_error);
+    const GfxAudioDeviceEvent& audioDeviceEvent(void) const throw(std::runtime_error);
+    const GfxUserEvent& userEvent(void) const throw(std::runtime_error);
 
     void clear(void) noexcept;
 
     SdlTypePtr getAsSdlTypePtr(void) const noexcept;
 private:
     void processEvent(void) noexcept;
-    void assign(GfxEvent const& other) noexcept;
+    void assign(const GfxEvent& other) noexcept;
 
     static int32_t eventFilterFunction(void * userdata, SdlTypePtr event);
     static int32_t eventWatchFunction(void * userdata, SdlTypePtr event);

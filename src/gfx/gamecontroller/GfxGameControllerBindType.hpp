@@ -58,10 +58,10 @@ public:
     explicit GfxGameControllerBindType(const SdlType btype) noexcept;
     explicit GfxGameControllerBindType(const ValueType btype) noexcept;
 
-    GfxGameControllerBindType(GfxGameControllerBindType const& other) noexcept;
+    GfxGameControllerBindType(const GfxGameControllerBindType& other) noexcept;
     GfxGameControllerBindType(GfxGameControllerBindType&& other) noexcept;
 
-    GfxGameControllerBindType& operator=(GfxGameControllerBindType const& other) noexcept;
+    GfxGameControllerBindType& operator=(const GfxGameControllerBindType& other) noexcept;
     GfxGameControllerBindType& operator=(GfxGameControllerBindType&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

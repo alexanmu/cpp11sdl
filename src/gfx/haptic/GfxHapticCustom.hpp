@@ -50,10 +50,10 @@ public:
     GfxHapticCustom() noexcept;
     explicit GfxHapticCustom(const SdlType hCust) noexcept;
 
-    GfxHapticCustom(GfxHapticCustom const& other) noexcept;
+    GfxHapticCustom(const GfxHapticCustom& other) noexcept;
     GfxHapticCustom(GfxHapticCustom&& other) noexcept;
 
-    GfxHapticCustom& operator=(GfxHapticCustom const& other) noexcept;
+    GfxHapticCustom& operator=(const GfxHapticCustom& other) noexcept;
     GfxHapticCustom& operator=(GfxHapticCustom&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

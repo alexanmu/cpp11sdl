@@ -52,7 +52,7 @@ GfxSysWmEvent::GfxSysWmEvent(const SdlType event) noexcept : GfxObject(ClassName
     wmEvent_ = event;
 }
 
-GfxSysWmEvent::GfxSysWmEvent(GfxSysWmEvent const& other) noexcept : GfxObject(other)
+GfxSysWmEvent::GfxSysWmEvent(const GfxSysWmEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxSysWmEvent::GfxSysWmEvent(GfxSysWmEvent&& other) noexcept : GfxObject(std::mo
     other.clear();
 }
 
-GfxSysWmEvent& GfxSysWmEvent::operator=(GfxSysWmEvent const& other) noexcept
+GfxSysWmEvent& GfxSysWmEvent::operator=(const GfxSysWmEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

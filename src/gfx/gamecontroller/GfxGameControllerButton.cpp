@@ -58,7 +58,7 @@ GfxGameControllerButton::GfxGameControllerButton(const ValueType button) noexcep
     button_ = static_cast<SdlType>(button);
 }
 
-GfxGameControllerButton::GfxGameControllerButton(GfxGameControllerButton const& other) noexcept : GfxObject(other)
+GfxGameControllerButton::GfxGameControllerButton(const GfxGameControllerButton& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -74,7 +74,7 @@ GfxGameControllerButton::GfxGameControllerButton(GfxGameControllerButton&& other
     other.clear();
 }
 
-GfxGameControllerButton& GfxGameControllerButton::operator=(GfxGameControllerButton const& other) noexcept
+GfxGameControllerButton& GfxGameControllerButton::operator=(const GfxGameControllerButton& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

@@ -49,7 +49,7 @@ public:
 
     explicit GfxArcCoordsType(const BgiType arccoords) noexcept;
 
-    GfxArcCoordsType(GfxArcCoordsType const& other) noexcept;
+    GfxArcCoordsType(const GfxArcCoordsType& other) noexcept;
     GfxArcCoordsType(GfxArcCoordsType&& other) noexcept;
 
     GfxArcCoordsType& operator=(const GfxArcCoordsType& other) noexcept;

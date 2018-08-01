@@ -52,7 +52,7 @@ GfxHapticCustom::GfxHapticCustom(const SdlType hCust) noexcept : GfxObject(Class
     hCust_ = hCust;
 }
 
-GfxHapticCustom::GfxHapticCustom(GfxHapticCustom const& other) noexcept : GfxObject(other)
+GfxHapticCustom::GfxHapticCustom(const GfxHapticCustom& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -68,7 +68,7 @@ GfxHapticCustom::GfxHapticCustom(GfxHapticCustom&& other) noexcept : GfxObject(s
     other.clear();
 }
 
-GfxHapticCustom& GfxHapticCustom::operator=(GfxHapticCustom const& other) noexcept
+GfxHapticCustom& GfxHapticCustom::operator=(const GfxHapticCustom& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

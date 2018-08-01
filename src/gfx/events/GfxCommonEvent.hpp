@@ -50,10 +50,10 @@ public:
     explicit GfxCommonEvent(const uint32_t type, const uint32_t timestamp) noexcept;
     explicit GfxCommonEvent(const SdlType ev) noexcept;
 
-    GfxCommonEvent(GfxCommonEvent const& other) noexcept;
+    GfxCommonEvent(const GfxCommonEvent& other) noexcept;
     GfxCommonEvent(GfxCommonEvent&& other) noexcept;
 
-    GfxCommonEvent& operator=(GfxCommonEvent const& other) noexcept;
+    GfxCommonEvent& operator=(const GfxCommonEvent& other) noexcept;
     GfxCommonEvent& operator=(GfxCommonEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;
@@ -62,7 +62,7 @@ public:
     const GfxEventType getType(void) const noexcept;
     uint32_t getTimeStamp(void) const noexcept;
 
-    void setType(GfxEventType const& evtype) noexcept;
+    void setType(const GfxEventType& evtype) noexcept;
     void setTimeStamp(const uint32_t timestamp) noexcept;
 
     void clear(void) noexcept;

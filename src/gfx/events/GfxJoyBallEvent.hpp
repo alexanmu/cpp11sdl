@@ -51,10 +51,10 @@ public:
     GfxJoyBallEvent() noexcept;
     explicit GfxJoyBallEvent(const SdlType event) noexcept;
 
-    GfxJoyBallEvent(GfxJoyBallEvent const& other) noexcept;
+    GfxJoyBallEvent(const GfxJoyBallEvent& other) noexcept;
     GfxJoyBallEvent(GfxJoyBallEvent&& other) noexcept;
 
-    GfxJoyBallEvent& operator=(GfxJoyBallEvent const& other) noexcept;
+    GfxJoyBallEvent& operator=(const GfxJoyBallEvent& other) noexcept;
     GfxJoyBallEvent& operator=(GfxJoyBallEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

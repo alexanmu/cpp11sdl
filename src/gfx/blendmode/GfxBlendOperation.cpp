@@ -61,7 +61,7 @@ GfxBlendOperation::GfxBlendOperation(const SdlType blendop) noexcept : GfxObject
     blendOperation_ = blendop;
 }
 
-GfxBlendOperation::GfxBlendOperation(GfxBlendOperation const& other) noexcept : GfxObject(other)
+GfxBlendOperation::GfxBlendOperation(const GfxBlendOperation& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -77,7 +77,7 @@ GfxBlendOperation::GfxBlendOperation(GfxBlendOperation&& other) noexcept : GfxOb
     other.clear();
 }
 
-GfxBlendOperation& GfxBlendOperation::operator=(GfxBlendOperation const& other) noexcept
+GfxBlendOperation& GfxBlendOperation::operator=(const GfxBlendOperation& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
@@ -107,7 +107,7 @@ GfxBlendOperation& GfxBlendOperation::operator=(GfxBlendOperation&& other) noexc
     return *this;
 }
 
-bool GfxBlendOperation::operator==(GfxBlendOperation const& other) noexcept
+bool GfxBlendOperation::operator==(const GfxBlendOperation& other) noexcept
 {
     LOG_TRACE_PRIO_LOW();
 

@@ -122,7 +122,7 @@ private:
 
     void demoStateMachine(void);
 
-    void processWindowEvent(GfxWindowEventID const& ev);
+    void processWindowEvent(const GfxWindowEventID& ev);
 
     GfxInitQuit * iqptr_;
     GfxWindow * winptr_;
@@ -244,7 +244,7 @@ bool BorlandGraphicsInterfaceDemo::checkWindowSurfaceAttrs(void)
 
     std::cout << "Get window surface. Attributes:" << std::endl;
     // Get surface
-    GfxSurface const& surf = winptr_->getWindowSurface();
+    const GfxSurface& surf = winptr_->getWindowSurface();
     // Surface flags
     sflags = surf.getSurfaceFlags();
     std::cout << "Software surface: " << std::boolalpha << sflags.isSwSurface() << std::noboolalpha << std::endl;
@@ -353,7 +353,7 @@ void BorlandGraphicsInterfaceDemo::eventLoop(void)
     }
 }
 
-void BorlandGraphicsInterfaceDemo::processWindowEvent(GfxWindowEventID const& ev)
+void BorlandGraphicsInterfaceDemo::processWindowEvent(const GfxWindowEventID& ev)
 {
     if (ev.isResized())
     {

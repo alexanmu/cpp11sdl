@@ -53,10 +53,10 @@ public:
     GfxKeyboardEvent() noexcept;
     explicit GfxKeyboardEvent(const SdlType event) noexcept;
 
-    GfxKeyboardEvent(GfxKeyboardEvent const& other) noexcept;
+    GfxKeyboardEvent(const GfxKeyboardEvent& other) noexcept;
     GfxKeyboardEvent(GfxKeyboardEvent&& other) noexcept;
 
-    GfxKeyboardEvent& operator=(GfxKeyboardEvent const& other) noexcept;
+    GfxKeyboardEvent& operator=(const GfxKeyboardEvent& other) noexcept;
     GfxKeyboardEvent& operator=(GfxKeyboardEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

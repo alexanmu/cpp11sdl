@@ -59,10 +59,10 @@ public:
                              const bool strikethrough) noexcept;
     explicit GfxTtfFontStyle(const SdlType style) noexcept;
 
-    GfxTtfFontStyle(GfxTtfFontStyle const& other) noexcept;
+    GfxTtfFontStyle(const GfxTtfFontStyle& other) noexcept;
     GfxTtfFontStyle(GfxTtfFontStyle&& other) noexcept;
 
-    GfxTtfFontStyle& operator=(GfxTtfFontStyle const& other) noexcept;
+    GfxTtfFontStyle& operator=(const GfxTtfFontStyle& other) noexcept;
     GfxTtfFontStyle& operator=(GfxTtfFontStyle&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

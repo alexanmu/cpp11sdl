@@ -52,10 +52,10 @@ public:
     GfxJoyButtonEvent() noexcept;
     explicit GfxJoyButtonEvent(const SdlType event) noexcept;
 
-    GfxJoyButtonEvent(GfxJoyButtonEvent const& other) noexcept;
+    GfxJoyButtonEvent(const GfxJoyButtonEvent& other) noexcept;
     GfxJoyButtonEvent(GfxJoyButtonEvent&& other) noexcept;
 
-    GfxJoyButtonEvent& operator=(GfxJoyButtonEvent const& other) noexcept;
+    GfxJoyButtonEvent& operator=(const GfxJoyButtonEvent& other) noexcept;
     GfxJoyButtonEvent& operator=(GfxJoyButtonEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

@@ -51,10 +51,10 @@ public:
     GfxMultiGestureEvent() noexcept;
     explicit GfxMultiGestureEvent(const SdlType event) noexcept;
 
-    GfxMultiGestureEvent(GfxMultiGestureEvent const& other) noexcept;
+    GfxMultiGestureEvent(const GfxMultiGestureEvent& other) noexcept;
     GfxMultiGestureEvent(GfxMultiGestureEvent&& other) noexcept;
 
-    GfxMultiGestureEvent& operator=(GfxMultiGestureEvent const& other) noexcept;
+    GfxMultiGestureEvent& operator=(const GfxMultiGestureEvent& other) noexcept;
     GfxMultiGestureEvent& operator=(GfxMultiGestureEvent&& other) noexcept;
 
     virtual explicit operator bool() const noexcept;

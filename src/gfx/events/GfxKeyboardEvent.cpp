@@ -51,7 +51,7 @@ GfxKeyboardEvent::GfxKeyboardEvent(const SdlType event) noexcept : GfxObject(Cla
     keyboardEvent_ = event;
 }
 
-GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent const& other) noexcept : GfxObject(other)
+GfxKeyboardEvent::GfxKeyboardEvent(const GfxKeyboardEvent& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxKeyboardEvent::GfxKeyboardEvent(GfxKeyboardEvent&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxKeyboardEvent& GfxKeyboardEvent::operator=(GfxKeyboardEvent const& other) noexcept
+GfxKeyboardEvent& GfxKeyboardEvent::operator=(const GfxKeyboardEvent& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 

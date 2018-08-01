@@ -51,7 +51,7 @@ GfxArcCoordsType::GfxArcCoordsType(const BgiType arccoords) noexcept : GfxObject
     arccoords_ = arccoords;
 }
 
-GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType const& other) noexcept : GfxObject(other)
+GfxArcCoordsType::GfxArcCoordsType(const GfxArcCoordsType& other) noexcept : GfxObject(other)
 {
     LOG_TRACE_PRIO_MED();
 
@@ -67,7 +67,7 @@ GfxArcCoordsType::GfxArcCoordsType(GfxArcCoordsType&& other) noexcept : GfxObjec
     other.clear();
 }
 
-GfxArcCoordsType& GfxArcCoordsType::operator=(GfxArcCoordsType const& other) noexcept
+GfxArcCoordsType& GfxArcCoordsType::operator=(const GfxArcCoordsType& other) noexcept
 {
     LOG_TRACE_PRIO_MED();
 
