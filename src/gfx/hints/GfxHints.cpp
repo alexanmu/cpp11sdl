@@ -1,6 +1,6 @@
 		/*
  Giotto
- Copyright (C) 2017 George Oros
+ Copyright (C) 2019 George Oros
  
  This software is provided 'as-is', without any express or implied
  warranty.  In no event will the authors be held liable for any damages
