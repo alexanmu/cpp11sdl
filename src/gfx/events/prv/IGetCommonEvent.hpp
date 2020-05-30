@@ -41,7 +41,7 @@ namespace prv
 class IGetCommonEvent
 {
 public:
-    virtual ~IGetCommonEvent() {}
+    virtual ~IGetCommonEvent() = default;
 
     virtual const GfxCommonEvent getCommonEvent(void) const noexcept = 0;
 };

@@ -59,12 +59,12 @@ public:
     GfxWindowEvent& operator=(const GfxWindowEvent& other) noexcept;
     GfxWindowEvent& operator=(GfxWindowEvent&& other) noexcept;
 
-    virtual explicit operator bool() const noexcept;
-    virtual std::string to_string(void) const noexcept;
+    explicit operator bool() const noexcept override;
+    std::string to_string(void) const noexcept override;
 
-    virtual const GfxCommonEvent getCommonEvent(void) const noexcept;
+    const GfxCommonEvent getCommonEvent(void) const noexcept override;
 
-    virtual uint32_t getWindowID(void) const noexcept;
+    uint32_t getWindowID(void) const noexcept override;
 
     const video::GfxWindowEventID getWindowEventID(void) const noexcept;
     int32_t getData1(void) const noexcept;

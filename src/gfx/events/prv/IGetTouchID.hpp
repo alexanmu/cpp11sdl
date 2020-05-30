@@ -40,7 +40,7 @@ namespace prv
 class IGetTouchID
 {
 public:
-    virtual ~IGetTouchID() {}
+    virtual ~IGetTouchID() = default;
 
     virtual const touch::GfxTouchID getTouchID(void) const noexcept = 0;
 };

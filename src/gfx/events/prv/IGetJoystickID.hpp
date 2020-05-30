@@ -40,7 +40,7 @@ namespace prv
 class IGetJoystickID
 {
 public:
-    virtual ~IGetJoystickID() {}
+    virtual ~IGetJoystickID() = default;
 
     virtual const joystick::GfxJoystickID getJoystickID(void) const noexcept = 0;
 };

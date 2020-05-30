@@ -38,7 +38,7 @@ namespace prv
 class IGetWindowID
 {
 public:
-    virtual ~IGetWindowID() {}
+    virtual ~IGetWindowID() = default;
 
     virtual uint32_t getWindowID(void) const noexcept = 0;
 };

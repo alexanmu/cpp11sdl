@@ -38,7 +38,7 @@ namespace prv
 class IGetMouseID
 {
 public:
-    virtual ~IGetMouseID() {}
+    virtual ~IGetMouseID() = default;
 
     virtual uint32_t getMouseID(void) const noexcept = 0;
 };

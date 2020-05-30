@@ -41,7 +41,7 @@ namespace blendmode
 class GfxBlendMode final : public GfxObject
 {
 public:
-    typedef SDL_BlendMode SdlType;
+    using SdlType = SDL_BlendMode;
 
     static const char ClassName[];
     static const bool SdlResource = false;
@@ -82,10 +82,13 @@ public:
 
     bool isCustom(void) const noexcept;
 
-    void composeCustomBlendMode(const GfxBlendFactor& srcColorFactor, const GfxBlendFactor& dstColorFactor,
-                                const GfxBlendOperation& colorOperation, const GfxBlendFactor& srcAlphaFactor,
-                                const GfxBlendFactor& dstAlphaFactor, const GfxBlendOperation& alphaOperation)
-                noexcept;
+    void composeCustomBlendMode(
+        const GfxBlendFactor& srcColorFactor,
+        const GfxBlendFactor& dstColorFactor,
+        const GfxBlendOperation& colorOperation,
+        const GfxBlendFactor& srcAlphaFactor,
+        const GfxBlendFactor& dstAlphaFactor,
+        const GfxBlendOperation& alphaOperation) noexcept;
 
     void clear(void) noexcept;
 

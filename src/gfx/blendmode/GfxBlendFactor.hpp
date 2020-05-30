@@ -39,7 +39,7 @@ namespace blendmode
 class GfxBlendFactor final : public GfxObject
 {
 public:
-    typedef SDL_BlendFactor SdlType;
+    using SdlType = SDL_BlendFactor;
 
     static const char ClassName[];
     static const bool SdlResource = false;
